@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block title %}{{ episode.code }} — FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC -{% endblock %}
+{% block content %}
+<section class="page-head episode-head">
+  <div><p class="eyebrow">{{ episode.code }}</p><h1>{{ episode.title }}</h1><p>{{ episode.organization.name }}{% if episode.organizational_unit %} · {{ episode.organizational_unit }}{% endif %}</p></div>
+  <div class="badges"><span class="pill">{{ episode.demand_level }}</span><span class="status">{{ episode.status }}</span><span class="pill subtle">Sensibilité {{ episode.sensitivity_level }}</span></div>
+</section>
+
+<div class="grid two">
+<section class="panel">
+  <h2>Besoin actif</h2>
+  {% if need %}
+  <dl class="facts">
+    <dt>Situation</dt><dd>{{ need.current_situation }}</dd>
+    <dt>Résultat recherché</dt><dd>{{ need.desired_outcome }}</dd>
+    <dt>Responsable</dt><dd>{{ need.sponsor or 'À confirmer' }}</dd>
+    <dt>Échéance</dt><dd>{{ need.latest_useful_date or 'À préciser' }}</dd>
+    <dt>Contrefactuel</dt><dd>{{ need.counterfactual_plan or 'À verrouiller avant investigation' }}</dd>
+    <dt>Hypothèse initiale</dt><dd>{{ need.initial_frontiere_hypothesis or 'À enregistrer' }}</dd>
+  </dl>
+  {% endif %}
+</section>
+<section class="panel">
+  <h2>Contrôles de qualité</h2>
+  <ul class="checks">
+    <li class="{{ 'ok' if need and need.current_situation else 'warn' }}">Problème défini</li>
+    <li class="{{ 'ok' if need and need.desired_outcome else 'warn' }}">Résultat observable défini</li>
+    <li class="{{ 'ok' if need and need.sponsor else 'warn' }}">Responsable institutionnel</li>
+    <li class="{{ 'ok' if need and need.counterfactual_plan else 'warn' }}">Contrefactuel pré-intervention</li>
+    <li class="{{ 'ok' if episode.need_preexisting_frontiere is not none else 'warn' }}">Préexistence du besoin qualifiée</li>
+  </ul>
+</section>
+</div>
+
+<section id="recherche" class="panel">
+  <div class="panel-head"><h2>Recherche prioritaire dans le secteur public</h2><span class="muted">P0 / P1 / P2 / P3</span></div>
+  {% if episode.searches %}
+    <table><thead><tr><th>Type</th><th>Date</th><th>Complète</th><th>Capacité trouvée</th><th>Mobilisable</th><th>Résultat</th><th>Temps</th></tr></thead><tbody>
+    {% for s in episode.searches %}<tr><td>{{ s.search_type }}</td><td>{{ s.started_at.date() }}</td><td>{{ 'Oui' if s.complete_enough_to_conclude else 'Non' }}</td><td>{{ s.public_relevant_found }}</td><td>{{ s.public_mobilizable_found }}</td><td><strong>{{ s.public_result or '—' }}</strong></td><td>{{ s.analyst_minutes }} min</td></tr>{% endfor %}
+    </tbody></table>
+  {% endif %}
+  <form method="post" action="/episodes/{{ episode.code }}/public-search" class="inline-form">
+    <label>Recherche suffisante<select name="complete"><option value="no">Non</option><option value="yes">Oui</option></select></label>
+    <label>Capacité publique pertinente<select name="relevant_found"><option value="unknown">Inconnu</option><option value="yes">Oui</option><option value="no">Non</option></select></label>
+    <label>Mobilisable<select name="mobilizable_found"><option value="unknown">Inconnu</option><option value="yes">Oui</option><option value="no">Non</option></select></label>
+    <label>Temps analyste (min)<input type="number" min="0" name="analyst_minutes" value="0"></label>
+    <label class="wide">Notes<textarea name="notes" rows="2"></textarea></label>
+    <button class="button" type="submit">Enregistrer la recherche</button>
+  </form>
+</section>
+
+<section id="ressources" class="panel">
+  <div class="panel-head"><h2>Ressources identifiées</h2><span class="muted">R0 → R5</span></div>
+  {% set ns = namespace(found=false) %}
+  {% for s in episode.searches %}{% for d in s.discoveries %}{% set ns.found=true %}
+    <div class="resource-row"><div><strong>{{ d.resource.display_name }}</strong><span>{{ d.resource.resource_type }}</span></div><div><span class="pill">{{ d.state }}</span> <span class="muted">{{ s.search_type }} · {{ d.source_channel }}</span></div></div>
+  {% endfor %}{% endfor %}
+  {% if not ns.found %}<div class="empty">Aucune ressource enregistrée.</div>{% endif %}
+  <form method="post" action="/episodes/{{ episode.code }}/resource" class="inline-form">
+    <label>Type de recherche<select name="search_type"><option>PUBLIQUE</option><option>EXTERIEURE</option><option>SCIENTIFIQUE</option><option>MARCHE</option><option>AUTRE</option></select></label>
+    <label>Type de ressource<select name="resource_type"><option>PERSONNE</option><option>EQUIPE</option><option>LABORATOIRE</option><option>ORGANISME</option><option>PRESTATAIRE</option><option>OUTIL</option><option>JEU_DE_DONNEES</option><option>DOCUMENT</option><option>SERVICE</option><option>PROCEDURE</option></select></label>
+    <label>État<select name="state"><option>R0</option><option>R1</option><option>R2</option><option>R3</option><option>R4</option><option>R5</option></select></label>
+    <label>Canal / source<input name="source_channel"></label>
+    <label class="wide">Nom de la ressource<input required name="display_name"></label>
+    <button class="button" type="submit">Ajouter la ressource</button>
+  </form>
+</section>
+
+<section id="voies" class="panel">
+  <div class="panel-head"><h2>Comparaison des voies</h2><span class="muted">aucun score global</span></div>
+  {% if episode.route_assessments %}
+    <table><thead><tr><th>Voie</th><th>État</th><th>Pour</th><th>Contre / blocage</th><th>Suite</th></tr></thead><tbody>
+    {% for r in episode.route_assessments %}<tr><td><strong>{{ r.route_label }}</strong><br><span class="muted">{{ r.route_code }}</span></td><td>{{ r.status_current }}</td><td>{{ r.evidence_for or '—' }}</td><td>{{ r.evidence_against or r.blocking_condition or '—' }}</td><td>{{ r.next_action or '—' }}</td></tr>{% endfor %}
+    </tbody></table>
+  {% else %}<div class="empty">Aucune voie évaluée.</div>{% endif %}
+  <form method="post" action="/episodes/{{ episode.code }}/route" class="form-grid compact">
+    <label>Code<input required name="route_code" placeholder="R-MOB"></label>
+    <label>Voie<input required name="route_label" placeholder="Mobilité publique"></label>
+    <label>État<select name="status_current"><option>INFORMATION_INSUFFISANTE</option><option>PLAUSIBLE</option><option>IMPROBABLE</option><option>EXCLUE</option><option>ACTIVEE</option></select></label>
+    <label>Prochaine action<input name="next_action"></label>
+    <label class="wide">Preuves favorables<textarea name="evidence_for" rows="2"></textarea></label>
+    <label class="wide">Preuves défavorables<textarea name="evidence_against" rows="2"></textarea></label>
+    <label class="wide">Condition bloquante<textarea name="blocking_condition" rows="2"></textarea></label>
+    <button class="button" type="submit">Enregistrer la voie</button>
+  </form>
+</section>
+
+<section id="decision" class="panel">
+  <h2>Décision d'orientation</h2>
+  {% if episode.decisions %}
+    {% for d in episode.decisions %}<article class="decision"><div><strong>{{ d.selected_option }}</strong><span>{{ d.confidence }}</span></div><p>{{ d.justification }}</p>{% if d.contradictory_evidence %}<p class="contradiction"><strong>Éléments contradictoires :</strong> {{ d.contradictory_evidence }}</p>{% endif %}{% if d.uncertainties %}<p><strong>Incertitudes :</strong> {{ d.uncertainties }}</p>{% endif %}</article>{% endfor %}
+  {% endif %}
+  <form method="post" action="/episodes/{{ episode.code }}/decision" class="form-grid compact">
+    <label>Option retenue<input required name="selected_option" placeholder="Ex. mobilité publique"></label>
+    <label>Confiance<select name="confidence"><option>faible</option><option selected>moyenne</option><option>forte</option></select></label>
+    <label class="wide">Justification<textarea required name="justification" rows="3"></textarea></label>
+    <label class="wide">Éléments qui contredisent cette décision<textarea name="contradictory_evidence" rows="2"></textarea></label>
+    <label class="wide">Incertitudes restantes<textarea name="uncertainties" rows="2"></textarea></label>
+    <button class="button primary" type="submit">Verrouiller la décision</button>
+  </form>
+</section>
+
+<section id="frictions" class="panel">
+  <h2>Chronologie et frictions</h2>
+  {% if episode.friction_events %}<table><thead><tr><th>Catégorie</th><th>Début</th><th>Fin</th><th>Bloquant</th><th>Raison</th></tr></thead><tbody>{% for f in episode.friction_events %}<tr><td><strong>{{ f.category }}</strong>{% if f.subcategory %}<br><span class="muted">{{ f.subcategory }}</span>{% endif %}</td><td>{{ f.started_at }}</td><td>{{ f.ended_at or 'ouvert' }}</td><td>{{ 'Oui' if f.blocking else 'Non' }}</td><td>{{ f.reason or '—' }}</td></tr>{% endfor %}</tbody></table>{% else %}<div class="empty">Aucun événement enregistré.</div>{% endif %}
+  <form method="post" action="/episodes/{{ episode.code }}/friction" class="inline-form">
+    <label>Catégorie<select name="category"><option>F1_COMPETENCE</option><option>F2_ACCUEIL</option><option>F3_RH</option><option>F4_BUDGET</option><option>F5_DROIT_STATUT</option><option>F6_SECURITE_INTEGRITE</option><option>F7_INFORMATIQUE</option><option>F8_AUTRE</option></select></label>
+    <label>Sous-catégorie<input name="subcategory"></label>
+    <label>Début<input required type="datetime-local" name="started_at"></label>
+    <label>Fin<input type="datetime-local" name="ended_at"></label>
+    <label>Responsable<input name="owner"></label>
+    <label>Bloquant<select name="blocking"><option value="no">Non</option><option value="yes">Oui</option></select></label>
+    <label class="wide">Raison<textarea name="reason" rows="2"></textarea></label>
+    <button class="button" type="submit">Ajouter l'événement</button>
+  </form>
+</section>
+
+<section id="resultat" class="panel">
+  <h2>Résultat</h2>
+  {% if episode.results %}{% for r in episode.results %}<article class="decision"><div><strong>{{ r.result_status }}</strong><span>{{ r.dominant_friction or 'friction non précisée' }}</span></div><p>{{ r.outcome_description }}</p><p class="muted">Intervention : {{ r.actual_intervention or '—' }} · Voie : {{ r.actual_route or '—' }} · Frontière : {{ r.frontiere_minutes }} min · Institution : {{ r.institution_minutes }} min</p></article>{% endfor %}{% endif %}
+  <form method="post" action="/episodes/{{ episode.code }}/result" class="form-grid compact">
+    <label>Issue<select name="result_status"><option>RESOLU</option><option>PARTIELLEMENT_RESOLU</option><option>REORIENTE</option><option>NON_RESOLU</option><option>BESOIN_DISPARU</option></select></label>
+    <label>Friction dominante<input name="dominant_friction"></label>
+    <label>Intervention réelle<input name="actual_intervention"></label>
+    <label>Voie réelle<input name="actual_route"></label>
+    <label>Temps Frontière (min)<input type="number" min="0" name="frontiere_minutes" value="0"></label>
+    <label>Temps institution (min)<input type="number" min="0" name="institution_minutes" value="0"></label>
+    <label class="wide">Résultat observable<textarea required name="outcome_description" rows="3"></textarea></label>
+    <button class="button primary" type="submit">Enregistrer le résultat</button>
+  </form>
+</section>
+
+<section id="connaissance" class="panel">
+  <h2>Connaissances réutilisables</h2>
+  {% if episode.knowledge_items %}{% for k in episode.knowledge_items %}<article class="knowledge"><div><strong>{{ k.title }}</strong><span class="pill subtle">{{ k.knowledge_type }}</span></div><p>{{ k.content }}</p>{% if k.scope %}<p class="muted">Portée : {{ k.scope }}</p>{% endif %}</article>{% endfor %}{% else %}<div class="empty">Aucune connaissance explicite enregistrée.</div>{% endif %}
+  <form method="post" action="/episodes/{{ episode.code }}/knowledge" class="form-grid compact">
+    <label>Type<select name="knowledge_type"><option>REGLE</option><option>PRECEDENT</option><option>RESSOURCE</option><option>SOURCE</option><option>VOIE</option><option>DELAI</option><option>FRICTION</option><option>TAXONOMIE</option><option>AUTRE</option></select></label>
+    <label>Niveau de preuve<select name="evidence_level"><option>A</option><option>B</option><option selected>C</option><option>D</option><option>E</option></select></label>
+    <label class="wide">Titre<input required name="title"></label>
+    <label class="wide">Connaissance<textarea required name="content" rows="3"></textarea></label>
+    <label class="wide">Portée / conditions d'application<textarea name="scope" rows="2"></textarea></label>
+    <button class="button" type="submit">Créer la connaissance</button>
+  </form>
+</section>
+{% endblock %}

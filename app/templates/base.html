@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC -{% endblock %}</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><a href="/">FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC -</a><span>prototype opératoire v0.1</span></div>
+    <nav><a href="/">Tableau de bord</a><a href="/episodes/new">Nouvel épisode</a><a href="/hypotheses">Hypothèses</a></nav>
+  </header>
+  <main class="shell">{% block content %}{% endblock %}</main>
+  <footer>Étude interne sur la mobilisation des capacités scientifiques et techniques pour l’action publique.</footer>
+</body>
+</html>

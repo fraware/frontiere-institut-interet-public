@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Nouvel épisode — FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC -{% endblock %}
+{% block content %}
+<section class="page-head"><div><p class="eyebrow">SAISINE</p><h1>Nouvel épisode de déficit de capacité</h1><p>Commencer par le problème observé. La solution vient ensuite.</p></div></section>
+<form method="post" action="/episodes" class="panel form-grid">
+  <label>Institution<input required name="organization_name" placeholder="Ex. Direction générale..."></label>
+  <label>Direction / unité<input name="organizational_unit"></label>
+  <label class="wide">Titre opérationnel<input required name="title" placeholder="Ex. Évaluer un système de prévision avant décision d'achat"></label>
+  <label class="wide">Situation actuelle<textarea required name="current_situation" rows="4"></textarea></label>
+  <label class="wide">Résultat recherché<textarea required name="desired_outcome" rows="3"></textarea></label>
+  <label>Niveau de demande<select name="demand_level"><option>D0</option><option>D1</option><option>D2</option><option>D3</option><option>D4</option></select></label>
+  <label>Sensibilité<select name="sensitivity_level"><option value="1">1 — ordinaire</option><option value="2">2 — interne</option><option value="3">3 — sensible</option><option value="4">4 — fortement restreint</option></select></label>
+  <label>Besoin antérieur à Frontière<select name="need_preexisting_frontiere"><option value="unknown">Inconnu</option><option value="yes">Oui</option><option value="no">Non</option></select></label>
+  <label>Échéance utile<input type="date" name="latest_useful_date"></label>
+  <label class="wide">Responsable institutionnel<input name="sponsor"></label>
+  <label class="wide">Contrefactuel — que ferait réellement l'institution sans Frontière ?<textarea name="counterfactual_plan" rows="3"></textarea></label>
+  <label class="wide">Hypothèse Frontière initiale<textarea name="initial_frontiere_hypothesis" rows="3" placeholder="Friction anticipée, voie anticipée, principales incertitudes."></textarea></label>
+  <div class="wide actions"><button class="button primary" type="submit">Créer et ouvrir la qualification</button></div>
+</form>
+{% endblock %}
