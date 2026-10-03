@@ -1,0 +1,27 @@
+name: bootstrap-source
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  unpack:
+    if: ${{ hashFiles('bootstrap-source.zip') != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Expand source archive
+        run: |
+          rm -rf /tmp/frontiere-bootstrap
+          mkdir -p /tmp/frontiere-bootstrap
+          unzip -q bootstrap-source.zip -d /tmp/frontiere-bootstrap
+          cp -a /tmp/frontiere-bootstrap/frontiere-institut-interet-public/. .
+          rm -f bootstrap-source.zip .github/workflows/bootstrap.yml
+      - name: Commit canonical source tree
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -m "feat: publish Frontière operational prototype v0.1.0"
+          git push
