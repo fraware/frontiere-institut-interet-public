@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Hypothèses — FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC -{% endblock %}
+{% block content %}
+<section class="page-head"><div><p class="eyebrow">PRÉ-ENREGISTREMENT</p><h1>Registre des hypothèses de plateforme</h1><p>Une hypothèse peut être renforcée, affaiblie ou réfutée. Le statut ne change pas automatiquement.</p></div></section>
+<section class="panel hypothesis-list">
+{% for h in hypotheses %}
+<article><div class="hypothesis-title"><span class="code">{{ h.code }}</span><h2>{{ h.label }}</h2><span class="status {{ h.status|lower }}">{{ h.status }}</span></div><p>{{ h.definition }}</p><div class="grid two small"><div><strong>Signal favorable</strong><p>{{ h.strengthening_criterion }}</p></div><div><strong>Signal défavorable</strong><p>{{ h.weakening_criterion }}</p></div></div></article>
+{% else %}<div class="empty">Aucune hypothèse chargée. Exécuter <code>make seed</code>.</div>{% endfor %}
+</section>
+{% endblock %}
