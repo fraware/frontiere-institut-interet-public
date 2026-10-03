@@ -6,12 +6,12 @@ permissions:
   contents: write
 jobs:
   unpack:
-    if: ${{ hashFiles('bootstrap-source.zip') != '' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Expand source archive
         run: |
+          test -f bootstrap-source.zip
           rm -rf /tmp/frontiere-bootstrap
           mkdir -p /tmp/frontiere-bootstrap
           unzip -q bootstrap-source.zip -d /tmp/frontiere-bootstrap
