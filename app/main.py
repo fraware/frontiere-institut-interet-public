@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from contextlib import asynccontextmanager
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 from fastapi import Depends, FastAPI, Form, HTTPException, Request
@@ -16,6 +16,7 @@ from .database import Base, engine, get_db
 from .models import (
     Decision,
     Discovery,
+    Evidence,
     Episode,
     EpisodeResult,
     FrictionEvent,
@@ -26,6 +27,7 @@ from .models import (
     Resource,
     RouteAssessment,
     SearchRun,
+    StakeholderContact,
 )
 from .services import classify_public_search, dashboard_metrics, hypothesis_summary
 
@@ -36,14 +38,34 @@ async def lifespan(_: FastAPI):
     yield
 
 
-app = FastAPI(title=settings.app_name, version="0.1.0", lifespan=lifespan)
+app = FastAPI(title=settings.app_name, version="0.2.0", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
+
+MAX_UNAUTHENTICATED_SENSITIVITY = 2
+EVIDENCE_QUALITIES = {"A", "B", "C", "D", "E"}
+DATA_ENVIRONMENTS = {"RECHERCHE", "RESEAU", "CANDIDATURE", "INTEGRITE"}
+
+
+def _active_need(ep: Episode) -> NeedVersion | None:
+    return next((n for n in sorted(ep.needs, key=lambda n: n.version, reverse=True) if n.active), None)
+
+
+def _require_locked_need(db: Session, ep: Episode) -> NeedVersion:
+    need = db.scalar(
+        select(NeedVersion)
+        .where(NeedVersion.episode_id == ep.id, NeedVersion.active.is_(True))
+        .order_by(NeedVersion.version.desc())
+        .limit(1)
+    )
+    if need is None or need.locked_at is None:
+        raise HTTPException(409, "Le besoin et son contrefactuel doivent être verrouillés avant cette étape.")
+    return need
 
 
 @app.get("/health")
 def health() -> dict:
-    return {"status": "ok", "service": "frontiere-institut-interet-public"}
+    return {"status": "ok", "service": "frontiere-institut-interet-public", "version": "0.2.0"}
 
 
 @app.get("/api/v1/metrics")
@@ -53,7 +75,7 @@ def api_metrics(db: Session = Depends(get_db)) -> dict:
 
 @app.get("/api/v1/episodes")
 def api_episodes(db: Session = Depends(get_db)) -> list[dict]:
-    rows = db.scalars(select(Episode).where(Episode.synthetic.is_(False)).order_by(Episode.created_at.desc())).all()
+    rows = db.scalars(select(Episode).options(selectinload(Episode.organization)).where(Episode.synthetic.is_(False)).order_by(Episode.created_at.desc())).all()
     return [
         {
             "code": e.code,
@@ -108,6 +130,8 @@ def create_episode(
 ):
     if demand_level not in {"D0", "D1", "D2", "D3", "D4"}:
         raise HTTPException(400, "Niveau de demande invalide")
+    if sensitivity_level < 1 or sensitivity_level > MAX_UNAUTHENTICATED_SENSITIVITY:
+        raise HTTPException(400, "Le prototype public v0.2 accepte uniquement les niveaux de sensibilité 1 et 2. Les niveaux 3–4 exigent authentification et contrôle d'accès.")
     org = db.scalar(select(Organization).where(Organization.name == organization_name.strip()))
     if org is None:
         org = Organization(name=organization_name.strip())
@@ -158,16 +182,17 @@ def episode_detail(code: str, request: Request, db: Session = Depends(get_db)):
             selectinload(Episode.friction_events),
             selectinload(Episode.results),
             selectinload(Episode.knowledge_items),
+            selectinload(Episode.evidence_items),
         )
         .where(Episode.code == code)
     )
     if ep is None:
         raise HTTPException(404, "Épisode introuvable")
-    active_need = next((n for n in sorted(ep.needs, key=lambda n: n.version, reverse=True) if n.active), None)
+    active_need = _active_need(ep)
     return templates.TemplateResponse(
         request=request,
         name="episode_detail.html",
-        context={"episode": ep, "need": active_need},
+        context={"episode": ep, "need": active_need, "need_locked": bool(active_need and active_need.locked_at)},
     )
 
 
