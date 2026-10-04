@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from contextlib import asynccontextmanager
+import json
 from datetime import date, datetime, timezone
 from pathlib import Path
 
@@ -14,6 +15,7 @@ from sqlalchemy.orm import Session, selectinload
 from .config import settings
 from .database import Base, engine, get_db
 from .models import (
+    AuditEvent,
     Decision,
     Discovery,
     Evidence,
@@ -38,7 +40,7 @@ async def lifespan(_: FastAPI):
     yield
 
 
-app = FastAPI(title=settings.app_name, version="0.2.0", lifespan=lifespan)
+app = FastAPI(title=settings.app_name, version="0.3.0", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
@@ -63,9 +65,31 @@ def _require_locked_need(db: Session, ep: Episode) -> NeedVersion:
     return need
 
 
+def _audit(
+    db: Session,
+    *,
+    event_type: str,
+    entity_type: str,
+    entity_id: int | None = None,
+    episode_id: int | None = None,
+    payload: dict | None = None,
+    actor: str = "équipe Frontière",
+) -> None:
+    db.add(
+        AuditEvent(
+            episode_id=episode_id,
+            entity_type=entity_type,
+            entity_id=entity_id,
+            event_type=event_type,
+            actor=actor,
+            payload_json=json.dumps(payload or {}, ensure_ascii=False, sort_keys=True),
+        )
+    )
+
+
 @app.get("/health")
 def health() -> dict:
-    return {"status": "ok", "service": "frontiere-institut-interet-public", "version": "0.2.0"}
+    return {"status": "ok", "service": "frontiere-institut-interet-public", "version": "0.3.0"}
 
 
 @app.get("/api/v1/metrics")
