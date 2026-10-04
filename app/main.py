@@ -387,6 +387,164 @@ def add_knowledge(
     return RedirectResponse(url=f"/episodes/{code}#connaissance", status_code=303)
 
 
+@app.post("/episodes/{code}/need/lock")
+def lock_need(code: str, db: Session = Depends(get_db)):
+    ep = db.scalar(select(Episode).where(Episode.code == code))
+    if ep is None:
+        raise HTTPException(404, "Épisode introuvable")
+    need = db.scalar(
+        select(NeedVersion)
+        .where(NeedVersion.episode_id == ep.id, NeedVersion.active.is_(True))
+        .order_by(NeedVersion.version.desc())
+        .limit(1)
+    )
+    if need is None:
+        raise HTTPException(409, "Aucune version active du besoin")
+    missing = []
+    if not need.current_situation.strip(): missing.append("situation")
+    if not need.desired_outcome.strip(): missing.append("résultat recherché")
+    if not need.counterfactual_plan: missing.append("contrefactuel")
+    if not need.initial_frontiere_hypothesis: missing.append("hypothèse initiale")
+    if missing:
+        raise HTTPException(409, "Impossible de verrouiller : " + ", ".join(missing))
+    if need.locked_at is None:
+        need.locked_at = datetime.now(timezone.utc)
+        ep.status = "QUALIFIE"
+        db.commit()
+    return RedirectResponse(url=f"/episodes/{code}", status_code=303)
+
+
+@app.post("/episodes/{code}/evidence")
+def add_evidence(
+    code: str,
+    title: str = Form(...),
+    evidence_type: str = Form("document"),
+    source: str = Form(""),
+    evidence_date: str = Form(""),
+    quality: str = Form("C"),
+    sensitivity_level: int = Form(1),
+    data_environment: str = Form("RECHERCHE"),
+    notes: str = Form(""),
+    db: Session = Depends(get_db),
+):
+    ep = db.scalar(select(Episode).where(Episode.code == code))
+    if ep is None:
+        raise HTTPException(404, "Épisode introuvable")
+    if quality not in EVIDENCE_QUALITIES:
+        raise HTTPException(400, "Qualité de preuve invalide")
+    if data_environment not in DATA_ENVIRONMENTS:
+        raise HTTPException(400, "Environnement de données invalide")
+    if sensitivity_level < 1 or sensitivity_level > MAX_UNAUTHENTICATED_SENSITIVITY:
+        raise HTTPException(400, "Les preuves de sensibilité 3–4 ne doivent pas être saisies dans ce prototype public.")
+    parsed_date = date.fromisoformat(evidence_date) if evidence_date else None
+    db.add(Evidence(
+        episode_id=ep.id,
+        evidence_type=evidence_type.strip() or "document",
+        title=title.strip(),
+        source=source.strip() or None,
+        evidence_date=parsed_date,
+        quality=quality,
+        sensitivity_level=sensitivity_level,
+        data_environment=data_environment,
+        notes=notes.strip() or None,
+    ))
+    db.commit()
+    return RedirectResponse(url=f"/episodes/{code}#preuves", status_code=303)
+
+
+@app.get("/contacts", response_class=HTMLResponse)
+def contacts_page(request: Request, db: Session = Depends(get_db)):
+    contacts = db.scalars(select(StakeholderContact).order_by(StakeholderContact.priority, StakeholderContact.id)).all()
+    return templates.TemplateResponse(request=request, name="contacts.html", context={"contacts": contacts})
+
+
+@app.post("/contacts")
+def create_contact(
+    institution: str = Form(...),
+    function: str = Form(...),
+    person: str = Form(""),
+    priority: int = Form(3),
+    hypothesis_tested: str = Form(...),
+    single_ask: str = Form(...),
+    minimal_success: str = Form(...),
+    next_intro_sought: str = Form(""),
+    document_to_send: str = Form(""),
+    db: Session = Depends(get_db),
+):
+    next_id = (db.scalar(select(StakeholderContact.id).order_by(StakeholderContact.id.desc()).limit(1)) or 0) + 1
+    db.add(StakeholderContact(
+        code=f"INT-{next_id:03d}", institution=institution.strip(), function=function.strip(),
+        person=person.strip() or None, priority=max(1, min(priority, 5)),
+        hypothesis_tested=hypothesis_tested.strip(), single_ask=single_ask.strip(),
+        minimal_success=minimal_success.strip(), next_intro_sought=next_intro_sought.strip() or None,
+        document_to_send=document_to_send.strip() or None,
+    ))
+    db.commit()
+    return RedirectResponse(url="/contacts", status_code=303)
+
+
+@app.post("/contacts/{code}/update")
+def update_contact(
+    code: str,
+    status: str = Form(...),
+    produced_evidence: str = Form("no"),
+    produced_case: str = Form("no"),
+    produced_experiment: str = Form("no"),
+    produced_introduction: str = Form("no"),
+    followup_due_at: str = Form(""),
+    outcome_summary: str = Form(""),
+    notes: str = Form(""),
+    db: Session = Depends(get_db),
+):
+    allowed = {"PLANIFIE", "CONTACTE", "REPONDU", "ENTRETIEN_PLANIFIE", "ENTRETIEN_REALISE", "SUIVI", "CLOS", "ABANDONNE"}
+    if status not in allowed:
+        raise HTTPException(400, "Statut de contact invalide")
+    contact = db.scalar(select(StakeholderContact).where(StakeholderContact.code == code))
+    if contact is None:
+        raise HTTPException(404, "Interlocuteur introuvable")
+    contact.status = status
+    contact.produced_evidence = produced_evidence == "yes"
+    contact.produced_case = produced_case == "yes"
+    contact.produced_experiment = produced_experiment == "yes"
+    contact.produced_introduction = produced_introduction == "yes"
+    contact.followup_due_at = date.fromisoformat(followup_due_at) if followup_due_at else None
+    contact.outcome_summary = outcome_summary.strip() or None
+    contact.notes = notes.strip() or None
+    if status == "CONTACTE" and contact.first_contact_at is None:
+        contact.first_contact_at = datetime.now(timezone.utc)
+    db.commit()
+    return RedirectResponse(url="/contacts", status_code=303)
+
+
+@app.get("/api/v1/research-export")
+def research_export(db: Session = Depends(get_db)) -> dict:
+    episodes = db.scalars(
+        select(Episode)
+        .options(selectinload(Episode.organization), selectinload(Episode.needs), selectinload(Episode.searches), selectinload(Episode.results))
+        .where(Episode.synthetic.is_(False), Episode.sensitivity_level <= 2)
+        .order_by(Episode.id)
+    ).all()
+    rows = []
+    for ep in episodes:
+        need = _active_need(ep)
+        public = next((r for r in sorted(ep.searches, key=lambda x: x.id, reverse=True) if r.search_type == "PUBLIQUE"), None)
+        result = ep.results[-1] if ep.results else None
+        rows.append({
+            "code": ep.code,
+            "organization": ep.organization.name,
+            "demand_level": ep.demand_level,
+            "status": ep.status,
+            "need_preexisting_frontiere": ep.need_preexisting_frontiere,
+            "need_locked": bool(need and need.locked_at),
+            "public_result": public.public_result if public else None,
+            "result_status": result.result_status if result else None,
+            "dominant_friction": result.dominant_friction if result else None,
+            "frontiere_minutes": result.frontiere_minutes if result else 0,
+            "institution_minutes": result.institution_minutes if result else 0,
+        })
+    return {"schema_version": "0.2", "episodes": rows}
+
+
 @app.get("/hypotheses", response_class=HTMLResponse)
 def hypotheses_page(request: Request, db: Session = Depends(get_db)):
     hypotheses = hypothesis_summary(db)
