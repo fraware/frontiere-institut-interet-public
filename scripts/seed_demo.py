@@ -8,7 +8,7 @@ sys.path.insert(0, str(ROOT))
 from sqlalchemy import select
 
 from app.database import Base, SessionLocal, engine
-from app.models import Episode, Hypothesis, NeedVersion, Organization, RouteAssessment
+from app.models import Episode, Hypothesis, NeedVersion, Organization, RouteAssessment, StakeholderContact
 
 HYPOTHESES = [
     ("H1", "Le routeur apporte une valeur substantielle", "Plusieurs cas changent utilement de voie après qualification.", "L'orientation correcte est presque toujours évidente avant Frontière."),
@@ -26,6 +26,15 @@ HYPOTHESES = [
     ("H13", "La valeur dépasse le réseau personnel initial", "Les résultats se reproduisent hors réseau fondateur.", "Les ressources décisives proviennent durablement du réseau personnel initial."),
     ("H14", "Les données opérationnelles soutiennent un observatoire utile", "Les épisodes sont assez comparables pour produire des distributions stables.", "La standardisation est artificielle ou la sélection domine les résultats."),
     ("H15", "Une intervention institutionnelle nouvelle est réellement nécessaire", "Les mécanismes existants, même mieux connectés, laissent une friction résiduelle récurrente.", "Améliorer ou connecter les mécanismes existants suffit."),
+]
+
+
+CONTACTS = [
+    ("DINUM", "Programme Entrepreneurs d’intérêt général", 1, "Identifier les cas que les mécanismes actuels couvrent mal.", "Partager 3 à 5 cas récents particulièrement difficiles à pourvoir ou mobiliser.", "Au moins un épisode documentable.", "Responsable opérationnel du cas"),
+    ("DINUM", "RH numérique — Mobilité et Parcours", 1, "Tester si P2 et la mobilité publique constituent une friction récurrente.", "Partager 2 à 3 situations où la capacité existait dans l’État mais circulait mal.", "Un cas P2 potentiel documentable.", "Administration et agent concernés"),
+    ("DINUM", "Département intelligence artificielle dans l’État", 1, "Identifier des besoins D2+ actuels avec capacité technique précisément définissable.", "Partager 2 à 3 projets réellement ralentis par une capacité identifiable.", "Un besoin actuel suffisamment mûr.", "Responsable du projet"),
+    ("DITP", "Agence de conseil interne de l’État", 2, "Tester la redondance avec les mécanismes publics existants.", "Identifier des cas déjà bien couverts et la frontière éventuelle avec une expertise scientifique spécialisée.", "Un contre-exemple ou une frontière de périmètre documentée.", "Administration concernée"),
+    ("Organisme scientifique", "Partenariats publics / direction scientifique", 2, "Tester si l’unité pertinente est parfois une équipe ou un laboratoire.", "Partager 2 à 3 cas où une capacité collective aurait accéléré une mission publique.", "Un épisode impliquant une ressource collective.", "Équipe scientifique et responsable opérationnel"),
 ]
 
 CASES = [
@@ -55,6 +64,13 @@ def main() -> None:
             org = Organization(name="Jeu synthétique Frontière", organization_type="test", public_sector=False)
             db.add(org)
             db.flush()
+        if not db.scalar(select(StakeholderContact.id).limit(1)):
+            for idx, (institution, function, priority, hypothesis, ask, success, next_intro) in enumerate(CONTACTS, 1):
+                db.add(StakeholderContact(
+                    code=f"INT-{idx:03d}", institution=institution, function=function, priority=priority,
+                    hypothesis_tested=hypothesis, single_ask=ask, minimal_success=success,
+                    next_intro_sought=next_intro, document_to_send="Note de recherche d’une page",
+                ))
         existing = {e.code for e in db.scalars(select(Episode).where(Episode.synthetic.is_(True))).all()}
         for idx, (suffix, title, diagnosis, route) in enumerate(CASES, 1):
             code = f"TEST-{suffix}"

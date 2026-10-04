@@ -52,6 +52,7 @@ class Episode(Base):
     friction_events: Mapped[list[FrictionEvent]] = relationship(back_populates="episode", cascade="all, delete-orphan")
     results: Mapped[list[EpisodeResult]] = relationship(back_populates="episode", cascade="all, delete-orphan")
     knowledge_items: Mapped[list[KnowledgeItem]] = relationship(back_populates="source_episode")
+    evidence_items: Mapped[list[Evidence]] = relationship(back_populates="episode", cascade="all, delete-orphan")
 
 
 class NeedVersion(Base):
@@ -121,6 +122,8 @@ class Evidence(Base):
     data_environment: Mapped[str] = mapped_column(String(40), default="RECHERCHE")
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+    episode: Mapped[Episode | None] = relationship(back_populates="evidence_items")
 
 
 class Resource(Base):
@@ -298,6 +301,35 @@ class Hypothesis(Base):
     weakening_criterion: Mapped[str] = mapped_column(Text)
     status: Mapped[str] = mapped_column(String(30), default="OUVERTE")
     preregistered_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class StakeholderContact(Base):
+    __tablename__ = "stakeholder_contacts"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    code: Mapped[str] = mapped_column(String(30), unique=True, index=True)
+    institution: Mapped[str] = mapped_column(String(240), index=True)
+    function: Mapped[str] = mapped_column(String(240))
+    person: Mapped[str | None] = mapped_column(String(180), nullable=True)
+    priority: Mapped[int] = mapped_column(Integer, default=3, index=True)
+    hypothesis_tested: Mapped[str] = mapped_column(Text)
+    single_ask: Mapped[str] = mapped_column(Text)
+    data_sought: Mapped[str | None] = mapped_column(Text, nullable=True)
+    minimal_success: Mapped[str] = mapped_column(Text)
+    next_intro_sought: Mapped[str | None] = mapped_column(Text, nullable=True)
+    document_to_send: Mapped[str | None] = mapped_column(String(180), nullable=True)
+    status: Mapped[str] = mapped_column(String(40), default="PLANIFIE", index=True)
+    first_contact_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    followup_due_at: Mapped[date | None] = mapped_column(Date, nullable=True)
+    meeting_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    produced_evidence: Mapped[bool] = mapped_column(Boolean, default=False)
+    produced_case: Mapped[bool] = mapped_column(Boolean, default=False)
+    produced_experiment: Mapped[bool] = mapped_column(Boolean, default=False)
+    produced_introduction: Mapped[bool] = mapped_column(Boolean, default=False)
+    outcome_summary: Mapped[str | None] = mapped_column(Text, nullable=True)
+    notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, onupdate=utcnow)
 
 
 class ActivityLog(Base):

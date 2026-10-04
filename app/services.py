@@ -7,7 +7,7 @@ from typing import Iterable
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from .models import Episode, EpisodeResult, Hypothesis, KnowledgeItem, ReuseEvent, SearchRun
+from .models import Episode, EpisodeResult, Hypothesis, KnowledgeItem, NeedVersion, ReuseEvent, SearchRun, StakeholderContact
 
 PUBLIC_RESULTS = {"P0", "P1", "P2", "P3"}
 HOST_STATES = {"PASS", "FAIL", "UNKNOWN", "NON_APPLICABLE"}
@@ -71,6 +71,8 @@ def dashboard_metrics(db: Session) -> dict:
         select(func.count(ReuseEvent.id)).join(Episode, ReuseEvent.destination_episode_id == Episode.id).where(Episode.synthetic.is_(False))
     ) or 0
     knowledge_count = db.scalar(select(func.count(KnowledgeItem.id))) or 0
+    contacts_active = db.scalar(select(func.count(StakeholderContact.id)).where(StakeholderContact.status.notin_(["CLOS", "ABANDONNE"]))) or 0
+    needs_locked = db.scalar(select(func.count(Episode.id)).join(Episode.needs).where(Episode.synthetic.is_(False), NeedVersion.active.is_(True), NeedVersion.locked_at.is_not(None))) or 0
 
     return {
         "episodes": len(episodes),
@@ -82,6 +84,8 @@ def dashboard_metrics(db: Session) -> dict:
         "results": len(closed_results),
         "reuse_events": reuse_count,
         "knowledge_items": knowledge_count,
+        "contacts_active": contacts_active,
+        "needs_locked": needs_locked,
     }
 
 
