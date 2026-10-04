@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from contextlib import asynccontextmanager
+import json
 from datetime import date, datetime, timezone
 from pathlib import Path
 
@@ -14,6 +15,7 @@ from sqlalchemy.orm import Session, selectinload
 from .config import settings
 from .database import Base, engine, get_db
 from .models import (
+    AuditEvent,
     Decision,
     Discovery,
     Evidence,
@@ -38,7 +40,7 @@ async def lifespan(_: FastAPI):
     yield
 
 
-app = FastAPI(title=settings.app_name, version="0.2.0", lifespan=lifespan)
+app = FastAPI(title=settings.app_name, version="0.3.0", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
@@ -63,9 +65,31 @@ def _require_locked_need(db: Session, ep: Episode) -> NeedVersion:
     return need
 
 
+def _audit(
+    db: Session,
+    *,
+    event_type: str,
+    entity_type: str,
+    entity_id: int | None = None,
+    episode_id: int | None = None,
+    payload: dict | None = None,
+    actor: str = "équipe Frontière",
+) -> None:
+    db.add(
+        AuditEvent(
+            episode_id=episode_id,
+            entity_type=entity_type,
+            entity_id=entity_id,
+            event_type=event_type,
+            actor=actor,
+            payload_json=json.dumps(payload or {}, ensure_ascii=False, sort_keys=True),
+        )
+    )
+
+
 @app.get("/health")
 def health() -> dict:
-    return {"status": "ok", "service": "frontiere-institut-interet-public", "version": "0.2.0"}
+    return {"status": "ok", "service": "frontiere-institut-interet-public", "version": "0.3.0"}
 
 
 @app.get("/api/v1/metrics")
@@ -165,6 +189,15 @@ def create_episode(
         initial_frontiere_hypothesis=initial_frontiere_hypothesis.strip() or None,
     )
     db.add(need)
+    db.flush()
+    _audit(
+        db,
+        event_type="EPISODE_CREE",
+        entity_type="EPISODE",
+        entity_id=ep.id,
+        episode_id=ep.id,
+        payload={"need_version_id": need.id, "demand_level": ep.demand_level, "sensitivity_level": ep.sensitivity_level},
+    )
     db.commit()
     return RedirectResponse(url=f"/episodes/{ep.code}", status_code=303)
 
@@ -183,6 +216,7 @@ def episode_detail(code: str, request: Request, db: Session = Depends(get_db)):
             selectinload(Episode.results),
             selectinload(Episode.knowledge_items),
             selectinload(Episode.evidence_items),
+            selectinload(Episode.audit_events),
         )
         .where(Episode.code == code)
     )
@@ -225,7 +259,17 @@ def add_public_search(
         notes=notes.strip() or None,
     )
     db.add(run)
+    db.flush()
     ep.status = "INVESTIGATION"
+    locked_need = _require_locked_need(db, ep)
+    _audit(
+        db,
+        event_type="RECHERCHE_PUBLIQUE_ENREGISTREE",
+        entity_type="SEARCH_RUN",
+        entity_id=run.id,
+        episode_id=ep.id,
+        payload={"need_version_id": locked_need.id, "public_result": result, "complete": complete_b, "analyst_minutes": max(0, analyst_minutes)},
+    )
     db.commit()
     return RedirectResponse(url=f"/episodes/{code}#recherche", status_code=303)
 
@@ -253,7 +297,17 @@ def add_decision(
         confidence=confidence,
     )
     db.add(d)
+    db.flush()
     ep.status = "ORIENTE"
+    locked_need = _require_locked_need(db, ep)
+    _audit(
+        db,
+        event_type="DECISION_VERROUILLEE",
+        entity_type="DECISION",
+        entity_id=d.id,
+        episode_id=ep.id,
+        payload={"need_version_id": locked_need.id, "selected_option": d.selected_option, "confidence": d.confidence},
+    )
     db.commit()
     return RedirectResponse(url=f"/episodes/{code}#decision", status_code=303)
 
@@ -273,6 +327,7 @@ def add_resource(
     ep = db.scalar(select(Episode).where(Episode.code == code))
     if ep is None:
         raise HTTPException(404)
+    locked_need = _require_locked_need(db, ep)
     resource = db.scalar(select(Resource).where(Resource.display_name == display_name.strip(), Resource.resource_type == resource_type))
     if resource is None:
         resource = Resource(resource_type=resource_type, display_name=display_name.strip())
@@ -292,6 +347,15 @@ def add_resource(
     else:
         existing.state = state
         existing.source_channel = source_channel.strip() or existing.source_channel
+    db.flush()
+    _audit(
+        db,
+        event_type="RESSOURCE_ETAT_ENREGISTRE",
+        entity_type="RESOURCE",
+        entity_id=resource.id,
+        episode_id=ep.id,
+        payload={"need_version_id": locked_need.id, "search_type": search_type, "state": state, "source_channel": source_channel.strip() or "non précisé"},
+    )
     db.commit()
     return RedirectResponse(url=f"/episodes/{code}#ressources", status_code=303)
 
@@ -311,6 +375,7 @@ def add_route(
     ep = db.scalar(select(Episode).where(Episode.code == code))
     if ep is None:
         raise HTTPException(404)
+    locked_need = _require_locked_need(db, ep)
     route = db.scalar(select(RouteAssessment).where(RouteAssessment.episode_id == ep.id, RouteAssessment.route_code == route_code.strip()))
     if route is None:
         route = RouteAssessment(episode_id=ep.id, route_code=route_code.strip(), route_label=route_label.strip(), status_initial=status_current, status_current=status_current)
@@ -322,6 +387,15 @@ def add_route(
     route.evidence_against = evidence_against.strip() or None
     route.blocking_condition = blocking_condition.strip() or None
     route.next_action = next_action.strip() or None
+    db.flush()
+    _audit(
+        db,
+        event_type="VOIE_EVALUEE",
+        entity_type="ROUTE_ASSESSMENT",
+        entity_id=route.id,
+        episode_id=ep.id,
+        payload={"need_version_id": locked_need.id, "route_code": route.route_code, "status": route.status_current},
+    )
     db.commit()
     return RedirectResponse(url=f"/episodes/{code}#voies", status_code=303)
 
@@ -341,9 +415,20 @@ def add_friction(
     ep = db.scalar(select(Episode).where(Episode.code == code))
     if ep is None:
         raise HTTPException(404)
+    locked_need = _require_locked_need(db, ep)
     start = datetime.fromisoformat(started_at)
     end = datetime.fromisoformat(ended_at) if ended_at else None
-    db.add(FrictionEvent(episode_id=ep.id, category=category, subcategory=subcategory.strip() or None, started_at=start, ended_at=end, owner=owner.strip() or None, blocking=blocking == "yes", reason=reason.strip() or None))
+    friction = FrictionEvent(episode_id=ep.id, category=category, subcategory=subcategory.strip() or None, started_at=start, ended_at=end, owner=owner.strip() or None, blocking=blocking == "yes", reason=reason.strip() or None)
+    db.add(friction)
+    db.flush()
+    _audit(
+        db,
+        event_type="FRICTION_ENREGISTREE",
+        entity_type="FRICTION_EVENT",
+        entity_id=friction.id,
+        episode_id=ep.id,
+        payload={"need_version_id": locked_need.id, "category": category, "blocking": blocking == "yes"},
+    )
     db.commit()
     return RedirectResponse(url=f"/episodes/{code}#frictions", status_code=303)
 
@@ -363,8 +448,19 @@ def add_result(
     ep = db.scalar(select(Episode).where(Episode.code == code))
     if ep is None:
         raise HTTPException(404)
-    db.add(EpisodeResult(episode_id=ep.id, result_status=result_status, actual_intervention=actual_intervention.strip() or None, actual_route=actual_route.strip() or None, outcome_description=outcome_description.strip(), dominant_friction=dominant_friction.strip() or None, frontiere_minutes=max(0, frontiere_minutes), institution_minutes=max(0, institution_minutes)))
+    locked_need = _require_locked_need(db, ep)
+    result = EpisodeResult(episode_id=ep.id, result_status=result_status, actual_intervention=actual_intervention.strip() or None, actual_route=actual_route.strip() or None, outcome_description=outcome_description.strip(), dominant_friction=dominant_friction.strip() or None, frontiere_minutes=max(0, frontiere_minutes), institution_minutes=max(0, institution_minutes))
+    db.add(result)
+    db.flush()
     ep.status = "RESULTAT_ENREGISTRE"
+    _audit(
+        db,
+        event_type="RESULTAT_ENREGISTRE",
+        entity_type="EPISODE_RESULT",
+        entity_id=result.id,
+        episode_id=ep.id,
+        payload={"need_version_id": locked_need.id, "result_status": result_status, "dominant_friction": dominant_friction.strip() or None},
+    )
     db.commit()
     return RedirectResponse(url=f"/episodes/{code}#resultat", status_code=303)
 
@@ -382,7 +478,18 @@ def add_knowledge(
     ep = db.scalar(select(Episode).where(Episode.code == code))
     if ep is None:
         raise HTTPException(404)
-    db.add(KnowledgeItem(source_episode_id=ep.id, knowledge_type=knowledge_type, title=title.strip(), content=content.strip(), scope=scope.strip() or None, evidence_level=evidence_level))
+    locked_need = _require_locked_need(db, ep)
+    item = KnowledgeItem(source_episode_id=ep.id, knowledge_type=knowledge_type, title=title.strip(), content=content.strip(), scope=scope.strip() or None, evidence_level=evidence_level)
+    db.add(item)
+    db.flush()
+    _audit(
+        db,
+        event_type="CONNAISSANCE_CREEE",
+        entity_type="KNOWLEDGE_ITEM",
+        entity_id=item.id,
+        episode_id=ep.id,
+        payload={"need_version_id": locked_need.id, "knowledge_type": knowledge_type, "evidence_level": evidence_level},
+    )
     db.commit()
     return RedirectResponse(url=f"/episodes/{code}#connaissance", status_code=303)
 
@@ -410,8 +517,68 @@ def lock_need(code: str, db: Session = Depends(get_db)):
     if need.locked_at is None:
         need.locked_at = datetime.now(timezone.utc)
         ep.status = "QUALIFIE"
+        _audit(
+            db,
+            event_type="BESOIN_VERROUILLE",
+            entity_type="NEED_VERSION",
+            entity_id=need.id,
+            episode_id=ep.id,
+            payload={"version": need.version, "counterfactual_present": bool(need.counterfactual_plan), "hypothesis_present": bool(need.initial_frontiere_hypothesis)},
+        )
         db.commit()
     return RedirectResponse(url=f"/episodes/{code}", status_code=303)
+
+
+@app.post("/episodes/{code}/need/revise")
+def revise_need(
+    code: str,
+    revision_reason: str = Form(...),
+    current_situation: str = Form(...),
+    desired_outcome: str = Form(...),
+    sponsor: str = Form(""),
+    latest_useful_date: str = Form(""),
+    counterfactual_plan: str = Form(""),
+    initial_frontiere_hypothesis: str = Form(""),
+    db: Session = Depends(get_db),
+):
+    ep = db.scalar(select(Episode).where(Episode.code == code))
+    if ep is None:
+        raise HTTPException(404, "Épisode introuvable")
+    current = _require_locked_need(db, ep)
+    reason = revision_reason.strip()
+    if not reason:
+        raise HTTPException(400, "La raison de révision est obligatoire.")
+    deadline = date.fromisoformat(latest_useful_date) if latest_useful_date else None
+    current.active = False
+    revised = NeedVersion(
+        episode_id=ep.id,
+        version=current.version + 1,
+        active=True,
+        current_situation=current_situation.strip(),
+        desired_outcome=desired_outcome.strip(),
+        dependent_decision=current.dependent_decision,
+        delay_consequence=current.delay_consequence,
+        urgency=current.urgency,
+        latest_useful_date=deadline,
+        sponsor=sponsor.strip() or None,
+        counterfactual_plan=counterfactual_plan.strip() or None,
+        initial_frontiere_hypothesis=initial_frontiere_hypothesis.strip() or None,
+        locked_at=datetime.now(timezone.utc),
+    )
+    if not revised.current_situation or not revised.desired_outcome or not revised.counterfactual_plan or not revised.initial_frontiere_hypothesis:
+        raise HTTPException(409, "Une révision doit conserver situation, résultat, contrefactuel et hypothèse.")
+    db.add(revised)
+    db.flush()
+    _audit(
+        db,
+        event_type="BESOIN_REVISE",
+        entity_type="NEED_VERSION",
+        entity_id=revised.id,
+        episode_id=ep.id,
+        payload={"from_version": current.version, "to_version": revised.version, "reason": reason},
+    )
+    db.commit()
+    return RedirectResponse(url=f"/episodes/{code}#versions", status_code=303)
 
 
 @app.post("/episodes/{code}/evidence")
@@ -437,7 +604,7 @@ def add_evidence(
     if sensitivity_level < 1 or sensitivity_level > MAX_UNAUTHENTICATED_SENSITIVITY:
         raise HTTPException(400, "Les preuves de sensibilité 3–4 ne doivent pas être saisies dans ce prototype public.")
     parsed_date = date.fromisoformat(evidence_date) if evidence_date else None
-    db.add(Evidence(
+    evidence = Evidence(
         episode_id=ep.id,
         evidence_type=evidence_type.strip() or "document",
         title=title.strip(),
@@ -447,7 +614,17 @@ def add_evidence(
         sensitivity_level=sensitivity_level,
         data_environment=data_environment,
         notes=notes.strip() or None,
-    ))
+    )
+    db.add(evidence)
+    db.flush()
+    _audit(
+        db,
+        event_type="PREUVE_AJOUTEE",
+        entity_type="EVIDENCE",
+        entity_id=evidence.id,
+        episode_id=ep.id,
+        payload={"quality": quality, "data_environment": data_environment, "sensitivity_level": sensitivity_level},
+    )
     db.commit()
     return RedirectResponse(url=f"/episodes/{code}#preuves", status_code=303)
 
@@ -472,13 +649,22 @@ def create_contact(
     db: Session = Depends(get_db),
 ):
     next_id = (db.scalar(select(StakeholderContact.id).order_by(StakeholderContact.id.desc()).limit(1)) or 0) + 1
-    db.add(StakeholderContact(
+    contact = StakeholderContact(
         code=f"INT-{next_id:03d}", institution=institution.strip(), function=function.strip(),
         person=person.strip() or None, priority=max(1, min(priority, 5)),
         hypothesis_tested=hypothesis_tested.strip(), single_ask=single_ask.strip(),
         minimal_success=minimal_success.strip(), next_intro_sought=next_intro_sought.strip() or None,
         document_to_send=document_to_send.strip() or None,
-    ))
+    )
+    db.add(contact)
+    db.flush()
+    _audit(
+        db,
+        event_type="INTERLOCUTEUR_AJOUTE",
+        entity_type="STAKEHOLDER_CONTACT",
+        entity_id=contact.id,
+        payload={"code": contact.code, "institution": contact.institution, "priority": contact.priority},
+    )
     db.commit()
     return RedirectResponse(url="/contacts", status_code=303)
 
@@ -512,6 +698,20 @@ def update_contact(
     contact.notes = notes.strip() or None
     if status == "CONTACTE" and contact.first_contact_at is None:
         contact.first_contact_at = datetime.now(timezone.utc)
+    _audit(
+        db,
+        event_type="INTERLOCUTEUR_MIS_A_JOUR",
+        entity_type="STAKEHOLDER_CONTACT",
+        entity_id=contact.id,
+        payload={
+            "code": contact.code,
+            "status": status,
+            "produced_evidence": contact.produced_evidence,
+            "produced_case": contact.produced_case,
+            "produced_experiment": contact.produced_experiment,
+            "produced_introduction": contact.produced_introduction,
+        },
+    )
     db.commit()
     return RedirectResponse(url="/contacts", status_code=303)
 
