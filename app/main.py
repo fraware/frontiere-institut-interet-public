@@ -529,6 +529,58 @@ def lock_need(code: str, db: Session = Depends(get_db)):
     return RedirectResponse(url=f"/episodes/{code}", status_code=303)
 
 
+@app.post("/episodes/{code}/need/revise")
+def revise_need(
+    code: str,
+    revision_reason: str = Form(...),
+    current_situation: str = Form(...),
+    desired_outcome: str = Form(...),
+    sponsor: str = Form(""),
+    latest_useful_date: str = Form(""),
+    counterfactual_plan: str = Form(""),
+    initial_frontiere_hypothesis: str = Form(""),
+    db: Session = Depends(get_db),
+):
+    ep = db.scalar(select(Episode).where(Episode.code == code))
+    if ep is None:
+        raise HTTPException(404, "Épisode introuvable")
+    current = _require_locked_need(db, ep)
+    reason = revision_reason.strip()
+    if not reason:
+        raise HTTPException(400, "La raison de révision est obligatoire.")
+    deadline = date.fromisoformat(latest_useful_date) if latest_useful_date else None
+    current.active = False
+    revised = NeedVersion(
+        episode_id=ep.id,
+        version=current.version + 1,
+        active=True,
+        current_situation=current_situation.strip(),
+        desired_outcome=desired_outcome.strip(),
+        dependent_decision=current.dependent_decision,
+        delay_consequence=current.delay_consequence,
+        urgency=current.urgency,
+        latest_useful_date=deadline,
+        sponsor=sponsor.strip() or None,
+        counterfactual_plan=counterfactual_plan.strip() or None,
+        initial_frontiere_hypothesis=initial_frontiere_hypothesis.strip() or None,
+        locked_at=datetime.now(timezone.utc),
+    )
+    if not revised.current_situation or not revised.desired_outcome or not revised.counterfactual_plan or not revised.initial_frontiere_hypothesis:
+        raise HTTPException(409, "Une révision doit conserver situation, résultat, contrefactuel et hypothèse.")
+    db.add(revised)
+    db.flush()
+    _audit(
+        db,
+        event_type="BESOIN_REVISE",
+        entity_type="NEED_VERSION",
+        entity_id=revised.id,
+        episode_id=ep.id,
+        payload={"from_version": current.version, "to_version": revised.version, "reason": reason},
+    )
+    db.commit()
+    return RedirectResponse(url=f"/episodes/{code}#versions", status_code=303)
+
+
 @app.post("/episodes/{code}/evidence")
 def add_evidence(
     code: str,
@@ -597,13 +649,22 @@ def create_contact(
     db: Session = Depends(get_db),
 ):
     next_id = (db.scalar(select(StakeholderContact.id).order_by(StakeholderContact.id.desc()).limit(1)) or 0) + 1
-    db.add(StakeholderContact(
+    contact = StakeholderContact(
         code=f"INT-{next_id:03d}", institution=institution.strip(), function=function.strip(),
         person=person.strip() or None, priority=max(1, min(priority, 5)),
         hypothesis_tested=hypothesis_tested.strip(), single_ask=single_ask.strip(),
         minimal_success=minimal_success.strip(), next_intro_sought=next_intro_sought.strip() or None,
         document_to_send=document_to_send.strip() or None,
-    ))
+    )
+    db.add(contact)
+    db.flush()
+    _audit(
+        db,
+        event_type="INTERLOCUTEUR_AJOUTE",
+        entity_type="STAKEHOLDER_CONTACT",
+        entity_id=contact.id,
+        payload={"code": contact.code, "institution": contact.institution, "priority": contact.priority},
+    )
     db.commit()
     return RedirectResponse(url="/contacts", status_code=303)
 
@@ -637,6 +698,20 @@ def update_contact(
     contact.notes = notes.strip() or None
     if status == "CONTACTE" and contact.first_contact_at is None:
         contact.first_contact_at = datetime.now(timezone.utc)
+    _audit(
+        db,
+        event_type="INTERLOCUTEUR_MIS_A_JOUR",
+        entity_type="STAKEHOLDER_CONTACT",
+        entity_id=contact.id,
+        payload={
+            "code": contact.code,
+            "status": status,
+            "produced_evidence": contact.produced_evidence,
+            "produced_case": contact.produced_case,
+            "produced_experiment": contact.produced_experiment,
+            "produced_introduction": contact.produced_introduction,
+        },
+    )
     db.commit()
     return RedirectResponse(url="/contacts", status_code=303)
 
