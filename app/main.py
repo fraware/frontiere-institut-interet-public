@@ -209,6 +209,7 @@ def add_public_search(
     ep = db.scalar(select(Episode).where(Episode.code == code))
     if ep is None:
         raise HTTPException(404)
+    _require_locked_need(db, ep)
     complete_b = complete == "yes"
     rel = None if relevant_found == "unknown" else relevant_found == "yes"
     mob = None if mobilizable_found == "unknown" else mobilizable_found == "yes"
@@ -242,6 +243,7 @@ def add_decision(
     ep = db.scalar(select(Episode).where(Episode.code == code))
     if ep is None:
         raise HTTPException(404)
+    _require_locked_need(db, ep)
     d = Decision(
         episode_id=ep.id,
         selected_option=selected_option.strip(),
