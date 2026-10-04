@@ -17,6 +17,7 @@
     <dt>Échéance</dt><dd>{{ need.latest_useful_date or 'À préciser' }}</dd>
     <dt>Contrefactuel</dt><dd>{{ need.counterfactual_plan or 'À verrouiller avant investigation' }}</dd>
     <dt>Hypothèse initiale</dt><dd>{{ need.initial_frontiere_hypothesis or 'À enregistrer' }}</dd>
+    <dt>Pré-enregistrement</dt><dd>{% if need.locked_at %}<span class="pill">Verrouillé · {{ need.locked_at.date() }}</span>{% else %}<span class="pill warning">À verrouiller</span>{% endif %}</dd>
   </dl>
   {% endif %}
 </section>
@@ -32,6 +33,34 @@
 </section>
 </div>
 
+{% if need and not need_locked %}
+<section class="panel prelock">
+  <h2>Pré-enregistrement</h2>
+  <p>Avant toute recherche publique ou décision d’orientation, verrouiller le besoin, le résultat recherché, le contrefactuel et l’hypothèse initiale.</p>
+  <form method="post" action="/episodes/{{ episode.code }}/need/lock"><button class="button primary" type="submit">Verrouiller l’état initial</button></form>
+</section>
+{% endif %}
+
+<section id="preuves" class="panel">
+  <div class="panel-head"><h2>Preuves</h2><span class="muted">A–E · provenance explicite</span></div>
+  {% if episode.evidence_items %}
+  <table><thead><tr><th>Preuve</th><th>Source</th><th>Date</th><th>Qualité</th><th>Environnement</th></tr></thead><tbody>
+  {% for ev in episode.evidence_items %}<tr><td><strong>{{ ev.title }}</strong><br><span class="muted">{{ ev.evidence_type }}</span></td><td>{{ ev.source or '—' }}</td><td>{{ ev.evidence_date or '—' }}</td><td><span class="pill">{{ ev.quality }}</span></td><td>{{ ev.data_environment }}</td></tr>{% endfor %}
+  </tbody></table>
+  {% else %}<div class="empty">Aucune preuve enregistrée.</div>{% endif %}
+  <form method="post" action="/episodes/{{ episode.code }}/evidence" class="form-grid compact">
+    <label class="wide">Titre<input required name="title"></label>
+    <label>Type<input name="evidence_type" value="document"></label>
+    <label>Source<input name="source"></label>
+    <label>Date<input type="date" name="evidence_date"></label>
+    <label>Qualité<select name="quality"><option>A</option><option>B</option><option selected>C</option><option>D</option><option>E</option></select></label>
+    <label>Environnement<select name="data_environment"><option>RECHERCHE</option><option>RESEAU</option><option>CANDIDATURE</option><option>INTEGRITE</option></select></label>
+    <label>Sensibilité<select name="sensitivity_level"><option value="1">1</option><option value="2">2</option></select></label>
+    <label class="wide">Notes<textarea name="notes" rows="2"></textarea></label>
+    <button class="button" type="submit">Ajouter la preuve</button>
+  </form>
+</section>
+
 <section id="recherche" class="panel">
   <div class="panel-head"><h2>Recherche prioritaire dans le secteur public</h2><span class="muted">P0 / P1 / P2 / P3</span></div>
   {% if episode.searches %}
@@ -39,6 +68,7 @@
     {% for s in episode.searches %}<tr><td>{{ s.search_type }}</td><td>{{ s.started_at.date() }}</td><td>{{ 'Oui' if s.complete_enough_to_conclude else 'Non' }}</td><td>{{ s.public_relevant_found }}</td><td>{{ s.public_mobilizable_found }}</td><td><strong>{{ s.public_result or '—' }}</strong></td><td>{{ s.analyst_minutes }} min</td></tr>{% endfor %}
     </tbody></table>
   {% endif %}
+  {% if not need_locked %}<div class="callout warning">Recherche verrouillée tant que l’état initial n’est pas pré-enregistré.</div>{% endif %}
   <form method="post" action="/episodes/{{ episode.code }}/public-search" class="inline-form">
     <label>Recherche suffisante<select name="complete"><option value="no">Non</option><option value="yes">Oui</option></select></label>
     <label>Capacité publique pertinente<select name="relevant_found"><option value="unknown">Inconnu</option><option value="yes">Oui</option><option value="no">Non</option></select></label>
@@ -90,6 +120,7 @@
   {% if episode.decisions %}
     {% for d in episode.decisions %}<article class="decision"><div><strong>{{ d.selected_option }}</strong><span>{{ d.confidence }}</span></div><p>{{ d.justification }}</p>{% if d.contradictory_evidence %}<p class="contradiction"><strong>Éléments contradictoires :</strong> {{ d.contradictory_evidence }}</p>{% endif %}{% if d.uncertainties %}<p><strong>Incertitudes :</strong> {{ d.uncertainties }}</p>{% endif %}</article>{% endfor %}
   {% endif %}
+  {% if not need_locked %}<div class="callout warning">Décision verrouillée tant que l’état initial n’est pas pré-enregistré.</div>{% endif %}
   <form method="post" action="/episodes/{{ episode.code }}/decision" class="form-grid compact">
     <label>Option retenue<input required name="selected_option" placeholder="Ex. mobilité publique"></label>
     <label>Confiance<select name="confidence"><option>faible</option><option selected>moyenne</option><option>forte</option></select></label>
