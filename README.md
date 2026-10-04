@@ -1,4 +1,4 @@
-# FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC - — prototype opératoire v0.1
+# FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC - — prototype opératoire v0.2
 
 Prototype interne pour l'étude de la mobilisation des capacités scientifiques et techniques au service de l'action publique.
 
@@ -12,7 +12,7 @@ La chaîne de travail est :
 
 Une solution publique existante, une prestation de marché, un recrutement permanent, un abandon justifié ou l'absence de nouvelle intervention constituent des résultats valides.
 
-## Ce que la version 0.1 réalise
+## Ce que la version 0.2 réalise
 
 - registre des épisodes avec D0–D4 et distinction entre cas réels et cas synthétiques ;
 - formulation du besoin, résultat attendu, responsable, échéance, contrefactuel et hypothèse initiale ;
@@ -25,6 +25,10 @@ Une solution publique existante, une prestation de marché, un recrutement perma
 - registre pré-enregistré des quinze hypothèses de plateforme ;
 - douze scénarios synthétiques adverses séparés des données réelles ;
 - interface interne légère et API de lecture ;
+- pré-enregistrement du besoin et du contrefactuel avant investigation ;
+- registre des preuves A–E avec environnement de données ;
+- registre opérationnel des interlocuteurs avec règle preuve / cas / expérience / mise en relation ;
+- export de recherche minimal et non sensible ;
 - tests automatisés des invariants méthodologiques essentiels.
 
 ## Lancer localement
@@ -65,7 +69,13 @@ pytest
 - `docs/REGLES_DECISION.md` — D0–D4, P0–P3, R0–R5, orientation et clôture.
 - `docs/SECURITE_GOUVERNANCE.md` — séparation des données et règles d'accès.
 - `docs/PLAN_12_SEMAINES.md` — cadence de l'exécution contrôlée.
+- `docs/LANCEMENT_OPERATIONNEL.md` — première vague et règles de bascule vers les cas réels.
 
 ## Périmètre actuel
 
 Cette version est un outil de recherche et d'opérations internes. Elle ne constitue ni un système de recrutement automatisé, ni une base publique de réputation, ni une plateforme nationale finalisée. Les abstractions seront modifiées uniquement à partir d'observations réelles, avec historique des versions.
+
+
+## Sécurité de la version publique
+
+Cette version ne possède pas encore d’authentification. Elle refuse les niveaux de sensibilité 3 et 4. Ne saisir aucune donnée confidentielle ou nominative restreinte dans une instance publique. Voir `SECURITY.md`.
