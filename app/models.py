@@ -53,6 +53,7 @@ class Episode(Base):
     results: Mapped[list[EpisodeResult]] = relationship(back_populates="episode", cascade="all, delete-orphan")
     knowledge_items: Mapped[list[KnowledgeItem]] = relationship(back_populates="source_episode")
     evidence_items: Mapped[list[Evidence]] = relationship(back_populates="episode", cascade="all, delete-orphan")
+    audit_events: Mapped[list[AuditEvent]] = relationship(back_populates="episode", cascade="all, delete-orphan")
 
 
 class NeedVersion(Base):
@@ -330,6 +331,21 @@ class StakeholderContact(Base):
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, onupdate=utcnow)
+
+
+class AuditEvent(Base):
+    __tablename__ = "audit_events"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    episode_id: Mapped[int | None] = mapped_column(ForeignKey("episodes.id"), nullable=True, index=True)
+    entity_type: Mapped[str] = mapped_column(String(60), index=True)
+    entity_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    event_type: Mapped[str] = mapped_column(String(80), index=True)
+    actor: Mapped[str] = mapped_column(String(180), default="équipe Frontière")
+    payload_json: Mapped[str | None] = mapped_column(Text, nullable=True)
+    occurred_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, index=True)
+
+    episode: Mapped[Episode | None] = relationship(back_populates="audit_events")
 
 
 class ActivityLog(Base):
