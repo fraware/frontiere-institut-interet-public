@@ -41,6 +41,31 @@
 </section>
 {% endif %}
 
+<section id="versions" class="panel">
+  <div class="panel-head"><h2>Historique du besoin</h2><span class="muted">aucune réécriture silencieuse</span></div>
+  <table><thead><tr><th>Version</th><th>État</th><th>Création</th><th>Verrouillage</th><th>Situation</th></tr></thead><tbody>
+  {% for v in episode.needs|sort(attribute='version', reverse=true) %}
+    <tr><td><strong>v{{ v.version }}</strong></td><td>{{ 'active' if v.active else 'historique' }}</td><td>{{ v.created_at }}</td><td>{{ v.locked_at or '—' }}</td><td>{{ v.current_situation }}</td></tr>
+  {% endfor %}
+  </tbody></table>
+  {% if need and need_locked %}
+  <details>
+    <summary>Créer une révision verrouillée</summary>
+    <p class="muted">La version active précédente reste conservée. La raison de révision est inscrite dans le journal de traçabilité.</p>
+    <form method="post" action="/episodes/{{ episode.code }}/need/revise" class="form-grid compact">
+      <label class="wide">Raison de la révision<textarea required name="revision_reason" rows="2"></textarea></label>
+      <label class="wide">Situation<textarea required name="current_situation" rows="3">{{ need.current_situation }}</textarea></label>
+      <label class="wide">Résultat recherché<textarea required name="desired_outcome" rows="3">{{ need.desired_outcome }}</textarea></label>
+      <label>Responsable<input name="sponsor" value="{{ need.sponsor or '' }}"></label>
+      <label>Échéance<input type="date" name="latest_useful_date" value="{{ need.latest_useful_date or '' }}"></label>
+      <label class="wide">Contrefactuel<textarea required name="counterfactual_plan" rows="2">{{ need.counterfactual_plan or '' }}</textarea></label>
+      <label class="wide">Hypothèse initiale de cette version<textarea required name="initial_frontiere_hypothesis" rows="2">{{ need.initial_frontiere_hypothesis or '' }}</textarea></label>
+      <button class="button" type="submit">Créer v{{ need.version + 1 }} et verrouiller</button>
+    </form>
+  </details>
+  {% endif %}
+</section>
+
 <section id="preuves" class="panel">
   <div class="panel-head"><h2>Preuves</h2><span class="muted">A–E · provenance explicite</span></div>
   {% if episode.evidence_items %}
@@ -172,5 +197,16 @@
     <label class="wide">Portée / conditions d'application<textarea name="scope" rows="2"></textarea></label>
     <button class="button" type="submit">Créer la connaissance</button>
   </form>
+</section>
+
+<section id="trace" class="panel">
+  <div class="panel-head"><h2>Journal de traçabilité</h2><span class="muted">événements appendus</span></div>
+  {% if episode.audit_events %}
+  <table><thead><tr><th>Date</th><th>Événement</th><th>Objet</th><th>Contexte</th></tr></thead><tbody>
+  {% for a in episode.audit_events|sort(attribute='occurred_at', reverse=true) %}
+    <tr><td>{{ a.occurred_at }}</td><td><strong>{{ a.event_type }}</strong></td><td>{{ a.entity_type }}{% if a.entity_id %} #{{ a.entity_id }}{% endif %}</td><td><code>{{ a.payload_json or '{}' }}</code></td></tr>
+  {% endfor %}
+  </tbody></table>
+  {% else %}<div class="empty">Aucun événement de traçabilité.</div>{% endif %}
 </section>
 {% endblock %}
