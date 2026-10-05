@@ -1,34 +1,63 @@
 # Règles de décision
 
-## Qualification
+## Entrée d'un cas
 
-Un épisode peut entrer dans le registre dès qu'un besoin et une source existent. Une investigation approfondie exige un résultat recherché, une capacité suffisamment définissable et un responsable ou une justification explicite de son absence.
+Un cas peut être enregistré dès qu'un besoin précis et une source existent. Une analyse approfondie exige ensuite un résultat recherché, une capacité suffisamment définie et, si possible, un responsable institutionnel.
 
-## Recherche publique
+## Recherche dans le secteur public
 
-La classification est conservatrice :
+La recherche commence normalement par les capacités déjà présentes dans le secteur public.
 
-- recherche insuffisante → P0 ;
-- ressource publique pertinente et mobilisable → P1 ;
-- ressource publique pertinente mais non mobilisable → P2 ;
-- recherche suffisante et aucune ressource publique suffisamment pertinente → P3.
+Quatre situations sont distinguées :
 
-## Orientation
+1. la recherche est encore insuffisante pour conclure ;
+2. une capacité publique pertinente est trouvée et peut être mobilisée ;
+3. une capacité publique pertinente est trouvée mais sa mobilisation est difficile ou incertaine ;
+4. la recherche est suffisamment approfondie et aucune capacité publique pertinente n'a été trouvée.
 
-Les formes d'intervention possibles incluent : capacité interne, capacité publique, expertise ponctuelle, mission courte ou longue, coopération scientifique, recrutement permanent, achat, défi, formation, partenariat, report et abandon.
+La troisième situation signale d'abord un problème de mobilisation ou d'organisation. Elle ne prouve pas une pénurie de compétences.
 
-Chaque option conserve séparément preuves favorables, preuves défavorables, inconnues et prochaine action. Aucun score global ne choisit l'option.
+## Choix d'une voie
 
-## Résultats négatifs
+Les voies possibles comprennent notamment :
 
-Sont explicitement conservés : solution publique immédiate, marché privé satisfaisant, besoin insuffisamment mûr, recherche sans ressource pertinente, refus de spécialiste, obstacle juridique, abandon institutionnel, expérience sans différence observable.
+- capacité interne ;
+- capacité située dans une autre organisation publique ;
+- expertise ponctuelle ;
+- mission temporaire ;
+- coopération scientifique ;
+- recrutement permanent ;
+- achat d'une prestation ;
+- formation ;
+- partenariat ;
+- report du besoin ;
+- abandon justifié.
+
+Pour chaque voie, l'application conserve séparément les éléments favorables, les éléments défavorables, les inconnues, les blocages et la prochaine action.
+
+## Résultats qui doivent aussi être conservés
+
+Un résultat utile peut être positif ou négatif. Sont notamment conservés :
+
+- une solution publique immédiate ;
+- un prestataire du marché qui répond correctement au besoin ;
+- un besoin encore trop peu défini ;
+- une recherche qui ne trouve aucune ressource pertinente ;
+- un spécialiste qui refuse ;
+- un obstacle juridique ou administratif ;
+- l'abandon du besoin ;
+- une comparaison qui ne montre aucune différence entre FRONTIÈRE et la méthode habituelle.
 
 ## Décision de fin de phase
 
-- Construire : friction récurrente et importante, additionalité démontrée, fonctionnement opératoire plausible.
-- Construire ciblé : signal fort concentré dans un périmètre limité.
-- Réorienter : le problème est réel mais la fonction utile diffère de l'hypothèse initiale.
-- Prolonger : preuves encore insuffisantes ou contradictoires.
-- Arrêter : les mécanismes existants suffisent ou la valeur additionnelle est trop faible.
+La poursuite large se justifie si une difficulté récurrente et importante apparaît, si FRONTIÈRE apporte une valeur observable et si une voie d'action réaliste existe.
 
-Le principe de parcimonie prévaut : améliorer, connecter, créer une petite fonction, créer un programme spécialisé, puis seulement envisager une infrastructure large.
+Une poursuite ciblée se justifie si le signal est fort dans un périmètre limité.
+
+Un changement de direction se justifie si le problème est réel mais que la fonction utile diffère de l'hypothèse initiale.
+
+Une prolongation se justifie si les preuves sont encore insuffisantes ou contradictoires.
+
+Un arrêt se justifie si les mécanismes existants suffisent ou si la valeur ajoutée est trop faible.
+
+Dans tous les cas, la solution la plus légère qui résout effectivement le problème est privilégiée.
