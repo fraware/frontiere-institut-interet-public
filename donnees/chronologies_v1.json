@@ -240,6 +240,59 @@
         "réutilisation des méthodes entre territoires"
       ],
       "lecture_provisoire": "Exemple de création d'une capacité collective ciblée avec production observable l'année suivante."
+    },
+    {
+      "id_signal": "S027",
+      "titre": "PFAS dans les matières fertilisantes — mission interministérielle",
+      "evenements": [
+        {
+          "date": "2026-02",
+          "precision": "mois",
+          "evenement": "Une dépêche publique citée par la lettre du CGAAER attire l'attention sur l'épandage de boues contaminées par des PFAS."
+        },
+        {
+          "date": "2026-04",
+          "precision": "mois",
+          "evenement": "La lettre du CGAAER présente les travaux de la mission conjointe CGAAER-IGEDD sur le risque de diffusion et la nécessité éventuelle d'un cadre de gestion adapté."
+        }
+      ],
+      "inconnues": [
+        "date exacte de commande de la mission",
+        "date de constitution de l'équipe",
+        "date de remise du rapport complet",
+        "durée de travail",
+        "décision publique prise à la suite de la mission"
+      ],
+      "lecture_provisoire": "La séquence établit une expertise interministérielle répondant à une question publique précise ; elle ne permet pas encore de mesurer exactement le temps de mobilisation."
+    },
+    {
+      "id_signal": "S050",
+      "titre": "Météo-France — renouvellement de la capacité de calcul intensif",
+      "evenements": [
+        {
+          "date": "2025-2033",
+          "precision": "intervalle",
+          "evenement": "Période prévue pour le projet de renouvellement des supercalculateurs."
+        },
+        {
+          "date": "2026",
+          "precision": "annee",
+          "evenement": "Météo-France prévoit 39 millions d'euros de dépenses d'investissement, en hausse notamment du fait du renouvellement des supercalculateurs."
+        },
+        {
+          "date": "2027",
+          "precision": "annee",
+          "evenement": "Horizon annoncé pour la mise en service du nouveau système et une multiplication par six de la puissance de calcul."
+        }
+      ],
+      "inconnues": [
+        "date précise de décision d'investissement",
+        "date de contractualisation",
+        "date réelle de mise en service",
+        "écart entre calendrier prévu et réalisé",
+        "effet sur les productions scientifiques et opérationnelles"
+      ],
+      "lecture_provisoire": "Ce cas permet de suivre une capacité scientifique principalement matérielle ; la contribution utile dépendra de la mise en service effective."
     }
   ]
 }
