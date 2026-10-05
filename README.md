@@ -1,4 +1,4 @@
-# FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC - — prototype opératoire v0.4
+# FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC - — prototype opératoire v0.5
 
 Prototype interne pour l'étude de la mobilisation des capacités scientifiques et techniques au service de l'action publique.
 
@@ -12,7 +12,7 @@ La chaîne de travail est :
 
 Une solution publique existante, une prestation de marché, un recrutement permanent, un abandon justifié ou l'absence de nouvelle intervention constituent des résultats valides.
 
-## Ce que la version 0.4 réalise
+## Ce que la version 0.5 réalise
 
 - registre des épisodes avec D0–D4 et distinction entre cas réels et cas synthétiques ;
 - formulation du besoin, résultat attendu, responsable, échéance, contrefactuel et hypothèse initiale ;
@@ -23,6 +23,9 @@ Une solution publique existante, une prestation de marché, un recrutement perma
 - résultats avec première contribution utile, coût direct et additionalité par dimensions séparées ;
 - connaissances réutilisables et événements de réutilisation inter-cas ;
 - tableau empirique séparant demande, recherche publique, R5, résultats, frictions et réutilisations ;
+- requête de capacité structurée et versionnée : domaine, fonction, profondeur, contexte, contraintes, formes de ressource et critères impératifs ;
+- banc d’évaluation aveugle permettant de comparer recherche Web manuelle, assistants généralistes et FRONTIÈRE sur les mêmes cas ;
+- métriques vectorielles du banc : rappel des voies, rappel des formes de ressource, rappel des ressources nommées, temps humain, temps écoulé et nombre de preuves ;
 - registre pré-enregistré des quinze hypothèses de plateforme ;
 - douze scénarios synthétiques adverses séparés des données réelles ;
 - interface interne légère et API de lecture ;
@@ -74,6 +77,7 @@ pytest
 - `docs/PLAN_12_SEMAINES.md` — cadence de l'exécution contrôlée.
 - `docs/LANCEMENT_OPERATIONNEL.md` — première vague et règles de bascule vers les cas réels.
 - `docs/TRACEABILITE_V0.3.md` — versionnement et journal d’audit.
+- `docs/BENCHMARK_V0.5.md` — banc d’évaluation technique et corpus public initial.
 
 ## Périmètre actuel
 

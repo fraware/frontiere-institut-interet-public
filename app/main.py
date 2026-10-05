@@ -16,6 +16,9 @@ from .config import settings
 from .database import Base, engine, get_db
 from .models import (
     AuditEvent,
+    BenchmarkCase,
+    BenchmarkPrediction,
+    CapabilityQuery,
     Decision,
     Discovery,
     Evidence,
@@ -32,7 +35,7 @@ from .models import (
     SearchRun,
     StakeholderContact,
 )
-from .services import classify_public_search, dashboard_metrics, empirical_metrics, hypothesis_summary
+from .services import benchmark_prediction_metrics, benchmark_summary, classify_public_search, dashboard_metrics, empirical_metrics, hypothesis_summary
 
 BASE_DIR = Path(__file__).resolve().parent
 @asynccontextmanager
@@ -41,7 +44,7 @@ async def lifespan(_: FastAPI):
     yield
 
 
-app = FastAPI(title=settings.app_name, version="0.4.0", lifespan=lifespan)
+app = FastAPI(title=settings.app_name, version="0.5.0", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
@@ -92,7 +95,7 @@ def _audit(
 
 @app.get("/health")
 def health() -> dict:
-    return {"status": "ok", "service": "frontiere-institut-interet-public", "version": "0.4.0"}
+    return {"status": "ok", "service": "frontiere-institut-interet-public", "version": "0.5.0"}
 
 
 @app.get("/api/v1/metrics")
@@ -236,6 +239,12 @@ def episode_detail(code: str, request: Request, db: Session = Depends(get_db)):
     if ep is None:
         raise HTTPException(404, "Épisode introuvable")
     active_need = _active_need(ep)
+    capability_query = db.scalar(
+        select(CapabilityQuery)
+        .where(CapabilityQuery.episode_id == ep.id, CapabilityQuery.active.is_(True))
+        .order_by(CapabilityQuery.version.desc())
+        .limit(1)
+    )
     reusable_knowledge = list(db.scalars(
         select(KnowledgeItem)
         .where(KnowledgeItem.status == "ACTIVE", KnowledgeItem.source_episode_id != ep.id)
@@ -255,10 +264,118 @@ def episode_detail(code: str, request: Request, db: Session = Depends(get_db)):
             "episode": ep,
             "need": active_need,
             "need_locked": bool(active_need and active_need.locked_at),
+            "capability_query": capability_query,
             "reusable_knowledge": reusable_knowledge,
             "reuse_events": reuse_events,
         },
     )
+
+
+@app.post("/episodes/{code}/capability-query")
+def create_capability_query(
+    code: str,
+    raw_request: str = Form(...),
+    domain: str = Form(...),
+    function: str = Form(...),
+    depth: str = Form("intermediaire"),
+    operational_context: str = Form(""),
+    constraints: str = Form(""),
+    resource_forms: str = Form(""),
+    must_have: str = Form(""),
+    nice_to_have: str = Form(""),
+    latest_useful_date: str = Form(""),
+    compiler: str = Form("human"),
+    db: Session = Depends(get_db),
+):
+    ep = db.scalar(select(Episode).where(Episode.code == code))
+    if ep is None:
+        raise HTTPException(404, "Épisode introuvable")
+    need = _require_locked_need(db, ep)
+
+    current = db.scalar(
+        select(CapabilityQuery)
+        .where(CapabilityQuery.need_id == need.id, CapabilityQuery.active.is_(True))
+        .order_by(CapabilityQuery.version.desc())
+        .limit(1)
+    )
+    version = 1
+    if current is not None:
+        current.active = False
+        version = current.version + 1
+
+    def items(text: str) -> list[str]:
+        return [part.strip() for part in text.replace("\n", ",").split(",") if part.strip()]
+
+    deadline = date.fromisoformat(latest_useful_date) if latest_useful_date else need.latest_useful_date
+    query = CapabilityQuery(
+        episode_id=ep.id,
+        need_id=need.id,
+        version=version,
+        active=True,
+        raw_request=raw_request.strip(),
+        domain=domain.strip(),
+        function=function.strip(),
+        depth=depth.strip(),
+        operational_context=operational_context.strip() or None,
+        constraints=constraints.strip() or None,
+        resource_forms_json=json.dumps(items(resource_forms), ensure_ascii=False),
+        must_have_json=json.dumps(items(must_have), ensure_ascii=False),
+        nice_to_have_json=json.dumps(items(nice_to_have), ensure_ascii=False),
+        latest_useful_date=deadline,
+        compiler=compiler.strip() or "human",
+        compiler_version="1.0",
+        locked_at=datetime.now(timezone.utc),
+    )
+    db.add(query)
+    db.flush()
+    _audit(
+        db,
+        event_type="CAPABILITY_QUERY_COMPILÉE",
+        entity_type="CAPABILITY_QUERY",
+        entity_id=query.id,
+        episode_id=ep.id,
+        payload={
+            "need_version_id": need.id,
+            "query_version": query.version,
+            "domain": query.domain,
+            "function": query.function,
+            "depth": query.depth,
+            "resource_forms": json.loads(query.resource_forms_json),
+        },
+    )
+    db.commit()
+    return RedirectResponse(url=f"/episodes/{code}#capability-query", status_code=303)
+
+
+@app.get("/api/v1/episodes/{code}/capability-query")
+def api_capability_query(code: str, db: Session = Depends(get_db)) -> dict:
+    ep = db.scalar(select(Episode).where(Episode.code == code))
+    if ep is None:
+        raise HTTPException(404, "Épisode introuvable")
+    query = db.scalar(
+        select(CapabilityQuery)
+        .where(CapabilityQuery.episode_id == ep.id, CapabilityQuery.active.is_(True))
+        .order_by(CapabilityQuery.version.desc())
+        .limit(1)
+    )
+    if query is None:
+        raise HTTPException(404, "Aucune requête de capacité active")
+    return {
+        "episode": ep.code,
+        "version": query.version,
+        "raw_request": query.raw_request,
+        "domain": query.domain,
+        "function": query.function,
+        "depth": query.depth,
+        "operational_context": query.operational_context,
+        "constraints": query.constraints,
+        "resource_forms": json.loads(query.resource_forms_json),
+        "must_have": json.loads(query.must_have_json),
+        "nice_to_have": json.loads(query.nice_to_have_json),
+        "latest_useful_date": query.latest_useful_date.isoformat() if query.latest_useful_date else None,
+        "compiler": query.compiler,
+        "locked_at": query.locked_at.isoformat() if query.locked_at else None,
+    }
 
 
 @app.post("/episodes/{code}/public-search")
@@ -912,6 +1029,78 @@ def research_export(db: Session = Depends(get_db)) -> dict:
             "institution_minutes": result.institution_minutes if result else 0,
         })
     return {"schema_version": "0.2", "episodes": rows}
+
+
+@app.get("/benchmark", response_class=HTMLResponse)
+def benchmark_page(request: Request, db: Session = Depends(get_db)):
+    summary = benchmark_summary(db)
+    rows = []
+    for case in summary["cases"]:
+        predictions = [p for p in summary["predictions"] if p.case_id == case.id]
+        rows.append({
+            "case": case,
+            "expected_routes": json.loads(case.expected_routes_json),
+            "expected_resource_forms": json.loads(case.expected_resource_forms_json),
+            "predictions": [
+                {"prediction": p, "metrics": benchmark_prediction_metrics(case, p)}
+                for p in predictions
+            ],
+        })
+    return templates.TemplateResponse(
+        request=request,
+        name="benchmark.html",
+        context={"rows": rows, "methods": summary["methods"]},
+    )
+
+
+@app.post("/benchmark/{case_code}/prediction")
+def add_benchmark_prediction(
+    case_code: str,
+    method: str = Form(...),
+    method_version: str = Form("1.0"),
+    routes: str = Form(""),
+    resource_forms: str = Form(""),
+    resources: str = Form(""),
+    evidence_urls: str = Form(""),
+    elapsed_seconds: float | None = Form(None),
+    analyst_minutes: int = Form(0),
+    verification_minutes: int = Form(0),
+    notes: str = Form(""),
+    db: Session = Depends(get_db),
+):
+    case = db.scalar(select(BenchmarkCase).where(BenchmarkCase.code == case_code, BenchmarkCase.active.is_(True)))
+    if case is None:
+        raise HTTPException(404, "Cas de benchmark introuvable")
+
+    def items(text: str) -> list[str]:
+        return [part.strip() for part in text.replace("\n", ",").split(",") if part.strip()]
+
+    prediction = BenchmarkPrediction(
+        case_id=case.id,
+        method=method.strip(),
+        method_version=method_version.strip() or "1.0",
+        routes_json=json.dumps(items(routes), ensure_ascii=False),
+        resource_forms_json=json.dumps(items(resource_forms), ensure_ascii=False),
+        resources_json=json.dumps(items(resources), ensure_ascii=False),
+        evidence_urls_json=json.dumps(items(evidence_urls), ensure_ascii=False),
+        elapsed_seconds=max(0, elapsed_seconds) if elapsed_seconds is not None else None,
+        analyst_minutes=max(0, analyst_minutes),
+        verification_minutes=max(0, verification_minutes),
+        notes=notes.strip() or None,
+    )
+    db.add(prediction)
+    db.commit()
+    return RedirectResponse(url=f"/benchmark#{case.code}", status_code=303)
+
+
+@app.get("/api/v1/benchmark")
+def api_benchmark(db: Session = Depends(get_db)) -> dict:
+    summary = benchmark_summary(db)
+    return {
+        "case_count": len(summary["cases"]),
+        "prediction_count": len(summary["predictions"]),
+        "methods": summary["methods"],
+    }
 
 
 @app.get("/hypotheses", response_class=HTMLResponse)

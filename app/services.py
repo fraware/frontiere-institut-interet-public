@@ -1,13 +1,15 @@
 from __future__ import annotations
 
-from collections import Counter
+from collections import Counter, defaultdict
 from datetime import datetime
+import json
+import statistics
 from typing import Iterable
 
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from .models import Discovery, Episode, EpisodeResult, Hypothesis, KnowledgeItem, NeedVersion, ReuseEvent, SearchRun, StakeholderContact
+from .models import BenchmarkCase, BenchmarkPrediction, Discovery, Episode, EpisodeResult, Hypothesis, KnowledgeItem, NeedVersion, ReuseEvent, SearchRun, StakeholderContact
 
 PUBLIC_RESULTS = {"P0", "P1", "P2", "P3"}
 HOST_STATES = {"PASS", "FAIL", "UNKNOWN", "NON_APPLICABLE"}
@@ -140,3 +142,83 @@ def empirical_metrics(db: Session) -> dict:
         "dominant_frictions": dict(dominant_frictions),
         "reuse_events": int(reuse_count),
     }
+
+
+def _json_list(value: str | None) -> list[str]:
+    if not value:
+        return []
+    try:
+        data = json.loads(value)
+    except json.JSONDecodeError:
+        return []
+    return [str(item).strip() for item in data if str(item).strip()] if isinstance(data, list) else []
+
+
+def _normalized_set(values: list[str]) -> set[str]:
+    return {v.strip().upper() for v in values if v and v.strip()}
+
+
+def _recall(expected: list[str], predicted: list[str]) -> float | None:
+    gold = _normalized_set(expected)
+    if not gold:
+        return None
+    pred = _normalized_set(predicted)
+    return len(gold & pred) / len(gold)
+
+
+def benchmark_prediction_metrics(case: BenchmarkCase, prediction: BenchmarkPrediction) -> dict:
+    expected_routes = _json_list(case.expected_routes_json)
+    expected_forms = _json_list(case.expected_resource_forms_json)
+    expected_resources = _json_list(case.expected_resources_json)
+    predicted_routes = _json_list(prediction.routes_json)
+    predicted_forms = _json_list(prediction.resource_forms_json)
+    predicted_resources = _json_list(prediction.resources_json)
+    evidence_urls = _json_list(prediction.evidence_urls_json)
+    return {
+        "route_recall": _recall(expected_routes, predicted_routes),
+        "resource_form_recall": _recall(expected_forms, predicted_forms),
+        "resource_recall": _recall(expected_resources, predicted_resources),
+        "evidence_count": len(evidence_urls),
+        "analyst_minutes": prediction.analyst_minutes,
+        "verification_minutes": prediction.verification_minutes,
+        "human_minutes": prediction.analyst_minutes + prediction.verification_minutes,
+        "elapsed_seconds": prediction.elapsed_seconds,
+    }
+
+
+def benchmark_summary(db: Session) -> dict:
+    cases = list(db.scalars(select(BenchmarkCase).where(BenchmarkCase.active.is_(True)).order_by(BenchmarkCase.code)).all())
+    predictions = list(
+        db.scalars(
+            select(BenchmarkPrediction)
+            .join(BenchmarkCase)
+            .where(BenchmarkCase.active.is_(True))
+            .order_by(BenchmarkPrediction.submitted_at)
+        ).all()
+    )
+    by_method: dict[str, list[tuple[BenchmarkCase, BenchmarkPrediction]]] = defaultdict(list)
+    case_by_id = {c.id: c for c in cases}
+    for prediction in predictions:
+        case = case_by_id.get(prediction.case_id)
+        if case is not None:
+            by_method[prediction.method].append((case, prediction))
+
+    methods = []
+    for method, rows in sorted(by_method.items()):
+        vectors = [benchmark_prediction_metrics(case, prediction) for case, prediction in rows]
+        route = [v["route_recall"] for v in vectors if v["route_recall"] is not None]
+        forms = [v["resource_form_recall"] for v in vectors if v["resource_form_recall"] is not None]
+        resources = [v["resource_recall"] for v in vectors if v["resource_recall"] is not None]
+        human = [v["human_minutes"] for v in vectors]
+        elapsed = [v["elapsed_seconds"] for v in vectors if v["elapsed_seconds"] is not None]
+        methods.append({
+            "method": method,
+            "n": len(rows),
+            "route_recall_mean": (sum(route) / len(route)) if route else None,
+            "resource_form_recall_mean": (sum(forms) / len(forms)) if forms else None,
+            "resource_recall_mean": (sum(resources) / len(resources)) if resources else None,
+            "human_minutes_median": statistics.median(human) if human else None,
+            "elapsed_seconds_median": statistics.median(elapsed) if elapsed else None,
+            "evidence_count_mean": (sum(v["evidence_count"] for v in vectors) / len(vectors)) if vectors else 0,
+        })
+    return {"cases": cases, "predictions": predictions, "methods": methods}
