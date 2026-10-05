@@ -40,6 +40,7 @@ Les documents principaux sont :
 - `docs/TRACEABILITE_V0.3.md` — la conservation de l'historique des décisions ;
 - `docs/EVALUATION_TECHNIQUE_V0.5.md` — la comparaison des méthodes de recherche ;
 - `docs/REPERES_DE_LECTURE.md` — les termes utilisés dans le projet, expliqués en langage courant.
+- `docs/PRINCIPES_REDACTION.md` — les règles de rédaction en français clair.
 
 ## Évaluation technique
 
