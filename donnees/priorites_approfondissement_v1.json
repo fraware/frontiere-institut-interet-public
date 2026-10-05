@@ -1,0 +1,113 @@
+{
+  "version": "1",
+  "objectif": "Approfondir en priorité les cas qui permettent de distinguer recherche, mobilisation, fidélisation, formation et infrastructure.",
+  "cas": [
+    {
+      "id_signal": "S001",
+      "raison": "Cas précis avec chronologie et difficulté de recrutement ; potentiel de comparaison avec une compétence présente ailleurs dans l'État.",
+      "informations_a_rechercher": [
+        "date exacte de perte de capacité",
+        "premières démarches de recrutement",
+        "candidatures reçues",
+        "solutions temporaires",
+        "état actuel"
+      ]
+    },
+    {
+      "id_signal": "S009",
+      "raison": "Montre une voie de mobilisation plus rapide que le concours pour la cybersécurité.",
+      "informations_a_rechercher": [
+        "délais réels par voie de recrutement",
+        "coût",
+        "taux de vacance",
+        "durée jusqu'à autonomie"
+      ]
+    },
+    {
+      "id_signal": "S011",
+      "raison": "Cas explicite où le délai vient du mécanisme de mobilisation.",
+      "informations_a_rechercher": [
+        "date d'expression du besoin",
+        "date du concours",
+        "date d'affectation",
+        "effets du délai"
+      ]
+    },
+    {
+      "id_signal": "S012",
+      "raison": "Permet de distinguer recrutement et fidélisation.",
+      "informations_a_rechercher": [
+        "nombre de départs",
+        "ancienneté des agents",
+        "revalorisations mises en œuvre",
+        "effet observé"
+      ]
+    },
+    {
+      "id_signal": "S013",
+      "raison": "Chronologie longue entre embauche et pleine capacité opérationnelle.",
+      "informations_a_rechercher": [
+        "contenu des formations",
+        "durée moyenne",
+        "ressources mobilisées",
+        "conditions de fidélisation"
+      ]
+    },
+    {
+      "id_signal": "S016",
+      "raison": "Contre-exemple fort où un opérateur public a atteint son objectif de montée en capacité.",
+      "informations_a_rechercher": [
+        "calendrier exact",
+        "sources de recrutement",
+        "coût",
+        "rémunérations",
+        "taux de maintien",
+        "rôle de l'école interne"
+      ]
+    },
+    {
+      "id_signal": "S018",
+      "raison": "Exemple d'équipe interne servant plusieurs directions.",
+      "informations_a_rechercher": [
+        "nombre de demandes traitées",
+        "temps de réponse",
+        "types de missions",
+        "critères de priorité",
+        "effet sur les directions utilisatrices"
+      ]
+    },
+    {
+      "id_signal": "S024",
+      "raison": "Cas de difficulté d'une instance scientifique puis mobilisation d'opérateurs publics.",
+      "informations_a_rechercher": [
+        "date des difficultés",
+        "opérateurs mobilisés",
+        "délai de réponse",
+        "avis produits",
+        "réorganisation décidée"
+      ]
+    },
+    {
+      "id_signal": "S027",
+      "raison": "Mission ponctuelle d'expertise interministérielle avec objectif de décision précis.",
+      "informations_a_rechercher": [
+        "date de commande",
+        "date de constitution de l'équipe",
+        "date de remise",
+        "compétences mobilisées",
+        "temps total"
+      ]
+    },
+    {
+      "id_signal": "S032",
+      "raison": "Contre-exemple sectoriel où les mécanismes de formation et recrutement semblent suffisants.",
+      "informations_a_rechercher": [
+        "données de recrutement",
+        "vacances de postes",
+        "durée moyenne de recrutement",
+        "rôle des formations",
+        "éventuelles tensions locales"
+      ]
+    }
+  ]
+}
