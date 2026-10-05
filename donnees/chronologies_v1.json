@@ -240,6 +240,82 @@
         "réutilisation des méthodes entre territoires"
       ],
       "lecture_provisoire": "Exemple de création d'une capacité collective ciblée avec production observable l'année suivante."
+    },
+    {
+      "id_signal": "S027",
+      "titre": "PFAS dans les matières fertilisantes — mission interministérielle d'expertise",
+      "evenements": [
+        {
+          "date": "2025-10",
+          "precision": "mois",
+          "evenement": "Les premières consultations datées visibles dans le rapport ont lieu en octobre 2025 auprès d'administrations et d'organismes scientifiques."
+        },
+        {
+          "date": "2025-12",
+          "precision": "mois",
+          "evenement": "Les consultations se poursuivent auprès d'acteurs techniques et territoriaux, notamment en France et en Belgique."
+        },
+        {
+          "date": "2026-01",
+          "precision": "mois",
+          "evenement": "La mission poursuit ses consultations auprès d'acteurs de l'eau et de la gestion des matières résiduelles."
+        },
+        {
+          "date": "2026-04",
+          "precision": "mois",
+          "evenement": "Publication du rapport conjoint du CGAAER et de l'IGEDD recommandant un cadre national progressif de gestion."
+        }
+      ],
+      "inconnues": [
+        "date exacte de la lettre de mission",
+        "date de constitution de l'équipe",
+        "temps consacré par chaque membre",
+        "date de la première décision administrative fondée sur le rapport"
+      ],
+      "lecture_provisoire": "La mission transforme en quelques mois une question émergente et pluridisciplinaire en recommandations nationales structurées."
+    },
+    {
+      "id_signal": "S050",
+      "titre": "Météo-France — renouvellement anticipé de la puissance de calcul",
+      "evenements": [
+        {
+          "date": "2021-02",
+          "precision": "mois",
+          "evenement": "Mise en service de la génération précédente de supercalculateurs, multipliant la puissance de calcul par environ 5,5."
+        },
+        {
+          "date": "2024-11",
+          "precision": "mois",
+          "evenement": "Le rapport budgétaire pour 2025 indique que Météo-France prépare déjà le renouvellement suivant de sa capacité de calcul."
+        },
+        {
+          "date": "2025",
+          "precision": "annee",
+          "evenement": "Début de la période d'investissement prévue pour le nouveau programme de calcul intensif."
+        },
+        {
+          "date": "2026",
+          "precision": "annee",
+          "evenement": "Une dotation exceptionnelle est prévue pour financer le renouvellement et les dépenses d'investissement augmentent."
+        },
+        {
+          "date": "2027",
+          "precision": "annee",
+          "evenement": "Mise en service prévue du nouveau système, avec un objectif de multiplication par six de la puissance de calcul."
+        },
+        {
+          "date": "2033",
+          "precision": "annee",
+          "evenement": "Fin prévue de la période d'exploitation du nouveau système."
+        }
+      ],
+      "inconnues": [
+        "date exacte du choix définitif du fournisseur",
+        "jalons contractuels",
+        "date de première utilisation scientifique du nouveau système",
+        "écart éventuel entre calendrier prévu et calendrier réel"
+      ],
+      "lecture_provisoire": "Le cas montre qu'une capacité scientifique critique peut exiger une anticipation de plusieurs années et un investissement matériel très supérieur à un besoin de recrutement."
     }
   ]
 }
