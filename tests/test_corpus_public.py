@@ -37,3 +37,19 @@ def test_corpus_contient_des_contre_exemples_et_des_chronologies():
     assert sum(1 for s in signaux if s["contre_exemple"]) >= 5
     assert sum(1 for s in signaux if s["chronologie_exploitable"]) >= 8
     assert sum(1 for s in signaux if s["niveau_documentaire"] == "cas_solide") >= 8
+
+
+def test_chronologies_publiques():
+    contenu = json.loads(Path("donnees/chronologies_v1.json").read_text(encoding="utf-8"))
+    chronologies = contenu["chronologies"]
+    assert len(chronologies) >= 8
+    ids = [c["id_signal"] for c in chronologies]
+    assert len(ids) == len(set(ids))
+    for chronologie in chronologies:
+        assert chronologie["evenements"]
+        assert chronologie["inconnues"]
+        assert chronologie["lecture_provisoire"].strip()
+        for evenement in chronologie["evenements"]:
+            assert evenement["date"].strip()
+            assert evenement["precision"] in {"jour", "mois", "annee", "intervalle"}
+            assert evenement["evenement"].strip()
