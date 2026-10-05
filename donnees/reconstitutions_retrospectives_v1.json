@@ -1,0 +1,126 @@
+{
+  "version": "1",
+  "date_creation": "2026-10-05",
+  "usage": "Jeu de développement pour comparer des raisonnements à partir des informations disponibles avant la réponse connue. Il ne constitue pas une évaluation indépendante.",
+  "cas": [
+    {
+      "code": "R01",
+      "source_signal": "S001",
+      "question_initiale": "Un petit établissement public perd brutalement la maîtrise interne d'un langage d'analyse de données indispensable à une mission récurrente. Les profils correspondants sont rares et la rémunération proposée est peu compétitive. Quelles voies de résolution faut-il examiner en priorité ?",
+      "reponse_connue": "L'établissement a engagé un recrutement interne, qui restait difficile plusieurs mois plus tard.",
+      "dimensions_a_comparer": [
+        "rapidité",
+        "disponibilité de la capacité",
+        "coût humain de recherche",
+        "dépendance à une personne unique"
+      ]
+    },
+    {
+      "code": "R02",
+      "source_signal": "S009",
+      "question_initiale": "Une organisation publique de défense doit pourvoir rapidement des fonctions de cybersécurité dans un marché très tendu. Le recrutement statutaire par concours est lent et ne pourvoit qu'une partie des postes. Quelles voies faut-il comparer ?",
+      "reponse_connue": "Le recours aux ingénieurs civils contractuels constitue la voie majoritaire et est décrit comme immédiatement disponible.",
+      "dimensions_a_comparer": [
+        "délai",
+        "taux de postes pourvus",
+        "fidélisation",
+        "coût"
+      ]
+    },
+    {
+      "code": "R03",
+      "source_signal": "S012",
+      "question_initiale": "Une organisation publique a réussi à recruter des ingénieurs en cybersécurité mais subit une hausse des départs de personnels qualifiés. Comment traiter le déficit de capacité ?",
+      "reponse_connue": "Le rapport met en avant rémunération, parcours professionnels et fidélisation, 70 % des démissions étant alors attribuées à des motifs salariaux.",
+      "dimensions_a_comparer": [
+        "fidélisation",
+        "rémunération",
+        "temps de remplacement",
+        "perte de compétences"
+      ]
+    },
+    {
+      "code": "R04",
+      "source_signal": "S013",
+      "question_initiale": "Une fonction de cybersécurité nécessite une formation interne importante et environ deux ans avant pleine efficacité opérationnelle. Quelle stratégie de capacité faut-il privilégier ?",
+      "reponse_connue": "La DGA combine recrutement et formation interne, tout en soulignant le coût des départs précoces.",
+      "dimensions_a_comparer": [
+        "temps jusqu'à contribution utile",
+        "formation",
+        "expérience initiale",
+        "fidélisation"
+      ]
+    },
+    {
+      "code": "R05",
+      "source_signal": "S016",
+      "question_initiale": "Un opérateur public anticipe un besoin durable de compétences en intelligence artificielle et en données. Il dispose d'une école d'ingénieurs et de missions scientifiques attractives. Comment constituer la capacité sur plusieurs années ?",
+      "reponse_connue": "L'IGN combine recrutement, formation et augmentation du nombre d'ingénieurs fonctionnaires formés par son école ; les objectifs annoncés ont été atteints ou dépassés.",
+      "dimensions_a_comparer": [
+        "recrutement",
+        "formation",
+        "vivier durable",
+        "attractivité"
+      ]
+    },
+    {
+      "code": "R06",
+      "source_signal": "S018",
+      "question_initiale": "Un opérateur scientifique a besoin d'expertise en intelligence artificielle dans plusieurs directions et souhaite aussi conduire des travaux internes. Quelle forme de ressource est adaptée ?",
+      "reponse_connue": "Météo-France a constitué une petite équipe interne mutualisée, complétée par des projets partenariaux.",
+      "dimensions_a_comparer": [
+        "équipe mutualisée",
+        "partenariats",
+        "taille de l'équipe",
+        "nombre de directions servies"
+      ]
+    },
+    {
+      "code": "R07",
+      "source_signal": "S024",
+      "question_initiale": "Le conseil scientifique d'un grand projet public ne fonctionne plus correctement, alors que les décisions nécessitent toujours des avis scientifiques spécialisés. Quelle voie de résolution faut-il privilégier ?",
+      "reponse_connue": "Des opérateurs publics ont été sollicités directement et la mission recommande de transférer la fonction de conseil à une instance scientifique de façade.",
+      "dimensions_a_comparer": [
+        "rapidité",
+        "indépendance scientifique",
+        "charge sur les opérateurs",
+        "durabilité de la solution"
+      ]
+    },
+    {
+      "code": "R08",
+      "source_signal": "S027",
+      "question_initiale": "Deux ministères doivent rapidement apprécier un risque émergent à l'interface santé, environnement et agriculture et proposer un cadre national de gestion. Quelle forme d'expertise mobiliser ?",
+      "reponse_connue": "Une mission conjointe du CGAAER et de l'IGEDD a conduit l'analyse et formulé un cadre progressif.",
+      "dimensions_a_comparer": [
+        "pluridisciplinarité",
+        "délai",
+        "capacité de décision",
+        "besoin de données complémentaires"
+      ]
+    },
+    {
+      "code": "R09",
+      "source_signal": "S032",
+      "question_initiale": "Une filière scientifique stratégique est examinée pour savoir si elle souffre d'un déficit de compétences. Les opérateurs ne signalent pas de problème particulier de recrutement et les formations semblent répondre aux besoins. Quelle conclusion opérationnelle faut-il retenir ?",
+      "reponse_connue": "Aucune intervention supplémentaire n'est justifiée par les éléments disponibles ; les mécanismes existants semblent suffisants.",
+      "dimensions_a_comparer": [
+        "capacité à conclure à l'absence de problème",
+        "coût d'une intervention inutile",
+        "qualité des preuves"
+      ]
+    },
+    {
+      "code": "R10",
+      "source_signal": "S050",
+      "question_initiale": "Un opérateur scientifique voit sa performance dépendre directement de la puissance de calcul et doit préparer le renouvellement d'une infrastructure critique plusieurs années à l'avance. Quelle forme de ressource doit être considérée ?",
+      "reponse_connue": "Météo-France programme un renouvellement majeur de ses supercalculateurs, avec une mise en service prévue en 2027.",
+      "dimensions_a_comparer": [
+        "infrastructure",
+        "anticipation",
+        "financement",
+        "temps jusqu'à disponibilité"
+      ]
+    }
+  ]
+}
