@@ -53,3 +53,18 @@ def test_chronologies_publiques():
             assert evenement["date"].strip()
             assert evenement["precision"] in {"jour", "mois", "annee", "intervalle"}
             assert evenement["evenement"].strip()
+
+
+def test_audit_des_cas_solides():
+    texte = Path("donnees/AUDIT_CAS_SOLIDES_V1.md").read_text(encoding="utf-8")
+    contenu = json.loads(Path("donnees/signaux_publics_v1.json").read_text(encoding="utf-8"))
+    solides = [signal["id_signal"] for signal in contenu["signaux"] if signal["niveau_documentaire"] == "cas_solide"]
+    assert len(solides) == 16
+    for identifiant in solides:
+        assert identifiant in texte
+    assert "Aucun des seize cas solides n’est rejeté" in texte
+
+
+def test_dix_chronologies_documentees():
+    contenu = json.loads(Path("donnees/chronologies_v1.json").read_text(encoding="utf-8"))
+    assert len(contenu["chronologies"]) >= 10
