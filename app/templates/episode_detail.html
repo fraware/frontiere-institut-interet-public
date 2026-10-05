@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% block title %}{{ episode.code }} — FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC -{% endblock %}
 {% block content %}
+{% set libelle_demande = {'D0':'Simple intérêt','D1':'Problème historique documenté','D2':'Besoin actuel avec responsable','D3':'Besoin actuel avec ressources engagées','D4':'Besoin immédiatement activable'} %}
+{% set libelle_ressource = {'R0':'Identifiée','R1':'Pertinence plausible','R2':'Capacité vérifiée','R3':'Conditions compatibles','R4':'Engagement confirmé','R5':'Mobilisable pour ce cas'} %}
+{% set libelle_recherche = {'P0':'Recherche insuffisante','P1':'Capacité publique mobilisable','P2':'Capacité publique trouvée, mobilisation difficile','P3':'Aucune capacité publique pertinente trouvée'} %}
 <section class="page-head episode-head">
   <div><p class="eyebrow">{{ episode.code }}</p><h1>{{ episode.title }}</h1><p>{{ episode.organization.name }}{% if episode.organizational_unit %} · {{ episode.organizational_unit }}{% endif %}</p></div>
-  <div class="badges"><span class="pill">{{ episode.demand_level }}</span><span class="status">{{ episode.status }}</span><span class="pill subtle">Sensibilité {{ episode.sensitivity_level }}</span></div>
+  <div class="badges"><span class="pill">{{ libelle_demande.get(episode.demand_level, episode.demand_level) }}</span><span class="status">{{ episode.status|replace('_',' ')|lower }}</span><span class="pill subtle">Sensibilité {{ episode.sensitivity_level }}</span></div>
 </section>
 
 <div class="grid two">
@@ -70,7 +73,7 @@
   <div class="panel-head"><h2>Description structurée de la capacité nécessaire</h2><span class="muted">du besoin à la capacité recherchée</span></div>
   {% if capability_query %}
   <dl class="facts">
-    <dt>Version</dt><dd>v{{ capability_query.version }} · {{ capability_query.compiler }}</dd>
+    <dt>Version</dt><dd>v{{ capability_query.version }} · {% if capability_query.compiler == 'human' %}saisie humaine{% else %}{{ capability_query.compiler }}{% endif %}</dd>
     <dt>Demande initiale</dt><dd>{{ capability_query.raw_request }}</dd>
     <dt>Domaine</dt><dd>{{ capability_query.domain }}</dd>
     <dt>Fonction</dt><dd>{{ capability_query.function }}</dd>
@@ -125,7 +128,7 @@
   <div class="panel-head"><h2>Recherche prioritaire dans le secteur public</h2><span class="muted">recherche incomplète · capacité mobilisable · capacité difficile à mobiliser · aucune capacité trouvée</span></div>
   {% if episode.searches %}
     <table><thead><tr><th>Type</th><th>Date</th><th>Complète</th><th>Capacité trouvée</th><th>Mobilisable</th><th>Résultat</th><th>Temps</th></tr></thead><tbody>
-    {% for s in episode.searches %}<tr><td>{{ s.search_type }}</td><td>{{ s.started_at.date() }}</td><td>{{ 'Oui' if s.complete_enough_to_conclude else 'Non' }}</td><td>{{ s.public_relevant_found }}</td><td>{{ s.public_mobilizable_found }}</td><td><strong>{{ s.public_result or '—' }}</strong></td><td>{{ s.analyst_minutes }} min</td></tr>{% endfor %}
+    {% for s in episode.searches %}<tr><td>{{ s.search_type|replace('_',' ')|lower }}</td><td>{{ s.started_at.date() }}</td><td>{{ 'Oui' if s.complete_enough_to_conclude else 'Non' }}</td><td>{% if s.public_relevant_found is sameas true %}Oui{% elif s.public_relevant_found is sameas false %}Non{% else %}Inconnu{% endif %}</td><td>{% if s.public_mobilizable_found is sameas true %}Oui{% elif s.public_mobilizable_found is sameas false %}Non{% else %}Inconnu{% endif %}</td><td><strong>{{ libelle_recherche.get(s.public_result, '—') }}</strong></td><td>{{ s.analyst_minutes }} min</td></tr>{% endfor %}
     </tbody></table>
   {% endif %}
   {% if not need_locked %}<div class="callout warning">Recherche verrouillée tant que l’état initial n’est pas pré-enregistré.</div>{% endif %}
@@ -143,7 +146,7 @@
   <div class="panel-head"><h2>Ressources identifiées</h2><span class="muted">de la simple identification à la mobilisation réelle</span></div>
   {% set ns = namespace(found=false) %}
   {% for s in episode.searches %}{% for d in s.discoveries %}{% set ns.found=true %}
-    <div class="resource-row"><div><strong>{{ d.resource.display_name }}</strong><span>{{ d.resource.resource_type }}</span></div><div><span class="pill">{{ d.state }}</span> <span class="muted">{{ s.search_type }} · {{ d.source_channel }}{% if d.available_as_of %} · disponibilité confirmée {{ d.available_as_of }}{% endif %}</span>{% if d.state_reason %}<br><span class="muted">{{ d.state_reason }}</span>{% endif %}</div></div>
+    <div class="resource-row"><div><strong>{{ d.resource.display_name }}</strong><span>{{ d.resource.resource_type }}</span></div><div><span class="pill">{{ libelle_ressource.get(d.state, d.state) }}</span> <span class="muted">{{ s.search_type }} · {{ d.source_channel }}{% if d.available_as_of %} · disponibilité confirmée {{ d.available_as_of }}{% endif %}</span>{% if d.state_reason %}<br><span class="muted">{{ d.state_reason }}</span>{% endif %}</div></div>
   {% endfor %}{% endfor %}
   {% if not ns.found %}<div class="empty">Aucune ressource enregistrée.</div>{% endif %}
   <form method="post" action="/episodes/{{ episode.code }}/resource" class="inline-form">
@@ -178,7 +181,7 @@
   <div class="panel-head"><h2>Comparaison des voies</h2><span class="muted">aucun score global</span></div>
   {% if episode.route_assessments %}
     <table><thead><tr><th>Voie</th><th>État</th><th>Pour</th><th>Contre / blocage</th><th>Suite</th></tr></thead><tbody>
-    {% for r in episode.route_assessments %}<tr><td><strong>{{ r.route_label }}</strong><br><span class="muted">{{ r.route_code }}</span></td><td>{{ r.status_current }}</td><td>{{ r.evidence_for or '—' }}</td><td>{{ r.evidence_against or r.blocking_condition or '—' }}</td><td>{{ r.next_action or '—' }}</td></tr>{% endfor %}
+    {% for r in episode.route_assessments %}<tr><td><strong>{{ r.route_label }}</strong><br><span class="muted">{{ r.route_code }}</span></td><td>{{ r.status_current|replace('_',' ')|lower }}</td><td>{{ r.evidence_for or '—' }}</td><td>{{ r.evidence_against or r.blocking_condition or '—' }}</td><td>{{ r.next_action or '—' }}</td></tr>{% endfor %}
     </tbody></table>
   {% else %}<div class="empty">Aucune voie évaluée.</div>{% endif %}
   <form method="post" action="/episodes/{{ episode.code }}/route" class="form-grid compact">
@@ -228,7 +231,7 @@
 
 <section id="resultat" class="panel">
   <h2>Résultat</h2>
-  {% if episode.results %}{% for r in episode.results %}<article class="decision"><div><strong>{{ r.result_status }}</strong><span>{{ r.dominant_friction or 'obstacle non précisé' }}</span></div><p>{{ r.outcome_description }}</p><p class="muted">Intervention : {{ r.actual_intervention or '—' }} · Voie : {{ r.actual_route or '—' }} · Première valeur : {{ r.first_useful_contribution_at or '—' }} · Coût direct : {{ r.direct_cost_eur if r.direct_cost_eur is not none else '—' }} € · Frontière : {{ r.frontiere_minutes }} min · Institution : {{ r.institution_minutes }} min</p><p class="muted">Valeur ajoutée — résultat {{ r.additionality_outcome }} · délai {{ r.additionality_time }} · qualité {{ r.additionality_quality }} · coût {{ r.additionality_cost }} · apprentissage {{ r.additionality_learning }}</p></article>{% endfor %}{% endif %}
+  {% if episode.results %}{% for r in episode.results %}<article class="decision"><div><strong>{{ r.result_status|replace('_',' ')|lower }}</strong><span>{{ r.dominant_friction|replace('_',' ')|lower if r.dominant_friction else 'obstacle non précisé' }}</span></div><p>{{ r.outcome_description }}</p><p class="muted">Intervention : {{ r.actual_intervention or '—' }} · Voie : {{ r.actual_route or '—' }} · Première valeur : {{ r.first_useful_contribution_at or '—' }} · Coût direct : {{ r.direct_cost_eur if r.direct_cost_eur is not none else '—' }} € · Frontière : {{ r.frontiere_minutes }} min · Institution : {{ r.institution_minutes }} min</p><p class="muted">Valeur ajoutée — résultat {{ r.additionality_outcome }} · délai {{ r.additionality_time }} · qualité {{ r.additionality_quality }} · coût {{ r.additionality_cost }} · apprentissage {{ r.additionality_learning }}</p></article>{% endfor %}{% endif %}
   <form method="post" action="/episodes/{{ episode.code }}/result" class="form-grid compact">
     <label>Résultat<select name="result_status">
 <option value="RESOLU">Résolu</option><option value="PARTIELLEMENT_RESOLU">Partiellement résolu</option><option value="REORIENTE">Réorienté</option><option value="NON_RESOLU">Non résolu</option><option value="BESOIN_DISPARU">Besoin devenu sans objet</option>
@@ -285,11 +288,11 @@
 </section>
 
 <section id="trace" class="panel">
-  <div class="panel-head"><h2>Journal de traçabilité</h2><span class="muted">événements conservés dans l’ordre</span></div>
+  <div class="panel-head"><h2>Historique des décisions et événements</h2><span class="muted">ordre chronologique conservé</span></div>
   {% if episode.audit_events %}
-  <table><thead><tr><th>Date</th><th>Événement</th><th>Objet</th><th>Contexte</th></tr></thead><tbody>
+  <table><thead><tr><th>Date</th><th>Événement</th></tr></thead><tbody>
   {% for a in episode.audit_events|sort(attribute='occurred_at', reverse=true) %}
-    <tr><td>{{ a.occurred_at }}</td><td><strong>{{ a.event_type }}</strong></td><td>{{ a.entity_type }}{% if a.entity_id %} #{{ a.entity_id }}{% endif %}</td><td><code>{{ a.payload_json or '{}' }}</code></td></tr>
+    <tr><td>{{ a.occurred_at }}</td><td><strong>{{ a.event_type|replace('_',' ')|lower }}</strong></td></tr>
   {% endfor %}
   </tbody></table>
   {% else %}<div class="empty">Aucun événement de traçabilité.</div>{% endif %}
