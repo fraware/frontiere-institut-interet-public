@@ -389,7 +389,7 @@ def test_cross_case_reuse_and_empirical_dashboard():
         page = client.get(target)
         assert "Le précédent a évité une recherche redondante." in page.text
 
-        empirical = client.get("/empirique")
+        empirical = client.get("/donnees-terrain")
         assert empirical.status_code == 200
         assert "Tableau empirique" in empirical.text
         assert "2" in empirical.text
@@ -453,13 +453,13 @@ def test_benchmark_is_blind_until_prediction_and_scores_vector():
         db.commit()
 
     with TestClient(app) as client:
-        before = client.get("/benchmark")
+        before = client.get("/evaluation")
         assert before.status_code == 200
         assert "https://example.org/hidden-source" not in before.text
         assert "RECHERCHE_PUBLIQUE" not in before.text
 
         submitted = client.post(
-            "/benchmark/BTEST/prediction",
+            "/evaluation/BTEST/reponse",
             data={
                 "method": "frontiere-v0.5",
                 "method_version": "0.5",
@@ -474,29 +474,29 @@ def test_benchmark_is_blind_until_prediction_and_scores_vector():
             follow_redirects=False,
         )
         assert submitted.status_code == 303
-        sealed = client.get("/benchmark")
+        sealed = client.get("/evaluation")
         assert "https://example.org/hidden-source" not in sealed.text
         assert "Des prédictions sont enregistrées" in sealed.text
 
         duplicate = client.post(
-            "/benchmark/BTEST/prediction",
+            "/evaluation/BTEST/reponse",
             data={"method": "frontiere-v0.5", "method_version": "0.5"},
             follow_redirects=False,
         )
         assert duplicate.status_code == 409
 
-        blind_api = client.get("/api/v1/benchmark/blind")
+        blind_api = client.get("/api/v1/evaluation/aveugle")
         assert blind_api.status_code == 200
         blind_case = blind_api.json()["cases"][0]
         assert "source_url" not in blind_case
         assert "expected_routes" not in blind_case
 
-        reveal = client.post("/benchmark/BTEST/reveal", follow_redirects=False)
+        reveal = client.post("/evaluation/BTEST/reveler", follow_redirects=False)
         assert reveal.status_code == 303
-        after = client.get("/benchmark")
+        after = client.get("/evaluation")
         assert "https://example.org/hidden-source" in after.text
         assert "100%" in after.text
-        api = client.get("/api/v1/benchmark")
+        api = client.get("/api/v1/evaluation")
         assert api.status_code == 200
         assert api.json()["case_count"] == 1
         assert api.json()["prediction_count"] == 1
@@ -528,9 +528,9 @@ def test_benchmark_cannot_reveal_without_prediction():
         ))
         db.commit()
     with TestClient(app) as client:
-        reveal = client.post("/benchmark/BSEALED/reveal", follow_redirects=False)
+        reveal = client.post("/evaluation/BSEALED/reveler", follow_redirects=False)
         assert reveal.status_code == 409
-        page = client.get("/benchmark")
+        page = client.get("/evaluation")
         assert "ROUTAGE" not in page.text
 
 
@@ -557,7 +557,7 @@ def test_benchmark_precision_penalizes_overprediction():
         ))
         db.commit()
     with TestClient(app) as client:
-        data = client.get("/api/v1/benchmark").json()
+        data = client.get("/api/v1/evaluation").json()
         method = data["methods"][0]
         assert method["route_recall_mean"] == 1.0
         assert round(method["route_precision_mean"], 6) == round(1/3, 6)
@@ -571,12 +571,12 @@ def test_holdout_prediction_template_covers_all_cases():
     import json
     from pathlib import Path
 
-    payload = json.loads(Path("benchmark/predictions_template.json").read_text(encoding="utf-8"))
-    codes = [row["code"] for row in payload["cases"]]
-    assert payload["schema_version"] == "holdout-predictions-v1"
+    payload = json.loads(Path("evaluation/modele_reponses.json").read_text(encoding="utf-8"))
+    codes = [row["code"] for row in payload["cas"]]
+    assert payload["version_schema"] == "reponses-jeu-reserve-v1"
     assert codes == [f"H{i:02d}" for i in range(1, 11)]
     assert len(set(codes)) == 10
 
-    manifest = json.loads(Path("benchmark/holdout_v1_manifest.json").read_text(encoding="utf-8"))
-    assert manifest["case_count"] == 10
-    assert len(manifest["labels_sha256"]) == 64
+    manifest = json.loads(Path("evaluation/jeu_reserve_v1_manifeste.json").read_text(encoding="utf-8"))
+    assert manifest["nombre_cas"] == 10
+    assert len(manifest["empreinte_sha256_references"]) == 64
