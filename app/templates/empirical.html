@@ -1,30 +1,37 @@
 {% extends "base.html" %}
-{% block title %}Empirique — FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC -{% endblock %}
+{% block title %}Données de terrain — FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC -{% endblock %}
 {% block content %}
-<section class="page-head"><div><p class="eyebrow">DONNÉES TERRAIN</p><h1>Tableau empirique</h1><p>Vue descriptive des épisodes réels. Les cas synthétiques sont exclus.</p></div></section>
+<section class="page-head"><div><p class="eyebrow">DONNÉES TERRAIN</p><h1>Données de terrain</h1><p>Vue descriptive des cas réels. Les cas de démonstration sont exclus.</p></div></section>
 
 <section class="metrics">
   <article><span>Épisodes réels</span><strong>{{ metrics.episodes }}</strong></article>
   <article><span>Organisations</span><strong>{{ metrics.organizations }}</strong></article>
-  <article><span>D2+</span><strong>{{ metrics.d2_plus }}</strong></article>
-  <article><span>R5</span><strong>{{ metrics.r5 }}</strong></article>
+  <article><span>Besoins actuels qualifiés</span><strong>{{ metrics.d2_plus }}</strong></article>
+  <article><span>Ressources mobilisables</span><strong>{{ metrics.r5 }}</strong></article>
   <article><span>Réutilisations</span><strong>{{ metrics.reuse_events }}</strong></article>
   <article><span>Besoins préexistants</span><strong>{% if metrics.preexisting_rate is not none %}{{ (metrics.preexisting_rate * 100)|round(0)|int }}%{% else %}—{% endif %}</strong></article>
 </section>
 
 <div class="grid two">
 <section class="panel">
-  <h2>Demande</h2>
+  <h2>Maturité des besoins</h2>
   <table><thead><tr><th>Niveau</th><th>Nombre</th></tr></thead><tbody>
-  {% for k in ['D0','D1','D2','D3','D4'] %}<tr><td>{{ k }}</td><td>{{ metrics.demand.get(k,0) }}</td></tr>{% endfor %}
+  <tr><td>Simple intérêt</td><td>{{ metrics.demand.get('D0',0) }}</td></tr>
+  <tr><td>Problème historique documenté</td><td>{{ metrics.demand.get('D1',0) }}</td></tr>
+  <tr><td>Besoin actuel avec responsable identifié</td><td>{{ metrics.demand.get('D2',0) }}</td></tr>
+  <tr><td>Besoin actuel avec ressources engagées</td><td>{{ metrics.demand.get('D3',0) }}</td></tr>
+  <tr><td>Besoin immédiatement activable</td><td>{{ metrics.demand.get('D4',0) }}</td></tr>
   </tbody></table>
   <p class="muted">Préexistence connue : {{ metrics.preexisting_known }} épisode(s), dont {{ metrics.preexisting_yes }} antérieur(s) à FRONTIÈRE.</p>
 </section>
 
 <section class="panel">
-  <h2>Recherche publique</h2>
+  <h2>Résultat de la recherche dans le secteur public</h2>
   <table><thead><tr><th>Résultat</th><th>Nombre d’épisodes</th></tr></thead><tbody>
-  {% for k in ['P0','P1','P2','P3'] %}<tr><td>{{ k }}</td><td>{{ metrics.public_results.get(k,0) }}</td></tr>{% endfor %}
+  <tr><td>Recherche encore insuffisante</td><td>{{ metrics.public_results.get('P0',0) }}</td></tr>
+  <tr><td>Capacité publique trouvée et mobilisable</td><td>{{ metrics.public_results.get('P1',0) }}</td></tr>
+  <tr><td>Capacité publique trouvée mais difficile à mobiliser</td><td>{{ metrics.public_results.get('P2',0) }}</td></tr>
+  <tr><td>Aucune capacité publique pertinente trouvée après recherche suffisante</td><td>{{ metrics.public_results.get('P3',0) }}</td></tr>
   </tbody></table>
 </section>
 </div>
@@ -40,17 +47,17 @@
 </section>
 
 <section class="panel">
-  <h2>Frictions dominantes</h2>
+  <h2>Principaux obstacles</h2>
   {% if metrics.dominant_frictions %}
   <table><thead><tr><th>Friction</th><th>Nombre</th></tr></thead><tbody>
   {% for k,v in metrics.dominant_frictions.items() %}<tr><td>{{ k }}</td><td>{{ v }}</td></tr>{% endfor %}
   </tbody></table>
-  {% else %}<div class="empty">Aucune friction dominante observée.</div>{% endif %}
+  {% else %}<div class="empty">Aucun obstacle dominant observé.</div>{% endif %}
 </section>
 </div>
 
 <section class="panel">
   <h2>Lecture stratégique</h2>
-  <p>Cette page décrit uniquement les signaux observés. Les trois questions produit prioritaires sont : les cas basculent-ils vers P2, vers P3 avec R5 difficile, ou vers des frictions post-identification ? La distribution réelle décidera du prochain investissement technique.</p>
+  <p>Cette page décrit uniquement les signaux observés. Les trois questions produit prioritaires sont : les besoins sont-ils surtout résolus par des capacités publiques existantes, par une recherche extérieure, ou les difficultés apparaissent-elles surtout après l'identification d'une ressource ? Les observations réelles décideront du prochain investissement technique.</p>
 </section>
 {% endblock %}
