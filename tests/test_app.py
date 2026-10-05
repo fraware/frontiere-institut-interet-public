@@ -3,7 +3,7 @@ from sqlalchemy import delete, select
 
 from app.database import Base, SessionLocal, engine
 from app.main import app
-from app.models import AuditEvent, Episode, EpisodeResult, KnowledgeItem, NeedVersion, Organization, ReuseEvent
+from app.models import AuditEvent, BenchmarkCase, BenchmarkPrediction, CapabilityQuery, Episode, EpisodeResult, KnowledgeItem, NeedVersion, Organization, ReuseEvent
 
 
 def reset_db():
@@ -17,7 +17,7 @@ def test_health():
         r = client.get("/health")
         assert r.status_code == 200
         assert r.json()["status"] == "ok"
-        assert r.json()["version"] == "0.4.0"
+        assert r.json()["version"] == "0.5.0"
 
 
 def test_create_episode_and_public_search():
@@ -399,3 +399,94 @@ def test_cross_case_reuse_and_empirical_dashboard():
         assert reuse is not None
         assert reuse.decision_changed is True
         assert reuse.estimated_minutes_saved == 35
+
+
+def test_capability_query_compilation():
+    reset_db()
+    with TestClient(app) as client:
+        location = _create_locked_episode(client, "Cas capacité")
+        response = client.post(
+            location + "/capability-query",
+            data={
+                "raw_request": "Évaluer rapidement une technologie pour une décision publique.",
+                "domain": "technologies numériques",
+                "function": "évaluation technique",
+                "depth": "expert",
+                "operational_context": "décision avant comité",
+                "constraints": "français, 10 jours",
+                "resource_forms": "PERSONNE, EQUIPE, LABORATOIRE",
+                "must_have": "expérience d'évaluation, expertise technique",
+                "nice_to_have": "contexte public",
+                "latest_useful_date": "2026-10-20",
+                "compiler": "human",
+            },
+            follow_redirects=False,
+        )
+        assert response.status_code == 303
+        api = client.get(location.replace("/episodes/", "/api/v1/episodes/") + "/capability-query")
+        assert api.status_code == 200
+        payload = api.json()
+        assert payload["domain"] == "technologies numériques"
+        assert payload["function"] == "évaluation technique"
+        assert payload["resource_forms"] == ["PERSONNE", "EQUIPE", "LABORATOIRE"]
+
+    with SessionLocal() as db:
+        query = db.scalar(select(CapabilityQuery))
+        assert query is not None
+        assert query.locked_at is not None
+
+
+def test_benchmark_is_blind_until_prediction_and_scores_vector():
+    reset_db()
+    with SessionLocal() as db:
+        case = BenchmarkCase(
+            code="BTEST",
+            title="Cas test",
+            source_url="https://example.org/hidden-source",
+            prompt="Trouver une voie et une forme de ressource.",
+            expected_routes_json='["ROUTAGE", "RECHERCHE_PUBLIQUE"]',
+            expected_resource_forms_json='["EQUIPE", "LABORATOIRE"]',
+            expected_resources_json='[]',
+            outcome_summary="Solution connue masquée avant prédiction.",
+        )
+        db.add(case)
+        db.commit()
+
+    with TestClient(app) as client:
+        before = client.get("/benchmark")
+        assert before.status_code == 200
+        assert "https://example.org/hidden-source" not in before.text
+        assert "RECHERCHE_PUBLIQUE" not in before.text
+
+        submitted = client.post(
+            "/benchmark/BTEST/prediction",
+            data={
+                "method": "frontiere-v0.5",
+                "method_version": "0.5",
+                "routes": "ROUTAGE, RECHERCHE_PUBLIQUE",
+                "resource_forms": "EQUIPE",
+                "resources": "",
+                "evidence_urls": "https://example.org/evidence",
+                "elapsed_seconds": "12.5",
+                "analyst_minutes": "5",
+                "verification_minutes": "3",
+            },
+            follow_redirects=False,
+        )
+        assert submitted.status_code == 303
+        after = client.get("/benchmark")
+        assert "https://example.org/hidden-source" in after.text
+        assert "100%" in after.text
+        api = client.get("/api/v1/benchmark")
+        assert api.status_code == 200
+        assert api.json()["case_count"] == 1
+        assert api.json()["prediction_count"] == 1
+        method = api.json()["methods"][0]
+        assert method["route_recall_mean"] == 1.0
+        assert method["resource_form_recall_mean"] == 0.5
+        assert method["human_minutes_median"] == 8
+
+    with SessionLocal() as db:
+        prediction = db.scalar(select(BenchmarkPrediction))
+        assert prediction is not None
+        assert prediction.method == "frontiere-v0.5"
