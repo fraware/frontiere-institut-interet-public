@@ -11,8 +11,8 @@
 </section>
 
 <section class="metrics">
-  <article><span>Épisodes réels</span><strong>{{ metrics.episodes }}</strong></article>
-  <article><span>D2+</span><strong>{{ metrics.d2_plus }}</strong></article>
+  <article><span>Cas réels</span><strong>{{ metrics.episodes }}</strong></article>
+  <article><span>Besoins actuels qualifiés</span><strong>{{ metrics.d2_plus }}</strong></article>
   <article><span>Résultats enregistrés</span><strong>{{ metrics.results }}</strong></article>
   <article><span>Réutilisations</span><strong>{{ metrics.reuse_events }}</strong></article>
   <article><span>Besoins verrouillés</span><strong>{{ metrics.needs_locked }}</strong></article>
@@ -21,7 +21,7 @@
 
 <div class="grid two">
 <section class="panel">
-  <div class="panel-head"><h2>Épisodes actifs</h2><a href="/episodes/new">Nouveau</a></div>
+  <div class="panel-head"><h2>Cas actifs</h2><a href="/episodes/new">Nouveau</a></div>
   {% if episodes %}
   <table>
     <thead><tr><th>Épisode</th><th>Institution</th><th>Demande</th><th>État</th></tr></thead>
@@ -34,11 +34,11 @@
       {% endfor %}
     </tbody>
   </table>
-  {% else %}<div class="empty">Aucun épisode réel. Le premier cas peut être créé dès maintenant.</div>{% endif %}
+  {% else %}<div class="empty">Aucun cas réel. Le premier cas peut être créé dès maintenant.</div>{% endif %}
 </section>
 
 <section class="panel">
-  <div class="panel-head"><h2>Hypothèses produit</h2><a href="/hypotheses">Tout voir</a></div>
+  <div class="panel-head"><h2>Hypothèses à vérifier</h2><a href="/hypotheses">Tout voir</a></div>
   {% for h in hypotheses %}
   <div class="hypothesis-row"><div><strong>{{ h.code }}</strong> {{ h.label }}</div><span class="status {{ h.status|lower }}">{{ h.status }}</span></div>
   {% else %}<div class="empty">Chargez les hypothèses pré-enregistrées avec le script d'initialisation.</div>{% endfor %}
