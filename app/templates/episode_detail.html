@@ -15,7 +15,7 @@
     <dt>Résultat recherché</dt><dd>{{ need.desired_outcome }}</dd>
     <dt>Responsable</dt><dd>{{ need.sponsor or 'À confirmer' }}</dd>
     <dt>Échéance</dt><dd>{{ need.latest_useful_date or 'À préciser' }}</dd>
-    <dt>Contrefactuel</dt><dd>{{ need.counterfactual_plan or 'À verrouiller avant investigation' }}</dd>
+    <dt>Situation sans FRONTIÈRE</dt><dd>{{ need.counterfactual_plan or 'À verrouiller avant investigation' }}</dd>
     <dt>Hypothèse initiale</dt><dd>{{ need.initial_frontiere_hypothesis or 'À enregistrer' }}</dd>
     <dt>Pré-enregistrement</dt><dd>{% if need.locked_at %}<span class="pill">Verrouillé · {{ need.locked_at.date() }}</span>{% else %}<span class="pill warning">À verrouiller</span>{% endif %}</dd>
   </dl>
@@ -27,7 +27,7 @@
     <li class="{{ 'ok' if need and need.current_situation else 'warn' }}">Problème défini</li>
     <li class="{{ 'ok' if need and need.desired_outcome else 'warn' }}">Résultat observable défini</li>
     <li class="{{ 'ok' if need and need.sponsor else 'warn' }}">Responsable institutionnel</li>
-    <li class="{{ 'ok' if need and need.counterfactual_plan else 'warn' }}">Contrefactuel pré-intervention</li>
+    <li class="{{ 'ok' if need and need.counterfactual_plan else 'warn' }}">Situation sans FRONTIÈRE pré-intervention</li>
     <li class="{{ 'ok' if episode.need_preexisting_frontiere is not none else 'warn' }}">Préexistence du besoin qualifiée</li>
   </ul>
 </section>
@@ -36,7 +36,7 @@
 {% if need and not need_locked %}
 <section class="panel prelock">
   <h2>Pré-enregistrement</h2>
-  <p>Avant toute recherche publique ou décision d’orientation, verrouiller le besoin, le résultat recherché, le contrefactuel et l’hypothèse initiale.</p>
+  <p>Avant toute recherche publique ou décision d’orientation, verrouiller le besoin, le résultat recherché, le situation sans FRONTIÈRE et l’hypothèse initiale.</p>
   <form method="post" action="/episodes/{{ episode.code }}/need/lock"><button class="button primary" type="submit">Verrouiller l’état initial</button></form>
 </section>
 {% endif %}
@@ -58,7 +58,7 @@
       <label class="wide">Résultat recherché<textarea required name="desired_outcome" rows="3">{{ need.desired_outcome }}</textarea></label>
       <label>Responsable<input name="sponsor" value="{{ need.sponsor or '' }}"></label>
       <label>Échéance<input type="date" name="latest_useful_date" value="{{ need.latest_useful_date or '' }}"></label>
-      <label class="wide">Contrefactuel<textarea required name="counterfactual_plan" rows="2">{{ need.counterfactual_plan or '' }}</textarea></label>
+      <label class="wide">Situation sans FRONTIÈRE<textarea required name="counterfactual_plan" rows="2">{{ need.counterfactual_plan or '' }}</textarea></label>
       <label class="wide">Hypothèse initiale de cette version<textarea required name="initial_frontiere_hypothesis" rows="2">{{ need.initial_frontiere_hypothesis or '' }}</textarea></label>
       <button class="button" type="submit">Créer v{{ need.version + 1 }} et verrouiller</button>
     </form>
@@ -67,11 +67,11 @@
 </section>
 
 <section id="capability-query" class="panel">
-  <div class="panel-head"><h2>Requête de capacité</h2><span class="muted">Mission → capacité structurée</span></div>
+  <div class="panel-head"><h2>Description structurée de la capacité nécessaire</h2><span class="muted">du besoin à la capacité recherchée</span></div>
   {% if capability_query %}
   <dl class="facts">
     <dt>Version</dt><dd>v{{ capability_query.version }} · {{ capability_query.compiler }}</dd>
-    <dt>Demande brute</dt><dd>{{ capability_query.raw_request }}</dd>
+    <dt>Demande initiale</dt><dd>{{ capability_query.raw_request }}</dd>
     <dt>Domaine</dt><dd>{{ capability_query.domain }}</dd>
     <dt>Fonction</dt><dd>{{ capability_query.function }}</dd>
     <dt>Profondeur</dt><dd>{{ capability_query.depth }}</dd>
@@ -82,10 +82,10 @@
     <dt>Souhaitables</dt><dd><code>{{ capability_query.nice_to_have_json }}</code></dd>
     <dt>Échéance utile</dt><dd>{{ capability_query.latest_useful_date or '—' }}</dd>
   </dl>
-  {% else %}<div class="empty">Aucune requête de capacité compilée.</div>{% endif %}
+  {% else %}<div class="empty">Aucune description structurée de la capacité n’a encore été enregistrée.</div>{% endif %}
   {% if need_locked %}
   <form method="post" action="/episodes/{{ episode.code }}/capability-query" class="form-grid compact">
-    <label class="wide">Demande brute<textarea required name="raw_request" rows="3">{{ need.current_situation }} — {{ need.desired_outcome }}</textarea></label>
+    <label class="wide">Demande initiale<textarea required name="raw_request" rows="3">{{ need.current_situation }} — {{ need.desired_outcome }}</textarea></label>
     <label>Domaine<input required name="domain" placeholder="ex. biodiversité"></label>
     <label>Fonction<input required name="function" placeholder="ex. synthèse scientifique"></label>
     <label>Profondeur<select name="depth"><option>intermediaire</option><option>avancee</option><option>expert</option></select></label>
@@ -96,9 +96,9 @@
     <label class="wide">Impératifs<input name="must_have" placeholder="compétence A, expérience B"></label>
     <label class="wide">Souhaitables<input name="nice_to_have" placeholder="connaissance contexte C"></label>
     <input type="hidden" name="compiler" value="human">
-    <button class="button primary" type="submit">{% if capability_query %}Créer une nouvelle version{% else %}Compiler la requête{% endif %}</button>
+    <button class="button primary" type="submit">{% if capability_query %}Créer une nouvelle version{% else %}Enregistrer la capacité nécessaire{% endif %}</button>
   </form>
-  {% else %}<div class="callout warning">Verrouiller le besoin avant de compiler la requête de capacité.</div>{% endif %}
+  {% else %}<div class="callout warning">Verrouiller le besoin avant de enregistrer la capacité nécessaire.</div>{% endif %}
 </section>
 
 <section id="preuves" class="panel">
@@ -122,7 +122,7 @@
 </section>
 
 <section id="recherche" class="panel">
-  <div class="panel-head"><h2>Recherche prioritaire dans le secteur public</h2><span class="muted">P0 / P1 / P2 / P3</span></div>
+  <div class="panel-head"><h2>Recherche prioritaire dans le secteur public</h2><span class="muted">recherche incomplète · capacité mobilisable · capacité difficile à mobiliser · aucune capacité trouvée</span></div>
   {% if episode.searches %}
     <table><thead><tr><th>Type</th><th>Date</th><th>Complète</th><th>Capacité trouvée</th><th>Mobilisable</th><th>Résultat</th><th>Temps</th></tr></thead><tbody>
     {% for s in episode.searches %}<tr><td>{{ s.search_type }}</td><td>{{ s.started_at.date() }}</td><td>{{ 'Oui' if s.complete_enough_to_conclude else 'Non' }}</td><td>{{ s.public_relevant_found }}</td><td>{{ s.public_mobilizable_found }}</td><td><strong>{{ s.public_result or '—' }}</strong></td><td>{{ s.analyst_minutes }} min</td></tr>{% endfor %}
@@ -140,19 +140,34 @@
 </section>
 
 <section id="ressources" class="panel">
-  <div class="panel-head"><h2>Ressources identifiées</h2><span class="muted">R0 → R5</span></div>
+  <div class="panel-head"><h2>Ressources identifiées</h2><span class="muted">de la simple identification à la mobilisation réelle</span></div>
   {% set ns = namespace(found=false) %}
   {% for s in episode.searches %}{% for d in s.discoveries %}{% set ns.found=true %}
     <div class="resource-row"><div><strong>{{ d.resource.display_name }}</strong><span>{{ d.resource.resource_type }}</span></div><div><span class="pill">{{ d.state }}</span> <span class="muted">{{ s.search_type }} · {{ d.source_channel }}{% if d.available_as_of %} · disponibilité confirmée {{ d.available_as_of }}{% endif %}</span>{% if d.state_reason %}<br><span class="muted">{{ d.state_reason }}</span>{% endif %}</div></div>
   {% endfor %}{% endfor %}
   {% if not ns.found %}<div class="empty">Aucune ressource enregistrée.</div>{% endif %}
   <form method="post" action="/episodes/{{ episode.code }}/resource" class="inline-form">
-    <label>Type de recherche<select name="search_type"><option>PUBLIQUE</option><option>EXTERIEURE</option><option>SCIENTIFIQUE</option><option>MARCHE</option><option>AUTRE</option></select></label>
-    <label>Type de ressource<select name="resource_type"><option>PERSONNE</option><option>EQUIPE</option><option>LABORATOIRE</option><option>ORGANISME</option><option>PRESTATAIRE</option><option>OUTIL</option><option>JEU_DE_DONNEES</option><option>DOCUMENT</option><option>SERVICE</option><option>PROCEDURE</option></select></label>
-    <label>État<select name="state"><option>R0</option><option>R1</option><option>R2</option><option>R3</option><option>R4</option><option>R5</option></select></label>
+    <label>Type de recherche<select name="search_type">
+<option value="PUBLIQUE">Secteur public</option>
+<option value="EXTERIEURE">Ressources extérieures</option>
+<option value="SCIENTIFIQUE">Recherche scientifique</option>
+<option value="MARCHE">Prestataires du marché</option>
+<option value="AUTRE">Autre</option>
+</select></label>
+    <label>Type de ressource<select name="resource_type">
+<option value="PERSONNE">Personne</option><option value="EQUIPE">Équipe</option><option value="LABORATOIRE">Laboratoire</option><option value="ORGANISME">Organisme</option><option value="PRESTATAIRE">Prestataire</option><option value="OUTIL">Outil</option><option value="JEU_DE_DONNEES">Jeu de données</option><option value="DOCUMENT">Document</option><option value="SERVICE">Service</option><option value="PROCEDURE">Procédure</option>
+</select></label>
+    <label>État<select name="state">
+<option value="R0">Identifiée</option>
+<option value="R1">Pertinence plausible</option>
+<option value="R2">Capacité vérifiée</option>
+<option value="R3">Conditions compatibles</option>
+<option value="R4">Engagement confirmé</option>
+<option value="R5">Mobilisable pour ce cas</option>
+</select></label>
     <label>Canal / source<input name="source_channel"></label>
     <label class="wide">Nom de la ressource<input required name="display_name"></label>
-    <label class="wide">Justification de l'état<input name="state_reason" placeholder="Obligatoire de R2 à R5"></label>
+    <label class="wide">Justification de l'état<input name="state_reason" placeholder="À renseigner dès que la capacité est vérifiée"></label>
     <label>Intérêt explicite pour cette mission<select name="mission_specific_interest"><option value="unknown">Inconnu</option><option value="yes">Oui</option><option value="no">Non</option></select></label>
     <label>Disponibilité confirmée le<input type="date" name="available_as_of"></label>
     <button class="button" type="submit">Enregistrer l'état</button>
@@ -167,9 +182,11 @@
     </tbody></table>
   {% else %}<div class="empty">Aucune voie évaluée.</div>{% endif %}
   <form method="post" action="/episodes/{{ episode.code }}/route" class="form-grid compact">
-    <label>Code<input required name="route_code" placeholder="R-MOB"></label>
+    <label>Identifiant interne<input required name="route_code" placeholder="mobilite-publique"></label>
     <label>Voie<input required name="route_label" placeholder="Mobilité publique"></label>
-    <label>État<select name="status_current"><option>INFORMATION_INSUFFISANTE</option><option>PLAUSIBLE</option><option>IMPROBABLE</option><option>EXCLUE</option><option>ACTIVEE</option></select></label>
+    <label>État<select name="status_current">
+<option value="INFORMATION_INSUFFISANTE">Informations insuffisantes</option><option value="PLAUSIBLE">Plausible</option><option value="IMPROBABLE">Improbable</option><option value="EXCLUE">Écartée</option><option value="ACTIVEE">Activée</option>
+</select></label>
     <label>Prochaine action<input name="next_action"></label>
     <label class="wide">Preuves favorables<textarea name="evidence_for" rows="2"></textarea></label>
     <label class="wide">Preuves défavorables<textarea name="evidence_against" rows="2"></textarea></label>
@@ -195,7 +212,7 @@
 </section>
 
 <section id="frictions" class="panel">
-  <h2>Chronologie et frictions</h2>
+  <h2>Chronologie et obstacles</h2>
   {% if episode.friction_events %}<table><thead><tr><th>Catégorie</th><th>Début</th><th>Fin</th><th>Bloquant</th><th>Raison</th></tr></thead><tbody>{% for f in episode.friction_events %}<tr><td><strong>{{ f.category }}</strong>{% if f.subcategory %}<br><span class="muted">{{ f.subcategory }}</span>{% endif %}</td><td>{{ f.started_at }}</td><td>{{ f.ended_at or 'ouvert' }}</td><td>{{ 'Oui' if f.blocking else 'Non' }}</td><td>{{ f.reason or '—' }}</td></tr>{% endfor %}</tbody></table>{% else %}<div class="empty">Aucun événement enregistré.</div>{% endif %}
   <form method="post" action="/episodes/{{ episode.code }}/friction" class="inline-form">
     <label>Catégorie<select name="category"><option>F1_COMPETENCE</option><option>F2_ACCUEIL</option><option>F3_RH</option><option>F4_BUDGET</option><option>F5_DROIT_STATUT</option><option>F6_SECURITE_INTEGRITE</option><option>F7_INFORMATIQUE</option><option>F8_AUTRE</option></select></label>
@@ -211,21 +228,23 @@
 
 <section id="resultat" class="panel">
   <h2>Résultat</h2>
-  {% if episode.results %}{% for r in episode.results %}<article class="decision"><div><strong>{{ r.result_status }}</strong><span>{{ r.dominant_friction or 'friction non précisée' }}</span></div><p>{{ r.outcome_description }}</p><p class="muted">Intervention : {{ r.actual_intervention or '—' }} · Voie : {{ r.actual_route or '—' }} · Première valeur : {{ r.first_useful_contribution_at or '—' }} · Coût direct : {{ r.direct_cost_eur if r.direct_cost_eur is not none else '—' }} € · Frontière : {{ r.frontiere_minutes }} min · Institution : {{ r.institution_minutes }} min</p><p class="muted">Additionalité — issue {{ r.additionality_outcome }} · délai {{ r.additionality_time }} · qualité {{ r.additionality_quality }} · coût {{ r.additionality_cost }} · apprentissage {{ r.additionality_learning }}</p></article>{% endfor %}{% endif %}
+  {% if episode.results %}{% for r in episode.results %}<article class="decision"><div><strong>{{ r.result_status }}</strong><span>{{ r.dominant_friction or 'obstacle non précisé' }}</span></div><p>{{ r.outcome_description }}</p><p class="muted">Intervention : {{ r.actual_intervention or '—' }} · Voie : {{ r.actual_route or '—' }} · Première valeur : {{ r.first_useful_contribution_at or '—' }} · Coût direct : {{ r.direct_cost_eur if r.direct_cost_eur is not none else '—' }} € · Frontière : {{ r.frontiere_minutes }} min · Institution : {{ r.institution_minutes }} min</p><p class="muted">Valeur ajoutée — résultat {{ r.additionality_outcome }} · délai {{ r.additionality_time }} · qualité {{ r.additionality_quality }} · coût {{ r.additionality_cost }} · apprentissage {{ r.additionality_learning }}</p></article>{% endfor %}{% endif %}
   <form method="post" action="/episodes/{{ episode.code }}/result" class="form-grid compact">
-    <label>Issue<select name="result_status"><option>RESOLU</option><option>PARTIELLEMENT_RESOLU</option><option>REORIENTE</option><option>NON_RESOLU</option><option>BESOIN_DISPARU</option></select></label>
-    <label>Friction dominante<input name="dominant_friction"></label>
+    <label>Résultat<select name="result_status">
+<option value="RESOLU">Résolu</option><option value="PARTIELLEMENT_RESOLU">Partiellement résolu</option><option value="REORIENTE">Réorienté</option><option value="NON_RESOLU">Non résolu</option><option value="BESOIN_DISPARU">Besoin devenu sans objet</option>
+</select></label>
+    <label>Obstacle dominant<input name="dominant_friction"></label>
     <label>Intervention réelle<input name="actual_intervention"></label>
     <label>Voie réelle<input name="actual_route"></label>
     <label>Première contribution utile<input type="datetime-local" name="first_useful_contribution_at"></label>
     <label>Coût direct (€)<input type="number" min="0" step="0.01" name="direct_cost_eur"></label>
     <label>Temps Frontière (min)<input type="number" min="0" name="frontiere_minutes" value="0"></label>
     <label>Temps institution (min)<input type="number" min="0" name="institution_minutes" value="0"></label>
-    <label>Additionalité — issue<select name="additionality_outcome"><option>INDETERMINE</option><option>FORTE</option><option>MODEREE</option><option>FAIBLE</option><option>NULLE</option></select></label>
-    <label>Additionalité — délai<select name="additionality_time"><option>INDETERMINE</option><option>FORTE</option><option>MODEREE</option><option>FAIBLE</option><option>NULLE</option></select></label>
-    <label>Additionalité — qualité<select name="additionality_quality"><option>INDETERMINE</option><option>FORTE</option><option>MODEREE</option><option>FAIBLE</option><option>NULLE</option></select></label>
-    <label>Additionalité — coût<select name="additionality_cost"><option>INDETERMINE</option><option>FORTE</option><option>MODEREE</option><option>FAIBLE</option><option>NULLE</option></select></label>
-    <label>Additionalité — apprentissage<select name="additionality_learning"><option>INDETERMINE</option><option>FORTE</option><option>MODEREE</option><option>FAIBLE</option><option>NULLE</option></select></label>
+    <label>Valeur ajoutée — issue<select name="additionality_outcome"><option value="INDETERMINE">Indéterminée</option><option value="FORTE">Forte</option><option value="MODEREE">Modérée</option><option value="FAIBLE">Faible</option><option value="NULLE">Nulle</option></select></label>
+    <label>Valeur ajoutée — délai<select name="additionality_time"><option value="INDETERMINE">Indéterminée</option><option value="FORTE">Forte</option><option value="MODEREE">Modérée</option><option value="FAIBLE">Faible</option><option value="NULLE">Nulle</option></select></label>
+    <label>Valeur ajoutée — qualité<select name="additionality_quality"><option value="INDETERMINE">Indéterminée</option><option value="FORTE">Forte</option><option value="MODEREE">Modérée</option><option value="FAIBLE">Faible</option><option value="NULLE">Nulle</option></select></label>
+    <label>Valeur ajoutée — coût<select name="additionality_cost"><option value="INDETERMINE">Indéterminée</option><option value="FORTE">Forte</option><option value="MODEREE">Modérée</option><option value="FAIBLE">Faible</option><option value="NULLE">Nulle</option></select></label>
+    <label>Valeur ajoutée — apprentissage<select name="additionality_learning"><option value="INDETERMINE">Indéterminée</option><option value="FORTE">Forte</option><option value="MODEREE">Modérée</option><option value="FAIBLE">Faible</option><option value="NULLE">Nulle</option></select></label>
     <label class="wide">Résultat observable<textarea required name="outcome_description" rows="3"></textarea></label>
     <button class="button primary" type="submit">Enregistrer le résultat</button>
   </form>
@@ -235,7 +254,7 @@
   <h2>Connaissances réutilisables</h2>
   {% if episode.knowledge_items %}{% for k in episode.knowledge_items %}<article class="knowledge"><div><strong>{{ k.title }}</strong><span class="pill subtle">{{ k.knowledge_type }}</span></div><p>{{ k.content }}</p>{% if k.scope %}<p class="muted">Portée : {{ k.scope }}</p>{% endif %}</article>{% endfor %}{% else %}<div class="empty">Aucune connaissance explicite enregistrée.</div>{% endif %}
   <form method="post" action="/episodes/{{ episode.code }}/knowledge" class="form-grid compact">
-    <label>Type<select name="knowledge_type"><option>REGLE</option><option>PRECEDENT</option><option>RESSOURCE</option><option>SOURCE</option><option>VOIE</option><option>DELAI</option><option>FRICTION</option><option>TAXONOMIE</option><option>AUTRE</option></select></label>
+    <label>Type<select name="knowledge_type"><option>REGLE</option><option>PRECEDENT</option><option>RESSOURCE</option><option>SOURCE</option><option>VOIE</option><option>DELAI</option><option>OBSTACLE</option><option>TAXONOMIE</option><option>AUTRE</option></select></label>
     <label>Niveau de preuve<select name="evidence_level"><option>A</option><option>B</option><option selected>C</option><option>D</option><option>E</option></select></label>
     <label class="wide">Titre<input required name="title"></label>
     <label class="wide">Connaissance<textarea required name="content" rows="3"></textarea></label>
@@ -266,7 +285,7 @@
 </section>
 
 <section id="trace" class="panel">
-  <div class="panel-head"><h2>Journal de traçabilité</h2><span class="muted">événements appendus</span></div>
+  <div class="panel-head"><h2>Journal de traçabilité</h2><span class="muted">événements conservés dans l’ordre</span></div>
   {% if episode.audit_events %}
   <table><thead><tr><th>Date</th><th>Événement</th><th>Objet</th><th>Contexte</th></tr></thead><tbody>
   {% for a in episode.audit_events|sort(attribute='occurred_at', reverse=true) %}
