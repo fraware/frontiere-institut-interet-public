@@ -54,6 +54,7 @@ class Episode(Base):
     knowledge_items: Mapped[list[KnowledgeItem]] = relationship(back_populates="source_episode")
     evidence_items: Mapped[list[Evidence]] = relationship(back_populates="episode", cascade="all, delete-orphan")
     audit_events: Mapped[list[AuditEvent]] = relationship(back_populates="episode", cascade="all, delete-orphan")
+    capability_queries: Mapped[list[CapabilityQuery]] = relationship(back_populates="episode", cascade="all, delete-orphan")
 
 
 class NeedVersion(Base):
@@ -78,6 +79,75 @@ class NeedVersion(Base):
 
     episode: Mapped[Episode] = relationship(back_populates="needs")
     capability_requirements: Mapped[list[CapabilityRequirement]] = relationship(back_populates="need", cascade="all, delete-orphan")
+    capability_queries: Mapped[list[CapabilityQuery]] = relationship(back_populates="need", cascade="all, delete-orphan")
+
+
+class CapabilityQuery(Base):
+    __tablename__ = "capability_queries"
+    __table_args__ = (UniqueConstraint("need_id", "version", name="uq_capability_query_need_version"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    episode_id: Mapped[int] = mapped_column(ForeignKey("episodes.id"), index=True)
+    need_id: Mapped[int] = mapped_column(ForeignKey("need_versions.id"), index=True)
+    version: Mapped[int] = mapped_column(Integer, default=1)
+    active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
+    raw_request: Mapped[str] = mapped_column(Text)
+    domain: Mapped[str] = mapped_column(String(180), index=True)
+    function: Mapped[str] = mapped_column(String(220), index=True)
+    depth: Mapped[str] = mapped_column(String(80), default="intermediaire")
+    operational_context: Mapped[str | None] = mapped_column(Text, nullable=True)
+    constraints: Mapped[str | None] = mapped_column(Text, nullable=True)
+    resource_forms_json: Mapped[str] = mapped_column(Text, default="[]")
+    must_have_json: Mapped[str] = mapped_column(Text, default="[]")
+    nice_to_have_json: Mapped[str] = mapped_column(Text, default="[]")
+    latest_useful_date: Mapped[date | None] = mapped_column(Date, nullable=True)
+    compiler: Mapped[str] = mapped_column(String(80), default="human")
+    compiler_version: Mapped[str] = mapped_column(String(40), default="1.0")
+    locked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+    episode: Mapped[Episode] = relationship(back_populates="capability_queries")
+    need: Mapped[NeedVersion] = relationship(back_populates="capability_queries")
+
+
+class BenchmarkCase(Base):
+    __tablename__ = "benchmark_cases"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    code: Mapped[str] = mapped_column(String(40), unique=True, index=True)
+    title: Mapped[str] = mapped_column(String(300))
+    source_url: Mapped[str | None] = mapped_column(String(500), nullable=True)
+    source_date: Mapped[date | None] = mapped_column(Date, nullable=True)
+    prompt: Mapped[str] = mapped_column(Text)
+    expected_routes_json: Mapped[str] = mapped_column(Text, default="[]")
+    expected_resource_forms_json: Mapped[str] = mapped_column(Text, default="[]")
+    expected_resources_json: Mapped[str] = mapped_column(Text, default="[]")
+    outcome_summary: Mapped[str | None] = mapped_column(Text, nullable=True)
+    label_quality: Mapped[str] = mapped_column(String(30), default="PROVISIONAL")
+    active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+    predictions: Mapped[list[BenchmarkPrediction]] = relationship(back_populates="case", cascade="all, delete-orphan")
+
+
+class BenchmarkPrediction(Base):
+    __tablename__ = "benchmark_predictions"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    case_id: Mapped[int] = mapped_column(ForeignKey("benchmark_cases.id"), index=True)
+    method: Mapped[str] = mapped_column(String(100), index=True)
+    method_version: Mapped[str] = mapped_column(String(60), default="1.0")
+    routes_json: Mapped[str] = mapped_column(Text, default="[]")
+    resource_forms_json: Mapped[str] = mapped_column(Text, default="[]")
+    resources_json: Mapped[str] = mapped_column(Text, default="[]")
+    evidence_urls_json: Mapped[str] = mapped_column(Text, default="[]")
+    elapsed_seconds: Mapped[float | None] = mapped_column(Float, nullable=True)
+    analyst_minutes: Mapped[int] = mapped_column(Integer, default=0)
+    verification_minutes: Mapped[int] = mapped_column(Integer, default=0)
+    notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+    submitted_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+    case: Mapped[BenchmarkCase] = relationship(back_populates="predictions")
 
 
 class Capability(Base):
