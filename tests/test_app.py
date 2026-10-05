@@ -17,7 +17,7 @@ def test_health():
         r = client.get("/health")
         assert r.status_code == 200
         assert r.json()["status"] == "ok"
-        assert r.json()["version"] == "0.5.1"
+        assert r.json()["version"] == "0.5.2"
 
 
 def test_create_episode_and_public_search():
@@ -502,7 +502,11 @@ def test_benchmark_is_blind_until_prediction_and_scores_vector():
         assert api.json()["prediction_count"] == 1
         method = api.json()["methods"][0]
         assert method["route_recall_mean"] == 1.0
+        assert method["route_precision_mean"] == 1.0
+        assert method["route_f1_mean"] == 1.0
         assert method["resource_form_recall_mean"] == 0.5
+        assert method["resource_form_precision_mean"] == 1.0
+        assert round(method["resource_form_f1_mean"], 6) == round(2/3, 6)
         assert method["human_minutes_median"] == 8
 
     with SessionLocal() as db:
@@ -528,3 +532,36 @@ def test_benchmark_cannot_reveal_without_prediction():
         assert reveal.status_code == 409
         page = client.get("/benchmark")
         assert "ROUTAGE" not in page.text
+
+
+def test_benchmark_precision_penalizes_overprediction():
+    reset_db()
+    with SessionLocal() as db:
+        case = BenchmarkCase(
+            code="BPREC",
+            title="Cas précision",
+            prompt="Trouver une voie.",
+            expected_routes_json='["ROUTAGE"]',
+            expected_resource_forms_json='["EQUIPE"]',
+            expected_resources_json='[]',
+        )
+        db.add(case)
+        db.flush()
+        db.add(BenchmarkPrediction(
+            case_id=case.id,
+            method="surprediction",
+            routes_json='["ROUTAGE", "RECRUTEMENT", "ACHAT"]',
+            resource_forms_json='["EQUIPE", "PERSONNE"]',
+            resources_json='[]',
+            evidence_urls_json='[]',
+        ))
+        db.commit()
+    with TestClient(app) as client:
+        data = client.get("/api/v1/benchmark").json()
+        method = data["methods"][0]
+        assert method["route_recall_mean"] == 1.0
+        assert round(method["route_precision_mean"], 6) == round(1/3, 6)
+        assert method["route_f1_mean"] == 0.5
+        assert method["resource_form_recall_mean"] == 1.0
+        assert method["resource_form_precision_mean"] == 0.5
+        assert round(method["resource_form_f1_mean"], 6) == round(2/3, 6)
