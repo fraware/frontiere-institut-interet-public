@@ -1,4 +1,4 @@
-# FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC - — prototype opératoire v0.5
+# FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC - — prototype opératoire v0.5.1
 
 Prototype interne pour l'étude de la mobilisation des capacités scientifiques et techniques au service de l'action publique.
 
@@ -12,7 +12,7 @@ La chaîne de travail est :
 
 Une solution publique existante, une prestation de marché, un recrutement permanent, un abandon justifié ou l'absence de nouvelle intervention constituent des résultats valides.
 
-## Ce que la version 0.5 réalise
+## Ce que la version 0.5.1 réalise
 
 - registre des épisodes avec D0–D4 et distinction entre cas réels et cas synthétiques ;
 - formulation du besoin, résultat attendu, responsable, échéance, contrefactuel et hypothèse initiale ;
@@ -87,3 +87,15 @@ Cette version est un outil de recherche et d'opérations internes. Elle ne const
 ## Sécurité de la version publique
 
 Cette version ne possède pas encore d’authentification. Elle refuse les niveaux de sensibilité 3 et 4. Ne saisir aucune donnée confidentielle ou nominative restreinte dans une instance publique. Voir `SECURITY.md`.
+
+
+## Export aveugle du banc d'évaluation
+
+Après initialisation du jeu de démonstration :
+
+```bash
+python scripts/seed_demo.py
+python scripts/export_benchmark_blind.py --output benchmark_blind.json
+```
+
+Le fichier exporté contient uniquement les identifiants, titres, demandes et qualité d'étiquette. Les sources, voies attendues et résultats connus restent scellés.
