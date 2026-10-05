@@ -1,36 +1,38 @@
 # Sécurité et gouvernance des données
 
-## Environnements séparés
+## Séparer les finalités
 
-Le modèle cible distingue quatre finalités :
+Les informations sont séparées selon leur usage :
 
-1. Recherche — épisodes et analyses pseudonymisées.
-2. Réseau professionnel — profil minimal et disponibilité générale avec accord.
-3. Candidature — informations nécessaires à une mission réelle.
-4. Intégrité et incompatibilités — conflits, intérêts, confidentialité et données à accès fortement restreint.
+1. **étude** : cas et analyses, idéalement pseudonymisés ;
+2. **réseau professionnel** : coordonnées et disponibilité générale, avec accord ;
+3. **mission réelle** : informations nécessaires à une collaboration précise ;
+4. **intégrité et incompatibilités** : conflits d'intérêts, confidentialité et autres informations fortement restreintes.
 
-La version 0.1 matérialise l'environnement et le niveau de sensibilité dans le modèle. Un déploiement multi-utilisateurs réel devra appliquer des stockages ou contrôles d'accès séparés avant collecte de données sensibles de niveau élevé.
+Ces catégories ne doivent pas être mélangées simplement parce qu'elles concernent la même personne ou le même cas.
 
-## Minimisation
+## Collecter le minimum utile
 
-Toute donnée doit avoir une finalité, une décision associée, un groupe d'accès et une durée de conservation. Une information ancienne de disponibilité doit être réaffirmée avant usage opérationnel.
+Chaque donnée doit avoir une finalité claire, un groupe de personnes autorisées à la consulter et une durée de conservation.
 
-## Niveaux
+Une ancienne information de disponibilité ne vaut pas confirmation actuelle.
 
-- 1 : ordinaire ;
-- 2 : interne ;
-- 3 : sensible ;
-- 4 : fortement restreint.
+## Niveaux de sensibilité
 
-## Interdictions v0.1
+- niveau 1 : information ordinaire ;
+- niveau 2 : information interne à faible sensibilité ;
+- niveau 3 : information sensible ;
+- niveau 4 : information fortement restreinte.
 
-- aucun classement public de personnes ;
-- aucun score global d'institution ;
-- aucune inférence automatique de données sensibles ;
-- aucune présentation d'une personne sans accord explicite ;
-- aucune décision juridique ou déontologique automatique ;
-- aucun financeur n'accède automatiquement aux dossiers individuels.
+## Ce que la version actuelle interdit
 
-## Avant hébergement externe
+- classement public de personnes ;
+- note globale attribuée à une institution ;
+- déduction automatique d'informations sensibles ;
+- présentation d'une personne à une mission sans accord explicite ;
+- décision juridique ou déontologique automatisée ;
+- accès automatique d'un financeur aux dossiers individuels.
 
-Exiger au minimum : authentification, contrôle d'accès par rôle, journal d'accès, chiffrement en transit et au repos, sauvegardes, politique de conservation, procédure de suppression, gestion des incidents, séparation des secrets et revue juridique adaptée aux données réellement collectées.
+## Avant tout usage avec des données sensibles
+
+Une instance adaptée doit disposer au minimum d'une authentification, de droits d'accès différenciés, d'un journal des accès, d'un chiffrement adapté, de sauvegardes, d'une durée de conservation, d'une procédure de suppression, d'une gestion des incidents et d'une séparation des secrets techniques.

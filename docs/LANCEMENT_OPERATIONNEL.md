@@ -1,29 +1,38 @@
-# Lancement opérationnel — semaine 1
+# Lancement opérationnel — première semaine
 
-## Objet
+## Objectif
 
-Cette version transforme le protocole en exécution contrôlée. La priorité n'est pas le volume de réunions. Chaque échange doit produire au moins un actif parmi quatre catégories : preuve, cas, expérience ou mise en relation.
+La première semaine vise à obtenir des cas réels, pas des avis généraux sur FRONTIÈRE. Chaque échange doit idéalement produire au moins un élément vérifiable : un cas, un document, une expérience possible ou une mise en relation avec le responsable d'un besoin concret.
 
-## Première vague
+## Premiers interlocuteurs
 
-La vague initiale est volontairement limitée à cinq fonctions institutionnelles :
+La première vague couvre cinq fonctions différentes :
 
-1. DINUM — programme Entrepreneurs d’intérêt général : cas récents particulièrement difficiles et limites des mécanismes actuels.
-2. DINUM — RH numérique, mobilité et parcours : cas où une capacité publique existe mais circule difficilement.
-3. DINUM — département intelligence artificielle dans l’État : projets ralentis par une capacité technique précise.
-4. DITP — conseil interne de l’État : contrôle négatif et test de redondance.
-5. Un organisme scientifique : cas où l'unité de ressource pertinente est une équipe, un laboratoire ou une capacité collective.
+1. le programme Entrepreneurs d'intérêt général de la DINUM, pour comprendre les besoins difficiles à pourvoir et les cas où les mécanismes existants fonctionnent bien ;
+2. les équipes de mobilité et de parcours de la DINUM, pour identifier les situations où la compétence existe déjà dans le secteur public mais circule difficilement ;
+3. les équipes chargées de l'intelligence artificielle dans l'État, pour identifier des projets réellement ralentis par une capacité technique précise ;
+4. l'Agence de conseil interne de l'État, pour vérifier si certaines situations sont déjà correctement résolues par des dispositifs existants ;
+5. un organisme scientifique, pour étudier les cas où la bonne ressource est une équipe, un laboratoire ou une capacité collective.
 
-Les interlocuteurs suivants sont générés par les cas : responsables opérationnels, fonction publique, budget, sécurité/données/déontologie, spécialistes et employeurs. Ils ne sont pas sollicités abstraitement.
+## Passage d'un échange général à un cas réel
 
-## Critère de bascule
+Dès qu'un interlocuteur décrit un besoin actuel avec un responsable identifié, l'effort se déplace vers le responsable opérationnel du cas.
 
-Dès qu'un interlocuteur fournit un épisode D2+ suffisamment concret, l'effort se déplace vers le responsable opérationnel du cas afin de reconstruire la chronologie, les démarches, les alternatives, les frictions, le résultat et le contrefactuel.
+La suite consiste alors à reconstruire :
 
-## Pré-enregistrement
+- le résultat recherché ;
+- l'échéance ;
+- la capacité nécessaire ;
+- les démarches déjà entreprises ;
+- les solutions déjà disponibles ;
+- les délais et blocages ;
+- le résultat observé ;
+- ce qui se serait passé sans FRONTIÈRE.
 
-Avant toute recherche publique ou décision d'orientation, l'état initial de l'épisode est verrouillé : problème, résultat recherché, contrefactuel et hypothèse initiale. La v0.2 interdit déjà la progression opérationnelle avant verrouillage.
+## État initial
 
-## Données et sécurité
+Avant toute recherche ou recommandation de FRONTIÈRE, l'état initial du cas est enregistré et verrouillé. Cette étape évite de réécrire après coup le besoin ou l'hypothèse de départ.
 
-Le dépôt est public et l'application v0.2 ne possède pas encore d'authentification. L'instance actuelle accepte uniquement les niveaux de sensibilité 1 et 2. Les informations de niveaux 3 et 4 doivent rester hors de cette instance jusqu'à la mise en place d'un contrôle d'accès, d'un journal d'accès et d'un hébergement adapté.
+## Données
+
+Le dépôt est public. L'instance publique ne doit recevoir que des informations ordinaires ou internes à faible sensibilité. Toute information sensible ou nominative restreinte doit rester dans un environnement privé adapté.

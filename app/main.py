@@ -44,7 +44,7 @@ async def lifespan(_: FastAPI):
     yield
 
 
-app = FastAPI(title=settings.app_name, version="0.5.3", lifespan=lifespan)
+app = FastAPI(title=settings.app_name, version="0.5.4", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
@@ -95,7 +95,7 @@ def _audit(
 
 @app.get("/health")
 def health() -> dict:
-    return {"status": "ok", "service": "frontiere-institut-interet-public", "version": "0.5.3"}
+    return {"status": "ok", "service": "frontiere-institut-interet-public", "version": "0.5.4"}
 
 
 @app.get("/api/v1/metrics")
@@ -132,24 +132,24 @@ def dashboard(request: Request, db: Session = Depends(get_db)):
     hypotheses = hypothesis_summary(db)
     return templates.TemplateResponse(
         request=request,
-        name="dashboard.html",
+        name="tableau_bord.html",
         context={"episodes": episodes, "metrics": metrics, "hypotheses": hypotheses[:5]},
     )
 
 
-@app.get("/empirique", response_class=HTMLResponse)
+@app.get("/donnees-terrain", response_class=HTMLResponse)
 def empirical_dashboard(request: Request, db: Session = Depends(get_db)):
     metrics = empirical_metrics(db)
     return templates.TemplateResponse(
         request=request,
-        name="empirical.html",
+        name="donnees_terrain.html",
         context={"metrics": metrics},
     )
 
 
 @app.get("/episodes/new", response_class=HTMLResponse)
 def new_episode(request: Request):
-    return templates.TemplateResponse(request=request, name="episode_new.html", context={})
+    return templates.TemplateResponse(request=request, name="nouveau_cas.html", context={})
 
 
 @app.post("/episodes")
@@ -259,7 +259,7 @@ def episode_detail(code: str, request: Request, db: Session = Depends(get_db)):
     ).all())
     return templates.TemplateResponse(
         request=request,
-        name="episode_detail.html",
+        name="detail_cas.html",
         context={
             "episode": ep,
             "need": active_need,
@@ -1031,7 +1031,7 @@ def research_export(db: Session = Depends(get_db)) -> dict:
     return {"schema_version": "0.2", "episodes": rows}
 
 
-@app.get("/benchmark", response_class=HTMLResponse)
+@app.get("/evaluation", response_class=HTMLResponse)
 def benchmark_page(request: Request, db: Session = Depends(get_db)):
     summary = benchmark_summary(db)
     rows = []
@@ -1048,12 +1048,12 @@ def benchmark_page(request: Request, db: Session = Depends(get_db)):
         })
     return templates.TemplateResponse(
         request=request,
-        name="benchmark.html",
+        name="evaluation.html",
         context={"rows": rows, "methods": summary["methods"]},
     )
 
 
-@app.post("/benchmark/{case_code}/prediction")
+@app.post("/evaluation/{case_code}/reponse")
 def add_benchmark_prediction(
     case_code: str,
     method: str = Form(...),
@@ -1070,7 +1070,7 @@ def add_benchmark_prediction(
 ):
     case = db.scalar(select(BenchmarkCase).where(BenchmarkCase.code == case_code, BenchmarkCase.active.is_(True)))
     if case is None:
-        raise HTTPException(404, "Cas de benchmark introuvable")
+        raise HTTPException(404, "Cas d'évaluation introuvable")
 
     def items(text: str) -> list[str]:
         return [part.strip() for part in text.replace("\n", ",").split(",") if part.strip()]
@@ -1101,23 +1101,23 @@ def add_benchmark_prediction(
     )
     db.add(prediction)
     db.commit()
-    return RedirectResponse(url=f"/benchmark#{case.code}", status_code=303)
+    return RedirectResponse(url=f"/evaluation#{case.code}", status_code=303)
 
 
-@app.post("/benchmark/{case_code}/reveal")
+@app.post("/evaluation/{case_code}/reveler")
 def reveal_benchmark_case(case_code: str, db: Session = Depends(get_db)):
     case = db.scalar(select(BenchmarkCase).where(BenchmarkCase.code == case_code, BenchmarkCase.active.is_(True)))
     if case is None:
-        raise HTTPException(404, "Cas de benchmark introuvable")
+        raise HTTPException(404, "Cas d'évaluation introuvable")
     predictions = db.scalar(select(func.count(BenchmarkPrediction.id)).where(BenchmarkPrediction.case_id == case.id)) or 0
     if predictions < 1:
         raise HTTPException(409, "Au moins une prédiction est requise avant révélation.")
     case.revealed = True
     db.commit()
-    return RedirectResponse(url=f"/benchmark#{case.code}", status_code=303)
+    return RedirectResponse(url=f"/evaluation#{case.code}", status_code=303)
 
 
-@app.get("/api/v1/benchmark/blind")
+@app.get("/api/v1/evaluation/aveugle")
 def api_benchmark_blind(db: Session = Depends(get_db)) -> dict:
     cases = list(db.scalars(select(BenchmarkCase).where(BenchmarkCase.active.is_(True)).order_by(BenchmarkCase.code)).all())
     return {
@@ -1134,7 +1134,7 @@ def api_benchmark_blind(db: Session = Depends(get_db)) -> dict:
     }
 
 
-@app.get("/api/v1/benchmark")
+@app.get("/api/v1/evaluation")
 def api_benchmark(db: Session = Depends(get_db)) -> dict:
     summary = benchmark_summary(db)
     return {

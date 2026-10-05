@@ -1,29 +1,33 @@
-# Plan d'exécution — 12 semaines
+# Plan d'exécution — douze semaines
 
-## Semaines 1–3
+## Semaines 1 à 3
 
-Ouvrir le terrain, obtenir les premiers épisodes, identifier les responsables opérationnels, commencer les recherches publiques et intégrer des contrôles négatifs. Les conversations générales n'ont de valeur que si elles produisent une preuve, un cas, une expérience ou une mise en relation.
+Obtenir les premiers cas réels, identifier leurs responsables, documenter les démarches déjà entreprises et commencer les recherches dans les ressources publiques existantes.
+
+Les échanges généraux ne sont poursuivis que s'ils produisent un cas, un document, une expérience possible ou une mise en relation utile.
 
 ## Semaine 4
 
-Première revue : le signal de demande est-il assez sérieux pour continuer ? Vérifier D2+, préexistence des besoins, diversité institutionnelle, contre-exemples et qualité des preuves.
+Examiner les premiers signaux : combien de besoins actuels et préexistants avons-nous réellement observés ? Dans combien d'organisations ? Quelles solutions existantes ont déjà suffi ? Quelles affirmations reposent encore sur des preuves faibles ?
 
-## Semaines 5–6
+## Semaines 5 et 6
 
-Lancer les premières recherches parallèles sur les missions appropriées, dédupliquer les ressources et figer la version prospective du protocole pour les cas suivants. Commencer le double codage.
+Comparer, sur les cas appropriés, les recherches réalisées par les mécanismes habituels et celles réalisées par FRONTIÈRE. Dédupliquer les ressources trouvées et documenter les différences.
 
-## Semaines 7–8
+## Semaines 7 et 8
 
-Traiter sur cas réels les questions de mobilité, budget, droit et procédures. Deuxième revue : quelle friction commence à apparaître comme dominante ? Comparer temps d'identification et temps post-identification.
+Étudier les difficultés qui apparaissent après l'identification d'une ressource : mobilité, financement, droit, accès, sécurité, systèmes informatiques ou organisation du travail.
 
-## Semaines 9–10
+Comparer le temps nécessaire pour trouver une ressource au temps nécessaire pour qu'elle apporte effectivement une contribution utile.
 
-Tester la mémoire du système, suivre la réutilisation inter-cas, reconstruire plusieurs chemins critiques et évaluer la préparation des institutions.
+## Semaines 9 et 10
+
+Mesurer la réutilisation des connaissances acquises sur les cas précédents. Vérifier si un nouveau cas est résolu plus vite ou avec moins de travail grâce à l'historique accumulé.
 
 ## Semaine 11
 
-Revue contradictoire interne : chercher les explications concurrentes, recalculer la performance hors réseau fondateur, rechercher les solutions existantes et les biais de sélection.
+Chercher activement les explications concurrentes et les cas qui contredisent l'hypothèse initiale. Vérifier notamment si les mécanismes publics existants ou le marché répondent déjà correctement à certaines catégories de besoins.
 
 ## Semaine 12
 
-Clôturer les cas mûrs, marquer les cas ouverts, produire le dossier final de preuves et décider entre construire, construire ciblé, réorienter, prolonger ou arrêter.
+Clore les cas suffisamment mûrs, conserver les autres comme cas ouverts et décider de la suite à partir des résultats observés : poursuivre largement, poursuivre sur un périmètre ciblé, changer de direction, prolonger l'observation ou arrêter.

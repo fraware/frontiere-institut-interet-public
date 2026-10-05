@@ -1,136 +1,123 @@
-# Protocole FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC - v1.1
-
-## Statut
-
-Version consolidée avant les premiers épisodes réels. Cette version reprend le protocole de pré-exécution et enregistre les extensions issues des tests adverses et de la conception fonctionnelle. Toute modification ultérieure importante doit être datée, justifiée et versionnée.
+# Protocole FRONTIÈRE — version 1.1
 
 ## Question centrale
 
-Lorsqu'une institution publique ne dispose pas, au moment utile, d'une capacité scientifique ou technique importante, quel mécanisme explique réellement la situation et quelle est la plus petite intervention capable de la corriger ?
+Lorsqu'une institution publique ne dispose pas, au moment utile, d'une capacité scientifique ou technique importante, quelle est la cause réelle de cette difficulté et quelle est la plus petite intervention capable de la corriger ?
 
-## Unité d'analyse
+## Ce qu'est un cas
 
-Un épisode est une situation délimitée dans le temps associant :
+Un cas est une situation réelle, délimitée dans le temps, comprenant :
 
 - une institution et une unité concernée ;
 - un résultat opérationnel précis ;
-- une capacité manquante ou inaccessible ;
+- une capacité nécessaire ;
 - une période identifiable ;
-- des démarches effectivement entreprises ;
-- un résultat observé ou une situation actuelle ;
-- une explication documentée de la difficulté ;
-- un contrefactuel ;
-- une qualité de preuve.
+- les démarches déjà entreprises ;
+- le résultat obtenu ou la situation actuelle ;
+- les raisons documentées de la difficulté ;
+- ce qui se serait vraisemblablement passé sans FRONTIÈRE ;
+- les preuves disponibles.
 
-## Extension v1.1 : de la personne à la ressource
+## Une capacité n'est pas forcément une personne
 
-La version antérieure était plus centrée sur les personnes. La version 1.1 distingue désormais :
+FRONTIÈRE distingue la capacité recherchée de la ressource qui peut l'apporter.
 
-`Source → Ressource → Forme d'intervention → Voie de mobilisation`
+Une ressource peut être une personne, une équipe, un laboratoire, un organisme, un prestataire, un réseau, un outil, une donnée, une infrastructure, un service ou une procédure.
 
-Une ressource peut être une personne, une équipe, un laboratoire, un organisme, un prestataire, une communauté, un outil, un jeu de données, un document, un modèle, un service ou une procédure.
+Cette distinction évite de transformer automatiquement tout besoin en problème de recrutement.
 
-Cette modification évite d'interpréter chaque déficit comme un problème de recrutement.
+## Maturité du besoin
 
-## Niveaux de demande
+Le système conserve cinq niveaux techniques, mais les analyses utilisent en priorité les descriptions en toutes lettres :
 
-- D0 : intérêt hypothétique.
-- D1 : problème historique documenté.
-- D2 : besoin actuel avec responsable identifié.
-- D3 : besoin actuel avec ressources engagées.
-- D4 : besoin immédiatement activable avec procédure, financement ou dispositif déclenchable.
+- simple intérêt hypothétique ;
+- problème historique documenté ;
+- besoin actuel avec responsable identifié ;
+- besoin actuel avec ressources déjà engagées ;
+- besoin immédiatement activable avec procédure ou financement disponible.
 
-Les estimations de demande opérationnelle reposent principalement sur D2–D4.
+Les estimations de demande opérationnelle reposent principalement sur les trois derniers niveaux.
 
-## Recherche prioritaire dans le secteur public
+## Recherche des capacités déjà publiques
 
-La recherche publique précède normalement une recherche extérieure. Une dérogation d'urgence peut autoriser des recherches parallèles, avec justification documentée.
+Avant de chercher une ressource extérieure, FRONTIÈRE vérifie normalement si la capacité existe déjà dans le secteur public.
 
-- P0 : recherche insuffisante pour conclure.
-- P1 : capacité publique pertinente trouvée et mobilisable.
-- P2 : capacité publique pertinente trouvée, mobilisation non établie ou difficile.
-- P3 : recherche suffisamment approfondie et aucune capacité publique suffisamment pertinente identifiée.
+Quatre situations sont distinguées :
 
-P2 est un signal de mobilité ou d'organisation, pas une preuve de pénurie.
+- recherche encore insuffisante ;
+- capacité publique pertinente et mobilisable ;
+- capacité publique pertinente mais difficile à mobiliser ;
+- recherche suffisamment approfondie sans capacité publique pertinente trouvée.
 
-## États génériques d'une ressource
+Une capacité trouvée mais difficile à mobiliser signale d'abord un problème de circulation, d'organisation ou de procédure.
 
-- R0 : identifiée.
-- R1 : pertinence plausible.
-- R2 : capacité vérifiée.
-- R3 : conditions compatibles.
-- R4 : capacité d'engagement confirmée.
-- R5 : mobilisable pour le besoin précis et la période considérée.
+## De la ressource trouvée à la ressource mobilisable
 
-La mobilisabilité est relationnelle : `ressource × besoin/mission × temps`.
+Une ressource traverse plusieurs étapes :
 
-## Résultat principal
+1. identifiée ;
+2. plausiblement pertinente ;
+3. capacité vérifiée ;
+4. conditions compatibles ;
+5. engagement confirmé ;
+6. mobilisable pour le besoin précis et la période considérée.
 
-Le résultat principal d'un épisode est la résolution ou l'orientation utile du déficit :
+Une ressource trouvée n'est donc jamais assimilée directement à une ressource disponible.
+
+## Résultat d'un cas
+
+Le résultat principal est l'effet réel sur le besoin :
 
 - résolu ;
 - partiellement résolu ;
 - correctement réorienté ;
 - non résolu ;
-- besoin devenu sans objet.
+- devenu sans objet.
 
-Le placement d'une personne n'est pas un critère principal.
+Le placement d'une personne n'est pas, à lui seul, un critère de réussite.
 
-## Additionalité
+## Valeur ajoutée de FRONTIÈRE
 
-Aucun score agrégé. Cinq dimensions sont conservées séparément :
+La valeur ajoutée est examinée séparément sur cinq dimensions :
 
-- issue ;
+- résultat obtenu ;
 - délai ;
 - qualité ;
 - coût ;
 - apprentissage réutilisable.
 
-Chaque dimension est classée forte, modérée, faible, nulle ou indéterminée avec justification et preuve.
+Aucune note globale ne fusionne ces dimensions.
 
-## Capacité d'accueil
+## Préparation de l'organisation
 
-Pour une mission longue, cinq conditions impératives sont évaluées :
+Pour une intervention longue, cinq conditions sont vérifiées : un responsable, un encadrement opérationnel, les accès nécessaires, une capacité de décision et une personne ou équipe chargée de la transmission interne.
 
-- responsable institutionnel ;
-- encadrement opérationnel ;
-- accès ;
-- capacité de décision ;
-- transmission interne.
+Une information inconnue reste inconnue ; elle n'est pas traitée comme une condition satisfaite.
 
-`UNKNOWN` ne vaut jamais `PASS`. D'autres formes d'intervention possèdent des profils de préparation adaptés.
+## Délais et obstacles
 
-## Frictions et chemin critique
+Chaque délai important est enregistré avec ses dates, son responsable, ses dépendances et son caractère bloquant. Les étapes qui se déroulent en parallèle ne sont pas additionnées comme si elles étaient successives.
 
-Chaque délai est enregistré comme événement avec dates, responsable, dépendances, caractère bloquant et motif. Les processus parallèles ne sont pas additionnés naïvement. Le délai pertinent est reconstruit par le chemin critique du graphe de dépendances.
+## Réutilisation des connaissances
 
-## Mémoire et effet cumulatif
+Une connaissance acquise sur un cas n'est comptée comme réutilisée que si elle aide effectivement un cas ultérieur. La preuve la plus forte d'un effet cumulatif est une connaissance utilisable par une autre organisation et par un analyste qui n'a pas participé au cas d'origine.
 
-Chaque connaissance réutilisable est enregistrée comme objet explicite : capacité, source, ressource, voie, friction, délai, règle ou précédent. Une réutilisation n'est comptée que si elle est effectivement reliée à un épisode ultérieur. La mesure la plus exigeante est la réutilisation entre organisations distinctes et l'accessibilité de la connaissance à un nouvel analyste.
+## Cas de démonstration
 
-## Cas synthétiques
+Des scénarios artificiels servent à vérifier le fonctionnement du logiciel et des règles. Ils sont toujours séparés des observations réelles et ne constituent aucune preuve sur la situation française.
 
-Douze scénarios adverses servent aux tests du protocole. Ils sont marqués `synthetic=true` et exclus des statistiques opérationnelles. Ils ne constituent aucune preuve sur la France.
+## Rôle de l'intelligence artificielle
 
-## Place de l'intelligence artificielle
+L'intelligence artificielle peut aider à extraire des informations, trouver des précédents, repérer des contradictions, rechercher des ressources et résumer des preuves.
 
-L'intelligence artificielle peut assister l'extraction, la recherche de précédents, la détection de contradictions, la recherche de ressources et la synthèse des preuves. La validation du besoin, D0–D4, P0–P3, R5, l'orientation finale, la présentation d'une personne, les décisions de conformité et l'additionalité restent sous autorité humaine.
+Les décisions qui engagent une institution ou une personne restent sous responsabilité humaine : validation du besoin, confirmation de la disponibilité réelle, choix final d'une voie, présentation d'une personne, conformité juridique ou déontologique et appréciation de la valeur ajoutée.
 
-Toute connaissance opérationnelle doit exister dans le système avec une provenance ; une information présente seulement dans le contexte d'un modèle ne constitue pas une preuve institutionnelle.
+Une information produite par un modèle ne devient une preuve que si sa provenance est enregistrée et vérifiable.
 
-## Phase des douze premières semaines
+## Douze premières semaines
 
-Cible :
+L'objectif initial est d'obtenir environ huit à douze cas fortement documentés provenant d'au moins quatre organisations, avec une majorité de besoins actuels et préexistants à FRONTIÈRE.
 
-- 8 à 12 épisodes fortement documentés ;
-- au moins 4 organisations ;
-- au moins 8 D2+ ;
-- au moins 75 % de besoins préexistants à la sollicitation ;
-- 3 à 5 recherches parallèles appropriées ;
-- recherche publique systématique ;
-- 20 à 30 entretiens spécialistes ;
-- quelques employeurs ;
-- plusieurs reconstructions de chemin critique ;
-- contrôles négatifs et cas où les mécanismes existants fonctionnent correctement.
+Plusieurs cas doivent permettre une comparaison entre la méthode habituelle et FRONTIÈRE. Les résultats doivent aussi inclure des situations où les mécanismes existants fonctionnent correctement.
 
-Les sorties possibles restent : construire, construire de manière ciblée, réorienter, prolonger ou arrêter.
+À la fin de cette phase, les options restent ouvertes : poursuivre largement, poursuivre sur un périmètre ciblé, changer de direction, prolonger l'observation ou arrêter.

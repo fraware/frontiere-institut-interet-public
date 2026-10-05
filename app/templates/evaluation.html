@@ -1,13 +1,13 @@
 {% extends "base.html" %}
-{% block title %}Banc d’évaluation — FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC -{% endblock %}
+{% block title %}Évaluation technique — FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC -{% endblock %}
 {% block content %}
-<section class="page-head"><div><p class="eyebrow">ÉVALUATION TECHNIQUE</p><h1>Banc de requêtes de capacité</h1><p>Comparer des méthodes sur les mêmes cas. Les étiquettes attendues restent masquées jusqu’à la première prédiction enregistrée.</p></div></section>
+<section class="page-head"><div><p class="eyebrow">ÉVALUATION TECHNIQUE</p><h1>Comparaison des méthodes de recherche</h1><p>Comparer plusieurs méthodes sur les mêmes cas. Les réponses de référence restent masquées jusqu’à leur révélation explicite.</p></div></section>
 
 {% if methods %}
 <section class="panel">
-  <div class="panel-head"><h2>Comparaison des méthodes</h2><span class="muted">vecteur de performance, aucun score global</span></div>
+  <div class="panel-head"><h2>Comparaison des méthodes</h2><span class="muted">mesures séparées, aucune note globale</span></div>
   <table>
-    <thead><tr><th>Méthode</th><th>n</th><th>Voies P/R/F1</th><th>Formes P/R/F1</th><th>Ressources P/R/F1</th><th>Temps humain médian</th><th>Temps écoulé médian</th><th>Preuves moyennes</th></tr></thead>
+    <thead><tr><th>Méthode</th><th>n</th><th>Voies — précision / rappel / équilibre</th><th>Formes — précision / rappel / équilibre</th><th>Ressources — précision / rappel / équilibre</th><th>Temps humain médian</th><th>Temps écoulé médian</th><th>Preuves moyennes</th></tr></thead>
     <tbody>
     {% for m in methods %}
       <tr>
@@ -27,11 +27,11 @@
 
 {% for row in rows %}
 <section id="{{ row.case.code }}" class="panel">
-  <div class="panel-head"><h2>{{ row.case.code }} — {{ row.case.title }}</h2><span class="pill subtle">{{ row.case.label_quality }}</span></div>
+  <div class="panel-head"><h2>{{ row.case.code }} — {{ row.case.title }}</h2><span class="pill subtle">{% if row.case.label_quality == 'STRONG' %}référence solide{% elif row.case.label_quality == 'PROVISIONAL' %}référence provisoire{% else %}{{ row.case.label_quality }}{% endif %}</span></div>
   <p>{{ row.case.prompt }}</p>
 
-  <form method="post" action="/benchmark/{{ row.case.code }}/prediction" class="form-grid compact">
-    <label>Méthode<input required name="method" placeholder="web-manuel / llm-web / frontiere-v0.5"></label>
+  <form method="post" action="/evaluation/{{ row.case.code }}/reponse" class="form-grid compact">
+    <label>Méthode<input required name="method" placeholder="recherche-manuelle / assistant-generaliste / frontiere"></label>
     <label>Version<input name="method_version" value="1.0"></label>
     <label class="wide">Voies proposées<input name="routes" placeholder="code voie 1, code voie 2"></label>
     <label class="wide">Formes de ressource<input name="resource_forms" placeholder="type de ressource 1, type de ressource 2"></label>
@@ -51,7 +51,7 @@
     <p><strong>Voies attendues :</strong> {{ row.expected_routes|join(', ') }}<br><strong>Formes attendues :</strong> {{ row.expected_resource_forms|join(', ') }}</p>
     {% if row.case.outcome_summary %}<p><strong>Contexte connu :</strong> {{ row.case.outcome_summary }}</p>{% endif %}
     <table>
-      <thead><tr><th>Méthode</th><th>Voies P/R/F1</th><th>Formes P/R/F1</th><th>Ressources P/R/F1</th><th>Temps humain</th><th>Preuves</th></tr></thead>
+      <thead><tr><th>Méthode</th><th>Voies — précision / rappel / équilibre</th><th>Formes — précision / rappel / équilibre</th><th>Ressources — précision / rappel / équilibre</th><th>Temps humain</th><th>Preuves</th></tr></thead>
       <tbody>
       {% for item in row.predictions %}
       <tr>
@@ -68,10 +68,10 @@
   </details>
   {% elif row.predictions %}
   <div class="callout">Des prédictions sont enregistrées. Les références restent scellées pour permettre d'autres méthodes indépendantes.</div>
-  <form method="post" action="/benchmark/{{ row.case.code }}/reveal"><button class="button" type="submit">Révéler les références de ce cas</button></form>
+  <form method="post" action="/evaluation/{{ row.case.code }}/reveler"><button class="button" type="submit">Révéler les références de ce cas</button></form>
   {% endif %}
 </section>
 {% else %}
-<section class="panel"><div class="empty">Aucun cas de benchmark chargé. Exécuter le script d'initialisation.</div></section>
+<section class="panel"><div class="empty">Aucun cas d’évaluation chargé. Exécuter le script d'initialisation.</div></section>
 {% endfor %}
 {% endblock %}

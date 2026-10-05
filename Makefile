@@ -1,14 +1,14 @@
-.PHONY: run test seed reset
+.PHONY: lancer verifier initialiser reinitialiser
 
-run:
+lancer:
 	uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 
-test:
+verifier:
 	pytest
 
-seed:
-	python scripts/seed_demo.py
+initialiser:
+	python scripts/initialiser_demonstration.py
 
-reset:
+reinitialiser:
 	rm -f data/frontiere.db
-	python scripts/seed_demo.py
+	python scripts/initialiser_demonstration.py

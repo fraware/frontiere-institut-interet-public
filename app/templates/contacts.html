@@ -1,25 +1,25 @@
 {% extends "base.html" %}
 {% block title %}Interlocuteurs — FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC -{% endblock %}
 {% block content %}
-<section class="page-head"><div><p class="eyebrow">LANCEMENT OPÉRATIONNEL</p><h1>Registre des interlocuteurs</h1><p>Chaque échange doit produire au moins un actif : preuve, cas, expérience ou mise en relation.</p></div></section>
+<section class="page-head"><div><p class="eyebrow">LANCEMENT OPÉRATIONNEL</p><h1>Registre des interlocuteurs</h1><p>Chaque échange doit produire au moins un résultat concret : preuve, cas, expérience possible ou mise en relation.</p></div></section>
 
 <section class="panel">
   <div class="panel-head"><h2>Vague active</h2><span class="muted">priorité · hypothèse · demande unique · résultat minimal</span></div>
   {% if contacts %}
-  <table><thead><tr><th>Priorité</th><th>Cible</th><th>Hypothèse / demande</th><th>État</th><th>Actifs produits</th><th>Suite</th></tr></thead><tbody>
+  <table><thead><tr><th>Priorité</th><th>Cible</th><th>Hypothèse / demande</th><th>État</th><th>Résultats produits</th><th>Suite</th></tr></thead><tbody>
   {% for c in contacts %}
   <tr>
     <td><strong>{{ c.priority }}</strong><br><span class="muted">{{ c.code }}</span></td>
     <td><strong>{{ c.institution }}</strong><br>{{ c.function }}{% if c.person %}<br><span class="muted">{{ c.person }}</span>{% endif %}</td>
     <td><span class="muted">Hypothèse</span><br>{{ c.hypothesis_tested }}<br><span class="muted">Demande</span><br>{{ c.single_ask }}<br><span class="muted">Succès minimal</span><br>{{ c.minimal_success }}</td>
     <td><span class="pill">{{ c.status }}</span>{% if c.followup_due_at %}<br><span class="muted">Relance {{ c.followup_due_at }}</span>{% endif %}</td>
-    <td class="asset-cells"><span class="{{ 'asset yes' if c.produced_evidence else 'asset' }}">preuve</span><span class="{{ 'asset yes' if c.produced_case else 'asset' }}">cas</span><span class="{{ 'asset yes' if c.produced_experiment else 'asset' }}">exp.</span><span class="{{ 'asset yes' if c.produced_introduction else 'asset' }}">intro.</span></td>
+    <td class="asset-cells"><span class="{{ 'asset yes' if c.produced_evidence else 'asset' }}">preuve</span><span class="{{ 'asset yes' if c.produced_case else 'asset' }}">cas</span><span class="{{ 'asset yes' if c.produced_experiment else 'asset' }}">expérience</span><span class="{{ 'asset yes' if c.produced_introduction else 'asset' }}">mise en relation</span></td>
     <td>
       <form method="post" action="/contacts/{{ c.code }}/update" class="contact-update">
         <select name="status"><option {% if c.status=='PLANIFIE' %}selected{% endif %}>PLANIFIE</option><option {% if c.status=='CONTACTE' %}selected{% endif %}>CONTACTE</option><option {% if c.status=='REPONDU' %}selected{% endif %}>REPONDU</option><option {% if c.status=='ENTRETIEN_PLANIFIE' %}selected{% endif %}>ENTRETIEN_PLANIFIE</option><option {% if c.status=='ENTRETIEN_REALISE' %}selected{% endif %}>ENTRETIEN_REALISE</option><option {% if c.status=='SUIVI' %}selected{% endif %}>SUIVI</option><option {% if c.status=='CLOS' %}selected{% endif %}>CLOS</option><option {% if c.status=='ABANDONNE' %}selected{% endif %}>ABANDONNE</option></select>
         <div class="contact-assets"><label><input type="checkbox" name="produced_evidence" value="yes" {% if c.produced_evidence %}checked{% endif %}> preuve</label><label><input type="checkbox" name="produced_case" value="yes" {% if c.produced_case %}checked{% endif %}> cas</label><label><input type="checkbox" name="produced_experiment" value="yes" {% if c.produced_experiment %}checked{% endif %}> expérience</label><label><input type="checkbox" name="produced_introduction" value="yes" {% if c.produced_introduction %}checked{% endif %}> introduction</label></div>
         <input type="date" name="followup_due_at" value="{{ c.followup_due_at or '' }}">
-        <textarea name="outcome_summary" rows="2" placeholder="Résultat / actif produit">{{ c.outcome_summary or '' }}</textarea>
+        <textarea name="outcome_summary" rows="2" placeholder="Résultat concret produit">{{ c.outcome_summary or '' }}</textarea>
         <textarea name="notes" rows="2" placeholder="Notes">{{ c.notes or '' }}</textarea>
         <button class="button" type="submit">Mettre à jour</button>
       </form>

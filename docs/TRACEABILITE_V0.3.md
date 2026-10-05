@@ -1,46 +1,30 @@
-# Traçabilité — FRONTIÈRE v0.3
+# Traçabilité — version 0.3
 
-## Objet
+## Objectif
 
-La v0.3 formalise une règle méthodologique centrale : toute conclusion doit pouvoir être reconstruite à partir de l'état d'information disponible au moment où elle a été prise.
+Une décision doit pouvoir être relue plus tard en retrouvant les informations qui existaient au moment où elle a été prise.
 
-Deux mécanismes sont séparés.
+Deux mécanismes permettent cette reconstruction.
 
-### 1. Versionnement du besoin
+## Historique du besoin
 
-Le besoin actif possède un numéro de version. La version initiale est verrouillée avant investigation. Une information nouvelle ne modifie jamais silencieusement cette version.
+La première description du besoin est conservée. Si une nouvelle information change substantiellement le problème, une nouvelle version est créée.
 
-Une révision :
-- rend la version précédente historique ;
-- crée une nouvelle version active ;
-- conserve situation, résultat recherché, responsable, échéance, contrefactuel et hypothèse ;
-- est immédiatement verrouillée ;
-- enregistre explicitement la raison de révision.
+La version précédente n'est pas écrasée. La raison du changement est enregistrée.
 
-La version précédente reste consultable.
+## Journal des événements importants
 
-### 2. Journal appendu des événements
+L'application conserve les événements qui modifient l'état d'un cas : création, modification du besoin, ajout d'une preuve, recherche, évolution d'une ressource, comparaison d'une voie, décision, obstacle, résultat et connaissance réutilisable.
 
-Les opérations critiques créent un événement de traçabilité : création d'épisode, verrouillage, révision, preuve ajoutée, recherche publique, état d'une ressource, évaluation d'une voie, décision, friction, résultat et connaissance réutilisable.
+Chaque événement conserve au minimum sa date, son type, l'objet concerné et le contexte nécessaire à sa compréhension.
 
-Chaque événement contient :
-- type d'événement ;
-- type et identifiant de l'objet concerné ;
-- épisode, le cas échéant ;
-- horodatage ;
-- acteur ;
-- contexte structuré.
+## Règles
 
-Lorsqu'une opération dépend d'une version du besoin, son identifiant est inscrit dans le contexte de l'événement.
+1. Les décisions importantes sont reliées à la version du besoin qui existait à ce moment.
+2. Une nouvelle version ne supprime jamais une version antérieure.
+3. Le journal n'est pas réécrit depuis l'interface.
+4. Le suivi du temps humain reste distinct du journal des événements.
 
-## Invariants
+## Limite
 
-1. Une recherche publique, une ressource, une voie, une décision, une friction, un résultat ou une connaissance opérationnelle exigent un besoin actif verrouillé.
-2. Une révision n'efface aucune version antérieure.
-3. Les événements du journal ne sont pas modifiés par l'interface.
-4. Les opérations importantes doivent être interprétables avec la version du besoin qui existait alors.
-5. Le journal sert à l'audit méthodologique ; le suivi du temps humain reste un objet distinct.
-
-## Limites
-
-Le journal v0.3 n'est pas un mécanisme de sécurité ni une preuve cryptographique d'intégrité. Il ne remplace ni authentification, ni journal d'accès, ni stockage immuable pour un déploiement sensible.
+Ce journal sert à reconstruire l'histoire d'une décision. Il ne remplace pas les mécanismes de sécurité, les contrôles d'accès ou un stockage conçu pour des données sensibles.
