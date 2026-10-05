@@ -1,0 +1,193 @@
+{
+  "version": "1",
+  "date_audit": "2026-10-05",
+  "objet": "Vérification source par source des seize cas classés solides dans le corpus public.",
+  "regles": [
+    "Le statut confirmé signifie que la source officielle soutient directement le fait principal enregistré.",
+    "Une formulation interprétative est signalée séparément du fait source.",
+    "Les emplacements renvoient à une page, une section ou un passage identifiable dans le document officiel.",
+    "Un titre est corrigé s'il ajoute une propriété que la source ne démontre pas."
+  ],
+  "cas": [
+    {
+      "id_signal": "S001",
+      "statut": "confirme",
+      "emplacement_source": "Sénat, rapport n°807 (2024-2025), section « Quand la dispersion des ressources en matière informatique fragilise le fonctionnement d'une agence : l'exemple de France compétences ».",
+      "elements_confirmes": [
+        "Perte de la maîtrise interne du langage R après le décès du directeur informatique et l'indisponibilité de son collaborateur.",
+        "Recrutement de nouveaux agents engagé.",
+        "Profils décrits comme très spécifiques et rares.",
+        "Situation indiquée comme perdurant depuis octobre 2024.",
+        "Rémunération de France Compétences décrite comme peu compétitive sur un marché tendu."
+      ],
+      "correction_necessaire": false
+    },
+    {
+      "id_signal": "S009",
+      "statut": "confirme",
+      "emplacement_source": "Assemblée nationale, rapport d'information n°2068, pages 49-50.",
+      "elements_confirmes": [
+        "Les ingénieurs civils contractuels représentent 75 % des agents de la DGA exerçant des fonctions cyber dans le passage considéré.",
+        "Le rapport relie cette prépondérance à leur disponibilité immédiate par rapport au recrutement par concours."
+      ],
+      "correction_necessaire": false
+    },
+    {
+      "id_signal": "S010",
+      "statut": "confirme",
+      "emplacement_source": "Assemblée nationale, rapport d'information n°2068, page 50.",
+      "elements_confirmes": [
+        "Les concours d'ingénieurs fonctionnaires sont décrits comme rencontrant depuis plusieurs années un succès mitigé.",
+        "Le rapport indique environ 50 % de postes pourvus."
+      ],
+      "correction_necessaire": false
+    },
+    {
+      "id_signal": "S011",
+      "statut": "confirme",
+      "emplacement_source": "Assemblée nationale, rapport d'information n°2068, page 50.",
+      "elements_confirmes": [
+        "L'organisation des concours peut conduire à une affectation pratiquement un an après l'expression du besoin des employeurs.",
+        "Le rapport juge ce délai peu réactif pour les sujets cyber."
+      ],
+      "correction_necessaire": false
+    },
+    {
+      "id_signal": "S012",
+      "statut": "confirme",
+      "emplacement_source": "Assemblée nationale, rapport d'information n°2068, page 49.",
+      "elements_confirmes": [
+        "Le rapport indique que 70 % des démissions enregistrées dans le domaine cyber à la DGA sont alors attribuées uniquement à des questions salariales."
+      ],
+      "correction_necessaire": false
+    },
+    {
+      "id_signal": "S013",
+      "statut": "confirme",
+      "emplacement_source": "Assemblée nationale, rapport d'information n°2068, page 49.",
+      "elements_confirmes": [
+        "Des formations importantes sont dispensées à l'embauche dans le domaine cyber.",
+        "Le rapport indique environ deux ans pour atteindre une efficacité opérationnelle."
+      ],
+      "correction_necessaire": false
+    },
+    {
+      "id_signal": "S016",
+      "statut": "confirme",
+      "emplacement_source": "Sénat, délégation à la prospective, audition du 12 novembre 2024, intervention de Sébastien Soriano.",
+      "elements_confirmes": [
+        "Plan de recrutement et de formation sur trois ans visant 150 personnes.",
+        "156 personnes déjà recrutées et formées avant l'échéance au moment de l'audition.",
+        "Objectif de 30 spécialistes de science des données indiqué comme atteint.",
+        "Usage d'une grille de rémunération plus flexible pour les contractuels."
+      ],
+      "correction_necessaire": false
+    },
+    {
+      "id_signal": "S017",
+      "statut": "confirme",
+      "emplacement_source": "Sénat, délégation à la prospective, audition du 12 novembre 2024, intervention de Sébastien Soriano.",
+      "elements_confirmes": [
+        "Environ dix ingénieurs fonctionnaires accueillis auparavant chaque année.",
+        "Vingt-deux prévus pour septembre 2025.",
+        "Engagement de huit ans dans la fonction publique indiqué pour cette promotion."
+      ],
+      "correction_necessaire": false
+    },
+    {
+      "id_signal": "S018",
+      "statut": "confirme",
+      "emplacement_source": "Sénat, rapport sur l'intelligence artificielle et les politiques publiques environnementales, page 41.",
+      "elements_confirmes": [
+        "Création en 2020 d'une équipe de quatre personnes à Météo-France.",
+        "Équipe décrite comme centre de ressource pour les directions ayant besoin d'expertise en intelligence artificielle.",
+        "Rôle de conduite de projets, de prospective et de développement interne de techniques d'intelligence artificielle."
+      ],
+      "correction_necessaire": false
+    },
+    {
+      "id_signal": "S024",
+      "statut": "confirme",
+      "emplacement_source": "IGEDD, « Révision de la comitologie du parc éolien en mer de Saint-Brieuc », publié le 16 mars 2026.",
+      "elements_confirmes": [
+        "Le conseil scientifique a rencontré des difficultés de fonctionnement.",
+        "Des opérateurs de l'État ont été mobilisés par le préfet pour obtenir des avis scientifiques.",
+        "Les dysfonctionnements ont été compensés par une implication plus forte des services déconcentrés et de certains opérateurs.",
+        "Le rapport indique qu'une expertise scientifique réelle fait alors défaut pour le suivi environnemental et la gestion."
+      ],
+      "correction_necessaire": false
+    },
+    {
+      "id_signal": "S027",
+      "statut": "confirme_avec_correction_de_titre",
+      "emplacement_source": "CGAAER, lettre n°204, avril 2026, mission interministérielle de conseil n°25101.",
+      "elements_confirmes": [
+        "Mission conjointe du CGAAER et de l'IGEDD.",
+        "Objet : évaluer le risque de diffusion de PFAS via les matières fertilisantes.",
+        "Question explicite de la nécessité d'introduire un cadre de gestion adapté."
+      ],
+      "correction_necessaire": true,
+      "correction": "Retirer le mot « rapide » du titre : la source établit la mission et son objet, sans démontrer un délai d'exécution particulièrement court."
+    },
+    {
+      "id_signal": "S039",
+      "statut": "confirme",
+      "emplacement_source": "IGEDD, rapport n°015427-01, juin 2025, notamment page 10 et section 1 « Comprendre la crise pour en sortir durablement ».",
+      "elements_confirmes": [
+        "Approvisionnement essentiellement fondé sur des eaux superficielles sensibles aux variations de pluviométrie.",
+        "Infrastructures de production et de distribution décrites comme sous-dimensionnées.",
+        "Orientation vers des ressources moins tributaires de la pluviométrie, dont eaux souterraines et dessalement."
+      ],
+      "correction_necessaire": false
+    },
+    {
+      "id_signal": "S040",
+      "statut": "confirme",
+      "emplacement_source": "Sénat, projet de loi de finances pour 2026, mission Écologie, section consacrée à Météo-France.",
+      "elements_confirmes": [
+        "Programme d'investissement prévoyant l'installation d'un radar météorologique à Mayotte.",
+        "Mayotte est présentée comme le seul département français alors dépourvu de radar météorologique."
+      ],
+      "correction_necessaire": false
+    },
+    {
+      "id_signal": "S042",
+      "statut": "confirme",
+      "emplacement_source": "Sénat, séance du 4 décembre 2023, page 37 du compte rendu intégral.",
+      "elements_confirmes": [
+        "Difficultés d'attractivité signalées pour l'ASN et l'IRSN.",
+        "Relance du nucléaire reliée à une pénurie de compétences et à un recrutement plus difficile d'ingénieurs spécialisés.",
+        "Quatre-vingt-onze postes indiqués comme vacants à l'IRSN en 2023."
+      ],
+      "correction_necessaire": false
+    },
+    {
+      "id_signal": "S049",
+      "statut": "confirme",
+      "emplacement_source": "Sénat, commission de l'aménagement du territoire et du développement durable, séance de la semaine du 6 juillet 2026, réponse de Virginie Schwarz.",
+      "elements_confirmes": [
+        "Effectifs supplémentaires attribués en 2024.",
+        "Constitution d'une équipe dédiée aux projections climatiques à fine échelle pour les territoires ultramarins.",
+        "Indicateurs territorialisés rendus publics fin 2025."
+      ],
+      "correction_necessaire": false
+    },
+    {
+      "id_signal": "S050",
+      "statut": "confirme",
+      "emplacement_source": "Sénat, projet de loi de finances pour 2026, section « Le coût total du renouvellement des supercalculateurs de Météo-France est estimé à 415 millions d'euros ».",
+      "elements_confirmes": [
+        "Coût total estimé à 415 millions d'euros.",
+        "Projet étalé sur 2025-2033.",
+        "Objectif de multiplication par six de la puissance de calcul à l'horizon 2027 après mise en service."
+      ],
+      "correction_necessaire": false
+    }
+  ],
+  "synthese": {
+    "nombre_cas_audites": 16,
+    "nombre_confirmes_sans_correction": 15,
+    "nombre_confirmes_avec_correction": 1,
+    "nombre_rejetes": 0
+  }
+}
