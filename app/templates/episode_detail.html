@@ -66,6 +66,41 @@
   {% endif %}
 </section>
 
+<section id="capability-query" class="panel">
+  <div class="panel-head"><h2>Requête de capacité</h2><span class="muted">Mission → capacité structurée</span></div>
+  {% if capability_query %}
+  <dl class="facts">
+    <dt>Version</dt><dd>v{{ capability_query.version }} · {{ capability_query.compiler }}</dd>
+    <dt>Demande brute</dt><dd>{{ capability_query.raw_request }}</dd>
+    <dt>Domaine</dt><dd>{{ capability_query.domain }}</dd>
+    <dt>Fonction</dt><dd>{{ capability_query.function }}</dd>
+    <dt>Profondeur</dt><dd>{{ capability_query.depth }}</dd>
+    <dt>Contexte</dt><dd>{{ capability_query.operational_context or '—' }}</dd>
+    <dt>Contraintes</dt><dd>{{ capability_query.constraints or '—' }}</dd>
+    <dt>Formes de ressource</dt><dd><code>{{ capability_query.resource_forms_json }}</code></dd>
+    <dt>Impératifs</dt><dd><code>{{ capability_query.must_have_json }}</code></dd>
+    <dt>Souhaitables</dt><dd><code>{{ capability_query.nice_to_have_json }}</code></dd>
+    <dt>Échéance utile</dt><dd>{{ capability_query.latest_useful_date or '—' }}</dd>
+  </dl>
+  {% else %}<div class="empty">Aucune requête de capacité compilée.</div>{% endif %}
+  {% if need_locked %}
+  <form method="post" action="/episodes/{{ episode.code }}/capability-query" class="form-grid compact">
+    <label class="wide">Demande brute<textarea required name="raw_request" rows="3">{{ need.current_situation }} — {{ need.desired_outcome }}</textarea></label>
+    <label>Domaine<input required name="domain" placeholder="ex. biodiversité"></label>
+    <label>Fonction<input required name="function" placeholder="ex. synthèse scientifique"></label>
+    <label>Profondeur<select name="depth"><option>intermediaire</option><option>avancee</option><option>expert</option></select></label>
+    <label>Échéance utile<input type="date" name="latest_useful_date" value="{{ need.latest_useful_date or '' }}"></label>
+    <label class="wide">Contexte opérationnel<textarea name="operational_context" rows="2"></textarea></label>
+    <label class="wide">Contraintes<textarea name="constraints" rows="2" placeholder="sécurité, localisation, langue, durée, accès..."></textarea></label>
+    <label class="wide">Formes de ressource acceptables<input name="resource_forms" placeholder="PERSONNE, EQUIPE, LABORATOIRE"></label>
+    <label class="wide">Impératifs<input name="must_have" placeholder="compétence A, expérience B"></label>
+    <label class="wide">Souhaitables<input name="nice_to_have" placeholder="connaissance contexte C"></label>
+    <input type="hidden" name="compiler" value="human">
+    <button class="button primary" type="submit">{% if capability_query %}Créer une nouvelle version{% else %}Compiler la requête{% endif %}</button>
+  </form>
+  {% else %}<div class="callout warning">Verrouiller le besoin avant de compiler la requête de capacité.</div>{% endif %}
+</section>
+
 <section id="preuves" class="panel">
   <div class="panel-head"><h2>Preuves</h2><span class="muted">A–E · provenance explicite</span></div>
   {% if episode.evidence_items %}
