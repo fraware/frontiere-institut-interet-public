@@ -615,6 +615,54 @@ def add_knowledge(
     return RedirectResponse(url=f"/episodes/{code}#connaissance", status_code=303)
 
 
+@app.post("/episodes/{code}/reuse")
+def add_reuse(
+    code: str,
+    knowledge_id: int = Form(...),
+    decision_changed: str = Form("no"),
+    estimated_minutes_saved: int | None = Form(None),
+    accessible_to_new_analyst: str = Form("yes"),
+    effect_description: str = Form(""),
+    db: Session = Depends(get_db),
+):
+    ep = db.scalar(select(Episode).where(Episode.code == code))
+    if ep is None:
+        raise HTTPException(404, "Épisode introuvable")
+    locked_need = _require_locked_need(db, ep)
+    knowledge = db.scalar(select(KnowledgeItem).where(KnowledgeItem.id == knowledge_id, KnowledgeItem.status == "ACTIVE"))
+    if knowledge is None:
+        raise HTTPException(404, "Connaissance introuvable")
+    if knowledge.source_episode_id == ep.id:
+        raise HTTPException(409, "Une connaissance ne peut pas être comptée comme réutilisée dans son épisode source.")
+    reuse = ReuseEvent(
+        knowledge_id=knowledge.id,
+        destination_episode_id=ep.id,
+        decision_changed=decision_changed == "yes",
+        estimated_minutes_saved=max(0, estimated_minutes_saved) if estimated_minutes_saved is not None else None,
+        accessible_to_new_analyst=accessible_to_new_analyst == "yes",
+        effect_description=effect_description.strip() or None,
+    )
+    db.add(reuse)
+    db.flush()
+    _audit(
+        db,
+        event_type="CONNAISSANCE_REUTILISEE",
+        entity_type="REUSE_EVENT",
+        entity_id=reuse.id,
+        episode_id=ep.id,
+        payload={
+            "need_version_id": locked_need.id,
+            "knowledge_id": knowledge.id,
+            "source_episode_id": knowledge.source_episode_id,
+            "decision_changed": reuse.decision_changed,
+            "estimated_minutes_saved": reuse.estimated_minutes_saved,
+            "accessible_to_new_analyst": reuse.accessible_to_new_analyst,
+        },
+    )
+    db.commit()
+    return RedirectResponse(url=f"/episodes/{code}#reutilisation", status_code=303)
+
+
 @app.post("/episodes/{code}/need/lock")
 def lock_need(code: str, db: Session = Depends(get_db)):
     ep = db.scalar(select(Episode).where(Episode.code == code))
