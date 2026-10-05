@@ -1,59 +1,65 @@
-# Modèle de données canonique v0.2
+# Modèle de données — version 0.2
 
-## Chaîne
+## Vue d'ensemble
 
-`Épisode → Besoin → Exigence de capacité → Source → Ressource → Correspondance → Recherche → Décision → Frictions → Résultat → Connaissance → Réutilisation`
+L'application relie les objets suivants :
 
-## Entités principales
+`Cas → Besoin → Capacité nécessaire → Source → Ressource → Recherche → Voie de résolution → Décision → Délais et obstacles → Résultat → Connaissance → Réutilisation`
 
-### Organisation
-Identité institutionnelle minimale. Les unités fines restent dans l'épisode au démarrage.
+## Cas
 
-### Épisode
-Identité stable du cas. Contient code, organisation, statut opératoire, D0–D4, sensibilité, caractère historique/actuel/récurrent, préexistence à Frontière et marqueur synthétique.
+Le cas représente une situation réelle et délimitée dans le temps. Il conserve l'organisation concernée, le besoin, son état d'avancement, sa sensibilité et son caractère réel ou de démonstration.
 
-### Version du besoin
-La formulation du besoin est versionnée. Une modification substantielle produit une nouvelle version et conserve l'ancienne.
+## Version du besoin
 
-### Capacité / exigence de capacité
-La capacité est une classe réutilisable. L'exigence associe une capacité à un besoin avec profondeur, contexte, contraintes et méthode de vérification.
+Le besoin peut évoluer à mesure que de nouvelles informations apparaissent. Chaque changement important crée une nouvelle version ; l'ancienne reste consultable.
 
-### Preuve
-Document, donnée ou témoignage avec source, date, niveau A–E, sensibilité et environnement de données.
+## Capacité nécessaire
 
-### Ressource
-Personne, équipe, laboratoire, organisme, prestataire, communauté, outil, donnée, document, modèle, service, procédure ou autre.
+La capacité décrit ce qu'il faut savoir faire pour résoudre le problème. Elle comprend le domaine, la fonction attendue, le niveau de profondeur, le contexte et les contraintes.
 
-### Recherche / découverte
-Une exécution de recherche conserve méthode, type, dates, temps analyste et résultat. Une ressource découverte par plusieurs méthodes garde une seule identité et plusieurs découvertes.
+## Preuve
 
-### Voie évaluée
-Une option de résolution conserve statut initial, statut courant, preuves favorables et défavorables, blocage et prochaine action.
+Une preuve est un document, une donnée ou un témoignage. Elle conserve sa source, sa date, sa qualité, son niveau de sensibilité et l'environnement dans lequel elle peut être utilisée.
 
-### Décision
-Conserve option choisie, options examinées, justification, éléments contradictoires, incertitudes, confiance, auteur et date.
+## Ressource
 
-### Friction
-Événement temporel avec catégorie, sous-catégorie, début/fin, responsable, dépendance, caractère bloquant/évitable et raison.
+Une ressource peut être une personne, une équipe, un laboratoire, un organisme, un prestataire, un réseau, un outil, une donnée, un document, un modèle, un service, une procédure ou une infrastructure.
 
-### Résultat
-Issue, intervention réelle, voie réelle, première contribution utile, coûts, temps et additionalité par dimensions.
+## Recherche
 
-### Connaissance / réutilisation
-Une connaissance issue d'un épisode est enregistrée indépendamment de l'analyste qui l'a créée et reliée aux épisodes ultérieurs qui l'utilisent.
+Une recherche conserve la méthode utilisée, les dates, le temps consacré et les ressources trouvées. Une même ressource trouvée par plusieurs méthodes reste une seule ressource, reliée à plusieurs recherches.
 
-### Hypothèse de plateforme
-Quinze hypothèses pré-enregistrées, avec critères de renforcement et d'affaiblissement et statut humainement revu.
+## Voie de résolution
 
-## Invariants
+Une voie décrit une manière concrète de résoudre le besoin : utiliser une capacité publique existante, organiser une expertise ponctuelle, créer une coopération scientifique, recruter, acheter une prestation, former une équipe ou utiliser un autre mécanisme adapté.
 
-1. Un épisode possède au plus une version active du besoin.
-2. D0–D4 restent distincts de l'état opératoire de l'épisode.
-3. Une recherche insuffisante produit P0.
-4. Une capacité publique pertinente trouvée mais non mobilisable produit P2, pas P3.
-5. R5 est spécifique à un besoin et une période.
-6. Une connaissance synthétique n'alimente pas les métriques réelles.
-7. Les éléments contradictoires font partie du dossier de décision.
-8. Une disponibilité périmée doit être revalidée.
-9. Les processus parallèles de friction ne sont pas additionnés comme délai total.
-10. Une solution existante suffisante constitue un résultat valide.
+Chaque voie conserve les éléments favorables, les éléments défavorables, les inconnues, les conditions bloquantes et la prochaine action.
+
+## Décision
+
+La décision conserve l'option retenue, les autres options examinées, la justification, les éléments contradictoires, les incertitudes, l'auteur et la date.
+
+## Délais et obstacles
+
+Chaque délai important est enregistré séparément avec son début, sa fin, son responsable, ses dépendances et son caractère bloquant ou non.
+
+## Résultat
+
+Le résultat décrit ce qui s'est réellement passé : solution utilisée, première contribution utile, coût, temps consacré et valeur ajoutée observée.
+
+## Connaissance réutilisable
+
+Une connaissance peut être une source utile, une capacité, une ressource, une voie, un délai typique, une règle ou un précédent. Elle est reliée aux cas futurs qui l'utilisent réellement.
+
+## Règles essentielles
+
+1. Un cas ne possède qu'une seule version active du besoin.
+2. Une recherche incomplète ne permet pas de conclure qu'aucune capacité publique n'existe.
+3. Une capacité publique trouvée mais difficile à mobiliser n'est pas assimilée à une absence de capacité.
+4. Une ressource n'est considérée mobilisable que pour un besoin précis et une période précise.
+5. Une disponibilité ancienne doit être confirmée avant usage.
+6. Les cas de démonstration ne sont jamais comptés comme observations réelles.
+7. Les preuves contradictoires restent dans le dossier.
+8. Les délais parallèles ne sont pas additionnés comme s'ils étaient successifs.
+9. Une solution existante suffisante constitue un résultat valable.
