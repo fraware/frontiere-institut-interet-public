@@ -108,7 +108,7 @@
   <div class="panel-head"><h2>Ressources identifiées</h2><span class="muted">R0 → R5</span></div>
   {% set ns = namespace(found=false) %}
   {% for s in episode.searches %}{% for d in s.discoveries %}{% set ns.found=true %}
-    <div class="resource-row"><div><strong>{{ d.resource.display_name }}</strong><span>{{ d.resource.resource_type }}</span></div><div><span class="pill">{{ d.state }}</span> <span class="muted">{{ s.search_type }} · {{ d.source_channel }}</span></div></div>
+    <div class="resource-row"><div><strong>{{ d.resource.display_name }}</strong><span>{{ d.resource.resource_type }}</span></div><div><span class="pill">{{ d.state }}</span> <span class="muted">{{ s.search_type }} · {{ d.source_channel }}{% if d.available_as_of %} · disponibilité confirmée {{ d.available_as_of }}{% endif %}</span>{% if d.state_reason %}<br><span class="muted">{{ d.state_reason }}</span>{% endif %}</div></div>
   {% endfor %}{% endfor %}
   {% if not ns.found %}<div class="empty">Aucune ressource enregistrée.</div>{% endif %}
   <form method="post" action="/episodes/{{ episode.code }}/resource" class="inline-form">
@@ -117,7 +117,10 @@
     <label>État<select name="state"><option>R0</option><option>R1</option><option>R2</option><option>R3</option><option>R4</option><option>R5</option></select></label>
     <label>Canal / source<input name="source_channel"></label>
     <label class="wide">Nom de la ressource<input required name="display_name"></label>
-    <button class="button" type="submit">Ajouter la ressource</button>
+    <label class="wide">Justification de l'état<input name="state_reason" placeholder="Obligatoire de R2 à R5"></label>
+    <label>Intérêt explicite pour cette mission<select name="mission_specific_interest"><option value="unknown">Inconnu</option><option value="yes">Oui</option><option value="no">Non</option></select></label>
+    <label>Disponibilité confirmée le<input type="date" name="available_as_of"></label>
+    <button class="button" type="submit">Enregistrer l'état</button>
   </form>
 </section>
 
@@ -173,14 +176,21 @@
 
 <section id="resultat" class="panel">
   <h2>Résultat</h2>
-  {% if episode.results %}{% for r in episode.results %}<article class="decision"><div><strong>{{ r.result_status }}</strong><span>{{ r.dominant_friction or 'friction non précisée' }}</span></div><p>{{ r.outcome_description }}</p><p class="muted">Intervention : {{ r.actual_intervention or '—' }} · Voie : {{ r.actual_route or '—' }} · Frontière : {{ r.frontiere_minutes }} min · Institution : {{ r.institution_minutes }} min</p></article>{% endfor %}{% endif %}
+  {% if episode.results %}{% for r in episode.results %}<article class="decision"><div><strong>{{ r.result_status }}</strong><span>{{ r.dominant_friction or 'friction non précisée' }}</span></div><p>{{ r.outcome_description }}</p><p class="muted">Intervention : {{ r.actual_intervention or '—' }} · Voie : {{ r.actual_route or '—' }} · Première valeur : {{ r.first_useful_contribution_at or '—' }} · Coût direct : {{ r.direct_cost_eur if r.direct_cost_eur is not none else '—' }} € · Frontière : {{ r.frontiere_minutes }} min · Institution : {{ r.institution_minutes }} min</p><p class="muted">Additionalité — issue {{ r.additionality_outcome }} · délai {{ r.additionality_time }} · qualité {{ r.additionality_quality }} · coût {{ r.additionality_cost }} · apprentissage {{ r.additionality_learning }}</p></article>{% endfor %}{% endif %}
   <form method="post" action="/episodes/{{ episode.code }}/result" class="form-grid compact">
     <label>Issue<select name="result_status"><option>RESOLU</option><option>PARTIELLEMENT_RESOLU</option><option>REORIENTE</option><option>NON_RESOLU</option><option>BESOIN_DISPARU</option></select></label>
     <label>Friction dominante<input name="dominant_friction"></label>
     <label>Intervention réelle<input name="actual_intervention"></label>
     <label>Voie réelle<input name="actual_route"></label>
+    <label>Première contribution utile<input type="datetime-local" name="first_useful_contribution_at"></label>
+    <label>Coût direct (€)<input type="number" min="0" step="0.01" name="direct_cost_eur"></label>
     <label>Temps Frontière (min)<input type="number" min="0" name="frontiere_minutes" value="0"></label>
     <label>Temps institution (min)<input type="number" min="0" name="institution_minutes" value="0"></label>
+    <label>Additionalité — issue<select name="additionality_outcome"><option>INDETERMINE</option><option>FORTE</option><option>MODEREE</option><option>FAIBLE</option><option>NULLE</option></select></label>
+    <label>Additionalité — délai<select name="additionality_time"><option>INDETERMINE</option><option>FORTE</option><option>MODEREE</option><option>FAIBLE</option><option>NULLE</option></select></label>
+    <label>Additionalité — qualité<select name="additionality_quality"><option>INDETERMINE</option><option>FORTE</option><option>MODEREE</option><option>FAIBLE</option><option>NULLE</option></select></label>
+    <label>Additionalité — coût<select name="additionality_cost"><option>INDETERMINE</option><option>FORTE</option><option>MODEREE</option><option>FAIBLE</option><option>NULLE</option></select></label>
+    <label>Additionalité — apprentissage<select name="additionality_learning"><option>INDETERMINE</option><option>FORTE</option><option>MODEREE</option><option>FAIBLE</option><option>NULLE</option></select></label>
     <label class="wide">Résultat observable<textarea required name="outcome_description" rows="3"></textarea></label>
     <button class="button primary" type="submit">Enregistrer le résultat</button>
   </form>
@@ -197,6 +207,27 @@
     <label class="wide">Portée / conditions d'application<textarea name="scope" rows="2"></textarea></label>
     <button class="button" type="submit">Créer la connaissance</button>
   </form>
+</section>
+
+<section id="reutilisation" class="panel">
+  <div class="panel-head"><h2>Réutilisation inter-cas</h2><span class="muted">valeur cumulative observée</span></div>
+  {% if reuse_events %}
+  <table><thead><tr><th>Connaissance</th><th>Décision changée</th><th>Temps économisé</th><th>Nouveau analyste</th><th>Effet</th></tr></thead><tbody>
+  {% for r in reuse_events %}
+    <tr><td>{{ r.knowledge.title }}</td><td>{{ 'Oui' if r.decision_changed else 'Non' }}</td><td>{{ r.estimated_minutes_saved if r.estimated_minutes_saved is not none else '—' }} min</td><td>{{ 'Oui' if r.accessible_to_new_analyst else 'Non' }}</td><td>{{ r.effect_description or '—' }}</td></tr>
+  {% endfor %}
+  </tbody></table>
+  {% else %}<div class="empty">Aucune réutilisation enregistrée pour cet épisode.</div>{% endif %}
+  {% if reusable_knowledge %}
+  <form method="post" action="/episodes/{{ episode.code }}/reuse" class="form-grid compact">
+    <label class="wide">Connaissance réutilisée<select name="knowledge_id">{% for k in reusable_knowledge %}<option value="{{ k.id }}">{{ k.knowledge_type }} · {{ k.title }}</option>{% endfor %}</select></label>
+    <label>Décision changée<select name="decision_changed"><option value="no">Non</option><option value="yes">Oui</option></select></label>
+    <label>Temps économisé (min)<input type="number" min="0" name="estimated_minutes_saved"></label>
+    <label>Accessible à un nouvel analyste<select name="accessible_to_new_analyst"><option value="yes">Oui</option><option value="no">Non</option></select></label>
+    <label class="wide">Effet observé<textarea name="effect_description" rows="2"></textarea></label>
+    <button class="button" type="submit">Enregistrer la réutilisation</button>
+  </form>
+  {% endif %}
 </section>
 
 <section id="trace" class="panel">
