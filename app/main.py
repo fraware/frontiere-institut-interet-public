@@ -24,6 +24,7 @@ from .models import (
     FrictionEvent,
     Hypothesis,
     KnowledgeItem,
+    ReuseEvent,
     NeedVersion,
     Organization,
     Resource,
@@ -31,7 +32,7 @@ from .models import (
     SearchRun,
     StakeholderContact,
 )
-from .services import classify_public_search, dashboard_metrics, hypothesis_summary
+from .services import classify_public_search, dashboard_metrics, empirical_metrics, hypothesis_summary
 
 BASE_DIR = Path(__file__).resolve().parent
 @asynccontextmanager
@@ -40,13 +41,15 @@ async def lifespan(_: FastAPI):
     yield
 
 
-app = FastAPI(title=settings.app_name, version="0.3.0", lifespan=lifespan)
+app = FastAPI(title=settings.app_name, version="0.4.0", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
 MAX_UNAUTHENTICATED_SENSITIVITY = 2
 EVIDENCE_QUALITIES = {"A", "B", "C", "D", "E"}
 DATA_ENVIRONMENTS = {"RECHERCHE", "RESEAU", "CANDIDATURE", "INTEGRITE"}
+RESOURCE_STATES = ["R0", "R1", "R2", "R3", "R4", "R5"]
+ADDITIONALITY_LEVELS = {"FORTE", "MODEREE", "FAIBLE", "NULLE", "INDETERMINE"}
 
 
 def _active_need(ep: Episode) -> NeedVersion | None:
@@ -89,7 +92,7 @@ def _audit(
 
 @app.get("/health")
 def health() -> dict:
-    return {"status": "ok", "service": "frontiere-institut-interet-public", "version": "0.3.0"}
+    return {"status": "ok", "service": "frontiere-institut-interet-public", "version": "0.4.0"}
 
 
 @app.get("/api/v1/metrics")
@@ -128,6 +131,16 @@ def dashboard(request: Request, db: Session = Depends(get_db)):
         request=request,
         name="dashboard.html",
         context={"episodes": episodes, "metrics": metrics, "hypotheses": hypotheses[:5]},
+    )
+
+
+@app.get("/empirique", response_class=HTMLResponse)
+def empirical_dashboard(request: Request, db: Session = Depends(get_db)):
+    metrics = empirical_metrics(db)
+    return templates.TemplateResponse(
+        request=request,
+        name="empirical.html",
+        context={"metrics": metrics},
     )
 
 
@@ -223,10 +236,28 @@ def episode_detail(code: str, request: Request, db: Session = Depends(get_db)):
     if ep is None:
         raise HTTPException(404, "Épisode introuvable")
     active_need = _active_need(ep)
+    reusable_knowledge = list(db.scalars(
+        select(KnowledgeItem)
+        .where(KnowledgeItem.status == "ACTIVE", KnowledgeItem.source_episode_id != ep.id)
+        .order_by(KnowledgeItem.created_at.desc())
+        .limit(100)
+    ).all())
+    reuse_events = list(db.scalars(
+        select(ReuseEvent)
+        .options(selectinload(ReuseEvent.knowledge))
+        .where(ReuseEvent.destination_episode_id == ep.id)
+        .order_by(ReuseEvent.reused_at.desc())
+    ).all())
     return templates.TemplateResponse(
         request=request,
         name="episode_detail.html",
-        context={"episode": ep, "need": active_need, "need_locked": bool(active_need and active_need.locked_at)},
+        context={
+            "episode": ep,
+            "need": active_need,
+            "need_locked": bool(active_need and active_need.locked_at),
+            "reusable_knowledge": reusable_knowledge,
+            "reuse_events": reuse_events,
+        },
     )
 
 
