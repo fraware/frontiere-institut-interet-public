@@ -44,7 +44,7 @@ async def lifespan(_: FastAPI):
     yield
 
 
-app = FastAPI(title=settings.app_name, version="0.5.0", lifespan=lifespan)
+app = FastAPI(title=settings.app_name, version="0.5.1", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
@@ -95,7 +95,7 @@ def _audit(
 
 @app.get("/health")
 def health() -> dict:
-    return {"status": "ok", "service": "frontiere-institut-interet-public", "version": "0.5.0"}
+    return {"status": "ok", "service": "frontiere-institut-interet-public", "version": "0.5.1"}
 
 
 @app.get("/api/v1/metrics")
@@ -1075,10 +1075,21 @@ def add_benchmark_prediction(
     def items(text: str) -> list[str]:
         return [part.strip() for part in text.replace("\n", ",").split(",") if part.strip()]
 
+    method_clean = method.strip()
+    version_clean = method_version.strip() or "1.0"
+    existing = db.scalar(
+        select(BenchmarkPrediction).where(
+            BenchmarkPrediction.case_id == case.id,
+            BenchmarkPrediction.method == method_clean,
+            BenchmarkPrediction.method_version == version_clean,
+        )
+    )
+    if existing is not None:
+        raise HTTPException(409, "Une prédiction existe déjà pour cette méthode et cette version sur ce cas.")
     prediction = BenchmarkPrediction(
         case_id=case.id,
-        method=method.strip(),
-        method_version=method_version.strip() or "1.0",
+        method=method_clean,
+        method_version=version_clean,
         routes_json=json.dumps(items(routes), ensure_ascii=False),
         resource_forms_json=json.dumps(items(resource_forms), ensure_ascii=False),
         resources_json=json.dumps(items(resources), ensure_ascii=False),
@@ -1091,6 +1102,36 @@ def add_benchmark_prediction(
     db.add(prediction)
     db.commit()
     return RedirectResponse(url=f"/benchmark#{case.code}", status_code=303)
+
+
+@app.post("/benchmark/{case_code}/reveal")
+def reveal_benchmark_case(case_code: str, db: Session = Depends(get_db)):
+    case = db.scalar(select(BenchmarkCase).where(BenchmarkCase.code == case_code, BenchmarkCase.active.is_(True)))
+    if case is None:
+        raise HTTPException(404, "Cas de benchmark introuvable")
+    predictions = db.scalar(select(func.count(BenchmarkPrediction.id)).where(BenchmarkPrediction.case_id == case.id)) or 0
+    if predictions < 1:
+        raise HTTPException(409, "Au moins une prédiction est requise avant révélation.")
+    case.revealed = True
+    db.commit()
+    return RedirectResponse(url=f"/benchmark#{case.code}", status_code=303)
+
+
+@app.get("/api/v1/benchmark/blind")
+def api_benchmark_blind(db: Session = Depends(get_db)) -> dict:
+    cases = list(db.scalars(select(BenchmarkCase).where(BenchmarkCase.active.is_(True)).order_by(BenchmarkCase.code)).all())
+    return {
+        "cases": [
+            {
+                "code": case.code,
+                "title": case.title,
+                "prompt": case.prompt,
+                "label_quality": case.label_quality,
+                "revealed": case.revealed,
+            }
+            for case in cases
+        ]
+    }
 
 
 @app.get("/api/v1/benchmark")
