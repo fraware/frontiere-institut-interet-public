@@ -41,6 +41,8 @@ Les documents principaux sont :
 - `docs/EVALUATION_TECHNIQUE_V0.5.md` — la comparaison des méthodes de recherche ;
 - `docs/REPERES_DE_LECTURE.md` — les termes utilisés dans le projet, expliqués en langage courant.
 - `docs/PRINCIPES_REDACTION.md` — les règles de rédaction en français clair.
+- `docs/PLAN_SOURCES_PUBLIQUES.md` — le programme de constitution du corpus public.
+- `donnees/README.md` — les règles du corpus de signaux publics.
 
 ## Évaluation technique
 
