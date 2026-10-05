@@ -45,16 +45,16 @@ Avant la première prédiction d'un cas, l'interface affiche uniquement le titre
 
 ## Corpus initial
 
-Le jeu actuel contient quinze cas ou signaux publics. Les cinq premiers proviennent du corpus initial :
+Le jeu actuel contient vingt cas ou signaux publics. Les cinq premiers proviennent du corpus initial :
 - France Compétences — recrutement de data scientists ;
 - ministère de l'Agriculture — expertise scientifique et technique ;
 - transition écologique — articulation recherche / besoins opérationnels ;
 - biodiversité — synthèse scientifique ponctuelle ;
 - compétences de l'État en matière de donnée.
 
-Dix cas supplémentaires couvrent cyberdéfense, recrutement d'ingénieurs cyber, réserve opérationnelle, conseil scientifique, montée en capacité IA, requalification interne, ingénieurs du génie sanitaire, contraintes de recrutement liées au cadre administratif et coordination multi-opérateurs.
+Quinze cas supplémentaires couvrent cyberdéfense, recrutement d'ingénieurs cyber, réserve opérationnelle, conseil scientifique, montée en capacité IA, requalification interne, ingénieurs du génie sanitaire, contraintes de recrutement liées au cadre administratif, coordination multi-opérateurs, sûreté nucléaire et contrôles négatifs.
 
-Ce corpus atteint désormais 15 cas et doit encore être renforcé jusqu'à environ 20–25 cas, avec davantage de cas complets et moins de signaux contextuels.
+Ce corpus atteint désormais 20 cas et doit encore être renforcé jusqu'à environ 20–25 cas, avec davantage de cas complets et moins de signaux contextuels.
 
 ## Scellement multi-méthodes
 
