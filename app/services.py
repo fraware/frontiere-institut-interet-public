@@ -166,6 +166,24 @@ def _recall(expected: list[str], predicted: list[str]) -> float | None:
     return len(gold & pred) / len(gold)
 
 
+def _precision(expected: list[str], predicted: list[str]) -> float | None:
+    gold = _normalized_set(expected)
+    pred = _normalized_set(predicted)
+    if not gold:
+        return None
+    if not pred:
+        return 0.0
+    return len(gold & pred) / len(pred)
+
+
+def _f1(precision: float | None, recall: float | None) -> float | None:
+    if precision is None or recall is None:
+        return None
+    if precision + recall == 0:
+        return 0.0
+    return 2 * precision * recall / (precision + recall)
+
+
 def benchmark_prediction_metrics(case: BenchmarkCase, prediction: BenchmarkPrediction) -> dict:
     expected_routes = _json_list(case.expected_routes_json)
     expected_forms = _json_list(case.expected_resource_forms_json)
@@ -174,10 +192,22 @@ def benchmark_prediction_metrics(case: BenchmarkCase, prediction: BenchmarkPredi
     predicted_forms = _json_list(prediction.resource_forms_json)
     predicted_resources = _json_list(prediction.resources_json)
     evidence_urls = _json_list(prediction.evidence_urls_json)
+    route_recall = _recall(expected_routes, predicted_routes)
+    route_precision = _precision(expected_routes, predicted_routes)
+    form_recall = _recall(expected_forms, predicted_forms)
+    form_precision = _precision(expected_forms, predicted_forms)
+    resource_recall = _recall(expected_resources, predicted_resources)
+    resource_precision = _precision(expected_resources, predicted_resources)
     return {
-        "route_recall": _recall(expected_routes, predicted_routes),
-        "resource_form_recall": _recall(expected_forms, predicted_forms),
-        "resource_recall": _recall(expected_resources, predicted_resources),
+        "route_recall": route_recall,
+        "route_precision": route_precision,
+        "route_f1": _f1(route_precision, route_recall),
+        "resource_form_recall": form_recall,
+        "resource_form_precision": form_precision,
+        "resource_form_f1": _f1(form_precision, form_recall),
+        "resource_recall": resource_recall,
+        "resource_precision": resource_precision,
+        "resource_f1": _f1(resource_precision, resource_recall),
         "evidence_count": len(evidence_urls),
         "analyst_minutes": prediction.analyst_minutes,
         "verification_minutes": prediction.verification_minutes,
@@ -207,16 +237,28 @@ def benchmark_summary(db: Session) -> dict:
     for method, rows in sorted(by_method.items()):
         vectors = [benchmark_prediction_metrics(case, prediction) for case, prediction in rows]
         route = [v["route_recall"] for v in vectors if v["route_recall"] is not None]
+        route_p = [v["route_precision"] for v in vectors if v["route_precision"] is not None]
+        route_f1 = [v["route_f1"] for v in vectors if v["route_f1"] is not None]
         forms = [v["resource_form_recall"] for v in vectors if v["resource_form_recall"] is not None]
+        forms_p = [v["resource_form_precision"] for v in vectors if v["resource_form_precision"] is not None]
+        forms_f1 = [v["resource_form_f1"] for v in vectors if v["resource_form_f1"] is not None]
         resources = [v["resource_recall"] for v in vectors if v["resource_recall"] is not None]
+        resources_p = [v["resource_precision"] for v in vectors if v["resource_precision"] is not None]
+        resources_f1 = [v["resource_f1"] for v in vectors if v["resource_f1"] is not None]
         human = [v["human_minutes"] for v in vectors]
         elapsed = [v["elapsed_seconds"] for v in vectors if v["elapsed_seconds"] is not None]
         methods.append({
             "method": method,
             "n": len(rows),
             "route_recall_mean": (sum(route) / len(route)) if route else None,
+            "route_precision_mean": (sum(route_p) / len(route_p)) if route_p else None,
+            "route_f1_mean": (sum(route_f1) / len(route_f1)) if route_f1 else None,
             "resource_form_recall_mean": (sum(forms) / len(forms)) if forms else None,
+            "resource_form_precision_mean": (sum(forms_p) / len(forms_p)) if forms_p else None,
+            "resource_form_f1_mean": (sum(forms_f1) / len(forms_f1)) if forms_f1 else None,
             "resource_recall_mean": (sum(resources) / len(resources)) if resources else None,
+            "resource_precision_mean": (sum(resources_p) / len(resources_p)) if resources_p else None,
+            "resource_f1_mean": (sum(resources_f1) / len(resources_f1)) if resources_f1 else None,
             "human_minutes_median": statistics.median(human) if human else None,
             "elapsed_seconds_median": statistics.median(elapsed) if elapsed else None,
             "evidence_count_mean": (sum(v["evidence_count"] for v in vectors) / len(vectors)) if vectors else 0,
