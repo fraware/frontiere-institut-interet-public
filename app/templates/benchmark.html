@@ -33,8 +33,8 @@
   <form method="post" action="/benchmark/{{ row.case.code }}/prediction" class="form-grid compact">
     <label>Méthode<input required name="method" placeholder="web-manuel / llm-web / frontiere-v0.5"></label>
     <label>Version<input name="method_version" value="1.0"></label>
-    <label class="wide">Voies proposées<input name="routes" placeholder="ROUTAGE, RECHERCHE_PUBLIQUE"></label>
-    <label class="wide">Formes de ressource<input name="resource_forms" placeholder="PERSONNE, EQUIPE, LABORATOIRE"></label>
+    <label class="wide">Voies proposées<input name="routes" placeholder="code voie 1, code voie 2"></label>
+    <label class="wide">Formes de ressource<input name="resource_forms" placeholder="type de ressource 1, type de ressource 2"></label>
     <label class="wide">Ressources nommées<input name="resources" placeholder="séparées par virgules"></label>
     <label class="wide">Preuves / URL<input name="evidence_urls" placeholder="URL 1, URL 2"></label>
     <label>Temps écoulé (s)<input type="number" min="0" step="0.1" name="elapsed_seconds"></label>
