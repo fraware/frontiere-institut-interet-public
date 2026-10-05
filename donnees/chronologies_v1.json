@@ -1,0 +1,245 @@
+{
+  "version": "1",
+  "date_creation": "2026-10-05",
+  "regle": "Chaque date conserve son degré de précision. Une date partielle n'est jamais convertie en date exacte.",
+  "chronologies": [
+    {
+      "id_signal": "S001",
+      "titre": "France Compétences — perte puis recherche d'une capacité en analyse de données",
+      "evenements": [
+        {
+          "date": "2024-10",
+          "precision": "mois",
+          "evenement": "La situation de perte de capacité interne est signalée comme perdurant à partir de cette période."
+        },
+        {
+          "date": "2025-03",
+          "precision": "mois",
+          "evenement": "Lors de l'audition sénatoriale, le recrutement de profils spécialisés reste difficile."
+        },
+        {
+          "date": "2025",
+          "precision": "annee",
+          "evenement": "Le rapport de la commission d'enquête reprend la difficulté et l'associe à la rareté des profils et à une rémunération peu compétitive."
+        }
+      ],
+      "inconnues": [
+        "date exacte de la perte de capacité",
+        "date de la première offre publiée",
+        "nombre de candidatures",
+        "date éventuelle de résolution"
+      ],
+      "lecture_provisoire": "La difficulté persiste plusieurs mois après le début du besoin."
+    },
+    {
+      "id_signal": "S011",
+      "titre": "DGA — délai entre expression du besoin et affectation après concours",
+      "evenements": [
+        {
+          "date": "2023",
+          "precision": "annee",
+          "evenement": "Le rapport décrit un besoin de recrutement rapide sur les métiers de cybersécurité."
+        },
+        {
+          "date": "2023",
+          "precision": "annee",
+          "evenement": "Les concours d'ingénieurs fonctionnaires ne pourvoient qu'environ la moitié des postes."
+        },
+        {
+          "date": "2023",
+          "precision": "annee",
+          "evenement": "Le rapport indique que l'affectation peut intervenir pratiquement un an après l'expression du besoin."
+        },
+        {
+          "date": "2023",
+          "precision": "annee",
+          "evenement": "Les ingénieurs civils contractuels constituent la majorité des effectifs concernés et sont décrits comme immédiatement disponibles."
+        }
+      ],
+      "inconnues": [
+        "dates exactes des concours",
+        "distribution réelle des délais",
+        "écart de coût entre voies",
+        "résultats par type de recrutement"
+      ],
+      "lecture_provisoire": "Une partie importante du délai semble provenir du mécanisme de recrutement lui-même."
+    },
+    {
+      "id_signal": "S016",
+      "titre": "IGN — montée en capacité en intelligence artificielle et données",
+      "evenements": [
+        {
+          "date": "2021",
+          "precision": "annee",
+          "evenement": "L'IGN lance un programme de recrutement et de formation visant 150 nouveaux postes sur des compétences émergentes."
+        },
+        {
+          "date": "2024-11",
+          "precision": "mois",
+          "evenement": "L'IGN indique avoir déjà recruté et formé 156 personnes et atteint l'objectif de 30 spécialistes de science des données."
+        },
+        {
+          "date": "2025-09",
+          "precision": "mois",
+          "evenement": "L'établissement prévoit d'accueillir 22 ingénieurs fonctionnaires formés par son école, contre environ dix auparavant."
+        }
+      ],
+      "inconnues": [
+        "coût total du programme",
+        "durée moyenne des recrutements",
+        "taux de maintien",
+        "part respective du recrutement et de la formation"
+      ],
+      "lecture_provisoire": "Contre-exemple fort : plusieurs leviers combinés permettent une montée en capacité relativement rapide."
+    },
+    {
+      "id_signal": "S018",
+      "titre": "Météo-France — constitution d'une capacité interne en intelligence artificielle",
+      "evenements": [
+        {
+          "date": "2020",
+          "precision": "annee",
+          "evenement": "Création d'une équipe interne de quatre personnes dédiée à l'intelligence artificielle."
+        },
+        {
+          "date": "2025-02",
+          "precision": "mois",
+          "evenement": "Un rapport sénatorial décrit cette équipe comme centre de ressource pour les directions de l'établissement."
+        }
+      ],
+      "inconnues": [
+        "nombre de demandes traitées",
+        "temps de réponse",
+        "effets sur les projets",
+        "évolution des effectifs depuis 2020"
+      ],
+      "lecture_provisoire": "La capacité est organisée comme une équipe mutualisée plutôt que comme une succession de recrutements ponctuels."
+    },
+    {
+      "id_signal": "S024",
+      "titre": "Parc éolien de Saint-Brieuc — difficulté du conseil scientifique et substitution partielle",
+      "evenements": [
+        {
+          "date": "2024",
+          "precision": "annee",
+          "evenement": "Mise en service du parc éolien en mer de Saint-Brieuc."
+        },
+        {
+          "date": "2024-2026",
+          "precision": "intervalle",
+          "evenement": "Le conseil scientifique rencontre des difficultés de fonctionnement ; des opérateurs de l'État sont mobilisés pour fournir des avis scientifiques."
+        },
+        {
+          "date": "2026-03",
+          "precision": "mois",
+          "evenement": "Publication du rapport recommandant de revoir le rôle, la composition et le fonctionnement des instances scientifiques."
+        }
+      ],
+      "inconnues": [
+        "date exacte du premier dysfonctionnement",
+        "opérateurs mobilisés",
+        "temps de production des avis",
+        "effet sur les décisions"
+      ],
+      "lecture_provisoire": "La capacité scientifique existe dans le secteur public, mais l'interface de mobilisation et de gouvernance semble défaillante."
+    },
+    {
+      "id_signal": "S038",
+      "titre": "Mayotte — sortie de crise de l'eau et renforcement des capacités locales",
+      "evenements": [
+        {
+          "date": "2022-11",
+          "precision": "mois",
+          "evenement": "Début de la phase aiguë de la crise de l'eau décrite par l'IGEDD."
+        },
+        {
+          "date": "2023-11",
+          "precision": "mois",
+          "evenement": "Début de la direction de projet dédiée à la sortie de crise."
+        },
+        {
+          "date": "2024-02",
+          "precision": "mois",
+          "evenement": "Fin de la période aiguë de crise identifiée dans le rapport."
+        },
+        {
+          "date": "2024-12",
+          "precision": "mois",
+          "evenement": "Fin de la mission de direction de projet."
+        },
+        {
+          "date": "2025-06",
+          "precision": "mois",
+          "evenement": "Publication du rapport détaillant le Plan Eau Mayotte et le besoin de structurer une ingénierie locale pérenne."
+        }
+      ],
+      "inconnues": [
+        "effectifs de l'ingénierie locale avant et après",
+        "temps de recrutement ou de mobilisation",
+        "répartition entre expertise extérieure et capacité locale"
+      ],
+      "lecture_provisoire": "Le cas combine infrastructure insuffisante et capacité humaine locale à renforcer."
+    },
+    {
+      "id_signal": "S042",
+      "titre": "IRSN puis ASNR — tensions de recrutement et réorganisation",
+      "evenements": [
+        {
+          "date": "2023",
+          "precision": "annee",
+          "evenement": "Le Sénat signale 91 postes vacants à l'IRSN dans un contexte de forte concurrence pour les ingénieurs spécialisés."
+        },
+        {
+          "date": "2024-02",
+          "precision": "mois",
+          "evenement": "Le débat parlementaire sur la réforme met explicitement en avant le regroupement de compétences rares et l'amélioration de l'attractivité."
+        },
+        {
+          "date": "2025-01",
+          "precision": "mois",
+          "evenement": "Création de l'Autorité de sûreté nucléaire et de radioprotection issue du rapprochement de l'ASN et de l'IRSN."
+        },
+        {
+          "date": "2025-05",
+          "precision": "mois",
+          "evenement": "La nouvelle autorité présente un modèle combinant compétences techniques internes et recours externe pour certaines compétences rares."
+        }
+      ],
+      "inconnues": [
+        "évolution du nombre de postes vacants",
+        "délais de recrutement",
+        "effet de la diversité des statuts",
+        "évolution de la fidélisation"
+      ],
+      "lecture_provisoire": "La réorganisation vise explicitement une meilleure conservation et mobilisation de compétences rares ; son effet réel reste à mesurer."
+    },
+    {
+      "id_signal": "S049",
+      "titre": "Météo-France — création d'une équipe climatique dédiée à l'outre-mer",
+      "evenements": [
+        {
+          "date": "2024",
+          "precision": "annee",
+          "evenement": "Des effectifs supplémentaires sont accordés pour constituer une équipe dédiée aux projections climatiques à fine échelle pour les territoires ultramarins."
+        },
+        {
+          "date": "2025",
+          "precision": "annee",
+          "evenement": "Les indicateurs territorialisés produits par cette capacité sont rendus publics."
+        },
+        {
+          "date": "2026-07",
+          "precision": "mois",
+          "evenement": "Le Sénat revient sur cette capacité et sur les projets d'observation météorologique à Mayotte."
+        }
+      ],
+      "inconnues": [
+        "taille exacte de l'équipe",
+        "temps entre création de l'équipe et première production utile",
+        "coût",
+        "réutilisation des méthodes entre territoires"
+      ],
+      "lecture_provisoire": "Exemple de création d'une capacité collective ciblée avec production observable l'année suivante."
+    }
+  ]
+}
