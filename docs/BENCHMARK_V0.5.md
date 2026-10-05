@@ -45,14 +45,20 @@ Avant la première prédiction d'un cas, l'interface affiche uniquement le titre
 
 ## Corpus initial
 
-Le jeu initial contient cinq signaux publics déjà recensés dans le projet :
+Le jeu actuel contient quinze cas ou signaux publics. Les cinq premiers proviennent du corpus initial :
 - France Compétences — recrutement de data scientists ;
 - ministère de l'Agriculture — expertise scientifique et technique ;
 - transition écologique — articulation recherche / besoins opérationnels ;
 - biodiversité — synthèse scientifique ponctuelle ;
 - compétences de l'État en matière de donnée.
 
-Ce corpus sert à démarrer l'itération technique. Il doit être étendu vers 15 à 25 cas historiques suffisamment documentés.
+Dix cas supplémentaires couvrent cyberdéfense, recrutement d'ingénieurs cyber, réserve opérationnelle, conseil scientifique, montée en capacité IA, requalification interne, ingénieurs du génie sanitaire, contraintes de recrutement liées au cadre administratif et coordination multi-opérateurs.
+
+Ce corpus atteint désormais 15 cas et doit encore être renforcé jusqu'à environ 20–25 cas, avec davantage de cas complets et moins de signaux contextuels.
+
+## Scellement multi-méthodes
+
+Une première prédiction ne révèle plus automatiquement la référence. Les étiquettes restent scellées tant qu'un opérateur n'active pas explicitement la révélation du cas. Cela permet d'enregistrer plusieurs méthodes indépendantes sur un même cas. Une même paire `méthode + version` ne peut être soumise deux fois sur un cas.
 
 ## Critère stratégique
 
