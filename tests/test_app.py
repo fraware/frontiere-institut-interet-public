@@ -17,7 +17,7 @@ def test_health():
         r = client.get("/health")
         assert r.status_code == 200
         assert r.json()["status"] == "ok"
-        assert r.json()["version"] == "0.5.2"
+        assert r.json()["version"] == "0.5.3"
 
 
 def test_create_episode_and_public_search():
@@ -565,3 +565,18 @@ def test_benchmark_precision_penalizes_overprediction():
         assert method["resource_form_recall_mean"] == 1.0
         assert method["resource_form_precision_mean"] == 0.5
         assert round(method["resource_form_f1_mean"], 6) == round(2/3, 6)
+
+
+def test_holdout_prediction_template_covers_all_cases():
+    import json
+    from pathlib import Path
+
+    payload = json.loads(Path("benchmark/predictions_template.json").read_text(encoding="utf-8"))
+    codes = [row["code"] for row in payload["cases"]]
+    assert payload["schema_version"] == "holdout-predictions-v1"
+    assert codes == [f"H{i:02d}" for i in range(1, 11)]
+    assert len(set(codes)) == 10
+
+    manifest = json.loads(Path("benchmark/holdout_v1_manifest.json").read_text(encoding="utf-8"))
+    assert manifest["case_count"] == 10
+    assert len(manifest["labels_sha256"]) == 64
