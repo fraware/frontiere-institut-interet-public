@@ -351,9 +351,12 @@ def add_resource(
     display_name: str = Form(...),
     source_channel: str = Form(""),
     state: str = Form("R0"),
+    state_reason: str = Form(""),
+    mission_specific_interest: str = Form("unknown"),
+    available_as_of: str = Form(""),
     db: Session = Depends(get_db),
 ):
-    if state not in {"R0", "R1", "R2", "R3", "R4", "R5"}:
+    if state not in RESOURCE_STATES:
         raise HTTPException(400, "État de ressource invalide")
     ep = db.scalar(select(Episode).where(Episode.code == code))
     if ep is None:
@@ -362,7 +365,8 @@ def add_resource(
     resource = db.scalar(select(Resource).where(Resource.display_name == display_name.strip(), Resource.resource_type == resource_type))
     if resource is None:
         resource = Resource(resource_type=resource_type, display_name=display_name.strip())
-        db.add(resource); db.flush()
+        db.add(resource)
+        db.flush()
     run = db.scalar(
         select(SearchRun)
         .where(SearchRun.episode_id == ep.id, SearchRun.search_type == search_type)
@@ -371,21 +375,61 @@ def add_resource(
     )
     if run is None:
         run = SearchRun(episode_id=ep.id, search_type=search_type, method_name="saisie opérateur")
-        db.add(run); db.flush()
+        db.add(run)
+        db.flush()
+
     existing = db.scalar(select(Discovery).where(Discovery.search_run_id == run.id, Discovery.resource_id == resource.id))
+    reason = state_reason.strip() or None
+    interest = None if mission_specific_interest == "unknown" else mission_specific_interest == "yes"
+    availability_date = date.fromisoformat(available_as_of) if available_as_of else None
+
     if existing is None:
-        db.add(Discovery(search_run_id=run.id, resource_id=resource.id, source_channel=source_channel.strip() or "non précisé", state=state))
+        if state != "R0":
+            raise HTTPException(409, "Une nouvelle ressource entre en R0. Les progressions R1–R5 sont enregistrées séquentiellement.")
+        existing = Discovery(
+            search_run_id=run.id,
+            resource_id=resource.id,
+            source_channel=source_channel.strip() or "non précisé",
+            state="R0",
+            state_reason=reason,
+            mission_specific_interest=interest,
+            available_as_of=availability_date,
+        )
+        db.add(existing)
     else:
+        current_index = RESOURCE_STATES.index(existing.state)
+        new_index = RESOURCE_STATES.index(state)
+        if new_index > current_index + 1:
+            raise HTTPException(409, f"Transition {existing.state} → {state} interdite : avancer un état à la fois.")
+        if new_index >= 2 and not reason:
+            raise HTTPException(409, "R2–R5 exigent une justification vérifiable.")
+        if state == "R5" and (interest is not True or availability_date is None):
+            raise HTTPException(409, "R5 exige un intérêt explicite pour la mission et une date de disponibilité confirmée.")
         existing.state = state
+        existing.state_reason = reason or existing.state_reason
         existing.source_channel = source_channel.strip() or existing.source_channel
+        if interest is not None:
+            existing.mission_specific_interest = interest
+        if availability_date is not None:
+            existing.available_as_of = availability_date
+
     db.flush()
     _audit(
         db,
         event_type="RESSOURCE_ETAT_ENREGISTRE",
-        entity_type="RESOURCE",
-        entity_id=resource.id,
+        entity_type="DISCOVERY",
+        entity_id=existing.id,
         episode_id=ep.id,
-        payload={"need_version_id": locked_need.id, "search_type": search_type, "state": state, "source_channel": source_channel.strip() or "non précisé"},
+        payload={
+            "need_version_id": locked_need.id,
+            "resource_id": resource.id,
+            "search_type": search_type,
+            "state": existing.state,
+            "state_reason": existing.state_reason,
+            "mission_specific_interest": existing.mission_specific_interest,
+            "available_as_of": existing.available_as_of.isoformat() if existing.available_as_of else None,
+            "source_channel": existing.source_channel,
+        },
     )
     db.commit()
     return RedirectResponse(url=f"/episodes/{code}#ressources", status_code=303)
