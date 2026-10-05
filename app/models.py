@@ -125,6 +125,7 @@ class BenchmarkCase(Base):
     outcome_summary: Mapped[str | None] = mapped_column(Text, nullable=True)
     label_quality: Mapped[str] = mapped_column(String(30), default="PROVISIONAL")
     active: Mapped[bool] = mapped_column(Boolean, default=True, index=True)
+    revealed: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
     predictions: Mapped[list[BenchmarkPrediction]] = relationship(back_populates="case", cascade="all, delete-orphan")
@@ -132,6 +133,7 @@ class BenchmarkCase(Base):
 
 class BenchmarkPrediction(Base):
     __tablename__ = "benchmark_predictions"
+    __table_args__ = (UniqueConstraint("case_id", "method", "method_version", name="uq_benchmark_case_method_version"),)
 
     id: Mapped[int] = mapped_column(primary_key=True)
     case_id: Mapped[int] = mapped_column(ForeignKey("benchmark_cases.id"), index=True)

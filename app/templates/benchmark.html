@@ -44,7 +44,7 @@
     <button class="button primary" type="submit">Enregistrer la prédiction</button>
   </form>
 
-  {% if row.predictions %}
+  {% if row.predictions and row.case.revealed %}
   <details open>
     <summary>Résultats et étiquettes de référence</summary>
     <p class="muted">Source : {% if row.case.source_url %}<a href="{{ row.case.source_url }}">{{ row.case.source_url }}</a>{% else %}—{% endif %}</p>
@@ -66,6 +66,9 @@
       </tbody>
     </table>
   </details>
+  {% elif row.predictions %}
+  <div class="callout">Des prédictions sont enregistrées. Les références restent scellées pour permettre d'autres méthodes indépendantes.</div>
+  <form method="post" action="/benchmark/{{ row.case.code }}/reveal"><button class="button" type="submit">Révéler les références de ce cas</button></form>
   {% endif %}
 </section>
 {% else %}

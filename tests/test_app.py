@@ -17,7 +17,7 @@ def test_health():
         r = client.get("/health")
         assert r.status_code == 200
         assert r.json()["status"] == "ok"
-        assert r.json()["version"] == "0.5.0"
+        assert r.json()["version"] == "0.5.1"
 
 
 def test_create_episode_and_public_search():
@@ -474,6 +474,25 @@ def test_benchmark_is_blind_until_prediction_and_scores_vector():
             follow_redirects=False,
         )
         assert submitted.status_code == 303
+        sealed = client.get("/benchmark")
+        assert "https://example.org/hidden-source" not in sealed.text
+        assert "Des prédictions sont enregistrées" in sealed.text
+
+        duplicate = client.post(
+            "/benchmark/BTEST/prediction",
+            data={"method": "frontiere-v0.5", "method_version": "0.5"},
+            follow_redirects=False,
+        )
+        assert duplicate.status_code == 409
+
+        blind_api = client.get("/api/v1/benchmark/blind")
+        assert blind_api.status_code == 200
+        blind_case = blind_api.json()["cases"][0]
+        assert "source_url" not in blind_case
+        assert "expected_routes" not in blind_case
+
+        reveal = client.post("/benchmark/BTEST/reveal", follow_redirects=False)
+        assert reveal.status_code == 303
         after = client.get("/benchmark")
         assert "https://example.org/hidden-source" in after.text
         assert "100%" in after.text
@@ -490,3 +509,22 @@ def test_benchmark_is_blind_until_prediction_and_scores_vector():
         prediction = db.scalar(select(BenchmarkPrediction))
         assert prediction is not None
         assert prediction.method == "frontiere-v0.5"
+
+
+def test_benchmark_cannot_reveal_without_prediction():
+    reset_db()
+    with SessionLocal() as db:
+        db.add(BenchmarkCase(
+            code="BSEALED",
+            title="Cas scellé",
+            prompt="Trouver une voie.",
+            expected_routes_json='["ROUTAGE"]',
+            expected_resource_forms_json='["EQUIPE"]',
+            expected_resources_json='[]',
+        ))
+        db.commit()
+    with TestClient(app) as client:
+        reveal = client.post("/benchmark/BSEALED/reveal", follow_redirects=False)
+        assert reveal.status_code == 409
+        page = client.get("/benchmark")
+        assert "ROUTAGE" not in page.text
