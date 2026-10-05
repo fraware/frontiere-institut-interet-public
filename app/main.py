@@ -44,7 +44,7 @@ async def lifespan(_: FastAPI):
     yield
 
 
-app = FastAPI(title=settings.app_name, version="0.5.1", lifespan=lifespan)
+app = FastAPI(title=settings.app_name, version="0.5.2", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
@@ -95,7 +95,7 @@ def _audit(
 
 @app.get("/health")
 def health() -> dict:
-    return {"status": "ok", "service": "frontiere-institut-interet-public", "version": "0.5.1"}
+    return {"status": "ok", "service": "frontiere-institut-interet-public", "version": "0.5.2"}
 
 
 @app.get("/api/v1/metrics")
