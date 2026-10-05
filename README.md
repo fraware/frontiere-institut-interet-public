@@ -1,4 +1,4 @@
-# FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC - — prototype opératoire v0.5.1
+# FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC - — prototype opératoire v0.5.2
 
 Prototype interne pour l'étude de la mobilisation des capacités scientifiques et techniques au service de l'action publique.
 
@@ -12,7 +12,7 @@ La chaîne de travail est :
 
 Une solution publique existante, une prestation de marché, un recrutement permanent, un abandon justifié ou l'absence de nouvelle intervention constituent des résultats valides.
 
-## Ce que la version 0.5.1 réalise
+## Ce que la version 0.5.2 réalise
 
 - registre des épisodes avec D0–D4 et distinction entre cas réels et cas synthétiques ;
 - formulation du besoin, résultat attendu, responsable, échéance, contrefactuel et hypothèse initiale ;
@@ -99,3 +99,10 @@ python scripts/export_benchmark_blind.py --output benchmark_blind.json
 ```
 
 Le fichier exporté contient uniquement les identifiants, titres, demandes et qualité d'étiquette. Les sources, voies attendues et résultats connus restent scellés.
+
+
+## HOLDOUT v1
+
+Le dépôt contient dix requêtes aveugles sous `benchmark/holdout_v1_blind.json`. Les références restent hors du dépôt public. Le manifeste public contient uniquement l'engagement SHA-256 sur le fichier d'étiquettes.
+
+Le scorer hors ligne `scripts/score_holdout.py` calcule précision, rappel et F1 pour les voies et formes de ressource, ainsi que la charge humaine et le nombre de preuves.
