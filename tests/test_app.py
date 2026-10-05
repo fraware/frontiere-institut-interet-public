@@ -17,7 +17,7 @@ def test_health():
         r = client.get("/health")
         assert r.status_code == 200
         assert r.json()["status"] == "ok"
-        assert r.json()["version"] == "0.5.3"
+        assert r.json()["version"] == "0.5.4"
 
 
 def test_create_episode_and_public_search():
