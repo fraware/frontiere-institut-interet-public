@@ -7,14 +7,14 @@
 <section class="panel">
   <div class="panel-head"><h2>Comparaison des méthodes</h2><span class="muted">vecteur de performance, aucun score global</span></div>
   <table>
-    <thead><tr><th>Méthode</th><th>n</th><th>Rappel voies</th><th>Rappel formes</th><th>Rappel ressources</th><th>Temps humain médian</th><th>Temps écoulé médian</th><th>Preuves moyennes</th></tr></thead>
+    <thead><tr><th>Méthode</th><th>n</th><th>Voies P/R/F1</th><th>Formes P/R/F1</th><th>Ressources P/R/F1</th><th>Temps humain médian</th><th>Temps écoulé médian</th><th>Preuves moyennes</th></tr></thead>
     <tbody>
     {% for m in methods %}
       <tr>
         <td><strong>{{ m.method }}</strong></td><td>{{ m.n }}</td>
-        <td>{% if m.route_recall_mean is not none %}{{ (m.route_recall_mean*100)|round(0)|int }}%{% else %}—{% endif %}</td>
-        <td>{% if m.resource_form_recall_mean is not none %}{{ (m.resource_form_recall_mean*100)|round(0)|int }}%{% else %}—{% endif %}</td>
-        <td>{% if m.resource_recall_mean is not none %}{{ (m.resource_recall_mean*100)|round(0)|int }}%{% else %}—{% endif %}</td>
+        <td>{% if m.route_f1_mean is not none %}{{ (m.route_precision_mean*100)|round(0)|int }}/{{ (m.route_recall_mean*100)|round(0)|int }}/{{ (m.route_f1_mean*100)|round(0)|int }}%{% else %}—{% endif %}</td>
+        <td>{% if m.resource_form_f1_mean is not none %}{{ (m.resource_form_precision_mean*100)|round(0)|int }}/{{ (m.resource_form_recall_mean*100)|round(0)|int }}/{{ (m.resource_form_f1_mean*100)|round(0)|int }}%{% else %}—{% endif %}</td>
+        <td>{% if m.resource_f1_mean is not none %}{{ (m.resource_precision_mean*100)|round(0)|int }}/{{ (m.resource_recall_mean*100)|round(0)|int }}/{{ (m.resource_f1_mean*100)|round(0)|int }}%{% else %}—{% endif %}</td>
         <td>{{ m.human_minutes_median if m.human_minutes_median is not none else '—' }} min</td>
         <td>{{ m.elapsed_seconds_median if m.elapsed_seconds_median is not none else '—' }} s</td>
         <td>{{ m.evidence_count_mean|round(1) }}</td>
@@ -51,14 +51,14 @@
     <p><strong>Voies attendues :</strong> {{ row.expected_routes|join(', ') }}<br><strong>Formes attendues :</strong> {{ row.expected_resource_forms|join(', ') }}</p>
     {% if row.case.outcome_summary %}<p><strong>Contexte connu :</strong> {{ row.case.outcome_summary }}</p>{% endif %}
     <table>
-      <thead><tr><th>Méthode</th><th>Voies</th><th>Formes</th><th>Ressources</th><th>Temps humain</th><th>Preuves</th></tr></thead>
+      <thead><tr><th>Méthode</th><th>Voies P/R/F1</th><th>Formes P/R/F1</th><th>Ressources P/R/F1</th><th>Temps humain</th><th>Preuves</th></tr></thead>
       <tbody>
       {% for item in row.predictions %}
       <tr>
         <td>{{ item.prediction.method }}<br><span class="muted">{{ item.prediction.method_version }}</span></td>
-        <td>{% if item.metrics.route_recall is not none %}{{ (item.metrics.route_recall*100)|round(0)|int }}%{% else %}—{% endif %}</td>
-        <td>{% if item.metrics.resource_form_recall is not none %}{{ (item.metrics.resource_form_recall*100)|round(0)|int }}%{% else %}—{% endif %}</td>
-        <td>{% if item.metrics.resource_recall is not none %}{{ (item.metrics.resource_recall*100)|round(0)|int }}%{% else %}—{% endif %}</td>
+        <td>{% if item.metrics.route_f1 is not none %}{{ (item.metrics.route_precision*100)|round(0)|int }}/{{ (item.metrics.route_recall*100)|round(0)|int }}/{{ (item.metrics.route_f1*100)|round(0)|int }}%{% else %}—{% endif %}</td>
+        <td>{% if item.metrics.resource_form_f1 is not none %}{{ (item.metrics.resource_form_precision*100)|round(0)|int }}/{{ (item.metrics.resource_form_recall*100)|round(0)|int }}/{{ (item.metrics.resource_form_f1*100)|round(0)|int }}%{% else %}—{% endif %}</td>
+        <td>{% if item.metrics.resource_f1 is not none %}{{ (item.metrics.resource_precision*100)|round(0)|int }}/{{ (item.metrics.resource_recall*100)|round(0)|int }}/{{ (item.metrics.resource_f1*100)|round(0)|int }}%{% else %}—{% endif %}</td>
         <td>{{ item.metrics.human_minutes }} min</td>
         <td>{{ item.metrics.evidence_count }}</td>
       </tr>
