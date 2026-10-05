@@ -1,0 +1,56 @@
+{
+  "schema_version": "holdout-v1",
+  "created_at": "2026-10-05",
+  "cases": [
+    {
+      "code": "H01",
+      "title": "Cadre de gestion d'une contamination émergente",
+      "prompt": "Une administration doit décider rapidement si des matières fertilisantes contaminées par une famille de polluants persistants nécessitent un cadre de gestion spécifique. Les données disponibles sont incomplètes, le risque doit être interprété à l'interface sols-plantes-eaux, et la décision a des conséquences agricoles et environnementales. Proposer les voies de résolution et les formes de ressource à mobiliser."
+    },
+    {
+      "code": "H02",
+      "title": "Centre de référence à compléter par une expertise technico-économique",
+      "prompt": "Une direction publique dispose déjà d'un centre de référence scientifique en réseau qui répond bien à une partie de ses besoins, mais elle juge cruciale l'adjonction d'une expertise de faisabilité et d'impacts économiques pour certaines décisions. Proposer les voies de résolution et les formes de ressource les plus adaptées."
+    },
+    {
+      "code": "H03",
+      "title": "Augmenter durablement l'offre d'ingénieurs spécialisés",
+      "prompt": "Une politique publique fixe l'objectif d'augmenter fortement d'ici 2030 le nombre d'ingénieurs formés dans un domaine stratégique confronté à des transformations techniques rapides et à une concurrence accrue entre formations supérieures. Identifier les voies de résolution et les formes de ressource pertinentes."
+    },
+    {
+      "code": "H04",
+      "title": "Filière stratégique avec inadéquation entre formation et besoins",
+      "prompt": "Une filière technique stratégique constate que certains employeurs ne trouvent pas les salariés formés selon leurs attentes. L'offre de formation est peu lisible, certains cursus sont peu attractifs et les besoins portent aussi sur de nouveaux équipements et de nouvelles compétences. Identifier les voies de résolution et les formes de ressource à comparer."
+    },
+    {
+      "code": "H05",
+      "title": "Mobiliser des chercheurs pour des travaux administratifs",
+      "prompt": "Plusieurs administrations souhaitent mobiliser davantage de chercheurs et d'ingénieurs de recherche sur des questions stratégiques. Le dispositif doit préserver l'indépendance scientifique, clarifier la commande, traiter les conflits d'intérêts et permettre une contribution exploitable par l'administration. Identifier les voies de mobilisation et les formes de ressource adaptées."
+    },
+    {
+      "code": "H06",
+      "title": "Diversifier rapidement une ressource en eau insulaire",
+      "prompt": "Après plusieurs crises d'approvisionnement en eau, un service public insulaire doit accélérer la diversification de ses ressources. Il faut combiner connaissance hydrogéologique, prospection, réalisation de nombreux forages et capitalisation scientifique pour la stratégie future. Identifier les voies de résolution et les formes de ressource adaptées."
+    },
+    {
+      "code": "H07",
+      "title": "Besoin critique résolu par infrastructure scientifique",
+      "prompt": "Un opérateur public de prévision doit améliorer ses capacités de calcul et renforcer la couverture d'observation d'un territoire insulaire dépourvu d'un équipement critique. La valeur recherchée dépend moins du recrutement d'un expert isolé que de capacités matérielles et scientifiques durables. Identifier les voies de résolution et les formes de ressource pertinentes."
+    },
+    {
+      "code": "H08",
+      "title": "Monter en compétence sur le génie écologique",
+      "prompt": "L'État veut accélérer l'adoption de solutions d'ingénierie écologique. Les obstacles portent sur la capacité des acheteurs publics à formuler les marchés, la montée en compétence des prestataires, la visibilité des métiers et le partage de connaissances entre pairs. Identifier les voies de résolution et les formes de ressource adaptées."
+    },
+    {
+      "code": "H09",
+      "title": "Préparer une réponse vaccinale à des maladies animales émergentes",
+      "prompt": "Une administration doit améliorer sa préparation à l'introduction de maladies animales émergentes. Le besoin porte sur la stratégie vaccinale, l'accès à des pathogènes et données internationales, des plateformes technologiques, des installations expérimentales adaptées et des équipes de recherche partenariales. Identifier les voies de résolution et les formes de ressource pertinentes."
+    },
+    {
+      "code": "H10",
+      "title": "Appui géoscientifique en situation de crise",
+      "prompt": "Un territoire subit une crise sismo-volcanique inhabituelle. Les autorités ont besoin d'informations fiables et fréquentes pour gérer la crise, expliquer le phénomène à la population et suivre son évolution, alors que les compétences et instruments pertinents sont dispersés entre plusieurs organismes scientifiques. Identifier les voies de résolution et les formes de ressource à mobiliser."
+    }
+  ]
+}
