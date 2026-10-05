@@ -132,7 +132,7 @@ def dashboard(request: Request, db: Session = Depends(get_db)):
     hypotheses = hypothesis_summary(db)
     return templates.TemplateResponse(
         request=request,
-        name="dashboard.html",
+        name="tableau_bord.html",
         context={"episodes": episodes, "metrics": metrics, "hypotheses": hypotheses[:5]},
     )
 
@@ -142,14 +142,14 @@ def empirical_dashboard(request: Request, db: Session = Depends(get_db)):
     metrics = empirical_metrics(db)
     return templates.TemplateResponse(
         request=request,
-        name="empirical.html",
+        name="donnees_terrain.html",
         context={"metrics": metrics},
     )
 
 
 @app.get("/episodes/new", response_class=HTMLResponse)
 def new_episode(request: Request):
-    return templates.TemplateResponse(request=request, name="episode_new.html", context={})
+    return templates.TemplateResponse(request=request, name="nouveau_cas.html", context={})
 
 
 @app.post("/episodes")
@@ -259,7 +259,7 @@ def episode_detail(code: str, request: Request, db: Session = Depends(get_db)):
     ).all())
     return templates.TemplateResponse(
         request=request,
-        name="episode_detail.html",
+        name="detail_cas.html",
         context={
             "episode": ep,
             "need": active_need,
