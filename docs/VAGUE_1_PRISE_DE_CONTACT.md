@@ -4,7 +4,7 @@ Vérification des canaux publics : 3 octobre 2026.
 
 ## Règle d'exécution
 
-Chaque échange doit produire au moins un actif parmi : preuve, cas, expérience ou mise en relation.
+Chaque échange doit produire au moins un résultat concret parmi : preuve, cas, expérience possible ou mise en relation.
 
 Dès qu'un interlocuteur fournit un besoin actuel avec responsable identifié suffisamment concret, l'effort se déplace vers le responsable opérationnel du cas. L'objectif n'est pas d'accumuler des conversations générales.
 
@@ -63,7 +63,7 @@ Bonjour,
 
 Je conduis actuellement une étude sur la mobilisation des compétences scientifiques et techniques au service de l'action publique.
 
-Je cherche des projets réels où une capacité technique précisément identifiable a effectivement ralenti, réduit ou réorienté un projet public. L'objectif n'est pas de dresser une liste générale de compétences manquantes, mais de reconstruire quelques épisodes avec un résultat recherché, une échéance, les démarches entreprises, les alternatives envisagées et le résultat final.
+Je cherche des projets réels où une capacité technique précisément identifiable a effectivement ralenti, réduit ou réorienté un projet public. L'objectif n'est pas de dresser une liste générale de compétences manquantes, mais de reconstruire quelques cas avec un résultat recherché, une échéance, les démarches entreprises, les alternatives envisagées et le résultat final.
 
 Deux ou trois projets de cette nature seraient particulièrement utiles. Pour le cas le plus informatif, je souhaiterais ensuite échanger avec le responsable opérationnel afin d'en reconstruire la chronologie.
 
@@ -101,7 +101,7 @@ Objet : Mobilisation de capacités scientifiques d'Inria pour des besoins public
 
 Bonjour,
 
-Je mène une étude sur les situations où une administration rencontre un déficit ponctuel de capacité scientifique ou technique.
+Je mène une étude sur les situations où une administration rencontre un besoin ponctuel d'une capacité scientifique ou technique.
 
 Je souhaite tester une hypothèse qui dépasse le recrutement individuel : certains besoins publics pourraient être mieux servis par une équipe, un laboratoire ou une capacité scientifique collective déjà existante.
 
@@ -125,10 +125,10 @@ Mateo Petel
 
 ## Sortie attendue de la vague 1
 
-Le succès de la vague n'est pas mesuré par le nombre de réponses. Les actifs recherchés sont :
-- épisodes réels documentables ;
+Le succès de la vague n'est pas mesuré par le nombre de réponses. Les résultats recherchés sont :
+- cas réels documentables ;
 - preuves ou documents ;
-- expérimentations déclenchables ;
+- essais concrets pouvant être lancés ;
 - introductions vers les responsables opérationnels.
 
 Les contacts et résultats doivent être enregistrés dans le registre des interlocuteurs de l'application.
