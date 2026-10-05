@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "frontiere-institut-interet-public"
-version = "0.3.0"
+version = "0.4.0"
 description = "Prototype opératoire pour l'étude de la mobilisation des capacités scientifiques et techniques pour l'action publique."
 requires-python = ">=3.11"
 dependencies = [
