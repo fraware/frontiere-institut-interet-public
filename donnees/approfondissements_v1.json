@@ -1,0 +1,346 @@
+{
+  "version": "1",
+  "date_creation": "2026-10-05",
+  "principe": "Chaque dossier sépare les faits directement documentés, l'interprétation provisoire et les informations encore inconnues.",
+  "dossiers": [
+    {
+      "id_signal": "S001",
+      "titre": "France Compétences — perte d'une capacité interne en analyse de données",
+      "faits_documentes": [
+        "France Compétences utilisait le langage R pour analyser les comptabilités analytiques des opérateurs de compétences.",
+        "À la suite du décès du directeur informatique, statisticien de l'Insee, et des problèmes de santé de son collaborateur, l'établissement a perdu la maîtrise interne de cette capacité.",
+        "Un recrutement de nouveaux agents a été engagé.",
+        "Le rapport indique que les profils recherchés étaient très spécifiques et rares et que la situation perdurait depuis octobre 2024.",
+        "Le rapport relie aussi la difficulté à une rémunération publique peu compétitive."
+      ],
+      "capacite_necessaire": "analyse de données avec maîtrise du langage R appliquée aux données de financement de la formation professionnelle",
+      "forme_de_ressource_observee": "personnes recrutées en interne",
+      "mecanismes_possibles_a_comparer": [
+        "recrutement interne",
+        "mobilisation temporaire d'une capacité publique existante",
+        "appui d'une équipe publique spécialisée",
+        "prestation extérieure"
+      ],
+      "interpretation_provisoire": "Le cas documente une perte brutale de capacité interne suivie d'une recherche de remplacement lente. La source ne permet pas encore de savoir si une capacité équivalente existait ailleurs dans le secteur public et aurait pu être mobilisée plus vite.",
+      "informations_manquantes": [
+        "date exacte de la perte de capacité",
+        "date de publication des premiers recrutements",
+        "nombre et qualité des candidatures",
+        "solutions temporaires utilisées",
+        "date de résolution éventuelle"
+      ],
+      "sources": [
+        {
+          "organisme": "Sénat",
+          "url": "https://www.senat.fr/rap/r24-807-1/r24-807-121.html",
+          "date": "2025"
+        }
+      ]
+    },
+    {
+      "id_signal": "S009",
+      "titre": "DGA — recrutement contractuel majoritaire en cybersécurité",
+      "faits_documentes": [
+        "Les ingénieurs civils contractuels représentaient 75 % des agents de la DGA exerçant des fonctions de cybersécurité.",
+        "Le rapport explique cette prédominance par leur disponibilité immédiate, contrairement aux ingénieurs fonctionnaires recrutés uniquement par concours.",
+        "Les concours d'ingénieurs fonctionnaires ne pourvoyaient qu'environ la moitié des postes depuis plusieurs années.",
+        "Le marché de l'emploi cyber est décrit comme structurellement déficitaire."
+      ],
+      "capacite_necessaire": "ingénierie de cybersécurité",
+      "forme_de_ressource_observee": "ingénieurs civils contractuels",
+      "mecanismes_possibles_a_comparer": [
+        "recrutement contractuel",
+        "recrutement par concours",
+        "mobilité interne",
+        "formation interne"
+      ],
+      "interpretation_provisoire": "Le cas suggère qu'une voie de recrutement plus souple apporte une disponibilité plus rapide. La source ne permet pas encore de comparer précisément coût, qualité et durée de maintien des différentes voies.",
+      "informations_manquantes": [
+        "délai médian de recrutement contractuel",
+        "délai médian par concours",
+        "coût complet par voie",
+        "taux de maintien selon le statut"
+      ],
+      "sources": [
+        {
+          "organisme": "Assemblée nationale",
+          "url": "https://questions.assemblee-nationale.fr/dyn/opendata/RINFANR5L16B2068.html",
+          "date": "2023"
+        }
+      ]
+    },
+    {
+      "id_signal": "S011",
+      "titre": "DGA — délai d'affectation après concours",
+      "faits_documentes": [
+        "L'organisation des concours pouvait conduire à une affectation pratiquement un an après l'expression du besoin des employeurs.",
+        "Le rapport juge ce délai peu réactif pour un domaine qui évolue rapidement.",
+        "Les recrutements contractuels sont présentés comme immédiatement disponibles en comparaison."
+      ],
+      "capacite_necessaire": "ingénierie de cybersécurité mobilisable rapidement",
+      "forme_de_ressource_observee": "personnes recrutées par différentes voies",
+      "mecanismes_possibles_a_comparer": [
+        "concours",
+        "recrutement contractuel",
+        "mobilité interne"
+      ],
+      "interpretation_provisoire": "Le cas constitue une indication forte que le délai critique peut se situer après l'identification du type de compétence, dans le mécanisme de recrutement lui-même.",
+      "informations_manquantes": [
+        "date précise d'expression de plusieurs besoins comparables",
+        "dates des concours",
+        "dates d'affectation",
+        "conséquences opérationnelles du délai"
+      ],
+      "sources": [
+        {
+          "organisme": "Assemblée nationale",
+          "url": "https://questions.assemblee-nationale.fr/dyn/opendata/RINFANR5L16B2068.html",
+          "date": "2023"
+        }
+      ]
+    },
+    {
+      "id_signal": "S012",
+      "titre": "DGA — départs de personnels cyber pour raisons salariales",
+      "faits_documentes": [
+        "Le rapport décrit une hausse des démissions dans les métiers de la DGA, particulièrement en cybersécurité en 2022 et 2023.",
+        "Il indique que 70 % des démissions enregistrées dans le domaine cyber étaient alors attribuées uniquement à des questions salariales.",
+        "Le rapport mentionne une concurrence accrue des industriels et d'autres organismes publics.",
+        "Des mesures de revalorisation et des parcours professionnels sont présentés comme réponses de fidélisation."
+      ],
+      "capacite_necessaire": "maintien de compétences expérimentées en cybersécurité",
+      "forme_de_ressource_observee": "personnels internes qualifiés",
+      "mecanismes_possibles_a_comparer": [
+        "revalorisation salariale",
+        "parcours professionnels",
+        "formation et progression interne",
+        "recrutement de remplacement"
+      ],
+      "interpretation_provisoire": "Le problème observé est moins la découverte d'une compétence que sa conservation. Une solution centrée uniquement sur la recherche de nouveaux profils manquerait donc une partie importante du mécanisme.",
+      "informations_manquantes": [
+        "nombre absolu de démissions",
+        "ancienneté des personnes partantes",
+        "effet des revalorisations engagées",
+        "coût de remplacement"
+      ],
+      "sources": [
+        {
+          "organisme": "Assemblée nationale",
+          "url": "https://www.assemblee-nationale.fr/dyn/16/rapports/cion_def/l16b2068_rapport-information.pdf",
+          "date": "2023"
+        }
+      ]
+    },
+    {
+      "id_signal": "S013",
+      "titre": "DGA — environ deux ans avant pleine efficacité opérationnelle",
+      "faits_documentes": [
+        "Des formations importantes sont dispensées à l'embauche dans le domaine cyber.",
+        "Le rapport indique qu'environ deux ans peuvent être nécessaires pour atteindre une efficacité opérationnelle.",
+        "Le départ d'ingénieurs ayant deux ans d'expérience ou moins empêche de bénéficier pleinement de l'effort de formation consenti."
+      ],
+      "capacite_necessaire": "capacité cyber pleinement opérationnelle",
+      "forme_de_ressource_observee": "personnes recrutées puis formées",
+      "mecanismes_possibles_a_comparer": [
+        "recrutement de profils déjà expérimentés",
+        "recrutement puis formation interne",
+        "mobilisation temporaire d'experts existants"
+      ],
+      "interpretation_provisoire": "Le temps entre embauche et capacité utile est suffisamment long pour devoir être distingué du délai de recrutement. Le recrutement d'une personne ne signifie donc pas disponibilité immédiate de la capacité.",
+      "informations_manquantes": [
+        "répartition des profils selon l'expérience initiale",
+        "durée moyenne de formation par fonction",
+        "première contribution utile avant les deux ans",
+        "coût de formation"
+      ],
+      "sources": [
+        {
+          "organisme": "Assemblée nationale",
+          "url": "https://www.assemblee-nationale.fr/dyn/16/rapports/cion_def/l16b2068_rapport-information.pdf",
+          "date": "2023"
+        }
+      ]
+    },
+    {
+      "id_signal": "S016",
+      "titre": "IGN — montée en capacité réussie sur l'intelligence artificielle et les données",
+      "faits_documentes": [
+        "L'IGN a établi un plan de recrutement et de formation sur trois ans visant 150 personnes dans plusieurs domaines techniques et de gestion de projet.",
+        "Avant l'échéance annoncée, l'établissement indiquait avoir recruté et formé 156 personnes.",
+        "L'objectif de 30 spécialistes de science des données a été atteint.",
+        "Le Sénat indique que les équipes spécialisées sont passées d'environ 8 à 30 ingénieurs en environ deux ans.",
+        "L'IGN a également modernisé les programmes de son école d'ingénieurs et augmenté le nombre d'ingénieurs fonctionnaires formés, avec 22 attendus à la rentrée 2025 contre environ dix auparavant."
+      ],
+      "capacite_necessaire": "intelligence artificielle, science des données et technologies géographiques",
+      "forme_de_ressource_observee": "recrutement, formation interne et école d'ingénieurs",
+      "mecanismes_possibles_a_comparer": [
+        "recrutement contractuel",
+        "formation interne",
+        "formation initiale par l'école de l'établissement",
+        "combinaison des trois"
+      ],
+      "interpretation_provisoire": "Le cas constitue un contre-exemple fort à une thèse générale d'incapacité publique à constituer des compétences techniques rares. Une combinaison d'attractivité des missions, de rémunération, de formation et d'école interne semble avoir fonctionné.",
+      "informations_manquantes": [
+        "coût total du programme",
+        "durée moyenne d'un recrutement",
+        "taux de maintien après recrutement",
+        "contribution relative de chaque mécanisme"
+      ],
+      "sources": [
+        {
+          "organisme": "Sénat",
+          "url": "https://www.senat.fr/compte-rendu-commissions/20241111/pro_2024_11_12.html",
+          "date": "2024-11"
+        },
+        {
+          "organisme": "Sénat",
+          "url": "https://www.senat.fr/rap/r24-379/r24-379_mono.html",
+          "date": "2025"
+        }
+      ]
+    },
+    {
+      "id_signal": "S018",
+      "titre": "Météo-France — équipe interne dédiée à l'intelligence artificielle",
+      "faits_documentes": [
+        "Météo-France a créé en 2020 une équipe de quatre personnes dédiée à l'intelligence artificielle.",
+        "Cette équipe sert de centre de ressource pour les directions ayant besoin d'une expertise en intelligence artificielle et mène également des travaux de production interne.",
+        "Le développement de cette capacité a reposé sur des réallocations de moyens et des ressources obtenues dans des projets partenariaux.",
+        "Le Sénat indique toutefois que Météo-France jugeait les effectifs et collaborations encore insuffisants pour mener tous les travaux nécessaires à la pointe du domaine."
+      ],
+      "capacite_necessaire": "intelligence artificielle appliquée à la météorologie",
+      "forme_de_ressource_observee": "équipe interne mutualisée",
+      "mecanismes_possibles_a_comparer": [
+        "équipe interne mutualisée",
+        "partenariats scientifiques",
+        "renforcement d'effectifs",
+        "appui ponctuel extérieur"
+      ],
+      "interpretation_provisoire": "Le cas montre qu'une capacité collective interne peut répondre à plusieurs directions, tout en laissant ouverte la question de sa taille optimale et de son articulation avec des partenaires externes.",
+      "informations_manquantes": [
+        "nombre de demandes reçues par an",
+        "temps de réponse",
+        "projets ayant atteint une utilisation opérationnelle",
+        "effectifs actuels",
+        "part du travail réalisée avec des partenaires"
+      ],
+      "sources": [
+        {
+          "organisme": "Sénat",
+          "url": "https://www.senat.fr/rap/r24-379/r24-379_mono.html",
+          "date": "2025"
+        },
+        {
+          "organisme": "Météo-France",
+          "url": "https://meteofrance.fr/sites/meteofrance.fr/files/files/editorial/rapport-annuel-2024-meteo-france.pdf",
+          "date": "2024"
+        }
+      ]
+    },
+    {
+      "id_signal": "S024",
+      "titre": "Saint-Brieuc — défaillance d'un conseil scientifique et mobilisation d'opérateurs publics",
+      "faits_documentes": [
+        "Le conseil scientifique du parc éolien de Saint-Brieuc a rencontré des difficultés de fonctionnement.",
+        "Son président a démissionné en 2021 et n'avait pas été remplacé au moment du rapport.",
+        "Le conseil n'avait plus été convoqué depuis fin 2023.",
+        "Le préfet a directement sollicité des opérateurs publics, notamment le SHOM, l'Ifremer et le Cerema, pour obtenir des avis scientifiques.",
+        "La mission recommande de transférer la fonction de conseil scientifique au conseil scientifique de façade Nord Atlantique-Manche Ouest."
+      ],
+      "capacite_necessaire": "expertise scientifique sur le suivi environnemental d'un parc éolien en mer",
+      "forme_de_ressource_observee": "conseil scientifique puis opérateurs publics spécialisés",
+      "mecanismes_possibles_a_comparer": [
+        "conseil scientifique propre au projet",
+        "conseil scientifique de façade",
+        "sollicitation directe d'opérateurs publics"
+      ],
+      "interpretation_provisoire": "La compétence scientifique existe dans plusieurs organismes publics. Le problème documenté porte surtout sur le fonctionnement de l'instance chargée de l'agréger et sur l'interface entre scientifiques et administration.",
+      "informations_manquantes": [
+        "dates exactes de sollicitation du SHOM, de l'Ifremer et du Cerema",
+        "temps de production des avis",
+        "effet des avis sur les décisions",
+        "date effective du transfert éventuel vers le conseil de façade"
+      ],
+      "sources": [
+        {
+          "organisme": "IGEDD",
+          "url": "https://www.igedd.developpement-durable.gouv.fr/revision-de-la-comitologie-du-parc-eolien-en-mer-a4393.html",
+          "date": "2026-03"
+        },
+        {
+          "organisme": "Préfecture des Côtes-d'Armor",
+          "url": "https://www.cotes-darmor.gouv.fr/Actions-de-l-Etat/Environnement-Biodiversite-Foret-et-transition-energetique/Energie/Eolien-en-mer/Comite-de-gestion-et-de-suivi-Conseil-scientifique",
+          "date": "non précisée"
+        }
+      ]
+    },
+    {
+      "id_signal": "S027",
+      "titre": "PFAS dans les matières fertilisantes — mission conjointe d'expertise",
+      "faits_documentes": [
+        "Les ministères chargés de l'environnement et de l'agriculture ont confié une mission conjointe au CGAAER et à l'IGEDD.",
+        "Les premières consultations datées visibles dans le rapport ont lieu en octobre 2025 et se poursuivent au moins jusqu'en janvier 2026.",
+        "Le rapport est publié le 28 avril 2026.",
+        "La mission conclut à la nécessité d'un cadre national rapide et progressif de gestion de la contamination.",
+        "Elle propose une première phase transitoire de 2026 à 2028, puis une seconde phase de 2029 à 2035 fondée sur les connaissances acquises et le retour d'expérience."
+      ],
+      "capacite_necessaire": "évaluation conjointe des risques sanitaires, environnementaux et agricoles liés aux PFAS et conception d'un cadre de gestion",
+      "forme_de_ressource_observee": "mission interministérielle pluridisciplinaire",
+      "mecanismes_possibles_a_comparer": [
+        "mission conjointe d'inspections générales",
+        "expertise scientifique collective",
+        "saisine d'un organisme sanitaire spécialisé"
+      ],
+      "interpretation_provisoire": "Ce cas illustre un mécanisme existant capable de réunir plusieurs compétences institutionnelles sur une question émergente et de produire une recommandation nationale en quelques mois.",
+      "informations_manquantes": [
+        "date exacte de la lettre de mission",
+        "temps consacré par chaque membre",
+        "coût complet",
+        "date des premières décisions administratives prises sur la base du rapport"
+      ],
+      "sources": [
+        {
+          "organisme": "Ministère chargé de l'Agriculture",
+          "url": "https://agriculture.gouv.fr/cadres-de-gestion-de-la-contamination-par-les-pfas-substances-perfluoroalkyles-ou-polyfluoroalkyles",
+          "date": "2026-04"
+        },
+        {
+          "organisme": "IGEDD",
+          "url": "https://www.igedd.developpement-durable.gouv.fr/IMG/pdf/016408-01_rapport-publie_cle5feed2.pdf",
+          "date": "2026"
+        }
+      ]
+    },
+    {
+      "id_signal": "S032",
+      "titre": "CNES — absence signalée de difficulté particulière de recrutement",
+      "faits_documentes": [
+        "Lors d'une audition sénatoriale de juin 2024, il est indiqué que les opérateurs de la politique spatiale française ne font pas état de difficultés particulières de ressources humaines.",
+        "Le CNES ne mentionne pas de problème particulier de recrutement.",
+        "Les formations existantes sont alors décrites comme semblant répondre aux besoins du secteur.",
+        "Des échanges internationaux de compétences sont également mentionnés."
+      ],
+      "capacite_necessaire": "ingénierie spatiale",
+      "forme_de_ressource_observee": "recrutement ordinaire soutenu par les formations existantes",
+      "mecanismes_possibles_a_comparer": [
+        "formations existantes",
+        "recrutement direct",
+        "mobilité internationale"
+      ],
+      "interpretation_provisoire": "Ce cas est un contre-exemple important : une filière scientifique et technique stratégique peut disposer d'un vivier et de mécanismes de recrutement jugés suffisants. La source ne permet toutefois pas d'exclure des tensions sur certains sous-domaines.",
+      "informations_manquantes": [
+        "vacances de postes par métier",
+        "délais de recrutement",
+        "tensions éventuelles sur des spécialités précises",
+        "évolution depuis 2024"
+      ],
+      "sources": [
+        {
+          "organisme": "Sénat",
+          "url": "https://www.senat.fr/compte-rendu-commissions/20240617/financ.html",
+          "date": "2024-06"
+        }
+      ]
+    }
+  ]
+}
