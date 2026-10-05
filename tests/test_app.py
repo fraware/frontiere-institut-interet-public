@@ -52,7 +52,7 @@ def test_create_episode_and_public_search():
         )
         assert r.status_code == 303
         page = client.get(location)
-        assert "P2" in page.text
+        assert "Capacité publique trouvée, mobilisation difficile" in page.text
 
 
 def test_search_blocked_until_need_is_locked():
@@ -391,7 +391,7 @@ def test_cross_case_reuse_and_empirical_dashboard():
 
         empirical = client.get("/donnees-terrain")
         assert empirical.status_code == 200
-        assert "Tableau empirique" in empirical.text
+        assert "Données de terrain" in empirical.text
         assert "2" in empirical.text
 
     with SessionLocal() as db:
