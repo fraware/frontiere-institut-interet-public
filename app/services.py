@@ -7,7 +7,7 @@ from typing import Iterable
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
-from .models import Episode, EpisodeResult, Hypothesis, KnowledgeItem, NeedVersion, ReuseEvent, SearchRun, StakeholderContact
+from .models import Discovery, Episode, EpisodeResult, Hypothesis, KnowledgeItem, NeedVersion, ReuseEvent, SearchRun, StakeholderContact
 
 PUBLIC_RESULTS = {"P0", "P1", "P2", "P3"}
 HOST_STATES = {"PASS", "FAIL", "UNKNOWN", "NON_APPLICABLE"}
@@ -91,3 +91,52 @@ def dashboard_metrics(db: Session) -> dict:
 
 def hypothesis_summary(db: Session) -> list[Hypothesis]:
     return list(db.scalars(select(Hypothesis).order_by(Hypothesis.code)).all())
+
+
+def empirical_metrics(db: Session) -> dict:
+    episodes = list(db.scalars(select(Episode).where(Episode.synthetic.is_(False)).order_by(Episode.id)).all())
+    demand = Counter(e.demand_level for e in episodes)
+    organizations = len({e.organization_id for e in episodes})
+    known_preexisting = [e for e in episodes if e.need_preexisting_frontiere is not None]
+    preexisting_yes = sum(1 for e in known_preexisting if e.need_preexisting_frontiere is True)
+
+    latest_public: dict[int, SearchRun] = {}
+    for run in db.scalars(
+        select(SearchRun)
+        .join(Episode)
+        .where(Episode.synthetic.is_(False), SearchRun.search_type == "PUBLIQUE")
+        .order_by(SearchRun.id)
+    ).all():
+        latest_public[run.episode_id] = run
+    public_results = Counter(r.public_result for r in latest_public.values() if r.public_result)
+
+    r5_count = db.scalar(
+        select(func.count(Discovery.id))
+        .join(SearchRun, Discovery.search_run_id == SearchRun.id)
+        .join(Episode, SearchRun.episode_id == Episode.id)
+        .where(Episode.synthetic.is_(False), Discovery.state == "R5")
+    ) or 0
+
+    result_rows = list(db.scalars(select(EpisodeResult).join(Episode).where(Episode.synthetic.is_(False))).all())
+    result_statuses = Counter(r.result_status for r in result_rows)
+    dominant_frictions = Counter(r.dominant_friction for r in result_rows if r.dominant_friction)
+    reuse_count = db.scalar(
+        select(func.count(ReuseEvent.id))
+        .join(Episode, ReuseEvent.destination_episode_id == Episode.id)
+        .where(Episode.synthetic.is_(False))
+    ) or 0
+
+    return {
+        "episodes": len(episodes),
+        "organizations": organizations,
+        "d2_plus": sum(demand[k] for k in ("D2", "D3", "D4")),
+        "demand": dict(demand),
+        "preexisting_known": len(known_preexisting),
+        "preexisting_yes": preexisting_yes,
+        "preexisting_rate": (preexisting_yes / len(known_preexisting)) if known_preexisting else None,
+        "public_results": dict(public_results),
+        "r5": int(r5_count),
+        "result_statuses": dict(result_statuses),
+        "dominant_frictions": dict(dominant_frictions),
+        "reuse_events": int(reuse_count),
+    }

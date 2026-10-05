@@ -24,6 +24,7 @@ from .models import (
     FrictionEvent,
     Hypothesis,
     KnowledgeItem,
+    ReuseEvent,
     NeedVersion,
     Organization,
     Resource,
@@ -31,7 +32,7 @@ from .models import (
     SearchRun,
     StakeholderContact,
 )
-from .services import classify_public_search, dashboard_metrics, hypothesis_summary
+from .services import classify_public_search, dashboard_metrics, empirical_metrics, hypothesis_summary
 
 BASE_DIR = Path(__file__).resolve().parent
 @asynccontextmanager
@@ -40,13 +41,15 @@ async def lifespan(_: FastAPI):
     yield
 
 
-app = FastAPI(title=settings.app_name, version="0.3.0", lifespan=lifespan)
+app = FastAPI(title=settings.app_name, version="0.4.0", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
 MAX_UNAUTHENTICATED_SENSITIVITY = 2
 EVIDENCE_QUALITIES = {"A", "B", "C", "D", "E"}
 DATA_ENVIRONMENTS = {"RECHERCHE", "RESEAU", "CANDIDATURE", "INTEGRITE"}
+RESOURCE_STATES = ["R0", "R1", "R2", "R3", "R4", "R5"]
+ADDITIONALITY_LEVELS = {"FORTE", "MODEREE", "FAIBLE", "NULLE", "INDETERMINE"}
 
 
 def _active_need(ep: Episode) -> NeedVersion | None:
@@ -89,7 +92,7 @@ def _audit(
 
 @app.get("/health")
 def health() -> dict:
-    return {"status": "ok", "service": "frontiere-institut-interet-public", "version": "0.3.0"}
+    return {"status": "ok", "service": "frontiere-institut-interet-public", "version": "0.4.0"}
 
 
 @app.get("/api/v1/metrics")
@@ -128,6 +131,16 @@ def dashboard(request: Request, db: Session = Depends(get_db)):
         request=request,
         name="dashboard.html",
         context={"episodes": episodes, "metrics": metrics, "hypotheses": hypotheses[:5]},
+    )
+
+
+@app.get("/empirique", response_class=HTMLResponse)
+def empirical_dashboard(request: Request, db: Session = Depends(get_db)):
+    metrics = empirical_metrics(db)
+    return templates.TemplateResponse(
+        request=request,
+        name="empirical.html",
+        context={"metrics": metrics},
     )
 
 
@@ -223,10 +236,28 @@ def episode_detail(code: str, request: Request, db: Session = Depends(get_db)):
     if ep is None:
         raise HTTPException(404, "Épisode introuvable")
     active_need = _active_need(ep)
+    reusable_knowledge = list(db.scalars(
+        select(KnowledgeItem)
+        .where(KnowledgeItem.status == "ACTIVE", KnowledgeItem.source_episode_id != ep.id)
+        .order_by(KnowledgeItem.created_at.desc())
+        .limit(100)
+    ).all())
+    reuse_events = list(db.scalars(
+        select(ReuseEvent)
+        .options(selectinload(ReuseEvent.knowledge))
+        .where(ReuseEvent.destination_episode_id == ep.id)
+        .order_by(ReuseEvent.reused_at.desc())
+    ).all())
     return templates.TemplateResponse(
         request=request,
         name="episode_detail.html",
-        context={"episode": ep, "need": active_need, "need_locked": bool(active_need and active_need.locked_at)},
+        context={
+            "episode": ep,
+            "need": active_need,
+            "need_locked": bool(active_need and active_need.locked_at),
+            "reusable_knowledge": reusable_knowledge,
+            "reuse_events": reuse_events,
+        },
     )
 
 
@@ -320,9 +351,12 @@ def add_resource(
     display_name: str = Form(...),
     source_channel: str = Form(""),
     state: str = Form("R0"),
+    state_reason: str = Form(""),
+    mission_specific_interest: str = Form("unknown"),
+    available_as_of: str = Form(""),
     db: Session = Depends(get_db),
 ):
-    if state not in {"R0", "R1", "R2", "R3", "R4", "R5"}:
+    if state not in RESOURCE_STATES:
         raise HTTPException(400, "État de ressource invalide")
     ep = db.scalar(select(Episode).where(Episode.code == code))
     if ep is None:
@@ -331,7 +365,8 @@ def add_resource(
     resource = db.scalar(select(Resource).where(Resource.display_name == display_name.strip(), Resource.resource_type == resource_type))
     if resource is None:
         resource = Resource(resource_type=resource_type, display_name=display_name.strip())
-        db.add(resource); db.flush()
+        db.add(resource)
+        db.flush()
     run = db.scalar(
         select(SearchRun)
         .where(SearchRun.episode_id == ep.id, SearchRun.search_type == search_type)
@@ -340,21 +375,61 @@ def add_resource(
     )
     if run is None:
         run = SearchRun(episode_id=ep.id, search_type=search_type, method_name="saisie opérateur")
-        db.add(run); db.flush()
+        db.add(run)
+        db.flush()
+
     existing = db.scalar(select(Discovery).where(Discovery.search_run_id == run.id, Discovery.resource_id == resource.id))
+    reason = state_reason.strip() or None
+    interest = None if mission_specific_interest == "unknown" else mission_specific_interest == "yes"
+    availability_date = date.fromisoformat(available_as_of) if available_as_of else None
+
     if existing is None:
-        db.add(Discovery(search_run_id=run.id, resource_id=resource.id, source_channel=source_channel.strip() or "non précisé", state=state))
+        if state != "R0":
+            raise HTTPException(409, "Une nouvelle ressource entre en R0. Les progressions R1–R5 sont enregistrées séquentiellement.")
+        existing = Discovery(
+            search_run_id=run.id,
+            resource_id=resource.id,
+            source_channel=source_channel.strip() or "non précisé",
+            state="R0",
+            state_reason=reason,
+            mission_specific_interest=interest,
+            available_as_of=availability_date,
+        )
+        db.add(existing)
     else:
+        current_index = RESOURCE_STATES.index(existing.state)
+        new_index = RESOURCE_STATES.index(state)
+        if new_index > current_index + 1:
+            raise HTTPException(409, f"Transition {existing.state} → {state} interdite : avancer un état à la fois.")
+        if new_index >= 2 and not reason:
+            raise HTTPException(409, "R2–R5 exigent une justification vérifiable.")
+        if state == "R5" and (interest is not True or availability_date is None):
+            raise HTTPException(409, "R5 exige un intérêt explicite pour la mission et une date de disponibilité confirmée.")
         existing.state = state
+        existing.state_reason = reason or existing.state_reason
         existing.source_channel = source_channel.strip() or existing.source_channel
+        if interest is not None:
+            existing.mission_specific_interest = interest
+        if availability_date is not None:
+            existing.available_as_of = availability_date
+
     db.flush()
     _audit(
         db,
         event_type="RESSOURCE_ETAT_ENREGISTRE",
-        entity_type="RESOURCE",
-        entity_id=resource.id,
+        entity_type="DISCOVERY",
+        entity_id=existing.id,
         episode_id=ep.id,
-        payload={"need_version_id": locked_need.id, "search_type": search_type, "state": state, "source_channel": source_channel.strip() or "non précisé"},
+        payload={
+            "need_version_id": locked_need.id,
+            "resource_id": resource.id,
+            "search_type": search_type,
+            "state": existing.state,
+            "state_reason": existing.state_reason,
+            "mission_specific_interest": existing.mission_specific_interest,
+            "available_as_of": existing.available_as_of.isoformat() if existing.available_as_of else None,
+            "source_channel": existing.source_channel,
+        },
     )
     db.commit()
     return RedirectResponse(url=f"/episodes/{code}#ressources", status_code=303)
@@ -441,15 +516,48 @@ def add_result(
     actual_route: str = Form(""),
     outcome_description: str = Form(...),
     dominant_friction: str = Form(""),
+    first_useful_contribution_at: str = Form(""),
+    direct_cost_eur: float | None = Form(None),
     frontiere_minutes: int = Form(0),
     institution_minutes: int = Form(0),
+    additionality_outcome: str = Form("INDETERMINE"),
+    additionality_time: str = Form("INDETERMINE"),
+    additionality_quality: str = Form("INDETERMINE"),
+    additionality_cost: str = Form("INDETERMINE"),
+    additionality_learning: str = Form("INDETERMINE"),
     db: Session = Depends(get_db),
 ):
     ep = db.scalar(select(Episode).where(Episode.code == code))
     if ep is None:
         raise HTTPException(404)
     locked_need = _require_locked_need(db, ep)
-    result = EpisodeResult(episode_id=ep.id, result_status=result_status, actual_intervention=actual_intervention.strip() or None, actual_route=actual_route.strip() or None, outcome_description=outcome_description.strip(), dominant_friction=dominant_friction.strip() or None, frontiere_minutes=max(0, frontiere_minutes), institution_minutes=max(0, institution_minutes))
+    levels = {
+        additionality_outcome,
+        additionality_time,
+        additionality_quality,
+        additionality_cost,
+        additionality_learning,
+    }
+    if not levels.issubset(ADDITIONALITY_LEVELS):
+        raise HTTPException(400, "Niveau d'additionalité invalide.")
+    first_value = datetime.fromisoformat(first_useful_contribution_at) if first_useful_contribution_at else None
+    result = EpisodeResult(
+        episode_id=ep.id,
+        result_status=result_status,
+        actual_intervention=actual_intervention.strip() or None,
+        actual_route=actual_route.strip() or None,
+        outcome_description=outcome_description.strip(),
+        dominant_friction=dominant_friction.strip() or None,
+        first_useful_contribution_at=first_value,
+        direct_cost_eur=max(0, direct_cost_eur) if direct_cost_eur is not None else None,
+        frontiere_minutes=max(0, frontiere_minutes),
+        institution_minutes=max(0, institution_minutes),
+        additionality_outcome=additionality_outcome,
+        additionality_time=additionality_time,
+        additionality_quality=additionality_quality,
+        additionality_cost=additionality_cost,
+        additionality_learning=additionality_learning,
+    )
     db.add(result)
     db.flush()
     ep.status = "RESULTAT_ENREGISTRE"
@@ -459,7 +567,20 @@ def add_result(
         entity_type="EPISODE_RESULT",
         entity_id=result.id,
         episode_id=ep.id,
-        payload={"need_version_id": locked_need.id, "result_status": result_status, "dominant_friction": dominant_friction.strip() or None},
+        payload={
+            "need_version_id": locked_need.id,
+            "result_status": result_status,
+            "dominant_friction": dominant_friction.strip() or None,
+            "first_useful_contribution_at": first_value.isoformat() if first_value else None,
+            "direct_cost_eur": result.direct_cost_eur,
+            "additionality": {
+                "outcome": additionality_outcome,
+                "time": additionality_time,
+                "quality": additionality_quality,
+                "cost": additionality_cost,
+                "learning": additionality_learning,
+            },
+        },
     )
     db.commit()
     return RedirectResponse(url=f"/episodes/{code}#resultat", status_code=303)
@@ -492,6 +613,54 @@ def add_knowledge(
     )
     db.commit()
     return RedirectResponse(url=f"/episodes/{code}#connaissance", status_code=303)
+
+
+@app.post("/episodes/{code}/reuse")
+def add_reuse(
+    code: str,
+    knowledge_id: int = Form(...),
+    decision_changed: str = Form("no"),
+    estimated_minutes_saved: int | None = Form(None),
+    accessible_to_new_analyst: str = Form("yes"),
+    effect_description: str = Form(""),
+    db: Session = Depends(get_db),
+):
+    ep = db.scalar(select(Episode).where(Episode.code == code))
+    if ep is None:
+        raise HTTPException(404, "Épisode introuvable")
+    locked_need = _require_locked_need(db, ep)
+    knowledge = db.scalar(select(KnowledgeItem).where(KnowledgeItem.id == knowledge_id, KnowledgeItem.status == "ACTIVE"))
+    if knowledge is None:
+        raise HTTPException(404, "Connaissance introuvable")
+    if knowledge.source_episode_id == ep.id:
+        raise HTTPException(409, "Une connaissance ne peut pas être comptée comme réutilisée dans son épisode source.")
+    reuse = ReuseEvent(
+        knowledge_id=knowledge.id,
+        destination_episode_id=ep.id,
+        decision_changed=decision_changed == "yes",
+        estimated_minutes_saved=max(0, estimated_minutes_saved) if estimated_minutes_saved is not None else None,
+        accessible_to_new_analyst=accessible_to_new_analyst == "yes",
+        effect_description=effect_description.strip() or None,
+    )
+    db.add(reuse)
+    db.flush()
+    _audit(
+        db,
+        event_type="CONNAISSANCE_REUTILISEE",
+        entity_type="REUSE_EVENT",
+        entity_id=reuse.id,
+        episode_id=ep.id,
+        payload={
+            "need_version_id": locked_need.id,
+            "knowledge_id": knowledge.id,
+            "source_episode_id": knowledge.source_episode_id,
+            "decision_changed": reuse.decision_changed,
+            "estimated_minutes_saved": reuse.estimated_minutes_saved,
+            "accessible_to_new_analyst": reuse.accessible_to_new_analyst,
+        },
+    )
+    db.commit()
+    return RedirectResponse(url=f"/episodes/{code}#reutilisation", status_code=303)
 
 
 @app.post("/episodes/{code}/need/lock")

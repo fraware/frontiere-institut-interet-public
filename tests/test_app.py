@@ -3,7 +3,7 @@ from sqlalchemy import delete, select
 
 from app.database import Base, SessionLocal, engine
 from app.main import app
-from app.models import AuditEvent, Episode, NeedVersion, Organization
+from app.models import AuditEvent, Episode, EpisodeResult, KnowledgeItem, NeedVersion, Organization, ReuseEvent
 
 
 def reset_db():
@@ -17,7 +17,7 @@ def test_health():
         r = client.get("/health")
         assert r.status_code == 200
         assert r.json()["status"] == "ok"
-        assert r.json()["version"] == "0.3.0"
+        assert r.json()["version"] == "0.4.0"
 
 
 def test_create_episode_and_public_search():
@@ -259,3 +259,143 @@ def test_search_writes_audit_event_with_need_version():
         assert event is not None
         assert '"public_result": "P2"' in (event.payload_json or "")
         assert '"need_version_id":' in (event.payload_json or "")
+
+
+def _create_locked_episode(client, title="Cas terrain"):
+    r = client.post(
+        "/episodes",
+        data={
+            "organization_name": "Administration terrain",
+            "title": title,
+            "current_situation": "Situation réelle à qualifier",
+            "desired_outcome": "Résultat observable",
+            "demand_level": "D2",
+            "sensitivity_level": "1",
+            "need_preexisting_frontiere": "yes",
+            "sponsor": "Responsable",
+            "counterfactual_plan": "Voie ordinaire",
+            "initial_frontiere_hypothesis": "Recherche publique d'abord",
+        },
+        follow_redirects=False,
+    )
+    location = r.headers["location"]
+    assert client.post(location + "/need/lock", follow_redirects=False).status_code == 303
+    return location
+
+
+def test_resource_progression_and_r5_gate():
+    reset_db()
+    with TestClient(app) as client:
+        location = _create_locked_episode(client)
+        skipped = client.post(
+            location + "/resource",
+            data={"resource_type": "PERSONNE", "display_name": "Profil A", "state": "R2", "state_reason": "expertise vérifiée"},
+            follow_redirects=False,
+        )
+        assert skipped.status_code == 409
+
+        assert client.post(location + "/resource", data={"resource_type": "PERSONNE", "display_name": "Profil A", "state": "R0"}, follow_redirects=False).status_code == 303
+        assert client.post(location + "/resource", data={"resource_type": "PERSONNE", "display_name": "Profil A", "state": "R1"}, follow_redirects=False).status_code == 303
+        assert client.post(location + "/resource", data={"resource_type": "PERSONNE", "display_name": "Profil A", "state": "R2"}, follow_redirects=False).status_code == 409
+        assert client.post(location + "/resource", data={"resource_type": "PERSONNE", "display_name": "Profil A", "state": "R2", "state_reason": "capacité vérifiée"}, follow_redirects=False).status_code == 303
+        assert client.post(location + "/resource", data={"resource_type": "PERSONNE", "display_name": "Profil A", "state": "R3", "state_reason": "conditions compatibles"}, follow_redirects=False).status_code == 303
+        assert client.post(location + "/resource", data={"resource_type": "PERSONNE", "display_name": "Profil A", "state": "R4", "state_reason": "engagement confirmé"}, follow_redirects=False).status_code == 303
+
+        r5_blocked = client.post(
+            location + "/resource",
+            data={"resource_type": "PERSONNE", "display_name": "Profil A", "state": "R5", "state_reason": "mobilisable"},
+            follow_redirects=False,
+        )
+        assert r5_blocked.status_code == 409
+        r5 = client.post(
+            location + "/resource",
+            data={
+                "resource_type": "PERSONNE",
+                "display_name": "Profil A",
+                "state": "R5",
+                "state_reason": "mobilisable pour la mission",
+                "mission_specific_interest": "yes",
+                "available_as_of": "2026-10-04",
+            },
+            follow_redirects=False,
+        )
+        assert r5.status_code == 303
+        assert "R5" in client.get(location).text
+
+
+def test_result_captures_first_value_and_additionality():
+    reset_db()
+    with TestClient(app) as client:
+        location = _create_locked_episode(client, "Cas résultat")
+        response = client.post(
+            location + "/result",
+            data={
+                "result_status": "RESOLU",
+                "actual_intervention": "Expertise ponctuelle",
+                "actual_route": "Capacité publique",
+                "outcome_description": "Décision prise avec expertise documentée.",
+                "dominant_friction": "F1_COMPETENCE",
+                "first_useful_contribution_at": "2026-10-04T10:30",
+                "direct_cost_eur": "250.50",
+                "frontiere_minutes": "90",
+                "institution_minutes": "45",
+                "additionality_outcome": "FORTE",
+                "additionality_time": "MODEREE",
+                "additionality_quality": "FORTE",
+                "additionality_cost": "FAIBLE",
+                "additionality_learning": "MODEREE",
+            },
+            follow_redirects=False,
+        )
+        assert response.status_code == 303
+
+    with SessionLocal() as db:
+        result = db.scalar(select(EpisodeResult))
+        assert result is not None
+        assert result.direct_cost_eur == 250.50
+        assert result.first_useful_contribution_at is not None
+        assert result.additionality_outcome == "FORTE"
+        assert result.additionality_time == "MODEREE"
+
+
+def test_cross_case_reuse_and_empirical_dashboard():
+    reset_db()
+    with TestClient(app) as client:
+        source = _create_locked_episode(client, "Cas source")
+        assert client.post(
+            source + "/knowledge",
+            data={"knowledge_type": "PRECEDENT", "title": "Voie utile", "content": "Un précédent réutilisable", "evidence_level": "B"},
+            follow_redirects=False,
+        ).status_code == 303
+        target = _create_locked_episode(client, "Cas cible")
+
+        with SessionLocal() as db:
+            knowledge = db.scalar(select(KnowledgeItem).where(KnowledgeItem.title == "Voie utile"))
+            assert knowledge is not None
+            knowledge_id = knowledge.id
+
+        reused = client.post(
+            target + "/reuse",
+            data={
+                "knowledge_id": str(knowledge_id),
+                "decision_changed": "yes",
+                "estimated_minutes_saved": "35",
+                "accessible_to_new_analyst": "yes",
+                "effect_description": "Le précédent a évité une recherche redondante.",
+            },
+            follow_redirects=False,
+        )
+        assert reused.status_code == 303
+        page = client.get(target)
+        assert "Le précédent a évité une recherche redondante." in page.text
+
+        empirical = client.get("/empirique")
+        assert empirical.status_code == 200
+        assert "Tableau empirique" in empirical.text
+        assert "2" in empirical.text
+
+    with SessionLocal() as db:
+        reuse = db.scalar(select(ReuseEvent))
+        assert reuse is not None
+        assert reuse.decision_changed is True
+        assert reuse.estimated_minutes_saved == 35

@@ -1,4 +1,4 @@
-# FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC - — prototype opératoire v0.3
+# FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC - — prototype opératoire v0.4
 
 Prototype interne pour l'étude de la mobilisation des capacités scientifiques et techniques au service de l'action publique.
 
@@ -12,16 +12,17 @@ La chaîne de travail est :
 
 Une solution publique existante, une prestation de marché, un recrutement permanent, un abandon justifié ou l'absence de nouvelle intervention constituent des résultats valides.
 
-## Ce que la version 0.3 réalise
+## Ce que la version 0.4 réalise
 
 - registre des épisodes avec D0–D4 et distinction entre cas réels et cas synthétiques ;
 - formulation du besoin, résultat attendu, responsable, échéance, contrefactuel et hypothèse initiale ;
 - recherche prioritaire dans le secteur public avec classification conservatrice P0/P1/P2/P3 ;
-- registre de capacités, ressources, recherches, découvertes R0–R5 et voies possibles au niveau du modèle de données ;
+- registre de capacités, ressources, recherches et découvertes R0–R5 avec progression séquentielle, justification de R2–R5 et garde-fou R5 ;
 - journal des décisions avec éléments contradictoires et incertitudes ;
 - modèle des frictions et dépendances pour calculer le chemin critique ;
-- résultats et additionalité par dimensions séparées ;
-- connaissances réutilisables et événements de réutilisation ;
+- résultats avec première contribution utile, coût direct et additionalité par dimensions séparées ;
+- connaissances réutilisables et événements de réutilisation inter-cas ;
+- tableau empirique séparant demande, recherche publique, R5, résultats, frictions et réutilisations ;
 - registre pré-enregistré des quinze hypothèses de plateforme ;
 - douze scénarios synthétiques adverses séparés des données réelles ;
 - interface interne légère et API de lecture ;
