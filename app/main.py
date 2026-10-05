@@ -516,15 +516,48 @@ def add_result(
     actual_route: str = Form(""),
     outcome_description: str = Form(...),
     dominant_friction: str = Form(""),
+    first_useful_contribution_at: str = Form(""),
+    direct_cost_eur: float | None = Form(None),
     frontiere_minutes: int = Form(0),
     institution_minutes: int = Form(0),
+    additionality_outcome: str = Form("INDETERMINE"),
+    additionality_time: str = Form("INDETERMINE"),
+    additionality_quality: str = Form("INDETERMINE"),
+    additionality_cost: str = Form("INDETERMINE"),
+    additionality_learning: str = Form("INDETERMINE"),
     db: Session = Depends(get_db),
 ):
     ep = db.scalar(select(Episode).where(Episode.code == code))
     if ep is None:
         raise HTTPException(404)
     locked_need = _require_locked_need(db, ep)
-    result = EpisodeResult(episode_id=ep.id, result_status=result_status, actual_intervention=actual_intervention.strip() or None, actual_route=actual_route.strip() or None, outcome_description=outcome_description.strip(), dominant_friction=dominant_friction.strip() or None, frontiere_minutes=max(0, frontiere_minutes), institution_minutes=max(0, institution_minutes))
+    levels = {
+        additionality_outcome,
+        additionality_time,
+        additionality_quality,
+        additionality_cost,
+        additionality_learning,
+    }
+    if not levels.issubset(ADDITIONALITY_LEVELS):
+        raise HTTPException(400, "Niveau d'additionalité invalide.")
+    first_value = datetime.fromisoformat(first_useful_contribution_at) if first_useful_contribution_at else None
+    result = EpisodeResult(
+        episode_id=ep.id,
+        result_status=result_status,
+        actual_intervention=actual_intervention.strip() or None,
+        actual_route=actual_route.strip() or None,
+        outcome_description=outcome_description.strip(),
+        dominant_friction=dominant_friction.strip() or None,
+        first_useful_contribution_at=first_value,
+        direct_cost_eur=max(0, direct_cost_eur) if direct_cost_eur is not None else None,
+        frontiere_minutes=max(0, frontiere_minutes),
+        institution_minutes=max(0, institution_minutes),
+        additionality_outcome=additionality_outcome,
+        additionality_time=additionality_time,
+        additionality_quality=additionality_quality,
+        additionality_cost=additionality_cost,
+        additionality_learning=additionality_learning,
+    )
     db.add(result)
     db.flush()
     ep.status = "RESULTAT_ENREGISTRE"
@@ -534,7 +567,20 @@ def add_result(
         entity_type="EPISODE_RESULT",
         entity_id=result.id,
         episode_id=ep.id,
-        payload={"need_version_id": locked_need.id, "result_status": result_status, "dominant_friction": dominant_friction.strip() or None},
+        payload={
+            "need_version_id": locked_need.id,
+            "result_status": result_status,
+            "dominant_friction": dominant_friction.strip() or None,
+            "first_useful_contribution_at": first_value.isoformat() if first_value else None,
+            "direct_cost_eur": result.direct_cost_eur,
+            "additionality": {
+                "outcome": additionality_outcome,
+                "time": additionality_time,
+                "quality": additionality_quality,
+                "cost": additionality_cost,
+                "learning": additionality_learning,
+            },
+        },
     )
     db.commit()
     return RedirectResponse(url=f"/episodes/{code}#resultat", status_code=303)
