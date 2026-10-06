@@ -14,6 +14,30 @@ Fichier courant :
 
 https://echanges.dila.gouv.fr/OPENDATA/RefOrgaAdminEtat/FluxAnneeCourante/dila_refOrga_admin_Etat_fr_latest.zip
 
+## État observé au 6 octobre 2026
+
+La publication DILA ingérée le 6 octobre 2026 contient **7 903 services institutionnels**. FRONTIÈRE en produit **7 903 entités canoniques** et **8 071 relations hiérarchiques résolues**.
+
+Parmi ces entités :
+
+- **7 898** disposent d'un parent principal dérivé d'un lien DILA `Service Fils` ;
+- **5** n'ont pas de parent principal dans ce sous-graphe ;
+- **7 797** disposent d'au moins une coordonnée ;
+- **7 549** disposent d'au moins un responsable ;
+- **1 568** disposent d'une mission publiée dans le flux ;
+- **1 169** disposent d'au moins un texte de référence ;
+- **416** exposent un SIREN dans ce flux ;
+- **414** exposent un SIRET.
+
+Le flux contient également **158 références hiérarchiques dont l'identifiant cible n'est pas présent dans le snapshot SI courant**. Elles sont conservées intégralement dans `institutionnel/anomalies_roae.json`. FRONTIÈRE ne crée aucune relation de remplacement par rapprochement de nom. Une partie de ces références pourra être résolue lors de l'ingestion des catégories locales de l'Annuaire de l'administration ; leur cause exacte reste à établir cas par cas.
+
+Archive observée :
+
+```text
+dila_refOrga_admin_Etat_fr_20261006.json
+SHA-256 ZIP: d9150c4e9ff5551019a02f4beefaeff956fb2fa3e3beb4c022b038204920c332
+```
+
 ## Reproduction
 
 ```bash
@@ -37,6 +61,7 @@ institutionnel/
   instantanes/
     roae_manifest.json
   statistiques_roae.json
+  anomalies_roae.json
 ```
 
 Les partitions servent à maintenir des fichiers de taille raisonnable et à limiter les différences Git lors des mises à jour.
@@ -75,7 +100,7 @@ Une relation dont la cible ne peut pas être résolue par identifiant reste comp
 
 ## Temporalité
 
-La date d'observation de FRONTIÈRE est enregistrée dans `observe_le`.
+La date d'observation de FRONTIÈRE est enregistrée dans `observe_le`. Une entité dont l'enregistrement source reste inchangé conserve sa date d'observation précédente. Le système compare l'empreinte de chaque enregistrement afin d'éviter de transformer une simple nouvelle exécution en faux changement institutionnel.
 
 Les dates DILA de création, modification et diffusion sont conservées dans `metadata_dila`. Elles ne sont pas automatiquement transformées en période de validité juridique de l'organisme, car leur signification est celle du référentiel source.
 
@@ -99,7 +124,7 @@ Chaque entité conserve également une empreinte de son enregistrement source.
 
 ## Mise à jour
 
-Une action GitHub exécute l'ingestion quotidiennement. Elle ne crée un commit que si les données canoniques ont changé.
+Une action GitHub exécute l'ingestion quotidiennement. L'empreinte de l'archive et la version de transformation sont vérifiées avant recalcul. Elle ne crée un commit que si la source ou la transformation produit un état canonique différent.
 
 Le référentiel DILA devient ainsi un état versionné de l'organisation administrative de l'État, avec historique des transformations dans Git.
 
