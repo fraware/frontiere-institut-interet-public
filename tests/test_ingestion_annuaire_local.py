@@ -173,3 +173,32 @@ def test_chargeur_export_accepte_liste(tmp_path):
 
     assert len(donnees) == 1
     assert donnees[0]["nom"] == "Mairie d'essai"
+
+
+def test_structures_json_encodees_sont_decodees():
+    parent = service_exemple()
+    enfant_id = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+    enfant = service_exemple(enfant_id)
+
+    parent["hierarchie"] = json.dumps(
+        [{"type_hierarchie": "Service Fils", "service": enfant_id}]
+    )
+    parent["pivot"] = json.dumps(
+        [{"type_service_local": "mairie", "code_insee_commune": ["75056"]}]
+    )
+
+    entite = module.canonicaliser_service(
+        parent,
+        "2026-10-06T12:00:00+00:00",
+    )
+    relations, anomalies = module.construire_relations_locales(
+        [parent, enfant],
+        {parent["id"], enfant_id},
+        {},
+        "2026-10-06T12:00:00+00:00",
+    )
+
+    assert entite["territoires"] == ["75056"]
+    assert entite["types_service_local"] == ["mairie"]
+    assert len(relations) == 1
+    assert anomalies == []
