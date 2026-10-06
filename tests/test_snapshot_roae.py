@@ -13,7 +13,7 @@ def lire_json(chemin: Path) -> dict:
 def lire_jsonl(chemin: Path) -> list[dict]:
     return [
         json.loads(ligne)
-        for ligne in chemin.read_text(encoding="utf-8").splitlines()
+        for ligne in chemin.read_text(encoding="utf-8").split("\n")
         if ligne.strip()
     ]
 
@@ -27,7 +27,7 @@ def verifier_partition(entree: dict) -> list[dict]:
 
     objets = [
         json.loads(ligne)
-        for ligne in brut.decode("utf-8").splitlines()
+        for ligne in brut.decode("utf-8").split("\n")
         if ligne.strip()
     ]
     assert len(objets) == entree["nombre"]
