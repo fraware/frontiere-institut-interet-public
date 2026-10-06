@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "scripts/ingerer_annuaire_local.py"
+      - "scripts/rechercher_competence_geographique.py"
       - "tests/test_ingestion_annuaire_local.py"
       - ".github/workflows/amorcage-annuaire-local.yml"
   workflow_dispatch:
@@ -15,13 +16,13 @@ permissions:
 
 concurrency:
   group: amorcage-annuaire-local
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   ingestion:
     name: Ingérer les services publics locaux
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 30
 
     steps:
       - name: Récupérer la branche
@@ -41,7 +42,7 @@ jobs:
       - name: Vérifier l'importeur
         run: python -m pytest -q tests/test_ingestion_annuaire_local.py
 
-      - name: Ingérer la Base de données locales
+      - name: Ingérer l'API Annuaire
         run: python scripts/ingerer_annuaire_local.py
 
       - name: Contrôler les bornes de sécurité
@@ -52,17 +53,20 @@ jobs:
           from pathlib import Path
 
           s = json.loads(Path("institutionnel/statistiques_annuaire_local.json").read_text(encoding="utf-8"))
-          assert s["nombre_services_source"] >= 80000, s
-          assert s["nombre_entites_canoniques"] == s["nombre_services_source"]
-          assert s["nombre_communes_competence"] >= 30000
-          assert s["stockage"]["octets_total_canonique"] < 400_000_000, s["stockage"]
+
+          assert s["nombre_enregistrements_export_complet"] >= 90000, s
+          assert s["nombre_services_locaux_source"] >= 80000, s
+          assert s["nombre_entites_canoniques"] == s["nombre_services_locaux_source"]
+          assert s["categories_export"].get("SI", 0) >= 7000
+          assert s["stockage"]["octets_total_canonique"] < 300_000_000, s["stockage"]
+
           print(json.dumps(s, ensure_ascii=False))
           PY
 
       - name: Enregistrer le snapshot initial
         shell: bash
         run: |
-          git add             institutionnel/entites/locales             institutionnel/relations/locales             institutionnel/competences/locales             institutionnel/instantanes/annuaire_local_manifest.json             institutionnel/statistiques_annuaire_local.json             institutionnel/anomalies_annuaire_local.json             institutionnel/resolution_roae_local.json
+          git add             institutionnel/entites/locales             institutionnel/relations/locales             institutionnel/instantanes/annuaire_local_manifest.json             institutionnel/statistiques_annuaire_local.json             institutionnel/anomalies_annuaire_local.json             institutionnel/resolution_roae_local.json
 
           if git diff --cached --quiet; then
             echo "Aucun changement à enregistrer."
