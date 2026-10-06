@@ -202,3 +202,9 @@ def test_structures_json_encodees_sont_decodees():
     assert entite["types_service_local"] == ["mairie"]
     assert len(relations) == 1
     assert anomalies == []
+
+
+def test_empreinte_semantique_est_independante_de_l_ordre():
+    a = service_exemple()
+    b = service_exemple("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+    assert module.empreinte_semantique_export([a, b]) == module.empreinte_semantique_export([b, a])
