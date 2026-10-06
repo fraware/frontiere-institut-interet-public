@@ -49,6 +49,8 @@ Le snapshot local conserve **100 références hiérarchiques non résolues**. Le
 
 L'apport du croisement des deux flux est mesurable : les **158 références hiérarchiques du ROAE qui restaient orphelines dans le seul flux SI sont toutes résolues par des identifiants présents dans le flux local**. Le résultat est enregistré dans `institutionnel/resolution_roae_local.json`.
 
+Une relation résolue par croisement conserve désormais deux preuves distinctes : le lien hiérarchique publié dans le ROAE et l'existence de l'identifiant cible dans l'Annuaire local. Les deux sources, leurs identifiants et leurs empreintes sont enregistrés séparément. Une relation locale résolue conserve également la représentation source du lien hiérarchique.
+
 ## Compétence géographique
 
 La DILA publie séparément un jeu de compétence géographique qui associe une commune, un type de service local et un ou plusieurs identifiants de services compétents.
@@ -111,6 +113,10 @@ L'empreinte sémantique courante est :
 
 Une variation d'ordre dans l'export ne produit ainsi aucun faux changement institutionnel et aucun commit inutile.
 
+L'état local dépend aussi du snapshot ROAE utilisé pour résoudre les relations croisées. Le manifeste local enregistre donc une `empreinte_dependance_roae` construite à partir de l'empreinte de la source ROAE, de sa version de transformation et de ses nombres d'objets et de relations. Une modification du ROAE force le recalcul de l'état local, même si l'export local reste identique.
+
+Les relations suivent la même règle temporelle que les entités : une relation dont les extrémités, le type, les qualificatifs et les preuves restent identiques conserve sa date d'observation et la date de collecte de ses preuves.
+
 ## Sorties
 
 ```text
@@ -152,9 +158,11 @@ Les tests du snapshot sont écrits en lecture progressive afin de contrôler env
 
 ## Mise à jour
 
-Une action GitHub quotidienne exécute l'ingestion après l'actualisation du ROAE.
+L'actualisation locale est déclenchée par la réussite de l'action d'actualisation du ROAE. Les deux actions partagent en outre le même groupe de concurrence, ce qui interdit leur exécution simultanée. Une exécution manuelle reste disponible.
 
-Elle :
+Pour toute révision touchant l'importeur, la recherche géographique, leurs tests ou leurs actions d'automatisation, une exécution sur demande de fusion reconstruit le snapshot depuis la publication officielle et vérifie les invariants sans écrire dans `main`.
+
+L'action d'actualisation :
 
 1. vérifie l'importeur ;
 2. télécharge l'export courant de l'Annuaire ;
@@ -163,6 +171,12 @@ Elle :
 5. vérifie le snapshot complet ;
 6. interroge une compétence géographique réelle comme contrôle de bout en bout ;
 7. écrit un commit uniquement en présence d'un changement sémantique.
+
+## Limites de reproductibilité de la source
+
+L'export JSON brut de l'API n'est pas recopié dans Git. Le dépôt conserve son empreinte SHA-256, l'empreinte sémantique de l'ensemble des enregistrements et la représentation canonique produite par la transformation. Cette stratégie maintient une taille de dépôt exploitable, mais elle ne garantit pas à elle seule la récupération future des octets exacts d'un export historique si le producteur cesse de le servir.
+
+Une conservation probante à long terme demanderait un stockage d'archives externe, immuable et adressé par contenu. Cette exigence est suivie séparément avant d'utiliser le référentiel comme preuve historique autonome.
 
 ## Limites et prochaine vague
 
