@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: verification-${{ github.workflow }}-${{ github.ref }}
@@ -70,49 +70,3 @@ jobs:
           done
           docker logs frontiere-test
           exit 1
-
-
-  amorcage_roae:
-    name: Amorçage du référentiel DILA
-    if: github.event_name == 'pull_request' && github.head_ref == 'institutionnel/ingestion-roae-v1'
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-
-    steps:
-      - name: Récupérer la branche source
-        uses: actions/checkout@v7
-        with:
-          ref: ${{ github.head_ref }}
-          fetch-depth: 0
-
-      - name: Installer Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: "3.12"
-
-      - name: Importer la dernière publication DILA
-        run: python scripts/ingerer_roae.py
-
-      - name: Afficher les statistiques
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          s=json.loads(Path("institutionnel/statistiques_roae.json").read_text(encoding="utf-8"))
-          print(json.dumps(s, ensure_ascii=False))
-          assert s["nombre_services_source"] >= 5000
-          assert s["nombre_entites_canoniques"] == s["nombre_services_source"]
-          PY
-
-      - name: Enregistrer les données produites
-        shell: bash
-        run: |
-          git add institutionnel/entites/roae institutionnel/relations/roae institutionnel/instantanes/roae_manifest.json institutionnel/statistiques_roae.json institutionnel/anomalies_roae.json
-          if git diff --cached --quiet; then
-            echo "Aucun changement à enregistrer."
-            exit 0
-          fi
-          git config user.name "frontiere-referentiel"
-          git config user.email "frontiere-referentiel@users.noreply.github.com"
-          git commit -m "Référentiel DILA — amorcer l'organisation administrative de l'État"
-          git push origin "HEAD:${{ github.head_ref }}"
