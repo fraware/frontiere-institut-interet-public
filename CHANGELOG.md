@@ -10,7 +10,10 @@ Ce fichier résume les principales étapes publiques du projet. Les détails com
 - registre initial des principales sources officielles et de leur cadence ;
 - séparation entre validité institutionnelle et date d'observation ;
 - surveillance quotidienne de la fraîcheur et des modifications des sources ;
-- matrice de couverture et schémas canoniques pour les entités et relations.
+- matrice de couverture et schémas canoniques pour les entités et relations ;
+- ingestion du snapshot DILA du 6 octobre 2026 avec 7 903 entités et 8 071 relations hiérarchiques résolues ;
+- 7 898 parents principaux dérivés, cinq entités sans parent principal et 158 références hiérarchiques explicitement conservées comme non résolues ;
+- vérification automatique des empreintes, partitions, identités, relations et parentage du snapshot complet.
 
 ### Exécution terrain
 

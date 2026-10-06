@@ -1,0 +1,48 @@
+{
+  "categories_source": {
+    "SI": 7903
+  },
+  "couverture": {
+    "avec_coordonnees": 7797,
+    "avec_fondement_juridique": 1169,
+    "avec_mission": 1568,
+    "avec_responsable": 7549,
+    "avec_siren": 416,
+    "avec_siret": 414
+  },
+  "hierarchie": {
+    "avec_parent_principal": 7898,
+    "entites_a_parents_directs_multiples": 0,
+    "sans_parent_principal": 5
+  },
+  "liens_hierarchiques_non_resolus": 158,
+  "nombre_entites_canoniques": 7903,
+  "nombre_relations_hierarchiques": 8071,
+  "nombre_services_source": 7903,
+  "observe_le": "2026-10-06T18:08:28+00:00",
+  "source_id": "dila_roae",
+  "types_anomalies": {
+    "LIEN_HIERARCHIQUE_NON_RESOLU": 158
+  },
+  "types_institutionnels_source": {
+    "Administration centrale (ou Ministère)": 5284,
+    "Ambassade ou mission diplomatique": 447,
+    "Association d'utilité publique": 24,
+    "Autorité administrative indépendante": 213,
+    "Autorité publique indépendante": 12,
+    "Cabinet ministériel": 50,
+    "Conseil, comité, commission (organisme consultatif)": 175,
+    "Groupement d'intérêt public": 20,
+    "Institution": 137,
+    "Institution européenne": 3,
+    "Juridiction": 68,
+    "Non précisé": 3,
+    "Répertoire": 101,
+    "Secrétaire d'État": 1,
+    "Service déconcentré": 46,
+    "Service à compétence nationale": 276,
+    "Établissement d'enseignement": 79,
+    "Établissement public": 964
+  },
+  "version": "1.1"
+}
