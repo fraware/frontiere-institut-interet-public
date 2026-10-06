@@ -17,9 +17,10 @@ RACINE = Path(__file__).resolve().parents[1]
 
 SOURCE_ID = "dila_annuaire_local"
 SOURCE_ROAE_ID = "dila_roae"
-VERSION_TRANSFORMATION = "2.1"
+VERSION_TRANSFORMATION = "2.2"
 
 PAGE_SOURCE = "https://www.data.gouv.fr/datasets/service-public-gouv-fr-annuaire-de-ladministration-base-de-donnees-locales"
+PAGE_SOURCE_ROAE = "https://www.data.gouv.fr/datasets/referentiel-de-lorganisation-administrative-de-letat"
 URL_SOURCE = (
     "https://api-lannuaire.service-public.gouv.fr/api/explore/v2.1/catalog/"
     "datasets/api-lannuaire-administration/exports/json"
@@ -33,6 +34,7 @@ NOM_SOURCE = "api-lannuaire-administration.json"
 DOSSIER_ENTITES = RACINE / "institutionnel" / "entites" / "locales"
 DOSSIER_RELATIONS = RACINE / "institutionnel" / "relations" / "locales"
 MANIFESTE = RACINE / "institutionnel" / "instantanes" / "annuaire_local_manifest.json"
+MANIFESTE_ROAE = RACINE / "institutionnel" / "instantanes" / "roae_manifest.json"
 STATISTIQUES = RACINE / "institutionnel" / "statistiques_annuaire_local.json"
 ANOMALIES = RACINE / "institutionnel" / "anomalies_annuaire_local.json"
 RESOLUTION_CROISEE = RACINE / "institutionnel" / "resolution_roae_local.json"
@@ -103,6 +105,27 @@ def empreinte_semantique_export(enregistrements: list[dict[str, Any]]) -> str:
         hachage.update(valeur.encode("ascii"))
         hachage.update(b"\n")
     return hachage.hexdigest()
+
+
+def empreinte_dependance_roae() -> str:
+    """Empreinte l'état ROAE dont dépend la résolution croisée locale."""
+    try:
+        manifeste = json.loads(MANIFESTE_ROAE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(
+            "Le manifeste ROAE est indispensable à l'ingestion locale."
+        ) from exc
+
+    dependance = {
+        "sha256_zip": manifeste.get("sha256_zip"),
+        "version_transformation": manifeste.get("version_transformation"),
+        "nombre_services": manifeste.get("nombre_services"),
+        "nombre_relations": manifeste.get("nombre_relations"),
+    }
+    if not dependance["sha256_zip"] or not dependance["version_transformation"]:
+        raise ValueError("Le manifeste ROAE ne contient pas son identité de source.")
+
+    return compact_sha256(dependance)
 
 
 def compacter(objet: Any) -> Any:
@@ -463,6 +486,70 @@ def provenance_precedente(precedent: dict[str, Any] | None) -> dict[str, Any] | 
     return None
 
 
+def vue_semantique_relation(relation: dict[str, Any]) -> dict[str, Any]:
+    """Vue d'une relation qui ignore uniquement les horodatages d'observation."""
+    provenance = []
+    for entree in relation.get("provenance") or []:
+        if not isinstance(entree, dict):
+            continue
+        provenance.append(
+            {
+                cle: valeur
+                for cle, valeur in entree.items()
+                if cle != "collecte_le"
+            }
+        )
+    return {
+        "source_entite": relation.get("source_entite"),
+        "type_relation": relation.get("type_relation"),
+        "cible_entite": relation.get("cible_entite"),
+        "qualificatifs": relation.get("qualificatifs") or {},
+        "provenance": provenance,
+        "statut_validation": relation.get("statut_validation"),
+    }
+
+
+def stabiliser_relation(
+    relation: dict[str, Any],
+    precedent: dict[str, Any] | None,
+) -> dict[str, Any]:
+    """Préserve les dates d'une relation lorsque son contenu probant est inchangé."""
+    if not precedent:
+        return relation
+    if compact_sha256(vue_semantique_relation(relation)) != compact_sha256(
+        vue_semantique_relation(precedent)
+    ):
+        return relation
+
+    if precedent.get("observe_le"):
+        relation["observe_le"] = precedent["observe_le"]
+
+    precedentes = {}
+    for entree in precedent.get("provenance") or []:
+        if not isinstance(entree, dict):
+            continue
+        cle = (
+            entree.get("source_id"),
+            entree.get("identifiant_source"),
+            entree.get("empreinte"),
+        )
+        precedentes[cle] = entree.get("collecte_le")
+
+    for entree in relation.get("provenance") or []:
+        if not isinstance(entree, dict):
+            continue
+        cle = (
+            entree.get("source_id"),
+            entree.get("identifiant_source"),
+            entree.get("empreinte"),
+        )
+        collecte = precedentes.get(cle)
+        if collecte:
+            entree["collecte_le"] = collecte
+
+    return relation
+
+
 def canonicaliser_service(
     service: dict[str, Any],
     observe_le: str,
@@ -591,9 +678,11 @@ def construire_relations_locales(
     ids_locaux: set[str],
     roae: dict[str, str],
     observe_le: str,
+    precedentes: dict[str, dict[str, Any]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     relations: dict[tuple[str, str, str], dict[str, Any]] = {}
     anomalies: list[dict[str, Any]] = []
+    precedentes = precedentes or {}
 
     for parent in services:
         parent_dila = nettoyer_texte(parent.get("id"))
@@ -630,19 +719,21 @@ def construire_relations_locales(
 
                 resolues += 1
                 cle = (enfant_canonique, parent_canonique, type_source)
-                relations[cle] = {
-                    "id": relation_id(
-                        enfant_canonique,
-                        parent_canonique,
-                        type_source,
-                        SOURCE_ID,
-                    ),
+                identifiant_relation = relation_id(
+                    enfant_canonique,
+                    parent_canonique,
+                    type_source,
+                    SOURCE_ID,
+                )
+                relation = {
+                    "id": identifiant_relation,
                     "source_entite": enfant_canonique,
                     "type_relation": "DEPEND_DE",
                     "cible_entite": parent_canonique,
                     "qualificatifs": {
                         "type_hierarchie_dila": type_source,
                         "origine_relation": "annuaire_local",
+                        "representation_source": lien,
                     },
                     "provenance": [
                         {
@@ -656,6 +747,10 @@ def construire_relations_locales(
                     "observe_le": observe_le,
                     "statut_validation": "VALIDE",
                 }
+                relations[cle] = stabiliser_relation(
+                    relation,
+                    precedentes.get(identifiant_relation),
+                )
 
             if resolues == 0:
                 anomalies.append(
@@ -687,8 +782,12 @@ def resoudre_anomalies_roae(
     ids_locaux: set[str],
     roae: dict[str, str],
     observe_le: str,
+    empreintes_locales: dict[str, str] | None = None,
+    precedentes: dict[str, dict[str, Any]] | None = None,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     relations: list[dict[str, Any]] = []
+    empreintes_locales = empreintes_locales or {}
+    precedentes = precedentes or {}
     resolues: list[dict[str, Any]] = []
     restantes: list[dict[str, Any]] = []
 
@@ -708,33 +807,48 @@ def resoudre_anomalies_roae(
                 if cible not in ids_locaux:
                     continue
                 enfant_canonique = id_canonique_local(cible)
-                relations.append(
-                    {
-                        "id": relation_id(
-                            enfant_canonique,
-                            parent_canonique,
-                            type_source,
-                            SOURCE_ROAE_ID,
-                        ),
-                        "source_entite": enfant_canonique,
-                        "type_relation": "DEPEND_DE",
-                        "cible_entite": parent_canonique,
-                        "qualificatifs": {
-                            "type_hierarchie_dila": type_source,
-                            "origine_relation": "resolution_croisee_roae_local",
+                identifiant_relation = relation_id(
+                    enfant_canonique,
+                    parent_canonique,
+                    type_source,
+                    SOURCE_ROAE_ID,
+                )
+                relation = {
+                    "id": identifiant_relation,
+                    "source_entite": enfant_canonique,
+                    "type_relation": "DEPEND_DE",
+                    "cible_entite": parent_canonique,
+                    "qualificatifs": {
+                        "type_hierarchie_dila": type_source,
+                        "origine_relation": "resolution_croisee_roae_local",
+                        "representation_source": anomalie.get("representation_source"),
+                    },
+                    "provenance": [
+                        {
+                            "source_id": SOURCE_ROAE_ID,
+                            "identifiant_source": parent_dila,
+                            "url": PAGE_SOURCE_ROAE,
+                            "collecte_le": observe_le,
+                            "empreinte": compact_sha256(anomalie),
+                            "role": "relation_hierarchique_source",
                         },
-                        "provenance": [
-                            {
-                                "source_id": SOURCE_ROAE_ID,
-                                "identifiant_source": parent_dila,
-                                "url": PAGE_SOURCE,
-                                "collecte_le": observe_le,
-                                "empreinte": compact_sha256(anomalie),
-                            }
-                        ],
-                        "observe_le": observe_le,
-                        "statut_validation": "VALIDE",
-                    }
+                        {
+                            "source_id": SOURCE_ID,
+                            "identifiant_source": cible,
+                            "url": PAGE_SOURCE,
+                            "collecte_le": observe_le,
+                            "empreinte": empreintes_locales.get(cible),
+                            "role": "resolution_identite_cible",
+                        },
+                    ],
+                    "observe_le": observe_le,
+                    "statut_validation": "VALIDE",
+                }
+                relations.append(
+                    stabiliser_relation(
+                        relation,
+                        precedentes.get(identifiant_relation),
+                    )
                 )
                 trouve = True
 
@@ -841,7 +955,10 @@ def ecrire_jsonl_partitionne(
     return manifeste
 
 
-def source_deja_traitee(sha_semantique: str) -> bool:
+def source_deja_traitee(
+    sha_semantique: str,
+    empreinte_roae: str,
+) -> bool:
     if not MANIFESTE.exists():
         return False
     try:
@@ -851,6 +968,7 @@ def source_deja_traitee(sha_semantique: str) -> bool:
     return bool(
         precedent.get("sha256_semantique_export") == sha_semantique
         and precedent.get("version_transformation") == VERSION_TRANSFORMATION
+        and precedent.get("empreinte_dependance_roae") == empreinte_roae
     )
 
 
@@ -968,8 +1086,9 @@ def executer(
     sha_export = sha256_fichier(export_json)
     enregistrements = charger_export(export_json)
     sha_semantique = empreinte_semantique_export(enregistrements)
+    empreinte_roae = empreinte_dependance_roae()
 
-    if source_deja_traitee(sha_semantique):
+    if source_deja_traitee(sha_semantique, empreinte_roae):
         return {
             "etat": "inchange",
             "manifest": json.loads(MANIFESTE.read_text(encoding="utf-8")),
@@ -988,6 +1107,12 @@ def executer(
     ids_locaux = set(ids_non_vides)
     roae = charger_index_roae()
     anciennes_entites = charger_index_jsonl(DOSSIER_ENTITES, "id")
+    anciennes_relations = charger_index_jsonl(DOSSIER_RELATIONS, "id")
+    empreintes_locales = {
+        identifiant: compact_sha256(service)
+        for service in services
+        if (identifiant := nettoyer_texte(service.get("id")))
+    }
 
     entites = []
     for service in services:
@@ -1008,11 +1133,14 @@ def executer(
         ids_locaux,
         roae,
         observe_le,
+        precedentes=anciennes_relations,
     )
     relations_croisees, resolution_croisee = resoudre_anomalies_roae(
         ids_locaux,
         roae,
         observe_le,
+        empreintes_locales=empreintes_locales,
+        precedentes=anciennes_relations,
     )
     relations = sorted(
         {
@@ -1100,6 +1228,7 @@ def executer(
         "octets_http": entetes.get("content-length"),
         "sha256_export": sha_export,
         "sha256_semantique_export": sha_semantique,
+        "empreinte_dependance_roae": empreinte_roae,
         "nombre_enregistrements_export_complet": len(enregistrements),
         "nombre_services_locaux": len(services),
         "nombre_relations": len(relations),
