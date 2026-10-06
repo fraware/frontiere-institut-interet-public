@@ -8,6 +8,13 @@ on:
       - "scripts/ingerer_roae.py"
       - "tests/test_ingestion_roae.py"
       - ".github/workflows/ingestion-roae.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "scripts/ingerer_roae.py"
+      - "tests/test_ingestion_roae.py"
+      - ".github/workflows/ingestion-roae.yml"
   schedule:
     - cron: "47 5 * * *"
   workflow_dispatch:
@@ -29,6 +36,7 @@ jobs:
       - name: Récupérer le dépôt
         uses: actions/checkout@v7
         with:
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
           fetch-depth: 0
 
       - name: Installer Python
@@ -69,6 +77,8 @@ jobs:
 
       - name: Enregistrer le nouvel état
         shell: bash
+        env:
+          BRANCHE_CIBLE: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
         run: |
           if git diff --quiet -- institutionnel/entites/roae institutionnel/relations/roae institutionnel/instantanes/roae_manifest.json institutionnel/statistiques_roae.json; then
             echo "Le référentiel canonique est déjà à jour."
@@ -79,4 +89,4 @@ jobs:
           git config user.email "frontiere-referentiel@users.noreply.github.com"
           git add institutionnel/entites/roae institutionnel/relations/roae institutionnel/instantanes/roae_manifest.json institutionnel/statistiques_roae.json
           git commit -m "Référentiel DILA — actualiser l'organisation administrative de l'État"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+          git push origin "HEAD:${BRANCHE_CIBLE}"
