@@ -1,0 +1,55 @@
+{
+  "version": "2",
+  "date_creation": "2026-10-06",
+  "objet": "Mettre à jour la limite des sources publiques après recherche ciblée et préparer les demandes de données d'exécution.",
+  "cas": [
+    {
+      "id_signal": "S001",
+      "institution": "France Compétences",
+      "statut": "plafond_public_atteint_provisoirement",
+      "acquis": [
+        "Perte de maîtrise interne du langage R documentée depuis octobre 2024.",
+        "Recrutement encore en cours lors de l'audition du 3 avril 2025.",
+        "Difficulté reprise dans le rapport du Sénat du 1er juillet 2025."
+      ],
+      "manque": "date de rétablissement effectif de la capacité",
+      "source_suivante": "données RH, offre archivée, prise de fonctions ou confirmation directe de France Compétences"
+    },
+    {
+      "id_signal": "S016",
+      "institution": "IGN",
+      "statut": "plafond_public_atteint_provisoirement",
+      "acquis": [
+        "Objectif de 30 à 40 recrutements spécialisés formulé en 2022.",
+        "Trente recrutements en science des données et intelligence artificielle atteints au plus tard le 5 juillet 2024.",
+        "Des annonces publiques attestent d'un recrutement actif de spécialistes IA et données pendant la période."
+      ],
+      "manque": "délai individuel entre ouverture, recrutement, formation et première contribution utile",
+      "source_suivante": "échantillon anonymisé de recrutements ou données RH de l'IGN"
+    },
+    {
+      "id_signal": "S024",
+      "institution": "Préfecture / DDTM des Côtes-d'Armor",
+      "statut": "plafond_public_atteint_provisoirement",
+      "acquis": [
+        "Démission de la présidence du conseil scientifique en 2021.",
+        "Conseil non convoqué depuis fin 2023.",
+        "Sollicitation directe du SHOM, de l'Ifremer et du Cerema par le préfet."
+      ],
+      "manque": "au moins une paire date de saisine / date de remise d'avis",
+      "source_suivante": "courriers de saisine, avis datés ou comptes rendus de la DDTM / préfecture"
+    },
+    {
+      "id_signal": "S042",
+      "institution": "ASNR",
+      "statut": "preuve_publique_partielle_supplementaire",
+      "acquis": [
+        "Le Sénat indique 91 postes vacants à l'IRSN en 2023.",
+        "Le président de l'ASNR indique le 22 mai 2025 qu'environ douze postes sont vacants sur 2 100 ETP au début de 2025.",
+        "Les périmètres IRSN 2023 et ASNR 2025 diffèrent et ne permettent pas une comparaison directe."
+      ],
+      "manque": "durée de recrutement et vacance par famille de métier spécialisé",
+      "source_suivante": "indicateurs RH par métier ou réponse directe de l'ASNR"
+    }
+  ]
+}
