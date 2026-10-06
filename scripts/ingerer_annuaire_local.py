@@ -128,6 +128,7 @@ def extraire_archive(
     archive: Path,
     dossier_temp: Path,
 ) -> tuple[Path, Path, dict[str, Any]]:
+    dossier_temp.mkdir(parents=True, exist_ok=True)
     with tarfile.open(archive, mode="r:bz2") as tar:
         fichiers = [m for m in tar.getmembers() if m.isfile()]
         jsons = [m for m in fichiers if m.name.lower().endswith(".json")]
