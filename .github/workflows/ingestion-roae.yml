@@ -83,7 +83,7 @@ jobs:
         env:
           BRANCHE_CIBLE: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
         run: |
-          git add institutionnel/entites/roae institutionnel/relations/roae institutionnel/instantanes/roae_manifest.json institutionnel/statistiques_roae.json
+          git add institutionnel/entites/roae institutionnel/relations/roae institutionnel/instantanes/roae_manifest.json institutionnel/statistiques_roae.json institutionnel/anomalies_roae.json
 
           if git diff --cached --quiet; then
             echo "Le référentiel canonique est déjà à jour."
