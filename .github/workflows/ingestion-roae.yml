@@ -1,0 +1,82 @@
+name: Ingestion du référentiel DILA
+
+on:
+  push:
+    branches:
+      - institutionnel/ingestion-roae-v1
+    paths:
+      - "scripts/ingerer_roae.py"
+      - "tests/test_ingestion_roae.py"
+      - ".github/workflows/ingestion-roae.yml"
+  schedule:
+    - cron: "47 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ingestion-roae-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  ingestion:
+    name: Importer le référentiel de l'État
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Installer Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Vérifier l'importeur
+        run: python -m pytest -q tests/test_ingestion_roae.py
+
+      - name: Importer la dernière publication DILA
+        run: python scripts/ingerer_roae.py
+
+      - name: Vérifier les données produites
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          stats = json.loads(Path("institutionnel/statistiques_roae.json").read_text(encoding="utf-8"))
+          manifest = json.loads(Path("institutionnel/instantanes/roae_manifest.json").read_text(encoding="utf-8"))
+
+          assert stats["nombre_services_source"] >= 5000, stats
+          assert stats["nombre_entites_canoniques"] == stats["nombre_services_source"]
+          assert manifest["nombre_services"] == stats["nombre_services_source"]
+
+          print(json.dumps({
+              "services": stats["nombre_services_source"],
+              "relations": stats["nombre_relations_hierarchiques"],
+              "missions": stats["couverture"]["avec_mission"],
+              "responsables": stats["couverture"]["avec_responsable"],
+              "siren": stats["couverture"]["avec_siren"],
+              "liens_non_resolus": stats["liens_hierarchiques_non_resolus"],
+              "sha256_zip": manifest["sha256_zip"],
+          }, ensure_ascii=False))
+          PY
+
+      - name: Enregistrer le nouvel état
+        shell: bash
+        run: |
+          if git diff --quiet -- institutionnel/entites/roae institutionnel/relations/roae institutionnel/instantanes/roae_manifest.json institutionnel/statistiques_roae.json; then
+            echo "Le référentiel canonique est déjà à jour."
+            exit 0
+          fi
+
+          git config user.name "frontiere-referentiel"
+          git config user.email "frontiere-referentiel@users.noreply.github.com"
+          git add institutionnel/entites/roae institutionnel/relations/roae institutionnel/instantanes/roae_manifest.json institutionnel/statistiques_roae.json
+          git commit -m "Référentiel DILA — actualiser l'organisation administrative de l'État"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
