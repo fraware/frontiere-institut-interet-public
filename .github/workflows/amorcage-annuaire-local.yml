@@ -45,6 +45,24 @@ jobs:
       - name: Ingérer l'API Annuaire
         run: python scripts/ingerer_annuaire_local.py
 
+      - name: Vérifier une compétence géographique réelle
+        shell: bash
+        run: |
+          python scripts/rechercher_competence_geographique.py --commune 75056 --type mairie > /tmp/competence-paris.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          donnees = json.loads(Path("/tmp/competence-paris.json").read_text(encoding="utf-8"))
+          assert donnees, "Aucune compétence mairie retournée pour Paris."
+          assert any(
+              organisme.get("resolu")
+              for entree in donnees
+              for organisme in entree.get("organismes", [])
+          ), donnees
+          print(json.dumps(donnees[:3], ensure_ascii=False))
+          PY
+
       - name: Contrôler les bornes de sécurité
         shell: bash
         run: |
