@@ -326,3 +326,42 @@ def test_empreinte_dependance_roae_change_avec_la_source_ou_la_transformation(
     seconde = module.empreinte_dependance_roae()
 
     assert premiere != seconde
+
+
+
+def test_migration_relation_v21_vers_v22_preserve_observation():
+    parent = service_exemple()
+    enfant_id = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+    enfant = service_exemple(enfant_id)
+    lien = {"type_hierarchie": "Service Fils", "service": enfant_id}
+    parent["hierarchie"] = [lien]
+
+    anciennes, _ = module.construire_relations_locales(
+        [parent, enfant],
+        {parent["id"], enfant_id},
+        {},
+        "2026-10-06T12:00:00+00:00",
+    )
+    assert len(anciennes) == 1
+
+    ancienne = anciennes[0]
+    ancienne["qualificatifs"].pop("representation_source", None)
+    ancienne["observe_le"] = "2026-10-06T12:00:00+00:00"
+    ancienne["provenance"][0]["collecte_le"] = "2026-10-06T12:00:00+00:00"
+
+    nouvelles, _ = module.construire_relations_locales(
+        [parent, enfant],
+        {parent["id"], enfant_id},
+        {},
+        "2026-10-07T12:00:00+00:00",
+        precedentes={ancienne["id"]: ancienne},
+    )
+
+    assert len(nouvelles) == 1
+    nouvelle = nouvelles[0]
+    assert nouvelle["qualificatifs"]["representation_source"] == lien
+    assert nouvelle["observe_le"] == "2026-10-06T12:00:00+00:00"
+    assert (
+        nouvelle["provenance"][0]["collecte_le"]
+        == "2026-10-06T12:00:00+00:00"
+    )
