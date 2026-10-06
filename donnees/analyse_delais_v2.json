@@ -1,0 +1,93 @@
+{
+  "version": "2",
+  "date_creation": "2026-10-05",
+  "objet": "Distinguer les délais directement mesurables dans le parcours besoin-identification-mobilisation-contribution des durées structurelles utiles mais moins comparables.",
+  "cas": [
+    {
+      "id_signal": "S001",
+      "segment_principal": "besoin → première contribution utile",
+      "delai_parcours_mesurable": false,
+      "duree_structurelle_mesurable": true,
+      "resultat": "La difficulté persiste depuis octobre 2024 et reste signalée plusieurs mois plus tard.",
+      "limite": "La date de résolution reste inconnue."
+    },
+    {
+      "id_signal": "S011",
+      "segment_principal": "besoin → mobilisation",
+      "delai_parcours_mesurable": true,
+      "duree_structurelle_mesurable": true,
+      "resultat": "Le recrutement par concours peut conduire à une affectation pratiquement un an après l'expression du besoin.",
+      "limite": "La distribution réelle des délais et le temps jusqu'à contribution utile ne sont pas documentés."
+    },
+    {
+      "id_signal": "S016",
+      "segment_principal": "montée en capacité collective",
+      "delai_parcours_mesurable": false,
+      "duree_structurelle_mesurable": true,
+      "resultat": "Les équipes spécialisées de l'IGN passent de 8 à 30 ingénieurs en environ deux ans.",
+      "limite": "Le temps de recrutement et de formation par personne n'est pas documenté."
+    },
+    {
+      "id_signal": "S018",
+      "segment_principal": "création de capacité → première production documentée",
+      "delai_parcours_mesurable": true,
+      "duree_structurelle_mesurable": true,
+      "resultat": "Le Lab IA est créé en février 2019 et publie MeteoNet en février 2020 ; la structure est pérennisée en 2021 avec plusieurs réalisations opérationnelles.",
+      "limite": "MeteoNet n'est pas nécessairement la première contribution utile à une direction interne."
+    },
+    {
+      "id_signal": "S024",
+      "segment_principal": "défaillance d'une instance scientifique → substitution",
+      "delai_parcours_mesurable": false,
+      "duree_structurelle_mesurable": true,
+      "resultat": "La présidence démissionne en 2021 ; le conseil n'est plus convoqué depuis fin 2023 ; le préfet sollicite directement le SHOM, l'Ifremer et le Cerema.",
+      "limite": "Les dates de sollicitation et de remise des avis ne sont pas connues."
+    },
+    {
+      "id_signal": "S038",
+      "segment_principal": "renforcement de capacité locale",
+      "delai_parcours_mesurable": false,
+      "duree_structurelle_mesurable": true,
+      "resultat": "Une direction de projet intervient de novembre 2023 à décembre 2024 ; le Cerema est positionné et six postes sont programmés au second semestre 2024 ; un expert de haut niveau prend ses fonctions le 14 janvier 2025.",
+      "limite": "Le temps jusqu'à première contribution utile des nouvelles capacités reste inconnu."
+    },
+    {
+      "id_signal": "S042",
+      "segment_principal": "tensions de recrutement → réorganisation",
+      "delai_parcours_mesurable": false,
+      "duree_structurelle_mesurable": true,
+      "resultat": "Des postes vacants sont documentés en 2023 ; l'ASNR est créée en 2025 puis établit une politique de recrutement unifiée et recrute un directeur scientifique.",
+      "limite": "Aucune mesure publique trouvée ne permet encore d'établir l'effet sur le nombre de postes vacants."
+    },
+    {
+      "id_signal": "S049",
+      "segment_principal": "création de capacité → première production publique",
+      "delai_parcours_mesurable": true,
+      "duree_structurelle_mesurable": true,
+      "resultat": "Des effectifs supplémentaires sont attribués en 2024 et les indicateurs territorialisés sont publics fin 2025.",
+      "limite": "La date précise de constitution de l'équipe reste inconnue."
+    },
+    {
+      "id_signal": "S027",
+      "segment_principal": "mission d'expertise → traduction publique",
+      "delai_parcours_mesurable": true,
+      "duree_structurelle_mesurable": true,
+      "resultat": "La mission se déroule de septembre 2025 à mars 2026 ; ses conclusions alimentent une circulaire interministérielle en avril 2026.",
+      "limite": "La date exacte de saisine n'est pas connue."
+    },
+    {
+      "id_signal": "S050",
+      "segment_principal": "investissement → mise en service prévue",
+      "delai_parcours_mesurable": true,
+      "duree_structurelle_mesurable": true,
+      "resultat": "Le renouvellement est engagé sur 2025-2033 avec une mise en service annoncée pour 2027.",
+      "limite": "Il s'agit encore d'un calendrier prévisionnel, pas d'un délai réalisé."
+    }
+  ],
+  "synthese": {
+    "nombre_chronologies": 10,
+    "delais_de_parcours_mesurables": 5,
+    "durees_structurelles_mesurables": 10,
+    "conclusion": "Cinq chronologies fournissent désormais un intervalle directement exploitable dans une trajectoire de capacité. Les dix permettent au moins de mesurer une durée structurelle ou une persistance. La priorité suivante est de compléter les cinq autres avec les dates de sollicitation, mobilisation et première contribution utile."
+  }
+}
