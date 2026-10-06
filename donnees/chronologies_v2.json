@@ -1,0 +1,350 @@
+{
+  "version": "2",
+  "date_creation": "2026-10-05",
+  "regle": "Chaque date conserve son degré de précision. Une date partielle n'est jamais convertie en date exacte.",
+  "chronologies": [
+    {
+      "id_signal": "S001",
+      "titre": "France Compétences — perte puis recherche d'une capacité en analyse de données",
+      "evenements": [
+        {
+          "date": "2024-10",
+          "precision": "mois",
+          "evenement": "La situation de perte de capacité interne est signalée comme perdurant à partir de cette période."
+        },
+        {
+          "date": "2025-03",
+          "precision": "mois",
+          "evenement": "Lors de l'audition sénatoriale, le recrutement de profils spécialisés reste difficile."
+        },
+        {
+          "date": "2025",
+          "precision": "annee",
+          "evenement": "Le rapport de la commission d'enquête reprend la difficulté et l'associe à la rareté des profils et à une rémunération peu compétitive."
+        }
+      ],
+      "inconnues": [
+        "date exacte de la perte de capacité",
+        "date de la première offre publiée",
+        "nombre de candidatures",
+        "date éventuelle de résolution"
+      ],
+      "lecture_provisoire": "La difficulté persiste plusieurs mois après le début du besoin."
+    },
+    {
+      "id_signal": "S011",
+      "titre": "DGA — délai entre expression du besoin et affectation après concours",
+      "evenements": [
+        {
+          "date": "2023",
+          "precision": "annee",
+          "evenement": "Le rapport décrit un besoin de recrutement rapide sur les métiers de cybersécurité."
+        },
+        {
+          "date": "2023",
+          "precision": "annee",
+          "evenement": "Les concours d'ingénieurs fonctionnaires ne pourvoient qu'environ la moitié des postes."
+        },
+        {
+          "date": "2023",
+          "precision": "annee",
+          "evenement": "Le rapport indique que l'affectation peut intervenir pratiquement un an après l'expression du besoin."
+        },
+        {
+          "date": "2023",
+          "precision": "annee",
+          "evenement": "Les ingénieurs civils contractuels constituent la majorité des effectifs concernés et sont décrits comme immédiatement disponibles."
+        }
+      ],
+      "inconnues": [
+        "dates exactes des concours",
+        "distribution réelle des délais",
+        "écart de coût entre voies",
+        "résultats par type de recrutement"
+      ],
+      "lecture_provisoire": "Une partie importante du délai semble provenir du mécanisme de recrutement lui-même."
+    },
+    {
+      "id_signal": "S016",
+      "titre": "IGN — montée en capacité en intelligence artificielle et données",
+      "evenements": [
+        {
+          "date": "2021",
+          "precision": "annee",
+          "evenement": "L'IGN lance un programme de recrutement et de formation visant 150 nouveaux postes sur des compétences émergentes."
+        },
+        {
+          "date": "2024-11",
+          "precision": "mois",
+          "evenement": "L'IGN indique avoir déjà recruté et formé 156 personnes et atteint l'objectif de 30 spécialistes de science des données."
+        },
+        {
+          "date": "2025-09",
+          "precision": "mois",
+          "evenement": "L'établissement prévoit d'accueillir 22 ingénieurs fonctionnaires formés par son école, contre environ dix auparavant."
+        },
+        {
+          "date": "2024-11",
+          "precision": "mois",
+          "evenement": "Le Sénat indique qu'en environ deux ans les équipes de l'IGN sont passées de 8 à 30 ingénieurs spécialisés dans les compétences concernées."
+        }
+      ],
+      "inconnues": [
+        "durée moyenne de recrutement par personne",
+        "durée moyenne de formation par personne",
+        "taux de maintien",
+        "coût total du programme"
+      ],
+      "lecture_provisoire": "La montée en capacité collective est partiellement mesurable : environ deux ans pour passer de 8 à 30 ingénieurs spécialisés, dans le cadre d'un programme combinant recrutement et formation."
+    },
+    {
+      "id_signal": "S018",
+      "titre": "Météo-France — constitution d'une capacité interne en intelligence artificielle",
+      "evenements": [
+        {
+          "date": "2019-02",
+          "precision": "mois",
+          "evenement": "Création du Lab IA de Météo-France avec le soutien du Fonds de transformation de l'action publique ; six experts sont prévus sur trois ans."
+        },
+        {
+          "date": "2020-02",
+          "precision": "mois",
+          "evenement": "Météo-France publie MeteoNet, jeu de données préparé par le Lab IA pour faciliter la recherche et l'innovation en intelligence artificielle."
+        },
+        {
+          "date": "2021",
+          "precision": "annee",
+          "evenement": "Météo-France pérennise le Lab IA ; quatre agents le composent et le rapport d'activité recense une cinquantaine de réalisations faisant appel à l'intelligence artificielle, dont une dizaine opérationnelles."
+        },
+        {
+          "date": "2024",
+          "precision": "annee",
+          "evenement": "Un premier démonstrateur de prévision régionale par intelligence artificielle à échelle kilométrique est développé en collaboration étroite avec le Lab IA."
+        }
+      ],
+      "inconnues": [
+        "date de la première demande interne adressée au Lab IA",
+        "temps moyen de réponse aux directions",
+        "part des réalisations directement attribuable au Lab IA"
+      ],
+      "lecture_provisoire": "Le délai entre création du Lab IA et une première production publique documentée est d'environ un an ; la structure est pérennisée en 2021 avec des réalisations déjà opérationnelles."
+    },
+    {
+      "id_signal": "S024",
+      "titre": "Parc éolien de Saint-Brieuc — difficulté du conseil scientifique et substitution partielle",
+      "evenements": [
+        {
+          "date": "2017-04",
+          "precision": "mois",
+          "evenement": "Création du conseil scientifique du parc par l'arrêté préfectoral d'autorisation."
+        },
+        {
+          "date": "2021",
+          "precision": "annee",
+          "evenement": "Le président du conseil scientifique démissionne et n'est pas remplacé."
+        },
+        {
+          "date": "2023-fin",
+          "precision": "intervalle",
+          "evenement": "Le rapport indique qu'aucune convocation du conseil scientifique n'a lieu depuis la fin de 2023."
+        },
+        {
+          "date": "2024-05",
+          "precision": "mois",
+          "evenement": "Mise en service du parc éolien en mer de Saint-Brieuc."
+        },
+        {
+          "date": "2025-06",
+          "precision": "mois",
+          "evenement": "Le rapport IGEDD constate que le préfet sollicite directement le SHOM, l'Ifremer et le Cerema pour obtenir des avis scientifiques et recommande de transférer la fonction de conseil scientifique au conseil de façade NAMO."
+        }
+      ],
+      "inconnues": [
+        "date de chaque sollicitation directe des opérateurs",
+        "date de remise des avis scientifiques",
+        "temps de production des avis"
+      ],
+      "lecture_provisoire": "La défaillance de l'instance scientifique est durable : démission de la présidence en 2021, absence de convocation depuis fin 2023 et recours direct à plusieurs opérateurs publics. Le temps de réponse de ces opérateurs reste inconnu."
+    },
+    {
+      "id_signal": "S038",
+      "titre": "Mayotte — sortie de crise de l'eau et renforcement des capacités locales",
+      "evenements": [
+        {
+          "date": "2022-11",
+          "precision": "mois",
+          "evenement": "Début de la phase aiguë de la crise de l'eau décrite par l'IGEDD."
+        },
+        {
+          "date": "2023-11",
+          "precision": "mois",
+          "evenement": "Début de la direction de projet dédiée à la sortie de crise."
+        },
+        {
+          "date": "2024-02",
+          "precision": "mois",
+          "evenement": "Fin de la période aiguë de crise identifiée dans le rapport."
+        },
+        {
+          "date": "2024-12",
+          "precision": "mois",
+          "evenement": "Fin de la mission de direction de projet."
+        },
+        {
+          "date": "2025-06",
+          "precision": "mois",
+          "evenement": "Publication du rapport détaillant le Plan Eau Mayotte et le besoin de structurer une ingénierie locale pérenne."
+        },
+        {
+          "date": "2024-S2",
+          "precision": "intervalle",
+          "evenement": "Le renforcement de l'assistance à maîtrise d'ouvrage se concrétise avec le positionnement du Cerema à Mayotte sur la compétence eau et la programmation de six postes dédiés."
+        },
+        {
+          "date": "2024-12",
+          "precision": "mois",
+          "evenement": "Nomination par arrêté d'un expert de haut niveau chargé de l'animation locale du Plan Eau Mayotte pour trois ans."
+        },
+        {
+          "date": "2025-01-14",
+          "precision": "jour",
+          "evenement": "Prise de fonctions de l'expert de haut niveau auprès du préfet de Mayotte."
+        }
+      ],
+      "inconnues": [
+        "date de prise de fonctions des six postes dédiés",
+        "temps de mobilisation du Cerema",
+        "premières contributions attribuables à ces nouvelles capacités",
+        "effectifs comparables avant renforcement"
+      ],
+      "lecture_provisoire": "Le renforcement humain devient plus observable : Cerema positionné et six postes programmés au second semestre 2024, puis prise de fonctions d'un expert de haut niveau le 14 janvier 2025."
+    },
+    {
+      "id_signal": "S042",
+      "titre": "IRSN puis ASNR — tensions de recrutement et réorganisation",
+      "evenements": [
+        {
+          "date": "2023",
+          "precision": "annee",
+          "evenement": "Le Sénat signale 91 postes vacants à l'IRSN dans un contexte de forte concurrence pour les ingénieurs spécialisés."
+        },
+        {
+          "date": "2024-02",
+          "precision": "mois",
+          "evenement": "Le débat parlementaire sur la réforme met explicitement en avant le regroupement de compétences rares et l'amélioration de l'attractivité."
+        },
+        {
+          "date": "2025-01",
+          "precision": "mois",
+          "evenement": "Création de l'Autorité de sûreté nucléaire et de radioprotection issue du rapprochement de l'ASN et de l'IRSN."
+        },
+        {
+          "date": "2025-05",
+          "precision": "mois",
+          "evenement": "La nouvelle autorité présente un modèle combinant compétences techniques internes et recours externe pour certaines compétences rares."
+        },
+        {
+          "date": "2025",
+          "precision": "annee",
+          "evenement": "L'ASNR établit une politique de recrutement unifiée et engage la définition d'un cadre attractif de l'emploi et des compétences ; un directeur scientifique est recruté."
+        }
+      ],
+      "inconnues": [
+        "nombre de postes encore vacants en 2025",
+        "délai moyen de recrutement",
+        "effet de la politique unifiée sur les candidatures",
+        "évolution de la fidélisation"
+      ],
+      "lecture_provisoire": "La réforme produit dès 2025 des mesures concrètes de recrutement et d'attractivité, mais leur effet sur les vacances de postes reste non mesuré."
+    },
+    {
+      "id_signal": "S049",
+      "titre": "Météo-France — création d'une équipe climatique dédiée à l'outre-mer",
+      "evenements": [
+        {
+          "date": "2024",
+          "precision": "annee",
+          "evenement": "Des effectifs supplémentaires sont accordés pour constituer une équipe dédiée aux projections climatiques à fine échelle pour les territoires ultramarins."
+        },
+        {
+          "date": "2025",
+          "precision": "annee",
+          "evenement": "Les indicateurs territorialisés produits par cette capacité sont rendus publics."
+        },
+        {
+          "date": "2026-07",
+          "precision": "mois",
+          "evenement": "Le Sénat revient sur cette capacité et sur les projets d'observation météorologique à Mayotte."
+        }
+      ],
+      "inconnues": [
+        "taille exacte de l'équipe",
+        "temps entre création de l'équipe et première production utile",
+        "coût",
+        "réutilisation des méthodes entre territoires"
+      ],
+      "lecture_provisoire": "Exemple de création d'une capacité collective ciblée avec production observable l'année suivante."
+    },
+    {
+      "id_signal": "S027",
+      "titre": "PFAS dans les matières fertilisantes — mission interministérielle",
+      "evenements": [
+        {
+          "date": "2025-09",
+          "precision": "mois",
+          "evenement": "Début de la mission conjointe IGEDD-CGAAER sur la contamination des matières fertilisantes par les PFAS."
+        },
+        {
+          "date": "2026-03",
+          "precision": "mois",
+          "evenement": "Fin de la mission, après analyse des flux, des cadres étrangers et des options de gestion."
+        },
+        {
+          "date": "2026-04",
+          "precision": "mois",
+          "evenement": "Les conclusions de la mission alimentent une circulaire interministérielle introduisant un premier cadre national de gestion."
+        },
+        {
+          "date": "2026-04-28",
+          "precision": "jour",
+          "evenement": "Publication par le ministère de l'Agriculture du rapport de mission et de ses recommandations."
+        }
+      ],
+      "inconnues": [
+        "date exacte de saisine",
+        "date exacte de constitution de l'équipe",
+        "temps consacré par chaque expert"
+      ],
+      "lecture_provisoire": "La durée de la mission est documentée de septembre 2025 à mars 2026, et une première traduction réglementaire intervient en avril 2026."
+    },
+    {
+      "id_signal": "S050",
+      "titre": "Météo-France — renouvellement de la capacité de calcul intensif",
+      "evenements": [
+        {
+          "date": "2025-2033",
+          "precision": "intervalle",
+          "evenement": "Période prévue pour le projet de renouvellement des supercalculateurs."
+        },
+        {
+          "date": "2026",
+          "precision": "annee",
+          "evenement": "Météo-France prévoit 39 millions d'euros de dépenses d'investissement, en hausse notamment du fait du renouvellement des supercalculateurs."
+        },
+        {
+          "date": "2027",
+          "precision": "annee",
+          "evenement": "Horizon annoncé pour la mise en service du nouveau système et une multiplication par six de la puissance de calcul."
+        }
+      ],
+      "inconnues": [
+        "date précise de décision d'investissement",
+        "date de contractualisation",
+        "date réelle de mise en service",
+        "écart entre calendrier prévu et réalisé",
+        "effet sur les productions scientifiques et opérationnelles"
+      ],
+      "lecture_provisoire": "Ce cas permet de suivre une capacité scientifique principalement matérielle ; la contribution utile dépendra de la mise en service effective."
+    }
+  ]
+}
