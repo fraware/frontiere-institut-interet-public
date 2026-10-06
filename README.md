@@ -39,6 +39,7 @@ Les documents principaux sont :
 - `docs/LANCEMENT_OPERATIONNEL.md` — la première vague de cas et d'interlocuteurs ;
 - `docs/TRACEABILITE_V0.3.md` — la conservation de l'historique des décisions ;
 - `docs/EVALUATION_TECHNIQUE_V0.5.md` — la comparaison des méthodes de recherche ;
+- `evaluation/CAS_RETROSPECTIFS_DEVELOPPEMENT.md` — les douze cas historiques utilisés pour comparer les méthodes pendant le développement ;
 - `docs/REPERES_DE_LECTURE.md` — les termes utilisés dans le projet, expliqués en langage courant.
 - `docs/PRINCIPES_REDACTION.md` — les règles de rédaction en français clair.
 - `docs/PLAN_SOURCES_PUBLIQUES.md` — le programme de constitution du corpus public.

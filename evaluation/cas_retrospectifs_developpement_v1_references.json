@@ -1,0 +1,198 @@
+{
+  "version_schema": "references-cas-retrospectifs-developpement-v1",
+  "cas": [
+    {
+      "code": "D01",
+      "source_signaux": [
+        "S001"
+      ],
+      "voies_attendues": [
+        "recrutement contractuel",
+        "formation ou reconversion"
+      ],
+      "formes_attendues": [
+        "personne",
+        "formation"
+      ],
+      "reponse_observee": "Recrutement de nouveaux agents spécialisés ; la résolution finale reste à documenter.",
+      "limites": "La source ne permet pas de conclure qu'une reconversion a effectivement été utilisée."
+    },
+    {
+      "code": "D02",
+      "source_signaux": [
+        "S009",
+        "S010",
+        "S011"
+      ],
+      "voies_attendues": [
+        "recrutement contractuel",
+        "recrutement statutaire"
+      ],
+      "formes_attendues": [
+        "personne",
+        "vivier"
+      ],
+      "reponse_observee": "Recours très majoritaire aux ingénieurs civils contractuels, décrits comme immédiatement disponibles par rapport au concours.",
+      "limites": "Le rapport ne fournit pas une distribution complète des délais par voie."
+    },
+    {
+      "code": "D03",
+      "source_signaux": [
+        "S012",
+        "S013"
+      ],
+      "voies_attendues": [
+        "formation ou reconversion",
+        "amélioration des conditions de rémunération ou de carrière"
+      ],
+      "formes_attendues": [
+        "personne",
+        "formation"
+      ],
+      "reponse_observee": "Formation, parcours professionnels et actions de fidélisation dans un contexte de forte pression salariale.",
+      "limites": "L'effet propre de chaque mesure n'est pas quantifié."
+    },
+    {
+      "code": "D04",
+      "source_signaux": [
+        "S016",
+        "S017"
+      ],
+      "voies_attendues": [
+        "recrutement contractuel",
+        "recrutement statutaire",
+        "formation ou reconversion"
+      ],
+      "formes_attendues": [
+        "personne",
+        "vivier",
+        "formation"
+      ],
+      "reponse_observee": "L'IGN a combiné recrutement, formation, adaptation des rémunérations et augmentation du nombre d'ingénieurs fonctionnaires formés par son école.",
+      "limites": "Le coût total et la rétention à long terme ne sont pas documentés dans la source examinée."
+    },
+    {
+      "code": "D05",
+      "source_signaux": [
+        "S018"
+      ],
+      "voies_attendues": [
+        "équipe interne mutualisée"
+      ],
+      "formes_attendues": [
+        "équipe"
+      ],
+      "reponse_observee": "Création d'une équipe interne de quatre personnes servant de centre de ressource pour plusieurs directions.",
+      "limites": "Le volume de demandes traitées et le temps de réponse ne sont pas documentés."
+    },
+    {
+      "code": "D06",
+      "source_signaux": [
+        "S024"
+      ],
+      "voies_attendues": [
+        "mobilisation d'un autre organisme public",
+        "réorganisation"
+      ],
+      "formes_attendues": [
+        "organisme public",
+        "équipe"
+      ],
+      "reponse_observee": "Mobilisation d'opérateurs publics pour fournir des avis scientifiques et recommandation de revoir l'organisation de l'instance scientifique.",
+      "limites": "Les opérateurs et leurs délais ne sont pas détaillés dans la synthèse publique."
+    },
+    {
+      "code": "D07",
+      "source_signaux": [
+        "S027"
+      ],
+      "voies_attendues": [
+        "mission ponctuelle d'expertise",
+        "coopération scientifique"
+      ],
+      "formes_attendues": [
+        "équipe",
+        "organisme public"
+      ],
+      "reponse_observee": "Mission conjointe du CGAAER et de l'IGEDD.",
+      "limites": "La source publique de synthèse ne permet pas de mesurer précisément le délai de mobilisation."
+    },
+    {
+      "code": "D08",
+      "source_signaux": [
+        "S039"
+      ],
+      "voies_attendues": [
+        "investissement matériel",
+        "réorganisation",
+        "formation ou reconversion"
+      ],
+      "formes_attendues": [
+        "infrastructure",
+        "équipe"
+      ],
+      "reponse_observee": "Diversification des ressources, modernisation des infrastructures et renforcement d'une ingénierie locale pérenne.",
+      "limites": "Les délais et coûts doivent encore être séparés par composante."
+    },
+    {
+      "code": "D09",
+      "source_signaux": [
+        "S040"
+      ],
+      "voies_attendues": [
+        "investissement matériel"
+      ],
+      "formes_attendues": [
+        "infrastructure"
+      ],
+      "reponse_observee": "Installation programmée d'un radar météorologique.",
+      "limites": "La date réelle de mise en service reste à observer."
+    },
+    {
+      "code": "D10",
+      "source_signaux": [
+        "S042"
+      ],
+      "voies_attendues": [
+        "amélioration des conditions de rémunération ou de carrière",
+        "formation ou reconversion",
+        "réorganisation"
+      ],
+      "formes_attendues": [
+        "personne",
+        "vivier",
+        "formation"
+      ],
+      "reponse_observee": "Pistes portant sur l'attractivité, les parcours de carrière et la formation ; réorganisation ultérieure visant aussi à regrouper des compétences rares.",
+      "limites": "L'effet réel sur les vacances de postes doit être mesuré après la réforme."
+    },
+    {
+      "code": "D11",
+      "source_signaux": [
+        "S049"
+      ],
+      "voies_attendues": [
+        "équipe interne mutualisée"
+      ],
+      "formes_attendues": [
+        "équipe"
+      ],
+      "reponse_observee": "Création d'une équipe dédiée grâce à des effectifs supplémentaires.",
+      "limites": "La taille exacte de l'équipe et son coût ne sont pas documentés dans la source examinée."
+    },
+    {
+      "code": "D12",
+      "source_signaux": [
+        "S050"
+      ],
+      "voies_attendues": [
+        "investissement matériel"
+      ],
+      "formes_attendues": [
+        "infrastructure"
+      ],
+      "reponse_observee": "Renouvellement pluriannuel des supercalculateurs avec objectif d'une puissance de calcul multipliée par six.",
+      "limites": "Les effets opérationnels seront mesurables après la mise en service."
+    }
+  ]
+}

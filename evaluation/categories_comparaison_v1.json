@@ -1,0 +1,34 @@
+{
+  "version": "1",
+  "formes_ressource": [
+    "personne",
+    "équipe",
+    "laboratoire",
+    "organisme public",
+    "prestataire",
+    "réseau",
+    "vivier",
+    "formation",
+    "infrastructure",
+    "outil ou service",
+    "donnée ou document"
+  ],
+  "voies_resolution": [
+    "capacité interne existante",
+    "mobilisation d'un autre organisme public",
+    "mission ponctuelle d'expertise",
+    "équipe interne mutualisée",
+    "coopération scientifique",
+    "mobilité temporaire",
+    "recrutement contractuel",
+    "recrutement statutaire",
+    "formation ou reconversion",
+    "amélioration des conditions de rémunération ou de carrière",
+    "achat d'une prestation",
+    "investissement matériel",
+    "mutualisation entre organisations",
+    "réorganisation",
+    "maintien du mécanisme existant",
+    "aucune intervention supplémentaire"
+  ]
+}

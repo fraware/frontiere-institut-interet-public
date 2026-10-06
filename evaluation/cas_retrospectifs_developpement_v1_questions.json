@@ -1,0 +1,79 @@
+{
+  "version_schema": "cas-retrospectifs-developpement-v1",
+  "date_creation": "2026-10-05",
+  "consigne": "Répondre uniquement à partir de la situation présentée. Ne pas consulter le fichier de références avant d'avoir figé les réponses.",
+  "cas": [
+    {
+      "code": "D01",
+      "titre": "Perte soudaine d'une capacité d'analyse de données",
+      "situation": "Un petit opérateur public perd une compétence interne nécessaire à l'analyse de données financières. Le marché des profils spécialisés est tendu et les conditions salariales de l'établissement sont peu compétitives.",
+      "question": "Quelles voies de résolution et quelles formes de ressource examiner pour rétablir une capacité utile rapidement puis durablement ?"
+    },
+    {
+      "code": "D02",
+      "titre": "Besoin rapide d'ingénieurs en cybersécurité",
+      "situation": "Un employeur public de défense a besoin de compétences cyber dans un marché déficitaire. La voie statutaire repose sur des concours dont une partie des postes reste vacante et dont le calendrier peut retarder fortement l'affectation.",
+      "question": "Quelles voies comparer pour réduire le délai jusqu'à une capacité réellement disponible ?"
+    },
+    {
+      "code": "D03",
+      "titre": "Fidéliser une capacité cyber longue à former",
+      "situation": "Une organisation publique investit fortement dans la formation initiale de ses ingénieurs cyber. Elle observe en parallèle des départs de profils expérimentés et de jeunes ingénieurs peu après leur recrutement.",
+      "question": "Quelles voies examiner si la montée en compétence opérationnelle prend environ deux ans ?"
+    },
+    {
+      "code": "D04",
+      "titre": "Augmenter durablement une capacité en données et intelligence artificielle",
+      "situation": "Un opérateur public anticipe une transformation technologique qui exige davantage d'ingénieurs formés aux techniques récentes de la donnée et de l'intelligence artificielle.",
+      "question": "Quelle combinaison de recrutement, formation et constitution de vivier paraît adaptée pour créer une capacité durable ?"
+    },
+    {
+      "code": "D05",
+      "titre": "Servir plusieurs directions avec une expertise en intelligence artificielle",
+      "situation": "Plusieurs directions d'un opérateur scientifique ont besoin d'expertise en intelligence artificielle pour conduire des projets, explorer de nouvelles techniques et maintenir une capacité prospective.",
+      "question": "Quelle forme de ressource et quelle organisation de cette capacité paraissent les plus adaptées ?"
+    },
+    {
+      "code": "D06",
+      "titre": "Rétablir une expertise scientifique autour d'un grand projet environnemental",
+      "situation": "Le conseil scientifique attaché à un grand projet public rencontre des difficultés de fonctionnement alors qu'une expertise scientifique reste indispensable au suivi environnemental et à la gestion du projet.",
+      "question": "Quelles ressources publiques et quelle voie d'organisation examiner pour rétablir une expertise crédible et durable ?"
+    },
+    {
+      "code": "D07",
+      "titre": "Évaluer un risque émergent à l'interface agriculture-environnement",
+      "situation": "Une nouvelle préoccupation porte sur la diffusion possible de polluants persistants depuis des matières fertilisantes vers les sols, les plantes et les nappes. L'administration doit apprécier le risque et décider si un cadre de gestion spécifique est nécessaire.",
+      "question": "Quelle forme d'expertise mobiliser pour produire une réponse exploitable par la décision publique ?"
+    },
+    {
+      "code": "D08",
+      "titre": "Sortir durablement d'une crise de l'eau insulaire",
+      "situation": "Un territoire insulaire subit une pénurie chronique d'eau aggravée par une forte dépendance aux eaux superficielles, des infrastructures insuffisantes et une forte pression démographique.",
+      "question": "Quelles capacités et quelles formes de ressource faut-il combiner pour réduire durablement la vulnérabilité du service public de l'eau ?"
+    },
+    {
+      "code": "D09",
+      "titre": "Combler une lacune critique d'observation météorologique",
+      "situation": "Un département insulaire ne dispose pas d'un équipement d'observation météorologique présent ailleurs sur le territoire national, alors que la qualité de la prévision dépend de la couverture d'observation.",
+      "question": "Quelle réponse privilégier si le déficit principal vient d'une capacité matérielle absente ?"
+    },
+    {
+      "code": "D10",
+      "titre": "Vacances de postes dans l'expertise nucléaire",
+      "situation": "Un organisme public de sûreté nucléaire compte de nombreux postes vacants alors que la relance de la filière augmente la concurrence pour les ingénieurs spécialisés.",
+      "question": "Quelles voies comparer pour restaurer puis stabiliser la capacité scientifique et technique nécessaire ?"
+    },
+    {
+      "code": "D11",
+      "titre": "Produire des projections climatiques fines pour les territoires ultramarins",
+      "situation": "Un opérateur météorologique doit disposer de projections climatiques territorialisées à fine échelle pour plusieurs territoires ultramarins.",
+      "question": "Quelle forme de capacité créer ou mobiliser pour produire ces informations de manière durable et réutilisable ?"
+    },
+    {
+      "code": "D12",
+      "titre": "Renouveler une capacité de calcul scientifique critique",
+      "situation": "Un opérateur scientifique doit traiter des volumes de données croissants et accroître fortement sa puissance de calcul pour maintenir et améliorer ses capacités de prévision.",
+      "question": "Quelle forme de ressource et quelle voie d'investissement correspondent à un déficit dont le cœur est matériel et calculatoire ?"
+    }
+  ]
+}
