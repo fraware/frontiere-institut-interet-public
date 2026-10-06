@@ -1,0 +1,84 @@
+name: Caractérisation Annuaire local DILA
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "scripts/analyser_annuaire_local.py"
+      - "tests/test_analyse_annuaire_local.py"
+      - "docs/ANALYSE_ANNUAIRE_LOCAL_V1.md"
+      - ".github/workflows/analyse-annuaire-local.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: analyse-annuaire-local-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  caracterisation:
+    name: Mesurer le flux local officiel
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v7
+
+      - name: Installer Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Exécuter les tests ciblés
+        run: |
+          python -m pip install "pytest>=8,<10"
+          python -m pytest -q tests/test_analyse_annuaire_local.py
+
+      - name: Caractériser la publication officielle
+        run: |
+          mkdir -p /tmp/frontiere-analyse
+          python scripts/analyser_annuaire_local.py \
+            --sortie /tmp/frontiere-analyse/annuaire_local.json \
+            | tee /tmp/frontiere-analyse/resume.json
+
+      - name: Vérifier le rapport
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          rapport = json.loads(
+              Path("/tmp/frontiere-analyse/annuaire_local.json").read_text(encoding="utf-8")
+          )
+          guichets = rapport["guichets"]
+          hierarchie = guichets["hierarchie"]
+          geo = rapport["competence_geographique"]
+          resolution = rapport["resolution_anomalies_roae"]
+
+          assert rapport["doctrine"]["aucune_ecriture_canonique"] is True
+          assert rapport["doctrine"]["aucune_fusion_par_nom"] is True
+          assert guichets["nombre_guichets_source"] >= 50_000
+          assert guichets["nombre_ids_uniques"] > 0
+          assert guichets["nombre_ids_uniques"] <= guichets["nombre_guichets_source"]
+          assert guichets["croisement_roae"]["nombre_ids_roae"] == 7_903
+          assert resolution["nombre_anomalies_source"] == 158
+          assert geo["nombre_fichiers_communes"] >= 30_000
+          assert geo["nombre_codes_insee_distincts"] >= 30_000
+          assert (
+              hierarchie["liens_local_local"]
+              + hierarchie["liens_local_roae_hors_local"]
+              + hierarchie["liens_non_resolus"]
+              == hierarchie["liens_declares_avec_id_explicite"]
+          )
+          PY
+
+      - name: Publier le rapport de caractérisation
+        uses: actions/upload-artifact@v4
+        with:
+          name: caracterisation-annuaire-local
+          path: /tmp/frontiere-analyse/
+          if-no-files-found: error
+          retention-days: 14
