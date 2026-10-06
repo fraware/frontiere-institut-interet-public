@@ -5,6 +5,13 @@ on:
     workflows: ["Ingestion du référentiel DILA"]
     types: [completed]
     branches: [main]
+  push:
+    branches: [main]
+    paths:
+      - "scripts/ingerer_annuaire_local.py"
+      - "scripts/rechercher_competence_geographique.py"
+      - ".github/workflows/ingestion-annuaire-local.yml"
+      - ".github/workflows/ingestion-roae.yml"
   pull_request:
     branches: [main]
     paths:
