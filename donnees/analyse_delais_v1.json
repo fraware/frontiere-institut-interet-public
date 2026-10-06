@@ -1,0 +1,143 @@
+{
+  "version": "1",
+  "date_creation": "2026-10-05",
+  "objectif": "Évaluer ce que les dix chronologies permettent réellement de mesurer sur le temps entre besoin, identification, mobilisation et première contribution utile.",
+  "categories_segment": [
+    "besoin → identification",
+    "identification → mobilisation",
+    "mobilisation → première contribution utile",
+    "besoin → première contribution utile",
+    "délai structurel ou pluriannuel"
+  ],
+  "cas": [
+    {
+      "id_signal": "S001",
+      "segment_principal": "besoin → première contribution utile",
+      "mesurable": false,
+      "observation": "La difficulté est signalée comme perdurant depuis octobre 2024 et reste documentée plusieurs mois plus tard.",
+      "borne": "borne inférieure de plusieurs mois sur la persistance du besoin ; date de résolution inconnue",
+      "manque": [
+        "date exacte de début",
+        "date d'identification d'une ressource",
+        "date de mobilisation",
+        "première contribution utile"
+      ]
+    },
+    {
+      "id_signal": "S011",
+      "segment_principal": "besoin → mobilisation",
+      "mesurable": true,
+      "observation": "Le rapport indique qu'une affectation issue du concours peut intervenir pratiquement un an après l'expression du besoin.",
+      "borne": "environ un an dans le mécanisme décrit",
+      "manque": [
+        "distribution des délais",
+        "date d'identification individuelle",
+        "première contribution utile après affectation"
+      ]
+    },
+    {
+      "id_signal": "S016",
+      "segment_principal": "délai structurel ou pluriannuel",
+      "mesurable": false,
+      "observation": "Le programme de montée en capacité est lancé en 2021 et les objectifs sont annoncés comme atteints avant l'échéance lors de l'audition de 2024.",
+      "borne": "programme de l'ordre de trois ans ; délai par recrutement inconnu",
+      "manque": [
+        "temps moyen de recrutement",
+        "temps moyen de formation",
+        "date de première contribution utile par personne"
+      ]
+    },
+    {
+      "id_signal": "S018",
+      "segment_principal": "délai structurel ou pluriannuel",
+      "mesurable": false,
+      "observation": "Une équipe spécialisée est créée en 2020 et décrite comme centre de ressource en 2025.",
+      "borne": "aucune mesure du temps jusqu'à la première prestation interne",
+      "manque": [
+        "date de première demande",
+        "date de première réponse utile",
+        "temps de traitement"
+      ]
+    },
+    {
+      "id_signal": "S024",
+      "segment_principal": "identification → mobilisation",
+      "mesurable": false,
+      "observation": "Des opérateurs publics sont mobilisés pour compenser les difficultés du conseil scientifique, mais les dates de sollicitation et de réponse ne sont pas précisées.",
+      "borne": "aucune durée calculable",
+      "manque": [
+        "date de première difficulté",
+        "date de sollicitation des opérateurs",
+        "date des avis produits"
+      ]
+    },
+    {
+      "id_signal": "S038",
+      "segment_principal": "besoin → première contribution utile",
+      "mesurable": false,
+      "observation": "La crise aiguë s'étend sur plusieurs années et une direction de projet dédiée intervient pendant une partie de cette période.",
+      "borne": "chronologie de crise disponible, mais attribution des délais aux différentes capacités impossible",
+      "manque": [
+        "date d'identification des expertises",
+        "dates de mobilisation",
+        "premières contributions par composante"
+      ]
+    },
+    {
+      "id_signal": "S042",
+      "segment_principal": "délai structurel ou pluriannuel",
+      "mesurable": false,
+      "observation": "Des postes vacants sont documentés en 2023, puis une réforme est discutée en 2024 et la nouvelle autorité est créée en 2025.",
+      "borne": "séquence pluriannuelle ; effet sur les vacances de postes encore inconnu",
+      "manque": [
+        "date de vacance de chaque poste",
+        "temps de recrutement",
+        "évolution des vacances après réforme"
+      ]
+    },
+    {
+      "id_signal": "S049",
+      "segment_principal": "mobilisation → première contribution utile",
+      "mesurable": true,
+      "observation": "Des effectifs supplémentaires sont attribués en 2024 et des indicateurs territorialisés sont rendus publics fin 2025.",
+      "borne": "intervalle grossier inférieur ou égal à environ deux ans entre création de capacité et production publique observée",
+      "manque": [
+        "date exacte de constitution de l'équipe",
+        "date de première production utile",
+        "part du délai due au recrutement"
+      ]
+    },
+    {
+      "id_signal": "S027",
+      "segment_principal": "besoin → mobilisation",
+      "mesurable": false,
+      "observation": "Une préoccupation publique est documentée en février 2026 et la mission conjointe est présentée en avril 2026.",
+      "borne": "intervalle documentaire d'environ deux mois, sans preuve que celui-ci corresponde au temps réel de mobilisation",
+      "manque": [
+        "date de commande",
+        "date de constitution de l'équipe",
+        "date de début effectif des travaux",
+        "date de remise"
+      ]
+    },
+    {
+      "id_signal": "S050",
+      "segment_principal": "délai structurel ou pluriannuel",
+      "mesurable": true,
+      "observation": "Le renouvellement de la capacité de calcul est prévu sur 2025-2033, avec une mise en service annoncée pour 2027.",
+      "borne": "environ deux ans entre début du programme et mise en service prévue, sous réserve du calendrier réel",
+      "manque": [
+        "date exacte de décision",
+        "date de contractualisation",
+        "date réelle de mise en service",
+        "première contribution utile"
+      ]
+    }
+  ],
+  "synthese": {
+    "nombre_chronologies": 10,
+    "segments_directement_mesurables": 3,
+    "segments_non_directement_mesurables": 7,
+    "conclusion": "Les dix chronologies améliorent la compréhension des mécanismes, mais seules trois fournissent actuellement une durée exploitable, souvent grossière. La priorité est donc de compléter les dates d'identification, de mobilisation et de première contribution utile plutôt que d'augmenter immédiatement le nombre de chronologies."
+  }
+}
