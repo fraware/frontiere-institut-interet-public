@@ -95,6 +95,16 @@ def sha256_fichier(chemin: Path) -> str:
     return hachage.hexdigest()
 
 
+def empreinte_semantique_export(enregistrements: list[dict[str, Any]]) -> str:
+    """Empreinte stable vis-à-vis de l'ordre des objets dans l'export ODS."""
+    hachages = sorted(compact_sha256(item) for item in enregistrements)
+    hachage = hashlib.sha256()
+    for valeur in hachages:
+        hachage.update(valeur.encode("ascii"))
+        hachage.update(b"\n")
+    return hachage.hexdigest()
+
+
 def compacter(objet: Any) -> Any:
     if isinstance(objet, dict):
         resultat = {}
@@ -831,7 +841,7 @@ def ecrire_jsonl_partitionne(
     return manifeste
 
 
-def source_deja_traitee(sha_export: str) -> bool:
+def source_deja_traitee(sha_semantique: str) -> bool:
     if not MANIFESTE.exists():
         return False
     try:
@@ -839,7 +849,7 @@ def source_deja_traitee(sha_export: str) -> bool:
     except (OSError, json.JSONDecodeError):
         return False
     return bool(
-        precedent.get("sha256_export") == sha_export
+        precedent.get("sha256_semantique_export") == sha_semantique
         and precedent.get("version_transformation") == VERSION_TRANSFORMATION
     )
 
@@ -956,15 +966,16 @@ def executer(
 ) -> dict[str, Any]:
     observe_le = observe_le or maintenant_iso()
     sha_export = sha256_fichier(export_json)
+    enregistrements = charger_export(export_json)
+    sha_semantique = empreinte_semantique_export(enregistrements)
 
-    if source_deja_traitee(sha_export):
+    if source_deja_traitee(sha_semantique):
         return {
             "etat": "inchange",
             "manifest": json.loads(MANIFESTE.read_text(encoding="utf-8")),
             "stats": json.loads(STATISTIQUES.read_text(encoding="utf-8")),
         }
 
-    enregistrements = charger_export(export_json)
     services, categories_export = filtrer_services_locaux(enregistrements)
 
     ids = [nettoyer_texte(service.get("id")) for service in services]
@@ -1088,6 +1099,7 @@ def executer(
         "etag_http": entetes.get("etag"),
         "octets_http": entetes.get("content-length"),
         "sha256_export": sha_export,
+        "sha256_semantique_export": sha_semantique,
         "nombre_enregistrements_export_complet": len(enregistrements),
         "nombre_services_locaux": len(services),
         "nombre_relations": len(relations),
@@ -1144,6 +1156,9 @@ def main() -> None:
                 ],
                 "octets_canonique": stats["stockage"]["octets_total_canonique"],
                 "sha256_export": resultat["manifest"]["sha256_export"],
+                "sha256_semantique_export": resultat["manifest"][
+                    "sha256_semantique_export"
+                ],
             },
             ensure_ascii=False,
         )
