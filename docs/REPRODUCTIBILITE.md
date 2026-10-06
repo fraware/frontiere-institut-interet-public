@@ -21,7 +21,7 @@ Sous Windows PowerShell :
 ## Vérifications minimales
 
 ```bash
-python -m compileall -q app scripts
+python -m compileall -q app scripts tests
 pytest
 ```
 
