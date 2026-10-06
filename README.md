@@ -48,15 +48,19 @@ Les décisions institutionnelles restent humaines. Le logiciel structure les fai
 | Cas rétrospectifs structurés | 12 |
 | Jeu réservé | 10 |
 | Cas prospectifs complets observés | 0 |
-| Entités du référentiel DILA ingérées | 7 903 |
-| Relations hiérarchiques DILA résolues | 8 071 |
+| Enregistrements du snapshot Annuaire DILA couverts | 93 782 / 93 782 |
+| Entités SI du ROAE | 7 903 |
+| Entités locales SL/SIL | 85 879 |
+| Relations hiérarchiques SI résolues | 8 071 |
+| Relations hiérarchiques locales et croisées | 4 155 |
 
 Ces nombres décrivent l’état du corpus au 6 octobre 2026. Ils ne constituent pas une estimation de fréquence à l’échelle de l’administration française.
 
 La principale frontière empirique se situe désormais entre trois explications : difficulté à identifier une ressource, difficulté à la mobiliser et difficulté à transformer sa mobilisation en contribution utile. Le projet entre dans une phase de collecte de données proches de l’exécution.
 
 → [État détaillé du projet](docs/ETAT_DU_PROJET.md)  
-→ [État du référentiel DILA](docs/INGESTION_ROAE_V1.md)
+→ [État du référentiel DILA](docs/INGESTION_ROAE_V1.md)  
+→ [Couverture territoriale de l'Annuaire](docs/INGESTION_ANNUAIRE_LOCAL_V1.md)
 
 ## Principes de recherche
 
