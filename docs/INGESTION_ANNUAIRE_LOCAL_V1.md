@@ -6,7 +6,7 @@ Cette ingestion étend le graphe institutionnel de FRONTIÈRE de l'organisation 
 
 La source canonique utilisée est l'API de l'Annuaire de l'administration :
 
-https://api-lannuaire.service-public.gouv.fr/explore/dataset/api-lannuaire-administration/
+https://api-lannuaire.service-public.gouv.fr/
 
 La page de référence du jeu de données est :
 
@@ -55,7 +55,7 @@ La DILA publie séparément un jeu de compétence géographique qui associe une 
 
 Le jeu est interrogé directement via :
 
-https://api-lannuaire.service-public.gouv.fr/explore/dataset/api-lannuaire-administration-locale-competence-geographique/
+https://api-lannuaire.service-public.gouv.fr/
 
 Ce graphe comporte plusieurs millions d'enregistrements. FRONTIÈRE ne le recopie pas intégralement dans Git. Le dépôt conserve une interface d'interrogation directe vers la source officielle et résout les identifiants retournés vers les entités canoniques locales ou SI.
 
