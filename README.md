@@ -130,8 +130,9 @@ Pour comprendre le projet dans le bon ordre :
 4. [Règles de décision](docs/REGLES_DECISION.md)
 5. [État empirique actuel](docs/ETAT_DU_PROJET.md)
 6. [Évaluation technique](docs/EVALUATION_TECHNIQUE_V0.5.md)
-7. [Plan d’exécution sur douze semaines](docs/PLAN_12_SEMAINES.md)
-8. [Sécurité et gouvernance](docs/SECURITE_GOUVERNANCE.md)
+7. [Reproductibilité](docs/REPRODUCTIBILITE.md)
+8. [Plan d’exécution sur douze semaines](docs/PLAN_12_SEMAINES.md)
+9. [Sécurité et gouvernance](docs/SECURITE_GOUVERNANCE.md)
 
 ## Évaluation
 
@@ -194,6 +195,10 @@ Toute contribution doit améliorer directement l’une des opérations suivantes
 ## Historique
 
 Les principales évolutions du projet sont consignées dans [CHANGELOG.md](CHANGELOG.md).
+
+## Citation
+
+Les métadonnées de citation sont disponibles dans [CITATION.cff](CITATION.cff). GitHub les expose directement dans l’interface du dépôt.
 
 ## Licence
 
