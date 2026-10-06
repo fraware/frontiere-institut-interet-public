@@ -38,6 +38,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [PLAN_12_SEMAINES.md](PLAN_12_SEMAINES.md) | Séquence de recherche sur douze semaines |
 | [LANCEMENT_OPERATIONNEL.md](LANCEMENT_OPERATIONNEL.md) | Première vague opérationnelle |
 | [PASSAGE_DONNEES_EXECUTION_V1.md](PASSAGE_DONNEES_EXECUTION_V1.md) | Quatre demandes minimales vers les détenteurs de données |
+| [EXECUTION_TERRAIN_V1.md](EXECUTION_TERRAIN_V1.md) | Canaux vérifiés, messages prêts à envoyer et règles de relance |
 | [PLAN_SOURCES_PUBLIQUES.md](PLAN_SOURCES_PUBLIQUES.md) | Constitution et approfondissement du corpus public |
 | [LIMITE_SOURCES_PUBLIQUES_V2.md](LIMITE_SOURCES_PUBLIQUES_V2.md) | Point où la recherche publique générale cesse d’être productive |
 
