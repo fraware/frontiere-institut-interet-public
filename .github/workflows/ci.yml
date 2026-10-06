@@ -26,10 +26,10 @@ jobs:
 
     steps:
       - name: Récupérer le dépôt
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Installer Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
@@ -40,7 +40,7 @@ jobs:
           pip install -e ".[dev]"
 
       - name: Vérifier la syntaxe Python
-        run: python -m compileall -q app scripts
+        run: python -m compileall -q app scripts tests
 
       - name: Exécuter les tests
         run: pytest
