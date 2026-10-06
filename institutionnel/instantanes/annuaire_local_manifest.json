@@ -1,0 +1,988 @@
+{
+  "competence_geographique": {
+    "dataset": "api-lannuaire-administration-locale-competence-geographique",
+    "mode": "interrogation_live"
+  },
+  "derniere_modification_http": null,
+  "etag_http": null,
+  "licence": "Licence Ouverte 2.0",
+  "nom_fichier_telecharge": "api-lannuaire-administration.json",
+  "nombre_enregistrements_export_complet": 93782,
+  "nombre_relations": 158,
+  "nombre_services_locaux": 85879,
+  "observe_le": "2026-10-06T19:02:01+00:00",
+  "octets_http": null,
+  "page_source": "https://www.data.gouv.fr/datasets/service-public-gouv-fr-annuaire-de-ladministration-base-de-donnees-locales",
+  "partitions_entites": [
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_000.jsonl",
+      "nombre": 646,
+      "octets": 1644009,
+      "sha256": "5909e5e67d9d8fedf62107939f828ba211d9600a8b5b30b34ddae52afd2a1a60"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_001.jsonl",
+      "nombre": 683,
+      "octets": 1732965,
+      "sha256": "b9563b6189196ca7ebac982d7f9aab36591170f9488fc8446c680c2861859419"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_002.jsonl",
+      "nombre": 700,
+      "octets": 1806538,
+      "sha256": "b81eff9737f82165dc8a08cba6b3e1e8f3475dc376fdaff8bf2e58a39c01004d"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_003.jsonl",
+      "nombre": 628,
+      "octets": 1563121,
+      "sha256": "e72c186354bf5ce15bf4d393ee24d48ea76db0b05bd3523927d1d1f35858f4d3"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_004.jsonl",
+      "nombre": 676,
+      "octets": 1743896,
+      "sha256": "36ad29b95efeda00d1da7b729c43dc654b1f30b6b28e61d05416e6fd97c29bc1"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_005.jsonl",
+      "nombre": 692,
+      "octets": 1778075,
+      "sha256": "74772ec228a046d09f9842babde4d51fae5cb2b731735223c91cd53e688eee54"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_006.jsonl",
+      "nombre": 710,
+      "octets": 1791444,
+      "sha256": "6fdf5d6f8795287b03fb536f234cfd06fdbd0339e284876d63bf83b25cf4119d"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_007.jsonl",
+      "nombre": 644,
+      "octets": 1636418,
+      "sha256": "2b363ca3074245b431bfa63865d94382ea026773d6dd071b5aad5ae754e0f0d3"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_008.jsonl",
+      "nombre": 686,
+      "octets": 1700129,
+      "sha256": "55d7ad7dedc43ac51eff58b92af1ad07b73c897e4e15d24ec75663ace05a7a62"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_009.jsonl",
+      "nombre": 722,
+      "octets": 1820809,
+      "sha256": "fe5990b3fd50a805ea9d58ac3159b6f48a716a0adb228d33aeb418c89ec023b7"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_010.jsonl",
+      "nombre": 655,
+      "octets": 1690415,
+      "sha256": "d62a7f30848d159bb1fe646a7665756e2b712e34cbf3e01624614b89c94ac114"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_011.jsonl",
+      "nombre": 651,
+      "octets": 1661788,
+      "sha256": "ee537cc9aaba036a8187da4abbd4263636c64a5b6deb45987eab3dca25c4b681"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_012.jsonl",
+      "nombre": 636,
+      "octets": 1629318,
+      "sha256": "d16f76afb9e36060c029731f72c70bd2d00e360aa94a1823282592a7485679b7"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_013.jsonl",
+      "nombre": 611,
+      "octets": 1551209,
+      "sha256": "01ce8cb89553862c456eefda28988165a71e4865f45532e3ec5d9e0658cafd3b"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_014.jsonl",
+      "nombre": 656,
+      "octets": 1645676,
+      "sha256": "b9ec967781147bed9b4bec9d602cad29534dfe0aa72643324a8acb9051ddd596"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_015.jsonl",
+      "nombre": 625,
+      "octets": 1608713,
+      "sha256": "3de4c9144166009905c6b79f9fabe60d6414613f0daa05936f06dbe5f462781a"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_016.jsonl",
+      "nombre": 666,
+      "octets": 1699913,
+      "sha256": "cb0cc26eef2da258c8eefbf2f8b0578a9d23bb3c0a00f7aadd870e951ec8e1c0"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_017.jsonl",
+      "nombre": 669,
+      "octets": 1681518,
+      "sha256": "3b08f25c6493a04ec34ecab2ebc4623790d6fc5b0bf1976088bb79c01f4ada54"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_018.jsonl",
+      "nombre": 672,
+      "octets": 1727475,
+      "sha256": "8d4d0fe6a0cd05ba4ba8d36723912c3bad4a15fc7903bb7bcf52590ce68ca996"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_019.jsonl",
+      "nombre": 672,
+      "octets": 1700600,
+      "sha256": "decd9a6249f8aec1d0f51102994ec8465bf8c69772c9244a1ee96225c9e54516"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_020.jsonl",
+      "nombre": 665,
+      "octets": 1715734,
+      "sha256": "a151190eeeaded992b286c9164322c4272273a69134887677aa9f783f101425f"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_021.jsonl",
+      "nombre": 691,
+      "octets": 1740681,
+      "sha256": "9d594f73d86b98963785391eb5818f4cd9476e78516689bc3858d10302081b08"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_022.jsonl",
+      "nombre": 650,
+      "octets": 1651489,
+      "sha256": "c06d511474842b4ec9a6e573071eafd664de36ac850a583b2f7bc1a96ea4f13c"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_023.jsonl",
+      "nombre": 646,
+      "octets": 1616323,
+      "sha256": "8231019e738a9f2dd6fe151ad2bf4d164215d173b2de441a4d51e7bc1fe0ca43"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_024.jsonl",
+      "nombre": 685,
+      "octets": 1749296,
+      "sha256": "4b40918827e5b2fd8e16703172e9546442a2eb428cc2aa854d561cb106121145"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_025.jsonl",
+      "nombre": 697,
+      "octets": 1765262,
+      "sha256": "9498aa9715ffb0b5cc6dba886c52aa5bbe0187606fe82c0336c854b81166ebd7"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_026.jsonl",
+      "nombre": 660,
+      "octets": 1682030,
+      "sha256": "ac06b24cc0b72ca949075b5167bd3690cf9d474a7492109526da4982f75be84b"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_027.jsonl",
+      "nombre": 666,
+      "octets": 1692032,
+      "sha256": "1b98d771a117789e683fb4b7ca55b0713aacd79dcf2e317fdcf21c2d00ca8708"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_028.jsonl",
+      "nombre": 669,
+      "octets": 1697557,
+      "sha256": "1974d66e34283b2701858a9b76a2454ecc636c2b3e0b317bb9521a11d9748639"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_029.jsonl",
+      "nombre": 633,
+      "octets": 1592253,
+      "sha256": "016b50214fb3e14f5e9308b59a0f59cb4b54d0e7df948841fc578d66b27b402c"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_030.jsonl",
+      "nombre": 705,
+      "octets": 1780354,
+      "sha256": "3972639eea86e71adbf88d068163509a46cb18e7c71568541beff837281dbe71"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_031.jsonl",
+      "nombre": 677,
+      "octets": 1706023,
+      "sha256": "26257a29a4bcbbc64b8b9a5c4bd3b4eef2ea5367bb0c2583e75b97357e42ff7f"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_032.jsonl",
+      "nombre": 672,
+      "octets": 1685303,
+      "sha256": "69e5f670b1aec8f8da0f3166de7db8e0e68e5afd814a6a3295c4f1200db74660"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_033.jsonl",
+      "nombre": 643,
+      "octets": 1629369,
+      "sha256": "d7e8daf6fdd0ccdbbf661c73e27b8c057ca777c6425f6b965ffac2a41a2adbff"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_034.jsonl",
+      "nombre": 649,
+      "octets": 1661496,
+      "sha256": "bf1b44fddb3a553096faa3de4518993aa01e03093c1fe67721c824f76a0ed383"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_035.jsonl",
+      "nombre": 675,
+      "octets": 1710222,
+      "sha256": "49bcee1a2b9792d1cb1c3dac53a651d653f9bfa06fe6118fcde45c012e749109"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_036.jsonl",
+      "nombre": 677,
+      "octets": 1704852,
+      "sha256": "a276a25ee0d39664af9ad46a41872036b10193635f97f5fdbe2608b7180fdda6"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_037.jsonl",
+      "nombre": 687,
+      "octets": 1736801,
+      "sha256": "c1a16be9238b73112fab496e582307f754ddedd15c25ac1e0cb84ae2e877bb24"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_038.jsonl",
+      "nombre": 690,
+      "octets": 1757460,
+      "sha256": "cf8dcede6256b938f14e8788f11dfcd3f954b86c06fee85818cff9d75549118c"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_039.jsonl",
+      "nombre": 660,
+      "octets": 1716348,
+      "sha256": "dc7da1fcc60bb1e9bfcce4f392d347ec307d0cc4a8468986b316b39df5bf4e17"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_040.jsonl",
+      "nombre": 711,
+      "octets": 1807725,
+      "sha256": "b73f43360b7d0384a633f214f4607d4f99650a330484b2f26bfdba34982de241"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_041.jsonl",
+      "nombre": 696,
+      "octets": 1775354,
+      "sha256": "c085ae514197ace7975b53f94bb5427f4f65f8b06a3912b23d493b9659211d3c"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_042.jsonl",
+      "nombre": 714,
+      "octets": 1792624,
+      "sha256": "904217823167e947383b942bca536e33e197e7ed14d53173d73a878acffe6775"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_043.jsonl",
+      "nombre": 646,
+      "octets": 1642447,
+      "sha256": "57aa3bb12ee32c4cd7372419e2d10b326d64329c4560d3a41786a9c725c7dc19"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_044.jsonl",
+      "nombre": 668,
+      "octets": 1704203,
+      "sha256": "b56ff0a42003af800ec329781a7f0468231752be45b8ec5ff06904a69c60756c"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_045.jsonl",
+      "nombre": 646,
+      "octets": 1633057,
+      "sha256": "b1d69d71cdbf85736541433788d4c1e93af0774cdd655034be595cf98d6f6399"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_046.jsonl",
+      "nombre": 649,
+      "octets": 1640353,
+      "sha256": "6ebb6b61e54c21bebd9d96a516ca0db1472d40c05acf2464a570158a6636b094"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_047.jsonl",
+      "nombre": 654,
+      "octets": 1633015,
+      "sha256": "e44c9e57031f970083bb49dd48f62a731a8ace62d8d998568dd6cda8f716ce85"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_048.jsonl",
+      "nombre": 699,
+      "octets": 1777164,
+      "sha256": "3589a7ae0258da9c63f2b0161ecbb4c39aa51c9e2d6aaadd626af6d64628b909"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_049.jsonl",
+      "nombre": 675,
+      "octets": 1702263,
+      "sha256": "00a26266d779d1dd048e771741d52147dc76987b35f77e44a6d086e7a4a4efe9"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_050.jsonl",
+      "nombre": 661,
+      "octets": 1697849,
+      "sha256": "7016002732bb1f47d3f11bdecf9cbe195c04e1e28067e27206ea181df7e44b3b"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_051.jsonl",
+      "nombre": 655,
+      "octets": 1659820,
+      "sha256": "a653ece31a408df4cfe72b4cf47e8e7548d8c418472e667e2dca4af5ec77ece2"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_052.jsonl",
+      "nombre": 666,
+      "octets": 1694914,
+      "sha256": "a7e6bb97ab26505ad4d92f9f508b84668e5723a70135e35a153c53d6a4e37041"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_053.jsonl",
+      "nombre": 670,
+      "octets": 1712130,
+      "sha256": "5276ea5bab5235a8a4d4d62af918d7029448d7b6de2f8b2f1648969f7e3ff058"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_054.jsonl",
+      "nombre": 688,
+      "octets": 1751097,
+      "sha256": "5dd4fd8f56fbbbc5796a626d811271d025d7dc0cbb8b91ffb7583191d7196fbf"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_055.jsonl",
+      "nombre": 658,
+      "octets": 1663093,
+      "sha256": "07259227d7557c176d27052a6b2f78627ec6c01f080d03730e3fb95a47a6c134"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_056.jsonl",
+      "nombre": 646,
+      "octets": 1629531,
+      "sha256": "77b4d904a50f4df10acf9475df1afd2d562ea259466ffdad49538b21f82b91e6"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_057.jsonl",
+      "nombre": 685,
+      "octets": 1730007,
+      "sha256": "96766c5de5f1deaf251d0ad8f1ad7e6070ec3bb6942d47118d0d9ce384ccbbeb"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_058.jsonl",
+      "nombre": 691,
+      "octets": 1773298,
+      "sha256": "82fc3b5492231da55d45d80ded7c69a8bc2da2e0cc6ff4c90937f830458372a1"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_059.jsonl",
+      "nombre": 633,
+      "octets": 1592979,
+      "sha256": "0ccdf05e9db2aa9b6a147fc06ebd064de96b98343038831a5bd7131cc503f0b8"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_060.jsonl",
+      "nombre": 652,
+      "octets": 1664095,
+      "sha256": "224eaa2310a5d5c7329f71ae42ede212ad4ecc6e9a9ba0a602f2aed51a89a245"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_061.jsonl",
+      "nombre": 657,
+      "octets": 1654296,
+      "sha256": "d2092e7b88e15e78760d89414eb0e14d823727a6ccf7fc859964652e8724832f"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_062.jsonl",
+      "nombre": 673,
+      "octets": 1692775,
+      "sha256": "c1586cf8e33f97047cc81170c080842840bc9b62fcc638e89dbefab97e3bc80b"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_063.jsonl",
+      "nombre": 686,
+      "octets": 1724208,
+      "sha256": "69b64af83e076da522f27e4f1fe8499cc344c7c64715f2cdcabd9e3c992e08a9"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_064.jsonl",
+      "nombre": 692,
+      "octets": 1751209,
+      "sha256": "8f08997bb33027f2df234f8e45544c312a2a2097d40d503366a6e3a44be1ba02"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_065.jsonl",
+      "nombre": 662,
+      "octets": 1667173,
+      "sha256": "f8b7cdad2216bc5f1ab1afe036dfefb36fbf576b8bcfdd5c2e9ba33d4fdab029"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_066.jsonl",
+      "nombre": 678,
+      "octets": 1691512,
+      "sha256": "4fbf920e539f3693791116d081b65c8d8cd8a2d1c96da57470d84dc76e0042e8"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_067.jsonl",
+      "nombre": 650,
+      "octets": 1645236,
+      "sha256": "68ce9b69139aba1870d8a728d04b521425d169a822ccd401bc5c786a677aad17"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_068.jsonl",
+      "nombre": 685,
+      "octets": 1741028,
+      "sha256": "26f3f3a126d612244419439fb0e18c50d1952ff1141777baf9d4b7c07f5cd327"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_069.jsonl",
+      "nombre": 690,
+      "octets": 1722689,
+      "sha256": "7692e72481985106698de5bd46428f242d2eac14e85a2aa5cb2f7a38cdf248eb"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_070.jsonl",
+      "nombre": 659,
+      "octets": 1656910,
+      "sha256": "489cbc953b369b081ad2463b49c96bfe59fcd10e0d5632891036f2ec4e8bb626"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_071.jsonl",
+      "nombre": 671,
+      "octets": 1697685,
+      "sha256": "1e1d47501876fe0b5dea64aefe9a8a2da18d301b7e621197ce28d0fab12b9586"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_072.jsonl",
+      "nombre": 653,
+      "octets": 1655967,
+      "sha256": "a0e2672d229789b9c2d63e308806eaec0cfa0fe50c244bebe223cbe9d57a999c"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_073.jsonl",
+      "nombre": 693,
+      "octets": 1749930,
+      "sha256": "e476ef7eccd88289b93e0ee1d3ec584f52eb34fe023aa27d32bc14041fdf19c0"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_074.jsonl",
+      "nombre": 675,
+      "octets": 1756804,
+      "sha256": "cbcd2ed1cb4ad03de0e78dbb97ec8e44bfb99374c9354555ebe61d814123cff0"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_075.jsonl",
+      "nombre": 660,
+      "octets": 1660045,
+      "sha256": "7ca4d5583578e7e6ee6095e8200754a23fa08e3079821ec9873767f0b90a51c6"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_076.jsonl",
+      "nombre": 702,
+      "octets": 1780838,
+      "sha256": "e03142f62e6db6cc05340609485348dbc525766b2285cd31ba536cde1718a89e"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_077.jsonl",
+      "nombre": 732,
+      "octets": 1841130,
+      "sha256": "72407d29acb4ab424973c9e23313fe18becda1ccf2262e0bc7f89b1dbcbf2b03"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_078.jsonl",
+      "nombre": 666,
+      "octets": 1690188,
+      "sha256": "2ed9ccebd20065dc42d9d90dfaa307e1ca487c6bbd3cb1cd9793fb83c8c1b0b6"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_079.jsonl",
+      "nombre": 629,
+      "octets": 1583049,
+      "sha256": "a7aee95a7f293a2e430a6787f1ac5228672cae231fc6f0e7ac1f5147d2a639b5"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_080.jsonl",
+      "nombre": 684,
+      "octets": 1743399,
+      "sha256": "d5fbc0fffdcbba0a05140da06e52003a1d05cac66cd92cca0e125a8433f4e217"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_081.jsonl",
+      "nombre": 664,
+      "octets": 1699111,
+      "sha256": "f4efadd912a0fe610f8d279ac984cdc4857b38fcfbbc94146875f6d09bf95415"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_082.jsonl",
+      "nombre": 676,
+      "octets": 1751705,
+      "sha256": "1a7e455656ca018c4a93523f8d0f8b036ad7c8efff0f28f3cbaefda2d7d68c89"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_083.jsonl",
+      "nombre": 692,
+      "octets": 1752502,
+      "sha256": "955c0c9923ffda5f5378138dfe553668c94d84e0e6aee5a3399cbdcbc5de4d7a"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_084.jsonl",
+      "nombre": 679,
+      "octets": 1709668,
+      "sha256": "9a089fc4b85ada15e099d64d35fc594edad06e119db2f0d134f9cba9d479d1ed"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_085.jsonl",
+      "nombre": 664,
+      "octets": 1694149,
+      "sha256": "93e189ee7ba13151a1eca9fdd8f9f112741c535743f1d4eb94cf7f7f59b514aa"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_086.jsonl",
+      "nombre": 654,
+      "octets": 1670089,
+      "sha256": "f2b8353a658bb934c4a252e43595d6f684a664e16e8891cc4fbf234be0116f67"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_087.jsonl",
+      "nombre": 683,
+      "octets": 1737152,
+      "sha256": "593b205c9511172f8a29f2a1d2198b9442656c29ddb0ac4a2034b04943f28b5d"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_088.jsonl",
+      "nombre": 669,
+      "octets": 1717489,
+      "sha256": "6f20edc7a6ef7cd1dc9ae8b305415570ba94db83ede50bf92ed718521a26b169"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_089.jsonl",
+      "nombre": 706,
+      "octets": 1791788,
+      "sha256": "b6194444d2a275bb1e9825d26fbb07a3054474a499e1aa2acad096a8c0a29d17"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_090.jsonl",
+      "nombre": 645,
+      "octets": 1624436,
+      "sha256": "bde9f008248340218ae0f7529b6822874835ccd6fab6f714bc008ce17590b386"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_091.jsonl",
+      "nombre": 707,
+      "octets": 1796387,
+      "sha256": "9e72f2852e1bc8ecf5e8eafa7a7c725e54605b004931bb697939787686036445"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_092.jsonl",
+      "nombre": 678,
+      "octets": 1713870,
+      "sha256": "89b46dd863c7d7f8927641da4a224f1d3c4cd5b39f6597bb1dcb7e23e0a0fbdc"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_093.jsonl",
+      "nombre": 650,
+      "octets": 1645661,
+      "sha256": "d26b6650511e111c132325311d95427fb3d3fd9122829ff2e065648616c05c9c"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_094.jsonl",
+      "nombre": 672,
+      "octets": 1696678,
+      "sha256": "437fc71412998cb7b467f5029a0ea521695eea0fe78ab60f5ccd8474c7c4311e"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_095.jsonl",
+      "nombre": 692,
+      "octets": 1766293,
+      "sha256": "9156ca5592f8894748b6c88a1398f02f44ef9c9081793a7103aa3ca4e44afad1"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_096.jsonl",
+      "nombre": 695,
+      "octets": 1744583,
+      "sha256": "4f5e5bbdbddbccf7d83501fccc8c7eb2bf443c86b9af48d45904f17c58538139"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_097.jsonl",
+      "nombre": 634,
+      "octets": 1621033,
+      "sha256": "81638813ced7c7f9c5491d4ab7ac061c658a2901161fbef50c4756609de120e0"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_098.jsonl",
+      "nombre": 686,
+      "octets": 1738660,
+      "sha256": "80b3e20a697b40a91fec22772fc69cff2d42e72f1bf102aedf2cf8754cb7ad9d"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_099.jsonl",
+      "nombre": 679,
+      "octets": 1723972,
+      "sha256": "d6be65d49c887b6108e70c3c2e505b2c8d41ec78c3e15fd45254f38e827a0e08"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_100.jsonl",
+      "nombre": 675,
+      "octets": 1702215,
+      "sha256": "04fac49efa24787e4a157429930c4bfa54c9903234e8dc8f431e5a8be8ccf2a1"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_101.jsonl",
+      "nombre": 636,
+      "octets": 1625936,
+      "sha256": "41659d9ec782be00bf0aab20055069acba9f95ffe0630dd17729f8f4c560f352"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_102.jsonl",
+      "nombre": 700,
+      "octets": 1738270,
+      "sha256": "420a2d6bcc5e3aec4647a86d0f1cb19787f54dcf489cd8e2ee78e178c257ec35"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_103.jsonl",
+      "nombre": 662,
+      "octets": 1700085,
+      "sha256": "e00a6b4b2d0fd80c491ab1bd76997d4c5dfa684fa5512e77b02daf10a50b35f8"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_104.jsonl",
+      "nombre": 687,
+      "octets": 1740145,
+      "sha256": "cbddd3c891a751a47ff9339de3f3de99a6a35d7531fa19d99daa1f7a155b5558"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_105.jsonl",
+      "nombre": 711,
+      "octets": 1800682,
+      "sha256": "ff91845a62f6b95321a8c59ddc720b0309254ade52f0c9a5a850e76907db5df0"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_106.jsonl",
+      "nombre": 676,
+      "octets": 1757146,
+      "sha256": "5cdb12f6c76e2c3dabb17284d6b6e2ed902d22901a5358af76706a9106d71641"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_107.jsonl",
+      "nombre": 655,
+      "octets": 1652241,
+      "sha256": "49c6447a6c597140aaf444c7f3e354702e50da39254c3fa8e4df1d04eb94e7c9"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_108.jsonl",
+      "nombre": 695,
+      "octets": 1746523,
+      "sha256": "0659b443878f331940ebd46ffec73797cb1d621d578d3dec22474ade6e261ace"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_109.jsonl",
+      "nombre": 677,
+      "octets": 1722316,
+      "sha256": "b13fcdc3f6f3f8e16eaed25de646235066db121dad25b181636b60976f474cf1"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_110.jsonl",
+      "nombre": 671,
+      "octets": 1687823,
+      "sha256": "319347d34ae0c75d180515e2cf13245cafe72bc63c3e95d0c27e9802b85e5bbf"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_111.jsonl",
+      "nombre": 711,
+      "octets": 1850339,
+      "sha256": "5f540d1dbd6f2f36e6072f7158709c01956cddc0edbe52cc8bd7ed7b56728307"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_112.jsonl",
+      "nombre": 654,
+      "octets": 1642093,
+      "sha256": "0bb3356fe15023190cc793562aaa1b61a1c1b9a2b3e8f9459ffe628483fa35c1"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_113.jsonl",
+      "nombre": 703,
+      "octets": 1788262,
+      "sha256": "5c5aba18440749bb8e1ff429416580d051eec73771cd3b1901e7ca54804c1b5c"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_114.jsonl",
+      "nombre": 675,
+      "octets": 1689877,
+      "sha256": "c0661750137deef36f5e616dbe30bb747efd52e912cdef75998348b2b21abccf"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_115.jsonl",
+      "nombre": 647,
+      "octets": 1632734,
+      "sha256": "323af60f804351473dc1ebea064caf0cbc8f3f1bf613df2a9982552be5d8b5c4"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_116.jsonl",
+      "nombre": 676,
+      "octets": 1696674,
+      "sha256": "b8139218bbc0511dd9d9643f998e706edfbf7f648e06128d2f4d992155a7cf87"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_117.jsonl",
+      "nombre": 702,
+      "octets": 1743397,
+      "sha256": "d87e1b78b84ad1d2dda3693cdb88476a30126a1f4eea7575fcc7d825151d391a"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_118.jsonl",
+      "nombre": 638,
+      "octets": 1595834,
+      "sha256": "3fc16511eeb98744046932d757a7759d39a07305ef22387f085d53c1898bfe48"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_119.jsonl",
+      "nombre": 702,
+      "octets": 1775542,
+      "sha256": "c4057a61ea137d63b01409b533673d5a4a1c2b101c1925186faeb352616ded11"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_120.jsonl",
+      "nombre": 647,
+      "octets": 1623259,
+      "sha256": "be1557007164e2a62b67f6217f9216f8c53287a5c921cb6b9f2cc456576fb975"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_121.jsonl",
+      "nombre": 655,
+      "octets": 1687521,
+      "sha256": "a4c21d65455a341e9d4ac7a55c6cdcf27a34e47373f0c4ce93ebbf31b0d53b58"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_122.jsonl",
+      "nombre": 621,
+      "octets": 1568301,
+      "sha256": "4a8a65e732e1883c01b488860b57dd90a227fbd02a1513920c6b16298f8f11ce"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_123.jsonl",
+      "nombre": 687,
+      "octets": 1699867,
+      "sha256": "b7f3f0d541602d107cbc93858751795399ac83fee4f57497fa441972dbcf9ad6"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_124.jsonl",
+      "nombre": 686,
+      "octets": 1774622,
+      "sha256": "10aa8c0d3785036e7dcf4c54dca55109a9abca2a946c4427d35f9cd49547a44e"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_125.jsonl",
+      "nombre": 696,
+      "octets": 1772698,
+      "sha256": "5bc51188893d18cb8fc6b15788deb850e11959d945dc0d91f6d353fb90a787b5"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_126.jsonl",
+      "nombre": 628,
+      "octets": 1564029,
+      "sha256": "ae4dc71fac1a7a36f103ed52e70bbbbbc917477991b54b262ad2983aeea430d9"
+    },
+    {
+      "fichier": "institutionnel/entites/locales/annuaire_local_127.jsonl",
+      "nombre": 624,
+      "octets": 1576323,
+      "sha256": "c4b36398452622d375a47dabbd140b5ebc1329a3834054a473bd7639e58a3a9b"
+    }
+  ],
+  "partitions_relations": [
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_000.jsonl",
+      "nombre": 9,
+      "octets": 6847,
+      "sha256": "22fe2727ebc62a5c51180baae361759a5467369e4a6c10a575f41b497b161cd9"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_001.jsonl",
+      "nombre": 2,
+      "octets": 1526,
+      "sha256": "acf0877f0134d37de49cda4addddfbe5e72a2b030753df5ab900346c964aec53"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_002.jsonl",
+      "nombre": 6,
+      "octets": 4563,
+      "sha256": "dfbc59c8ea22f18771b120549914944269f8e10e012e39e1f99c013512f20d7f"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_003.jsonl",
+      "nombre": 3,
+      "octets": 2284,
+      "sha256": "3ea834a6b70a690208f2e299ac8076e415838533de3081033da50434a7c06dc5"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_004.jsonl",
+      "nombre": 6,
+      "octets": 4558,
+      "sha256": "b1b91e1503d77aad587932bd5c5fa6a7e03e0af9a2c3ad5423f163b43f6ff0ef"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_005.jsonl",
+      "nombre": 4,
+      "octets": 3047,
+      "sha256": "85d7d5aa4f8ee4a53e4496d2a603e1a0f93ac861bf6821d54885c3a355c0c2ef"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_006.jsonl",
+      "nombre": 6,
+      "octets": 4573,
+      "sha256": "ce31c8fbecd76b394ab959c09b7a9464e8d2065f659639ba26a6ec50cb5db625"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_007.jsonl",
+      "nombre": 4,
+      "octets": 3047,
+      "sha256": "db38f3482e617687f13f736c4c4cf132d455dc03e4217fadb6d7c71c1c9745f3"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_008.jsonl",
+      "nombre": 6,
+      "octets": 4568,
+      "sha256": "04ec10571f849df53d074a22a9412a7743cb6876d444506b516803d1b6b04947"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_009.jsonl",
+      "nombre": 3,
+      "octets": 2284,
+      "sha256": "bc8c1bc6656f4aba6d86d682b84336a61b9cf677d2b1c4138ce4099365fd0543"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_010.jsonl",
+      "nombre": 3,
+      "octets": 2289,
+      "sha256": "9ccffc862588b3828ab5312d91df2f993146576bbadc51ccfe13dcd28ea4336d"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_011.jsonl",
+      "nombre": 6,
+      "octets": 4563,
+      "sha256": "922a6062efe60cc5388e2ef0abe6ea625083382de89435fd6c8008206a5d5e6c"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_012.jsonl",
+      "nombre": 6,
+      "octets": 4558,
+      "sha256": "374bd6016ba5a23a6c788cc830b4e9163cbc36ef89c5042c9a6b85a52a0013b4"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_013.jsonl",
+      "nombre": 3,
+      "octets": 2279,
+      "sha256": "28f54a17dbd8aeb27c4d25cd5445085526b56f0c5144f9f0c75a10186c71b17a"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_014.jsonl",
+      "nombre": 7,
+      "octets": 5326,
+      "sha256": "2cd0a54c4de2a1413ec64c4b1bff8b0a99e40ece5568ddc861f4d0b43d046202"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_015.jsonl",
+      "nombre": 2,
+      "octets": 1521,
+      "sha256": "398f035ef6d471140917499dfe120cf6cba6aada24c254c0d5e9c498ecdf7db8"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_016.jsonl",
+      "nombre": 10,
+      "octets": 7610,
+      "sha256": "d73478228c37b7e76cd0b0ef7c262b818eca730786648be5d2e0431c77a01650"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_017.jsonl",
+      "nombre": 4,
+      "octets": 3047,
+      "sha256": "34d0b83718194d12da46215d1bc51b211ef521cd99bdffcb766e52264e86fdc2"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_018.jsonl",
+      "nombre": 8,
+      "octets": 6084,
+      "sha256": "4a22b4e1043aa363052d26a7dd470c9ad5a8a493ceaaa97e72e6bbed6437a20a"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_019.jsonl",
+      "nombre": 6,
+      "octets": 4573,
+      "sha256": "8e56f126fc02027c75f38ac082347c4cf7659d01732722da1cfb62a641b8c2f4"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_020.jsonl",
+      "nombre": 2,
+      "octets": 1521,
+      "sha256": "9c39e5c864add452387aa27b92089dec306ce725f03f9c09228df5334bbf2dea"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_021.jsonl",
+      "nombre": 4,
+      "octets": 3052,
+      "sha256": "66d282ca6dc09e45c8425adc132d09c9624e720d1c12a3e398de90a58560bad8"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_022.jsonl",
+      "nombre": 4,
+      "octets": 3047,
+      "sha256": "46a242f722bf51722334ee8e1d32596087361ab2e08a61bc5a6988500330d862"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_023.jsonl",
+      "nombre": 5,
+      "octets": 3800,
+      "sha256": "f78091c6b950bca838705124d06994bd8e0822a52702ff000eb9b079f97880d4"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_024.jsonl",
+      "nombre": 5,
+      "octets": 3795,
+      "sha256": "dcd485326ed2055ea78e8e0b08ea9a350c91b3bb27f38e3ce21d753ef007238f"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_025.jsonl",
+      "nombre": 6,
+      "octets": 4563,
+      "sha256": "5163e44d5a158257bc037b411d661e2b8a11228f922845829a3ca3b14e1992dc"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_026.jsonl",
+      "nombre": 5,
+      "octets": 3815,
+      "sha256": "baf26498a757f1eb12bcf23ccb815f2a740d673c9ddf6df6f824ac0c2bd961a6"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_027.jsonl",
+      "nombre": 6,
+      "octets": 4558,
+      "sha256": "f0a00afa0cef0537093da9fdbef27a4cb3e4ee53fbeb5bae37f3b4bbc1f54a86"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_028.jsonl",
+      "nombre": 6,
+      "octets": 4558,
+      "sha256": "d68aac20ea03219628fad0229494fec2d2a6488f344b18257ef7afa35ebbb028"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_029.jsonl",
+      "nombre": 1,
+      "octets": 763,
+      "sha256": "9956a0ae113a32f5b4bbedff0c85a7f2dba4e1b47b394618836c0ae47257ebc6"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_030.jsonl",
+      "nombre": 5,
+      "octets": 3805,
+      "sha256": "cf550c4cd7e5a9addd63ef22e09c0449e63eb893a74f724c874bde329c6f8838"
+    },
+    {
+      "fichier": "institutionnel/relations/locales/hierarchie_locale_031.jsonl",
+      "nombre": 5,
+      "octets": 3805,
+      "sha256": "fd3b2b57885f3eebe7f142bb670da875fd09060efe80b4b276d5f7347ec2b26e"
+    }
+  ],
+  "paternite": "Service-Public.gouv.fr / DILA",
+  "producteur": "Direction de l'information légale et administrative",
+  "sha256_export": "2e2e0432ea51377c1d58be37698654b5516cc328ea41c29d185d153bc53e81ca",
+  "source_id": "dila_annuaire_local",
+  "url_competence_geographique": "https://api-lannuaire.service-public.gouv.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration-locale-competence-geographique",
+  "url_export": "https://api-lannuaire.service-public.gouv.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json",
+  "version": "2",
+  "version_transformation": "2.0"
+}

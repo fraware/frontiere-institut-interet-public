@@ -1,0 +1,64 @@
+{
+  "categories_export": {
+    "SI": 7903,
+    "SIL": 6294,
+    "SL": 79585
+  },
+  "competence_geographique": {
+    "dataset": "api-lannuaire-administration-locale-competence-geographique",
+    "mode": "interrogation_live",
+    "raison_non_materialisation_git": "Le jeu de compétence géographique comporte plusieurs millions d'enregistrements. Il est interrogé à la demande afin de garder le dépôt Git exploitable et l'information fraîche.",
+    "url": "https://api-lannuaire.service-public.gouv.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration-locale-competence-geographique"
+  },
+  "couverture": {
+    "avec_coordonnees": 84749,
+    "avec_fondement_juridique": 1546,
+    "avec_mission": 29905,
+    "avec_responsable": 0,
+    "avec_siren": 44048,
+    "avec_siret": 54651,
+    "avec_territoire_direct": 85580
+  },
+  "hierarchie": {
+    "anomalies": 835,
+    "avec_parent_principal": 65,
+    "entites_a_parents_directs_multiples": 0,
+    "sans_parent_principal": 85814
+  },
+  "nombre_enregistrements_export_complet": 93782,
+  "nombre_entites_canoniques": 85879,
+  "nombre_relations_hierarchiques": 158,
+  "nombre_services_locaux_source": 85879,
+  "observe_le": "2026-10-06T19:02:01+00:00",
+  "resolution_croisee_roae": {
+    "anomalies_roae_initiales": 158,
+    "resolues_par_annuaire_local": 158,
+    "restantes_apres_croisement": 0
+  },
+  "source_id": "dila_annuaire_local",
+  "stockage": {
+    "octets_entites": 217737983,
+    "octets_relations": 120229,
+    "octets_total_canonique": 217858212
+  },
+  "types_institutionnels_source": {
+    "Administration centrale (ou Ministère)": 4,
+    "Association d'utilité publique": 490,
+    "Autorité administrative indépendante": 11,
+    "Collectivité locale": 760,
+    "Conseil, comité, commission (organisme consultatif)": 207,
+    "Direction départementale interministérielle": 284,
+    "Département": 108,
+    "Groupement d'intérêt public": 38,
+    "Juridiction": 66,
+    "Non précisé": 79444,
+    "Ordre professionnel": 543,
+    "Préfecture, sous-préfecture": 1162,
+    "Région": 17,
+    "Répertoire": 58,
+    "Service déconcentré": 1633,
+    "Syndicat mixte": 57,
+    "Établissement public": 997
+  },
+  "version": "2"
+}
