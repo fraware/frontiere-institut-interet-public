@@ -1,0 +1,56 @@
+{
+  "version": "1",
+  "date_creation": "2026-10-05",
+  "objet": "Identifier, pour les quatre chronologies encore incomplètes, la limite atteinte par les sources publiques et la donnée précise nécessaire pour continuer.",
+  "cas": [
+    {
+      "id_signal": "S001",
+      "titre": "France Compétences — capacité d'analyse en langage R",
+      "ce_que_les_sources_publiques_etablissent": [
+        "La perte de capacité interne perdure depuis octobre 2024.",
+        "Le 3 avril 2025, le recrutement de profils spécialisés est encore en cours.",
+        "Le rapport du Sénat déposé le 1er juillet 2025 reprend encore la difficulté."
+      ],
+      "ce_qui_manque": "La date de rétablissement effectif de la capacité.",
+      "source_la_plus_prometteuse": "données de ressources humaines de France Compétences, offre de recrutement archivée, arrivée du nouvel agent ou confirmation directe de l'établissement",
+      "statut": "plafond_public_atteint_provisoirement"
+    },
+    {
+      "id_signal": "S016",
+      "titre": "IGN — montée en capacité en données et intelligence artificielle",
+      "ce_que_les_sources_publiques_etablissent": [
+        "La feuille de route 2022 prévoit 30 à 40 recrutements spécialisés supplémentaires d'ici 2024.",
+        "Au 5 juillet 2024, 30 recrutements dans les métiers de la science des données et de l'intelligence artificielle sont atteints.",
+        "L'IGN considère alors le risque d'attractivité comme levé."
+      ],
+      "ce_qui_manque": "Le délai individuel entre ouverture d'un poste, recrutement, formation et première contribution utile.",
+      "source_la_plus_prometteuse": "données internes de recrutement et de formation de l'IGN ou échantillon anonymisé de plusieurs recrutements",
+      "statut": "plafond_public_atteint_provisoirement"
+    },
+    {
+      "id_signal": "S024",
+      "titre": "Saint-Brieuc — substitution à un conseil scientifique défaillant",
+      "ce_que_les_sources_publiques_etablissent": [
+        "La présidence du conseil scientifique démissionne en 2021.",
+        "Le conseil n'est plus convoqué depuis fin 2023.",
+        "Le préfet sollicite directement le SHOM, l'Ifremer et le Cerema pour obtenir des avis scientifiques."
+      ],
+      "ce_qui_manque": "Au moins une paire date de sollicitation / date de remise d'avis.",
+      "source_la_plus_prometteuse": "courriers de saisine, comptes rendus de réunions préfectorales, avis datés du SHOM, de l'Ifremer ou du Cerema",
+      "statut": "plafond_public_atteint_provisoirement"
+    },
+    {
+      "id_signal": "S042",
+      "titre": "Sûreté nucléaire — recrutement et montée en capacité de l'ASNR",
+      "ce_que_les_sources_publiques_etablissent": [
+        "L'IRSN comptait 91 postes vacants en 2023 dans un contexte de tension sur les ingénieurs spécialisés.",
+        "L'ASNR compte 2 085 personnels au 1er janvier 2025 et 2 126 au 31 décembre 2025.",
+        "Une politique de recrutement unifiée et des mesures d'attractivité sont mises en place en 2025.",
+        "9 135 jours de formation sont dispensés aux personnels de l'ASNR en 2025."
+      ],
+      "ce_qui_manque": "Un nombre comparable de postes spécialisés vacants en 2025 ainsi que le délai moyen de recrutement.",
+      "source_la_plus_prometteuse": "bilan social détaillé, tableau des vacances de postes, indicateurs de recrutement par métier ou réponse directe de l'ASNR",
+      "statut": "plafond_public_atteint_provisoirement"
+    }
+  ]
+}
