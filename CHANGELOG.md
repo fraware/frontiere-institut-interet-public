@@ -4,6 +4,12 @@ Ce fichier résume les principales étapes publiques du projet. Les détails com
 
 ## Non publié
 
+### Exécution terrain
+
+- quatre prises de contact rendues directement exécutables avec canaux vérifiés, messages, données minimales et règles de relance ;
+- provenance des canaux de contact enregistrée dans les données du projet ;
+- nouveaux contrôles automatiques sur le paquet d’exécution.
+
 ### Documentation et tenue du dépôt
 
 - refonte de la page d’accueil ;
