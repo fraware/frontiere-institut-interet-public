@@ -107,12 +107,12 @@ jobs:
       - name: Enregistrer les données produites
         shell: bash
         run: |
-          if git diff --quiet -- institutionnel/entites/roae institutionnel/relations/roae institutionnel/instantanes/roae_manifest.json institutionnel/statistiques_roae.json; then
+          git add institutionnel/entites/roae institutionnel/relations/roae institutionnel/instantanes/roae_manifest.json institutionnel/statistiques_roae.json
+          if git diff --cached --quiet; then
             echo "Aucun changement à enregistrer."
             exit 0
           fi
           git config user.name "frontiere-referentiel"
           git config user.email "frontiere-referentiel@users.noreply.github.com"
-          git add institutionnel/entites/roae institutionnel/relations/roae institutionnel/instantanes/roae_manifest.json institutionnel/statistiques_roae.json
           git commit -m "Référentiel DILA — amorcer l'organisation administrative de l'État"
           git push origin "HEAD:${{ github.head_ref }}"
