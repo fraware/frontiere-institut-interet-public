@@ -6,7 +6,14 @@ build-backend = "setuptools.build_meta"
 name = "frontiere-institut-interet-public"
 version = "0.5.4"
 description = "Prototype opératoire pour l'étude de la mobilisation des capacités scientifiques et techniques pour l'action publique."
+readme = "README.md"
 requires-python = ">=3.11"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Operating System :: OS Independent",
+]
 dependencies = [
   "fastapi>=0.115,<1",
   "uvicorn[standard]>=0.30,<1",
@@ -19,6 +26,10 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<9", "httpx>=0.27,<1", "alembic>=1.13,<2"]
+
+[project.urls]
+Repository = "https://github.com/fraware/frontiere-institut-interet-public"
+Documentation = "https://github.com/fraware/frontiere-institut-interet-public/tree/main/docs"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
