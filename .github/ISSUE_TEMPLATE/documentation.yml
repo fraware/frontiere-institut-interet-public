@@ -1,0 +1,47 @@
+name: Documentation ou méthode
+description: Proposer une correction documentaire ou méthodologique
+title: "[Documentation] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Les propositions empiriques doivent distinguer le fait observé, sa source et l'interprétation proposée.
+
+  - type: textarea
+    id: emplacement
+    attributes:
+      label: Document ou partie concernée
+    validations:
+      required: true
+
+  - type: textarea
+    id: probleme
+    attributes:
+      label: Problème identifié
+      description: Expliquer l'ambiguïté, l'erreur ou le manque.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposition
+    attributes:
+      label: Modification proposée
+    validations:
+      required: true
+
+  - type: textarea
+    id: preuve
+    attributes:
+      label: Source ou justification
+      description: Pour une affirmation empirique, fournir la provenance vérifiable.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: securite
+    attributes:
+      label: Vérification
+      options:
+        - label: Ce ticket ne contient aucune information sensible ou restreinte.
+          required: true
