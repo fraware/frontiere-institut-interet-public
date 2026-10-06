@@ -1,8 +1,5 @@
 import importlib.util
-import io
 import json
-import tarfile
-import zipfile
 from pathlib import Path
 
 RACINE = Path(__file__).resolve().parents[1]
@@ -14,15 +11,21 @@ assert spec.loader is not None
 spec.loader.exec_module(module)
 
 
-def service_exemple(identifiant="11111111-2222-3333-4444-555555555555"):
+def service_exemple(
+    identifiant="11111111-2222-3333-4444-555555555555",
+    categorie="SL",
+):
     return {
         "id": identifiant,
         "nom": "Mairie d'essai",
-        "categorie": "SL",
+        "categorie": categorie,
         "type_organisme": "Mairie",
-        "type_service_local": "mairie",
-        "pivot": "mairie",
-        "code_insee_commune": ["75056"],
+        "pivot": [
+            {
+                "type_service_local": "mairie",
+                "code_insee_commune": ["75056"],
+            }
+        ],
         "adresse": [
             {
                 "numero_voie": "1 place d'essai",
@@ -36,18 +39,43 @@ def service_exemple(identifiant="11111111-2222-3333-4444-555555555555"):
         "mission": "Accueille les usagers.",
         "siren": "123456789",
         "siret": "12345678900012",
-        "statut": "active",
         "statut_de_diffusion": True,
         "date_creation": "01/01/2020 00:00:00",
         "date_modification": "01/10/2026 00:00:00",
-        "plage_ouverture": [{"nom_jour_debut": "Lundi", "valeur_heure_debut_1": "09:00"}],
+        "plage_ouverture": [
+            {"nom_jour_debut": "Lundi", "valeur_heure_debut_1": "09:00"}
+        ],
         "hierarchie": [],
     }
 
 
+def test_filtre_conserve_sl_et_sil():
+    enregistrements = [
+        service_exemple(categorie="SL"),
+        service_exemple(
+            "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+            categorie="SIL",
+        ),
+        service_exemple(
+            "bbbbbbbb-cccc-dddd-eeee-ffffffffffff",
+            categorie="SI",
+        ),
+    ]
+
+    locaux, categories = module.filtrer_services_locaux(enregistrements)
+
+    assert len(locaux) == 2
+    assert categories["SL"] == 1
+    assert categories["SIL"] == 1
+    assert categories["SI"] == 1
+
+
 def test_canonicalisation_locale_preserve_territoire_et_coordonnees():
     service = service_exemple()
-    entite = module.canonicaliser_service(service, "2026-10-06T12:00:00+00:00")
+    entite = module.canonicaliser_service(
+        service,
+        "2026-10-06T12:00:00+00:00",
+    )
 
     assert entite["id"].startswith("FRONTIERE-INST-DILA-LOCAL-")
     assert entite["nom_officiel"] == "Mairie d'essai"
@@ -55,13 +83,16 @@ def test_canonicalisation_locale_preserve_territoire_et_coordonnees():
     assert entite["identifiants"]["siren"] == "123456789"
     assert entite["missions"][0]["nature"] == "PUBLIEE"
     assert any(c["type"] == "ADRESSE" for c in entite["coordonnees"])
-    assert entite["donnees_annuaire_local"]["pivot"] == "mairie"
+    assert entite["donnees_annuaire_local"]["pivot"][0]["type_service_local"] == "mairie"
     assert entite["provenance"][0]["source_id"] == "dila_annuaire_local"
 
 
 def test_entite_inchangee_conserve_date_observation():
     service = service_exemple()
-    premiere = module.canonicaliser_service(service, "2026-10-06T12:00:00+00:00")
+    premiere = module.canonicaliser_service(
+        service,
+        "2026-10-06T12:00:00+00:00",
+    )
     seconde = module.canonicaliser_service(
         service,
         "2026-10-07T12:00:00+00:00",
@@ -69,7 +100,10 @@ def test_entite_inchangee_conserve_date_observation():
     )
 
     assert seconde["observe_le"] == premiere["observe_le"]
-    assert seconde["provenance"][0]["collecte_le"] == premiere["provenance"][0]["collecte_le"]
+    assert (
+        seconde["provenance"][0]["collecte_le"]
+        == premiere["provenance"][0]["collecte_le"]
+    )
 
 
 def test_hierarchie_locale_orientee_enfant_vers_parent():
@@ -95,62 +129,47 @@ def test_hierarchie_locale_orientee_enfant_vers_parent():
     assert relations[0]["type_relation"] == "DEPEND_DE"
 
 
-def test_competence_commune_resout_un_guichet_local():
-    local_id = "11111111-2222-3333-4444-555555555555"
-    donnees = {
-        "code_insee_commune": "75056",
-        "nom": "Paris",
-        "type_service_local": [
-            {
-                "code_type_service_local": "mairie",
-                "organisme": [local_id],
-            }
-        ],
-    }
+def test_parent_principal_est_derivable():
+    parent = service_exemple()
+    enfant_id = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+    enfant = service_exemple(enfant_id)
+    parent["hierarchie"] = [
+        {"type_hierarchie": "Service Fils", "service": enfant_id}
+    ]
 
-    record, anomalies, resolus, non_resolus = module.canonicaliser_competence_commune(
-        donnees,
-        {local_id},
+    entites = [
+        module.canonicaliser_service(
+            parent,
+            "2026-10-06T12:00:00+00:00",
+        ),
+        module.canonicaliser_service(
+            enfant,
+            "2026-10-06T12:00:00+00:00",
+        ),
+    ]
+    relations, _ = module.construire_relations_locales(
+        [parent, enfant],
+        {parent["id"], enfant_id},
         {},
+        "2026-10-06T12:00:00+00:00",
+    )
+    resultat = module.appliquer_parent_principal(entites, relations)
+
+    enfant_canonique = next(
+        e for e in entites if e["id"].endswith(enfant_id.upper())
+    )
+    assert enfant_canonique["parent_id"].endswith(parent["id"].upper())
+    assert resultat["avec_parent_principal"] == 1
+
+
+def test_chargeur_export_accepte_liste(tmp_path):
+    chemin = tmp_path / "export.json"
+    chemin.write_text(
+        json.dumps([service_exemple()], ensure_ascii=False),
+        encoding="utf-8",
     )
 
-    assert record["code_insee_commune"] == "75056"
-    assert record["types_service_local"][0]["organismes"][0].endswith(local_id.upper())
-    assert anomalies == []
-    assert resolus == 1
-    assert non_resolus == 0
+    donnees = module.charger_export(chemin)
 
-
-def test_extraction_archive_identifie_json_et_zip(tmp_path):
-    json_bytes = json.dumps([service_exemple()], ensure_ascii=False).encode("utf-8")
-
-    competence = io.BytesIO()
-    with zipfile.ZipFile(competence, "w") as z:
-        z.writestr(
-            "75056.json",
-            json.dumps(
-                {
-                    "code_insee_commune": "75056",
-                    "nom": "Paris",
-                    "type_service_local": [],
-                }
-            ),
-        )
-
-    archive_path = tmp_path / "all_latest.tar.bz2"
-    with tarfile.open(archive_path, "w:bz2") as tar:
-        info_json = tarfile.TarInfo("2026-10-06-data.gouv_local.json")
-        info_json.size = len(json_bytes)
-        tar.addfile(info_json, io.BytesIO(json_bytes))
-
-        zip_bytes = competence.getvalue()
-        info_zip = tarfile.TarInfo("2026-10-06-data.gouv.commune.zip")
-        info_zip.size = len(zip_bytes)
-        tar.addfile(info_zip, io.BytesIO(zip_bytes))
-
-    main_json, competence_zip, details = module.extraire_archive(archive_path, tmp_path / "x")
-
-    assert main_json.exists()
-    assert competence_zip.exists()
-    assert details["membre_json"].endswith(".json")
-    assert details["membre_competence"].endswith(".zip")
+    assert len(donnees) == 1
+    assert donnees[0]["nom"] == "Mairie d'essai"
