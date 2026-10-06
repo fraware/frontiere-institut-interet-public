@@ -112,6 +112,7 @@ flowchart TB
 | --- | --- |
 | `app/` | Application FastAPI et logique métier |
 | `donnees/` | Corpus public, chronologies et données de recherche versionnées |
+| `institutionnel/` | Référentiel vivant des institutions, sources, relations et changements |
 | `evaluation/` | Jeux de cas, formats de réponses et instruments de comparaison |
 | `scripts/` | Initialisation, vérification et évaluation |
 | `tests/` | Vérifications automatiques |
@@ -132,7 +133,8 @@ Pour comprendre le projet dans le bon ordre :
 6. [Évaluation technique](docs/EVALUATION_TECHNIQUE_V0.5.md)
 7. [Reproductibilité](docs/REPRODUCTIBILITE.md)
 8. [Plan d’exécution sur douze semaines](docs/PLAN_12_SEMAINES.md)
-9. [Sécurité et gouvernance](docs/SECURITE_GOUVERNANCE.md)
+9. [Référentiel institutionnel vivant](docs/REFERENTIEL_INSTITUTIONNEL_V1.md)
+10. [Sécurité et gouvernance](docs/SECURITE_GOUVERNANCE.md)
 
 ## Évaluation
 
