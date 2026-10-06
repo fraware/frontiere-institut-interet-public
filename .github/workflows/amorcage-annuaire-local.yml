@@ -1,9 +1,9 @@
 name: Amorçage du territoire DILA
 
 on:
-  push:
+  pull_request:
     branches:
-      - institutionnel/territoire-integral-v1
+      - main
     paths:
       - "scripts/ingerer_annuaire_local.py"
       - "tests/test_ingestion_annuaire_local.py"
