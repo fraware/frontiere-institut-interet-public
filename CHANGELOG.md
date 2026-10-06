@@ -13,7 +13,13 @@ Ce fichier résume les principales étapes publiques du projet. Les détails com
 - matrice de couverture et schémas canoniques pour les entités et relations ;
 - ingestion du snapshot DILA du 6 octobre 2026 avec 7 903 entités et 8 071 relations hiérarchiques résolues ;
 - 7 898 parents principaux dérivés, cinq entités sans parent principal et 158 références hiérarchiques explicitement conservées comme non résolues ;
-- vérification automatique des empreintes, partitions, identités, relations et parentage du snapshot complet.
+- vérification automatique des empreintes, partitions, identités, relations et parentage du snapshot complet ;
+- couverture des **93 782 enregistrements** du snapshot courant de l'Annuaire DILA par l'union des **7 903 SI** et **85 879 SL/SIL** ;
+- ingestion de **4 155 relations** locales et croisées, avec **3 536 parents principaux** ;
+- résolution par le flux local des **158 références hiérarchiques** restées orphelines dans le seul ROAE ;
+- conservation explicite de **100 références locales** dont la cible est absente du snapshot courant ;
+- interrogation à la demande de la compétence géographique DILA et contrôle de bout en bout sur une commune réelle ;
+- empreinte sémantique de l'export Annuaire afin d'éliminer les faux changements dus à l'ordre de transport.
 
 ### Exécution terrain
 

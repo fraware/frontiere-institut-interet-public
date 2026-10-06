@@ -1,21 +1,133 @@
 {
-  "version": "1",
+  "version": "1.1",
   "date_reference": "2026-10-06",
   "familles": [
-    {"id": "institutions_constitutionnelles", "priorite": 1, "sources": ["dila_roae", "dila_jorf"], "objectif": "exhaustif"},
-    {"id": "gouvernement_ministeres", "priorite": 1, "sources": ["dila_roae", "dila_protocole_gouvernement", "dila_jorf"], "objectif": "exhaustif"},
-    {"id": "administration_centrale", "priorite": 1, "sources": ["dila_roae", "dila_jorf"], "objectif": "exhaustif_jusqu_aux_bureaux"},
-    {"id": "administration_territoriale", "priorite": 1, "sources": ["dila_annuaire_local", "dila_roae"], "objectif": "exhaustif_des_services_references"},
-    {"id": "autorites_independantes", "priorite": 1, "sources": ["legifrance_aai_api", "dila_roae", "dila_jorf"], "objectif": "exhaustif"},
-    {"id": "operateurs_etablissements_publics", "priorite": 1, "sources": ["budget_operateurs_2026", "dila_roae"], "objectif": "exhaustif_du_perimetre_budgetaire_et_des_etablissements_references"},
-    {"id": "collectivites", "priorite": 1, "sources": ["insee_cog", "dila_annuaire_local"], "objectif": "exhaustif"},
-    {"id": "intercommunalites_groupements", "priorite": 1, "sources": ["dgcl_banatic"], "objectif": "exhaustif"},
-    {"id": "enseignement_superieur", "priorite": 2, "sources": ["mesr_etablissements", "dila_roae"], "objectif": "exhaustif_des_etablissements_publics_references"},
-    {"id": "recherche_publique", "priorite": 1, "sources": ["mesr_rnsr", "mesr_etablissements"], "objectif": "exhaustif_des_structures_references"},
-    {"id": "sante_social_medicosocial", "priorite": 2, "sources": ["ans_finess_structures", "ans_finess_activites"], "objectif": "exhaustif_des_structures_finess"},
-    {"id": "justice", "priorite": 2, "sources": ["dila_roae", "dila_jorf"], "objectif": "exhaustif_des_juridictions_referencees"},
-    {"id": "reseau_diplomatique", "priorite": 2, "sources": ["dila_roae"], "objectif": "exhaustif_des_implantations_referencees"},
-    {"id": "entreprises_participation_etat", "priorite": 3, "sources": ["ape_portefeuille"], "objectif": "exhaustif_du_portefeuille_ape"}
+    {
+      "id": "institutions_constitutionnelles",
+      "priorite": 1,
+      "sources": [
+        "dila_roae",
+        "dila_jorf"
+      ],
+      "objectif": "exhaustif"
+    },
+    {
+      "id": "gouvernement_ministeres",
+      "priorite": 1,
+      "sources": [
+        "dila_roae",
+        "dila_protocole_gouvernement",
+        "dila_jorf"
+      ],
+      "objectif": "exhaustif"
+    },
+    {
+      "id": "administration_centrale",
+      "priorite": 1,
+      "sources": [
+        "dila_roae",
+        "dila_jorf"
+      ],
+      "objectif": "exhaustif_jusqu_aux_bureaux"
+    },
+    {
+      "id": "administration_territoriale",
+      "priorite": 1,
+      "sources": [
+        "dila_annuaire_local",
+        "dila_roae",
+        "dila_competence_geographique"
+      ],
+      "objectif": "exhaustif_des_services_references"
+    },
+    {
+      "id": "autorites_independantes",
+      "priorite": 1,
+      "sources": [
+        "legifrance_aai_api",
+        "dila_roae",
+        "dila_jorf"
+      ],
+      "objectif": "exhaustif"
+    },
+    {
+      "id": "operateurs_etablissements_publics",
+      "priorite": 1,
+      "sources": [
+        "budget_operateurs_2026",
+        "dila_roae"
+      ],
+      "objectif": "exhaustif_du_perimetre_budgetaire_et_des_etablissements_references"
+    },
+    {
+      "id": "collectivites",
+      "priorite": 1,
+      "sources": [
+        "insee_cog",
+        "dila_annuaire_local"
+      ],
+      "objectif": "exhaustif"
+    },
+    {
+      "id": "intercommunalites_groupements",
+      "priorite": 1,
+      "sources": [
+        "dgcl_banatic"
+      ],
+      "objectif": "exhaustif"
+    },
+    {
+      "id": "enseignement_superieur",
+      "priorite": 2,
+      "sources": [
+        "mesr_etablissements",
+        "dila_roae"
+      ],
+      "objectif": "exhaustif_des_etablissements_publics_references"
+    },
+    {
+      "id": "recherche_publique",
+      "priorite": 1,
+      "sources": [
+        "mesr_rnsr",
+        "mesr_etablissements"
+      ],
+      "objectif": "exhaustif_des_structures_references"
+    },
+    {
+      "id": "sante_social_medicosocial",
+      "priorite": 2,
+      "sources": [
+        "ans_finess_structures",
+        "ans_finess_activites"
+      ],
+      "objectif": "exhaustif_des_structures_finess"
+    },
+    {
+      "id": "justice",
+      "priorite": 2,
+      "sources": [
+        "dila_roae",
+        "dila_jorf"
+      ],
+      "objectif": "exhaustif_des_juridictions_referencees"
+    },
+    {
+      "id": "reseau_diplomatique",
+      "priorite": 2,
+      "sources": [
+        "dila_roae"
+      ],
+      "objectif": "exhaustif_des_implantations_referencees"
+    },
+    {
+      "id": "entreprises_participation_etat",
+      "priorite": 3,
+      "sources": [
+        "ape_portefeuille"
+      ],
+      "objectif": "exhaustif_du_portefeuille_ape"
+    }
   ],
   "indicateurs": [
     "sources_disponibles",
