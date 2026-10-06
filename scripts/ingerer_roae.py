@@ -18,7 +18,7 @@ URL_SOURCE = "https://echanges.dila.gouv.fr/OPENDATA/RefOrgaAdminEtat/FluxAnneeC
 PAGE_SOURCE = "https://www.data.gouv.fr/datasets/referentiel-de-lorganisation-administrative-de-letat"
 NOM_SOURCE = "dila_refOrga_admin_Etat_fr_latest.zip"
 SOURCE_ID = "dila_roae"
-VERSION_TRANSFORMATION = "1.1"
+VERSION_TRANSFORMATION = "1.2"
 
 DOSSIER_ENTITES = RACINE / "institutionnel" / "entites" / "roae"
 DOSSIER_RELATIONS = RACINE / "institutionnel" / "relations" / "roae"
