@@ -44,3 +44,29 @@ jobs:
 
       - name: Exécuter les tests
         run: pytest
+
+
+  conteneur:
+    name: Conteneur
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v7
+
+      - name: Construire l'image
+        run: docker build -t frontiere:test .
+
+      - name: Vérifier le service
+        run: |
+          docker run --detach --name frontiere-test --publish 8000:8000 frontiere:test
+          for tentative in {1..20}; do
+            if curl --fail --silent http://127.0.0.1:8000/health > /tmp/frontiere-health.json; then
+              cat /tmp/frontiere-health.json
+              exit 0
+            fi
+            sleep 1
+          done
+          docker logs frontiere-test
+          exit 1
