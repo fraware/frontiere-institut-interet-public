@@ -90,11 +90,13 @@ Portefeuille de l'Agence des participations de l'État et autres entités lorsqu
 
 ## Sources de référence
 
-Le socle principal est le Référentiel de l'organisation administrative de l'État de la DILA. Il couvre environ six mille organismes, jusqu'au niveau des bureaux, et fournit missions, hiérarchie, coordonnées et responsables.
+Le premier socle est le Référentiel de l'organisation administrative de l'État de la DILA. Le snapshot observé le 6 octobre 2026 contient **7 903 objets SI**, jusqu'au niveau de nombreuses unités internes, avec missions, hiérarchie, coordonnées et responsables selon les objets.
 
-Le second socle est la Base de données locales de l'Annuaire de l'administration, qui référence plus de quatre-vingt-six mille guichets publics locaux.
+Le second socle est l'API de l'Annuaire de l'administration. Le même snapshot courant contient **79 585 objets SL** et **6 294 objets SIL**, soit **85 879 objets locaux**. L'union des ingestions SI, SL et SIL couvre ainsi les **93 782 enregistrements** de l'export DILA observé à cette date.
 
-Ces deux sources ne suffisent pas à représenter l'ensemble de l'écosystème. Elles sont complétées par le Code officiel géographique de l'Insee, BANATIC pour les intercommunalités, le budget de l'État pour les opérateurs, Légifrance et le Journal officiel pour les textes et changements, les données du ministère chargé de l'enseignement supérieur et de la recherche, FINESS pour la santé, et le portefeuille de l'Agence des participations de l'État.
+La DILA publie également un jeu distinct de compétence géographique reliant communes, types de services et identifiants de services compétents. Ce jeu massif est interrogé directement par FRONTIÈRE au moment d'une recherche territoriale. Il reste une source officielle du graphe même si ses millions d'arêtes ne sont pas recopiées dans Git.
+
+Cette complétude concerne le périmètre de l'Annuaire DILA. Elle ne suffit pas à représenter l'ensemble de l'écosystème public. Le graphe doit encore être complété par le Code officiel géographique de l'Insee, BANATIC pour les intercommunalités, le budget de l'État pour les opérateurs, Légifrance et le Journal officiel pour les textes et changements, les données du ministère chargé de l'enseignement supérieur et de la recherche, FINESS pour la santé, et le portefeuille de l'Agence des participations de l'État.
 
 Le registre exact des sources et de leur cadence figure dans `institutionnel/sources_v1.json`.
 
@@ -320,7 +322,7 @@ institutionnel/
   instantanes/
 ```
 
-Les gros fichiers bruts des producteurs publics ne sont pas recopiés quotidiennement dans Git. FRONTIÈRE conserve leur adresse, leur empreinte, leur date et la représentation canonique nécessaire au graphe. Les instantanés volumineux doivent être stockés sous forme compressée et partitionnée ou dans un stockage d'archives dédié afin d'éviter une croissance incontrôlée de l'historique Git.
+Les gros fichiers bruts des producteurs publics ne sont pas recopiés quotidiennement dans Git. FRONTIÈRE conserve leur adresse, leur empreinte, leur date et la représentation canonique nécessaire au graphe. Les instantanés volumineux sont partitionnés. Les graphes massifs servant principalement à des requêtes ponctuelles, comme la compétence géographique DILA, peuvent rester interrogés directement auprès de la source officielle lorsque leur matérialisation intégrale dégraderait fortement la tenue du dépôt.
 
 ## Cadence de surveillance
 
@@ -363,7 +365,7 @@ Le programme `scripts/surveiller_sources_institutionnelles.py` vérifie la fraî
 
 Une action GitHub quotidienne exécute cette surveillance. Une modification du millésime, de la date de mise à jour, d'une ressource ou de son empreinte apparaît alors dans l'historique du dépôt.
 
-Cette première surveillance concerne les sources elles-mêmes. Les connecteurs d'ingestion transformeront ensuite leurs contenus en entités, relations et événements canoniques.
+La surveillance des sources est complétée par des ingestions canoniques du ROAE et de l'Annuaire local. Les deux ingestions sont reproductibles et versionnées. Une empreinte sémantique distingue un changement réel du contenu institutionnel d'une simple variation d'ordre dans un export.
 
 ## Mesure de couverture
 
