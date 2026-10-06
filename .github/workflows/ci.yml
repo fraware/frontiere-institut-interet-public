@@ -107,7 +107,7 @@ jobs:
       - name: Enregistrer les données produites
         shell: bash
         run: |
-          git add institutionnel/entites/roae institutionnel/relations/roae institutionnel/instantanes/roae_manifest.json institutionnel/statistiques_roae.json
+          git add institutionnel/entites/roae institutionnel/relations/roae institutionnel/instantanes/roae_manifest.json institutionnel/statistiques_roae.json institutionnel/anomalies_roae.json
           if git diff --cached --quiet; then
             echo "Aucun changement à enregistrer."
             exit 0
