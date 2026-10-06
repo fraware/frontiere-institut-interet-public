@@ -19,6 +19,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [REGLES_DECISION.md](REGLES_DECISION.md) | Qualification des situations et choix des voies |
 | [REPERES_DE_LECTURE.md](REPERES_DE_LECTURE.md) | Définitions en français clair |
 | [TRACEABILITE_V0.3.md](TRACEABILITE_V0.3.md) | Historique des décisions et changements |
+| [REPRODUCTIBILITE.md](REPRODUCTIBILITE.md) | Reproduction du logiciel, du corpus et des évaluations |
 | [PRINCIPES_REDACTION.md](PRINCIPES_REDACTION.md) | Règles de rédaction publique |
 
 ## Évaluation
@@ -53,3 +54,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 Le répertoire [`donnees/`](../donnees/) contient le corpus empirique versionné. Son [README](../donnees/README.md) décrit les règles de lecture et de qualité.
 
 Les fichiers d’analyse successifs restent conservés lorsque leur présence permet de reconstruire l’évolution du raisonnement. Les documents qui décrivent l’état courant portent la version la plus récente dans leur nom.
+
+## Citation
+
+Les métadonnées de citation du projet figurent dans [`CITATION.cff`](../CITATION.cff).
