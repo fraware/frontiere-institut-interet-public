@@ -4,6 +4,14 @@ Ce fichier résume les principales étapes publiques du projet. Les détails com
 
 ## Non publié
 
+### Référentiel institutionnel vivant
+
+- définition d'un graphe canonique couvrant l'État central, les services territoriaux, collectivités, opérateurs, autorités indépendantes, recherche, santé et participations publiques ;
+- registre initial des principales sources officielles et de leur cadence ;
+- séparation entre validité institutionnelle et date d'observation ;
+- surveillance quotidienne de la fraîcheur et des modifications des sources ;
+- matrice de couverture et schémas canoniques pour les entités et relations.
+
 ### Exécution terrain
 
 - quatre prises de contact rendues directement exécutables avec canaux vérifiés, messages, données minimales et règles de relance ;

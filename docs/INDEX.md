@@ -31,6 +31,13 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [PREMIERS_ENSEIGNEMENTS_EMPIRIQUES.md](PREMIERS_ENSEIGNEMENTS_EMPIRIQUES.md) | Première synthèse des mécanismes observés |
 | [ANALYSE_DELAIS_V4.md](ANALYSE_DELAIS_V4.md) | État actuel des chronologies et des délais exploitables |
 
+## Référentiel institutionnel
+
+| Document | Rôle |
+| --- | --- |
+| [REFERENTIEL_INSTITUTIONNEL_V1.md](REFERENTIEL_INSTITUTIONNEL_V1.md) | Périmètre, sources, graphe, temporalité, provenance et surveillance |
+| [../institutionnel/README.md](../institutionnel/README.md) | Organisation des fichiers du référentiel vivant |
+
 ## Exécution
 
 | Document | Rôle |

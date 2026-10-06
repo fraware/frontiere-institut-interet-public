@@ -1,0 +1,48 @@
+name: Surveillance institutionnelle
+
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: surveillance-institutionnelle
+  cancel-in-progress: false
+
+jobs:
+  surveillance:
+    name: Actualiser l'état des sources
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v7
+
+      - name: Installer Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Surveiller les sources
+        run: python scripts/surveiller_sources_institutionnelles.py
+
+      - name: Vérifier la structure du référentiel
+        run: pytest -q tests/test_referentiel_institutionnel.py
+
+      - name: Enregistrer les changements observés
+        shell: bash
+        run: |
+          if git diff --quiet -- institutionnel/etat_sources.json institutionnel/alertes_sources.json; then
+            echo "Aucun changement de source à enregistrer."
+            exit 0
+          fi
+
+          git config user.name "frontiere-surveillance"
+          git config user.email "frontiere-surveillance@users.noreply.github.com"
+          git add institutionnel/etat_sources.json institutionnel/alertes_sources.json
+          git commit -m "Surveillance institutionnelle — état des sources"
+          git push
