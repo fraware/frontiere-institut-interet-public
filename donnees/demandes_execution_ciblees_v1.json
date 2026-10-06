@@ -1,0 +1,82 @@
+{
+  "version": "1",
+  "date_creation": "2026-10-06",
+  "objet": "Transformer les quatre lacunes documentaires restantes en demandes minimales adressables aux détenteurs de la trace d'exécution.",
+  "demandes": [
+    {
+      "id_signal": "S001",
+      "institution": "France Compétences",
+      "fonction_cible": "Direction observation et évaluation / secrétariat général et ressources humaines",
+      "question_unique": "À quelle date la capacité interne permettant d'exploiter les données en langage R a-t-elle été rétablie après la perte documentée à partir d'octobre 2024 ?",
+      "champs_minimaux": [
+        "mois de rétablissement",
+        "nature de la solution"
+      ],
+      "champs_utiles": [
+        "mois de publication du besoin",
+        "mois de prise de fonctions",
+        "mois de première utilisation opérationnelle"
+      ],
+      "precision_minimale": "mois",
+      "canal_public": "https://www.francecompetences.fr/contactez-nous/",
+      "appui_public": "https://www.francecompetences.fr/fiche/les-directions-de-france-competences/",
+      "statut": "prete_a_envoyer"
+    },
+    {
+      "id_signal": "S016",
+      "institution": "IGN",
+      "fonction_cible": "Direction des ressources humaines",
+      "question_unique": "Sur un petit échantillon de recrutements en science des données ou intelligence artificielle réalisés entre 2022 et 2024, combien de temps s'est écoulé entre l'ouverture du besoin et la première contribution utile ?",
+      "champs_minimaux": [
+        "mois d'ouverture",
+        "mois de prise de fonctions",
+        "mois de première contribution utile"
+      ],
+      "champs_utiles": [
+        "mois de publication",
+        "mois de sélection",
+        "formation éventuelle"
+      ],
+      "precision_minimale": "mois",
+      "canal_public": "partenariats-nationaux@ign.fr",
+      "appui_public": "https://www.ign.fr/institut/notre-organisation",
+      "statut": "prete_a_router"
+    },
+    {
+      "id_signal": "S024",
+      "institution": "DDTM des Côtes-d'Armor — délégation mer et littoral",
+      "fonction_cible": "service suivant le parc éolien en mer de Saint-Brieuc",
+      "question_unique": "Pour au moins une sollicitation directe du SHOM, de l'Ifremer ou du Cerema liée au parc éolien de Saint-Brieuc, quelles sont la date de saisine et la date de remise de l'avis ?",
+      "champs_minimaux": [
+        "organisme sollicité",
+        "date ou mois de saisine",
+        "date ou mois de remise de l'avis",
+        "objet de l'avis"
+      ],
+      "precision_minimale": "mois",
+      "canal_public": "ddtm-dml@cotes-darmor.gouv.fr",
+      "appui_public": "https://www.cotes-darmor.gouv.fr/Actions-de-l-Etat/Mer-littoral-et-securite-maritime",
+      "statut": "prete_a_envoyer"
+    },
+    {
+      "id_signal": "S042",
+      "institution": "ASNR",
+      "fonction_cible": "ressources humaines",
+      "question_unique": "Pour les métiers scientifiques et techniques en tension, quel est le délai de recrutement observé entre l'ouverture d'un poste et la prise de fonctions en 2025 ?",
+      "champs_minimaux": [
+        "famille de métiers",
+        "mesure du délai de recrutement",
+        "nombre de postes couverts par la mesure"
+      ],
+      "champs_utiles": [
+        "postes ouverts",
+        "postes pourvus",
+        "postes vacants à date définie"
+      ],
+      "precision_minimale": "statistique agrégée",
+      "canal_public": "info@asnr.fr",
+      "appui_public": "https://www.asnr.fr/nous-contacter",
+      "statut": "prete_a_envoyer"
+    }
+  ]
+}
