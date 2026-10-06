@@ -40,9 +40,9 @@ CONTACTS = [
 BENCHMARK_CASES = [
     {
         "code": "B01",
-        "title": "France Compétences — recrutement de data scientists",
+        "title": "France Compétences — recrutement de spécialistes de la donnée",
         "source_url": "https://www.senat.fr/fileadmin/Illustrations/Controle/Structures_temporaires/2024-2025/CE-Agences_Etat/TOME_I_-_Rapport_CE_Agences.pdf",
-        "prompt": "Une agence publique cherche depuis plusieurs mois à recruter des profils de data scientists décrits comme spécifiques et rares. La rémunération proposée est signalée comme peu compétitive. Identifier la capacité requise, les formes de ressource pertinentes et les principales voies de résolution à tester.",
+        "prompt": "Une agence publique cherche depuis plusieurs mois à recruter des profils de spécialistes de la donnée décrits comme spécifiques et rares. La rémunération proposée est signalée comme peu compétitive. Identifier la capacité requise, les formes de ressource pertinentes et les principales voies de résolution à tester.",
         "expected_routes": ["RECRUTEMENT_PERMANENT", "ATTRACTIVITE_REMUNERATION"],
         "expected_resource_forms": ["PERSONNE"],
         "outcome_summary": "Signal public de rareté et d'attractivité ; l'état opérationnel actuel reste à vérifier.",
@@ -78,7 +78,7 @@ BENCHMARK_CASES = [
         "code": "B05",
         "title": "État — tension sur les compétences data",
         "source_url": "https://www.numerique.gouv.fr/actualites/rapport-evaluation-des-besoins-de-letat-en-competences-et-expertises-en-matiere-de-donnee/",
-        "prompt": "Les métiers de la donnée sont décrits comme en tension et le métier de data scientist comme critique, avec des besoins supérieurs aux effectifs disponibles et un problème d'attractivité en milieu de carrière. Identifier les voies et formes de ressource à comparer.",
+        "prompt": "Les métiers de la donnée sont décrits comme en tension et le métier de spécialiste de la donnée comme critique, avec des besoins supérieurs aux effectifs disponibles et un problème d'attractivité en milieu de carrière. Identifier les voies et formes de ressource à comparer.",
         "expected_routes": ["RECRUTEMENT_PERMANENT", "MOBILITE_PUBLIQUE", "ATTRACTIVITE_REMUNERATION"],
         "expected_resource_forms": ["PERSONNE"],
         "outcome_summary": "Contexte quantitatif de tension ; il ne constitue pas encore un épisode individuel.",
@@ -120,7 +120,7 @@ BENCHMARK_CASES = [
         "prompt": "Un opérateur public anticipe un besoin accru d'ingénieurs formés aux techniques récentes de la donnée et de l'IA. Il veut développer rapidement une capacité interne durable. Identifier les voies et formes de ressource pertinentes.",
         "expected_routes": ["RECRUTEMENT_PERMANENT", "FORMATION_INTERNE", "EQUIPE_INTERNE"],
         "expected_resource_forms": ["PERSONNE", "EQUIPE"],
-        "outcome_summary": "L'IGN a mis en œuvre un plan de recrutement de 150 talents, dont 30 data scientists, faisant passer ses équipes IA de 8 à 30 ingénieurs spécialisés en environ deux ans.",
+        "outcome_summary": "L'IGN a mis en œuvre un plan de recrutement de 150 talents, dont 30 spécialistes de la donnée, faisant passer ses équipes IA de 8 à 30 ingénieurs spécialisés en environ deux ans.",
         "label_quality": "STRONG",
     },
     {
