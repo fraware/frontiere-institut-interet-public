@@ -8,7 +8,7 @@ import re
 import shutil
 import urllib.request
 import zipfile
-from collections import Counter
+from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
@@ -18,11 +18,13 @@ URL_SOURCE = "https://echanges.dila.gouv.fr/OPENDATA/RefOrgaAdminEtat/FluxAnneeC
 PAGE_SOURCE = "https://www.data.gouv.fr/datasets/referentiel-de-lorganisation-administrative-de-letat"
 NOM_SOURCE = "dila_refOrga_admin_Etat_fr_latest.zip"
 SOURCE_ID = "dila_roae"
+VERSION_TRANSFORMATION = "1.1"
 
 DOSSIER_ENTITES = RACINE / "institutionnel" / "entites" / "roae"
 DOSSIER_RELATIONS = RACINE / "institutionnel" / "relations" / "roae"
 MANIFESTE = RACINE / "institutionnel" / "instantanes" / "roae_manifest.json"
 STATISTIQUES = RACINE / "institutionnel" / "statistiques_roae.json"
+ANOMALIES = RACINE / "institutionnel" / "anomalies_roae.json"
 
 N_PARTITIONS_ENTITES = 32
 N_PARTITIONS_RELATIONS = 16
@@ -50,7 +52,7 @@ def lire_url(url: str) -> tuple[bytes, dict[str, str]]:
     requete = urllib.request.Request(
         url,
         headers={
-            "User-Agent": "FRONTIERE-referentiel-institutionnel/1.0",
+            "User-Agent": "FRONTIERE-referentiel-institutionnel/1.1",
             "Accept": "application/zip,application/octet-stream,*/*",
         },
     )
@@ -70,8 +72,7 @@ def charger_services_depuis_zip(contenu_zip: bytes) -> tuple[list[dict[str, Any]
         nom_json = noms[0]
         donnees = json.loads(archive.read(nom_json).decode("utf-8-sig"))
 
-    services = trouver_liste_services(donnees)
-    return services, nom_json
+    return trouver_liste_services(donnees), nom_json
 
 
 def trouver_liste_services(donnees: Any) -> list[dict[str, Any]]:
@@ -105,9 +106,7 @@ def trouver_liste_services(donnees: Any) -> list[dict[str, Any]]:
 def liste(valeur: Any) -> list[Any]:
     if valeur is None or valeur == "":
         return []
-    if isinstance(valeur, list):
-        return valeur
-    return [valeur]
+    return valeur if isinstance(valeur, list) else [valeur]
 
 
 def nettoyer_texte(valeur: Any) -> str | None:
@@ -132,6 +131,32 @@ def valeurs_liens(valeur: Any) -> list[dict[str, Any]]:
     return resultat
 
 
+def charger_index_jsonl(dossier: Path, cle: str) -> dict[str, dict[str, Any]]:
+    index: dict[str, dict[str, Any]] = {}
+    if not dossier.exists():
+        return index
+    for chemin in sorted(dossier.glob("*.jsonl")):
+        with chemin.open("r", encoding="utf-8") as fichier:
+            for ligne in fichier:
+                if not ligne.strip():
+                    continue
+                objet = json.loads(ligne)
+                valeur = nettoyer_texte(objet.get(cle))
+                if valeur:
+                    index[valeur] = objet
+    return index
+
+
+def charger_json(chemin: Path) -> dict[str, Any]:
+    if not chemin.exists():
+        return {}
+    try:
+        valeur = json.loads(chemin.read_text(encoding="utf-8"))
+        return valeur if isinstance(valeur, dict) else {}
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
 def normaliser_responsables(service: dict[str, Any], source_id: str) -> list[dict[str, Any]]:
     resultat = []
     for affectation in liste(service.get("affectation_personne")):
@@ -140,7 +165,6 @@ def normaliser_responsables(service: dict[str, Any], source_id: str) -> list[dic
         personne = affectation.get("personne")
         if not isinstance(personne, dict):
             personne = {}
-        textes = valeurs_liens(personne.get("texte_reference"))
         resultat.append(
             {
                 "fonction": nettoyer_texte(affectation.get("fonction")) or "Fonction non précisée",
@@ -150,7 +174,7 @@ def normaliser_responsables(service: dict[str, Any], source_id: str) -> list[dic
                 "grade": nettoyer_texte(personne.get("grade")),
                 "telephone": nettoyer_texte(affectation.get("telephone")),
                 "adresses_courriel": valeurs_liens(personne.get("adresse_courriel")),
-                "textes_reference": textes,
+                "textes_reference": valeurs_liens(personne.get("texte_reference")),
                 "source_id": source_id,
                 "valide_depuis": None,
                 "valide_jusqua": None,
@@ -165,8 +189,7 @@ def normaliser_coordonnees(service: dict[str, Any]) -> list[dict[str, Any]]:
         if isinstance(adresse, dict):
             resultat.append({"type": "ADRESSE", **adresse})
 
-    courriels = liste(service.get("adresse_courriel"))
-    for courriel in courriels:
+    for courriel in liste(service.get("adresse_courriel")):
         if isinstance(courriel, dict):
             resultat.append({"type": "COURRIEL", **courriel})
         elif nettoyer_texte(courriel):
@@ -197,20 +220,18 @@ def normaliser_coordonnees(service: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def normaliser_textes(service: dict[str, Any]) -> list[dict[str, Any]]:
-    resultat = []
-    for item in valeurs_liens(service.get("texte_reference")):
-        resultat.append(
-            {
-                "libelle": nettoyer_texte(item.get("libelle")),
-                "url": nettoyer_texte(item.get("valeur")),
-                "source_id": SOURCE_ID,
-            }
-        )
-    return resultat
+    return [
+        {
+            "libelle": nettoyer_texte(item.get("libelle")),
+            "url": nettoyer_texte(item.get("valeur")),
+            "source_id": SOURCE_ID,
+        }
+        for item in valeurs_liens(service.get("texte_reference"))
+    ]
 
 
 def aliases(service: dict[str, Any]) -> list[str]:
-    resultat = []
+    resultat: list[str] = []
     for valeur in liste(service.get("ancien_nom")):
         texte = nettoyer_texte(valeur)
         if texte and texte not in resultat:
@@ -218,16 +239,42 @@ def aliases(service: dict[str, Any]) -> list[str]:
     return resultat
 
 
-def canonicaliser_service(service: dict[str, Any], observe_le: str) -> dict[str, Any]:
+def provenance_precedente(precedent: dict[str, Any] | None) -> dict[str, Any] | None:
+    if not precedent:
+        return None
+    provenance = precedent.get("provenance")
+    if isinstance(provenance, list) and provenance and isinstance(provenance[0], dict):
+        return provenance[0]
+    return None
+
+
+def canonicaliser_service(
+    service: dict[str, Any],
+    observe_le: str,
+    precedent: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     dila_id = nettoyer_texte(service.get("id"))
     nom = nettoyer_texte(service.get("nom"))
     if not dila_id or not nom:
         raise ValueError("Chaque service DILA doit posséder id et nom.")
 
+    empreinte_service = compact_sha256(service)
+    provenance_ancienne = provenance_precedente(precedent)
+    inchange = bool(
+        precedent
+        and provenance_ancienne
+        and provenance_ancienne.get("empreinte") == empreinte_service
+    )
+    date_observation = precedent.get("observe_le") if inchange else observe_le
+    date_collecte = (
+        provenance_ancienne.get("collecte_le")
+        if inchange and provenance_ancienne
+        else observe_le
+    )
+
     mission = nettoyer_texte(service.get("mission"))
-    missions = []
-    if mission:
-        missions.append(
+    missions = (
+        [
             {
                 "texte": mission,
                 "source_id": SOURCE_ID,
@@ -235,7 +282,10 @@ def canonicaliser_service(service: dict[str, Any], observe_le: str) -> dict[str,
                 "valide_depuis": None,
                 "valide_jusqua": None,
             }
-        )
+        ]
+        if mission
+        else []
+    )
 
     identifiants = {
         "dila_id": dila_id,
@@ -251,8 +301,6 @@ def canonicaliser_service(service: dict[str, Any], observe_le: str) -> dict[str,
         or nettoyer_texte(service.get("type_repertoire"))
         or "Service institutionnel"
     )
-
-    empreinte_service = compact_sha256(service)
 
     return {
         "id": id_canonique(dila_id),
@@ -279,13 +327,13 @@ def canonicaliser_service(service: dict[str, Any], observe_le: str) -> dict[str,
                 "source_id": SOURCE_ID,
                 "identifiant_source": dila_id,
                 "url": nettoyer_texte(service.get("url_service_public")) or PAGE_SOURCE,
-                "collecte_le": observe_le,
+                "collecte_le": date_collecte,
                 "empreinte": empreinte_service,
             }
         ],
         "valide_depuis": None,
         "valide_jusqua": None,
-        "observe_le": observe_le,
+        "observe_le": date_observation,
         "metadata_dila": {
             "categorie": service.get("categorie"),
             "type_repertoire": service.get("type_repertoire"),
@@ -317,9 +365,8 @@ def candidats_id(objet: Any) -> Iterable[str]:
                 "id_service",
                 "service_id",
                 "identifiant_service",
-            }:
-                if isinstance(valeur, str) and UUID_RE.match(valeur.strip()):
-                    yield valeur.strip()
+            } and isinstance(valeur, str) and UUID_RE.match(valeur.strip()):
+                yield valeur.strip()
             if isinstance(valeur, (dict, list)):
                 yield from candidats_id(valeur)
         return
@@ -329,16 +376,25 @@ def candidats_id(objet: Any) -> Iterable[str]:
             yield from candidats_id(valeur)
 
 
+def relation_precedente(
+    relation_id: str, precedentes: dict[str, dict[str, Any]]
+) -> dict[str, Any] | None:
+    return precedentes.get(relation_id)
+
+
 def relations_hierarchie(
-    services: list[dict[str, Any]], observe_le: str
-) -> tuple[list[dict[str, Any]], int]:
+    services: list[dict[str, Any]],
+    observe_le: str,
+    precedentes: dict[str, dict[str, Any]] | None = None,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    precedentes = precedentes or {}
     ids = {
         str(service.get("id")).strip()
         for service in services
         if nettoyer_texte(service.get("id"))
     }
     relations: dict[tuple[str, str, str], dict[str, Any]] = {}
-    liens_non_resolus = 0
+    anomalies: list[dict[str, Any]] = []
 
     for parent in services:
         parent_dila = nettoyer_texte(parent.get("id"))
@@ -347,7 +403,14 @@ def relations_hierarchie(
 
         for lien in liste(parent.get("hierarchie")):
             if not isinstance(lien, dict):
-                liens_non_resolus += 1
+                anomalies.append(
+                    {
+                        "type": "LIEN_HIERARCHIQUE_MALFORME",
+                        "parent_id_dila": parent_dila,
+                        "parent_nom": parent.get("nom"),
+                        "representation_source": lien,
+                    }
+                )
                 continue
 
             type_source = (
@@ -365,14 +428,41 @@ def relations_hierarchie(
             cibles_connues = [cible for cible in cibles if cible in ids]
 
             if not cibles_connues:
-                liens_non_resolus += 1
+                anomalies.append(
+                    {
+                        "type": "LIEN_HIERARCHIQUE_NON_RESOLU",
+                        "parent_id_dila": parent_dila,
+                        "parent_nom": parent.get("nom"),
+                        "type_hierarchie_dila": type_source,
+                        "candidats_id": cibles,
+                        "representation_source": lien,
+                    }
+                )
                 continue
 
             for enfant_dila in cibles_connues:
                 cle = (enfant_dila, parent_dila, type_source)
-                relation = {
-                    "id": "FRONTIERE-REL-DILA-"
-                    + hashlib.sha256("|".join(cle).encode("utf-8")).hexdigest()[:24].upper(),
+                relation_id = (
+                    "FRONTIERE-REL-DILA-"
+                    + hashlib.sha256("|".join(cle).encode("utf-8")).hexdigest()[:24].upper()
+                )
+                empreinte_lien = compact_sha256(lien)
+                precedent = relation_precedente(relation_id, precedentes)
+                provenance_ancienne = provenance_precedente(precedent)
+                inchange = bool(
+                    precedent
+                    and provenance_ancienne
+                    and provenance_ancienne.get("empreinte") == empreinte_lien
+                )
+                date_observation = precedent.get("observe_le") if inchange else observe_le
+                date_collecte = (
+                    provenance_ancienne.get("collecte_le")
+                    if inchange and provenance_ancienne
+                    else observe_le
+                )
+
+                relations[cle] = {
+                    "id": relation_id,
                     "source_entite": id_canonique(enfant_dila),
                     "type_relation": "DEPEND_DE",
                     "cible_entite": id_canonique(parent_dila),
@@ -385,18 +475,49 @@ def relations_hierarchie(
                             "source_id": SOURCE_ID,
                             "identifiant_source": parent_dila,
                             "url": PAGE_SOURCE,
-                            "collecte_le": observe_le,
-                            "empreinte": compact_sha256(lien),
+                            "collecte_le": date_collecte,
+                            "empreinte": empreinte_lien,
                         }
                     ],
                     "valide_depuis": None,
                     "valide_jusqua": None,
-                    "observe_le": observe_le,
+                    "observe_le": date_observation,
                     "statut_validation": "VALIDE",
                 }
-                relations[cle] = relation
 
-    return sorted(relations.values(), key=lambda r: r["id"]), liens_non_resolus
+    return sorted(relations.values(), key=lambda item: item["id"]), anomalies
+
+
+def appliquer_parent_principal(
+    entites: list[dict[str, Any]], relations: list[dict[str, Any]]
+) -> dict[str, Any]:
+    parents_directs: dict[str, set[str]] = defaultdict(set)
+    for relation in relations:
+        type_source = relation.get("qualificatifs", {}).get("type_hierarchie_dila")
+        if type_source == "Service Fils":
+            parents_directs[relation["source_entite"]].add(relation["cible_entite"])
+
+    parents_multiples = []
+    avec_parent = 0
+    for entite in entites:
+        parents = sorted(parents_directs.get(entite["id"], set()))
+        if len(parents) == 1:
+            entite["parent_id"] = parents[0]
+            avec_parent += 1
+        elif len(parents) > 1:
+            parents_multiples.append(
+                {
+                    "entite_id": entite["id"],
+                    "nom_officiel": entite["nom_officiel"],
+                    "parents": parents,
+                }
+            )
+
+    return {
+        "avec_parent_principal": avec_parent,
+        "sans_parent_principal": len(entites) - avec_parent,
+        "parents_directs_multiples": parents_multiples,
+    }
 
 
 def index_partition(cle: str, nombre: int) -> int:
@@ -428,12 +549,13 @@ def ecrire_jsonl_partitionne(
             for item in items
         )
         chemin.write_text(texte, encoding="utf-8")
+        brut = texte.encode("utf-8")
         manifeste.append(
             {
                 "fichier": str(chemin.relative_to(RACINE)),
                 "nombre": len(items),
-                "sha256": hashlib.sha256(texte.encode("utf-8")).hexdigest(),
-                "octets": len(texte.encode("utf-8")),
+                "sha256": hashlib.sha256(brut).hexdigest(),
+                "octets": len(brut),
             }
         )
     return manifeste
@@ -443,7 +565,8 @@ def statistiques(
     services: list[dict[str, Any]],
     entites: list[dict[str, Any]],
     relations: list[dict[str, Any]],
-    liens_non_resolus: int,
+    anomalies: list[dict[str, Any]],
+    parentage: dict[str, Any],
     observe_le: str,
 ) -> dict[str, Any]:
     types = Counter(
@@ -455,15 +578,22 @@ def statistiques(
     categories = Counter(
         nettoyer_texte(service.get("categorie")) or "Non précisée" for service in services
     )
+    types_anomalies = Counter(item["type"] for item in anomalies)
 
     return {
-        "version": "1",
+        "version": "1.1",
         "source_id": SOURCE_ID,
         "observe_le": observe_le,
         "nombre_services_source": len(services),
         "nombre_entites_canoniques": len(entites),
         "nombre_relations_hierarchiques": len(relations),
-        "liens_hierarchiques_non_resolus": liens_non_resolus,
+        "liens_hierarchiques_non_resolus": len(anomalies),
+        "types_anomalies": dict(types_anomalies.most_common()),
+        "hierarchie": {
+            "avec_parent_principal": parentage["avec_parent_principal"],
+            "sans_parent_principal": parentage["sans_parent_principal"],
+            "entites_a_parents_directs_multiples": len(parentage["parents_directs_multiples"]),
+        },
         "couverture": {
             "avec_siren": sum(bool(e["identifiants"].get("siren")) for e in entites),
             "avec_siret": sum(bool(e["identifiants"].get("siret")) for e in entites),
@@ -477,7 +607,20 @@ def statistiques(
     }
 
 
-def executer(contenu_zip: bytes, entetes: dict[str, str], observe_le: str | None = None) -> dict[str, Any]:
+def source_deja_traitee(contenu_zip: bytes) -> bool:
+    precedent = charger_json(MANIFESTE)
+    return bool(
+        precedent
+        and precedent.get("sha256_zip") == hashlib.sha256(contenu_zip).hexdigest()
+        and precedent.get("version_transformation") == VERSION_TRANSFORMATION
+    )
+
+
+def executer(
+    contenu_zip: bytes,
+    entetes: dict[str, str],
+    observe_le: str | None = None,
+) -> dict[str, Any]:
     observe_le = observe_le or maintenant_iso()
     services, nom_json = charger_services_depuis_zip(contenu_zip)
 
@@ -488,9 +631,29 @@ def executer(contenu_zip: bytes, entetes: dict[str, str], observe_le: str | None
     if len(ids_non_vides) != len(set(ids_non_vides)):
         raise ValueError("Le flux contient des identifiants DILA en doublon.")
 
-    entites = [canonicaliser_service(service, observe_le) for service in services]
+    anciennes_entites = charger_index_jsonl(DOSSIER_ENTITES, "id")
+    anciennes_relations = charger_index_jsonl(DOSSIER_RELATIONS, "id")
+
+    entites = []
+    for service in services:
+        dila_id = nettoyer_texte(service.get("id"))
+        assert dila_id is not None
+        canonique_id = id_canonique(dila_id)
+        entites.append(
+            canonicaliser_service(
+                service,
+                observe_le,
+                precedent=anciennes_entites.get(canonique_id),
+            )
+        )
     entites.sort(key=lambda item: item["id"])
-    relations, non_resolus = relations_hierarchie(services, observe_le)
+
+    relations, anomalies = relations_hierarchie(
+        services,
+        observe_le,
+        precedentes=anciennes_relations,
+    )
+    parentage = appliquer_parent_principal(entites, relations)
 
     partitions_entites = ecrire_jsonl_partitionne(
         entites,
@@ -507,15 +670,36 @@ def executer(contenu_zip: bytes, entetes: dict[str, str], observe_le: str | None
         "id",
     )
 
-    stats = statistiques(services, entites, relations, non_resolus, observe_le)
+    stats = statistiques(
+        services,
+        entites,
+        relations,
+        anomalies,
+        parentage,
+        observe_le,
+    )
     STATISTIQUES.parent.mkdir(parents=True, exist_ok=True)
     STATISTIQUES.write_text(
         json.dumps(stats, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
 
+    rapport_anomalies = {
+        "version": "1",
+        "source_id": SOURCE_ID,
+        "observe_le": observe_le,
+        "nombre_anomalies_hierarchiques": len(anomalies),
+        "liens_hierarchiques_non_resolus": anomalies,
+        "parents_directs_multiples": parentage["parents_directs_multiples"],
+    }
+    ANOMALIES.write_text(
+        json.dumps(rapport_anomalies, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
     manifeste = {
         "version": "1",
+        "version_transformation": VERSION_TRANSFORMATION,
         "source_id": SOURCE_ID,
         "producteur": "Direction de l'information légale et administrative",
         "paternite": "Service-Public.gouv.fr / DILA",
@@ -540,29 +724,51 @@ def executer(contenu_zip: bytes, entetes: dict[str, str], observe_le: str | None
         encoding="utf-8",
     )
 
-    return {"manifest": manifeste, "stats": stats}
+    return {
+        "manifest": manifeste,
+        "stats": stats,
+        "anomalies": rapport_anomalies,
+        "etat": "actualise",
+    }
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Télécharge et canonicalise le Référentiel de l'organisation administrative de l'État."
     )
+    parser.add_argument("--source", default=URL_SOURCE, help="URL du fichier ZIP DILA.")
     parser.add_argument(
-        "--source",
-        default=URL_SOURCE,
-        help="URL du fichier ZIP DILA.",
+        "--force",
+        action="store_true",
+        help="Recalculer même si l'archive et la version de transformation sont inchangées.",
     )
     args = parser.parse_args()
 
     contenu, entetes = lire_url(args.source)
-    resultat = executer(contenu, entetes)
+    if not args.force and source_deja_traitee(contenu):
+        manifeste = charger_json(MANIFESTE)
+        print(
+            json.dumps(
+                {
+                    "etat": "inchange",
+                    "services": manifeste.get("nombre_services"),
+                    "relations": manifeste.get("nombre_relations"),
+                    "sha256_zip": manifeste.get("sha256_zip"),
+                },
+                ensure_ascii=False,
+            )
+        )
+        return
 
+    resultat = executer(contenu, entetes)
     print(
         json.dumps(
             {
+                "etat": resultat["etat"],
                 "services": resultat["manifest"]["nombre_services"],
                 "relations": resultat["manifest"]["nombre_relations"],
                 "liens_non_resolus": resultat["stats"]["liens_hierarchiques_non_resolus"],
+                "parents_principaux": resultat["stats"]["hierarchie"]["avec_parent_principal"],
                 "sha256_zip": resultat["manifest"]["sha256_zip"],
             },
             ensure_ascii=False,
