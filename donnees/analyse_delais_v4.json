@@ -1,0 +1,45 @@
+{
+  "version": "4",
+  "date_creation": "2026-10-06",
+  "objet": "Conserver l'analyse des dix chronologies et intégrer la nouvelle donnée publique sur les vacances de postes à l'ASNR.",
+  "synthese": {
+    "nombre_chronologies": 10,
+    "delais_de_parcours_mesurables": 6,
+    "durees_structurelles_mesurables": 10,
+    "cas_restants_sans_delai_de_parcours": [
+      "S001",
+      "S016",
+      "S024",
+      "S042"
+    ],
+    "conclusion": "Le cas ASNR dispose désormais d'une donnée publique récente sur la vacance globale des postes, mais aucune durée de recrutement par métier spécialisé n'est encore établie."
+  },
+  "mise_a_jour_s042": {
+    "id_signal": "S042",
+    "segment_principal": "tensions de recrutement → consolidation des effectifs",
+    "delai_parcours_mesurable": false,
+    "duree_structurelle_mesurable": true,
+    "nouvelles_preuves": [
+      {
+        "date": "2023-12-04",
+        "perimetre": "IRSN",
+        "fait": "Le Sénat indique que 91 postes sont vacants à l'IRSN en 2023 dans un contexte de difficulté à recruter des ingénieurs spécialisés.",
+        "source": "https://www.senat.fr/seances/s202312/s20231204/s20231204.pdf"
+      },
+      {
+        "date": "2025-05-22",
+        "perimetre": "ASNR",
+        "fait": "Le président de l'ASNR indique que l'autorité a commencé 2025 avec environ douze postes vacants sur 2 100 ETP et que les départs sont tombés à quatre au premier trimestre 2025.",
+        "source": "https://www.senat.fr/compte-rendu-commissions/20250519/opecst_2025_05_22.html"
+      },
+      {
+        "date": "2025-10-23",
+        "perimetre": "ASNR",
+        "fait": "Un rapport de l'Assemblée nationale rappelle que l'ASNR prévoit une évolution de +34 ETP sur la trajectoire 2025-2030, principalement en lien avec les nouveaux projets nucléaires.",
+        "source": "https://www.assemblee-nationale.fr/dyn/opendata/RAPPANR5L17B1996-tIII-a14.html"
+      }
+    ],
+    "precaution": "Les chiffres IRSN 2023 et ASNR 2025 portent sur des périmètres institutionnels différents et ne permettent pas une comparaison longitudinale directe.",
+    "prochaine_donnee_decisive": "durée médiane ou distribution du temps entre ouverture d'un poste spécialisé et prise de fonctions, avec nombre de postes spécialisés ouverts, pourvus et encore vacants"
+  }
+}
