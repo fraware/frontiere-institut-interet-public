@@ -63,3 +63,28 @@ def test_resolution_utilise_le_graphe_canonique(monkeypatch):
 
     assert resultats[0]["organismes"][0]["resolu"] is True
     assert resultats[0]["organismes"][0]["nom"] == "Mairie test"
+
+
+def test_where_accepte_code_insee_corse():
+    where = module.construire_where("2A004", "mairie")
+    assert 'code_insee_commune="2A004"' in where
+
+
+def test_where_refuse_un_code_commune_non_borne():
+    for valeur in ('75056"', "75056 OR 1=1", "../75"):
+        try:
+            module.construire_where(valeur, "mairie")
+        except ValueError:
+            pass
+        else:
+            raise AssertionError(f"Code Insee invalide accepté: {valeur}")
+
+
+def test_where_refuse_un_type_de_service_invalide():
+    for valeur in ('mairie"', "mairie OR 1=1", "../mairie"):
+        try:
+            module.construire_where("75056", valeur)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError(f"Type de service invalide accepté: {valeur}")
