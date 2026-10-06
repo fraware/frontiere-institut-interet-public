@@ -208,3 +208,121 @@ def test_empreinte_semantique_est_independante_de_l_ordre():
     a = service_exemple()
     b = service_exemple("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
     assert module.empreinte_semantique_export([a, b]) == module.empreinte_semantique_export([b, a])
+
+
+def test_relation_inchangee_conserve_ses_dates():
+    parent = service_exemple()
+    enfant_id = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+    enfant = service_exemple(enfant_id)
+    parent["hierarchie"] = [
+        {"type_hierarchie": "Service Fils", "service": enfant_id}
+    ]
+
+    premieres, _ = module.construire_relations_locales(
+        [parent, enfant],
+        {parent["id"], enfant_id},
+        {},
+        "2026-10-06T12:00:00+00:00",
+    )
+    assert len(premieres) == 1
+    index = {premieres[0]["id"]: premieres[0]}
+
+    secondes, _ = module.construire_relations_locales(
+        [parent, enfant],
+        {parent["id"], enfant_id},
+        {},
+        "2026-10-07T12:00:00+00:00",
+        precedentes=index,
+    )
+
+    assert secondes[0]["observe_le"] == "2026-10-06T12:00:00+00:00"
+    assert (
+        secondes[0]["provenance"][0]["collecte_le"]
+        == "2026-10-06T12:00:00+00:00"
+    )
+    assert (
+        secondes[0]["qualificatifs"]["representation_source"]
+        == parent["hierarchie"][0]
+    )
+
+
+def test_resolution_croisee_conserve_les_deux_preuves(monkeypatch):
+    parent_id = "11111111-2222-3333-4444-555555555555"
+    enfant_id = "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
+    anomalie = {
+        "type": "LIEN_HIERARCHIQUE_NON_RESOLU",
+        "parent_id_dila": parent_id,
+        "type_hierarchie_dila": "Service Fils",
+        "candidats_id": [enfant_id],
+        "representation_source": {
+            "type_hierarchie": "Service Fils",
+            "service": enfant_id,
+        },
+    }
+    monkeypatch.setattr(module, "charger_anomalies_roae", lambda: [anomalie])
+
+    relations, rapport = module.resoudre_anomalies_roae(
+        {enfant_id},
+        {parent_id: "FRONTIERE-INST-DILA-PARENT"},
+        "2026-10-06T12:00:00+00:00",
+        empreintes_locales={enfant_id: "empreinte-locale"},
+    )
+
+    assert rapport["resolues_par_annuaire_local"] == 1
+    assert rapport["restantes_apres_croisement"] == 0
+    assert len(relations) == 1
+
+    relation = relations[0]
+    assert relation["qualificatifs"]["representation_source"] == anomalie[
+        "representation_source"
+    ]
+    assert [p["source_id"] for p in relation["provenance"]] == [
+        "dila_roae",
+        "dila_annuaire_local",
+    ]
+    assert relation["provenance"][0]["url"] == module.PAGE_SOURCE_ROAE
+    assert relation["provenance"][1]["url"] == module.PAGE_SOURCE
+    assert relation["provenance"][1]["empreinte"] == "empreinte-locale"
+
+
+def test_dependance_roae_participe_a_la_detection_d_un_etat_inchange(
+    tmp_path,
+    monkeypatch,
+):
+    manifeste_local = tmp_path / "annuaire.json"
+    manifeste_local.write_text(
+        json.dumps(
+            {
+                "sha256_semantique_export": "annuaire-hash",
+                "version_transformation": module.VERSION_TRANSFORMATION,
+                "empreinte_dependance_roae": "roae-hash",
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(module, "MANIFESTE", manifeste_local)
+
+    assert module.source_deja_traitee("annuaire-hash", "roae-hash") is True
+    assert module.source_deja_traitee("annuaire-hash", "autre-roae") is False
+
+
+def test_empreinte_dependance_roae_change_avec_la_source_ou_la_transformation(
+    tmp_path,
+    monkeypatch,
+):
+    manifeste_roae = tmp_path / "roae.json"
+    donnees = {
+        "sha256_zip": "source-a",
+        "version_transformation": "1.2",
+        "nombre_services": 7903,
+        "nombre_relations": 8071,
+    }
+    manifeste_roae.write_text(json.dumps(donnees), encoding="utf-8")
+    monkeypatch.setattr(module, "MANIFESTE_ROAE", manifeste_roae)
+
+    premiere = module.empreinte_dependance_roae()
+    donnees["version_transformation"] = "1.3"
+    manifeste_roae.write_text(json.dumps(donnees), encoding="utf-8")
+    seconde = module.empreinte_dependance_roae()
+
+    assert premiere != seconde
