@@ -4,9 +4,19 @@ Ce répertoire contient la représentation canonique et la surveillance de l'éc
 
 ## État courant
 
-Le snapshot DILA du 6 octobre 2026 contient **7 903 entités canoniques** et **8 071 relations hiérarchiques résolues**. **7 898 entités** disposent d'un parent principal. **158 références hiérarchiques** restent explicitement non résolues et sont conservées dans `anomalies_roae.json`.
+Le snapshot de l'Annuaire DILA observé le 6 octobre 2026 contient **93 782 enregistrements**. Le graphe FRONTIÈRE couvre les trois catégories du snapshot :
 
-L'état détaillé et la méthode de reproduction figurent dans [INGESTION_ROAE_V1.md](../docs/INGESTION_ROAE_V1.md).
+- **7 903 SI** par le Référentiel de l'organisation administrative de l'État ;
+- **79 585 SL** et **6 294 SIL**, soit **85 879 entités locales**, par l'API de l'Annuaire.
+
+Le sous-graphe SI contient **8 071 relations hiérarchiques**. Le sous-graphe local et ses relations croisées contiennent **4 155 relations**.
+
+Le croisement avec les entités locales résout les **158 références du ROAE** qui étaient impossibles à fermer dans le seul snapshot SI. Le flux local contient encore **100 références hiérarchiques** dont la cible n'apparaît dans aucune des trois catégories courantes de l'Annuaire. Elles restent explicitement enregistrées comme anomalies.
+
+La compétence géographique massive est interrogée directement auprès de l'API DILA au moment de la requête. Elle n'est pas copiée intégralement dans Git.
+
+→ [Ingestion du ROAE](../docs/INGESTION_ROAE_V1.md)  
+→ [Ingestion de l'Annuaire local](../docs/INGESTION_ANNUAIRE_LOCAL_V1.md)
 
 ## Fichiers de contrôle
 
@@ -20,7 +30,13 @@ L'état détaillé et la méthode de reproduction figurent dans [INGESTION_ROAE_
 - `anomalies_roae.json` : références hiérarchiques qui ne peuvent pas être résolues dans le snapshot SI ;
 - `instantanes/roae_manifest.json` : provenance, empreinte de l'archive et empreintes des partitions ;
 - `entites/roae/` : 32 partitions des entités canoniques ;
-- `relations/roae/` : 16 partitions des relations hiérarchiques.
+- `relations/roae/` : 16 partitions des relations hiérarchiques ;
+- `statistiques_annuaire_local.json` : couverture des catégories SL et SIL ;
+- `anomalies_annuaire_local.json` : références hiérarchiques locales non résolues ;
+- `resolution_roae_local.json` : résolution croisée des références SI vers les objets locaux ;
+- `instantanes/annuaire_local_manifest.json` : provenance et empreinte sémantique de l'export local ;
+- `entites/locales/` : 128 partitions des entités SL/SIL ;
+- `relations/locales/` : 32 partitions des relations locales et croisées.
 
 ## Principes
 
