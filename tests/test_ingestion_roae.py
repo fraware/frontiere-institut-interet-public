@@ -78,11 +78,11 @@ def test_hierarchie_est_orientee_enfant_vers_parent():
         }
     ]
 
-    relations, non_resolus = module.relations_hierarchie(
+    relations, anomalies = module.relations_hierarchie(
         [parent, enfant], "2026-10-06T12:00:00+00:00"
     )
 
-    assert non_resolus == 0
+    assert anomalies == []
     assert len(relations) == 1
     assert relations[0]["source_entite"].endswith(enfant["id"].upper())
     assert relations[0]["cible_entite"].endswith(parent["id"].upper())
@@ -104,3 +104,48 @@ def test_chargeur_accepte_zip_avec_liste_json():
 def test_id_canonique_est_stable():
     brut = "11111111-2222-3333-4444-555555555555"
     assert module.id_canonique(brut) == module.id_canonique(brut)
+
+
+def test_entite_inchangee_conserve_date_observation():
+    service = service_exemple()
+    premiere = module.canonicaliser_service(
+        service,
+        "2026-10-06T12:00:00+00:00",
+    )
+    seconde = module.canonicaliser_service(
+        service,
+        "2026-10-07T12:00:00+00:00",
+        precedent=premiere,
+    )
+
+    assert seconde["observe_le"] == premiere["observe_le"]
+    assert seconde["provenance"][0]["collecte_le"] == premiere["provenance"][0]["collecte_le"]
+
+
+def test_parent_principal_provient_du_lien_service_fils():
+    parent = service_exemple()
+    enfant = {
+        **service_exemple(),
+        "id": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+        "nom": "Sous-direction d'essai",
+    }
+    parent["hierarchie"] = [
+        {
+            "type_hierarchie": "Service Fils",
+            "service": enfant["id"],
+        }
+    ]
+
+    entites = [
+        module.canonicaliser_service(parent, "2026-10-06T12:00:00+00:00"),
+        module.canonicaliser_service(enfant, "2026-10-06T12:00:00+00:00"),
+    ]
+    relations, anomalies = module.relations_hierarchie(
+        [parent, enfant], "2026-10-06T12:00:00+00:00"
+    )
+    resultat = module.appliquer_parent_principal(entites, relations)
+
+    enfant_canonique = next(e for e in entites if e["nom_officiel"] == "Sous-direction d'essai")
+    assert anomalies == []
+    assert enfant_canonique["parent_id"].endswith(parent["id"].upper())
+    assert resultat["avec_parent_principal"] == 1
