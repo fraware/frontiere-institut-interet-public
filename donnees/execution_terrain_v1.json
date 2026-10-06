@@ -1,0 +1,76 @@
+{
+  "version": "1",
+  "date_reference": "2026-10-06",
+  "objet": "Suivi des quatre demandes de données d'exécution encore nécessaires aux chronologies prioritaires.",
+  "regle_relance": {
+    "nombre_maximal": 1,
+    "delai_jours_ouvres_min": 4,
+    "delai_jours_ouvres_max": 6
+  },
+  "demandes": [
+    {
+      "id_signal": "S001",
+      "institution": "France Compétences",
+      "priorite": 1,
+      "fonction_cible": "Direction observation et évaluation / Secrétariat général",
+      "canal_principal": "https://www.francecompetences.fr/contactez-nous/",
+      "rubrique": "Observation et évaluation",
+      "canal_secondaire": "rh@francecompetences.fr",
+      "telephone": "01 81 69 01 40",
+      "question": "À quel mois la capacité interne permettant d'exploiter les données avec le langage R a-t-elle été effectivement rétablie après la perte documentée à partir d'octobre 2024, et par quel mécanisme ?",
+      "minimum_suffisant": [
+        "mois de rétablissement",
+        "mécanisme utilisé"
+      ],
+      "statut": "prete_a_envoyer"
+    },
+    {
+      "id_signal": "S024",
+      "institution": "DDTM des Côtes-d'Armor — Délégation mer et littoral",
+      "priorite": 1,
+      "fonction_cible": "service suivant le parc éolien en mer de Saint-Brieuc",
+      "canal_principal": "ddtm-dml@cotes-darmor.gouv.fr",
+      "canal_secondaire": "ddtm@cotes-darmor.gouv.fr",
+      "telephone": "02 96 75 66 22",
+      "question": "Pour au moins une sollicitation directe du SHOM, de l'Ifremer ou du Cerema liée au parc éolien de Saint-Brieuc, quelles sont la date de saisine et la date de remise de l'avis correspondant ?",
+      "minimum_suffisant": [
+        "organisme sollicité",
+        "mois de saisine",
+        "mois de remise de l'avis"
+      ],
+      "statut": "prete_a_envoyer"
+    },
+    {
+      "id_signal": "S042",
+      "institution": "ASNR",
+      "priorite": 2,
+      "fonction_cible": "Direction des ressources humaines",
+      "canal_principal": "info@asnr.fr",
+      "canal_secondaire": "https://www.asnr.fr/nous-contacter",
+      "telephone": "01 58 35 88 88",
+      "question": "Pour les métiers scientifiques et techniques recrutés en 2025, quelle mesure agrégée existe du délai entre l'ouverture du poste et la prise de fonctions ?",
+      "minimum_suffisant": [
+        "famille de métiers",
+        "mesure du délai",
+        "nombre de recrutements couverts"
+      ],
+      "statut": "prete_a_envoyer"
+    },
+    {
+      "id_signal": "S016",
+      "institution": "IGN",
+      "priorite": 3,
+      "fonction_cible": "Direction des ressources humaines / Service Recrutement Emploi Formation",
+      "canal_principal": "recrutement-mobilite@ign.fr",
+      "canal_secondaire": "sref-formation@ign.fr",
+      "telephone": "01 43 98 00 00",
+      "question": "Pour trois à cinq recrutements anonymisés en science des données ou intelligence artificielle réalisés entre 2022 et 2024, combien de temps s'est écoulé entre l'ouverture du besoin, la prise de fonctions et la première contribution utile lorsque cette dernière date est disponible ?",
+      "minimum_suffisant": [
+        "mois d'ouverture du besoin",
+        "mois de prise de fonctions",
+        "au moins trois recrutements"
+      ],
+      "statut": "prete_a_envoyer"
+    }
+  ]
+}
