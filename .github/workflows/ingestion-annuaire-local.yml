@@ -21,7 +21,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: referentiel-institutionnel-main
+  group: ${{ github.event_name == 'pull_request' && format('referentiel-institutionnel-pr-{0}', github.event.pull_request.number) || 'referentiel-institutionnel-main' }}
   cancel-in-progress: false
 
 jobs:
