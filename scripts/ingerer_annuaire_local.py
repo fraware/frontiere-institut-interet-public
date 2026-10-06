@@ -1,16 +1,13 @@
 from __future__ import annotations
 
 import argparse
-import bz2
 import hashlib
-import io
 import json
 import re
 import shutil
-import tarfile
 import tempfile
+import urllib.parse
 import urllib.request
-import zipfile
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -20,14 +17,21 @@ RACINE = Path(__file__).resolve().parents[1]
 
 SOURCE_ID = "dila_annuaire_local"
 SOURCE_ROAE_ID = "dila_roae"
-VERSION_TRANSFORMATION = "1.0"
+VERSION_TRANSFORMATION = "2.0"
+
 PAGE_SOURCE = "https://www.data.gouv.fr/datasets/service-public-gouv-fr-annuaire-de-ladministration-base-de-donnees-locales"
-URL_SOURCE = "https://lecomarquage.service-public.gouv.fr/donnees_locales_v4/all_latest.tar.bz2"
-NOM_SOURCE = "all_latest.tar.bz2"
+URL_SOURCE = (
+    "https://api-lannuaire.service-public.gouv.fr/api/explore/v2.1/catalog/"
+    "datasets/api-lannuaire-administration/exports/json"
+)
+URL_COMPETENCE = (
+    "https://api-lannuaire.service-public.gouv.fr/api/explore/v2.1/catalog/"
+    "datasets/api-lannuaire-administration-locale-competence-geographique"
+)
+NOM_SOURCE = "api-lannuaire-administration.json"
 
 DOSSIER_ENTITES = RACINE / "institutionnel" / "entites" / "locales"
 DOSSIER_RELATIONS = RACINE / "institutionnel" / "relations" / "locales"
-DOSSIER_COMPETENCES = RACINE / "institutionnel" / "competences" / "locales"
 MANIFESTE = RACINE / "institutionnel" / "instantanes" / "annuaire_local_manifest.json"
 STATISTIQUES = RACINE / "institutionnel" / "statistiques_annuaire_local.json"
 ANOMALIES = RACINE / "institutionnel" / "anomalies_annuaire_local.json"
@@ -38,12 +42,9 @@ ANOMALIES_ROAE = RACINE / "institutionnel" / "anomalies_roae.json"
 
 N_PARTITIONS_ENTITES = 128
 N_PARTITIONS_RELATIONS = 32
-N_PARTITIONS_COMPETENCES = 64
-
 TAILLE_BLOC = 1024 * 1024
-UUID_RE = re.compile(
-    r"^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
-)
+
+CATEGORIES_LOCALES = {"SL", "SIL"}
 
 
 def maintenant_iso() -> str:
@@ -73,6 +74,14 @@ def compact_sha256(objet: Any) -> str:
     return hashlib.sha256(brut).hexdigest()
 
 
+def sha256_fichier(chemin: Path) -> str:
+    hachage = hashlib.sha256()
+    with chemin.open("rb") as fichier:
+        for bloc in iter(lambda: fichier.read(4 * TAILLE_BLOC), b""):
+            hachage.update(bloc)
+    return hachage.hexdigest()
+
+
 def compacter(objet: Any) -> Any:
     if isinstance(objet, dict):
         resultat = {}
@@ -96,8 +105,8 @@ def telecharger(url: str, destination: Path) -> dict[str, str]:
     requete = urllib.request.Request(
         url,
         headers={
-            "User-Agent": "FRONTIERE-referentiel-institutionnel/1.0",
-            "Accept": "application/octet-stream,*/*",
+            "User-Agent": "FRONTIERE-referentiel-institutionnel/2.0",
+            "Accept": "application/json,*/*",
         },
     )
     total = 0
@@ -116,84 +125,35 @@ def telecharger(url: str, destination: Path) -> dict[str, str]:
     return entetes
 
 
-def sha256_fichier(chemin: Path) -> str:
-    hachage = hashlib.sha256()
-    with chemin.open("rb") as fichier:
-        for bloc in iter(lambda: fichier.read(4 * TAILLE_BLOC), b""):
-            hachage.update(bloc)
-    return hachage.hexdigest()
+def charger_export(chemin: Path) -> list[dict[str, Any]]:
+    with chemin.open("r", encoding="utf-8-sig") as fichier:
+        donnees = json.load(fichier)
 
-
-def extraire_archive(
-    archive: Path,
-    dossier_temp: Path,
-) -> tuple[Path, Path, dict[str, Any]]:
-    dossier_temp.mkdir(parents=True, exist_ok=True)
-    with tarfile.open(archive, mode="r:bz2") as tar:
-        fichiers = [m for m in tar.getmembers() if m.isfile()]
-        jsons = [m for m in fichiers if m.name.lower().endswith(".json")]
-        zips = [m for m in fichiers if m.name.lower().endswith(".zip")]
-
-        if not jsons:
-            raise ValueError("Aucun fichier JSON principal trouvé dans l'archive locale DILA.")
-        if not zips:
-            raise ValueError("Aucun fichier ZIP de compétence géographique trouvé.")
-
-        principal = max(jsons, key=lambda membre: membre.size)
-        competence = max(zips, key=lambda membre: membre.size)
-
-        chemin_json = dossier_temp / "guichets_locaux.json"
-        chemin_zip = dossier_temp / "competences_communes.zip"
-
-        for membre, destination in ((principal, chemin_json), (competence, chemin_zip)):
-            source = tar.extractfile(membre)
-            if source is None:
-                raise ValueError(f"Impossible d'extraire {membre.name}")
-            with source, destination.open("wb") as sortie:
-                shutil.copyfileobj(source, sortie, length=4 * TAILLE_BLOC)
-
-        details = {
-            "membre_json": principal.name,
-            "octets_json": principal.size,
-            "membre_competence": competence.name,
-            "octets_competence_zip": competence.size,
-            "nombre_membres_archive": len(fichiers),
-        }
-        return chemin_json, chemin_zip, details
-
-
-def trouver_liste_services(donnees: Any) -> list[dict[str, Any]]:
     if isinstance(donnees, list):
-        services = [item for item in donnees if isinstance(item, dict)]
-        if services:
-            return services
+        return [item for item in donnees if isinstance(item, dict)]
 
     if isinstance(donnees, dict):
-        for cle in ("services", "service", "results", "data", "items"):
+        for cle in ("results", "records", "data", "items"):
             valeur = donnees.get(cle)
             if isinstance(valeur, list):
-                services = [item for item in valeur if isinstance(item, dict)]
-                if services:
-                    return services
+                return [item for item in valeur if isinstance(item, dict)]
 
-        listes = [
-            valeur
-            for valeur in donnees.values()
-            if isinstance(valeur, list)
-            and valeur
-            and all(isinstance(item, dict) for item in valeur[:20])
-        ]
-        if listes:
-            listes.sort(key=len, reverse=True)
-            return listes[0]
-
-    raise ValueError("Structure JSON des guichets locaux non reconnue.")
+    raise ValueError("Structure de l'export API Annuaire non reconnue.")
 
 
-def charger_services(chemin_json: Path) -> list[dict[str, Any]]:
-    with chemin_json.open("r", encoding="utf-8-sig") as fichier:
-        donnees = json.load(fichier)
-    return trouver_liste_services(donnees)
+def filtrer_services_locaux(
+    enregistrements: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], Counter]:
+    categories = Counter(
+        nettoyer_texte(item.get("categorie")) or "Non précisée"
+        for item in enregistrements
+    )
+    locaux = [
+        item
+        for item in enregistrements
+        if (nettoyer_texte(item.get("categorie")) or "") in CATEGORIES_LOCALES
+    ]
+    return locaux, categories
 
 
 def valeurs_liens(valeur: Any) -> list[dict[str, Any]]:
@@ -203,6 +163,33 @@ def valeurs_liens(valeur: Any) -> list[dict[str, Any]]:
             resultat.append(compacter(item))
         elif nettoyer_texte(item):
             resultat.append({"valeur": nettoyer_texte(item)})
+    return resultat
+
+
+def normaliser_responsables(service: dict[str, Any]) -> list[dict[str, Any]]:
+    resultat = []
+    for affectation in liste(service.get("affectation_personne")):
+        if not isinstance(affectation, dict):
+            continue
+        personne = affectation.get("personne")
+        if not isinstance(personne, dict):
+            personne = {}
+        resultat.append(
+            {
+                "fonction": nettoyer_texte(affectation.get("fonction"))
+                or "Fonction non précisée",
+                "nom": nettoyer_texte(personne.get("nom")),
+                "prenom": nettoyer_texte(personne.get("prenom")),
+                "civilite": nettoyer_texte(personne.get("civilite")),
+                "grade": nettoyer_texte(personne.get("grade")),
+                "telephone": nettoyer_texte(affectation.get("telephone")),
+                "adresses_courriel": valeurs_liens(personne.get("adresse_courriel")),
+                "textes_reference": valeurs_liens(personne.get("texte_reference")),
+                "source_id": SOURCE_ID,
+                "valide_depuis": None,
+                "valide_jusqua": None,
+            }
+        )
     return resultat
 
 
@@ -277,31 +264,29 @@ def normaliser_aliases(service: dict[str, Any]) -> list[str]:
     return resultat
 
 
-def normaliser_territoires(service: dict[str, Any]) -> list[str]:
-    resultat = []
-    for item in liste(service.get("code_insee_commune")):
-        if isinstance(item, dict):
-            valeur = (
-                nettoyer_texte(item.get("valeur"))
-                or nettoyer_texte(item.get("code_insee_commune"))
-                or nettoyer_texte(item.get("code"))
-            )
-        else:
-            valeur = nettoyer_texte(item)
-        if valeur and valeur not in resultat:
-            resultat.append(valeur)
+def codes_insee_pivot(service: dict[str, Any]) -> list[str]:
+    resultat: list[str] = []
+
+    for pivot in liste(service.get("pivot")):
+        if not isinstance(pivot, dict):
+            continue
+        for code in liste(pivot.get("code_insee_commune")):
+            texte = nettoyer_texte(code)
+            if texte and texte not in resultat:
+                resultat.append(texte)
+
+    for code in liste(service.get("code_insee_commune")):
+        texte = nettoyer_texte(code)
+        if texte and texte not in resultat:
+            resultat.append(texte)
+
     return sorted(resultat)
 
 
 def statut_entite(service: dict[str, Any]) -> str:
-    statut = (nettoyer_texte(service.get("statut")) or "").lower()
     diffusion = service.get("statut_de_diffusion")
-    if statut == "active" and diffusion not in (False, "false", "FALSE", 0):
-        return "ACTIF"
     if diffusion in (False, "false", "FALSE", 0):
         return "INCONNU"
-    if statut:
-        return "ACTIF" if statut in {"actif", "active", "publiable"} else "INCONNU"
     return "ACTIF"
 
 
@@ -313,8 +298,8 @@ CHAMPS_CANONISES = {
     "categorie",
     "type_repertoire",
     "type_organisme",
-    "type_service_local",
     "pivot",
+    "ancien_code_pivot",
     "code_insee_commune",
     "adresse",
     "telephone",
@@ -341,17 +326,20 @@ CHAMPS_CANONISES = {
     "copyright",
     "partenaire_date_modification",
     "service_disponible",
-    "statut",
     "statut_de_diffusion",
     "date_creation",
+    "date_creation_datetime",
     "date_modification",
+    "date_modification_datetime",
     "date_diffusion",
     "plage_ouverture",
     "commentaire_plage_ouverture",
     "hierarchie",
+    "affectation_personne",
     "version_type",
     "version_source",
     "version_etat_modification",
+    "url_service_public",
 }
 
 
@@ -360,7 +348,7 @@ def donnees_operationnelles(service: dict[str, Any]) -> dict[str, Any]:
         "categorie": service.get("categorie"),
         "type_repertoire": service.get("type_repertoire"),
         "pivot": service.get("pivot"),
-        "type_service_local": service.get("type_service_local"),
+        "ancien_code_pivot": service.get("ancien_code_pivot"),
         "plage_ouverture": service.get("plage_ouverture"),
         "commentaire_plage_ouverture": service.get("commentaire_plage_ouverture"),
         "information_complementaire": service.get("information_complementaire"),
@@ -368,9 +356,12 @@ def donnees_operationnelles(service: dict[str, Any]) -> dict[str, Any]:
         "partenaire": service.get("partenaire"),
         "partenaire_date_modification": service.get("partenaire_date_modification"),
         "copyright": service.get("copyright"),
+        "url_service_public": service.get("url_service_public"),
         "dates_source": {
             "creation": service.get("date_creation"),
+            "creation_datetime": service.get("date_creation_datetime"),
             "modification": service.get("date_modification"),
+            "modification_datetime": service.get("date_modification_datetime"),
             "diffusion": service.get("date_diffusion"),
         },
         "version_source": {
@@ -459,11 +450,10 @@ def canonicaliser_service(
     type_institutionnel = (
         nettoyer_texte(service.get("type_organisme"))
         or nettoyer_texte(service.get("type_repertoire"))
-        or nettoyer_texte(service.get("type_service_local"))
         or "Guichet public local"
     )
-
     mission = nettoyer_texte(service.get("mission"))
+
     entite: dict[str, Any] = {
         "id": id_canonique_local(dila_id),
         "nom_officiel": nom,
@@ -473,7 +463,7 @@ def canonicaliser_service(
             {
                 "source_id": SOURCE_ID,
                 "identifiant_source": dila_id,
-                "url": PAGE_SOURCE,
+                "url": nettoyer_texte(service.get("url_service_public")) or PAGE_SOURCE,
                 "collecte_le": date_collecte,
                 "empreinte": empreinte,
             }
@@ -498,7 +488,7 @@ def canonicaliser_service(
                 "ancien_identifiant": liste(service.get("ancien_identifiant")),
             }
         ),
-        "territoires": normaliser_territoires(service),
+        "territoires": codes_insee_pivot(service),
         "missions": (
             [
                 {
@@ -512,6 +502,7 @@ def canonicaliser_service(
             if mission
             else []
         ),
+        "responsables": normaliser_responsables(service),
         "coordonnees": normaliser_coordonnees(service),
         "fondements_juridiques": normaliser_textes(service),
         "donnees_annuaire_local": donnees_operationnelles(service),
@@ -525,9 +516,8 @@ def canonicaliser_service(
 
 
 def cibles_hierarchie(lien: dict[str, Any]) -> list[str]:
-    service = lien.get("service")
-    resultat: list[str] = []
-    for item in liste(service):
+    resultat = []
+    for item in liste(lien.get("service")):
         if isinstance(item, str):
             valeur = nettoyer_texte(item)
         elif isinstance(item, dict):
@@ -594,14 +584,13 @@ def construire_relations_locales(
 
                 resolues += 1
                 cle = (enfant_canonique, parent_canonique, type_source)
-                identifiant_relation = relation_id(
-                    enfant_canonique,
-                    parent_canonique,
-                    type_source,
-                    SOURCE_ID,
-                )
                 relations[cle] = {
-                    "id": identifiant_relation,
+                    "id": relation_id(
+                        enfant_canonique,
+                        parent_canonique,
+                        type_source,
+                        SOURCE_ID,
+                    ),
                     "source_entite": enfant_canonique,
                     "type_relation": "DEPEND_DE",
                     "cible_entite": parent_canonique,
@@ -659,12 +648,9 @@ def resoudre_anomalies_roae(
 
     for anomalie in charger_anomalies_roae():
         parent_dila = nettoyer_texte(anomalie.get("parent_id_dila"))
-        type_source = (
-            nettoyer_texte(anomalie.get("type_hierarchie_dila"))
-            or "HIERARCHIE_DILA"
-        )
+        type_source = nettoyer_texte(anomalie.get("type_hierarchie_dila")) or "HIERARCHIE_DILA"
         cibles = [
-            valeur
+            str(valeur)
             for valeur in liste(anomalie.get("candidats_id"))
             if nettoyer_texte(valeur)
         ]
@@ -673,10 +659,9 @@ def resoudre_anomalies_roae(
         trouve = False
         if parent_canonique:
             for cible in cibles:
-                cible_texte = str(cible)
-                if cible_texte not in ids_locaux:
+                if cible not in ids_locaux:
                     continue
-                enfant_canonique = id_canonique_local(cible_texte)
+                enfant_canonique = id_canonique_local(cible)
                 relations.append(
                     {
                         "id": relation_id(
@@ -761,157 +746,6 @@ def appliquer_parent_principal(
     }
 
 
-def extraire_identifiant_organisme(objet: Any) -> str | None:
-    if isinstance(objet, str):
-        return nettoyer_texte(objet)
-    if isinstance(objet, dict):
-        for cle in ("id", "identifiant", "service", "organisme"):
-            valeur = objet.get(cle)
-            if isinstance(valeur, str) and nettoyer_texte(valeur):
-                return nettoyer_texte(valeur)
-    return None
-
-
-def trouver_blocs_types_commune(donnees: dict[str, Any]) -> list[dict[str, Any]]:
-    for cle in (
-        "type_service_local",
-        "Type_service_local",
-        "types_service_local",
-        "types_services_locaux",
-    ):
-        valeur = donnees.get(cle)
-        if isinstance(valeur, list):
-            return [item for item in valeur if isinstance(item, dict)]
-        if isinstance(valeur, dict):
-            return [valeur]
-    return []
-
-
-def canonicaliser_competence_commune(
-    donnees: dict[str, Any],
-    ids_locaux: set[str],
-    roae: dict[str, str],
-) -> tuple[dict[str, Any] | None, list[dict[str, Any]], int, int]:
-    code = (
-        nettoyer_texte(donnees.get("code_insee_commune"))
-        or nettoyer_texte(donnees.get("code_insee"))
-        or nettoyer_texte(donnees.get("code"))
-    )
-    if not code:
-        return None, [{"type": "COMMUNE_SANS_CODE_INSEE", "source": compacter(donnees)}], 0, 0
-
-    nom = nettoyer_texte(donnees.get("nom")) or nettoyer_texte(donnees.get("nom_commune"))
-    types = []
-    anomalies: list[dict[str, Any]] = []
-    resolus = 0
-    non_resolus = 0
-
-    for bloc in trouver_blocs_types_commune(donnees):
-        code_type = (
-            nettoyer_texte(bloc.get("code_type_service_local"))
-            or nettoyer_texte(bloc.get("type_service_local"))
-            or nettoyer_texte(bloc.get("code"))
-        )
-        organismes = liste(bloc.get("organisme"))
-        connus: list[str] = []
-        inconnus: list[Any] = []
-
-        for organisme in organismes:
-            identifiant = extraire_identifiant_organisme(organisme)
-            if identifiant and identifiant in ids_locaux:
-                connus.append(id_canonique_local(identifiant))
-                resolus += 1
-            elif identifiant and identifiant in roae:
-                connus.append(roae[identifiant])
-                resolus += 1
-            else:
-                inconnus.append(compacter(organisme))
-                non_resolus += 1
-
-        entree = {
-            "code_type_service_local": code_type,
-            "organismes": sorted(set(connus)),
-        }
-        if inconnus:
-            entree["organismes_non_resolus"] = inconnus
-            anomalies.append(
-                {
-                    "type": "ORGANISME_COMPETENCE_NON_RESOLU",
-                    "code_insee_commune": code,
-                    "nom_commune": nom,
-                    "code_type_service_local": code_type,
-                    "organismes": inconnus,
-                }
-            )
-        types.append(compacter(entree))
-
-    record = compacter(
-        {
-            "code_insee_commune": code,
-            "nom_commune": nom,
-            "types_service_local": types,
-        }
-    )
-    return record, anomalies, resolus, non_resolus
-
-
-def charger_competences(
-    chemin_zip: Path,
-    ids_locaux: set[str],
-    roae: dict[str, str],
-) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, int]]:
-    communes: list[dict[str, Any]] = []
-    anomalies: list[dict[str, Any]] = []
-    resolus = 0
-    non_resolus = 0
-    fichiers_json = 0
-
-    with zipfile.ZipFile(chemin_zip) as archive:
-        for nom in sorted(archive.namelist()):
-            if not nom.lower().endswith(".json"):
-                continue
-            fichiers_json += 1
-            try:
-                donnees = json.loads(archive.read(nom).decode("utf-8-sig"))
-            except (UnicodeDecodeError, json.JSONDecodeError) as exc:
-                anomalies.append(
-                    {
-                        "type": "FICHIER_COMMUNE_ILLISIBLE",
-                        "fichier": nom,
-                        "erreur": f"{type(exc).__name__}: {exc}",
-                    }
-                )
-                continue
-
-            if not isinstance(donnees, dict):
-                anomalies.append(
-                    {
-                        "type": "FICHIER_COMMUNE_STRUCTURE_INATTENDUE",
-                        "fichier": nom,
-                    }
-                )
-                continue
-
-            record, erreurs, nb_resolus, nb_non_resolus = canonicaliser_competence_commune(
-                donnees,
-                ids_locaux,
-                roae,
-            )
-            if record:
-                communes.append(record)
-            anomalies.extend(erreurs)
-            resolus += nb_resolus
-            non_resolus += nb_non_resolus
-
-    communes.sort(key=lambda item: item.get("code_insee_commune", ""))
-    return communes, anomalies, {
-        "fichiers_communes": fichiers_json,
-        "communes_canoniques": len(communes),
-        "organismes_resolus": resolus,
-        "organismes_non_resolus": non_resolus,
-    }
-
-
 def index_partition(cle: str, nombre: int) -> int:
     return int(hashlib.sha256(cle.encode("utf-8")).hexdigest()[:8], 16) % nombre
 
@@ -961,41 +795,36 @@ def ecrire_jsonl_partitionne(
     return manifeste
 
 
-def statistiques(
+def source_deja_traitee(sha_export: str) -> bool:
+    if not MANIFESTE.exists():
+        return False
+    try:
+        precedent = json.loads(MANIFESTE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return False
+    return bool(
+        precedent.get("sha256_export") == sha_export
+        and precedent.get("version_transformation") == VERSION_TRANSFORMATION
+    )
+
+
+def construire_statistiques(
+    enregistrements: list[dict[str, Any]],
+    categories_export: Counter,
     services: list[dict[str, Any]],
     entites: list[dict[str, Any]],
     relations: list[dict[str, Any]],
-    communes: list[dict[str, Any]],
     anomalies_hierarchie: list[dict[str, Any]],
-    anomalies_competence: list[dict[str, Any]],
-    stats_competence: dict[str, int],
     parentage: dict[str, Any],
     resolution_croisee: dict[str, Any],
     observe_le: str,
 ) -> dict[str, Any]:
-    categories = Counter(
-        nettoyer_texte(service.get("categorie")) or "Non précisée" for service in services
-    )
     types = Counter(
         nettoyer_texte(service.get("type_organisme"))
         or nettoyer_texte(service.get("type_repertoire"))
-        or nettoyer_texte(service.get("type_service_local"))
         or "Non précisé"
         for service in services
     )
-    types_service = Counter()
-    for service in services:
-        for valeur in liste(service.get("type_service_local")):
-            if isinstance(valeur, dict):
-                code = (
-                    nettoyer_texte(valeur.get("valeur"))
-                    or nettoyer_texte(valeur.get("code"))
-                    or nettoyer_texte(valeur.get("libelle"))
-                )
-            else:
-                code = nettoyer_texte(valeur)
-            if code:
-                types_service[code] += 1
 
     taille_entites = sum(
         chemin.stat().st_size for chemin in DOSSIER_ENTITES.glob("*.jsonl")
@@ -1003,18 +832,16 @@ def statistiques(
     taille_relations = sum(
         chemin.stat().st_size for chemin in DOSSIER_RELATIONS.glob("*.jsonl")
     )
-    taille_competences = sum(
-        chemin.stat().st_size for chemin in DOSSIER_COMPETENCES.glob("*.jsonl")
-    )
 
     return {
-        "version": "1",
+        "version": "2",
         "source_id": SOURCE_ID,
         "observe_le": observe_le,
-        "nombre_services_source": len(services),
+        "nombre_enregistrements_export_complet": len(enregistrements),
+        "categories_export": dict(categories_export.most_common()),
+        "nombre_services_locaux_source": len(services),
         "nombre_entites_canoniques": len(entites),
         "nombre_relations_hierarchiques": len(relations),
-        "nombre_communes_competence": len(communes),
         "hierarchie": {
             "avec_parent_principal": parentage["avec_parent_principal"],
             "sans_parent_principal": parentage["sans_parent_principal"],
@@ -1022,10 +849,6 @@ def statistiques(
                 parentage["parents_directs_multiples"]
             ),
             "anomalies": len(anomalies_hierarchie),
-        },
-        "competence_geographique": {
-            **stats_competence,
-            "anomalies": len(anomalies_competence),
         },
         "resolution_croisee_roae": {
             "anomalies_roae_initiales": resolution_croisee[
@@ -1040,260 +863,241 @@ def statistiques(
         },
         "couverture": {
             "avec_siren": sum(
-                bool((e.get("identifiants") or {}).get("siren")) for e in entites
+                bool((entite.get("identifiants") or {}).get("siren"))
+                for entite in entites
             ),
             "avec_siret": sum(
-                bool((e.get("identifiants") or {}).get("siret")) for e in entites
+                bool((entite.get("identifiants") or {}).get("siret"))
+                for entite in entites
             ),
-            "avec_mission": sum(bool(e.get("missions")) for e in entites),
-            "avec_coordonnees": sum(bool(e.get("coordonnees")) for e in entites),
-            "avec_territoire_direct": sum(bool(e.get("territoires")) for e in entites),
+            "avec_mission": sum(bool(entite.get("missions")) for entite in entites),
+            "avec_responsable": sum(
+                bool(entite.get("responsables")) for entite in entites
+            ),
+            "avec_coordonnees": sum(
+                bool(entite.get("coordonnees")) for entite in entites
+            ),
+            "avec_territoire_direct": sum(
+                bool(entite.get("territoires")) for entite in entites
+            ),
             "avec_fondement_juridique": sum(
-                bool(e.get("fondements_juridiques")) for e in entites
+                bool(entite.get("fondements_juridiques")) for entite in entites
+            ),
+        },
+        "competence_geographique": {
+            "mode": "interrogation_live",
+            "dataset": "api-lannuaire-administration-locale-competence-geographique",
+            "url": URL_COMPETENCE,
+            "raison_non_materialisation_git": (
+                "Le jeu de compétence géographique comporte plusieurs millions "
+                "d'enregistrements. Il est interrogé à la demande afin de garder "
+                "le dépôt Git exploitable et l'information fraîche."
             ),
         },
         "stockage": {
             "octets_entites": taille_entites,
             "octets_relations": taille_relations,
-            "octets_competences": taille_competences,
-            "octets_total_canonique": taille_entites
-            + taille_relations
-            + taille_competences,
+            "octets_total_canonique": taille_entites + taille_relations,
         },
-        "categories_source": dict(categories.most_common()),
         "types_institutionnels_source": dict(types.most_common()),
-        "types_service_local": dict(types_service.most_common()),
     }
 
 
-def source_deja_traitee(sha_archive: str) -> bool:
-    if not MANIFESTE.exists():
-        return False
-    try:
-        precedent = json.loads(MANIFESTE.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
-        return False
-    return bool(
-        precedent.get("sha256_archive") == sha_archive
-        and precedent.get("version_transformation") == VERSION_TRANSFORMATION
-    )
-
-
-def executer(archive: Path, entetes: dict[str, str], observe_le: str | None = None) -> dict[str, Any]:
+def executer(
+    export_json: Path,
+    entetes: dict[str, str],
+    observe_le: str | None = None,
+) -> dict[str, Any]:
     observe_le = observe_le or maintenant_iso()
-    sha_archive = sha256_fichier(archive)
+    sha_export = sha256_fichier(export_json)
 
-    if source_deja_traitee(sha_archive):
-        manifeste = json.loads(MANIFESTE.read_text(encoding="utf-8"))
-        stats = json.loads(STATISTIQUES.read_text(encoding="utf-8"))
-        return {"etat": "inchange", "manifest": manifeste, "stats": stats}
+    if source_deja_traitee(sha_export):
+        return {
+            "etat": "inchange",
+            "manifest": json.loads(MANIFESTE.read_text(encoding="utf-8")),
+            "stats": json.loads(STATISTIQUES.read_text(encoding="utf-8")),
+        }
 
-    with tempfile.TemporaryDirectory(prefix="frontiere-local-") as temp:
-        dossier_temp = Path(temp)
-        chemin_json, chemin_zip, details_archive = extraire_archive(archive, dossier_temp)
-        sha_json = sha256_fichier(chemin_json)
-        sha_zip_competence = sha256_fichier(chemin_zip)
+    enregistrements = charger_export(export_json)
+    services, categories_export = filtrer_services_locaux(enregistrements)
 
-        services = charger_services(chemin_json)
-        ids = [nettoyer_texte(service.get("id")) for service in services]
-        ids_non_vides = [identifiant for identifiant in ids if identifiant]
-        if len(ids_non_vides) != len(services):
-            raise ValueError("Le flux local contient au moins un guichet sans identifiant.")
-        if len(ids_non_vides) != len(set(ids_non_vides)):
-            raise ValueError("Le flux local contient des identifiants DILA en doublon.")
+    ids = [nettoyer_texte(service.get("id")) for service in services]
+    ids_non_vides = [identifiant for identifiant in ids if identifiant]
+    if len(ids_non_vides) != len(services):
+        raise ValueError("Le flux local contient au moins un guichet sans identifiant.")
+    if len(ids_non_vides) != len(set(ids_non_vides)):
+        raise ValueError("Le flux local contient des identifiants DILA en doublon.")
 
-        ids_locaux = set(ids_non_vides)
-        roae = charger_index_roae()
-        anciennes_entites = charger_index_jsonl(DOSSIER_ENTITES, "id")
+    ids_locaux = set(ids_non_vides)
+    roae = charger_index_roae()
+    anciennes_entites = charger_index_jsonl(DOSSIER_ENTITES, "id")
 
-        entites = []
-        for service in services:
-            dila_id = nettoyer_texte(service.get("id"))
-            assert dila_id is not None
-            canonique_id = id_canonique_local(dila_id)
-            entites.append(
-                canonicaliser_service(
-                    service,
-                    observe_le,
-                    precedent=anciennes_entites.get(canonique_id),
-                )
+    entites = []
+    for service in services:
+        dila_id = nettoyer_texte(service.get("id"))
+        assert dila_id is not None
+        canonique_id = id_canonique_local(dila_id)
+        entites.append(
+            canonicaliser_service(
+                service,
+                observe_le,
+                precedent=anciennes_entites.get(canonique_id),
             )
-        entites.sort(key=lambda item: item["id"])
-
-        relations_locales, anomalies_hierarchie = construire_relations_locales(
-            services,
-            ids_locaux,
-            roae,
-            observe_le,
         )
-        relations_croisees, resolution_croisee = resoudre_anomalies_roae(
-            ids_locaux,
-            roae,
-            observe_le,
-        )
+    entites.sort(key=lambda item: item["id"])
 
-        toutes_relations = {
+    relations_locales, anomalies_hierarchie = construire_relations_locales(
+        services,
+        ids_locaux,
+        roae,
+        observe_le,
+    )
+    relations_croisees, resolution_croisee = resoudre_anomalies_roae(
+        ids_locaux,
+        roae,
+        observe_le,
+    )
+    relations = sorted(
+        {
             relation["id"]: relation
             for relation in [*relations_locales, *relations_croisees]
-        }
-        relations = sorted(toutes_relations.values(), key=lambda item: item["id"])
-        parentage = appliquer_parent_principal(entites, relations)
+        }.values(),
+        key=lambda item: item["id"],
+    )
+    parentage = appliquer_parent_principal(entites, relations)
 
-        communes, anomalies_competence, stats_competence = charger_competences(
-            chemin_zip,
-            ids_locaux,
-            roae,
-        )
+    partitions_entites = ecrire_jsonl_partitionne(
+        entites,
+        DOSSIER_ENTITES,
+        "annuaire_local",
+        N_PARTITIONS_ENTITES,
+        "id",
+    )
+    partitions_relations = ecrire_jsonl_partitionne(
+        relations,
+        DOSSIER_RELATIONS,
+        "hierarchie_locale",
+        N_PARTITIONS_RELATIONS,
+        "id",
+    )
 
-        partitions_entites = ecrire_jsonl_partitionne(
-            entites,
-            DOSSIER_ENTITES,
-            "annuaire_local",
-            N_PARTITIONS_ENTITES,
-            "id",
-        )
-        partitions_relations = ecrire_jsonl_partitionne(
-            relations,
-            DOSSIER_RELATIONS,
-            "hierarchie_locale",
-            N_PARTITIONS_RELATIONS,
-            "id",
-        )
-        partitions_competences = ecrire_jsonl_partitionne(
-            communes,
-            DOSSIER_COMPETENCES,
-            "competence_commune",
-            N_PARTITIONS_COMPETENCES,
-            "code_insee_commune",
-        )
+    stats = construire_statistiques(
+        enregistrements,
+        categories_export,
+        services,
+        entites,
+        relations,
+        anomalies_hierarchie,
+        parentage,
+        resolution_croisee,
+        observe_le,
+    )
 
-        stats = statistiques(
-            services,
-            entites,
-            relations,
-            communes,
-            anomalies_hierarchie,
-            anomalies_competence,
-            stats_competence,
-            parentage,
+    STATISTIQUES.parent.mkdir(parents=True, exist_ok=True)
+    STATISTIQUES.write_text(
+        json.dumps(stats, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    ANOMALIES.write_text(
+        json.dumps(
+            {
+                "version": "2",
+                "source_id": SOURCE_ID,
+                "observe_le": observe_le,
+                "nombre_anomalies_hierarchiques": len(anomalies_hierarchie),
+                "parents_directs_multiples": parentage["parents_directs_multiples"],
+                "anomalies_hierarchiques": anomalies_hierarchie,
+            },
+            ensure_ascii=False,
+            indent=2,
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    RESOLUTION_CROISEE.write_text(
+        json.dumps(
             resolution_croisee,
-            observe_le,
+            ensure_ascii=False,
+            indent=2,
+            sort_keys=True,
         )
+        + "\n",
+        encoding="utf-8",
+    )
 
-        STATISTIQUES.parent.mkdir(parents=True, exist_ok=True)
-        STATISTIQUES.write_text(
-            json.dumps(stats, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-            encoding="utf-8",
-        )
-
-        rapport_anomalies = {
-            "version": "1",
-            "source_id": SOURCE_ID,
-            "observe_le": observe_le,
-            "nombre_anomalies_hierarchiques": len(anomalies_hierarchie),
-            "nombre_anomalies_competence": len(anomalies_competence),
-            "parents_directs_multiples": parentage["parents_directs_multiples"],
-            "anomalies_hierarchiques": anomalies_hierarchie,
-            "anomalies_competence": anomalies_competence,
-        }
-        ANOMALIES.write_text(
-            json.dumps(
-                rapport_anomalies,
-                ensure_ascii=False,
-                indent=2,
-                sort_keys=True,
-            )
-            + "\n",
-            encoding="utf-8",
-        )
-        RESOLUTION_CROISEE.write_text(
-            json.dumps(
-                resolution_croisee,
-                ensure_ascii=False,
-                indent=2,
-                sort_keys=True,
-            )
-            + "\n",
-            encoding="utf-8",
-        )
-
-        manifeste = {
-            "version": "1",
-            "version_transformation": VERSION_TRANSFORMATION,
-            "source_id": SOURCE_ID,
-            "producteur": "Direction de l'information légale et administrative",
-            "paternite": "Service-Public.gouv.fr / DILA",
-            "licence": "Licence Ouverte 2.0",
-            "page_source": PAGE_SOURCE,
-            "url_telechargement_longue": URL_SOURCE,
-            "nom_fichier_telecharge": NOM_SOURCE,
-            "observe_le": observe_le,
-            "derniere_modification_http": entetes.get("last-modified"),
-            "etag_http": entetes.get("etag"),
-            "octets_http": entetes.get("content-length"),
-            "sha256_archive": sha_archive,
-            "sha256_json_guichets": sha_json,
-            "sha256_zip_competences": sha_zip_competence,
-            "details_archive": details_archive,
-            "nombre_services": len(services),
-            "nombre_relations": len(relations),
-            "nombre_communes_competence": len(communes),
-            "partitions_entites": partitions_entites,
-            "partitions_relations": partitions_relations,
-            "partitions_competences": partitions_competences,
-        }
-        MANIFESTE.parent.mkdir(parents=True, exist_ok=True)
-        MANIFESTE.write_text(
-            json.dumps(manifeste, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
-            encoding="utf-8",
-        )
+    manifeste = {
+        "version": "2",
+        "version_transformation": VERSION_TRANSFORMATION,
+        "source_id": SOURCE_ID,
+        "producteur": "Direction de l'information légale et administrative",
+        "paternite": "Service-Public.gouv.fr / DILA",
+        "licence": "Licence Ouverte 2.0",
+        "page_source": PAGE_SOURCE,
+        "url_export": URL_SOURCE,
+        "url_competence_geographique": URL_COMPETENCE,
+        "nom_fichier_telecharge": NOM_SOURCE,
+        "observe_le": observe_le,
+        "derniere_modification_http": entetes.get("last-modified"),
+        "etag_http": entetes.get("etag"),
+        "octets_http": entetes.get("content-length"),
+        "sha256_export": sha_export,
+        "nombre_enregistrements_export_complet": len(enregistrements),
+        "nombre_services_locaux": len(services),
+        "nombre_relations": len(relations),
+        "partitions_entites": partitions_entites,
+        "partitions_relations": partitions_relations,
+        "competence_geographique": {
+            "dataset": "api-lannuaire-administration-locale-competence-geographique",
+            "mode": "interrogation_live",
+        },
+    }
+    MANIFESTE.parent.mkdir(parents=True, exist_ok=True)
+    MANIFESTE.write_text(
+        json.dumps(manifeste, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
 
     return {"etat": "actualise", "manifest": manifeste, "stats": stats}
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Ingère la Base de données locales de l'Annuaire de l'administration."
+        description="Ingère les services locaux de l'API Annuaire de l'administration."
     )
-    parser.add_argument("--source", default=URL_SOURCE, help="URL de l'archive tar.bz2 DILA.")
+    parser.add_argument("--source", default=URL_SOURCE, help="URL de l'export JSON.")
     parser.add_argument(
         "--fichier",
         type=Path,
-        help="Archive locale à utiliser à la place du téléchargement.",
+        help="Export JSON local à utiliser à la place du téléchargement.",
     )
     args = parser.parse_args()
 
-    with tempfile.TemporaryDirectory(prefix="frontiere-download-") as temp:
+    with tempfile.TemporaryDirectory(prefix="frontiere-annuaire-") as temp:
         if args.fichier:
-            archive = args.fichier
+            export_json = args.fichier
             entetes: dict[str, str] = {}
         else:
-            archive = Path(temp) / NOM_SOURCE
-            entetes = telecharger(args.source, archive)
+            export_json = Path(temp) / NOM_SOURCE
+            entetes = telecharger(args.source, export_json)
 
-        resultat = executer(archive, entetes)
+        resultat = executer(export_json, entetes)
 
     stats = resultat["stats"]
     print(
         json.dumps(
             {
                 "etat": resultat["etat"],
-                "services": stats["nombre_services_source"],
+                "export_complet": stats["nombre_enregistrements_export_complet"],
+                "services_locaux": stats["nombre_services_locaux_source"],
                 "relations": stats["nombre_relations_hierarchiques"],
-                "communes_competence": stats["nombre_communes_competence"],
                 "parents_principaux": stats["hierarchie"]["avec_parent_principal"],
                 "anomalies_hierarchie": stats["hierarchie"]["anomalies"],
-                "organismes_competence_resolus": stats["competence_geographique"][
-                    "organismes_resolus"
-                ],
-                "organismes_competence_non_resolus": stats[
-                    "competence_geographique"
-                ]["organismes_non_resolus"],
                 "anomalies_roae_resolues": stats["resolution_croisee_roae"][
                     "resolues_par_annuaire_local"
                 ],
                 "octets_canonique": stats["stockage"]["octets_total_canonique"],
-                "sha256_archive": resultat["manifest"]["sha256_archive"],
+                "sha256_export": resultat["manifest"]["sha256_export"],
             },
             ensure_ascii=False,
         )
