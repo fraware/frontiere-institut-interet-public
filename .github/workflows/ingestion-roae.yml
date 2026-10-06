@@ -44,6 +44,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Installer les outils de test
+        run: python -m pip install "pytest>=8,<10"
+
       - name: Vérifier l'importeur
         run: python -m pytest -q tests/test_ingestion_roae.py
 
@@ -80,13 +83,14 @@ jobs:
         env:
           BRANCHE_CIBLE: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
         run: |
-          if git diff --quiet -- institutionnel/entites/roae institutionnel/relations/roae institutionnel/instantanes/roae_manifest.json institutionnel/statistiques_roae.json; then
+          git add institutionnel/entites/roae institutionnel/relations/roae institutionnel/instantanes/roae_manifest.json institutionnel/statistiques_roae.json
+
+          if git diff --cached --quiet; then
             echo "Le référentiel canonique est déjà à jour."
             exit 0
           fi
 
           git config user.name "frontiere-referentiel"
           git config user.email "frontiere-referentiel@users.noreply.github.com"
-          git add institutionnel/entites/roae institutionnel/relations/roae institutionnel/instantanes/roae_manifest.json institutionnel/statistiques_roae.json
           git commit -m "Référentiel DILA — actualiser l'organisation administrative de l'État"
           git push origin "HEAD:${BRANCHE_CIBLE}"
