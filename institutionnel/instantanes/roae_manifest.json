@@ -6,7 +6,7 @@
   "nom_fichier_telecharge": "dila_refOrga_admin_Etat_fr_latest.zip",
   "nombre_relations": 8071,
   "nombre_services": 7903,
-  "observe_le": "2026-10-06T18:06:47+00:00",
+  "observe_le": "2026-10-06T18:08:28+00:00",
   "octets_zip": 3171494,
   "page_source": "https://www.data.gouv.fr/datasets/referentiel-de-lorganisation-administrative-de-letat",
   "partitions_entites": [
@@ -307,5 +307,5 @@
   "source_id": "dila_roae",
   "url_telechargement_longue": "https://echanges.dila.gouv.fr/OPENDATA/RefOrgaAdminEtat/FluxAnneeCourante/dila_refOrga_admin_Etat_fr_latest.zip",
   "version": "1",
-  "version_transformation": "1.1"
+  "version_transformation": "1.2"
 }
