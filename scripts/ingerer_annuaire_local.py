@@ -17,7 +17,7 @@ RACINE = Path(__file__).resolve().parents[1]
 
 SOURCE_ID = "dila_annuaire_local"
 SOURCE_ROAE_ID = "dila_roae"
-VERSION_TRANSFORMATION = "2.0"
+VERSION_TRANSFORMATION = "2.1"
 
 PAGE_SOURCE = "https://www.data.gouv.fr/datasets/service-public-gouv-fr-annuaire-de-ladministration-base-de-donnees-locales"
 URL_SOURCE = (
@@ -58,7 +58,20 @@ def nettoyer_texte(valeur: Any) -> str | None:
     return texte or None
 
 
+def decoder_json_embarque(valeur: Any) -> Any:
+    if not isinstance(valeur, str):
+        return valeur
+    texte = valeur.strip()
+    if not texte or texte[0] not in "[{":
+        return valeur
+    try:
+        return json.loads(texte)
+    except json.JSONDecodeError:
+        return valeur
+
+
 def liste(valeur: Any) -> list[Any]:
+    valeur = decoder_json_embarque(valeur)
     if valeur is None or valeur == "":
         return []
     return valeur if isinstance(valeur, list) else [valeur]
@@ -264,6 +277,21 @@ def normaliser_aliases(service: dict[str, Any]) -> list[str]:
     return resultat
 
 
+def types_service_local(service: dict[str, Any]) -> list[str]:
+    resultat: list[str] = []
+    for pivot in liste(service.get("pivot")):
+        if isinstance(pivot, dict):
+            valeur = (
+                nettoyer_texte(pivot.get("type_service_local"))
+                or nettoyer_texte(pivot.get("code_type_service_local"))
+            )
+        else:
+            valeur = nettoyer_texte(pivot)
+        if valeur and valeur not in resultat:
+            resultat.append(valeur)
+    return sorted(resultat)
+
+
 def codes_insee_pivot(service: dict[str, Any]) -> list[str]:
     resultat: list[str] = []
 
@@ -347,10 +375,12 @@ def donnees_operationnelles(service: dict[str, Any]) -> dict[str, Any]:
     donnees = {
         "categorie": service.get("categorie"),
         "type_repertoire": service.get("type_repertoire"),
-        "pivot": service.get("pivot"),
-        "ancien_code_pivot": service.get("ancien_code_pivot"),
-        "plage_ouverture": service.get("plage_ouverture"),
-        "commentaire_plage_ouverture": service.get("commentaire_plage_ouverture"),
+        "pivot": decoder_json_embarque(service.get("pivot")),
+        "ancien_code_pivot": decoder_json_embarque(service.get("ancien_code_pivot")),
+        "plage_ouverture": decoder_json_embarque(service.get("plage_ouverture")),
+        "commentaire_plage_ouverture": decoder_json_embarque(
+            service.get("commentaire_plage_ouverture")
+        ),
         "information_complementaire": service.get("information_complementaire"),
         "service_disponible": service.get("service_disponible"),
         "partenaire": service.get("partenaire"),
@@ -447,10 +477,15 @@ def canonicaliser_service(
         else observe_le
     )
 
+    codes_service = types_service_local(service)
     type_institutionnel = (
         nettoyer_texte(service.get("type_organisme"))
         or nettoyer_texte(service.get("type_repertoire"))
-        or "Guichet public local"
+        or (
+            "Service local — " + ", ".join(codes_service)
+            if codes_service
+            else "Guichet public local"
+        )
     )
     mission = nettoyer_texte(service.get("mission"))
 
@@ -489,6 +524,7 @@ def canonicaliser_service(
             }
         ),
         "territoires": codes_insee_pivot(service),
+        "types_service_local": codes_service,
         "missions": (
             [
                 {
@@ -822,8 +858,17 @@ def construire_statistiques(
     types = Counter(
         nettoyer_texte(service.get("type_organisme"))
         or nettoyer_texte(service.get("type_repertoire"))
-        or "Non précisé"
+        or (
+            "Service local — " + ", ".join(types_service_local(service))
+            if types_service_local(service)
+            else "Guichet public local"
+        )
         for service in services
+    )
+    codes_types = Counter(
+        code
+        for service in services
+        for code in types_service_local(service)
     )
 
     taille_entites = sum(
@@ -900,6 +945,7 @@ def construire_statistiques(
             "octets_total_canonique": taille_entites + taille_relations,
         },
         "types_institutionnels_source": dict(types.most_common()),
+        "types_service_local": dict(codes_types.most_common()),
     }
 
 
