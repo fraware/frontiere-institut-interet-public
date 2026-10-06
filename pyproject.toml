@@ -34,3 +34,7 @@ Documentation = "https://github.com/fraware/frontiere-institut-interet-public/tr
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+exclude = ["tests*", "donnees*", "evaluation*", "scripts*", "docs*"]
