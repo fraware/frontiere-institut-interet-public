@@ -1,0 +1,53 @@
+name: Problème logiciel
+description: Signaler un comportement reproductible du prototype public
+title: "[Problème] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci de ne joindre aucune donnée sensible, nominative ou restreinte.
+
+  - type: textarea
+    id: comportement
+    attributes:
+      label: Comportement observé
+      description: Décrire précisément ce qui s'est produit.
+    validations:
+      required: true
+
+  - type: textarea
+    id: attendu
+    attributes:
+      label: Comportement attendu
+      description: Décrire le résultat attendu.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Étapes de reproduction
+      description: Fournir le plus petit exemple reproductible possible avec des données publiques ou artificielles.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Révision ou version
+      description: Commit, branche ou version utilisée.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: securite
+    attributes:
+      label: Vérification
+      options:
+        - label: Ce signalement ne contient aucune information sensible ou restreinte.
+          required: true
