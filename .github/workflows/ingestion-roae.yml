@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: ingestion-roae-main
+  group: referentiel-institutionnel-main
   cancel-in-progress: false
 
 jobs:

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -14,6 +15,9 @@ BASE = (
     "https://api-lannuaire.service-public.gouv.fr/api/explore/v2.1/catalog/"
     "datasets/api-lannuaire-administration-locale-competence-geographique/records"
 )
+
+CODE_COMMUNE_RE = re.compile(r"^[0-9A-Z]{5}$")
+TYPE_SERVICE_RE = re.compile(r"^[A-Za-z0-9_-]{1,80}$")
 
 
 def nettoyer(valeur: Any) -> str | None:
@@ -44,10 +48,18 @@ def charger_index(dossier: Path, cle_identifiant: str) -> dict[str, dict[str, An
 def construire_where(commune: str | None, type_service: str | None) -> str:
     clauses = []
     if commune:
-        valeur = commune.replace('"', '\"')
+        valeur = commune.strip().upper()
+        if not CODE_COMMUNE_RE.fullmatch(valeur):
+            raise ValueError(
+                "Le code Insee doit contenir exactement cinq caractères alphanumériques."
+            )
         clauses.append(f'code_insee_commune="{valeur}"')
     if type_service:
-        valeur = type_service.replace('"', '\"')
+        valeur = type_service.strip()
+        if not TYPE_SERVICE_RE.fullmatch(valeur):
+            raise ValueError(
+                "Le type de service contient des caractères non autorisés."
+            )
         clauses.append(f'code_type_service_local="{valeur}"')
     if not clauses:
         raise ValueError(
