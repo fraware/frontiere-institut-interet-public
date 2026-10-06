@@ -9,7 +9,7 @@
 [![Vérifications](https://github.com/fraware/frontiere-institut-interet-public/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/fraware/frontiere-institut-interet-public/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB)
 ![État](https://img.shields.io/badge/état-recherche%20expérimentale-5A5A5A)
-![Données](https://img.shields.io/badge/données-publiques%20uniquement-1F6FEB)
+![Sécurité](https://img.shields.io/badge/données%20restreintes-exclues-1F6FEB)
 
 </div>
 
@@ -172,7 +172,7 @@ Ouvrir ensuite `http://127.0.0.1:8000`.
 ## Vérifications
 
 ```bash
-python -m compileall -q app scripts
+python -m compileall -q app scripts tests
 pytest
 ```
 
