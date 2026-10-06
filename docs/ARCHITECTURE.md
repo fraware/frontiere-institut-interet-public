@@ -36,7 +36,7 @@ Cette séparation réduit le risque de traduire automatiquement tout besoin en r
 
 ### 1. État initial
 
-Le cas enregistre l’institution, le résultat recherché, la capacité nécessaire, la chronologie connue, les démarches déjà entreprises, la situation actuelle et le contrefactuel.
+Le cas enregistre l’institution, le résultat recherché, la capacité nécessaire, la chronologie connue, les démarches déjà entreprises, la situation actuelle et ce qui se serait vraisemblablement produit en l’absence de FRONTIÈRE.
 
 L’état initial est conservé avant toute recommandation afin de limiter la reconstruction a posteriori.
 
