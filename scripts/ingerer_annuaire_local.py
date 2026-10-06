@@ -108,7 +108,7 @@ def empreinte_semantique_export(enregistrements: list[dict[str, Any]]) -> str:
 
 
 def empreinte_dependance_roae() -> str:
-    """Empreinte l'état ROAE dont dépend la résolution croisée locale."""
+    """Empreinte de l'état ROAE dont dépend la résolution croisée locale."""
     try:
         manifeste = json.loads(MANIFESTE_ROAE.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
@@ -486,26 +486,31 @@ def provenance_precedente(precedent: dict[str, Any] | None) -> dict[str, Any] | 
     return None
 
 
-def vue_semantique_relation(relation: dict[str, Any]) -> dict[str, Any]:
-    """Vue d'une relation qui ignore uniquement les horodatages d'observation."""
-    provenance = []
-    for entree in relation.get("provenance") or []:
-        if not isinstance(entree, dict):
-            continue
-        provenance.append(
-            {
-                cle: valeur
-                for cle, valeur in entree.items()
-                if cle != "collecte_le"
-            }
-        )
+def noyau_semantique_relation(relation: dict[str, Any]) -> dict[str, Any]:
+    """Contenu institutionnel d'une relation, hors représentation brute ajoutée."""
+    qualificatifs = {
+        cle: valeur
+        for cle, valeur in (relation.get("qualificatifs") or {}).items()
+        if cle != "representation_source"
+    }
     return {
         "source_entite": relation.get("source_entite"),
         "type_relation": relation.get("type_relation"),
         "cible_entite": relation.get("cible_entite"),
-        "qualificatifs": relation.get("qualificatifs") or {},
-        "provenance": provenance,
+        "qualificatifs": qualificatifs,
         "statut_validation": relation.get("statut_validation"),
+    }
+
+
+def cles_preuves_relation(relation: dict[str, Any]) -> set[tuple[Any, Any, Any]]:
+    return {
+        (
+            entree.get("source_id"),
+            entree.get("identifiant_source"),
+            entree.get("empreinte"),
+        )
+        for entree in relation.get("provenance") or []
+        if isinstance(entree, dict)
     }
 
 
@@ -513,12 +518,17 @@ def stabiliser_relation(
     relation: dict[str, Any],
     precedent: dict[str, Any] | None,
 ) -> dict[str, Any]:
-    """Préserve les dates d'une relation lorsque son contenu probant est inchangé."""
+    """Préserve les dates si l'objet institutionnel et ses preuves antérieures subsistent."""
     if not precedent:
         return relation
-    if compact_sha256(vue_semantique_relation(relation)) != compact_sha256(
-        vue_semantique_relation(precedent)
+    if compact_sha256(noyau_semantique_relation(relation)) != compact_sha256(
+        noyau_semantique_relation(precedent)
     ):
+        return relation
+
+    preuves_precedentes = cles_preuves_relation(precedent)
+    preuves_nouvelles = cles_preuves_relation(relation)
+    if not preuves_precedentes or not preuves_precedentes.issubset(preuves_nouvelles):
         return relation
 
     if precedent.get("observe_le"):
