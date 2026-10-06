@@ -20,7 +20,7 @@ Préciser si la modification change une interprétation, une chronologie, un seu
 
 ## Vérifications
 
-- [ ] `python -m compileall -q app scripts`
+- [ ] `python -m compileall -q app scripts tests`
 - [ ] `pytest`
 - [ ] provenance vérifiée pour toute nouvelle donnée empirique
 - [ ] distinction faits / interprétations conservée

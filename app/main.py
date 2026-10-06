@@ -67,7 +67,7 @@ def _require_locked_need(db: Session, ep: Episode) -> NeedVersion:
         .limit(1)
     )
     if need is None or need.locked_at is None:
-        raise HTTPException(409, "Le besoin et son contrefactuel doivent être verrouillés avant cette étape.")
+        raise HTTPException(409, "Le besoin et la situation sans FRONTIÈRE doivent être verrouillés avant cette étape.")
     return need
 
 
@@ -656,7 +656,7 @@ def add_result(
         additionality_learning,
     }
     if not levels.issubset(ADDITIONALITY_LEVELS):
-        raise HTTPException(400, "Niveau d'additionalité invalide.")
+        raise HTTPException(400, "Niveau d'effet propre invalide.")
     first_value = datetime.fromisoformat(first_useful_contribution_at) if first_useful_contribution_at else None
     result = EpisodeResult(
         episode_id=ep.id,
@@ -796,7 +796,7 @@ def lock_need(code: str, db: Session = Depends(get_db)):
     missing = []
     if not need.current_situation.strip(): missing.append("situation")
     if not need.desired_outcome.strip(): missing.append("résultat recherché")
-    if not need.counterfactual_plan: missing.append("contrefactuel")
+    if not need.counterfactual_plan: missing.append("situation sans FRONTIÈRE")
     if not need.initial_frontiere_hypothesis: missing.append("hypothèse initiale")
     if missing:
         raise HTTPException(409, "Impossible de verrouiller : " + ", ".join(missing))
@@ -852,7 +852,7 @@ def revise_need(
         locked_at=datetime.now(timezone.utc),
     )
     if not revised.current_situation or not revised.desired_outcome or not revised.counterfactual_plan or not revised.initial_frontiere_hypothesis:
-        raise HTTPException(409, "Une révision doit conserver situation, résultat, contrefactuel et hypothèse.")
+        raise HTTPException(409, "Une révision doit conserver la situation, le résultat, la situation sans FRONTIÈRE et l’hypothèse.")
     db.add(revised)
     db.flush()
     _audit(

@@ -11,7 +11,11 @@ Ce fichier résume les principales étapes publiques du projet. Les détails com
 - architecture conceptuelle ;
 - état empirique consolidé ;
 - guide de contribution ;
-- vérifications automatiques sur Python 3.11 et 3.12.
+- vérifications automatiques sur Python 3.11 et 3.12 ;
+- contrôle automatique des liens documentaires et des métadonnées de version ;
+- suppression du doublon historique du guide de contribution ;
+- vérification du conteneur et de son point de santé en intégration continue ;
+- suivi mensuel des dépendances Python et des actions GitHub.
 
 ## 6 octobre 2026
 

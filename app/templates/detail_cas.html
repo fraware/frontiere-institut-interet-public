@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{ episode.code }} — FRONTIÈRE - INSTITUT POUR L’INTÉRÊT PUBLIC -{% endblock %}
+{% block title %}{{ episode.code }} — FRONTIÈRE — Institut pour l’intérêt public{% endblock %}
 {% block content %}
 {% set libelle_demande = {'D0':'Simple intérêt','D1':'Problème historique documenté','D2':'Besoin actuel avec responsable','D3':'Besoin actuel avec ressources engagées','D4':'Besoin immédiatement activable'} %}
 {% set libelle_ressource = {'R0':'Identifiée','R1':'Pertinence plausible','R2':'Capacité vérifiée','R3':'Conditions compatibles','R4':'Engagement confirmé','R5':'Mobilisable pour ce cas'} %}
@@ -39,7 +39,7 @@
 {% if need and not need_locked %}
 <section class="panel prelock">
   <h2>Pré-enregistrement</h2>
-  <p>Avant toute recherche publique ou décision d’orientation, verrouiller le besoin, le résultat recherché, le situation sans FRONTIÈRE et l’hypothèse initiale.</p>
+  <p>Avant toute recherche publique ou décision d’orientation, verrouiller le besoin, le résultat recherché, la situation sans FRONTIÈRE et l’hypothèse initiale.</p>
   <form method="post" action="/episodes/{{ episode.code }}/need/lock"><button class="button primary" type="submit">Verrouiller l’état initial</button></form>
 </section>
 {% endif %}

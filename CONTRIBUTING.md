@@ -59,7 +59,7 @@ Sous Windows PowerShell :
 Exécuter :
 
 ```bash
-python -m compileall -q app scripts
+python -m compileall -q app scripts tests
 pytest
 ```
 
