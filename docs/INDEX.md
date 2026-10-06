@@ -37,6 +37,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | --- | --- |
 | [REFERENTIEL_INSTITUTIONNEL_V1.md](REFERENTIEL_INSTITUTIONNEL_V1.md) | Périmètre, sources, graphe, temporalité, provenance et surveillance |
 | [INGESTION_ROAE_V1.md](INGESTION_ROAE_V1.md) | Ingestion de la colonne vertébrale DILA, statistiques et anomalies |
+| [ANALYSE_ANNUAIRE_LOCAL_V1.md](ANALYSE_ANNUAIRE_LOCAL_V1.md) | Caractérisation contrôlée du flux local DILA avant ingestion canonique |
 | [../institutionnel/README.md](../institutionnel/README.md) | Organisation des fichiers du référentiel vivant |
 
 ## Exécution
@@ -60,10 +61,10 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 
 ## Données
 
-Le répertoire [`donnees/`](../donnees/) contient le corpus empirique versionné. Son [README](../donnees/README.md) décrit les règles de lecture et de qualité.
+Le répertoire [donnees/](../donnees/) contient le corpus empirique versionné. Son [README](../donnees/README.md) décrit les règles de lecture et de qualité.
 
 Les fichiers d’analyse successifs restent conservés lorsque leur présence permet de reconstruire l’évolution du raisonnement. Les documents qui décrivent l’état courant portent la version la plus récente dans leur nom.
 
 ## Citation
 
-Les métadonnées de citation du projet figurent dans [`CITATION.cff`](../CITATION.cff).
+Les métadonnées de citation du projet figurent dans [CITATION.cff](../CITATION.cff).
