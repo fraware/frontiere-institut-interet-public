@@ -1,0 +1,109 @@
+{
+  "version": "3",
+  "date_creation": "2026-10-05",
+  "objet": "Mettre à jour les délais mesurables après approfondissement des cinq chronologies encore insuffisantes.",
+  "cas": [
+    {
+      "id_signal": "S001",
+      "segment_principal": "persistance du besoin",
+      "delai_parcours_mesurable": false,
+      "duree_structurelle_mesurable": true,
+      "resultat": "La perte de capacité est documentée depuis octobre 2024 ; le recrutement est toujours en cours lors de l'audition du 3 avril 2025 et le rapport du 1er juillet 2025 reprend encore la difficulté.",
+      "borne": "au moins environ cinq mois jusqu'à l'audition ; résolution finale inconnue",
+      "prochaine_donnee_decisive": "date de prise de fonctions d'une ressource ou date de rétablissement de la capacité"
+    },
+    {
+      "id_signal": "S011",
+      "segment_principal": "besoin → mobilisation",
+      "delai_parcours_mesurable": true,
+      "duree_structurelle_mesurable": true,
+      "resultat": "Le recrutement par concours peut conduire à une affectation pratiquement un an après l'expression du besoin.",
+      "borne": "environ un an dans le mécanisme décrit",
+      "prochaine_donnee_decisive": "date de première contribution utile après affectation"
+    },
+    {
+      "id_signal": "S016",
+      "segment_principal": "constitution de capacité collective",
+      "delai_parcours_mesurable": false,
+      "duree_structurelle_mesurable": true,
+      "resultat": "L'objectif de recruter 30 à 40 spécialistes supplémentaires est formalisé en 2022 ; 30 recrutements en science des données et intelligence artificielle sont atteints au plus tard le 5 juillet 2024.",
+      "borne": "ordre de grandeur d'environ deux ans pour la constitution de la capacité spécialisée",
+      "prochaine_donnee_decisive": "durée moyenne entre ouverture d'un poste, recrutement, formation et première contribution"
+    },
+    {
+      "id_signal": "S018",
+      "segment_principal": "création de capacité → première production documentée",
+      "delai_parcours_mesurable": true,
+      "duree_structurelle_mesurable": true,
+      "resultat": "Le Lab IA est créé en février 2019 et MeteoNet est publié en février 2020 ; la structure est pérennisée en 2021.",
+      "borne": "environ un an entre création et première production publique documentée",
+      "prochaine_donnee_decisive": "date de première contribution utile à une direction interne"
+    },
+    {
+      "id_signal": "S024",
+      "segment_principal": "défaillance d'une instance scientifique → substitution",
+      "delai_parcours_mesurable": false,
+      "duree_structurelle_mesurable": true,
+      "resultat": "La présidence démissionne en 2021 ; le conseil n'est plus convoqué depuis fin 2023 ; le préfet sollicite directement plusieurs opérateurs publics.",
+      "borne": "défaillance durable sur plusieurs années ; délai des avis non mesurable",
+      "prochaine_donnee_decisive": "date de sollicitation et date de remise d'au moins un avis du SHOM, de l'Ifremer ou du Cerema"
+    },
+    {
+      "id_signal": "S038",
+      "segment_principal": "engagement confirmé → mobilisation",
+      "delai_parcours_mesurable": true,
+      "duree_structurelle_mesurable": true,
+      "resultat": "L'expert de haut niveau est nommé par arrêté du 13 décembre 2024 et prend ses fonctions le 14 janvier 2025.",
+      "borne": "32 jours entre nomination et prise de fonctions",
+      "prochaine_donnee_decisive": "date de première contribution utile et date d'identification du candidat"
+    },
+    {
+      "id_signal": "S042",
+      "segment_principal": "tensions de recrutement → renforcement des effectifs",
+      "delai_parcours_mesurable": false,
+      "duree_structurelle_mesurable": true,
+      "resultat": "L'ASNR débute avec 2 085 personnels au 1er janvier 2025 et atteint 2 126 personnes au 31 décembre 2025, tout en mettant en place une politique de recrutement unifiée et un partenariat d'attractivité.",
+      "borne": "hausse nette de 41 personnes sur l'année 2025 ; effet sur les postes spécialisés vacants non isolable",
+      "prochaine_donnee_decisive": "nombre de postes spécialisés vacants et délai moyen de recrutement en 2025"
+    },
+    {
+      "id_signal": "S049",
+      "segment_principal": "création de capacité → première production publique",
+      "delai_parcours_mesurable": true,
+      "duree_structurelle_mesurable": true,
+      "resultat": "Des effectifs supplémentaires sont attribués en 2024 et les indicateurs territorialisés sont publics fin 2025.",
+      "borne": "intervalle grossier inférieur ou égal à environ deux ans",
+      "prochaine_donnee_decisive": "date exacte de constitution de l'équipe et de première production"
+    },
+    {
+      "id_signal": "S027",
+      "segment_principal": "mission d'expertise → traduction publique",
+      "delai_parcours_mesurable": true,
+      "duree_structurelle_mesurable": true,
+      "resultat": "La mission se déroule de septembre 2025 à mars 2026 ; ses conclusions alimentent une circulaire interministérielle en avril 2026.",
+      "borne": "environ six mois de mission puis traduction publique le mois suivant",
+      "prochaine_donnee_decisive": "date exacte de saisine"
+    },
+    {
+      "id_signal": "S050",
+      "segment_principal": "investissement → mise en service prévue",
+      "delai_parcours_mesurable": true,
+      "duree_structurelle_mesurable": true,
+      "resultat": "Le renouvellement est engagé sur 2025-2033 avec une mise en service annoncée pour 2027.",
+      "borne": "environ deux ans entre début du programme et mise en service prévue",
+      "prochaine_donnee_decisive": "date réelle de mise en service et première contribution utile"
+    }
+  ],
+  "synthese": {
+    "nombre_chronologies": 10,
+    "delais_de_parcours_mesurables": 6,
+    "durees_structurelles_mesurables": 10,
+    "cas_restants_sans_delai_de_parcours": [
+      "S001",
+      "S016",
+      "S024",
+      "S042"
+    ],
+    "conclusion": "Six chronologies fournissent désormais un intervalle directement exploitable dans un parcours de capacité. Les quatre restantes documentent une persistance ou une montée en capacité, mais pas encore le temps entre sollicitation, mobilisation et première contribution utile."
+  }
+}
