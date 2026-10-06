@@ -67,7 +67,7 @@ def _require_locked_need(db: Session, ep: Episode) -> NeedVersion:
         .limit(1)
     )
     if need is None or need.locked_at is None:
-        raise HTTPException(409, "Le besoin et la situation prévue sans FRONTIÈRE doivent être verrouillés avant cette étape.")
+        raise HTTPException(409, "Le besoin et la situation sans FRONTIÈRE doivent être verrouillés avant cette étape.")
     return need
 
 
@@ -852,7 +852,7 @@ def revise_need(
         locked_at=datetime.now(timezone.utc),
     )
     if not revised.current_situation or not revised.desired_outcome or not revised.counterfactual_plan or not revised.initial_frontiere_hypothesis:
-        raise HTTPException(409, "Une révision doit conserver la situation, le résultat, la situation prévue sans FRONTIÈRE et l’hypothèse.")
+        raise HTTPException(409, "Une révision doit conserver la situation, le résultat, la situation sans FRONTIÈRE et l’hypothèse.")
     db.add(revised)
     db.flush()
     _audit(
