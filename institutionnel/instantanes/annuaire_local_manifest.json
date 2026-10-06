@@ -10,7 +10,7 @@
   "nombre_enregistrements_export_complet": 93782,
   "nombre_relations": 4155,
   "nombre_services_locaux": 85879,
-  "observe_le": "2026-10-06T19:10:50+00:00",
+  "observe_le": "2026-10-06T19:12:52+00:00",
   "octets_http": null,
   "page_source": "https://www.data.gouv.fr/datasets/service-public-gouv-fr-annuaire-de-ladministration-base-de-donnees-locales",
   "partitions_entites": [
@@ -788,198 +788,199 @@
       "fichier": "institutionnel/relations/locales/hierarchie_locale_000.jsonl",
       "nombre": 144,
       "octets": 109417,
-      "sha256": "f0fa221b00d6e434c1e2dc7567248cba1cb89e0275a5003ef12f06cd47b54d02"
+      "sha256": "dff246ae084438a93d1573a27537888a5a2af7ead26b70c1b4efa108757b83e5"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_001.jsonl",
       "nombre": 120,
       "octets": 91163,
-      "sha256": "97cc8efef5eb2f89a704eba6656ad421a4b98ae3811013463ae97aa28df66272"
+      "sha256": "6331ac60e20535d90fbb4f1b158151cf78d92610e5a5124ffc04ca6f1aaa85a3"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_002.jsonl",
       "nombre": 145,
       "octets": 110139,
-      "sha256": "2a771e5f2794ed618f4d99e39065adc3ddeec77683c12be85f3f4fbdb0b88303"
+      "sha256": "eb016ab9aa6e18f6f9c947d72f4b0f938a52bea97e58e1c2732351ca8e2e218e"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_003.jsonl",
       "nombre": 109,
       "octets": 82823,
-      "sha256": "6de4e6cdaaf60dc87c2a7de5fab7f132da16db8124035d9b1b54e5bdeedf591c"
+      "sha256": "8ecbb9a00a0497e15d9e7f0f3e2e6e252b0a76a1258d39d7ce535a5459b9087c"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_004.jsonl",
       "nombre": 137,
       "octets": 104067,
-      "sha256": "ea12ad52f365d195d1ff695715711c30be7489fe122c8f5fa98020968a383e2d"
+      "sha256": "08f77a524ec78349255b7e430029b78b0a614e1c24d5e1f7f255de00a182d608"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_005.jsonl",
       "nombre": 134,
       "octets": 101796,
-      "sha256": "e3430c8d087b6a970a61613ef1d571bd45b3f7ca4405380f5f0ea1ce5245689c"
+      "sha256": "53d92263247e6a3c71e3e1689182353361c8f5306e4e34a20e068cbada9bab03"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_006.jsonl",
       "nombre": 127,
       "octets": 96492,
-      "sha256": "898f0f9833e45f3d8f2b3439986e0ddacdd9526ce3a2f9061b1e7bbf52c15a06"
+      "sha256": "0c010e52f565d7e43b7f31b951468179e2f9e8c572e8514f3123401c5d8faa65"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_007.jsonl",
       "nombre": 134,
       "octets": 101792,
-      "sha256": "6374a1c4e598fcccfc775563cb82e25b7665891c097667cf4ed2471a57a46c4b"
+      "sha256": "cd4c67f80e3947395c70326fe6c69ab56d18b68c1edda4ddc9eb6331ee44cd2d"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_008.jsonl",
       "nombre": 121,
       "octets": 91928,
-      "sha256": "7b01ddbb81832897641ae8eb3264b4bf71205f4979275acb651009da823aa5da"
+      "sha256": "4380b797f43ee88e4550f6c65c31d4224feee6800fe6ee3271463ceaca11edf9"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_009.jsonl",
       "nombre": 132,
       "octets": 100280,
-      "sha256": "1ab69d439f300a766761d76079a963b749f3c8145e7cc4b601522230b1b74d8c"
+      "sha256": "6d829d6563cf9a22cb62829807a4ea30e05ab7c9cff4208865a2e7eb0e6aeddc"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_010.jsonl",
       "nombre": 121,
       "octets": 91946,
-      "sha256": "3ed16ed671dc46b7500b10a9e89fa9b55f8623713d4ddef5656f1abf4eef763f"
+      "sha256": "3f1fed9f9bca8ce5e85184d267de7efc8a46fcecbee43f44b3bd396f4c0cf5b6"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_011.jsonl",
       "nombre": 128,
       "octets": 97246,
-      "sha256": "4535ae2322bc1410d735715f9003d10d1e014b23afc8820b036fd0d454f4ee7c"
+      "sha256": "b563d825d8da223bf6a12b8ca96ef1a9f3e59a5055ca851414e12814543e8974"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_012.jsonl",
       "nombre": 122,
       "octets": 92692,
-      "sha256": "8a496dbf0de5152c40b5af2c6b0a6c22dc77a615c45a1b9797bad1190ab2a644"
+      "sha256": "468e98a07748885fa870eb63edf0326dec65f866cebaa43deabbccfa844d1e46"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_013.jsonl",
       "nombre": 125,
       "octets": 94947,
-      "sha256": "dc7668c3f6636d1976bacbb447edb7bd8fa58913e27f82737cea15056810a05b"
+      "sha256": "1c7257f54fa1ce94bbbd5f016cc6caf804694a00cb07b189534ebff4d9f9093c"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_014.jsonl",
       "nombre": 114,
       "octets": 86619,
-      "sha256": "39a5c549fd1129e65df4bb29f835df5abc1ef925d1b2e98f7eacd039b7ab764e"
+      "sha256": "4707457354f66c95425401aebc1950bda4be3151e356b36fe0f6257edb5a50fe"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_015.jsonl",
       "nombre": 119,
       "octets": 90409,
-      "sha256": "58e75ece1fa1faadfb4e5d07cd319936cd12866a726df86b4add849d639251cd"
+      "sha256": "ed4542b8ecf1dd76ac482384080b663c0d069f4a14d5215d56aca86cac8b8dae"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_016.jsonl",
       "nombre": 137,
       "octets": 104083,
-      "sha256": "a53b1541682a6493faaf96788c417b3ad0f1d91c4fbc50c248e31a0610de8f59"
+      "sha256": "c1a190b01ded17481c4c7c3edcdbbd47af97eebc57054648d89916c485682d5f"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_017.jsonl",
       "nombre": 122,
       "octets": 92679,
-      "sha256": "7791dd64a7236f223456b3958dc4128f7d553f6519e1c9dc521a1f1b28752cbb"
+      "sha256": "122ec7010b757b6f6cfa1c308fdbbda6dfcbccb0ebc57743940655444e6bb194"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_018.jsonl",
       "nombre": 147,
       "octets": 111665,
-      "sha256": "84c3e45c7f12fb71a3b1540fc6012464cd09216c607a2b8c4c32de43de75a8c8"
+      "sha256": "310ea86f381824edfbe8b8c2a01a3133297d218fb3014db0d83b05b37815a31e"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_019.jsonl",
       "nombre": 129,
       "octets": 98015,
-      "sha256": "21ce41a4e16e85e9fd8013cead1ce8e7145024aa94f9d160a3373897221f1fe6"
+      "sha256": "042764119b4f4faf44d48df56914f7cecbc73e39506e005bd58125b8c1e780d6"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_020.jsonl",
       "nombre": 135,
       "octets": 102533,
-      "sha256": "f3232d1f00e321ca8f9bf75cb0e91a5707cee618d2598aeb23e330ba1596c23c"
+      "sha256": "9b9575c7eade392801b36b4258d340764536e7619979fa27a04e354b14e0d35f"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_021.jsonl",
       "nombre": 136,
       "octets": 103305,
-      "sha256": "37c7f09c0388f1bbae6310e77f5486a9da0d75c177b704d6ceb40cffe0f8791c"
+      "sha256": "cb1da8aa4079a3490b567237cd2e4a0b0d146b4bffd9fbad8d3e1d26349e6847"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_022.jsonl",
       "nombre": 121,
       "octets": 91940,
-      "sha256": "5c002befef7a6e2812086b4699a91cb9500216d585cb016b493ff9684b24a1cd"
+      "sha256": "86399c9bfeca4403a50c7b6fa28ffab4c20c1215cc6812efe39f5a08612f1144"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_023.jsonl",
       "nombre": 126,
       "octets": 95729,
-      "sha256": "d06d0d63c7af8d71371ecd63da46b5c5662eae8257fa166f52acfe9da38000dd"
+      "sha256": "21ce6e135e51a28a6a9fc1860f76378216354a65979c386a07cf6b42d72c796c"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_024.jsonl",
       "nombre": 131,
       "octets": 99504,
-      "sha256": "77851b582a48d7a219d74f5d203105afa618651b19e10c4aa12e28c1c46766c1"
+      "sha256": "f94743da92ca92bfcb81f5f2cece3401a66b42e6b8c934e12d4b9744434f9599"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_025.jsonl",
       "nombre": 142,
       "octets": 107882,
-      "sha256": "415bd641caa0bb9102fd9124f4a0f17198f65822aa2d469214d881380d717dcd"
+      "sha256": "8a89d911b6ff3f10a88ae0d5085b4a724f497fadc956bdb99dc69e1b8d21ef46"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_026.jsonl",
       "nombre": 124,
       "octets": 94226,
-      "sha256": "6f89aae7ccd51759c7e2ba96f89674bd70e986604430e67734238fc619c29c64"
+      "sha256": "b8a147ed3e0318c147e5712962c982b40047f962c48fe48efcd3f6c2199b7e9e"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_027.jsonl",
       "nombre": 126,
       "octets": 95718,
-      "sha256": "06b815dada4776db701b928c44f7652279621729923ad1f28b0b6d05ab2bb5e1"
+      "sha256": "2180ed63878c6dc703142396ad7a2a7990dd268eae58a1b314e3bddd271769d0"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_028.jsonl",
       "nombre": 140,
       "octets": 106349,
-      "sha256": "0206e52aef1a755c1e43a89047d32a138a1a44301446da0a1879f92150c0b9ad"
+      "sha256": "c00308eadcbbef4ad0b5523f0194543a5e057940fd118e97635dd755ac419f83"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_029.jsonl",
       "nombre": 128,
       "octets": 97226,
-      "sha256": "474ea22a8d8830bb689aaf1c5b5354ee451b27b43883878cb8ee5b1d7045d586"
+      "sha256": "36134f25064ba8236c218b2a2419c8e1e6ad0bcf45dcf3b191fcd7d9a65a8668"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_030.jsonl",
       "nombre": 154,
       "octets": 116986,
-      "sha256": "4d103c5c0101cb21ea7a42a6d839330241a50a207f02af43097ac3dea8f6ae9a"
+      "sha256": "a25e900bf85302c0bd0011ace8e55f6972184ad77bd552d6d05a7ca474cfa5db"
     },
     {
       "fichier": "institutionnel/relations/locales/hierarchie_locale_031.jsonl",
       "nombre": 125,
       "octets": 94980,
-      "sha256": "c2832c4bcaebe76c00c8e33b04c601e70d94dd17c88adc7136891a5a106e256b"
+      "sha256": "13c86847dc48dea69f429bf455c62666d8a533bf29a58e1f2015b0414d759c59"
     }
   ],
   "paternite": "Service-Public.gouv.fr / DILA",
   "producteur": "Direction de l'information légale et administrative",
-  "sha256_export": "71f992e73b8873d52211a67c2269f0b048c3c725c4327b09ec8d173b9fed6138",
+  "sha256_export": "2e2e0432ea51377c1d58be37698654b5516cc328ea41c29d185d153bc53e81ca",
+  "sha256_semantique_export": "766773e42de8e5cff961c03c9f9bde3c2e7f6d2e2753ca535b366a8a90a0c6d8",
   "source_id": "dila_annuaire_local",
   "url_competence_geographique": "https://api-lannuaire.service-public.gouv.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration-locale-competence-geographique",
   "url_export": "https://api-lannuaire.service-public.gouv.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration/exports/json",
