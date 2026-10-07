@@ -20,6 +20,16 @@ https://www.insee.fr/fr/statistiques/fichier/8740222/cog_ensemble_2026_csv.zip
 
 Le millésime 2026 est daté du 1er janvier 2026. La page Insee a été mise à jour le 24 février 2026. L’Insee indique notamment qu’aucune commune nouvelle n’a été créée entre le 2 janvier 2025 et le 1er janvier 2026, que 19 communes ont changé de nom et que 40 communes déléguées ou associées ont été supprimées.
 
+## État observé au 6 octobre 2026
+
+L’archive officielle produit **40 345 unités territoriales courantes** et **150 421 relations territoriales** dans FRONTIÈRE, sans cible territoriale non résolue dans les relations matérialisées.
+
+La répartition comprend 34 875 communes, 2 105 communes déléguées, 2 293 cantons ou pseudo-cantons, 471 communes associées, 333 arrondissements, 101 départements, 45 arrondissements municipaux, 18 régions, 9 collectivités ou territoires français d’outre-mer et 95 zonages communaux associés à ces territoires.
+
+Le croisement avec l’Annuaire DILA examine **305 456 références à des codes Insee** portées par **85 581 entités locales**. **305 449 références** correspondent exactement à une unité du COG courant. Les **7 références restantes** sont toutes attestées par l’historique officiel du COG comme des codes ayant cessé d’être courants ; aucune référence ne reste inexpliquée et aucun cas ambigu n’est observé. Le taux de résolution vers le COG courant est de **99,9977 %** et le taux de références expliquées par le COG courant ou son historique est de **100 %**.
+
+Ces sept écarts ne sont pas réécrits. `resolution_annuaire_cog.json` conserve pour chacun le code DILA, l’entité concernée, la dernière période historique connue et le dernier événement communal publié par l’Insee.
+
 ## Modèle
 
 Les objets territoriaux utilisent l’espace d’identifiants `FRONTIERE-TERR-COG-*` et sont stockés séparément des objets `FRONTIERE-INST-*`.
