@@ -1,0 +1,1421 @@
+{
+  "empreinte_dependance_annuaire": "40ddfd6e35a1d56812a1252425793483634271814532e50609d08bb38603a75d",
+  "fichiers_source": [
+    {
+      "classe_detectee": null,
+      "colonnes": [
+        "COMER",
+        "DATE_DEBUT",
+        "DATE_FIN",
+        "LIBELLE",
+        "NCC",
+        "NCCENR",
+        "TNCC"
+      ],
+      "nom": "v_tom_depuis_1943.csv",
+      "octets": 5795,
+      "sha256": "6814a3ddedfa186557f5f7a10ff0f4c521f72fd388bdd430318d3d0d59b426bd"
+    },
+    {
+      "classe_detectee": "arrondissements",
+      "colonnes": [
+        "ARR",
+        "CHEFLIEU",
+        "DEP",
+        "LIBELLE",
+        "NCC",
+        "NCCENR",
+        "REG",
+        "TNCC"
+      ],
+      "nom": "v_arrondissement_2026.csv",
+      "octets": 21989,
+      "sha256": "1cbd787e52dc8b758167ef1d447615e19d194f10284547fb06b4687dc13a4a80"
+    },
+    {
+      "classe_detectee": "cantons",
+      "colonnes": [
+        "BURCENTRAL",
+        "CAN",
+        "COMPCT",
+        "DEP",
+        "LIBELLE",
+        "NCC",
+        "NCCENR",
+        "REG",
+        "TNCC",
+        "TYPECT"
+      ],
+      "nom": "v_canton_2026.csv",
+      "octets": 188007,
+      "sha256": "23631c3a3d694e9bf8d412a139defb04375bcb3bff1c21f9b53d9d923493dd61"
+    },
+    {
+      "classe_detectee": null,
+      "colonnes": [
+        "CODE_EXT",
+        "CODE_GEO",
+        "LIBGEO"
+      ],
+      "nom": "v_codes_extension_2026.csv",
+      "octets": 15526,
+      "sha256": "8d9c77ffa087bde81bd066f3404724354893cc753b76f54cbdfb916ea27b965e"
+    },
+    {
+      "classe_detectee": "comer",
+      "colonnes": [
+        "COMER",
+        "LIBELLE",
+        "NCC",
+        "NCCENR",
+        "TNCC"
+      ],
+      "nom": "v_comer_2026.csv",
+      "octets": 785,
+      "sha256": "d1f08ba101abf50c0a5db5cf7b24a50397bf68706aa658e4027a4fb933f059ed"
+    },
+    {
+      "classe_detectee": "communes",
+      "colonnes": [
+        "ARR",
+        "CAN",
+        "COM",
+        "COMPARENT",
+        "CTCD",
+        "DEP",
+        "LIBELLE",
+        "NCC",
+        "NCCENR",
+        "REG",
+        "TNCC",
+        "TYPECOM"
+      ],
+      "nom": "v_commune_2026.csv",
+      "octets": 3565935,
+      "sha256": "7be1153de3a63df48fa0ca77f8490c8a0c5c9c4eb12f5cec1ca7f70b0237b1d3"
+    },
+    {
+      "classe_detectee": "communes_comer",
+      "colonnes": [
+        "COMER",
+        "COM_COMER",
+        "LIBELLE",
+        "LIBELLE_COMER",
+        "NATURE_ZONAGE",
+        "NCC",
+        "NCCENR",
+        "TNCC"
+      ],
+      "nom": "v_commune_comer_2026.csv",
+      "octets": 8012,
+      "sha256": "9ca82ec1104c9a2307ad368ab40e47afa801137845901ca844bb700dc8d7c9d8"
+    },
+    {
+      "classe_detectee": "communes_historiques",
+      "colonnes": [
+        "COM",
+        "DATE_DEBUT",
+        "DATE_FIN",
+        "LIBELLE",
+        "NCC",
+        "NCCENR",
+        "TNCC",
+        "TYPECOM"
+      ],
+      "nom": "v_commune_depuis_1943.csv",
+      "octets": 3440210,
+      "sha256": "08c532ed8dade0a048aa4e1d72b8a25852a3aa05ce79c7911276031235d6eeee"
+    },
+    {
+      "classe_detectee": null,
+      "colonnes": [
+        "COM_COMER",
+        "DATE_DEBUT",
+        "DATE_FIN",
+        "LIBELLE",
+        "NATURE_ZONAGE",
+        "NCC",
+        "NCCENR",
+        "TNCC"
+      ],
+      "nom": "v_commune_outremer_depuis_1943.csv",
+      "octets": 71020,
+      "sha256": "d2e2d3b376540d5c5e624e1cdf3d6a1959f6f24d6763268eec67883fe82ce748"
+    },
+    {
+      "classe_detectee": "ctcd",
+      "colonnes": [
+        "CHEFLIEU",
+        "CTCD",
+        "LIBELLE",
+        "NCC",
+        "NCCENR",
+        "REG",
+        "TNCC"
+      ],
+      "nom": "v_ctcd_2026.csv",
+      "octets": 14147,
+      "sha256": "9af34d274d499479970bca153451f90fd9762904c9cb49343c7eb87539394b46"
+    },
+    {
+      "classe_detectee": "departements",
+      "colonnes": [
+        "CHEFLIEU",
+        "DEP",
+        "LIBELLE",
+        "NCC",
+        "NCCENR",
+        "REG",
+        "TNCC"
+      ],
+      "nom": "v_departement_2026.csv",
+      "octets": 6076,
+      "sha256": "513900ca23edc682ef9b912d7bfc317129eac3a7d71ff19bc22b40ea4838e6eb"
+    },
+    {
+      "classe_detectee": "evenements_communes",
+      "colonnes": [
+        "COM_AP",
+        "COM_AV",
+        "DATE_EFF",
+        "LIBELLE_AP",
+        "LIBELLE_AV",
+        "MOD",
+        "NCCENR_AP",
+        "NCCENR_AV",
+        "NCC_AP",
+        "NCC_AV",
+        "TNCC_AP",
+        "TNCC_AV",
+        "TYPECOM_AP",
+        "TYPECOM_AV"
+      ],
+      "nom": "v_mvt_commune_2026.csv",
+      "octets": 2076555,
+      "sha256": "8b339fad8232e97233af3fd9468715af845e2cf8b14cb67b24d9a301ef8645f1"
+    },
+    {
+      "classe_detectee": null,
+      "colonnes": [
+        "COG",
+        "CRPAY",
+        "DATE_DEBUT",
+        "DATE_FIN",
+        "LIBCOG",
+        "LIBENR"
+      ],
+      "nom": "v_pays_et_territoire_depuis_1943.csv",
+      "octets": 42634,
+      "sha256": "ec584a234189b4cb28eed0ce18ff1183cc10bd16aca17bb84c92520e92ac7d5a"
+    },
+    {
+      "classe_detectee": null,
+      "colonnes": [
+        "ACTUAL",
+        "ANI",
+        "CODEISO2",
+        "CODEISO3",
+        "CODENUM3",
+        "COG",
+        "CRPAY",
+        "LIBCOG",
+        "LIBENR"
+      ],
+      "nom": "v_pays_territoire_2026.csv",
+      "octets": 18419,
+      "sha256": "0dd9d1e83cfba3229b77444747fab0bba7d0ac1acec0442e8e5123c72fa1502d"
+    },
+    {
+      "classe_detectee": "regions",
+      "colonnes": [
+        "CHEFLIEU",
+        "LIBELLE",
+        "NCC",
+        "NCCENR",
+        "REG",
+        "TNCC"
+      ],
+      "nom": "v_region_2026.csv",
+      "octets": 1245,
+      "sha256": "d903566d9c0d263389d279baea6761917b7460749a07bec8ba37dd8f2ff7d98a"
+    }
+  ],
+  "millesime": "2026",
+  "nom_fichier": "cog_ensemble_2026_csv.zip",
+  "nombre_relations": 150421,
+  "nombre_territoires": 40345,
+  "observe_le": "2026-10-07T04:07:25+00:00",
+  "page_source": "https://www.insee.fr/fr/information/8740222",
+  "partitions_relations": [
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_000.jsonl",
+      "nombre": 1157,
+      "octets": 616755,
+      "sha256": "f31a0cb8abbeee9665130a84e5d31b24afd5baff2248387213a7aa123f0e3f2b"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_001.jsonl",
+      "nombre": 1214,
+      "octets": 647157,
+      "sha256": "9a040dc36e52cb791e4e0c3c256f49465eec13fa2e2938361965b6d751154a18"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_002.jsonl",
+      "nombre": 1135,
+      "octets": 605041,
+      "sha256": "b8dc55d31d6500fc34239198412645d5f3df9c3f7af17c0e981e37a46056701c"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_003.jsonl",
+      "nombre": 1147,
+      "octets": 611368,
+      "sha256": "8547f55676fa4bd1d61cbb68514fec29f36801595587ebb0a8ce1a8095a20aa9"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_004.jsonl",
+      "nombre": 1191,
+      "octets": 634826,
+      "sha256": "c168151dd089e6a3bc1ecff9543709ee8284125e501d648610c99d9387c0102e"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_005.jsonl",
+      "nombre": 1184,
+      "octets": 631130,
+      "sha256": "382725a21ffac06138b3a3b2af72f9cbc8cae69289802c16e7a883f8335f3231"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_006.jsonl",
+      "nombre": 1132,
+      "octets": 603432,
+      "sha256": "09627540624023d9aaf0ecf4c4fb5bbb55f4a7735dd9297018b3f713e80512ce"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_007.jsonl",
+      "nombre": 1235,
+      "octets": 658264,
+      "sha256": "374864f86b62b01a888570f096db71df396d01428181eb8e5e360c54c0f203cd"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_008.jsonl",
+      "nombre": 1180,
+      "octets": 629010,
+      "sha256": "d84e45002e7ef07c91debd38c47ea6f60115eec8f496fa99cc4e4ad1edbda871"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_009.jsonl",
+      "nombre": 1206,
+      "octets": 642875,
+      "sha256": "8d6d34d9dd914765c2fc6f453ebdbec04bae0538aca84ede5c98855995ab969a"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_010.jsonl",
+      "nombre": 1195,
+      "octets": 636926,
+      "sha256": "ca38bb409796ce43ac756518c3d215bbe803d6882852f639e3f6393cda729a93"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_011.jsonl",
+      "nombre": 1162,
+      "octets": 619397,
+      "sha256": "38993134cd330c9805581ac5b2c143179000d0d4930909fcdc2436e52547686d"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_012.jsonl",
+      "nombre": 1190,
+      "octets": 634260,
+      "sha256": "5b8fd50a7370e40e55b09de0a118e9d3fad5273e799d730fe64e6c31a4806df3"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_013.jsonl",
+      "nombre": 1208,
+      "octets": 643756,
+      "sha256": "3f7c862d8071000458375e60caae6d481442be771a305951ad3bd7c9b1b051a7"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_014.jsonl",
+      "nombre": 1140,
+      "octets": 607763,
+      "sha256": "87ad64979ab2a1e9a4083368398be5e5cfdd7287c8e6ed9328fd2d4487a1e714"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_015.jsonl",
+      "nombre": 1170,
+      "octets": 623698,
+      "sha256": "987119ce45afea6bbe526f57009e05a4e9357aebb1dbe7df829f43e1c8dc20df"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_016.jsonl",
+      "nombre": 1148,
+      "octets": 611973,
+      "sha256": "7df29d6a30b6b3c13e54551ae9593b517effaab90de93c0b7975c8b3d6d56740"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_017.jsonl",
+      "nombre": 1162,
+      "octets": 619268,
+      "sha256": "f0ba4cc050e55c45d1144437ed491f82ba91b9e6f4a5105d6f408a11678eebcb"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_018.jsonl",
+      "nombre": 1165,
+      "octets": 621060,
+      "sha256": "eb2981e58074a0cab4163e3056561535efd5b2812795afb7a9ee17be22b28df5"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_019.jsonl",
+      "nombre": 1182,
+      "octets": 630121,
+      "sha256": "e800ec6207070c5f72a5a5d9979bfbe23fac487df70573e31ac0f7391df350a5"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_020.jsonl",
+      "nombre": 1137,
+      "octets": 606097,
+      "sha256": "feeda448c4479133dc5e823d5311a505a886b882d51c189ca87af9447801637d"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_021.jsonl",
+      "nombre": 1163,
+      "octets": 619914,
+      "sha256": "518e088ca295a8f8e4562b5a30eab0320d2b85fa601db376951471636990fea4"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_022.jsonl",
+      "nombre": 1132,
+      "octets": 603314,
+      "sha256": "91bd0801db15b2adef3a4eeb3063713d0b38f550fde7f7368824b46582634538"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_023.jsonl",
+      "nombre": 1209,
+      "octets": 644437,
+      "sha256": "4b6d4c46224e6f9a6c57c0e7a5fb4b793ebb7c10bfb1a5675f08cd7c15c5f559"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_024.jsonl",
+      "nombre": 1155,
+      "octets": 615604,
+      "sha256": "8ec4dad7ce4282fb726d8f4c591f45c7ef6dadf9874a85ba0f8caada89893161"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_025.jsonl",
+      "nombre": 1170,
+      "octets": 623611,
+      "sha256": "8625f023ef24fdb88b7094c78ffc8fa7b388becca01a9651d9206e9f579f86d3"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_026.jsonl",
+      "nombre": 1152,
+      "octets": 614045,
+      "sha256": "873b3855da018b96dd0b953e375f36f0a6e45912e4d1bd1fc4dbd9bb53d998be"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_027.jsonl",
+      "nombre": 1193,
+      "octets": 635937,
+      "sha256": "c58a67122eb33e5099ff444c9b3e89ed124f7b8292ed37f3196e3bc2ffe79504"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_028.jsonl",
+      "nombre": 1185,
+      "octets": 631688,
+      "sha256": "f6ab362faa687f394df48bfb264dac460c651cdf9eae97988f90bfc292244c0f"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_029.jsonl",
+      "nombre": 1153,
+      "octets": 614581,
+      "sha256": "3da7235c1b4279861d95ad2ad2fd8fbed918f072b01aa4c321b9639374be0616"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_030.jsonl",
+      "nombre": 1206,
+      "octets": 642905,
+      "sha256": "8281cac09afdba78e8be22233e16cf2ecd3aba18922caf5898459d734860a932"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_031.jsonl",
+      "nombre": 1172,
+      "octets": 624838,
+      "sha256": "6ca1670826cea240acae79bc65112361223e220d0c343b08936811ed5b4acb22"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_032.jsonl",
+      "nombre": 1148,
+      "octets": 611923,
+      "sha256": "48ba281dce4c88b34078f0150f14147f15c209d741ca06cf120741c59be8169e"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_033.jsonl",
+      "nombre": 1179,
+      "octets": 628356,
+      "sha256": "c8149fd83a46610546621564c1cd0b78d6570c63f7b9496e43f93be02470664f"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_034.jsonl",
+      "nombre": 1105,
+      "octets": 589048,
+      "sha256": "c35c312200f3bad8870b24f3f943b38f872c32b9ac69e20f4ad0b659f916141f"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_035.jsonl",
+      "nombre": 1126,
+      "octets": 600211,
+      "sha256": "5911796348c9071e04e07f5ee77b30a83cb8d0d82a01c6587af174dfbc853b74"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_036.jsonl",
+      "nombre": 1175,
+      "octets": 626314,
+      "sha256": "c75172f0b2684bc95daaccae4b20ee3170e4175f500fc26d129e0716a7e4452d"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_037.jsonl",
+      "nombre": 1078,
+      "octets": 574619,
+      "sha256": "1a4f63b84b1f094d39112e74436637ea9e9317212f337b30bb94cd410de3cf96"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_038.jsonl",
+      "nombre": 1207,
+      "octets": 643321,
+      "sha256": "2615e88752d5f40a3968466bf4e384bfaf1f41fc18f7bfcd3b9c9f413fcb0c45"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_039.jsonl",
+      "nombre": 1186,
+      "octets": 632211,
+      "sha256": "41bc1a6d0aa6ab991bd72c77070ba57babddedc58814dbd6ab49cdc1f9cdce07"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_040.jsonl",
+      "nombre": 1198,
+      "octets": 638508,
+      "sha256": "b45d02af1f198918c6bca72105ed9ebc6f68ccce6f793608f49ae9d334bdd0b6"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_041.jsonl",
+      "nombre": 1167,
+      "octets": 622102,
+      "sha256": "c530706e349edb6acda0823f87fae37cf0d26ad3805a2616c2b25b8eda173d91"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_042.jsonl",
+      "nombre": 1208,
+      "octets": 643835,
+      "sha256": "57d121bf03d17ee6845c34828eef3a4226029adc56761cd5f1d035d6d072028c"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_043.jsonl",
+      "nombre": 1132,
+      "octets": 603384,
+      "sha256": "e3a1c6bc9b057339f76c8e47e51462a2c499437e9da7cc2672015fbbc32df50d"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_044.jsonl",
+      "nombre": 1190,
+      "octets": 634384,
+      "sha256": "d293854634da53bab8487b3b56f1bcbe7f8e1649a73ed56461743703984d0a2f"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_045.jsonl",
+      "nombre": 1197,
+      "octets": 638103,
+      "sha256": "bd3efa97cf36b48249f315814f51b5eae15bdc16fd2591babfcdfe3c6c6d680e"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_046.jsonl",
+      "nombre": 1186,
+      "octets": 632086,
+      "sha256": "b5b69a84dc2f82933d1e5318815e4b04892ab871e45eb1895316be2580daee51"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_047.jsonl",
+      "nombre": 1152,
+      "octets": 613969,
+      "sha256": "a0f4724ebb590e57ba0b64fb5830f71c6d2be3f5a46d032e8933763ef535fb0b"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_048.jsonl",
+      "nombre": 1166,
+      "octets": 621570,
+      "sha256": "2ed254fb328c80d4b4de0c1dd64b843e3e32b1b1be852c64e47674adce52183a"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_049.jsonl",
+      "nombre": 1146,
+      "octets": 610925,
+      "sha256": "0c2d668b67162efa98d57811a95648d14fdb1c0f8213d55426907e35a772a92e"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_050.jsonl",
+      "nombre": 1157,
+      "octets": 616764,
+      "sha256": "0a1b6d8e1e3dfbdcb51691a07646a645d56c717915c90406fb434defb3f2f53e"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_051.jsonl",
+      "nombre": 1141,
+      "octets": 608203,
+      "sha256": "2bf95ac199311371f5214eeb01d8dcae55cacef3907a862d94ad6c392618de89"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_052.jsonl",
+      "nombre": 1225,
+      "octets": 653048,
+      "sha256": "8dcfc113da47675c88ddca94c72da3cb94a11abae32bafd839668e23692b024a"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_053.jsonl",
+      "nombre": 1185,
+      "octets": 631571,
+      "sha256": "4a8a8bf26b8cadf8af0707725825ea1d123bf28bccb0456e9dd7532aacd72cc8"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_054.jsonl",
+      "nombre": 1134,
+      "octets": 604482,
+      "sha256": "6b3d49b4b4e7931817af10a88b4fca6eed65bb8c6556bca928932f6026c64420"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_055.jsonl",
+      "nombre": 1147,
+      "octets": 611316,
+      "sha256": "f933c58fa4db37373726abb0e30d7230fb3521e1d54ace6fa1ea8b82a8913e36"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_056.jsonl",
+      "nombre": 1170,
+      "octets": 623691,
+      "sha256": "b2772aa9353ae179352f6e76ff11557f3595b88cfcd770c692363109721ebd1c"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_057.jsonl",
+      "nombre": 1207,
+      "octets": 643306,
+      "sha256": "4634ed18e03fbde0e1e613ad063089fdf6fb1f4e75a2dfd961de329f382d0238"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_058.jsonl",
+      "nombre": 1238,
+      "octets": 659868,
+      "sha256": "00dec57c8e79162597051c8d974157486fd04f8681d88ec0084fa3ae9cddff83"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_059.jsonl",
+      "nombre": 1191,
+      "octets": 634802,
+      "sha256": "ba7a3ff95b2e0a6dea3847847742d7bc70a36594162b61926baa322760ad2063"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_060.jsonl",
+      "nombre": 1153,
+      "octets": 614589,
+      "sha256": "9e57e3be3fbb402a63c30c615af28741c0697476571c1d00709dc3435af11252"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_061.jsonl",
+      "nombre": 1171,
+      "octets": 624169,
+      "sha256": "b9192b7b3a5e30a8839925e35e6dc75d9de398ab15da53958ba0a18c85dcec39"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_062.jsonl",
+      "nombre": 1255,
+      "octets": 668907,
+      "sha256": "ec5cf749543b064c638d692ec9301369b7dcaf8a7128b4490d78d4d410feda08"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_063.jsonl",
+      "nombre": 1202,
+      "octets": 640637,
+      "sha256": "d4612c5e83dc794d38f87854f2516b4f542e04850b71d9ce8227262ca19b2fbf"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_064.jsonl",
+      "nombre": 1156,
+      "octets": 616078,
+      "sha256": "51a84cb5e23ee6d65e6d372a71a5d9e21bf580ef583a3db8f786dcf414d2f821"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_065.jsonl",
+      "nombre": 1284,
+      "octets": 684292,
+      "sha256": "44085b31c45e3874c3366763f45e805f9bdae684cb0159c3af8f69745bb9a2a3"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_066.jsonl",
+      "nombre": 1269,
+      "octets": 676459,
+      "sha256": "7b1641405a3f30249dcb12dbec36fa8ce268c1e608367e51e0a4d2f3077b77ac"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_067.jsonl",
+      "nombre": 1186,
+      "octets": 631990,
+      "sha256": "1a0bd47dcc9200d6a1f1eeef9e6909ada4078665dfd17d739f7f49c1d2f7a0c4"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_068.jsonl",
+      "nombre": 1184,
+      "octets": 631079,
+      "sha256": "30d6368a5b761c50a916197b201a9695c067142dcc52c372e38b9084a5c600ed"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_069.jsonl",
+      "nombre": 1212,
+      "octets": 645916,
+      "sha256": "6f5bcc799081086c612e78e7fd41f462ee688cc1d223b7137eb63b76d17194d0"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_070.jsonl",
+      "nombre": 1216,
+      "octets": 648106,
+      "sha256": "bac6074d8fa15cfeddbae849e6f4a97bba8dde53708c880b0f6bc0d83c27caec"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_071.jsonl",
+      "nombre": 1196,
+      "octets": 637480,
+      "sha256": "5070ee052e4011870b6de246dc39eaed8ca87ea3ab8fe9ca4d5c51166c116168"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_072.jsonl",
+      "nombre": 1168,
+      "octets": 622478,
+      "sha256": "13a991cff1523a7ea23c84968eebea6c4ed7afd1961b6fcb87ca8282e95c5e2a"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_073.jsonl",
+      "nombre": 1167,
+      "octets": 622014,
+      "sha256": "f02b8a93a70322e75dab0d84d52f80b6a83252f74ba7b8cbe87d9f441efc87e2"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_074.jsonl",
+      "nombre": 1217,
+      "octets": 648688,
+      "sha256": "cd8d852549dce8f8b0d6b319d464c07316cafa97208a455a13157f5f0031b0dd"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_075.jsonl",
+      "nombre": 1144,
+      "octets": 609778,
+      "sha256": "0a4ffffeca193ff94315c5ac945e9409c9ac1ba7d4303f118f975437b296f247"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_076.jsonl",
+      "nombre": 1196,
+      "octets": 637551,
+      "sha256": "4bee7f917cc4b1318417558649ef8b0c78c303362654717f7783fd1807a2f897"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_077.jsonl",
+      "nombre": 1089,
+      "octets": 580488,
+      "sha256": "d9040126bbd52354c7bcacdb4c825bce5be1aa7e68762a9c052972dec0045c88"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_078.jsonl",
+      "nombre": 1167,
+      "octets": 622052,
+      "sha256": "cf1fedc7a300da39685cbef427493370fa5f8958c7f453055603130637f215b9"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_079.jsonl",
+      "nombre": 1167,
+      "octets": 622024,
+      "sha256": "f071bcf60027be0be1f169561e26555147cef529d8b6508e5c71dc3360aad24a"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_080.jsonl",
+      "nombre": 1183,
+      "octets": 630496,
+      "sha256": "94d76639f67b304acd44e3a534e41d92a12f356d7665d33d728c4b5bccb24278"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_081.jsonl",
+      "nombre": 1149,
+      "octets": 612374,
+      "sha256": "10c1a5855981710cdd282138139855699f40fcf923bb640c430e532f2ce0ea8b"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_082.jsonl",
+      "nombre": 1231,
+      "octets": 656189,
+      "sha256": "80a9dcdc90c7473cad3d8d272ac2c9634afff24e0c60e54b8c3d403d99345d8d"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_083.jsonl",
+      "nombre": 1122,
+      "octets": 598023,
+      "sha256": "fc10326e5868fe9980463acf91ab1c9c6abf0634b16742c62f396ac7db1aaf53"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_084.jsonl",
+      "nombre": 1208,
+      "octets": 643856,
+      "sha256": "391ed0dd6f3e3f39595600a49d31e22b2267c7510db1e1de24d55cca4d92d2b1"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_085.jsonl",
+      "nombre": 1191,
+      "octets": 634744,
+      "sha256": "9f1fb22f253a43414240ec7e69d079ff0ce56650d9029a335c0bdc239d019378"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_086.jsonl",
+      "nombre": 1169,
+      "octets": 623153,
+      "sha256": "de4cde2885eb354a75d7d7ccd8f76d64281b4ab1f206d662b0a57aac7430572c"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_087.jsonl",
+      "nombre": 1132,
+      "octets": 603435,
+      "sha256": "5be6664250e0f06a486d806083a819c0b5daff3f418c5a0c49cce36972790940"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_088.jsonl",
+      "nombre": 1167,
+      "octets": 622017,
+      "sha256": "289a13c36b0328cdffbf3a8b80ed8e51d1a9c7f8c50cbc25340ecbefe67f1dc0"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_089.jsonl",
+      "nombre": 1157,
+      "octets": 616724,
+      "sha256": "dd5444e7b79df91aeebc293ccf3971ce90da4494136207530754672fd7c69ca1"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_090.jsonl",
+      "nombre": 1168,
+      "octets": 622518,
+      "sha256": "36ace06ff0f55a612de94ae773014dde36c45ff23b5098430f5ca7ce796d4f60"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_091.jsonl",
+      "nombre": 1236,
+      "octets": 658839,
+      "sha256": "a2060a7b9a19d1cdff2f25ecfb2d9477095ebfe1ced49956b27ba655704720e6"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_092.jsonl",
+      "nombre": 1194,
+      "octets": 636234,
+      "sha256": "3fa4bf04b49a486ed9d56dfae404c361515997e4a39694a1ed9f4ba4b692c3b1"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_093.jsonl",
+      "nombre": 1221,
+      "octets": 650919,
+      "sha256": "6d27bbfee1d021645b282c11f46e007613a7c17ae3b01363bfdee708d85555ec"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_094.jsonl",
+      "nombre": 1150,
+      "octets": 612931,
+      "sha256": "19f4e3bb8db1c3cf1fab2f4e7d4444f280efa4fa44063a46f5db0a14f0258d06"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_095.jsonl",
+      "nombre": 1185,
+      "octets": 631554,
+      "sha256": "4a3762866e9113faf39b6c6b536318eb524a35802ca4e2d6f7c617dd29159b20"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_096.jsonl",
+      "nombre": 1145,
+      "octets": 610299,
+      "sha256": "bfcb4ec086840a3061ebd77c527d36de895b83b77cda6083ee35e96f6381caa4"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_097.jsonl",
+      "nombre": 1182,
+      "octets": 629896,
+      "sha256": "f739d4262e98fbda9148cc828382e85d7d4f1f257728a34d0f6f05029c7872f6"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_098.jsonl",
+      "nombre": 1142,
+      "octets": 608647,
+      "sha256": "9b6abd4941490c2d46e68be4d1c8ef32b53594e41b5d9d63e9807f3113f30497"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_099.jsonl",
+      "nombre": 1183,
+      "octets": 630581,
+      "sha256": "bee0d1cef4de23ce218d84a6f43e88a942450cc5df3affcf5d021778eaf6e50a"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_100.jsonl",
+      "nombre": 1153,
+      "octets": 614660,
+      "sha256": "10b91bbe56c41dbd57f3eee36337cf5f39a1d5014f16cbac096e622c0551a4dd"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_101.jsonl",
+      "nombre": 1224,
+      "octets": 652317,
+      "sha256": "c4e3d5cb27712754d4d8c8b2dbabab96f700760995560e924278795190b73807"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_102.jsonl",
+      "nombre": 1165,
+      "octets": 620870,
+      "sha256": "9b25865a8427038f6eab7d85c3769934d517689301e9002446d0bce9c1605a24"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_103.jsonl",
+      "nombre": 1201,
+      "octets": 640070,
+      "sha256": "fef809a5c4ac1e1b4bf87d93b1fae46fc6e0ffb8fc0d7aaa5130d116531701e9"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_104.jsonl",
+      "nombre": 1171,
+      "octets": 624136,
+      "sha256": "a5166a46e7183b9f5dcc8385493a75b19c34855042c7f961156165956a00a3d4"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_105.jsonl",
+      "nombre": 1162,
+      "octets": 619300,
+      "sha256": "334b6718b75cd4ffc2c4dab932c62c609a9711188940510ce8e87dd197dc2ab5"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_106.jsonl",
+      "nombre": 1174,
+      "octets": 625798,
+      "sha256": "761f272033fbaddd9e5adeaa03d5fa8ade25aef19a581549a8df12f1f10ccb46"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_107.jsonl",
+      "nombre": 1120,
+      "octets": 596922,
+      "sha256": "0e0a6050827b9690347c5d4c13b27a4e3ecefcb453189a7ff3daf42e858307d3"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_108.jsonl",
+      "nombre": 1198,
+      "octets": 638689,
+      "sha256": "fbe9264c184d07fb614a8059bf83f8eec2ad62a771b3f6933767db181a6e0f52"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_109.jsonl",
+      "nombre": 1169,
+      "octets": 623131,
+      "sha256": "3a1e29501f9cdd485087a54a04098badcc0397d2815a80ee61e565445b9dda45"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_110.jsonl",
+      "nombre": 1134,
+      "octets": 604341,
+      "sha256": "19a7e4a0d331849e4c31bb53d26c56bc2994fde08a083522bcc219c0490056c5"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_111.jsonl",
+      "nombre": 1150,
+      "octets": 613012,
+      "sha256": "9ddf331cc3641372a178a69bc042542e7034f4c11b517b7a076e026c03a78247"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_112.jsonl",
+      "nombre": 1228,
+      "octets": 654562,
+      "sha256": "99737b13ef4326f5afcfdd8f3ae6b53f4496f005326b0495c0c4232bc7cfe6b0"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_113.jsonl",
+      "nombre": 1146,
+      "octets": 610832,
+      "sha256": "b023bcfd4a433146ed70f2867d4e7af150b2a05f177e1f0661a64294b658bc95"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_114.jsonl",
+      "nombre": 1086,
+      "octets": 578797,
+      "sha256": "c37db48fcd1ff85fabb23ff0d602685f6a484cddd033a0aaa987537c979db87c"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_115.jsonl",
+      "nombre": 1189,
+      "octets": 633696,
+      "sha256": "f76dee4c152bf95af90fca082cc965aaa09178f46f75f6b5209eb4d33d8fce88"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_116.jsonl",
+      "nombre": 1204,
+      "octets": 641645,
+      "sha256": "3b95a0c629d35b59f899d46de4e663dedd94e14acf436420cf954ecf1c2ba917"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_117.jsonl",
+      "nombre": 1191,
+      "octets": 634792,
+      "sha256": "44ec4018eb9e60acbed487ad61ff8c06a3c3eaa542a7d950f9de827c70a308c4"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_118.jsonl",
+      "nombre": 1180,
+      "octets": 628965,
+      "sha256": "a0ca8e7e77ea3988f12c5fd13e3e8d4ad1c8c6ab71c3db7bced85d97f5990e8c"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_119.jsonl",
+      "nombre": 1103,
+      "octets": 587870,
+      "sha256": "c4ee430d4015a70cd39f62d2f33230cfecd9332155bfa79a0bea91aa544fc4db"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_120.jsonl",
+      "nombre": 1179,
+      "octets": 628508,
+      "sha256": "390d646585d763c3c0fd574eec0f69714a9c40fb0ea66daa056ab7e8b44ac816"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_121.jsonl",
+      "nombre": 1189,
+      "octets": 633827,
+      "sha256": "c0b2f2539277a8f862522c63f37f7c904cb6014fcf2587326a4833f020e94984"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_122.jsonl",
+      "nombre": 1167,
+      "octets": 622075,
+      "sha256": "2d1791afb49507f87d1a05a954922edb92de39ecd0789134f03ff3b55f152025"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_123.jsonl",
+      "nombre": 1216,
+      "octets": 648200,
+      "sha256": "9712502ebafb20b55e078ee3242171b2bcb532275e2c139e29778bd9e8767451"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_124.jsonl",
+      "nombre": 1191,
+      "octets": 634768,
+      "sha256": "2336a1a440ddc9b5454337cc6915df5c4ff19ff3e5d088bfdbfb84af338dd924"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_125.jsonl",
+      "nombre": 1177,
+      "octets": 627379,
+      "sha256": "ad81ebec27a42045ee22684462d71b5cf935e23e21a9bf4779816a58b5d843fa"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_126.jsonl",
+      "nombre": 1206,
+      "octets": 642814,
+      "sha256": "bab429e136f9f5e6d51816dd4df67e0d7d06619bed41f06f447339f81f4f3be2"
+    },
+    {
+      "fichier": "institutionnel/relations/territoriales/cog/cog_relation_127.jsonl",
+      "nombre": 1163,
+      "octets": 619860,
+      "sha256": "e8865933916cf65a9fd5561a2ee849bb0cb96b37e7d4caed49d51eb79707de47"
+    }
+  ],
+  "partitions_territoires": [
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_000.jsonl",
+      "nombre": 690,
+      "octets": 478072,
+      "sha256": "c7f846eb60ca7ac2dae8857f04608f4d7d934482a8c903f3df13c67458d12116"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_001.jsonl",
+      "nombre": 636,
+      "octets": 442587,
+      "sha256": "5989dc83e45c8c31163f712d447b6dc107dcbe8c9b1cb42f947d8b0503343bcf"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_002.jsonl",
+      "nombre": 668,
+      "octets": 462673,
+      "sha256": "e38f28a70a3c19f50d2eac52224a89e35b49289cc67a3c77d3d027b1d8febefc"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_003.jsonl",
+      "nombre": 635,
+      "octets": 441180,
+      "sha256": "f1ffb523ba72c77f97a815eb16e968c4686e516deb0839030d365d940fec8586"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_004.jsonl",
+      "nombre": 601,
+      "octets": 416632,
+      "sha256": "329f1157b8bc43f1fd7b274821bd97771501afcdb6c57200cf136cb85aa7fef9"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_005.jsonl",
+      "nombre": 619,
+      "octets": 429839,
+      "sha256": "a4351c77e9a83501dcc85b22cb5ce3ce4f2eacdecf25dbc8d199704207271a3c"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_006.jsonl",
+      "nombre": 606,
+      "octets": 419699,
+      "sha256": "180a0c8d58677ab90538f5eb50d5001c6f9505fb72714ae6dad2fa1418412896"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_007.jsonl",
+      "nombre": 651,
+      "octets": 450400,
+      "sha256": "02b8334e24f9eb1074813dcdef85f36637e016ed96f38942e5d9e3328a75216a"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_008.jsonl",
+      "nombre": 625,
+      "octets": 431970,
+      "sha256": "6a39dcc40b44911f2c4ae4327d32b55004ce55bade5840d4eabd9d1b060c3fca"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_009.jsonl",
+      "nombre": 624,
+      "octets": 432845,
+      "sha256": "ba9b2046d696089d521741b67e8c61d3399dfbc74801e60b037a03ef3c95f4fc"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_010.jsonl",
+      "nombre": 616,
+      "octets": 426276,
+      "sha256": "08142a10b9ba38d760e5a584c8b66c9d651dd87ad963500b9bf1739980111c38"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_011.jsonl",
+      "nombre": 611,
+      "octets": 424955,
+      "sha256": "9a6020bc7b7541059faebf095ac646eac33ba77ae24da69ee796d0d1d2e7af06"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_012.jsonl",
+      "nombre": 607,
+      "octets": 421668,
+      "sha256": "03007b3b424cfaf6bfedb047d73df7b5ff8d6a1be9cbf7501eca16c22485f001"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_013.jsonl",
+      "nombre": 639,
+      "octets": 443791,
+      "sha256": "c81138df79b5a1e6a7258b3a070828e150be9735daa3a0dbf3b8e861ffbe24fc"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_014.jsonl",
+      "nombre": 635,
+      "octets": 440493,
+      "sha256": "4f4b9dae2970ed770617b4df7e40ec0f4d9d23ef45c16c945d2bb11ae17227f0"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_015.jsonl",
+      "nombre": 569,
+      "octets": 394764,
+      "sha256": "f4ebeb7c965ea9914ad8d1e725086c9f04848c3ecc3a6f7093c5bc42db2e1822"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_016.jsonl",
+      "nombre": 661,
+      "octets": 458457,
+      "sha256": "53ddefac74ac668bd15820f142e615d77fdd6ac92f23eef505054c8bb8ed8fe6"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_017.jsonl",
+      "nombre": 621,
+      "octets": 430681,
+      "sha256": "6719788ed1d4442953771664a2e1dd1037577c503cbd8c1583e8fe532a7b3f90"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_018.jsonl",
+      "nombre": 648,
+      "octets": 449963,
+      "sha256": "fb99773211a0228f9589c8c17ed79e1bfcd63b8426a89cd4d73fb3a677a74d6a"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_019.jsonl",
+      "nombre": 622,
+      "octets": 431203,
+      "sha256": "cfed06b70428511d2f5fe88b279272887b5abec8c5161a92156df36b95855ea1"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_020.jsonl",
+      "nombre": 609,
+      "octets": 422166,
+      "sha256": "121fc560474f7ba0179ef697807998808f8050137722bc272182290e61b8d521"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_021.jsonl",
+      "nombre": 629,
+      "octets": 435918,
+      "sha256": "1ddb87d7afc133fefca4e033cebed9ca39b8928e06c0e421559e5be27010f1da"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_022.jsonl",
+      "nombre": 585,
+      "octets": 405374,
+      "sha256": "249afb2da638dfb45e3a3407b241a4cae0a28184db8f37aeae893afce853c56a"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_023.jsonl",
+      "nombre": 674,
+      "octets": 467623,
+      "sha256": "a2ccd9873a771993c33727b5053627a82f66c5552c6c5139eb87b1463122d78c"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_024.jsonl",
+      "nombre": 639,
+      "octets": 442592,
+      "sha256": "765abad63ae440d13d9ef046a93983b305743dd693eb7694f02068c9266148da"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_025.jsonl",
+      "nombre": 638,
+      "octets": 442139,
+      "sha256": "3f7578fec84a7ce0078a8dc37a5726fcbb49b65471d71c0a29fa8db0fe7291bc"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_026.jsonl",
+      "nombre": 649,
+      "octets": 450052,
+      "sha256": "407fb1c1bddccc4b04fb293396d7bfbc6349c3003647c057128b9b3a4c355d20"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_027.jsonl",
+      "nombre": 613,
+      "octets": 426715,
+      "sha256": "c98e11ac7ec62dbbe4f4d8a2a20d66730e6f37dfa2a4d93fa07372cffe252b6f"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_028.jsonl",
+      "nombre": 667,
+      "octets": 462872,
+      "sha256": "9d7b8c1cedfc7032a508f194ce852446a2561b347858fc34d67d6ea624244530"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_029.jsonl",
+      "nombre": 622,
+      "octets": 432252,
+      "sha256": "7017f47ffdd3d1c9fe5594c270c0e0cff28ad4a66baf1b2d581d4bb9089fddde"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_030.jsonl",
+      "nombre": 604,
+      "octets": 419068,
+      "sha256": "69ae0ebbf4f66abd546f1348df1949d74f4a195ec7b3f0c11d103c59352012a3"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_031.jsonl",
+      "nombre": 627,
+      "octets": 435769,
+      "sha256": "30953759f46f56ae0f4bfeed0016f8c8f71546324e0a8c9a492669a5ce463196"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_032.jsonl",
+      "nombre": 583,
+      "octets": 404958,
+      "sha256": "1923eae4ca8234ea8cb883b258c929b5121f8e8ea03b44d8e6931ea89a6acc63"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_033.jsonl",
+      "nombre": 621,
+      "octets": 432242,
+      "sha256": "34ac4b52dd627bbfc99b99ca566714239fefe185c373c82b08500d2757ea787d"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_034.jsonl",
+      "nombre": 658,
+      "octets": 457820,
+      "sha256": "b57203dc361403d5bb799acc3fd3ea3f9d6085afb4a7ddba741b12cbd051b09d"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_035.jsonl",
+      "nombre": 605,
+      "octets": 418887,
+      "sha256": "334e3ebe9d5ab43163855a3ef22d0eae50bf05c8510fbd1c327ec75cfcfba31e"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_036.jsonl",
+      "nombre": 643,
+      "octets": 444470,
+      "sha256": "0af3bbe1c3654273af47b4f05e2d716dc978b484701bc07dd172a4d7c0aedb62"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_037.jsonl",
+      "nombre": 610,
+      "octets": 423062,
+      "sha256": "1c0207ec4648605207c3cedc46717a785257cd7544aec9088661862052f99f3c"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_038.jsonl",
+      "nombre": 609,
+      "octets": 423752,
+      "sha256": "56faf5855a9666e0d9cb03195fa0e5e24e46df1060be823ef3bd9ad26eedfd07"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_039.jsonl",
+      "nombre": 641,
+      "octets": 444531,
+      "sha256": "1c2295ebc26706d7597405322d52d4563f4c2b13e8130099b140eb6911695bba"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_040.jsonl",
+      "nombre": 645,
+      "octets": 447716,
+      "sha256": "9bb28e279212edeb9922f7df1e7f9fa66d31498c2842c4120dacc305c517527a"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_041.jsonl",
+      "nombre": 648,
+      "octets": 450328,
+      "sha256": "c1cc173498758bf700408063c7ab37d134626b47c3d96079fb16dd48054cb527"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_042.jsonl",
+      "nombre": 624,
+      "octets": 433838,
+      "sha256": "5d66858ebf90eba3d60d5ca646ae481fe6d1e3d2c6b734a7b03552baeb07e9a8"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_043.jsonl",
+      "nombre": 625,
+      "octets": 434667,
+      "sha256": "2addb356f1d14ae6917bc921c03729fa9fe2b9946e3b9d3ea544170870485ad3"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_044.jsonl",
+      "nombre": 649,
+      "octets": 450538,
+      "sha256": "201dc2c213ada98c113515835d9d9ab9a98ce86b9e33e2cef0b1dec9c1ee49e5"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_045.jsonl",
+      "nombre": 602,
+      "octets": 417406,
+      "sha256": "6981125d58ef37fbe65e9d1a3af6e8829d83b2a595bb9ffa3d2379c9a9c461a6"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_046.jsonl",
+      "nombre": 649,
+      "octets": 450634,
+      "sha256": "c75d5e26e813e4de3f0f4c0141933fee05b6e9cf4c763bc6281883ccd972a331"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_047.jsonl",
+      "nombre": 589,
+      "octets": 408114,
+      "sha256": "af7306ccadec58067c7258fb19c60977285594f948d92576c853af4f836de31f"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_048.jsonl",
+      "nombre": 665,
+      "octets": 462126,
+      "sha256": "cdf1bb19b7dad69c7734a6a5dfe11ae9a80ed8a80a86875cad2f59d86ffe9c7f"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_049.jsonl",
+      "nombre": 598,
+      "octets": 414837,
+      "sha256": "485fce443494ad5a446e9f27728a2d7f1b5e9587bc7a4cf22edc0194c4bc0209"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_050.jsonl",
+      "nombre": 638,
+      "octets": 443396,
+      "sha256": "0111e8b767478cab8b6139837300ff3dd0507aa7b84d73b1d1a8133679cd087c"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_051.jsonl",
+      "nombre": 664,
+      "octets": 460545,
+      "sha256": "283da57e3cb51d501a859c5d4b0367ab7757b1bb4a42573ad0291e1e2bd3c72f"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_052.jsonl",
+      "nombre": 672,
+      "octets": 466000,
+      "sha256": "80ab3f1fcb61755157ad10234d3ff282832cd6cade8bed9cc472df5c801433a9"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_053.jsonl",
+      "nombre": 621,
+      "octets": 431632,
+      "sha256": "0ed3798bdd2a9a627465151446f412eea4fa0bb7ca8f1aeb8f4a86ddb4fa9364"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_054.jsonl",
+      "nombre": 642,
+      "octets": 446249,
+      "sha256": "edafb8e04de504bd0a546872dbdcfcbdd22163e2f8a29550f2161004009c09ce"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_055.jsonl",
+      "nombre": 586,
+      "octets": 407193,
+      "sha256": "44563ab4458d931debfac9255c6226fd0f330b2c89c8f9320fb25d995b18ce08"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_056.jsonl",
+      "nombre": 610,
+      "octets": 423139,
+      "sha256": "51e889fcc46ed6187abce5b803881fdefe1de8b63311c008d73058825aefd879"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_057.jsonl",
+      "nombre": 631,
+      "octets": 438092,
+      "sha256": "a54accc4ef0ca11feba96ca765b5888a6ba36446fa83d3131fe45b401673a6cb"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_058.jsonl",
+      "nombre": 622,
+      "octets": 431320,
+      "sha256": "08bc4a149b0daef661ece25308abfeede1043ee61485e1137fe7fdb211e0bbee"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_059.jsonl",
+      "nombre": 656,
+      "octets": 455835,
+      "sha256": "2dd6d77a2a2c68146ee9079c2b6ff9a73cb88fa6e23ae7dd8e2d7dc29c5cb80c"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_060.jsonl",
+      "nombre": 653,
+      "octets": 454416,
+      "sha256": "3ac3b46cd2e8aa5b38924335d1d4cc2b40ba1391cb41302f8f3af2a61ff5b4c4"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_061.jsonl",
+      "nombre": 643,
+      "octets": 448045,
+      "sha256": "dc6bcc94a165cece8993f2f44cea9d367681bf53669ecedc563f80f06b909660"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_062.jsonl",
+      "nombre": 641,
+      "octets": 444968,
+      "sha256": "7f375f3a4963ac13a91945ac05fc89e1faf10833d65a96c8bb4d6b6b4a5e5fa5"
+    },
+    {
+      "fichier": "institutionnel/territoires/cog/cog_territoire_063.jsonl",
+      "nombre": 662,
+      "octets": 459253,
+      "sha256": "0109708690ef030ba431fcc7b0bf7931e5d0719ce65e4ccb2202f2ea5412f876"
+    }
+  ],
+  "producteur": "Insee",
+  "reference_le": "2026-01-01",
+  "sha256_semantique": "c586f37f29eb12785a0f2de98f12b4ea4211ea4e17bd9dffb1bfdcdabed0bf15",
+  "sha256_zip": "5c037e2977c9d476cfe2e7b7f923bbe09a87cbe448c59e492a71ef6a917aa53f",
+  "source_id": "insee_cog",
+  "telechargement": {
+    "content_length_http": null,
+    "etag_http": null,
+    "last_modified_http": null,
+    "octets": 1961824,
+    "sha256": "5c037e2977c9d476cfe2e7b7f923bbe09a87cbe448c59e492a71ef6a917aa53f",
+    "url_effective": "https://www.insee.fr/fr/statistiques/fichier/8740222/cog_ensemble_2026_csv.zip"
+  },
+  "url_source": "https://www.insee.fr/fr/statistiques/fichier/8740222/cog_ensemble_2026_csv.zip",
+  "version": "1",
+  "version_transformation": "1.1"
+}

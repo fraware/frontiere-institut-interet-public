@@ -1,0 +1,39 @@
+{
+  "anomalies_relations": 0,
+  "collectivites_competence_departementale_source": 100,
+  "doctrine_ctcd": "Les codes CTCD sont conservés comme attributs source et ne sont pas matérialisés comme territoires : le fichier CTCD décrit des collectivités territoriales exerçant les compétences départementales.",
+  "millesime": "2026",
+  "nombre_relations": 150421,
+  "nombre_territoires": 40345,
+  "observe_le": "2026-10-07T04:07:25+00:00",
+  "reference_le": "2026-01-01",
+  "resolution_annuaire": {
+    "absentes": 7,
+    "absentes_courantes_expliquees_historiquement": 7,
+    "absentes_sans_trace_historique": 0,
+    "ambigues": 0,
+    "entites_annuaire_avec_territoire": 85581,
+    "references_codes_insee": 305456,
+    "resolues": 305449,
+    "taux_references_expliquees": 1.0,
+    "taux_resolution": 0.999977
+  },
+  "source_id": "insee_cog",
+  "stockage": {
+    "octets_relations": 80177011,
+    "octets_territoires": 28000697
+  },
+  "types_territoires": {
+    "ARM": 45,
+    "ARR": 333,
+    "CAN": 2293,
+    "COM": 34875,
+    "COMA": 471,
+    "COMD": 2105,
+    "COMER": 9,
+    "COMER-COM": 95,
+    "DEP": 101,
+    "REG": 18
+  },
+  "version": "1"
+}

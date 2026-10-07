@@ -1,0 +1,520 @@
+{
+  "absentes": 7,
+  "absentes_courantes_expliquees_historiquement": 7,
+  "absentes_sans_trace_historique": 0,
+  "ambigues": 0,
+  "doctrine": "Priorité à TYPECOM=COM; à défaut un zonage COMER-COM unique; aucune résolution par nom. Un code absent du COG courant est classé séparément uniquement si les tables historiques officielles attestent une période terminée au plus tard à la date de référence; cette classification ne le remappe pas vers un territoire courant.",
+  "entites_annuaire_avec_territoire": 85581,
+  "exemples_absents": [
+    {
+      "classification": "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT",
+      "code": "16247",
+      "entite_id": "FRONTIERE-INST-DILA-LOCAL-EA9336B3-DBAB-40BB-9B5E-1A118A12623D",
+      "historique_cog": {
+        "attestation_historique": true,
+        "code": "16247",
+        "dernier_evenement_sortant": [
+          {
+            "code_ap": "16204",
+            "code_av": "16247",
+            "date_eff": "2026-01-01",
+            "mod": "35",
+            "nom_ap": "Bellevigne",
+            "nom_av": "Nonaville",
+            "typecom_ap": "COM",
+            "typecom_av": "COMD"
+          }
+        ],
+        "derniere_periode_connue": [
+          {
+            "date_debut": "1943-01-01",
+            "date_fin": "2017-01-01",
+            "nom": "Nonaville",
+            "typecom": "COM"
+          }
+        ],
+        "periode_terminee_avant_ou_a_la_reference": true
+      }
+    },
+    {
+      "classification": "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT",
+      "code": "05150",
+      "entite_id": "FRONTIERE-INST-DILA-LOCAL-B4813F2A-DE99-401B-9E69-B0E641A4399D",
+      "historique_cog": {
+        "attestation_historique": true,
+        "code": "05150",
+        "dernier_evenement_sortant": [
+          {
+            "code_ap": "05024",
+            "code_av": "05150",
+            "date_eff": "2017-07-01",
+            "mod": "32",
+            "nom_ap": "Valdoule",
+            "nom_av": "Sainte-Marie",
+            "typecom_ap": "COM",
+            "typecom_av": "COM"
+          },
+          {
+            "code_ap": "05024",
+            "code_av": "05150",
+            "date_eff": "2017-07-01",
+            "mod": "35",
+            "nom_ap": "Valdoule",
+            "nom_av": "Sainte-Marie",
+            "typecom_ap": "COM",
+            "typecom_av": "COMD"
+          },
+          {
+            "code_ap": "05150",
+            "code_av": "05150",
+            "date_eff": "2017-07-01",
+            "mod": "32",
+            "nom_ap": "Sainte-Marie",
+            "nom_av": "Sainte-Marie",
+            "typecom_ap": "COMD",
+            "typecom_av": "COM"
+          }
+        ],
+        "derniere_periode_connue": [
+          {
+            "date_debut": "1943-01-01",
+            "date_fin": "2017-07-01",
+            "nom": "Sainte-Marie",
+            "typecom": "COM"
+          }
+        ],
+        "periode_terminee_avant_ou_a_la_reference": true
+      }
+    },
+    {
+      "classification": "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT",
+      "code": "86166",
+      "entite_id": "FRONTIERE-INST-DILA-LOCAL-A3DDF5FD-0775-4AB1-92BA-BD50C54B06B6",
+      "historique_cog": {
+        "attestation_historique": true,
+        "code": "86166",
+        "dernier_evenement_sortant": [
+          {
+            "code_ap": "86123",
+            "code_av": "86166",
+            "date_eff": "2026-01-01",
+            "mod": "35",
+            "nom_ap": "Boivre-la-Vallée",
+            "nom_av": "Montreuil-Bonnin",
+            "typecom_ap": "COM",
+            "typecom_av": "COMD"
+          }
+        ],
+        "derniere_periode_connue": [
+          {
+            "date_debut": "1943-01-01",
+            "date_fin": "2019-01-01",
+            "nom": "Montreuil-Bonnin",
+            "typecom": "COM"
+          }
+        ],
+        "periode_terminee_avant_ou_a_la_reference": true
+      }
+    },
+    {
+      "classification": "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT",
+      "code": "05088",
+      "entite_id": "FRONTIERE-INST-DILA-LOCAL-95E3FEC0-C9B2-4767-B20A-551B933F16B1",
+      "historique_cog": {
+        "attestation_historique": true,
+        "code": "05088",
+        "dernier_evenement_sortant": [
+          {
+            "code_ap": "05024",
+            "code_av": "05088",
+            "date_eff": "2017-07-01",
+            "mod": "32",
+            "nom_ap": "Valdoule",
+            "nom_av": "Montmorin",
+            "typecom_ap": "COM",
+            "typecom_av": "COM"
+          },
+          {
+            "code_ap": "05024",
+            "code_av": "05088",
+            "date_eff": "2017-07-01",
+            "mod": "35",
+            "nom_ap": "Valdoule",
+            "nom_av": "Montmorin",
+            "typecom_ap": "COM",
+            "typecom_av": "COMD"
+          },
+          {
+            "code_ap": "05088",
+            "code_av": "05088",
+            "date_eff": "2017-07-01",
+            "mod": "32",
+            "nom_ap": "Montmorin",
+            "nom_av": "Montmorin",
+            "typecom_ap": "COMD",
+            "typecom_av": "COM"
+          }
+        ],
+        "derniere_periode_connue": [
+          {
+            "date_debut": "1943-01-01",
+            "date_fin": "2017-07-01",
+            "nom": "Montmorin",
+            "typecom": "COM"
+          }
+        ],
+        "periode_terminee_avant_ou_a_la_reference": true
+      }
+    },
+    {
+      "classification": "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT",
+      "code": "27131",
+      "entite_id": "FRONTIERE-INST-DILA-LOCAL-0D481DD7-6347-4C81-BAF4-5C438750415F",
+      "historique_cog": {
+        "attestation_historique": true,
+        "code": "27131",
+        "dernier_evenement_sortant": [
+          {
+            "code_ap": "27425",
+            "code_av": "27131",
+            "date_eff": "2025-04-09",
+            "mod": "35",
+            "nom_ap": "Nassandres sur Risle",
+            "nom_av": "Carsix",
+            "typecom_ap": "COM",
+            "typecom_av": "COMD"
+          }
+        ],
+        "derniere_periode_connue": [
+          {
+            "date_debut": "1943-01-01",
+            "date_fin": "2017-01-01",
+            "nom": "Carsix",
+            "typecom": "COM"
+          }
+        ],
+        "periode_terminee_avant_ou_a_la_reference": true
+      }
+    },
+    {
+      "classification": "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT",
+      "code": "16386",
+      "entite_id": "FRONTIERE-INST-DILA-LOCAL-AD679852-9ED9-4ECC-8F8D-1182880E54B7",
+      "historique_cog": {
+        "attestation_historique": true,
+        "code": "16386",
+        "dernier_evenement_sortant": [
+          {
+            "code_ap": "16204",
+            "code_av": "16386",
+            "date_eff": "2026-01-01",
+            "mod": "35",
+            "nom_ap": "Bellevigne",
+            "nom_av": "Touzac",
+            "typecom_ap": "COM",
+            "typecom_av": "COMD"
+          }
+        ],
+        "derniere_periode_connue": [
+          {
+            "date_debut": "1943-01-01",
+            "date_fin": "2017-01-01",
+            "nom": "Touzac",
+            "typecom": "COM"
+          }
+        ],
+        "periode_terminee_avant_ou_a_la_reference": true
+      }
+    },
+    {
+      "classification": "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT",
+      "code": "25282",
+      "entite_id": "FRONTIERE-INST-DILA-LOCAL-42099DA4-7DEB-4643-B7AB-9E12A6E98DA7",
+      "historique_cog": {
+        "attestation_historique": true,
+        "code": "25282",
+        "dernier_evenement_sortant": [
+          {
+            "code_ap": "25060",
+            "code_av": "25282",
+            "date_eff": "2025-12-31",
+            "mod": "35",
+            "nom_ap": "Val-d'Usiers",
+            "nom_av": "Goux-les-Usiers",
+            "typecom_ap": "COM",
+            "typecom_av": "COMD"
+          }
+        ],
+        "derniere_periode_connue": [
+          {
+            "date_debut": "1943-01-01",
+            "date_fin": "2024-01-01",
+            "nom": "Goux-les-Usiers",
+            "typecom": "COM"
+          }
+        ],
+        "periode_terminee_avant_ou_a_la_reference": true
+      }
+    }
+  ],
+  "exemples_absents_historiques": [
+    {
+      "classification": "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT",
+      "code": "16247",
+      "entite_id": "FRONTIERE-INST-DILA-LOCAL-EA9336B3-DBAB-40BB-9B5E-1A118A12623D",
+      "historique_cog": {
+        "attestation_historique": true,
+        "code": "16247",
+        "dernier_evenement_sortant": [
+          {
+            "code_ap": "16204",
+            "code_av": "16247",
+            "date_eff": "2026-01-01",
+            "mod": "35",
+            "nom_ap": "Bellevigne",
+            "nom_av": "Nonaville",
+            "typecom_ap": "COM",
+            "typecom_av": "COMD"
+          }
+        ],
+        "derniere_periode_connue": [
+          {
+            "date_debut": "1943-01-01",
+            "date_fin": "2017-01-01",
+            "nom": "Nonaville",
+            "typecom": "COM"
+          }
+        ],
+        "periode_terminee_avant_ou_a_la_reference": true
+      }
+    },
+    {
+      "classification": "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT",
+      "code": "05150",
+      "entite_id": "FRONTIERE-INST-DILA-LOCAL-B4813F2A-DE99-401B-9E69-B0E641A4399D",
+      "historique_cog": {
+        "attestation_historique": true,
+        "code": "05150",
+        "dernier_evenement_sortant": [
+          {
+            "code_ap": "05024",
+            "code_av": "05150",
+            "date_eff": "2017-07-01",
+            "mod": "32",
+            "nom_ap": "Valdoule",
+            "nom_av": "Sainte-Marie",
+            "typecom_ap": "COM",
+            "typecom_av": "COM"
+          },
+          {
+            "code_ap": "05024",
+            "code_av": "05150",
+            "date_eff": "2017-07-01",
+            "mod": "35",
+            "nom_ap": "Valdoule",
+            "nom_av": "Sainte-Marie",
+            "typecom_ap": "COM",
+            "typecom_av": "COMD"
+          },
+          {
+            "code_ap": "05150",
+            "code_av": "05150",
+            "date_eff": "2017-07-01",
+            "mod": "32",
+            "nom_ap": "Sainte-Marie",
+            "nom_av": "Sainte-Marie",
+            "typecom_ap": "COMD",
+            "typecom_av": "COM"
+          }
+        ],
+        "derniere_periode_connue": [
+          {
+            "date_debut": "1943-01-01",
+            "date_fin": "2017-07-01",
+            "nom": "Sainte-Marie",
+            "typecom": "COM"
+          }
+        ],
+        "periode_terminee_avant_ou_a_la_reference": true
+      }
+    },
+    {
+      "classification": "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT",
+      "code": "86166",
+      "entite_id": "FRONTIERE-INST-DILA-LOCAL-A3DDF5FD-0775-4AB1-92BA-BD50C54B06B6",
+      "historique_cog": {
+        "attestation_historique": true,
+        "code": "86166",
+        "dernier_evenement_sortant": [
+          {
+            "code_ap": "86123",
+            "code_av": "86166",
+            "date_eff": "2026-01-01",
+            "mod": "35",
+            "nom_ap": "Boivre-la-Vallée",
+            "nom_av": "Montreuil-Bonnin",
+            "typecom_ap": "COM",
+            "typecom_av": "COMD"
+          }
+        ],
+        "derniere_periode_connue": [
+          {
+            "date_debut": "1943-01-01",
+            "date_fin": "2019-01-01",
+            "nom": "Montreuil-Bonnin",
+            "typecom": "COM"
+          }
+        ],
+        "periode_terminee_avant_ou_a_la_reference": true
+      }
+    },
+    {
+      "classification": "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT",
+      "code": "05088",
+      "entite_id": "FRONTIERE-INST-DILA-LOCAL-95E3FEC0-C9B2-4767-B20A-551B933F16B1",
+      "historique_cog": {
+        "attestation_historique": true,
+        "code": "05088",
+        "dernier_evenement_sortant": [
+          {
+            "code_ap": "05024",
+            "code_av": "05088",
+            "date_eff": "2017-07-01",
+            "mod": "32",
+            "nom_ap": "Valdoule",
+            "nom_av": "Montmorin",
+            "typecom_ap": "COM",
+            "typecom_av": "COM"
+          },
+          {
+            "code_ap": "05024",
+            "code_av": "05088",
+            "date_eff": "2017-07-01",
+            "mod": "35",
+            "nom_ap": "Valdoule",
+            "nom_av": "Montmorin",
+            "typecom_ap": "COM",
+            "typecom_av": "COMD"
+          },
+          {
+            "code_ap": "05088",
+            "code_av": "05088",
+            "date_eff": "2017-07-01",
+            "mod": "32",
+            "nom_ap": "Montmorin",
+            "nom_av": "Montmorin",
+            "typecom_ap": "COMD",
+            "typecom_av": "COM"
+          }
+        ],
+        "derniere_periode_connue": [
+          {
+            "date_debut": "1943-01-01",
+            "date_fin": "2017-07-01",
+            "nom": "Montmorin",
+            "typecom": "COM"
+          }
+        ],
+        "periode_terminee_avant_ou_a_la_reference": true
+      }
+    },
+    {
+      "classification": "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT",
+      "code": "27131",
+      "entite_id": "FRONTIERE-INST-DILA-LOCAL-0D481DD7-6347-4C81-BAF4-5C438750415F",
+      "historique_cog": {
+        "attestation_historique": true,
+        "code": "27131",
+        "dernier_evenement_sortant": [
+          {
+            "code_ap": "27425",
+            "code_av": "27131",
+            "date_eff": "2025-04-09",
+            "mod": "35",
+            "nom_ap": "Nassandres sur Risle",
+            "nom_av": "Carsix",
+            "typecom_ap": "COM",
+            "typecom_av": "COMD"
+          }
+        ],
+        "derniere_periode_connue": [
+          {
+            "date_debut": "1943-01-01",
+            "date_fin": "2017-01-01",
+            "nom": "Carsix",
+            "typecom": "COM"
+          }
+        ],
+        "periode_terminee_avant_ou_a_la_reference": true
+      }
+    },
+    {
+      "classification": "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT",
+      "code": "16386",
+      "entite_id": "FRONTIERE-INST-DILA-LOCAL-AD679852-9ED9-4ECC-8F8D-1182880E54B7",
+      "historique_cog": {
+        "attestation_historique": true,
+        "code": "16386",
+        "dernier_evenement_sortant": [
+          {
+            "code_ap": "16204",
+            "code_av": "16386",
+            "date_eff": "2026-01-01",
+            "mod": "35",
+            "nom_ap": "Bellevigne",
+            "nom_av": "Touzac",
+            "typecom_ap": "COM",
+            "typecom_av": "COMD"
+          }
+        ],
+        "derniere_periode_connue": [
+          {
+            "date_debut": "1943-01-01",
+            "date_fin": "2017-01-01",
+            "nom": "Touzac",
+            "typecom": "COM"
+          }
+        ],
+        "periode_terminee_avant_ou_a_la_reference": true
+      }
+    },
+    {
+      "classification": "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT",
+      "code": "25282",
+      "entite_id": "FRONTIERE-INST-DILA-LOCAL-42099DA4-7DEB-4643-B7AB-9E12A6E98DA7",
+      "historique_cog": {
+        "attestation_historique": true,
+        "code": "25282",
+        "dernier_evenement_sortant": [
+          {
+            "code_ap": "25060",
+            "code_av": "25282",
+            "date_eff": "2025-12-31",
+            "mod": "35",
+            "nom_ap": "Val-d'Usiers",
+            "nom_av": "Goux-les-Usiers",
+            "typecom_ap": "COM",
+            "typecom_av": "COMD"
+          }
+        ],
+        "derniere_periode_connue": [
+          {
+            "date_debut": "1943-01-01",
+            "date_fin": "2024-01-01",
+            "nom": "Goux-les-Usiers",
+            "typecom": "COM"
+          }
+        ],
+        "periode_terminee_avant_ou_a_la_reference": true
+      }
+    }
+  ],
+  "exemples_absents_inconnus": [],
+  "exemples_ambigus": [],
+  "observe_le": "2026-10-07T04:07:25+00:00",
+  "references_codes_insee": 305456,
+  "resolues": 305449,
+  "taux_references_expliquees": 1.0,
+  "taux_resolution": 0.999977,
+  "version": "2"
+}
