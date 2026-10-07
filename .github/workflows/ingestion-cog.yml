@@ -84,6 +84,14 @@ jobs:
           assert stats["nombre_relations"] > stats["nombre_territoires"]
           assert resolution["references_codes_insee"] > 80_000
           assert resolution["taux_resolution"] >= 0.95
+          assert (
+              resolution["absentes"]
+              == resolution["absentes_courantes_expliquees_historiquement"]
+              + resolution["absentes_sans_trace_historique"]
+          )
+          assert resolution["ambigues"] == 0
+          assert resolution["absentes_sans_trace_historique"] == 0
+          assert resolution["taux_references_expliquees"] == 1.0
           assert manifeste["empreinte_dependance_annuaire"]
           print(json.dumps({
               "territoires": stats["nombre_territoires"],
