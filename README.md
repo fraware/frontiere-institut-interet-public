@@ -48,17 +48,19 @@ Les décisions institutionnelles restent humaines. Le logiciel structure les fai
 | Cas rétrospectifs structurés | 12 |
 | Jeu réservé | 10 |
 | Cas prospectifs complets observés | 0 |
+<!-- FRONTIERE:ETAT_REFERENTIEL:DEBUT -->
 | Enregistrements du snapshot Annuaire DILA couverts | 93 782 / 93 782 |
-| Entités SI du ROAE | 7 903 |
-| Entités locales SL/SIL | 85 879 |
-| Relations hiérarchiques SI résolues | 8 071 |
+| Entités SI du ROAE | 7 905 |
+| Entités locales SL/SIL | 85 877 |
+| Relations hiérarchiques SI résolues | 8 073 |
 | Relations hiérarchiques locales et croisées | 4 155 |
 | Unités territoriales COG 2026 | 40 345 |
 | Relations territoriales COG | 150 421 |
-| Références Annuaire vers le COG courant | 305 449 / 305 456 |
-| Références territoriales restantes expliquées par l’historique COG | 7 / 7 |
+| Références Annuaire vers le COG courant | 305 447 / 305 454 |
+| Références territoriales résiduelles expliquées par l’historique COG | 7 / 7 |
+<!-- FRONTIERE:ETAT_REFERENTIEL:FIN -->
 
-Ces nombres décrivent l’état du corpus au 6 octobre 2026. Ils ne constituent pas une estimation de fréquence à l’échelle de l’administration française.
+Les indicateurs empiriques de ce tableau ont pour date de référence le 6 octobre 2026. Le bloc du référentiel institutionnel est régénéré après chaque cycle complet à partir des fichiers statistiques canoniques. Aucun de ces nombres ne constitue une estimation de fréquence à l’échelle de l’administration française.
 
 La principale frontière empirique se situe désormais entre trois explications : difficulté à identifier une ressource, difficulté à la mobiliser et difficulté à transformer sa mobilisation en contribution utile. Le projet entre dans une phase de collecte de données proches de l’exécution.
 

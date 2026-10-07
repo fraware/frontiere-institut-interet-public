@@ -68,6 +68,9 @@ jobs:
           }, ensure_ascii=False))
           PY
 
+      - name: Vérifier l'amplitude du changement
+        run: python scripts/verifier_variation_referentiel.py --source roae
+
       - name: Enregistrer le nouvel état
         shell: bash
         run: |

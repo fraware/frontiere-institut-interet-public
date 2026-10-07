@@ -4,20 +4,21 @@ Ce répertoire contient la représentation canonique et la surveillance de l'éc
 
 ## État courant
 
-Le snapshot de l'Annuaire DILA observé le 6 octobre 2026 contient **93 782 enregistrements**. Le graphe FRONTIÈRE couvre les trois catégories du snapshot :
+<!-- FRONTIERE:ETAT_INSTITUTIONNEL:DEBUT -->
+Le dernier cycle complet du référentiel associe les états suivants :
 
-- **7 903 SI** par le Référentiel de l'organisation administrative de l'État ;
-- **79 585 SL** et **6 294 SIL**, soit **85 879 entités locales**, par l'API de l'Annuaire.
+- ROAE observé le **2026-10-07** : **7 905 SI** et **8 073 relations hiérarchiques** ;
+- Annuaire local observé le **2026-10-07** : **93 782 enregistrements**, dont **7 905 SI**, **79 583 SL** et **6 294 SIL** ; les catégories SL/SIL produisent **85 877 entités locales** et **4 155 relations locales ou croisées** ;
+- COG observé le **2026-10-07** : **40 345 unités territoriales** et **150 421 relations territoriales**.
 
-Le sous-graphe SI contient **8 071 relations hiérarchiques**. Le sous-graphe local et ses relations croisées contiennent **4 155 relations**.
+Le croisement Annuaire–COG résout **305 447 / 305 454** références vers le COG courant. Les **7** références résiduelles sont toutes expliquées par les tables historiques officielles du COG ; **0** référence reste sans trace historique et **0** résolution est ambiguë.
 
-Le croisement avec les entités locales résout les **158 références du ROAE** qui étaient impossibles à fermer dans le seul snapshot SI. Le flux local contient encore **100 références hiérarchiques** dont la cible n'apparaît dans aucune des trois catégories courantes de l'Annuaire. Elles restent explicitement enregistrées comme anomalies.
+Le croisement Annuaire–ROAE ferme **158 / 158** références SI absentes du seul snapshot ROAE. L’Annuaire local conserve **100** références hiérarchiques dont la cible n’apparaît dans aucune catégorie courante.
+<!-- FRONTIERE:ETAT_INSTITUTIONNEL:FIN -->
 
 La compétence géographique massive est interrogée directement auprès de l'API DILA au moment de la requête. Elle n'est pas copiée intégralement dans Git.
 
-Le Code officiel géographique de l’Insee fournit un espace d’identité distinct pour les unités territoriales. Le millésime 2026 produit **40 345 unités territoriales** et **150 421 relations territoriales**. Les nœuds `FRONTIERE-TERR-COG-*` restent séparés des organisations `FRONTIERE-INST-*`. Les codes CTCD sont conservés comme données source sans être assimilés à des territoires, car le fichier Insee correspondant décrit des collectivités publiques exerçant les compétences départementales.
-
-Le croisement Annuaire–COG résout **305 449 / 305 456** références vers le COG courant. Les **7 références résiduelles** sont toutes expliquées par les tables historiques officielles du COG ; aucune ne reste sans trace historique et aucune résolution ambiguë n’est observée.
+Le Code officiel géographique de l’Insee fournit un espace d’identité distinct pour les unités territoriales. Les nœuds `FRONTIERE-TERR-COG-*` restent séparés des organisations `FRONTIERE-INST-*`. Les codes CTCD sont conservés comme données source sans être assimilés à des territoires, car le fichier Insee correspondant décrit des collectivités publiques exerçant les compétences départementales.
 
 → [Référentiel territorial COG](../docs/INGESTION_COG_V1.md)
 
