@@ -4,22 +4,35 @@ Ce fichier résume les principales étapes publiques du projet. Les détails com
 
 ## Non publié
 
+### Clarté documentaire
+
+- réécriture des principaux documents du référentiel institutionnel en français directement compréhensible ;
+- remplacement des codes internes par leur signification dans les tableaux, titres et explications destinés au lecteur ;
+- harmonisation de l’interface autour des termes « état initial », « règles de comparaison » et « recherche dans le secteur public » ;
+- contrôle automatique de l’ensemble de la documentation pour éviter la réintroduction des principaux raccourcis internes.
+
 ### Référentiel institutionnel vivant
 
-- définition d'un graphe canonique couvrant l'État central, les services territoriaux, collectivités, opérateurs, autorités indépendantes, recherche, santé et participations publiques ;
-- registre initial des principales sources officielles et de leur cadence ;
-- séparation entre validité institutionnelle et date d'observation ;
+- définition d’une représentation commune des administrations, services territoriaux, collectivités, opérateurs, autorités indépendantes, structures de recherche, établissements de santé et participations publiques ;
+- registre initial des principales sources officielles et de leur fréquence de vérification ;
+- séparation entre la période de validité d’une information et la date à laquelle FRONTIÈRE l’a observée ;
 - surveillance quotidienne de la fraîcheur et des modifications des sources ;
-- matrice de couverture et schémas canoniques pour les entités et relations ;
-- ingestion du snapshot DILA du 6 octobre 2026 avec 7 903 entités et 8 071 relations hiérarchiques résolues ;
-- 7 898 parents principaux dérivés, cinq entités sans parent principal et 158 références hiérarchiques explicitement conservées comme non résolues ;
-- vérification automatique des empreintes, partitions, identités, relations et parentage du snapshot complet ;
-- couverture des **93 782 enregistrements** du snapshot courant de l'Annuaire DILA par l'union des **7 903 SI** et **85 879 SL/SIL** ;
-- ingestion de **4 155 relations** locales et croisées, avec **3 536 parents principaux** ;
-- résolution par le flux local des **158 références hiérarchiques** restées orphelines dans le seul ROAE ;
-- conservation explicite de **100 références locales** dont la cible est absente du snapshot courant ;
-- interrogation à la demande de la compétence géographique DILA et contrôle de bout en bout sur une commune réelle ;
-- empreinte sémantique de l'export Annuaire afin d'éliminer les faux changements dus à l'ordre de transport.
+- mesure de la couverture et schémas communs pour les organisations et leurs relations ;
+- importation, au 7 octobre 2026, de **7 905 services ou organismes** issus du Référentiel de l’organisation administrative de l’État, avec **8 073 relations hiérarchiques résolues** ;
+- couverture des **93 782 enregistrements** de l’Annuaire de l’administration grâce à l’union de la publication sur l’organisation de l’État et des **85 877 services et guichets locaux** ;
+- importation de **4 155 relations hiérarchiques locales ou croisées**, avec **3 536 parents principaux** ;
+- résolution, grâce à l’Annuaire local, des **158 références hiérarchiques** dont la cible manquait dans la seule publication sur l’organisation de l’État ;
+- conservation explicite de **100 références locales** dont la cible est absente de l’export courant ;
+- interrogation à la demande de la compétence géographique publiée par la Direction de l’information légale et administrative ;
+- utilisation d’empreintes calculées sur le contenu pour éviter les faux changements dus à un simple réordonnancement des données ;
+- importation de **40 345 unités territoriales** issues du Code officiel géographique de l’Insee, reliées par **150 421 relations territoriales**.
+
+### Premier cas prospectif
+
+- enregistrement obligatoire de la situation initiale avant toute recherche menée par FRONTIÈRE ;
+- exigence d’un responsable opérationnel, d’une échéance, d’une voie prévue sans FRONTIÈRE et d’au moins une preuve initiale ;
+- enregistrement préalable des règles de comparaison entre la méthode habituelle et FRONTIÈRE ;
+- empreintes cryptographiques de l’état initial et des règles de comparaison afin de vérifier leur antériorité.
 
 ### Exécution terrain
 
@@ -71,18 +84,18 @@ Ce fichier résume les principales étapes publiques du projet. Les détails com
 
 ### Version 0.5.2
 
-- jeu réservé scellé ;
+- jeu réservé figé avant évaluation ;
 - empreinte cryptographique des références ;
 - mesures de précision, rappel et mesure harmonique.
 
 ### Version 0.5.1
 
-- scellement de l’évaluation multi-méthodes ;
+- règles de l’évaluation comparative fixées avant exécution ;
 - extension du corpus public initial.
 
 ### Version 0.5.0
 
-- requêtes de capacité structurées ;
+- description structurée des capacités recherchées ;
 - première architecture d’évaluation comparative.
 
 ## 4 octobre 2026
@@ -91,13 +104,13 @@ Ce fichier résume les principales étapes publiques du projet. Les détails com
 
 - résultats terrain enrichis ;
 - progression contrôlée des ressources ;
-- réutilisation inter-cas.
+- réutilisation entre cas.
 
 ### Version 0.3.0
 
 - journal de traçabilité ;
 - historique versionné du besoin ;
-- garde-fous de pré-enregistrement.
+- règles empêchant une recherche avant l’enregistrement de l’état initial.
 
 ### Version 0.2.0
 

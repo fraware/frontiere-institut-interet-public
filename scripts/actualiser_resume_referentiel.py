@@ -48,39 +48,39 @@ def bloc_readme(roae: dict[str, Any], local: dict[str, Any], cog: dict[str, Any]
     resolution = cog["resolution_annuaire"]
     return "\n".join(
         [
-            "| Référentiel institutionnel | État |",
+            "| Couverture institutionnelle | État |",
             "| --- | ---: |",
-            "| Enregistrements du snapshot Annuaire DILA couverts | "
+            "| Enregistrements de l’Annuaire de l’administration couverts | "
             f"{nombre(local['nombre_enregistrements_export_complet'])} / {nombre(local['nombre_enregistrements_export_complet'])} |",
-            f"| Entités SI du ROAE | {nombre(roae['nombre_entites_canoniques'])} |",
-            f"| Entités locales SL/SIL | {nombre(local['nombre_entites_canoniques'])} |",
-            f"| Relations hiérarchiques SI résolues | {nombre(roae['nombre_relations_hierarchiques'])} |",
-            f"| Relations hiérarchiques locales et croisées | {nombre(local['nombre_relations_hierarchiques'])} |",
-            f"| Unités territoriales COG 2026 | {nombre(cog['nombre_territoires'])} |",
-            f"| Relations territoriales COG | {nombre(cog['nombre_relations'])} |",
-            "| Références Annuaire vers le COG courant | "
+            f"| Services issus du Référentiel de l’organisation administrative de l’État | {nombre(roae['nombre_entites_canoniques'])} |",
+            f"| Services et guichets locaux issus de l’Annuaire | {nombre(local['nombre_entites_canoniques'])} |",
+            f"| Relations hiérarchiques résolues dans l’organisation de l’État | {nombre(roae['nombre_relations_hierarchiques'])} |",
+            f"| Relations hiérarchiques résolues parmi les services locaux | {nombre(local['nombre_relations_hierarchiques'])} |",
+            f"| Unités territoriales issues du Code officiel géographique 2026 | {nombre(cog['nombre_territoires'])} |",
+            f"| Relations entre unités territoriales | {nombre(cog['nombre_relations'])} |",
+            "| Références de l’Annuaire reliées à une unité territoriale actuelle | "
             f"{nombre(resolution['resolues'])} / {nombre(resolution['references_codes_insee'])} |",
-            "| Références territoriales résiduelles expliquées par l’historique COG | "
+            "| Références territoriales anciennes expliquées par l’historique officiel | "
             f"{nombre(resolution['absentes_courantes_expliquees_historiquement'])} / {nombre(resolution['absentes'])} |",
         ]
     )
 
 
 def bloc_institutionnel(roae: dict[str, Any], local: dict[str, Any], cog: dict[str, Any]) -> str:
-    cat = local["categories_export"]
     res = cog["resolution_annuaire"]
-    lignes = [
-        "Le dernier cycle complet du référentiel associe les états suivants :",
-        "",
-        f"- ROAE observé le **{date_iso(roae.get('observe_le'))}** : **{nombre(roae['nombre_entites_canoniques'])} SI** et **{nombre(roae['nombre_relations_hierarchiques'])} relations hiérarchiques** ;",
-        f"- Annuaire local observé le **{date_iso(local.get('observe_le'))}** : **{nombre(local['nombre_enregistrements_export_complet'])} enregistrements**, dont **{nombre(cat['SI'])} SI**, **{nombre(cat['SL'])} SL** et **{nombre(cat['SIL'])} SIL** ; les catégories SL/SIL produisent **{nombre(local['nombre_entites_canoniques'])} entités locales** et **{nombre(local['nombre_relations_hierarchiques'])} relations locales ou croisées** ;",
-        f"- COG observé le **{date_iso(cog.get('observe_le'))}** : **{nombre(cog['nombre_territoires'])} unités territoriales** et **{nombre(cog['nombre_relations'])} relations territoriales**.",
-        "",
-        f"Le croisement Annuaire–COG résout **{nombre(res['resolues'])} / {nombre(res['references_codes_insee'])}** références vers le COG courant. Les **{nombre(res['absentes'])}** références résiduelles sont toutes expliquées par les tables historiques officielles du COG ; **{nombre(res['absentes_sans_trace_historique'])}** référence reste sans trace historique et **{nombre(res['ambigues'])}** résolution est ambiguë.",
-        "",
-        f"Le croisement Annuaire–ROAE ferme **{nombre(local['resolution_croisee_roae']['resolues_par_annuaire_local'])} / {nombre(local['resolution_croisee_roae']['anomalies_roae_initiales'])}** références SI absentes du seul snapshot ROAE. L’Annuaire local conserve **{nombre(local['hierarchie']['anomalies'])}** références hiérarchiques dont la cible n’apparaît dans aucune catégorie courante.",
-    ]
-    return "\n".join(lignes)
+    return "\n".join(
+        [
+            f"Dernier cycle complet observé le **{date_iso(cog.get('observe_le'))}** :",
+            "",
+            f"- **{nombre(roae['nombre_entites_canoniques'])} services ou organismes** issus du Référentiel de l’organisation administrative de l’État, avec **{nombre(roae['nombre_relations_hierarchiques'])} relations hiérarchiques résolues** ;",
+            f"- **{nombre(local['nombre_entites_canoniques'])} services et guichets locaux** issus de l’Annuaire de l’administration, avec **{nombre(local['nombre_relations_hierarchiques'])} relations hiérarchiques locales ou croisées** ;",
+            f"- **{nombre(cog['nombre_territoires'])} unités territoriales** issues du Code officiel géographique de l’Insee, reliées par **{nombre(cog['nombre_relations'])} relations territoriales**.",
+            "",
+            f"L’Annuaire contient **{nombre(res['references_codes_insee'])} références à des codes Insee**. **{nombre(res['resolues'])}** correspondent à une unité territoriale actuelle. Les **{nombre(res['absentes'])}** références restantes correspondent à d’anciens codes attestés par l’historique officiel. **{nombre(res['absentes_sans_trace_historique'])}** référence reste inexpliquée et **{nombre(res['ambigues'])}** cas est ambigu.",
+            "",
+            f"Le croisement des deux publications de la Direction de l’information légale et administrative résout également les **{nombre(local['resolution_croisee_roae']['resolues_par_annuaire_local'])} références hiérarchiques** dont la cible manquait dans la publication consacrée à l’organisation de l’État. Il reste **{nombre(local['hierarchie']['anomalies'])} références hiérarchiques locales** dont la cible n’apparaît dans aucune catégorie courante de l’Annuaire.",
+        ]
+    )
 
 
 def bloc_cog(cog: dict[str, Any]) -> str:
@@ -103,13 +103,15 @@ def bloc_cog(cog: dict[str, Any]) -> str:
         [
             f"État du dernier cycle complet, observé le **{date_iso(cog.get('observe_le'))}**.",
             "",
-            f"L’archive officielle produit **{nombre(cog['nombre_territoires'])} unités territoriales courantes** et **{nombre(cog['nombre_relations'])} relations territoriales** dans FRONTIÈRE, avec **{nombre(cog['anomalies_relations'])} relation territoriale non résolue**.",
+            f"L’archive officielle produit **{nombre(cog['nombre_territoires'])} unités territoriales courantes** et **{nombre(cog['nombre_relations'])} relations entre territoires**, avec **{nombre(cog['anomalies_relations'])} relation non résolue**.",
             "",
-            f"La répartition courante comprend {phrase_repartition}.",
+            f"La répartition comprend {phrase_repartition}.",
             "",
-            f"Le croisement avec l’Annuaire DILA examine **{nombre(res['references_codes_insee'])} références à des codes Insee** portées par **{nombre(res['entites_annuaire_avec_territoire'])} entités locales**. **{nombre(res['resolues'])} références** correspondent exactement à une unité du COG courant. Les **{nombre(res['absentes'])} références restantes** sont attestées par l’historique officiel du COG comme des codes ayant cessé d’être courants ; **{nombre(res['absentes_sans_trace_historique'])}** reste sans trace historique et **{nombre(res['ambigues'])}** cas est ambigu. Le taux de résolution vers le COG courant est de **{str(round(res['taux_resolution'] * 100, 4)).replace('.', ',')} %** et le taux de références expliquées par le COG courant ou son historique est de **{str(round(res['taux_references_expliquees'] * 100, 4)).replace('.', ',')} %**.",
+            f"L’Annuaire de l’administration contient **{nombre(res['references_codes_insee'])} références à des codes Insee** portées par **{nombre(res['entites_annuaire_avec_territoire'])} services ou guichets locaux**. **{nombre(res['resolues'])} références** correspondent exactement à une unité territoriale actuelle. Les **{nombre(res['absentes'])} références restantes** correspondent à d’anciens codes attestés par l’historique officiel de l’Insee. **{nombre(res['absentes_sans_trace_historique'])}** référence reste sans trace historique et **{nombre(res['ambigues'])}** cas est ambigu.",
             "",
-            "Les écarts historiques ne sont pas réécrits. `resolution_annuaire_cog.json` conserve pour chacun le code DILA, l’entité concernée, la dernière période historique connue et le dernier événement communal publié par l’Insee.",
+            f"Le taux de raccordement aux unités territoriales actuelles est de **{str(round(res['taux_resolution'] * 100, 4)).replace('.', ',')} %**. En tenant compte de l’historique officiel, **{str(round(res['taux_references_expliquees'] * 100, 4)).replace('.', ',')} %** des références sont expliquées.",
+            "",
+            "Le fichier " + chr(96) + "resolution_annuaire_cog.json" + chr(96) + " conserve pour chaque ancien code l’objet concerné, la dernière période historique connue et le dernier événement communal publié par l’Insee.",
         ]
     )
 

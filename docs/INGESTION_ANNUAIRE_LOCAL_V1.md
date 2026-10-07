@@ -1,195 +1,122 @@
-# Ingestion de l'Annuaire de l'administration — services locaux
+# Annuaire de l’administration — services et guichets locaux
 
 ## Objet
 
-Cette ingestion étend le graphe institutionnel de FRONTIÈRE de l'organisation administrative de l'État vers les implantations et guichets publics locaux publiés par la Direction de l'information légale et administrative.
+Ce document décrit l’importation des services et guichets locaux publiés dans l’Annuaire de l’administration par la Direction de l’information légale et administrative.
 
-La source canonique utilisée est l'API de l'Annuaire de l'administration :
+Source officielle :
 
 https://api-lannuaire.service-public.gouv.fr/
 
-La page de référence du jeu de données est :
+Page de référence :
 
 https://www.data.gouv.fr/datasets/service-public-gouv-fr-annuaire-de-ladministration-base-de-donnees-locales
 
-## État observé au 6 octobre 2026
+## État observé le 7 octobre 2026
 
-L'export courant contient **93 782 enregistrements** répartis en trois catégories DILA :
+L’export contient **93 782 enregistrements**.
 
-| Catégorie | Nombre | Traitement FRONTIÈRE |
+La source utilise trois codes techniques de catégorie. FRONTIÈRE ne demande pas au lecteur de les mémoriser : la catégorie `SI` correspond à la partie déjà couverte par le Référentiel de l’organisation administrative de l’État ; les catégories `SL` et `SIL` constituent les deux ensembles locaux importés ici.
+
+| Ensemble | Nombre | Traitement |
 | --- | ---: | --- |
-| SI | 7 903 | déjà ingérés par le Référentiel de l'organisation administrative de l'État |
-| SL | 79 585 | ingérés par cette ingestion |
-| SIL | 6 294 | ingérés par cette ingestion |
-| **Total** | **93 782** | **couvert par l'union des deux ingestions DILA** |
+| Partie déjà couverte par le référentiel de l’organisation de l’État | 7 905 | réutilisée |
+| Premier ensemble local de l’Annuaire | 79 583 | importé ici |
+| Second ensemble local de l’Annuaire | 6 294 | importé ici |
+| **Total de l’export** | **93 782** | **couvert par l’union des deux importations** |
 
-FRONTIÈRE possède donc un objet canonique pour chaque enregistrement du snapshot courant de l'Annuaire DILA. Cette complétude est **relative à ce référentiel et à cette date**. Elle ne signifie pas que les 93 782 objets constituent l'intégralité des personnes morales, organismes, collectivités, opérateurs, établissements de santé ou structures de recherche du secteur public français.
+Les deux ensembles locaux produisent **85 877 objets normalisés**.
 
-Les catégories SL et SIL produisent **85 879 entités locales canoniques**.
+Cette couverture est complète pour cet export précis. Elle ne signifie pas que ces 93 782 enregistrements représentent toutes les personnes morales, collectivités, opérateurs, établissements de santé ou structures de recherche du secteur public français.
 
-### Couverture des attributs locaux
+### Informations disponibles sur les 85 877 objets locaux
 
-| Attribut | Entités |
+| Information publiée | Objets concernés |
 | --- | ---: |
-| Coordonnées | 85 696 |
-| Territoire directement publié | 85 581 |
-| SIRET | 54 651 |
-| SIREN | 44 048 |
-| Mission publiée | 29 905 |
-| Responsable publié | 5 201 |
+| Coordonnées | 85 694 |
+| Territoire indiqué directement | 85 579 |
+| Numéro SIRET | 54 651 |
+| Numéro SIREN | 44 050 |
+| Mission | 29 903 |
+| Responsable | 5 201 |
 | Fondement juridique | 1 546 |
 
-Les absences restent des absences de la source utilisée. FRONTIÈRE ne complète pas un champ manquant par inférence silencieuse.
+Un champ absent reste absent. FRONTIÈRE ne complète pas silencieusement la source par une supposition.
 
-## Hiérarchie et croisement avec le référentiel de l'État
+## Hiérarchie et raccordement avec l’organisation de l’État
 
-L'ingestion produit **4 155 relations hiérarchiques résolues** à partir des liens publiés par la DILA. **3 536 entités locales** reçoivent un parent principal directement justifié par un lien `Service Fils`.
+L’importation produit **4 155 relations hiérarchiques résolues**. **3 536 objets locaux** disposent d’un parent principal directement justifié par un lien publié.
 
-Le snapshot local conserve **100 références hiérarchiques non résolues**. Leur identifiant cible n'apparaît ni parmi les 85 879 objets SL/SIL courants ni parmi les 7 903 objets SI courants. Le dépôt les conserve dans `institutionnel/anomalies_annuaire_local.json` et ne leur attribue aucune cible par similarité de nom.
+Il reste **100 références hiérarchiques non résolues**. Elles sont conservées dans `institutionnel/anomalies_annuaire_local.json`.
 
-L'apport du croisement des deux flux est mesurable : les **158 références hiérarchiques du ROAE qui restaient orphelines dans le seul flux SI sont toutes résolues par des identifiants présents dans le flux local**. Le résultat est enregistré dans `institutionnel/resolution_roae_local.json`.
+Le croisement entre les deux publications DILA résout également les **158 références** qui manquaient dans la seule publication consacrée à l’organisation de l’État. Cette résolution utilise des identifiants exacts, jamais une simple ressemblance de nom.
 
-Une relation résolue par croisement conserve désormais deux preuves distinctes : le lien hiérarchique publié dans le ROAE et l'existence de l'identifiant cible dans l'Annuaire local. Les deux sources, leurs identifiants et leurs empreintes sont enregistrés séparément. Une relation locale résolue conserve également la représentation source du lien hiérarchique.
+Le résultat du croisement figure dans `institutionnel/resolution_roae_local.json`.
 
 ## Compétence géographique
 
-La DILA publie séparément un jeu de compétence géographique qui associe une commune, un type de service local et un ou plusieurs identifiants de services compétents.
+La DILA publie un jeu séparé qui relie une commune, un type de service et les services compétents pour cette commune.
 
-Le jeu est interrogé directement via :
+Ce jeu contient plusieurs millions d’enregistrements. FRONTIÈRE l’interroge directement au moment d’une recherche au lieu d’en copier l’intégralité dans Git.
 
-https://api-lannuaire.service-public.gouv.fr/
-
-Ce graphe comporte plusieurs millions d'enregistrements. FRONTIÈRE ne le recopie pas intégralement dans Git. Le dépôt conserve une interface d'interrogation directe vers la source officielle et résout les identifiants retournés vers les entités canoniques locales ou SI.
-
-Exemple reproductible :
+Exemple :
 
 ```bash
 python scripts/rechercher_competence_geographique.py --commune 75056 --type mairie
 ```
 
-Le contrôle en intégration continue du 6 octobre 2026 a retourné pour la commune Insee `75056` et le type `mairie` l'identifiant DILA de **Mairie - Paris - Hôtel-de-Ville**, résolu vers son identifiant canonique FRONTIÈRE.
-
-Cette stratégie sépare deux objets :
-
-- le **stock institutionnel canonique**, versionné dans Git ;
-- le **graphe massif de compétence géographique**, interrogé à la source au moment de la requête.
-
-La séparation évite de transformer le dépôt Git en entrepôt de plusieurs millions d'arêtes tout en conservant une réponse fondée sur le référentiel officiel courant.
+La réponse est reliée aux objets institutionnels déjà présents grâce aux identifiants publiés par la source.
 
 ## Identité et provenance
 
-Chaque entité locale possède un identifiant de la forme :
+Chaque objet local reçoit un identifiant technique de la forme :
 
 ```text
 FRONTIERE-INST-DILA-LOCAL-<IDENTIFIANT DILA>
 ```
 
-L'identifiant DILA d'origine, les SIREN, les SIRET, les identifiants partenaires, les territoires, les coordonnées, les missions et les autres champs disponibles restent séparés.
+L’identifiant de la source, les numéros SIREN et SIRET, les territoires, les coordonnées, les missions et les autres champs disponibles restent conservés séparément.
 
-Chaque objet conserve :
+Chaque objet conserve son identifiant dans la source, l’adresse de la source, la date de collecte, une empreinte de l’enregistrement et les champs structurés nécessaires à l’utilisation du référentiel.
 
-- l'identifiant dans la source ;
-- l'adresse de la source ;
-- la date de collecte ;
-- une empreinte de l'enregistrement ;
-- les champs structurés utiles à l'exploitation opérationnelle.
+## Détecter un vrai changement
 
-Les identifiants DILA locaux du snapshot courant sont disjoints des identifiants DILA SI du ROAE. Cette propriété est vérifiée automatiquement.
+L’ordre des enregistrements dans l’export peut varier sans que le contenu institutionnel change.
 
-## Stabilité des mises à jour
+FRONTIÈRE calcule une empreinte du fichier téléchargé et une seconde empreinte construite à partir du contenu des enregistrements indépendamment de leur ordre. Cette seconde mesure évite qu’un simple réordonnancement crée un faux changement dans Git.
 
-L'export JSON de l'API peut varier au niveau des octets ou de l'ordre des enregistrements sans changement sémantique du référentiel.
+L’état local dépend aussi de la publication consacrée à l’organisation de l’État. Une modification de cette source déclenche un nouveau calcul des raccordements, même si l’export local est inchangé.
 
-FRONTIÈRE calcule donc deux empreintes :
-
-1. l'empreinte SHA-256 du fichier transporté ;
-2. une empreinte sémantique construite à partir des empreintes triées de tous les enregistrements.
-
-L'empreinte sémantique courante est :
-
-```text
-766773e42de8e5cff961c03c9f9bde3c2e7f6d2e2753ca535b366a8a90a0c6d8
-```
-
-Une variation d'ordre dans l'export ne produit ainsi aucun faux changement institutionnel et aucun commit inutile.
-
-L'état local dépend aussi du snapshot ROAE utilisé pour résoudre les relations croisées. Le manifeste local enregistre donc une `empreinte_dependance_roae` construite à partir de l'empreinte de la source ROAE, de sa version de transformation et de ses nombres d'objets et de relations. Une modification du ROAE force le recalcul de l'état local, même si l'export local reste identique.
-
-Les relations suivent la même règle temporelle que les entités : une relation dont les extrémités, le type, les qualificatifs et les preuves restent identiques conserve sa date d'observation et la date de collecte de ses preuves.
-
-## Sorties
+## Fichiers produits
 
 ```text
 institutionnel/
   entites/locales/
-    annuaire_local_000.jsonl
-    ...
-    annuaire_local_127.jsonl
   relations/locales/
-    hierarchie_locale_000.jsonl
-    ...
-    hierarchie_locale_031.jsonl
-  instantanes/
-    annuaire_local_manifest.json
+  instantanes/annuaire_local_manifest.json
   statistiques_annuaire_local.json
   anomalies_annuaire_local.json
   resolution_roae_local.json
 ```
 
-Les 85 879 entités sont réparties dans 128 partitions. Les relations sont réparties dans 32 partitions.
+Les 85 877 objets locaux sont répartis dans 128 fichiers et les relations dans 32 fichiers afin de garder des tailles de fichier raisonnables.
 
 ## Vérifications automatiques
 
-La suite de tests vérifie notamment :
-
-- les empreintes et tailles de toutes les partitions ;
-- les nombres d'entités et de relations ;
-- l'unicité des identifiants ;
-- la disjonction des identifiants DILA SI et locaux ;
-- l'existence des deux extrémités de chaque relation ;
-- la justification de chaque parent principal ;
-- la provenance de chaque entité locale ;
-- la cohérence entre les trois catégories DILA et l'export complet ;
-- la résolution croisée des 158 références du ROAE ;
-- le décodage des champs structurés transportés sous forme de chaînes JSON ;
-- la recherche de compétence géographique.
-
-Les tests du snapshot sont écrits en lecture progressive afin de contrôler environ 230 Mo de représentation canonique sans charger le corpus entier en mémoire.
+Les tests contrôlent notamment les empreintes, les nombres d’objets et de relations, l’unicité des identifiants, l’existence des deux extrémités de chaque relation, la provenance et la résolution des 158 références manquantes dans la publication de l’organisation de l’État.
 
 ## Mise à jour
 
-L'actualisation locale est déclenchée par la réussite de l'action d'actualisation du ROAE. Les deux actions partagent en outre le même groupe de concurrence, ce qui interdit leur exécution simultanée. Une exécution manuelle reste disponible.
+L’actualisation de l’Annuaire est déclenchée après la réussite de l’actualisation de l’organisation de l’État. Les deux opérations sont sérialisées afin d’éviter des écritures concurrentes sur la branche principale.
 
-Pour toute révision touchant l'importeur, la recherche géographique, leurs tests ou leurs actions d'automatisation, une exécution sur demande de fusion reconstruit le snapshot depuis la publication officielle et vérifie les invariants sans écrire dans `main`.
+## Limite de conservation historique
 
-L'action d'actualisation :
+L’export brut complet n’est pas copié dans Git. Le dépôt conserve son empreinte, une empreinte indépendante de l’ordre des enregistrements et les objets normalisés produits par la transformation.
 
-1. vérifie l'importeur ;
-2. télécharge l'export courant de l'Annuaire ;
-3. calcule son empreinte sémantique ;
-4. reconstruit le snapshot uniquement si nécessaire ;
-5. vérifie le snapshot complet ;
-6. interroge une compétence géographique réelle comme contrôle de bout en bout ;
-7. écrit un commit uniquement en présence d'un changement sémantique.
+Une conservation probante de chaque export historique exigerait un stockage d’archives externe et immuable.
 
-## Limites de reproductibilité de la source
+## Prochaines sources possibles
 
-L'export JSON brut de l'API n'est pas recopié dans Git. Le dépôt conserve son empreinte SHA-256, l'empreinte sémantique de l'ensemble des enregistrements et la représentation canonique produite par la transformation. Cette stratégie maintient une taille de dépôt exploitable, mais elle ne garantit pas à elle seule la récupération future des octets exacts d'un export historique si le producteur cesse de le servir.
+Les extensions possibles comprennent le référentiel territorial de l’Insee, la base nationale des intercommunalités, les données budgétaires des opérateurs de l’État, les structures publiques d’enseignement supérieur et de recherche, le répertoire des établissements sanitaires et médico-sociaux, les participations publiques et les textes juridiques.
 
-Une conservation probante à long terme demanderait un stockage d'archives externe, immuable et adressé par contenu. Cette exigence est suivie séparément avant d'utiliser le référentiel comme preuve historique autonome.
-
-## Limites et prochaine vague
-
-L'union ROAE + Annuaire fournit désormais une couverture complète du **snapshot courant de l'Annuaire DILA**, y compris ses objets SI, SL et SIL.
-
-La construction du référentiel public français reste plus large. Les prochaines sources prioritaires sont :
-
-- le Code officiel géographique pour les collectivités et l'historique territorial ;
-- BANATIC pour les intercommunalités, syndicats et compétences ;
-- le périmètre budgétaire des opérateurs de l'État ;
-- les structures publiques d'enseignement supérieur et de recherche ;
-- FINESS pour les structures sanitaires, sociales et médico-sociales ;
-- les participations publiques ;
-- les textes et événements juridiques.
-
-La règle reste identique : chaque nouvelle source doit augmenter une couverture mesurée, conserver sa provenance et exposer explicitement ce qu'elle laisse encore inconnu.
+Aucune nouvelle source n’est intégrée uniquement pour augmenter le volume. Elle doit apporter une information utile à un cas, améliorer une couverture mesurée ou résoudre une inconnue clairement identifiée.
