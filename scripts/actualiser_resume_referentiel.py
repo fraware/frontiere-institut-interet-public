@@ -48,6 +48,8 @@ def bloc_readme(roae: dict[str, Any], local: dict[str, Any], cog: dict[str, Any]
     resolution = cog["resolution_annuaire"]
     return "\n".join(
         [
+            "| Référentiel institutionnel | État |",
+            "| --- | ---: |",
             "| Enregistrements du snapshot Annuaire DILA couverts | "
             f"{nombre(local['nombre_enregistrements_export_complet'])} / {nombre(local['nombre_enregistrements_export_complet'])} |",
             f"| Entités SI du ROAE | {nombre(roae['nombre_entites_canoniques'])} |",

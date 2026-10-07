@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
@@ -123,7 +124,11 @@ def analyser_date(valeur: str | None) -> datetime | None:
     try:
         return datetime.fromisoformat(valeur.replace("Z", "+00:00"))
     except ValueError:
-        return None
+        try:
+            date = parsedate_to_datetime(valeur)
+            return date if date.tzinfo is not None else date.replace(tzinfo=timezone.utc)
+        except (TypeError, ValueError):
+            return None
 
 
 def fraicheur(source: dict, observation: dict, date_observation: datetime) -> dict:
@@ -139,6 +144,10 @@ def fraicheur(source: dict, observation: dict, date_observation: datetime) -> di
     date_source = analyser_date(observation.get("derniere_mise_a_jour"))
     if date_source is None:
         date_source = analyser_date(observation.get("derniere_modification"))
+    if date_source is None:
+        date_source = analyser_date(observation.get("derniere_modification_http"))
+    if date_source is None:
+        date_source = analyser_date(source.get("reference_le"))
 
     if seuil is None or date_source is None:
         return {

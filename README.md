@@ -48,7 +48,10 @@ Les décisions institutionnelles restent humaines. Le logiciel structure les fai
 | Cas rétrospectifs structurés | 12 |
 | Jeu réservé | 10 |
 | Cas prospectifs complets observés | 0 |
+
 <!-- FRONTIERE:ETAT_REFERENTIEL:DEBUT -->
+| Référentiel institutionnel | État |
+| --- | ---: |
 | Enregistrements du snapshot Annuaire DILA couverts | 93 782 / 93 782 |
 | Entités SI du ROAE | 7 905 |
 | Entités locales SL/SIL | 85 877 |
@@ -60,7 +63,7 @@ Les décisions institutionnelles restent humaines. Le logiciel structure les fai
 | Références territoriales résiduelles expliquées par l’historique COG | 7 / 7 |
 <!-- FRONTIERE:ETAT_REFERENTIEL:FIN -->
 
-Les indicateurs empiriques de ce tableau ont pour date de référence le 6 octobre 2026. Le bloc du référentiel institutionnel est régénéré après chaque cycle complet à partir des fichiers statistiques canoniques. Aucun de ces nombres ne constitue une estimation de fréquence à l’échelle de l’administration française.
+Les indicateurs empiriques du premier tableau ont pour date de référence le 6 octobre 2026. Le bloc du référentiel institutionnel est régénéré après chaque cycle complet à partir des fichiers statistiques canoniques. Aucun de ces nombres ne constitue une estimation de fréquence à l’échelle de l’administration française.
 
 La principale frontière empirique se situe désormais entre trois explications : difficulté à identifier une ressource, difficulté à la mobiliser et difficulté à transformer sa mobilisation en contribution utile. Le projet entre dans une phase de collecte de données proches de l’exécution.
 

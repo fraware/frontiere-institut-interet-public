@@ -6,8 +6,11 @@ from datetime import datetime, timezone
 
 
 def test_cadence_cog_est_explicitement_traitee():
-    source = {"cadence_attendue": "annuelle_avec_verification_hebdomadaire"}
-    observation = {"derniere_mise_a_jour": "2026-02-24T00:00:00+00:00"}
+    source = {
+        "cadence_attendue": "annuelle_avec_verification_hebdomadaire",
+        "reference_le": "2026-01-01",
+    }
+    observation = {}
     resultat = fraicheur(source, observation, datetime(2026, 10, 7, tzinfo=timezone.utc))
     assert resultat["statut"] == "FRAIS"
     assert resultat["seuil_jours"] == 400
