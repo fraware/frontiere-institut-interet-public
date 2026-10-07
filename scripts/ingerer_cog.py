@@ -4,6 +4,7 @@ import argparse
 import csv
 import hashlib
 import io
+import os
 import json
 import re
 import shutil
@@ -897,7 +898,7 @@ def executer(
 
     if archive_source is None:
         fd, nom_tmp = tempfile.mkstemp(prefix="frontiere-cog-", suffix=".zip")
-        Path(nom_tmp).unlink(missing_ok=True)
+        os.close(fd)
         archive_source = Path(nom_tmp)
         temp_cree = True
         telechargement = telecharger_archive(URL_SOURCE, archive_source)
