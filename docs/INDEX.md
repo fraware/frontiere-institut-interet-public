@@ -46,6 +46,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | Document | Rôle |
 | --- | --- |
 | [PLAN_12_SEMAINES.md](PLAN_12_SEMAINES.md) | Séquence de recherche sur douze semaines |
+| [CAS_PROSPECTIF_V1.md](CAS_PROSPECTIF_V1.md) | Pré-enregistrement du point zéro, comparaison appariée et mesures du premier cas prospectif |
 | [LANCEMENT_OPERATIONNEL.md](LANCEMENT_OPERATIONNEL.md) | Première vague opérationnelle |
 | [PASSAGE_DONNEES_EXECUTION_V1.md](PASSAGE_DONNEES_EXECUTION_V1.md) | Quatre demandes minimales vers les détenteurs de données |
 | [EXECUTION_TERRAIN_V1.md](EXECUTION_TERRAIN_V1.md) | Canaux vérifiés, messages prêts à envoyer et règles de relance |

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from contextlib import asynccontextmanager
+import hashlib
 import json
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -91,6 +92,51 @@ def _audit(
             payload_json=json.dumps(payload or {}, ensure_ascii=False, sort_keys=True),
         )
     )
+
+
+def _audit_event(db: Session, episode_id: int, event_type: str) -> AuditEvent | None:
+    return db.scalar(
+        select(AuditEvent)
+        .where(AuditEvent.episode_id == episode_id, AuditEvent.event_type == event_type)
+        .order_by(AuditEvent.id.desc())
+        .limit(1)
+    )
+
+
+def _audit_payload(event: AuditEvent | None) -> dict:
+    if event is None or not event.payload_json:
+        return {}
+    try:
+        valeur = json.loads(event.payload_json)
+    except json.JSONDecodeError:
+        return {}
+    return valeur if isinstance(valeur, dict) else {}
+
+
+def _empreinte(objet: dict) -> str:
+    brut = json.dumps(
+        objet,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    return hashlib.sha256(brut).hexdigest()
+
+
+def _prospective_event(db: Session, ep: Episode) -> AuditEvent | None:
+    return _audit_event(db, ep.id, "CAS_PROSPECTIF_PRE_ENREGISTRE")
+
+
+def _comparison_event(db: Session, ep: Episode) -> AuditEvent | None:
+    return _audit_event(db, ep.id, "COMPARAISON_APPARIEE_PRE_ENREGISTREE")
+
+
+def _require_comparison_plan_if_prospective(db: Session, ep: Episode) -> None:
+    if _prospective_event(db, ep) is not None and _comparison_event(db, ep) is None:
+        raise HTTPException(
+            409,
+            "Ce cas prospectif est pré-enregistré. Le plan de comparaison appariée doit être verrouillé avant toute intervention de FRONTIÈRE.",
+        )
 
 
 @app.get("/health")
@@ -239,6 +285,10 @@ def episode_detail(code: str, request: Request, db: Session = Depends(get_db)):
     if ep is None:
         raise HTTPException(404, "Épisode introuvable")
     active_need = _active_need(ep)
+    prospective_event = _prospective_event(db, ep)
+    comparison_event = _comparison_event(db, ep)
+    prospective_payload = _audit_payload(prospective_event)
+    comparison_payload = _audit_payload(comparison_event)
     capability_query = db.scalar(
         select(CapabilityQuery)
         .where(CapabilityQuery.episode_id == ep.id, CapabilityQuery.active.is_(True))
@@ -264,6 +314,8 @@ def episode_detail(code: str, request: Request, db: Session = Depends(get_db)):
             "episode": ep,
             "need": active_need,
             "need_locked": bool(active_need and active_need.locked_at),
+            "prospective_payload": prospective_payload,
+            "comparison_payload": comparison_payload,
             "capability_query": capability_query,
             "reusable_knowledge": reusable_knowledge,
             "reuse_events": reuse_events,
@@ -291,6 +343,7 @@ def create_capability_query(
     if ep is None:
         raise HTTPException(404, "Épisode introuvable")
     need = _require_locked_need(db, ep)
+    _require_comparison_plan_if_prospective(db, ep)
 
     current = db.scalar(
         select(CapabilityQuery)
@@ -385,6 +438,9 @@ def add_public_search(
     relevant_found: str = Form("unknown"),
     mobilizable_found: str = Form("unknown"),
     analyst_minutes: int = Form(0),
+    method_name: str = Form("recherche structurée"),
+    search_scope: str = Form(""),
+    sources_consulted: str = Form(""),
     notes: str = Form(""),
     db: Session = Depends(get_db),
 ):
@@ -392,6 +448,7 @@ def add_public_search(
     if ep is None:
         raise HTTPException(404)
     _require_locked_need(db, ep)
+    _require_comparison_plan_if_prospective(db, ep)
     complete_b = complete == "yes"
     rel = None if relevant_found == "unknown" else relevant_found == "yes"
     mob = None if mobilizable_found == "unknown" else mobilizable_found == "yes"
@@ -399,6 +456,7 @@ def add_public_search(
     run = SearchRun(
         episode_id=ep.id,
         search_type="PUBLIQUE",
+        method_name=method_name.strip() or "recherche structurée",
         complete_enough_to_conclude=complete_b,
         public_relevant_found=rel,
         public_mobilizable_found=mob,
@@ -416,7 +474,19 @@ def add_public_search(
         entity_type="SEARCH_RUN",
         entity_id=run.id,
         episode_id=ep.id,
-        payload={"need_version_id": locked_need.id, "public_result": result, "complete": complete_b, "analyst_minutes": max(0, analyst_minutes)},
+        payload={
+            "need_version_id": locked_need.id,
+            "public_result": result,
+            "complete": complete_b,
+            "analyst_minutes": max(0, analyst_minutes),
+            "method_name": run.method_name,
+            "search_scope": search_scope.strip() or None,
+            "sources_consulted": [
+                ligne.strip()
+                for ligne in sources_consulted.replace(",", "\n").splitlines()
+                if ligne.strip()
+            ],
+        },
     )
     db.commit()
     return RedirectResponse(url=f"/episodes/{code}#recherche", status_code=303)
@@ -436,6 +506,7 @@ def add_decision(
     if ep is None:
         raise HTTPException(404)
     _require_locked_need(db, ep)
+    _require_comparison_plan_if_prospective(db, ep)
     d = Decision(
         episode_id=ep.id,
         selected_option=selected_option.strip(),
@@ -778,6 +849,265 @@ def add_reuse(
     )
     db.commit()
     return RedirectResponse(url=f"/episodes/{code}#reutilisation", status_code=303)
+
+
+@app.post("/episodes/{code}/need/update-initial")
+def update_initial_need(
+    code: str,
+    current_situation: str = Form(...),
+    desired_outcome: str = Form(...),
+    sponsor: str = Form(""),
+    latest_useful_date: str = Form(""),
+    need_preexisting_frontiere: str = Form("unknown"),
+    counterfactual_plan: str = Form(""),
+    initial_frontiere_hypothesis: str = Form(""),
+    db: Session = Depends(get_db),
+):
+    ep = db.scalar(select(Episode).where(Episode.code == code))
+    if ep is None:
+        raise HTTPException(404, "Épisode introuvable")
+    need = db.scalar(
+        select(NeedVersion)
+        .where(NeedVersion.episode_id == ep.id, NeedVersion.active.is_(True))
+        .order_by(NeedVersion.version.desc())
+        .limit(1)
+    )
+    if need is None:
+        raise HTTPException(409, "Aucune version active du besoin")
+    if need.locked_at is not None:
+        raise HTTPException(409, "L’état initial est déjà verrouillé. Utiliser une révision versionnée.")
+    if need_preexisting_frontiere not in {"yes", "no", "unknown"}:
+        raise HTTPException(400, "Qualification de préexistence invalide.")
+    deadline = date.fromisoformat(latest_useful_date) if latest_useful_date else None
+    need.current_situation = current_situation.strip()
+    need.desired_outcome = desired_outcome.strip()
+    need.sponsor = sponsor.strip() or None
+    need.latest_useful_date = deadline
+    need.counterfactual_plan = counterfactual_plan.strip() or None
+    need.initial_frontiere_hypothesis = initial_frontiere_hypothesis.strip() or None
+    ep.need_preexisting_frontiere = (
+        None if need_preexisting_frontiere == "unknown" else need_preexisting_frontiere == "yes"
+    )
+    _audit(
+        db,
+        event_type="ETAT_INITIAL_MIS_A_JOUR",
+        entity_type="NEED_VERSION",
+        entity_id=need.id,
+        episode_id=ep.id,
+        payload={
+            "version": need.version,
+            "preexistence_qualifiee": ep.need_preexisting_frontiere is not None,
+            "responsable_present": bool(need.sponsor),
+            "echeance_presente": bool(need.latest_useful_date),
+        },
+    )
+    db.commit()
+    return RedirectResponse(url=f"/episodes/{code}#prospectif", status_code=303)
+
+
+@app.post("/episodes/{code}/prospective/lock")
+def lock_prospective_baseline(code: str, db: Session = Depends(get_db)):
+    ep = db.scalar(
+        select(Episode)
+        .options(selectinload(Episode.organization))
+        .where(Episode.code == code)
+    )
+    if ep is None:
+        raise HTTPException(404, "Épisode introuvable")
+    if ep.synthetic or ep.nature != "actuel":
+        raise HTTPException(409, "Le pré-enregistrement prospectif exige un cas réel et actuel.")
+    if _prospective_event(db, ep) is not None:
+        raise HTTPException(409, "Ce cas possède déjà un état initial prospectif scellé.")
+    if db.scalar(select(func.count(SearchRun.id)).where(SearchRun.episode_id == ep.id)):
+        raise HTTPException(409, "Une recherche existe déjà : le point zéro prospectif ne peut plus être scellé.")
+
+    need = db.scalar(
+        select(NeedVersion)
+        .where(NeedVersion.episode_id == ep.id, NeedVersion.active.is_(True))
+        .order_by(NeedVersion.version.desc())
+        .limit(1)
+    )
+    if need is None:
+        raise HTTPException(409, "Aucune version active du besoin")
+
+    preuves = list(
+        db.scalars(
+            select(Evidence)
+            .where(Evidence.episode_id == ep.id)
+            .order_by(Evidence.id)
+        ).all()
+    )
+    manquants: list[str] = []
+    if not need.current_situation.strip():
+        manquants.append("situation")
+    if not need.desired_outcome.strip():
+        manquants.append("résultat recherché")
+    if not need.sponsor:
+        manquants.append("responsable opérationnel")
+    if ep.need_preexisting_frontiere is None:
+        manquants.append("préexistence du besoin")
+    if not need.latest_useful_date:
+        manquants.append("échéance utile")
+    if not need.counterfactual_plan:
+        manquants.append("situation sans FRONTIÈRE")
+    if not need.initial_frontiere_hypothesis:
+        manquants.append("hypothèse initiale")
+    if not preuves:
+        manquants.append("au moins une preuve initiale")
+    if manquants:
+        raise HTTPException(
+            409,
+            "Pré-enregistrement prospectif impossible : " + ", ".join(manquants),
+        )
+
+    if need.locked_at is None:
+        need.locked_at = datetime.now(timezone.utc)
+
+    baseline = {
+        "schema_version": "prospectif-v1",
+        "episode": {
+            "code": ep.code,
+            "organization": ep.organization.name,
+            "organizational_unit": ep.organizational_unit,
+            "title": ep.title,
+            "nature": ep.nature,
+            "detected_at": ep.detected_at.isoformat(),
+            "need_preexisting_frontiere": ep.need_preexisting_frontiere,
+            "demand_level": ep.demand_level,
+        },
+        "need": {
+            "version": need.version,
+            "current_situation": need.current_situation,
+            "desired_outcome": need.desired_outcome,
+            "sponsor": need.sponsor,
+            "latest_useful_date": need.latest_useful_date.isoformat(),
+            "counterfactual_plan": need.counterfactual_plan,
+            "initial_frontiere_hypothesis": need.initial_frontiere_hypothesis,
+            "locked_at": need.locked_at.isoformat(),
+        },
+        "evidence": [
+            {
+                "id": preuve.id,
+                "title": preuve.title,
+                "evidence_type": preuve.evidence_type,
+                "source": preuve.source,
+                "evidence_date": preuve.evidence_date.isoformat() if preuve.evidence_date else None,
+                "quality": preuve.quality,
+                "data_environment": preuve.data_environment,
+            }
+            for preuve in preuves
+        ],
+    }
+    baseline_sha256 = _empreinte(baseline)
+    ep.status = "PRE_ENREGISTRE"
+    _audit(
+        db,
+        event_type="CAS_PROSPECTIF_PRE_ENREGISTRE",
+        entity_type="EPISODE",
+        entity_id=ep.id,
+        episode_id=ep.id,
+        payload={
+            "schema_version": "prospectif-v1",
+            "baseline_sha256": baseline_sha256,
+            "baseline": baseline,
+        },
+    )
+    db.commit()
+    return RedirectResponse(url=f"/episodes/{code}#prospectif", status_code=303)
+
+
+@app.post("/episodes/{code}/comparison/lock")
+def lock_paired_comparison(
+    code: str,
+    usual_method: str = Form(...),
+    frontiere_method: str = Form("FRONTIÈRE"),
+    usual_owner: str = Form(...),
+    frontiere_owner: str = Form(...),
+    primary_outcome: str = Form(...),
+    observation_date: str = Form(...),
+    interference_policy: str = Form(...),
+    usual_budget_minutes: int = Form(0),
+    frontiere_budget_minutes: int = Form(0),
+    db: Session = Depends(get_db),
+):
+    ep = db.scalar(select(Episode).where(Episode.code == code))
+    if ep is None:
+        raise HTTPException(404, "Épisode introuvable")
+    baseline_event = _prospective_event(db, ep)
+    if baseline_event is None:
+        raise HTTPException(409, "Sceller d’abord l’état initial prospectif.")
+    if _comparison_event(db, ep) is not None:
+        raise HTTPException(409, "Le plan de comparaison appariée est déjà verrouillé.")
+    if db.scalar(select(func.count(SearchRun.id)).where(SearchRun.episode_id == ep.id)):
+        raise HTTPException(409, "Une recherche existe déjà : la comparaison ne serait plus pré-enregistrée.")
+
+    methode_habituelle = usual_method.strip()
+    methode_frontiere = frontiere_method.strip()
+    proprietaire_habituel = usual_owner.strip()
+    proprietaire_frontiere = frontiere_owner.strip()
+    mesure = primary_outcome.strip()
+    regle_interference = interference_policy.strip()
+    if not all([methode_habituelle, methode_frontiere, proprietaire_habituel, proprietaire_frontiere, mesure, regle_interference]):
+        raise HTTPException(400, "Tous les champs du plan de comparaison sont obligatoires.")
+    if methode_habituelle.casefold() == methode_frontiere.casefold():
+        raise HTTPException(400, "Les deux méthodes comparées doivent être distinctes.")
+
+    date_observation = date.fromisoformat(observation_date)
+    if date_observation < date.today():
+        raise HTTPException(400, "La date d’observation doit être aujourd’hui ou dans le futur.")
+
+    baseline_payload = _audit_payload(baseline_event)
+    plan = {
+        "schema_version": "comparaison-appariee-v1",
+        "need_version_id": _require_locked_need(db, ep).id,
+        "baseline_sha256": baseline_payload.get("baseline_sha256"),
+        "usual_method": methode_habituelle,
+        "frontiere_method": methode_frontiere,
+        "usual_owner": proprietaire_habituel,
+        "frontiere_owner": proprietaire_frontiere,
+        "primary_outcome": mesure,
+        "observation_date": date_observation.isoformat(),
+        "interference_policy": regle_interference,
+        "usual_budget_minutes": max(0, usual_budget_minutes),
+        "frontiere_budget_minutes": max(0, frontiere_budget_minutes),
+        "registered_before_search": True,
+        "registered_at": datetime.now(timezone.utc).isoformat(),
+    }
+    plan_sha256 = _empreinte(plan)
+    ep.status = "COMPARAISON_PRE_ENREGISTREE"
+    _audit(
+        db,
+        event_type="COMPARAISON_APPARIEE_PRE_ENREGISTREE",
+        entity_type="EPISODE",
+        entity_id=ep.id,
+        episode_id=ep.id,
+        payload={
+            **plan,
+            "plan_sha256": plan_sha256,
+        },
+    )
+    db.commit()
+    return RedirectResponse(url=f"/episodes/{code}#prospectif", status_code=303)
+
+
+@app.get("/api/v1/episodes/{code}/preregistration")
+def api_preregistration(code: str, db: Session = Depends(get_db)) -> dict:
+    ep = db.scalar(select(Episode).where(Episode.code == code))
+    if ep is None:
+        raise HTTPException(404, "Épisode introuvable")
+    baseline_event = _prospective_event(db, ep)
+    comparison_event = _comparison_event(db, ep)
+    return {
+        "episode": ep.code,
+        "prospective_baseline": {
+            "occurred_at": baseline_event.occurred_at.isoformat(),
+            "payload": _audit_payload(baseline_event),
+        } if baseline_event else None,
+        "paired_comparison": {
+            "occurred_at": comparison_event.occurred_at.isoformat(),
+            "payload": _audit_payload(comparison_event),
+        } if comparison_event else None,
+    }
 
 
 @app.post("/episodes/{code}/need/lock")

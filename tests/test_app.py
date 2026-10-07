@@ -1,3 +1,5 @@
+import json
+
 from fastapi.testclient import TestClient
 from sqlalchemy import delete, select
 
@@ -580,3 +582,172 @@ def test_holdout_prediction_template_covers_all_cases():
     manifest = json.loads(Path("evaluation/jeu_reserve_v1_manifeste.json").read_text(encoding="utf-8"))
     assert manifest["nombre_cas"] == 10
     assert len(manifest["empreinte_sha256_references"]) == 64
+
+
+def _create_prospective_candidate(client):
+    response = client.post(
+        "/episodes",
+        data={
+            "organization_name": "Administration prospective",
+            "organizational_unit": "Direction test",
+            "title": "Besoin prospectif réel",
+            "current_situation": "Une mission actuelle exige une expertise technique qui n'est pas disponible dans l'équipe.",
+            "desired_outcome": "Identifier et mobiliser une ressource avant l'échéance opérationnelle.",
+            "demand_level": "D2",
+            "sensitivity_level": "1",
+            "need_preexisting_frontiere": "yes",
+            "sponsor": "Responsable opérationnel",
+            "latest_useful_date": "2026-10-20",
+            "counterfactual_plan": "Poursuivre la recherche manuelle et le recrutement ordinaire.",
+            "initial_frontiere_hypothesis": "Une capacité publique existante peut être identifiée avant une recherche extérieure.",
+        },
+        follow_redirects=False,
+    )
+    location = response.headers["location"]
+    preuve = client.post(
+        location + "/evidence",
+        data={
+            "title": "Note initiale du responsable",
+            "evidence_type": "note",
+            "source": "responsable opérationnel",
+            "evidence_date": "2026-10-07",
+            "quality": "B",
+            "sensitivity_level": "1",
+            "data_environment": "RECHERCHE",
+        },
+        follow_redirects=False,
+    )
+    assert preuve.status_code == 303
+    return location
+
+
+def test_prospective_baseline_requires_complete_point_zero():
+    reset_db()
+    with TestClient(app) as client:
+        response = client.post(
+            "/episodes",
+            data={
+                "organization_name": "Administration prospective incomplète",
+                "title": "Besoin incomplet",
+                "current_situation": "Situation actuelle suffisamment décrite.",
+                "desired_outcome": "Résultat observable.",
+                "demand_level": "D2",
+                "sensitivity_level": "1",
+                "need_preexisting_frontiere": "unknown",
+                "counterfactual_plan": "Voie ordinaire.",
+                "initial_frontiere_hypothesis": "Hypothèse initiale.",
+            },
+            follow_redirects=False,
+        )
+        location = response.headers["location"]
+        locked = client.post(location + "/prospective/lock", follow_redirects=False)
+        assert locked.status_code == 409
+        detail = locked.json()["detail"]
+        assert "responsable opérationnel" in detail
+        assert "préexistence du besoin" in detail
+        assert "échéance utile" in detail
+        assert "preuve initiale" in detail
+
+
+def test_prospective_baseline_is_hashed_and_auditable():
+    reset_db()
+    with TestClient(app) as client:
+        location = _create_prospective_candidate(client)
+        locked = client.post(location + "/prospective/lock", follow_redirects=False)
+        assert locked.status_code == 303
+        api = client.get(location.replace("/episodes/", "/api/v1/episodes/") + "/preregistration")
+        assert api.status_code == 200
+        payload = api.json()["prospective_baseline"]["payload"]
+        assert payload["schema_version"] == "prospectif-v1"
+        assert len(payload["baseline_sha256"]) == 64
+        assert payload["baseline"]["need"]["sponsor"] == "Responsable opérationnel"
+        assert len(payload["baseline"]["evidence"]) == 1
+
+    with SessionLocal() as db:
+        event = db.scalar(select(AuditEvent).where(AuditEvent.event_type == "CAS_PROSPECTIF_PRE_ENREGISTRE"))
+        assert event is not None
+        stored = json.loads(event.payload_json)
+        assert stored["baseline"]["episode"]["need_preexisting_frontiere"] is True
+
+
+def test_prospective_case_blocks_frontiere_before_paired_plan():
+    reset_db()
+    with TestClient(app) as client:
+        location = _create_prospective_candidate(client)
+        assert client.post(location + "/prospective/lock", follow_redirects=False).status_code == 303
+        blocked = client.post(
+            location + "/public-search",
+            data={"complete": "no", "analyst_minutes": "5"},
+            follow_redirects=False,
+        )
+        assert blocked.status_code == 409
+        blocked_query = client.post(
+            location + "/capability-query",
+            data={
+                "raw_request": "Besoin technique",
+                "domain": "numérique",
+                "function": "expertise",
+            },
+            follow_redirects=False,
+        )
+        assert blocked_query.status_code == 409
+
+
+def test_paired_plan_unlocks_search_and_preserves_preregistration():
+    reset_db()
+    with TestClient(app) as client:
+        location = _create_prospective_candidate(client)
+        assert client.post(location + "/prospective/lock", follow_redirects=False).status_code == 303
+        plan = client.post(
+            location + "/comparison/lock",
+            data={
+                "usual_method": "recherche manuelle habituelle",
+                "frontiere_method": "FRONTIÈRE",
+                "usual_owner": "Analyste A",
+                "frontiere_owner": "Analyste B",
+                "primary_outcome": "temps jusqu'à une ressource mobilisable",
+                "observation_date": "2026-10-20",
+                "interference_policy": "Les deux recherches restent séparées jusqu'au point de mesure.",
+                "usual_budget_minutes": "90",
+                "frontiere_budget_minutes": "90",
+            },
+            follow_redirects=False,
+        )
+        assert plan.status_code == 303
+        search = client.post(
+            location + "/public-search",
+            data={
+                "complete": "yes",
+                "relevant_found": "yes",
+                "mobilizable_found": "no",
+                "analyst_minutes": "35",
+                "method_name": "FRONTIÈRE Inside-First",
+                "search_scope": "administration concernée, ministère, opérateurs, recherche publique",
+                "sources_consulted": "ROAE\nAnnuaire DILA\nCOG",
+            },
+            follow_redirects=False,
+        )
+        assert search.status_code == 303
+        api = client.get(location.replace("/episodes/", "/api/v1/episodes/") + "/preregistration").json()
+        comparison = api["paired_comparison"]["payload"]
+        assert comparison["registered_before_search"] is True
+        assert len(comparison["plan_sha256"]) == 64
+
+    with SessionLocal() as db:
+        event = db.scalar(select(AuditEvent).where(AuditEvent.event_type == "RECHERCHE_PUBLIQUE_ENREGISTREE"))
+        payload = json.loads(event.payload_json)
+        assert payload["method_name"] == "FRONTIÈRE Inside-First"
+        assert payload["sources_consulted"] == ["ROAE", "Annuaire DILA", "COG"]
+
+
+def test_paired_plan_cannot_be_registered_after_search():
+    reset_db()
+    with TestClient(app) as client:
+        location = _create_locked_episode(client, "Cas déjà investigué")
+        assert client.post(
+            location + "/public-search",
+            data={"complete": "no", "analyst_minutes": "10"},
+            follow_redirects=False,
+        ).status_code == 303
+        late = client.post(location + "/prospective/lock", follow_redirects=False)
+        assert late.status_code == 409
