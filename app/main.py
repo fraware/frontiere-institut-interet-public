@@ -289,6 +289,7 @@ def episode_detail(code: str, request: Request, db: Session = Depends(get_db)):
     comparison_event = _comparison_event(db, ep)
     prospective_payload = _audit_payload(prospective_event)
     comparison_payload = _audit_payload(comparison_event)
+    prospective_fingerprint = prospective_payload.get("baseline_sha256")
     capability_query = db.scalar(
         select(CapabilityQuery)
         .where(CapabilityQuery.episode_id == ep.id, CapabilityQuery.active.is_(True))
@@ -315,6 +316,7 @@ def episode_detail(code: str, request: Request, db: Session = Depends(get_db)):
             "need": active_need,
             "need_locked": bool(active_need and active_need.locked_at),
             "prospective_payload": prospective_payload,
+            "prospective_fingerprint": prospective_fingerprint,
             "comparison_payload": comparison_payload,
             "capability_query": capability_query,
             "reusable_knowledge": reusable_knowledge,
