@@ -15,7 +15,9 @@ Le croisement avec les entités locales résout les **158 références du ROAE**
 
 La compétence géographique massive est interrogée directement auprès de l'API DILA au moment de la requête. Elle n'est pas copiée intégralement dans Git.
 
-Le Code officiel géographique de l’Insee fournit un espace d’identité distinct pour les unités territoriales. Les nœuds `FRONTIERE-TERR-COG-*` représentent des territoires et circonscriptions ; ils restent séparés des organisations `FRONTIERE-INST-*`. Les codes CTCD sont conservés comme données source sans être assimilés à des territoires, car le fichier Insee correspondant décrit des collectivités publiques exerçant les compétences départementales.
+Le Code officiel géographique de l’Insee fournit un espace d’identité distinct pour les unités territoriales. Le millésime 2026 produit **40 345 unités territoriales** et **150 421 relations territoriales**. Les nœuds `FRONTIERE-TERR-COG-*` restent séparés des organisations `FRONTIERE-INST-*`. Les codes CTCD sont conservés comme données source sans être assimilés à des territoires, car le fichier Insee correspondant décrit des collectivités publiques exerçant les compétences départementales.
+
+Le croisement Annuaire–COG résout **305 449 / 305 456** références vers le COG courant. Les **7 références résiduelles** sont toutes expliquées par les tables historiques officielles du COG ; aucune ne reste sans trace historique et aucune résolution ambiguë n’est observée.
 
 → [Référentiel territorial COG](../docs/INGESTION_COG_V1.md)
 
