@@ -62,7 +62,16 @@ def archive_cog(path: Path, *, unsafe=False, duplicate_commune=False):
         # Fichier historique volontairement présent : il ne doit pas être confondu avec le fichier courant.
         "v_commune_1943_2026.csv": (
             ["TYPECOM", "COM", "TNCC", "NCC", "NCCENR", "LIBELLE", "DATE_DEBUT", "DATE_FIN"],
-            [{"TYPECOM": "COM", "COM": "75056", "TNCC": "0", "NCC": "PARIS", "NCCENR": "Paris", "LIBELLE": "Paris", "DATE_DEBUT": "1943-01-01", "DATE_FIN": ""}],
+            [
+                {"TYPECOM": "COM", "COM": "75056", "TNCC": "0", "NCC": "PARIS", "NCCENR": "Paris", "LIBELLE": "Paris", "DATE_DEBUT": "1943-01-01", "DATE_FIN": ""},
+                {"TYPECOM": "COMD", "COM": "75057", "TNCC": "0", "NCC": "PARIS ANCIENNE", "NCCENR": "Paris ancienne", "LIBELLE": "Paris ancienne", "DATE_DEBUT": "2017-01-01", "DATE_FIN": "2026-01-01"},
+            ],
+        ),
+        "v_mvt_commune_2026.csv": (
+            ["MOD", "DATE_EFF", "TYPECOM_AV", "COM_AV", "TNCC_AV", "NCC_AV", "NCCENR_AV", "LIBELLE_AV", "TYPECOM_AP", "COM_AP", "TNCC_AP", "NCC_AP", "NCCENR_AP", "LIBELLE_AP"],
+            [
+                {"MOD": "35", "DATE_EFF": "2026-01-01", "TYPECOM_AV": "COMD", "COM_AV": "75057", "TNCC_AV": "0", "NCC_AV": "PARIS ANCIENNE", "NCCENR_AV": "Paris ancienne", "LIBELLE_AV": "Paris ancienne", "TYPECOM_AP": "COM", "COM_AP": "75056", "TNCC_AP": "0", "NCC_AP": "PARIS", "NCCENR_AP": "Paris", "LIBELLE_AP": "Paris"}
+            ],
         ),
     }
     with zipfile.ZipFile(path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
@@ -125,14 +134,16 @@ def test_archive_synthetique_produit_territoires_relations_et_resolution(tmp_pat
     assert paris["provenance"][0]["source_id"] == "insee_cog"
 
 
-def test_decouverte_ignore_le_fichier_historique(tmp_path):
+def test_decouverte_classe_les_tables_historiques_sans_les_canonicaliser(tmp_path):
     archive = tmp_path / "cog.zip"
     archive_cog(archive)
     with zipfile.ZipFile(archive) as zf:
         classes, inventaire = module.decouvrir_fichiers(zf)
     assert set(classes) == module.FAMILLES_REQUISES
     historique = next(x for x in inventaire if x["nom"] == "v_commune_1943_2026.csv")
-    assert historique["classe_detectee"] is None
+    evenements = next(x for x in inventaire if x["nom"] == "v_mvt_commune_2026.csv")
+    assert historique["classe_detectee"] == "communes_historiques"
+    assert evenements["classe_detectee"] == "evenements_communes"
 
 
 def test_refuse_traversee_de_repertoire(tmp_path):
@@ -180,6 +191,54 @@ def test_code_commune_ambigu_sans_commune_principale_reste_ambigu(tmp_path, monk
     assert rapport["resolues"] == 0
     assert rapport["ambigues"] == 1
 
+
+
+def test_code_absent_du_cog_courant_est_explique_par_historique_sans_remappage(tmp_path, monkeypatch):
+    preparer_sorties(tmp_path, monkeypatch)
+    module.DOSSIER_ANNUAIRE.mkdir(parents=True, exist_ok=True)
+    (module.DOSSIER_ANNUAIRE / "annuaire_local_000.jsonl").write_text(
+        json.dumps({"id": "X", "territoires": ["75057"]}) + "\n",
+        encoding="utf-8",
+    )
+    territoires = [{"id": "FRONTIERE-TERR-COG-COM-75056", "type_territoire": "COM", "code": "75056"}]
+    historique = [
+        {
+            "TYPECOM": "COMD",
+            "COM": "75057",
+            "NCCENR": "Paris ancienne",
+            "DATE_DEBUT": "2017-01-01",
+            "DATE_FIN": "2026-01-01",
+        }
+    ]
+    evenements = [
+        {
+            "MOD": "35",
+            "DATE_EFF": "2026-01-01",
+            "TYPECOM_AV": "COMD",
+            "COM_AV": "75057",
+            "NCCENR_AV": "Paris ancienne",
+            "TYPECOM_AP": "COM",
+            "COM_AP": "75056",
+            "NCCENR_AP": "Paris",
+        }
+    ]
+
+    rapport = module.resoudre_annuaire_cog(
+        territoires,
+        "2026-10-06T12:00:00+00:00",
+        historique_communes=historique,
+        evenements_communes=evenements,
+    )
+
+    assert rapport["resolues"] == 0
+    assert rapport["absentes"] == 1
+    assert rapport["absentes_courantes_expliquees_historiquement"] == 1
+    assert rapport["absentes_sans_trace_historique"] == 0
+    assert rapport["taux_references_expliquees"] == 1.0
+    exemple = rapport["exemples_absents_historiques"][0]
+    assert exemple["classification"] == "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT"
+    assert exemple["historique_cog"]["dernier_evenement_sortant"][0]["code_ap"] == "75056"
+    assert "cible_territoire" not in exemple
 
 def test_dependance_annuaire_force_recalcul(tmp_path, monkeypatch):
     preparer_sorties(tmp_path, monkeypatch)
