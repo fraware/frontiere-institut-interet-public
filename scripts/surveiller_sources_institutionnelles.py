@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
@@ -23,6 +24,12 @@ SEUILS_JOURS = {
     "hebdomadaire": 14,
     "reguliere": 120,
     "annuelle": 400,
+    "annuelle_avec_verification_hebdomadaire": 400,
+}
+
+CADENCES_SANS_FRAICHEUR = {
+    "evenementielle",
+    "a_chaque_remaniement",
 }
 
 
@@ -115,17 +122,33 @@ def analyser_date(valeur: str | None) -> datetime | None:
     if not valeur:
         return None
     try:
-        return datetime.fromisoformat(valeur.replace("Z", "+00:00"))
+        date = datetime.fromisoformat(valeur.replace("Z", "+00:00"))
+        return date if date.tzinfo is not None else date.replace(tzinfo=timezone.utc)
     except ValueError:
-        return None
+        try:
+            date = parsedate_to_datetime(valeur)
+            return date if date.tzinfo is not None else date.replace(tzinfo=timezone.utc)
+        except (TypeError, ValueError):
+            return None
 
 
 def fraicheur(source: dict, observation: dict, date_observation: datetime) -> dict:
     cadence = source.get("cadence_attendue")
+    if cadence in CADENCES_SANS_FRAICHEUR:
+        return {
+            "statut": "NON_APPLICABLE",
+            "seuil_jours": None,
+            "age_jours": None,
+        }
+
     seuil = SEUILS_JOURS.get(cadence)
     date_source = analyser_date(observation.get("derniere_mise_a_jour"))
     if date_source is None:
         date_source = analyser_date(observation.get("derniere_modification"))
+    if date_source is None:
+        date_source = analyser_date(observation.get("derniere_modification_http"))
+    if date_source is None:
+        date_source = analyser_date(source.get("reference_le"))
 
     if seuil is None or date_source is None:
         return {
@@ -244,6 +267,14 @@ def surveiller(registre: Path, sortie: Path, alertes_sortie: Path) -> tuple[dict
     return etat, alertes
 
 
+def lister_erreurs_critiques(etat: dict) -> list[str]:
+    return [
+        source["source_id"]
+        for source in etat.get("sources", [])
+        if source.get("erreur") and source.get("criticite") == "critique"
+    ]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Surveille les sources du référentiel institutionnel FRONTIÈRE.")
     parser.add_argument("--registre", type=Path, default=REGISTRE)
@@ -252,11 +283,7 @@ def main() -> None:
     args = parser.parse_args()
 
     etat, alertes = surveiller(args.registre, args.sortie, args.alertes)
-    erreurs_critiques = [
-        source["source_id"]
-        for source in etat["sources"]
-        if source.get("erreur") and source.get("criticite") == "critique"
-    ]
+    erreurs_critiques = lister_erreurs_critiques(etat)
 
     print(
         json.dumps(
@@ -268,6 +295,9 @@ def main() -> None:
             ensure_ascii=False,
         )
     )
+
+    if erreurs_critiques:
+        raise SystemExit(2)
 
 
 if __name__ == "__main__":
