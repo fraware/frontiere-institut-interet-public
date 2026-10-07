@@ -103,6 +103,14 @@ def test_resolution_annuaire_est_mesuree_sans_rapprochement_par_nom():
     assert rapport["resolues"] + rapport["ambigues"] + rapport["absentes"] == total
     assert rapport["taux_resolution"] is not None
     assert rapport["taux_resolution"] >= 0.95
+    assert (
+        rapport["absentes"]
+        == rapport["absentes_courantes_expliquees_historiquement"]
+        + rapport["absentes_sans_trace_historique"]
+    )
+    assert rapport["ambigues"] == 0
+    assert rapport["absentes_sans_trace_historique"] == 0
+    assert rapport["taux_references_expliquees"] == 1.0
     assert "aucune résolution par nom" in rapport["doctrine"]
 
 
