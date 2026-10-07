@@ -135,7 +135,7 @@ def _require_comparison_plan_if_prospective(db: Session, ep: Episode) -> None:
     if _prospective_event(db, ep) is not None and _comparison_event(db, ep) is None:
         raise HTTPException(
             409,
-            "Ce cas prospectif est pré-enregistré. Le plan de comparaison appariée doit être verrouillé avant toute intervention de FRONTIÈRE.",
+            "L’état initial de ce cas est déjà enregistré. Enregistrez les règles de comparaison des deux méthodes avant toute intervention de FRONTIÈRE.",
         )
 
 
@@ -917,11 +917,11 @@ def lock_prospective_baseline(code: str, db: Session = Depends(get_db)):
     if ep is None:
         raise HTTPException(404, "Épisode introuvable")
     if ep.synthetic or ep.nature != "actuel":
-        raise HTTPException(409, "Le pré-enregistrement prospectif exige un cas réel et actuel.")
+        raise HTTPException(409, "L’enregistrement de l’état initial exige un cas réel et actuel.")
     if _prospective_event(db, ep) is not None:
-        raise HTTPException(409, "Ce cas possède déjà un état initial prospectif scellé.")
+        raise HTTPException(409, "L’état initial de ce cas a déjà été enregistré et figé.")
     if db.scalar(select(func.count(SearchRun.id)).where(SearchRun.episode_id == ep.id)):
-        raise HTTPException(409, "Une recherche existe déjà : le point zéro prospectif ne peut plus être scellé.")
+        raise HTTPException(409, "Une recherche existe déjà : l’état initial ne peut plus être présenté comme antérieur à l’intervention.")
 
     need = db.scalar(
         select(NeedVersion)
@@ -959,7 +959,7 @@ def lock_prospective_baseline(code: str, db: Session = Depends(get_db)):
     if manquants:
         raise HTTPException(
             409,
-            "Pré-enregistrement prospectif impossible : " + ", ".join(manquants),
+            "Impossible de figer l’état initial : " + ", ".join(manquants),
         )
 
     if need.locked_at is None:
@@ -1037,11 +1037,11 @@ def lock_paired_comparison(
         raise HTTPException(404, "Épisode introuvable")
     baseline_event = _prospective_event(db, ep)
     if baseline_event is None:
-        raise HTTPException(409, "Sceller d’abord l’état initial prospectif.")
+        raise HTTPException(409, "Enregistrez et figez d’abord l’état initial.")
     if _comparison_event(db, ep) is not None:
-        raise HTTPException(409, "Le plan de comparaison appariée est déjà verrouillé.")
+        raise HTTPException(409, "Les règles de comparaison des deux méthodes sont déjà enregistrées.")
     if db.scalar(select(func.count(SearchRun.id)).where(SearchRun.episode_id == ep.id)):
-        raise HTTPException(409, "Une recherche existe déjà : la comparaison ne serait plus pré-enregistrée.")
+        raise HTTPException(409, "Une recherche existe déjà : les règles de comparaison ne seraient plus enregistrées avant l’intervention.")
 
     methode_habituelle = usual_method.strip()
     methode_frontiere = frontiere_method.strip()
@@ -1052,7 +1052,7 @@ def lock_paired_comparison(
     if not all([methode_habituelle, methode_frontiere, proprietaire_habituel, proprietaire_frontiere, mesure, regle_interference]):
         raise HTTPException(400, "Tous les champs du plan de comparaison sont obligatoires.")
     if methode_habituelle.casefold() == methode_frontiere.casefold():
-        raise HTTPException(400, "Les deux méthodes comparées doivent être distinctes.")
+        raise HTTPException(400, "Les deux méthodes comparées doivent être différentes.")
 
     date_observation = date.fromisoformat(observation_date)
     if date_observation < date.today():

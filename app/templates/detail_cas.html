@@ -20,7 +20,7 @@
     <dt>Échéance</dt><dd>{{ need.latest_useful_date or 'À préciser' }}</dd>
     <dt>Situation sans FRONTIÈRE</dt><dd>{{ need.counterfactual_plan or 'À verrouiller avant investigation' }}</dd>
     <dt>Hypothèse initiale</dt><dd>{{ need.initial_frontiere_hypothesis or 'À enregistrer' }}</dd>
-    <dt>Pré-enregistrement</dt><dd>{% if need.locked_at %}<span class="pill">Verrouillé · {{ need.locked_at.date() }}</span>{% else %}<span class="pill warning">À verrouiller</span>{% endif %}</dd>
+    <dt>Enregistrement initial</dt><dd>{% if need.locked_at %}<span class="pill">Verrouillé · {{ need.locked_at.date() }}</span>{% else %}<span class="pill warning">À verrouiller</span>{% endif %}</dd>
   </dl>
   {% endif %}
 </section>
@@ -55,19 +55,19 @@
 {% endif %}
 
 <section id="prospectif" class="panel">
-  <div class="panel-head"><h2>Pré-enregistrement prospectif</h2><span class="muted">point zéro avant intervention</span></div>
+  <div class="panel-head"><h2>État initial avant intervention</h2><span class="muted">situation avant intervention</span></div>
   {% if prospective_payload %}
-    <div class="callout"><strong>État initial prospectif scellé.</strong> Empreinte SHA-256 : <code>{{ prospective_fingerprint }}</code></div>
+    <div class="callout"><strong>État initial enregistré et figé.</strong> Empreinte SHA-256 : <code>{{ prospective_fingerprint }}</code></div>
   {% else %}
     <p>Le scellement prospectif exige un cas réel et actuel, un responsable opérationnel, une préexistence qualifiée, une échéance utile, la situation sans FRONTIÈRE, l’hypothèse initiale et au moins une preuve enregistrée. Aucune recherche ne doit avoir commencé.</p>
     <form method="post" action="/episodes/{{ episode.code }}/prospective/lock">
-      <button class="button primary" type="submit">Sceller le point zéro prospectif</button>
+      <button class="button primary" type="submit">Enregistrer et figer l’état initial</button>
     </form>
   {% endif %}
 
   {% if prospective_payload and comparison_payload %}
     <dl class="facts">
-      <dt>Plan apparié</dt><dd><span class="pill">Verrouillé</span></dd>
+      <dt>Règles de comparaison</dt><dd><span class="pill">Verrouillé</span></dd>
       <dt>Méthode habituelle</dt><dd>{{ comparison_payload.get('usual_method') }}</dd>
       <dt>Méthode FRONTIÈRE</dt><dd>{{ comparison_payload.get('frontiere_method') }}</dd>
       <dt>Mesure principale</dt><dd>{{ comparison_payload.get('primary_outcome') }}</dd>
@@ -76,7 +76,7 @@
       <dt>Empreinte du plan</dt><dd><code>{{ comparison_payload.get('plan_sha256') }}</code></dd>
     </dl>
   {% elif prospective_payload %}
-    <div class="callout warning">Aucune intervention de FRONTIÈRE ne peut commencer avant le verrouillage du plan de comparaison appariée.</div>
+    <div class="callout warning">Aucune intervention de FRONTIÈRE ne doit commencer avant l’enregistrement des règles de comparaison des deux méthodes.</div>
     <form method="post" action="/episodes/{{ episode.code }}/comparison/lock" class="form-grid compact">
       <label>Méthode habituelle<input required name="usual_method" placeholder="ex. recherche manuelle habituelle"></label>
       <label>Méthode FRONTIÈRE<input required name="frontiere_method" value="FRONTIÈRE"></label>
@@ -87,7 +87,7 @@
       <label>Budget méthode habituelle (min)<input type="number" min="0" name="usual_budget_minutes" value="0"></label>
       <label>Budget FRONTIÈRE (min)<input type="number" min="0" name="frontiere_budget_minutes" value="0"></label>
       <label class="wide">Règle d’interférence<textarea required name="interference_policy" rows="3" placeholder="Séparer les recherches jusqu’au point de mesure ; consigner tout échange de ressource entre les deux voies."></textarea></label>
-      <button class="button primary" type="submit">Verrouiller le plan apparié</button>
+      <button class="button primary" type="submit">Enregistrer les règles de comparaison</button>
     </form>
   {% endif %}
 </section>

@@ -36,9 +36,9 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | Document | Rôle |
 | --- | --- |
 | [REFERENTIEL_INSTITUTIONNEL_V1.md](REFERENTIEL_INSTITUTIONNEL_V1.md) | Périmètre, sources, graphe, temporalité, provenance et surveillance |
-| [INGESTION_ROAE_V1.md](INGESTION_ROAE_V1.md) | Ingestion de la colonne vertébrale DILA, statistiques et anomalies |
-| [INGESTION_ANNUAIRE_LOCAL_V1.md](INGESTION_ANNUAIRE_LOCAL_V1.md) | Couverture territoriale SL/SIL, croisements SI et compétence géographique |
-| [INGESTION_COG_V1.md](INGESTION_COG_V1.md) | Identité des territoires COG, relations géographiques et croisement avec l’Annuaire |
+| [INGESTION_ROAE_V1.md](INGESTION_ROAE_V1.md) | Source officielle de l’organisation administrative de l’État, couverture, hiérarchie et mise à jour |
+| [INGESTION_ANNUAIRE_LOCAL_V1.md](INGESTION_ANNUAIRE_LOCAL_V1.md) | Services et guichets locaux de l’Annuaire, hiérarchie et compétence géographique |
+| [INGESTION_COG_V1.md](INGESTION_COG_V1.md) | Territoires de référence de l’Insee, relations géographiques et raccordement avec l’Annuaire |
 | [../institutionnel/README.md](../institutionnel/README.md) | Organisation des fichiers du référentiel vivant |
 
 ## Exécution
@@ -46,7 +46,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | Document | Rôle |
 | --- | --- |
 | [PLAN_12_SEMAINES.md](PLAN_12_SEMAINES.md) | Séquence de recherche sur douze semaines |
-| [CAS_PROSPECTIF_V1.md](CAS_PROSPECTIF_V1.md) | Pré-enregistrement du point zéro, comparaison appariée et mesures du premier cas prospectif |
+| [CAS_PROSPECTIF_V1.md](CAS_PROSPECTIF_V1.md) | Enregistrement de l’état initial, comparaison de deux méthodes et mesures du premier cas prospectif |
 | [LANCEMENT_OPERATIONNEL.md](LANCEMENT_OPERATIONNEL.md) | Première vague opérationnelle |
 | [PASSAGE_DONNEES_EXECUTION_V1.md](PASSAGE_DONNEES_EXECUTION_V1.md) | Quatre demandes minimales vers les détenteurs de données |
 | [EXECUTION_TERRAIN_V1.md](EXECUTION_TERRAIN_V1.md) | Canaux vérifiés, messages prêts à envoyer et règles de relance |

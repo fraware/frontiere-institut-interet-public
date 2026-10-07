@@ -1,99 +1,94 @@
-# Cas prospectif — protocole d’exécution version 1
+# Premier cas prospectif — protocole d’exécution version 1
 
 ## Objet
 
-Le premier cas prospectif doit permettre d’observer la chaîne entière depuis un besoin actuel jusqu’à une contribution utile, tout en préservant un point zéro antérieur à l’intervention de FRONTIÈRE.
+Le premier cas prospectif doit permettre d’observer toute la chaîne, depuis un besoin actuel jusqu’à une contribution utile, en conservant une description vérifiable de la situation avant l’intervention de FRONTIÈRE.
 
-Ce protocole complète les tickets #4, #5 et #6. Il ne transforme pas une comparaison opérationnelle en estimation causale.
+Le protocole complète les tickets #4, #5 et #6. Une comparaison sur un seul cas reste une comparaison opérationnelle ; elle ne suffit pas à établir un effet causal général.
 
-## Condition d’admission
+## Conditions d’admission
 
-Un cas entre dans le protocole prospectif seulement si les éléments suivants sont enregistrés avant toute recherche menée par FRONTIÈRE :
+Le cas entre dans le protocole seulement si les éléments suivants sont enregistrés avant toute recherche menée par FRONTIÈRE :
 
 - situation actuelle délimitée ;
 - résultat observable recherché ;
 - responsable opérationnel ;
-- qualification explicite de la préexistence du besoin par rapport au contact avec FRONTIÈRE ;
+- indication explicite du fait que le besoin existait déjà, ou non, avant le contact avec FRONTIÈRE ;
 - échéance utile ;
-- plan que l’institution suivrait sans FRONTIÈRE ;
+- voie que l’institution suivrait sans FRONTIÈRE ;
 - hypothèse initiale de FRONTIÈRE ;
-- au moins une preuve initiale avec provenance.
+- au moins une preuve initiale avec sa provenance.
 
-Le logiciel refuse le scellement prospectif lorsqu’une recherche a déjà commencé.
+L’application refuse de figer l’état initial si une recherche a déjà commencé.
 
-## Scellement du point zéro
+## Enregistrer et figer l’état initial
 
-L’action `/episodes/{code}/prospective/lock` enregistre un événement `CAS_PROSPECTIF_PRE_ENREGISTRE`.
+L’application conserve l’identité du cas, la version active du besoin et les preuves disponibles à ce moment.
 
-Le contenu canonique comprend l’identité du cas, la version active du besoin et les preuves disponibles au moment du scellement. Une empreinte SHA-256 du point zéro est conservée dans le journal d’audit.
+Elle calcule également une empreinte SHA-256. Cette empreinte est une valeur calculée à partir du contenu enregistré. Elle permet de vérifier qu’une modification ultérieure n’a pas remplacé silencieusement l’état initial.
 
-Une modification ultérieure du besoin passe par une nouvelle version. Le point zéro historique reste inchangé.
+Le nom technique de l’événement conservé dans le journal est `CAS_PROSPECTIF_PRE_ENREGISTRE`.
 
-## Comparaison appariée
+Une modification ultérieure du besoin crée une nouvelle version. L’état initial historique reste consultable.
 
-Avant toute intervention de FRONTIÈRE sur un cas prospectif scellé, un plan apparié est obligatoire.
+## Enregistrer la comparaison avant toute intervention
 
-Le plan fixe :
+Avant que FRONTIÈRE commence sa recherche sur un cas dont l’état initial a été figé, les règles de comparaison doivent être enregistrées.
 
-- la méthode habituelle ;
+Elles précisent :
+
+- la méthode habituellement utilisée par l’institution ;
 - la méthode FRONTIÈRE ;
-- le responsable de chaque voie ;
+- le responsable de chaque recherche ;
 - la mesure principale ;
-- la date d’observation ;
-- la règle gouvernant les interactions entre les deux recherches ;
-- les budgets de temps prévus lorsque ceux-ci sont définis.
+- la date à laquelle le résultat sera observé ;
+- la règle applicable si les deux recherches échangent une information ou une ressource ;
+- les budgets de temps prévus, lorsqu’ils sont connus.
 
-Le plan reçoit sa propre empreinte SHA-256 et l’événement `COMPARAISON_APPARIEE_PRE_ENREGISTREE`.
+L’application calcule une seconde empreinte SHA-256 pour ces règles. Le nom technique de l’événement correspondant est `COMPARAISON_APPARIEE_PRE_ENREGISTREE`.
 
-Après scellement prospectif et avant ce second événement, l’application bloque la compilation de la requête de capacité, la recherche publique, l’enregistrement de ressources, l’évaluation de voies et la décision d’orientation.
+Tant que ces règles ne sont pas enregistrées, l’application bloque les actions qui constitueraient déjà une intervention de FRONTIÈRE : formalisation de la capacité recherchée, recherche dans le secteur public, ajout d’une ressource trouvée, évaluation d’une voie de résolution et décision d’orientation.
 
-## Recherche publique prioritaire
+## Première recherche dans le secteur public
 
-La première recherche documente séparément :
+La recherche enregistre séparément :
 
-- la méthode ;
-- le périmètre ;
+- la méthode utilisée ;
+- le périmètre examiné ;
 - les sources consultées ;
-- le temps analyste ;
-- la suffisance de la recherche ;
-- l’existence d’une capacité publique pertinente ;
-- sa mobilisabilité.
+- le temps humain consacré ;
+- le fait que la recherche soit suffisante ou encore incomplète ;
+- l’existence éventuelle d’une capacité publique pertinente ;
+- la possibilité réelle de mobiliser cette capacité.
 
-La conclusion reste l’une des quatre classes déjà définies :
-
-- P0 : recherche insuffisante ;
-- P1 : capacité publique trouvée et mobilisable ;
-- P2 : capacité publique trouvée, mobilisation difficile ;
-- P3 : aucune capacité publique pertinente trouvée après une recherche jugée suffisante.
+La conclusion est exprimée en toutes lettres : recherche insuffisante ; capacité publique mobilisable ; capacité publique trouvée avec obstacles de mobilisation ; ou aucune capacité publique pertinente trouvée après une recherche suffisamment approfondie.
 
 ## Mesures de la comparaison
 
-Le point de comparaison principal doit être fixé avant recherche. La mesure recommandée pour le premier cas est le temps jusqu’à une ressource réellement mobilisable pour la mission.
+La mesure principale recommandée pour le premier cas est le temps écoulé jusqu’à l’identification d’une ressource réellement mobilisable pour la mission.
 
 Conserver également :
 
 - temps humain total ;
-- temps de vérification ;
-- ressources utiles trouvées exclusivement par une méthode ;
-- moment et contenu des éventuelles interactions entre les deux voies ;
-- première contribution utile ;
+- temps consacré à la vérification ;
+- ressources utiles trouvées par une seule des deux méthodes ;
+- moment et contenu des interactions éventuelles entre les deux recherches ;
+- date de première contribution utile ;
 - résultat observé à la date fixée.
 
-La portée d’un seul cas reste descriptive et opérationnelle.
+## Vérifier l’antériorité des enregistrements
 
-## Preuve d’antériorité
+L’interface de programmation `/api/v1/episodes/{code}/preregistration` restitue l’état initial enregistré, les règles de comparaison et leurs empreintes pour les cas admissibles au prototype public.
 
-L’API `/api/v1/episodes/{code}/preregistration` expose, pour les cas admissibles au prototype public, les événements de pré-enregistrement et leurs empreintes.
-
-La séquence recherchée est :
+La séquence attendue est :
 
 ```text
 besoin actuel
 → preuves initiales
-→ point zéro prospectif scellé
-→ plan apparié scellé
-→ recherche habituelle et recherche FRONTIÈRE
-→ ressources et mobilisabilité
+→ état initial enregistré et figé
+→ règles de comparaison enregistrées
+→ méthode habituelle et méthode FRONTIÈRE
+→ ressources trouvées et vérification de leur mobilisation
 → première contribution utile
 → résultat à la date fixée
 ```
@@ -102,9 +97,9 @@ besoin actuel
 
 Le premier cas est exploitable pour l’apprentissage méthodologique si :
 
-1. le point zéro précède toute recherche de FRONTIÈRE ;
-2. le plan apparié précède l’intervention ;
+1. l’état initial est enregistré avant toute recherche de FRONTIÈRE ;
+2. les règles de comparaison sont enregistrées avant l’intervention ;
 3. les deux méthodes partent des mêmes informations initiales ;
-4. les interactions sont enregistrées ;
+4. les interactions entre les deux recherches sont enregistrées ;
 5. le résultat est observé à une date fixée à l’avance ;
-6. les limites de comparabilité restent explicites.
+6. les limites de comparaison restent explicites.

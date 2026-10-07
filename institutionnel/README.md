@@ -1,67 +1,54 @@
 # Référentiel institutionnel
 
-Ce répertoire contient la représentation canonique et la surveillance de l'écosystème institutionnel français utilisée par FRONTIÈRE.
+Ce répertoire contient les données normalisées utilisées par FRONTIÈRE pour retrouver des organismes publics, leurs relations et les territoires auxquels ils sont rattachés.
 
 ## État courant
 
 <!-- FRONTIERE:ETAT_INSTITUTIONNEL:DEBUT -->
-Le dernier cycle complet du référentiel associe les états suivants :
+Dernier cycle complet observé le **7 octobre 2026** :
 
-- ROAE observé le **2026-10-07** : **7 905 SI** et **8 073 relations hiérarchiques** ;
-- Annuaire local observé le **2026-10-07** : **93 782 enregistrements**, dont **7 905 SI**, **79 583 SL** et **6 294 SIL** ; les catégories SL/SIL produisent **85 877 entités locales** et **4 155 relations locales ou croisées** ;
-- COG observé le **2026-10-07** : **40 345 unités territoriales** et **150 421 relations territoriales**.
+- **7 905 services ou organismes** issus du Référentiel de l’organisation administrative de l’État, avec **8 073 relations hiérarchiques résolues** ;
+- **85 877 services et guichets locaux** issus de l’Annuaire de l’administration, avec **4 155 relations hiérarchiques locales ou croisées** ;
+- **40 345 unités territoriales** issues du Code officiel géographique de l’Insee, reliées par **150 421 relations territoriales**.
 
-Le croisement Annuaire–COG résout **305 447 / 305 454** références vers le COG courant. Les **7** références résiduelles sont toutes expliquées par les tables historiques officielles du COG ; **0** référence reste sans trace historique et **0** résolution est ambiguë.
+L’Annuaire contient **305 454 références à des codes Insee**. **305 447** correspondent à une unité territoriale actuelle. Les **7** références restantes correspondent à d’anciens codes attestés par l’historique officiel. Aucune référence ne reste inexpliquée et aucun cas n’est ambigu.
 
-Le croisement Annuaire–ROAE ferme **158 / 158** références SI absentes du seul snapshot ROAE. L’Annuaire local conserve **100** références hiérarchiques dont la cible n’apparaît dans aucune catégorie courante.
+Le croisement des deux publications de la Direction de l’information légale et administrative résout également les **158 références hiérarchiques** dont la cible manquait dans la publication consacrée à l’organisation de l’État. Il reste **100 références hiérarchiques locales** dont la cible n’apparaît dans aucune catégorie courante de l’Annuaire.
 <!-- FRONTIERE:ETAT_INSTITUTIONNEL:FIN -->
 
-La compétence géographique massive est interrogée directement auprès de l'API DILA au moment de la requête. Elle n'est pas copiée intégralement dans Git.
+Le jeu de compétence géographique de l’Annuaire contient plusieurs millions d’enregistrements. Il est interrogé directement auprès de la source officielle au moment d’une recherche et n’est pas copié intégralement dans Git.
 
-Le Code officiel géographique de l’Insee fournit un espace d’identité distinct pour les unités territoriales. Les nœuds `FRONTIERE-TERR-COG-*` restent séparés des organisations `FRONTIERE-INST-*`. Les codes CTCD sont conservés comme données source sans être assimilés à des territoires, car le fichier Insee correspondant décrit des collectivités publiques exerçant les compétences départementales.
+Les territoires de l’Insee restent séparés des organisations. Une commune constitue un territoire ; une mairie constitue une organisation.
 
-→ [Référentiel territorial COG](../docs/INGESTION_COG_V1.md)
-
-→ [Ingestion du ROAE](../docs/INGESTION_ROAE_V1.md)  
-→ [Ingestion de l'Annuaire local](../docs/INGESTION_ANNUAIRE_LOCAL_V1.md)
+→ [Organisation administrative de l’État](../docs/INGESTION_ROAE_V1.md)  
+→ [Services et guichets locaux](../docs/INGESTION_ANNUAIRE_LOCAL_V1.md)  
+→ [Territoires de référence de l’Insee](../docs/INGESTION_COG_V1.md)
 
 ## Fichiers de contrôle
 
-- `sources_v1.json` : registre des sources officielles ;
-- `schema_entite_v1.json` : schéma d'une entité institutionnelle ;
-- `schema_relation_v1.json` : schéma d'une relation institutionnelle ;
-- `couverture_cible_v1.json` : périmètres attendus et critères de couverture ;
-- `etat_sources.json` : état courant des sources après surveillance ;
+- `sources_v1.json` : liste des sources officielles et fréquence attendue de mise à jour ;
+- `schema_entite_v1.json` : structure d’un objet institutionnel ;
+- `schema_relation_v1.json` : structure d’une relation entre organisations ;
+- `couverture_cible_v1.json` : familles d’organisations attendues et mesures de couverture ;
+- `etat_sources.json` : état des sources après la dernière vérification ;
 - `alertes_sources.json` : changements ou erreurs détectés ;
-- `statistiques_roae.json` : couverture du snapshot DILA courant ;
-- `anomalies_roae.json` : références hiérarchiques qui ne peuvent pas être résolues dans le snapshot SI ;
-- `instantanes/roae_manifest.json` : provenance, empreinte de l'archive et empreintes des partitions ;
-- `entites/roae/` : 32 partitions des entités canoniques ;
-- `relations/roae/` : 16 partitions des relations hiérarchiques ;
-- `statistiques_annuaire_local.json` : couverture des catégories SL et SIL ;
+- `statistiques_roae.json` : statistiques de la source sur l’organisation administrative de l’État ;
+- `anomalies_roae.json` : références hiérarchiques absentes de cette source isolée ;
+- `statistiques_annuaire_local.json` : statistiques des services et guichets locaux ;
 - `anomalies_annuaire_local.json` : références hiérarchiques locales non résolues ;
-- `resolution_roae_local.json` : résolution croisée des références SI vers les objets locaux ;
-- `instantanes/annuaire_local_manifest.json` : provenance et empreinte sémantique de l'export local ;
-- `entites/locales/` : 128 partitions des entités SL/SIL ;
-- `relations/locales/` : 32 partitions des relations locales et croisées ;
-- `schema_territoire_v1.json` : schéma des unités territoriales de référence ;
-- `schema_relation_territoriale_v1.json` : schéma des relations entre territoires ;
-- `instantanes/cog_manifest.json` : provenance et empreintes du millésime COG courant ;
-- `statistiques_cog.json` : couverture du référentiel territorial ;
-- `anomalies_cog.json` : relations territoriales dont une cible exacte reste absente ;
-- `resolution_annuaire_cog.json` : mesure du raccordement des codes Insee publiés par l’Annuaire ;
-- `territoires/cog/` et `relations/territoriales/cog/` : partitions du graphe territorial.
+- `resolution_roae_local.json` : résultat du croisement entre les deux publications DILA ;
+- `statistiques_cog.json` : statistiques des territoires de référence ;
+- `anomalies_cog.json` : relations territoriales dont une cible exacte manque ;
+- `resolution_annuaire_cog.json` : raccordement des codes Insee de l’Annuaire aux territoires.
+
+Les répertoires `entites/`, `relations/`, `territoires/` et `instantanes/` contiennent les données normalisées et les informations permettant de vérifier leur provenance.
 
 ## Principes
 
-Une entité canonique n'est jamais identifiée par son seul nom.
-
-Chaque fait important conserve sa provenance.
-
-Les états historiques restent reconstructibles.
-
-Une information inférée reste distinguée d'une information explicitement publiée.
-
-Les fichiers bruts volumineux ne sont pas recopiés inutilement dans l'historique Git. Le dépôt conserve la représentation canonique, les références de source, les empreintes et les événements de changement.
+- une organisation n’est jamais identifiée par son seul nom ;
+- chaque fait important conserve sa provenance ;
+- les états historiques restent reconstructibles ;
+- une information déduite reste distincte d’une information publiée ;
+- les fichiers bruts très volumineux ne sont pas recopiés inutilement dans l’historique Git.
 
 La conception détaillée figure dans [le document de référence](../docs/REFERENTIEL_INSTITUTIONNEL_V1.md).

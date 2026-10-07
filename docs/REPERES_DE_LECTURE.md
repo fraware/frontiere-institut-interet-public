@@ -1,18 +1,18 @@
 # Repères de lecture
 
-Ce document explique les termes utilisés dans FRONTIÈRE. Les documents principaux doivent rester compréhensibles sans mémoriser de codes.
+Ce document définit les mots utilisés dans FRONTIÈRE. Les autres documents doivent rester compréhensibles sans revenir à cette page.
 
 ## Cas
 
-Un cas est une situation réelle, délimitée dans le temps, dans laquelle une institution publique a besoin d'une capacité scientifique ou technique pour produire un résultat précis.
+Un cas est une situation réelle, délimitée dans le temps, dans laquelle une institution publique a besoin d’une capacité scientifique ou technique pour produire un résultat précis.
 
 ## Besoin
 
-Le besoin décrit le problème à résoudre, le résultat recherché, l'échéance et ce qui se passerait si FRONTIÈRE n'intervenait pas.
+Le besoin décrit la situation, le résultat recherché, le responsable opérationnel, l’échéance utile et la voie que l’institution suivrait sans intervention de FRONTIÈRE.
 
-## Capacité
+## Capacité nécessaire
 
-La capacité décrit ce qu'il faut savoir faire. Elle ne désigne pas encore une personne ou une organisation.
+La capacité nécessaire décrit ce qu’il faut savoir faire. Elle ne désigne pas encore une personne ou une organisation.
 
 ## Ressource
 
@@ -20,23 +20,34 @@ Une ressource est ce qui peut apporter la capacité : personne, équipe, laborat
 
 ## Voie de résolution
 
-La voie de résolution décrit la manière d'utiliser une ressource : mobilisation d'une capacité publique existante, expertise ponctuelle, coopération scientifique, recrutement, achat, formation ou autre mécanisme adapté.
+La voie de résolution décrit la manière d’utiliser une ressource : mobilisation d’une capacité publique existante, expertise ponctuelle, coopération scientifique, recrutement, achat, formation ou autre mécanisme adapté.
 
-## Maturité du besoin
+## État initial
 
-L'application conserve cinq niveaux techniques, de la simple idée à un besoin immédiatement activable. Les documents emploient en priorité les descriptions en toutes lettres.
+L’état initial est la description du cas enregistrée avant toute recherche menée par FRONTIÈRE. Il contient notamment le besoin, le résultat recherché, le responsable, l’échéance, la voie prévue sans FRONTIÈRE, l’hypothèse de départ et les preuves déjà disponibles.
 
-## Résultat d'une recherche publique
+Une empreinte cryptographique permet de vérifier plus tard que cet état enregistré n’a pas été modifié silencieusement. Une empreinte est une courte valeur calculée à partir du contenu ; toute modification du contenu produit normalement une valeur différente.
 
-L'application distingue quatre situations techniques : recherche encore insuffisante ; capacité publique trouvée et mobilisable ; capacité publique trouvée mais difficile à mobiliser ; recherche suffisamment approfondie sans capacité publique pertinente trouvée.
+## Résultat d’une recherche dans le secteur public
 
-## État d'une ressource
+Quatre conclusions sont possibles :
 
-L'application suit une ressource depuis sa simple identification jusqu'à sa mobilisation réelle. Les six étapes sont : identifiée, plausible, capacité vérifiée, conditions compatibles, engagement confirmé, mobilisable pour le cas précis.
+- la recherche reste trop incomplète pour conclure ;
+- une capacité publique pertinente a été trouvée et peut être mobilisée ;
+- une capacité publique pertinente a été trouvée, avec des obstacles de mobilisation ;
+- une recherche suffisamment approfondie n’a trouvé aucune capacité publique pertinente.
+
+## État d’une ressource
+
+Une ressource progresse par étapes : identifiée, plausiblement pertinente, capacité vérifiée, conditions compatibles, engagement confirmé, puis mobilisable pour le cas précis.
+
+## Comparaison de la méthode habituelle et de FRONTIÈRE
+
+Pour certains cas, les deux méthodes sont observées séparément à partir des mêmes informations de départ. La mesure principale et la date d’observation sont fixées avant le début de la recherche. Toute interaction entre les deux voies est enregistrée.
 
 ## Valeur ajoutée de FRONTIÈRE
 
-La valeur ajoutée est évaluée séparément sur cinq dimensions : résultat obtenu, délai, qualité, coût et apprentissage réutilisable. Ces dimensions ne sont pas fusionnées en une note unique.
+La valeur ajoutée est examinée séparément sur cinq dimensions : résultat obtenu, délai, qualité, coût et apprentissage réutilisable. Ces dimensions ne sont pas fusionnées en une note unique.
 
 ## Jeu de développement
 
@@ -44,8 +55,8 @@ Ensemble de cas publics utilisé pour améliorer le système. Les résultats sur
 
 ## Jeu réservé
 
-Ensemble de cas conservé à part pour évaluer une méthode sur des questions qu'elle n'a pas utilisées pendant son développement. Les réponses de référence sont gardées hors du dépôt public jusqu'à la fin de l'évaluation.
+Ensemble de cas conservé à part pour évaluer une méthode sur des questions qu’elle n’a pas utilisées pendant son développement. Les réponses de référence restent hors du dépôt public jusqu’à la fin de l’évaluation.
 
 ## Précision, rappel et mesure harmonique
 
-La précision mesure la part des propositions faites qui sont correctes. Le rappel mesure la part des éléments attendus qui ont été retrouvés. La mesure harmonique combine les deux et pénalise aussi bien les omissions que les propositions excessives.
+La précision mesure la part des propositions faites qui sont correctes. Le rappel mesure la part des éléments attendus qui ont été retrouvés. La mesure harmonique combine les deux et pénalise les omissions comme les propositions excessives.

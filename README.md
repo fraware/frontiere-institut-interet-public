@@ -50,27 +50,27 @@ Les décisions institutionnelles restent humaines. Le logiciel structure les fai
 | Cas prospectifs complets observés | 0 |
 
 <!-- FRONTIERE:ETAT_REFERENTIEL:DEBUT -->
-| Référentiel institutionnel | État |
+| Couverture institutionnelle | État |
 | --- | ---: |
-| Enregistrements du snapshot Annuaire DILA couverts | 93 782 / 93 782 |
-| Entités SI du ROAE | 7 905 |
-| Entités locales SL/SIL | 85 877 |
-| Relations hiérarchiques SI résolues | 8 073 |
-| Relations hiérarchiques locales et croisées | 4 155 |
-| Unités territoriales COG 2026 | 40 345 |
-| Relations territoriales COG | 150 421 |
-| Références Annuaire vers le COG courant | 305 447 / 305 454 |
-| Références territoriales résiduelles expliquées par l’historique COG | 7 / 7 |
+| Enregistrements de l’Annuaire de l’administration couverts | 93 782 / 93 782 |
+| Services issus du Référentiel de l’organisation administrative de l’État | 7 905 |
+| Services et guichets locaux issus de l’Annuaire | 85 877 |
+| Relations hiérarchiques résolues dans l’organisation de l’État | 8 073 |
+| Relations hiérarchiques résolues parmi les services locaux | 4 155 |
+| Unités territoriales issues du Code officiel géographique 2026 | 40 345 |
+| Relations entre unités territoriales | 150 421 |
+| Références de l’Annuaire reliées à une unité territoriale actuelle | 305 447 / 305 454 |
+| Références territoriales anciennes expliquées par l’historique officiel | 7 / 7 |
 <!-- FRONTIERE:ETAT_REFERENTIEL:FIN -->
 
-Les indicateurs empiriques du premier tableau ont pour date de référence le 6 octobre 2026. Le bloc du référentiel institutionnel est régénéré après chaque cycle complet à partir des fichiers statistiques canoniques. Aucun de ces nombres ne constitue une estimation de fréquence à l’échelle de l’administration française.
+Les indicateurs empiriques du premier tableau ont pour date de référence le 6 octobre 2026. Le tableau institutionnel est régénéré après chaque cycle complet à partir des fichiers statistiques de référence. Aucun de ces nombres ne constitue une estimation de fréquence à l’échelle de l’administration française.
 
 La principale frontière empirique se situe désormais entre trois explications : difficulté à identifier une ressource, difficulté à la mobiliser et difficulté à transformer sa mobilisation en contribution utile. Le projet entre dans une phase de collecte de données proches de l’exécution.
 
 → [État détaillé du projet](docs/ETAT_DU_PROJET.md)  
-→ [État du référentiel DILA](docs/INGESTION_ROAE_V1.md)  
+→ [Organisation administrative de l’État : source, couverture et mise à jour](docs/INGESTION_ROAE_V1.md)  
 → [Couverture territoriale de l'Annuaire](docs/INGESTION_ANNUAIRE_LOCAL_V1.md)  
-→ [Référentiel territorial COG 2026](docs/INGESTION_COG_V1.md)
+→ [Territoires de référence de l’Insee](docs/INGESTION_COG_V1.md)
 
 ## Principes de recherche
 

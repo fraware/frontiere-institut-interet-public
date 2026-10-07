@@ -1,10 +1,10 @@
-# Ingestion du Référentiel de l'organisation administrative de l'État
+# Organisation administrative de l’État — ingestion de la source DILA
 
 ## Objet
 
-Cette ingestion constitue la colonne vertébrale du graphe institutionnel de FRONTIÈRE.
+Ce document décrit l’importation du Référentiel de l’organisation administrative de l’État, publié par la Direction de l’information légale et administrative (DILA).
 
-La source est le Référentiel de l'organisation administrative de l'État produit par la Direction de l'information légale et administrative. La DILA indique que ce référentiel couvre environ six mille organismes, les services centraux jusqu'au niveau des bureaux, leurs missions, leur hiérarchie, leurs coordonnées et leurs responsables.
+Cette source fournit la structure de base utilisée par FRONTIÈRE pour représenter les ministères, services centraux, services déconcentrés, établissements et autres organismes présents dans ce référentiel. Elle contient notamment des identifiants, des liens hiérarchiques, des coordonnées, des responsables, des missions et des textes de référence lorsque ces informations sont publiées.
 
 Source officielle :
 
@@ -14,132 +14,82 @@ Fichier courant :
 
 https://echanges.dila.gouv.fr/OPENDATA/RefOrgaAdminEtat/FluxAnneeCourante/dila_refOrga_admin_Etat_fr_latest.zip
 
-## État observé au 6 octobre 2026
+## État observé le 7 octobre 2026
 
-La publication DILA ingérée le 6 octobre 2026 contient **7 903 services institutionnels**. FRONTIÈRE en produit **7 903 entités canoniques** et **8 071 relations hiérarchiques résolues**.
+La publication utilisée contient **7 905 services ou organismes**. FRONTIÈRE produit **7 905 objets normalisés** et **8 073 relations hiérarchiques résolues**.
 
-Parmi ces entités :
+Parmi ces objets :
 
-- **7 898** disposent d'un parent principal dérivé d'un lien DILA `Service Fils` ;
-- **5** n'ont pas de parent principal dans ce sous-graphe ;
-- **7 797** disposent d'au moins une coordonnée ;
-- **7 549** disposent d'au moins un responsable ;
-- **1 568** disposent d'une mission publiée dans le flux ;
-- **1 169** disposent d'au moins un texte de référence ;
-- **416** exposent un SIREN dans ce flux ;
-- **414** exposent un SIRET.
+- **7 900** disposent d’un parent principal directement justifié par la source ;
+- **5** n’ont pas de parent principal dans ce périmètre ;
+- **7 799** disposent d’au moins une coordonnée ;
+- **7 550** disposent d’au moins un responsable ;
+- **1 569** disposent d’une mission publiée ;
+- **1 171** disposent d’au moins un texte de référence ;
+- **417** exposent un numéro SIREN ;
+- **415** exposent un numéro SIRET.
 
-Le flux contient également **158 références hiérarchiques dont l'identifiant cible n'est pas présent dans le snapshot SI courant**. Elles sont conservées intégralement dans `institutionnel/anomalies_roae.json`. FRONTIÈRE ne crée aucune relation de remplacement par rapprochement de nom. Une partie de ces références pourra être résolue lors de l'ingestion des catégories locales de l'Annuaire de l'administration ; leur cause exacte reste à établir cas par cas.
+La source contient également **158 liens hiérarchiques dont la cible n’apparaît pas dans cette seule publication**. FRONTIÈRE les conserve dans `institutionnel/anomalies_roae.json`. Aucun lien de remplacement n’est créé à partir d’une ressemblance de nom.
 
-Archive observée :
+Le croisement avec l’Annuaire de l’administration résout les 158 cibles grâce à leurs identifiants exacts. L’anomalie reste néanmoins conservée comme propriété de cette source isolée : cela permet de distinguer ce que fournit chaque publication de ce que FRONTIÈRE obtient en les croisant.
 
-```text
-dila_refOrga_admin_Etat_fr_20261006.json
-SHA-256 ZIP: d9150c4e9ff5551019a02f4beefaeff956fb2fa3e3beb4c022b038204920c332
-```
-
-## Reproduction
+## Reproduire l’importation
 
 ```bash
 python scripts/ingerer_roae.py
 ```
 
-L'importeur télécharge la dernière archive DILA, exige un fichier JSON unique, vérifie l'unicité des identifiants et produit des données canoniques partitionnées.
+Le programme télécharge l’archive officielle, vérifie la structure du fichier et l’unicité des identifiants, puis produit les fichiers normalisés du dépôt.
 
-## Sorties
+## Fichiers produits
 
 ```text
 institutionnel/
   entites/roae/
-    roae_00.jsonl
-    ...
-    roae_31.jsonl
   relations/roae/
-    roae_hierarchie_00.jsonl
-    ...
-    roae_hierarchie_15.jsonl
-  instantanes/
-    roae_manifest.json
+  instantanes/roae_manifest.json
   statistiques_roae.json
   anomalies_roae.json
 ```
 
-Les partitions servent à maintenir des fichiers de taille raisonnable et à limiter les différences Git lors des mises à jour.
+Les sous-fichiers numérotés répartissent les données volumineuses en ensembles de taille raisonnable. Cette organisation limite aussi la taille des différences Git lors d’une mise à jour.
 
-## Transformation sans perte
+## Données normalisées et données source
 
-Chaque entité comporte deux représentations complémentaires.
+Chaque objet contient une représentation normalisée utilisée par FRONTIÈRE et l’enregistrement DILA d’origine dans `source_dila`.
 
-La première est canonique : identité, identifiants, mission, responsables, coordonnées, fondements juridiques et provenance.
-
-La seconde, `source_dila`, conserve l'enregistrement DILA original. L'ingestion ne supprime donc pas silencieusement un champ du producteur. Les améliorations futures du modèle canonique peuvent être recalculées depuis les enregistrements conservés.
+La copie de l’enregistrement d’origine permet de recalculer ultérieurement une nouvelle représentation sans perdre un champ publié par la source.
 
 ## Identité
 
-L'identifiant canonique est construit à partir de l'identifiant DILA :
+L’identifiant technique de FRONTIÈRE est construit à partir de l’identifiant DILA :
 
 ```text
 FRONTIERE-INST-DILA-<IDENTIFIANT DILA>
 ```
 
-Les SIREN, SIRET, anciens identifiants et identifiants partenaires restent enregistrés séparément. Aucun rapprochement entre organismes n'est effectué sur la seule similarité de leur nom.
+Les numéros SIREN, SIRET et autres identifiants restent enregistrés séparément. Deux organismes ne sont jamais fusionnés sur la seule ressemblance de leur nom.
 
 ## Hiérarchie
 
-Les spécifications DILA décrivent le champ `hierarchie` comme l'ensemble des services fils et des autres liens hiérarchiques fils.
+La source publie des liens entre services. FRONTIÈRE les traduit en relations explicites entre l’enfant et son parent.
 
-FRONTIÈRE représente un lien direct sous la forme :
+Le nom technique de cette relation est `DEPEND_DE`. Une relation est créée uniquement lorsque la cible est retrouvée par son identifiant exact.
 
-```text
-service enfant --DEPEND_DE--> service parent
-```
+Les références dont la cible manque restent dans le fichier d’anomalies. Elles ne sont pas complétées par supposition.
 
-Le type de hiérarchie publié par la DILA est conservé comme qualificatif de la relation.
+## Dates et provenance
 
-Une relation dont la cible ne peut pas être résolue par identifiant reste comptée dans `liens_hierarchiques_non_resolus`. Elle n'est pas inventée à partir du nom.
+FRONTIÈRE distingue la date à laquelle une information est observée des dates de création, modification ou diffusion fournies par la DILA.
 
-## Temporalité
+Une nouvelle exécution du programme ne crée pas artificiellement une nouvelle date d’observation si l’enregistrement source est identique. Une empreinte cryptographique de l’enregistrement permet cette comparaison.
 
-La date d'observation de FRONTIÈRE est enregistrée dans `observe_le`. Une entité dont l'enregistrement source reste inchangé conserve sa date d'observation précédente. Le système compare l'empreinte de chaque enregistrement afin d'éviter de transformer une simple nouvelle exécution en faux changement institutionnel.
-
-Les dates DILA de création, modification et diffusion sont conservées dans `metadata_dila`. Elles ne sont pas automatiquement transformées en période de validité juridique de l'organisme, car leur signification est celle du référentiel source.
-
-## Provenance et attribution
-
-Le manifeste conserve :
-
-- le producteur ;
-- la paternité demandée par la DILA ;
-- la Licence Ouverte 2.0 ;
-- la page du jeu de données ;
-- l'adresse longue de téléchargement ;
-- le nom du fichier ;
-- le nom du JSON contenu dans l'archive ;
-- la date d'observation ;
-- la dernière modification HTTP ;
-- l'empreinte SHA-256 de l'archive ;
-- les empreintes de toutes les partitions.
-
-Chaque entité conserve également une empreinte de son enregistrement source.
+Le fichier `institutionnel/instantanes/roae_manifest.json` conserve le producteur, la licence, la page du jeu de données, l’adresse de téléchargement, la date d’observation et les empreintes des fichiers utilisés et produits.
 
 ## Mise à jour
 
-Une action GitHub exécute l'ingestion quotidiennement. L'empreinte de l'archive et la version de transformation sont vérifiées avant recalcul. Elle ne crée un commit que si la source ou la transformation produit un état canonique différent.
+Une action GitHub vérifie quotidiennement la publication officielle. Elle recalcule les fichiers seulement si la source ou la méthode de transformation a changé. Un commit est créé uniquement lorsque l’état normalisé évolue.
 
-Le référentiel DILA devient ainsi un état versionné de l'organisation administrative de l'État, avec historique des transformations dans Git.
+## Limite
 
-## Limites de cette première ingestion
-
-Cette source constitue la colonne vertébrale de l'État. Elle ne représente pas à elle seule l'intégralité de l'écosystème public français.
-
-Les vagues suivantes doivent relier au même graphe :
-
-- collectivités et intercommunalités ;
-- opérateurs budgétaires ;
-- structures de recherche ;
-- établissements d'enseignement supérieur ;
-- santé et médico-social ;
-- participations publiques ;
-- textes et événements juridiques.
-
-La mesure de couverture reste le critère permettant de distinguer une source ingérée d'un périmètre réellement complet.
+Cette source décrit une part importante de l’organisation de l’État, mais elle ne représente pas à elle seule tout le secteur public français. Les services locaux, collectivités, intercommunalités, structures de recherche, établissements de santé, opérateurs budgétaires et participations publiques nécessitent d’autres sources.
