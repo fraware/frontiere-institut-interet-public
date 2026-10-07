@@ -1,0 +1,118 @@
+name: Ingestion du Code officiel géographique
+
+on:
+  schedule:
+    - cron: "19 6 * * 1"
+  workflow_run:
+    workflows: ["Ingestion de l'annuaire local"]
+    types: [completed]
+    branches: [main]
+  push:
+    branches: [main]
+    paths:
+      - "scripts/ingerer_cog.py"
+      - "institutionnel/schema_territoire_v1.json"
+      - "institutionnel/schema_relation_territoriale_v1.json"
+      - ".github/workflows/ingestion-cog.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "scripts/ingerer_cog.py"
+      - "tests/test_ingestion_cog.py"
+      - "tests/test_snapshot_cog.py"
+      - "institutionnel/schema_territoire_v1.json"
+      - "institutionnel/schema_relation_territoriale_v1.json"
+      - "docs/INGESTION_COG_V1.md"
+      - ".github/workflows/ingestion-cog.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('referentiel-cog-pr-{0}', github.event.pull_request.number) || 'referentiel-institutionnel-main' }}
+  cancel-in-progress: false
+
+jobs:
+  ingestion:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    name: Construire le référentiel territorial COG
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || 'main' }}
+          fetch-depth: 0
+
+      - name: Installer Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Installer les outils de test
+        run: python -m pip install "pytest>=8,<10"
+
+      - name: Vérifier l'importeur
+        run: python -m pytest -q tests/test_ingestion_cog.py
+
+      - name: Ingérer le millésime COG courant
+        run: python scripts/ingerer_cog.py
+
+      - name: Vérifier le snapshot territorial
+        run: python -m pytest -q tests/test_snapshot_cog.py
+
+      - name: Vérifier les invariants essentiels
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          stats = json.loads(Path("institutionnel/statistiques_cog.json").read_text(encoding="utf-8"))
+          resolution = json.loads(Path("institutionnel/resolution_annuaire_cog.json").read_text(encoding="utf-8"))
+          manifeste = json.loads(Path("institutionnel/instantanes/cog_manifest.json").read_text(encoding="utf-8"))
+
+          assert 30_000 <= stats["types_territoires"].get("COM", 0) <= 40_000
+          assert stats["types_territoires"].get("DEP", 0) >= 100
+          assert stats["types_territoires"].get("REG", 0) >= 18
+          assert stats["types_territoires"].get("CTCD", 0) == 0
+          assert stats["collectivites_competence_departementale_source"] >= 100
+          assert stats["nombre_territoires"] >= 35_000
+          assert stats["nombre_relations"] > stats["nombre_territoires"]
+          assert resolution["references_codes_insee"] > 80_000
+          assert resolution["taux_resolution"] >= 0.95
+          assert manifeste["empreinte_dependance_annuaire"]
+          print(json.dumps({
+              "territoires": stats["nombre_territoires"],
+              "relations": stats["nombre_relations"],
+              "types": stats["types_territoires"],
+              "anomalies": stats["anomalies_relations"],
+              "resolution_annuaire": stats["resolution_annuaire"],
+              "sha256_zip": manifeste["sha256_zip"],
+          }, ensure_ascii=False))
+          PY
+
+      - name: Enregistrer le nouvel état
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: |
+          git add \
+            institutionnel/territoires/cog \
+            institutionnel/relations/territoriales/cog \
+            institutionnel/instantanes/cog_manifest.json \
+            institutionnel/statistiques_cog.json \
+            institutionnel/anomalies_cog.json \
+            institutionnel/resolution_annuaire_cog.json
+
+          if git diff --cached --quiet; then
+            echo "Le référentiel COG est déjà à jour."
+            exit 0
+          fi
+
+          git config user.name "frontiere-referentiel"
+          git config user.email "frontiere-referentiel@users.noreply.github.com"
+          git commit -m "Territoires COG — actualiser le référentiel géographique"
+          git push origin HEAD:main
