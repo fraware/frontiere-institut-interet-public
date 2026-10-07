@@ -38,6 +38,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [REFERENTIEL_INSTITUTIONNEL_V1.md](REFERENTIEL_INSTITUTIONNEL_V1.md) | Périmètre, sources, graphe, temporalité, provenance et surveillance |
 | [INGESTION_ROAE_V1.md](INGESTION_ROAE_V1.md) | Ingestion de la colonne vertébrale DILA, statistiques et anomalies |
 | [INGESTION_ANNUAIRE_LOCAL_V1.md](INGESTION_ANNUAIRE_LOCAL_V1.md) | Couverture territoriale SL/SIL, croisements SI et compétence géographique |
+| [INGESTION_COG_V1.md](INGESTION_COG_V1.md) | Identité des territoires COG, relations géographiques et croisement avec l’Annuaire |
 | [../institutionnel/README.md](../institutionnel/README.md) | Organisation des fichiers du référentiel vivant |
 
 ## Exécution

@@ -53,6 +53,10 @@ Les décisions institutionnelles restent humaines. Le logiciel structure les fai
 | Entités locales SL/SIL | 85 879 |
 | Relations hiérarchiques SI résolues | 8 071 |
 | Relations hiérarchiques locales et croisées | 4 155 |
+| Unités territoriales COG 2026 | 40 345 |
+| Relations territoriales COG | 150 421 |
+| Références Annuaire vers le COG courant | 305 449 / 305 456 |
+| Références territoriales restantes expliquées par l’historique COG | 7 / 7 |
 
 Ces nombres décrivent l’état du corpus au 6 octobre 2026. Ils ne constituent pas une estimation de fréquence à l’échelle de l’administration française.
 
@@ -60,7 +64,8 @@ La principale frontière empirique se situe désormais entre trois explications 
 
 → [État détaillé du projet](docs/ETAT_DU_PROJET.md)  
 → [État du référentiel DILA](docs/INGESTION_ROAE_V1.md)  
-→ [Couverture territoriale de l'Annuaire](docs/INGESTION_ANNUAIRE_LOCAL_V1.md)
+→ [Couverture territoriale de l'Annuaire](docs/INGESTION_ANNUAIRE_LOCAL_V1.md)  
+→ [Référentiel territorial COG 2026](docs/INGESTION_COG_V1.md)
 
 ## Principes de recherche
 

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://frontiere.example/schema/relation-territoriale-v1",
+  "title": "Relation territoriale FRONTIÈRE",
+  "type": "object",
+  "required": [
+    "id",
+    "source_territoire",
+    "type_relation",
+    "cible_territoire",
+    "reference_le",
+    "provenance",
+    "observe_le",
+    "statut_validation"
+  ],
+  "properties": {
+    "id": {"type": "string", "pattern": "^FRONTIERE-REL-COG-[A-F0-9]+$"},
+    "source_territoire": {"type": "string", "pattern": "^FRONTIERE-TERR-COG-[A-Z0-9-]+$"},
+    "type_relation": {
+      "type": "string",
+      "enum": ["APPARTIENT_A", "PARTIE_DE", "A_POUR_CHEF_LIEU"]
+    },
+    "cible_territoire": {"type": "string", "pattern": "^FRONTIERE-TERR-COG-[A-Z0-9-]+$"},
+    "qualificatifs": {"type": "object"},
+    "reference_le": {"type": "string"},
+    "provenance": {"type": "array", "minItems": 1, "items": {"type": "object"}},
+    "observe_le": {"type": "string"},
+    "statut_validation": {"type": "string", "enum": ["VALIDE", "A_VALIDER", "REJETE"]}
+  },
+  "additionalProperties": true
+}

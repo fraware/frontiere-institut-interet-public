@@ -1,5 +1,5 @@
 {
-  "version": "1.1",
+  "version": "1.2",
   "date_reference": "2026-10-06",
   "sources": [
     {
@@ -88,13 +88,16 @@
         "collectivites_statut_particulier"
       ],
       "page_url": "https://www.insee.fr/fr/information/8740222",
-      "cadence_attendue": "annuelle",
+      "cadence_attendue": "annuelle_avec_verification_hebdomadaire",
       "licence": "données publiques Insee",
       "usage": [
         "identifiants_geographiques",
         "hierarchie_territoriale",
         "historique_geographique"
-      ]
+      ],
+      "resource_url": "https://www.insee.fr/fr/statistiques/fichier/8740222/cog_ensemble_2026_csv.zip",
+      "millesime": "2026",
+      "reference_le": "2026-01-01"
     },
     {
       "id": "dgcl_banatic",
