@@ -142,11 +142,11 @@ def relation_id(
     ).hexdigest()[:24].upper()
 
 
-def evenement_id(index: int, ligne: dict[str, str]) -> str:
+def evenement_id(ligne: dict[str, str], occurrence: int) -> str:
     cle = {
         "millesime": MILLESIME,
-        "index": index,
         "ligne": ligne,
+        "occurrence_identique": occurrence,
     }
     return "FRONTIERE-EVT-COG-" + compact_sha256(cle)[:24].upper()
 
@@ -652,10 +652,13 @@ def construire_evenements(
     observe_le: str,
 ) -> list[dict[str, Any]]:
     resultat = []
-    for index, ligne in enumerate(mouvements, start=1):
+    occurrences: Counter[str] = Counter()
+    for ligne in mouvements:
+        empreinte_ligne = compact_sha256(ligne)
+        occurrences[empreinte_ligne] += 1
         resultat.append(
             {
-                "id": evenement_id(index, ligne),
+                "id": evenement_id(ligne, occurrences[empreinte_ligne]),
                 "source_id": SOURCE_ID,
                 "type_evenement_source": nettoyer(ligne.get("MOD")),
                 "date_effet": nettoyer(ligne.get("DATE_EFF")),
