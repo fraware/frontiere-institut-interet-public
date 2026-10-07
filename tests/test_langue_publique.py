@@ -15,7 +15,7 @@ FICHIERS_PUBLICS = [
 ]
 
 TERMES_INTERDITS = [
-    "benchmark", "holdout", "runner", "outreach", "pipeline", "baseline",
+    "benchmark", "holdout", "runner", "outreach", "pipeline", "baseline", "snapshot",
     "scoring", "scorer", "capability query", "dataset", "data scientist",
     "workflow", "feedback", "roadmap", "stakeholder", "matching",
     "shadow sourcing", "inside-first", "additionalité", "contrefactuel",
