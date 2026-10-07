@@ -100,6 +100,8 @@ jobs:
               "anomalies": stats["anomalies_relations"],
               "resolution_annuaire": stats["resolution_annuaire"],
               "exemples_codes_absents": resolution.get("exemples_absents", [])[:20],
+              "exemples_codes_historiques": resolution.get("exemples_absents_historiques", [])[:20],
+              "exemples_codes_inconnus": resolution.get("exemples_absents_inconnus", [])[:20],
               "exemples_codes_ambigus": resolution.get("exemples_ambigus", [])[:20],
               "fichiers_non_classes": [
                   {"nom": f.get("nom"), "colonnes": f.get("colonnes", [])}
