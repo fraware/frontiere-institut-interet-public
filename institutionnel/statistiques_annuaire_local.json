@@ -1,8 +1,8 @@
 {
   "categories_export": {
-    "SI": 7903,
+    "SI": 7905,
     "SIL": 6294,
-    "SL": 79585
+    "SL": 79583
   },
   "competence_geographique": {
     "dataset": "api-lannuaire-administration-locale-competence-geographique",
@@ -11,25 +11,25 @@
     "url": "https://api-lannuaire.service-public.gouv.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration-locale-competence-geographique"
   },
   "couverture": {
-    "avec_coordonnees": 85696,
+    "avec_coordonnees": 85694,
     "avec_fondement_juridique": 1546,
-    "avec_mission": 29905,
+    "avec_mission": 29903,
     "avec_responsable": 5201,
-    "avec_siren": 44048,
+    "avec_siren": 44050,
     "avec_siret": 54651,
-    "avec_territoire_direct": 85581
+    "avec_territoire_direct": 85579
   },
   "hierarchie": {
     "anomalies": 100,
     "avec_parent_principal": 3536,
     "entites_a_parents_directs_multiples": 0,
-    "sans_parent_principal": 82343
+    "sans_parent_principal": 82341
   },
   "nombre_enregistrements_export_complet": 93782,
-  "nombre_entites_canoniques": 85879,
+  "nombre_entites_canoniques": 85877,
   "nombre_relations_hierarchiques": 4155,
-  "nombre_services_locaux_source": 85879,
-  "observe_le": "2026-10-06T23:59:29+00:00",
+  "nombre_services_locaux_source": 85877,
+  "observe_le": "2026-10-07T12:04:42+00:00",
   "resolution_croisee_roae": {
     "anomalies_roae_initiales": 158,
     "resolues_par_annuaire_local": 158,
@@ -37,9 +37,9 @@
   },
   "source_id": "dila_annuaire_local",
   "stockage": {
-    "octets_entites": 226489350,
+    "octets_entites": 226490189,
     "octets_relations": 3669241,
-    "octets_total_canonique": 230158591
+    "octets_total_canonique": 230159430
   },
   "types_institutionnels_source": {
     "Administration centrale (ou Ministère)": 4,
@@ -143,7 +143,7 @@
     "Service local — pcb": 458,
     "Service local — pif": 353,
     "Service local — plateforme_naturalisation": 31,
-    "Service local — pmi": 1190,
+    "Service local — pmi": 1188,
     "Service local — point_accueil_numerique": 274,
     "Service local — point_justice": 2524,
     "Service local — police_municipale": 3608,
@@ -336,7 +336,7 @@
     "pcb": 458,
     "pif": 353,
     "plateforme_naturalisation": 31,
-    "pmi": 1190,
+    "pmi": 1188,
     "point_accueil_numerique": 274,
     "point_justice": 2524,
     "police_municipale": 3608,
