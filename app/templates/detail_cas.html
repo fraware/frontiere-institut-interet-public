@@ -57,7 +57,7 @@
 <section id="prospectif" class="panel">
   <div class="panel-head"><h2>Pré-enregistrement prospectif</h2><span class="muted">point zéro avant intervention</span></div>
   {% if prospective_payload %}
-    <div class="callout"><strong>État initial prospectif scellé.</strong> Empreinte SHA-256 : <code>{{ prospective_payload.get('baseline_sha256') }}</code></div>
+    <div class="callout"><strong>État initial prospectif scellé.</strong> Empreinte SHA-256 : <code>{{ prospective_fingerprint }}</code></div>
   {% else %}
     <p>Le scellement prospectif exige un cas réel et actuel, un responsable opérationnel, une préexistence qualifiée, une échéance utile, la situation sans FRONTIÈRE, l’hypothèse initiale et au moins une preuve enregistrée. Aucune recherche ne doit avoir commencé.</p>
     <form method="post" action="/episodes/{{ episode.code }}/prospective/lock">
