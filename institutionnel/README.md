@@ -15,6 +15,10 @@ Le croisement avec les entités locales résout les **158 références du ROAE**
 
 La compétence géographique massive est interrogée directement auprès de l'API DILA au moment de la requête. Elle n'est pas copiée intégralement dans Git.
 
+Le Code officiel géographique de l’Insee fournit un espace d’identité distinct pour les unités territoriales. Les nœuds `FRONTIERE-TERR-COG-*` représentent des territoires et circonscriptions ; ils restent séparés des organisations `FRONTIERE-INST-*`. Les codes CTCD sont conservés comme données source sans être assimilés à des territoires, car le fichier Insee correspondant décrit des collectivités publiques exerçant les compétences départementales.
+
+→ [Référentiel territorial COG](../docs/INGESTION_COG_V1.md)
+
 → [Ingestion du ROAE](../docs/INGESTION_ROAE_V1.md)  
 → [Ingestion de l'Annuaire local](../docs/INGESTION_ANNUAIRE_LOCAL_V1.md)
 
@@ -36,7 +40,14 @@ La compétence géographique massive est interrogée directement auprès de l'AP
 - `resolution_roae_local.json` : résolution croisée des références SI vers les objets locaux ;
 - `instantanes/annuaire_local_manifest.json` : provenance et empreinte sémantique de l'export local ;
 - `entites/locales/` : 128 partitions des entités SL/SIL ;
-- `relations/locales/` : 32 partitions des relations locales et croisées.
+- `relations/locales/` : 32 partitions des relations locales et croisées ;
+- `schema_territoire_v1.json` : schéma des unités territoriales de référence ;
+- `schema_relation_territoriale_v1.json` : schéma des relations entre territoires ;
+- `instantanes/cog_manifest.json` : provenance et empreintes du millésime COG courant ;
+- `statistiques_cog.json` : couverture du référentiel territorial ;
+- `anomalies_cog.json` : relations territoriales dont une cible exacte reste absente ;
+- `resolution_annuaire_cog.json` : mesure du raccordement des codes Insee publiés par l’Annuaire ;
+- `territoires/cog/` et `relations/territoriales/cog/` : partitions du graphe territorial.
 
 ## Principes
 
