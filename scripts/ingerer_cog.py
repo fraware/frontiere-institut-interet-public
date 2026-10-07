@@ -550,8 +550,15 @@ def _resume_historique_code(
             if (texte(x.get("DATE_EFF")) or "") == date_eff_max
         ]
 
+    fins = [x.get("date_fin") for x in dernieres_periodes]
+    periode_terminee = bool(dernieres_periodes) and all(
+        isinstance(fin, str) and bool(fin) and fin <= REFERENCE_LE for fin in fins
+    )
+
     return {
         "code": code,
+        "attestation_historique": bool(periodes),
+        "periode_terminee_avant_ou_a_la_reference": periode_terminee,
         "derniere_periode_connue": dernieres_periodes,
         "dernier_evenement_sortant": derniers_evenements,
     }
@@ -614,7 +621,11 @@ def resoudre_annuaire_cog(
                 absents += 1
                 resume_historique = _resume_historique_code(code, historique, evenements)
                 entree_absente: dict[str, Any] = {"entite_id": entite_id, "code": code}
-                if resume_historique is not None:
+                if (
+                    resume_historique is not None
+                    and resume_historique["attestation_historique"]
+                    and resume_historique["periode_terminee_avant_ou_a_la_reference"]
+                ):
                     absents_historiques += 1
                     entree_absente["classification"] = "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT"
                     entree_absente["historique_cog"] = resume_historique
@@ -622,7 +633,13 @@ def resoudre_annuaire_cog(
                         exemples_historiques.append(entree_absente)
                 else:
                     absents_inconnus += 1
-                    entree_absente["classification"] = "CODE_ABSENT_SANS_TRACE_HISTORIQUE_COG"
+                    entree_absente["classification"] = (
+                        "CODE_ABSENT_MAIS_HISTORIQUE_NON_TERMINE"
+                        if resume_historique is not None
+                        else "CODE_ABSENT_SANS_TRACE_HISTORIQUE_COG"
+                    )
+                    if resume_historique is not None:
+                        entree_absente["historique_cog"] = resume_historique
                     if len(exemples_inconnus) < 100:
                         exemples_inconnus.append(entree_absente)
                 if len(exemples_absents) < 100:
@@ -648,8 +665,9 @@ def resoudre_annuaire_cog(
         "doctrine": (
             "Priorité à TYPECOM=COM; à défaut un zonage COMER-COM unique; "
             "aucune résolution par nom. Un code absent du COG courant est "
-            "classé séparément s'il est attesté dans les tables historiques "
-            "officielles; cette classification ne le remappe pas vers un territoire courant."
+            "classé séparément uniquement si les tables historiques officielles "
+            "attestent une période terminée au plus tard à la date de référence; "
+            "cette classification ne le remappe pas vers un territoire courant."
         ),
     }
 
