@@ -30,7 +30,9 @@ Le fichier COG des collectivités territoriales exerçant les compétences dépa
 
 Chaque objet conserve la ligne CSV Insee originale dans `source_insee`, son code, son type, le millésime, la date de référence, une empreinte cryptographique, la date de collecte et la date d’observation FRONTIÈRE.
 
-`reference_le = 2026-01-01` signifie que le territoire appartient au millésime courant. Cette date n’est pas utilisée comme date de création juridique du territoire. Les périodes historiques seront ajoutées à partir des fichiers historiques et des événements du COG dans une étape distincte.
+`reference_le = 2026-01-01` signifie que le territoire appartient au millésime courant. Cette date n’est pas utilisée comme date de création juridique du territoire. Les tables « communes depuis 1943 » et « événements sur les communes » sont également lues comme sources auxiliaires de diagnostic. Elles ne créent aucun nœud territorial historique dans cette version. Elles servent à distinguer un code DILA absent du COG courant parce qu’il appartient à l’histoire administrative d’un code sans trace dans les tables historiques officielles.
+
+Une référence historique reste une référence historique. FRONTIÈRE conserve la dernière période connue et le dernier événement sortant publié par l’Insee, sans remplacer silencieusement l’ancien code par le code postérieur. La matérialisation d’un graphe temporel complet des successions communales constitue une extension séparée.
 
 ## Relations territoriales
 
@@ -50,11 +52,13 @@ Les entités locales déjà ingérées conservent les codes Insee publiés par l
 
 La résolution suit une règle stricte. Une commune courante `TYPECOM=COM` est prioritaire. À défaut, un zonage d’outre-mer `COMER-COM` unique est accepté. Un autre code n’est résolu que s’il possède une cible unique. Les cas ambigus et absents restent explicitement signalés. Aucun rapprochement par nom n’est autorisé.
 
+Lorsqu’un code n’existe plus dans le millésime courant, l’importeur consulte les deux tables historiques officielles présentes dans la même archive. Le rapport distingue alors `CODE_HISTORIQUE_ABSENT_DU_COG_COURANT` de `CODE_ABSENT_SANS_TRACE_HISTORIQUE_COG`. Cette classification explique la provenance de l’écart sans transformer une ancienne référence territoriale en référence courante. Le taux de résolution courante et le taux de références expliquées restent deux métriques distinctes.
+
 Le manifeste COG conserve une empreinte de dépendance de l’Annuaire local. Une modification du snapshot DILA force donc le recalcul du rapport de résolution même si le millésime COG n’a pas changé.
 
 ## Découverte des fichiers
 
-L’importeur n’est pas couplé à des noms de fichiers fragiles. Il inspecte les en-têtes CSV et identifie chaque table courante par son schéma de colonnes. Les fichiers historiques présents dans l’archive ne sont pas confondus avec les tables courantes.
+L’importeur n’est pas couplé à des noms de fichiers fragiles. Il inspecte les en-têtes CSV et identifie chaque table par son schéma de colonnes. Les tables courantes, la table des communes depuis 1943 et la table des événements communaux sont des familles distinctes. Les tables historiques enrichissent le diagnostic sans entrer dans le stock territorial courant.
 
 Une modification incompatible de la structure de l’archive produit une erreur explicite. Les chemins ZIP dangereux, les liens symboliques et les membres anormalement volumineux sont refusés.
 
