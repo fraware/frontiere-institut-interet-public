@@ -237,8 +237,33 @@ def test_code_absent_du_cog_courant_est_explique_par_historique_sans_remappage(t
     assert rapport["taux_references_expliquees"] == 1.0
     exemple = rapport["exemples_absents_historiques"][0]
     assert exemple["classification"] == "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT"
+    assert exemple["historique_cog"]["periode_terminee_avant_ou_a_la_reference"] is True
     assert exemple["historique_cog"]["dernier_evenement_sortant"][0]["code_ap"] == "75056"
     assert "cible_territoire" not in exemple
+
+
+def test_code_absent_mais_historique_encore_actif_reste_incoherent(tmp_path, monkeypatch):
+    preparer_sorties(tmp_path, monkeypatch)
+    module.DOSSIER_ANNUAIRE.mkdir(parents=True, exist_ok=True)
+    (module.DOSSIER_ANNUAIRE / "annuaire_local_000.jsonl").write_text(
+        json.dumps({"id": "X", "territoires": ["75058"]}) + "\n",
+        encoding="utf-8",
+    )
+    rapport = module.resoudre_annuaire_cog(
+        [],
+        "2026-10-06T12:00:00+00:00",
+        historique_communes=[{
+            "TYPECOM": "COM",
+            "COM": "75058",
+            "NCCENR": "Commune active absente",
+            "DATE_DEBUT": "2020-01-01",
+            "DATE_FIN": "",
+        }],
+        evenements_communes=[],
+    )
+    assert rapport["absentes_courantes_expliquees_historiquement"] == 0
+    assert rapport["absentes_sans_trace_historique"] == 1
+    assert rapport["exemples_absents_inconnus"][0]["classification"] == "CODE_ABSENT_MAIS_HISTORIQUE_NON_TERMINE"
 
 def test_dependance_annuaire_force_recalcul(tmp_path, monkeypatch):
     preparer_sorties(tmp_path, monkeypatch)
