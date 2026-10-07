@@ -38,11 +38,59 @@
 
 {% if need and not need_locked %}
 <section class="panel prelock">
-  <h2>Pré-enregistrement</h2>
-  <p>Avant toute recherche publique ou décision d’orientation, verrouiller le besoin, le résultat recherché, la situation sans FRONTIÈRE et l’hypothèse initiale.</p>
-  <form method="post" action="/episodes/{{ episode.code }}/need/lock"><button class="button primary" type="submit">Verrouiller l’état initial</button></form>
+  <h2>État initial avant verrouillage</h2>
+  <p>Compléter l’état initial avant toute intervention. Pour un cas prospectif, le responsable, la préexistence du besoin, l’échéance utile et au moins une preuve initiale sont également requis.</p>
+  <form method="post" action="/episodes/{{ episode.code }}/need/update-initial" class="form-grid compact">
+    <label class="wide">Situation<textarea required name="current_situation" rows="3">{{ need.current_situation }}</textarea></label>
+    <label class="wide">Résultat recherché<textarea required name="desired_outcome" rows="3">{{ need.desired_outcome }}</textarea></label>
+    <label>Responsable opérationnel<input name="sponsor" value="{{ need.sponsor or '' }}"></label>
+    <label>Échéance utile<input type="date" name="latest_useful_date" value="{{ need.latest_useful_date or '' }}"></label>
+    <label>Besoin antérieur à FRONTIÈRE<select name="need_preexisting_frontiere"><option value="unknown" {% if episode.need_preexisting_frontiere is none %}selected{% endif %}>Inconnu</option><option value="yes" {% if episode.need_preexisting_frontiere is sameas true %}selected{% endif %}>Oui</option><option value="no" {% if episode.need_preexisting_frontiere is sameas false %}selected{% endif %}>Non</option></select></label>
+    <label class="wide">Situation sans FRONTIÈRE<textarea required name="counterfactual_plan" rows="2">{{ need.counterfactual_plan or '' }}</textarea></label>
+    <label class="wide">Hypothèse initiale<textarea required name="initial_frontiere_hypothesis" rows="2">{{ need.initial_frontiere_hypothesis or '' }}</textarea></label>
+    <button class="button" type="submit">Mettre à jour l’état initial</button>
+  </form>
+  <form method="post" action="/episodes/{{ episode.code }}/need/lock"><button class="button" type="submit">Verrouiller hors protocole prospectif</button></form>
 </section>
 {% endif %}
+
+<section id="prospectif" class="panel">
+  <div class="panel-head"><h2>Pré-enregistrement prospectif</h2><span class="muted">point zéro avant intervention</span></div>
+  {% if prospective_payload %}
+    <div class="callout"><strong>État initial prospectif scellé.</strong> Empreinte SHA-256 : <code>{{ prospective_fingerprint }}</code></div>
+  {% else %}
+    <p>Le scellement prospectif exige un cas réel et actuel, un responsable opérationnel, une préexistence qualifiée, une échéance utile, la situation sans FRONTIÈRE, l’hypothèse initiale et au moins une preuve enregistrée. Aucune recherche ne doit avoir commencé.</p>
+    <form method="post" action="/episodes/{{ episode.code }}/prospective/lock">
+      <button class="button primary" type="submit">Sceller le point zéro prospectif</button>
+    </form>
+  {% endif %}
+
+  {% if prospective_payload and comparison_payload %}
+    <dl class="facts">
+      <dt>Plan apparié</dt><dd><span class="pill">Verrouillé</span></dd>
+      <dt>Méthode habituelle</dt><dd>{{ comparison_payload.get('usual_method') }}</dd>
+      <dt>Méthode FRONTIÈRE</dt><dd>{{ comparison_payload.get('frontiere_method') }}</dd>
+      <dt>Mesure principale</dt><dd>{{ comparison_payload.get('primary_outcome') }}</dd>
+      <dt>Date d’observation</dt><dd>{{ comparison_payload.get('observation_date') }}</dd>
+      <dt>Règle d’interférence</dt><dd>{{ comparison_payload.get('interference_policy') }}</dd>
+      <dt>Empreinte du plan</dt><dd><code>{{ comparison_payload.get('plan_sha256') }}</code></dd>
+    </dl>
+  {% elif prospective_payload %}
+    <div class="callout warning">Aucune intervention de FRONTIÈRE ne peut commencer avant le verrouillage du plan de comparaison appariée.</div>
+    <form method="post" action="/episodes/{{ episode.code }}/comparison/lock" class="form-grid compact">
+      <label>Méthode habituelle<input required name="usual_method" placeholder="ex. recherche manuelle habituelle"></label>
+      <label>Méthode FRONTIÈRE<input required name="frontiere_method" value="FRONTIÈRE"></label>
+      <label>Responsable méthode habituelle<input required name="usual_owner"></label>
+      <label>Responsable FRONTIÈRE<input required name="frontiere_owner"></label>
+      <label class="wide">Mesure principale<input required name="primary_outcome" value="temps jusqu’à une ressource réellement mobilisable"></label>
+      <label>Date d’observation<input required type="date" name="observation_date"></label>
+      <label>Budget méthode habituelle (min)<input type="number" min="0" name="usual_budget_minutes" value="0"></label>
+      <label>Budget FRONTIÈRE (min)<input type="number" min="0" name="frontiere_budget_minutes" value="0"></label>
+      <label class="wide">Règle d’interférence<textarea required name="interference_policy" rows="3" placeholder="Séparer les recherches jusqu’au point de mesure ; consigner tout échange de ressource entre les deux voies."></textarea></label>
+      <button class="button primary" type="submit">Verrouiller le plan apparié</button>
+    </form>
+  {% endif %}
+</section>
 
 <section id="versions" class="panel">
   <div class="panel-head"><h2>Historique du besoin</h2><span class="muted">aucune réécriture silencieuse</span></div>
@@ -132,11 +180,14 @@
     </tbody></table>
   {% endif %}
   {% if not need_locked %}<div class="callout warning">Recherche verrouillée tant que l’état initial n’est pas pré-enregistré.</div>{% endif %}
-  <form method="post" action="/episodes/{{ episode.code }}/public-search" class="inline-form">
+  <form method="post" action="/episodes/{{ episode.code }}/public-search" class="form-grid compact">
+    <label>Méthode<input name="method_name" value="recherche structurée"></label>
+    <label>Temps analyste (min)<input type="number" min="0" name="analyst_minutes" value="0"></label>
+    <label class="wide">Périmètre de recherche<textarea name="search_scope" rows="2" placeholder="Institutions, familles, territoires et exclusions examinés."></textarea></label>
+    <label class="wide">Sources consultées<textarea name="sources_consulted" rows="3" placeholder="Une source ou un référentiel par ligne."></textarea></label>
     <label>Recherche suffisante<select name="complete"><option value="no">Non</option><option value="yes">Oui</option></select></label>
     <label>Capacité publique pertinente<select name="relevant_found"><option value="unknown">Inconnu</option><option value="yes">Oui</option><option value="no">Non</option></select></label>
     <label>Mobilisable<select name="mobilizable_found"><option value="unknown">Inconnu</option><option value="yes">Oui</option><option value="no">Non</option></select></label>
-    <label>Temps analyste (min)<input type="number" min="0" name="analyst_minutes" value="0"></label>
     <label class="wide">Notes<textarea name="notes" rows="2"></textarea></label>
     <button class="button" type="submit">Enregistrer la recherche</button>
   </form>
