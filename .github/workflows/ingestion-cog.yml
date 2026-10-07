@@ -1,0 +1,145 @@
+name: Ingestion du Code officiel géographique
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/ingerer_cog.py"
+      - "scripts/resoudre_territoires_dila_cog.py"
+      - "institutionnel/schema_territoire_v1.json"
+      - ".github/workflows/ingestion-cog.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "scripts/ingerer_cog.py"
+      - "scripts/resoudre_territoires_dila_cog.py"
+      - "tests/test_ingestion_cog.py"
+      - "tests/test_resolution_territoires_dila_cog.py"
+      - "tests/test_snapshot_cog.py"
+      - "institutionnel/schema_territoire_v1.json"
+      - ".github/workflows/ingestion-cog.yml"
+  schedule:
+    - cron: "17 6 2 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('referentiel-cog-pr-{0}', github.event.pull_request.number) || 'referentiel-institutionnel-main' }}
+  cancel-in-progress: false
+
+jobs:
+  ingestion:
+    name: Actualiser la géographie administrative
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || 'main' }}
+          fetch-depth: 0
+
+      - name: Installer Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Installer les outils de test
+        run: python -m pip install "pytest>=8,<10"
+
+      - name: Vérifier les transformations
+        run: |
+          python -m pytest -q \
+            tests/test_ingestion_cog.py \
+            tests/test_resolution_territoires_dila_cog.py
+
+      - name: Ingérer le COG 2026
+        run: python scripts/ingerer_cog.py
+
+      - name: Résoudre les codes territoriaux DILA
+        run: python scripts/resoudre_territoires_dila_cog.py
+
+      - name: Vérifier le snapshot complet
+        run: python -m pytest -q tests/test_snapshot_cog.py
+
+      - name: Vérifier les invariants structurants
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          stats = json.loads(
+              Path("institutionnel/statistiques_cog.json").read_text(encoding="utf-8")
+          )
+          resolution = json.loads(
+              Path("institutionnel/resolution_territoires_dila_cog.json").read_text(
+                  encoding="utf-8"
+              )
+          )
+          manifeste = json.loads(
+              Path("institutionnel/instantanes/cog_manifest.json").read_text(
+                  encoding="utf-8"
+              )
+          )
+
+          par_type = stats["territoires"]["par_type"]
+          assert manifeste["millesime"] == "2026"
+          assert manifeste["version_transformation"] == "1.0"
+          assert par_type["REGION"] >= 18
+          assert par_type["DEPARTEMENT"] >= 100
+          assert par_type["COMMUNE"] >= 34_000
+          assert par_type["COLLECTIVITE_OUTRE_MER"] >= 5
+          assert par_type["ZONAGE_OUTRE_MER"] > 0
+          assert stats["nombre_relations_territoriales"] > stats["nombre_territoires"]
+          assert stats["nombre_evenements_communes"] > 1_000
+          assert stats["nombre_lignes_historique_communes"] > par_type["COMMUNE"]
+          assert stats["integrite"]["extremites_relations_resolues"] is True
+          assert stats["integrite"]["communes_actives_dans_historique"] is True
+          assert resolution["nombre_references_territoriales"] > 0
+          assert resolution["resultats"].get("codes_resolus_courants", 0) > 0
+
+          print(json.dumps({
+              "territoires": stats["nombre_territoires"],
+              "relations": stats["nombre_relations_territoriales"],
+              "communes": par_type["COMMUNE"],
+              "evenements": stats["nombre_evenements_communes"],
+              "historique": stats["nombre_lignes_historique_communes"],
+              "anomalies": stats["anomalies"],
+              "codes_dila": resolution["nombre_codes_distincts"],
+              "resolus": resolution["resultats"].get("codes_resolus_courants", 0),
+              "historiques_seulement": resolution["resultats"].get(
+                  "codes_historiques_seulement", 0
+              ),
+              "ambigus": resolution["resultats"].get("codes_ambigus", 0),
+              "inconnus": resolution["resultats"].get("codes_inconnus", 0),
+              "sha256_archive": manifeste["sha256_archive"],
+          }, ensure_ascii=False))
+          PY
+
+      - name: Enregistrer les changements
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: |
+          git add \
+            institutionnel/territoires/cog \
+            institutionnel/relations_territoriales/cog \
+            institutionnel/evenements/cog \
+            institutionnel/archives/cog \
+            institutionnel/instantanes/cog_manifest.json \
+            institutionnel/statistiques_cog.json \
+            institutionnel/anomalies_cog.json \
+            institutionnel/resolution_territoires_dila_cog.json
+
+          if git diff --cached --quiet; then
+            echo "Le COG canonique est déjà à jour."
+            exit 0
+          fi
+
+          git config user.name "frontiere-referentiel"
+          git config user.email "frontiere-referentiel@users.noreply.github.com"
+          git commit -m "COG 2026 — actualiser la géographie administrative"
+          git push origin HEAD:main
