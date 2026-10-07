@@ -100,6 +100,12 @@ Cette complétude concerne le périmètre de l'Annuaire DILA. Elle ne suffit pas
 
 Le registre exact des sources et de leur cadence figure dans `institutionnel/sources_v1.json`.
 
+### Référentiel territorial distinct
+
+Le Code officiel géographique alimente un espace d’identité territorial séparé du graphe institutionnel. Une commune, un département, une région, un arrondissement ou un canton constitue une unité territoriale ; une mairie, une préfecture, un conseil départemental ou une autre collectivité organisée constitue un objet institutionnel. FRONTIÈRE relie ces familles par des relations explicites au lieu de les fusionner.
+
+Cette distinction vaut également pour les codes `CTCD` du COG. Le fichier Insee correspondant décrit des collectivités territoriales exerçant les compétences départementales. Ces codes restent conservés dans la provenance COG et feront l’objet d’une résolution institutionnelle dédiée ; ils ne deviennent pas des nœuds territoriaux par défaut.
+
 ## Modèle canonique
 
 Chaque institution reçoit un identifiant interne stable `FRONTIERE-INST-...`.
