@@ -93,6 +93,11 @@ jobs:
               "resolution_annuaire": stats["resolution_annuaire"],
               "exemples_codes_absents": resolution.get("exemples_absents", [])[:20],
               "exemples_codes_ambigus": resolution.get("exemples_ambigus", [])[:20],
+              "fichiers_non_classes": [
+                  {"nom": f.get("nom"), "colonnes": f.get("colonnes", [])}
+                  for f in manifeste.get("fichiers_source", [])
+                  if f.get("classe_detectee") is None and str(f.get("nom", "")).lower().endswith(".csv")
+              ],
               "sha256_zip": manifeste["sha256_zip"],
           }, ensure_ascii=False))
           PY
