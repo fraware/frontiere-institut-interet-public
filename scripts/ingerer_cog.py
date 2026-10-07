@@ -18,7 +18,7 @@ from typing import Any, Iterable
 
 RACINE = Path(__file__).resolve().parents[1]
 SOURCE_ID = "insee_cog"
-VERSION_TRANSFORMATION = "1.0"
+VERSION_TRANSFORMATION = "1.1"
 MILLESIME = "2026"
 REFERENCE_LE = "2026-01-01"
 PAGE_SOURCE = "https://www.insee.fr/fr/information/8740222"
@@ -164,10 +164,25 @@ def classifier_csv(entete: set[str]) -> str | None:
         return "communes_comer"
     if {"COMER", "TNCC", "NCC", "NCCENR", "LIBELLE"} <= entete and not ({"COM_COMER", "DATE_DEBUT", "DATE_FIN"} & entete):
         return "comer"
+    if {"TYPECOM", "COM", "DATE_DEBUT", "DATE_FIN", "NCCENR"} <= entete:
+        return "communes_historiques"
+    if {"MOD", "DATE_EFF", "TYPECOM_AV", "COM_AV", "TYPECOM_AP", "COM_AP"} <= entete:
+        return "evenements_communes"
     return None
 
 
-FAMILLES_REQUISES = {"communes", "cantons", "arrondissements", "departements", "regions", "ctcd", "communes_comer", "comer"}
+FAMILLES_REQUISES = {
+    "communes",
+    "cantons",
+    "arrondissements",
+    "departements",
+    "regions",
+    "ctcd",
+    "communes_comer",
+    "comer",
+    "communes_historiques",
+    "evenements_communes",
+}
 
 
 def decouvrir_fichiers(archive: zipfile.ZipFile) -> tuple[dict[str, zipfile.ZipInfo], list[dict[str, Any]]]:
@@ -467,18 +482,109 @@ def charger_codes_annuaire() -> Iterable[tuple[str, list[str]]]:
     return generateur()
 
 
-def resoudre_annuaire_cog(territoires: list[dict[str, Any]], observe_le: str) -> dict[str, Any]:
+def _index_historique_communes(
+    historique: Iterable[dict[str, str]],
+    evenements: Iterable[dict[str, str]],
+) -> tuple[dict[str, list[dict[str, str]]], dict[str, list[dict[str, str]]]]:
+    par_code: dict[str, list[dict[str, str]]] = defaultdict(list)
+    evenements_sortants: dict[str, list[dict[str, str]]] = defaultdict(list)
+
+    for ligne in historique:
+        code = texte(ligne.get("COM"))
+        if code:
+            par_code[code].append(ligne)
+
+    for lignes in par_code.values():
+        lignes.sort(key=lambda x: (texte(x.get("DATE_DEBUT")) or "", texte(x.get("DATE_FIN")) or ""))
+
+    for ligne in evenements:
+        code = texte(ligne.get("COM_AV"))
+        if code:
+            evenements_sortants[code].append(ligne)
+
+    for lignes in evenements_sortants.values():
+        lignes.sort(key=lambda x: texte(x.get("DATE_EFF")) or "")
+
+    return dict(par_code), dict(evenements_sortants)
+
+
+def _resume_historique_code(
+    code: str,
+    historique: dict[str, list[dict[str, str]]],
+    evenements: dict[str, list[dict[str, str]]],
+) -> dict[str, Any] | None:
+    periodes = historique.get(code, [])
+    transitions = evenements.get(code, [])
+    if not periodes and not transitions:
+        return None
+
+    dernieres_periodes: list[dict[str, Any]] = []
+    if periodes:
+        date_debut_max = max(texte(x.get("DATE_DEBUT")) or "" for x in periodes)
+        dernieres_periodes = [
+            {
+                "typecom": texte(x.get("TYPECOM")),
+                "nom": texte(x.get("NCCENR")) or texte(x.get("LIBELLE")) or texte(x.get("NCC")),
+                "date_debut": texte(x.get("DATE_DEBUT")),
+                "date_fin": texte(x.get("DATE_FIN")),
+            }
+            for x in periodes
+            if (texte(x.get("DATE_DEBUT")) or "") == date_debut_max
+        ]
+
+    derniers_evenements: list[dict[str, Any]] = []
+    if transitions:
+        date_eff_max = max(texte(x.get("DATE_EFF")) or "" for x in transitions)
+        derniers_evenements = [
+            {
+                "mod": texte(x.get("MOD")),
+                "date_eff": texte(x.get("DATE_EFF")),
+                "typecom_av": texte(x.get("TYPECOM_AV")),
+                "code_av": texte(x.get("COM_AV")),
+                "nom_av": texte(x.get("NCCENR_AV")) or texte(x.get("LIBELLE_AV")) or texte(x.get("NCC_AV")),
+                "typecom_ap": texte(x.get("TYPECOM_AP")),
+                "code_ap": texte(x.get("COM_AP")),
+                "nom_ap": texte(x.get("NCCENR_AP")) or texte(x.get("LIBELLE_AP")) or texte(x.get("NCC_AP")),
+            }
+            for x in transitions
+            if (texte(x.get("DATE_EFF")) or "") == date_eff_max
+        ]
+
+    return {
+        "code": code,
+        "derniere_periode_connue": dernieres_periodes,
+        "dernier_evenement_sortant": derniers_evenements,
+    }
+
+
+def resoudre_annuaire_cog(
+    territoires: list[dict[str, Any]],
+    observe_le: str,
+    *,
+    historique_communes: Iterable[dict[str, str]] = (),
+    evenements_communes: Iterable[dict[str, str]] = (),
+) -> dict[str, Any]:
     par_code: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for t in territoires:
         if t["type_territoire"] in TYPES_COMMUNE or t["type_territoire"] == "COMER-COM":
             par_code[t["code"]].append(t)
+
+    historique, evenements = _index_historique_communes(
+        historique_communes, evenements_communes
+    )
+
     total_entites = 0
     total_codes = 0
     resolus = 0
     ambigus = 0
     absents = 0
-    exemples_ambigus = []
-    exemples_absents = []
+    absents_historiques = 0
+    absents_inconnus = 0
+    exemples_ambigus: list[dict[str, Any]] = []
+    exemples_absents: list[dict[str, Any]] = []
+    exemples_historiques: list[dict[str, Any]] = []
+    exemples_inconnus: list[dict[str, Any]] = []
+
     for entite_id, codes in charger_codes_annuaire():
         total_entites += 1
         for code in codes:
@@ -497,23 +603,54 @@ def resoudre_annuaire_cog(territoires: list[dict[str, Any]], observe_le: str) ->
             elif len(candidats) > 1:
                 ambigus += 1
                 if len(exemples_ambigus) < 100:
-                    exemples_ambigus.append({"entite_id": entite_id, "code": code, "candidats": [t["id"] for t in candidats]})
+                    exemples_ambigus.append(
+                        {
+                            "entite_id": entite_id,
+                            "code": code,
+                            "candidats": [t["id"] for t in candidats],
+                        }
+                    )
             else:
                 absents += 1
+                resume_historique = _resume_historique_code(code, historique, evenements)
+                entree_absente: dict[str, Any] = {"entite_id": entite_id, "code": code}
+                if resume_historique is not None:
+                    absents_historiques += 1
+                    entree_absente["classification"] = "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT"
+                    entree_absente["historique_cog"] = resume_historique
+                    if len(exemples_historiques) < 100:
+                        exemples_historiques.append(entree_absente)
+                else:
+                    absents_inconnus += 1
+                    entree_absente["classification"] = "CODE_ABSENT_SANS_TRACE_HISTORIQUE_COG"
+                    if len(exemples_inconnus) < 100:
+                        exemples_inconnus.append(entree_absente)
                 if len(exemples_absents) < 100:
-                    exemples_absents.append({"entite_id": entite_id, "code": code})
+                    exemples_absents.append(entree_absente)
+
+    explications = resolus + absents_historiques
     return {
-        "version": "1",
+        "version": "2",
         "observe_le": observe_le,
         "entites_annuaire_avec_territoire": total_entites,
         "references_codes_insee": total_codes,
         "resolues": resolus,
         "ambigues": ambigus,
         "absentes": absents,
+        "absentes_courantes_expliquees_historiquement": absents_historiques,
+        "absentes_sans_trace_historique": absents_inconnus,
         "taux_resolution": round(resolus / total_codes, 6) if total_codes else None,
+        "taux_references_expliquees": round(explications / total_codes, 6) if total_codes else None,
         "exemples_ambigus": exemples_ambigus,
         "exemples_absents": exemples_absents,
-        "doctrine": "Priorité à TYPECOM=COM; à défaut un zonage COMER-COM unique; aucune résolution par nom.",
+        "exemples_absents_historiques": exemples_historiques,
+        "exemples_absents_inconnus": exemples_inconnus,
+        "doctrine": (
+            "Priorité à TYPECOM=COM; à défaut un zonage COMER-COM unique; "
+            "aucune résolution par nom. Un code absent du COG courant est "
+            "classé séparément s'il est attesté dans les tables historiques "
+            "officielles; cette classification ne le remappe pas vers un territoire courant."
+        ),
     }
 
 
@@ -573,7 +710,12 @@ def executer(archive_path: Path, telechargement: dict[str, Any] | None = None, o
         tables = {classe: lire_csv(archive, info) for classe, info in classes.items()}
     territoires = construire_territoires(tables, observe_le, precedents)
     relations, anomalies = construire_relations(tables, territoires, observe_le, relations_precedentes)
-    resolution = resoudre_annuaire_cog(territoires, observe_le)
+    resolution = resoudre_annuaire_cog(
+        territoires,
+        observe_le,
+        historique_communes=tables["communes_historiques"],
+        evenements_communes=tables["evenements_communes"],
+    )
     partitions_t = ecrire_jsonl_partitionne(territoires, DOSSIER_TERRITOIRES, "cog_territoire", N_PARTITIONS_TERRITOIRES, "id")
     partitions_r = ecrire_jsonl_partitionne(relations, DOSSIER_RELATIONS, "cog_relation", N_PARTITIONS_RELATIONS, "id")
     compteur_types = Counter(t["type_territoire"] for t in territoires)
@@ -593,7 +735,20 @@ def executer(archive_path: Path, telechargement: dict[str, Any] | None = None, o
             "matérialisés comme territoires : le fichier CTCD décrit des collectivités "
             "territoriales exerçant les compétences départementales."
         ),
-        "resolution_annuaire": {k: resolution[k] for k in ("entites_annuaire_avec_territoire", "references_codes_insee", "resolues", "ambigues", "absentes", "taux_resolution")},
+        "resolution_annuaire": {
+            k: resolution[k]
+            for k in (
+                "entites_annuaire_avec_territoire",
+                "references_codes_insee",
+                "resolues",
+                "ambigues",
+                "absentes",
+                "absentes_courantes_expliquees_historiquement",
+                "absentes_sans_trace_historique",
+                "taux_resolution",
+                "taux_references_expliquees",
+            )
+        },
         "stockage": {
             "octets_territoires": sum((RACINE / p["fichier"]).stat().st_size for p in partitions_t),
             "octets_relations": sum((RACINE / p["fichier"]).stat().st_size for p in partitions_r),
