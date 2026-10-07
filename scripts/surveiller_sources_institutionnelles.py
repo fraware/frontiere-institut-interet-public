@@ -122,7 +122,8 @@ def analyser_date(valeur: str | None) -> datetime | None:
     if not valeur:
         return None
     try:
-        return datetime.fromisoformat(valeur.replace("Z", "+00:00"))
+        date = datetime.fromisoformat(valeur.replace("Z", "+00:00"))
+        return date if date.tzinfo is not None else date.replace(tzinfo=timezone.utc)
     except ValueError:
         try:
             date = parsedate_to_datetime(valeur)
