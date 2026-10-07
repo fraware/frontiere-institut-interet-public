@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://frontiere.example/schema/territoire-v1",
+  "title": "Territoire canonique FRONTIÈRE",
+  "type": "object",
+  "required": [
+    "id",
+    "type_territoire",
+    "code",
+    "nom_officiel",
+    "etat",
+    "provenance",
+    "observe_le"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^FRONTIERE-TERR-[A-Z0-9-]+$"
+    },
+    "type_territoire": {
+      "type": "string",
+      "enum": [
+        "REGION",
+        "DEPARTEMENT",
+        "CTCD",
+        "ARRONDISSEMENT",
+        "CANTON",
+        "COMMUNE",
+        "ARRONDISSEMENT_MUNICIPAL",
+        "COMMUNE_ASSOCIEE",
+        "COMMUNE_DELEGUEE",
+        "COLLECTIVITE_OUTRE_MER",
+        "ZONAGE_OUTRE_MER"
+      ]
+    },
+    "code": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nom_officiel": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nom_enrichi": {
+      "type": ["string", "null"]
+    },
+    "libelle": {
+      "type": ["string", "null"]
+    },
+    "etat": {
+      "type": "string",
+      "enum": ["ACTIF", "HISTORIQUE", "INCONNU"]
+    },
+    "identifiants": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["string", "array", "null"]
+      }
+    },
+    "parents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type_relation", "territoire_id"],
+        "properties": {
+          "type_relation": {
+            "type": "string"
+          },
+          "territoire_id": {
+            "type": "string",
+            "pattern": "^FRONTIERE-TERR-[A-Z0-9-]+$"
+          },
+          "source_id": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "chef_lieu_code_commune": {
+      "type": ["string", "null"]
+    },
+    "valide_depuis": {
+      "type": ["string", "null"]
+    },
+    "valide_jusqua": {
+      "type": ["string", "null"]
+    },
+    "provenance": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["source_id", "identifiant_source", "collecte_le"],
+        "properties": {
+          "source_id": {
+            "type": "string"
+          },
+          "identifiant_source": {
+            "type": "string"
+          },
+          "url": {
+            "type": ["string", "null"]
+          },
+          "collecte_le": {
+            "type": "string"
+          },
+          "empreinte": {
+            "type": ["string", "null"]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "observe_le": {
+      "type": "string"
+    },
+    "source_insee": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}
