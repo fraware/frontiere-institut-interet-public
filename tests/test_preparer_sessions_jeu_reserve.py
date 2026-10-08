@@ -44,6 +44,9 @@ def test_trois_dossiers_contiennent_uniquement_les_questions_publiques(tmp_path)
         assert "RESSOURCE_SECRETE" not in fichier_reponses
         assert json.loads(fichier_reponses)["cas"][0]["voies"] == []
         assert json.loads(fichier_reponses)["cas"][1]["ressources"] == []
+        journal = json.loads((sortie / nom / "journal_vierge.json").read_text(encoding="utf-8"))
+        assert journal["cas"][0]["debut_iso"] is None
+        assert journal["cas"][0]["reconnaissance_fortuite_origine"] is None
     contenus = [(sortie / nom / "questions.json").read_bytes() for nom in METHODES]
     assert len(set(contenus)) == 1
 
