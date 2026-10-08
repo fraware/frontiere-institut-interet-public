@@ -60,6 +60,14 @@ Une évaluation indépendante exige qu’un évaluateur ne dispose pas des répo
 
 Une personne ayant construit ou consulté les références peut contribuer à l’infrastructure d’évaluation, mais son propre résultat ne constitue pas une mesure indépendante sur ces cas.
 
+## Mesure des délais
+
+Le calcul `critical_path_minutes` additionne les durées des événements le long des chaînes de dépendance représentées dans un graphe simple à parent unique. Ce calcul ne constitue pas, à lui seul, le délai calendaire observé : deux événements dépendants peuvent comporter des périodes qui se chevauchent.
+
+La fonction `elapsed_span_minutes` mesure séparément le temps entre le premier début et la dernière fin pour un ensemble d'événements achevés. Elle conserve les périodes d'attente et ne compte pas deux fois des intervalles qui se chevauchent. Elle renvoie une valeur inconnue (`None`) si aucun événement n'est fourni ou si un événement reste ouvert ; les fins antérieures aux débuts sont rejetées.
+
+Pour la recherche, les trois mesures suivantes doivent être conservées distinctement : temps de travail humain, somme des durées sur les dépendances et délai calendaire observé. Une mesure issue de la fonction calendaire ne démontre pas, à elle seule, que la première contribution utile a été atteinte : cette date doit être documentée séparément.
+
 ## Reproduction d’un résultat empirique
 
 Pour reproduire une conclusion à partir d’un cas :
