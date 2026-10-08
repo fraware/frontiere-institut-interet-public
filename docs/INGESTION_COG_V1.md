@@ -21,13 +21,13 @@ https://www.insee.fr/fr/statistiques/fichier/8740222/cog_ensemble_2026_csv.zip
 ## État courant
 
 <!-- FRONTIERE:ETAT_COG:DEBUT -->
-État du dernier cycle complet, observé le **2026-10-07**.
+État du dernier cycle complet, observé le **2026-10-08**.
 
 L’archive officielle produit **40 345 unités territoriales courantes** et **150 421 relations entre territoires**, avec **0 relation non résolue**.
 
 La répartition comprend 34 875 communes, 2 105 communes déléguées, 2 293 cantons ou pseudo-cantons, 471 communes associées, 333 arrondissements, 101 départements, 45 arrondissements municipaux, 18 régions, 9 collectivités ou territoires français d’outre-mer, 95 zonages communaux associés à ces territoires.
 
-L’Annuaire de l’administration contient **305 454 références à des codes Insee** portées par **85 579 services ou guichets locaux**. **305 447 références** correspondent exactement à une unité territoriale actuelle. Les **7 références restantes** correspondent à d’anciens codes attestés par l’historique officiel de l’Insee. **0** référence reste sans trace historique et **0** cas est ambigu.
+L’Annuaire de l’administration contient **305 557 références à des codes Insee** portées par **85 681 services ou guichets locaux**. **305 550 références** correspondent exactement à une unité territoriale actuelle. Les **7 références restantes** correspondent à d’anciens codes attestés par l’historique officiel de l’Insee. **0** référence reste sans trace historique et **0** cas est ambigu.
 
 Le taux de raccordement aux unités territoriales actuelles est de **99,9977 %**. En tenant compte de l’historique officiel, **100,0 %** des références sont expliquées.
 
