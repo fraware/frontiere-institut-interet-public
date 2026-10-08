@@ -505,6 +505,18 @@ def test_benchmark_is_blind_until_prediction_and_scores_vector():
         after = client.get("/evaluation")
         assert "https://example.org/hidden-source" in after.text
         assert "100%" in after.text
+        assert 'action="/evaluation/BTEST/reponse"' not in after.text
+        assert "nouvelles réponses sont bloquées" in after.text
+        contribution_tardive = client.post(
+            "/evaluation/BTEST/reponse",
+            data={
+                "method": "assistant-tardif", "method_version": "1.0",
+                "routes": "ROUTAGE, RECHERCHE_PUBLIQUE",
+                "resource_forms": "EQUIPE, LABORATOIRE",
+            },
+            follow_redirects=False,
+        )
+        assert contribution_tardive.status_code == 409
         api = client.get("/api/v1/evaluation")
         assert api.status_code == 200
         assert api.json()["case_count"] == 1
