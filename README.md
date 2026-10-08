@@ -161,7 +161,11 @@ Les mesures sont conservées séparément : justesse de la voie proposée, juste
 
 Le dépôt distingue un corpus de développement d’un jeu réservé. Les références du jeu réservé restent hors du dépôt public ; leur empreinte cryptographique permet de vérifier qu’elles ont été fixées avant les réponses externes.
 
-→ [Méthode d’évaluation](docs/EVALUATION_TECHNIQUE_V0.5.md)  
+Les instruments de gel des réponses, de comparaison des méthodes et de double relecture sont intégrés. L'exécution indépendante du protocole reste à réaliser ; aucun avantage comparatif de FRONTIÈRE n'est actuellement démontré.
+
+→ [Méthode d’évaluation](docs/EVALUATION_TECHNIQUE_V0.5.md)
+→ [Sessions indépendantes](evaluation/PROTOCOLE_SESSIONS_INDEPENDANTES_V1.md)
+→ [Relecture de la qualité des ressources et des preuves](evaluation/RELECTURE_QUALITE_V1.md)  
 → [Cas rétrospectifs de développement](evaluation/CAS_RETROSPECTIFS_DEVELOPPEMENT.md)
 
 ## Installation locale
