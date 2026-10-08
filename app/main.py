@@ -3,6 +3,7 @@ from __future__ import annotations
 from contextlib import asynccontextmanager
 import hashlib
 import json
+import math
 from datetime import date, datetime, timezone
 from pathlib import Path
 
@@ -1455,7 +1456,15 @@ def add_benchmark_prediction(
         return [part.strip() for part in text.replace("\n", ",").split(",") if part.strip()]
 
     method_clean = method.strip()
-    version_clean = method_version.strip() or "1.0"
+    version_clean = method_version.strip()
+    if not method_clean or len(method_clean) > 100:
+        raise HTTPException(400, "Nom de méthode absent ou trop long.")
+    if not version_clean or len(version_clean) > 60:
+        raise HTTPException(400, "Version de méthode absente ou trop longue.")
+    if elapsed_seconds is not None and (not math.isfinite(elapsed_seconds) or elapsed_seconds < 0):
+        raise HTTPException(400, "Le temps écoulé doit être un nombre fini positif ou nul.")
+    if analyst_minutes < 0 or verification_minutes < 0:
+        raise HTTPException(400, "Les temps humains ne peuvent pas être négatifs.")
     existing = db.scalar(
         select(BenchmarkPrediction).where(
             BenchmarkPrediction.case_id == case.id,
@@ -1473,9 +1482,9 @@ def add_benchmark_prediction(
         resource_forms_json=json.dumps(items(resource_forms), ensure_ascii=False),
         resources_json=json.dumps(items(resources), ensure_ascii=False),
         evidence_urls_json=json.dumps(items(evidence_urls), ensure_ascii=False),
-        elapsed_seconds=max(0, elapsed_seconds) if elapsed_seconds is not None else None,
-        analyst_minutes=max(0, analyst_minutes),
-        verification_minutes=max(0, verification_minutes),
+        elapsed_seconds=elapsed_seconds,
+        analyst_minutes=analyst_minutes,
+        verification_minutes=verification_minutes,
         notes=notes.strip() or None,
     )
     db.add(prediction)
