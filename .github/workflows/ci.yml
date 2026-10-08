@@ -42,6 +42,9 @@ jobs:
       - name: Vérifier la syntaxe Python
         run: python -m compileall -q app scripts tests
 
+      - name: Vérifier la filiation du corpus versionné
+        run: python scripts/auditer_filiation_chronologies.py
+
       - name: Vérifier le corpus public
         run: python scripts/verifier_corpus_public.py
 
