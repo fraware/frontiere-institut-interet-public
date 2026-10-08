@@ -30,6 +30,7 @@
   <div class="panel-head"><h2>{{ row.case.code }} — {{ row.case.title }}</h2><span class="pill subtle">{% if row.case.label_quality == 'STRONG' %}référence solide{% elif row.case.label_quality == 'PROVISIONAL' %}référence provisoire{% else %}{{ row.case.label_quality }}{% endif %}</span></div>
   <p>{{ row.case.prompt }}</p>
 
+  {% if not row.case.revealed %}
   <form method="post" action="/evaluation/{{ row.case.code }}/reponse" class="form-grid compact">
     <label>Méthode<input required name="method" placeholder="recherche-manuelle / assistant-generaliste / frontiere"></label>
     <label>Version<input name="method_version" value="1.0"></label>
@@ -43,6 +44,9 @@
     <label class="wide">Notes<textarea name="notes" rows="2"></textarea></label>
     <button class="button primary" type="submit">Enregistrer la prédiction</button>
   </form>
+  {% else %}
+  <p class="muted">Références de ce cas révélées : les nouvelles réponses sont bloquées pour préserver les conditions d’évaluation.</p>
+  {% endif %}
 
   {% if row.predictions and row.case.revealed %}
   <details open>
