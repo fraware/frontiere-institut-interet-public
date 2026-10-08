@@ -57,6 +57,26 @@ def critical_path_minutes(events: list[tuple[datetime, datetime | None, int | No
     return max(scores) if scores else 0
 
 
+
+def elapsed_span_minutes(events: list[tuple[datetime, datetime | None, int | None]]) -> int | None:
+    """Durée calendaire du premier début à la dernière fin observée.
+
+    Les événements ouverts interdisent une mesure complète : None est renvoyé.
+    Les intervalles qui se chevauchent ne sont pas additionnés et les périodes
+    d'attente entre événements restent incluses dans le délai calendaire.
+    Un ensemble vide n'a pas de durée observée.
+    """
+    if not events or any(end is None for _, end, _ in events):
+        return None
+    for start, end, _ in events:
+        if end < start:
+            raise ValueError("La fin d'un événement précède son début.")
+    earliest = min(start for start, _, _ in events)
+    latest = max(end for _, end, _ in events)
+    return int((latest - earliest).total_seconds() // 60)
+
+
+
 def dashboard_metrics(db: Session) -> dict:
     episodes = db.scalars(select(Episode).where(Episode.synthetic.is_(False))).all()
     synthetic = db.scalar(select(func.count(Episode.id)).where(Episode.synthetic.is_(True))) or 0
