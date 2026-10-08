@@ -1,0 +1,21 @@
+{
+  "version_schema": "instantane-structures-recherche-rnsr-v1",
+  "source_id": "mesr_rnsr_structures_actives",
+  "source_url": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-structures-recherche-publiques-actives/",
+  "api_url": "https://mesr.opendatasoft.com/api/explore/v2.1/catalog/datasets/fr-esr-structures-recherche-publiques-actives/records",
+  "version_transformation": "1.0",
+  "collecte_le": "2026-10-08T22:20:25+00:00",
+  "nombre_structures": 4767,
+  "sha256_semantique_source": "9b51582883a74279fcf1e2504ec5f36bb78bdc1477600fa901ad430a07dea6c9",
+  "nombre_partitions": 8,
+  "empreintes_partitions": {
+    "rnsr_00.jsonl": "e6c37bddf2274cb0b75fb2d64970df2e19571e832fdf7bb6146a7398a54c8917",
+    "rnsr_01.jsonl": "ab8e2b5cf54ac988e081b7220e3c265a402c0c15494409078c4fc30e89775f71",
+    "rnsr_02.jsonl": "adf13b0c7b08c703aa3f8fa867890e6111947039048688d0a7d2e84c94e04eb3",
+    "rnsr_03.jsonl": "1719b305e2b961fd21a8f930a26abc7b594d2a609150d2df6ec5a6148931c51d",
+    "rnsr_04.jsonl": "87bb5b7185a3375cbebe2d48b15483c161e26c33efbb16c7dc1d8ca52d632033",
+    "rnsr_05.jsonl": "87afeee1cd6d4a8a39c6e280b6dc3c4a79b8e8db84cfd233687fe16e777dbc09",
+    "rnsr_06.jsonl": "32b912ea1362a3184a179b7c3a1fc9da40d9fdaaa6522cbcfdb142dd5e36f1e7",
+    "rnsr_07.jsonl": "26a935c9fc1263adb09cc0161189ba64e8fbe756541eac41c75ceb49d38f112b"
+  }
+}
