@@ -85,19 +85,28 @@ def critical_path_minutes(events: list[tuple[datetime, datetime | None, int | No
 def elapsed_span_minutes(events: list[tuple[datetime, datetime | None, int | None]]) -> int | None:
     """Durée calendaire du premier début à la dernière fin observée.
 
-    Les événements ouverts interdisent une mesure complète : None est renvoyé.
-    Les intervalles qui se chevauchent ne sont pas additionnés et les périodes
-    d'attente entre événements restent incluses dans le délai calendaire.
-    Un ensemble vide n'a pas de durée observée.
+    Le calcul accepte les chevauchements et conserve les attentes. Une date
+    manquante rend l'intervalle complet inconnu ; une date invalide est refusée.
+    Le résultat ne prouve pas la date de première contribution utile.
     """
-    if not events or any(end is None for _, end, _ in events):
+    if not events:
         return None
-    for start, end, _ in events:
-        if end < start:
+    incomplet = False
+    for debut, fin, _ in events:
+        if not isinstance(debut, datetime) or debut.utcoffset() is None:
+            raise ValueError("Chaque début doit être une date avec fuseau horaire.")
+        if fin is None:
+            incomplet = True
+            continue
+        if not isinstance(fin, datetime) or fin.utcoffset() is None:
+            raise ValueError("Chaque fin connue doit être une date avec fuseau horaire.")
+        if fin < debut:
             raise ValueError("La fin d'un événement précède son début.")
-    earliest = min(start for start, _, _ in events)
-    latest = max(end for _, end, _ in events)
-    return int((latest - earliest).total_seconds() // 60)
+    if incomplet:
+        return None
+    premiere_date = min(debut for debut, _, _ in events)
+    derniere_date = max(fin for _, fin, _ in events if fin is not None)
+    return int((derniere_date - premiere_date).total_seconds() // 60)
 
 
 
