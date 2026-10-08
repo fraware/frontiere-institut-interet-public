@@ -93,3 +93,9 @@ Le protocole [d'exécution indépendante](PROTOCOLE_SESSIONS_INDEPENDANTES_V1.md
 Le programme `scripts/preparer_sessions_jeu_reserve.py` prépare **hors du dépôt public** trois dossiers contenant des questions identiques, des consignes propres à chaque méthode, un fichier de réponses vide et un journal de séance vide. Il exige un budget explicite, refuse l'écrasement d'une séance et n'ouvre aucune référence privée.
 
 Les dossiers produits doivent être transmis aux opérateurs dans un environnement privé. Un manifeste commun identifie les questions, les conditions de préparation et les empreintes des documents. Le responsable enregistre ce manifeste auprès d'un tiers avant le début de l'expérience.
+
+## Relecture indépendante des chronologies historiques
+
+Le [protocole de double relecture des sources](PROTOCOLE_RELECTURE_SOURCES_HISTORIQUES_V1.md) définit la vérification indépendante des **45 événements** du corpus actif. Les scripts `preparer_relecture_evenements.py` et `consolider_relecture_evenements.py` produisent des dossiers identiques, des jugements vierges, un manifeste d'intégrité et un bilan conservant tous les désaccords. Le paquet présenté aux relecteurs n'inclut pas les conclusions ni les réserves préalables de l'assistant.
+
+Ce dispositif est **préparatoire** : aucun jugement humain indépendant n'est encore disponible et aucun accord entre relecteurs n'est revendiqué. Les fichiers individuels et leurs empreintes doivent rester dans un environnement privé, avec preuve d'antériorité extérieure.
