@@ -77,3 +77,12 @@ L'interface `/evaluation` contient les cas de **développement** enregistrés da
 Le compteur `prediction_count` dénombre toutes les réponses enregistrées à ce banc interne ; `scored_prediction_count` indique les réponses appartenant à des cas révélés, et `sealed_prediction_count` les réponses encore masquées. Les indicateurs `methods` et leurs tailles `n` portent uniquement sur les réponses révélées. Les méthodes disposant exclusivement de réponses non révélées n'ont pas de score public.
 
 La révélation d'un cas du banc interne relève d'une décision explicite et irréversible pour son statut de développement : les autres réponses ultérieures à ce cas perdent leur caractère aveugle. Le dispositif H01–H10 possède une chaîne de gel et de correction indépendante ; **cette interface ne remplace pas sa procédure de protection des références privées**. Aucun score affiché par le banc interne ne doit être assimilé à un résultat indépendant de l'étude réservée.
+
+
+## Version des méthodes et fiabilité des temps
+
+Dans le banc de développement de l'application, les moyennes sont maintenant regroupées par le **couple méthode et version**. Deux versions distinctes d'une même procédure constituent deux groupes séparés, chacune accompagnée du nombre exact de prédictions incluses. Des versions différentes pourraient avoir été évaluées sur des ensembles différents de cas révélés ; le seul affichage de moyennes ne permet donc pas d'en déduire un avantage expérimental apparié.
+
+À la saisie, un nom de méthode vide, une version vide, un temps humain négatif, une durée calendaire négative ou non finie sont **refusés**. Les observations ne sont plus artificiellement ramenées à zéro. Le temps écoulé absent reste inconnu, sans substitution d'une valeur. Les données déjà enregistrées avant ce contrôle ne sont pas modifiées ; si une analyse historique dépend de durées anciennes, celles-ci demandent un examen spécifique.
+
+La comparaison réservée H01–H10 utilise son propre programme d'appariement sur les mêmes questions et ses contrôles de réponses. Le banc de développement ne doit pas se substituer à ce dispositif.
