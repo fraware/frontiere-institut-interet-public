@@ -1,4 +1,5 @@
 import json
+from datetime import datetime, timezone
 
 from fastapi.testclient import TestClient
 from sqlalchemy import delete, select
@@ -1000,3 +1001,61 @@ def test_benchmark_refuse_les_mesures_invalides_sans_les_modifier():
         assert client.get("/api/v1/evaluation").json()["prediction_count"] == 0
     with SessionLocal() as db:
         assert db.scalar(select(BenchmarkPrediction.id).limit(1)) is None
+
+
+def test_export_empirique_preserve_absence_et_dernier_resultat():
+    reset_db()
+    with SessionLocal() as db:
+        org = Organization(name="Organisme export temporel")
+        db.add(org)
+        db.flush()
+        sans_resultat = Episode(
+            code="EP-SANS-RESULTAT", organization_id=org.id,
+            title="Besoin sans résultat enregistré", synthetic=False,
+        )
+        avec_resultat = Episode(
+            code="EP-AVEC-RESULTAT", organization_id=org.id,
+            title="Besoin suivi par deux observations", synthetic=False,
+        )
+        db.add_all([sans_resultat, avec_resultat])
+        db.flush()
+        db.add_all([
+            SearchRun(episode_id=avec_resultat.id, search_type="PUBLIQUE", public_result="P1"),
+            SearchRun(episode_id=avec_resultat.id, search_type="PUBLIQUE", public_result="P2"),
+            EpisodeResult(
+                episode_id=avec_resultat.id,
+                result_status="PROVISOIRE",
+                outcome_description="Première observation",
+                frontiere_minutes=200, institution_minutes=75,
+            ),
+            EpisodeResult(
+                episode_id=avec_resultat.id,
+                result_status="OBSERVE",
+                outcome_description="Révision ultérieure",
+                frontiere_minutes=0, institution_minutes=14,
+                first_useful_contribution_at=datetime(2026, 10, 8, 12, 30, tzinfo=timezone.utc),
+            ),
+        ])
+        db.commit()
+
+    with TestClient(app) as client:
+        reponse = client.get("/api/v1/research-export")
+        assert reponse.status_code == 200
+        export = reponse.json()
+        assert export["schema_version"] == "0.3"
+        dossiers = {e["code"]: e for e in export["episodes"]}
+        vide = dossiers["EP-SANS-RESULTAT"]
+        assert vide["result_status"] is None
+        assert vide["result_record_id"] is None
+        assert vide["first_useful_contribution_at"] is None
+        assert vide["frontiere_minutes"] is None
+        assert vide["institution_minutes"] is None
+        assert vide["public_search_record_id"] is None
+        observe = dossiers["EP-AVEC-RESULTAT"]
+        assert observe["public_result"] == "P2"
+        assert type(observe["public_search_record_id"]) is int
+        assert observe["result_status"] == "OBSERVE"
+        assert type(observe["result_record_id"]) is int
+        assert observe["frontiere_minutes"] == 0
+        assert observe["institution_minutes"] == 14
+        assert observe["first_useful_contribution_at"].startswith("2026-10-08T12:30:00")
