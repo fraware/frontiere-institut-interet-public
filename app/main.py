@@ -1418,10 +1418,10 @@ def benchmark_page(request: Request, db: Session = Depends(get_db)):
         predictions = [p for p in summary["predictions"] if p.case_id == case.id]
         rows.append({
             "case": case,
-            "expected_routes": json.loads(case.expected_routes_json),
-            "expected_resource_forms": json.loads(case.expected_resource_forms_json),
+            "expected_routes": json.loads(case.expected_routes_json) if case.revealed else [],
+            "expected_resource_forms": json.loads(case.expected_resource_forms_json) if case.revealed else [],
             "predictions": [
-                {"prediction": p, "metrics": benchmark_prediction_metrics(case, p)}
+                {"prediction": p, "metrics": benchmark_prediction_metrics(case, p) if case.revealed else None}
                 for p in predictions
             ],
         })
@@ -1519,6 +1519,8 @@ def api_benchmark(db: Session = Depends(get_db)) -> dict:
     return {
         "case_count": len(summary["cases"]),
         "prediction_count": len(summary["predictions"]),
+        "scored_prediction_count": summary["scored_prediction_count"],
+        "sealed_prediction_count": summary["sealed_prediction_count"],
         "methods": summary["methods"],
     }
 
