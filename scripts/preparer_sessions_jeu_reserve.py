@@ -44,6 +44,9 @@ def preparer(
     identifiant: str,
     budget_minutes: int,
 ) -> dict:
+    depot = Path(__file__).resolve().parents[1]
+    if destination.resolve().is_relative_to(depot):
+        raise ValueError("La destination doit être extérieure au dépôt public.")
     if not re.fullmatch(r"[A-Za-z0-9_-]{3,80}", identifiant):
         raise ValueError("L'identifiant doit contenir 3 à 80 caractères alphanumériques, _ ou -.")
     if type(budget_minutes) is not int or budget_minutes < 1:
