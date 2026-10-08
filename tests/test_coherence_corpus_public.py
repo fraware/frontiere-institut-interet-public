@@ -19,9 +19,9 @@ def test_dates_a_precision_conservee():
     assert not valider_date("2033-2025", "intervalle")
 
 
-def test_controle_corpus_reel_sur_chronologies_v4():
+def test_controle_corpus_reel_sur_chronologies_v5():
     signaux = json.loads((ROOT / "donnees" / "signaux_publics_v1.json").read_text(encoding="utf-8"))
-    chronos = json.loads((ROOT / "donnees" / "chronologies_v4.json").read_text(encoding="utf-8"))
+    chronos = json.loads((ROOT / "donnees" / "chronologies_v5.json").read_text(encoding="utf-8"))
     rapport = verifier(signaux, chronos)
     assert rapport["valide_structurellement"], rapport["erreurs"]
     assert rapport["nombre_signaux"] == 50
