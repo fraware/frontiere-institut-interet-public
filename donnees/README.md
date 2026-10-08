@@ -35,3 +35,11 @@ Chaque entrée conserve :
 5. Une entrée doit être retirée ou corrigée si la source ne soutient pas directement le fait décrit.
 
 Le fichier `signaux_publics_v1.json` constitue la première tranche. L'objectif suivant est d'atteindre environ cent signaux, puis de retenir les trente cas les plus documentés.
+
+## Registre de vérification des événements
+
+Le fichier `registre_verification_evenements_v1.json` recense les événements des dix chronologies de recherche les plus récentes (version 3), avec leur date conservée à la précision d'origine, le texte du fait allégué et **la source candidate du signal parent**.
+
+Chaque événement porte la valeur `A_VERIFIER` : l'existence d'une source publique associée au signal **ne prouve pas** qu'elle documente précisément cet événement. Le fichier rend la tâche de vérification explicite, événement par événement, sans produire de citation nouvelle ni modifier les interprétations historiques. Les champs de relecture restent vides jusqu'à examen de la source par une personne compétente.
+
+La commande `python scripts/construire_registre_verification_evenements.py --sortie /chemin/nouveau_registre.json` régénère un exemplaire de contrôle sans écraser un fichier existant. Les tests vérifient l'identité exacte du registre avec les fichiers sources du dépôt. Toute validation factuelle doit conserver la référence du passage justifiant le fait et la date de vérification.
