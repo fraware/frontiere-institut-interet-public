@@ -114,3 +114,8 @@ Chaque rapport individuel issu de `scripts/evaluer_jeu_reserve.py` contient dés
 Les anciens rapports dépourvus de cette empreinte ne satisfont pas au contrôle renforcé. Avant toute analyse, retrouver les fichiers originaux, leurs manifestes et les questions, puis **reproduire une correction autorisée** à partir des réponses restées inchangées et de leurs gels vérifiés ; ne jamais compléter une empreinte manquante par estimation ni modifier silencieusement un rapport original.
 
 Ce contrôle établit l'identité des fichiers de questions utilisés lors de la correction ; il ne prouve pas, à lui seul, que les trois opérateurs ont effectivement reçu et respecté les mêmes consignes, tâche qui reste couverte par les journaux et la procédure indépendante.
+
+
+## Vérification artificielle du raccordement documentaire
+
+Le [jeu d'essais adversariaux de l'orientation](ESSAIS_ORIENTATION_SYNTHETIQUE_V1.md) comprend des demandes et des structures entièrement fictives. Son programme permet de reproduire les omissions lexicales et les rapprochements inattendus du moteur sans consulter de référence réservée ni publier de résultat institutionnel réel.

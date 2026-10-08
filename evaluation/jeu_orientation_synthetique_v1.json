@@ -1,0 +1,230 @@
+{
+  "version_schema": "jeu-orientation-synthetique-v1",
+  "nature": "EXCLUSIVEMENT_ARTIFICIELLE",
+  "limites": "Les jugements sont créés pour vérifier le fonctionnement du programme. Ils ne démontrent aucune compétence institutionnelle ni précision empirique.",
+  "structures": [
+    {
+      "code": "S-EAU",
+      "nom": "Direction fictive des eaux",
+      "mission": "Analyse chimique des eaux par spectrométrie de masse.",
+      "etat": "ACTIF"
+    },
+    {
+      "code": "S-CHIMIE",
+      "nom": "Unité fictive des matériaux",
+      "domaine": "Chimie analytique et matériaux.",
+      "etat": "ACTIF"
+    },
+    {
+      "code": "S-SPECTRO-NOM",
+      "nom": "Institut fictif de spectrométrie",
+      "mission": "Accueille les visiteurs.",
+      "etat": "ACTIF"
+    },
+    {
+      "code": "S-SPECTRAL",
+      "nom": "Laboratoire fictif des eaux",
+      "mission": "Analyse spectrale de liquides.",
+      "etat": "ACTIF"
+    },
+    {
+      "code": "S-GENOMIQUE",
+      "nom": "Unité fictive du vivant",
+      "domaine": "Génomique et biologie moléculaire.",
+      "etat": "ACTIF"
+    },
+    {
+      "code": "S-CYBER-MISSION",
+      "nom": "Direction numérique fictive",
+      "mission": "Sécurité des systèmes informatiques.",
+      "etat": "ACTIF"
+    },
+    {
+      "code": "S-CYBER-DOM",
+      "nom": "Institut du numérique fictif",
+      "domaine": "Cybersécurité et cryptographie.",
+      "etat": "ACTIF"
+    },
+    {
+      "code": "S-GEOSPATIAL",
+      "nom": "Centre spatial fictif",
+      "mission": "Cartographie et télédétection satellitaire.",
+      "etat": "ACTIF"
+    },
+    {
+      "code": "S-IRM",
+      "nom": "Unité fictive d'imagerie clinique",
+      "domaine": "Imagerie par résonance magnétique.",
+      "etat": "ACTIF"
+    },
+    {
+      "code": "S-CALCUL",
+      "nom": "Infrastructure numérique fictive",
+      "mission": "Calcul et stockage pour la recherche scientifique.",
+      "etat": "ACTIF"
+    },
+    {
+      "code": "S-HISTORIQUE",
+      "nom": "Ancien institut fictif des eaux",
+      "mission": "Analyse chimique des eaux par spectrométrie.",
+      "etat": "SUPPRIME"
+    },
+    {
+      "code": "S-GENERAL",
+      "nom": "Institut fictif des sciences",
+      "etat": "ACTIF"
+    }
+  ],
+  "cas": [
+    {
+      "code": "CHIMIE-SPECTRO",
+      "domaine": "chimie",
+      "fonction": "spectrométrie",
+      "imperatifs": [
+        "spectrométrie de masse"
+      ],
+      "attendus": {
+        "mission_ou_capacite_publiee": [
+          "S-EAU"
+        ],
+        "domaine_scientifique_publie": [
+          "S-CHIMIE"
+        ],
+        "nom_uniquement": [
+          "S-SPECTRO-NOM"
+        ]
+      },
+      "raison": "Trois types de preuve distincts, dont un rapprochement exclusivement nominal."
+    },
+    {
+      "code": "CYBER-SECURITE",
+      "domaine": "cybersécurité",
+      "fonction": "sécurité des systèmes",
+      "imperatifs": [],
+      "attendus": {
+        "mission_ou_capacite_publiee": [
+          "S-CYBER-MISSION"
+        ],
+        "domaine_scientifique_publie": [
+          "S-CYBER-DOM"
+        ],
+        "nom_uniquement": []
+      },
+      "raison": "Une mission et une classification scientifique distinctes."
+    },
+    {
+      "code": "BIOLOGIE",
+      "domaine": "biologie",
+      "fonction": "génomique",
+      "imperatifs": [],
+      "attendus": {
+        "mission_ou_capacite_publiee": [],
+        "domaine_scientifique_publie": [
+          "S-GENOMIQUE"
+        ],
+        "nom_uniquement": []
+      },
+      "raison": "Classification scientifique sans mission ni capacité constatée."
+    },
+    {
+      "code": "CALCUL-STOCKAGE",
+      "domaine": "calcul",
+      "fonction": "stockage scientifique",
+      "imperatifs": [],
+      "attendus": {
+        "mission_ou_capacite_publiee": [
+          "S-CALCUL"
+        ],
+        "domaine_scientifique_publie": [],
+        "nom_uniquement": []
+      },
+      "raison": "Mission publiée portant sur le calcul et le stockage."
+    },
+    {
+      "code": "TELEDETECTION",
+      "domaine": "cartographie",
+      "fonction": "télédétection",
+      "imperatifs": [],
+      "attendus": {
+        "mission_ou_capacite_publiee": [
+          "S-GEOSPATIAL"
+        ],
+        "domaine_scientifique_publie": [],
+        "nom_uniquement": []
+      },
+      "raison": "Mission publique textuellement concordante."
+    },
+    {
+      "code": "IRM-ABREVIATION",
+      "domaine": "IRM",
+      "fonction": "IRM",
+      "imperatifs": [],
+      "attendus": {
+        "mission_ou_capacite_publiee": [],
+        "domaine_scientifique_publie": [
+          "S-IRM"
+        ],
+        "nom_uniquement": []
+      },
+      "raison": "Omission attendue du moteur lexical face à une abréviation absente des libellés."
+    },
+    {
+      "code": "ANALYSE-SPECTRALE",
+      "domaine": "analyse spectrale",
+      "fonction": "liquides",
+      "imperatifs": [],
+      "attendus": {
+        "mission_ou_capacite_publiee": [
+          "S-SPECTRAL"
+        ],
+        "domaine_scientifique_publie": [],
+        "nom_uniquement": []
+      },
+      "raison": "Le mot général « analyse » risque de sélectionner une seconde notice trop large."
+    },
+    {
+      "code": "AUCUNE-CONCORDANCE",
+      "domaine": "géomagnétisme",
+      "fonction": "sismologie",
+      "imperatifs": [],
+      "attendus": {
+        "mission_ou_capacite_publiee": [],
+        "domaine_scientifique_publie": [],
+        "nom_uniquement": []
+      },
+      "raison": "Aucun résultat attendu dans cet univers artificiel ; l'absence n'autorise pas une conclusion institutionnelle."
+    },
+    {
+      "code": "HOMONYMIE",
+      "domaine": "spectrométrie",
+      "fonction": "spectrométrie",
+      "imperatifs": [],
+      "attendus": {
+        "mission_ou_capacite_publiee": [
+          "S-EAU"
+        ],
+        "domaine_scientifique_publie": [],
+        "nom_uniquement": [
+          "S-SPECTRO-NOM"
+        ]
+      },
+      "raison": "Un nom similaire n'établit aucune activité technique."
+    },
+    {
+      "code": "HISTORIQUE",
+      "domaine": "spectrométrie",
+      "fonction": "chimique",
+      "imperatifs": [],
+      "attendus": {
+        "mission_ou_capacite_publiee": [
+          "S-EAU"
+        ],
+        "domaine_scientifique_publie": [],
+        "nom_uniquement": [
+          "S-SPECTRO-NOM"
+        ]
+      },
+      "raison": "La notice historique inactive n'est pas une ressource active."
+    }
+  ]
+}
