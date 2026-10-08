@@ -65,3 +65,7 @@ La version active devient `chronologies_v6.json` ; elle conserve dix chronologie
 ### Provenance temporelle du cas DGA
 
 La version active est `chronologies_v7.json` (toujours 46 événements pour dix chronologies), avec `registre_verification_evenements_v5.json` et `passages_sources_evenements_v3.json`. Quatre constats du cas DGA sont reliés au rapport parlementaire **enregistré le 17 janvier 2024**, tout en conservant 2023 comme période approximative des situations décrites. Le registre de passages couvre maintenant **18 événements**, dont la première lecture ne constitue pas une vérification indépendante. Voir [la note DGA](NOTE_SOURCES_DGA_2026-10-08.md).
+
+### Chaîne documentaire PFAS et extension des sources
+
+La référence active est `chronologies_v8.json`, son registre `registre_verification_evenements_v6.json`, et le dossier de passages `passages_sources_evenements_v4.json`. La version 8 distingue explicitement la remise de l'expertise PFAS le 15 avril 2026, la signature de la circulaire le 27 avril et leurs dates de publication. Elle préserve 46 événements sur dix cas. **29 événements** disposent maintenant d'un passage source localisé dans le registre, avec limites d'interprétation et absence de confirmation indépendante ; **17 restent à documenter individuellement**. Voir [la note PFAS](NOTE_SOURCES_PFAS_2026-10-08.md).

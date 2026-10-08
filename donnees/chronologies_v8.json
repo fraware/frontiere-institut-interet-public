@@ -1,0 +1,487 @@
+{
+  "version": "8",
+  "date_creation": "2026-10-08",
+  "regle": "Événements distingués par leur date réelle, par la date de publication et par la nature de leur preuve ; conserver les identifiants stables et les précisions temporelles.",
+  "chronologies": [
+    {
+      "id_signal": "S001",
+      "titre": "France Compétences — perte puis recherche d'une capacité en analyse de données",
+      "evenements": [
+        {
+          "date": "2024-10",
+          "precision": "mois",
+          "evenement": "Début documenté de la perte de maîtrise interne du langage R, selon l'audition ultérieure du directeur général de France Compétences.",
+          "id_evenement": "S001-E01"
+        },
+        {
+          "date": "2025-04-03",
+          "precision": "jour",
+          "evenement": "Audition au Sénat de Stéphane Lardy, directeur général de France Compétences : le recrutement de profils spécialisés est toujours en cours et la difficulté perdure depuis octobre 2024.",
+          "id_evenement": "S001-E02"
+        },
+        {
+          "date": "2025-07-01",
+          "precision": "jour",
+          "evenement": "Publication du rapport de la commission d'enquête du Sénat, qui reprend le témoignage du 3 avril 2025 sur la perte de capacité, la rareté des profils et la rémunération. Cette reprise ne constate pas un nouvel état du recrutement au 1er juillet 2025.",
+          "id_evenement": "S001-E03"
+        }
+      ],
+      "inconnues": [
+        "date exacte de la perte de capacité en octobre 2024",
+        "date de la première offre de recrutement",
+        "date d'identification d'un candidat satisfaisant",
+        "date de prise de fonctions ou de résolution",
+        "solution temporaire éventuelle"
+      ],
+      "lecture_provisoire": "La difficulté, signalée comme existant depuis octobre 2024, est attestée par le témoignage du 3 avril 2025. Le rapport publié le 1er juillet reprend cet état sans attester sa persistance jusqu'à juillet. La date de rétablissement de la capacité reste inconnue."
+    },
+    {
+      "id_signal": "S011",
+      "titre": "DGA — délai entre expression du besoin et affectation après concours",
+      "evenements": [
+        {
+          "date": "2023",
+          "precision": "annee",
+          "evenement": "Le rapport parlementaire sur la cyberdéfense, enregistré le 17 janvier 2024 après une mission engagée en 2023, décrit des tensions de recrutement dans les métiers de cybersécurité à la DGA, dans un contexte de forte concurrence avec les industriels.",
+          "id_evenement": "S011-E01",
+          "nature_date": "periode_de_reference_approximative",
+          "date_document_source": "2024-01-17"
+        },
+        {
+          "date": "2023",
+          "precision": "annee",
+          "evenement": "Le rapport parlementaire enregistré le 17 janvier 2024 indique que, depuis plusieurs années, les concours d'ingénieurs fonctionnaires pourvoient environ 50 % des postes ; il ne présente pas ce taux comme une statistique exclusivement mesurée en 2023.",
+          "id_evenement": "S011-E02",
+          "nature_date": "periode_de_reference_approximative",
+          "date_document_source": "2024-01-17"
+        },
+        {
+          "date": "2023",
+          "precision": "annee",
+          "evenement": "Le rapport parlementaire enregistré le 17 janvier 2024 décrit une procédure de concours entraînant une affectation des lauréats pratiquement un an après l'expression du besoin par les employeurs ; ce délai est une estimation de mécanisme, non la moyenne calculée d'un échantillon individuel.",
+          "id_evenement": "S011-E03",
+          "nature_date": "periode_de_reference_approximative",
+          "date_document_source": "2024-01-17"
+        },
+        {
+          "date": "2023",
+          "precision": "annee",
+          "evenement": "Le rapport parlementaire enregistré le 17 janvier 2024 indique que les ingénieurs civils contractuels représentent environ 75 % des agents cyber de la DGA, contre 12 % d'officiers des corps de l'armement et 8 % d'ingénieurs fonctionnaires ; la disponibilité immédiate décrite se rapporte à la voie de recrutement contractuel relativement au concours et ne signifie pas que toute ressource est immédiatement mobilisable.",
+          "id_evenement": "S011-E04",
+          "nature_date": "periode_de_reference_approximative",
+          "date_document_source": "2024-01-17"
+        }
+      ],
+      "inconnues": [
+        "dates exactes des concours",
+        "distribution réelle des délais",
+        "écart de coût entre voies",
+        "résultats par type de recrutement"
+      ],
+      "lecture_provisoire": "La mission parlementaire menée en 2023 et son rapport enregistré le 17 janvier 2024 mettent en évidence un contraste entre les mécanismes contractuels et le délai d'affectation des lauréats des concours, décrit comme proche d'un an. Les quatre lignes correspondent à des constats documentaires de la même période et du même rapport, pas à quatre actions distinctes datées individuellement de 2023. Les trajectoires de recrutement individuelles et la première contribution utile restent inconnues."
+    },
+    {
+      "id_signal": "S016",
+      "titre": "IGN — montée en capacité en intelligence artificielle et données",
+      "evenements": [
+        {
+          "date": "2022-03",
+          "precision": "mois",
+          "evenement": "Le conseil d'administration de l'IGN approuve une feuille de route prévoyant le recrutement de 30 à 40 spécialistes supplémentaires de la donnée et de l'intelligence artificielle d'ici 2024.",
+          "id_evenement": "S016-E01"
+        },
+        {
+          "date": "2024-03-15",
+          "precision": "jour",
+          "evenement": "Lors de la séance du conseil d'administration du 15 mars 2024, le bilan présente 126 recrutements sur 150 ambitionnés, dont 30 dans les métiers de la science des données et de l'intelligence artificielle. Le procès-verbal précise que les 126 recrutements ont été observés fin 2023 (75 internes et 51 externes) ; l'établissement considère le risque d'attractivité comme levé. Ce procès-verbal a été approuvé le 5 juillet 2024.",
+          "id_evenement": "S016-E02"
+        },
+        {
+          "date": "2024-09-12",
+          "precision": "jour",
+          "evenement": "L'IGN annonce disposer désormais de 30 ingénieurs spécialisés en intelligence artificielle.",
+          "id_evenement": "S016-E03"
+        },
+        {
+          "date": "2024-11-12",
+          "precision": "jour",
+          "evenement": "Lors d'une audition au Sénat, l'IGN indique avoir recruté et formé 156 personnes et atteint l'objectif de 30 spécialistes.",
+          "id_evenement": "S016-E04"
+        }
+      ],
+      "inconnues": [
+        "date exacte de début de chaque recrutement",
+        "durée moyenne entre publication et prise de fonctions",
+        "durée moyenne de formation",
+        "taux de maintien des personnes recrutées"
+      ],
+      "lecture_provisoire": "L'objectif formulé en 2022 est suivi d'un bilan de 126 recrutements observés fin 2023, dont 30 dans les métiers des données et de l'intelligence artificielle ; ces chiffres sont présentés le 15 mars 2024 et le procès-verbal approuvé le 5 juillet. Une déclaration ultérieure en novembre 2024 évoque 156 personnes recrutées et formées. Les dates individuelles de recrutement et de première contribution utile demeurent inconnues."
+    },
+    {
+      "id_signal": "S018",
+      "titre": "Météo-France — constitution d'une capacité interne en intelligence artificielle",
+      "evenements": [
+        {
+          "date": "2019-02",
+          "precision": "mois",
+          "evenement": "Création du Lab IA de Météo-France avec le soutien du Fonds de transformation de l'action publique ; six experts sont prévus sur trois ans.",
+          "id_evenement": "S018-E01"
+        },
+        {
+          "date": "2020-02",
+          "precision": "mois",
+          "evenement": "Météo-France publie MeteoNet, jeu de données préparé par le Lab IA pour faciliter la recherche et l'innovation en intelligence artificielle.",
+          "id_evenement": "S018-E02"
+        },
+        {
+          "date": "2021",
+          "precision": "annee",
+          "evenement": "Météo-France pérennise le Lab IA ; quatre agents le composent et le rapport d'activité recense une cinquantaine de réalisations faisant appel à l'intelligence artificielle, dont une dizaine opérationnelles.",
+          "id_evenement": "S018-E03"
+        },
+        {
+          "date": "2024",
+          "precision": "annee",
+          "evenement": "Un premier démonstrateur de prévision régionale par intelligence artificielle à échelle kilométrique est développé en collaboration étroite avec le Lab IA.",
+          "id_evenement": "S018-E04"
+        }
+      ],
+      "inconnues": [
+        "date de la première demande interne adressée au Lab IA",
+        "temps moyen de réponse aux directions",
+        "part des réalisations directement attribuable au Lab IA"
+      ],
+      "lecture_provisoire": "Le délai entre création du Lab IA et une première production publique documentée est d'environ un an ; la structure est pérennisée en 2021 avec des réalisations déjà opérationnelles."
+    },
+    {
+      "id_signal": "S024",
+      "titre": "Parc éolien de Saint-Brieuc — difficulté du conseil scientifique et substitution partielle",
+      "evenements": [
+        {
+          "date": "2017-04-18",
+          "precision": "jour",
+          "evenement": "Création du conseil scientifique par l'article 14 de l'arrêté préfectoral d'autorisation du 18 avril 2017. Sa composition est définie par un arrêté du même jour.",
+          "id_evenement": "S024-E01"
+        },
+        {
+          "date": "2021",
+          "precision": "annee",
+          "evenement": "À l'issue de son premier mandat, le président du conseil scientifique ne sollicite pas de renouvellement en 2021. Le conseil demeure ensuite sans président, l'animation étant assurée par la DDTM des Côtes-d'Armor.",
+          "id_evenement": "S024-E02"
+        },
+        {
+          "date": "2023-11-22",
+          "precision": "jour",
+          "evenement": "Dernière réunion documentée du conseil scientifique le 22 novembre 2023 ; le rapport IGEDD daté de juin 2025 indique qu'il ne s'est plus réuni depuis.",
+          "id_evenement": "S024-E03"
+        },
+        {
+          "date": "2024-05-28",
+          "precision": "jour",
+          "evenement": "Le parc éolien devient entièrement opérationnel le 28 mai 2024, après sa première connexion au réseau en juillet 2023.",
+          "id_evenement": "S024-E04"
+        },
+        {
+          "date": "2025-06",
+          "precision": "mois",
+          "evenement": "Le rapport IGEDD daté de juin 2025 constate que le préfet sollicite directement le SHOM, l'Ifremer et le Cerema pour des avis scientifiques et recommande de transférer la fonction de conseil au conseil scientifique de façade NAMO. Ce rapport est publié sur le site de l'IGEDD le 16 mars 2026.",
+          "id_evenement": "S024-E05"
+        }
+      ],
+      "inconnues": [
+        "date de chaque sollicitation directe des opérateurs",
+        "date de remise des avis scientifiques",
+        "temps de production des avis"
+      ],
+      "lecture_provisoire": "Le conseil scientifique, créé en avril 2017, est resté sans président après le non-renouvellement de son premier mandat en 2021 et n'a plus tenu de réunion après le 22 novembre 2023. Le rapport daté de juin 2025 décrit des sollicitations directes d'opérateurs publics mais n'indique pas les dates individuelles de saisine ni de remise des avis. Sa mise en ligne en mars 2026 ne doit pas être utilisée comme date d'observation du dysfonctionnement."
+    },
+    {
+      "id_signal": "S038",
+      "titre": "Mayotte — sortie de crise de l'eau et renforcement des capacités locales",
+      "evenements": [
+        {
+          "date": "2022-11",
+          "precision": "mois",
+          "evenement": "Début de la phase aiguë de la crise de l'eau décrite par l'IGEDD.",
+          "id_evenement": "S038-E01"
+        },
+        {
+          "date": "2023-11",
+          "precision": "mois",
+          "evenement": "Début de la direction de projet dédiée à la sortie de crise.",
+          "id_evenement": "S038-E02"
+        },
+        {
+          "date": "2024-02",
+          "precision": "mois",
+          "evenement": "Fin de la période aiguë de crise identifiée dans le rapport.",
+          "id_evenement": "S038-E03"
+        },
+        {
+          "date": "2024-12",
+          "precision": "mois",
+          "evenement": "Fin de la mission de direction de projet.",
+          "id_evenement": "S038-E04"
+        },
+        {
+          "date": "2025-06",
+          "precision": "mois",
+          "evenement": "Rapport IGEDD daté de juin 2025, consacré à la direction de projet et à la nécessité de structurer une ingénierie locale pérenne ; sa publication officielle intervient le 8 juillet 2025.",
+          "id_evenement": "S038-E05"
+        },
+        {
+          "date": "2024-S2",
+          "precision": "intervalle",
+          "evenement": "Le renforcement de l'assistance à maîtrise d'ouvrage se concrétise avec le positionnement du Cerema à Mayotte sur la compétence eau et la programmation de six postes dédiés.",
+          "id_evenement": "S038-E06"
+        },
+        {
+          "date": "2024-12-13",
+          "precision": "jour",
+          "evenement": "Arrêté du 13 décembre 2024 portant nomination d'Yves Kocher comme expert de haut niveau chargé de l'animation locale du Plan Eau Mayotte, avec effet administratif au 1er janvier 2025.",
+          "id_evenement": "S038-E09"
+        },
+        {
+          "date": "2025-01-14",
+          "precision": "jour",
+          "evenement": "Yves Kocher prend effectivement ses fonctions le 14 janvier 2025 auprès du préfet de Mayotte, selon le communiqué préfectoral du 21 janvier 2025.",
+          "id_evenement": "S038-E10"
+        }
+      ],
+      "inconnues": [
+        "date d'identification ou de sélection du candidat",
+        "date de première contribution utile de l'expert",
+        "date de prise de fonctions des six postes dédiés au Cerema",
+        "temps de mobilisation du Cerema"
+      ],
+      "lecture_provisoire": "La direction de projet IGEDD se déroule de novembre 2023 à décembre 2024. Un arrêté du 13 décembre 2024 nomme l'expert chargé de l'animation locale du Plan Eau, avec prise d'effet juridique le 1er janvier 2025 et prise de fonctions effective le 14 janvier. La séquence décrit plusieurs dates institutionnelles distinctes, sans démontrer une première contribution utile à cette dernière date. Les doublons de nomination et prise de fonctions figurant en version 5 ont été fusionnés en conservant les identifiants d'événements les plus précis."
+    },
+    {
+      "id_signal": "S042",
+      "titre": "IRSN puis ASNR — tensions de recrutement et réorganisation",
+      "evenements": [
+        {
+          "date": "2023",
+          "precision": "annee",
+          "evenement": "Le Sénat signale 91 postes vacants à l'IRSN dans un contexte de forte concurrence pour les ingénieurs spécialisés.",
+          "id_evenement": "S042-E01"
+        },
+        {
+          "date": "2024-02",
+          "precision": "mois",
+          "evenement": "Le débat parlementaire sur la réforme met explicitement en avant le regroupement de compétences rares et l'amélioration de l'attractivité.",
+          "id_evenement": "S042-E02"
+        },
+        {
+          "date": "2025-01",
+          "precision": "mois",
+          "evenement": "Création de l'Autorité de sûreté nucléaire et de radioprotection issue du rapprochement de l'ASN et de l'IRSN.",
+          "id_evenement": "S042-E03"
+        },
+        {
+          "date": "2025-05",
+          "precision": "mois",
+          "evenement": "La nouvelle autorité présente un modèle combinant compétences techniques internes et recours externe pour certaines compétences rares.",
+          "id_evenement": "S042-E04"
+        },
+        {
+          "date": "2025",
+          "precision": "annee",
+          "evenement": "L'ASNR établit une politique de recrutement unifiée et engage la définition d'un cadre attractif de l'emploi et des compétences ; un directeur scientifique est recruté.",
+          "id_evenement": "S042-E05"
+        },
+        {
+          "date": "2025-01-01",
+          "precision": "jour",
+          "evenement": "L'ASNR débute avec 2 085 personnels de statuts public et privé.",
+          "id_evenement": "S042-E06"
+        },
+        {
+          "date": "2025-05-12",
+          "precision": "jour",
+          "evenement": "Signature d'un partenariat de trois ans entre l'ASNR et l'Université des Métiers du Nucléaire pour renforcer l'attractivité, la visibilité des offres et le recrutement.",
+          "id_evenement": "S042-E07"
+        },
+        {
+          "date": "2025-12-31",
+          "precision": "jour",
+          "evenement": "L'effectif global de l'ASNR atteint 2 126 personnes.",
+          "id_evenement": "S042-E08"
+        }
+      ],
+      "inconnues": [
+        "nombre de postes vacants comparable à celui observé à l'IRSN en 2023",
+        "nombre de recrutements réalisés en 2025",
+        "délai moyen de recrutement",
+        "effet du partenariat et de la politique de recrutement unifiée sur les candidatures"
+      ],
+      "lecture_provisoire": "La nouvelle autorité augmente son effectif global de 41 personnes entre le 1er janvier et le 31 décembre 2025 et met en place des mesures d'attractivité. Cette évolution ne permet pas encore d'établir que les vacances de postes spécialisés ont été résorbées."
+    },
+    {
+      "id_signal": "S049",
+      "titre": "Météo-France — création d'une équipe climatique dédiée à l'outre-mer",
+      "evenements": [
+        {
+          "date": "2024",
+          "precision": "annee",
+          "evenement": "Des effectifs supplémentaires sont accordés pour constituer une équipe dédiée aux projections climatiques à fine échelle pour les territoires ultramarins.",
+          "id_evenement": "S049-E01"
+        },
+        {
+          "date": "2025",
+          "precision": "annee",
+          "evenement": "Les indicateurs territorialisés produits par cette capacité sont rendus publics.",
+          "id_evenement": "S049-E02"
+        },
+        {
+          "date": "2026-07",
+          "precision": "mois",
+          "evenement": "Le Sénat revient sur cette capacité et sur les projets d'observation météorologique à Mayotte.",
+          "id_evenement": "S049-E03"
+        }
+      ],
+      "inconnues": [
+        "taille exacte de l'équipe",
+        "temps entre création de l'équipe et première production utile",
+        "coût",
+        "réutilisation des méthodes entre territoires"
+      ],
+      "lecture_provisoire": "Exemple de création d'une capacité collective ciblée avec production observable l'année suivante."
+    },
+    {
+      "id_signal": "S027",
+      "titre": "PFAS dans les matières fertilisantes — mission interministérielle",
+      "evenements": [
+        {
+          "date": "2025-09",
+          "precision": "mois",
+          "evenement": "Au plus tard en septembre 2025, la mission conjointe CGAAER-IGEDD sur les PFAS dans les matières fertilisantes mène des consultations de services publics, selon la liste datée des personnes rencontrées dans son rapport. La date exacte de la commande de mission n'est pas établie ici.",
+          "id_evenement": "S027-E01"
+        },
+        {
+          "date": "2026-04-15",
+          "precision": "jour",
+          "evenement": "Remise du rapport de la mission conjointe CGAAER-IGEDD le 15 avril 2026, date explicitement mentionnée par la circulaire interministérielle du 27 avril 2026.",
+          "id_evenement": "S027-E02"
+        },
+        {
+          "date": "2026-04-27",
+          "precision": "jour",
+          "evenement": "Signature de la circulaire interministérielle relative à la recherche et à la gestion des PFAS dans les boues destinées à la valorisation agricole. La circulaire mentionne expressément la mission des inspections générales et le rapport de cette mission, remis le 15 avril 2026 ; sa publication au Bulletin officiel intervient le 29 avril 2026.",
+          "id_evenement": "S027-E03"
+        },
+        {
+          "date": "2026-04-28",
+          "precision": "jour",
+          "evenement": "Publication sur le site officiel du ministère de l'Agriculture du rapport de mission CGAAER n°25101 et IGEDD n°016408-01 et de ses recommandations. La publication suit la remise du rapport et la signature de la circulaire.",
+          "id_evenement": "S027-E04"
+        }
+      ],
+      "inconnues": [
+        "date exacte de saisine",
+        "date exacte de constitution de l'équipe",
+        "temps consacré par chaque expert"
+      ],
+      "lecture_provisoire": "La mission est documentée au moins depuis des consultations de septembre 2025. Son rapport est remis le 15 avril 2026, une circulaire interministérielle signée le 27 avril y fait référence expressément, et le rapport et la circulaire sont publiés les 28 et 29 avril respectivement. Le segment remise du rapport → signature de la circulaire dure 12 jours calendaires, sans établir à lui seul la contribution causale marginale du rapport dans la rédaction de l'acte. La date de commande de la mission et la date de première application concrète de la circulaire restent inconnues."
+    },
+    {
+      "id_signal": "S050",
+      "titre": "Météo-France — renouvellement de la capacité de calcul intensif",
+      "evenements": [
+        {
+          "date": "2025-2033",
+          "precision": "intervalle",
+          "evenement": "Période prévue pour le projet de renouvellement des supercalculateurs.",
+          "id_evenement": "S050-E01"
+        },
+        {
+          "date": "2026",
+          "precision": "annee",
+          "evenement": "Météo-France prévoit 39 millions d'euros de dépenses d'investissement, en hausse notamment du fait du renouvellement des supercalculateurs.",
+          "id_evenement": "S050-E02"
+        },
+        {
+          "date": "2027",
+          "precision": "annee",
+          "evenement": "Horizon annoncé pour la mise en service du nouveau système et une multiplication par six de la puissance de calcul.",
+          "id_evenement": "S050-E03"
+        }
+      ],
+      "inconnues": [
+        "date précise de décision d'investissement",
+        "date de contractualisation",
+        "date réelle de mise en service",
+        "écart entre calendrier prévu et réalisé",
+        "effet sur les productions scientifiques et opérationnelles"
+      ],
+      "lecture_provisoire": "Ce cas permet de suivre une capacité scientifique principalement matérielle ; la contribution utile dépendra de la mise en service effective."
+    }
+  ],
+  "rectifications": [
+    {
+      "id_signal": "S016",
+      "evenement": "S016-E02",
+      "champ": "date",
+      "ancienne_valeur": "2024-07-05",
+      "nouvelle_valeur": "2024-03-15",
+      "nature": "date de séance et date d'approbation confondues",
+      "source": "https://www.ign.fr/publications-de-l-ign/institut/informations_legales_administratives/de_deliberations_ca_5_juillet_2024.pdf",
+      "precision": "La donnée de 126 recrutements est déclarée comme valeur observée fin 2023 au procès-verbal du 15 mars 2024, approuvé le 5 juillet 2024."
+    },
+    {
+      "id_signal": "S001",
+      "evenement": "S001-E03",
+      "champ": "evenement",
+      "nature": "publication du rapport confondue avec nouvelle observation factuelle",
+      "source": "https://www.senat.fr/rap/r24-807-2/r24-807-21.pdf",
+      "precision": "Témoignage du 3 avril 2025 ; le rapport ultérieur ne documente pas un état nouveau du recrutement au 1er juillet."
+    },
+    {
+      "id_signal": "S024",
+      "evenement": "S024-E01 à S024-E05",
+      "nature": "précision des dates de création, dernière réunion et mise en service ; clarification de la fin du mandat présidentiel et de la publication du rapport",
+      "source": "https://www.igedd.developpement-durable.gouv.fr/IMG/pdf/015969-01_rapport-publie_cle5181c2.pdf",
+      "date_publication_source": "2026-03-16",
+      "precision": "Le rapport n° 015969-01 est daté de juin 2025 ; sa publication sur la page IGEDD est datée du 16 mars 2026."
+    },
+    {
+      "id_signal": "S038",
+      "evenement": "S038-E05, S038-E09, S038-E10",
+      "nature": "suppression de deux doublons, clarification de la date du rapport et des dates de nomination/prise de fonctions",
+      "sources": [
+        "https://www.igedd.developpement-durable.gouv.fr/projet-de-sortie-de-crise-de-l-eau-a-mayotte-a4274.html",
+        "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050774717",
+        "https://www.mayotte.gouv.fr/Actualites/EAU/Communiques-de-presse/Prise-de-fonctions-d-Yves-KOCHER-expert-de-haut-niveau-en-charge-du-plan-eau-de-Mayotte"
+      ]
+    },
+    {
+      "id_signal": "S011",
+      "evenement": "S011-E01 à S011-E04",
+      "nature": "distinguer année de référence 2023, dépôt du rapport le 17 janvier 2024 et délai de concours présenté comme ordre de grandeur",
+      "source": "https://questions.assemblee-nationale.fr/dyn/opendata/RINFANR5L16B2068.html",
+      "passage": "En-tête du rapport ; section « Une situation particulièrement alarmante à la DGA », paragraphes consacrés aux contrats, concours et délais."
+    },
+    {
+      "id_signal": "S027",
+      "evenement": "S027-E01 à S027-E04",
+      "nature": "mise en cohérence de la première consultation documentée, de la remise du rapport et des dates de signature et de publication réglementaires",
+      "sources": [
+        "https://agriculture.gouv.fr/telecharger/154287",
+        "https://aida.ineris.fr/reglementation/circulaire-270426-relative-a-recherche-pfas-boues-issues-stations-depuration",
+        "https://agriculture.gouv.fr/cadres-de-gestion-de-la-contamination-par-les-pfas-substances-perfluoroalkyles-ou-polyfluoroalkyles"
+      ]
+    }
+  ],
+  "fusions_doublons": [
+    {
+      "identifiant_supprime": "S038-E07",
+      "identifiant_canonique": "S038-E09",
+      "motif": "Même arrêté de nomination, entrée datée au mois et entrée datée au jour."
+    },
+    {
+      "identifiant_supprime": "S038-E08",
+      "identifiant_canonique": "S038-E10",
+      "motif": "Même prise de fonctions effective du 14 janvier 2025, décrite deux fois."
+    }
+  ]
+}
