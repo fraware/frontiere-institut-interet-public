@@ -132,3 +132,11 @@ Le tableau de bord conserve des compteurs distincts : `public_search_records` po
 Dans la vue empirique, `r5` compte les **ressources distinctes** ayant fait l'objet d'au moins une découverte au stade final de mobilisation sur un épisode réel ; `r5_observations` compte l'ensemble de ces observations. Le stade final de mobilisation historique ne prouve pas que la ressource est toujours disponible aujourd'hui. La vue exclut les cas marqués comme artificiels, sans effacer leurs données d'essai.
 
 Les catégories de résultats et d'obstacles dominants reflètent le dernier résultat déclaré par dossier, non une incidence nationale représentative. Les observations issues des dossiers réels ne sont pas suffisamment nombreuses pour produire une estimation causale de la valeur de FRONTIÈRE.
+
+## Export des observations et absence de mesure
+
+L'interface `/api/v1/research-export` utilise le format **0.3**. Pour chaque épisode réel admissible, elle retient la dernière recherche publique et le dernier résultat enregistrés selon leur identifiant de création. Elle publie les identifiants `public_search_record_id` et `result_record_id`, qui permettent de retrouver les enregistrements retenus dans l'instance source. Une observation absente est représentée par `null` : aucune recherche, aucun résultat ou durée encore inconnue ne doit être transformé en valeur nulle de temps.
+
+La date de première contribution utile, lorsqu'elle est renseignée, est exportée dans `first_useful_contribution_at` sans compléter artificiellement une précision ou un fuseau horaire absent. La version 0.2 du format renvoyait une durée de zéro minute lorsque le dossier ne possédait aucun résultat ; elle ne doit pas être utilisée pour interpréter cette valeur comme une mesure expérimentale.
+
+**Limite supplémentaire :** pour les résultats déjà présents, les champs de temps humains du modèle de données possèdent une valeur initiale numérique de zéro. Un zéro associé à un résultat enregistré n'est donc pas toujours distinguable d'une donnée jamais mesurée. Le changement de format corrige l'absence de résultat, sans requalifier automatiquement les zéros historiques internes au résultat. Une correction de ce second problème devra préserver les données et leur provenance au moyen d'une évolution du modèle.
