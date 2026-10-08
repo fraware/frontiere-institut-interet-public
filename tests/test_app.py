@@ -941,7 +941,7 @@ def test_benchmark_separe_les_versions_d_une_meme_methode():
             code="BVERS", title="Versions", prompt="Trouver une voie",
             expected_routes_json='["VOIE_CORRECTE"]',
             expected_resource_forms_json='["EQUIPE"]',
-            expected_resources_json='[]', revealed=True,
+            expected_resources_json='[]', revealed=False,
         ))
         db.commit()
 
@@ -957,6 +957,9 @@ def test_benchmark_separe_les_versions_d_une_meme_methode():
                 "elapsed_seconds": "60",
             }, follow_redirects=False)
             assert response.status_code == 303
+        avant = client.get("/api/v1/evaluation").json()
+        assert avant["scored_prediction_count"] == 0
+        assert client.post("/evaluation/BVERS/reveler", follow_redirects=False).status_code == 303
         resultat = client.get("/api/v1/evaluation").json()
         assert resultat["prediction_count"] == 2
         assert resultat["scored_prediction_count"] == 2
@@ -977,7 +980,7 @@ def test_benchmark_refuse_les_mesures_invalides_sans_les_modifier():
             code="BINVALID", title="Mesures invalides", prompt="Proposer une ressource",
             expected_routes_json='["VOIE"]',
             expected_resource_forms_json='["EQUIPE"]',
-            expected_resources_json='[]', revealed=True,
+            expected_resources_json='[]', revealed=False,
         ))
         db.commit()
 
