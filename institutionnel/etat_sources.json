@@ -1,7 +1,707 @@
 {
-  "version": "1",
-  "registre_version": "1",
-  "observe_le": null,
-  "nombre_sources": 0,
-  "sources": []
+  "nombre_sources": 14,
+  "observe_le": "2026-10-08T12:02:36+00:00",
+  "registre_version": "1.3",
+  "sources": [
+    {
+      "cadence_attendue": "quotidienne_ou_evenementielle",
+      "criticite": "critique",
+      "fraicheur": {
+        "age_jours": 1,
+        "seuil_jours": 14,
+        "statut": "FRAIS"
+      },
+      "nom": "Référentiel de l'organisation administrative de l'État",
+      "observation": {
+        "derniere_mise_a_jour": "2026-10-07T08:01:41.175000+00:00",
+        "derniere_modification": "2025-12-11T16:33:55.359000+00:00",
+        "empreinte": "afe5a2673b26d1ca9ef57c0dbef350509d085528ae836b9886b411717927b286",
+        "etag": null,
+        "etat_http": 200,
+        "id_jeu": "57343feb88ee3823b0d1b934",
+        "licence": "fr-lo",
+        "ressources": [
+          {
+            "derniere_modification": "2026-10-07T08:01:41.175790+00:00",
+            "disponible": true,
+            "empreinte_source": "ae99f2e4541d266101fb35df17c9e5f86c16b704",
+            "format": "zip",
+            "id": "462274f2-b494-469f-81c3-e63a22ce2ff3",
+            "taille": 33584,
+            "titre": "Référentiel : flux année courante zippé au format JSON",
+            "url": "https://echanges.dila.gouv.fr/OPENDATA/RefOrgaAdminEtat/FluxAnneeCourante/",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/462274f2-b494-469f-81c3-e63a22ce2ff3"
+          },
+          {
+            "derniere_modification": "2026-02-28T12:44:00.850154+00:00",
+            "disponible": true,
+            "empreinte_source": "573547599742d87297f973afdab6b8d6af80daca",
+            "format": "zip",
+            "id": "51dfffaf-bad8-458d-ac69-1d47ad1328fa",
+            "taille": 1591,
+            "titre": "Référentiel : flux historique zippé ",
+            "url": "https://echanges.dila.gouv.fr/OPENDATA/RefOrgaAdminEtat/FluxHistorique/",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/51dfffaf-bad8-458d-ac69-1d47ad1328fa"
+          },
+          {
+            "derniere_modification": "2025-10-22T10:11:52+00:00",
+            "disponible": true,
+            "empreinte_source": "efb203ab3fb3581534827f5c8cabb62db954f3d8",
+            "format": "pdf",
+            "id": "a2c205f5-6371-4fed-abcc-0ed2cf6dddc4",
+            "taille": 741017,
+            "titre": "Présentation du référentiel de l'organisation administrative de l'Etat",
+            "url": "https://echanges.dila.gouv.fr/OPENDATA/RefOrgaAdminEtat/Documentation/DILA_Referentiel_organisation_administrative_Etat_%20presentation-20251001.pdf",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/a2c205f5-6371-4fed-abcc-0ed2cf6dddc4"
+          },
+          {
+            "derniere_modification": "2026-10-07T02:32:02+00:00",
+            "disponible": true,
+            "empreinte_source": "f64576499dc86f18fd3bce0d563a066966b37b81",
+            "format": "zip",
+            "id": "d0158eb2-6772-49c2-afb1-732e573ba1e5",
+            "taille": 3172927,
+            "titre": "Dernier référentiel zippé au format JSON",
+            "url": "https://echanges.dila.gouv.fr/OPENDATA/RefOrgaAdminEtat/FluxAnneeCourante/dila_refOrga_admin_Etat_fr_latest.zip",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/d0158eb2-6772-49c2-afb1-732e573ba1e5"
+          },
+          {
+            "derniere_modification": "2025-10-31T11:15:00+00:00",
+            "disponible": true,
+            "empreinte_source": "f4bc57b9c00b77fa657e6fae11affecd4b6cb94e",
+            "format": "pdf",
+            "id": "dc982cf2-3593-4866-ac8e-6568c87e4916",
+            "taille": 474252,
+            "titre": "Présentation de l'API Annuaire de l'administration et des services publics ",
+            "url": "https://echanges.dila.gouv.fr/OPENDATA/RefOrgaAdminEtat/Documentation/DILA_API-Annuaire_l_administration_Service-public.gouv.fr_Presentation_20251001.pdf",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/dc982cf2-3593-4866-ac8e-6568c87e4916"
+          }
+        ],
+        "titre": "Référentiel de l'organisation administrative de l'Etat",
+        "type_observation": "metadonnees_data_gouv"
+      },
+      "observe_le": "2026-10-08T12:02:36+00:00",
+      "source_id": "dila_roae"
+    },
+    {
+      "cadence_attendue": "quotidienne_ou_evenementielle",
+      "criticite": "critique",
+      "fraicheur": {
+        "age_jours": 0,
+        "seuil_jours": 14,
+        "statut": "FRAIS"
+      },
+      "nom": "Annuaire de l'administration — Base de données locales",
+      "observation": {
+        "derniere_mise_a_jour": "2026-10-08T02:38:14+00:00",
+        "derniere_modification": "2026-03-04T15:21:07.215000+00:00",
+        "empreinte": "431c646f3b5bb80f6883ed009bb40fe027bfb335d505286ffaf231366b6d526c",
+        "etag": null,
+        "etat_http": 200,
+        "id_jeu": "53699fe4a3a729239d206227",
+        "licence": "fr-lo",
+        "ressources": [
+          {
+            "derniere_modification": "2025-10-15T09:09:56+00:00",
+            "disponible": true,
+            "empreinte_source": "2dadd14dcbbf3d954f562e09e055dad9a66ab124",
+            "format": "pdf",
+            "id": "120efe64-a749-42b7-b1bf-d92e6e3f2fa9",
+            "taille": 372500,
+            "titre": "Présentation de la Base de données locales",
+            "url": "https://echanges.dila.gouv.fr/OPENDATA/Base_donn%c3%83%c2%a9es_locales/DILA_BASE_DONNEES_LOCALES_SERVICE-PUBLIC_GOUV_FR_Presentation_20251001.pdf",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/120efe64-a749-42b7-b1bf-d92e6e3f2fa9"
+          },
+          {
+            "derniere_modification": "2025-10-15T09:08:38+00:00",
+            "disponible": true,
+            "empreinte_source": "512cccd1dee1534679998c4501282b66693c5262",
+            "format": "pdf",
+            "id": "34ffc308-a0fc-463a-8cd5-063d7901dead",
+            "taille": 476281,
+            "titre": "Présentation de l'API Annuaire de l'administration et des services publics ",
+            "url": "https://echanges.dila.gouv.fr/OPENDATA/Base_donn%c3%83%c2%a9es_locales/DILA_API-Annuaire_l_administration_Service-public.gouv.fr_Presentation_20251001.pdf",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/34ffc308-a0fc-463a-8cd5-063d7901dead"
+          },
+          {
+            "derniere_modification": "2026-10-08T02:38:14+00:00",
+            "disponible": true,
+            "empreinte_source": null,
+            "format": "json",
+            "id": "73302880-e4df-4d4c-8676-1a61bb997f3d",
+            "taille": null,
+            "titre": "Base de données locales de Service-public.gouv.fr",
+            "url": "https://lecomarquage.service-public.gouv.fr/donnees_locales_v4/all_latest.tar.bz2",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/73302880-e4df-4d4c-8676-1a61bb997f3d"
+          },
+          {
+            "derniere_modification": "2025-10-15T09:05:53+00:00",
+            "disponible": true,
+            "empreinte_source": "aac9d350598e481bc0eb1df0ca30dfa1b46de34d",
+            "format": "pdf",
+            "id": "8c5e2022-ea88-4030-a16b-90804810336d",
+            "taille": 480126,
+            "titre": "Présentation de l'API Annuaire de l'administration : compétence géographique des services locaux",
+            "url": "https://echanges.dila.gouv.fr/OPENDATA/Base_donn%c3%83%c2%a9es_locales/DILA_API-Annuaire_l_administration_competence_geographique_Service-public.gouv.fr_Presentation_20251001.pdf",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/8c5e2022-ea88-4030-a16b-90804810336d"
+          },
+          {
+            "derniere_modification": "2026-02-18T08:12:00+00:00",
+            "disponible": true,
+            "empreinte_source": "11fc1363a4f7ac8150509f31d857b2d5f6469f2f",
+            "format": "csv",
+            "id": "d86809f7-a60e-4853-b4b2-126399ce9603",
+            "taille": 27371,
+            "titre": "Liste du type d'organismes de la base locale de l'Annuaire de Service-public.gouv.fr",
+            "url": "https://echanges.dila.gouv.fr/OPENDATA/Base_donn%c3%83%c2%a9es_locales/DILA-Liste-organismes-annuaire-service-public_20260218.csv",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/d86809f7-a60e-4853-b4b2-126399ce9603"
+          }
+        ],
+        "titre": "Service-public.gouv.fr - Annuaire de l’administration - Base de données locales",
+        "type_observation": "metadonnees_data_gouv"
+      },
+      "observe_le": "2026-10-08T12:02:36+00:00",
+      "source_id": "dila_annuaire_local"
+    },
+    {
+      "cadence_attendue": "quotidienne_ou_evenementielle",
+      "criticite": "critique",
+      "fraicheur": {
+        "age_jours": null,
+        "seuil_jours": 14,
+        "statut": "INDETERMINE"
+      },
+      "nom": "Annuaire de l'administration — Compétence géographique locale",
+      "observation": {
+        "derniere_modification_http": null,
+        "empreinte": "9d8f16ddd80406d41e5b5f6518a9ead50c2f3855a0f50f3bc8ab829b39efaa55",
+        "empreinte_partielle": "9c18c9e01ae7e7ee414d8423af48044b4bdecab12451a852adc67c809722718b",
+        "etag": null,
+        "etat_http": 200,
+        "taille_http": "314425",
+        "type_observation": "page_officielle",
+        "url": "https://api-lannuaire.service-public.gouv.fr/explore/dataset/api-lannuaire-administration-locale-competence-geographique/"
+      },
+      "observe_le": "2026-10-08T12:02:36+00:00",
+      "source_id": "dila_competence_geographique"
+    },
+    {
+      "cadence_attendue": "annuelle_avec_verification_hebdomadaire",
+      "criticite": "critique",
+      "fraicheur": {
+        "age_jours": 280,
+        "seuil_jours": 400,
+        "statut": "FRAIS"
+      },
+      "nom": "Code officiel géographique 2026",
+      "observation": {
+        "derniere_modification_http": null,
+        "empreinte": "4cdd892b542f332e9b1265ca4f75ee6afb84dbf27bdc6abd91f2eb6583bcc7dc",
+        "empreinte_partielle": "262b67dd4c62fb11865da207a41fe0b89aa3b783ea739febf9890bb6f4baedd5",
+        "etag": null,
+        "etat_http": 200,
+        "taille_http": null,
+        "type_observation": "page_officielle",
+        "url": "https://www.insee.fr/fr/information/8740222"
+      },
+      "observe_le": "2026-10-08T12:02:36+00:00",
+      "source_id": "insee_cog"
+    },
+    {
+      "cadence_attendue": "frequente",
+      "criticite": "critique",
+      "fraicheur": {
+        "age_jours": 0,
+        "seuil_jours": 21,
+        "statut": "FRAIS"
+      },
+      "nom": "Base nationale sur les intercommunalités",
+      "observation": {
+        "derniere_mise_a_jour": "2026-10-08T02:42:02.236000+00:00",
+        "derniere_modification": "2026-07-13T07:59:34.424000+00:00",
+        "empreinte": "bc82b6a567fa52011c379f2fdbb05931dafa6e635ebe5ddda7f6c21092dfc4cf",
+        "etag": null,
+        "etat_http": 200,
+        "id_jeu": "5e1f20058b4c414d3f94460d",
+        "licence": "lov2",
+        "ressources": [
+          {
+            "derniere_modification": "2025-02-03T15:39:29.687000+00:00",
+            "disponible": true,
+            "empreinte_source": {
+              "type": "sha1",
+              "value": "af316cb3fa20a38e0b78ddf2edd8ff27e6531fdf"
+            },
+            "format": "csv",
+            "id": "25571b3e-a5ce-4567-bfb4-650504644d7b",
+            "taille": 1381592,
+            "titre": "liste-des-groupements-france-entiere-20250127.csv",
+            "url": "https://static.data.gouv.fr/resources/base-nationale-sur-les-intercommunalites/20250203-143929/liste-des-groupements-france-entiere-20250127.csv",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/25571b3e-a5ce-4567-bfb4-650504644d7b"
+          },
+          {
+            "derniere_modification": "2026-10-08T02:42:02.236761+00:00",
+            "disponible": true,
+            "empreinte_source": "e52a4802dec7114caa115d37a607a5086ac5900e",
+            "format": "xlsx",
+            "id": "348cc004-22b4-4b12-9281-b00d4ccb1d88",
+            "taille": 79318464,
+            "titre": "Export BANATIC issu du site officiel",
+            "url": "https://www.banatic.interieur.gouv.fr/consultation/api/export/pregenere/telecharger/France",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/348cc004-22b4-4b12-9281-b00d4ccb1d88"
+          },
+          {
+            "derniere_modification": "2025-03-12T08:36:43.822000+00:00",
+            "disponible": true,
+            "empreinte_source": {
+              "type": "sha1",
+              "value": "0b59e47c9877523cd5c6132465f9f04964c71f86"
+            },
+            "format": "csv",
+            "id": "5d3cfdd0-00de-43fe-a5db-dffeacec6fc7",
+            "taille": 1038838,
+            "titre": "Correspondance code communes INSEE et SIREN",
+            "url": "https://static.data.gouv.fr/resources/base-nationale-sur-les-intercommunalites/20250312-083024/correspondance-code-commune-siren.csv",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/5d3cfdd0-00de-43fe-a5db-dffeacec6fc7"
+          },
+          {
+            "derniere_modification": "2025-02-03T15:40:53.787000+00:00",
+            "disponible": true,
+            "empreinte_source": {
+              "type": "sha1",
+              "value": "774ab32c345cf974a3929b792864433a8cbde6cc"
+            },
+            "format": "csv",
+            "id": "6e05c448-62cc-4470-aa0f-4f31adea0bc4",
+            "taille": 3628674,
+            "titre": "perimetre-epci-a-fp.csv",
+            "url": "https://static.data.gouv.fr/resources/base-nationale-sur-les-intercommunalites/20250203-144053/perimetre-epci-a-fp.csv",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/6e05c448-62cc-4470-aa0f-4f31adea0bc4"
+          },
+          {
+            "derniere_modification": "2025-02-03T15:41:30.384000+00:00",
+            "disponible": true,
+            "empreinte_source": {
+              "type": "sha1",
+              "value": "d6c362b76ae25b0fb98195359b123560f9c888b8"
+            },
+            "format": "csv",
+            "id": "b111005e-3a3a-4163-8e24-2bf13d128d8c",
+            "taille": 23969,
+            "titre": "codes-competences.csv",
+            "url": "https://static.data.gouv.fr/resources/base-nationale-sur-les-intercommunalites/20250203-144130/codes-competences.csv",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/b111005e-3a3a-4163-8e24-2bf13d128d8c"
+          },
+          {
+            "derniere_modification": "2025-02-03T15:40:14.031000+00:00",
+            "disponible": true,
+            "empreinte_source": {
+              "type": "sha1",
+              "value": "c2bb10b436e65afbc90eb898a57bbf4bd8210c1e"
+            },
+            "format": "csv",
+            "id": "c4cdd239-c82d-41ac-b0fb-530cccbab108",
+            "taille": 2773230,
+            "titre": "adresse.csv",
+            "url": "https://static.data.gouv.fr/resources/base-nationale-sur-les-intercommunalites/20250203-144013/adresse.csv",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/c4cdd239-c82d-41ac-b0fb-530cccbab108"
+          },
+          {
+            "derniere_modification": "2025-02-03T15:42:04.076000+00:00",
+            "disponible": true,
+            "empreinte_source": {
+              "type": "sha1",
+              "value": "3b2848ae879bc3df7523f5c7c354579dead4060b"
+            },
+            "format": "csv",
+            "id": "ed17ac9b-2025-482b-bda4-f9d667644b8b",
+            "taille": 538,
+            "titre": "categorie-competences.csv",
+            "url": "https://static.data.gouv.fr/resources/base-nationale-sur-les-intercommunalites/20250203-144203/categorie-competences.csv",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/ed17ac9b-2025-482b-bda4-f9d667644b8b"
+          }
+        ],
+        "titre": "Base nationale sur les intercommunalités",
+        "type_observation": "metadonnees_data_gouv"
+      },
+      "observe_le": "2026-10-08T12:02:36+00:00",
+      "source_id": "dgcl_banatic"
+    },
+    {
+      "cadence_attendue": "annuelle",
+      "criticite": "haute",
+      "erreur": "HTTPError: HTTP Error 403: Forbidden",
+      "fraicheur": {
+        "age_jours": null,
+        "seuil_jours": null,
+        "statut": "ERREUR"
+      },
+      "nom": "Opérateurs de l'État — PLF 2026",
+      "observe_le": "2026-10-08T12:02:36+00:00",
+      "source_id": "budget_operateurs_2026"
+    },
+    {
+      "cadence_attendue": "evenementielle",
+      "criticite": "haute",
+      "erreur": "HTTPError: HTTP Error 403: Forbidden",
+      "fraicheur": {
+        "age_jours": null,
+        "seuil_jours": null,
+        "statut": "ERREUR"
+      },
+      "nom": "Autorités administratives indépendantes et autorités publiques indépendantes",
+      "observe_le": "2026-10-08T12:02:36+00:00",
+      "source_id": "legifrance_aai_api"
+    },
+    {
+      "cadence_attendue": "quotidienne",
+      "criticite": "critique",
+      "fraicheur": {
+        "age_jours": 6,
+        "seuil_jours": 3,
+        "statut": "A_REVOIR"
+      },
+      "nom": "Journal officiel — Lois et décrets",
+      "observation": {
+        "derniere_mise_a_jour": "2026-10-02T11:11:20.376000+00:00",
+        "derniere_modification": "2026-07-31T16:24:39.209000+00:00",
+        "empreinte": "3cbf0048be35ba096c469395db4aa28947e911d5c6173fcbbf0ec8abb392078a",
+        "etag": null,
+        "etat_http": 200,
+        "id_jeu": "53ca3560a3a7294a1ddd784e",
+        "licence": "fr-lo",
+        "ressources": [
+          {
+            "derniere_modification": "2024-10-06T16:26:11.142021+00:00",
+            "disponible": true,
+            "empreinte_source": "1b41b8d067a44440c0843e0dd3a0d1b1e4c16c3f",
+            "format": "dtd",
+            "id": "1efe163c-f2fa-4c71-9efa-ff4e3ffdf25a",
+            "taille": 1338,
+            "titre": "DTD LEGIFRANCE",
+            "url": "https://echanges.dila.gouv.fr/OPENDATA/DTD_LEGIFRANCE",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/1efe163c-f2fa-4c71-9efa-ff4e3ffdf25a"
+          },
+          {
+            "derniere_modification": "2018-12-14T18:37:21.238000+00:00",
+            "disponible": true,
+            "empreinte_source": {
+              "type": "sha1",
+              "value": "c2ccc8f8f4aaf1357ee8380593ddf8688b873d98"
+            },
+            "format": "pdf",
+            "id": "28dbc276-ab81-4902-8569-cd61776016a6",
+            "taille": 180252,
+            "titre": "avertissement-metadonnees-textes-entreprise-20181212.pdf",
+            "url": "https://static.data.gouv.fr/resources/jorf-les-donnees-de-l-edition-lois-et-decrets-du-journal-officiel/20181214-183652/avertissement-metadonnees-textes-entreprise-20181212.pdf",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/28dbc276-ab81-4902-8569-cd61776016a6"
+          },
+          {
+            "derniere_modification": "2026-10-02T09:58:04.360570+00:00",
+            "disponible": false,
+            "empreinte_source": "19b4d4c456140e6ec741b624b30b95e733f69c87",
+            "format": "xml",
+            "id": "4ec72a95-2113-4f90-a632-0aeace534f71",
+            "taille": 145430,
+            "titre": "JORF simple",
+            "url": "https://echanges.dila.gouv.fr/OPENDATA/JORFSIMPLE/",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/4ec72a95-2113-4f90-a632-0aeace534f71"
+          },
+          {
+            "derniere_modification": "2026-10-02T11:11:20.376301+00:00",
+            "disponible": false,
+            "empreinte_source": "95447cc9800a5fcaa48d858460a1a378aa167787",
+            "format": "xml",
+            "id": "825258fd-8d0c-4356-b684-b33b72b2e81f",
+            "taille": 140498,
+            "titre": "JORF Données légales ",
+            "url": "https://echanges.dila.gouv.fr/OPENDATA/JORF/",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/825258fd-8d0c-4356-b684-b33b72b2e81f"
+          },
+          {
+            "derniere_modification": "2017-08-28T16:54:30+00:00",
+            "disponible": true,
+            "empreinte_source": null,
+            "format": "pdf",
+            "id": "a57e6f65-58ca-48bf-b527-37fd88cfcb71",
+            "taille": null,
+            "titre": "Présentation du JORF",
+            "url": "https://echanges.dila.gouv.fr/OPENDATA/JORF/DILA_JORF_Presentation_20170824.pdf",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/a57e6f65-58ca-48bf-b527-37fd88cfcb71"
+          }
+        ],
+        "titre": "JORF: les données de l'édition ''Lois et décrets'' du Journal officiel ",
+        "type_observation": "metadonnees_data_gouv"
+      },
+      "observe_le": "2026-10-08T12:02:36+00:00",
+      "source_id": "dila_jorf"
+    },
+    {
+      "cadence_attendue": "a_chaque_remaniement",
+      "criticite": "critique",
+      "fraicheur": {
+        "age_jours": null,
+        "seuil_jours": null,
+        "statut": "NON_APPLICABLE"
+      },
+      "nom": "Protocole du Gouvernement",
+      "observation": {
+        "derniere_mise_a_jour": "2026-04-16T05:56:00+00:00",
+        "derniere_modification": "2026-07-31T16:07:16.243000+00:00",
+        "empreinte": "c2a94457475b92a4281c55e561fa26eeec4f8b2479b61966af9cddb504dedf8d",
+        "etag": null,
+        "etat_http": 200,
+        "id_jeu": "598d7459c751df5a5e67466d",
+        "licence": "fr-lo",
+        "ressources": [
+          {
+            "derniere_modification": "2017-08-29T05:44:00+00:00",
+            "disponible": true,
+            "empreinte_source": null,
+            "format": "pdf",
+            "id": "a8be71be-a5b7-4885-8713-514cc0306a93",
+            "taille": null,
+            "titre": "Présentation du protocole du Gouvernement",
+            "url": "https://echanges.dila.gouv.fr/OPENDATA/Protocole_du_Gouvernement/DILA_Protocole-Gouvernement_Presentation20170824.pdf",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/a8be71be-a5b7-4885-8713-514cc0306a93"
+          },
+          {
+            "derniere_modification": "2026-04-16T05:56:00+00:00",
+            "disponible": true,
+            "empreinte_source": "c32505ae12de05d353c3bdc3895a03fd1e6ca41c",
+            "format": "xml",
+            "id": "d1f7dd38-6947-4172-b0aa-b7e0d4f5d396",
+            "taille": 240217,
+            "titre": "Protocole du Gouvernement ",
+            "url": "https://echanges.dila.gouv.fr/OPENDATA/Protocole_du_Gouvernement/DILA-Gouvernement_protocole-20260416.xml",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/d1f7dd38-6947-4172-b0aa-b7e0d4f5d396"
+          }
+        ],
+        "titre": "Protocole du Gouvernement",
+        "type_observation": "metadonnees_data_gouv"
+      },
+      "observe_le": "2026-10-08T12:02:36+00:00",
+      "source_id": "dila_protocole_gouvernement"
+    },
+    {
+      "cadence_attendue": "reguliere",
+      "criticite": "haute",
+      "fraicheur": {
+        "age_jours": null,
+        "seuil_jours": 120,
+        "statut": "INDETERMINE"
+      },
+      "nom": "Principaux établissements d'enseignement supérieur",
+      "observation": {
+        "derniere_modification_http": null,
+        "empreinte": "98ee73a68cd90c40388b5c6640d9f5a27859577e9e46ab96dc0eba073870c838",
+        "empreinte_partielle": "d8c339d7bdbfa6fa5ab7c43e024ed1ab0248727d0dbb31678a8a6a41277d109f",
+        "etag": null,
+        "etat_http": 200,
+        "taille_http": "116136",
+        "type_observation": "page_officielle",
+        "url": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-principaux-etablissements-enseignement-superieur/"
+      },
+      "observe_le": "2026-10-08T12:02:36+00:00",
+      "source_id": "mesr_etablissements"
+    },
+    {
+      "cadence_attendue": "hebdomadaire",
+      "criticite": "haute",
+      "fraicheur": {
+        "age_jours": null,
+        "seuil_jours": 14,
+        "statut": "INDETERMINE"
+      },
+      "nom": "Répertoire national des structures de recherche",
+      "observation": {
+        "derniere_modification_http": null,
+        "empreinte": "31593b124bb1a1573c37f258ef7e7d1f1dd41fa36890ae9776082d9d055d128b",
+        "empreinte_partielle": "1824f2e0f18742ac71e1c647400e0c8df34cbc6f6e255bd308b5a9f5fe06601c",
+        "etag": null,
+        "etat_http": 200,
+        "taille_http": "115598",
+        "type_observation": "page_officielle",
+        "url": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-repertoire-national-structures-recherche/"
+      },
+      "observe_le": "2026-10-08T12:02:36+00:00",
+      "source_id": "mesr_rnsr"
+    },
+    {
+      "cadence_attendue": "quotidienne",
+      "criticite": "haute",
+      "fraicheur": {
+        "age_jours": 0,
+        "seuil_jours": 3,
+        "statut": "FRAIS"
+      },
+      "nom": "FINESS — Structures",
+      "observation": {
+        "derniere_mise_a_jour": "2026-10-08T02:21:00.628000+00:00",
+        "derniere_modification": "2026-10-08T02:21:00.628000+00:00",
+        "empreinte": "6e710bb6d9e8a6ef0d6e9020c515d2b90efb58e87068db7d43270c46a368f35d",
+        "etag": null,
+        "etat_http": 200,
+        "id_jeu": "69fb10fd3d405934d1077e01",
+        "licence": "lov2",
+        "ressources": [
+          {
+            "derniere_modification": "2026-08-01T04:15:18.009000+00:00",
+            "disponible": true,
+            "empreinte_source": {
+              "type": "sha1",
+              "value": "72fba0439f54b58b43ad913184453639fc061ad1"
+            },
+            "format": "json.gz",
+            "id": "7b8218bc-faf9-4660-a8d8-1027e5679f08",
+            "taille": 50044904,
+            "titre": "finess-structures-mensuel-202607.json.gz",
+            "url": "https://static.data.gouv.fr/resources/finess-structures-1/20260801-021515/finess-structures-mensuel-202607.json.gz",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/7b8218bc-faf9-4660-a8d8-1027e5679f08"
+          },
+          {
+            "derniere_modification": "2026-10-08T02:21:00.628000+00:00",
+            "disponible": true,
+            "empreinte_source": {
+              "type": "sha1",
+              "value": "4958af6f728053b51e22f4545dbce1051f999446"
+            },
+            "format": "json.gz",
+            "id": "cd493959-fb03-41e5-9347-0edd14dfbc22",
+            "taille": 51577630,
+            "titre": "finess-structures-journalier-20261008.json.gz",
+            "url": "https://static.data.gouv.fr/resources/finess-structures-1/20261008-022055/finess-structures-journalier-20261008.json.gz",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/cd493959-fb03-41e5-9347-0edd14dfbc22"
+          },
+          {
+            "derniere_modification": "2026-09-01T02:16:30.432000+00:00",
+            "disponible": true,
+            "empreinte_source": {
+              "type": "sha1",
+              "value": "9bbc6978bb965f57971659c7111e28e43f56dd8e"
+            },
+            "format": "json.gz",
+            "id": "e0b99aac-98d0-4626-80bf-a1e95796ea93",
+            "taille": 50191316,
+            "titre": "finess-structures-mensuel-202608.json.gz",
+            "url": "https://static.data.gouv.fr/resources/finess-structures-1/20260901-021627/finess-structures-mensuel-202608.json.gz",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/e0b99aac-98d0-4626-80bf-a1e95796ea93"
+          },
+          {
+            "derniere_modification": "2026-10-01T02:19:44.273000+00:00",
+            "disponible": true,
+            "empreinte_source": {
+              "type": "sha1",
+              "value": "df9faa6a7d3413b5dff7327d6d7beafdc91be622"
+            },
+            "format": "json.gz",
+            "id": "fd101469-1ba3-4c45-8fbe-7f5e85152558",
+            "taille": 50402410,
+            "titre": "finess-structures-mensuel-202609.json.gz",
+            "url": "https://static.data.gouv.fr/resources/finess-structures-1/20261001-021940/finess-structures-mensuel-202609.json.gz",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/fd101469-1ba3-4c45-8fbe-7f5e85152558"
+          }
+        ],
+        "titre": "FINESS - Structures",
+        "type_observation": "metadonnees_data_gouv"
+      },
+      "observe_le": "2026-10-08T12:02:36+00:00",
+      "source_id": "ans_finess_structures"
+    },
+    {
+      "cadence_attendue": "quotidienne",
+      "criticite": "haute",
+      "fraicheur": {
+        "age_jours": 0,
+        "seuil_jours": 3,
+        "statut": "FRAIS"
+      },
+      "nom": "FINESS — Activités",
+      "observation": {
+        "derniere_mise_a_jour": "2026-10-08T02:21:11.732000+00:00",
+        "derniere_modification": "2026-10-08T02:21:11.732000+00:00",
+        "empreinte": "8c0552a962dd1c3e2e8bfdc623257cbd4b268e597ca9fa52e6d58906303d4080",
+        "etag": null,
+        "etat_http": 200,
+        "id_jeu": "69faffb8789b9dc5135058b1",
+        "licence": "lov2",
+        "ressources": [
+          {
+            "derniere_modification": "2026-10-01T02:19:51.684000+00:00",
+            "disponible": true,
+            "empreinte_source": {
+              "type": "sha1",
+              "value": "673c0376b989e515698fd0608caefef8915a1ff5"
+            },
+            "format": "json.gz",
+            "id": "18cd94a1-cba6-436c-8a34-512b17417687",
+            "taille": 58671971,
+            "titre": "finess-activites-mensuel-202609.json.gz",
+            "url": "https://static.data.gouv.fr/resources/finess-activites-1/20261001-021946/finess-activites-mensuel-202609.json.gz",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/18cd94a1-cba6-436c-8a34-512b17417687"
+          },
+          {
+            "derniere_modification": "2026-08-01T04:15:23.341000+00:00",
+            "disponible": true,
+            "empreinte_source": {
+              "type": "sha1",
+              "value": "76a51f2917a359ab384b01d7ab7acf2a2ae627ff"
+            },
+            "format": "json.gz",
+            "id": "cfbd996e-7dcd-4ffa-99e0-2408fdca8a15",
+            "taille": 57793142,
+            "titre": "finess-activites-mensuel-202607.json.gz",
+            "url": "https://static.data.gouv.fr/resources/finess-activites-1/20260801-021520/finess-activites-mensuel-202607.json.gz",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/cfbd996e-7dcd-4ffa-99e0-2408fdca8a15"
+          },
+          {
+            "derniere_modification": "2026-09-01T02:16:35.934000+00:00",
+            "disponible": true,
+            "empreinte_source": {
+              "type": "sha1",
+              "value": "d3d334ad2fd64bb2670773adff763ca561aa329a"
+            },
+            "format": "json.gz",
+            "id": "d620a995-68b7-42a7-a02c-cb522748bc6b",
+            "taille": 58236979,
+            "titre": "finess-activites-mensuel-202608.json.gz",
+            "url": "https://static.data.gouv.fr/resources/finess-activites-1/20260901-021632/finess-activites-mensuel-202608.json.gz",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/d620a995-68b7-42a7-a02c-cb522748bc6b"
+          },
+          {
+            "derniere_modification": "2026-10-08T02:21:11.732000+00:00",
+            "disponible": true,
+            "empreinte_source": {
+              "type": "sha1",
+              "value": "412c797572b3d2e93f4e2433ca7929d22b83a13d"
+            },
+            "format": "json.gz",
+            "id": "ed12913c-6bb2-4e47-8434-2f6e4f961c8e",
+            "taille": 58907873,
+            "titre": "finess-activites-journalier-20261008.json.gz",
+            "url": "https://static.data.gouv.fr/resources/finess-activites-1/20261008-022104/finess-activites-journalier-20261008.json.gz",
+            "url_stable": "https://www.data.gouv.fr/api/1/datasets/r/ed12913c-6bb2-4e47-8434-2f6e4f961c8e"
+          }
+        ],
+        "titre": "FINESS - Activités",
+        "type_observation": "metadonnees_data_gouv"
+      },
+      "observe_le": "2026-10-08T12:02:36+00:00",
+      "source_id": "ans_finess_activites"
+    },
+    {
+      "cadence_attendue": "reguliere",
+      "criticite": "moyenne",
+      "erreur": "HTTPError: HTTP Error 403: Forbidden",
+      "fraicheur": {
+        "age_jours": null,
+        "seuil_jours": null,
+        "statut": "ERREUR"
+      },
+      "nom": "Portefeuille de l'Agence des participations de l'État",
+      "observe_le": "2026-10-08T12:02:36+00:00",
+      "source_id": "ape_portefeuille"
+    }
+  ],
+  "version": "1"
 }

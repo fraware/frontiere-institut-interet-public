@@ -1,5 +1,34 @@
 {
-  "version": "1",
-  "observe_le": null,
-  "alertes": []
+  "alertes": [
+    {
+      "criticite": "haute",
+      "detail": "HTTPError: HTTP Error 403: Forbidden",
+      "source_id": "budget_operateurs_2026",
+      "type": "SOURCE_INDISPONIBLE"
+    },
+    {
+      "criticite": "haute",
+      "detail": "HTTPError: HTTP Error 403: Forbidden",
+      "source_id": "legifrance_aai_api",
+      "type": "SOURCE_INDISPONIBLE"
+    },
+    {
+      "criticite": "critique",
+      "detail": {
+        "age_jours": 6,
+        "seuil_jours": 3,
+        "statut": "A_REVOIR"
+      },
+      "source_id": "dila_jorf",
+      "type": "FRAICHEUR_A_REVOIR"
+    },
+    {
+      "criticite": "moyenne",
+      "detail": "HTTPError: HTTP Error 403: Forbidden",
+      "source_id": "ape_portefeuille",
+      "type": "SOURCE_INDISPONIBLE"
+    }
+  ],
+  "observe_le": "2026-10-08T12:02:36+00:00",
+  "version": "1"
 }
