@@ -5,7 +5,7 @@ Aucune référence privée n'est ouverte par ce programme.
 from __future__ import annotations
 
 import argparse
-import hashlib
+import math
 import json
 from pathlib import Path
 
@@ -35,11 +35,11 @@ def charger(chemin: Path) -> dict:
     for ligne in cas:
         for domaine, mesure in DIMENSIONS:
             valeur = ligne.get(domaine, {}).get(mesure)
-            if valeur is not None and (type(valeur) not in (int, float) or not 0 <= valeur <= 1):
+            if valeur is not None and (type(valeur) not in (int, float) or not math.isfinite(valeur) or not 0 <= valeur <= 1):
                 raise ValueError(f"{chemin}: valeur incorrecte pour {domaine}")
         for champ in TEMPS:
             valeur = ligne.get(champ)
-            if valeur is not None and (type(valeur) not in (int, float) or valeur < 0):
+            if valeur is not None and (type(valeur) not in (int, float) or not math.isfinite(valeur) or valeur < 0):
                 raise ValueError(f"{chemin}: valeur temporelle incorrecte pour {champ}")
     return rapport
 
