@@ -44,3 +44,27 @@ La publication atomique et le refus de remplacement préviennent des écrasement
 5. Préserver les versions historiques non archivées comme **non attestées par cette nouvelle procédure**. Ne pas reconstruire rétroactivement de fausses captures.
 
 Aucune source réelle n'est archivée dans cette livraison. Les essais utilisent exclusivement des octets inventés. Le ticket n° 49 reste ouvert.
+
+
+## Vérifier le lien avec un manifeste canonique
+
+Lorsque des octets publics ont réellement été capturés, exécuter :
+
+```bash
+python scripts/verifier_lien_archive_source.py \
+  --manifeste institutionnel/instantanes/roae_manifest.json \
+  --archive /chemin/prive/archive \
+  --capture EMPREINTE_SHA256_DE_LA_CAPTURE
+```
+
+Le contrôle compare les octets de l'archive à l'empreinte du transport brut indiquée dans le manifeste. Les correspondances actuellement définies sont :
+
+| Source | Empreinte brute | Contrôle complémentaire |
+| --- | --- | --- |
+| Référentiel de l'organisation administrative de l'État | `sha256_zip` | `octets_zip` |
+| Annuaire administratif | `sha256_export` | taille non exigée du manifeste |
+| Code officiel géographique | `sha256_zip` | taille non exigée du manifeste |
+
+Le Répertoire national des structures de recherche ne présente actuellement dans son manifeste qu'une empreinte *sémantique* de la source et les empreintes des partitions normalisées. Cette information ne permet pas d'attester l'identité des octets bruts transportés. Le programme refuse donc de présenter cette source comme couverte par le contrôle tant que sa capture brute n'est pas documentée distinctement.
+
+Le résultat distingue la concordance des octets, la concordance **déclarée** des dates et l'absence d'attestation indépendante d'origine. Un résultat positif ne certifie ni l'origine distante ni la conservation immuable. Aucune correspondance historique n'est reconstruite sans les fichiers bruts d'origine.
