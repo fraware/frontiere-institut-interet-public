@@ -16,6 +16,7 @@ import secrets
 import stat
 from urllib.parse import urlsplit
 
+RACINE_PROJET = Path(__file__).resolve().parents[1]
 TAILLE_BLOC = 1024 * 1024
 SHA256 = re.compile(r"^[a-f0-9]{64}$")
 IDENTIFIANT = re.compile(r"^[a-z][a-z0-9_-]{1,79}$")
@@ -35,6 +36,8 @@ def _dossier(racine: Path) -> Path:
     """Ouvrir la racine sans suivre de lien symbolique direct."""
     if racine.is_symlink():
         raise ErreurArchive("La racine de l'archive est un lien symbolique.")
+    if racine.resolve().is_relative_to(RACINE_PROJET):
+        raise ErreurArchive("Archive brute interdite dans le dépôt public.")
     racine.mkdir(parents=True, exist_ok=True)
     if not racine.is_dir():
         raise ErreurArchive("La racine de l'archive doit être un répertoire.")
@@ -129,7 +132,8 @@ def archiver(racine: Path, source: Path, *, source_id: str, url: str,
     if not IDENTIFIANT.fullmatch(source_id):
         raise ErreurArchive("Identifiant de source invalide.")
     url_parts = urlsplit(url)
-    if url_parts.scheme not in {"http", "https"} or not url_parts.netloc or url_parts.username or url_parts.password:
+    if (url_parts.scheme not in {"http", "https"} or not url_parts.netloc
+            or url_parts.username or url_parts.password or url_parts.query or url_parts.fragment):
         raise ErreurArchive("Adresse source publique HTTP(S) incorrecte.")
     if not licence.strip():
         raise ErreurArchive("Licence ou statut de réutilisation obligatoire.")
