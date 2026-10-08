@@ -343,10 +343,25 @@ def chercher(
         "bm25(termes, 1.0, 6.0, 8.0, 4.0) AS pertinence_lexicale "
         "FROM termes AS t JOIN organismes AS o ON o.numero = t.rowid "
         f"WHERE termes MATCH ? AND o.etat = 'ACTIF' {filtre} "
-        "ORDER BY pertinence_lexicale, o.identifiant LIMIT 1000"
+        "ORDER BY pertinence_lexicale, o.identifiant LIMIT 1001"
     )
-    params = [expression] + ([famille] if famille is not None else [])
-    lignes = db.execute(sql, params).fetchall()
+    # Une seule liste commune limitée à 1000 réponses peut masquer une discipline
+    # ou une mission par une abondance de concordances nominales.
+    # Chaque classe de preuve reçoit sa propre recherche et son plafond.
+    colonnes = ("capacite_index", "mission_index", "domaine_index", "nom_index")
+    candidats: dict[str, sqlite3.Row] = {}
+    recherches_par_champ = {}
+    champs_tronques = []
+    for colonne in colonnes:
+        expression_colonne = f"{colonne} : ({expression})"
+        parametres = [expression_colonne] + ([famille] if famille is not None else [])
+        extraits = db.execute(sql, parametres).fetchall()
+        recherches_par_champ[colonne] = min(len(extraits), 1000)
+        if len(extraits) > 1000:
+            champs_tronques.append(colonne)
+        for item in extraits[:1000]:
+            candidats.setdefault(item["identifiant"], item)
+    lignes = list(candidats.values())
     documentees = []
     disciplinaires = []
     nominatives = []
@@ -409,12 +424,15 @@ def chercher(
         "empreinte_sha256_sources_indexees": info["empreinte_sources"],
         "organismes_dans_index": int(info["nombre_entites"]),
         "candidats_lexicaux_examines": len(lignes),
+        "candidats_examines_par_champ": recherches_par_champ,
+        "champs_dont_les_resultats_sont_tronques": champs_tronques,
         "correspondances_aux_missions_ou_capacites_publiees": [x[1] for x in documentees[:limite]],
         "correspondances_aux_domaines_scientifiques_publies": [x[1] for x in disciplinaires[:limite]],
         "correspondances_de_nom_uniquement": [x[1] for x in nominatives[:limite]],
-        "recherche_bornee_aux_1000_premiers_candidats": len(lignes) == 1000,
+        "recherche_bornee_aux_1000_premiers_candidats": bool(champs_tronques),
         "limites": [
             "Le classement est lexical : il ne mesure pas la pertinence opérationnelle.",
+            "Les recherches par classe sont bornées et les éventuelles troncatures sont signalées.",
             "Une mission officielle n'établit pas une compétence spécialisée disponible.",
             "Un domaine scientifique recense un rattachement disciplinaire sans attester de moyens mobilisables.",
             "Une concordance de nom est une piste d'identification, pas une preuve de capacité.",
