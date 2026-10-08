@@ -252,7 +252,9 @@ def benchmark_summary(db: Session) -> dict:
     case_by_id = {c.id: c for c in cases}
     for prediction in predictions:
         case = case_by_id.get(prediction.case_id)
-        if case is not None:
+        # Aucun agrégat chiffré n'est publié avant la révélation explicite.
+        # Même une moyenne sur un seul cas scellé divulguerait sa référence.
+        if case is not None and case.revealed:
             by_method[prediction.method].append((case, prediction))
 
     methods = []
@@ -285,4 +287,10 @@ def benchmark_summary(db: Session) -> dict:
             "elapsed_seconds_median": statistics.median(elapsed) if elapsed else None,
             "evidence_count_mean": (sum(v["evidence_count"] for v in vectors) / len(vectors)) if vectors else 0,
         })
-    return {"cases": cases, "predictions": predictions, "methods": methods}
+    return {
+        "cases": cases,
+        "predictions": predictions,
+        "methods": methods,
+        "scored_prediction_count": sum(len(rows) for rows in by_method.values()),
+        "sealed_prediction_count": sum(1 for p in predictions if not case_by_id[p.case_id].revealed),
+    }
