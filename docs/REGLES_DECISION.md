@@ -22,6 +22,12 @@ Une conclusion d'absence de capacité publique exige **à la fois** une recherch
 Une capacité déclarée mobilisable implique qu'elle a d'abord été identifiée comme pertinente. Les saisies contradictoires sont rejetées et ne modifient pas le dossier.
 
 
+## Contrôle des classifications déjà enregistrées
+
+La règle de préservation de l'inconnu s'applique aux nouveaux dossiers. Pour les recherches publiques enregistrées avant cette correction, exécuter `python scripts/auditer_recherches_publiques.py` sur l'instance concernée. Ce programme lit les recherches et signale les écarts entre les classifications historiques et les règles actuelles, ainsi que les réponses contradictoires.
+
+L'examen est strictement conservatoire : aucun dossier, aucune preuve et aucune classification ne sont modifiés automatiquement. Une anomalie constitue une **invitation à vérifier les éléments initiaux**, et non une preuve que la conclusion corrigée est factuellement établie. Tout changement ultérieur doit faire l'objet d'une révision tracée.
+
 ## Choix d'une voie
 
 Les voies possibles comprennent notamment :
