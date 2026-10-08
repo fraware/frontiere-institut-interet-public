@@ -279,3 +279,38 @@ def test_domaine_sans_source_et_inference_analytique_ignorés():
     dossier = preparer_entite(entite, "entree artificielle")
     assert dossier["domaines"] == []
     assert dossier["domaine_index"] == ""
+
+
+def test_nom_en_abondance_ne_masque_pas_une_discipline_officielle(tmp_path):
+    repertoire = tmp_path / "entites"
+    fragment = repertoire / "rnsr"
+    fragment.mkdir(parents=True)
+    commun = "Spectrométrie"
+    nombreuses = [
+        organisme(f"NOM-{i:04d}", f"Institut de spectrométrie numéro {i}")
+        for i in range(1010)
+    ]
+    discipline = organisme("DISCIPLINE", "Unité de recherche des matériaux", famille="recherche_publique")
+    discipline["domaines_recherche"] = [{
+        "texte": "Spectrométrie de masse", "nature": "PUBLIEE",
+        "source_id": "mesr_rnsr_structures_actives",
+    }]
+    mission = organisme("MISSION", "Service des équipements", mission="Analyse par spectrométrie.")
+    with (fragment / "unites.jsonl").open("w", encoding="utf-8") as f:
+        for item in nombreuses + [discipline, mission]:
+            f.write(json.dumps(item, ensure_ascii=False) + "\n")
+    index = tmp_path / "index.sqlite3"
+    construire_index(repertoire, index)
+    with ouvrir_index(index) as db:
+        resultats = chercher(db, "spectrométrie", limite=10)
+    assert [x["identifiant"] for x in resultats["correspondances_aux_missions_ou_capacites_publiees"]] == [
+        "FRONTIERE-INST-MISSION"
+    ]
+    assert [x["identifiant"] for x in resultats["correspondances_aux_domaines_scientifiques_publies"]] == [
+        "FRONTIERE-INST-DISCIPLINE"
+    ]
+    assert resultats["candidats_examines_par_champ"]["nom_index"] == 1000
+    assert "nom_index" in resultats["champs_dont_les_resultats_sont_tronques"]
+    assert resultats["recherche_bornee_aux_1000_premiers_candidats"] is True
+    assert resultats["candidats_examines_par_champ"]["domaine_index"] == 1
+    assert resultats["candidats_examines_par_champ"]["mission_index"] == 1

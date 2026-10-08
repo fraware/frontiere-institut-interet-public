@@ -61,7 +61,7 @@ Les tests utilisent des **notices artificielles** et vérifient notamment les mi
 
 ## Limites de cette première version
 
-La recherche est **lexicale** : elle ne reconnaît pas toutes les synonymies et ne comprend pas les opérations scientifiques décrites implicitement. Les résultats sont limités aux mille premiers candidats textuels pour borner le calcul ; ce seuil est explicitement signalé lorsqu'il est atteint. Une recherche vide ou trop générale est refusée. Les familles et les états suivent les notices actuelles du dépôt, avec leurs limites de couverture.
+La recherche est **lexicale** : elle ne reconnaît pas toutes les synonymies et ne comprend pas les opérations scientifiques décrites implicitement. Chaque classe de preuve est désormais interrogée séparément avec un plafond de mille candidats pour borner le calcul. Le moteur conserve jusqu'à mille candidats pour les capacités publiées, mille pour les missions, mille pour les disciplines et mille pour les noms. Cette séparation empêche que de très nombreuses ressemblances de noms saturent le quota et fassent disparaître toutes les disciplines ou missions. Les plafonds effectivement atteints sont signalés par champ et les catégories restent descriptives, sans classement commun de capacité réelle. Une recherche vide ou trop générale est refusée. Les familles et les états suivent les notices actuelles du dépôt, avec leurs limites de couverture.
 
 Les liens fournis identifient la provenance des notices ; ils ne désignent pas nécessairement le passage exact d'un document original. Une absence de résultat signifie seulement qu'aucune concordance suffisante n'a été trouvée dans le périmètre textuel exploré. Elle **ne constitue pas** une démonstration qu'aucune capacité publique n'existe.
 
@@ -92,3 +92,6 @@ Les réponses sont réparties en **trois ensembles** : correspondances avec des 
 L'index porte la version technique `recherche-missions-institutionnelles-v2` et les réponses `orientation-documentaire-v2`. L'ancien index local est incompatible avec cette structure : exécuter à nouveau la commande `--construire` pour incorporer les domaines scientifiques et les huit partitions du RNSR. La comparaison des empreintes des fichiers reste obligatoire avant chaque interrogation.
 
 Les structures sans domaine indiqué restent retrouvables par leur nom, mais aucune discipline n'est ajoutée par supposition. Les classifications ministérielles doivent être confrontées à des preuves distinctes pour conclure sur les instruments, les personnels, les compétences effectivement présentes ou leur disponibilité.
+
+
+Une requête à laquelle correspondent plus de mille notices dans une même classe reste **incomplète pour cette classe**. Le programme expose les effectifs examinés par champ, les catégories tronquées et le nombre total de candidats uniques retenus. Ces nombres ne correspondent ni au nombre total d'organismes compétents, ni à un rappel mesuré. Toute conclusion d'absence exige une démarche indépendante et des pièces adaptées.
