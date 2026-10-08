@@ -27,6 +27,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | Document | Rôle |
 | --- | --- |
 | [Méthode d’évaluation](EVALUATION_TECHNIQUE_V0.5.md) | Comparaison des méthodes et mesures |
+| [Essais adversariaux d'orientation](../evaluation/ESSAIS_ORIENTATION_SYNTHETIQUE_V1.md) | Omissions et rapprochements trompeurs dans dix cas exclusivement fictifs |
 | [Exécution indépendante du jeu réservé](../evaluation/PROTOCOLE_SESSIONS_INDEPENDANTES_V1.md) | Conditions des trois méthodes, génération des dossiers, gel et restitution |
 | [Relecture de la qualité](../evaluation/RELECTURE_QUALITE_V1.md) | Double examen anonymisé et motivé des ressources et des preuves |
 | [Relecture indépendante des sources historiques](../evaluation/PROTOCOLE_RELECTURE_SOURCES_HISTORIQUES_V1.md) | Double examen de chaque événement, du passage officiel et de sa datation |
