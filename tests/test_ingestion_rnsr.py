@@ -153,3 +153,16 @@ def test_empreinte_independante_de_l_ordre_des_lignes(tmp_path):
     apres = json.loads((tmp_path / "instantanes/rnsr_manifest.json").read_text(encoding="utf-8"))
     assert avant == apres
     assert elements("PE3;PE5;PE3") == ["PE3", "PE5"]
+
+
+def test_partition_modifiee_est_reconstruite_meme_si_source_inchangee(tmp_path):
+    source = [structure("200610662T"), structure("200710662T")]
+    produire(source, tmp_path, minimum=1, date_collecte="2026-10-08")
+    manifeste = json.loads((tmp_path / "instantanes/rnsr_manifest.json").read_text(encoding="utf-8"))
+    fichiers = sorted((tmp_path / "entites/rnsr").glob("*.jsonl"))
+    assert len(manifeste["empreintes_partitions"]) == len(fichiers) == 8
+    archive = {f.name: f.read_bytes() for f in fichiers}
+    fichiers[0].write_bytes(fichiers[0].read_bytes() + b"\n")
+    recalcule = produire(source, tmp_path, minimum=1, date_collecte="2026-10-09")
+    assert recalcule["statut"] == "actualisé"
+    assert {f.name: f.read_bytes() for f in fichiers} == archive
