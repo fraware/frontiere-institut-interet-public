@@ -7,7 +7,7 @@ from scripts.comparer_methodes_jeu_reserve import comparer
 
 def rapports():
     sorties = []
-    for nom, f1 in [("analyste", 0.5), ("assistant", 0.6), ("FRONTIÈRE", 0.7)]:
+    for nom, f1 in [("analyste", 0.5), ("assistant_generaliste", 0.6), ("frontiere", 0.7)]:
         sorties.append({
             "version_schema": "resultats-jeu-reserve-v1",
             "methode": nom,
@@ -39,6 +39,8 @@ def test_comparaison_appariee_et_donnees_manquantes():
     assert sortie["methodes"][0]["temps_ecoule_total_secondes"] is None
     assert sortie["ecarts"][0]["nombre_paires"] == 2
     assert sortie["ecarts"][1]["nombre_paires"] == 1
+    assert len(sortie["ecarts"]) == 6
+    assert sortie["ecarts"][4]["reference"] == "assistant_generaliste"
 
 
 def test_refuse_des_references_differentes():
@@ -57,6 +59,6 @@ def test_refuse_des_cas_non_apparies():
 
 def test_refuse_les_methodes_dupliquees():
     sources = rapports()
-    sources[2]["methode"] = "assistant"
+    sources[2]["methode"] = "assistant_generaliste"
     with pytest.raises(ValueError):
         comparer(sources)
