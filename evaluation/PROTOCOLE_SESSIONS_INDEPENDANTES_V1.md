@@ -63,7 +63,7 @@ Valider chaque fichier avec `scripts/verifier_reponses_jeu_reserve.py`. Puis gé
 
 Faire enregistrer les trois empreintes auprès d'un tiers indépendant **avant** que le détenteur des références ne consulte les réponses. Conserver une attestation datée ; déposer séparément les journaux privés, sans secrets ni données sensibles dans GitHub.
 
-Seul le détenteur autorisé ouvre ensuite les références privées, en vérifie l'empreinte annoncée dans `jeu_reserve_v1_manifeste.json` et exécute `scripts/evaluer_jeu_reserve.py` pour chaque méthode. Ce programme demeure dans l'environnement privé au moment de l'évaluation.
+Seul le détenteur autorisé ouvre ensuite les références privées, en vérifie l'empreinte annoncée dans `jeu_reserve_v1_manifeste.json` et exécute `scripts/evaluer_jeu_reserve.py` pour chaque méthode. Le programme de correction exige `--gel-reponses`, vérifie le manifeste **avant** la lecture du corrigé privé, et refuse les réponses qui ne correspondent plus au gel. Conserver la preuve extérieure de l'antériorité du manifeste, indépendamment de ce contrôle interne. Ce programme demeure dans l'environnement privé au moment de l'évaluation.
 
 ## 7. Comparer sans falsifier les résultats
 
