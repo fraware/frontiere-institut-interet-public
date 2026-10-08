@@ -34,9 +34,13 @@ def construire(signaux: dict, chronologies: dict) -> dict:
                 "resultat_relecture": None,
                 "motif_relecture": None,
             })
+    version_chronologies = str(chronologies.get("version", ""))
+    if version_chronologies not in {"3", "4"}:
+        raise ValueError("Version de chronologies non prise en charge pour ce registre.")
+    version_registre = "1" if version_chronologies == "3" else "2"
     return {
-        "version_schema": "registre-verification-evenements-v1",
-        "origine": ["donnees/signaux_publics_v1.json", "donnees/chronologies_v3.json"],
+        "version_schema": f"registre-verification-evenements-v{version_registre}",
+        "origine": ["donnees/signaux_publics_v1.json", f"donnees/chronologies_v{version_chronologies}.json"],
         "nombre_evenements": len(fiches),
         "regle": (
             "La source candidate provient du signal parent. Elle ne doit pas "
@@ -50,7 +54,7 @@ def construire(signaux: dict, chronologies: dict) -> dict:
 def principal() -> None:
     parser = argparse.ArgumentParser(description="Préparer le registre des preuves événementielles.")
     parser.add_argument("--signaux", type=Path, default=Path("donnees/signaux_publics_v1.json"))
-    parser.add_argument("--chronologies", type=Path, default=Path("donnees/chronologies_v3.json"))
+    parser.add_argument("--chronologies", type=Path, default=Path("donnees/chronologies_v4.json"))
     parser.add_argument("--sortie", type=Path, required=True)
     args = parser.parse_args()
     document = construire(
