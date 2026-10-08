@@ -17,7 +17,7 @@ import tempfile
 import unicodedata
 from typing import Any
 
-VERSION_INDEX = "recherche-missions-institutionnelles-v1"
+VERSION_INDEX = "recherche-missions-institutionnelles-v2"
 RACINE = Path(__file__).resolve().parents[1]
 DEFAULT_ENTITES = RACINE / "institutionnel" / "entites"
 DEFAULT_INDEX = RACINE / "data" / "recherche_institutionnelle.sqlite3"
@@ -105,6 +105,7 @@ def preparer_entite(entite: dict[str, Any], fichier: str) -> dict[str, Any]:
     aliases = [x for x in alias_bruts if isinstance(x, str)] if isinstance(alias_bruts, list) else []
     missions = faits_publies(entite, "missions")
     capacites = faits_publies(entite, "capacites")
+    domaines = faits_publies(entite, "domaines_recherche")
     return {
         "identifiant": identifiant,
         "nom": nom.strip(),
@@ -115,10 +116,12 @@ def preparer_entite(entite: dict[str, Any], fichier: str) -> dict[str, Any]:
         "fichier": fichier,
         "missions": missions,
         "capacites": capacites,
+        "domaines": domaines,
         "sources": sources,
         "nom_index": " ".join(normaliser(" ".join([nom] + aliases))),
         "mission_index": " ".join(normaliser(" ".join(x["texte"] for x in missions))),
         "capacite_index": " ".join(normaliser(" ".join(x["texte"] for x in capacites))),
+        "domaine_index": " ".join(normaliser(" ".join(x["texte"] for x in domaines))),
     }
 
 
@@ -153,10 +156,11 @@ def initialiser_tables(db: sqlite3.Connection) -> None:
             fichier TEXT NOT NULL,
             missions_json TEXT NOT NULL,
             capacites_json TEXT NOT NULL,
+            domaines_json TEXT NOT NULL,
             sources_json TEXT NOT NULL
         );
         CREATE VIRTUAL TABLE termes USING fts5(
-            nom_index, mission_index, capacite_index,
+            nom_index, mission_index, capacite_index, domaine_index,
             tokenize = 'unicode61 remove_diacritics 2'
         );
     """)
@@ -178,6 +182,7 @@ def construire_index(repertoire: Path, index: Path) -> dict:
         nombre_entites = 0
         nombre_missions = 0
         nombre_capacites = 0
+        nombre_domaines = 0
         for fichier in fichiers:
             nom_rel = fichier.relative_to(repertoire).as_posix()
             hachage = hashlib.sha256()
@@ -201,13 +206,15 @@ def construire_index(repertoire: Path, index: Path) -> dict:
                         curseur = db.execute(
                             """INSERT INTO organismes (
                                 identifiant, nom, etat, famille, type_institutionnel,
-                                observe_le, fichier, missions_json, capacites_json, sources_json
-                            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                                observe_le, fichier, missions_json, capacites_json,
+                                domaines_json, sources_json
+                            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
                             (
                                 item["identifiant"], item["nom"], item["etat"], item["famille"],
                                 item["type_institutionnel"], item["observe_le"], item["fichier"],
                                 json.dumps(item["missions"], ensure_ascii=False),
                                 json.dumps(item["capacites"], ensure_ascii=False),
+                                json.dumps(item["domaines"], ensure_ascii=False),
                                 json.dumps(item["sources"], ensure_ascii=False),
                             ),
                         )
@@ -216,16 +223,17 @@ def construire_index(repertoire: Path, index: Path) -> dict:
                             f"Identifiant institutionnel dupliqué : {item['identifiant']}."
                         ) from exc
                     db.execute(
-                        "INSERT INTO termes(rowid, nom_index, mission_index, capacite_index)"
-                        " VALUES (?, ?, ?, ?)",
+                        "INSERT INTO termes(rowid, nom_index, mission_index, capacite_index, domaine_index)"
+                        " VALUES (?, ?, ?, ?, ?)",
                         (
                             curseur.lastrowid, item["nom_index"], item["mission_index"],
-                            item["capacite_index"],
+                            item["capacite_index"], item["domaine_index"],
                         ),
                     )
                     nombre_entites += 1
                     nombre_missions += len(item["missions"])
                     nombre_capacites += len(item["capacites"])
+                    nombre_domaines += len(item["domaines"])
             digest = hachage.hexdigest()
             manifest.append([nom_rel, digest, total_octets, total_lignes])
             db.execute(
@@ -241,6 +249,7 @@ def construire_index(repertoire: Path, index: Path) -> dict:
             "nombre_entites": str(nombre_entites),
             "nombre_missions": str(nombre_missions),
             "nombre_capacites": str(nombre_capacites),
+            "nombre_domaines": str(nombre_domaines),
         }.items():
             db.execute("INSERT INTO informations(cle, valeur) VALUES (?, ?)", (cle, valeur))
         db.commit()
@@ -257,6 +266,7 @@ def construire_index(repertoire: Path, index: Path) -> dict:
         "nombre_entites": nombre_entites,
         "nombre_missions_publiees": nombre_missions,
         "nombre_capacites_explicitement_publiees": nombre_capacites,
+        "nombre_domaines_scientifiques_publies": nombre_domaines,
         "empreinte_sha256_sources": identite,
         "avertissement": (
             "L'index couvre des notices et leurs missions publiées, "
@@ -329,8 +339,8 @@ def chercher(
     expression = " OR ".join(f'"{mot}"' for mot in mots)
     filtre = "AND o.famille = ?" if famille is not None else ""
     sql = (
-        "SELECT o.*, t.nom_index, t.mission_index, t.capacite_index, "
-        "bm25(termes, 1.0, 6.0, 8.0) AS pertinence_lexicale "
+"        "SELECT o.*, t.nom_index, t.mission_index, t.capacite_index, t.domaine_index, "
+        "bm25(termes, 1.0, 6.0, 8.0, 4.0) AS pertinence_lexicale "
         "FROM termes AS t JOIN organismes AS o ON o.numero = t.rowid "
         f"WHERE termes MATCH ? AND o.etat = 'ACTIF' {filtre} "
         "ORDER BY pertinence_lexicale, o.identifiant LIMIT 1000"
@@ -338,18 +348,25 @@ def chercher(
     params = [expression] + ([famille] if famille is not None else [])
     lignes = db.execute(sql, params).fetchall()
     documentees = []
+    disciplinaires = []
     nominatives = []
     for item in lignes:
         concordance_capacite = correspondances(item["capacite_index"], mots)
         concordance_mission = correspondances(item["mission_index"], mots)
+        concordance_domaine = correspondances(item["domaine_index"], mots)
         concordance_nom = correspondances(item["nom_index"], mots)
         selection = (
             "capacite_publiee" if concordance_capacite
             else "mission_publiee" if concordance_mission
+            else "domaine_scientifique_publie" if concordance_domaine
             else "nom_seul"
         )
         # Aucune équivalence sémantique inférée au-delà des mots réellement cités.
-        preuves = json.loads(item["capacites_json"] if concordance_capacite else item["missions_json"])
+        preuves = json.loads(
+            item["capacites_json"] if concordance_capacite else
+            item["missions_json"] if concordance_mission else
+            item["domaines_json"] if concordance_domaine else "[]"
+        )
         candidats_passages = [
             p for p in preuves if set(normaliser(p["texte"])) & set(mots)
         ][:2]
@@ -364,36 +381,42 @@ def chercher(
             "type_correspondance": selection,
             "mots_retrouves_dans_les_missions": concordance_mission,
             "mots_retrouves_dans_les_capacites": concordance_capacite,
+            "mots_retrouves_dans_les_domaines_scientifiques": concordance_domaine,
             "mots_retrouves_dans_le_nom": concordance_nom,
             "passages_publies": candidats_passages,
             "provenance_notice": sources,
             "disponibilite": "INCONNUE",
             "mobilisabilite": "NON_ETABLIE",
         }
-        couverture = len(set(concordance_mission + concordance_capacite))
+        couverture = len(set(concordance_mission + concordance_capacite + concordance_domaine))
         rang = (-couverture, float(item["pertinence_lexicale"]), item["identifiant"])
         if concordance_mission or concordance_capacite:
             documentees.append((rang, sortie))
+        elif concordance_domaine:
+            disciplinaires.append((rang, sortie))
         else:
             nominatives.append((rang, sortie))
     documentees.sort(key=lambda x: x[0])
+    disciplinaires.sort(key=lambda x: x[0])
     nominatives.sort(key=lambda x: x[0])
     info = {
         ligne["cle"]: ligne["valeur"] for ligne in db.execute("SELECT cle, valeur FROM informations")
     }
     return {
-        "version_schema": "orientation-documentaire-v1",
+        "version_schema": "orientation-documentaire-v2",
         "requete": requete,
         "termes_distinctifs": mots,
         "empreinte_sha256_sources_indexees": info["empreinte_sources"],
         "organismes_dans_index": int(info["nombre_entites"]),
         "candidats_lexicaux_examines": len(lignes),
         "correspondances_aux_missions_ou_capacites_publiees": [x[1] for x in documentees[:limite]],
+        "correspondances_aux_domaines_scientifiques_publies": [x[1] for x in disciplinaires[:limite]],
         "correspondances_de_nom_uniquement": [x[1] for x in nominatives[:limite]],
         "recherche_bornee_aux_1000_premiers_candidats": len(lignes) == 1000,
         "limites": [
             "Le classement est lexical : il ne mesure pas la pertinence opérationnelle.",
             "Une mission officielle n'établit pas une compétence spécialisée disponible.",
+            "Un domaine scientifique recense un rattachement disciplinaire sans attester de moyens mobilisables.",
             "Une concordance de nom est une piste d'identification, pas une preuve de capacité.",
             "Les organismes non actifs dans la notice sont exclus ; un état ACTIF historique ne prouve pas une activité actuelle.",
             "Les liens renvoient à la provenance des notices, pas nécessairement au passage original précis.",
