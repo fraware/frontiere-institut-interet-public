@@ -42,11 +42,11 @@ Les fichiers du répertoire `donnees/` conservent les observations, les chronolo
 
 Une affirmation empirique importante doit pouvoir être reliée à une source publique identifiée. La précision de la donnée source est conservée : une année reste une année, un mois reste un mois, une estimation reste une estimation.
 
-Les versions antérieures restent disponibles dans l’historique Git afin de reconstruire l’évolution de l’analyse. Les chronologies version 4 corrigent les attributions de dates IGN et France Compétences de la version 3 ; la version 5 apporte des précisions sourcées au cas Saint-Brieuc. Les sources primaires et motifs figurent dans `donnees/RECTIFICATIF_SOURCES_2026-10-08.md` et `donnees/NOTE_SOURCES_SAINT_BRIEUC_2026-10-08.md`.
+Les versions antérieures restent disponibles dans l’historique Git afin de reconstruire l’évolution de l’analyse. Les chronologies version 4 corrigent les attributions de dates IGN et France Compétences de la version 3 ; la version 5 apporte des précisions sourcées à Saint-Brieuc ; la version 6 fusionne deux paires de doublons Mayotte et stabilise les identifiants d'événement. Les sources primaires et motifs figurent dans `donnees/RECTIFICATIF_SOURCES_2026-10-08.md` et `donnees/NOTE_SOURCES_SAINT_BRIEUC_2026-10-08.md`.
 
 ### Contrôle automatisé du corpus public
 
-Exécuter `python scripts/verifier_corpus_public.py` pour vérifier conjointement `donnees/signaux_publics_v1.json` et `donnees/chronologies_v5.json`. Le programme contrôle les identifiants, l'unicité des signaux, la couverture des chronologies, la présence de liens de sources et la cohérence entre les valeurs de date et leur degré de précision déclaré (année, mois, jour ou intervalle).
+Exécuter `python scripts/verifier_corpus_public.py` pour vérifier conjointement `donnees/signaux_publics_v1.json` et `donnees/chronologies_v6.json`. Le programme contrôle les identifiants, l'unicité des signaux, la couverture des chronologies, la présence de liens de sources et la cohérence entre les valeurs de date et leur degré de précision déclaré (année, mois, jour ou intervalle).
 
 Le rapport distingue les événements possédant une référence propre de ceux qui n'en possèdent pas. **Une référence attachée au signal ne constitue pas une vérification autonome de chacun de ses événements.** Le contrôle structurel ne juge pas l'exactitude des sources et n'améliore pas artificiellement la précision temporelle. Les conclusions exigeant une validation factuelle restent soumises à une relecture documentaire.
 
@@ -107,3 +107,5 @@ Les cas prospectifs complets et les comparaisons indépendantes constituent enco
 ## Registre des passages sources
 
 Le rapprochement des observations avec leurs pièces primaires est conservé dans `donnees/passages_sources_evenements_v1.json`. Chaque fiche donne l'événement concerné, la source officielle, le passage localisé, la portée du constat et ses limites. Cette première lecture documentaire n'est pas une validation indépendante. Le contrôle exécutable `scripts/verifier_passages_sources.py` signale notamment les références croisées incohérentes ou les affirmations excessives d'indépendance, mais ne remplace pas la consultation effective des documents.
+
+Pour reproduire les modifications Mayotte, conserver côte à côte les versions 5 et 6. Les correspondances entre identifiants supprimés et conservés figurent dans la propriété `fusions_doublons` et dans `donnees/NOTE_SOURCES_MAYOTTE_2026-10-08.md`. Le vérificateur du corpus contrôle ces correspondances et signale les dates journalières répétées. Les deux versions du registre de passages restent conservées, afin de distinguer une première lecture documentaire de sa éventuelle confirmation indépendante.
