@@ -93,6 +93,14 @@ besoin actuel
 → résultat à la date fixée
 ```
 
+## Vérification de l'intégrité interne
+
+L'interface `/api/v1/episodes/{code}/preregistration` expose aussi un objet `integrity`. Il vérifie l'empreinte du contenu de l'état initial, l'empreinte du plan de comparaison, le rattachement du plan à l'état initial et l'ordre des deux événements enregistrés.
+
+Un contrôle absent reste inconnu. Une divergence rend `internally_consistent` faux. Cette vérification porte sur les contenus et les horodatages présents dans la même base de données. Elle ne constitue **ni une preuve d'antériorité indépendante, ni une protection contre un acteur ayant le pouvoir de réécrire simultanément les données et leurs empreintes**.
+
+Pour attester une antériorité auprès d'un évaluateur externe, conserver en outre une empreinte datée dans un système indépendant, avec des règles de conservation et d'accès adaptées au niveau de sensibilité.
+
 ## Critère de réussite du premier cas
 
 Le premier cas est exploitable pour l’apprentissage méthodologique si :

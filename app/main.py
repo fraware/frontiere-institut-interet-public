@@ -13,6 +13,7 @@ from fastapi.templating import Jinja2Templates
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session, selectinload
 
+from .preregistration_integrity import verifier_preenregistrements
 from .config import settings
 from .database import Base, engine, get_db
 from .models import (
@@ -1109,6 +1110,12 @@ def api_preregistration(code: str, db: Session = Depends(get_db)) -> dict:
             "occurred_at": comparison_event.occurred_at.isoformat(),
             "payload": _audit_payload(comparison_event),
         } if comparison_event else None,
+        "integrity": verifier_preenregistrements(
+            _audit_payload(baseline_event) if baseline_event else None,
+            _audit_payload(comparison_event) if comparison_event else None,
+            baseline_event.occurred_at if baseline_event else None,
+            comparison_event.occurred_at if comparison_event else None,
+        ),
     }
 
 
