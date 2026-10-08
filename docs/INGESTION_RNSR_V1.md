@@ -2,7 +2,7 @@
 
 ## Source, objet et portée
 
-FRONTIÈRE complète les notices administratives de la Direction de l’information légale et administrative par une source spécialisée du ministère chargé de l’enseignement supérieur et de la recherche : [Structures de recherche publiques actives](https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-structures-recherche-publiques-actives/), issue du Répertoire national des structures de recherche (RNSR).
+FRONTIÈRE complète les notices administratives de la Direction de l’information légale et administrative par une source spécialisée du ministère chargé de l’enseignement supérieur et de la recherche : [Structures de recherche publiques actives](https://data.esr.gouv.fr/donnees-ouvertes/ods-fr-esr-structures-recherche-publiques-actives), issue du Répertoire national des structures de recherche (RNSR).
 
 Le jeu comporte environ **4 767 enregistrements** dans la publication observée en 2026 et fournit notamment un identifiant national de structure, une dénomination, un type d’unité et, selon les notices, des classifications scientifiques. Ce périmètre concerne les **structures considérées comme actives dans la publication source** ; il ne fournit pas une mesure en temps réel de l’activité, des effectifs, des équipements disponibles ou des conditions de collaboration.
 
