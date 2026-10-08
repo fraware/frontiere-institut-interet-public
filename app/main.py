@@ -41,8 +41,26 @@ from .models import (
 from .services import benchmark_prediction_metrics, benchmark_summary, classify_public_search, dashboard_metrics, empirical_metrics, hypothesis_summary
 
 BASE_DIR = Path(__file__).resolve().parent
+
+
+def verifier_mode_execution(environnement: str) -> None:
+    """Interdire le déploiement déclaré comme institutionnel sans contrôles d'accès.
+
+    L'application actuelle permet des modifications sans authentification.
+    Le développement et les tests sont réservés à des instances isolées.
+    """
+    if environnement.strip().lower() not in {"development", "test", "testing"}:
+        raise RuntimeError(
+            "Démarrage refusé : FRONTIÈRE ne dispose pas encore "
+            "d'authentification ni de contrôle des accès. "
+            "Une instance de production ou de préproduction doit intégrer "
+            "ces mécanismes avant d'accepter des données."
+        )
+
+
 @asynccontextmanager
 async def lifespan(_: FastAPI):
+    verifier_mode_execution(settings.env)
     Base.metadata.create_all(bind=engine)
     yield
 
