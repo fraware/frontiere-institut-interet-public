@@ -107,6 +107,7 @@ def principal() -> None:
         "version_methode": reponses.get("version_methode"),
         "nombre_cas": len(lignes),
         "empreinte_sha256_references": empreinte_reelle,
+        "empreinte_sha256_questions": empreinte(questions_path),
         "empreinte_sha256_reponses": empreinte(reponses_path),
         "empreinte_sha256_gel_reponses": empreinte(Path(arguments.gel_reponses)),
         "voies_precision_moyenne": moyenne("voies", "precision"),
