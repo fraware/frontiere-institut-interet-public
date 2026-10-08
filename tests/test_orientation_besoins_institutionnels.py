@@ -214,3 +214,73 @@ def test_besoin_non_verrouille_et_requete_ancienne_refuses(environnement):
         with pytest.raises(ValueError, match="correspondre"):
             orienter(db, index, code=ep.code)
     assert db.scalar(select(func.count(AuditEvent.id))) == 0
+
+
+def test_prospectif_sans_plan_bloque_l_orientation(environnement):
+    db, ep, _, _, dossier, chemin_index, _ = environnement
+    db.add(AuditEvent(
+        episode_id=ep.id, entity_type="EPISODE", entity_id=ep.id,
+        event_type="CAS_PROSPECTIF_PRE_ENREGISTRE",
+        payload_json='{"source":"essai artificiel"}',
+    ))
+    db.commit()
+    avant = db.scalar(select(func.count(AuditEvent.id)))
+    with pytest.raises(ValueError, match="Plan de comparaison prospectif absent"):
+        executer_sur_dossier(db, code=ep.code, index_path=chemin_index, entites=dossier)
+    assert db.scalar(select(func.count(AuditEvent.id))) == avant
+
+    db.add(AuditEvent(
+        episode_id=ep.id, entity_type="EPISODE", entity_id=ep.id,
+        event_type="COMPARAISON_APPARIEE_PRE_ENREGISTREE",
+        payload_json='{"source":"essai artificiel"}',
+    ))
+    db.commit()
+    rapport = executer_sur_dossier(
+        db, code=ep.code, index_path=chemin_index, entites=dossier,
+    )
+    assert rapport["journal"]["type"] == TYPE_EVENEMENT
+
+
+def test_dossier_sensible_refuse_sans_preuve_d_autorisation(environnement):
+    db, ep, _, _, dossier, chemin_index, _ = environnement
+    ep.sensitivity_level = 2
+    db.commit()
+    with pytest.raises(ValueError, match="non admissible"):
+        executer_sur_dossier(db, code=ep.code, index_path=chemin_index, entites=dossier)
+    assert db.scalar(select(func.count(AuditEvent.id))) == 0
+
+
+def test_donnees_de_criteres_invalides_refusees_sans_journal(environnement):
+    db, ep, _, query, dossier, chemin_index, _ = environnement
+    query.must_have_json = '{"malforme": true}'
+    db.commit()
+    with pytest.raises(ValueError, match="must_have"):
+        executer_sur_dossier(db, code=ep.code, index_path=chemin_index, entites=dossier)
+    assert db.scalar(select(func.count(AuditEvent.id))) == 0
+
+
+def test_domaine_generique_refuse_sans_journal(environnement):
+    db, ep, _, query, dossier, chemin_index, _ = environnement
+    query.domain = "la recherche publique"
+    db.commit()
+    with pytest.raises(ValueError, match="domaine"):
+        executer_sur_dossier(db, code=ep.code, index_path=chemin_index, entites=dossier)
+    assert db.scalar(select(func.count(AuditEvent.id))) == 0
+
+
+def test_raccourci_vers_requete_non_verrouillee_refuse(environnement):
+    db, ep, _, query, dossier, chemin_index, _ = environnement
+    query.locked_at = None
+    db.commit()
+    with pytest.raises(ValueError, match="verrouillée"):
+        executer_sur_dossier(db, code=ep.code, index_path=chemin_index, entites=dossier)
+
+
+def test_recherche_tronquee_et_limite_d_entrees(environnement):
+    db, ep, _, query, _, chemin_index, _ = environnement
+    with ouvrir_index(chemin_index) as index:
+        with pytest.raises(ValueError, match="limite"):
+            orienter(db, index, code=ep.code, limite=0)
+        with pytest.raises(ValueError, match="limite"):
+            orienter(db, index, code=ep.code, limite=True)
+    assert db.scalar(select(func.count(AuditEvent.id))) == 0
