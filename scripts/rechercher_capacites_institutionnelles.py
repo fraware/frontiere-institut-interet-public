@@ -6,6 +6,7 @@ lexicale n'établit ni compétence effective ni disponibilité. Aucun réseau.
 from __future__ import annotations
 
 import argparse
+from contextlib import closing
 import hashlib
 import json
 import os
@@ -417,7 +418,7 @@ def main() -> None:
         if args.construire:
             resultat = construire_index(args.entites, args.index)
         else:
-            with ouvrir_index(args.index) as db:
+            with closing(ouvrir_index(args.index)) as db:
                 controle = verifier_sources(db, args.entites)
                 if not controle["conforme"]:
                     raise ValueError(
