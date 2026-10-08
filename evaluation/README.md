@@ -59,3 +59,11 @@ python scripts/comparer_methodes_jeu_reserve.py \
 Le programme refuse les méthodes répétées, les codes de cas différents et les empreintes de référence différentes. Il calcule séparément les scores moyens des voies et des formes de ressources, les temps humains, le nombre de durées calendaires observées et les écarts sur les mêmes cas. Les scores manquants sont exclus seulement des paires correspondantes ; les durées totales sont inconnues si un cas n'a pas de durée mesurée.
 
 **Limites :** cette comparaison est descriptive. Elle ne mesure ni la pertinence des ressources nommées, ni la qualité réelle des preuves citées, ni la mobilisabilité effective. Ces dimensions exigent une évaluation indépendante supplémentaire. Ne publier aucun résultat tant que les trois méthodes n'ont pas été évaluées.
+
+## Préparer les trois séances indépendantes
+
+Le protocole [d'exécution indépendante](PROTOCOLE_SESSIONS_INDEPENDANTES_V1.md) fixe les conditions d'admission, les trois méthodes, le journal de séance, le budget commun et les précautions contre la divulgation des références.
+
+Le programme `scripts/preparer_sessions_jeu_reserve.py` prépare **hors du dépôt public** trois dossiers contenant des questions identiques, des consignes propres à chaque méthode, un fichier de réponses vide et un journal de séance vide. Il exige un budget explicite, refuse l'écrasement d'une séance et n'ouvre aucune référence privée.
+
+Les dossiers produits doivent être transmis aux opérateurs dans un environnement privé. Un manifeste commun identifie les questions, les conditions de préparation et les empreintes des documents. Le responsable enregistre ce manifeste auprès d'un tiers avant le début de l'expérience.
