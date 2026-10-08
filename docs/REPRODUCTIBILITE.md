@@ -117,3 +117,7 @@ La version 8 des chronologies distingue la remise du rapport interministériel P
 ### Quarante-cinq premières lectures et une observation restant à étayer
 
 La dernière collection `donnees/passages_sources_evenements_v5.json` conserve le même registre de 46 événements que la version précédente, `registre_verification_evenements_v6.json`. Seize passages supplémentaires ont été localisés dans des sources institutionnelles. L'événement encore sans passage suffisamment daté est explicitement consigné, avec leur justification, dans `donnees/ETAT_PREUVES_PAR_EVENEMENT_2026-10-08.md`. La commande `python scripts/verifier_passages_sources.py` vérifie la correspondance de cet identifiant et permet toujours de valider séparément la version 4 ; elle ne garantit pas que les sources citées soutiennent l'intégralité des interprétations.
+
+### Correction de la temporalité ASNR
+
+La version 9 retire de l'ensemble courant le constat S042-E04, daté de mai 2025 sans preuve suffisante d'exécution, tout en conservant son texte et sa date dans `retraits_evenements_non_confirmes`. Son origine parlementaire de février 2024 est documentée sous S042-E02. Les 45 événements actifs sont reproduits par `donnees/registre_verification_evenements_v7.json` et leur première lecture par `donnees/passages_sources_evenements_v6.json`. Voir `donnees/NOTE_RECTIFICATION_ASNR_2026-10-08.md`. Une couverture documentaire de 45 sur 45 ne représente pas 45 vérifications humaines indépendantes.

@@ -35,14 +35,14 @@ def construire(signaux: dict, chronologies: dict) -> dict:
                 "resultat_relecture": None,
                 "motif_relecture": None,
             }
-            if str(chronologies.get("version")) in {"7", "8"}:
+            if str(chronologies.get("version")) in {"7", "8", "9"}:
                 if "nature_date" in evenement:
                     fiche["nature_date"] = evenement["nature_date"]
                 if "date_document_source" in evenement:
                     fiche["date_document_source"] = evenement["date_document_source"]
             fiches.append(fiche)
     version_chronologies = str(chronologies.get("version", ""))
-    if version_chronologies not in {"3", "4", "5", "6", "7", "8"}:
+    if version_chronologies not in {"3", "4", "5", "6", "7", "8", "9"}:
         raise ValueError("Version de chronologies non prise en charge pour ce registre.")
     version_registre = str(int(version_chronologies) - 2)
     return {
@@ -61,7 +61,7 @@ def construire(signaux: dict, chronologies: dict) -> dict:
 def principal() -> None:
     parser = argparse.ArgumentParser(description="Préparer le registre des preuves événementielles.")
     parser.add_argument("--signaux", type=Path, default=Path("donnees/signaux_publics_v1.json"))
-    parser.add_argument("--chronologies", type=Path, default=Path("donnees/chronologies_v8.json"))
+    parser.add_argument("--chronologies", type=Path, default=Path("donnees/chronologies_v9.json"))
     parser.add_argument("--sortie", type=Path, required=True)
     args = parser.parse_args()
     document = construire(

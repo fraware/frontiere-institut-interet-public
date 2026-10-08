@@ -19,15 +19,15 @@ def test_dates_a_precision_conservee():
     assert not valider_date("2033-2025", "intervalle")
 
 
-def test_controle_corpus_reel_sur_chronologies_v6():
+def test_controle_corpus_reel_sur_chronologies_v9():
     signaux = json.loads((ROOT / "donnees" / "signaux_publics_v1.json").read_text(encoding="utf-8"))
-    chronos = json.loads((ROOT / "donnees" / "chronologies_v6.json").read_text(encoding="utf-8"))
+    chronos = json.loads((ROOT / "donnees" / "chronologies_v9.json").read_text(encoding="utf-8"))
     rapport = verifier(signaux, chronos)
     assert rapport["valide_structurellement"], rapport["erreurs"]
     assert rapport["nombre_signaux"] == 50
     assert rapport["niveaux_documentaires"]["cas_solide"] == 16
     assert rapport["nombre_chronologies"] == 10
-    assert rapport["nombre_evenements"] == 46
+    assert rapport["nombre_evenements"] == 45
 
 
 def test_controle_rejette_lien_inconnu_et_date_invalide():

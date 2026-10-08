@@ -35,6 +35,9 @@ def verifier(registre: dict, passages: dict) -> dict:
         "registre-verification-evenements-v6": (
             "passages-sources-primaires-v4", "donnees/registre_verification_evenements_v6.json",
         ),
+        "registre-verification-evenements-v7": (
+            "passages-sources-primaires-v6", "donnees/registre_verification_evenements_v7.json",
+        ),
     }
     versions_attendues = versions.get(registre.get("version_schema"))
     if versions_attendues is None:
@@ -88,7 +91,7 @@ def verifier(registre: dict, passages: dict) -> dict:
             for nom in ("localisation", "point_precis_etaye"):
                 if not isinstance(source.get(nom), str) or not source[nom].strip():
                     erreurs.append(f"{identifiant} : {champ}/{nom} manquant.")
-    if passages.get("version_schema") == "passages-sources-primaires-v5":
+    if passages.get("version_schema") in {"passages-sources-primaires-v5", "passages-sources-primaires-v6"}:
         manquants = passages.get("evenements_restants_sans_passage")
         if not isinstance(manquants, list) or len(manquants) != len(set(manquants)):
             erreurs.append("Liste des événements sans passage absente ou répétée.")
@@ -113,8 +116,8 @@ def verifier(registre: dict, passages: dict) -> dict:
 
 def principal() -> None:
     analyseur = argparse.ArgumentParser(description="Vérifier les références et limites du registre documentaire.")
-    analyseur.add_argument("--registre", type=Path, default=Path("donnees/registre_verification_evenements_v6.json"))
-    analyseur.add_argument("--passages", type=Path, default=Path("donnees/passages_sources_evenements_v5.json"))
+    analyseur.add_argument("--registre", type=Path, default=Path("donnees/registre_verification_evenements_v7.json"))
+    analyseur.add_argument("--passages", type=Path, default=Path("donnees/passages_sources_evenements_v6.json"))
     args = analyseur.parse_args()
     bilan = verifier(
         json.loads(args.registre.read_text(encoding="utf-8")),
