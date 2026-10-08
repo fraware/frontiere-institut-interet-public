@@ -103,3 +103,7 @@ Une amélioration documentaire qui ne modifie aucune conclusion peut être trait
 Le dépôt permet de reproduire la structure logicielle, les données publiques enregistrées et les évaluations de développement.
 
 Les cas prospectifs complets et les comparaisons indépendantes constituent encore des travaux à exécuter. Leur absence doit rester explicite dans toute présentation des résultats.
+
+## Registre des passages sources
+
+Le rapprochement des observations avec leurs pièces primaires est conservé dans `donnees/passages_sources_evenements_v1.json`. Chaque fiche donne l'événement concerné, la source officielle, le passage localisé, la portée du constat et ses limites. Cette première lecture documentaire n'est pas une validation indépendante. Le contrôle exécutable `scripts/verifier_passages_sources.py` signale notamment les références croisées incohérentes ou les affirmations excessives d'indépendance, mais ne remplace pas la consultation effective des documents.

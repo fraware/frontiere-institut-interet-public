@@ -51,3 +51,9 @@ La version de référence actuelle est `chronologies_v4.json` ; son registre de 
 ### Complément sur Saint-Brieuc
 
 La version la plus récente est désormais `chronologies_v5.json`, avec `registre_verification_evenements_v3.json`. Elle précise les dates du conseil scientifique de Saint-Brieuc à partir du rapport IGEDD, en distinguant notamment la date du rapport (juin 2025) de sa mise en ligne (mars 2026). Voir [la note de provenance](NOTE_SOURCES_SAINT_BRIEUC_2026-10-08.md). Les versions 3 et 4, ainsi que les registres antérieurs, restent conservés.
+
+## Première lecture de passages primaires
+
+Le fichier `passages_sources_evenements_v1.json` relie quatorze événements du registre courant à des passages précis de documents officiels. Il s'agit d'une **lecture documentaire préliminaire par l'assistant**, non d'une relecture humaine indépendante. Chaque entrée distingue l'assertion précisément soutenue, le document, son emplacement et les limites de l'inférence. Les autres événements restent sans passage individuel documenté dans ce fichier.
+
+La commande `python scripts/verifier_passages_sources.py` vérifie la cohérence des identifiants, la structure des liens et l'absence de déclaration d'indépendance. Elle ne consulte pas les sources distantes et n'établit pas leur véracité. Une relecture documentaire contradictoire doit précéder toute qualification de preuve définitivement vérifiée.

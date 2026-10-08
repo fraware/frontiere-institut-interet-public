@@ -45,6 +45,9 @@ jobs:
       - name: Vérifier le corpus public
         run: python scripts/verifier_corpus_public.py
 
+      - name: Contrôler les passages des sources historiques
+        run: python scripts/verifier_passages_sources.py
+
       - name: Exécuter les tests
         run: pytest
 
