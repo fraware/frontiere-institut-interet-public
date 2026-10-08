@@ -5,7 +5,7 @@ from sqlalchemy import delete, select
 
 from app.database import Base, SessionLocal, engine
 from app.main import app
-from app.models import AuditEvent, BenchmarkCase, BenchmarkPrediction, CapabilityQuery, Episode, EpisodeResult, KnowledgeItem, NeedVersion, Organization, ReuseEvent, RouteAssessment
+from app.models import AuditEvent, BenchmarkCase, BenchmarkPrediction, CapabilityQuery, Episode, EpisodeResult, KnowledgeItem, NeedVersion, Organization, ReuseEvent, RouteAssessment, SearchRun
 
 
 def reset_db():
@@ -822,3 +822,37 @@ def test_paired_comparison_refuses_legacy_intervention():
         }, follow_redirects=False)
         assert blocked.status_code == 409
         assert "voie évaluée" in blocked.json()["detail"]
+
+
+def test_recherche_publique_complete_inconnue_ne_signifie_pas_absente():
+    reset_db()
+    with TestClient(app) as client:
+        location = _create_locked_episode(client, "Conclusion publique inconnue")
+        response = client.post(location + "/public-search", data={
+            "complete": "yes", "relevant_found": "unknown",
+            "mobilizable_found": "unknown",
+        }, follow_redirects=False)
+        assert response.status_code == 303
+    with SessionLocal() as db:
+        run = db.scalar(select(SearchRun).where(SearchRun.search_type == "PUBLIQUE"))
+        assert run is not None
+        assert run.public_result == "P0"
+        assert run.public_relevant_found is None
+
+
+def test_recherche_publique_refuse_mobilisable_sans_pertinence():
+    reset_db()
+    with TestClient(app) as client:
+        location = _create_locked_episode(client, "Conclusion contradictoire")
+        response = client.post(location + "/public-search", data={
+            "complete": "yes", "relevant_found": "no",
+            "mobilizable_found": "yes",
+        }, follow_redirects=False)
+        assert response.status_code == 400
+        malformed = client.post(location + "/public-search", data={
+            "complete": "yes", "relevant_found": "aucun",
+            "mobilizable_found": "unknown",
+        }, follow_redirects=False)
+        assert malformed.status_code == 400
+    with SessionLocal() as db:
+        assert db.scalar(select(SearchRun.id).limit(1)) is None
