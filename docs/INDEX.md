@@ -42,6 +42,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | --- | --- |
 | [Référentiel institutionnel](REFERENTIEL_INSTITUTIONNEL_V1.md) | Périmètre, sources, graphe, temporalité, provenance et surveillance |
 | [Recherche de missions institutionnelles](RECHERCHE_CAPACITES_INSTITUTIONNELLES_V1.md) | Indexation locale, indices documentaires, limites et vérification des fichiers |
+| [Structures de recherche du RNSR](INGESTION_RNSR_V1.md) | Identité nationale, disciplines publiées, provenance et limites de mobilisation |
 | [Organisation administrative de l’État](INGESTION_ROAE_V1.md) | Source officielle de l’organisation administrative de l’État, couverture, hiérarchie et mise à jour |
 | [Services et guichets locaux](INGESTION_ANNUAIRE_LOCAL_V1.md) | Services et guichets locaux de l’Annuaire, hiérarchie et compétence géographique |
 | [Territoires de référence de l’Insee](INGESTION_COG_V1.md) | Territoires de référence de l’Insee, relations géographiques et raccordement avec l’Annuaire |

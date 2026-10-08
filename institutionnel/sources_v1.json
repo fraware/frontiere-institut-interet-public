@@ -1,6 +1,6 @@
 {
-  "version": "1.3",
-  "date_reference": "2026-10-07",
+  "version": "1.4",
+  "date_reference": "2026-10-08",
   "sources": [
     {
       "id": "dila_roae",
@@ -248,6 +248,27 @@
         "tutelles",
         "domaines_scientifiques",
         "relations_parent_enfant"
+      ]
+    },
+    {
+      "id": "mesr_rnsr_structures_actives",
+      "nom": "Structures de recherche publiques actives — RNSR",
+      "producteur": "Ministère de l'Enseignement supérieur, de la Recherche et de l'Espace",
+      "niveau": "source_officielle",
+      "criticite": "haute",
+      "familles": [
+        "recherche_publique",
+        "laboratoires",
+        "structures_recherche"
+      ],
+      "page_url": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-structures-recherche-publiques-actives/",
+      "cadence_attendue": "hebdomadaire",
+      "licence": "Licence Ouverte 2.0",
+      "usage": [
+        "identifiants_rnsr",
+        "structures_actives_selon_la_source",
+        "disciplines_publiees",
+        "classifications_erc"
       ]
     },
     {
