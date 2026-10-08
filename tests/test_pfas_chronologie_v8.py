@@ -26,7 +26,7 @@ def test_pfas_remise_circulaire_et_publications_separees():
         "S027-E01", "S027-E02", "S027-E03", "S027-E04",
     ]
     assert "29 avril 2026" in a[2]["evenement"]
-    assert "remise de son rapport le 15 avril" in a[2]["evenement"]
+    assert "rapport" in a[2]["evenement"] and "15 avril 2026" in a[2]["evenement"]
     assert sum(len(c["evenements"]) for c in actuel["chronologies"]) == 46
 
 
