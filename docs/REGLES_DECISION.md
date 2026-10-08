@@ -17,6 +17,11 @@ Quatre situations sont distinguées :
 
 La troisième situation signale d'abord un problème de mobilisation ou d'organisation. Elle ne prouve pas une pénurie de compétences.
 
+Une conclusion d'absence de capacité publique exige **à la fois** une recherche suffisamment approfondie et une réponse explicitement négative sur l'existence d'une capacité pertinente. Un résultat « inconnu » reste classé comme recherche insuffisante pour conclure, y compris si l'analyste a marqué la recherche comme complète : une affirmation de complétude n'efface pas l'incertitude sur la conclusion.
+
+Une capacité déclarée mobilisable implique qu'elle a d'abord été identifiée comme pertinente. Les saisies contradictoires sont rejetées et ne modifient pas le dossier.
+
+
 ## Choix d'une voie
 
 Les voies possibles comprennent notamment :

@@ -1,5 +1,7 @@
 from datetime import datetime, timedelta, timezone
 
+import pytest
+
 from app.services import classify_public_search, critical_path_minutes, elapsed_span_minutes, host_ready
 
 
@@ -65,3 +67,20 @@ def test_elapsed_span_rejects_inverted_intervals():
         pass
     else:
         raise AssertionError("Un intervalle inversé doit être rejeté.")
+
+
+def test_recherche_complete_a_resultat_inconnu_reste_p0():
+    assert classify_public_search(
+        complete=True, relevant_found=None, mobilizable_found=None
+    ) == "P0"
+
+
+@pytest.mark.parametrize("relevant,mobilizable", [
+    (None, True),
+    (False, True),
+])
+def test_mobilisabilite_ne_peut_pas_preceder_pertinence(relevant, mobilizable):
+    with pytest.raises(ValueError):
+        classify_public_search(
+            complete=True, relevant_found=relevant, mobilizable_found=mobilizable
+        )
