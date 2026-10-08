@@ -1,31 +1,31 @@
 {
   "categories_source": {
-    "SI": 7905
+    "SI": 7907
   },
   "couverture": {
-    "avec_coordonnees": 7799,
+    "avec_coordonnees": 7801,
     "avec_fondement_juridique": 1171,
     "avec_mission": 1569,
-    "avec_responsable": 7550,
+    "avec_responsable": 7552,
     "avec_siren": 417,
     "avec_siret": 415
   },
   "hierarchie": {
-    "avec_parent_principal": 7900,
+    "avec_parent_principal": 7902,
     "entites_a_parents_directs_multiples": 0,
     "sans_parent_principal": 5
   },
   "liens_hierarchiques_non_resolus": 158,
-  "nombre_entites_canoniques": 7905,
-  "nombre_relations_hierarchiques": 8073,
-  "nombre_services_source": 7905,
-  "observe_le": "2026-10-07T12:03:45+00:00",
+  "nombre_entites_canoniques": 7907,
+  "nombre_relations_hierarchiques": 8075,
+  "nombre_services_source": 7907,
+  "observe_le": "2026-10-08T12:16:17+00:00",
   "source_id": "dila_roae",
   "types_anomalies": {
     "LIEN_HIERARCHIQUE_NON_RESOLU": 158
   },
   "types_institutionnels_source": {
-    "Administration centrale (ou Ministère)": 5286,
+    "Administration centrale (ou Ministère)": 5288,
     "Ambassade ou mission diplomatique": 447,
     "Association d'utilité publique": 24,
     "Autorité administrative indépendante": 213,
