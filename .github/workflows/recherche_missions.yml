@@ -61,12 +61,15 @@ jobs:
           resultat = lire("frontiere-resultats-index.json")
           assert construit["nombre_entites"] >= 90000, "Couverture institutionnelle anormalement réduite."
           assert construit["nombre_missions_publiees"] > 10000, "Missions publiées non indexées."
+          assert construit["nombre_entites"] >= 98000, "Structures de recherche non intégrées."
+          assert construit["nombre_domaines_scientifiques_publies"] >= 4700, "Classifications scientifiques absentes."
           assert controle["verification_sources"]["conforme"], "Index différent des fichiers officiels."
           assert resultat["verification_sources"]["conforme"], "Recherche sur un index périmé."
           assert construit["empreinte_sha256_sources"] == resultat["empreinte_sha256_sources_indexees"]
           assert resultat["organismes_dans_index"] == construit["nombre_entites"]
           candidats = (
               resultat["correspondances_aux_missions_ou_capacites_publiees"]
+              + resultat["correspondances_aux_domaines_scientifiques_publies"]
               + resultat["correspondances_de_nom_uniquement"]
           )
           assert all(
@@ -79,6 +82,7 @@ jobs:
               "entites_indexees": construit["nombre_entites"],
               "missions_publiees": construit["nombre_missions_publiees"],
               "capacites_explicites": construit["nombre_capacites_explicitement_publiees"],
+              "domaines_scientifiques_publies": construit["nombre_domaines_scientifiques_publies"],
               "fichiers": construit["nombre_fichiers"],
               "empreinte_sources": construit["empreinte_sha256_sources"],
               "verification_integre": True,

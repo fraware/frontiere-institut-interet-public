@@ -81,3 +81,14 @@ Le fichier `.github/workflows/recherche_missions.yml` définit un essai complém
 Des seuils conservateurs signalent une perte importante de couverture lors d'un changement de données. Le bilan affiche uniquement des **effectifs techniques et une empreinte**, sans prétendre que les missions sont scientifiquement pertinentes pour une demande, ni que des organismes sont disponibles. La requête d'essai vérifie le fonctionnement sur les fichiers réels ; elle n'est pas une mesure de précision ou de rappel.
 
 Le résultat du contrôle dépend de la révision du référentiel. Les fichiers originaux sont conservés dans Git ; l'index temporaire est recréé, puis détruit avec l'environnement d'exécution. Aucune donnée individuelle nouvelle et aucun résultat empirique indépendant ne sont produits.
+
+
+## Classements scientifiques des structures de recherche
+
+La deuxième version de l'index intègre les `domaines_recherche` du répertoire ministériel des structures de recherche publiques actives. Ces descriptions et classifications doivent être explicitement publiées, associées à une référence de source et déclarées comme telles dans la notice normalisée.
+
+Les réponses sont réparties en **trois ensembles** : correspondances avec des missions ou capacités explicitement publiées, correspondances avec des domaines scientifiques publiés, et correspondances exclusivement fondées sur le nom de l'organisme. Cette distinction évite qu'un laboratoire classé dans une discipline soit automatiquement traité comme détenteur d'une capacité opérationnelle ou comme organisme disponible. Chaque famille de résultats possède sa propre limite et le classement textuel n'établit aucune priorité institutionnelle.
+
+L'index porte la version technique `recherche-missions-institutionnelles-v2` et les réponses `orientation-documentaire-v2`. L'ancien index local est incompatible avec cette structure : exécuter à nouveau la commande `--construire` pour incorporer les domaines scientifiques et les huit partitions du RNSR. La comparaison des empreintes des fichiers reste obligatoire avant chaque interrogation.
+
+Les structures sans domaine indiqué restent retrouvables par leur nom, mais aucune discipline n'est ajoutée par supposition. Les classifications ministérielles doivent être confrontées à des preuves distinctes pour conclure sur les instruments, les personnels, les compétences effectivement présentes ou leur disponibilité.
