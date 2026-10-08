@@ -192,6 +192,8 @@ Sous Windows PowerShell :
 
 Ouvrir ensuite `http://127.0.0.1:8000`.
 
+**Sécurité de l'instance :** le prototype ne possède pas encore d'authentification. Le mode de développement n'est destiné qu'aux essais locaux ; ne pas exposer le serveur ni le port du conteneur à un réseau accessible à des tiers. Les modes de production et de préproduction sont volontairement refusés au démarrage. Voir [les limites de sécurité](SECURITE.md).
+
 ## Vérifications
 
 ```bash
