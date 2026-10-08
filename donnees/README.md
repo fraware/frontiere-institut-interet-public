@@ -43,3 +43,7 @@ Le fichier `registre_verification_evenements_v1.json` recense les événements d
 Chaque événement porte la valeur `A_VERIFIER` : l'existence d'une source publique associée au signal **ne prouve pas** qu'elle documente précisément cet événement. Le fichier rend la tâche de vérification explicite, événement par événement, sans produire de citation nouvelle ni modifier les interprétations historiques. Les champs de relecture restent vides jusqu'à examen de la source par une personne compétente.
 
 La commande `python scripts/construire_registre_verification_evenements.py --sortie /chemin/nouveau_registre.json` régénère un exemplaire de contrôle sans écraser un fichier existant. Les tests vérifient l'identité exacte du registre avec les fichiers sources du dépôt. Toute validation factuelle doit conserver la référence du passage justifiant le fait et la date de vérification.
+
+## Version des chronologies et rectifications
+
+La version de référence actuelle est `chronologies_v4.json` ; son registre de vérification est `registre_verification_evenements_v2.json`. La version 3 et le registre 1 restent disponibles sans modification. Les corrections portant sur le procès-verbal de l’IGN et le rapport sénatorial relatif à France Compétences figurent dans [le rectificatif documentaire](RECTIFICATIF_SOURCES_2026-10-08.md). Elles précisent la distinction entre date d'observation, date de séance et date de publication, sans créer de délais artificiels ni valider les autres événements.
