@@ -105,3 +105,12 @@ Ce dispositif est **préparatoire** : aucun jugement humain indépendant n'est e
 La [charte de recrutement et d’indépendance](CHARTE_RECRUTEMENT_RELECTEURS_V1.md) explicite les qualifications, conflits d'intérêts, déclarations d'exposition préalable, choix des rôles, conditions d'engagement et séquence de gel à fixer **avant** le premier jugement humain. La [fiche de mission](FICHE_MISSION_RELECTURE_V1.md) décrit les 45 assertions, le livrable attendu et une invitation de premier contact réutilisable.
 
 Ces documents ne déclarent ni relecteur recruté, ni rémunération financée, ni consentement obtenu, ni message envoyé. Les identités et conditions privées de participation doivent être conservées hors du dépôt public, et la disponibilité des candidats doit être vérifiée par prise de contact réelle. Le suivi d'exécution est la [tâche n° 84](https://github.com/fraware/frontiere-institut-interet-public/issues/84).
+
+
+## Identité des questions dans les trois rapports réservés
+
+Chaque rapport individuel issu de `scripts/evaluer_jeu_reserve.py` contient désormais `empreinte_sha256_questions`, l'empreinte exacte du fichier de questions utilisé pour la méthode concernée. Le programme de comparaison exige que les trois rapports présentent **la même empreinte des questions**, en plus d'une même empreinte de références privées et du même ensemble de codes H01–H10. Deux fichiers peuvent contenir les mêmes identifiants tout en décrivant des besoins différents ; comparer leurs scores constituerait un rapprochement invalide.
+
+Les anciens rapports dépourvus de cette empreinte ne satisfont pas au contrôle renforcé. Avant toute analyse, retrouver les fichiers originaux, leurs manifestes et les questions, puis **reproduire une correction autorisée** à partir des réponses restées inchangées et de leurs gels vérifiés ; ne jamais compléter une empreinte manquante par estimation ni modifier silencieusement un rapport original.
+
+Ce contrôle établit l'identité des fichiers de questions utilisés lors de la correction ; il ne prouve pas, à lui seul, que les trois opérateurs ont effectivement reçu et respecté les mêmes consignes, tâche qui reste couverte par les journaux et la procédure indépendante.
