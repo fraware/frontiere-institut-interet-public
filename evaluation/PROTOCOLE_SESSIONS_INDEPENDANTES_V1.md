@@ -57,6 +57,21 @@ Les réponses doivent conserver les mêmes codes et les mêmes structures, avec 
 
 Si une réponse est manquante, ne jamais inventer une valeur. Une séance interrompue doit être signalée au responsable et traitée selon une règle décidée avant toute correction.
 
+### Vérifier les temps et les journaux avant le gel
+
+Avant le gel, contrôler chaque journal à l'aide de `scripts/auditer_journaux_sessions.py`. Indiquer les mêmes questions, réponses et journal de séance, ainsi que le budget maximal décidé avant l'expérience :
+
+```bash
+python scripts/auditer_journaux_sessions.py \
+  --questions evaluation/jeu_reserve_v1_questions.json \
+  --reponses /prive/reponses_analyste.json \
+  --journal /prive/journal_analyste.json \
+  --budget-minutes-par-cas 25 \
+  --sortie /prive/audit_journal_analyste.json
+```
+
+Les 25 minutes ne sont qu'un exemple. Le contrôle signale les écarts entre les durées déclarées et les horodatages, les dépassements de plafond et les déclarations manquantes. Une anomalie appelle une explication datée ; elle ne doit être ni masquée ni corrigée sans trace. Les mesures reposent sur les informations consignées par les opérateurs et ne prouvent pas, à elles seules, que le travail a effectivement été réalisé.
+
 ## 6. Geler les trois réponses avant correction
 
 Valider chaque fichier avec `scripts/verifier_reponses_jeu_reserve.py`. Puis générer, pour chacune des trois méthodes, un manifeste avec `scripts/geler_reponses_jeu_reserve.py`.
