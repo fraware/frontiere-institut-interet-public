@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta, timezone
 
 import pytest
+from types import SimpleNamespace
+from scripts.auditer_recherches_publiques import auditer_recherches
 
 from app.services import classify_public_search, critical_path_minutes, elapsed_span_minutes, host_ready
 
@@ -84,3 +86,28 @@ def test_mobilisabilite_ne_peut_pas_preceder_pertinence(relevant, mobilizable):
         classify_public_search(
             complete=True, relevant_found=relevant, mobilizable_found=mobilizable
         )
+
+
+def test_audit_retrospectif_ne_requalifie_pas_silencieusement():
+    ancien = SimpleNamespace(
+        id=1, episode_id=101, search_type="PUBLIQUE",
+        public_result="P3", complete_enough_to_conclude=True,
+        public_relevant_found=None, public_mobilizable_found=None,
+    )
+    bilan = auditer_recherches([ancien])
+    assert bilan["nombre_anomalies"] == 1
+    assert bilan["anomalies"][0]["resultat_recalcule"] == "P0"
+    assert ancien.public_result == "P3"
+    assert bilan["donnees_modifiees"] is False
+
+
+def test_audit_signale_les_incoherences_sans_fausse_certitude():
+    ancien = SimpleNamespace(
+        id=2, episode_id=102, search_type="PUBLIQUE",
+        public_result="P3", complete_enough_to_conclude=True,
+        public_relevant_found=False, public_mobilizable_found=True,
+    )
+    bilan = auditer_recherches([ancien])
+    assert bilan["nombre_anomalies"] == 1
+    assert bilan["anomalies"][0]["type"] == "saisie_contradictoire"
+    assert bilan["anomalies"][0]["resultat_recalcule"] is None
