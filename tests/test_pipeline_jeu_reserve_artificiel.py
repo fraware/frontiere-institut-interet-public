@@ -79,7 +79,7 @@ def test_chaine_complete_sur_cas_artificiels(tmp_path):
         assert json.loads(rapport.read_text(encoding="utf-8"))["empreinte_sha256_gel_reponses"] == hashlib.sha256(gel.read_bytes()).hexdigest()
         rapports.append(rapport)
     final = tmp_path / "comparaison.json"
-    comparaison = lancer("comparer_methodes_jeu_reserve.py", "--rapports", *rapports, "--sortie", final)
+    comparaison = lancer("comparer_methodes_jeu_reserve.py", "--rapports", *rapports, "--nombre-cas-attendus", "2", "--sortie", final)
     assert comparaison.returncode == 0, comparaison.stderr
     resultat = json.loads(final.read_text(encoding="utf-8"))
     assert resultat["nombre_cas"] == 2
