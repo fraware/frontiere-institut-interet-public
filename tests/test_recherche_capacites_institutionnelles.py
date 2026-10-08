@@ -189,3 +189,32 @@ def test_validation_parametres_et_absence_de_sources(tmp_path):
             chercher(db, "chimie", limite=0)
         with pytest.raises(ValueError, match="Famille"):
             chercher(db, "chimie", famille="' OR 1=1")
+
+
+def test_echantillons_reels_des_deux_familles_sont_indexables(tmp_path):
+    """Vérifie la compatibilité des schémas JSONL sans indexer tout le corpus."""
+    original = Path(__file__).resolve().parents[1] / "institutionnel" / "entites"
+    synthese = tmp_path / "extraits"
+    pourcentage = 0
+    for categorie in ("roae", "locales"):
+        fragments = sorted((original / categorie).glob("*.jsonl"))
+        assert fragments, f"Absence des notices de la famille {categorie}."
+        entree = fragments[0]
+        with entree.open("rb") as f:
+            lignes = []
+            for ligne in f:
+                if ligne.strip():
+                    lignes.append(ligne)
+                if len(lignes) == 2:
+                    break
+        assert len(lignes) == 2
+        sortie = synthese / categorie
+        sortie.mkdir(parents=True)
+        (sortie / entree.name).write_bytes(b"".join(lignes))
+        pourcentage += len(lignes)
+    index = tmp_path / "echantillon.sqlite3"
+    resultat = construire_index(synthese, index)
+    assert resultat["nombre_entites"] == pourcentage == 4
+    with ouvrir_index(index) as db:
+        assert verifier_sources(db, synthese)["conforme"]
+        assert db.execute("SELECT COUNT(*) FROM organismes").fetchone()[0] == 4
