@@ -86,3 +86,9 @@ Dans le banc de développement de l'application, les moyennes sont maintenant re
 À la saisie, un nom de méthode vide, une version vide, un temps humain négatif, une durée calendaire négative ou non finie sont **refusés**. Les observations ne sont plus artificiellement ramenées à zéro. Le temps écoulé absent reste inconnu, sans substitution d'une valeur. Les données déjà enregistrées avant ce contrôle ne sont pas modifiées ; si une analyse historique dépend de durées anciennes, celles-ci demandent un examen spécifique.
 
 La comparaison réservée H01–H10 utilise son propre programme d'appariement sur les mêmes questions et ses contrôles de réponses. Le banc de développement ne doit pas se substituer à ce dispositif.
+
+## Révélation des références et admissibilité des réponses
+
+La révélation des références d'un cas de développement met fin à la possibilité d'enregistrer de nouvelles prédictions sur ce cas. Une réponse produite après connaissance du corrigé serait contaminée et ne peut pas figurer dans un tableau de résultats descriptifs présentant les conditions comme identiques. L'application refuse ces contributions et ne présente plus de formulaire de réponse sur les cas révélés.
+
+La révélation peut survenir après une seule prédiction dans le banc de développement ; ce comportement ne constitue pas une expérience multi-méthodes appariée. Pour une comparaison de plusieurs méthodes, leurs réponses doivent être recueillies **avant** toute révélation. Le protocole indépendant H01–H10 impose une procédure plus stricte de collecte, de gel et de correction avec des références privées.

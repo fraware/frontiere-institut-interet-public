@@ -1469,6 +1469,12 @@ def add_benchmark_prediction(
     case = db.scalar(select(BenchmarkCase).where(BenchmarkCase.code == case_code, BenchmarkCase.active.is_(True)))
     if case is None:
         raise HTTPException(404, "Cas d'évaluation introuvable")
+    if case.revealed:
+        raise HTTPException(
+            409,
+            "Les références de ce cas ont été révélées. "
+            "Toute nouvelle prédiction serait informée par le corrigé.",
+        )
 
     def items(text: str) -> list[str]:
         return [part.strip() for part in text.replace("\n", ",").split(",") if part.strip()]
