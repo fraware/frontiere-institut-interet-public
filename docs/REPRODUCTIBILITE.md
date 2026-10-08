@@ -121,3 +121,14 @@ La dernière collection `donnees/passages_sources_evenements_v5.json` conserve l
 ### Correction de la temporalité ASNR
 
 La version 9 retire de l'ensemble courant le constat S042-E04, daté de mai 2025 sans preuve suffisante d'exécution, tout en conservant son texte et sa date dans `retraits_evenements_non_confirmes`. Son origine parlementaire de février 2024 est documentée sous S042-E02. Les 45 événements actifs sont reproduits par `donnees/registre_verification_evenements_v7.json` et leur première lecture par `donnees/passages_sources_evenements_v6.json`. Voir `donnees/NOTE_RECTIFICATION_ASNR_2026-10-08.md`. Une couverture documentaire de 45 sur 45 ne représente pas 45 vérifications humaines indépendantes.
+
+
+## Unité de compte des indicateurs empiriques
+
+Les répartitions des recherches publiques et des résultats observés sont exprimées **par épisode réel**, en retenant la dernière observation enregistrée pour chaque dossier (ordre des identifiants de création). Les versions précédentes restent en base et ne sont pas supprimées. Un dossier dont la recherche passe de « capacité trouvée » à « aucune capacité pertinente trouvée après recherche suffisante » ne doit pas apparaître simultanément dans les deux catégories de la photographie actuelle.
+
+Le tableau de bord conserve des compteurs distincts : `public_search_records` pour l'ensemble des recherches publiques enregistrées, `public_search_episodes` pour les dossiers concernés, `results` pour les enregistrements successifs de résultat et `result_episodes` pour les dossiers ayant au moins un résultat. Les chiffres descriptifs de l'écran d'accueil comptent les **épisodes**, jamais une multiplication silencieuse des révisions.
+
+Dans la vue empirique, `r5` compte les **ressources distinctes** ayant fait l'objet d'au moins une découverte au stade final de mobilisation sur un épisode réel ; `r5_observations` compte l'ensemble de ces observations. Le stade final de mobilisation historique ne prouve pas que la ressource est toujours disponible aujourd'hui. La vue exclut les cas marqués comme artificiels, sans effacer leurs données d'essai.
+
+Les catégories de résultats et d'obstacles dominants reflètent le dernier résultat déclaré par dossier, non une incidence nationale représentative. Les observations issues des dossiers réels ne sont pas suffisamment nombreuses pour produire une estimation causale de la valeur de FRONTIÈRE.

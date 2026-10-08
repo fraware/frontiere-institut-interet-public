@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block title %}Données de terrain — FRONTIÈRE — Institut pour l’intérêt public{% endblock %}
 {% block content %}
-<section class="page-head"><div><p class="eyebrow">DONNÉES TERRAIN</p><h1>Données de terrain</h1><p>Vue descriptive des cas réels. Les cas de démonstration sont exclus.</p></div></section>
+<section class="page-head"><div><p class="eyebrow">DONNÉES TERRAIN</p><h1>Données de terrain</h1><p>Vue descriptive des cas réels. Les cas de démonstration sont exclus. Les répartitions décrivent le dernier état enregistré par épisode ; les révisions précédentes restent conservées dans le dossier.</p></div></section>
 
 <section class="metrics">
   <article><span>Épisodes réels</span><strong>{{ metrics.episodes }}</strong></article>
   <article><span>Organisations</span><strong>{{ metrics.organizations }}</strong></article>
   <article><span>Besoins actuels qualifiés</span><strong>{{ metrics.d2_plus }}</strong></article>
-  <article><span>Ressources mobilisables</span><strong>{{ metrics.r5 }}</strong></article>
+  <article><span>Ressources distinctes signalées au stade R5</span><strong>{{ metrics.r5 }}</strong></article>
   <article><span>Réutilisations</span><strong>{{ metrics.reuse_events }}</strong></article>
   <article><span>Besoins préexistants</span><strong>{% if metrics.preexisting_rate is not none %}{{ (metrics.preexisting_rate * 100)|round(0)|int }}%{% else %}—{% endif %}</strong></article>
 </section>
@@ -38,7 +38,7 @@
 
 <div class="grid two">
 <section class="panel">
-  <h2>Résultats</h2>
+  <h2>Résultats par épisode</h2>
   {% if metrics.result_statuses %}
   <table><thead><tr><th>Issue</th><th>Nombre</th></tr></thead><tbody>
   {% for k,v in metrics.result_statuses.items() %}<tr><td>{{ k }}</td><td>{{ v }}</td></tr>{% endfor %}
@@ -47,7 +47,7 @@
 </section>
 
 <section class="panel">
-  <h2>Principaux obstacles</h2>
+  <h2>Dernier obstacle déclaré par épisode</h2>
   {% if metrics.dominant_frictions %}
   <table><thead><tr><th>Friction</th><th>Nombre</th></tr></thead><tbody>
   {% for k,v in metrics.dominant_frictions.items() %}<tr><td>{{ k }}</td><td>{{ v }}</td></tr>{% endfor %}

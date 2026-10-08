@@ -86,11 +86,21 @@ def dashboard_metrics(db: Session) -> dict:
     statuses = Counter(e.status for e in episodes)
 
     public_runs = db.scalars(
-        select(SearchRun).join(Episode).where(Episode.synthetic.is_(False), SearchRun.search_type == "PUBLIQUE")
+        select(SearchRun).join(Episode)
+        .where(Episode.synthetic.is_(False), SearchRun.search_type == "PUBLIQUE")
+        .order_by(SearchRun.id)
     ).all()
-    public_results = Counter(r.public_result for r in public_runs if r.public_result)
+    latest_public = {r.episode_id: r for r in public_runs}
+    public_results = Counter(
+        r.public_result for r in latest_public.values() if r.public_result
+    )
 
-    closed_results = db.scalars(select(EpisodeResult).join(Episode).where(Episode.synthetic.is_(False))).all()
+    closed_results = db.scalars(
+        select(EpisodeResult).join(Episode)
+        .where(Episode.synthetic.is_(False))
+        .order_by(EpisodeResult.id)
+    ).all()
+    latest_results = {r.episode_id: r for r in closed_results}
     reuse_count = db.scalar(
         select(func.count(ReuseEvent.id)).join(Episode, ReuseEvent.destination_episode_id == Episode.id).where(Episode.synthetic.is_(False))
     ) or 0
@@ -105,7 +115,10 @@ def dashboard_metrics(db: Session) -> dict:
         "demand": dict(demand),
         "statuses": dict(statuses),
         "public_results": dict(public_results),
+        "public_search_records": len(public_runs),
+        "public_search_episodes": len(latest_public),
         "results": len(closed_results),
+        "result_episodes": len(latest_results),
         "reuse_events": reuse_count,
         "knowledge_items": knowledge_count,
         "contacts_active": contacts_active,
@@ -134,16 +147,24 @@ def empirical_metrics(db: Session) -> dict:
         latest_public[run.episode_id] = run
     public_results = Counter(r.public_result for r in latest_public.values() if r.public_result)
 
-    r5_count = db.scalar(
-        select(func.count(Discovery.id))
+    r5_query = (
+        select(Discovery.resource_id)
         .join(SearchRun, Discovery.search_run_id == SearchRun.id)
         .join(Episode, SearchRun.episode_id == Episode.id)
         .where(Episode.synthetic.is_(False), Discovery.state == "R5")
-    ) or 0
+    )
+    r5_resource_ids = db.scalars(r5_query).all()
 
-    result_rows = list(db.scalars(select(EpisodeResult).join(Episode).where(Episode.synthetic.is_(False))).all())
-    result_statuses = Counter(r.result_status for r in result_rows)
-    dominant_frictions = Counter(r.dominant_friction for r in result_rows if r.dominant_friction)
+    result_rows = list(db.scalars(
+        select(EpisodeResult).join(Episode)
+        .where(Episode.synthetic.is_(False))
+        .order_by(EpisodeResult.id)
+    ).all())
+    latest_results = {r.episode_id: r for r in result_rows}
+    result_statuses = Counter(r.result_status for r in latest_results.values())
+    dominant_frictions = Counter(
+        r.dominant_friction for r in latest_results.values() if r.dominant_friction
+    )
     reuse_count = db.scalar(
         select(func.count(ReuseEvent.id))
         .join(Episode, ReuseEvent.destination_episode_id == Episode.id)
@@ -159,7 +180,10 @@ def empirical_metrics(db: Session) -> dict:
         "preexisting_yes": preexisting_yes,
         "preexisting_rate": (preexisting_yes / len(known_preexisting)) if known_preexisting else None,
         "public_results": dict(public_results),
-        "r5": int(r5_count),
+        "r5": len(set(r5_resource_ids)),
+        "r5_observations": len(r5_resource_ids),
+        "result_records": len(result_rows),
+        "result_episodes": len(latest_results),
         "result_statuses": dict(result_statuses),
         "dominant_frictions": dict(dominant_frictions),
         "reuse_events": int(reuse_count),
