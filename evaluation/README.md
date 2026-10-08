@@ -99,3 +99,9 @@ Les dossiers produits doivent être transmis aux opérateurs dans un environneme
 Le [protocole de double relecture des sources](PROTOCOLE_RELECTURE_SOURCES_HISTORIQUES_V1.md) définit la vérification indépendante des **45 événements** du corpus actif. Les scripts `preparer_relecture_evenements.py` et `consolider_relecture_evenements.py` produisent des dossiers identiques, des jugements vierges, un manifeste d'intégrité et un bilan conservant tous les désaccords. Le paquet présenté aux relecteurs n'inclut pas les conclusions ni les réserves préalables de l'assistant.
 
 Ce dispositif est **préparatoire** : aucun jugement humain indépendant n'est encore disponible et aucun accord entre relecteurs n'est revendiqué. Les fichiers individuels et leurs empreintes doivent rester dans un environnement privé, avec preuve d'antériorité extérieure.
+
+## Recrutement des deux relecteurs documentaires
+
+La [charte de recrutement et d’indépendance](CHARTE_RECRUTEMENT_RELECTEURS_V1.md) explicite les qualifications, conflits d'intérêts, déclarations d'exposition préalable, choix des rôles, conditions d'engagement et séquence de gel à fixer **avant** le premier jugement humain. La [fiche de mission](FICHE_MISSION_RELECTURE_V1.md) décrit les 45 assertions, le livrable attendu et une invitation de premier contact réutilisable.
+
+Ces documents ne déclarent ni relecteur recruté, ni rémunération financée, ni consentement obtenu, ni message envoyé. Les identités et conditions privées de participation doivent être conservées hors du dépôt public, et la disponibilité des candidats doit être vérifiée par prise de contact réelle. Le suivi d'exécution est la [tâche n° 84](https://github.com/fraware/frontiere-institut-interet-public/issues/84).
