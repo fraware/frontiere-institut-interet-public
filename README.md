@@ -70,7 +70,8 @@ La principale frontière empirique se situe désormais entre trois explications 
 → [État détaillé du projet](docs/ETAT_DU_PROJET.md)  
 → [Organisation administrative de l’État : source, couverture et mise à jour](docs/INGESTION_ROAE_V1.md)  
 → [Couverture territoriale de l'Annuaire](docs/INGESTION_ANNUAIRE_LOCAL_V1.md)  
-→ [Territoires de référence de l’Insee](docs/INGESTION_COG_V1.md)
+→ [Territoires de référence de l’Insee](docs/INGESTION_COG_V1.md)  
+→ [Recherche documentaire des missions institutionnelles](docs/RECHERCHE_CAPACITES_INSTITUTIONNELLES_V1.md)
 
 ## Principes de recherche
 

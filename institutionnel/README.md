@@ -22,7 +22,8 @@ Les territoires de l’Insee restent séparés des organisations. Une commune co
 
 → [Organisation administrative de l’État](../docs/INGESTION_ROAE_V1.md)  
 → [Services et guichets locaux](../docs/INGESTION_ANNUAIRE_LOCAL_V1.md)  
-→ [Territoires de référence de l’Insee](../docs/INGESTION_COG_V1.md)
+→ [Territoires de référence de l’Insee](../docs/INGESTION_COG_V1.md)  
+→ [Recherche locale de missions et capacités publiées](../docs/RECHERCHE_CAPACITES_INSTITUTIONNELLES_V1.md)
 
 ## Fichiers de contrôle
 
