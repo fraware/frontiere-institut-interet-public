@@ -171,11 +171,20 @@ def _interventions_existantes(db: Session, ep: Episode) -> list[str]:
         ("connaissance créée", KnowledgeItem, KnowledgeItem.source_episode_id),
         ("connaissance réutilisée", ReuseEvent, ReuseEvent.destination_episode_id),
     ]
-    return [
+    interventions = [
         libelle
         for libelle, modele, colonne in controles
         if db.scalar(select(modele.id).where(colonne == ep.id).limit(1)) is not None
     ]
+    # Une orientation documentaire locale peut déjà influencer un état initial.
+    if db.scalar(
+        select(AuditEvent.id).where(
+            AuditEvent.episode_id == ep.id,
+            AuditEvent.event_type == "ORIENTATION_DOCUMENTAIRE_EXECUTEE",
+        ).limit(1)
+    ) is not None:
+        interventions.append("orientation documentaire déjà effectuée")
+    return interventions
 
 
 @app.get("/health")
