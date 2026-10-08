@@ -1,0 +1,106 @@
+name: Répertoire national des structures de recherche
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/ingerer_structures_rnsr.py"
+      - ".github/workflows/ingestion-rnsr.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "scripts/ingerer_structures_rnsr.py"
+      - "tests/test_ingestion_rnsr.py"
+      - ".github/workflows/ingestion-rnsr.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('referentiel-rnsr-pr-{0}', github.event.pull_request.number) || 'referentiel-institutionnel-main' }}
+  cancel-in-progress: false
+
+jobs:
+  ingestion:
+    name: Importer les structures de recherche publiques actives
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || 'main' }}
+          fetch-depth: 0
+
+      - name: Installer Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Installer les outils d'essai
+        run: python -m pip install "pytest>=8,<10"
+
+      - name: Vérifier l'importeur sur des données artificielles
+        run: python -m pytest -q tests/test_ingestion_rnsr.py
+
+      - name: Importer les structures officielles actives du RNSR
+        run: python scripts/ingerer_structures_rnsr.py
+
+      - name: Vérifier les données normalisées et le périmètre déclaré
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          dossier = Path("institutionnel")
+          stats = json.loads((dossier / "statistiques_rnsr.json").read_text(encoding="utf-8"))
+          manifeste = json.loads((dossier / "instantanes/rnsr_manifest.json").read_text(encoding="utf-8"))
+          fichiers = sorted((dossier / "entites/rnsr").glob("*.jsonl"))
+          ids = set()
+          nombre = 0
+          avec_domaines = 0
+          assert len(fichiers) == manifeste["nombre_partitions"] == 8
+          for fichier in fichiers:
+              for ligne in fichier.read_text(encoding="utf-8").splitlines():
+                  if not ligne.strip():
+                      continue
+                  item = json.loads(ligne)
+                  assert item["famille"] == "recherche_publique"
+                  assert item["etat"] == "ACTIF"
+                  assert not item["capacites"]
+                  assert not item["missions"]
+                  assert item["id"].startswith("FRONTIERE-INST-RNSR-")
+                  assert item["provenance"][0]["source_id"] == "mesr_rnsr_structures_actives"
+                  assert all(x["nature"] == "PUBLIEE" for x in item["domaines_recherche"])
+                  assert item["id"] not in ids
+                  ids.add(item["id"])
+                  nombre += 1
+                  avec_domaines += bool(item["domaines_recherche"])
+          assert nombre >= 3000
+          assert stats["nombre_structures"] == manifeste["nombre_structures"] == nombre
+          assert avec_domaines == stats["couverture"].get("avec_domaines_nommes", 0)
+          assert stats["nombre_capacites_operationnelles_etablies"] == 0
+          assert len(manifeste["sha256_semantique_source"]) == 64
+          print(json.dumps({
+              "structures": nombre,
+              "domaines_publies": avec_domaines,
+              "capacites_operationnelles_etablies": 0,
+              "empreinte_source": manifeste["sha256_semantique_source"],
+              "source": manifeste["source_id"],
+              "verification_structurelle": True,
+          }, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Enregistrer les structures validées
+        if: github.event_name != 'pull_request'
+        run: |
+          git add institutionnel/entites/rnsr institutionnel/statistiques_rnsr.json institutionnel/instantanes/rnsr_manifest.json
+          if git diff --cached --quiet; then
+            echo "La collection RNSR n'a pas changé."
+            exit 0
+          fi
+          git config user.name "frontiere-referentiel"
+          git config user.email "frontiere-referentiel@users.noreply.github.com"
+          git commit -m "Référentiel MESR — actualiser les structures de recherche du RNSR"
+          git push origin HEAD:main
