@@ -74,6 +74,18 @@ Le programme refuse les méthodes répétées, les codes de cas différents et l
 
 **Limites :** cette comparaison est descriptive. Elle ne mesure ni la pertinence des ressources nommées, ni la qualité réelle des preuves citées, ni la mobilisabilité effective. Ces dimensions exigent une évaluation indépendante supplémentaire. Ne publier aucun résultat tant que les trois méthodes n'ont pas été évaluées.
 
+## Vérification de cohérence des rapports
+
+Le programme de correction et le programme de comparaison exigent un chemin de sortie **extérieur au dépôt public**. Ils refusent l'écrasement automatique d'un rapport déjà présent.
+
+Le comparateur vérifie, avant calcul, la cohérence des trois rapports individuels : appartenance aux méthodes prévues, empreintes des réponses, des références et des gels, exactitude des scores harmoniques, validité des durées et correspondance entre totaux, moyennes et observations par cas.
+
+L'analyste manuel est une référence de comparaison explicitement désignée dans le protocole. Les écarts sont rapportés pour **assistant généraliste contre analyste**, **FRONTIÈRE contre analyste** et **FRONTIÈRE contre assistant généraliste**, sur les seules paires où la mesure est définie. L'ordre des chemins passés au programme n'influence plus la méthode de référence.
+
+Le programme exige par défaut **dix cas**. L'option `--nombre-cas-attendus` permet uniquement les essais artificiels ou les études distinctes avec une taille préalablement définie. Une absence de données demeure inconnue et ne vaut pas un score nul.
+
+Les contrôles internes ne prouvent pas l'origine indépendante des données. Toute attestation d'antériorité et toute correction qualitative restent consignées séparément.
+
 ## Préparer les trois séances indépendantes
 
 Le protocole [d'exécution indépendante](PROTOCOLE_SESSIONS_INDEPENDANTES_V1.md) fixe les conditions d'admission, les trois méthodes, le journal de séance, le budget commun et les précautions contre la divulgation des références.
