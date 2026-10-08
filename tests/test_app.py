@@ -5,7 +5,7 @@ from sqlalchemy import delete, select
 
 from app.database import Base, SessionLocal, engine
 from app.main import app
-from app.models import AuditEvent, BenchmarkCase, BenchmarkPrediction, CapabilityQuery, Episode, EpisodeResult, KnowledgeItem, NeedVersion, Organization, ReuseEvent
+from app.models import AuditEvent, BenchmarkCase, BenchmarkPrediction, CapabilityQuery, Episode, EpisodeResult, KnowledgeItem, NeedVersion, Organization, ReuseEvent, RouteAssessment
 
 
 def reset_db():
@@ -751,3 +751,74 @@ def test_paired_plan_cannot_be_registered_after_search():
         ).status_code == 303
         late = client.post(location + "/prospective/lock", follow_redirects=False)
         assert late.status_code == 409
+
+
+def test_prospective_baseline_refuses_existing_route_assessment():
+    reset_db()
+    with TestClient(app) as client:
+        location = _create_prospective_candidate(client)
+        assert client.post(location + "/need/lock", follow_redirects=False).status_code == 303
+        route = client.post(location + "/route", data={
+            "route_code": "COOPERATION", "route_label": "Coopération existante",
+        }, follow_redirects=False)
+        assert route.status_code == 303
+        blocked = client.post(location + "/prospective/lock", follow_redirects=False)
+        assert blocked.status_code == 409
+        assert "voie évaluée" in blocked.json()["detail"]
+
+
+def test_prospective_actions_cannot_bypass_paired_comparison():
+    reset_db()
+    with TestClient(app) as client:
+        location = _create_prospective_candidate(client)
+        assert client.post(location + "/prospective/lock", follow_redirects=False).status_code == 303
+        forbidden = [
+            ("/resource", {"resource_type": "ORGANISME", "display_name": "Exemple"}),
+            ("/route", {"route_code": "EXPERTISE", "route_label": "Expertise"}),
+            ("/friction", {"category": "MOBILITE", "started_at": "2026-10-07T12:00:00"}),
+            ("/result", {"result_status": "EN_COURS", "outcome_description": "Résultat test"}),
+            ("/knowledge", {"knowledge_type": "VOIE", "title": "Note", "content": "Texte"}),
+            ("/reuse", {"knowledge_id": "1"}),
+        ]
+        for route, donnees in forbidden:
+            response = client.post(location + route, data=donnees, follow_redirects=False)
+            assert response.status_code == 409, (route, response.status_code, response.text)
+        plan = client.post(location + "/comparison/lock", data={
+            "usual_method": "méthode existante",
+            "frontiere_method": "FRONTIÈRE",
+            "usual_owner": "Analyste A",
+            "frontiere_owner": "Analyste B",
+            "primary_outcome": "temps jusqu'à une capacité mobilisable",
+            "observation_date": "2026-10-20",
+            "interference_policy": "Aucun échange avant la mesure.",
+        }, follow_redirects=False)
+        assert plan.status_code == 303
+        route = client.post(location + "/route", data={
+            "route_code": "EXPERTISE", "route_label": "Expertise",
+        }, follow_redirects=False)
+        assert route.status_code == 303
+
+
+def test_paired_comparison_refuses_legacy_intervention():
+    reset_db()
+    with TestClient(app) as client:
+        location = _create_prospective_candidate(client)
+        assert client.post(location + "/prospective/lock", follow_redirects=False).status_code == 303
+        code = location.rsplit("/", 1)[-1]
+        with SessionLocal() as db:
+            ep = db.scalar(select(Episode).where(Episode.code == code))
+            db.add(RouteAssessment(
+                episode_id=ep.id, route_code="ANCIENNE", route_label="Intervention héritée",
+            ))
+            db.commit()
+        blocked = client.post(location + "/comparison/lock", data={
+            "usual_method": "recherche habituelle",
+            "frontiere_method": "FRONTIÈRE",
+            "usual_owner": "Analyste A",
+            "frontiere_owner": "Analyste B",
+            "primary_outcome": "délai",
+            "observation_date": "2026-10-20",
+            "interference_policy": "aucun échange",
+        }, follow_redirects=False)
+        assert blocked.status_code == 409
+        assert "voie évaluée" in blocked.json()["detail"]
