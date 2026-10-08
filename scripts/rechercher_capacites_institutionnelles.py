@@ -339,7 +339,7 @@ def chercher(
     expression = " OR ".join(f'"{mot}"' for mot in mots)
     filtre = "AND o.famille = ?" if famille is not None else ""
     sql = (
-"        "SELECT o.*, t.nom_index, t.mission_index, t.capacite_index, t.domaine_index, "
+        "SELECT o.*, t.nom_index, t.mission_index, t.capacite_index, t.domaine_index, "
         "bm25(termes, 1.0, 6.0, 8.0, 4.0) AS pertinence_lexicale "
         "FROM termes AS t JOIN organismes AS o ON o.numero = t.rowid "
         f"WHERE termes MATCH ? AND o.etat = 'ACTIF' {filtre} "
