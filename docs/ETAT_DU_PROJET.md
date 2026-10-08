@@ -77,6 +77,14 @@ La seconde concerne la séparation, dans les cas rétrospectifs, entre la situat
 
 Ces protections limitent la fuite de la solution. Elles ne remplacent pas une exécution indépendante.
 
+## Actualisation des instruments — 8 octobre 2026
+
+Depuis la situation empirique arrêtée au 6 octobre, les vérifications et procédures ont progressé : contrôle des délais calendaires, préenregistrement prospectif, verrouillage des interventions, gel obligatoire des réponses, comparaison des trois méthodes, double relecture des ressources et preuves, contrôle structurel du corpus, distinction entre résultat inconnu et absence de capacité publique, et audit conservatoire des anciennes classifications.
+
+Les modifications ont été fusionnées après vérifications automatiques. Elles améliorent la cohérence technique et méthodologique de l'instrumentation. **Aucun résultat comparatif indépendant et aucun cas prospectif complet n'est encore acquis.** Les tests artificiels n'ont aucune valeur de résultat institutionnel.
+
+Les étapes qui réclament désormais une intervention extérieure sont l'évaluation indépendante, les données d'exécution détenues par les organismes et l'observation de besoins actuels jusqu'à contribution utile. L'application demeure un prototype public qui ne doit pas recevoir de dossiers sensibles ; un déploiement privé exige des contrôles d'accès et une gouvernance adaptés.
+
 ## Prochain seuil de preuve
 
 Le prochain progrès important exige trois résultats.
