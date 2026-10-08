@@ -140,3 +140,9 @@ L'interface `/api/v1/research-export` utilise le format **0.3**. Pour chaque ép
 La date de première contribution utile, lorsqu'elle est renseignée, est exportée dans `first_useful_contribution_at` sans compléter artificiellement une précision ou un fuseau horaire absent. La version 0.2 du format renvoyait une durée de zéro minute lorsque le dossier ne possédait aucun résultat ; elle ne doit pas être utilisée pour interpréter cette valeur comme une mesure expérimentale.
 
 **Limite supplémentaire :** pour les résultats déjà présents, les champs de temps humains du modèle de données possèdent une valeur initiale numérique de zéro. Un zéro associé à un résultat enregistré n'est donc pas toujours distinguable d'une donnée jamais mesurée. Le changement de format corrige l'absence de résultat, sans requalifier automatiquement les zéros historiques internes au résultat. Une correction de ce second problème devra préserver les données et leur provenance au moyen d'une évolution du modèle.
+
+## Contrôle public préalable au jeu réservé
+
+Avant toute séance, exécuter `python scripts/verifier_prevol_jeu_reserve.py`. Ce programme vérifie la forme et la cohérence des dix questions H01–H10, la vacuité des modèles publics de réponse et la déclaration d'une empreinte SHA-256 des références privées. Le contrôle est également exécuté dans les vérifications automatiques et couvre des scénarios artificiels d'altération.
+
+**Limite stricte :** l'empreinte de référence est contrôlée quant à son format, sans ouvrir le fichier privé auquel elle correspond. Une réussite ne prouve ni que le corrigé existe encore, ni qu'il concorde avec son empreinte, ni qu'une séance indépendante a eu lieu. Ces trois propriétés demandent des vérifications distinctes dans un environnement autorisé.

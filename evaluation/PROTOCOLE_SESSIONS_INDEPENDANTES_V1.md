@@ -93,3 +93,9 @@ Le rapport final doit donner les versions des outils, le budget annoncé, les é
 Avec dix cas historiques, les écarts sont exploratoires et ne constituent ni une estimation représentative de l'administration française ni une preuve d'effet causal. La valeur en situation réelle devra être étudiée ultérieurement sur des cas prospectifs dont le besoin et les résultats sont préenregistrés.
 
 **Décision après le premier cycle :** poursuivre, resserrer ou arrêter l'hypothèse technique seulement au regard de résultats réels, reproductibles et critiqués ; préserver aussi les résultats négatifs.
+
+## 9. Vérifications automatisées supplémentaires avant une séance
+
+La commande `python scripts/verifier_prevol_jeu_reserve.py` contrôle les trois artefacts publics (questions, modèle et manifeste). Elle refuse les modifications de l'ordre H01–H10, l'introduction de réponses dans le modèle et les incohérences de nombre de cas. Elle ne lit aucune référence historique privée et ne remplace pas la vérification du détenteur du corrigé.
+
+Le contrôle des journaux signale également une durée de travail et de vérification supérieure au temps calendaire de la séance pour un opérateur unique. Deux variables déclarées en minutes entières justifient une tolérance d'arrondi d'une minute. Une anomalie est conservée pour examen ; elle n'est pas automatiquement corrigée et ne devient pas une preuve de fraude. Le traitement de cette anomalie doit être documenté avant la comparaison des méthodes.

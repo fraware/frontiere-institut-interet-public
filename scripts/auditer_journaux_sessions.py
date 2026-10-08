@@ -66,6 +66,14 @@ def auditer(questions: dict, reponses: dict, journal: dict, budget_minutes: int,
             mesure = (fin - debut).total_seconds()
             if mesure < 0:
                 observations.append("fin antérieure au début")
+            # Le protocole attribue une personne à chaque méthode. Les minutes
+            # de travail et de vérification ne peuvent dépasser le temps écoulé
+            # d’une séance unique, sous réserve de l’arrondi de deux relevés.
+            temps_humain_secondes = 60 * (
+                reponse["minutes_analyste"] + reponse["minutes_verification"]
+            )
+            if mesure >= 0 and temps_humain_secondes > mesure + 60:
+                observations.append("temps humain supérieur au temps écoulé")
             if reponse["duree_secondes"] is None:
                 observations.append("durée des réponses inconnue malgré des horodatages")
             elif abs(reponse["duree_secondes"] - mesure) > tolerance_secondes:

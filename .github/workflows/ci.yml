@@ -51,6 +51,9 @@ jobs:
       - name: Contrôler les passages des sources historiques
         run: python scripts/verifier_passages_sources.py
 
+      - name: Vérifier les artefacts publics du jeu réservé
+        run: python scripts/verifier_prevol_jeu_reserve.py
+
       - name: Exécuter les tests
         run: pytest
 
