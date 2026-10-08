@@ -5,6 +5,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from verifier_reponses_jeu_reserve import verifier_reponses
+
 
 def normaliser(valeurs):
     return {str(v).strip().upper() for v in valeurs if str(v).strip()}
@@ -44,6 +46,11 @@ def principal() -> None:
     references = json.loads(references_path.read_text(encoding="utf-8"))
     reponses = json.loads(reponses_path.read_text(encoding="utf-8"))
 
+    try:
+        verifier_reponses(questions, reponses)
+    except ValueError as erreur:
+        raise SystemExit(f"réponses invalides : {erreur}") from erreur
+
     empreinte_reelle = empreinte(references_path)
     empreinte_attendue = manifeste["empreinte_sha256_references"]
     if empreinte_reelle != empreinte_attendue:
@@ -51,6 +58,9 @@ def principal() -> None:
 
     codes_questions = {c["code"] for c in questions["cas"]}
     references_par_code = {c["code"]: c for c in references["cas"]}
+    codes_references = [c["code"] for c in references["cas"]]
+    if len(codes_references) != len(set(codes_references)):
+        raise SystemExit("références : codes de cas dupliqués")
     reponses_par_code = {c["code"]: c for c in reponses["cas"]}
 
     if codes_questions != set(references_par_code):
@@ -87,6 +97,7 @@ def principal() -> None:
         "version_methode": reponses.get("version_methode"),
         "nombre_cas": len(lignes),
         "empreinte_sha256_references": empreinte_reelle,
+        "empreinte_sha256_reponses": empreinte(reponses_path),
         "voies_precision_moyenne": moyenne("voies", "precision"),
         "voies_rappel_moyen": moyenne("voies", "rappel"),
         "voies_mesure_harmonique_moyenne": moyenne("voies", "mesure_harmonique"),
