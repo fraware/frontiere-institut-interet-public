@@ -218,3 +218,64 @@ def test_echantillons_reels_des_deux_familles_sont_indexables(tmp_path):
     with ouvrir_index(index) as db:
         assert verifier_sources(db, synthese)["conforme"]
         assert db.execute("SELECT COUNT(*) FROM organismes").fetchone()[0] == 4
+
+
+def test_domaines_scientifiques_sont_distingues_des_missions_et_capacites(tmp_path):
+    repertoire = tmp_path / "entites"
+    shard = repertoire / "rnsr"
+    shard.mkdir(parents=True)
+    structures = [
+        organisme("RNSR-A", "Institut d'étude des matériaux", famille="recherche_publique"),
+        organisme("RNSR-B", "Laboratoire de spectrométrie", famille="recherche_publique"),
+        organisme("RNSR-C", "Institut de spectrométrie appliquée", famille="recherche_publique"),
+    ]
+    structures[0]["domaines_recherche"] = [{
+        "texte": "Spectrométrie de masse", "source_id": "mesr_rnsr_structures_actives",
+        "nature": "PUBLIEE", "classification": "domaine_scientifique",
+    }]
+    structures[1]["domaines_recherche"] = [{
+        "texte": "Métrologie", "source_id": "mesr_rnsr_structures_actives",
+        "nature": "PUBLIEE",
+    }]
+    structures[2]["domaines_recherche"] = [{
+        "texte": "Spectrométrie avancée", "source_id": "mesr_rnsr_structures_actives",
+        "nature": "ANALYTIQUE",
+    }]
+    (shard / "rnsr_00.jsonl").write_text(
+        "".join(json.dumps(x, ensure_ascii=False) + "\n" for x in structures),
+        encoding="utf-8",
+    )
+    index = tmp_path / "index.sqlite3"
+    rapport = construire_index(repertoire, index)
+    assert rapport["nombre_entites"] == 3
+    assert rapport["nombre_missions_publiees"] == 0
+    assert rapport["nombre_capacites_explicitement_publiees"] == 0
+    assert rapport["nombre_domaines_scientifiques_publies"] == 2
+    with ouvrir_index(index) as db:
+        bilan = chercher(db, "spectrométrie de masse", limite=10)
+    assert bilan["version_schema"] == "orientation-documentaire-v2"
+    assert bilan["correspondances_aux_missions_ou_capacites_publiees"] == []
+    domaines = bilan["correspondances_aux_domaines_scientifiques_publies"]
+    assert [x["identifiant"] for x in domaines] == ["FRONTIERE-INST-RNSR-A"]
+    assert domaines[0]["type_correspondance"] == "domaine_scientifique_publie"
+    assert domaines[0]["mots_retrouves_dans_les_domaines_scientifiques"] == ["spectrometrie", "masse"]
+    assert domaines[0]["passages_publies"] == [
+        {"texte": "Spectrométrie de masse", "source_id": "mesr_rnsr_structures_actives"}
+    ]
+    assert domaines[0]["disponibilite"] == "INCONNUE"
+    assert domaines[0]["mobilisabilite"] == "NON_ETABLIE"
+    noms = bilan["correspondances_de_nom_uniquement"]
+    assert {x["identifiant"] for x in noms} == {
+        "FRONTIERE-INST-RNSR-B", "FRONTIERE-INST-RNSR-C",
+    }
+
+
+def test_domaine_sans_source_et_inference_analytique_ignorés():
+    entite = organisme("RNSR-ANALYSE", "Laboratoire fictif", famille="recherche_publique")
+    entite["domaines_recherche"] = [
+        {"texte": "Physique des particules", "source_id": "mesr_rnsr_structures_actives", "nature": "ANALYTIQUE"},
+        {"texte": "Biologie structurale", "nature": "PUBLIEE"},
+    ]
+    dossier = preparer_entite(entite, "entree artificielle")
+    assert dossier["domaines"] == []
+    assert dossier["domaine_index"] == ""
