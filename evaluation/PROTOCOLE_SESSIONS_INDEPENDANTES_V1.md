@@ -45,13 +45,13 @@ python scripts/preparer_sessions_jeu_reserve.py \
 
 **La valeur 25 minutes est uniquement un exemple de commande.** Le budget réel doit résulter d'une décision consignée avant lancement. Le programme refuse d'écrire à l'intérieur du dépôt public ou d'écraser une sortie existante.
 
-Il produit un `manifest_preparation.json` et trois dossiers : `analyste/`, `assistant_generaliste/`, `frontiere/`. Chaque dossier contient les mêmes questions épurées de métadonnées inutiles, des consignes propres à la méthode et un modèle vierge de réponse. Ni les références privées ni leurs corrections ne sont lues.
+Il produit un `manifest_preparation.json` et trois dossiers : `analyste/`, `assistant_generaliste/`, `frontiere/`. Chaque dossier contient les mêmes questions épurées de métadonnées inutiles, des consignes propres à la méthode, un modèle vierge de réponse et un journal de séance vierge. Ni les références privées ni leurs corrections ne sont lues.
 
 Le responsable d'étude conserve le manifeste et transmet son empreinte à un tiers. L'empreinte locale ne démontre pas, seule, l'antériorité.
 
 ## 5. Exécuter les sessions
 
-Pour chaque cas, noter dans un journal privé : heure réelle du début et de la fin, temps intellectuel humain direct, temps de vérification, versions des outils, accès au réseau, sources utilisées, interruptions, anomalies, dépassements de budget et reconnaissance fortuite d'un cas historique.
+Pour chaque cas, renseigner le journal de séance privé : heure réelle du début et de la fin, temps intellectuel humain direct, temps de vérification, versions des outils, accès au réseau, sources utilisées, interruptions, anomalies, dépassements de budget et reconnaissance fortuite d'un cas historique.
 
 Les réponses doivent conserver les mêmes codes et les mêmes structures, avec des listes vides lorsqu'aucune proposition n'est suffisamment justifiée. La variable `duree_secondes` correspond au temps écoulé de la séance ; `minutes_analyste` et `minutes_verification` mesurent le temps humain, sans considérer les temps de calcul comme du travail humain.
 
