@@ -7,7 +7,10 @@ import json
 import math
 from pathlib import Path
 
-from verifier_reponses_jeu_reserve import verifier_reponses
+try:
+    from scripts.verifier_reponses_jeu_reserve import verifier_reponses
+except ModuleNotFoundError:
+    from verifier_reponses_jeu_reserve import verifier_reponses
 
 
 def horodatage(valeur: str) -> datetime:
