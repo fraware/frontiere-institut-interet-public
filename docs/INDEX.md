@@ -28,6 +28,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | --- | --- |
 | [Méthode d’évaluation](EVALUATION_TECHNIQUE_V0.5.md) | Comparaison des méthodes et mesures |
 | [Exécution indépendante du jeu réservé](../evaluation/PROTOCOLE_SESSIONS_INDEPENDANTES_V1.md) | Conditions des trois méthodes, génération des dossiers, gel et restitution |
+| [Relecture de la qualité](../evaluation/RELECTURE_QUALITE_V1.md) | Double examen anonymisé et motivé des ressources et des preuves |
 | [../evaluation/CAS_RETROSPECTIFS_DEVELOPPEMENT.md](../evaluation/CAS_RETROSPECTIFS_DEVELOPPEMENT.md) | Douze cas historiques structurés pour le développement |
 | [Premiers enseignements empiriques](PREMIERS_ENSEIGNEMENTS_EMPIRIQUES.md) | Première synthèse des mécanismes observés |
 | [Analyse actuelle des délais](ANALYSE_DELAIS_V4.md) | État actuel des chronologies et des délais exploitables |
