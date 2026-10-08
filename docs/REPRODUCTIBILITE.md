@@ -46,7 +46,7 @@ Les versions antérieures restent disponibles dans l’historique Git afin de re
 
 ### Contrôle automatisé du corpus public
 
-Exécuter `python scripts/verifier_corpus_public.py` pour vérifier conjointement `donnees/signaux_publics_v1.json` et `donnees/chronologies_v6.json`. Le programme contrôle les identifiants, l'unicité des signaux, la couverture des chronologies, la présence de liens de sources et la cohérence entre les valeurs de date et leur degré de précision déclaré (année, mois, jour ou intervalle).
+Exécuter `python scripts/verifier_corpus_public.py` pour vérifier conjointement `donnees/signaux_publics_v1.json` et la collection active `donnees/chronologies_v9.json` (valeur par défaut du vérificateur au 8 octobre 2026). Le programme contrôle les identifiants, l'unicité des signaux, la couverture des chronologies, la présence de liens de sources et la cohérence entre les valeurs de date et leur degré de précision déclaré (année, mois, jour ou intervalle).
 
 Le rapport distingue les événements possédant une référence propre de ceux qui n'en possèdent pas. **Une référence attachée au signal ne constitue pas une vérification autonome de chacun de ses événements.** Le contrôle structurel ne juge pas l'exactitude des sources et n'améliore pas artificiellement la précision temporelle. Les conclusions exigeant une validation factuelle restent soumises à une relecture documentaire.
 
@@ -106,7 +106,7 @@ Les cas prospectifs complets et les comparaisons indépendantes constituent enco
 
 ## Registre des passages sources
 
-Le rapprochement des observations avec leurs pièces primaires est conservé dans `donnees/passages_sources_evenements_v1.json`. Chaque fiche donne l'événement concerné, la source officielle, le passage localisé, la portée du constat et ses limites. Cette première lecture documentaire n'est pas une validation indépendante. Le contrôle exécutable `scripts/verifier_passages_sources.py` signale notamment les références croisées incohérentes ou les affirmations excessives d'indépendance, mais ne remplace pas la consultation effective des documents.
+Le rapprochement courant des observations avec leurs pièces primaires est conservé dans `donnees/passages_sources_evenements_v6.json` ; les versions antérieures, depuis `passages_sources_evenements_v1.json`, restent disponibles pour reconstruire les corrections. Chaque fiche donne l'événement concerné, la source officielle, le passage localisé, la portée du constat et ses limites. Cette première lecture documentaire n'est pas une validation indépendante. Le contrôle exécutable `scripts/verifier_passages_sources.py` signale notamment les références croisées incohérentes ou les affirmations excessives d'indépendance, mais ne remplace pas la consultation effective des documents.
 
 Pour reproduire les modifications Mayotte, conserver côte à côte les versions 5 et 6. Les correspondances entre identifiants supprimés et conservés figurent dans la propriété `fusions_doublons` et dans `donnees/NOTE_SOURCES_MAYOTTE_2026-10-08.md`. Le vérificateur du corpus contrôle ces correspondances et signale les dates journalières répétées. Les deux versions du registre de passages restent conservées, afin de distinguer une première lecture documentaire de sa éventuelle confirmation indépendante.
 
@@ -116,7 +116,7 @@ La version 8 des chronologies distingue la remise du rapport interministériel P
 
 ### Quarante-cinq premières lectures et une observation restant à étayer
 
-La dernière collection `donnees/passages_sources_evenements_v5.json` conserve le même registre de 46 événements que la version précédente, `registre_verification_evenements_v6.json`. Seize passages supplémentaires ont été localisés dans des sources institutionnelles. L'événement encore sans passage suffisamment daté est explicitement consigné, avec leur justification, dans `donnees/ETAT_PREUVES_PAR_EVENEMENT_2026-10-08.md`. La commande `python scripts/verifier_passages_sources.py` vérifie la correspondance de cet identifiant et permet toujours de valider séparément la version 4 ; elle ne garantit pas que les sources citées soutiennent l'intégralité des interprétations.
+La collection intermédiaire `donnees/passages_sources_evenements_v5.json` conservait le même registre de 46 événements que `registre_verification_evenements_v6.json` ; la collection active après le retrait ASNR est la version 6, associée au registre 7. Seize passages supplémentaires ont été localisés dans des sources institutionnelles. L'événement encore sans passage suffisamment daté est explicitement consigné, avec leur justification, dans `donnees/ETAT_PREUVES_PAR_EVENEMENT_2026-10-08.md`. La commande `python scripts/verifier_passages_sources.py` vérifie la correspondance de cet identifiant et permet toujours de valider séparément la version 4 ; elle ne garantit pas que les sources citées soutiennent l'intégralité des interprétations.
 
 ### Correction de la temporalité ASNR
 
