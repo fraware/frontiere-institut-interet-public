@@ -69,3 +69,9 @@ La version active est `chronologies_v7.json` (toujours 46 événements pour dix 
 ### Chaîne documentaire PFAS et extension des sources
 
 La référence active est `chronologies_v8.json`, son registre `registre_verification_evenements_v6.json`, et le dossier de passages `passages_sources_evenements_v4.json`. La version 8 distingue explicitement la remise de l'expertise PFAS le 15 avril 2026, la signature de la circulaire le 27 avril et leurs dates de publication. Elle préserve 46 événements sur dix cas. **29 événements** disposent maintenant d'un passage source localisé dans le registre, avec limites d'interprétation et absence de confirmation indépendante ; **17 restent à documenter individuellement**. Voir [la note PFAS](NOTE_SOURCES_PFAS_2026-10-08.md).
+
+## Rapprochement des événements et des passages officiels — cinquième lecture
+
+La collection `passages_sources_evenements_v5.json` est construite sur les mêmes 46 événements de `registre_verification_evenements_v6.json`. Elle comprend **45 premières lectures documentaires** avec sources et limites explicites, dont seize nouvelles références à l'IGN, à Météo-France, à l'IGEDD, à l'ASNR et au Sénat. Un événement reste sans passage individualisé suffisant : `S042-E04`. Le passage sur les six postes programmés au Cerema à Mayotte est désormais localisé dans le rapport ministériel du Plan Eau DOM 2024. Les incertitudes et les documents nécessaires sont détaillés dans [l'état des preuves](ETAT_PREUVES_PAR_EVENEMENT_2026-10-08.md).
+
+Les versions précédentes du registre de passages sont conservées et vérifiables. Le programme `python scripts/verifier_passages_sources.py` exige que les deux références manquantes correspondent exactement aux événements absents du fichier courant. **Le passage de 29 à 45 premières lectures ne constitue pas une relecture indépendante.**
