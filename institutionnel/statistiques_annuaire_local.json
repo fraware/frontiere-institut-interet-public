@@ -1,8 +1,8 @@
 {
   "categories_export": {
-    "SI": 7905,
-    "SIL": 6294,
-    "SL": 79583
+    "SI": 7907,
+    "SIL": 6297,
+    "SL": 79582
   },
   "competence_geographique": {
     "dataset": "api-lannuaire-administration-locale-competence-geographique",
@@ -11,25 +11,25 @@
     "url": "https://api-lannuaire.service-public.gouv.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration-locale-competence-geographique"
   },
   "couverture": {
-    "avec_coordonnees": 85694,
+    "avec_coordonnees": 85696,
     "avec_fondement_juridique": 1546,
-    "avec_mission": 29903,
-    "avec_responsable": 5201,
-    "avec_siren": 44050,
-    "avec_siret": 54651,
-    "avec_territoire_direct": 85579
+    "avec_mission": 29905,
+    "avec_responsable": 5204,
+    "avec_siren": 44062,
+    "avec_siret": 54650,
+    "avec_territoire_direct": 85681
   },
   "hierarchie": {
     "anomalies": 100,
-    "avec_parent_principal": 3536,
+    "avec_parent_principal": 3539,
     "entites_a_parents_directs_multiples": 0,
-    "sans_parent_principal": 82341
+    "sans_parent_principal": 82340
   },
-  "nombre_enregistrements_export_complet": 93782,
-  "nombre_entites_canoniques": 85877,
-  "nombre_relations_hierarchiques": 4155,
-  "nombre_services_locaux_source": 85877,
-  "observe_le": "2026-10-07T12:04:42+00:00",
+  "nombre_enregistrements_export_complet": 93786,
+  "nombre_entites_canoniques": 85879,
+  "nombre_relations_hierarchiques": 4158,
+  "nombre_services_locaux_source": 85879,
+  "observe_le": "2026-10-08T12:17:17+00:00",
   "resolution_croisee_roae": {
     "anomalies_roae_initiales": 158,
     "resolues_par_annuaire_local": 158,
@@ -37,9 +37,9 @@
   },
   "source_id": "dila_annuaire_local",
   "stockage": {
-    "octets_entites": 226490189,
-    "octets_relations": 3669241,
-    "octets_total_canonique": 230159430
+    "octets_entites": 226573835,
+    "octets_relations": 3671842,
+    "octets_total_canonique": 230245677
   },
   "types_institutionnels_source": {
     "Administration centrale (ou Ministère)": 4,
@@ -50,7 +50,7 @@
     "Direction départementale interministérielle": 284,
     "Département": 108,
     "Groupement d'intérêt public": 38,
-    "Guichet public local": 133,
+    "Guichet public local": 30,
     "Juridiction": 66,
     "Ordre professionnel": 543,
     "Préfecture, sous-préfecture": 1162,
@@ -75,7 +75,7 @@
     "Service local — caf": 466,
     "Service local — cap_emploi": 96,
     "Service local — carsat": 20,
-    "Service local — ccas": 11909,
+    "Service local — ccas": 11908,
     "Service local — cci": 267,
     "Service local — cdad": 105,
     "Service local — cdg": 97,
@@ -109,7 +109,7 @@
     "Service local — dml": 21,
     "Service local — dreal": 1,
     "Service local — droit_travail": 111,
-    "Service local — epci": 1149,
+    "Service local — epci": 1252,
     "Service local — epide": 19,
     "Service local — esm": 6,
     "Service local — fdapp": 93,
@@ -166,7 +166,7 @@
     "Service local — vif_ca": 37,
     "Service local — vif_tj": 162,
     "Syndicat mixte": 57,
-    "Établissement public": 997
+    "Établissement public": 1000
   },
   "types_service_local": {
     "aav": 43,
@@ -203,7 +203,7 @@
     "carif_oref": 19,
     "carsat": 20,
     "caue": 93,
-    "ccas": 11909,
+    "ccas": 11908,
     "cci": 267,
     "ccsf": 103,
     "cdad": 105,
@@ -288,7 +288,7 @@
     "dz_paf": 8,
     "dzpn": 6,
     "emzpn": 2,
-    "epci": 1150,
+    "epci": 1253,
     "epide": 19,
     "esm": 6,
     "espe": 31,
