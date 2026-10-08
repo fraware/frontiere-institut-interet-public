@@ -140,7 +140,7 @@ def verifier(signaux: dict, chronologies: dict) -> dict:
 def principal() -> None:
     analyseur = argparse.ArgumentParser(description="Contrôler la structure du corpus public.")
     analyseur.add_argument("--signaux", type=Path, default=Path("donnees/signaux_publics_v1.json"))
-    analyseur.add_argument("--chronologies", type=Path, default=Path("donnees/chronologies_v3.json"))
+    analyseur.add_argument("--chronologies", type=Path, default=Path("donnees/chronologies_v4.json"))
     args = analyseur.parse_args()
     rapport = verifier(
         json.loads(args.signaux.read_text(encoding="utf-8")),
