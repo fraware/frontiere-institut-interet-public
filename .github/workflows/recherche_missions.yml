@@ -1,0 +1,88 @@
+name: Recherche documentaire institutionnelle
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/rechercher_capacites_institutionnelles.py"
+      - "institutionnel/entites/**"
+      - ".github/workflows/recherche_missions.yml"
+  pull_request:
+    paths:
+      - "scripts/rechercher_capacites_institutionnelles.py"
+      - "institutionnel/entites/**"
+      - ".github/workflows/recherche_missions.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  recherche-complete:
+    name: Référentiel complet et intégrité de l'index
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Récupérer le référentiel institutionnel
+        uses: actions/checkout@v7
+
+      - name: Installer Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Construire l'index complet hors du dépôt
+        run: |
+          python scripts/rechercher_capacites_institutionnelles.py \
+            --construire --index /tmp/frontiere-index-institutions.sqlite3 \
+            > /tmp/frontiere-construction-index.json
+
+      - name: Vérifier les empreintes et la recherche sur les vrais fichiers
+        run: |
+          python scripts/rechercher_capacites_institutionnelles.py \
+            --verifier-index --index /tmp/frontiere-index-institutions.sqlite3 \
+            > /tmp/frontiere-verification-index.json
+          python scripts/rechercher_capacites_institutionnelles.py \
+            --requete "analyse des eaux" --limite 5 \
+            --index /tmp/frontiere-index-institutions.sqlite3 \
+            > /tmp/frontiere-resultats-index.json
+
+      - name: Contrôler les invariants et publier uniquement des agrégats techniques
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          def lire(nom):
+              return json.loads(Path("/tmp", nom).read_text(encoding="utf-8"))
+
+          construit = lire("frontiere-construction-index.json")
+          controle = lire("frontiere-verification-index.json")
+          resultat = lire("frontiere-resultats-index.json")
+          assert construit["nombre_entites"] >= 90000, "Couverture institutionnelle anormalement réduite."
+          assert construit["nombre_missions_publiees"] > 10000, "Missions publiées non indexées."
+          assert controle["verification_sources"]["conforme"], "Index différent des fichiers officiels."
+          assert resultat["verification_sources"]["conforme"], "Recherche sur un index périmé."
+          assert construit["empreinte_sha256_sources"] == resultat["empreinte_sha256_sources_indexees"]
+          assert resultat["organismes_dans_index"] == construit["nombre_entites"]
+          candidats = (
+              resultat["correspondances_aux_missions_ou_capacites_publiees"]
+              + resultat["correspondances_de_nom_uniquement"]
+          )
+          assert all(
+              x["disponibilite"] == "INCONNUE"
+              and x["mobilisabilite"] == "NON_ETABLIE"
+              for x in candidats
+          ), "Une recherche documentaire a conclu à tort sur la mobilisation."
+          print(json.dumps({
+              "version": construit["version_schema"],
+              "entites_indexees": construit["nombre_entites"],
+              "missions_publiees": construit["nombre_missions_publiees"],
+              "capacites_explicites": construit["nombre_capacites_explicitement_publiees"],
+              "fichiers": construit["nombre_fichiers"],
+              "empreinte_sources": construit["empreinte_sha256_sources"],
+              "verification_integre": True,
+              "recherche_executee": True,
+              "resultat_institutionnel_independant": False,
+          }, ensure_ascii=False, indent=2))
+          PY

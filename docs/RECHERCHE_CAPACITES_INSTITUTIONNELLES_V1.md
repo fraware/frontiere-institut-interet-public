@@ -72,3 +72,12 @@ Les jeux de compétence géographique de l'Annuaire sont distincts. Pour retrouv
 Les premières améliorations reproductibles seront un jeu de requêtes de développement assorti de jugements de référence dont les limites sont explicites, la gestion des noms officiels et des changements de périmètre, la recherche de passages précis dans les documents sources et un couplage documenté avec le répertoire de compétence géographique.
 
 La création d'un classement n'autorise aucune affirmation de mobilisation effective. Les règles générales de distinction entre capacité identifiée, capacité pertinente et capacité disponible restent celles de `docs/REGLES_DECISION.md`.
+
+
+## Vérification automatisée sur la totalité des notices
+
+Le fichier `.github/workflows/recherche_missions.yml` définit un essai complémentaire distinct des tests unitaires. Il construit un index à partir de **tous les fichiers institutionnels présents dans la révision examinée**, dans un répertoire temporaire du système d'intégration, puis vérifie leurs empreintes et exécute une requête documentaire. Ce contrôle se déclenche lors d'une modification du moteur, de ses fichiers sources ou de sa configuration.
+
+Des seuils conservateurs signalent une perte importante de couverture lors d'un changement de données. Le bilan affiche uniquement des **effectifs techniques et une empreinte**, sans prétendre que les missions sont scientifiquement pertinentes pour une demande, ni que des organismes sont disponibles. La requête d'essai vérifie le fonctionnement sur les fichiers réels ; elle n'est pas une mesure de précision ou de rappel.
+
+Le résultat du contrôle dépend de la révision du référentiel. Les fichiers originaux sont conservés dans Git ; l'index temporaire est recréé, puis détruit avec l'environnement d'exécution. Aucune donnée individuelle nouvelle et aucun résultat empirique indépendant ne sont produits.
