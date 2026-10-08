@@ -65,3 +65,10 @@ Les tests automatiques emploient des besoins et organismes fictifs. Ils vérifie
 La recherche demeure tributaire des mots exacts, de la couverture des sources et de ses plafonds par catégorie. Des synonymes, équipements ou savoir-faire absents des notices peuvent produire des omissions. Une concordance lexicale est une piste documentaire à examiner, jamais une démonstration de compétence opérationnelle.
 
 L'étape technique suivante consiste à mesurer les omissions et les correspondances trompeuses sur un jeu d'essai artificiel indépendant du corpus d'évaluation réservé, en conservant les justifications de chaque jugement.
+
+
+## Détection des restitutions partielles
+
+Chaque clause de recherche restitue les effectifs de candidats par classe avant et après application du plafond. L'indicateur `restitution_partielle` signale les limitations de résultats de la clause, y compris celles propres à l'index. Le rapport agrégé expose également `restitution_finale_par_classe` et `restitution_potentiellement_partielle`.
+
+Le nombre de pistes distinctes examinées porte uniquement sur les résultats **effectivement revenus des interrogations documentaires** ; il ne constitue pas un compte exhaustif de toutes les ressources possibles. Une liste courte ou vide, notamment en présence d'une limite atteinte, interdit toute interprétation en termes d'absence de capacité.
