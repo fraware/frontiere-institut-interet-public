@@ -16,15 +16,15 @@ Les index sont calculés **localement** à partir des fichiers déjà présents 
 
 Depuis la racine du dépôt, avec Python 3.11 ou une version ultérieure :
 
-\`\`\`bash
+```bash
 python scripts/rechercher_capacites_institutionnelles.py --construire
 python scripts/rechercher_capacites_institutionnelles.py --verifier-index
 python scripts/rechercher_capacites_institutionnelles.py --requete "chimie analytique des eaux" --limite 10
-\`\`\`
+```
 
-L'index est écrit par défaut dans \`data/recherche_institutionnelle.sqlite3\`. Ce fichier local est ignoré par Git et ne doit pas être publié dans le dépôt. Sa construction utilise SQLite et son moteur de recherche textuelle intégré.
+L'index est écrit par défaut dans `data/recherche_institutionnelle.sqlite3`. Ce fichier local est ignoré par Git et ne doit pas être publié dans le dépôt. Sa construction utilise SQLite et son moteur de recherche textuelle intégré.
 
-Le programme accepte \`--famille organisation_administrative_etat\` pour limiter la recherche à une famille institutionnelle précise. Les résultats appartiennent aux notices marquées actives dans la source indexée. Un ancien statut actif ne démontre pas l'activité actuelle.
+Le programme accepte `--famille organisation_administrative_etat` pour limiter la recherche à une famille institutionnelle précise. Les résultats appartiennent aux notices marquées actives dans la source indexée. Un ancien statut actif ne démontre pas l'activité actuelle.
 
 Les recherches portent sur des termes normalisés (casse, accents et ponctuation) et conservent la distinction entre :
 
@@ -45,7 +45,7 @@ La commande de recherche recalcule les empreintes des sources locales avant de r
 
 Pour des essais isolés ou une application locale, les chemins sont paramétrables :
 
-\`\`\`bash
+```bash
 python scripts/rechercher_capacites_institutionnelles.py \
   --construire \
   --entites /chemin/vers/entites \
@@ -55,7 +55,7 @@ python scripts/rechercher_capacites_institutionnelles.py \
   --requete "analyse des eaux" \
   --entites /chemin/vers/entites \
   --index /chemin/prive/recherche.sqlite3
-\`\`\`
+```
 
 Les tests utilisent des **notices artificielles** et vérifient notamment les missions non publiées, les identifiants répétés, les sources modifiées, les notices historiques non actives et la séparation entre proximité nominale et mission publiée. Aucun score sur des besoins institutionnels réels n'est revendiqué.
 
@@ -65,10 +65,10 @@ La recherche est **lexicale** : elle ne reconnaît pas toutes les synonymies et 
 
 Les liens fournis identifient la provenance des notices ; ils ne désignent pas nécessairement le passage exact d'un document original. Une absence de résultat signifie seulement qu'aucune concordance suffisante n'a été trouvée dans le périmètre textuel exploré. Elle **ne constitue pas** une démonstration qu'aucune capacité publique n'existe.
 
-Les jeux de compétence géographique de l'Annuaire sont distincts. Pour retrouver un organisme officiellement compétent pour un type de service sur une commune, utiliser l'outil prévu dans \`scripts/rechercher_competence_geographique.py\`. La présence d'un organisme dans une commune ne prouve pas qu'il détient la capacité scientifique demandée.
+Les jeux de compétence géographique de l'Annuaire sont distincts. Pour retrouver un organisme officiellement compétent pour un type de service sur une commune, utiliser l'outil prévu dans `scripts/rechercher_competence_geographique.py`. La présence d'un organisme dans une commune ne prouve pas qu'il détient la capacité scientifique demandée.
 
 ## Étapes techniques ultérieures
 
 Les premières améliorations reproductibles seront un jeu de requêtes de développement assorti de jugements de référence dont les limites sont explicites, la gestion des noms officiels et des changements de périmètre, la recherche de passages précis dans les documents sources et un couplage documenté avec le répertoire de compétence géographique.
 
-La création d'un classement n'autorise aucune affirmation de mobilisation effective. Les règles générales de distinction entre capacité identifiée, capacité pertinente et capacité disponible restent celles de \`docs/REGLES_DECISION.md\`.
+La création d'un classement n'autorise aucune affirmation de mobilisation effective. Les règles générales de distinction entre capacité identifiée, capacité pertinente et capacité disponible restent celles de `docs/REGLES_DECISION.md`.
