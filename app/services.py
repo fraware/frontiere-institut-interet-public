@@ -248,17 +248,17 @@ def benchmark_summary(db: Session) -> dict:
             .order_by(BenchmarkPrediction.submitted_at)
         ).all()
     )
-    by_method: dict[str, list[tuple[BenchmarkCase, BenchmarkPrediction]]] = defaultdict(list)
+    by_method: dict[tuple[str, str], list[tuple[BenchmarkCase, BenchmarkPrediction]]] = defaultdict(list)
     case_by_id = {c.id: c for c in cases}
     for prediction in predictions:
         case = case_by_id.get(prediction.case_id)
         # Aucun agrégat chiffré n'est publié avant la révélation explicite.
         # Même une moyenne sur un seul cas scellé divulguerait sa référence.
         if case is not None and case.revealed:
-            by_method[prediction.method].append((case, prediction))
+            by_method[(prediction.method, prediction.method_version)].append((case, prediction))
 
     methods = []
-    for method, rows in sorted(by_method.items()):
+    for (method, method_version), rows in sorted(by_method.items()):
         vectors = [benchmark_prediction_metrics(case, prediction) for case, prediction in rows]
         route = [v["route_recall"] for v in vectors if v["route_recall"] is not None]
         route_p = [v["route_precision"] for v in vectors if v["route_precision"] is not None]
@@ -273,6 +273,7 @@ def benchmark_summary(db: Session) -> dict:
         elapsed = [v["elapsed_seconds"] for v in vectors if v["elapsed_seconds"] is not None]
         methods.append({
             "method": method,
+            "method_version": method_version,
             "n": len(rows),
             "route_recall_mean": (sum(route) / len(route)) if route else None,
             "route_precision_mean": (sum(route_p) / len(route_p)) if route_p else None,
