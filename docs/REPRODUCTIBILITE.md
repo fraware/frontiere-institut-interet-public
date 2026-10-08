@@ -44,6 +44,14 @@ Une affirmation empirique importante doit pouvoir être reliée à une source pu
 
 Les versions antérieures restent disponibles dans l’historique Git afin de reconstruire l’évolution de l’analyse.
 
+### Contrôle automatisé du corpus public
+
+Exécuter `python scripts/verifier_corpus_public.py` pour vérifier conjointement `donnees/signaux_publics_v1.json` et `donnees/chronologies_v3.json`. Le programme contrôle les identifiants, l'unicité des signaux, la couverture des chronologies, la présence de liens de sources et la cohérence entre les valeurs de date et leur degré de précision déclaré (année, mois, jour ou intervalle).
+
+Le rapport distingue les événements possédant une référence propre de ceux qui n'en possèdent pas. **Une référence attachée au signal ne constitue pas une vérification autonome de chacun de ses événements.** Le contrôle structurel ne juge pas l'exactitude des sources et n'améliore pas artificiellement la précision temporelle. Les conclusions exigeant une validation factuelle restent soumises à une relecture documentaire.
+
+Ce contrôle est également exécuté lors des vérifications automatiques du dépôt.
+
 ## Reproductibilité des évaluations
 
 Les méthodes comparées reçoivent le même cas de départ et le même format de réponse.
