@@ -95,3 +95,10 @@ Les structures sans domaine indiqué restent retrouvables par leur nom, mais auc
 
 
 Une requête à laquelle correspondent plus de mille notices dans une même classe reste **incomplète pour cette classe**. Le programme expose les effectifs examinés par champ, les catégories tronquées et le nombre total de candidats uniques retenus. Ces nombres ne correspondent ni au nombre total d'organismes compétents, ni à un rappel mesuré. Toute conclusion d'absence exige une démarche indépendante et des pièces adaptées.
+
+
+## Comptabilité des résultats écartés par la restitution
+
+Le résultat de la recherche publie désormais `restitution_par_classe`. Pour chacun des trois niveaux de preuve, il indique le nombre de candidats examinés dans la classe, le nombre effectivement restitué, le nombre écarté par la limite de présentation et l'existence éventuelle d'une troncature. Ces effectifs sont distincts des limites internes à l'interrogation de l'index, signalées dans `champs_dont_les_resultats_sont_tronques`.
+
+Un candidat écarté par un plafond de restitution n'est pas une ressource absente du référentiel. L'effectif observé ne mesure pas l'exhaustivité réelle des structures publiques, notamment en présence de synonymes et de descriptions manquantes. Une catégorie dont la restitution est tronquée exige une recherche plus précise pour son exploitation opérationnelle.

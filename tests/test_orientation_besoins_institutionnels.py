@@ -284,3 +284,29 @@ def test_recherche_tronquee_et_limite_d_entrees(environnement):
         with pytest.raises(ValueError, match="limite"):
             orienter(db, index, code=ep.code, limite=True)
     assert db.scalar(select(func.count(AuditEvent.id))) == 0
+
+
+def test_plafonds_lexicaux_signales_sans_conclure_a_une_absence(environnement):
+    db, ep, _, _, dossier, chemin_index, _ = environnement
+    complement = dossier / "fictives" / "autres.jsonl"
+    donnees = [
+        etablissement(
+            f"MISSION-SUP-{i}", f"Unité complémentaire fictive {i}",
+            mission="Chimie des matériaux", 
+        )
+        for i in range(5)
+    ]
+    complement.write_text(
+        "".join(json.dumps(x, ensure_ascii=False) + "\n" for x in donnees),
+        encoding="utf-8",
+    )
+    construire_index(dossier, chemin_index)
+    rapport = executer_sur_dossier(
+        db, code=ep.code, entites=dossier, index_path=chemin_index, limite=1,
+    )
+    assert rapport["restitution_potentiellement_partielle"] is True
+    domaine = next(x for x in rapport["recherches"] if x["clause"] == "DOMAINE")
+    assert domaine["restitution_partielle"] is True
+    assert domaine["restitution_par_classe"]["mission_ou_capacite_publiee"]["candidats_ecartes_par_limite"] >= 5
+    assert rapport["restitution_finale_par_classe"]["mission_ou_capacite_publiee"]["candidats_restitues"] == 1
+    assert "absence de capacité" in " ".join(rapport["criteres_non_verifies"])

@@ -314,3 +314,46 @@ def test_nom_en_abondance_ne_masque_pas_une_discipline_officielle(tmp_path):
     assert resultats["recherche_bornee_aux_1000_premiers_candidats"] is True
     assert resultats["candidats_examines_par_champ"]["domaine_index"] == 1
     assert resultats["candidats_examines_par_champ"]["mission_index"] == 1
+
+
+def test_les_omissions_par_limite_de_restitution_sont_quantifiees(tmp_path):
+    rep = tmp_path / "entites"
+    shard = rep / "roae"
+    shard.mkdir(parents=True)
+    notices = [
+        organisme(f"M-{i:02d}", f"Service de laboratoire numéro {i}", mission="Chimie analytique des eaux")
+        for i in range(5)
+    ] + [
+        organisme(f"D-{i:02d}", f"Institut scientifique numéro {i}", famille="recherche_publique")
+        for i in range(4)
+    ] + [
+        organisme(f"N-{i:02d}", f"Institut de chimie numéro {i}")
+        for i in range(3)
+    ]
+    for item in notices[5:9]:
+        item["domaines_recherche"] = [{
+            "texte": "Chimie et matériaux", "nature": "PUBLIEE",
+            "source_id": "source-fictive",
+        }]
+    (shard / "notices.jsonl").write_text(
+        "".join(json.dumps(x, ensure_ascii=False) + "\n" for x in notices),
+        encoding="utf-8",
+    )
+    index = tmp_path / "index.sqlite3"
+    construire_index(rep, index)
+    with ouvrir_index(index) as db:
+        rapport = chercher(db, "chimie", limite=2)
+    assert len(rapport["correspondances_aux_missions_ou_capacites_publiees"]) == 2
+    assert len(rapport["correspondances_aux_domaines_scientifiques_publies"]) == 2
+    assert len(rapport["correspondances_de_nom_uniquement"]) == 2
+    rest = rapport["restitution_par_classe"]
+    assert rest["mission_ou_capacite_publiee"] == {
+        "candidats_examines_dans_la_classe": 5,
+        "candidats_restitues": 2,
+        "candidats_ecartes_par_limite": 3,
+        "resultat_tronque": True,
+    }
+    assert rest["domaine_scientifique_publie"]["candidats_ecartes_par_limite"] == 2
+    assert rest["nom_uniquement"]["candidats_ecartes_par_limite"] == 1
+    assert rapport["recherche_bornee_aux_1000_premiers_candidats"] is False
+    assert rapport["champs_dont_les_resultats_sont_tronques"] == []

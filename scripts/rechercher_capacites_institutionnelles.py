@@ -414,6 +414,20 @@ def chercher(
     documentees.sort(key=lambda x: x[0])
     disciplinaires.sort(key=lambda x: x[0])
     nominatives.sort(key=lambda x: x[0])
+    effectifs = {
+        "mission_ou_capacite_publiee": len(documentees),
+        "domaine_scientifique_publie": len(disciplinaires),
+        "nom_uniquement": len(nominatives),
+    }
+    restitution = {
+        classe: {
+            "candidats_examines_dans_la_classe": nombre,
+            "candidats_restitues": min(nombre, limite),
+            "candidats_ecartes_par_limite": max(0, nombre - limite),
+            "resultat_tronque": nombre > limite,
+        }
+        for classe, nombre in effectifs.items()
+    }
     info = {
         ligne["cle"]: ligne["valeur"] for ligne in db.execute("SELECT cle, valeur FROM informations")
     }
@@ -424,6 +438,7 @@ def chercher(
         "empreinte_sha256_sources_indexees": info["empreinte_sources"],
         "organismes_dans_index": int(info["nombre_entites"]),
         "candidats_lexicaux_examines": len(lignes),
+        "restitution_par_classe": restitution,
         "candidats_examines_par_champ": recherches_par_champ,
         "champs_dont_les_resultats_sont_tronques": champs_tronques,
         "correspondances_aux_missions_ou_capacites_publiees": [x[1] for x in documentees[:limite]],
@@ -432,7 +447,7 @@ def chercher(
         "recherche_bornee_aux_1000_premiers_candidats": bool(champs_tronques),
         "limites": [
             "Le classement est lexical : il ne mesure pas la pertinence opérationnelle.",
-            "Les recherches par classe sont bornées et les éventuelles troncatures sont signalées.",
+            "Les recherches et les listes restituées sont bornées ; les candidats écartés par chaque limite sont comptés.",
             "Une mission officielle n'établit pas une compétence spécialisée disponible.",
             "Un domaine scientifique recense un rattachement disciplinaire sans attester de moyens mobilisables.",
             "Une concordance de nom est une piste d'identification, pas une preuve de capacité.",
