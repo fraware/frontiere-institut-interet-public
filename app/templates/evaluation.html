@@ -11,7 +11,7 @@
     <tbody>
     {% for m in methods %}
       <tr>
-        <td><strong>{{ m.method }}</strong></td><td>{{ m.n }}</td>
+        <td><strong>{{ m.method }}</strong><span class="muted"> — version {{ m.method_version }}</span></td><td>{{ m.n }}</td>
         <td>{% if m.route_f1_mean is not none %}{{ (m.route_precision_mean*100)|round(0)|int }}/{{ (m.route_recall_mean*100)|round(0)|int }}/{{ (m.route_f1_mean*100)|round(0)|int }}%{% else %}—{% endif %}</td>
         <td>{% if m.resource_form_f1_mean is not none %}{{ (m.resource_form_precision_mean*100)|round(0)|int }}/{{ (m.resource_form_recall_mean*100)|round(0)|int }}/{{ (m.resource_form_f1_mean*100)|round(0)|int }}%{% else %}—{% endif %}</td>
         <td>{% if m.resource_f1_mean is not none %}{{ (m.resource_precision_mean*100)|round(0)|int }}/{{ (m.resource_recall_mean*100)|round(0)|int }}/{{ (m.resource_f1_mean*100)|round(0)|int }}%{% else %}—{% endif %}</td>
