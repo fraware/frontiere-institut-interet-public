@@ -32,10 +32,22 @@ def creer_manifeste(questions: Path, reponses: Path) -> dict:
 
 
 def verifier_manifeste(questions: Path, reponses: Path, manifeste: dict) -> bool:
+    """Contrôle le gel local complet, sans présumer d'une attestation extérieure."""
+    if not isinstance(manifeste, dict):
+        return False
+    try:
+        donnees = json.loads(reponses.read_text(encoding="utf-8"))
+        jeu = json.loads(questions.read_text(encoding="utf-8"))
+        verifier_reponses(jeu, donnees)
+    except (OSError, ValueError, TypeError, KeyError, json.JSONDecodeError):
+        return False
     return (
         manifeste.get("version_schema") == "gel-reponses-independantes-v1"
         and manifeste.get("empreinte_sha256_questions") == empreinte(questions)
         and manifeste.get("empreinte_sha256_reponses") == empreinte(reponses)
+        and manifeste.get("methode") == donnees["methode"]
+        and manifeste.get("version_methode") == donnees["version_methode"]
+        and manifeste.get("nombre_cas") == len(donnees["cas"])
     )
 
 
