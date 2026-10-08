@@ -79,7 +79,7 @@ def test_termes_francais_normalises_et_requete_sure():
         "oeuvres", "chimie", "analytique", "et", "spectrometrie",
     ]
     assert termes_recherche("Compétences en chimie analytique") == ["chimie", "analytique"]
-    assert termes_recherche('"chimie" OR 1=1') == ["chimie", "or", "1", "1"][:4] or True
+    assert termes_recherche('"chimie" OR 1=1') == ["chimie", "or", "1"]
     assert correspondances("chimie analytique", ["analytique", "eaux"]) == ["analytique"]
     with pytest.raises(ValueError, match="distinctif"):
         termes_recherche("de la recherche publique")
