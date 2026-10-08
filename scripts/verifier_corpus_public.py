@@ -89,6 +89,9 @@ def verifier(signaux: dict, chronologies: dict) -> dict:
     precision_compte = Counter()
     nombre_evenements = 0
     sans_source_propre = 0
+    codes_evenements = set()
+    alertes_dates_identiques = []
+    identifiants_obligatoires = str(chronologies.get('version', '')) == '6'
     for position, parcours_item in enumerate(parcours, 1):
         if not isinstance(parcours_item, dict):
             erreurs.append(f"Chronologie {position} : format incorrect.")
@@ -103,13 +106,31 @@ def verifier(signaux: dict, chronologies: dict) -> dict:
         if not isinstance(evenements, list) or not evenements:
             erreurs.append(f"Chronologie {code} : aucun événement.")
             continue
+        dates_deja_vues = {}
         for indice, evenement in enumerate(evenements, 1):
             nombre_evenements += 1
             if not isinstance(evenement, dict):
                 erreurs.append(f"Chronologie {code}, événement {indice} : format incorrect.")
                 continue
+            evenement_id = evenement.get("id_evenement")
+            if identifiants_obligatoires or evenement_id is not None:
+                if not isinstance(evenement_id, str) or not re.fullmatch(rf"{code}-E\d{{2,}}", evenement_id):
+                    erreurs.append(f"Chronologie {code}, événement {indice} : identifiant stable invalide.")
+                elif evenement_id in codes_evenements:
+                    erreurs.append(f"Événement {evenement_id} : identifiant stable répété.")
+                else:
+                    codes_evenements.add(evenement_id)
             precision = evenement.get("precision")
             texte = evenement.get("date")
+            if precision == "jour" and isinstance(texte, str):
+                if texte in dates_deja_vues:
+                    alertes_dates_identiques.append({
+                        "id_signal": code, "date": texte,
+                        "positions": [dates_deja_vues[texte], indice],
+                        "description": "Deux événements du même cas partagent une date exacte : doublon éventuel à examiner.",
+                    })
+                else:
+                    dates_deja_vues[texte] = indice
             if precision not in PRECISIONS or not valider_date(texte, precision):
                 erreurs.append(f"Chronologie {code}, événement {indice} : date ou précision incorrecte.")
             else:
@@ -120,6 +141,26 @@ def verifier(signaux: dict, chronologies: dict) -> dict:
                 sans_source_propre += 1
             elif not source_web_valide(evenement["source_url"]):
                 erreurs.append(f"Chronologie {code}, événement {indice} : source invalide.")
+    if identifiants_obligatoires:
+        fusions = chronologies.get("fusions_doublons")
+        if not isinstance(fusions, list):
+            erreurs.append("Les fusions de doublons doivent être tracées pour la version 6.")
+        else:
+            identifiants_supprimes = set()
+            for ligne in fusions:
+                if not isinstance(ligne, dict):
+                    erreurs.append("Fusion de doublon : entrée invalide.")
+                    continue
+                obsolete = ligne.get("identifiant_supprime")
+                conserve = ligne.get("identifiant_canonique")
+                if obsolete in identifiants_supprimes or not isinstance(obsolete, str):
+                    erreurs.append("Fusion de doublon : identifiant supprimé absent ou répété.")
+                else:
+                    identifiants_supprimes.add(obsolete)
+                if obsolete in codes_evenements or conserve not in codes_evenements:
+                    erreurs.append(f"Fusion de doublon invalide : {obsolete} → {conserve}.")
+                if not isinstance(ligne.get("motif"), str) or not ligne["motif"].strip():
+                    erreurs.append("Fusion de doublon sans justification.")
     return {
         "version_schema": "controle-corpus-public-v1",
         "valide_structurellement": not erreurs,
@@ -129,6 +170,7 @@ def verifier(signaux: dict, chronologies: dict) -> dict:
         "nombre_evenements": nombre_evenements,
         "precisions_temporelles": dict(precision_compte),
         "evenements_sans_source_propre": sans_source_propre,
+        "alertes_dates_exactes_identiques": alertes_dates_identiques,
         "erreurs": erreurs,
         "limite": (
             "Ce contrôle vérifie les structures et les liens entre fichiers ; "
@@ -140,7 +182,7 @@ def verifier(signaux: dict, chronologies: dict) -> dict:
 def principal() -> None:
     analyseur = argparse.ArgumentParser(description="Contrôler la structure du corpus public.")
     analyseur.add_argument("--signaux", type=Path, default=Path("donnees/signaux_publics_v1.json"))
-    analyseur.add_argument("--chronologies", type=Path, default=Path("donnees/chronologies_v5.json"))
+    analyseur.add_argument("--chronologies", type=Path, default=Path("donnees/chronologies_v6.json"))
     args = analyseur.parse_args()
     rapport = verifier(
         json.loads(args.signaux.read_text(encoding="utf-8")),

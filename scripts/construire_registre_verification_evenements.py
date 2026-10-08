@@ -21,8 +21,9 @@ def construire(signaux: dict, chronologies: dict) -> dict:
             raise ValueError(f"Signal inconnu : {identifiant}")
         signal = repertoire[identifiant]
         for rang, evenement in enumerate(chronologie["evenements"], 1):
+            code_evenement = evenement.get("id_evenement", f"{identifiant}-E{rang:02d}")
             fiches.append({
-                "identifiant_evenement": f"{identifiant}-E{rang:02d}",
+                "identifiant_evenement": code_evenement,
                 "id_signal": identifiant,
                 "titre_signal": signal["titre"],
                 "date_documentee": evenement["date"],
@@ -35,7 +36,7 @@ def construire(signaux: dict, chronologies: dict) -> dict:
                 "motif_relecture": None,
             })
     version_chronologies = str(chronologies.get("version", ""))
-    if version_chronologies not in {"3", "4", "5"}:
+    if version_chronologies not in {"3", "4", "5", "6"}:
         raise ValueError("Version de chronologies non prise en charge pour ce registre.")
     version_registre = str(int(version_chronologies) - 2)
     return {
@@ -54,7 +55,7 @@ def construire(signaux: dict, chronologies: dict) -> dict:
 def principal() -> None:
     parser = argparse.ArgumentParser(description="Préparer le registre des preuves événementielles.")
     parser.add_argument("--signaux", type=Path, default=Path("donnees/signaux_publics_v1.json"))
-    parser.add_argument("--chronologies", type=Path, default=Path("donnees/chronologies_v5.json"))
+    parser.add_argument("--chronologies", type=Path, default=Path("donnees/chronologies_v6.json"))
     parser.add_argument("--sortie", type=Path, required=True)
     args = parser.parse_args()
     document = construire(

@@ -22,12 +22,19 @@ def verifier(registre: dict, passages: dict) -> dict:
     erreurs = []
     if not isinstance(registre, dict) or not isinstance(passages, dict):
         raise ValueError("Registre et passages doivent être des objets.")
-    if registre.get("version_schema") != "registre-verification-evenements-v3":
-        erreurs.append("Version du registre cible différente de la version attendue.")
-    if passages.get("version_schema") != "passages-sources-primaires-v1":
-        erreurs.append("Version des passages inconnue.")
-    if passages.get("registre_cible") != "donnees/registre_verification_evenements_v3.json":
-        erreurs.append("Référence au registre cible incorrecte.")
+    versions = {
+        "registre-verification-evenements-v3": (
+            "passages-sources-primaires-v1", "donnees/registre_verification_evenements_v3.json",
+        ),
+        "registre-verification-evenements-v4": (
+            "passages-sources-primaires-v2", "donnees/registre_verification_evenements_v4.json",
+        ),
+    }
+    versions_attendues = versions.get(registre.get("version_schema"))
+    if versions_attendues is None:
+        erreurs.append("Version du registre cible inconnue.")
+    elif (passages.get("version_schema"), passages.get("registre_cible")) != versions_attendues:
+        erreurs.append("Version des passages ou référence au registre cible incorrecte.")
     if passages.get("relecture_humaine_independante_effectuee") is not False:
         erreurs.append("La relecture indépendante doit rester non réalisée à ce stade.")
     if passages.get("responsable_de_la_premiere_lecture") != "assistant_de_recherche":
@@ -88,8 +95,8 @@ def verifier(registre: dict, passages: dict) -> dict:
 
 def principal() -> None:
     analyseur = argparse.ArgumentParser(description="Vérifier les références et limites du registre documentaire.")
-    analyseur.add_argument("--registre", type=Path, default=Path("donnees/registre_verification_evenements_v3.json"))
-    analyseur.add_argument("--passages", type=Path, default=Path("donnees/passages_sources_evenements_v1.json"))
+    analyseur.add_argument("--registre", type=Path, default=Path("donnees/registre_verification_evenements_v4.json"))
+    analyseur.add_argument("--passages", type=Path, default=Path("donnees/passages_sources_evenements_v2.json"))
     args = analyseur.parse_args()
     bilan = verifier(
         json.loads(args.registre.read_text(encoding="utf-8")),

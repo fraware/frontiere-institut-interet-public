@@ -13,19 +13,19 @@ def lire(nom):
 
 
 def test_passages_reels_restent_structurels_et_non_independants():
-    registre = lire("registre_verification_evenements_v3.json")
-    passages = lire("passages_sources_evenements_v1.json")
+    registre = lire("registre_verification_evenements_v4.json")
+    passages = lire("passages_sources_evenements_v2.json")
     bilan = verifier(registre, passages)
     assert bilan["valide_structurellement"], bilan["erreurs"]
-    assert bilan["total_evenements_registre"] == 48
+    assert bilan["total_evenements_registre"] == 46
     assert bilan["passages_documentaires_preliminaires"] == 14
-    assert bilan["evenements_sans_passage_individuel"] == 34
+    assert bilan["evenements_sans_passage_individuel"] == 32
     assert bilan["relecture_independante_realisee"] is False
 
 
 def test_signale_un_identifiant_ou_lien_invalide():
-    registre = lire("registre_verification_evenements_v3.json")
-    passages = lire("passages_sources_evenements_v1.json")
+    registre = lire("registre_verification_evenements_v4.json")
+    passages = lire("passages_sources_evenements_v2.json")
     copie = copy.deepcopy(passages)
     copie["entrees"][0]["identifiant_evenement"] = "S999-E01"
     copie["entrees"][1]["source_principale"]["url"] = "http://exemple.fr"
@@ -36,7 +36,16 @@ def test_signale_un_identifiant_ou_lien_invalide():
 
 
 def test_refuse_de_pretendre_a_une_relecture_independante():
-    registre = lire("registre_verification_evenements_v3.json")
-    passages = lire("passages_sources_evenements_v1.json")
+    registre = lire("registre_verification_evenements_v4.json")
+    passages = lire("passages_sources_evenements_v2.json")
     passages["entrees"][0]["verification_independante"] = True
     assert not verifier(registre, passages)["valide_structurellement"]
+
+
+def test_anciens_passages_restent_reproductibles():
+    ancien = verifier(
+        lire("registre_verification_evenements_v3.json"),
+        lire("passages_sources_evenements_v1.json"),
+    )
+    assert ancien["valide_structurellement"], ancien["erreurs"]
+    assert ancien["total_evenements_registre"] == 48

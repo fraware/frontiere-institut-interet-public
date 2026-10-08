@@ -1,0 +1,198 @@
+{
+  "version_schema": "passages-sources-primaires-v2",
+  "date_relecture": "2026-10-08",
+  "registre_cible": "donnees/registre_verification_evenements_v4.json",
+  "responsable_de_la_premiere_lecture": "assistant_de_recherche",
+  "relecture_humaine_independante_effectuee": false,
+  "regle": "Les passages listés ont été consultés pour un point documentaire circonscrit. Les autres événements demeurent non examinés dans ce registre. L'appui documentaire ne prouve ni la mobilisation réelle d'une ressource ni la validité d'un délai non mesuré.",
+  "nombre_entrees": 14,
+  "entrees": [
+    {
+      "identifiant_evenement": "S001-E01",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.senat.fr/rap/r24-807-2/r24-807-21.pdf",
+        "localisation": "Audition du 3 avril 2025, intervention de Stéphane Lardy, page imprimée 498",
+        "point_precis_etaye": "La situation décrite comme perdurant depuis octobre 2024 concerne la perte de maîtrise interne du langage R."
+      },
+      "source_complementaire": null,
+      "limites": "Le jour précis de début de la perte de capacité n'est pas établi.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S001-E02",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.senat.fr/rap/r24-807-2/r24-807-21.pdf",
+        "localisation": "Audition du 3 avril 2025, page imprimée 498",
+        "point_precis_etaye": "Le directeur général déclare à cette audition devoir recruter des profils rares pour rétablir la capacité R."
+      },
+      "source_complementaire": null,
+      "limites": "La date de rétablissement ultérieur est inconnue.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S001-E03",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.senat.fr/rap/r24-807-1/r24-807-121.html",
+        "localisation": "Rapport n°807, tome I, déposé le 1er juillet 2025 ; passage France Compétences",
+        "point_precis_etaye": "Le rapport reprend la difficulté rapportée lors de l'audition, notamment le recrutement de profils rares et la rémunération."
+      },
+      "source_complementaire": null,
+      "limites": "La publication en juillet ne prouve pas une persistance du besoin à cette date.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S016-E02",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.ign.fr/publications-de-l-ign/institut/informations_legales_administratives/de_deliberations_ca_5_juillet_2024.pdf",
+        "localisation": "Délibération du 5 juillet 2024 (page 1), procès-verbal du 15 mars 2024, pages internes 20–21",
+        "point_precis_etaye": "126 recrutements observés fin 2023, dont 30 dans les données et l'intelligence artificielle, présentés le 15 mars 2024 ; le document est approuvé le 5 juillet."
+      },
+      "source_complementaire": null,
+      "limites": "La ventilation 75 internes / 51 externes concerne les 126 recrutements, non spécifiquement les 30 spécialistes.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S016-E04",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.senat.fr/compte-rendu-commissions/20241111/pro_2024_11_12.html",
+        "localisation": "Audition du 12 novembre 2024 de Sébastien Soriano, passage ressources humaines",
+        "point_precis_etaye": "L'IGN déclare 156 personnes recrutées et formées sur l'objectif de 150 et trente spécialistes de la science des données."
+      },
+      "source_complementaire": null,
+      "limites": "Ne mesure pas les dates individuelles de première contribution.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S024-E01",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/IMG/pdf/015969-01_rapport-publie_cle5181c2.pdf",
+        "localisation": "Rapport n°015969-01, §2.1.3, page interne 16",
+        "point_precis_etaye": "Le conseil scientifique est créé par l'article 14 de l'arrêté du 18 avril 2017."
+      },
+      "source_complementaire": null,
+      "limites": "Une relecture indépendante reste nécessaire.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S024-E02",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/IMG/pdf/015969-01_rapport-publie_cle5181c2.pdf",
+        "localisation": "Rapport n°015969-01, §2.1.3, page interne 16",
+        "point_precis_etaye": "Le premier président ne sollicite pas un nouveau mandat en 2021."
+      },
+      "source_complementaire": null,
+      "limites": "Le résumé général parle de démission ; la description détaillée permet cette formulation précise.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S024-E03",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/IMG/pdf/015969-01_rapport-publie_cle5181c2.pdf",
+        "localisation": "Rapport n°015969-01, §2.1.3, page interne 16",
+        "point_precis_etaye": "Le conseil scientifique s'est réuni pour la dernière fois le 22 novembre 2023."
+      },
+      "source_complementaire": null,
+      "limites": "Une relecture indépendante reste nécessaire.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S024-E04",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/IMG/pdf/015969-01_rapport-publie_cle5181c2.pdf",
+        "localisation": "Rapport n°015969-01, §1.3, page interne 13",
+        "point_precis_etaye": "Le parc devient entièrement opérationnel le 28 mai 2024."
+      },
+      "source_complementaire": null,
+      "limites": "Une relecture indépendante reste nécessaire.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S024-E05",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/IMG/pdf/015969-01_rapport-publie_cle5181c2.pdf",
+        "localisation": "Rapport n°015969-01, résumé et §2.2.1 pages internes 6 et 16–17",
+        "point_precis_etaye": "Des avis scientifiques ont été sollicités directement auprès du SHOM, de l'Ifremer et du Cerema ; le rapport daté juin 2025 préconise un changement de gouvernance."
+      },
+      "source_complementaire": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/revision-de-la-comitologie-du-parc-eolien-en-mer-a4393.html",
+        "localisation": "Page de publication officielle de l'IGEDD",
+        "point_precis_etaye": "Publication datée du 16 mars 2026."
+      },
+      "limites": "Aucune date de saisine et de remise d'avis n'est fournie.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S042-E03",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.asnr.fr/actualites/lasnr-recrute-son-directeur-ou-sa-directrice-scientifique",
+        "localisation": "Note ASNR du 23 janvier 2025, introduction",
+        "point_precis_etaye": "L'ASNR est issue de la fusion de l'ASN et de l'IRSN au 1er janvier 2025."
+      },
+      "source_complementaire": null,
+      "limites": "Une relecture indépendante reste nécessaire.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S042-E06",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.asnr.fr/sites/asnr/files/2025-06/ASNR_NANTES_Presentation_Bilan-2024.pdf",
+        "localisation": "Présentation ASNR, 13 juin 2025, diapositive 10 « Chiffres clefs »",
+        "point_precis_etaye": "L'ASNR déclare 2 085 personnels de statuts public et privé au 1er janvier 2025."
+      },
+      "source_complementaire": null,
+      "limites": "L'indicateur correspond à l'effectif global, non à un sous-ensemble scientifique spécialisé.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S042-E07",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://admin.www.asnr.fr/actualites/recrutement-formation-lumn-et-lasnr-signent-un-partenariat",
+        "localisation": "Communiqué ASNR du 28 mai 2025",
+        "point_precis_etaye": "Le partenariat de trois ans avec l'Université des Métiers du Nucléaire a été signé le 12 mai 2025."
+      },
+      "source_complementaire": null,
+      "limites": "Une relecture indépendante reste nécessaire.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S042-E08",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.asnr.fr/sites/asnr/files/2026-05/Rapport-ASNR-sur-l-etat-de-la-surete-nucleaire-et-de-la-radioprotection-en-France-en-2025.pdf",
+        "localisation": "Rapport ASNR 2025, §1.4.3 « Les ressources humaines », page 130",
+        "point_precis_etaye": "L'effectif global au 31 décembre 2025 est de 2 126 personnes (1 607 salariés, 495 agents publics et 24 mis à disposition)."
+      },
+      "source_complementaire": null,
+      "limites": "Ne constitue pas un délai de recrutement ni une mesure de vacance des métiers spécialisés.",
+      "verification_independante": false
+    }
+  ],
+  "note_revision": "Les références documentaires non concernées par les doublons Mayotte conservent leurs identifiants historiques. Nouvelle version créée pour correspondre au registre v4 des 46 événements."
+}
