@@ -51,6 +51,7 @@ jobs:
         run: |
           python - <<'PY'
           import json
+          import hashlib
           from pathlib import Path
 
           dossier = Path("institutionnel")
@@ -62,6 +63,7 @@ jobs:
           avec_domaines = 0
           assert len(fichiers) == manifeste["nombre_partitions"] == 8
           for fichier in fichiers:
+              assert hashlib.sha256(fichier.read_bytes()).hexdigest() == manifeste["empreintes_partitions"][fichier.name]
               for ligne in fichier.read_text(encoding="utf-8").splitlines():
                   if not ligne.strip():
                       continue
