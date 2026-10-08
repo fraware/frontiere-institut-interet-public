@@ -192,6 +192,13 @@ def orienter(
             "nombre_retours": resultats_retrouves,
             "recherche_tronquee": retour["recherche_bornee_aux_1000_premiers_candidats"],
             "champs_tronques": retour.get("champs_dont_les_resultats_sont_tronques", []),
+            "restitution_par_classe": retour["restitution_par_classe"],
+            "restitution_partielle": bool(
+                retour["recherche_bornee_aux_1000_premiers_candidats"]
+                or any(
+                    e["resultat_tronque"] for e in retour["restitution_par_classe"].values()
+                )
+            ),
         })
 
     groupes = {categorie: [] for _, categorie in CATEGORIES}
@@ -204,10 +211,17 @@ def orienter(
             x["clause"] for x in correspondances if x["clause"].startswith("IMPERATIF-")
         })
         groupes[candidat["classe_de_preuve"]].append(candidat)
+    restitution_finale = {}
     for categorie in groupes:
         groupes[categorie].sort(
             key=lambda x: (-x["nombre_clauses_recoupees"], x["identifiant"])
         )
+        nombre = len(groupes[categorie])
+        restitution_finale[categorie] = {
+            "candidats_distincts_avant_limite_finale": nombre,
+            "candidats_restitues": min(nombre, limite),
+            "candidats_ecartes_par_limite": max(0, nombre - limite),
+        }
         groupes[categorie] = groupes[categorie][:limite]
     entree = {
         "episode": ep.code,
@@ -237,12 +251,18 @@ def orienter(
         "recherches": suivi,
         "pistes_par_classe": groupes,
         "nombre_pistes_distinctes_avant_limite": len(candidats),
+        "restitution_finale_par_classe": restitution_finale,
+        "restitution_potentiellement_partielle": bool(
+            any(x.get("restitution_partielle") for x in suivi)
+            or any(x["candidats_ecartes_par_limite"] for x in restitution_finale.values())
+        ),
         "limite_par_classe": limite,
         "criteres_non_verifies": [
             "Les critères impératifs sont des termes à rechercher, pas des conditions satisfaites.",
             "La profondeur, les formes de ressource, le contexte, les contraintes et l'échéance ne sont pas vérifiés par les notices.",
             "La pertinence effective, l'existence des moyens, la disponibilité et la mobilisabilité ne sont pas établies.",
-            "La sélection lexicale est plafonnée ; une absence de résultat ne prouve pas l'absence de capacité.",
+            "La sélection et la restitution sont plafonnées ; les comptes signalent les pertes éventuelles, sans mesurer le rappel réel.",
+            "Une absence de résultat ne prouve pas l'absence de capacité.",
             "Ce rapport ne constitue ni une recherche publique achevée, ni une découverte confirmée.",
         ],
     }
