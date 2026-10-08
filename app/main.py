@@ -471,10 +471,17 @@ def add_public_search(
         raise HTTPException(404)
     _require_locked_need(db, ep)
     _require_comparison_plan_if_prospective(db, ep)
+    if complete not in {"yes", "no"} or relevant_found not in {"yes", "no", "unknown"} or mobilizable_found not in {"yes", "no", "unknown"}:
+        raise HTTPException(400, "Valeur invalide pour la recherche publique.")
     complete_b = complete == "yes"
     rel = None if relevant_found == "unknown" else relevant_found == "yes"
     mob = None if mobilizable_found == "unknown" else mobilizable_found == "yes"
-    result = classify_public_search(complete=complete_b, relevant_found=rel, mobilizable_found=mob)
+    try:
+        result = classify_public_search(
+            complete=complete_b, relevant_found=rel, mobilizable_found=mob,
+        )
+    except ValueError as erreur:
+        raise HTTPException(400, str(erreur)) from erreur
     run = SearchRun(
         episode_id=ep.id,
         search_type="PUBLIQUE",
