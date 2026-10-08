@@ -61,3 +61,7 @@ La commande `python scripts/verifier_passages_sources.py` vérifie la cohérence
 ### Correction des doublons et identifiants stables
 
 La version active devient `chronologies_v6.json` ; elle conserve dix chronologies, comporte **46 événements distincts** après fusion de deux paires de doublons à Mayotte et attribue à chaque événement un identifiant historique stable. Le registre correspondant est `registre_verification_evenements_v4.json`, avec `passages_sources_evenements_v2.json` pour les quatorze premières lectures documentaires. Les identifiants supprimés et leurs successeurs sont consignés dans la version 6. Voir [la note Mayotte](NOTE_SOURCES_MAYOTTE_2026-10-08.md). Une date de nomination ou de prise d'effet juridique ne doit pas être assimilée à une date de première contribution utile.
+
+### Provenance temporelle du cas DGA
+
+La version active est `chronologies_v7.json` (toujours 46 événements pour dix chronologies), avec `registre_verification_evenements_v5.json` et `passages_sources_evenements_v3.json`. Quatre constats du cas DGA sont reliés au rapport parlementaire **enregistré le 17 janvier 2024**, tout en conservant 2023 comme période approximative des situations décrites. Le registre de passages couvre maintenant **18 événements**, dont la première lecture ne constitue pas une vérification indépendante. Voir [la note DGA](NOTE_SOURCES_DGA_2026-10-08.md).
