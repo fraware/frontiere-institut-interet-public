@@ -45,3 +45,17 @@ Le programme écrit un nouveau manifeste sans écraser un fichier existant. Il c
 Pour vérifier ultérieurement l'identité des fichiers, reprendre la commande avec `--verifier`. Conserver le fichier de réponses et le manifeste dans un emplacement approprié ; **communiquer l'empreinte du manifeste à un tiers indépendant avant de consulter les références privées**. Conserver la preuve de réception datée. Cette attestation est une étape procédurale humaine : elle n'est pas automatisée par le présent programme.
 
 La comparaison avec `scripts/evaluer_jeu_reserve.py` n'est autorisée qu'après cette étape. Pour chaque méthode évaluée, conserver un manifeste distinct ; ne jamais publier les références privées dans le dépôt.
+
+## Comparer les trois méthodes après correction
+
+Une fois les trois fichiers de réponses figés, les références ouvertes par le responsable autorisé et les trois rapports individuels produits hors du dépôt public, exécuter :
+
+```bash
+python scripts/comparer_methodes_jeu_reserve.py \
+  --rapports /chemin/prive/rapport_analyste.json /chemin/prive/rapport_assistant.json /chemin/prive/rapport_frontiere.json \
+  --sortie /chemin/prive/comparaison_appariee.json
+```
+
+Le programme refuse les méthodes répétées, les codes de cas différents et les empreintes de référence différentes. Il calcule séparément les scores moyens des voies et des formes de ressources, les temps humains, le nombre de durées calendaires observées et les écarts sur les mêmes cas. Les scores manquants sont exclus seulement des paires correspondantes ; les durées totales sont inconnues si un cas n'a pas de durée mesurée.
+
+**Limites :** cette comparaison est descriptive. Elle ne mesure ni la pertinence des ressources nommées, ni la qualité réelle des preuves citées, ni la mobilisabilité effective. Ces dimensions exigent une évaluation indépendante supplémentaire. Ne publier aucun résultat tant que les trois méthodes n'ont pas été évaluées.
