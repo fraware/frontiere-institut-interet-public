@@ -69,3 +69,11 @@ Les résultats doivent aider à distinguer trois sources possibles de valeur :
 - meilleure capacité à transformer une ressource pertinente en ressource réellement mobilisable.
 
 La version technique suivante dépendra de l'avantage observé, et non d'une liste de fonctions prévue à l'avance.
+
+## Publication conditionnelle des résultats du banc de développement
+
+L'interface `/evaluation` contient les cas de **développement** enregistrés dans l'application, distincts du jeu réservé H01–H10 dont les références restent hors du dépôt public. Lorsqu'un cas interne n'est pas encore marqué comme révélé, ses étiquettes de référence, ses scores individuels et sa contribution aux moyennes par méthode doivent rester absents des vues et de `/api/v1/evaluation`. La seule présence d'une moyenne chiffrée sur un cas unique suffirait à dévoiler sa qualité relative sans révélation explicite.
+
+Le compteur `prediction_count` dénombre toutes les réponses enregistrées à ce banc interne ; `scored_prediction_count` indique les réponses appartenant à des cas révélés, et `sealed_prediction_count` les réponses encore masquées. Les indicateurs `methods` et leurs tailles `n` portent uniquement sur les réponses révélées. Les méthodes disposant exclusivement de réponses scellées n'ont pas de score public.
+
+La révélation d'un cas du banc interne relève d'une décision explicite et irréversible pour son statut de développement : les autres réponses ultérieures à ce cas perdent leur caractère aveugle. Le dispositif H01–H10 possède une chaîne de gel et de correction indépendante ; **cette interface ne remplace pas sa procédure de protection des références privées**. Aucun score affiché par le banc interne ne doit être assimilé à un résultat indépendant de l'étude réservée.
