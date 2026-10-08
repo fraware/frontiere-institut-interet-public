@@ -12,7 +12,12 @@ import hashlib
 import json
 from pathlib import Path
 import tempfile
+import sys
 from typing import Any
+
+RACINE = Path(__file__).resolve().parents[1]
+if str(RACINE) not in sys.path:
+    sys.path.insert(0, str(RACINE))
 
 from sqlalchemy import create_engine, func, select
 from sqlalchemy.orm import Session
@@ -25,7 +30,6 @@ from app.models import (
 from app.orientation import TYPE_EVENEMENT, executer_sur_dossier
 from scripts.rechercher_capacites_institutionnelles import construire_index
 
-RACINE = Path(__file__).resolve().parents[1]
 FICHIER_PAR_DEFAUT = RACINE / "evaluation" / "jeu_orientation_synthetique_v1.json"
 TYPES = (
     "mission_ou_capacite_publiee",
