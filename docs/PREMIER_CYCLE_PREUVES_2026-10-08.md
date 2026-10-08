@@ -101,7 +101,7 @@ Le [protocole indépendant](../evaluation/PROTOCOLE_SESSIONS_INDEPENDANTES_V1.md
 | 2. Fixer les conditions préalables | Responsable d'étude indépendant du jugement des réponses | Budget de temps calibré sur développement, outils et versions consignés, règles d'écarts, plan déposé chez un tiers | À_FAIRE |
 | 3. Recruter trois opérateurs | Responsable d'étude | Une personne par méthode, déclarations d'exposition aux cas et conflits, confidentialité, absence de partage | À_FAIRE |
 | 4. Exécuter les trois conditions | Trois opérateurs | Même ensemble de questions, journaux de temps, anomalies et découvertes fortuites conservés | À_FAIRE |
-| 5. Figurer et attester les réponses | Responsable + tiers dépositaire | Trois fichiers valides, manifestes et empreintes datées à l'extérieur | À_FAIRE |
+| 5. Figer et attester les réponses | Responsable + tiers dépositaire | Trois fichiers valides, manifestes et empreintes datées à l'extérieur | À_FAIRE |
 | 6. Relecture aveugle des ressources | Deux lecteurs indépendants | Jugements individuels et conflits conservés avant rapprochement des méthodes | À_FAIRE |
 | 7. Dévoiler et corriger les références | Détenteur habilité | Empreinte privée vérifiée ; fichiers de réponses inchangés | À_FAIRE |
 | 8. Analyser et restituer | Responsable d'étude | Résultats par cas, différences appariées, temps, désaccords et contaminations publiés avec limites | À_FAIRE |
