@@ -81,3 +81,9 @@ Les versions précédentes du registre de passages sont conservées et vérifiab
 La version de référence est `chronologies_v9.json` (dix chronologies et **45 événements**), avec `registre_verification_evenements_v7.json` et `passages_sources_evenements_v6.json`. La seule attribution de date de mai 2025 qui ne pouvait être étayée, S042-E04, est **retirée du corpus courant avec conservation de sa formulation, sa date et du motif du retrait**. La source parlementaire de février 2024 reste sous S042-E02 : elle décrit une intention d'organisation, non un appui extérieur effectivement exécuté. Voir [le rectificatif ASNR](NOTE_RECTIFICATION_ASNR_2026-10-08.md).
 
 Les 45 événements actifs disposent tous d'une première lecture documentaire localisée, encore non indépendante. La collection antérieure à 45 passages sur 46 événements et les chronologies précédentes demeurent conservées pour permettre la reproduction des choix et des corrections.
+
+## Vérification automatique de la filiation des chronologies
+
+Le programme `python scripts/auditer_filiation_chronologies.py` compare les versions 3 à 9 de la série historique. Il contrôle les mêmes dix cas, la continuité des identifiants d'événements, les changements de dates et de formulations, les rectifications ajoutées, les fusions de doublons et les retraits explicitement motivés. Une modification d'une version précédente, une disparition d'événement non déclarée ou la suppression d'un motif de rectification provoquent une erreur.
+
+Le rapport contient les nombres d'événements par version, les identifiants supprimés ou ajoutés, les cas modifiés et les empreintes de chaque fichier. Le contrôle est également exécuté lors des vérifications automatiques du dépôt. Il ne vérifie pas le contenu des sources officielles, ne produit aucun nouvel événement et ne se substitue pas à la double relecture indépendante.
