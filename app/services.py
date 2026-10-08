@@ -38,44 +38,75 @@ def host_ready(states: Iterable[str]) -> bool:
 
 
 def critical_path_minutes(events: list[tuple[datetime, datetime | None, int | None]]) -> int | None:
-    """Calcule une durée de chemin critique sur un graphe simple à parent unique.
+    """Somme maximale des durées déclarées sur les dépendances représentées.
 
-    Chaque tuple contient (début, fin, index_parent). Les événements ouverts sont ignorés.
-    Le calcul utilise la durée propre de l'événement et la meilleure chaîne de dépendance.
+    Un parent doit correspondre à un événement antérieur dans la liste ; le
+    graphe représenté possède donc un parent au maximum par événement. La
+    valeur est inconnue si une opération est ouverte ou si la liste est vide.
+    Les durées invalides et les liens incorrects sont refusés explicitement.
+
+    Cette mesure ne constitue ni un chemin critique temporel prenant en compte
+    les attentes et les chevauchements, ni le délai jusqu'à une contribution
+    utile ; celui-ci est documenté indépendamment.
     """
     if not events:
-        return 0
-    durations: list[int] = []
-    scores: list[int] = []
-    for start, end, parent_idx in events:
-        if end is None:
-            durations.append(0)
-            scores.append(0)
+        return None
+
+    incomplet = False
+    for numero, (debut, fin, parent_idx) in enumerate(events):
+        if not isinstance(debut, datetime) or debut.utcoffset() is None:
+            raise ValueError("Chaque début doit être une date avec fuseau horaire.")
+        if parent_idx is not None and (
+            type(parent_idx) is not int or not 0 <= parent_idx < numero
+        ):
+            raise ValueError("Chaque dépendance doit référencer un événement antérieur.")
+        if fin is None:
+            incomplet = True
             continue
-        duration = max(0, int((end - start).total_seconds() // 60))
-        durations.append(duration)
-        parent_score = scores[parent_idx] if parent_idx is not None and 0 <= parent_idx < len(scores) else 0
-        scores.append(parent_score + duration)
-    return max(scores) if scores else 0
+        if not isinstance(fin, datetime) or fin.utcoffset() is None:
+            raise ValueError("Chaque fin connue doit être une date avec fuseau horaire.")
+        if fin < debut:
+            raise ValueError("La fin d'un événement précède son début.")
+
+    if incomplet:
+        return None
+
+    scores: list[int] = []
+    for debut, fin, parent_idx in events:
+        # Toutes les fins sont connues ici, après la vérification précédente.
+        assert fin is not None
+        duree = int((fin - debut).total_seconds() // 60)
+        score_parent = scores[parent_idx] if parent_idx is not None else 0
+        scores.append(score_parent + duree)
+    return max(scores)
 
 
 
 def elapsed_span_minutes(events: list[tuple[datetime, datetime | None, int | None]]) -> int | None:
     """Durée calendaire du premier début à la dernière fin observée.
 
-    Les événements ouverts interdisent une mesure complète : None est renvoyé.
-    Les intervalles qui se chevauchent ne sont pas additionnés et les périodes
-    d'attente entre événements restent incluses dans le délai calendaire.
-    Un ensemble vide n'a pas de durée observée.
+    Le calcul accepte les chevauchements et conserve les attentes. Une date
+    manquante rend l'intervalle complet inconnu ; une date invalide est refusée.
+    Le résultat ne prouve pas la date de première contribution utile.
     """
-    if not events or any(end is None for _, end, _ in events):
+    if not events:
         return None
-    for start, end, _ in events:
-        if end < start:
+    incomplet = False
+    for debut, fin, _ in events:
+        if not isinstance(debut, datetime) or debut.utcoffset() is None:
+            raise ValueError("Chaque début doit être une date avec fuseau horaire.")
+        if fin is None:
+            incomplet = True
+            continue
+        if not isinstance(fin, datetime) or fin.utcoffset() is None:
+            raise ValueError("Chaque fin connue doit être une date avec fuseau horaire.")
+        if fin < debut:
             raise ValueError("La fin d'un événement précède son début.")
-    earliest = min(start for start, _, _ in events)
-    latest = max(end for _, end, _ in events)
-    return int((latest - earliest).total_seconds() // 60)
+    if incomplet:
+        return None
+    premiere_date = min(debut for debut, _, _ in events)
+    derniere_date = max(fin for _, fin, _ in events if fin is not None)
+    return int((derniere_date - premiere_date).total_seconds() // 60)
 
 
 
