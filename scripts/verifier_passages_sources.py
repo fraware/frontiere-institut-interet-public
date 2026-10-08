@@ -40,7 +40,13 @@ def verifier(registre: dict, passages: dict) -> dict:
     if versions_attendues is None:
         erreurs.append("Version du registre cible inconnue.")
     elif (passages.get("version_schema"), passages.get("registre_cible")) != versions_attendues:
-        erreurs.append("Version des passages ou référence au registre cible incorrecte.")
+        suite_courante = (
+            registre.get("version_schema") == "registre-verification-evenements-v6"
+            and passages.get("version_schema") == "passages-sources-primaires-v5"
+            and passages.get("registre_cible") == "donnees/registre_verification_evenements_v6.json"
+        )
+        if not suite_courante:
+            erreurs.append("Version des passages ou référence au registre cible incorrecte.")
     if passages.get("relecture_humaine_independante_effectuee") is not False:
         erreurs.append("La relecture indépendante doit rester non réalisée à ce stade.")
     if passages.get("responsable_de_la_premiere_lecture") != "assistant_de_recherche":
@@ -82,6 +88,12 @@ def verifier(registre: dict, passages: dict) -> dict:
             for nom in ("localisation", "point_precis_etaye"):
                 if not isinstance(source.get(nom), str) or not source[nom].strip():
                     erreurs.append(f"{identifiant} : {champ}/{nom} manquant.")
+    if passages.get("version_schema") == "passages-sources-primaires-v5":
+        manquants = passages.get("evenements_restants_sans_passage")
+        if not isinstance(manquants, list) or len(manquants) != len(set(manquants)):
+            erreurs.append("Liste des événements sans passage absente ou répétée.")
+        elif set(manquants) != attendus - vus:
+            erreurs.append("Liste des événements sans passage incohérente avec les références.")
     if type(passages.get("nombre_entrees")) is not int or passages["nombre_entrees"] != len(fiches):
         erreurs.append("Nombre déclaré de passages différent du nombre réel.")
     return {
@@ -102,7 +114,7 @@ def verifier(registre: dict, passages: dict) -> dict:
 def principal() -> None:
     analyseur = argparse.ArgumentParser(description="Vérifier les références et limites du registre documentaire.")
     analyseur.add_argument("--registre", type=Path, default=Path("donnees/registre_verification_evenements_v6.json"))
-    analyseur.add_argument("--passages", type=Path, default=Path("donnees/passages_sources_evenements_v4.json"))
+    analyseur.add_argument("--passages", type=Path, default=Path("donnees/passages_sources_evenements_v5.json"))
     args = analyseur.parse_args()
     bilan = verifier(
         json.loads(args.registre.read_text(encoding="utf-8")),
