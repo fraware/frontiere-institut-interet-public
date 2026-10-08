@@ -5,7 +5,7 @@
   "responsable_de_la_premiere_lecture": "assistant_de_recherche",
   "relecture_humaine_independante_effectuee": false,
   "regle": "Les passages listés ont été consultés pour un point documentaire circonscrit. Les autres événements demeurent non examinés dans ce registre. L'appui documentaire ne prouve ni la mobilisation réelle d'une ressource ni la validité d'un délai non mesuré.",
-  "nombre_entrees": 44,
+  "nombre_entrees": 45,
   "entrees": [
     {
       "identifiant_evenement": "S001-E01",
@@ -582,11 +582,27 @@
       "source_complementaire": null,
       "limites": "L'audition prouve la déclaration de 2026, pas la mise en service effective d'un nouveau radar.",
       "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S038-E06",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.ecologie.gouv.fr/sites/default/files/documents/Plan_Eau_DOM_Rapport_activite_2024.pdf",
+        "localisation": "Rapport d'activité du Plan Eau DOM 2024, chapitre Mayotte, passage relatif au renforcement de l'assistance à maîtrise d'ouvrage du LEMA",
+        "point_precis_etaye": "Au second semestre 2024, le Cerema est positionné à Mayotte sur la compétence eau et six postes budgétaires dédiés sont programmés pour 2024-2025."
+      },
+      "source_complementaire": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/IMG/pdf/015427-01_rapport_publie_cle559324.pdf",
+        "localisation": "Rapport IGEDD n°015427-01, annexe 5.2 et document de suivi du 19 septembre 2024, pages internes autour de 148 et 196",
+        "point_precis_etaye": "Le volet de renforcement des moyens recense seize postes dans la sphère ministérielle, dont six associés à la mission Cerema dans le tableau de suivi."
+      },
+      "limites": "Les six postes correspondent à une programmation budgétaire ; leur occupation effective, l'affectation nominative et la première contribution utile ne sont pas documentées par ce seul passage.",
+      "verification_independante": false
     }
   ],
-  "note_revision": "Quinze passages officiels supplémentaires : IGN, Météo-France, Mayotte, ASNR et projections climatiques outre-mer. Deux événements conservent volontairement une provenance événementielle non localisée (S038-E06 et S042-E04). Aucune vérification indépendante.",
+  "note_revision": "Seize nouveaux rapprochements depuis la version précédente : source ministérielle retrouvée sur Cerema et six postes programmés à Mayotte. L'événement S042-E04 reste seul sans passage individualisé suffisamment daté. La relecture indépendante reste à réaliser.",
   "evenements_restants_sans_passage": [
-    "S038-E06",
     "S042-E04"
   ]
 }
