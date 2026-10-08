@@ -920,3 +920,68 @@ def test_sealed_case_cannot_influence_published_aggregates():
         assert "ETIQUETTE_SECRETE" not in page.text
         assert "FORME_SECRETE" not in page.text
         assert "Des prédictions sont enregistrées" in page.text
+
+
+def test_benchmark_separe_les_versions_d_une_meme_methode():
+    reset_db()
+    with SessionLocal() as db:
+        db.add(BenchmarkCase(
+            code="BVERS", title="Versions", prompt="Trouver une voie",
+            expected_routes_json='["VOIE_CORRECTE"]',
+            expected_resource_forms_json='["EQUIPE"]',
+            expected_resources_json='[]', revealed=True,
+        ))
+        db.commit()
+
+    with TestClient(app) as client:
+        for version, routes in [("1.0", "VOIE_CORRECTE"), ("2.0", "VOIE_INCORRECTE")]:
+            response = client.post("/evaluation/BVERS/reponse", data={
+                "method": "frontiere",
+                "method_version": version,
+                "routes": routes,
+                "resource_forms": "EQUIPE",
+                "analyst_minutes": "2",
+                "verification_minutes": "1",
+                "elapsed_seconds": "60",
+            }, follow_redirects=False)
+            assert response.status_code == 303
+        resultat = client.get("/api/v1/evaluation").json()
+        assert resultat["prediction_count"] == 2
+        assert resultat["scored_prediction_count"] == 2
+        versions = {m["method_version"]: m for m in resultat["methods"]}
+        assert set(versions) == {"1.0", "2.0"}
+        assert versions["1.0"]["n"] == 1
+        assert versions["2.0"]["n"] == 1
+        assert versions["1.0"]["route_f1_mean"] == 1.0
+        assert versions["2.0"]["route_f1_mean"] == 0.0
+        page = client.get("/evaluation")
+        assert "version 1.0" in page.text and "version 2.0" in page.text
+
+
+def test_benchmark_refuse_les_mesures_invalides_sans_les_modifier():
+    reset_db()
+    with SessionLocal() as db:
+        db.add(BenchmarkCase(
+            code="BINVALID", title="Mesures invalides", prompt="Proposer une ressource",
+            expected_routes_json='["VOIE"]',
+            expected_resource_forms_json='["EQUIPE"]',
+            expected_resources_json='[]', revealed=True,
+        ))
+        db.commit()
+
+    invalides = [
+        {"method": "  ", "method_version": "1.0"},
+        {"method": "test", "method_version": "   "},
+        {"method": "test", "method_version": "1.0", "analyst_minutes": "-3"},
+        {"method": "test", "method_version": "1.0", "verification_minutes": "-1"},
+        {"method": "test", "method_version": "1.0", "elapsed_seconds": "-2.5"},
+        {"method": "test", "method_version": "1.0", "elapsed_seconds": "nan"},
+        {"method": "test", "method_version": "1.0", "elapsed_seconds": "inf"},
+    ]
+    with TestClient(app) as client:
+        for data in invalides:
+            response = client.post("/evaluation/BINVALID/reponse", data=data, follow_redirects=False)
+            assert response.status_code in (400, 422), (data, response.status_code)
+        assert client.get("/api/v1/evaluation").json()["prediction_count"] == 0
+    with SessionLocal() as db:
+        assert db.scalar(select(BenchmarkPrediction.id).limit(1)) is None
