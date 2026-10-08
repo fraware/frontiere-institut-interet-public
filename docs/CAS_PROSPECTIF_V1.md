@@ -19,7 +19,7 @@ Le cas entre dans le protocole seulement si les éléments suivants sont enregis
 - hypothèse initiale de FRONTIÈRE ;
 - au moins une preuve initiale avec sa provenance.
 
-L’application refuse de figer l’état initial si une intervention sur le cas a déjà été enregistrée : recherche, formulation opérationnelle de capacité, évaluation d'une voie, décision, obstacle, résultat ou création et réutilisation de connaissances. Cette vérification couvre davantage que la seule existence d'une recherche et empêche un préenregistrement rétrospectif de ces actions.
+L’application refuse de figer l’état initial si une intervention sur le cas a déjà été enregistrée : recherche, formulation opérationnelle de capacité, évaluation d'une voie, décision, obstacle, résultat ou création et réutilisation de connaissances. L'orientation documentaire locale à partir du référentiel institutionnel est également enregistrée et empêche un enregistrement rétrospectif de cet état initial. Cette vérification couvre davantage que la seule existence d'une recherche et empêche un préenregistrement rétrospectif de ces actions.
 
 Après le gel de l'état initial, le même verrou s'applique aux actions opérationnelles jusqu'à l'enregistrement du plan de comparaison. Les preuves nouvelles peuvent conserver leur date et leur provenance ; elles ne remplacent pas le contenu du point initial figé.
 

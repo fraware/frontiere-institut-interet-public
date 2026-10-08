@@ -22,6 +22,10 @@ Une conclusion d'absence de capacité publique exige **à la fois** une recherch
 Une capacité déclarée mobilisable implique qu'elle a d'abord été identifiée comme pertinente. Les saisies contradictoires sont rejetées et ne modifient pas le dossier.
 
 
+## Orientation documentaire à partir d'un besoin verrouillé
+
+Un instrument local permet de rapprocher les clauses de la requête de capacité enregistrée et les missions, classifications scientifiques ou noms des organismes du référentiel. Chaque résultat conserve ses mots correspondants, sa provenance et sa catégorie de preuve. L'orientation est journalisée et n'établit à elle seule ni pertinence opérationnelle, ni disponibilité, ni mobilisation. Aucun état de recherche publique ni de ressource n'est modifié. Voir [le protocole d'orientation documentaire](ORIENTATION_BESOINS_V1.md).
+
 ## Contrôle des classifications déjà enregistrées
 
 La règle de préservation de l'inconnu s'applique aux nouveaux dossiers. Pour les recherches publiques enregistrées avant cette correction, exécuter `python scripts/auditer_recherches_publiques.py` sur l'instance concernée. Ce programme lit les recherches et signale les écarts entre les classifications historiques et les règles actuelles, ainsi que les réponses contradictoires.
