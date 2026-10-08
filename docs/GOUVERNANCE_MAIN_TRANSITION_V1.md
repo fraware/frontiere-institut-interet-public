@@ -4,9 +4,9 @@
 
 ## Constat vérifié dans les procédures
 
-Cinq procédures actuelles exécutent littéralement une commande de poussée Git vers `main` : importations ROAE, Annuaire local, COG et RNSR, ainsi que surveillance des sources. Le contrôle `python scripts/auditer_ecritures_main.py` énumère ces écritures historiques et fait échouer l'intégration si une **nouvelle procédure** ajoute une écriture directe littérale. Il ne détecte pas les actions tierces ou les commandes construites dynamiquement.
+Cinq procédures actuelles exécutent littéralement une commande de poussée Git vers `main` : importations référentiel de l'organisation administrative de l'État, Annuaire local, COG et RNSR, ainsi que surveillance des sources. Le contrôle `python scripts/auditer_ecritures_main.py` énumère ces écritures historiques et fait échouer l'intégration si une **nouvelle procédure** ajoute une écriture directe littérale. Il ne détecte pas les actions tierces ou les commandes construites dynamiquement.
 
-Les ingestions ROAE, Annuaire local et COG fonctionnent actuellement avec dépendances et déclenchements successifs. **Protéger `main` en interdisant les poussées directes avant d'avoir migré ces procédures entraînerait un risque d'interruption des actualisations.**
+Les ingestions référentiel de l'organisation administrative de l'État, Annuaire local et COG fonctionnent actuellement avec dépendances et déclenchements successifs. **Protéger `main` en interdisant les poussées directes avant d'avoir migré ces procédures entraînerait un risque d'interruption des actualisations.**
 
 ## Politique cible
 
@@ -19,8 +19,8 @@ Les ingestions ROAE, Annuaire local et COG fonctionnent actuellement avec dépen
 ## Transition proposée
 
 1. Enregistrer les vérifications obligatoires **réellement présentes** dans les résultats d'intégration continue avant d'éditer une règle de protection.
-2. Réunir la chaîne ROAE → Annuaire local → COG dans une orchestration privilégiée distincte des essais externes. Pour chaque nouveau lot, créer une branche technique et une proposition de fusion portant sur les données normalisées et leurs manifestes, sans pousser directement sur `main`.
-3. Réexaminer les déclenchements `workflow_run` : aujourd'hui la fin de l'import ROAE signifie aussi la fin de son écriture. Avec une proposition de fusion en attente, cette hypothèse devient fausse. Déclencher les étapes dépendantes après la fusion appropriée ou exécuter leur chaîne dans une même orchestration.
+2. Réunir la chaîne référentiel de l'organisation administrative de l'État → Annuaire local → COG dans une orchestration privilégiée distincte des essais externes. Pour chaque nouveau lot, créer une branche technique et une proposition de fusion portant sur les données normalisées et leurs manifestes, sans pousser directement sur `main`.
+3. Réexaminer les déclenchements `déclenchement à la fin d'une autre procédure` : aujourd'hui la fin de l'import référentiel de l'organisation administrative de l'État signifie aussi la fin de son écriture. Avec une proposition de fusion en attente, cette hypothèse devient fausse. Déclencher les étapes dépendantes après la fusion appropriée ou exécuter leur chaîne dans une même orchestration.
 4. Appliquer la même politique au RNSR et à la surveillance, en préservant la sérialisation des écritures qui partagent des fichiers ou des empreintes.
 5. Vérifier sur une branche expérimentale les autorisations des jetons, les contrôles de fusion et les réactions aux changements du référentiel. Une fusion automatique exige une identité et des permissions correctement configurées : ne jamais lui accorder un contournement général pour simplifier l'intégration.
 6. Activer ensuite la règle administrative `main` et vérifier par lecture des réglages et par essais non destructifs qu'elle est effectivement appliquée. Le ticket n° 54 reste ouvert jusqu'à cette preuve.
