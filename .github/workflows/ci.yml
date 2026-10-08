@@ -54,6 +54,9 @@ jobs:
       - name: Vérifier les artefacts publics du jeu réservé
         run: python scripts/verifier_prevol_jeu_reserve.py
 
+      - name: Détecter de nouvelles écritures directes vers main
+        run: python scripts/auditer_ecritures_main.py
+
       - name: Exécuter les tests
         run: pytest
 
