@@ -91,7 +91,7 @@ def verifier(signaux: dict, chronologies: dict) -> dict:
     sans_source_propre = 0
     codes_evenements = set()
     alertes_dates_identiques = []
-    identifiants_obligatoires = str(chronologies.get('version', '')) in {'6', '7', '8'}
+    identifiants_obligatoires = str(chronologies.get('version', '')) in {'6', '7', '8', '9'}
     for position, parcours_item in enumerate(parcours, 1):
         if not isinstance(parcours_item, dict):
             erreurs.append(f"Chronologie {position} : format incorrect.")
@@ -135,7 +135,7 @@ def verifier(signaux: dict, chronologies: dict) -> dict:
                 erreurs.append(f"Chronologie {code}, événement {indice} : date ou précision incorrecte.")
             else:
                 precision_compte[precision] += 1
-            if str(chronologies.get("version", "")) in {"7", "8"} and code == "S011":
+            if str(chronologies.get("version", "")) in {"7", "8", "9"} and code == "S011":
                 if evenement.get("nature_date") != "periode_de_reference_approximative":
                     erreurs.append(f"{code}/{indice} : nature de la datation historique absente.")
                 if evenement.get("date_document_source") != "2024-01-17":
@@ -166,6 +166,25 @@ def verifier(signaux: dict, chronologies: dict) -> dict:
                     erreurs.append(f"Fusion de doublon invalide : {obsolete} → {conserve}.")
                 if not isinstance(ligne.get("motif"), str) or not ligne["motif"].strip():
                     erreurs.append("Fusion de doublon sans justification.")
+    if str(chronologies.get("version", "")) == "9":
+        retraits = chronologies.get("retraits_evenements_non_confirmes")
+        if not isinstance(retraits, list) or len(retraits) != 1:
+            erreurs.append("Le retrait historique ASNR doit être précisément tracé.")
+        else:
+            retrait = retraits[0]
+            if not isinstance(retrait, dict):
+                erreurs.append("Retrait documentaire : format incorrect.")
+            else:
+                if retrait.get("identifiant_retire") != "S042-E04":
+                    erreurs.append("Identifiant retiré inattendu.")
+                if retrait.get("identifiant_retire") in codes_evenements:
+                    erreurs.append("L'assertion ASNR retirée subsiste dans le corpus courant.")
+                if retrait.get("assertion_source_conservee") not in codes_evenements:
+                    erreurs.append("Le fait parlementaire conservé manque dans la chronologie.")
+                if not source_web_valide(retrait.get("source")):
+                    erreurs.append("Le retrait ne référence pas de source officielle.")
+                if not isinstance(retrait.get("nature"), str) or not retrait["nature"].strip():
+                    erreurs.append("Le retrait documentaire doit être motivé.")
     return {
         "version_schema": "controle-corpus-public-v1",
         "valide_structurellement": not erreurs,
@@ -187,7 +206,7 @@ def verifier(signaux: dict, chronologies: dict) -> dict:
 def principal() -> None:
     analyseur = argparse.ArgumentParser(description="Contrôler la structure du corpus public.")
     analyseur.add_argument("--signaux", type=Path, default=Path("donnees/signaux_publics_v1.json"))
-    analyseur.add_argument("--chronologies", type=Path, default=Path("donnees/chronologies_v8.json"))
+    analyseur.add_argument("--chronologies", type=Path, default=Path("donnees/chronologies_v9.json"))
     args = analyseur.parse_args()
     rapport = verifier(
         json.loads(args.signaux.read_text(encoding="utf-8")),
