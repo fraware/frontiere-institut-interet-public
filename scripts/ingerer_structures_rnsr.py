@@ -231,7 +231,16 @@ def produire(
         manifeste_avant = json.loads(manifeste_path.read_text(encoding="utf-8"))
         if (manifeste_avant.get("sha256_semantique_source") == sha_source
                 and manifeste_avant.get("version_transformation") == VERSION_TRANSFORMATION):
-            return {"statut": "inchangé", **json.loads(stats_path.read_text(encoding="utf-8"))}
+            repartition = manifeste_avant.get("empreintes_partitions") or {}
+            integre = len(repartition) == PARTITIONS and all(
+                (destination / "entites" / "rnsr" / nom).is_file()
+                and hashlib.sha256(
+                    (destination / "entites" / "rnsr" / nom).read_bytes()
+                ).hexdigest() == signature
+                for nom, signature in repartition.items()
+            )
+            if integre:
+                return {"statut": "inchangé", **json.loads(stats_path.read_text(encoding="utf-8"))}
 
     horodatage = date_collecte or maintenant()
     entites = [
@@ -247,6 +256,7 @@ def produire(
     dossier = destination / "entites" / "rnsr"
     dossier.mkdir(parents=True, exist_ok=True)
     destination.joinpath("instantanes").mkdir(parents=True, exist_ok=True)
+    empreintes_partitions = {}
     for rang, bloc in enumerate(partitions):
         fichier = dossier / f"rnsr_{rang:02d}.jsonl"
         temporaire = fichier.with_suffix(".jsonl.tmp")
@@ -254,6 +264,7 @@ def produire(
             for item in bloc:
                 f.write(json.dumps(item, ensure_ascii=False, sort_keys=True) + "\n")
         temporaire.replace(fichier)
+        empreintes_partitions[fichier.name] = hashlib.sha256(fichier.read_bytes()).hexdigest()
 
     couverture = Counter()
     for item in entites:
@@ -283,6 +294,7 @@ def produire(
         "nombre_structures": len(entites),
         "sha256_semantique_source": sha_source,
         "nombre_partitions": PARTITIONS,
+        "empreintes_partitions": empreintes_partitions,
     }
     for chemin, contenu in ((stats_path, stats), (manifeste_path, manifeste)):
         temporaire = chemin.with_suffix(".json.tmp")
