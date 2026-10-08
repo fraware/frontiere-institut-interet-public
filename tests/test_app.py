@@ -479,6 +479,13 @@ def test_benchmark_is_blind_until_prediction_and_scores_vector():
         sealed = client.get("/evaluation")
         assert "https://example.org/hidden-source" not in sealed.text
         assert "Des prédictions sont enregistrées" in sealed.text
+        assert "Comparaison des méthodes" in sealed.text
+        # Les moyennes ne doivent pas divulguer les étiquettes du cas scellé.
+        avant_revelation = client.get("/api/v1/evaluation").json()
+        assert avant_revelation["prediction_count"] == 1
+        assert avant_revelation["sealed_prediction_count"] == 1
+        assert avant_revelation["scored_prediction_count"] == 0
+        assert avant_revelation["methods"] == []
 
         duplicate = client.post(
             "/evaluation/BTEST/reponse",
@@ -502,6 +509,8 @@ def test_benchmark_is_blind_until_prediction_and_scores_vector():
         assert api.status_code == 200
         assert api.json()["case_count"] == 1
         assert api.json()["prediction_count"] == 1
+        assert api.json()["sealed_prediction_count"] == 0
+        assert api.json()["scored_prediction_count"] == 1
         method = api.json()["methods"][0]
         assert method["route_recall_mean"] == 1.0
         assert method["route_precision_mean"] == 1.0
@@ -546,6 +555,7 @@ def test_benchmark_precision_penalizes_overprediction():
             expected_routes_json='["ROUTAGE"]',
             expected_resource_forms_json='["EQUIPE"]',
             expected_resources_json='[]',
+            revealed=True,
         )
         db.add(case)
         db.flush()
@@ -856,3 +866,57 @@ def test_recherche_publique_refuse_mobilisable_sans_pertinence():
         assert malformed.status_code == 400
     with SessionLocal() as db:
         assert db.scalar(select(SearchRun.id).limit(1)) is None
+
+
+def test_sealed_case_cannot_influence_published_aggregates():
+    reset_db()
+    with SessionLocal() as db:
+        revealed = BenchmarkCase(
+            code="BREVEAL", title="Cas révélé", prompt="Problème révélé",
+            expected_routes_json='["VOIE_A"]',
+            expected_resource_forms_json='["EQUIPE"]',
+            expected_resources_json='[]', revealed=True,
+        )
+        sealed = BenchmarkCase(
+            code="BSECRET", title="Cas réservé", prompt="Problème réservé",
+            expected_routes_json='["ETIQUETTE_SECRETE"]',
+            expected_resource_forms_json='["FORME_SECRETE"]',
+            expected_resources_json='[]', revealed=False,
+        )
+        db.add_all([revealed, sealed])
+        db.flush()
+        db.add_all([
+            BenchmarkPrediction(
+                case_id=revealed.id, method="methode-a",
+                routes_json='["VOIE_A"]', resource_forms_json='["EQUIPE"]',
+                resources_json='[]', evidence_urls_json='[]',
+                analyst_minutes=10, verification_minutes=1,
+            ),
+            BenchmarkPrediction(
+                case_id=sealed.id, method="methode-a",
+                routes_json='[]', resource_forms_json='[]',
+                resources_json='[]', evidence_urls_json='[]',
+                analyst_minutes=10000, verification_minutes=0,
+            ),
+            BenchmarkPrediction(
+                case_id=sealed.id, method="methode-b",
+                routes_json='[]', resource_forms_json='[]',
+                resources_json='[]', evidence_urls_json='[]',
+            ),
+        ])
+        db.commit()
+    with TestClient(app) as client:
+        public = client.get("/api/v1/evaluation").json()
+        assert public["case_count"] == 2
+        assert public["prediction_count"] == 3
+        assert public["scored_prediction_count"] == 1
+        assert public["sealed_prediction_count"] == 2
+        assert len(public["methods"]) == 1
+        assert public["methods"][0]["method"] == "methode-a"
+        assert public["methods"][0]["n"] == 1
+        assert public["methods"][0]["route_f1_mean"] == 1.0
+        assert public["methods"][0]["human_minutes_median"] == 11
+        page = client.get("/evaluation")
+        assert "ETIQUETTE_SECRETE" not in page.text
+        assert "FORME_SECRETE" not in page.text
+        assert "Des prédictions sont enregistrées" in page.text
