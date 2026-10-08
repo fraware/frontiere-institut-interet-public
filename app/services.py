@@ -23,10 +23,12 @@ def classify_public_search(*, complete: bool, relevant_found: bool | None, mobil
     P2: capacité publique pertinente identifiée, mobilisation non établie/échouée.
     P3: recherche suffisante et aucune capacité publique suffisamment pertinente identifiée.
     """
-    if not complete:
+    if mobilizable_found is True and relevant_found is not True:
+        raise ValueError("Une capacité déclarée mobilisable doit d'abord être identifiée comme pertinente.")
+    if not complete or relevant_found is None:
         return "P0"
-    if relevant_found:
-        return "P1" if mobilizable_found else "P2"
+    if relevant_found is True:
+        return "P1" if mobilizable_found is True else "P2"
     return "P3"
 
 
