@@ -35,13 +35,17 @@ def principal() -> None:
     analyseur.add_argument("--references", required=True)
     analyseur.add_argument("--reponses", required=True)
     analyseur.add_argument("--gel-reponses", required=True, help="Manifeste de gel créé avant ouverture des références.")
-    analyseur.add_argument("--sortie", default="resultats_jeu_reserve.json")
+    analyseur.add_argument("--sortie", required=True, help="Chemin privé extérieur au dépôt public.")
     arguments = analyseur.parse_args()
 
     questions_path = Path(arguments.questions)
     manifeste_path = Path(arguments.manifeste)
     references_path = Path(arguments.references)
     reponses_path = Path(arguments.reponses)
+    sortie_path = Path(arguments.sortie)
+    depot = Path(__file__).resolve().parents[1]
+    if sortie_path.resolve().is_relative_to(depot):
+        raise SystemExit("Le rapport individuel doit être enregistré hors du dépôt public.")
 
     # Vérifier le gel AVANT de lire le corrigé privé.
     questions = json.loads(questions_path.read_text(encoding="utf-8"))
@@ -116,7 +120,13 @@ def principal() -> None:
         "cas": lignes,
     }
 
-    Path(arguments.sortie).write_text(json.dumps(rapport, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    sortie_path.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        with sortie_path.open("x", encoding="utf-8") as fichier:
+            json.dump(rapport, fichier, ensure_ascii=False, indent=2)
+            fichier.write("\n")
+    except FileExistsError as erreur:
+        raise SystemExit("Un rapport existe déjà : choisir un autre chemin.") from erreur
 
 
 if __name__ == "__main__":
