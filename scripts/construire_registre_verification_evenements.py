@@ -22,7 +22,7 @@ def construire(signaux: dict, chronologies: dict) -> dict:
         signal = repertoire[identifiant]
         for rang, evenement in enumerate(chronologie["evenements"], 1):
             code_evenement = evenement.get("id_evenement", f"{identifiant}-E{rang:02d}")
-            fiches.append({
+            fiche = {
                 "identifiant_evenement": code_evenement,
                 "id_signal": identifiant,
                 "titre_signal": signal["titre"],
@@ -34,9 +34,15 @@ def construire(signaux: dict, chronologies: dict) -> dict:
                 "preuve_directe_de_cet_evenement": "A_VERIFIER",
                 "resultat_relecture": None,
                 "motif_relecture": None,
-            })
+            }
+            if str(chronologies.get("version")) == "7":
+                if "nature_date" in evenement:
+                    fiche["nature_date"] = evenement["nature_date"]
+                if "date_document_source" in evenement:
+                    fiche["date_document_source"] = evenement["date_document_source"]
+            fiches.append(fiche)
     version_chronologies = str(chronologies.get("version", ""))
-    if version_chronologies not in {"3", "4", "5", "6"}:
+    if version_chronologies not in {"3", "4", "5", "6", "7"}:
         raise ValueError("Version de chronologies non prise en charge pour ce registre.")
     version_registre = str(int(version_chronologies) - 2)
     return {
@@ -55,7 +61,7 @@ def construire(signaux: dict, chronologies: dict) -> dict:
 def principal() -> None:
     parser = argparse.ArgumentParser(description="Préparer le registre des preuves événementielles.")
     parser.add_argument("--signaux", type=Path, default=Path("donnees/signaux_publics_v1.json"))
-    parser.add_argument("--chronologies", type=Path, default=Path("donnees/chronologies_v6.json"))
+    parser.add_argument("--chronologies", type=Path, default=Path("donnees/chronologies_v7.json"))
     parser.add_argument("--sortie", type=Path, required=True)
     args = parser.parse_args()
     document = construire(
