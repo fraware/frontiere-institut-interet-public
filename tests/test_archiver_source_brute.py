@@ -86,3 +86,20 @@ def test_archive_ne_contient_aucun_entete_secret(tmp_path):
     fiche = (racine / a["fiche"]).read_text(encoding="utf-8")
     assert "authorization" not in fiche.lower()
     assert "cookie" not in fiche.lower()
+
+
+def test_refuse_archive_dans_depot_public(tmp_path):
+    """Un export brut ne doit jamais être copié sous le répertoire public."""
+    from scripts.archiver_source_brute import RACINE_PROJET
+
+    source, _ = scenario(tmp_path)
+    with pytest.raises(ErreurArchive, match="dépôt public"):
+        capturer(source, RACINE_PROJET / "data" / "archive-interdite")
+
+
+def test_refuse_url_contenant_une_requete_ou_un_fragment(tmp_path):
+    source, racine = scenario(tmp_path)
+    for url in ("https://example.org/export?token=secret", "https://example.org/export#fragment"):
+        with pytest.raises(ErreurArchive, match="Adresse source"):
+            archiver(racine, source, source_id="exemple_fictif",
+                    url=url, licence="Essai", observe_le="2026-10-08T00:00:00Z")
