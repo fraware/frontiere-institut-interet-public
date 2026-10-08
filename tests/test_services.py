@@ -33,12 +33,12 @@ def test_elapsed_span_counts_waiting_time_separately_from_dependency_work():
     events = [
         (t0, t0 + timedelta(minutes=60), None),
         (t0 + timedelta(minutes=30), t0 + timedelta(minutes=90), 0),
-        (t0 + timedelta(minutes=120), t0 + timedelta(minutes=150), 1),
+        (t0 + timedelta(minutes=100), t0 + timedelta(minutes=130), 1),
     ]
     # Le chemin additionne les durées déclarées (60 + 60 + 30).
     assert critical_path_minutes(events) == 150
     # Le délai réel englobe un chevauchement et une attente.
-    assert elapsed_span_minutes(events) == 150
+    assert elapsed_span_minutes(events) == 130
 
 
 def test_elapsed_span_counts_parallelism_without_double_counting():
