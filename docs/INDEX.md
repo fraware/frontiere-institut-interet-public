@@ -30,6 +30,8 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [Exécution indépendante du jeu réservé](../evaluation/PROTOCOLE_SESSIONS_INDEPENDANTES_V1.md) | Conditions des trois méthodes, génération des dossiers, gel et restitution |
 | [Relecture de la qualité](../evaluation/RELECTURE_QUALITE_V1.md) | Double examen anonymisé et motivé des ressources et des preuves |
 | [Relecture indépendante des sources historiques](../evaluation/PROTOCOLE_RELECTURE_SOURCES_HISTORIQUES_V1.md) | Double examen de chaque événement, du passage officiel et de sa datation |
+| [Charte de recrutement des relecteurs](../evaluation/CHARTE_RECRUTEMENT_RELECTEURS_V1.md) | Qualifications, indépendance, conflits et conditions de lancement |
+| [Fiche de mission documentaire](../evaluation/FICHE_MISSION_RELECTURE_V1.md) | Mandat attendu et texte de prise de contact |
 | [../evaluation/CAS_RETROSPECTIFS_DEVELOPPEMENT.md](../evaluation/CAS_RETROSPECTIFS_DEVELOPPEMENT.md) | Douze cas historiques structurés pour le développement |
 | [Premiers enseignements empiriques](PREMIERS_ENSEIGNEMENTS_EMPIRIQUES.md) | Première synthèse des mécanismes observés |
 | [Analyse actuelle des délais](ANALYSE_DELAIS_V10.md) | État actuel des chronologies et des délais exploitables |
