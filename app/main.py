@@ -140,6 +140,25 @@ def _require_comparison_plan_if_prospective(db: Session, ep: Episode) -> None:
         )
 
 
+def _interventions_existantes(db: Session, ep: Episode) -> list[str]:
+    """Repère toute action déjà entreprise susceptible de fausser l'antériorité."""
+    controles = [
+        ("recherche", SearchRun, SearchRun.episode_id),
+        ("requête de capacité", CapabilityQuery, CapabilityQuery.episode_id),
+        ("voie évaluée", RouteAssessment, RouteAssessment.episode_id),
+        ("décision", Decision, Decision.episode_id),
+        ("obstacle enregistré", FrictionEvent, FrictionEvent.episode_id),
+        ("résultat", EpisodeResult, EpisodeResult.episode_id),
+        ("connaissance créée", KnowledgeItem, KnowledgeItem.source_episode_id),
+        ("connaissance réutilisée", ReuseEvent, ReuseEvent.destination_episode_id),
+    ]
+    return [
+        libelle
+        for libelle, modele, colonne in controles
+        if db.scalar(select(modele.id).where(colonne == ep.id).limit(1)) is not None
+    ]
+
+
 @app.get("/health")
 def health() -> dict:
     return {"status": "ok", "service": "frontiere-institut-interet-public", "version": "0.5.4"}
@@ -553,6 +572,7 @@ def add_resource(
     if ep is None:
         raise HTTPException(404)
     locked_need = _require_locked_need(db, ep)
+    _require_comparison_plan_if_prospective(db, ep)
     resource = db.scalar(select(Resource).where(Resource.display_name == display_name.strip(), Resource.resource_type == resource_type))
     if resource is None:
         resource = Resource(resource_type=resource_type, display_name=display_name.strip())
@@ -642,6 +662,7 @@ def add_route(
     if ep is None:
         raise HTTPException(404)
     locked_need = _require_locked_need(db, ep)
+    _require_comparison_plan_if_prospective(db, ep)
     route = db.scalar(select(RouteAssessment).where(RouteAssessment.episode_id == ep.id, RouteAssessment.route_code == route_code.strip()))
     if route is None:
         route = RouteAssessment(episode_id=ep.id, route_code=route_code.strip(), route_label=route_label.strip(), status_initial=status_current, status_current=status_current)
@@ -682,6 +703,7 @@ def add_friction(
     if ep is None:
         raise HTTPException(404)
     locked_need = _require_locked_need(db, ep)
+    _require_comparison_plan_if_prospective(db, ep)
     start = datetime.fromisoformat(started_at)
     end = datetime.fromisoformat(ended_at) if ended_at else None
     friction = FrictionEvent(episode_id=ep.id, category=category, subcategory=subcategory.strip() or None, started_at=start, ended_at=end, owner=owner.strip() or None, blocking=blocking == "yes", reason=reason.strip() or None)
@@ -722,6 +744,7 @@ def add_result(
     if ep is None:
         raise HTTPException(404)
     locked_need = _require_locked_need(db, ep)
+    _require_comparison_plan_if_prospective(db, ep)
     levels = {
         additionality_outcome,
         additionality_time,
@@ -791,6 +814,7 @@ def add_knowledge(
     if ep is None:
         raise HTTPException(404)
     locked_need = _require_locked_need(db, ep)
+    _require_comparison_plan_if_prospective(db, ep)
     item = KnowledgeItem(source_episode_id=ep.id, knowledge_type=knowledge_type, title=title.strip(), content=content.strip(), scope=scope.strip() or None, evidence_level=evidence_level)
     db.add(item)
     db.flush()
@@ -820,6 +844,7 @@ def add_reuse(
     if ep is None:
         raise HTTPException(404, "Épisode introuvable")
     locked_need = _require_locked_need(db, ep)
+    _require_comparison_plan_if_prospective(db, ep)
     knowledge = db.scalar(select(KnowledgeItem).where(KnowledgeItem.id == knowledge_id, KnowledgeItem.status == "ACTIVE"))
     if knowledge is None:
         raise HTTPException(404, "Connaissance introuvable")
@@ -921,8 +946,12 @@ def lock_prospective_baseline(code: str, db: Session = Depends(get_db)):
         raise HTTPException(409, "L’enregistrement de l’état initial exige un cas réel et actuel.")
     if _prospective_event(db, ep) is not None:
         raise HTTPException(409, "L’état initial de ce cas a déjà été enregistré et figé.")
-    if db.scalar(select(func.count(SearchRun.id)).where(SearchRun.episode_id == ep.id)):
-        raise HTTPException(409, "Une recherche existe déjà : l’état initial ne peut plus être présenté comme antérieur à l’intervention.")
+    interventions = _interventions_existantes(db, ep)
+    if interventions:
+        raise HTTPException(
+            409,
+            "L’état initial ne peut être préenregistré après une intervention : " + ", ".join(interventions),
+        )
 
     need = db.scalar(
         select(NeedVersion)
@@ -1041,8 +1070,12 @@ def lock_paired_comparison(
         raise HTTPException(409, "Enregistrez et figez d’abord l’état initial.")
     if _comparison_event(db, ep) is not None:
         raise HTTPException(409, "Les règles de comparaison des deux méthodes sont déjà enregistrées.")
-    if db.scalar(select(func.count(SearchRun.id)).where(SearchRun.episode_id == ep.id)):
-        raise HTTPException(409, "Une recherche existe déjà : les règles de comparaison ne seraient plus enregistrées avant l’intervention.")
+    interventions = _interventions_existantes(db, ep)
+    if interventions:
+        raise HTTPException(
+            409,
+            "Les règles de comparaison ne peuvent être enregistrées après une intervention : " + ", ".join(interventions),
+        )
 
     methode_habituelle = usual_method.strip()
     methode_frontiere = frontiere_method.strip()
