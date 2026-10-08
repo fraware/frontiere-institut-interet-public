@@ -47,3 +47,7 @@ La commande `python scripts/construire_registre_verification_evenements.py --sor
 ## Version des chronologies et rectifications
 
 La version de référence actuelle est `chronologies_v4.json` ; son registre de vérification est `registre_verification_evenements_v2.json`. La version 3 et le registre 1 restent disponibles sans modification. Les corrections portant sur le procès-verbal de l’IGN et le rapport sénatorial relatif à France Compétences figurent dans [le rectificatif documentaire](RECTIFICATIF_SOURCES_2026-10-08.md). Elles précisent la distinction entre date d'observation, date de séance et date de publication, sans créer de délais artificiels ni valider les autres événements.
+
+### Complément sur Saint-Brieuc
+
+La version la plus récente est désormais `chronologies_v5.json`, avec `registre_verification_evenements_v3.json`. Elle précise les dates du conseil scientifique de Saint-Brieuc à partir du rapport IGEDD, en distinguant notamment la date du rapport (juin 2025) de sa mise en ligne (mars 2026). Voir [la note de provenance](NOTE_SOURCES_SAINT_BRIEUC_2026-10-08.md). Les versions 3 et 4, ainsi que les registres antérieurs, restent conservés.

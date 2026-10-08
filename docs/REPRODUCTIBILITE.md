@@ -42,11 +42,11 @@ Les fichiers du répertoire `donnees/` conservent les observations, les chronolo
 
 Une affirmation empirique importante doit pouvoir être reliée à une source publique identifiée. La précision de la donnée source est conservée : une année reste une année, un mois reste un mois, une estimation reste une estimation.
 
-Les versions antérieures restent disponibles dans l’historique Git afin de reconstruire l’évolution de l’analyse. Les chronologies version 4 corrigent deux attributions de dates de la version 3 ; la justification et les sources primaires sont documentées dans `donnees/RECTIFICATIF_SOURCES_2026-10-08.md`.
+Les versions antérieures restent disponibles dans l’historique Git afin de reconstruire l’évolution de l’analyse. Les chronologies version 4 corrigent les attributions de dates IGN et France Compétences de la version 3 ; la version 5 apporte des précisions sourcées au cas Saint-Brieuc. Les sources primaires et motifs figurent dans `donnees/RECTIFICATIF_SOURCES_2026-10-08.md` et `donnees/NOTE_SOURCES_SAINT_BRIEUC_2026-10-08.md`.
 
 ### Contrôle automatisé du corpus public
 
-Exécuter `python scripts/verifier_corpus_public.py` pour vérifier conjointement `donnees/signaux_publics_v1.json` et `donnees/chronologies_v4.json`. Le programme contrôle les identifiants, l'unicité des signaux, la couverture des chronologies, la présence de liens de sources et la cohérence entre les valeurs de date et leur degré de précision déclaré (année, mois, jour ou intervalle).
+Exécuter `python scripts/verifier_corpus_public.py` pour vérifier conjointement `donnees/signaux_publics_v1.json` et `donnees/chronologies_v5.json`. Le programme contrôle les identifiants, l'unicité des signaux, la couverture des chronologies, la présence de liens de sources et la cohérence entre les valeurs de date et leur degré de précision déclaré (année, mois, jour ou intervalle).
 
 Le rapport distingue les événements possédant une référence propre de ceux qui n'en possèdent pas. **Une référence attachée au signal ne constitue pas une vérification autonome de chacun de ses événements.** Le contrôle structurel ne juge pas l'exactitude des sources et n'améliore pas artificiellement la précision temporelle. Les conclusions exigeant une validation factuelle restent soumises à une relecture documentaire.
 
