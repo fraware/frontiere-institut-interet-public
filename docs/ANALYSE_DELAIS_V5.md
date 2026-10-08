@@ -18,7 +18,7 @@ Le rétablissement effectif de la capacité et le moment de la première contrib
 
 - Six chronologies sur dix permettent de mesurer au moins un segment d'un parcours de capacité, selon le classement existant ; ce nombre n'a pas été recalculé par une nouvelle collecte.
 - Le cas de Saint-Brieuc reste dépourvu de paire fiable entre saisine et remise d'un avis scientifique.
-- Le cas ASNR reste dépourvu de durée de recrutement par famille de métier spécialisé ; les effectifs IRNS de 2023 et ASNR de 2025 ne sont pas directement comparables à périmètre constant.
+- Le cas ASNR reste dépourvu de durée de recrutement par famille de métier spécialisé ; les effectifs IRSN de 2023 et ASNR de 2025 ne sont pas directement comparables à périmètre constant.
 - La mesure d'un segment de parcours ne démontre pas un avantage causal propre à FRONTIÈRE, ni la date de première contribution utile.
 
 ## Suites documentaires
