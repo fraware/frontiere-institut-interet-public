@@ -29,3 +29,7 @@ Ce contrôle de démarrage n'ajoute **aucune authentification**, n'empêche pas 
 ## Signalement d'un problème
 
 Ne pas publier dans une discussion publique une vulnérabilité accompagnée de données réelles. Utiliser un canal privé du mainteneur.
+
+## Spécification préparatoire pour les données institutionnelles
+
+La [spécification du modèle de sécurité institutionnelle](docs/MODELE_SECURITE_INSTITUTIONNELLE_V1.md) décrit les frontières de confiance, les rôles, les obligations d'autorisation par dossier et les conditions de réception avant toute exploitation réelle. Elle ne constitue pas un dispositif d'authentification. Le refus de démarrage en production reste pleinement applicable.
