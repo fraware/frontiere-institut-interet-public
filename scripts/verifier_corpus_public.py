@@ -91,7 +91,7 @@ def verifier(signaux: dict, chronologies: dict) -> dict:
     sans_source_propre = 0
     codes_evenements = set()
     alertes_dates_identiques = []
-    identifiants_obligatoires = str(chronologies.get('version', '')) == '6'
+    identifiants_obligatoires = str(chronologies.get('version', '')) in {'6', '7'}
     for position, parcours_item in enumerate(parcours, 1):
         if not isinstance(parcours_item, dict):
             erreurs.append(f"Chronologie {position} : format incorrect.")
@@ -135,6 +135,11 @@ def verifier(signaux: dict, chronologies: dict) -> dict:
                 erreurs.append(f"Chronologie {code}, événement {indice} : date ou précision incorrecte.")
             else:
                 precision_compte[precision] += 1
+            if str(chronologies.get("version", "")) == "7" and code == "S011":
+                if evenement.get("nature_date") != "periode_de_reference_approximative":
+                    erreurs.append(f"{code}/{indice} : nature de la datation historique absente.")
+                if evenement.get("date_document_source") != "2024-01-17":
+                    erreurs.append(f"{code}/{indice} : date d'enregistrement du rapport non distinguée.")
             if not isinstance(evenement.get("evenement"), str) or not evenement["evenement"].strip():
                 erreurs.append(f"Chronologie {code}, événement {indice} : description absente.")
             if not evenement.get("source_url"):
@@ -182,7 +187,7 @@ def verifier(signaux: dict, chronologies: dict) -> dict:
 def principal() -> None:
     analyseur = argparse.ArgumentParser(description="Contrôler la structure du corpus public.")
     analyseur.add_argument("--signaux", type=Path, default=Path("donnees/signaux_publics_v1.json"))
-    analyseur.add_argument("--chronologies", type=Path, default=Path("donnees/chronologies_v6.json"))
+    analyseur.add_argument("--chronologies", type=Path, default=Path("donnees/chronologies_v7.json"))
     args = analyseur.parse_args()
     rapport = verifier(
         json.loads(args.signaux.read_text(encoding="utf-8")),

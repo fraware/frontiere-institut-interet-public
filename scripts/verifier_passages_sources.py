@@ -29,6 +29,9 @@ def verifier(registre: dict, passages: dict) -> dict:
         "registre-verification-evenements-v4": (
             "passages-sources-primaires-v2", "donnees/registre_verification_evenements_v4.json",
         ),
+        "registre-verification-evenements-v5": (
+            "passages-sources-primaires-v3", "donnees/registre_verification_evenements_v5.json",
+        ),
     }
     versions_attendues = versions.get(registre.get("version_schema"))
     if versions_attendues is None:
@@ -95,8 +98,8 @@ def verifier(registre: dict, passages: dict) -> dict:
 
 def principal() -> None:
     analyseur = argparse.ArgumentParser(description="Vérifier les références et limites du registre documentaire.")
-    analyseur.add_argument("--registre", type=Path, default=Path("donnees/registre_verification_evenements_v4.json"))
-    analyseur.add_argument("--passages", type=Path, default=Path("donnees/passages_sources_evenements_v2.json"))
+    analyseur.add_argument("--registre", type=Path, default=Path("donnees/registre_verification_evenements_v5.json"))
+    analyseur.add_argument("--passages", type=Path, default=Path("donnees/passages_sources_evenements_v3.json"))
     args = analyseur.parse_args()
     bilan = verifier(
         json.loads(args.registre.read_text(encoding="utf-8")),
