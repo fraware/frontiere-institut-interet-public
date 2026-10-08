@@ -1,0 +1,606 @@
+{
+  "version_schema": "passages-sources-primaires-v6",
+  "date_relecture": "2026-10-08",
+  "registre_cible": "donnees/registre_verification_evenements_v7.json",
+  "responsable_de_la_premiere_lecture": "assistant_de_recherche",
+  "relecture_humaine_independante_effectuee": false,
+  "regle": "Les passages listés ont été consultés pour un point documentaire circonscrit. Les autres événements demeurent non examinés dans ce registre. L'appui documentaire ne prouve ni la mobilisation réelle d'une ressource ni la validité d'un délai non mesuré.",
+  "nombre_entrees": 45,
+  "entrees": [
+    {
+      "identifiant_evenement": "S001-E01",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.senat.fr/rap/r24-807-2/r24-807-21.pdf",
+        "localisation": "Audition du 3 avril 2025, intervention de Stéphane Lardy, page imprimée 498",
+        "point_precis_etaye": "La situation décrite comme perdurant depuis octobre 2024 concerne la perte de maîtrise interne du langage R."
+      },
+      "source_complementaire": null,
+      "limites": "Le jour précis de début de la perte de capacité n'est pas établi.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S001-E02",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.senat.fr/rap/r24-807-2/r24-807-21.pdf",
+        "localisation": "Audition du 3 avril 2025, page imprimée 498",
+        "point_precis_etaye": "Le directeur général déclare à cette audition devoir recruter des profils rares pour rétablir la capacité R."
+      },
+      "source_complementaire": null,
+      "limites": "La date de rétablissement ultérieur est inconnue.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S001-E03",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.senat.fr/rap/r24-807-1/r24-807-121.html",
+        "localisation": "Rapport n°807, tome I, déposé le 1er juillet 2025 ; passage France Compétences",
+        "point_precis_etaye": "Le rapport reprend la difficulté rapportée lors de l'audition, notamment le recrutement de profils rares et la rémunération."
+      },
+      "source_complementaire": null,
+      "limites": "La publication en juillet ne prouve pas une persistance du besoin à cette date.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S016-E02",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.ign.fr/publications-de-l-ign/institut/informations_legales_administratives/de_deliberations_ca_5_juillet_2024.pdf",
+        "localisation": "Délibération du 5 juillet 2024 (page 1), procès-verbal du 15 mars 2024, pages internes 20–21",
+        "point_precis_etaye": "126 recrutements observés fin 2023, dont 30 dans les données et l'intelligence artificielle, présentés le 15 mars 2024 ; le document est approuvé le 5 juillet."
+      },
+      "source_complementaire": null,
+      "limites": "La ventilation 75 internes / 51 externes concerne les 126 recrutements, non spécifiquement les 30 spécialistes.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S016-E04",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.senat.fr/compte-rendu-commissions/20241111/pro_2024_11_12.html",
+        "localisation": "Audition du 12 novembre 2024 de Sébastien Soriano, passage ressources humaines",
+        "point_precis_etaye": "L'IGN déclare 156 personnes recrutées et formées sur l'objectif de 150 et trente spécialistes de la science des données."
+      },
+      "source_complementaire": null,
+      "limites": "Ne mesure pas les dates individuelles de première contribution.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S024-E01",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/IMG/pdf/015969-01_rapport-publie_cle5181c2.pdf",
+        "localisation": "Rapport n°015969-01, §2.1.3, page interne 16",
+        "point_precis_etaye": "Le conseil scientifique est créé par l'article 14 de l'arrêté du 18 avril 2017."
+      },
+      "source_complementaire": null,
+      "limites": "Une relecture indépendante reste nécessaire.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S024-E02",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/IMG/pdf/015969-01_rapport-publie_cle5181c2.pdf",
+        "localisation": "Rapport n°015969-01, §2.1.3, page interne 16",
+        "point_precis_etaye": "Le premier président ne sollicite pas un nouveau mandat en 2021."
+      },
+      "source_complementaire": null,
+      "limites": "Le résumé général parle de démission ; la description détaillée permet cette formulation précise.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S024-E03",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/IMG/pdf/015969-01_rapport-publie_cle5181c2.pdf",
+        "localisation": "Rapport n°015969-01, §2.1.3, page interne 16",
+        "point_precis_etaye": "Le conseil scientifique s'est réuni pour la dernière fois le 22 novembre 2023."
+      },
+      "source_complementaire": null,
+      "limites": "Une relecture indépendante reste nécessaire.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S024-E04",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/IMG/pdf/015969-01_rapport-publie_cle5181c2.pdf",
+        "localisation": "Rapport n°015969-01, §1.3, page interne 13",
+        "point_precis_etaye": "Le parc devient entièrement opérationnel le 28 mai 2024."
+      },
+      "source_complementaire": null,
+      "limites": "Une relecture indépendante reste nécessaire.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S024-E05",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/IMG/pdf/015969-01_rapport-publie_cle5181c2.pdf",
+        "localisation": "Rapport n°015969-01, résumé et §2.2.1 pages internes 6 et 16–17",
+        "point_precis_etaye": "Des avis scientifiques ont été sollicités directement auprès du SHOM, de l'Ifremer et du Cerema ; le rapport daté juin 2025 préconise un changement de gouvernance."
+      },
+      "source_complementaire": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/revision-de-la-comitologie-du-parc-eolien-en-mer-a4393.html",
+        "localisation": "Page de publication officielle de l'IGEDD",
+        "point_precis_etaye": "Publication datée du 16 mars 2026."
+      },
+      "limites": "Aucune date de saisine et de remise d'avis n'est fournie.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S042-E03",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.asnr.fr/actualites/lasnr-recrute-son-directeur-ou-sa-directrice-scientifique",
+        "localisation": "Note ASNR du 23 janvier 2025, introduction",
+        "point_precis_etaye": "L'ASNR est issue de la fusion de l'ASN et de l'IRSN au 1er janvier 2025."
+      },
+      "source_complementaire": null,
+      "limites": "Une relecture indépendante reste nécessaire.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S042-E06",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.asnr.fr/sites/asnr/files/2025-06/ASNR_NANTES_Presentation_Bilan-2024.pdf",
+        "localisation": "Présentation ASNR, 13 juin 2025, diapositive 10 « Chiffres clefs »",
+        "point_precis_etaye": "L'ASNR déclare 2 085 personnels de statuts public et privé au 1er janvier 2025."
+      },
+      "source_complementaire": null,
+      "limites": "L'indicateur correspond à l'effectif global, non à un sous-ensemble scientifique spécialisé.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S042-E07",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://admin.www.asnr.fr/actualites/recrutement-formation-lumn-et-lasnr-signent-un-partenariat",
+        "localisation": "Communiqué ASNR du 28 mai 2025",
+        "point_precis_etaye": "Le partenariat de trois ans avec l'Université des Métiers du Nucléaire a été signé le 12 mai 2025."
+      },
+      "source_complementaire": null,
+      "limites": "Une relecture indépendante reste nécessaire.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S042-E08",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.asnr.fr/sites/asnr/files/2026-05/Rapport-ASNR-sur-l-etat-de-la-surete-nucleaire-et-de-la-radioprotection-en-France-en-2025.pdf",
+        "localisation": "Rapport ASNR 2025, §1.4.3 « Les ressources humaines », page 130",
+        "point_precis_etaye": "L'effectif global au 31 décembre 2025 est de 2 126 personnes (1 607 salariés, 495 agents publics et 24 mis à disposition)."
+      },
+      "source_complementaire": null,
+      "limites": "Ne constitue pas un délai de recrutement ni une mesure de vacance des métiers spécialisés.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S011-E01",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://questions.assemblee-nationale.fr/dyn/opendata/RINFANR5L16B2068.html",
+        "localisation": "§ « Une situation particulièrement alarmante à la DGA », alinéas sur la concurrence des industriels et les démissions en 2022-2023",
+        "point_precis_etaye": "La DGA est confrontée à des tensions de recrutement cyber et à une concurrence accrue du marché."
+      },
+      "source_complementaire": null,
+      "limites": "La date de cette observation n'est pas celle d'un besoin individuel précis.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S011-E02",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://questions.assemblee-nationale.fr/dyn/opendata/RINFANR5L16B2068.html",
+        "localisation": "Même section, paragraphe « depuis plusieurs années les concours d’ingénieurs fonctionnaires »",
+        "point_precis_etaye": "La proportion de postes pourvus lors des concours d'ingénieurs fonctionnaires est estimée à environ 50 %, depuis plusieurs années."
+      },
+      "source_complementaire": null,
+      "limites": "Pas de série annuelle permettant d'attribuer la valeur de 50 % à la seule année 2023.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S011-E03",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://questions.assemblee-nationale.fr/dyn/opendata/RINFANR5L16B2068.html",
+        "localisation": "Même section, paragraphe « l’organisation des concours implique une affectation ... pratiquement un an »",
+        "point_precis_etaye": "La procédure de concours est décrite comme impliquant une affectation des lauréats presque un an après l'expression des besoins."
+      },
+      "source_complementaire": null,
+      "limites": "Il s'agit d'un délai indicatif rapporté, non d'une distribution mesurée de parcours.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S011-E04",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://questions.assemblee-nationale.fr/dyn/opendata/RINFANR5L16B2068.html",
+        "localisation": "Même section, paragraphe « prépondérance des ingénieurs civils contractuels (75 %) »",
+        "point_precis_etaye": "Dans les métiers cyber de la DGA, 75 % des personnels décrits sont des ingénieurs civils contractuels ; comparaison aux statuts d'officiers (12 %) et d'ingénieurs fonctionnaires (8 %)."
+      },
+      "source_complementaire": null,
+      "limites": "« Disponibilité immédiate » renvoie à une modalité de recrutement, pas à la disponibilité opérationnelle démontrée de chaque compétence.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S027-E01",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://agriculture.gouv.fr/telecharger/154287",
+        "localisation": "Annexe 3 : liste datée des personnes rencontrées, premières rencontres en septembre 2025",
+        "point_precis_etaye": "Une mission conjointe avait engagé des consultations au plus tard en septembre 2025."
+      },
+      "source_complementaire": null,
+      "limites": "Les auditions attestent son activité, mais la date de commande de la mission n'est pas déduite.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S027-E02",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://aida.ineris.fr/reglementation/circulaire-270426-relative-a-recherche-pfas-boues-issues-stations-depuration",
+        "localisation": "Section « Mise en place d'une stratégie de gestion », rappel de la mission d'inspection et de la remise du 15 avril 2026",
+        "point_precis_etaye": "La circulaire indique explicitement que le rapport des inspections générales a été remis le 15 avril 2026."
+      },
+      "source_complementaire": null,
+      "limites": "La remise constitue un jalon administratif, non une mesure du temps consacré par chaque expert.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S027-E03",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://aida.ineris.fr/reglementation/circulaire-270426-relative-a-recherche-pfas-boues-issues-stations-depuration",
+        "localisation": "En-tête, NOR TECL2611645C, date de signature 27 avril 2026, Bulletin officiel 29 avril ; section 2",
+        "point_precis_etaye": "Une circulaire interministérielle est signée le 27 avril 2026 et fait explicitement référence à la mission qui a remis son rapport le 15 avril."
+      },
+      "source_complementaire": null,
+      "limites": "La circulaire s'inscrit aussi dans un plan national antérieur ; ne pas attribuer toute la décision à la mission.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S027-E04",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://agriculture.gouv.fr/cadres-de-gestion-de-la-contamination-par-les-pfas-substances-perfluoroalkyles-ou-polyfluoroalkyles",
+        "localisation": "En-tête du ministère « 28 avril 2026 Publication », rapport interministériel n° 25101 / n° 016408-01",
+        "point_precis_etaye": "Le rapport de mission et ses recommandations sont publiés officiellement le 28 avril 2026."
+      },
+      "source_complementaire": null,
+      "limites": "Publication au public différente de la remise aux administrations le 15 avril.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S018-E01",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://meteofrance.fr/actualite/presse/meteo-france-presente-meteonet-un-jeu-de-donnees-meteorologiques-concu-pour",
+        "localisation": "Communiqué de presse Météo-France du 26 février 2020, section « Le Lab IA »",
+        "point_precis_etaye": "Le Lab IA a été créé en février 2019 avec le Fonds de transformation de l'action publique ; il prévoit six experts sur trois ans."
+      },
+      "source_complementaire": null,
+      "limites": "Le nombre six est un objectif d'accueil, pas un effectif effectivement présent à chaque date.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S018-E02",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://meteofrance.fr/actualite/presse/meteo-france-presente-meteonet-un-jeu-de-donnees-meteorologiques-concu-pour",
+        "localisation": "Communiqué du 26 février 2020, en-tête et présentation du jeu MeteoNet",
+        "point_precis_etaye": "Météo-France met publiquement à disposition MeteoNet, jeu de données préparé par le Lab IA."
+      },
+      "source_complementaire": null,
+      "limites": "La date du communiqué est février 2020 ; l'effet de MeteoNet sur des projets ultérieurs n'est pas mesuré.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S050-E01",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.senat.fr/rap/l25-139-310-3/l25-139-310-3_mono.html",
+        "localisation": "Rapport sénatorial sur le projet de loi de finances pour 2026, paragraphe « Le coût total du renouvellement des supercalculateurs »",
+        "point_precis_etaye": "Le projet de renouvellement est présenté sur une période de 2025 à 2033."
+      },
+      "source_complementaire": null,
+      "limites": "Il s'agit d'un calendrier financier prévu, non d'un projet terminé.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S050-E02",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.senat.fr/rap/l25-139-310-3/l25-139-310-3_mono.html",
+        "localisation": "Même paragraphe, prévisions d'investissement Météo-France pour 2026",
+        "point_precis_etaye": "Météo-France prévoit 39 millions d'euros de dépenses d'investissement en 2026, incluant supercalculateurs et renouvellement des radars."
+      },
+      "source_complementaire": null,
+      "limites": "Le montant total d'investissement n'est pas intégralement imputable aux supercalculateurs.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S050-E03",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.senat.fr/rap/l25-139-310-3/l25-139-310-3_mono.html",
+        "localisation": "Même paragraphe, horizon de mise en service 2027 et facteur six",
+        "point_precis_etaye": "Le remplacement des supercalculateurs doit, selon l'objectif annoncé, multiplier la puissance de calcul par six vers 2027."
+      },
+      "source_complementaire": null,
+      "limites": "Prévision à confirmer après mise en service ; aucune capacité supplémentaire n'est présumée déjà disponible.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S038-E09",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050774717",
+        "localisation": "Journal officiel, arrêté du 13 décembre 2024 relatif à Yves Kocher",
+        "point_precis_etaye": "La nomination est prise par arrêté daté du 13 décembre, avec effet administratif à compter du 1er janvier 2025."
+      },
+      "source_complementaire": null,
+      "limites": "La date d'effet administratif diffère de la prise de fonctions réelle.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S038-E10",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.mayotte.gouv.fr/Actualites/EAU/Communiques-de-presse/Prise-de-fonctions-d-Yves-KOCHER-expert-de-haut-niveau-en-charge-du-plan-eau-de-Mayotte",
+        "localisation": "Communiqué préfectoral de Mayotte du 21 janvier 2025 sur la prise de fonctions",
+        "point_precis_etaye": "Yves Kocher a pris ses fonctions le 14 janvier 2025."
+      },
+      "source_complementaire": null,
+      "limites": "Ce fait ne date pas sa première contribution utile ni l'ouverture initiale du besoin.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S016-E01",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.ign.fr/publications-de-l-ign/institut/informations_legales_administratives/deliberations_ca_11_mars_2022.pdf",
+        "localisation": "Feuille de route IA jointe à la délibération du conseil d'administration du 11 mars 2022, synthèse et axe consacré aux ressources",
+        "point_precis_etaye": "L'IGN prévoit 30 à 40 spécialistes ou équivalents temps plein supplémentaires dans ses compétences d'intelligence artificielle, à l'horizon 2023-2024, à partir d'une base initiale d'environ neuf."
+      },
+      "source_complementaire": null,
+      "limites": "Il s'agit d'une cible affichée en 2022, distincte d'un recrutement individuel vérifié. L'horizon exact varie entre la synthèse et l'axe opérationnel.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S016-E03",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.ign.fr/espace-presse/grace-lia-lign-vigie-du-territoire",
+        "localisation": "Information de presse officielle IGN datée du 12 septembre 2024, paragraphe sur les compétences humaines",
+        "point_precis_etaye": "Le communiqué indique que l'IGN compte 30 ingénieurs spécialisés en IA à cette date, contribuant à l'innovation, au développement et à la production."
+      },
+      "source_complementaire": null,
+      "limites": "L'effectif annoncé n'est pas une distribution de dates de recrutement, ni une mesure individuelle de contribution utile.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S018-E03",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://meteofrance.fr/sites/default/files/files/editorial/RA_MF2021_web.pdf",
+        "localisation": "Rapport d'activité Météo-France 2021, page imprimée 28, encadré « L'intelligence artificielle au cœur de l'innovation »",
+        "point_precis_etaye": "Le Lab IA est pérennisé en 2021 et compte quatre agents, dont trois spécialistes de science des données. Le rapport mentionne une cinquantaine de réalisations utilisant l'IA, dont une dizaine opérationnelles."
+      },
+      "source_complementaire": null,
+      "limites": "Les cinquante réalisations concernent l'ensemble des techniques IA recensées au sein de l'établissement, et ne sont pas toutes nécessairement produites par les quatre agents du laboratoire.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S018-E04",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://education.meteofrance.fr/actualites/intelligence-artificielle-et-meteo-ou-en-est-on",
+        "localisation": "Article pédagogique institutionnel Météo-France, passage « En 2024 » sur la prévision à fine échelle",
+        "point_precis_etaye": "En 2024, Météo-France met en place un premier démonstrateur français de prévision météorologique par IA à une résolution de 2,5 km, entraîné à partir du modèle Arome."
+      },
+      "source_complementaire": null,
+      "limites": "La page confirme le démonstrateur et l'année ; l'attribution précise de sa réalisation aux seuls agents du Lab IA et sa date de déploiement opérationnel ne sont pas démontrées.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S038-E01",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/projet-de-sortie-de-crise-de-l-eau-a-mayotte-a4274.html",
+        "localisation": "Page officielle IGEDD, présentation du rapport Plan Eau Mayotte, paragraphe introductif",
+        "point_precis_etaye": "L'IGEDD situe l'aggravation aiguë de la crise de l'eau entre novembre 2022 et février 2024."
+      },
+      "source_complementaire": null,
+      "limites": "Décrit une période de crise, pas la date de début du besoin de recrutement.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S038-E02",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/projet-de-sortie-de-crise-de-l-eau-a-mayotte-a4274.html",
+        "localisation": "Titre du rapport IGEDD « Direction de projet de novembre 2023 à décembre 2024 »",
+        "point_precis_etaye": "La direction de projet du Plan Eau Mayotte débute en novembre 2023 selon l'intitulé même du rapport."
+      },
+      "source_complementaire": null,
+      "limites": "La date exacte de prise de fonctions de la première direction de projet n'est pas établie au jour près.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S038-E03",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/projet-de-sortie-de-crise-de-l-eau-a-mayotte-a4274.html",
+        "localisation": "Présentation officielle IGEDD, mention « aggravée de manière aiguë entre novembre 2022 et février 2024 »",
+        "point_precis_etaye": "La phase aiguë de la crise est située jusqu'à février 2024 dans la synthèse du rapport."
+      },
+      "source_complementaire": null,
+      "limites": "Cette borne temporelle n'est ni une résolution définitive de la pénurie hydrique ni une date de rétablissement d'une capacité scientifique.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S038-E04",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/projet-de-sortie-de-crise-de-l-eau-a-mayotte-a4274.html",
+        "localisation": "Titre officiel du rapport IGEDD, intervalle de la direction de projet novembre 2023 à décembre 2024",
+        "point_precis_etaye": "La période de direction de projet documentée se termine en décembre 2024."
+      },
+      "source_complementaire": null,
+      "limites": "La date de première contribution utile et la date précise de fin au jour près restent inconnues.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S038-E05",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/projet-de-sortie-de-crise-de-l-eau-a-mayotte-a4274.html",
+        "localisation": "Rapport IGEDD n° 015427-01 daté juin 2025 ; page officielle de publication indiquant le 8 juillet 2025",
+        "point_precis_etaye": "Le rapport expose la direction de projet et la nécessité de structurer une ingénierie locale pérenne, avec une date de rédaction juin 2025 et une date de publication le 8 juillet."
+      },
+      "source_complementaire": null,
+      "limites": "La publication n'est pas une observation de l'état de la crise en juillet et ne prouve aucune solution achevée.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S042-E01",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.senat.fr/seances/s202312/s20231204/s20231204006.html",
+        "localisation": "Sénat, séance du 4 décembre 2023, discussion sur l'attractivité de l'inspection et les métiers du nucléaire",
+        "point_precis_etaye": "Un intervenant indique qu'en 2023, 91 postes sont vacants à l'IRSN dans un contexte de forte concurrence pour les ingénieurs spécialisés."
+      },
+      "source_complementaire": null,
+      "limites": "Chiffre parlementaire rapporté sans extraction d'une base de postes individuels ; il ne décrit pas le périmètre futur ASNR.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S042-E02",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.senat.fr/seances/s202402/s20240207/s20240207007.html",
+        "localisation": "Sénat, séance du 7 février 2024, discussion de la réforme de la sûreté nucléaire",
+        "point_precis_etaye": "Le débat explicite le regroupement de compétences rares de l'ASN et de l'IRSN et des objectifs de mobilité, rémunération et attractivité."
+      },
+      "source_complementaire": null,
+      "limites": "Il s'agit d'objectifs parlementaires, non d'une démonstration d'amélioration réelle après création de l'ASNR.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S042-E05",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://reglementation-controle.asnr.fr/annual_report/2025-fr/",
+        "localisation": "Rapport d'activité ASNR 2025, introduction « 2025, l'année de la mise en place de l'ASNR » et ressources humaines",
+        "point_precis_etaye": "L'ASNR indique avoir établi une politique de recrutement unifiée, engagé un cadre attractif pour l'emploi et les compétences, et recruté un directeur scientifique."
+      },
+      "source_complementaire": null,
+      "limites": "Les dates individuelles et les délais des recrutements concernés ne sont pas fournis.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S049-E01",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.senat.fr/compte-rendu-commissions/20260706/devdur.html",
+        "localisation": "Sénat, commission de l'aménagement du territoire et du développement durable, audition de Virginie Schwarz en juillet 2026, réponse sur les outre-mer",
+        "point_precis_etaye": "Selon la direction de Météo-France, des effectifs supplémentaires ont été obtenus en 2024 pour former une équipe de projections climatiques ultramarines à échelle fine."
+      },
+      "source_complementaire": null,
+      "limites": "Témoignage rétrospectif de 2026, sans ventilation ni dates individuelles de prise de poste en 2024.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S049-E02",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.senat.fr/compte-rendu-commissions/20260706/devdur.html",
+        "localisation": "Même audition, réponse de Virginie Schwarz sur les projections climatiques ultramarines",
+        "point_precis_etaye": "Les éléments de projection climatique territorialisés produits ont été rendus publics à la fin de 2025, d'après la direction de Météo-France."
+      },
+      "source_complementaire": null,
+      "limites": "La date exacte de publication et le délai entre constitution de l'équipe et première production utile ne sont pas établis.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S049-E03",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.senat.fr/compte-rendu-commissions/20260706/devdur.html",
+        "localisation": "Compte rendu de la commission sénatoriale de la semaine du 6 juillet 2026, échanges sur Mayotte",
+        "point_precis_etaye": "La direction de Météo-France expose la capacité de projections outre-mer, les indicateurs pour Mayotte et le projet de radar météorologique sur l'île."
+      },
+      "source_complementaire": null,
+      "limites": "L'audition prouve la déclaration de 2026, pas la mise en service effective d'un nouveau radar.",
+      "verification_independante": false
+    },
+    {
+      "identifiant_evenement": "S038-E06",
+      "etat_verification": "LECTURE_DOCUMENTAIRE_PRELIMINAIRE",
+      "appui": "PASSAGE_CIBLE_TROUVE",
+      "source_principale": {
+        "url": "https://www.ecologie.gouv.fr/sites/default/files/documents/Plan_Eau_DOM_Rapport_activite_2024.pdf",
+        "localisation": "Rapport d'activité du Plan Eau DOM 2024, chapitre Mayotte, passage relatif au renforcement de l'assistance à maîtrise d'ouvrage du LEMA",
+        "point_precis_etaye": "Au second semestre 2024, le Cerema est positionné à Mayotte sur la compétence eau et six postes budgétaires dédiés sont programmés pour 2024-2025."
+      },
+      "source_complementaire": {
+        "url": "https://www.igedd.developpement-durable.gouv.fr/IMG/pdf/015427-01_rapport_publie_cle559324.pdf",
+        "localisation": "Rapport IGEDD n°015427-01, annexe 5.2 et document de suivi du 19 septembre 2024, pages internes autour de 148 et 196",
+        "point_precis_etaye": "Le volet de renforcement des moyens recense seize postes dans la sphère ministérielle, dont six associés à la mission Cerema dans le tableau de suivi."
+      },
+      "limites": "Les six postes correspondent à une programmation budgétaire ; leur occupation effective, l'affectation nominative et la première contribution utile ne sont pas documentées par ce seul passage.",
+      "verification_independante": false
+    }
+  ],
+  "note_revision": "Les 45 événements retenus en chronologies v9 disposent d'un passage documentaire préliminaire. L'ancienne assertion S042-E04, datée de mai 2025 sans preuve d'application, a été retirée en conservant la trace de son retrait ; le principe de complément externe documenté dès février 2024 demeure dans S042-E02. Aucun avis humain indépendant.",
+  "evenements_restants_sans_passage": []
+}
