@@ -27,7 +27,7 @@ def charger(chemin: Path) -> dict:
     if not isinstance(rapport.get("version_methode"), str) or not rapport["version_methode"].strip():
         raise ValueError(f"{chemin}: version de méthode absente")
     for champ in ("empreinte_sha256_reponses", "empreinte_sha256_references",
-                  "empreinte_sha256_gel_reponses"):
+                  "empreinte_sha256_questions", "empreinte_sha256_gel_reponses"):
         valeur = rapport.get(champ)
         if not isinstance(valeur, str) or re.fullmatch(r"[a-f0-9]{64}", valeur) is None:
             raise ValueError(f"{chemin}: empreinte absente ou incorrecte : {champ}")
@@ -103,6 +103,12 @@ def comparer(rapports: list[dict]) -> dict:
     ref_hashes = {r["empreinte_sha256_references"] for r in rapports}
     if len(ref_hashes) != 1:
         raise ValueError("Les méthodes ont été évaluées sur des références différentes.")
+    if any(not isinstance(r.get("empreinte_sha256_questions"), str) or
+           not re.fullmatch(r"[a-f0-9]{64}", r["empreinte_sha256_questions"]) for r in rapports):
+        raise ValueError("L'empreinte des questions est absente ou invalide.")
+    questions_hashes = {r["empreinte_sha256_questions"] for r in rapports}
+    if len(questions_hashes) != 1:
+        raise ValueError("Les méthodes ont reçu des fichiers de questions différents.")
     ensembles = [set(ligne["code"] for ligne in r["cas"]) for r in rapports]
     if len({frozenset(s) for s in ensembles}) != 1:
         raise ValueError("Les méthodes n'ont pas les mêmes cas.")
@@ -152,6 +158,7 @@ def comparer(rapports: list[dict]) -> dict:
         "version_schema": "comparaison-appariee-v1",
         "nombre_cas": len(codes),
         "empreinte_sha256_references": next(iter(ref_hashes)),
+        "empreinte_sha256_questions": next(iter(questions_hashes)),
         "methodes": methodes,
         "ecarts": ecarts,
         "limites": [

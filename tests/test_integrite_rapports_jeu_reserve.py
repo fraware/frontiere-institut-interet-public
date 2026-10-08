@@ -11,6 +11,7 @@ def exemple():
         "nombre_cas": 1,
         "empreinte_sha256_reponses": "a" * 64,
         "empreinte_sha256_references": "b" * 64,
+        "empreinte_sha256_questions": "d" * 64,
         "empreinte_sha256_gel_reponses": "c" * 64,
         "cas": [{
             "code": "H01",
@@ -67,4 +68,11 @@ def test_rejette_non_fini(tmp_path):
     rapport = exemple()
     rapport["cas"][0]["duree_secondes"] = float("nan")
     with pytest.raises(ValueError):
+        essayer(tmp_path, rapport)
+
+
+def test_rejette_empreinte_de_questions_absente(tmp_path):
+    rapport = exemple()
+    del rapport["empreinte_sha256_questions"]
+    with pytest.raises(ValueError, match="questions"):
         essayer(tmp_path, rapport)

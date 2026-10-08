@@ -14,6 +14,7 @@ def rapports():
             "version_methode": "1",
             "empreinte_sha256_reponses": nom,
             "empreinte_sha256_references": "meme-reference",
+            "empreinte_sha256_questions": "a" * 64,
             "nombre_cas": 2,
             "cas": [
                 {
@@ -62,3 +63,26 @@ def test_refuse_les_methodes_dupliquees():
     sources[2]["methode"] = "assistant_generaliste"
     with pytest.raises(ValueError):
         comparer(sources)
+
+
+def test_refuse_questions_differentes_meme_si_codes_et_references_identiques():
+    sources = rapports()
+    sources[2]["empreinte_sha256_questions"] = "b" * 64
+    with pytest.raises(ValueError, match="questions différents"):
+        comparer(sources)
+
+
+def test_refuse_empreinte_des_questions_absente_ou_malformee():
+    sources = rapports()
+    del sources[1]["empreinte_sha256_questions"]
+    with pytest.raises(ValueError, match="questions"):
+        comparer(sources)
+    sources = rapports()
+    sources[0]["empreinte_sha256_questions"] = "indetermine"
+    with pytest.raises(ValueError, match="questions"):
+        comparer(sources)
+
+
+def test_conserve_l_empreinte_des_questions_dans_le_bilan():
+    sortie = comparer(rapports())
+    assert sortie["empreinte_sha256_questions"] == "a" * 64
