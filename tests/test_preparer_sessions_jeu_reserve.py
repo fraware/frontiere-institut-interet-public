@@ -78,3 +78,10 @@ def test_refuse_ecart_de_codes(tmp_path):
     modele.write_text(json.dumps(donnees), encoding="utf-8")
     with pytest.raises(ValueError):
         preparer(questions, modele, tmp_path / "experience", "essai_001", 20)
+
+
+def test_refuse_destination_dans_depot_public(tmp_path):
+    questions, modele = echantillon(tmp_path)
+    depot = Path(__file__).resolve().parents[1]
+    with pytest.raises(ValueError, match="extérieure"):
+        preparer(questions, modele, depot / "evaluation" / "sessions_a_ne_pas_creer", "essai_001", 25)
