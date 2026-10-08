@@ -104,6 +104,23 @@ def preparer(
             "version_methode": "a-renseigner",
             "cas": lignes_vides,
         })
+        ecrire_json(dossier / "journal_vierge.json", {
+            "version_schema": "journal-session-v1",
+            "identifiant_session": identifiant,
+            "methode": methode,
+            "operateur_code": None,
+            "version_logiciel_ou_modele": None,
+            "outils_et_sources_autorises": [],
+            "cas": [{
+                "code": code,
+                "debut_iso": None,
+                "fin_iso": None,
+                "budget_respecte": None,
+                "reconnaissance_fortuite_origine": None,
+                "interruptions_ou_ecarts": None,
+                "sources_revelant_solution": [],
+            } for code in codes],
+        })
         instructions = (
             "# Session d'évaluation indépendante\n\n"
             f"Identifiant : {identifiant}\n\n"
@@ -116,7 +133,7 @@ def preparer(
             "Ne pas chercher à identifier l'origine historique des questions.\n\n"
             "Pour chaque cas, relever le début et la fin de la recherche, "
             "le temps humain direct, le temps de vérification, "
-            "les outils et versions employés et tout dépassement de budget. "
+            "les outils et versions employés et tout dépassement de budget, dans le journal joint. "
             "Consigner les URL qui soutiennent directement les propositions. "
             "Fournir le fichier JSON complet, même si certaines listes restent vides. "
             "Conserver les notes de séance en dehors du dépôt public.\n\n"
@@ -126,7 +143,7 @@ def preparer(
         (dossier / "consignes.md").write_text(instructions, encoding="utf-8")
         fichiers[methode] = {
             nom: empreinte((dossier / nom).read_bytes())
-            for nom in ("questions.json", "reponses_vierges.json", "consignes.md")
+            for nom in ("questions.json", "reponses_vierges.json", "journal_vierge.json", "consignes.md")
         }
     manifeste = {
         "version_schema": "preparation-sessions-v1",
