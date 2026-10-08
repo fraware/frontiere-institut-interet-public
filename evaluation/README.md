@@ -44,6 +44,20 @@ Le programme écrit un nouveau manifeste sans écraser un fichier existant. Il c
 
 Pour vérifier ultérieurement l'identité des fichiers, reprendre la commande avec `--verifier`. Conserver le fichier de réponses et le manifeste dans un emplacement approprié ; **communiquer l'empreinte du manifeste à un tiers indépendant avant de consulter les références privées**. Conserver la preuve de réception datée. Cette attestation est une étape procédurale humaine : elle n'est pas automatisée par le présent programme.
 
+Lors de la correction, `scripts/evaluer_jeu_reserve.py` exige désormais `--gel-reponses /chemin/prive/gel_analyste.json`. Il refuse un fichier modifié après le gel, y compris si ses champs restent valides. Le rapport conserve aussi l'empreinte SHA-256 du manifeste de gel réellement présenté. La procédure d'évaluation doit employer pour `--questions` le même fichier octet pour octet que celui utilisé pour créer le gel.
+
+Exemple de correction locale **après attestation extérieure** :
+
+```bash
+python scripts/evaluer_jeu_reserve.py \
+  --questions evaluation/jeu_reserve_v1_questions.json \
+  --manifeste evaluation/jeu_reserve_v1_manifeste.json \
+  --references /chemin/prive/references.json \
+  --reponses /chemin/prive/reponses_analyste.json \
+  --gel-reponses /chemin/prive/gel_analyste.json \
+  --sortie /chemin/prive/rapport_analyste.json
+```
+
 La comparaison avec `scripts/evaluer_jeu_reserve.py` n'est autorisée qu'après cette étape. Pour chaque méthode évaluée, conserver un manifeste distinct ; ne jamais publier les références privées dans le dépôt.
 
 ## Comparer les trois méthodes après correction
