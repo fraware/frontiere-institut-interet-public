@@ -1412,7 +1412,7 @@ def research_export(db: Session = Depends(get_db)) -> dict:
     for ep in episodes:
         need = _active_need(ep)
         public = next((r for r in sorted(ep.searches, key=lambda x: x.id, reverse=True) if r.search_type == "PUBLIQUE"), None)
-        result = ep.results[-1] if ep.results else None
+        result = max(ep.results, key=lambda r: r.id, default=None)
         rows.append({
             "code": ep.code,
             "organization": ep.organization.name,
@@ -1421,12 +1421,18 @@ def research_export(db: Session = Depends(get_db)) -> dict:
             "need_preexisting_frontiere": ep.need_preexisting_frontiere,
             "need_locked": bool(need and need.locked_at),
             "public_result": public.public_result if public else None,
+            "public_search_record_id": public.id if public else None,
             "result_status": result.result_status if result else None,
+            "result_record_id": result.id if result else None,
             "dominant_friction": result.dominant_friction if result else None,
-            "frontiere_minutes": result.frontiere_minutes if result else 0,
-            "institution_minutes": result.institution_minutes if result else 0,
+            "first_useful_contribution_at": (
+                result.first_useful_contribution_at.isoformat()
+                if result and result.first_useful_contribution_at else None
+            ),
+            "frontiere_minutes": result.frontiere_minutes if result else None,
+            "institution_minutes": result.institution_minutes if result else None,
         })
-    return {"schema_version": "0.2", "episodes": rows}
+    return {"schema_version": "0.3", "episodes": rows}
 
 
 @app.get("/evaluation", response_class=HTMLResponse)
