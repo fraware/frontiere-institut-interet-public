@@ -114,7 +114,7 @@ def verifier(signaux: dict, chronologies: dict) -> dict:
                 continue
             evenement_id = evenement.get("id_evenement")
             if identifiants_obligatoires or evenement_id is not None:
-                if not isinstance(evenement_id, str) or not re.fullmatch(rf"{code}-E\\d{{2,}}", evenement_id):
+                if not isinstance(evenement_id, str) or not re.fullmatch(rf"{code}-E\d{{2,}}", evenement_id):
                     erreurs.append(f"Chronologie {code}, événement {indice} : identifiant stable invalide.")
                 elif evenement_id in codes_evenements:
                     erreurs.append(f"Événement {evenement_id} : identifiant stable répété.")
