@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 from verifier_reponses_jeu_reserve import verifier_reponses
+from geler_reponses_jeu_reserve import verifier_manifeste
 
 
 def normaliser(valeurs):
@@ -33,6 +34,7 @@ def principal() -> None:
     analyseur.add_argument("--manifeste", required=True)
     analyseur.add_argument("--references", required=True)
     analyseur.add_argument("--reponses", required=True)
+    analyseur.add_argument("--gel-reponses", required=True, help="Manifeste de gel créé avant ouverture des références.")
     analyseur.add_argument("--sortie", default="resultats_jeu_reserve.json")
     arguments = analyseur.parse_args()
 
@@ -41,15 +43,19 @@ def principal() -> None:
     references_path = Path(arguments.references)
     reponses_path = Path(arguments.reponses)
 
+    # Vérifier le gel AVANT de lire le corrigé privé.
     questions = json.loads(questions_path.read_text(encoding="utf-8"))
-    manifeste = json.loads(manifeste_path.read_text(encoding="utf-8"))
-    references = json.loads(references_path.read_text(encoding="utf-8"))
     reponses = json.loads(reponses_path.read_text(encoding="utf-8"))
-
     try:
         verifier_reponses(questions, reponses)
-    except ValueError as erreur:
-        raise SystemExit(f"réponses invalides : {erreur}") from erreur
+        gel = json.loads(Path(arguments.gel_reponses).read_text(encoding="utf-8"))
+    except (ValueError, OSError) as erreur:
+        raise SystemExit(f"réponses ou manifeste de gel invalides : {erreur}") from erreur
+    if not verifier_manifeste(questions_path, reponses_path, gel):
+        raise SystemExit("Le gel des réponses ne correspond pas aux fichiers : correction refusée.")
+
+    manifeste = json.loads(manifeste_path.read_text(encoding="utf-8"))
+    references = json.loads(references_path.read_text(encoding="utf-8"))
 
     empreinte_reelle = empreinte(references_path)
     empreinte_attendue = manifeste["empreinte_sha256_references"]
@@ -98,6 +104,7 @@ def principal() -> None:
         "nombre_cas": len(lignes),
         "empreinte_sha256_references": empreinte_reelle,
         "empreinte_sha256_reponses": empreinte(reponses_path),
+        "empreinte_sha256_gel_reponses": empreinte(Path(arguments.gel_reponses)),
         "voies_precision_moyenne": moyenne("voies", "precision"),
         "voies_rappel_moyen": moyenne("voies", "rappel"),
         "voies_mesure_harmonique_moyenne": moyenne("voies", "mesure_harmonique"),
