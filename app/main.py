@@ -255,6 +255,58 @@ def page_sources_recherche(request: Request, terme: str = "", page: int = 1):
     )
 
 
+def _lire_besoins_publics(nom: str) -> tuple[list[dict], dict]:
+    """Consulter un index local explicite sans accès réseau ni SQL."""
+    base = BASE_DIR.parent / "institutionnel" / "besoins_publics"
+    fichiers = {
+        "marches": ("annonces_boamp.json", "etat_boamp.json", "annonces"),
+        "emplois": ("ressources_emplois_publics.json", "etat_emplois_publics.json", "ressources"),
+    }
+    if nom not in fichiers:
+        raise HTTPException(422, "Source inconnue.")
+    nom_fichier, nom_etat, champ = fichiers[nom]
+    try:
+        dossier = json.loads((base / nom_fichier).read_text(encoding="utf-8")) if (
+            base / nom_fichier).is_file() else {}
+        etat = json.loads((base / nom_etat).read_text(encoding="utf-8")) if (
+            base / nom_etat).is_file() else {}
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise HTTPException(503, "Le référentiel des besoins publics est illisible.") from exc
+    if not isinstance(dossier, dict) or not isinstance(etat, dict):
+        raise HTTPException(503, "Structure incorrecte des besoins publics.")
+    ensemble = dossier.get(champ, [])
+    if not isinstance(ensemble, list):
+        raise HTTPException(503, "Liste de notices incorrecte.")
+    return ensemble, etat
+
+
+@app.get("/api/v1/besoins-publics")
+def api_besoins_publics(source: str = "marches", page: int = 1, limite: int = 30) -> dict:
+    if not 1 <= page <= 1000 or not 1 <= limite <= 100:
+        raise HTTPException(422, "Pagination des besoins publics hors limites.")
+    entrees, etat = _lire_besoins_publics(source)
+    debut = (page - 1) * limite
+    return {
+        "source": source,
+        "total": len(entrees),
+        "page": page,
+        "limite": limite,
+        "controle_le": etat.get("controle_le"),
+        "collecte_partielle": etat.get("recherche_partielle"),
+        "fichiers_integraux_recopies": False,
+        "observations": entrees[debut:debut + limite],
+    }
+
+
+@app.get("/besoins-publics", response_class=HTMLResponse)
+def page_besoins_publics(request: Request, source: str = "marches", page: int = 1):
+    donnees = api_besoins_publics(source=source, page=page, limite=40)
+    return templates.TemplateResponse(
+        request=request, name="besoins_publics.html",
+        context={"donnees": donnees, "source": source},
+    )
+
+
 @app.get("/api/v1/catalogue-national")
 def api_catalogue_national(page: int = 1) -> dict:
     """Lire exactement une page versionnée, sans charger toutes les notices."""
