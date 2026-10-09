@@ -1,0 +1,95 @@
+name: "Index documentaire des avis BOAMP historiques"
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "institutionnel/besoins_publics/historique_boamp/**"
+      - "scripts/rechercher_historique_boamp.py"
+      - ".github/workflows/index-boamp-historique.yml"
+  schedule:
+    - cron: "37 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: index-public-boamp
+  cancel-in-progress: false
+
+jobs:
+  construire:
+    if: github.repository == 'fraware/frontiere-institut-interet-public'
+    name: Vérifier et indexer les avis officiels archivés
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Récupérer les archives publiées
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: Préparer Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Vérifier la syntaxe du constructeur
+        run: python -m compileall -q scripts/rechercher_historique_boamp.py
+
+      - name: Construire l'index en vérifiant chaque archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          DOSSIER="$RUNNER_TEMP/frontiere-boamp"
+          mkdir -p "$DOSSIER"
+          python scripts/rechercher_historique_boamp.py indexer \
+            --index "$DOSSIER/index-avis-boamp.sqlite3" \
+            > "$DOSSIER/bilan-index.json"
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import sqlite3
+
+          dossier = Path(os.environ["RUNNER_TEMP"]) / "frontiere-boamp"
+          base = dossier / "index-avis-boamp.sqlite3"
+          bilan = json.loads((dossier / "bilan-index.json").read_text(encoding="utf-8"))
+          with sqlite3.connect(f"file:{base}?mode=ro", uri=True) as con:
+              jours = con.execute("SELECT COUNT(*) FROM provenance").fetchone()[0]
+              avis = con.execute("SELECT COUNT(*) FROM recherche").fetchone()[0]
+              integrite = con.execute("PRAGMA integrity_check").fetchone()[0]
+          if integrite != "ok" or (jours, avis) != (
+              bilan["nombre_jours_indexes"], bilan["nombre_avis_indexes"]
+          ):
+              raise SystemExit("Index de recherche incohérent avec le bilan.")
+          preuve = {
+              "version": "publication-index-boamp-v1",
+              "revision_depot": os.environ["GITHUB_SHA"],
+              "jours_indexes": jours,
+              "avis_indexes": avis,
+              "octets_index": base.stat().st_size,
+              "sha256_index": hashlib.sha256(base.read_bytes()).hexdigest(),
+              "completude_historique_etablie": False,
+              "validation_correction_institutionnelle": False,
+          }
+          (dossier / "preuve-index.json").write_text(
+              json.dumps(preuve, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(preuve, ensure_ascii=False))
+          PY
+
+      - name: Publier l'index vérifié en artefact téléchargeable
+        uses: actions/upload-artifact@v4
+        with:
+          name: index-public-boamp-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/frontiere-boamp/index-avis-boamp.sqlite3
+            ${{ runner.temp }}/frontiere-boamp/bilan-index.json
+            ${{ runner.temp }}/frontiere-boamp/preuve-index.json
+          retention-days: 14
+          if-no-files-found: error
