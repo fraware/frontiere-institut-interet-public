@@ -173,7 +173,11 @@ def main() -> None:
             raise EchecCatalogue("Ancien fichier invalide.")
         nouveau, rapport = executer(ancien)
         if rapport["pages_reussies"] == 0:
-            raise EchecCatalogue("Aucune page officielle reçue ; conserver le fichier précédent.")
+            detail = json.dumps(rapport.get("erreurs", [])[:3], ensure_ascii=False)
+            raise EchecCatalogue(
+                "Aucune page officielle reçue ; conserver le fichier précédent. "
+                "Erreurs publiques de collecte : " + detail
+            )
         _enregistrer(a.sortie, nouveau)
         _enregistrer(a.etat, rapport)
         print(json.dumps(rapport, ensure_ascii=False, indent=2))
