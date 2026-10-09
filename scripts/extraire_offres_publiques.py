@@ -85,6 +85,7 @@ def traiter_csv(chemin: Path, colonnes: list[str]) -> tuple[dict[str, dict], dic
     if not isinstance(colonnes, list) or len(colonnes) < len(CLES) or len(colonnes) > 300:
         raise EchecExtraction("Schéma de colonnes non vérifié.")
     offres: dict[str, dict] = {}
+    variations: dict[str, set[str]] = {}
     lignes, oubliees, identiques, cellules_tronquees = 0, 0, 0, 0
     csv.field_size_limit(4_000_000)
     with chemin.open("r", encoding="utf-8-sig", newline="") as source:
@@ -97,15 +98,22 @@ def traiter_csv(chemin: Path, colonnes: list[str]) -> tuple[dict[str, dict], dic
             lignes += 1
             if lignes > MAX_LIGNES:
                 raise EchecExtraction("Plafond des offres dépassé ; répartir la collecte.")
+            if None in ligne:
+                raise EchecExtraction("La ligne comporte davantage de cellules que le schéma.")
             valeur = ligne_offre(ligne)
             if valeur is None:
                 oubliees += 1
                 continue
             cellules_tronquees += len(valeur["champs_tronques"])
-            cle = valeur["reference"]
+            reference = valeur["reference"]
+            projection = json.dumps(valeur, ensure_ascii=False, sort_keys=True,
+                                    separators=(",", ":")).encode("utf-8")
+            cle = hashlib.sha256(projection).hexdigest()
+            variations.setdefault(reference, set()).add(cle)
+            valeur["cle_enregistrement"] = cle
             if cle in offres:
                 if offres[cle] != valeur:
-                    raise EchecExtraction(f"Référence d'emploi contradictoire : {cle[:60]}")
+                    raise EchecExtraction("Collision d'empreintes des annonces.")
                 identiques += 1
                 continue
             offres[cle] = valeur
@@ -115,6 +123,9 @@ def traiter_csv(chemin: Path, colonnes: list[str]) -> tuple[dict[str, dict], dic
         "lignes_lues": lignes,
         "lignes_sans_reference": oubliees,
         "doublons_identiques": identiques,
+        "references_distinctes": len(variations),
+        "references_avec_plusieurs_variantes": sum(len(x) > 1 for x in variations.values()),
+        "variantes_supplementaires_de_reference": sum(len(x)-1 for x in variations.values()),
         "offres_distinctes": len(offres),
         "cellules_tronquees": cellules_tronquees,
         "couverture_integrale_du_csv": oubliees == 0 and cellules_tronquees == 0,
