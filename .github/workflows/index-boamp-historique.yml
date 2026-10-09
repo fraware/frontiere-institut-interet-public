@@ -66,11 +66,18 @@ jobs:
               bilan["nombre_jours_indexes"], bilan["nombre_avis_indexes"]
           ):
               raise SystemExit("Index de recherche incohérent avec le bilan.")
+          archives = Path("institutionnel/besoins_publics/historique_boamp")
+          comprimés = sorted(archives.glob("20??/??/20??-??-??.jsonl.gz"))
+          manifestes = sorted(archives.glob("20??/??/20??-??-??.json"))
+          if len(comprimés) != jours or len(manifestes) != jours:
+              raise SystemExit("Nombre d'archives et de manifestes incohérent.")
           preuve = {
               "version": "publication-index-boamp-v1",
               "revision_depot": os.environ["GITHUB_SHA"],
               "jours_indexes": jours,
               "avis_indexes": avis,
+              "octets_archives_compressees": sum(p.stat().st_size for p in comprimés),
+              "octets_manifestes": sum(p.stat().st_size for p in manifestes),
               "octets_index": base.stat().st_size,
               "sha256_index": hashlib.sha256(base.read_bytes()).hexdigest(),
               "completude_historique_etablie": False,
