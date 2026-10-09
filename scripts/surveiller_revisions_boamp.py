@@ -83,7 +83,7 @@ def repertoires_revision(dossier: Path, jour: str, empreinte: str) -> tuple[Path
 
 def conserver_revision(dossier: Path, jour: str, ancien_hash: str,
                        ancienne: list[dict], nouveau: list[dict],
-                       observe_le: datetime) -> dict:
+                       observe_le: datetime, initial_le: str) -> dict:
     brut, empreinte_source = serialiser(nouveau)
     gzip_hash = hashlib.sha256(brut).hexdigest()
     archive, fiche = repertoires_revision(dossier, jour, empreinte_source)
@@ -99,6 +99,7 @@ def conserver_revision(dossier: Path, jour: str, ancien_hash: str,
         "source": BOAMP,
         "jour_parution": jour,
         "recontrole_le": observe_le.replace(microsecond=0).isoformat(),
+        "releve_initial_le": initial_le,
         "cliche_initial_sha256_gzip": ancien_hash,
         "cliche_revise_sha256_gzip": gzip_hash,
         "cliche_revise_sha256_decompresse": empreinte_source,
@@ -154,6 +155,10 @@ def surveiller(dossier: Path = DOSSIER, obtenir=None, patienter=time.sleep,
     for fiche in fiches:
         try:
             jour, archive, ancien_hash, anciens = avis_archive(fiche, dossier)
+            meta_initiale = json.loads(fiche.read_text(encoding="utf-8"))
+            initial_le = meta_initiale.get("collecte_le")
+            if not isinstance(initial_le, str) or not initial_le:
+                raise RelectureInvalide("Date du relevé initial absente.")
             # La source garde sa politique de requêtes et ses limites habituelles.
             from datetime import date
             jour_date = date.fromisoformat(jour)
@@ -166,7 +171,7 @@ def surveiller(dossier: Path = DOSSIER, obtenir=None, patienter=time.sleep,
                 controles.append({"jour": jour, "variation": False})
             else:
                 controles.append(conserver_revision(
-                    dossier, jour, ancien_hash, anciens_tries, nouveaux, maintenant,
+                    dossier, jour, ancien_hash, anciens_tries, nouveaux, maintenant, initial_le,
                 ))
         except (OSError, ValueError, EOFError, json.JSONDecodeError) as erreur:
             erreurs.append({"jour": fiche.stem, "motif": type(erreur).__name__})
