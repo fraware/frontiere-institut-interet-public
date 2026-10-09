@@ -1,43 +1,39 @@
-"""Les essais de propositions n'obtiennent aucun droit de modification distant."""
+"""Vérifier les procédures passées en lecture seule et la chaîne programmée."""
 from pathlib import Path
 
 RACINE = Path(__file__).resolve().parents[1]
+DOSSIER = RACINE / ".github/workflows"
 
 
-def blocs(nom: str) -> tuple[str, str, str]:
-    texte = (RACINE / ".github/workflows" / nom).read_text(encoding="utf-8")
-    assert "jobs:\n  verification-proposition:\n" in texte
-    haut, parties = texte.split("jobs:\n  verification-proposition:\n", 1)
-    essai, collecte = parties.split("\n  ingestion:\n", 1)
-    return haut, essai, collecte
+def procedure(nom: str) -> str:
+    return (DOSSIER / nom).read_text(encoding="utf-8")
 
 
-def test_annuaire_et_territoires_separent_leurs_permissions():
-    for nom in ("ingestion-annuaire-local.yml", "ingestion-cog.yml"):
-        haut, essai, collecte = blocs(nom)
-        assert "permissions:\n  contents: read" in haut
-        assert "if: github.event_name == 'pull_request'" in essai
-        assert "contents: read" in essai
-        assert "contents: write" not in essai
-        assert "GH_TOKEN" not in essai
-        assert "git push" not in essai
-        assert "persist-credentials: false" in essai
-        assert "if: github.event_name != 'pull_request'" in collecte
-        assert "permissions:\n      contents: write" in collecte
-        assert "GH_TOKEN:" in collecte
-        assert "persist-credentials: false" in collecte
-        assert "gh auth setup-git" in collecte
-        assert "git push origin HEAD:main" in collecte
-        assert "pull-requests: write" not in collecte
-        assert "actions: write" not in collecte
+def test_trois_controles_historiques_sans_ecriture():
+    for nom in ("ingestion-roae.yml", "ingestion-annuaire-local.yml", "ingestion-cog.yml"):
+        contenu = procedure(nom)
+        assert "pull_request:" in contenu
+        assert "contents: read" in contenu
+        assert "contents: write" not in contenu
+        assert "pull-requests: write" not in contenu
+        assert "actions: write" not in contenu
+        assert "git push" not in contenu
+        assert "gh auth" not in contenu
+        assert "workflow_run:" not in contenu
+        assert "schedule:" not in contenu
+        assert "persist-credentials: false" in contenu
+        assert "github.workflow, github.event.pull_request.number" in contenu
 
 
-def test_dependances_de_collecte_et_alertes_conservees():
-    annuaire = (RACINE / ".github/workflows/ingestion-annuaire-local.yml").read_text(encoding="utf-8")
-    cog = (RACINE / ".github/workflows/ingestion-cog.yml").read_text(encoding="utf-8")
-    assert 'workflows: ["Ingestion du référentiel DILA"]' in annuaire
-    assert 'workflows: ["Ingestion de l\'annuaire local"]' in cog
-    assert "github.event.workflow_run.conclusion == 'success'" in annuaire
-    assert "github.event.workflow_run.conclusion == 'success'" in cog
-    assert "cancel-in-progress: false" in annuaire
-    assert "cancel-in-progress: false" in cog
+def test_chaine_programmee_et_seule_habilitee_pour_ces_trois_sources():
+    contenu = procedure("preparer-proposition-referentiel.yml")
+    assert 'cron: "47 5 * * *"' in contenu
+    assert "cancel-in-progress: false" in contenu
+    assert "contents: write" in contenu
+    assert "pull-requests: write" in contenu
+    assert "actions: write" in contenu
+    assert "persist-credentials: false" in contenu
+    assert "scripts/publier_mise_a_jour_institutionnelle.py --source referentiel --publier" in contenu
+    assert "git push origin HEAD:main" not in contenu
+    assert "if: ${{ github.event_name == 'schedule' || inputs.publier }}" in contenu
+    assert "if: ${{ github.event_name != 'schedule' && !inputs.publier }}" in contenu

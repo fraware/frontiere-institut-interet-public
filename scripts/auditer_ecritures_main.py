@@ -14,13 +14,7 @@ import re
 RACINE = Path(__file__).resolve().parents[1]
 DOSSIER = RACINE / ".github" / "workflows"
 # Dette existante autorisée pour l'audit, et non approuvée comme modèle cible.
-ECRITURES_HISTORIQUES = frozenset({
-    "ingestion-roae.yml",
-    "ingestion-annuaire-local.yml",
-    "ingestion-cog.yml",
-    "ingestion-rnsr.yml",
-    "surveillance-institutionnelle.yml",
-})
+ECRITURES_HISTORIQUES = frozenset()  # Aucune écriture directe admise comme héritage.
 PUSH = re.compile(r"^\s*git\s+push(?:\s|$)", re.MULTILINE)
 
 

@@ -45,12 +45,12 @@ def test_la_procedure_ne_publie_jamais_sans_ordre_explicite():
     texte = chemin.read_text(encoding="utf-8")
     assert "  workflow_dispatch:" in texte
     assert "default: false" in texte
-    assert "  schedule:" not in texte
+    assert 'cron: "47 5 * * *"' in texte
     assert "  push:" not in texte
     assert "persist-credentials: false" in texte
     assert "cancel-in-progress: false" in texte
-    assert "if: ${{ !inputs.publier }}" in texte
-    assert "if: ${{ inputs.publier }}" in texte
+    assert "if: ${{ github.event_name != 'schedule' && !inputs.publier }}" in texte
+    assert "if: ${{ github.event_name == 'schedule' || inputs.publier }}" in texte
     assert "scripts/publier_mise_a_jour_institutionnelle.py --source referentiel --publier" in texte
     assert "git push" not in texte
 

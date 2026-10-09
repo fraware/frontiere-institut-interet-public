@@ -1,18 +1,9 @@
 name: Ingestion de l'annuaire local
 
+# Contrôle en lecture seule des modifications proposées.
+# Les trois collectes réelles sont traitées ensemble dans
+# preparer-proposition-referentiel.yml.
 on:
-  workflow_run:
-    workflows: ["Ingestion du référentiel DILA"]
-    types: [completed]
-    branches: [main]
-  push:
-    branches: [main]
-    paths:
-      - "scripts/ingerer_annuaire_local.py"
-      - "scripts/rechercher_competence_geographique.py"
-      - "scripts/verifier_variation_referentiel.py"
-      - ".github/workflows/ingestion-annuaire-local.yml"
-      - ".github/workflows/ingestion-roae.yml"
   pull_request:
     branches: [main]
     paths:
@@ -24,19 +15,17 @@ on:
       - "tests/test_snapshot_annuaire_local.py"
       - "tests/test_variation_referentiel.py"
       - ".github/workflows/ingestion-annuaire-local.yml"
-      - ".github/workflows/ingestion-roae.yml"
-  workflow_dispatch:
+      - ".github/workflows/preparer-proposition-referentiel.yml"
 
 permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.event_name == 'pull_request' && format('referentiel-institutionnel-pr-{0}', github.event.pull_request.number) || 'referentiel-institutionnel-main' }}
-  cancel-in-progress: false
+  group: ${{ format('validation-{0}-pr-{1}', github.workflow, github.event.pull_request.number) }}
+  cancel-in-progress: true
 
 jobs:
   verification-proposition:
-    if: github.event_name == 'pull_request'
     name: Vérifier les transformations des services locaux en lecture seule
     runs-on: ubuntu-latest
     timeout-minutes: 12
@@ -60,122 +49,3 @@ jobs:
       - name: Contrôler les transformations et les données d'essai
         run: python -m pytest -q tests/test_ingestion_annuaire_local.py tests/test_recherche_competence_geographique.py tests/test_variation_referentiel.py tests/test_snapshot_annuaire_local.py
 
-  ingestion:
-    if: github.event_name != 'pull_request' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
-    permissions:
-      contents: write
-    name: Actualiser les services publics locaux
-    runs-on: ubuntu-latest
-    timeout-minutes: 40
-
-    steps:
-      - name: Récupérer le dépôt
-        uses: actions/checkout@v7
-        with:
-          ref: main
-          persist-credentials: false
-          fetch-depth: 0
-
-      - name: Installer Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: "3.12"
-
-      - name: Installer les outils de test
-        run: python -m pip install "pytest>=8,<10"
-
-      - name: Vérifier les transformations
-        run: |
-          python -m pytest -q \
-            tests/test_ingestion_annuaire_local.py \
-            tests/test_recherche_competence_geographique.py \
-            tests/test_variation_referentiel.py
-
-      - name: Ingérer l'Annuaire courant
-        run: python scripts/ingerer_annuaire_local.py
-
-      - name: Vérifier le snapshot territorial
-        run: python -m pytest -q tests/test_snapshot_annuaire_local.py
-
-      - name: Vérifier une compétence géographique réelle
-        shell: bash
-        run: |
-          python scripts/rechercher_competence_geographique.py --commune 75056 --type mairie > /tmp/competence-paris.json
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          donnees = json.loads(Path("/tmp/competence-paris.json").read_text(encoding="utf-8"))
-          assert donnees
-          assert any(
-              organisme.get("resolu")
-              for entree in donnees
-              for organisme in entree.get("organismes", [])
-          ), donnees
-          print(json.dumps(donnees[:3], ensure_ascii=False))
-          PY
-
-      - name: Vérifier les invariants de couverture
-        shell: bash
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          stats = json.loads(Path("institutionnel/statistiques_annuaire_local.json").read_text(encoding="utf-8"))
-          roae = json.loads(Path("institutionnel/statistiques_roae.json").read_text(encoding="utf-8"))
-          resolution = json.loads(Path("institutionnel/resolution_roae_local.json").read_text(encoding="utf-8"))
-          manifeste = json.loads(Path("institutionnel/instantanes/annuaire_local_manifest.json").read_text(encoding="utf-8"))
-
-          assert stats["nombre_enregistrements_export_complet"] >= 90000
-          assert stats["nombre_services_locaux_source"] >= 80000
-          assert stats["nombre_entites_canoniques"] == stats["nombre_services_locaux_source"]
-          assert stats["categories_export"]["SI"] == roae["nombre_entites_canoniques"]
-          assert (
-              stats["categories_export"]["SI"]
-              + stats["categories_export"]["SL"]
-              + stats["categories_export"]["SIL"]
-              == stats["nombre_enregistrements_export_complet"]
-          )
-          assert resolution["restantes_apres_croisement"] == 0
-          assert manifeste.get("empreinte_dependance_roae")
-          assert stats["stockage"]["octets_total_canonique"] < 320_000_000
-
-          print(json.dumps({
-              "annuaire_total": stats["nombre_enregistrements_export_complet"],
-              "si": stats["categories_export"]["SI"],
-              "sl_sil": stats["nombre_services_locaux_source"],
-              "relations_locales": stats["nombre_relations_hierarchiques"],
-              "territoires": stats["couverture"]["avec_territoire_direct"],
-              "anomalies_locales": stats["hierarchie"]["anomalies"],
-              "anomalies_roae_restantes": resolution["restantes_apres_croisement"],
-              "dependance_roae": manifeste["empreinte_dependance_roae"],
-          }, ensure_ascii=False))
-          PY
-
-      - name: Vérifier l'amplitude du changement
-        run: python scripts/verifier_variation_referentiel.py --source annuaire
-
-      - name: Enregistrer les changements
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        shell: bash
-        run: |
-          git add \
-            institutionnel/entites/locales \
-            institutionnel/relations/locales \
-            institutionnel/instantanes/annuaire_local_manifest.json \
-            institutionnel/statistiques_annuaire_local.json \
-            institutionnel/anomalies_annuaire_local.json \
-            institutionnel/resolution_roae_local.json
-
-          if git diff --cached --quiet; then
-            echo "Le référentiel territorial est déjà à jour."
-            exit 0
-          fi
-
-          git config user.name "frontiere-referentiel"
-          git config user.email "frontiere-referentiel@users.noreply.github.com"
-          git commit -m "Territoire DILA — actualiser les services publics locaux"
-          gh auth setup-git
-          git push origin HEAD:main

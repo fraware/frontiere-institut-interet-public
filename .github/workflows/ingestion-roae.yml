@@ -1,87 +1,46 @@
 name: Ingestion du référentiel DILA
 
+# Les collectes en écriture sont désormais coordonnées dans
+# preparer-proposition-referentiel.yml. Cette procédure teste les changements.
 on:
-  schedule:
-    - cron: "47 5 * * *"
+  pull_request:
+    branches: [main]
+    paths:
+      - "scripts/ingerer_roae.py"
+      - "tests/test_ingestion_roae.py"
+      - "tests/test_snapshot_roae.py"
+      - ".github/workflows/ingestion-roae.yml"
+      - ".github/workflows/preparer-proposition-referentiel.yml"
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: referentiel-institutionnel-main
-  cancel-in-progress: false
+  group: ${{ format('validation-{0}-pr-{1}', github.workflow, github.event.pull_request.number) }}
+  cancel-in-progress: true
 
 jobs:
-  ingestion:
-    name: Importer le référentiel de l'État
+  verification:
+    name: Vérifier le référentiel administratif sans écriture
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-
+    timeout-minutes: 12
+    permissions:
+      contents: read
     steps:
-      - name: Récupérer le dépôt
+      - name: Récupérer le code à contrôler
         uses: actions/checkout@v7
         with:
-          ref: main
-          fetch-depth: 0
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
 
       - name: Installer Python
         uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
-      - name: Installer les outils de test
+      - name: Installer les outils d'essai
         run: python -m pip install "pytest>=8,<10"
 
-      - name: Vérifier l'importeur
+      - name: Vérifier les transformations administratives
         run: python -m pytest -q tests/test_ingestion_roae.py tests/test_snapshot_roae.py
-
-      - name: Importer la dernière publication DILA
-        run: python scripts/ingerer_roae.py
-
-      - name: Vérifier les données produites
-        shell: bash
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          stats = json.loads(Path("institutionnel/statistiques_roae.json").read_text(encoding="utf-8"))
-          manifest = json.loads(Path("institutionnel/instantanes/roae_manifest.json").read_text(encoding="utf-8"))
-          anomalies = json.loads(Path("institutionnel/anomalies_roae.json").read_text(encoding="utf-8"))
-
-          assert stats["nombre_services_source"] >= 5000, stats
-          assert stats["nombre_entites_canoniques"] == stats["nombre_services_source"]
-          assert manifest["nombre_services"] == stats["nombre_services_source"]
-          assert anomalies["nombre_anomalies_hierarchiques"] == stats["liens_hierarchiques_non_resolus"]
-
-          print(json.dumps({
-              "services": stats["nombre_services_source"],
-              "relations": stats["nombre_relations_hierarchiques"],
-              "parents_principaux": stats["hierarchie"]["avec_parent_principal"],
-              "sans_parent_principal": stats["hierarchie"]["sans_parent_principal"],
-              "missions": stats["couverture"]["avec_mission"],
-              "responsables": stats["couverture"]["avec_responsable"],
-              "siren": stats["couverture"]["avec_siren"],
-              "liens_non_resolus": stats["liens_hierarchiques_non_resolus"],
-              "sha256_zip": manifest["sha256_zip"],
-          }, ensure_ascii=False))
-          PY
-
-      - name: Vérifier l'amplitude du changement
-        run: python scripts/verifier_variation_referentiel.py --source roae
-
-      - name: Enregistrer le nouvel état
-        shell: bash
-        run: |
-          git add institutionnel/entites/roae institutionnel/relations/roae institutionnel/instantanes/roae_manifest.json institutionnel/statistiques_roae.json institutionnel/anomalies_roae.json
-
-          if git diff --cached --quiet; then
-            echo "Le référentiel canonique est déjà à jour."
-            exit 0
-          fi
-
-          git config user.name "frontiere-referentiel"
-          git config user.email "frontiere-referentiel@users.noreply.github.com"
-          git commit -m "Référentiel DILA — actualiser l'organisation administrative de l'État"
-          git push origin HEAD:main
