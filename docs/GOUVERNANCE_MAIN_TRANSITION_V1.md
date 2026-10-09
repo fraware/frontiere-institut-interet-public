@@ -4,7 +4,7 @@
 
 ## Constat vérifié dans les procédures
 
-Cinq procédures actuelles exécutent littéralement une commande de poussée Git vers `main` : importations référentiel de l'organisation administrative de l'État, Annuaire local, COG et RNSR, ainsi que surveillance des sources. Le contrôle `python scripts/auditer_ecritures_main.py` énumère ces écritures historiques et fait échouer l'intégration si une **nouvelle procédure** ajoute une écriture directe littérale. Il ne détecte pas les actions tierces ou les commandes construites dynamiquement.
+Trois procédures de la chaîne administrative et territoriale exécutent encore littéralement une commande de poussée Git vers `main` : organisation administrative de l'État, Annuaire local et COG. La collecte des structures de recherche et la surveillance des sources produisent désormais des propositions distinctes. Le contrôle `python scripts/auditer_ecritures_main.py` énumère ces écritures historiques et fait échouer l'intégration si une **nouvelle procédure** ajoute une écriture directe littérale. Il ne détecte pas les actions tierces ou les commandes construites dynamiquement.
 
 Les ingestions référentiel de l'organisation administrative de l'État, Annuaire local et COG fonctionnent actuellement avec dépendances et déclenchements successifs. **Protéger `main` en interdisant les poussées directes avant d'avoir migré ces procédures entraînerait un risque d'interruption des actualisations.**
 
@@ -21,7 +21,7 @@ Les ingestions référentiel de l'organisation administrative de l'État, Annuai
 1. Enregistrer les vérifications obligatoires **réellement présentes** dans les résultats d'intégration continue avant d'éditer une règle de protection.
 2. Réunir la chaîne référentiel de l'organisation administrative de l'État → Annuaire local → COG dans une orchestration privilégiée distincte des essais externes. Pour chaque nouveau lot, créer une branche technique et une proposition de fusion portant sur les données normalisées et leurs manifestes, sans pousser directement sur `main`.
 3. Réexaminer les déclenchements `déclenchement à la fin d'une autre procédure` : aujourd'hui la fin de l'import référentiel de l'organisation administrative de l'État signifie aussi la fin de son écriture. Avec une proposition de fusion en attente, cette hypothèse devient fausse. Déclencher les étapes dépendantes après la fusion appropriée ou exécuter leur chaîne dans une même orchestration.
-4. Appliquer la même politique au RNSR et à la surveillance, en préservant la sérialisation des écritures qui partagent des fichiers ou des empreintes.
+4. Vérifier sur une exécution réelle que les procédures de structures de recherche et de surveillance ouvrent leurs propositions, déclenchent les contrôles et conservent les alertes critiques. Leurs réglages administratifs doivent permettre ces actions.
 5. Vérifier sur une branche expérimentale les autorisations des jetons, les contrôles de fusion et les réactions aux changements du référentiel. Une fusion automatique exige une identité et des permissions correctement configurées : ne jamais lui accorder un contournement général pour simplifier l'intégration.
 6. Activer ensuite la règle administrative `main` et vérifier par lecture des réglages et par essais non destructifs qu'elle est effectivement appliquée. Le ticket n° 54 reste ouvert jusqu'à cette preuve.
 

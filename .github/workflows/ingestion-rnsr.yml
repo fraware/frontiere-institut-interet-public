@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "scripts/ingerer_structures_rnsr.py"
+      - "scripts/publier_mise_a_jour_institutionnelle.py"
       - ".github/workflows/ingestion-rnsr.yml"
   pull_request:
     branches: [main]
@@ -14,23 +15,55 @@ on:
       - ".github/workflows/ingestion-rnsr.yml"
   workflow_dispatch:
 
+# Les propositions externes ne possèdent que les permissions de lecture.
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: ${{ github.event_name == 'pull_request' && format('referentiel-rnsr-pr-{0}', github.event.pull_request.number) || 'referentiel-institutionnel-main' }}
   cancel-in-progress: false
 
 jobs:
-  ingestion:
-    name: Importer les structures de recherche publiques actives
+  verification-proposition:
+    if: github.event_name == 'pull_request'
+    name: Vérifier les transformations RNSR sans écriture
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 10
+    permissions:
+      contents: read
     steps:
-      - name: Récupérer le dépôt
+      - name: Récupérer la proposition
         uses: actions/checkout@v7
         with:
-          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || 'main' }}
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+
+      - name: Installer Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Installer les outils d'essai
+        run: python -m pip install "pytest>=8,<10"
+
+      - name: Tester les importations fictives
+        run: python -m pytest -q tests/test_ingestion_rnsr.py
+
+  ingestion:
+    if: github.event_name != 'pull_request'
+    name: Préparer les structures publiques de recherche
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    steps:
+      - name: Récupérer la branche principale sans conserver de jeton
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          persist-credentials: false
           fetch-depth: 0
 
       - name: Installer Python
@@ -94,15 +127,8 @@ jobs:
           }, ensure_ascii=False, indent=2))
           PY
 
-      - name: Enregistrer les structures validées
-        if: github.event_name != 'pull_request'
-        run: |
-          git add institutionnel/entites/rnsr institutionnel/statistiques_rnsr.json institutionnel/instantanes/rnsr_manifest.json
-          if git diff --cached --quiet; then
-            echo "La collection RNSR n'a pas changé."
-            exit 0
-          fi
-          git config user.name "frontiere-referentiel"
-          git config user.email "frontiere-referentiel@users.noreply.github.com"
-          git commit -m "Référentiel MESR — actualiser les structures de recherche du RNSR"
-          git push origin HEAD:main
+
+      - name: Soumettre une proposition de mise à jour
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/publier_mise_a_jour_institutionnelle.py --source rnsr --publier
