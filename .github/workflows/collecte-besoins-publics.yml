@@ -11,6 +11,7 @@ on:
       - "scripts/sonder_structure_offres_publiques.py"
       - "scripts/extraire_offres_publiques.py"
       - "scripts/collecter_historique_boamp.py"
+      - "scripts/surveiller_revisions_boamp.py"
       - ".github/workflows/collecte-besoins-publics.yml"
   workflow_dispatch:
 
@@ -47,7 +48,7 @@ jobs:
       - name: Vérifier le collecteur hors connexion
         run: |
           python -m pip install "pytest>=8,<10"
-          python -m pytest -q tests/test_collecte_besoins_publics.py tests/test_collecte_historique_boamp.py tests/test_structure_offres_publiques.py tests/test_extraire_offres_publiques.py tests/test_publication_institutionnelle.py
+          python -m pytest -q tests/test_collecte_besoins_publics.py tests/test_collecte_historique_boamp.py tests/test_surveiller_revisions_boamp.py tests/test_structure_offres_publiques.py tests/test_extraire_offres_publiques.py tests/test_publication_institutionnelle.py
 
       - name: Interroger les deux sources officielles
         run: python scripts/collecter_besoins_publics.py
@@ -77,6 +78,15 @@ jobs:
             echo "Rattrapage historique BOAMP achevé pour ce lot."
           else
             echo "::warning::Rattrapage BOAMP indisponible : poursuivre les autres collectes sans publier de journée incomplète."
+          fi
+
+      - name: Réexaminer un échantillon tournant d'avis historiques BOAMP
+        shell: bash
+        run: |
+          if python scripts/surveiller_revisions_boamp.py; then
+            echo "Relecture rétrospective effectuée avec consignation des variations."
+          else
+            echo "::warning::Relecture BOAMP incomplète : conserver les constats antérieurs."
           fi
 
       - name: Soumettre les seules informations publiques autorisées
@@ -142,7 +152,7 @@ jobs:
           while IFS= read -r chemin; do
             [[ -z "$chemin" ]] && continue
             case "$chemin" in
-              institutionnel/besoins_publics/annonces_boamp.json|institutionnel/besoins_publics/etat_boamp.json|institutionnel/besoins_publics/ressources_emplois_publics.json|institutionnel/besoins_publics/etat_emplois_publics.json|institutionnel/besoins_publics/schema_emplois_publics.json|institutionnel/besoins_publics/etat_schema_emplois_publics.json|institutionnel/besoins_publics/manifest_offres_postes.json|institutionnel/besoins_publics/offres_postes/lot_*.jsonl|institutionnel/besoins_publics/etat_historique_boamp.json|institutionnel/besoins_publics/historique_boamp/20??/??/20??-??-??.jsonl.gz|institutionnel/besoins_publics/historique_boamp/20??/??/20??-??-??.json) ;;
+              institutionnel/besoins_publics/annonces_boamp.json|institutionnel/besoins_publics/etat_boamp.json|institutionnel/besoins_publics/ressources_emplois_publics.json|institutionnel/besoins_publics/etat_emplois_publics.json|institutionnel/besoins_publics/schema_emplois_publics.json|institutionnel/besoins_publics/etat_schema_emplois_publics.json|institutionnel/besoins_publics/manifest_offres_postes.json|institutionnel/besoins_publics/offres_postes/lot_*.jsonl|institutionnel/besoins_publics/etat_historique_boamp.json|institutionnel/besoins_publics/historique_boamp/20??/??/20??-??-??.jsonl.gz|institutionnel/besoins_publics/historique_boamp/20??/??/20??-??-??.json|institutionnel/besoins_publics/etat_revisions_boamp.json|institutionnel/besoins_publics/revisions_boamp/20??/??/20??-??-??/[0-9a-f]*.jsonl.gz|institutionnel/besoins_publics/revisions_boamp/20??/??/20??-??-??/[0-9a-f]*.json) ;;
               *) echo "Fichier non autorisé : $chemin." >&2; exit 1 ;;
             esac
           done <<< "$FICHIERS"
