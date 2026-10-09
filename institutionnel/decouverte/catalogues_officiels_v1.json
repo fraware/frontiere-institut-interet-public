@@ -178,6 +178,17 @@
       "documentation": "https://www.data.gouv.fr/datasets/repertoire-du-referentiel-des-metiers-de-fonction-publique-rmfp",
       "objet": "referentiel_metiers_et_competences_fonction_publique",
       "remarque": "La fiche data.gouv.fr indique une licence non renseignée ; ne pas republier les fichiers sans examen."
+    },
+    {
+      "id": "beauamp",
+      "nom": "BeauAMP — Marchés publics attribués enrichis",
+      "producteur": "Adrien Deschamps, Avignon Université",
+      "statut": "collecteur_quotidien_prepare_validation_en_conditions_reelles",
+      "documentation": "https://www.data.gouv.fr/datasets/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics",
+      "point_entree": "https://www.data.gouv.fr/api/1/datasets/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/",
+      "licence": "Creative Commons Attribution Share-Alike",
+      "objet": "resultats_attributions_marches_et_enrichissements_sirene",
+      "remarque": "Données indicatives avec rapprochements et identifiants estimés ; avis originaux BOAMP prioritaires"
     }
   ]
 }
