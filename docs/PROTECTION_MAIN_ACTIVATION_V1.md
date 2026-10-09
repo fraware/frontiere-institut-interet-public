@@ -24,8 +24,8 @@ Pour la première mise en service, les vérifications obligatoires sont configur
 1. Ouvrir [Settings → Rules → Rulesets](https://github.com/fraware/frontiere-institut-interet-public/settings/rules).
 2. Sélectionner **New ruleset → Import a ruleset** et fournir `gouvernance/regle_protection_main_v1.json`. Cette importation constitue une **préparation** : examiner le nom, la cible `main`, la liste de contournements vide, les cinq règles et les trois contrôles.
 3. Vérifier que l'application choisie pour chaque contrôle est **GitHub Actions** et que la politique est en état **Active**. Confirmer l'enregistrement.
-4. Vérifier le résultat avec `python scripts/verifier_protection_main.py --exiger`. La commande interroge exclusivement les renseignements publics de GitHub. Elle ne possède aucune capacité de modification des paramètres.
-5. En cas de conformité structurelle mais d'accès insuffisant à la liste des dérogations, consulter la page des règles depuis le compte administrateur et consigner le résultat. Ne pas déclarer un audit complet tant que les exceptions éventuelles n'ont pas été revues.
+4. Vérifier les règles accessibles avec `python scripts/verifier_protection_main.py --exiger`. La commande interroge exclusivement les renseignements publics de GitHub. Elle ne possède aucune capacité de modification des paramètres.
+5. En cas de conformité des protections publiquement accessibles mais d'accès insuffisant à la liste des dérogations, consulter la page des règles depuis le compte administrateur et consigner le résultat. `--exiger-integral` exige également la lecture de la liste complète des exceptions, susceptible d'être absente pour un jeton disposant uniquement des permissions de lecture. Ne pas déclarer un audit complet tant que les exceptions éventuelles n'ont pas été revues.
 6. Exercer une proposition d'essai contenant uniquement un fichier fictif sur une branche indépendante : constater l'impossibilité de fusionner en présence d'un contrôle requis absent, puis lancer les trois contrôles sur la révision exacte et confirmer que la fusion est autorisée. **Ne pas exécuter de poussée forcée réelle ni de suppression de `main`** pour éprouver la protection.
 7. Sur le premier lot institutionnel effectivement modifié, confronter le manifeste, la liste des fichiers et les résultats de contrôle à l'empreinte de la proposition. La branche technique ne doit jamais être fusionnée sans examen de son contenu.
 
@@ -45,7 +45,7 @@ Pour constater l'état GitHub **réel** :
 python scripts/verifier_protection_main.py --exiger
 ```
 
-Le contrôle est conservateur. Il ne valide les règles effectives que si les renseignements GitHub montrent à la fois une branche protégée, une règle active applicable à `main`, des propositions obligatoires, un historique linéaire, l'interdiction des suppressions et des poussées forcées et les trois vérifications issues de la bonne application. Les dérogations non exposées par l'API publique sont qualifiées **non vérifiables** et entraînent un résultat incomplet.
+Le contrôle est conservateur. L'option `--exiger` réussit seulement si GitHub montre une branche protégée et des règles actives lisibles pour les propositions obligatoires, l'historique linéaire, les interdictions de suppression et de poussée forcée et les trois vérifications issues de la bonne application. L'option `--exiger-integral` impose en outre la preuve de l'absence de dérogations. Les dérogations non exposées par l'API publique sont qualifiées **non vérifiables** ; elles interdisent une conclusion d'audit intégral, même si le contrôle des protections publiques réussit.
 
 Une ancienne protection classique dont les paramètres détaillés sont réservés aux administrateurs pourra apparaître comme active sans être intégralement vérifiable par cet audit ; il conviendra alors de lire ses paramètres avec le compte propriétaire.
 
