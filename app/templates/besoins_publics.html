@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Besoins publics — FRONTIÈRE{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">OBSERVATIONS PUBLIÉES</p>
+    <h1>Emplois et marchés publics</h1>
+    <p>Annonces et références recueillies auprès des producteurs officiels. Elles constituent des indices de besoins déclarés, sans établir la disponibilité de compétences ni le résultat d'une mobilisation.</p>
+  </div>
+</section>
+<section class="metrics">
+  <article><span>Notices conservées</span><strong>{{ donnees.total }}</strong></article>
+  <article><span>Dernier contrôle</span><strong style="font-size:1rem">{{ donnees.controle_le or "Non exécuté" }}</strong></article>
+  <article><span>Copie intégrale des fichiers</span><strong>Non</strong></article>
+</section>
+<section class="panel">
+  <div class="panel-head">
+    <h2>Sources documentaires</h2>
+    <p><a href="/besoins-publics?source=marches">Annonces de marchés</a> · <a href="/besoins-publics?source=emplois">Fichiers des offres d'emploi</a> · <a href="/sources-publiques">Autres catalogues</a></p>
+  </div>
+  <p>Source sélectionnée : <strong>{{ "BOAMP — annonces" if source == "marches" else "Choisir le Service Public — inventaire de fichiers" }}</strong>.</p>
+  {% if donnees.collecte_partielle %}<p>Le relevé est partiel : la source comporte davantage de notices que le nombre interrogé ou une page a échoué.</p>{% endif %}
+</section>
+<section class="panel">
+  {% if donnees.observations %}
+  <table>
+    <thead><tr><th>Objet ou fichier</th><th>Producteur / acheteur</th><th>Date publiée</th><th>Référence</th></tr></thead>
+    <tbody>
+    {% for item in donnees.observations %}
+    <tr>
+      <td>{{ item.objet if source == "marches" else item.titre }}</td>
+      <td>{{ item.acheteur if source == "marches" else "Direction générale de l'administration et de la fonction publique" }}</td>
+      <td>{{ (item.date_parution or "Inconnue") if source == "marches" else (item.modifie_le or "Inconnue") }}</td>
+      <td>
+        {% if source == "marches" %}
+          {% if item.avis %}<a href="{{ item.avis }}" rel="noopener noreferrer" target="_blank">Annonce officielle</a>{% else %}<a href="{{ item.catalogue_source }}" rel="noopener noreferrer" target="_blank">Catalogue officiel</a>{% endif %}
+        {% else %}
+          {% if item.url %}<a href="{{ item.url }}" rel="noopener noreferrer" target="_blank">Fichier original</a>{% else %}Adresse inconnue{% endif %}
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="empty">La source n'a pas encore publié de notice dans la version courante du site.</p>
+  {% endif %}
+  <p>
+  {% if donnees.page > 1 %}<a href="/besoins-publics?source={{ source }}&page={{ donnees.page-1 }}">Page précédente</a>{% endif %}
+  {% if donnees.page * donnees.limite < donnees.total %}<a href="/besoins-publics?source={{ source }}&page={{ donnees.page+1 }}">Page suivante</a>{% endif %}
+  </p>
+</section>
+{% endblock %}
