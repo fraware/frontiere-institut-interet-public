@@ -30,6 +30,8 @@ CHEMINS = {
         "institutionnel/decouverte/etat_collecte.json",
         "institutionnel/decouverte/balayage_etat.json",
         "institutionnel/decouverte/balayage_pages",
+        "institutionnel/decouverte/catalogue_mesr.json",
+        "institutionnel/decouverte/catalogue_mesr_etat.json",
     ),
     "referentiel": (
         "institutionnel/entites/roae",
