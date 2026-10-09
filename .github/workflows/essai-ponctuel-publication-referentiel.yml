@@ -1,0 +1,28 @@
+name: Essai ponctuel de publication du référentiel
+
+# Déclencheur unique : retirez ce fichier une fois l'essai terminé.
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/essai-ponctuel-publication-referentiel.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  essai:
+    if: github.repository == 'fraware/frontiere-institut-interet-public'
+    name: Demander l'essai de publication contrôlée
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Lancer les trois collectes avec proposition en cas de changement
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run preparer-proposition-referentiel.yml \
+            --repo "$GITHUB_REPOSITORY" --ref main -f publier=true
