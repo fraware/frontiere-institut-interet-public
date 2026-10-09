@@ -1,6 +1,6 @@
 # Essai contrôlé de la chaîne administrative et territoriale
 
-**Statut : procédure d'essai sans lancement confirmé.** Cette procédure prépare la migration des trois collectes interdépendantes. Elle n'a aucun déclenchement périodique et n'écrit rien dans `main`.
+**Statut : essai intégral réussi, publication distincte en cours de validation.** L'[exécution du 9 octobre 2026](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/37890327489) a confirmé les trois collectes sur les sources officielles, sans publication. La procédure commune est destinée à leur actualisation programmée ; elle n'écrit jamais directement dans `main`.
 
 ## Enchaînement
 
@@ -16,19 +16,19 @@ Le contrôle `python scripts/verifier_chaine_referentiel.py` recoupe les décomp
 
 ## Préparer et exécuter un essai
 
-La procédure apparaît dans les actions du dépôt sous le nom « Préparation contrôlée du référentiel institutionnel ». Elle est lancée à la demande sur `main`.
+La procédure apparaît dans les actions du dépôt sous le nom « Préparation contrôlée du référentiel institutionnel ». Elle est programmée chaque jour à 5 h 47 UTC et accepte également un lancement manuel sur `main`.
 
-- Avec `publier = false`, réglage initial : collecter et valider sans publier de proposition.
-- Avec `publier = true` : après toutes les vérifications, préparer une branche technique et ouvrir une proposition de fusion, puis demander l'exécution des contrôles automatisés sur la branche produite. La proposition n'est jamais fusionnée automatiquement.
+- **Lancement manuel avec `publier = false`**, réglage initial : collecter et valider sans ouvrir de proposition.
+- **Lancement manuel avec `publier = true`**, ou **déclenchement programmé** : après vérifications, ouvrir une proposition si un lot a changé, puis lancer les contrôles automatiques sur sa branche. Aucun lot n'est fusionné automatiquement.
 
 Le jeton de publication n'est fourni qu'à la dernière étape, la récupération initiale ne conserve aucune information d'authentification et l'exécution partage le groupe de sérialisation des anciennes collectes. La proposition n'est ouverte que si le point de départ est encore le dernier état de `main`.
 
-## Conditions avant remplacement des procédures historiques
+## Réception des lots et limites de l'essai
 
-Lancer un essai complet sans publication, observer les temps, les téléchargements, les décomptes, les contrôles de variation et le résultat des synthèses. Un succès de tests locaux ne prouve pas à lui seul que la chaîne de téléchargement complète a été exécutée.
+La [première exécution complète sans publication](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/37890327489) a réussi. La [vérification des droits GitHub sur données fictives](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/37950043096) a également réussi. Ces deux constats sont complémentaires, mais n'établissent pas à eux seuls la création réussie d'une proposition issue d'un lot **réellement modifié**.
 
-Ensuite, exercer la publication d'un lot sur branche technique et constater effectivement la création de sa proposition et les trois résultats automatiques. Examiner une exécution sans changement et une tentative où `main` a avancé, afin de vérifier les blocages et les reprises.
+À chaque actualisation programmée, consulter le journal de la procédure commune. La réussite des trois importations, des contrôles de variation et du contrôle final de portée constitue le premier critère. Si le lot est inchangé, aucune proposition n'est créée. Si un lot diffère du référentiel, la branche technique, la proposition et les résultats des vérifications sur l'empreinte exacte de la branche doivent être identifiés.
 
-Une fois ces observations acquises, déplacer la programmation périodique vers cette procédure, retirer les commandes d'écriture directe des trois collectes historiques et réexaminer leurs déclenchements en cascade. Ce changement doit être coordonné : la fin d'une collecte sans fusion ne signifie plus que ses résultats sont présents dans `main`.
+L'ancienne programmation des collectes individuelles est remplacée par cette chaîne commune. Leur code de transformation demeure disponible dans le dépôt et leurs procédures conservent les vérifications des propositions externes, en lecture seule.
 
-La protection administrative de `main` est un chantier distinct. Elle n'est pas déclarée activée par l'existence de cet essai.
+Toute activation de la protection administrative de `main` reste conditionnée à la vérification du mode de publication sur un lot modifié et aux réglages de gouvernance du dépôt. Le changement de procédure ne vaut pas activation d'une règle de protection.
