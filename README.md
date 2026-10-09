@@ -68,6 +68,7 @@ Les indicateurs empiriques du premier tableau ont pour date de référence le 6 
 La principale frontière empirique se situe désormais entre trois explications : difficulté à identifier une ressource, difficulté à la mobiliser et difficulté à transformer sa mobilisation en contribution utile. Le projet entre dans une phase de collecte de données proches de l’exécution.
 
 → [Découverte récurrente et catalogue des sources publiques](docs/DECOUVERTE_SOURCES_PERMANENTE_V1.md)  
+→ [Collecte régulière des annonces de marchés et offres d'emploi](docs/BESOINS_PUBLICS_COLLECTE_V1.md)  
 → [État détaillé du projet](docs/ETAT_DU_PROJET.md)  
 → [Organisation administrative de l’État : source, couverture et mise à jour](docs/INGESTION_ROAE_V1.md)  
 → [Couverture territoriale de l'Annuaire](docs/INGESTION_ANNUAIRE_LOCAL_V1.md)  

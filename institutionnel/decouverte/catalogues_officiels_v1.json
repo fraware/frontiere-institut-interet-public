@@ -31,10 +31,11 @@
       "id": "boamp",
       "nom": "Bulletin officiel des annonces des marchés publics",
       "producteur": "DILA",
-      "statut": "a_integrer",
+      "statut": "collecteur_mis_en_place_a_verifier_en_execution_reelle",
       "documentation": "https://www.data.gouv.fr/dataservices/api-bulletin-officiel-des-annonces-des-marches-publics-boamp",
-      "point_entree": "https://boamp-datadila.opendatasoft.com/api/explore/v2.0",
-      "objet": "annonces_et_attributions_marches"
+      "point_entree": "https://boamp-datadila.opendatasoft.com/api/explore/v2.1/catalog/datasets/boamp/records",
+      "objet": "annonces_et_attributions_marches",
+      "remarque": "Recherche bornée sur les annonces des sept derniers jours ; aucune exhaustivité historique revendiquée."
     },
     {
       "id": "ted",
@@ -91,11 +92,11 @@
     {
       "id": "csp_offres",
       "nom": "Offres diffusées sur Choisir le Service Public",
-      "producteur": "Service public de l'emploi",
-      "statut": "a_integrer",
+      "producteur": "Direction générale de l'administration et de la fonction publique",
+      "statut": "repertoire_ressources_a_verifier_en_execution_reelle",
       "documentation": "https://www.data.gouv.fr/datasets/les-offres-diffusees-sur-choisir-le-service-public",
       "objet": "vacances_de_poste_et_besoins_de_recrutement",
-      "remarque": "Publications déclarées hebdomadaires"
+      "remarque": "Publication hebdomadaire des CSV ; premier collecteur limité aux métadonnées des fichiers."
     },
     {
       "id": "decp",
