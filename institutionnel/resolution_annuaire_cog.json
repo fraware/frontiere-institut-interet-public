@@ -4,7 +4,7 @@
   "absentes_sans_trace_historique": 0,
   "ambigues": 0,
   "doctrine": "Priorité à TYPECOM=COM; à défaut un zonage COMER-COM unique; aucune résolution par nom. Un code absent du COG courant est classé séparément uniquement si les tables historiques officielles attestent une période terminée au plus tard à la date de référence; cette classification ne le remappe pas vers un territoire courant.",
-  "entites_annuaire_avec_territoire": 85681,
+  "entites_annuaire_avec_territoire": 85679,
   "exemples_absents": [
     {
       "classification": "CODE_HISTORIQUE_ABSENT_DU_COG_COURANT",
@@ -511,9 +511,9 @@
   ],
   "exemples_absents_inconnus": [],
   "exemples_ambigus": [],
-  "observe_le": "2026-10-08T12:19:26+00:00",
-  "references_codes_insee": 305557,
-  "resolues": 305550,
+  "observe_le": "2026-10-09T12:10:56+00:00",
+  "references_codes_insee": 305555,
+  "resolues": 305548,
   "taux_references_expliquees": 1.0,
   "taux_resolution": 0.999977,
   "version": "2"
