@@ -213,6 +213,48 @@ def _charger_sources_publiques() -> tuple[list[dict], dict]:
     return liste, rapport
 
 
+@app.get("/api/v1/catalogue-recherche")
+def api_catalogue_recherche(terme: str = "", page: int = 1, limite: int = 30) -> dict:
+    """Consulter les notices officielles du catalogue scientifique, sans fichiers bruts."""
+    if not 1 <= page <= 10000 or not 1 <= limite <= 100 or len(terme) > 120:
+        raise HTTPException(422, "Paramètre du catalogue scientifique hors limites.")
+    dossier = BASE_DIR.parent / "institutionnel" / "decouverte"
+    fichier = dossier / "catalogue_mesr.json"
+    bilan = dossier / "catalogue_mesr_etat.json"
+    try:
+        meta = json.loads(fichier.read_text(encoding="utf-8")) if fichier.is_file() else {}
+        etat = json.loads(bilan.read_text(encoding="utf-8")) if bilan.is_file() else {}
+    except (OSError, UnicodeError, ValueError) as exc:
+        raise HTTPException(503, "Le catalogue scientifique est momentanément indisponible.") from exc
+    valeurs = meta.get("notices", [])
+    if not isinstance(valeurs, list) or not isinstance(etat, dict):
+        raise HTTPException(503, "Le catalogue scientifique présente un format incorrect.")
+    recherche = terme.casefold().strip()
+    if recherche:
+        valeurs = [x for x in valeurs if isinstance(x, dict)
+                   and recherche in str(x.get("titre", "")).casefold()]
+    debut = (page - 1) * limite
+    return {
+        "version": "catalogue-recherche-v1",
+        "total": len(valeurs),
+        "page": page,
+        "limite": limite,
+        "derniere_consultation": etat.get("controle_le"),
+        "reponse_complete_selon_catalogue": etat.get("exhaustivite_constatee"),
+        "fichiers_bruts_copies": False,
+        "notices": valeurs[debut:debut + limite],
+    }
+
+
+@app.get("/sources-recherche", response_class=HTMLResponse)
+def page_sources_recherche(request: Request, terme: str = "", page: int = 1):
+    resultat = api_catalogue_recherche(terme=terme, page=page, limite=40)
+    return templates.TemplateResponse(
+        request=request, name="sources_recherche.html",
+        context={"catalogue": resultat, "terme": terme},
+    )
+
+
 @app.get("/api/v1/catalogue-national")
 def api_catalogue_national(page: int = 1) -> dict:
     """Lire exactement une page versionnée, sans charger toutes les notices."""

@@ -61,6 +61,16 @@ Cette première collecte conserve les **métadonnées et les URL**, sans téléc
 
 Les notices ne prouvent ni l'existence actuelle d'une compétence, ni sa disponibilité pour une mission, ni la réalité d'un besoin institutionnel. La recherche de ressources et leur mobilisation demeurent des questions distinctes.
 
+## Collecte indépendante du catalogue de la recherche
+
+Le programme `scripts/decouvrir_catalogue_scientifique.py` interroge directement l'[interface de données du ministère chargé de la recherche](https://data.enseignementsup-recherche.gouv.fr/api-console/explore/v2.1/). Les notices du catalogue sont distinctes de celles enregistrées dans data.gouv.fr, ce qui permet de détecter des ensembles absents ou moins récents dans l'agrégateur général.
+
+Les résultats sont conservés sous `institutionnel/decouverte/catalogue_mesr.json`, avec le dernier état et les erreurs dans `institutionnel/decouverte/catalogue_mesr_etat.json`. Un identifiant de jeu, un titre, la licence déclarée, une date de modification disponible et un lien de provenance sont retenus. **Aucune donnée d'enregistrement, pièce jointe, fichier personnel ou archive complète n'est copiée.**
+
+La collecte est déclenchée dans le même cycle de six heures que l'inventaire national. Elle est indépendante : une erreur sur ce portail déclenche une alerte d'exécution et conserve les données antérieures, sans empêcher la publication des autres catalogues. La première collecte sur ce portail reste à observer ; une source inscrite dans le code ne représente pas une interrogation réussie.
+
+Le site expose les notices du ministère dans `/sources-recherche` et `/api/v1/catalogue-recherche`, séparément du catalogue national.
+
 ## Diversification des catalogues
 
 Le registre `institutionnel/decouverte/catalogues_officiels_v1.json` recense des portails complémentaires : annuaire de l'administration, Bulletin officiel des annonces des marchés publics, publication européenne des marchés, recherche d'entreprises, données scientifiques, Répertoire national des structures de recherche et textes juridiques. Il distingue précisément les sources déjà ingérées, le catalogue nouvellement interrogé et les sources **encore à intégrer**.

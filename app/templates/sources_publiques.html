@@ -14,7 +14,7 @@
   <article><span>Pages en échec</span><strong>{{ catalogue.pages_echouees_derniere_collecte if catalogue.pages_echouees_derniere_collecte is not none else "Inconnu" }}</strong></article>
 </section>
 <section class="panel">
-  <div class="panel-head"><h2>Rechercher les notices</h2><a href="/catalogue-national">Parcourir le catalogue national complet</a></div>
+  <div class="panel-head"><h2>Rechercher les notices</h2><a href="/catalogue-national">Parcourir le catalogue national complet</a> · <a href="/sources-recherche">Catalogue scientifique du ministère</a></div>
   <form method="get" action="/sources-publiques">
     <label for="terme">Nom du jeu ou organisme producteur</label>
     <input id="terme" name="terme" type="search" maxlength="120" value="{{ terme }}" placeholder="ex. recherche publique">

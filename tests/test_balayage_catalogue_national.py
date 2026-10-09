@@ -78,7 +78,7 @@ def test_un_echec_garde_la_page_a_reessayer():
     assert len(lot) == 1 and lot[0][0] == 2
     assert etat["page_suivante"] == 3
     assert etat["cycles_acheves"] == 2
-    assert etat["erreurs"] == [{"page": 3, "motif": "OSError"}]
+    assert etat["erreurs"] == [{"page": 3, "motif": "OSError", "detail": None}]
 
 
 def test_aucune_page_reussie_interdit_tout_remplacement():
@@ -112,3 +112,18 @@ def test_importation_directe_du_script_charge_ses_validateurs():
     )
     assert resultat.returncode == 0, resultat.stderr
     assert resultat.stdout.strip() == "abc12345"
+
+
+
+def test_reponses_legeres_pour_les_pages_generales(monkeypatch):
+    import scripts.balayer_catalogue_national as module
+    appels = []
+
+    def mock(url, *, legere=False):
+        appels.append((url, legere))
+        return {"data": [{"id": "abc12345", "title": "Notice"}], "total": 1}
+
+    monkeypatch.setattr(module, "telecharger_page", mock)
+    resultat = module.telecharger_page_legere("https://www.data.gouv.fr/api/1/datasets/?page=1")
+    assert resultat["total"] == 1
+    assert appels[0][1] is True

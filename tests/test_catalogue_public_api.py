@@ -99,3 +99,32 @@ def test_navigation_pages_generales_sans_lire_toute_la_collection(monkeypatch, t
         assert page.status_code == 200
         assert "Atlas des capacités scientifiques" in page.text
         assert "Page suivante" in page.text
+
+
+
+def test_catalogue_scientifique_sur_site(monkeypatch, tmp_path):
+    import json
+    dossier = tmp_path / "institutionnel" / "decouverte"
+    dossier.mkdir(parents=True)
+    (dossier / "catalogue_mesr.json").write_text(
+        json.dumps({"notices": [{
+            "id": "fr-esr-essai", "titre": "Laboratoires expérimentaux",
+            "page": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-essai/",
+            "modifie_le": "2026-10-09", "licence_declaree": "Licence Ouverte",
+        }]}, ensure_ascii=False), encoding="utf-8",
+    )
+    (dossier / "catalogue_mesr_etat.json").write_text(
+        '{"controle_le":"2026-10-09","exhaustivite_constatee":false}', encoding="utf-8",
+    )
+    app_dir = tmp_path / "app"
+    app_dir.mkdir()
+    monkeypatch.setattr(MODULE, "BASE_DIR", app_dir)
+    with TestClient(app) as client:
+        resultat = client.get("/api/v1/catalogue-recherche")
+        assert resultat.status_code == 200
+        assert resultat.json()["total"] == 1
+        assert resultat.json()["fichiers_bruts_copies"] is False
+        assert client.get("/api/v1/catalogue-recherche?limite=101").status_code == 422
+        page = client.get("/sources-recherche")
+        assert page.status_code == 200
+        assert "Laboratoires expérimentaux" in page.text
