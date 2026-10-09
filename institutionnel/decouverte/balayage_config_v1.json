@@ -1,0 +1,10 @@
+{
+  "version": "balayage-national-v1",
+  "origine": "https://www.data.gouv.fr/api/1/datasets/",
+  "tri": "title",
+  "taille_page": 100,
+  "pages_par_execution": 30,
+  "nombre_max_pages": 2000,
+  "secondes_entre_appels": 0.25,
+  "conserver_uniquement_metadonnees": true
+}
