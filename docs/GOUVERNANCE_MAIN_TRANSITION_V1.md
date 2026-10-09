@@ -38,3 +38,9 @@ Une exécution ponctuelle, réalisée sur une branche temporaire ne contenant qu
 Les deux procédures indépendantes qui avaient été migrées vers cette publication ont donc été remises dans leur fonctionnement antérieur pour préserver les actualisations courantes. **Aucune protection stricte de `main` n'est déclarée active.** La procédure contrôlée des trois référentiels administratifs a toutefois réussi un essai complet sans publication sur les sources réelles : [exécution](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/37890327489).
 
 Pour reprendre la migration, activer la faculté de créer des propositions dans les paramètres d'autorisation des procédures GitHub ou fournir une identité technique spécifique, limiter ses droits et répéter l'essai de création sur une branche artificielle. Les procédures historiques doivent rester opérationnelles jusqu'à cette validation.
+
+## Limitation des droits des essais — 9 octobre 2026
+
+Les deux procédures responsables des services locaux et des territoires sont désormais séparées en deux tâches. La première vérifie les propositions externes uniquement avec des autorisations de lecture. La seconde réalise les actualisations programmées ou déclenchées à la suite d'une collecte précédente, avec un droit d'écriture limité à son propre travail. Les identifiants nécessaires à l'écriture ne sont fournis que lors de l'enregistrement final.
+
+Cette amélioration préserve les cinq écritures historiques tant que le réglage administratif de création des propositions reste désactivé. Elle ne remplace ni une règle de protection de la branche principale, ni l'identité technique nécessaire pour ouvrir des propositions automatiquement. Le traitement expérimental unique des trois référentiels demeure disponible et a réussi son essai sans publication.
