@@ -1,0 +1,118 @@
+name: Préparation contrôlée du référentiel institutionnel
+
+# Essai uniquement à la demande. Les procédures historiques restent actives
+# jusqu'à validation indépendante de la chaîne complète.
+on:
+  workflow_dispatch:
+    inputs:
+      publier:
+        description: "Créer une proposition de fusion après toutes les vérifications"
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: referentiel-institutionnel-main
+  cancel-in-progress: false
+
+jobs:
+  preparation:
+    name: Vérifier les trois référentiels dépendants
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    # Procédure réservée à un lancement sur main par un membre habilité.
+    # Le jeton de publication n'est transmis qu'à la dernière étape.
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+
+    steps:
+      - name: Récupérer main sans conserver les identifiants GitHub
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Installer Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Installer les outils de contrôle
+        run: python -m pip install "pytest>=8,<10"
+
+      - name: Vérifier le référentiel administratif
+        run: python -m pytest -q tests/test_ingestion_roae.py tests/test_snapshot_roae.py
+
+      - name: Collecter les organisations administratives
+        run: python scripts/ingerer_roae.py
+
+      - name: Refuser une variation anormale du référentiel administratif
+        run: python scripts/verifier_variation_referentiel.py --source roae
+
+      - name: Vérifier les transformations de l'Annuaire
+        run: |
+          python -m pytest -q \
+            tests/test_ingestion_annuaire_local.py \
+            tests/test_recherche_competence_geographique.py \
+            tests/test_variation_referentiel.py
+
+      - name: Collecter l'Annuaire sur le référentiel administratif actualisé
+        run: python scripts/ingerer_annuaire_local.py
+
+      - name: Vérifier les enregistrements et la compétence territoriale de l'Annuaire
+        run: |
+          python -m pytest -q tests/test_snapshot_annuaire_local.py
+          python scripts/rechercher_competence_geographique.py \
+            --commune 75056 --type mairie > /tmp/frontiere-competence-territoriale.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          resultat = json.loads(Path("/tmp/frontiere-competence-territoriale.json").read_text(encoding="utf-8"))
+          assert resultat
+          assert any(organisme.get("resolu")
+                     for ligne in resultat
+                     for organisme in ligne.get("organismes", []))
+          PY
+
+      - name: Refuser une variation anormale de l'Annuaire
+        run: python scripts/verifier_variation_referentiel.py --source annuaire
+
+      - name: Vérifier les transformations territoriales
+        run: |
+          python -m pytest -q \
+            tests/test_ingestion_cog.py \
+            tests/test_variation_referentiel.py \
+            tests/test_resume_referentiel.py
+
+      - name: Collecter les territoires à partir de l'Annuaire actualisé
+        run: python scripts/ingerer_cog.py
+
+      - name: Vérifier les territoires produits
+        run: python -m pytest -q tests/test_snapshot_cog.py
+
+      - name: Refuser une variation anormale des territoires
+        run: python scripts/verifier_variation_referentiel.py --source cog
+
+      - name: Actualiser puis contrôler les synthèses publiques
+        run: |
+          python scripts/actualiser_resume_referentiel.py
+          python scripts/actualiser_resume_referentiel.py --verifier
+
+      - name: Vérifier les relations entre les trois référentiels
+        run: python scripts/verifier_chaine_referentiel.py
+
+      - name: Contrôler le périmètre des fichiers sans publier
+        if: ${{ !inputs.publier }}
+        run: python scripts/publier_mise_a_jour_institutionnelle.py --source referentiel
+
+      - name: Soumettre une proposition de fusion distincte
+        if: ${{ inputs.publier }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/publier_mise_a_jour_institutionnelle.py --source referentiel --publier
