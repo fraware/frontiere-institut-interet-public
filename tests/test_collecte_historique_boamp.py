@@ -128,3 +128,18 @@ def test_refus_curseur_invalide_et_archive_alteree(tmp_path):
     p.write_bytes(b"fichier altere")
     with pytest.raises(HistoriqueIncomplet, match="altérées"):
         publier_jour(tmp_path, jour, [], 0, instant)
+
+
+
+def test_lot_de_vingt_quatre_jours_et_plafond_explicite(tmp_path):
+    instant = datetime(2026, 10, 9, tzinfo=timezone.utc)
+    def api(url, _origine):
+        return {"total_count": 0, "results": []}
+    bilan = executer(tmp_path, instant=instant, obtenir=api,
+                     patienter=lambda n: None, jours_par_execution=24)
+    assert bilan["jours_complets_cette_execution"] == 24
+    assert bilan["avis_distincts_cette_execution"] == 0
+    assert bilan["jour_suivant_a_relever"] == "2026-09-07"
+    with pytest.raises(HistoriqueIncomplet, match="incorrect"):
+        executer(tmp_path, instant=instant, obtenir=api,
+                 patienter=lambda n: None, jours_par_execution=25)
