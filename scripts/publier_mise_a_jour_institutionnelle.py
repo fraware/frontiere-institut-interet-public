@@ -143,6 +143,21 @@ def verifier_arbre_sain(source: str, racine: Path = RACINE) -> dict:
     return verifier_portee(source, changements_git(racine))
 
 
+def indexer_changements(source: str, changements: list[str], racine: Path = RACINE) -> list[str]:
+    """Indexer seulement les chemins présents dans le statut Git, y compris les suppressions.
+
+    Une source optionnelle absente n'interrompt jamais la publication.
+    """
+    verifier_portee(source, changements)
+    if not changements:
+        return []
+    _commande("git", "add", "-A", "--", *changements, cwd=racine)
+    index = _commande("git", "diff", "--cached", "--name-only", "-z", cwd=racine)
+    fichiers = [x for x in index.split("\0") if x]
+    verifier_portee(source, fichiers)
+    return fichiers
+
+
 def identite_branche(source: str, id_execution: str, tentative: str) -> str:
     nom = f"automatisation/{source}-{id_execution}-{tentative}"
     if source not in CHEMINS or not BRANCH.fullmatch(nom):
@@ -193,10 +208,10 @@ def publier(source: str, racine: Path = RACINE) -> dict:
         raise PublicationRefusee("Une proposition de la même source attend déjà une décision.")
 
     _commande("git", "switch", "-c", branche, cwd=racine)
-    _commande("git", "add", "-A", "--", *CHEMINS[source], cwd=racine)
-    fichiers = _commande("git", "diff", "--cached", "--name-only", "-z", cwd=racine).split("\0")
-    fichiers = [x for x in fichiers if x]
-    verifier_portee(source, fichiers)
+    # Indexer exclusivement les modifications attestées par git status.
+    # Les chemins possibles mais absents (p. ex. catalogue MESR indisponible)
+    # ne doivent jamais bloquer l'enregistrement des autres sources.
+    fichiers = indexer_changements(source, rapport["fichiers_modifies"], racine)
     if not fichiers:
         raise PublicationRefusee("Aucune modification admissible à publier.")
     # Aucune proposition issue du jeton automatique ne doit être fusionnée

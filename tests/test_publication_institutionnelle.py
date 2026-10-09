@@ -5,7 +5,7 @@ import subprocess
 import pytest
 
 from scripts.publier_mise_a_jour_institutionnelle import (
-    PublicationRefusee, changements_git, identite_branche,
+    PublicationRefusee, changements_git, identite_branche, indexer_changements,
     verifier_arbre_sain, verifier_portee,
 )
 
@@ -85,3 +85,51 @@ def test_aucune_publication_automatique_sans_contexte_autorise(monkeypatch):
         monkeypatch.delenv(cle, raising=False)
     with pytest.raises(PublicationRefusee, match="réservée"):
         publier("rnsr")
+
+
+
+def test_indexation_reelle_des_seuls_chemins_modifies(tmp_path: Path):
+    """Une source absente du périmètre admissible ne fait pas échouer git add."""
+    _git(tmp_path, "init", "-q")
+    _git(tmp_path, "config", "user.name", "Essai sans réseau")
+    _git(tmp_path, "config", "user.email", "test@example.org")
+    dossier = tmp_path / "institutionnel" / "decouverte"
+    dossier.mkdir(parents=True)
+    existant = dossier / "etat_collecte.json"
+    existant.write_text('{"ancien": true}\n', encoding="utf-8")
+    _git(tmp_path, "add", "--", "institutionnel/decouverte/etat_collecte.json")
+    _git(tmp_path, "commit", "-qm", "Fichier initial fictif")
+    existant.write_text('{"nouveau": true}\n', encoding="utf-8")
+    pages = dossier / "balayage_pages"
+    pages.mkdir()
+    (pages / "page_00001.jsonl").write_text('{"id":"exemple"}\n', encoding="utf-8")
+    nouveau = dossier / "balayage_etat.json"
+    nouveau.write_text("{}\n", encoding="utf-8")
+    # Le fichier optionnel catalogue_mesr.json manque délibérément.
+    chemins = changements_git(tmp_path)
+    assert len(chemins) == 3
+    index = indexer_changements("sources", chemins, tmp_path)
+    assert index == sorted(chemins)
+    assert not (dossier / "catalogue_mesr.json").exists()
+    _git(tmp_path, "commit", "-qm", "Lot fictif valide")
+
+
+def test_indexation_garde_les_suppressions_prevues(tmp_path: Path):
+    _git(tmp_path, "init", "-q")
+    _git(tmp_path, "config", "user.name", "Essai sans réseau")
+    _git(tmp_path, "config", "user.email", "test@example.org")
+    dossier = tmp_path / "institutionnel" / "decouverte"
+    dossier.mkdir(parents=True)
+    fichier = dossier / "etat_collecte.json"
+    fichier.write_text("{}", encoding="utf-8")
+    _git(tmp_path, "add", "--", "institutionnel/decouverte/etat_collecte.json")
+    _git(tmp_path, "commit", "-qm", "Fichier initial fictif")
+    fichier.unlink()
+    assert indexer_changements("sources", changements_git(tmp_path), tmp_path) == [
+        "institutionnel/decouverte/etat_collecte.json"
+    ]
+
+
+def test_indexation_refuse_les_changements_hors_perimetre(tmp_path: Path):
+    with pytest.raises(PublicationRefusee, match="hors périmètre"):
+        indexer_changements("sources", ["app/main.py"], tmp_path)
