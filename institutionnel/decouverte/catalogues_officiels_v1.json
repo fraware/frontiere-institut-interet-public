@@ -42,8 +42,9 @@
       "producteur": "Office des publications de l'Union européenne",
       "statut": "a_integrer",
       "documentation": "https://docs.ted.europa.eu/api/latest/search.html",
-      "point_entree": "https://ted.europa.eu/api/v3/notices/search",
-      "objet": "avis_marches_europeens"
+      "point_entree": "https://api.ted.europa.eu/v3/notices/search",
+      "objet": "avis_marches_europeens",
+      "remarque": "Recherche des avis publiés accessible anonymement, par requêtes documentées ; version 3 de l'interface officielle."
     },
     {
       "id": "recherche_entreprises",
@@ -121,6 +122,61 @@
       "documentation": "https://www.data.gouv.fr/datasets/repertoire-national-des-associations",
       "objet": "associations_et_structures",
       "remarque": "Contenus potentiellement personnels et volumes très importants ; diffusion conditionnelle"
+    },
+    {
+      "id": "france_travail_rome",
+      "nom": "Répertoire des métiers et compétences ROME 4.0",
+      "producteur": "France Travail",
+      "statut": "a_integrer",
+      "documentation": "https://www.data.gouv.fr/datasets/repertoire-operationnel-des-metiers-et-des-emplois-rome",
+      "objet": "metiers_competences_certifications_mobilites",
+      "remarque": "Licence Ouverte ; vérifier les conditions techniques et le nombre d'appels des interfaces avant l'ingestion."
+    },
+    {
+      "id": "france_competences_rncp_rs",
+      "nom": "Certifications professionnelles RNCP et répertoire spécifique",
+      "producteur": "France compétences",
+      "statut": "a_integrer",
+      "documentation": "https://www.data.gouv.fr/datasets/repertoire-national-des-certifications-professionnelles-et-repertoire-specifique",
+      "objet": "certifications_briques_competences_et_habilitations",
+      "remarque": "Licence Ouverte 2.0 ; archives quotidiennes et schémas versionnés ; volumes importants."
+    },
+    {
+      "id": "france_travail_marche_travail",
+      "nom": "Indicateurs de tension et besoins de recrutement",
+      "producteur": "France Travail",
+      "statut": "a_integrer_et_verifier_acces",
+      "documentation": "https://www.data.gouv.fr/dataservices/api-marche-du-travail",
+      "objet": "tensions_recrutement_metiers_territoires_salaires",
+      "remarque": "Vérifier conditions d'utilisation, identifiants et granularité de l'API."
+    },
+    {
+      "id": "ademe_catalogue",
+      "nom": "Catalogue de données environnementales et énergétiques de l'ADEME",
+      "producteur": "Agence de la transition écologique",
+      "statut": "a_integrer",
+      "documentation": "https://data.ademe.fr/openapi-viewer/?urlType=catalog",
+      "point_entree": "https://data.ademe.fr/data-fair/api/v1/catalog/datasets",
+      "objet": "transition_energetique_projets_financements_expertise",
+      "remarque": "Catalogue officiel Data Fair ; sa connexion technique et ses conditions de réutilisation restent à tester."
+    },
+    {
+      "id": "insee_sirene",
+      "nom": "Répertoire Sirene des unités légales et des établissements",
+      "producteur": "Insee",
+      "statut": "a_integrer_apres_examen_volumes",
+      "documentation": "https://www.data.gouv.fr/datasets/base-sirene-des-entreprises-et-de-leurs-etablissements-siren-siret",
+      "objet": "organismes_personnes_morales_et_implantations",
+      "remarque": "Archives très volumineuses, plus de deux gigaoctets pour certains fichiers ; utiliser les liens stables ; exclure données individuelles diffusées sous restriction."
+    },
+    {
+      "id": "dgafp_referentiel_metiers",
+      "nom": "Répertoire des métiers de la fonction publique",
+      "producteur": "Direction générale de l'administration et de la fonction publique",
+      "statut": "metadonnees_seulement_licence_a_verifier",
+      "documentation": "https://www.data.gouv.fr/datasets/repertoire-du-referentiel-des-metiers-de-fonction-publique-rmfp",
+      "objet": "referentiel_metiers_et_competences_fonction_publique",
+      "remarque": "La fiche data.gouv.fr indique une licence non renseignée ; ne pas republier les fichiers sans examen."
     }
   ]
 }
