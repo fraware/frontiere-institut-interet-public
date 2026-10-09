@@ -1,6 +1,20 @@
 {
   "alertes": [
     {
+      "ancienne_empreinte": "afe5a2673b26d1ca9ef57c0dbef350509d085528ae836b9886b411717927b286",
+      "criticite": "critique",
+      "nouvelle_empreinte": "ca6a3a542b37a200d01f39e104330c18f92cffa7034797c8341e479099a8c82b",
+      "source_id": "dila_roae",
+      "type": "SOURCE_MODIFIEE"
+    },
+    {
+      "ancienne_empreinte": "9d8f16ddd80406d41e5b5f6518a9ead50c2f3855a0f50f3bc8ab829b39efaa55",
+      "criticite": "critique",
+      "nouvelle_empreinte": "997f3c726e85c9a4c9c64dfb9dd789180b5019b0b22a705a756e0a7b1b3efe39",
+      "source_id": "dila_competence_geographique",
+      "type": "SOURCE_MODIFIEE"
+    },
+    {
       "criticite": "haute",
       "detail": "HTTPError: HTTP Error 403: Forbidden",
       "source_id": "budget_operateurs_2026",
@@ -15,12 +29,40 @@
     {
       "criticite": "critique",
       "detail": {
-        "age_jours": 6,
+        "age_jours": 7,
         "seuil_jours": 3,
         "statut": "A_REVOIR"
       },
       "source_id": "dila_jorf",
       "type": "FRAICHEUR_A_REVOIR"
+    },
+    {
+      "ancienne_empreinte": "98ee73a68cd90c40388b5c6640d9f5a27859577e9e46ab96dc0eba073870c838",
+      "criticite": "haute",
+      "nouvelle_empreinte": "ca10bba4e2bc45ee1ff8e638adaf1ad9b5e1d3a4ed81c02bff4417738acdbb5b",
+      "source_id": "mesr_etablissements",
+      "type": "SOURCE_MODIFIEE"
+    },
+    {
+      "ancienne_empreinte": "31593b124bb1a1573c37f258ef7e7d1f1dd41fa36890ae9776082d9d055d128b",
+      "criticite": "haute",
+      "nouvelle_empreinte": "4f4b6aad5a43b7983cdb59779a3e43450a46805efba3472ae68422650a28f8b2",
+      "source_id": "mesr_rnsr",
+      "type": "SOURCE_MODIFIEE"
+    },
+    {
+      "ancienne_empreinte": "6e710bb6d9e8a6ef0d6e9020c515d2b90efb58e87068db7d43270c46a368f35d",
+      "criticite": "haute",
+      "nouvelle_empreinte": "561c495cdeef6a61d1630b2ba0cc2d0cdb11fb4c2762a16e5257a3bbd357f975",
+      "source_id": "ans_finess_structures",
+      "type": "SOURCE_MODIFIEE"
+    },
+    {
+      "ancienne_empreinte": "8c0552a962dd1c3e2e8bfdc623257cbd4b268e597ca9fa52e6d58906303d4080",
+      "criticite": "haute",
+      "nouvelle_empreinte": "d526c2b692419526369c27fa04ec8e7209591e700edc5899095f94dfca8df720",
+      "source_id": "ans_finess_activites",
+      "type": "SOURCE_MODIFIEE"
     },
     {
       "criticite": "moyenne",
@@ -29,6 +71,6 @@
       "type": "SOURCE_INDISPONIBLE"
     }
   ],
-  "observe_le": "2026-10-08T12:02:36+00:00",
+  "observe_le": "2026-10-09T11:54:14+00:00",
   "version": "1"
 }
