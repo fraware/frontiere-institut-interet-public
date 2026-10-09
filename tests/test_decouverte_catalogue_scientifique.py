@@ -33,6 +33,7 @@ def test_notice_ne_conserve_que_les_metadonnees():
 def test_consultation_paginee_du_catalogue():
     adresse = url_page(50, 50)
     assert parse_qs(urlparse(adresse).query) == {"offset": ["50"], "limit": ["50"]}
+    assert urlparse(adresse).hostname == "mesr.opendatasoft.com"
     with pytest.raises(EchecCatalogue):
         url_page(-1, 50)
 
