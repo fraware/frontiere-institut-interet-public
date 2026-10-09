@@ -3,7 +3,7 @@
   "origine": "https://www.data.gouv.fr/api/1/datasets/",
   "tri": "title",
   "taille_page": 50,
-  "pages_par_execution": 60,
+  "pages_par_execution": 80,
   "nombre_max_pages": 2000,
   "secondes_entre_appels": 0.25,
   "conserver_uniquement_metadonnees": true
