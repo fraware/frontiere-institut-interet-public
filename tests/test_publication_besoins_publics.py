@@ -44,6 +44,10 @@ def test_cadence_et_controles_des_sources_de_besoins():
     assert "scripts/collecter_besoins_publics.py" in f
     assert "scripts/publier_mise_a_jour_institutionnelle.py --source besoins --publier" in f
     assert "gh run watch" in f
+    fusion = f.index('gh pr merge "$BRANCHE"')
+    relance = f.index("gh workflow run index-boamp-historique.yml")
+    assert fusion < relance
+    assert '--ref main' in f
     assert all(name in f for name in ("Python 3.11", "Python 3.12", "Conteneur"))
     assert "institutionnel/besoins_publics/annonces_boamp.json" in f
     assert "git push origin HEAD:main" not in f
