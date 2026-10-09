@@ -1,0 +1,37 @@
+{
+  "aucune_variation_ne_prouve_stabilite_totale": true,
+  "completude_historique_etablie": false,
+  "controle_le": "2026-10-09T23:06:08+00:00",
+  "controles": [
+    {
+      "jour": "2026-08-07",
+      "variation": false
+    },
+    {
+      "jour": "2026-08-08",
+      "variation": false
+    },
+    {
+      "jour": "2026-08-09",
+      "variation": false
+    },
+    {
+      "jour": "2026-08-10",
+      "variation": false
+    },
+    {
+      "jour": "2026-09-30",
+      "variation": false
+    },
+    {
+      "jour": "2026-10-01",
+      "variation": false
+    }
+  ],
+  "dernier_jour_relecture_circulaire": "2026-08-10",
+  "erreurs": [],
+  "jours_avec_variation": 0,
+  "jours_controles": 6,
+  "nouvelles_revisions_archivees": 0,
+  "version": "surveillance-revisions-boamp-v1"
+}
