@@ -19,6 +19,8 @@ Pour chaque résultat, sont conservés : identifiant stable, titre, organisme pr
 
 La recherche est **bornée**, par expression et par nombre de pages. Son résultat ne constitue pas un inventaire exhaustif des données de data.gouv.fr, de toutes les administrations ni de tous les sites Internet. Le [catalogue complet fourni par data.gouv.fr](https://www.data.gouv.fr/datasets/catalogue-des-donnees-de-data-gouv-fr) est également inscrit dans le registre. Ses exports de plusieurs centaines de mégaoctets à un gigaoctet sont traités séparément des notices légères.
 
+Le premier [essai automatisé](https://github.com/fraware/frontiere-institut-interet-public/pull/130) a conservé 500 notices distinctes. Il a réussi 46 des 79 demandes initiales et consigné 33 anomalies, essentiellement sur des secondes pages non disponibles. La présente révision utilise le nombre de résultats annoncé et le lien de page suivante afin d'éviter les interrogations sans suite ; le rapport suivant devra confirmer la diminution réelle de ces échecs.
+
 ## Balayage général indépendant des mots-clés
 
 Le programme `scripts/balayer_catalogue_national.py` ajoute une deuxième méthode de découverte : parcourir **toutes les pages du catalogue national**, y compris celles dont le titre ne correspond à aucune recherche thématique.
