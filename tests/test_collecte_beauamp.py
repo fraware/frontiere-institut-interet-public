@@ -104,3 +104,47 @@ def test_taille_declares_and_entete_verifies():
         telecharger_fichier(item, lambda fiche: b"trop court")
     with pytest.raises(RefusFichier, match="CSV"):
         telecharger_fichier(item, lambda fiche: b"\x00" * fiche["octets_declares"])
+
+
+def test_rattrapage_des_anciens_fichiers_sans_perdre_le_manifeste(tmp_path):
+    """Une nouvelle fenêtre de 31 jours n'efface pas les archives plus anciennes."""
+    contenu = b"acheteur;objet\nAdministration;Analyse\n"
+    recent = ressource("08-10-2026", contenu)
+    ancien = ressource("01-09-2026", contenu)
+    assert len(selectionner([ancien, recent], instant=date(2026, 10, 9))) == 1
+    selection = selectionner([ancien, recent], instant=date(2026, 10, 9),
+                            jours_archives=set())
+    assert [x["jour"] for x in selection] == ["2026-10-08", "2026-09-01"]
+
+    source = {"license": "cc-by-sa", "resources": [recent]}
+    collecter(tmp_path, obtenir_source=lambda: source,
+             obtenir_fichier=lambda fiche: contenu,
+             instant=date(2026, 10, 9))
+    source = {"license": "cc-by-sa", "resources": [recent, ancien]}
+    collecter(tmp_path, obtenir_source=lambda: source,
+             obtenir_fichier=lambda fiche: contenu,
+             instant=date(2026, 10, 9))
+    manifeste = json.loads((tmp_path / "manifest.json").read_text(encoding="utf-8"))
+    assert manifeste["nombre_fichiers"] == 2
+    assert [f["jour"] for f in manifeste["fichiers"]] == ["2026-09-01", "2026-10-08"]
+    assert manifeste["nombre_jours_anterieurs_conserves"] == 1
+    assert (tmp_path / "quotidiens" / "2026-09-01.csv").read_bytes() == contenu
+
+    # Même si le catalogue ne liste plus un jour ancien, son intégrité est
+    # réexaminée et le manifeste conservé lors du relevé suivant.
+    collecter(tmp_path, obtenir_source=lambda: {
+        "license": "cc-by-sa", "resources": [recent],
+    }, obtenir_fichier=lambda fiche: contenu, instant=date(2026, 10, 10))
+    nouveau = json.loads((tmp_path / "manifest.json").read_text(encoding="utf-8"))
+    assert nouveau["nombre_fichiers"] == 2
+
+
+def test_refus_archives_anciennes_modifiees(tmp_path):
+    contenu = b"acheteur;objet\nService;Etude\n"
+    source = {"license": "cc-by-sa", "resources": [ressource(contenu=contenu)]}
+    collecter(tmp_path, obtenir_source=lambda: source,
+             obtenir_fichier=lambda fiche: contenu, instant=date(2026, 10, 9))
+    (tmp_path / "quotidiens" / "2026-10-08.csv").write_bytes(b"fichier corrompu")
+    with pytest.raises(RefusFichier, match="Empreinte historique"):
+        collecter(tmp_path, obtenir_source=lambda: source,
+                 obtenir_fichier=lambda fiche: contenu, instant=date(2026, 10, 10))
