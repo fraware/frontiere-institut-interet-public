@@ -54,6 +54,8 @@ jobs:
           import os
           from pathlib import Path
           import sqlite3
+          import subprocess
+          import re
 
           dossier = Path(os.environ["RUNNER_TEMP"]) / "frontiere-boamp"
           base = dossier / "index-avis-boamp.sqlite3"
@@ -71,9 +73,16 @@ jobs:
           manifestes = sorted(archives.glob("20??/??/20??-??-??.json"))
           if len(comprimés) != jours or len(manifestes) != jours:
               raise SystemExit("Nombre d'archives et de manifestes incohérent.")
+          revision_lue = subprocess.run(
+              ["git", "rev-parse", "HEAD"], text=True,
+              capture_output=True, check=True,
+          ).stdout.strip()
+          if not re.fullmatch(r"[0-9a-f]{40}", revision_lue):
+              raise SystemExit("Révision réellement consultée incorrecte.")
           preuve = {
               "version": "publication-index-boamp-v1",
-              "revision_depot": os.environ["GITHUB_SHA"],
+              "revision_depot": revision_lue,
+              "revision_evenement_github": os.environ["GITHUB_SHA"],
               "jours_indexes": jours,
               "avis_indexes": avis,
               "octets_archives_compressees": sum(p.stat().st_size for p in comprimés),
