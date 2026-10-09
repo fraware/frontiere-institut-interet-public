@@ -20,6 +20,14 @@ L'index utilise SQLite et l'indexation textuelle intégrale FTS5. Il est constru
 
 La recherche couvre **uniquement** les journées déjà présentes dans le dossier d'archives. Les fichiers arrivés depuis la construction de l'index exigent une nouvelle exécution de `indexer`. Les résultats retournent la date, l'identifiant BOAMP, l'objet, l'acheteur, la catégorie, l'état de l'avis et le lien officiel disponible. Les champs de contact ou d'attribution nominative ne sont pas ajoutés.
 
+## Fabrication automatique et accès au fichier indexé
+
+La procédure `.github/workflows/index-boamp-historique.yml` construit l'index depuis les archives officielles publiées dans la branche principale, lors de l'ajout ou de la modification de ces archives, une fois par jour et sur demande. L'exécution relève les erreurs de fichier, vérifie chaque empreinte et réalise un contrôle de cohérence SQLite avant de publier un artefact temporaire téléchargeable depuis GitHub Actions.
+
+L'artefact contient le fichier de recherche `index-avis-boamp.sqlite3`, un bilan de construction et une fiche de preuve indiquant la révision exacte du dépôt, les nombres de journées et d'avis, le volume et l'empreinte SHA-256 de l'index. Les fichiers restent accessibles pendant quatorze jours. Ils ne sont pas ajoutés à l'historique Git, afin de maîtriser la croissance du dépôt. En cas d'échec de vérification, la procédure interrompt la publication.
+
+Pour consulter les résultats, télécharger l'artefact d'une exécution réussie puis exécuter la commande `chercher` avec le chemin du fichier SQLite. L'existence d'un fichier d'index téléchargeable ne constitue pas un service en ligne permanent ; le protocole de collecte reste indépendant d'une application publique.
+
 ## Limites
 
 Le dépôt contient une archive partielle, initialement huit journées de septembre et octobre 2026. L'index ne constitue ni un relevé exhaustif des marchés français ni une validation causale de la valeur de FRONTIÈRE. Les avis rectificatifs et répétitions éventuelles restent des unités documentaires distinctes. Le contenu archivé correspond à l'interface officielle à la date du relevé, sous réserve des limites de stabilité transactionnelle de cette interface.
