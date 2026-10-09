@@ -22,6 +22,7 @@ def test_trois_controles_historiques_sans_ecriture():
         assert "workflow_run:" not in contenu
         assert "schedule:" not in contenu
         assert "persist-credentials: false" in contenu
+        assert "github.workflow, github.event.pull_request.number" in contenu
 
 
 def test_chaine_programmee_et_seule_habilitee_pour_ces_trois_sources():
