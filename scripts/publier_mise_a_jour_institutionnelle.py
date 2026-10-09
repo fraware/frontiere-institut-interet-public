@@ -32,6 +32,7 @@ CHEMINS = {
         "institutionnel/decouverte/balayage_pages",
         "institutionnel/decouverte/catalogue_mesr.json",
         "institutionnel/decouverte/catalogue_mesr_etat.json",
+        "institutionnel/decouverte/domaines_sources.json",
     ),
     "referentiel": (
         "institutionnel/entites/roae",
