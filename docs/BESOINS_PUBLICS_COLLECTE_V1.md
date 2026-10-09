@@ -8,7 +8,7 @@ Une première collecte spécialisée réunit deux sources officielles.
 
 ### Annonces de marchés
 
-Le [Bulletin officiel des annonces des marchés publics](https://www.data.gouv.fr/dataservices/api-bulletin-officiel-des-annonces-des-marches-publics-boamp) expose une interface publique gratuite, soumise à la Licence Ouverte 2.0 et aux conditions d'accès du producteur. Le programme `scripts/collecter_besoins_publics.py` interroge les annonces publiées depuis sept jours, jusqu'à douze pages de cent annonces par exécution.
+Le [Bulletin officiel des annonces des marchés publics](https://www.data.gouv.fr/dataservices/api-bulletin-officiel-des-annonces-des-marches-publics-boamp) expose une interface publique gratuite, soumise à la Licence Ouverte 2.0 et aux conditions d'accès du producteur. Le programme `scripts/collecter_besoins_publics.py` interroge les annonces publiées depuis sept jours, jusqu'à quarante-cinq pages de cent annonces par exécution.
 
 Chaque notice conservée comporte un identifiant, l'objet de l'achat, l'acheteur public, les dates de publication et de réponse, la catégorie, le statut et une référence officielle lorsqu'elle est fournie. Les contacts nominatifs et les textes complets des annonces ne sont pas recopiés. L'index cumule les identifiants rencontrés dans `institutionnel/besoins_publics/annonces_boamp.json` ; son état est enregistré dans `institutionnel/besoins_publics/etat_boamp.json`.
 
@@ -39,7 +39,7 @@ Les résultats sont consultables dans l'application sur `/besoins-publics` et pa
 
 ## Conditions de lecture et limites
 
-La première version privilégie la disponibilité des données et l'identification de leurs producteurs. Les annonces BOAMP consultées forment une fenêtre glissante de sept jours, limitée en volume, et **ne représentent pas tous les avis historiques**. Les ressources d'emploi sont référencées mais leurs lignes ne sont pas encore importées. Une couverture totale exige des partitions historiques, le traitement des modifications et suppressions à la source, le suivi des licences et une stratégie adaptée aux fichiers importants.
+La première version privilégie la disponibilité des données et l'identification de leurs producteurs. Les annonces BOAMP consultées forment une fenêtre glissante de sept jours, limitée à 4 500 annonces interrogées par exécution, et **ne représentent pas tous les avis historiques**. Les ressources d'emploi sont référencées mais leurs lignes ne sont pas encore importées. Une couverture totale exige des partitions historiques, le traitement des modifications et suppressions à la source, le suivi des licences et une stratégie adaptée aux fichiers importants.
 
 Les échecs de réseau ne sont jamais traduits en absence de besoins. Chaque source conserve son propre suivi, avec les dates de consultation et limites de collecte. Aucune validation institutionnelle humaine n'est revendiquée.
 
@@ -51,3 +51,5 @@ python scripts/collecter_besoins_publics.py
 ```
 
 La seconde commande interroge les interfaces officielles et conserve les résultats dans le répertoire local. Les propositions de fusion distantes relèvent exclusivement de la procédure GitHub autorisée.
+
+Le premier relevé réel du 9 octobre 2026 a reçu 1 200 annonces sur 3 055 annoncées par la source, avec douze pages réussies et aucun échec. La présente révision porte la recherche à quarante-cinq pages ; la couverture effective de la fenêtre sera contrôlée lors de l'exécution suivante.
