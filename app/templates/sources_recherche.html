@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Catalogue de la recherche — FRONTIÈRE{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">ENSEIGNEMENT SUPÉRIEUR ET RECHERCHE</p>
+    <h1>Sources scientifiques publiques</h1>
+    <p>Notices issues du catalogue public du ministère chargé de l'enseignement supérieur et de la recherche. Chaque lien conduit à la source officielle.</p>
+  </div>
+</section>
+<section class="metrics">
+  <article><span>Notices recensées</span><strong>{{ catalogue.total }}</strong></article>
+  <article><span>Dernière collecte</span><strong style="font-size:1rem">{{ catalogue.derniere_consultation or "Non exécutée" }}</strong></article>
+</section>
+<section class="panel">
+  <div class="panel-head"><h2>Rechercher</h2><a href="/sources-publiques">Toutes les sources</a></div>
+  <form method="get" action="/sources-recherche">
+    <label for="terme">Titre du jeu scientifique</label>
+    <input id="terme" name="terme" type="search" maxlength="120" value="{{ terme }}" placeholder="ex. laboratoire">
+    <button type="submit">Rechercher</button>
+  </form>
+</section>
+<section class="panel">
+  {% if catalogue.notices %}
+  <table>
+    <thead><tr><th>Jeu de données</th><th>Licence déclarée</th><th>Dernière modification</th></tr></thead>
+    <tbody>{% for notice in catalogue.notices %}
+      <tr><td><a href="{{ notice.page }}" target="_blank" rel="noopener noreferrer">{{ notice.titre }}</a></td>
+      <td>{{ notice.licence_declaree }}</td><td>{{ notice.modifie_le or "Non indiqué" }}</td></tr>
+    {% endfor %}</tbody>
+  </table>
+  {% else %}<p class="empty">Aucun jeu disponible pour cette recherche dans la version déployée.</p>{% endif %}
+  <p class="muted">La présence dans le catalogue ne prouve ni la vérification du contenu, ni la licence permettant de republier des fichiers complets.</p>
+  {% if catalogue.page > 1 %}<a href="/sources-recherche?page={{ catalogue.page - 1 }}&terme={{ terme|urlencode }}">Page précédente</a>{% endif %}
+  {% if catalogue.page * catalogue.limite < catalogue.total %}<a href="/sources-recherche?page={{ catalogue.page + 1 }}&terme={{ terme|urlencode }}">Page suivante</a>{% endif %}
+</section>
+{% endblock %}
