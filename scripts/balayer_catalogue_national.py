@@ -13,13 +13,12 @@ import time
 
 from scripts.decouvrir_sources_publiques import (
     DOSSIER, ErreurCollecte, enregistrer_json, horodatage,
-    lire_json, telecharger_page, url_catalogue, _texte, url_publique,
+    lire_json, telecharger_page, url_catalogue, _texte,
 )
 
 CONFIG = DOSSIER / "balayage_config_v1.json"
 ETAT = DOSSIER / "balayage_etat.json"
 PAGES = DOSSIER / "balayage_pages"
-TAILLE_MAX_LOT = 2500
 
 
 def verifier_configuration(config: dict) -> None:
@@ -29,7 +28,7 @@ def verifier_configuration(config: dict) -> None:
         raise ErreurCollecte("Tri ou contenu du balayage non autorisé.")
     for k, minimum, maximum in (
         ("taille_page", 10, 100),
-        ("pages_par_execution", 1, 40),
+        ("pages_par_execution", 1, 80),
         ("nombre_max_pages", 100, 5000),
     ):
         value = config.get(k)
