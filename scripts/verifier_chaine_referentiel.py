@@ -84,7 +84,7 @@ def verifier(d: dict) -> dict:
             "Références hiérarchiques administratives non résolues.")
     types = cog.get("types_territoires", {})
     _exiger(30000 <= types.get("COM", 0) <= 40000 and types.get("DEP", 0) >= 100
-            and types.get("REG", 0) >= 18 and types.get("CTCD", -1) == 0,
+            and types.get("REG", 0) >= 18 and types.get("CTCD", 0) == 0,
             "Couverture territoriale incohérente.")
     _exiger(cog.get("nombre_territoires", 0) >= 35000
             and cog.get("nombre_relations", 0) > cog.get("nombre_territoires", 0),
