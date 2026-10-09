@@ -1,0 +1,82 @@
+{
+  "version": "2026-10-09",
+  "regle": "La présence dans cette liste indique une source officielle identifiée, pas une ingestion technique réalisée. Les droits, quotas et formats sont à vérifier avant duplication du contenu.",
+  "catalogues": [
+    {
+      "id": "data_gouv_catalogue",
+      "nom": "Catalogue national des données publiques",
+      "producteur": "DINUM",
+      "statut": "collecte_metadonnees_active_dans_cette_proposition",
+      "documentation": "https://guides.data.gouv.fr/api-de-data.gouv.fr/reference/datasets",
+      "point_entree": "https://www.data.gouv.fr/api/1/datasets/",
+      "objet": "jeux_donnees_et_ressources"
+    },
+    {
+      "id": "data_gouv_ensemble",
+      "nom": "Export complet du catalogue national",
+      "producteur": "DINUM",
+      "statut": "a_etudier_pour_couverture_complete",
+      "documentation": "https://www.data.gouv.fr/datasets/catalogue-des-donnees-de-data-gouv-fr",
+      "objet": "jeux_donnees_api_et_ressources"
+    },
+    {
+      "id": "dila_annuaire",
+      "nom": "Annuaire de l'administration",
+      "producteur": "DILA",
+      "statut": "deja_ingere_dans_autre_procedure",
+      "documentation": "https://www.data.gouv.fr/dataservices/api-annuaire-de-ladministration-et-des-services-publics",
+      "objet": "services_centraux_locaux"
+    },
+    {
+      "id": "boamp",
+      "nom": "Bulletin officiel des annonces des marchés publics",
+      "producteur": "DILA",
+      "statut": "a_integrer",
+      "documentation": "https://www.data.gouv.fr/dataservices/api-bulletin-officiel-des-annonces-des-marches-publics-boamp",
+      "point_entree": "https://boamp-datadila.opendatasoft.com/api/explore/v2.0",
+      "objet": "annonces_et_attributions_marches"
+    },
+    {
+      "id": "ted",
+      "nom": "Avis européens de marchés publics",
+      "producteur": "Office des publications de l'Union européenne",
+      "statut": "a_integrer",
+      "documentation": "https://docs.ted.europa.eu/api/latest/search.html",
+      "point_entree": "https://ted.europa.eu/api/v3/notices/search",
+      "objet": "avis_marches_europeens"
+    },
+    {
+      "id": "recherche_entreprises",
+      "nom": "API Recherche d'entreprises",
+      "producteur": "DINUM et partenaires",
+      "statut": "a_integrer",
+      "documentation": "https://www.data.gouv.fr/dataservices/api-recherche-dentreprises",
+      "point_entree": "https://recherche-entreprises.api.gouv.fr",
+      "objet": "identification_entreprises_et_etablissements"
+    },
+    {
+      "id": "recherche_data_gouv",
+      "nom": "Catalogue de données de recherche",
+      "producteur": "Recherche Data Gouv",
+      "statut": "a_integrer",
+      "documentation": "https://recherche.data.gouv.fr/fr/page/catalogue-recherche-data-gouv",
+      "objet": "catalogue_donnees_scientifiques"
+    },
+    {
+      "id": "legifrance_api",
+      "nom": "API Légifrance",
+      "producteur": "DILA",
+      "statut": "acces_avec_inscription_a_prevoir",
+      "documentation": "https://www.legifrance.gouv.fr/contenu/pied-de-page/open-data-et-api",
+      "objet": "textes_officiels"
+    },
+    {
+      "id": "rnsr_mesr",
+      "nom": "Répertoire des structures de recherche",
+      "producteur": "Ministère chargé de l'enseignement supérieur",
+      "statut": "deja_ingere_dans_autre_procedure",
+      "documentation": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-structures-recherche-publiques-actives/",
+      "objet": "laboratoires_domaines_scientifiques"
+    }
+  ]
+}
