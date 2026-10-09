@@ -106,7 +106,7 @@ Le [protocole indépendant](../evaluation/PROTOCOLE_SESSIONS_INDEPENDANTES_V1.md
 | 7. Dévoiler et corriger les références | Détenteur habilité | Empreinte privée vérifiée ; fichiers de réponses inchangés | À_FAIRE |
 | 8. Analyser et restituer | Responsable d'étude | Résultats par cas, différences appariées, temps, désaccords et contaminations publiés avec limites | À_FAIRE |
 
-**Points bloquants :** si le corrigé privé n'est pas retrouvé ou n'a pas l'empreinte annoncée, suspendre la correction ; si les opérateurs connaissent les solutions, ne pas présenter leurs résultats comme aveugles ; si les réponses sont postérieures à leur dévoilement, les exclure des analyses conçues comme scellées.
+**Points bloquants :** si le corrigé privé n'est pas retrouvé ou n'a pas l'empreinte annoncée, suspendre la correction ; si les opérateurs connaissent les solutions, ne pas présenter leurs résultats comme aveugles ; si les réponses sont postérieures à leur dévoilement, les exclure des analyses présentées comme établies avant le dévoilement des références.
 
 **Portée :** dix cas historiques autorisent un premier diagnostic comparatif et des analyses d'erreur. Ils ne donnent pas une estimation nationale ni une démonstration causale d'effet sur les institutions.
 
@@ -118,7 +118,7 @@ Pour chaque dossier :
 
 1. Enregistrer le besoin préexistant et sa provenance, sans divulguer de données sensibles dans le dépôt public.
 2. Dater le point de départ du besoin, le résultat souhaité et la définition de la première contribution utile.
-3. Enregistrer et préserver la recherche publique prioritaire et ses éventuelles inconnues (P0).
+3. Enregistrer et préserver les démarches de recherche dans le secteur public, leurs résultats et les informations encore inconnues.
 4. Comparer le processus habituel et l'intervention spécialisée uniquement sous des règles établies avant les résultats et compatibles avec les contraintes de l'organisme.
 5. Suivre séparément temps jusqu'à identification, mobilisation, première contribution utile, coût humain et effet observé.
 6. Recenser également les refus, abandons, autres solutions satisfaisantes et modifications de la mission.
