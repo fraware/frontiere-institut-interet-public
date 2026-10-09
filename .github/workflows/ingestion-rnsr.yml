@@ -56,6 +56,8 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: write
+      pull-requests: write
+      actions: write
     steps:
       - name: Récupérer la branche principale sans conserver de jeton
         uses: actions/checkout@v7
@@ -126,18 +128,7 @@ jobs:
           PY
 
 
-      - name: Enregistrer les structures validées en mode de continuité
+      - name: Soumettre une proposition de mise à jour
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        shell: bash
-        run: |
-          git add -- institutionnel/entites/rnsr institutionnel/statistiques_rnsr.json institutionnel/instantanes/rnsr_manifest.json
-          if git diff --cached --quiet; then
-            echo "La collection des structures de recherche est inchangée."
-            exit 0
-          fi
-          git config user.name "frontiere-referentiel"
-          git config user.email "frontiere-referentiel@users.noreply.github.com"
-          git commit -m "Référentiel MESR — actualiser les structures de recherche du RNSR"
-          gh auth setup-git
-          git push origin HEAD:main
+        run: python scripts/publier_mise_a_jour_institutionnelle.py --source rnsr --publier
