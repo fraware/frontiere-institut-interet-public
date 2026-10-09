@@ -14,6 +14,9 @@ def test_index_boamp_automatise_depuis_main_et_sans_push():
     assert "scripts/rechercher_historique_boamp.py indexer" in contenu
     assert "sqlite3" in contenu
     assert "sha256_index" in contenu
+    assert '["git", "rev-parse", "HEAD"]' in contenu
+    assert '"revision_depot": revision_lue' in contenu
+    assert '"revision_evenement_github": os.environ["GITHUB_SHA"]' in contenu
     assert "PRAGMA integrity_check" in contenu
     assert "actions/upload-artifact@v4" in contenu
     assert "retention-days: 14" in contenu
