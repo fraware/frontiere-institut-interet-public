@@ -1,26 +1,26 @@
 {
-  "derniere_modification_http": "Thu, 08 Oct 2026 02:32:03 GMT",
-  "etag_http": "\"306d51-65d4b097c1b16\"",
+  "derniere_modification_http": "Fri, 09 Oct 2026 02:32:03 GMT",
+  "etag_http": "\"307209-65d5f2751fefe\"",
   "licence": "Licence Ouverte 2.0",
-  "nom_fichier_json": "dila_refOrga_admin_Etat_fr_20261008.json",
+  "nom_fichier_json": "dila_refOrga_admin_Etat_fr_20261009.json",
   "nom_fichier_telecharge": "dila_refOrga_admin_Etat_fr_latest.zip",
-  "nombre_relations": 8075,
-  "nombre_services": 7907,
-  "observe_le": "2026-10-08T12:16:17+00:00",
-  "octets_zip": 3173713,
+  "nombre_relations": 8077,
+  "nombre_services": 7909,
+  "observe_le": "2026-10-09T12:07:32+00:00",
+  "octets_zip": 3174921,
   "page_source": "https://www.data.gouv.fr/datasets/referentiel-de-lorganisation-administrative-de-letat",
   "partitions_entites": [
     {
       "fichier": "institutionnel/entites/roae/roae_00.jsonl",
       "nombre": 258,
-      "octets": 1447878,
-      "sha256": "bb7186e3dafd71f3132f4078c11d679320f63b9c273d1983245ad0e0b9a624ee"
+      "octets": 1448018,
+      "sha256": "a15e10d92e40c44a9ed18a49e607f3256bd494989935eee3d4d983fac36751b4"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_01.jsonl",
       "nombre": 257,
-      "octets": 1421806,
-      "sha256": "e7be43e46ccfa0c3c566c64e0863484103cf331947e3105872237be62375a648"
+      "octets": 1421674,
+      "sha256": "8bdbfeba2811fc50cc6ee98ca0e9c7d279a80634d7d58a5192999364c7bdfc2b"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_02.jsonl",
@@ -31,44 +31,44 @@
     {
       "fichier": "institutionnel/entites/roae/roae_03.jsonl",
       "nombre": 248,
-      "octets": 1395077,
-      "sha256": "32737868d7a04e9c5c2904081fed37afa80160a52ecc2b4ae9fe87834bcf53ab"
+      "octets": 1395395,
+      "sha256": "665e0404b8f7296ea58893a479ba2583f5165b300824300fec0cc04be87f5640"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_04.jsonl",
       "nombre": 247,
-      "octets": 1367174,
-      "sha256": "4c9ad30b24544e22f205e22865a85cec9b37911878c2f0c1bc2a74bd6c68c9bf"
+      "octets": 1367524,
+      "sha256": "892e462faf1bfb2286a79d033eebf9df865cc835f58af064335df1f5dc14e0cf"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_05.jsonl",
       "nombre": 246,
-      "octets": 1375937,
-      "sha256": "285a04f64935a8b557294110cc268df55c1e748d830cb3ba8b40b924227270ea"
+      "octets": 1376385,
+      "sha256": "b66da6305d9bc3ef10a079e65140a1235b454bfa932ce29c32c5d9bcb4883b6d"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_06.jsonl",
-      "nombre": 268,
-      "octets": 1449423,
-      "sha256": "1badbc9fe31c0bdc2148265c5cbf5bdf7fbc5fa707dda23d837eefeb381b96e8"
+      "nombre": 269,
+      "octets": 1454586,
+      "sha256": "c5aef3725ded85b297ff58c8d33ec1054219a25b3061baae95f96fbd50494645"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_07.jsonl",
       "nombre": 235,
-      "octets": 1291414,
-      "sha256": "2e6052af627def2376380286d42b98c5a52697069d9ffe1dddac3b79a908ee5e"
+      "octets": 1291380,
+      "sha256": "16b840f79c4cad501059605c6a001a4d264e1c2401ac6f034bca25003f2ef3bc"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_08.jsonl",
       "nombre": 238,
-      "octets": 1364946,
-      "sha256": "4ec79562a6582610c4b4c7961f6b343f1bef564d5e2546fd454e740b9e78d252"
+      "octets": 1364944,
+      "sha256": "b4e2654e86afb1fc742bdec6e7fbc283cc0ee1c006789fe773fddb737296adce"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_09.jsonl",
       "nombre": 257,
-      "octets": 1493312,
-      "sha256": "e6f3d4bdca012fc18f8a289d861fbaf1229ad71a94efe5feaf34ce55d4d0e712"
+      "octets": 1492974,
+      "sha256": "fac9a74910f8bf87e3494499e34ffb85e4cc9321fc58649acb60f4fd9a56e57c"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_10.jsonl",
@@ -79,14 +79,14 @@
     {
       "fichier": "institutionnel/entites/roae/roae_11.jsonl",
       "nombre": 243,
-      "octets": 1350529,
-      "sha256": "23566a30bf8b1ef68717f611ee956bf3f9452a011e3349e9c38c652283f808ac"
+      "octets": 1350091,
+      "sha256": "59e7862fe53d9bcefd09eeb43a13094a61b3d496e1dfa1bec328b430ce8a4e34"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_12.jsonl",
       "nombre": 241,
       "octets": 1310313,
-      "sha256": "a38a338971bfb966f8880db49e12153f81777e7ac2cbe26347608ca00ccbe2d7"
+      "sha256": "604aa1915c5adce65416e45b4cfed88ddf05c5115b20cb7e11aa8dc480f83b47"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_13.jsonl",
@@ -97,8 +97,8 @@
     {
       "fichier": "institutionnel/entites/roae/roae_14.jsonl",
       "nombre": 229,
-      "octets": 1247732,
-      "sha256": "5217d312db5ab7b73ff3390c25786d14049f1dc125494419c8d3c3635a96cf5e"
+      "octets": 1247730,
+      "sha256": "94133c0de02f019463e97c69aa1d071cb319cda1c178a20e63257569b85286ff"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_15.jsonl",
@@ -109,8 +109,8 @@
     {
       "fichier": "institutionnel/entites/roae/roae_16.jsonl",
       "nombre": 241,
-      "octets": 1330546,
-      "sha256": "f997705b277801e305fa325f491770c50db6e8c1ca93fca409404a74ffd0edb6"
+      "octets": 1330630,
+      "sha256": "9acd5c6d01250bfd492ad7140e6456e605aa2c43122715bf3ae83cc0a822ebf0"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_17.jsonl",
@@ -127,20 +127,20 @@
     {
       "fichier": "institutionnel/entites/roae/roae_19.jsonl",
       "nombre": 245,
-      "octets": 1347730,
-      "sha256": "f73f986772d1f4299bf4837c70dde63ec73c962232f24072a0435738420a3e8a"
+      "octets": 1348080,
+      "sha256": "ed5989dbc3e9f77589df6dcdcf46b3561920328c952b3410a182d1b2b7d4d220"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_20.jsonl",
       "nombre": 240,
       "octets": 1370383,
-      "sha256": "65a461e8813df59b8ab762d900c9ef8ecb17217d945f13854415ece2461e325d"
+      "sha256": "b9aca9bb1c6eb800b0f188e7fcade79dfdc8cb46a237d90b1fadacb00bf3c37a"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_21.jsonl",
       "nombre": 284,
-      "octets": 1571975,
-      "sha256": "3c59fc8e4e8e1630e79de5276b0b4fb3a2f44ace374f7a738dd047e52b9cf381"
+      "octets": 1571977,
+      "sha256": "5a1bc9c80bd6302c94479067b18e0d561fa8f58e24414a37116415b75824a250"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_22.jsonl",
@@ -156,9 +156,9 @@
     },
     {
       "fichier": "institutionnel/entites/roae/roae_24.jsonl",
-      "nombre": 253,
-      "octets": 1395929,
-      "sha256": "1c5f9595ab0d783c6efa885453a4b5af04f37b923dc5a5f3df970ffdcede886a"
+      "nombre": 254,
+      "octets": 1403290,
+      "sha256": "192bd4cea85795d34f9e38fbd05f7868ef79d9d168348e81004f95b2360e11c2"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_25.jsonl",
@@ -181,8 +181,8 @@
     {
       "fichier": "institutionnel/entites/roae/roae_28.jsonl",
       "nombre": 258,
-      "octets": 1455634,
-      "sha256": "3f0ee1515a74bc117b1b8c8b55ec4097acda5675c2c8a7fd74df9609e489abd3"
+      "octets": 1455726,
+      "sha256": "b90a13b7229b646da5b21a25b3ad8d261f72ca8c4548a7adbf576037bc9b6ac7"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_29.jsonl",
@@ -193,14 +193,14 @@
     {
       "fichier": "institutionnel/entites/roae/roae_30.jsonl",
       "nombre": 243,
-      "octets": 1309039,
-      "sha256": "35d258d4b765d549cb883a8686818cd64525dcb63a28671cd02ba6934d5cf5a1"
+      "octets": 1309045,
+      "sha256": "073b6de162ffe0165c3451fb869fe9da1fadeefe353e2192dc0a44586353483c"
     },
     {
       "fichier": "institutionnel/entites/roae/roae_31.jsonl",
       "nombre": 227,
-      "octets": 1280176,
-      "sha256": "fc4d6196d0dd4f9460a32f8d7f7c4e920a0ce04a63487bd556fac072c4916b97"
+      "octets": 1279774,
+      "sha256": "41094fe87acf62629eed1b6db806df0fdc46d2c4c99d3e007ff6cc68a5127bce"
     }
   ],
   "partitions_relations": [
@@ -218,9 +218,9 @@
     },
     {
       "fichier": "institutionnel/relations/roae/roae_hierarchie_02.jsonl",
-      "nombre": 510,
-      "octets": 419870,
-      "sha256": "108687d0b91b467a29ea4e41e7db1998f87a59d6bc305a8d33904e732c449802"
+      "nombre": 511,
+      "octets": 420693,
+      "sha256": "f2d18ee238554a9c1b201379a0705bfd28a9721716e88b15cf9810d6f0bb5f16"
     },
     {
       "fichier": "institutionnel/relations/roae/roae_hierarchie_03.jsonl",
@@ -230,9 +230,9 @@
     },
     {
       "fichier": "institutionnel/relations/roae/roae_hierarchie_04.jsonl",
-      "nombre": 502,
-      "octets": 413246,
-      "sha256": "4a2e25d15d84ed2947801fcd69d8a0187f59c648d4506547d84e7a6dab3a7773"
+      "nombre": 500,
+      "octets": 411600,
+      "sha256": "927e84e01a6e98e01fd62c07f74f8f249532d8a1f8a1a8b0eedf3581c1577597"
     },
     {
       "fichier": "institutionnel/relations/roae/roae_hierarchie_05.jsonl",
@@ -242,9 +242,9 @@
     },
     {
       "fichier": "institutionnel/relations/roae/roae_hierarchie_06.jsonl",
-      "nombre": 561,
-      "octets": 461843,
-      "sha256": "49c34bff59862d899965dcdef908c03d997c89f46ba5ebdbb42fea1beca35550"
+      "nombre": 563,
+      "octets": 463489,
+      "sha256": "f30fa7724ca7372c66b97a69e1ae3279edc5df1a0a401edcd4739e9d2062f48b"
     },
     {
       "fichier": "institutionnel/relations/roae/roae_hierarchie_07.jsonl",
@@ -254,15 +254,15 @@
     },
     {
       "fichier": "institutionnel/relations/roae/roae_hierarchie_08.jsonl",
-      "nombre": 513,
-      "octets": 422309,
-      "sha256": "9ac65f3f775e0e844c09be51a8be3c43ff30ab0ca1f96e581259c378820d9fbb"
+      "nombre": 512,
+      "octets": 421486,
+      "sha256": "302dda54ac95ffe3a23c7281a87284c2b30a5da9594b28b20705cab36132062d"
     },
     {
       "fichier": "institutionnel/relations/roae/roae_hierarchie_09.jsonl",
-      "nombre": 455,
-      "octets": 374515,
-      "sha256": "6e5bf4d8073ccc4d317eaffb0d45bc27415cb2bd7b0dc3fad66b149f5b65bc5b"
+      "nombre": 454,
+      "octets": 373692,
+      "sha256": "4917ceefd653ae6a78eb96372dca38779b6d6f073ddc1526caa2e62018ef3768"
     },
     {
       "fichier": "institutionnel/relations/roae/roae_hierarchie_10.jsonl",
@@ -272,9 +272,9 @@
     },
     {
       "fichier": "institutionnel/relations/roae/roae_hierarchie_11.jsonl",
-      "nombre": 475,
-      "octets": 391045,
-      "sha256": "d72285662f9b59771f97dd6f8dcd89998c36343199bfe907f96a53e971c9e08e"
+      "nombre": 476,
+      "octets": 391868,
+      "sha256": "c5189c2908356f9cedf999fb9a4d88e3660c3005579d8ea1a9274bb133335598"
     },
     {
       "fichier": "institutionnel/relations/roae/roae_hierarchie_12.jsonl",
@@ -284,15 +284,15 @@
     },
     {
       "fichier": "institutionnel/relations/roae/roae_hierarchie_13.jsonl",
-      "nombre": 515,
-      "octets": 423965,
-      "sha256": "7486989b8bb418668e455b508faf89b4648c7008f960753f664e573e8c6e11e6"
+      "nombre": 516,
+      "octets": 424788,
+      "sha256": "4d7c36dc89fe77d2ece1cbfd584cc28f63913ecf35c8340539c3448a97fc3db7"
     },
     {
       "fichier": "institutionnel/relations/roae/roae_hierarchie_14.jsonl",
-      "nombre": 497,
-      "octets": 409171,
-      "sha256": "b3da3b88fa4217db47a6f1c4151c0a969f7fb58eee0cccbacf690c7b45dc5274"
+      "nombre": 498,
+      "octets": 409994,
+      "sha256": "ef2d48a822e0f74607fc37f7f7d961bcb493c43bf4ccb7e6bc75df222bdcb9bb"
     },
     {
       "fichier": "institutionnel/relations/roae/roae_hierarchie_15.jsonl",
@@ -303,7 +303,7 @@
   ],
   "paternite": "Service-Public.gouv.fr / DILA",
   "producteur": "Direction de l'information légale et administrative",
-  "sha256_zip": "16e8b7c6c13c7a63cee996cd0fd5a7b995feb879215b160052714d4dcf500743",
+  "sha256_zip": "c0218edbf0dcc2ac2699e702750ecc724e7ca58a1252ab0507fa9e3b898868fc",
   "source_id": "dila_roae",
   "url_telechargement_longue": "https://echanges.dila.gouv.fr/OPENDATA/RefOrgaAdminEtat/FluxAnneeCourante/dila_refOrga_admin_Etat_fr_latest.zip",
   "version": "1",
