@@ -25,6 +25,11 @@ CHEMINS = {
         "institutionnel/etat_sources.json",
         "institutionnel/alertes_sources.json",
     ),
+    "beauamp": (
+        "institutionnel/marches_attribues/quotidiens",
+        "institutionnel/marches_attribues/manifest.json",
+        "institutionnel/marches_attribues/etat.json",
+    ),
     "besoins": (
         "institutionnel/besoins_publics/annonces_boamp.json",
         "institutionnel/besoins_publics/etat_boamp.json",
@@ -71,9 +76,10 @@ TITRES = {
     "surveillance": "Actualiser la surveillance des sources institutionnelles",
     "sources": "Actualiser le catalogue des sources publiques découvertes",
     "besoins": "Actualiser les annonces de marchés et les offres publiques",
+    "beauamp": "Archiver les marchés attribués enrichis publiés quotidiennement",
     "referentiel": "Actualiser le référentiel administratif et territorial",
 }
-BRANCH = re.compile(r"^automatisation/(rnsr|surveillance|referentiel|sources|besoins)-([0-9]+)-([1-9][0-9]*)$")
+BRANCH = re.compile(r"^automatisation/(rnsr|surveillance|referentiel|sources|besoins|beauamp)-([0-9]+)-([1-9][0-9]*)$")
 REPO = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 
 
