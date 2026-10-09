@@ -1,8 +1,10 @@
 name: Préparation contrôlée du référentiel institutionnel
 
-# Essai uniquement à la demande. Les procédures historiques restent actives
-# jusqu'à validation indépendante de la chaîne complète.
+# Les actualisations programmées créent une proposition distincte.
+# L'exécution manuelle conserve une option sans publication.
 on:
+  schedule:
+    - cron: "47 5 * * *"
   workflow_dispatch:
     inputs:
       publier:
@@ -23,8 +25,8 @@ jobs:
     name: Vérifier les trois référentiels dépendants
     runs-on: ubuntu-latest
     timeout-minutes: 120
-    # Procédure réservée à un lancement sur main par un membre habilité.
-    # Le jeton de publication n'est transmis qu'à la dernière étape.
+    # Les modifications de main démarrent une chaîne complète depuis main.
+    # Le jeton n'est transmis qu'à l'étape de publication.
     permissions:
       contents: write
       pull-requests: write
@@ -108,11 +110,11 @@ jobs:
         run: python scripts/verifier_chaine_referentiel.py
 
       - name: Contrôler le périmètre des fichiers sans publier
-        if: ${{ !inputs.publier }}
+        if: ${{ github.event_name != 'schedule' && !inputs.publier }}
         run: python scripts/publier_mise_a_jour_institutionnelle.py --source referentiel
 
       - name: Soumettre une proposition de fusion distincte
-        if: ${{ inputs.publier }}
+        if: ${{ github.event_name == 'schedule' || inputs.publier }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/publier_mise_a_jour_institutionnelle.py --source referentiel --publier
