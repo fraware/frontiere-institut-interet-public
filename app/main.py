@@ -280,6 +280,68 @@ def _lire_besoins_publics(nom: str) -> tuple[list[dict], dict]:
     return ensemble, etat
 
 
+@app.get("/api/v1/offres-emplois")
+def api_offres_emplois(terme: str = "", page: int = 1, limite: int = 30) -> dict:
+    """Parcourir les seize partitions locales du fichier DGAFP, sans contact privé."""
+    if len(terme) > 120 or not 1 <= page <= 20000 or not 1 <= limite <= 100:
+        raise HTTPException(422, "Paramètre de recherche d'emploi hors limites.")
+    racine = BASE_DIR.parent / "institutionnel" / "besoins_publics"
+    manifest = racine / "manifest_offres_postes.json"
+    try:
+        metadonnees = json.loads(manifest.read_text(encoding="utf-8")) if manifest.is_file() else {}
+    except (OSError, UnicodeError, json.JSONDecodeError) as e:
+        raise HTTPException(503, "Manifeste d'emplois publics illisible.") from e
+    if not isinstance(metadonnees, dict):
+        raise HTTPException(503, "Manifeste de format incorrect.")
+    recherche = terme.casefold().strip()
+    debut = (page - 1) * limite
+    notices = []
+    compteur = 0
+    for shard in range(16):
+        chemin = racine / "offres_postes" / f"lot_{shard:02x}.jsonl"
+        if not chemin.is_file():
+            continue
+        try:
+            with chemin.open("r", encoding="utf-8") as flux:
+                for ligne in flux:
+                    if not ligne.strip():
+                        continue
+                    item = json.loads(ligne)
+                    if not isinstance(item, dict):
+                        raise ValueError("Notice mal formée.")
+                    if recherche and not any(recherche in str(item.get(champ) or "").casefold()
+                        for champ in ("intitule", "metier", "employeur",
+                                      "organisme", "specialisation", "competences_attendues")):
+                        continue
+                    if debut <= compteur < debut + limite:
+                        notices.append(item)
+                    compteur += 1
+        except (OSError, UnicodeError, ValueError) as e:
+            raise HTTPException(503, "Partition des emplois publics illisible.") from e
+    return {
+        "version": "emplois-publics-extraits-v1",
+        "total": compteur,
+        "page": page,
+        "limite": limite,
+        "filtre": terme,
+        "source_id": metadonnees.get("source_id"),
+        "date_extraction": metadonnees.get("extraire_le"),
+        "lignes_officielles_identifiees": metadonnees.get("offres_distinctes", 0),
+        "couverture_integrale_csv": metadonnees.get("couverture_integrale_du_csv"),
+        "fichier_brut_reproduit": False,
+        "offres": notices,
+    }
+
+
+@app.get("/offres-emplois", response_class=HTMLResponse)
+def page_offres_emplois(request: Request, terme: str = "", page: int = 1):
+    resultat = api_offres_emplois(terme=terme, page=page, limite=40)
+    return templates.TemplateResponse(
+        request=request, name="offres_emplois.html",
+        context={"resultat": resultat, "terme": terme},
+    )
+
+
 @app.get("/api/v1/besoins-publics")
 def api_besoins_publics(source: str = "marches", page: int = 1, limite: int = 30) -> dict:
     if not 1 <= page <= 1000 or not 1 <= limite <= 100:
