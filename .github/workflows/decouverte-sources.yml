@@ -3,6 +3,12 @@ name: Découverte récurrente des sources publiques
 on:
   schedule:
     - cron: "11 1,7,13,19 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/decouvrir_sources_publiques.py"
+      - "institutionnel/decouverte/recherches_v1.json"
+      - ".github/workflows/decouverte-sources.yml"
   workflow_dispatch:
 
 permissions:
