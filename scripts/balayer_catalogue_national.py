@@ -14,7 +14,7 @@ import time
 if __package__:
     from scripts.decouvrir_sources_publiques import (
         DOSSIER, ErreurCollecte, enregistrer_json, horodatage,
-        lire_json, telecharger_page, url_catalogue, _texte,
+        lire_json, telecharger_page, url_catalogue, _texte, ID,
     )
 else:
     from decouvrir_sources_publiques import (
@@ -47,7 +47,7 @@ def reduire_notice(brut: object) -> dict | None:
     if not isinstance(brut, dict) or brut.get("private") is True:
         return None
     uid = brut.get("id")
-    if not isinstance(uid, str) or not 5 <= len(uid) <= 120:
+    if not isinstance(uid, str) or not ID.fullmatch(uid):
         return None
     title = _texte(brut.get("title"), 240)
     if not title:
