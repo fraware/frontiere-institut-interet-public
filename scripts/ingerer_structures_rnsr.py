@@ -137,7 +137,11 @@ def normaliser(
 
 
 def lire_page_api(offset: int, limite: int = TAILLE_PAGE) -> dict:
-    adresse = API + "?" + urllib.parse.urlencode({"limit": limite, "offset": offset})
+    adresse = API + "?" + urllib.parse.urlencode({
+        "limit": limite,
+        "offset": offset,
+        "order_by": "numero_national_de_structure",
+    })
     req = urllib.request.Request(
         adresse,
         headers={
@@ -188,7 +192,12 @@ def telecharger(
             raise ValueError("Pagination RNSR dépassant le nombre déclaré.")
     identifiants = [identifier(x) for x in tous]
     if len(identifiants) != len(set(identifiants)):
-        raise ValueError("Doublon d'identifiant RNSR dans la collecte.")
+        doublons = [code for code, n in Counter(identifiants).items() if n > 1]
+        raise ValueError(
+            "Doublon d'identifiant RNSR dans la collecte triée : "
+            f"{len(doublons)} identifiant(s), "
+            f"premier code source : {sorted(doublons)[0]}."
+        )
     return tous
 
 
