@@ -2,6 +2,72 @@
   "completude_historique": false,
   "fichiers": [
     {
+      "chemin": "quotidiens/2026-09-01.csv",
+      "id": "665a9e4c-e81c-4f5c-afc1-eec7f0128bb9",
+      "jour": "2026-09-01",
+      "modifie_le": "2026-09-02T06:09:04.931000+00:00",
+      "octets_archives": 134228,
+      "octets_declares": 134228,
+      "sha256": "c9130af25f5345bb4563bd53917c0e2b0098bd8cbe54f1a49871894239e9e21d",
+      "titre": "beauamp-01-09-2026.csv",
+      "url": "https://static.data.gouv.fr/resources/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/20260902-060904/beauamp-01-09-2026.csv"
+    },
+    {
+      "chemin": "quotidiens/2026-09-02.csv",
+      "id": "43e2f85a-ad4c-4187-86a5-7c4a88791e28",
+      "jour": "2026-09-02",
+      "modifie_le": "2026-09-03T06:11:46.657000+00:00",
+      "octets_archives": 302365,
+      "octets_declares": 302365,
+      "sha256": "04f450e1d064a7794213008b406c2cd0f4da5cc2e992848c974eea0cc720d007",
+      "titre": "beauamp-02-09-2026.csv",
+      "url": "https://static.data.gouv.fr/resources/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/20260903-061146/beauamp-02-09-2026.csv"
+    },
+    {
+      "chemin": "quotidiens/2026-09-03.csv",
+      "id": "34820f32-dc39-4f4d-8e95-fea19ef0911d",
+      "jour": "2026-09-03",
+      "modifie_le": "2026-09-04T06:13:26.887000+00:00",
+      "octets_archives": 338294,
+      "octets_declares": 338294,
+      "sha256": "7671d83bae7517f9a5163cbf73b27eb3eddaa416a416626556f6baf009c5b777",
+      "titre": "beauamp-03-09-2026.csv",
+      "url": "https://static.data.gouv.fr/resources/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/20260904-061326/beauamp-03-09-2026.csv"
+    },
+    {
+      "chemin": "quotidiens/2026-09-04.csv",
+      "id": "42f5dff3-183a-4b79-b063-b0a882ae516b",
+      "jour": "2026-09-04",
+      "modifie_le": "2026-09-05T06:16:33.253000+00:00",
+      "octets_archives": 384787,
+      "octets_declares": 384787,
+      "sha256": "f6b37be9f20dfa38b773935fcaf53f2e3c93fb27d936eaacfeae64568ebc9a33",
+      "titre": "beauamp-04-09-2026.csv",
+      "url": "https://static.data.gouv.fr/resources/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/20260905-061633/beauamp-04-09-2026.csv"
+    },
+    {
+      "chemin": "quotidiens/2026-09-05.csv",
+      "id": "97648688-97c4-45f2-b857-8d2a78fe0897",
+      "jour": "2026-09-05",
+      "modifie_le": "2026-09-06T06:10:07.752000+00:00",
+      "octets_archives": 141431,
+      "octets_declares": 141431,
+      "sha256": "4b9e82b5cf072eee78fe3aef810221729b80239cbc70e490bf22016967141f6b",
+      "titre": "beauamp-05-09-2026.csv",
+      "url": "https://static.data.gouv.fr/resources/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/20260906-061007/beauamp-05-09-2026.csv"
+    },
+    {
+      "chemin": "quotidiens/2026-09-06.csv",
+      "id": "d2c28a03-e2c3-4b17-82a3-e9f0fb8683fc",
+      "jour": "2026-09-06",
+      "modifie_le": "2026-09-07T06:18:32.008000+00:00",
+      "octets_archives": 316568,
+      "octets_declares": 316568,
+      "sha256": "e98563a4d01dd7c69b41ab8b52f91745a42894559fb18be41455ee3e724fbd23",
+      "titre": "beauamp-06-09-2026.csv",
+      "url": "https://static.data.gouv.fr/resources/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/20260907-061831/beauamp-06-09-2026.csv"
+    },
+    {
       "chemin": "quotidiens/2026-09-08.csv",
       "id": "7964d877-bfeb-4ff2-9d69-2b29fae7b653",
       "jour": "2026-09-08",
@@ -324,7 +390,8 @@
   "fichiers_en_echec": [],
   "licence": "cc-by-sa",
   "mention": "Données dérivées, estimations et rapprochements à confirmer auprès du BOAMP.",
-  "nombre_fichiers": 29,
+  "nombre_fichiers": 35,
+  "nombre_jours_anterieurs_conserves": 6,
   "producteur": "Adrien Deschamps",
   "source": "https://www.data.gouv.fr/datasets/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics",
   "version": "beauamp-quotidiens-v1"
