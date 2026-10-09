@@ -1,0 +1,46 @@
+name: Vérification ponctuelle des droits de proposition
+
+# Essai unique avec fichier artificiel, sans données institutionnelles.
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/essai-droits-pr-ponctuel.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  tester:
+    if: github.repository == 'fraware/frontiere-institut-interet-public'
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Exercer la création, puis retirer la proposition fictive
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          BRANCHE="automatisation/verification-droits-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          nettoyer() {
+            gh pr close "$BRANCHE" --repo "$GITHUB_REPOSITORY" --delete-branch >/dev/null 2>&1 || true
+            gh api -X DELETE "repos/$GITHUB_REPOSITORY/git/refs/heads/$BRANCHE" >/dev/null 2>&1 || true
+          }
+          trap nettoyer EXIT
+          BASE=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq '.object.sha')
+          gh api -X POST "repos/$GITHUB_REPOSITORY/git/refs" \
+            -f ref="refs/heads/$BRANCHE" -f sha="$BASE" >/dev/null
+          FICHIER=$(printf 'Essai fictif des permissions GitHub Actions.\nAucune donnée réelle.\n' | base64 -w0)
+          gh api -X PUT "repos/$GITHUB_REPOSITORY/contents/docs/EXERCICE_AUTOMATISATION_TEMPORAIRE.md" \
+            -f message="Exercice fictif des autorisations de proposition" \
+            -f content="$FICHIER" -f branch="$BRANCHE" >/dev/null
+          URL=$(gh pr create --repo "$GITHUB_REPOSITORY" --base main \
+            --head "$BRANCHE" --title "Exercice fictif des permissions de proposition" \
+            --body "Exercice ponctuel de sécurité, à fermer et supprimer sans fusion.")
+          gh pr view "$BRANCHE" --repo "$GITHUB_REPOSITORY" --json number,state,url
+          echo "PROPOSITION_FICTIVE_CREEE: $URL"
+          echo "NETTOYAGE_PROGRAMME: fermeture et suppression à la sortie."
