@@ -62,7 +62,8 @@ def test_corruption_archive_refusee_sans_detruire_index_anterieur(tmp_path):
     creer_archive(source, jour, [notice("26-100", jour, "Analyse des sols")])
     assert indexer(source, cible)["nombre_avis_indexes"] == 1
     p, _ = chemins_jour(source, jour)
-    p.write_bytes(b"octets corrompus")
+    brut = p.read_bytes()
+    p.write_bytes(brut[:-1] + bytes([brut[-1] ^ 1]))
     with pytest.raises(ArchiveIncoherente, match="Empreinte"):
         indexer(source, cible)
     assert chercher(cible, "sols")["total_candidats"] == 1
