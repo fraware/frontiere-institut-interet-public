@@ -1,5 +1,6 @@
 """Contrats de l'index de recherche BOAMP alimenté par des archives vérifiées."""
 from datetime import date, datetime, timezone
+from pathlib import Path
 import json
 
 import pytest
@@ -88,3 +89,16 @@ def test_recherche_refuse_injection_ou_formulaires_vides(tmp_path):
     assert mots('sols" OR "secret') == '"sols" AND "or" AND "secret"'
     with pytest.raises(ValueError, match="Index manquant"):
         chercher(tmp_path / "introuvable.sqlite3", "eau")
+
+
+def test_archive_reelle_publiee_est_verifiable():
+    """Vérifier une archive déjà publiée, sans inventer de résultat."""
+    racine = Path(__file__).resolve().parents[1] / "institutionnel" / "besoins_publics"
+    fiches = sorted((racine / "historique_boamp").glob("20??/??/20??-??-??.json"))
+    if not fiches:
+        pytest.skip("Aucune journée historique publique disponible dans ce dépôt.")
+    jour, archive, sha, notices = avis_archive(fiches[0], racine)
+    assert jour == fiches[0].stem
+    assert archive.endswith(".jsonl.gz")
+    assert len(sha) == 64
+    assert len(notices) >= 0
