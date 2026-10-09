@@ -11,10 +11,16 @@ import json
 from pathlib import Path
 import time
 
-from scripts.decouvrir_sources_publiques import (
-    DOSSIER, ErreurCollecte, enregistrer_json, horodatage,
-    lire_json, telecharger_page, url_catalogue, _texte,
-)
+if __package__:
+    from scripts.decouvrir_sources_publiques import (
+        DOSSIER, ErreurCollecte, enregistrer_json, horodatage,
+        lire_json, telecharger_page, url_catalogue, _texte,
+    )
+else:
+    from decouvrir_sources_publiques import (
+        DOSSIER, ErreurCollecte, enregistrer_json, horodatage,
+        lire_json, telecharger_page, url_catalogue, _texte,
+    )
 
 CONFIG = DOSSIER / "balayage_config_v1.json"
 ETAT = DOSSIER / "balayage_etat.json"
