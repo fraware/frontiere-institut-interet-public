@@ -2600,6 +2600,33 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2015-11-03T15:25:24.691000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "annual",
+      "id": "5633826588ee383c66531576",
+      "licence_declaree": "fr-lo",
+      "modifie_le": "2016-02-24T10:05:16.750000+00:00",
+      "nombre_ressources_rapportees": 1,
+      "page": "https://www.data.gouv.fr/datasets/liste-des-marches-publics-2014",
+      "producteur": "Lorient Agglomération",
+      "recherches": [
+        "marchés publics"
+      ],
+      "ressources": [
+        {
+          "format": "xls",
+          "id": "5251622c-2376-423a-a14d-0cdff391993a",
+          "modifie_le": "2015-11-03T15:25:24.691000+00:00",
+          "titre": "Copie_de_Liste_marches_2014.xls",
+          "url": "https://static.data.gouv.fr/resources/marches-publics/20151030-154601/Copie_de_Liste_marches_2014.xls"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Liste des marchés publics 2014"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-09T14:34:08.513000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "monthly",
@@ -14005,12 +14032,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T23:05:03.934000+00:00",
+      "donnees_actualisees_le": "2026-10-09T23:14:05.096000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "monthly",
       "id": "64060c2ac773dcf3fabbe5d2",
       "licence_declaree": "notspecified",
-      "modifie_le": "2026-10-09T23:05:03.934000+00:00",
+      "modifie_le": "2026-10-09T23:14:05.097000+00:00",
       "nombre_ressources_rapportees": 2,
       "page": "https://www.data.gouv.fr/datasets/public-charging-stations-for-electric-cars-from-several-cpos",
       "producteur": "Eco-Movement",
@@ -14021,9 +14048,9 @@
         {
           "format": "csv",
           "id": "b20d2793-db42-4d6d-a0b4-e94bf5ee4279",
-          "modifie_le": "2026-10-09T23:05:03.934000+00:00",
+          "modifie_le": "2026-10-09T23:14:05.096000+00:00",
           "titre": "irve-dynamique.csv",
-          "url": "https://static.data.gouv.fr/resources/public-charging-stations-for-electric-cars-from-several-cpos/20261009-230503/irve-dynamique.csv"
+          "url": "https://static.data.gouv.fr/resources/public-charging-stations-for-electric-cars-from-several-cpos/20261009-231403/irve-dynamique.csv"
         },
         {
           "format": "csv",
@@ -15270,12 +15297,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T23:05:23.314000+00:00",
+      "donnees_actualisees_le": "2026-10-09T23:05:30.425000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "monthly",
       "id": "655b42ccbb968e8e1d64f9cc",
       "licence_declaree": "lov2",
-      "modifie_le": "2026-10-09T23:05:23.314000+00:00",
+      "modifie_le": "2026-10-09T23:05:30.426000+00:00",
       "nombre_ressources_rapportees": 6,
       "page": "https://www.data.gouv.fr/datasets/amenagements-cyclables-7",
       "producteur": "Communauté d'Agglomération Lunel Agglo",
@@ -15286,23 +15313,23 @@
         {
           "format": "zip",
           "id": "a92a9af4-6225-4312-9ce7-7f0814f5875c",
-          "modifie_le": "2026-09-09T23:05:19.516000+00:00",
+          "modifie_le": "2026-10-09T23:05:30.425000+00:00",
           "titre": "Aménagements cyclables - CSV",
-          "url": "https://static.data.gouv.fr/resources/amenagements-cyclables-7/20260909-230519/202609-amenagement-cyclable-csv-l93-2154.zip"
+          "url": "https://static.data.gouv.fr/resources/amenagements-cyclables-7/20261009-230530/202610-amenagement-cyclable-csv-l93-2154.zip"
         },
         {
           "format": "zip",
           "id": "dfeddc64-0899-485b-902d-ae86d2757be5",
-          "modifie_le": "2026-09-09T23:05:17.253000+00:00",
+          "modifie_le": "2026-10-09T23:05:28.291000+00:00",
           "titre": "Aménagements cyclables - SHP",
-          "url": "https://static.data.gouv.fr/resources/amenagements-cyclables-7/20260909-230516/202609-amenagement-cyclable-shp-l93-2154.zip"
+          "url": "https://static.data.gouv.fr/resources/amenagements-cyclables-7/20261009-230527/202610-amenagement-cyclable-shp-l93-2154.zip"
         },
         {
           "format": "zip",
           "id": "3c19ad94-c315-4a46-a9e9-85e503ee4b46",
-          "modifie_le": "2026-09-09T23:05:15.062000+00:00",
+          "modifie_le": "2026-10-09T23:05:25.597000+00:00",
           "titre": "Aménagements cyclables - GPKG",
-          "url": "https://static.data.gouv.fr/resources/amenagements-cyclables-7/20260909-230514/202609-amenagement-cyclable-gpkg-l93-2154.zip"
+          "url": "https://static.data.gouv.fr/resources/amenagements-cyclables-7/20261009-230525/202610-amenagement-cyclable-gpkg-l93-2154.zip"
         },
         {
           "format": "zip",
@@ -16349,12 +16376,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T18:48:30+00:00",
+      "donnees_actualisees_le": "2026-10-09T23:10:56+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "continuous",
       "id": "65bd12d7bfd26e26804204cb",
       "licence_declaree": "lov2",
-      "modifie_le": "2026-10-09T18:48:37.655000+00:00",
+      "modifie_le": "2026-10-09T23:11:02.741000+00:00",
       "nombre_ressources_rapportees": 102,
       "page": "https://www.data.gouv.fr/datasets/paquets-arome-resolution-0-025deg",
       "producteur": "Météo-France",
@@ -16372,170 +16399,170 @@
         {
           "format": "grib2",
           "id": "6214fedd-7762-4e84-b126-47538e0080d0",
-          "modifie_le": "2026-10-09T18:07:34+00:00",
-          "titre": "arome__0025__HP1__00H06H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP1/arome__0025__HP1__00H06H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:25:36+00:00",
+          "titre": "arome__0025__HP1__00H06H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP1/arome__0025__HP1__00H06H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "976711c8-f0b0-4bee-897b-2405ec31c530",
-          "modifie_le": "2026-10-09T18:10:56+00:00",
-          "titre": "arome__0025__HP1__07H12H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP1/arome__0025__HP1__07H12H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:28:11+00:00",
+          "titre": "arome__0025__HP1__07H12H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP1/arome__0025__HP1__07H12H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "7c4246a4-fce1-4eef-9fee-ec733bae8cf7",
-          "modifie_le": "2026-10-09T18:22:18+00:00",
-          "titre": "arome__0025__HP1__13H18H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP1/arome__0025__HP1__13H18H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:29:18+00:00",
+          "titre": "arome__0025__HP1__13H18H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP1/arome__0025__HP1__13H18H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "82c8ab2b-7ae1-4440-ae35-f66108b65644",
-          "modifie_le": "2026-10-09T18:27:32+00:00",
-          "titre": "arome__0025__HP1__19H24H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP1/arome__0025__HP1__19H24H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:37:59+00:00",
+          "titre": "arome__0025__HP1__19H24H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP1/arome__0025__HP1__19H24H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "134f6556-0987-4cd1-ba68-b6306935a025",
-          "modifie_le": "2026-10-09T18:33:49+00:00",
-          "titre": "arome__0025__HP1__25H30H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP1/arome__0025__HP1__25H30H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:48:19+00:00",
+          "titre": "arome__0025__HP1__25H30H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP1/arome__0025__HP1__25H30H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "16b4ba6e-74a3-41e1-8455-a1d572ddaf10",
-          "modifie_le": "2026-10-09T18:42:09+00:00",
-          "titre": "arome__0025__HP1__31H36H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP1/arome__0025__HP1__31H36H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:50:29+00:00",
+          "titre": "arome__0025__HP1__31H36H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP1/arome__0025__HP1__31H36H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "2195b6d2-cc25-4f2b-8279-1f10604fc834",
-          "modifie_le": "2026-10-09T18:47:57+00:00",
-          "titre": "arome__0025__HP1__37H42H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP1/arome__0025__HP1__37H42H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:55:36+00:00",
+          "titre": "arome__0025__HP1__37H42H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP1/arome__0025__HP1__37H42H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "090f83c4-826e-48ae-954d-01420b7c6f53",
-          "modifie_le": "2026-10-09T15:58:51+00:00",
-          "titre": "arome__0025__HP1__43H48H__2026-10-09T12:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome/0025/HP1/arome__0025__HP1__43H48H__2026-10-09T12:00:00Z.grib2"
+          "modifie_le": "2026-10-09T23:10:19+00:00",
+          "titre": "arome__0025__HP1__43H48H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP1/arome__0025__HP1__43H48H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "27b90fb9-4cb4-4c9e-b76a-b31b60a583c4",
-          "modifie_le": "2026-10-09T15:59:32+00:00",
-          "titre": "arome__0025__HP1__49H51H__2026-10-09T12:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome/0025/HP1/arome__0025__HP1__49H51H__2026-10-09T12:00:00Z.grib2"
+          "modifie_le": "2026-10-09T23:10:44+00:00",
+          "titre": "arome__0025__HP1__49H51H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP1/arome__0025__HP1__49H51H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "e9901f9b-417a-4e7f-ba4a-857fb9ceda42",
-          "modifie_le": "2026-10-09T18:08:09+00:00",
-          "titre": "arome__0025__HP2__00H06H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP2/arome__0025__HP2__00H06H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:26:59+00:00",
+          "titre": "arome__0025__HP2__00H06H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP2/arome__0025__HP2__00H06H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "1e1a7642-5ea2-4c8f-a4d2-232574691041",
-          "modifie_le": "2026-10-09T18:11:46+00:00",
-          "titre": "arome__0025__HP2__07H12H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP2/arome__0025__HP2__07H12H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:28:33+00:00",
+          "titre": "arome__0025__HP2__07H12H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP2/arome__0025__HP2__07H12H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "966fbeca-54b5-47d3-b339-716c831a5353",
-          "modifie_le": "2026-10-09T18:22:45+00:00",
-          "titre": "arome__0025__HP2__13H18H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP2/arome__0025__HP2__13H18H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:29:14+00:00",
+          "titre": "arome__0025__HP2__13H18H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP2/arome__0025__HP2__13H18H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "0c45af4b-305b-4fa8-b1bb-aa1a0a25ca5c",
-          "modifie_le": "2026-10-09T18:27:47+00:00",
-          "titre": "arome__0025__HP2__19H24H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP2/arome__0025__HP2__19H24H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:37:38+00:00",
+          "titre": "arome__0025__HP2__19H24H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP2/arome__0025__HP2__19H24H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "f39f0815-3cd3-452e-b4f9-341fd8528091",
-          "modifie_le": "2026-10-09T18:34:13+00:00",
-          "titre": "arome__0025__HP2__25H30H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP2/arome__0025__HP2__25H30H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:47:50+00:00",
+          "titre": "arome__0025__HP2__25H30H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP2/arome__0025__HP2__25H30H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "97372448-ecf5-438f-af82-688311aa6f5b",
-          "modifie_le": "2026-10-09T18:42:24+00:00",
-          "titre": "arome__0025__HP2__31H36H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP2/arome__0025__HP2__31H36H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:49:25+00:00",
+          "titre": "arome__0025__HP2__31H36H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP2/arome__0025__HP2__31H36H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "279d1403-84db-4990-9092-db3ea9d011e5",
-          "modifie_le": "2026-10-09T18:48:28+00:00",
-          "titre": "arome__0025__HP2__37H42H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP2/arome__0025__HP2__37H42H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:56:27+00:00",
+          "titre": "arome__0025__HP2__37H42H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP2/arome__0025__HP2__37H42H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "72636c97-a721-4ce9-b439-09d834885dc8",
-          "modifie_le": "2026-10-09T15:55:42+00:00",
-          "titre": "arome__0025__HP2__43H48H__2026-10-09T12:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome/0025/HP2/arome__0025__HP2__43H48H__2026-10-09T12:00:00Z.grib2"
+          "modifie_le": "2026-10-09T23:10:24+00:00",
+          "titre": "arome__0025__HP2__43H48H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP2/arome__0025__HP2__43H48H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "0918dce2-9cf9-44f1-b336-3e348e08b34f",
-          "modifie_le": "2026-10-09T15:56:36+00:00",
-          "titre": "arome__0025__HP2__49H51H__2026-10-09T12:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome/0025/HP2/arome__0025__HP2__49H51H__2026-10-09T12:00:00Z.grib2"
+          "modifie_le": "2026-10-09T23:10:52+00:00",
+          "titre": "arome__0025__HP2__49H51H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP2/arome__0025__HP2__49H51H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "41b97bb6-4d90-4b21-96de-c3df5dad24a0",
-          "modifie_le": "2026-10-09T18:07:37+00:00",
-          "titre": "arome__0025__HP3__00H06H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP3/arome__0025__HP3__00H06H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:29:18+00:00",
+          "titre": "arome__0025__HP3__00H06H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP3/arome__0025__HP3__00H06H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "4a37af9e-4208-4229-a98d-6272be1243a5",
-          "modifie_le": "2026-10-09T18:11:51+00:00",
-          "titre": "arome__0025__HP3__07H12H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP3/arome__0025__HP3__07H12H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:29:20+00:00",
+          "titre": "arome__0025__HP3__07H12H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP3/arome__0025__HP3__07H12H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "14d5114e-f00b-494e-a4e6-11a736dfc256",
-          "modifie_le": "2026-10-09T18:22:22+00:00",
-          "titre": "arome__0025__HP3__13H18H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP3/arome__0025__HP3__13H18H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:29:26+00:00",
+          "titre": "arome__0025__HP3__13H18H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP3/arome__0025__HP3__13H18H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "c8bdbb71-655d-41c9-91b0-89d6d3d7bcf6",
-          "modifie_le": "2026-10-09T18:27:54+00:00",
-          "titre": "arome__0025__HP3__19H24H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP3/arome__0025__HP3__19H24H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:37:43+00:00",
+          "titre": "arome__0025__HP3__19H24H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP3/arome__0025__HP3__19H24H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "0d798459-af4b-4440-9506-b0e47b64c97b",
-          "modifie_le": "2026-10-09T18:34:03+00:00",
-          "titre": "arome__0025__HP3__25H30H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP3/arome__0025__HP3__25H30H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:49:30+00:00",
+          "titre": "arome__0025__HP3__25H30H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP3/arome__0025__HP3__25H30H__2026-10-09T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "8cb6fcb3-5b14-4aa3-b1cf-0c4d6deb800c",
-          "modifie_le": "2026-10-09T18:42:26+00:00",
-          "titre": "arome__0025__HP3__31H36H__2026-10-09T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T15:00:00Z/arome/0025/HP3/arome__0025__HP3__31H36H__2026-10-09T15:00:00Z.grib2"
+          "modifie_le": "2026-10-09T22:49:35+00:00",
+          "titre": "arome__0025__HP3__31H36H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/arome/0025/HP3/arome__0025__HP3__31H36H__2026-10-09T18:00:00Z.grib2"
         }
       ],
       "reutilisation_potentielle": true,
@@ -17909,6 +17936,201 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:12:50+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "continuous",
+      "id": "65bd1a2957e1cc7c9625e7b5",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-10-09T23:12:54.029000+00:00",
+      "nombre_ressources_rapportees": 68,
+      "page": "https://www.data.gouv.fr/datasets/paquets-de-modele-de-vagues-mfwam-resolution-0-1deg",
+      "producteur": "Météo-France",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "pdf",
+          "id": "6b40861a-9c6a-4cf7-b5f6-f8021c569ec8",
+          "modifie_le": "2025-03-25T12:48:01.911000+00:00",
+          "titre": "20250318-doc-mfwam.pdf",
+          "url": "https://static.data.gouv.fr/resources/paquets-de-modele-de-vagues-mfwam-resolution-0-1deg/20250325-124758/20250318-doc-mfwam.pdf"
+        },
+        {
+          "format": "pdf",
+          "id": "d5a6b399-e2c4-4b12-926a-ccb9eac8e0b3",
+          "modifie_le": "2025-03-26T10:47:27.688000+00:00",
+          "titre": "documentation-serveur-dp2024-mfwam-20250326.pdf",
+          "url": "https://static.data.gouv.fr/resources/paquets-de-modele-de-vagues-mfwam-resolution-0-1deg/20250326-104726/documentation-serveur-dp2024-mfwam-20250326.pdf"
+        },
+        {
+          "format": "grib2",
+          "id": "b5b270ce-77fa-4329-a8c2-8f0fe1bca3ce",
+          "modifie_le": "2026-10-09T23:09:58+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__001H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__001H__2026-10-09T18:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "5171d3c7-6939-4abe-beea-8414a5e0b479",
+          "modifie_le": "2026-10-09T23:10:09+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__002H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__002H__2026-10-09T18:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "c0eff981-79bc-4fd2-9e2b-44d0e33de001",
+          "modifie_le": "2026-10-09T23:10:21+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__003H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__003H__2026-10-09T18:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "677bfa09-d1af-41ae-bbe1-1813ece0dd0f",
+          "modifie_le": "2026-10-09T23:10:38+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__004H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__004H__2026-10-09T18:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "4e92062f-c285-4e16-a01c-2ab3d820f0eb",
+          "modifie_le": "2026-10-09T23:10:51+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__005H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__005H__2026-10-09T18:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "3080d179-6254-4374-934e-8dbf0743c186",
+          "modifie_le": "2026-10-09T23:11:02+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__006H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__006H__2026-10-09T18:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "e58335e8-bc77-4141-9e3f-33d5626cc9cd",
+          "modifie_le": "2026-10-09T23:11:14+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__007H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__007H__2026-10-09T18:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "dfe2b1a3-6845-440b-baf2-6fecf9867fa7",
+          "modifie_le": "2026-10-09T23:11:22+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__008H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__008H__2026-10-09T18:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "98820275-01ac-4114-acdb-e7dde2c1b195",
+          "modifie_le": "2026-10-09T23:11:29+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__009H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__009H__2026-10-09T18:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "e3018eb3-8ba9-47a7-89c2-50b5290ffec8",
+          "modifie_le": "2026-10-09T23:11:52+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__010H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__010H__2026-10-09T18:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "3a05c99b-ddae-447e-a550-046e3c9a231d",
+          "modifie_le": "2026-10-09T23:12:02+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__011H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__011H__2026-10-09T18:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "13ef8699-ebcb-477f-b56a-221a92fce9e6",
+          "modifie_le": "2026-10-09T23:12:25+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__012H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__012H__2026-10-09T18:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "7b457d3e-78bb-444e-b99b-81c05642fbf8",
+          "modifie_le": "2026-10-09T23:12:36+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__013H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__013H__2026-10-09T18:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "1c94b23a-17ec-4b51-91e8-3de55ccc08ea",
+          "modifie_le": "2026-10-09T23:12:40+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__014H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__014H__2026-10-09T18:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "897c756e-2b4f-4b52-afcd-3e390b5f3807",
+          "modifie_le": "2026-10-09T23:12:50+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__015H__2026-10-09T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T18:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__015H__2026-10-09T18:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "e5158d89-7c3d-4904-8280-7558a3d7eab6",
+          "modifie_le": "2026-10-09T16:15:42+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__016H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__016H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "f4c83595-9144-4a40-9297-a250bc9d9a3b",
+          "modifie_le": "2026-10-09T16:15:58+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__017H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__017H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "60edf04a-d738-4af9-a12c-f02fa4aec27b",
+          "modifie_le": "2026-10-09T16:16:13+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__018H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__018H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "8f931019-e274-49bf-a88c-9b1f50a4d124",
+          "modifie_le": "2026-10-09T16:16:29+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__019H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__019H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "062b39b0-2783-499d-833b-416e2b28e2cc",
+          "modifie_le": "2026-10-09T16:16:47+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__020H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__020H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "bfc954c7-6d67-4d6b-b0e1-0ff0ec5a5205",
+          "modifie_le": "2026-10-09T16:17:05+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__021H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__021H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "06a0201c-c27a-4c74-8195-dc676e75c673",
+          "modifie_le": "2026-10-09T16:17:18+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__022H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__022H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "80cc2ed9-3986-43e2-94b0-1d41c76bde4d",
+          "modifie_le": "2026-10-09T16:17:31+00:00",
+          "titre": "vague-surcote-MFWAM__01__SP1__023H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/vague-surcote/MFWAM/01/SP1/vague-surcote-MFWAM__01__SP1__023H__2026-10-09T12:00:00Z.grib2"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Paquets de modèle de vagues - MFWAM - Résolution 0.1°"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2024-02-27T09:10:18.809000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "irregular",
@@ -18613,6 +18835,68 @@
       "reutilisation_potentielle": true,
       "source_deja_suivie": false,
       "titre": "Les sites clés en main - France 2030"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:05:41.460000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "monthly",
+      "id": "6644bae838476d3a9a63eb9c",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-10-09T23:05:41.460000+00:00",
+      "nombre_ressources_rapportees": 6,
+      "page": "https://www.data.gouv.fr/datasets/boite-a-livres-1",
+      "producteur": "Communauté d'Agglomération Lunel Agglo",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "zip",
+          "id": "9ec1fa61-fecf-4ace-af18-596a7c52068b",
+          "modifie_le": "2026-10-09T23:05:39.606000+00:00",
+          "titre": "Boîte à livres - SHP",
+          "url": "https://static.data.gouv.fr/resources/boite-a-livres-1/20261009-230539/202610-boite-a-livres-shp-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "015b3e11-9e21-49b1-94a4-359ea5b3570c",
+          "modifie_le": "2026-10-09T23:05:37.786000+00:00",
+          "titre": "Boîte à livres - GPKG",
+          "url": "https://static.data.gouv.fr/resources/boite-a-livres-1/20261009-230537/202610-boite-a-livres-gpkg-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "810f0542-f970-4700-8891-16be2eecbfbd",
+          "modifie_le": "2026-10-09T23:05:36.014000+00:00",
+          "titre": "Boîte à livres - ODS",
+          "url": "https://static.data.gouv.fr/resources/boite-a-livres-1/20261009-230535/202610-boite-a-livres-ods-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "4c5941ef-7b3b-4dff-a0df-bcf37ce9e6f9",
+          "modifie_le": "2026-10-09T23:05:34.009000+00:00",
+          "titre": "Boîte à livres - SQL",
+          "url": "https://static.data.gouv.fr/resources/boite-a-livres-1/20261009-230533/202610-boite-a-livres-sql-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "09ec61bf-7363-4c55-9184-c4691794a03b",
+          "modifie_le": "2026-10-09T23:05:32.207000+00:00",
+          "titre": "Boîte à livres - GEOJSON",
+          "url": "https://static.data.gouv.fr/resources/boite-a-livres-1/20261009-230531/202610-boite-a-livres-geojson-wgs84-4326.zip"
+        },
+        {
+          "format": "zip",
+          "id": "e2a22ce3-866f-4782-8ed9-090a13f54411",
+          "modifie_le": "2026-10-09T23:05:41.460000+00:00",
+          "titre": "Boîte à livres - CSV",
+          "url": "https://static.data.gouv.fr/resources/boite-a-livres-1/20261009-230541/202610-boite-a-livres-csv-l93-2154.zip"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Boîte à livres"
     },
     {
       "contenu_original_copie": false,
@@ -22642,6 +22926,558 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:05:38.920000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "6727211e60854f01267aaf19",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:05:38.921000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-cdc-habitat",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "6864512d-4109-4313-ae24-24bf16ac8466",
+          "modifie_le": "2026-10-04T06:03:43.285000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cdc-habitat/20261004-060343/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "43624d17-689e-4865-9c6a-81a0e21ba507",
+          "modifie_le": "2026-10-09T01:05:09.791000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cdc-habitat/20261009-010509/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "853777ab-b53d-4faf-85cf-27708f712b1d",
+          "modifie_le": "2026-02-18T04:11:43.844000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cdc-habitat/20260218-031143/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "2c607f1e-d9b1-4014-a8ac-f62a0d71b3ca",
+          "modifie_le": "2026-10-09T02:05:50.126000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cdc-habitat/20261009-020550/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "6ed8c3fa-f0f9-4229-8626-31c1c6438739",
+          "modifie_le": "2026-10-09T23:05:38.920000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cdc-habitat/20261009-230537/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "70d19005-7256-4c78-8d4c-de790ea2d47c",
+          "modifie_le": "2026-10-09T03:05:04.278000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cdc-habitat/20261009-030503/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "f0c3dfe6-1283-4959-acff-0ee978ddfa95",
+          "modifie_le": "2026-10-09T00:05:56.976000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cdc-habitat/20261009-000556/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur CDC Habitat"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:05:42.392000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "67272125cc0f6e1e1dba8f01",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:05:42.393000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-loire-atlantique",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "55c9b2ef-be0d-45d7-9555-94eea62d1364",
+          "modifie_le": "2026-10-04T06:03:47.624000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-loire-atlantique/20261004-060345/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "928b6678-0e13-4bc4-8e18-cf7b2a998ee9",
+          "modifie_le": "2026-10-09T01:05:13.789000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-loire-atlantique/20261009-010513/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "ca9fc8b2-1a36-455d-92bf-7998521836e5",
+          "modifie_le": "2026-02-18T04:11:47.248000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-loire-atlantique/20260218-031147/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "7ffe76cd-04b0-46cb-acff-d348b00ff063",
+          "modifie_le": "2026-10-09T02:05:51.440000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-loire-atlantique/20261009-020551/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "e9e06ca3-af78-4098-bcb9-f178086e874d",
+          "modifie_le": "2026-10-09T23:05:42.392000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-loire-atlantique/20261009-230541/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "71672fd0-cc05-4804-ae7a-ff95e7f158bd",
+          "modifie_le": "2026-10-09T03:05:08.912000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-loire-atlantique/20261009-030508/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "22e35ecb-3ef1-4bf0-b0f5-c307d87d914f",
+          "modifie_le": "2026-10-09T00:05:59.597000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-loire-atlantique/20261009-000559/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Loire-Atlantique"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:06:34.342000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "6727217e51bcff5f90f6f9e5",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:06:34.343000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-ville-de-marseille",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "0be3c968-05ba-4b10-b7d9-a7dd9a806ac0",
+          "modifie_le": "2026-10-04T06:04:19.838000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-ville-de-marseille/20261004-060418/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "e17a686b-fc98-46ec-aedf-c411c4c42b41",
+          "modifie_le": "2026-10-09T01:05:34.207000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-ville-de-marseille/20261009-010533/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "7bcc040e-64c1-4495-b42f-2d456a1e8257",
+          "modifie_le": "2026-02-18T04:11:50.284000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-ville-de-marseille/20260218-031150/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "45c5db62-912e-4bf8-b313-4bf3fa0a154f",
+          "modifie_le": "2026-10-09T02:05:52.207000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-ville-de-marseille/20261009-020552/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "00456325-f7b3-418d-96ba-25c26ea72e72",
+          "modifie_le": "2026-10-09T23:06:34.342000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-ville-de-marseille/20261009-230630/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "36855979-7c3d-4278-beed-fbc5ab81c782",
+          "modifie_le": "2026-10-09T03:06:18.553000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-ville-de-marseille/20261009-030618/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "3f5d178a-4bb2-40ec-97ff-f8807014c127",
+          "modifie_le": "2026-10-09T00:06:46.924000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-ville-de-marseille/20261009-000645/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Ville de Marseille"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:06:40.334000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672721842b370d8b3227704d",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:06:40.334000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-region-guadeloupe",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "f99aad5b-b1b3-4c57-adc9-38f46e841d3b",
+          "modifie_le": "2026-10-04T06:04:20.936000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-region-guadeloupe/20261004-060420/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "50e6ef37-c818-4d91-a655-f78215b1523a",
+          "modifie_le": "2026-10-09T01:05:36.341000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-region-guadeloupe/20261009-010536/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "22690d0d-cce3-4ba8-adad-204a5cb7e4ed",
+          "modifie_le": "2026-02-18T04:11:54.608000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-region-guadeloupe/20260218-031154/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "26fd8947-f895-4a3f-aec6-83e55f495c8e",
+          "modifie_le": "2026-10-09T02:05:54.482000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-region-guadeloupe/20261009-020553/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "236d1fc8-7439-46b8-a507-04e17e652dc0",
+          "modifie_le": "2026-10-09T23:06:40.334000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-region-guadeloupe/20261009-230636/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "fb638ec7-4539-4332-8950-3c5a6a78d5be",
+          "modifie_le": "2026-10-09T03:06:21.112000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-region-guadeloupe/20261009-030620/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "45a81a1e-d83c-4b90-a031-b8f51b08fdba",
+          "modifie_le": "2026-10-09T00:06:51.543000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-region-guadeloupe/20261009-000649/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Région Guadeloupe"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:06:51.583000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "67272196d3c5ca95c62e7c63",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:06:51.584000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-cnrs",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "b0aa054f-3ad1-4173-adeb-5f8e17c1e2b8",
+          "modifie_le": "2026-10-04T06:04:25.441000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cnrs/20261004-060424/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "194f3e67-c24b-42d9-812d-acfb8228caaa",
+          "modifie_le": "2026-10-09T01:05:52.978000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cnrs/20261009-010552/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "67732de3-bc74-42b3-ac7f-48720430193f",
+          "modifie_le": "2026-02-18T04:12:33.908000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cnrs/20260218-031233/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "9f808998-3559-4646-a89b-74d8965b9cbe",
+          "modifie_le": "2026-10-09T02:06:09.169000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cnrs/20261009-020607/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "475a2019-80ca-4297-ad13-86ecb7b5fa8e",
+          "modifie_le": "2026-10-09T23:06:51.583000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cnrs/20261009-230648/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "328e3e58-4a2a-4fe6-9af9-7630a0c9b4a5",
+          "modifie_le": "2026-10-09T03:06:31.060000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cnrs/20261009-030630/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "d00c672d-c6d9-411c-8556-30837dcf335c",
+          "modifie_le": "2026-10-09T00:07:00.397000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cnrs/20261009-000659/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur CNRS"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:06:52.887000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "67272199922b37b9b2f1b654",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:06:52.888000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-cnes-1",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "639fc875-5844-46a6-b1a1-89f9a44a4f5a",
+          "modifie_le": "2026-10-04T06:04:26.051000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cnes-1/20261004-060425/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "b1422682-2348-42d4-9339-da14e03426d1",
+          "modifie_le": "2026-10-09T01:05:54.323000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cnes-1/20261009-010554/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "64e088ca-4321-4c2e-bae2-1413fa8e0281",
+          "modifie_le": "2026-02-18T04:12:36.992000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cnes-1/20260218-031236/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "d6f7de0b-32a1-414c-88ce-f5d7d7dcd9c4",
+          "modifie_le": "2026-10-09T02:06:10.124000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cnes-1/20261009-020609/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "3a14016c-9b2a-40cd-9aaa-0ef75d9936c6",
+          "modifie_le": "2026-10-09T23:06:52.887000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cnes-1/20261009-230652/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "faa1cf04-9c1d-4640-8273-a051364ec811",
+          "modifie_le": "2026-10-09T03:06:32.589000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cnes-1/20261009-030632/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "06708bbf-7857-4f6b-afad-4f0c4396fcca",
+          "modifie_le": "2026-10-09T00:07:01.017000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cnes-1/20261009-000700/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur CNES"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:07:03.846000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672721aaec64ca6d86444166",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:07:03.847000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-metropole-aix-marseille-provence",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "8c861881-4b33-4410-a019-9aaef9176ec6",
+          "modifie_le": "2026-10-04T06:04:32.835000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-metropole-aix-marseille-provence/20261004-060432/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "58ac43e6-c900-463b-b7cf-10e0a3824bfd",
+          "modifie_le": "2026-10-09T01:06:04.260000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-metropole-aix-marseille-provence/20261009-010602/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "0db8afd9-d8bc-4aa3-9f13-f7619883dfd9",
+          "modifie_le": "2026-02-18T04:12:57.372000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-metropole-aix-marseille-provence/20260218-031257/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "4b792749-755b-443d-a671-da6b7e2b6ecb",
+          "modifie_le": "2026-10-09T02:06:17.940000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-metropole-aix-marseille-provence/20261009-020617/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "5a108349-b491-4c1b-90ce-845c3bd478a0",
+          "modifie_le": "2026-10-09T23:07:03.846000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-metropole-aix-marseille-provence/20261009-230703/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "a4080c5f-03a4-467b-87f4-f9c5d58c5e33",
+          "modifie_le": "2026-10-09T03:06:39.326000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-metropole-aix-marseille-provence/20261009-030638/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "95be2654-e149-4f73-9469-2d79eaaec357",
+          "modifie_le": "2026-10-09T00:07:12.226000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-metropole-aix-marseille-provence/20261009-000711/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Métropole Aix Marseille Provence"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:07:30.457000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672721d097702d39796f4edd",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:07:30.457000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-nantes-metropole",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "ec9c2207-7ff9-44b2-b14d-ed9acdd5c602",
+          "modifie_le": "2026-10-04T06:04:57.571000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-nantes-metropole/20261004-060457/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "80f84761-e81a-4a9b-a1ef-8a101eccc6b5",
+          "modifie_le": "2026-10-09T01:06:23.230000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-nantes-metropole/20261009-010622/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "0e58bf40-e792-419b-821e-b6e65befed7e",
+          "modifie_le": "2026-02-18T04:13:16.568000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-nantes-metropole/20260218-031316/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "698f66af-73fa-4bbc-b65d-cb72a9c492ca",
+          "modifie_le": "2026-10-09T02:06:35.121000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-nantes-metropole/20261009-020634/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "8675b3a1-3dbf-4f26-9b8e-a3e9bcb81368",
+          "modifie_le": "2026-10-09T23:07:30.457000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-nantes-metropole/20261009-230728/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "e6d7b124-7d3b-4ce9-9e25-6bcaac48da89",
+          "modifie_le": "2026-10-09T03:06:53.321000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-nantes-metropole/20261009-030652/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "f00ac35f-b038-4d77-b2d3-3b2e570793d1",
+          "modifie_le": "2026-10-09T00:07:39.846000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-nantes-metropole/20261009-000739/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Nantes Métropole"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2021-01-29T00:00:00+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
@@ -25076,6 +25912,40 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:05:45.172000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "monthly",
+      "id": "67603f187b4187993f39d5bc",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-10-09T23:05:45.172000+00:00",
+      "nombre_ressources_rapportees": 2,
+      "page": "https://www.data.gouv.fr/datasets/calendriers-de-collecte-des-dechets",
+      "producteur": "Communauté d'Agglomération Lunel Agglo",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "zip",
+          "id": "63b9a6b8-7d34-462c-8b9f-bce289b0adf1",
+          "modifie_le": "2026-10-09T23:05:43.467000+00:00",
+          "titre": "Calendriers de collecte des déchets - ODS",
+          "url": "https://static.data.gouv.fr/resources/calendriers-de-collecte-des-dechets/20261009-230543/202610-calendrier-collecte-ods.zip"
+        },
+        {
+          "format": "zip",
+          "id": "f9b5ddce-9eda-4e60-84e2-fb18563ea525",
+          "modifie_le": "2026-10-09T23:05:45.172000+00:00",
+          "titre": "Calendriers de collecte des déchets - CSV",
+          "url": "https://static.data.gouv.fr/resources/calendriers-de-collecte-des-dechets/20261009-230544/202610-calendrier-collecte-csv.zip"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Calendriers de collecte des déchets"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2024-12-17T15:45:00.047000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
@@ -25140,6 +26010,130 @@
       "reutilisation_potentielle": true,
       "source_deja_suivie": false,
       "titre": "Délais de paiement 2023 des collectivités territoriales"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:06:08.529000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "monthly",
+      "id": "679c9ca0495479e2a42deb3b",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-10-09T23:06:08.529000+00:00",
+      "nombre_ressources_rapportees": 6,
+      "page": "https://www.data.gouv.fr/datasets/abris-bacs",
+      "producteur": "Communauté d'Agglomération Lunel Agglo",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "zip",
+          "id": "b637a4d0-a980-4d7e-8fc2-5f0434162602",
+          "modifie_le": "2026-10-09T23:06:08.529000+00:00",
+          "titre": "Abris bacs - CSV",
+          "url": "https://static.data.gouv.fr/resources/abris-bacs/20261009-230608/202610-abris-bacs-csv-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "cbc522ae-628e-4e95-9502-d55f282b33e5",
+          "modifie_le": "2026-10-09T23:06:04.849000+00:00",
+          "titre": "Abris bacs - GPKG",
+          "url": "https://static.data.gouv.fr/resources/abris-bacs/20261009-230604/202610-abris-bacs-gpkg-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "4a281e04-3782-46f7-9ad6-a098800b7b66",
+          "modifie_le": "2026-10-09T23:06:02.967000+00:00",
+          "titre": "Abris bacs - ODS",
+          "url": "https://static.data.gouv.fr/resources/abris-bacs/20261009-230602/202610-abris-bacs-ods-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "2eb7ae4c-a3a1-44be-8049-c03a8d3d8731",
+          "modifie_le": "2026-10-09T23:06:01.007000+00:00",
+          "titre": "Abris bacs - SQL",
+          "url": "https://static.data.gouv.fr/resources/abris-bacs/20261009-230600/202610-abris-bacs-sql-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "c14d4807-ce44-45d4-b1cf-5731e719765b",
+          "modifie_le": "2026-10-09T23:05:59.090000+00:00",
+          "titre": "Abris bacs - GEOJSON",
+          "url": "https://static.data.gouv.fr/resources/abris-bacs/20261009-230558/202610-abris-bacs-geojson-wgs84-4326.zip"
+        },
+        {
+          "format": "zip",
+          "id": "89442312-8c28-4ea2-bd23-264e49ffaf91",
+          "modifie_le": "2026-10-09T23:06:06.678000+00:00",
+          "titre": "Abris bacs - SHP",
+          "url": "https://static.data.gouv.fr/resources/abris-bacs/20261009-230606/202610-abris-bacs-shp-l93-2154.zip"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Abris bacs"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:05:57.191000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "monthly",
+      "id": "679cb0238d7d5a54bb89f725",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-10-09T23:05:57.191000+00:00",
+      "nombre_ressources_rapportees": 6,
+      "page": "https://www.data.gouv.fr/datasets/points-dapport-volontaire-textile-6",
+      "producteur": "Communauté d'Agglomération Lunel Agglo",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "zip",
+          "id": "80841d8b-59fc-4b53-b429-38d5cd50f472",
+          "modifie_le": "2026-10-09T23:05:57.191000+00:00",
+          "titre": "Points d'apport volontaire - Textile - CSV",
+          "url": "https://static.data.gouv.fr/resources/points-dapport-volontaire-textile-6/20261009-230556/202610-pav-textile-csv-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "a0f4a8cd-da9c-43f4-a20d-ab8fc99fab86",
+          "modifie_le": "2026-10-09T23:05:55.175000+00:00",
+          "titre": "Points d'apport volontaire - Textile - SHP",
+          "url": "https://static.data.gouv.fr/resources/points-dapport-volontaire-textile-6/20261009-230554/202610-pav-textile-shp-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "eeefd573-3d9b-4ef5-8ce5-3cf2a8cc0ab8",
+          "modifie_le": "2026-10-09T23:05:53.297000+00:00",
+          "titre": "Points d'apport volontaire - Textile - GPKG",
+          "url": "https://static.data.gouv.fr/resources/points-dapport-volontaire-textile-6/20261009-230552/202610-pav-textile-gpkg-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "0d2452c5-27b8-4763-8890-15ce60898d58",
+          "modifie_le": "2026-10-09T23:05:51.295000+00:00",
+          "titre": "Points d'apport volontaire - Textile - ODS",
+          "url": "https://static.data.gouv.fr/resources/points-dapport-volontaire-textile-6/20261009-230550/202610-pav-textile-ods-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "eaca2391-0374-4751-989a-15969da0562e",
+          "modifie_le": "2026-10-09T23:05:49.316000+00:00",
+          "titre": "Points d'apport volontaire - Textile - SQL",
+          "url": "https://static.data.gouv.fr/resources/points-dapport-volontaire-textile-6/20261009-230548/202610-pav-textile-sql-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "6fe09663-cdb5-43be-ad41-be88d455b2bd",
+          "modifie_le": "2026-10-09T23:05:47.183000+00:00",
+          "titre": "Points d'apport volontaire - Textile - GEOJSON",
+          "url": "https://static.data.gouv.fr/resources/points-dapport-volontaire-textile-6/20261009-230546/202610-pav-textile-geojson-wgs84-4326.zip"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Points d'apport volontaire - Textile"
     },
     {
       "contenu_original_copie": false,
@@ -25697,12 +26691,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T22:18:19+00:00",
+      "donnees_actualisees_le": "2026-10-09T23:13:00+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "severalTimesADay",
       "id": "67ac5dffb832ee7684ed1c40",
       "licence_declaree": "lov2",
-      "modifie_le": "2026-10-09T22:18:39.774000+00:00",
+      "modifie_le": "2026-10-09T23:13:13.034000+00:00",
       "nombre_ressources_rapportees": 103,
       "page": "https://www.data.gouv.fr/datasets/pe-arpege-glob025",
       "producteur": "Météo-France",
@@ -25776,114 +26770,114 @@
         {
           "format": "grib",
           "id": "97b990e4-f38e-4f3a-9d48-63774d26d868",
-          "modifie_le": "2026-10-09T15:22:50+00:00",
-          "titre": "pearp_glob025_202610091200_09:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091200/arpege_glob025_202610091200_09:00.grib"
+          "modifie_le": "2026-10-09T22:24:28+00:00",
+          "titre": "pearp_glob025_202610091800_09:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091800/arpege_glob025_202610091800_09:00.grib"
         },
         {
           "format": "grib",
           "id": "d52d890a-e989-47a1-92dd-1a6612a0cfd7",
-          "modifie_le": "2026-10-09T15:23:22+00:00",
-          "titre": "pearp_glob025_202610091200_10:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091200/arpege_glob025_202610091200_10:00.grib"
+          "modifie_le": "2026-10-09T22:26:29+00:00",
+          "titre": "pearp_glob025_202610091800_10:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091800/arpege_glob025_202610091800_10:00.grib"
         },
         {
           "format": "grib",
           "id": "1edd0878-18e9-47f1-a34c-f95e74cb815f",
-          "modifie_le": "2026-10-09T15:26:36+00:00",
-          "titre": "pearp_glob025_202610091200_11:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091200/arpege_glob025_202610091200_11:00.grib"
+          "modifie_le": "2026-10-09T22:27:18+00:00",
+          "titre": "pearp_glob025_202610091800_11:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091800/arpege_glob025_202610091800_11:00.grib"
         },
         {
           "format": "grib",
           "id": "f607baf9-845f-485d-a529-8c46a5822338",
-          "modifie_le": "2026-10-09T15:30:35+00:00",
-          "titre": "pearp_glob025_202610091200_12:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091200/arpege_glob025_202610091200_12:00.grib"
+          "modifie_le": "2026-10-09T22:23:23+00:00",
+          "titre": "pearp_glob025_202610091800_12:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091800/arpege_glob025_202610091800_12:00.grib"
         },
         {
           "format": "grib",
           "id": "cc6a808b-905c-48fb-aa03-7267c90f68a3",
-          "modifie_le": "2026-10-09T15:32:23+00:00",
-          "titre": "pearp_glob025_202610091200_13:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091200/arpege_glob025_202610091200_13:00.grib"
+          "modifie_le": "2026-10-09T22:29:24+00:00",
+          "titre": "pearp_glob025_202610091800_13:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091800/arpege_glob025_202610091800_13:00.grib"
         },
         {
           "format": "grib",
           "id": "ca83465e-d8bb-4023-bae3-dfdc5c0ee447",
-          "modifie_le": "2026-10-09T15:32:26+00:00",
-          "titre": "pearp_glob025_202610091200_14:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091200/arpege_glob025_202610091200_14:00.grib"
+          "modifie_le": "2026-10-09T22:24:06+00:00",
+          "titre": "pearp_glob025_202610091800_14:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091800/arpege_glob025_202610091800_14:00.grib"
         },
         {
           "format": "grib",
           "id": "88b13565-0c59-44cc-ad6f-394d619ae033",
-          "modifie_le": "2026-10-09T15:40:23+00:00",
-          "titre": "pearp_glob025_202610091200_15:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091200/arpege_glob025_202610091200_15:00.grib"
+          "modifie_le": "2026-10-09T22:36:48+00:00",
+          "titre": "pearp_glob025_202610091800_15:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091800/arpege_glob025_202610091800_15:00.grib"
         },
         {
           "format": "grib",
           "id": "648510ce-17ef-4016-bc4c-2d0a9d0f42a6",
-          "modifie_le": "2026-10-09T15:46:17+00:00",
-          "titre": "pearp_glob025_202610091200_16:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091200/arpege_glob025_202610091200_16:00.grib"
+          "modifie_le": "2026-10-09T22:27:22+00:00",
+          "titre": "pearp_glob025_202610091800_16:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091800/arpege_glob025_202610091800_16:00.grib"
         },
         {
           "format": "grib",
           "id": "139cb3e8-d6cd-4371-aa54-de923224f32e",
-          "modifie_le": "2026-10-09T15:41:05+00:00",
-          "titre": "pearp_glob025_202610091200_17:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091200/arpege_glob025_202610091200_17:00.grib"
+          "modifie_le": "2026-10-09T22:34:25+00:00",
+          "titre": "pearp_glob025_202610091800_17:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091800/arpege_glob025_202610091800_17:00.grib"
         },
         {
           "format": "grib",
           "id": "888aac89-605b-431a-8751-6da126d67889",
-          "modifie_le": "2026-10-09T15:45:04+00:00",
-          "titre": "pearp_glob025_202610091200_18:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091200/arpege_glob025_202610091200_18:00.grib"
+          "modifie_le": "2026-10-09T22:37:21+00:00",
+          "titre": "pearp_glob025_202610091800_18:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091800/arpege_glob025_202610091800_18:00.grib"
         },
         {
           "format": "grib",
           "id": "f60517d9-0004-4d75-9e61-7f520b1a668a",
-          "modifie_le": "2026-10-09T15:40:58+00:00",
-          "titre": "pearp_glob025_202610091200_19:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091200/arpege_glob025_202610091200_19:00.grib"
+          "modifie_le": "2026-10-09T22:44:32+00:00",
+          "titre": "pearp_glob025_202610091800_19:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091800/arpege_glob025_202610091800_19:00.grib"
         },
         {
           "format": "grib",
           "id": "ffb9c939-8480-4f5a-aa58-94862aef83a0",
-          "modifie_le": "2026-10-09T15:47:32+00:00",
-          "titre": "pearp_glob025_202610091200_20:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091200/arpege_glob025_202610091200_20:00.grib"
+          "modifie_le": "2026-10-09T22:36:07+00:00",
+          "titre": "pearp_glob025_202610091800_20:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091800/arpege_glob025_202610091800_20:00.grib"
         },
         {
           "format": "grib",
           "id": "9910a554-58c3-4610-adb0-b451b093e12c",
-          "modifie_le": "2026-10-09T15:50:45+00:00",
-          "titre": "pearp_glob025_202610091200_21:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091200/arpege_glob025_202610091200_21:00.grib"
+          "modifie_le": "2026-10-09T22:43:42+00:00",
+          "titre": "pearp_glob025_202610091800_21:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091800/arpege_glob025_202610091800_21:00.grib"
         },
         {
           "format": "grib",
           "id": "94079791-003a-4b40-9275-b6fb5aa4cb78",
-          "modifie_le": "2026-10-09T15:50:44+00:00",
-          "titre": "pearp_glob025_202610091200_22:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091200/arpege_glob025_202610091200_22:00.grib"
+          "modifie_le": "2026-10-09T22:37:47+00:00",
+          "titre": "pearp_glob025_202610091800_22:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091800/arpege_glob025_202610091800_22:00.grib"
         },
         {
           "format": "grib",
           "id": "5e16670a-bdfa-4ec1-80c5-ccd5f6b30b0e",
-          "modifie_le": "2026-10-09T15:53:22+00:00",
-          "titre": "pearp_glob025_202610091200_23:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091200/arpege_glob025_202610091200_23:00.grib"
+          "modifie_le": "2026-10-09T22:41:55+00:00",
+          "titre": "pearp_glob025_202610091800_23:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091800/arpege_glob025_202610091800_23:00.grib"
         },
         {
           "format": "grib",
           "id": "8f4c5fc3-5951-4217-a534-5fcd9b1b63a6",
-          "modifie_le": "2026-10-09T16:01:10+00:00",
-          "titre": "pearp_glob025_202610091200_24:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091200/arpege_glob025_202610091200_24:00.grib"
+          "modifie_le": "2026-10-09T22:44:20+00:00",
+          "titre": "pearp_glob025_202610091800_24:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610091800/arpege_glob025_202610091800_24:00.grib"
         }
       ],
       "reutilisation_potentielle": true,
@@ -25892,12 +26886,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T22:19:27+00:00",
+      "donnees_actualisees_le": "2026-10-09T23:06:54+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "severalTimesADay",
       "id": "67ac5e277e258045630bf687",
       "licence_declaree": "lov2",
-      "modifie_le": "2026-10-09T22:19:41.200000+00:00",
+      "modifie_le": "2026-10-09T23:07:10.269000+00:00",
       "nombre_ressources_rapportees": 103,
       "page": "https://www.data.gouv.fr/datasets/pe-arpege-eurat01",
       "producteur": "Météo-France",
@@ -25992,93 +26986,93 @@
         {
           "format": "grib",
           "id": "1ee218c9-ef04-445b-9d31-f95f12bb1617",
-          "modifie_le": "2026-10-09T15:28:40+00:00",
-          "titre": "pearp_eurat01_202610091200_12:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091200/arpege_eurat01_202610091200_12:00.grib"
+          "modifie_le": "2026-10-09T22:20:08+00:00",
+          "titre": "pearp_eurat01_202610091800_12:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091800/arpege_eurat01_202610091800_12:00.grib"
         },
         {
           "format": "grib",
           "id": "049e43a5-5be3-429d-a708-15af209ebffb",
-          "modifie_le": "2026-10-09T15:29:55+00:00",
-          "titre": "pearp_eurat01_202610091200_13:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091200/arpege_eurat01_202610091200_13:00.grib"
+          "modifie_le": "2026-10-09T22:21:55+00:00",
+          "titre": "pearp_eurat01_202610091800_13:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091800/arpege_eurat01_202610091800_13:00.grib"
         },
         {
           "format": "grib",
           "id": "50b62fad-7620-4f74-901e-2e07e99aa970",
-          "modifie_le": "2026-10-09T15:33:02+00:00",
-          "titre": "pearp_eurat01_202610091200_14:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091200/arpege_eurat01_202610091200_14:00.grib"
+          "modifie_le": "2026-10-09T22:24:30+00:00",
+          "titre": "pearp_eurat01_202610091800_14:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091800/arpege_eurat01_202610091800_14:00.grib"
         },
         {
           "format": "grib",
           "id": "167f294a-d6ac-49e5-b4d0-b9ad9a5ec54a",
-          "modifie_le": "2026-10-09T15:31:38+00:00",
-          "titre": "pearp_eurat01_202610091200_15:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091200/arpege_eurat01_202610091200_15:00.grib"
+          "modifie_le": "2026-10-09T22:23:30+00:00",
+          "titre": "pearp_eurat01_202610091800_15:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091800/arpege_eurat01_202610091800_15:00.grib"
         },
         {
           "format": "grib",
           "id": "be552b02-c071-4b23-861f-e5a793f4b63a",
-          "modifie_le": "2026-10-09T15:34:27+00:00",
-          "titre": "pearp_eurat01_202610091200_16:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091200/arpege_eurat01_202610091200_16:00.grib"
+          "modifie_le": "2026-10-09T22:28:00+00:00",
+          "titre": "pearp_eurat01_202610091800_16:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091800/arpege_eurat01_202610091800_16:00.grib"
         },
         {
           "format": "grib",
           "id": "b3880f61-92bf-4f79-99c6-d55ce91e3925",
-          "modifie_le": "2026-10-09T15:37:42+00:00",
-          "titre": "pearp_eurat01_202610091200_17:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091200/arpege_eurat01_202610091200_17:00.grib"
+          "modifie_le": "2026-10-09T22:26:00+00:00",
+          "titre": "pearp_eurat01_202610091800_17:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091800/arpege_eurat01_202610091800_17:00.grib"
         },
         {
           "format": "grib",
           "id": "3cff8b29-e975-4761-a970-d1ab6b058ede",
-          "modifie_le": "2026-10-09T15:41:45+00:00",
-          "titre": "pearp_eurat01_202610091200_18:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091200/arpege_eurat01_202610091200_18:00.grib"
+          "modifie_le": "2026-10-09T22:35:31+00:00",
+          "titre": "pearp_eurat01_202610091800_18:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091800/arpege_eurat01_202610091800_18:00.grib"
         },
         {
           "format": "grib",
           "id": "02ca4a4d-69f3-4708-9a0d-be3530457769",
-          "modifie_le": "2026-10-09T15:46:42+00:00",
-          "titre": "pearp_eurat01_202610091200_19:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091200/arpege_eurat01_202610091200_19:00.grib"
+          "modifie_le": "2026-10-09T22:32:22+00:00",
+          "titre": "pearp_eurat01_202610091800_19:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091800/arpege_eurat01_202610091800_19:00.grib"
         },
         {
           "format": "grib",
           "id": "f96809a9-61c4-4235-a8b7-1ebf1588d231",
-          "modifie_le": "2026-10-09T15:43:55+00:00",
-          "titre": "pearp_eurat01_202610091200_20:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091200/arpege_eurat01_202610091200_20:00.grib"
+          "modifie_le": "2026-10-09T22:29:56+00:00",
+          "titre": "pearp_eurat01_202610091800_20:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091800/arpege_eurat01_202610091800_20:00.grib"
         },
         {
           "format": "grib",
           "id": "d57aae68-b460-442a-8c1b-052aeebf3353",
-          "modifie_le": "2026-10-09T15:47:30+00:00",
-          "titre": "pearp_eurat01_202610091200_21:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091200/arpege_eurat01_202610091200_21:00.grib"
+          "modifie_le": "2026-10-09T22:33:14+00:00",
+          "titre": "pearp_eurat01_202610091800_21:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091800/arpege_eurat01_202610091800_21:00.grib"
         },
         {
           "format": "grib",
           "id": "71f9bc75-c5e6-4479-961e-0b57d3791e77",
-          "modifie_le": "2026-10-09T15:50:10+00:00",
-          "titre": "pearp_eurat01_202610091200_22:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091200/arpege_eurat01_202610091200_22:00.grib"
+          "modifie_le": "2026-10-09T22:37:14+00:00",
+          "titre": "pearp_eurat01_202610091800_22:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091800/arpege_eurat01_202610091800_22:00.grib"
         },
         {
           "format": "grib",
           "id": "e99650b4-9e44-4824-951c-3791f7139507",
-          "modifie_le": "2026-10-09T15:52:00+00:00",
-          "titre": "pearp_eurat01_202610091200_23:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091200/arpege_eurat01_202610091200_23:00.grib"
+          "modifie_le": "2026-10-09T22:39:06+00:00",
+          "titre": "pearp_eurat01_202610091800_23:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091800/arpege_eurat01_202610091800_23:00.grib"
         },
         {
           "format": "grib",
           "id": "001b0674-ebe5-4acc-9a44-8b712198baa1",
-          "modifie_le": "2026-10-09T15:53:21+00:00",
-          "titre": "pearp_eurat01_202610091200_24:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091200/arpege_eurat01_202610091200_24:00.grib"
+          "modifie_le": "2026-10-09T22:37:53+00:00",
+          "titre": "pearp_eurat01_202610091800_24:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610091800/arpege_eurat01_202610091800_24:00.grib"
         }
       ],
       "reutilisation_potentielle": true,
@@ -31341,12 +32335,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T22:17:17.864000+00:00",
+      "donnees_actualisees_le": "2026-10-09T23:12:18.014000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "fiveMinutes",
       "id": "691467f0f5dd0286d55bdd48",
       "licence_declaree": "lov2",
-      "modifie_le": "2026-10-09T22:17:17.864000+00:00",
+      "modifie_le": "2026-10-09T23:12:18.014000+00:00",
       "nombre_ressources_rapportees": 1,
       "page": "https://www.data.gouv.fr/datasets/irve-dynamique-organisation-parera-mobilite",
       "producteur": "PARERA MOBILITE",
@@ -31357,9 +32351,9 @@
         {
           "format": "csv",
           "id": "eea29849-4ee1-4e38-aa0a-49843ad30dfa",
-          "modifie_le": "2026-10-09T22:17:17.864000+00:00",
+          "modifie_le": "2026-10-09T23:12:18.014000+00:00",
           "titre": "data-gouv-dynamique.csv",
-          "url": "https://static.data.gouv.fr/resources/irve-dynamique-organisation-parera-mobilite/20261009-221717/data-gouv-dynamique.csv"
+          "url": "https://static.data.gouv.fr/resources/irve-dynamique-organisation-parera-mobilite/20261009-231217/data-gouv-dynamique.csv"
         }
       ],
       "reutilisation_potentielle": true,
@@ -32165,6 +33159,68 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:07:31.983000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "699cedaa5dcc50548da89178",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:07:31.983000+00:00",
+      "nombre_ressources_rapportees": 6,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-conseil-departemental-de-la-reunion",
+      "producteur": "",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "6f07772d-0be0-4c3d-9c6c-15b28c2cd027",
+          "modifie_le": "2026-10-04T06:05:05.668000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-conseil-departemental-de-la-reunion/20261004-060505/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "86bf0cdb-5215-482c-90e8-34d8a5256a11",
+          "modifie_le": "2026-10-09T03:06:54.775000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-conseil-departemental-de-la-reunion/20261009-030654/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "5f098e94-adde-45cd-a0ac-9d6e8b5bc2a7",
+          "modifie_le": "2026-10-09T02:06:36.604000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-conseil-departemental-de-la-reunion/20261009-020636/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "9a49dd2d-fbcd-49a4-b399-dbcf59663459",
+          "modifie_le": "2026-10-09T01:06:24.624000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-conseil-departemental-de-la-reunion/20261009-010624/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "a0546138-498f-45d8-b6b0-f78ecc2ec92c",
+          "modifie_le": "2026-10-09T00:07:42.701000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-conseil-departemental-de-la-reunion/20261009-000742/decp-2025.json"
+        },
+        {
+          "format": "json",
+          "id": "02678c11-ee4b-4ec6-95c5-35ce95e3d57a",
+          "modifie_le": "2026-10-09T23:07:31.983000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-conseil-departemental-de-la-reunion/20261009-230731/decp-2024.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Conseil Départemental de La Réunion"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-02-23T00:00:00+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
@@ -32688,6 +33744,130 @@
       "reutilisation_potentielle": true,
       "source_deja_suivie": false,
       "titre": "2025 - Données essentielles marchés publics"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:07:31.231000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "69b3573b3100bacc553a797f",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:07:31.231000+00:00",
+      "nombre_ressources_rapportees": 6,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-occitanie",
+      "producteur": "",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "b70aa0db-b9b1-4d6d-a961-9111ebc10993",
+          "modifie_le": "2026-10-04T06:04:59.667000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-occitanie/20261004-060459/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "2809ab47-0663-4702-9e13-96cf0caf4f3d",
+          "modifie_le": "2026-10-09T03:06:54.106000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-occitanie/20261009-030654/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "9084f680-72e5-4873-a104-f58e03fd7f26",
+          "modifie_le": "2026-10-09T02:06:35.861000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-occitanie/20261009-020635/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "239accda-9f94-4c98-b6a3-dd2fd28d676a",
+          "modifie_le": "2026-10-09T01:06:23.970000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-occitanie/20261009-010623/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "522f35c7-0e17-4d36-b502-2586d96c5acd",
+          "modifie_le": "2026-10-09T00:07:40.953000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-occitanie/20261009-000740/decp-2025.json"
+        },
+        {
+          "format": "json",
+          "id": "7f3fb2e0-8163-40fb-ac91-9910f0a4092d",
+          "modifie_le": "2026-10-09T23:07:31.231000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-occitanie/20261009-230731/decp-2024.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Occitanie"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:07:31.513000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "69b3573e26b62c6c84b08706",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:07:31.514000+00:00",
+      "nombre_ressources_rapportees": 6,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-normandie",
+      "producteur": "",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "a1ac66f0-1046-4e14-a5fe-1a1a3c9a8d65",
+          "modifie_le": "2026-10-04T06:05:02.802000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-normandie/20261004-060502/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "7dda35d5-b0a9-459e-b3c3-b6a1c7211950",
+          "modifie_le": "2026-10-09T03:06:54.373000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-normandie/20261009-030654/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "6c2b18b3-3647-4f4a-8b72-2b6db8d45b64",
+          "modifie_le": "2026-10-09T02:06:36.174000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-normandie/20261009-020636/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "cbfa1cd4-9450-44a6-839d-7932f74ad50a",
+          "modifie_le": "2026-10-09T01:06:24.229000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-normandie/20261009-010624/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "c5ce7f65-6e34-427a-8431-9da8e6ce1e86",
+          "modifie_le": "2026-10-09T00:07:42.214000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-normandie/20261009-000741/decp-2025.json"
+        },
+        {
+          "format": "json",
+          "id": "3ec3ef98-4a36-4590-aa9a-d696f41c0510",
+          "modifie_le": "2026-10-09T23:07:31.513000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-normandie/20261009-230731/decp-2024.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Normandie"
     },
     {
       "contenu_original_copie": false,
@@ -34544,12 +35724,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T23:04:26.388000+00:00",
+      "donnees_actualisees_le": "2026-10-09T23:13:30.058000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "oneMinute",
       "id": "6a75a5620dcff06bc7800727",
       "licence_declaree": "notspecified",
-      "modifie_le": "2026-10-09T23:04:26.388000+00:00",
+      "modifie_le": "2026-10-09T23:13:30.058000+00:00",
       "nombre_ressources_rapportees": 2,
       "page": "https://www.data.gouv.fr/datasets/irve-statique-dynamique-e-clearing-net",
       "producteur": "e-clearing.net",
@@ -34567,9 +35747,9 @@
         {
           "format": "csv",
           "id": "f6f2469e-542f-46a9-998a-46238010a8e7",
-          "modifie_le": "2026-10-09T23:04:26.388000+00:00",
+          "modifie_le": "2026-10-09T23:13:30.058000+00:00",
           "titre": "donnes-schema-irve-dynamique.csv",
-          "url": "https://static.data.gouv.fr/resources/irve-statique-dynamique-e-clearing-net/20261009-230426/donnes-schema-irve-dynamique.csv"
+          "url": "https://static.data.gouv.fr/resources/irve-statique-dynamique-e-clearing-net/20261009-231329/donnes-schema-irve-dynamique.csv"
         }
       ],
       "reutilisation_potentielle": false,
