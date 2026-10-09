@@ -68,4 +68,4 @@ def test_erreur_conserve_les_anciennes_notices():
 
 def test_identifiant_ou_notice_incorrecte_refusee():
     assert notice(fiche("../../autre")) is None
-    assert notice({"dataset": {"dataset_id": "ok"}})["id"] == "ok"
+    assert notice({"dataset": {"dataset_id": "okay"}})["id"] == "okay"
