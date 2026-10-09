@@ -7,14 +7,13 @@ from __future__ import annotations
 
 import argparse
 from datetime import datetime, timezone
-import hashlib
 import json
 from pathlib import Path
 import re
 import time
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode, urlparse
-from urllib.request import Request, urlopen
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 RACINE = Path(__file__).resolve().parents[1]
 DOSSIER = RACINE / "institutionnel" / "decouverte"
@@ -83,6 +82,11 @@ def url_catalogue(terme: str | None, page: int, taille: int,
     return ORIGINE + "?" + urlencode(params)
 
 
+class RefuserRedirection(HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        raise ErreurCollecte("Redirection HTTP imprévue : contrôle de domaine conservatoire.")
+
+
 def telecharger_page(url: str) -> dict:
     if not url.startswith(ORIGINE + "?"):
         raise ErreurCollecte("Adresse distante non autorisée.")
@@ -90,7 +94,7 @@ def telecharger_page(url: str) -> dict:
         "Accept": "application/json",
         "User-Agent": AGENT,
     })
-    with urlopen(requete, timeout=25) as reponse:
+    with build_opener(RefuserRedirection).open(requete, timeout=25) as reponse:
         if reponse.status != 200:
             raise ErreurCollecte("Réponse HTTP non conforme.")
         if urlparse(reponse.geturl()).hostname != "www.data.gouv.fr":
