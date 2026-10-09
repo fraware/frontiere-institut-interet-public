@@ -22,7 +22,9 @@ Le jeu [Les offres diffusées sur Choisir le Service Public](https://www.data.go
 
 La première étape spécialisée conserve la **liste vérifiée des ressources du jeu**, leurs identifiants, dates, formats, tailles et adresses officielles. Les fichiers originaux sont actuellement volumineux et ne sont pas encore copiés. L'index n'identifie donc encore aucun poste individuel : les deux fichiers `ressources_emplois_publics.json` et `etat_emplois_publics.json` signalent explicitement cette limite.
 
-La prochaine étape consistera à inspecter le schéma CSV réel, puis à extraire les annonces pertinentes avec identifiants stables, intitulés, employeurs publics, domaines, dates et géographie, en excluant les contacts individuels et en enregistrant les règles de réutilisation. L'étendue du fichier téléchargé et la couverture obtenue devront être mesurées.
+Un programme expérimental de lecture partielle inspecte désormais l'en-tête du CSV le plus récent et conserve uniquement les noms de colonnes, le séparateur et l'identifiant du fichier, sous réserve que la source accepte le téléchargement borné. Il ne conserve aucune ligne d'offre d'emploi. Cette observation de schéma devra réussir sur le fichier officiel avant toute extraction de lignes.
+
+L'étape suivante consistera à extraire les annonces pertinentes avec identifiants stables, intitulés, employeurs publics, domaines, dates et géographie, en excluant les contacts individuels et en enregistrant les règles de réutilisation. L'étendue du fichier téléchargé et la couverture obtenue devront être mesurées.
 
 ## Actualisation automatique
 
