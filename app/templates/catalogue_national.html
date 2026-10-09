@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Catalogue national — FRONTIÈRE{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">CATALOGUE DOCUMENTAIRE</p>
+    <h1>Catalogue national des jeux de données</h1>
+    <p>Parcours progressif du catalogue data.gouv.fr, y compris des notices absentes des recherches thématiques. Le relevé concerne les métadonnées publiées.</p>
+  </div>
+</section>
+<section class="metrics">
+  <article><span>Pages déjà enregistrées</span><strong>{{ etat.nombre_pages_presentes }}</strong></article>
+  <article><span>Cycles terminés</span><strong>{{ etat.cycles_acheves }}</strong></article>
+  <article><span>Page suivante de la collecte</span><strong>{{ etat.page_suivante if etat.page_suivante else "Inconnue" }}</strong></article>
+</section>
+<section class="panel">
+  <div class="panel-head"><h2>Page {{ donnees.page }}</h2><a href="/sources-publiques">Recherches thématiques</a></div>
+  {% if donnees.page_presente %}
+    {% if donnees.notices %}
+    <table>
+      <thead><tr><th>Jeu de données</th><th>Producteur</th><th>Licence déclarée</th><th>Dernière mise à jour déclarée</th></tr></thead>
+      <tbody>
+      {% for notice in donnees.notices %}
+      <tr>
+        <td><a href="{{ notice.page }}" rel="noopener noreferrer" target="_blank">{{ notice.titre }}</a></td>
+        <td>{{ notice.producteur or "Non indiqué" }}</td>
+        <td>{{ notice.licence }}</td>
+        <td>{{ notice.actualise_le or "Non indiqué" }}</td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    {% else %}<p>Aucune notice sur cette page.</p>{% endif %}
+  {% else %}
+    <p class="empty">Cette page n'a pas encore été enregistrée, ou le catalogue est en cours de parcours.</p>
+  {% endif %}
+  <p class="muted">Une page déjà enregistrée représente une consultation à une date antérieure ; la présence d'une notice ne garantit pas que le jeu existe encore ou que ses fichiers sont libres de republication.</p>
+  <p>
+    {% if donnees.page > 1 %}<a href="/catalogue-national?page={{ donnees.page - 1 }}">Page précédente</a>{% endif %}
+    {% if donnees.page < 2000 %}<a href="/catalogue-national?page={{ donnees.page + 1 }}">Page suivante</a>{% endif %}
+  </p>
+</section>
+{% endblock %}
