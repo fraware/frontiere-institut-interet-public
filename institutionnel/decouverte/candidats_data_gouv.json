@@ -924,6 +924,33 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T16:17:15.790000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "annual",
+      "id": "536999bca3a729239d205303",
+      "licence_declaree": "odc-odbl",
+      "modifie_le": "2015-03-27T23:53:07.920000+00:00",
+      "nombre_ressources_rapportees": 1,
+      "page": "https://www.data.gouv.fr/datasets/marches-publics-2012-toulouse-metropole-tm",
+      "producteur": "Toulouse métropole",
+      "recherches": [
+        "marchés publics"
+      ],
+      "ressources": [
+        {
+          "format": "zip",
+          "id": "932dde42-999e-4552-87a5-d1dd433ccd01",
+          "modifie_le": "2026-10-09T16:17:15.790390+00:00",
+          "titre": "Fichier ZIP",
+          "url": "http://data.toulouse-metropole.fr/les-donnees/-/opendata/card/21931-marches-publics-2012-toulouse-metropole/resource/document"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Marchés publics 2012 Toulouse Métropole"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-08-22T19:50:16.079000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
@@ -9255,12 +9282,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-08T23:00:07.470000+00:00",
+      "donnees_actualisees_le": "2026-10-09T23:00:08.659000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "punctual",
       "id": "5fa5e386afdaa6152360f323",
       "licence_declaree": "odc-odbl",
-      "modifie_le": "2026-10-08T23:00:07.415000+00:00",
+      "modifie_le": "2026-10-09T23:00:08.586000+00:00",
       "nombre_ressources_rapportees": 7,
       "page": "https://www.data.gouv.fr/datasets/ideo-structures-denseignement-superieur",
       "producteur": "Office national d'information sur les enseignements et les professions",
@@ -9270,50 +9297,50 @@
       "ressources": [
         {
           "format": "xml",
-          "id": "a5f9ed71-1d86-4b11-93a2-30440d7a5a90",
-          "modifie_le": "2026-10-08T23:00:07.468000+00:00",
+          "id": "4633d92f-0c3d-4784-9b22-2e757cd8e6a7",
+          "modifie_le": "2026-10-09T23:00:08.657000+00:00",
           "titre": "Idéo-Structures d'enseignement supérieur",
           "url": "https://api.opendata.onisep.fr/downloads/5fa586da5c4b6/5fa586da5c4b6.xml"
         },
         {
           "format": "csv",
-          "id": "650f9117-d84d-46b2-8ab9-8b0b73f118b3",
-          "modifie_le": "2026-10-08T23:00:07.468000+00:00",
+          "id": "a16ef278-26a8-41f6-a32f-eba8007de7dd",
+          "modifie_le": "2026-10-09T23:00:08.658000+00:00",
           "titre": "Idéo-Structures d'enseignement supérieur",
           "url": "https://api.opendata.onisep.fr/downloads/5fa586da5c4b6/5fa586da5c4b6.csv"
         },
         {
           "format": "xlsx",
-          "id": "157744aa-3478-4562-9e76-c6f486078690",
-          "modifie_le": "2026-10-08T23:00:07.469000+00:00",
+          "id": "fdc0926b-db2f-4169-a90b-479a02bb0c49",
+          "modifie_le": "2026-10-09T23:00:08.658000+00:00",
           "titre": "Idéo-Structures d'enseignement supérieur",
           "url": "https://api.opendata.onisep.fr/downloads/5fa586da5c4b6/5fa586da5c4b6.xlsx"
         },
         {
           "format": "json",
-          "id": "27fff147-22f6-4938-ab1b-5a7a669cc3f2",
-          "modifie_le": "2026-10-08T23:00:07.469000+00:00",
+          "id": "800886b7-fa68-4b94-94d7-cfe29d9d51e2",
+          "modifie_le": "2026-10-09T23:00:08.658000+00:00",
           "titre": "Idéo-Structures d'enseignement supérieur",
           "url": "https://api.opendata.onisep.fr/downloads/5fa586da5c4b6/5fa586da5c4b6.json"
         },
         {
           "format": "geojson",
-          "id": "a2ba9107-3508-4104-86f3-17cd437e6ee4",
-          "modifie_le": "2026-10-08T23:00:07.469000+00:00",
+          "id": "b3a3857d-bc93-4d75-94c2-a80f391125cf",
+          "modifie_le": "2026-10-09T23:00:08.658000+00:00",
           "titre": "Idéo-Structures d'enseignement supérieur",
           "url": "https://api.opendata.onisep.fr/downloads/5fa586da5c4b6/5fa586da5c4b6.geojson"
         },
         {
           "format": "zip",
-          "id": "a7e25321-2c19-4ce3-b7c5-b2c79d18a1b3",
-          "modifie_le": "2026-10-08T23:00:07.470000+00:00",
+          "id": "dfa8c676-ab75-4fe2-8f97-d54ebd996974",
+          "modifie_le": "2026-10-09T23:00:08.658000+00:00",
           "titre": "Idéo-Structures d'enseignement supérieur",
           "url": "https://api.opendata.onisep.fr/downloads/5fa586da5c4b6/5fa586da5c4b6.zip"
         },
         {
           "format": "ods",
-          "id": "2116f035-4246-4c76-8d33-8be11d2214b4",
-          "modifie_le": "2026-10-08T23:00:07.470000+00:00",
+          "id": "08cc2d23-d707-4014-b4b2-47443dc8e396",
+          "modifie_le": "2026-10-09T23:00:08.659000+00:00",
           "titre": "Idéo-Structures d'enseignement supérieur",
           "url": "https://api.opendata.onisep.fr/downloads/5fa586da5c4b6/5fa586da5c4b6.ods"
         }
@@ -9324,12 +9351,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-08T23:00:10.764000+00:00",
+      "donnees_actualisees_le": "2026-10-09T23:00:11.411000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "annual",
       "id": "5fa5e389aafc7b48e11d25e7",
       "licence_declaree": "odc-odbl",
-      "modifie_le": "2026-10-08T23:00:10.712000+00:00",
+      "modifie_le": "2026-10-09T23:00:11.361000+00:00",
       "nombre_ressources_rapportees": 7,
       "page": "https://www.data.gouv.fr/datasets/ideo-organismes-dinformation-et-dorientation-enseignement-secondaire-et-superieur",
       "producteur": "Office national d'information sur les enseignements et les professions",
@@ -9339,50 +9366,50 @@
       "ressources": [
         {
           "format": "zip",
-          "id": "7634b0fb-e1c4-4486-b726-43fc34618dd4",
-          "modifie_le": "2026-10-08T23:00:10.762000+00:00",
+          "id": "98155763-e445-4d82-ac80-bc44e2b1ba88",
+          "modifie_le": "2026-10-09T23:00:11.408000+00:00",
           "titre": "Idéo-Organismes d'information et d'orientation (Enseignement secondaire et supérieur)",
           "url": "https://api.opendata.onisep.fr/downloads/5fa57a292918b/5fa57a292918b.zip"
         },
         {
           "format": "geojson",
-          "id": "58efbbdc-1a4e-4e8d-8681-f83ef3377b8f",
-          "modifie_le": "2026-10-08T23:00:10.763000+00:00",
+          "id": "f1c966ae-45d1-420f-a7a5-aab5041ea590",
+          "modifie_le": "2026-10-09T23:00:11.409000+00:00",
           "titre": "Idéo-Organismes d'information et d'orientation (Enseignement secondaire et supérieur)",
           "url": "https://api.opendata.onisep.fr/downloads/5fa57a292918b/5fa57a292918b.geojson"
         },
         {
           "format": "xml",
-          "id": "32a8e020-b1e4-4050-bb3f-da8412e5106a",
-          "modifie_le": "2026-10-08T23:00:10.763000+00:00",
+          "id": "e65e5336-32af-464c-8fcb-0f996bc88bea",
+          "modifie_le": "2026-10-09T23:00:11.409000+00:00",
           "titre": "Idéo-Organismes d'information et d'orientation (Enseignement secondaire et supérieur)",
           "url": "https://api.opendata.onisep.fr/downloads/5fa57a292918b/5fa57a292918b.xml"
         },
         {
           "format": "json",
-          "id": "8f6fa21e-0dc4-4adc-be3f-0c7f73279747",
-          "modifie_le": "2026-10-08T23:00:10.763000+00:00",
+          "id": "188d71d3-1fd4-4ef9-b277-375b7e4c2c0c",
+          "modifie_le": "2026-10-09T23:00:11.409000+00:00",
           "titre": "Idéo-Organismes d'information et d'orientation (Enseignement secondaire et supérieur)",
           "url": "https://api.opendata.onisep.fr/downloads/5fa57a292918b/5fa57a292918b.json"
         },
         {
           "format": "xlsx",
-          "id": "9f27259a-dc0b-4254-8e7a-8326b274ab2b",
-          "modifie_le": "2026-10-08T23:00:10.763000+00:00",
+          "id": "6a97835f-f2c8-45b2-993d-e4e4b857a2cb",
+          "modifie_le": "2026-10-09T23:00:11.410000+00:00",
           "titre": "Idéo-Organismes d'information et d'orientation (Enseignement secondaire et supérieur)",
           "url": "https://api.opendata.onisep.fr/downloads/5fa57a292918b/5fa57a292918b.xlsx"
         },
         {
           "format": "ods",
-          "id": "e5612bcb-ceaf-4071-9dbb-e324d6c5b8b3",
-          "modifie_le": "2026-10-08T23:00:10.764000+00:00",
+          "id": "a02f3812-b7a4-4d00-9a73-e46de81cf9ae",
+          "modifie_le": "2026-10-09T23:00:11.410000+00:00",
           "titre": "Idéo-Organismes d'information et d'orientation (Enseignement secondaire et supérieur)",
           "url": "https://api.opendata.onisep.fr/downloads/5fa57a292918b/5fa57a292918b.ods"
         },
         {
           "format": "csv",
-          "id": "ad3b3f35-34ea-4e32-a632-2dbde78fae18",
-          "modifie_le": "2026-10-08T23:00:10.764000+00:00",
+          "id": "9b4f4309-cd21-4b53-9b28-943ceb322922",
+          "modifie_le": "2026-10-09T23:00:11.411000+00:00",
           "titre": "Idéo-Organismes d'information et d'orientation (Enseignement secondaire et supérieur)",
           "url": "https://api.opendata.onisep.fr/downloads/5fa57a292918b/5fa57a292918b.csv"
         }
@@ -9883,12 +9910,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-08T23:00:14.460000+00:00",
+      "donnees_actualisees_le": "2026-10-09T23:00:15.828000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "punctual",
       "id": "607934f531d60a476607d37b",
       "licence_declaree": "odc-odbl",
-      "modifie_le": "2026-10-08T23:00:14.420000+00:00",
+      "modifie_le": "2026-10-09T23:00:15.808000+00:00",
       "nombre_ressources_rapportees": 7,
       "page": "https://www.data.gouv.fr/datasets/ideo-actions-de-formation-initiale-univers-enseignement-superieur",
       "producteur": "Office national d'information sur les enseignements et les professions",
@@ -9898,50 +9925,50 @@
       "ressources": [
         {
           "format": "xlsx",
-          "id": "17d7825e-c694-4eae-b4e9-9f2a01c5c773",
-          "modifie_le": "2026-10-08T23:00:14.457000+00:00",
+          "id": "5bc28df8-bcd6-4aca-98e6-473e20c29d7e",
+          "modifie_le": "2026-10-09T23:00:15.826000+00:00",
           "titre": "Idéo-Actions de formation initiale-Univers enseignement supérieur",
           "url": "https://api.opendata.onisep.fr/downloads/605344579a7d7/605344579a7d7.xlsx"
         },
         {
           "format": "ods",
-          "id": "13d1d48d-1572-404d-bdb9-736b5adba00b",
-          "modifie_le": "2026-10-08T23:00:14.458000+00:00",
+          "id": "bc5ab00f-b456-4e8d-897a-e1f5e9c620c3",
+          "modifie_le": "2026-10-09T23:00:15.826000+00:00",
           "titre": "Idéo-Actions de formation initiale-Univers enseignement supérieur",
           "url": "https://api.opendata.onisep.fr/downloads/605344579a7d7/605344579a7d7.ods"
         },
         {
           "format": "zip",
-          "id": "c4ff02f2-b71a-4d4a-90ec-e6d469c10e48",
-          "modifie_le": "2026-10-08T23:00:14.458000+00:00",
+          "id": "16722f41-2128-4811-ac62-c32a549dbe54",
+          "modifie_le": "2026-10-09T23:00:15.826000+00:00",
           "titre": "Idéo-Actions de formation initiale-Univers enseignement supérieur",
           "url": "https://api.opendata.onisep.fr/downloads/605344579a7d7/605344579a7d7.zip"
         },
         {
           "format": "json",
-          "id": "2ce2bb73-ee4b-4217-be33-be837af765a1",
-          "modifie_le": "2026-10-08T23:00:14.458000+00:00",
+          "id": "caee25f2-c2c2-474f-af4a-bc5b9ddce78e",
+          "modifie_le": "2026-10-09T23:00:15.827000+00:00",
           "titre": "Idéo-Actions de formation initiale-Univers enseignement supérieur",
           "url": "https://api.opendata.onisep.fr/downloads/605344579a7d7/605344579a7d7.json"
         },
         {
           "format": "geojson",
-          "id": "b44f17d6-840f-464b-9f96-bf6c8ba95779",
-          "modifie_le": "2026-10-08T23:00:14.459000+00:00",
+          "id": "f6f69986-bd50-4de0-b743-4db127f0dfb4",
+          "modifie_le": "2026-10-09T23:00:15.827000+00:00",
           "titre": "Idéo-Actions de formation initiale-Univers enseignement supérieur",
           "url": "https://api.opendata.onisep.fr/downloads/605344579a7d7/605344579a7d7.geojson"
         },
         {
           "format": "xml",
-          "id": "c6186a07-cc28-43b3-965f-583969c17022",
-          "modifie_le": "2026-10-08T23:00:14.459000+00:00",
+          "id": "bf4ced43-5052-49d0-b973-bfe8e6144cbe",
+          "modifie_le": "2026-10-09T23:00:15.827000+00:00",
           "titre": "Idéo-Actions de formation initiale-Univers enseignement supérieur",
           "url": "https://api.opendata.onisep.fr/downloads/605344579a7d7/605344579a7d7.xml"
         },
         {
           "format": "csv",
-          "id": "70e01a72-95ec-4bbc-9f7d-bba894124755",
-          "modifie_le": "2026-10-08T23:00:14.460000+00:00",
+          "id": "9edb7334-9893-433c-9b07-213d5b1af69c",
+          "modifie_le": "2026-10-09T23:00:15.828000+00:00",
           "titre": "Idéo-Actions de formation initiale-Univers enseignement supérieur",
           "url": "https://api.opendata.onisep.fr/downloads/605344579a7d7/605344579a7d7.csv"
         }
@@ -10441,6 +10468,47 @@
       "reutilisation_potentielle": true,
       "source_deja_suivie": false,
       "titre": "Ligne du service Rhônexpress de la Métropole de Lyon et du Département du Rhône"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:05:06.425000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "punctual",
+      "id": "6135e28148a09c989665d569",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-10-09T23:05:06.425000+00:00",
+      "nombre_ressources_rapportees": 3,
+      "page": "https://www.data.gouv.fr/datasets/occupation-du-sol-2008",
+      "producteur": "Communauté d'Agglomération Lunel Agglo",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "zip",
+          "id": "002ea0bf-598e-4937-8a21-8b9369bcb55c",
+          "modifie_le": "2026-10-09T23:04:55.247000+00:00",
+          "titre": "Occupation du sol 2008 - GPKG",
+          "url": "https://static.data.gouv.fr/resources/occupation-du-sol-2008/20261009-230453/202610-ocs-2008-gpkg-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "72eec6bf-e0b6-49c7-b469-da50fda86407",
+          "modifie_le": "2026-10-09T23:04:45.355000+00:00",
+          "titre": "Occupation du sol 2008 - SQL",
+          "url": "https://static.data.gouv.fr/resources/occupation-du-sol-2008/20261009-230444/202610-ocs-2008-sql-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "35bcc72f-f115-451b-84a7-dfe92a044f3d",
+          "modifie_le": "2026-10-09T23:05:06.425000+00:00",
+          "titre": "Occupation du sol 2008 - SHP",
+          "url": "https://static.data.gouv.fr/resources/occupation-du-sol-2008/20261009-230502/202610-ocs-2008-shp-l93-2154.zip"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Occupation du sol 2008"
     },
     {
       "contenu_original_copie": false,
@@ -11606,6 +11674,47 @@
       "reutilisation_potentielle": true,
       "source_deja_suivie": false,
       "titre": "Agrégats comptables des collectivités et des établissements publics locaux 2020"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:04:36.414000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "punctual",
+      "id": "61d71d90ee5044d6a47079e4",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-10-09T23:04:36.414000+00:00",
+      "nombre_ressources_rapportees": 3,
+      "page": "https://www.data.gouv.fr/datasets/occupation-du-sol-2012",
+      "producteur": "Communauté d'Agglomération Lunel Agglo",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "zip",
+          "id": "5821fd41-fa8c-4b1a-85d4-717ae8d226de",
+          "modifie_le": "2026-10-09T23:04:36.414000+00:00",
+          "titre": "Occupation du sol 2012 - SHP",
+          "url": "https://static.data.gouv.fr/resources/occupation-du-sol-2012/20261009-230435/202610-ocs-2012-shp-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "817817b7-1c09-4f9f-8b46-204e628f5049",
+          "modifie_le": "2026-10-09T23:04:27.383000+00:00",
+          "titre": "Occupation du sol 2012 - GPKG",
+          "url": "https://static.data.gouv.fr/resources/occupation-du-sol-2012/20261009-230426/202610-ocs-2012-gpkg-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "9503ee11-cf18-47cd-b881-c80765edd360",
+          "modifie_le": "2026-10-09T23:04:17.351000+00:00",
+          "titre": "Occupation du sol 2012 - SQL",
+          "url": "https://static.data.gouv.fr/resources/occupation-du-sol-2012/20261009-230416/202610-ocs-2012-sql-l93-2154.zip"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Occupation du sol 2012"
     },
     {
       "contenu_original_copie": false,
@@ -13896,12 +14005,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T22:21:04.551000+00:00",
+      "donnees_actualisees_le": "2026-10-09T23:05:03.934000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "monthly",
       "id": "64060c2ac773dcf3fabbe5d2",
       "licence_declaree": "notspecified",
-      "modifie_le": "2026-10-09T22:21:04.551000+00:00",
+      "modifie_le": "2026-10-09T23:05:03.934000+00:00",
       "nombre_ressources_rapportees": 2,
       "page": "https://www.data.gouv.fr/datasets/public-charging-stations-for-electric-cars-from-several-cpos",
       "producteur": "Eco-Movement",
@@ -13912,9 +14021,9 @@
         {
           "format": "csv",
           "id": "b20d2793-db42-4d6d-a0b4-e94bf5ee4279",
-          "modifie_le": "2026-10-09T22:21:04.551000+00:00",
+          "modifie_le": "2026-10-09T23:05:03.934000+00:00",
           "titre": "irve-dynamique.csv",
-          "url": "https://static.data.gouv.fr/resources/public-charging-stations-for-electric-cars-from-several-cpos/20261009-222103/irve-dynamique.csv"
+          "url": "https://static.data.gouv.fr/resources/public-charging-stations-for-electric-cars-from-several-cpos/20261009-230503/irve-dynamique.csv"
         },
         {
           "format": "csv",
@@ -14808,6 +14917,54 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:05:16.222000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "monthly",
+      "id": "64e33a2060beca6a78dadd47",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-10-09T23:05:16.222000+00:00",
+      "nombre_ressources_rapportees": 4,
+      "page": "https://www.data.gouv.fr/datasets/secteurs-de-collecte-des-dechets",
+      "producteur": "Communauté d'Agglomération Lunel Agglo",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "zip",
+          "id": "d6ce8802-4469-4a33-a4a8-74d52692a248",
+          "modifie_le": "2026-10-09T23:05:13.747000+00:00",
+          "titre": "Secteurs de collecte des déchets - GPKG",
+          "url": "https://static.data.gouv.fr/resources/secteurs-de-collecte-des-dechets/20261009-230513/202610-secteurs-collecte-gpkg-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "15b7958c-8dc0-4201-99dc-d50d8ded9820",
+          "modifie_le": "2026-10-09T23:05:11.552000+00:00",
+          "titre": "Secteurs de collecte des déchets - SQL",
+          "url": "https://static.data.gouv.fr/resources/secteurs-de-collecte-des-dechets/20261009-230511/202610-secteurs-collecte-sql-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "cc3e247e-cd60-449b-9874-ba9aff358951",
+          "modifie_le": "2026-10-09T23:05:09.529000+00:00",
+          "titre": "Secteurs de collecte des déchets - GEOJSON",
+          "url": "https://static.data.gouv.fr/resources/secteurs-de-collecte-des-dechets/20261009-230508/202610-secteurs-collecte-geojson-wgs84-4326.zip"
+        },
+        {
+          "format": "zip",
+          "id": "2a20c6a6-29c4-4479-a48e-593cd51f62f9",
+          "modifie_le": "2026-10-09T23:05:16.222000+00:00",
+          "titre": "Secteurs de collecte des déchets - SHP",
+          "url": "https://static.data.gouv.fr/resources/secteurs-de-collecte-des-dechets/20261009-230515/202610-secteurs-collecte-shp-l93-2154.zip"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Secteurs de collecte des déchets"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2024-04-22T12:50:28+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
@@ -15110,6 +15267,68 @@
       "reutilisation_potentielle": true,
       "source_deja_suivie": false,
       "titre": "Fichier des compétences territoriales des services DGFIP"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:05:23.314000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "monthly",
+      "id": "655b42ccbb968e8e1d64f9cc",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-10-09T23:05:23.314000+00:00",
+      "nombre_ressources_rapportees": 6,
+      "page": "https://www.data.gouv.fr/datasets/amenagements-cyclables-7",
+      "producteur": "Communauté d'Agglomération Lunel Agglo",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "zip",
+          "id": "a92a9af4-6225-4312-9ce7-7f0814f5875c",
+          "modifie_le": "2026-09-09T23:05:19.516000+00:00",
+          "titre": "Aménagements cyclables - CSV",
+          "url": "https://static.data.gouv.fr/resources/amenagements-cyclables-7/20260909-230519/202609-amenagement-cyclable-csv-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "dfeddc64-0899-485b-902d-ae86d2757be5",
+          "modifie_le": "2026-09-09T23:05:17.253000+00:00",
+          "titre": "Aménagements cyclables - SHP",
+          "url": "https://static.data.gouv.fr/resources/amenagements-cyclables-7/20260909-230516/202609-amenagement-cyclable-shp-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "3c19ad94-c315-4a46-a9e9-85e503ee4b46",
+          "modifie_le": "2026-09-09T23:05:15.062000+00:00",
+          "titre": "Aménagements cyclables - GPKG",
+          "url": "https://static.data.gouv.fr/resources/amenagements-cyclables-7/20260909-230514/202609-amenagement-cyclable-gpkg-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "8d3de669-cfe0-4f98-ab0f-2791f7175f4e",
+          "modifie_le": "2026-10-09T23:05:23.314000+00:00",
+          "titre": "Aménagements cyclables - ODS",
+          "url": "https://static.data.gouv.fr/resources/amenagements-cyclables-7/20261009-230522/202610-amenagement-cyclable-ods-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "0e52fd0e-03e3-49fd-b88d-0afd4ed8fab0",
+          "modifie_le": "2026-10-09T23:05:21.277000+00:00",
+          "titre": "Aménagements cyclables - SQL",
+          "url": "https://static.data.gouv.fr/resources/amenagements-cyclables-7/20261009-230520/202610-amenagement-cyclable-sql-l93-2154.zip"
+        },
+        {
+          "format": "zip",
+          "id": "0fd98b1b-d1b9-4d88-9935-e0f3458a297e",
+          "modifie_le": "2026-10-09T23:05:18.552000+00:00",
+          "titre": "Aménagements cyclables - GEOJSON",
+          "url": "https://static.data.gouv.fr/resources/amenagements-cyclables-7/20261009-230517/202610-amenagement-cyclable-geojson-wgs84-4326.zip"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Aménagements cyclables"
     },
     {
       "contenu_original_copie": false,
@@ -17943,6 +18162,82 @@
       "reutilisation_potentielle": true,
       "source_deja_suivie": false,
       "titre": "Paquets Arome Outre-Mer - Guyane - Résolution 0,025°"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:04:11.370000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "daily",
+      "id": "65f18014e9923e9e71f5f258",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-10-09T23:04:11.370000+00:00",
+      "nombre_ressources_rapportees": 8,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-megalis-bretagne-schema-arretes-2022",
+      "producteur": "Mégalis Bretagne",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "5b67f1cb-d8f4-491d-a15f-77cccc65456c",
+          "modifie_le": "2026-10-09T06:03:29.902000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-megalis-bretagne-schema-arretes-2022/20261009-060329/decp-2026.json"
+        },
+        {
+          "format": "pdf",
+          "id": "b2e9a7e7-4879-4dd9-9334-bbfd0938c5ed",
+          "modifie_le": "2025-10-02T14:51:51.759000+00:00",
+          "titre": "Schéma de données dans l'arrêté relatif aux données essentielles des marchés publics",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-megalis-bretagne-schema-arretes-2022/20251002-145048/joe-20231228-0300-0022.pdf"
+        },
+        {
+          "format": "json",
+          "id": "2fbb7b58-4a6b-47ca-b528-4b9dea053477",
+          "modifie_le": "2026-10-09T01:03:35.363000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-megalis-bretagne-schema-arretes-2022/20261009-010334/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "0e79013c-6764-4af4-9f2e-c757d876a666",
+          "modifie_le": "2026-02-09T04:06:22.225000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-megalis-bretagne-schema-arretes-2022/20260209-030621/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "da0339ac-5709-4a6b-87fa-bb9251bb371e",
+          "modifie_le": "2026-10-09T02:03:22.442000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-megalis-bretagne-schema-arretes-2022/20261009-020321/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "3a9073a7-4062-49ff-a4b8-d4721705a462",
+          "modifie_le": "2026-10-09T23:04:11.370000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-megalis-bretagne-schema-arretes-2022/20261009-230408/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "40679992-a5e7-4761-b5ba-9775e77fd133",
+          "modifie_le": "2026-10-09T03:04:00.129000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-megalis-bretagne-schema-arretes-2022/20261009-030358/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "ea387298-b344-45dc-9a19-043f13df1f69",
+          "modifie_le": "2026-10-09T00:04:45.092000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-megalis-bretagne-schema-arretes-2022/20261009-000443/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Mégalis Bretagne - schéma arrêtés 2022"
     },
     {
       "contenu_original_copie": false,
@@ -20960,6 +21255,1393 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:05:02.385000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "weekly",
+      "id": "67272093922b37b9b2f1b653",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:05:02.386000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-gip-maximilien",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "194d55a3-654a-48ee-ac19-62d6589e4e3a",
+          "modifie_le": "2026-10-04T06:03:39.843000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-gip-maximilien/20261004-060339/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "4de18e82-c4c3-4e5a-bb17-239d7ac18571",
+          "modifie_le": "2026-10-09T01:04:28.483000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-gip-maximilien/20261009-010425/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "165b3951-ea28-448b-80c7-31b569b30b52",
+          "modifie_le": "2026-01-26T04:07:26.635000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-gip-maximilien/20260126-030725/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "cc6a1e6d-3ef1-4b48-b2d4-7776fc2f5ee4",
+          "modifie_le": "2026-10-09T02:03:58.341000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-gip-maximilien/20261009-020357/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "ed3d8ced-fdb6-41e1-933d-c0a15984ad16",
+          "modifie_le": "2026-10-09T23:05:02.385000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-gip-maximilien/20261009-230501/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "e921a5bd-8df1-4dd1-91c3-fba0625e9fdb",
+          "modifie_le": "2026-10-09T03:04:57.291000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-gip-maximilien/20261009-030454/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "ef2d35a1-a6d6-4301-badf-bd7f59ee0e0b",
+          "modifie_le": "2026-10-09T00:05:10.990000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-gip-maximilien/20261009-000509/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur GIP Maximilien"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:04:30.868000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672720b0b8b33f91e6032bfe",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:04:30.868000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-eure-normandie-numerique",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "5f5b62e2-83c2-43ab-9396-6a4818318b31",
+          "modifie_le": "2026-10-04T06:03:14.356000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-eure-normandie-numerique/20261004-060313/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "06ce5308-ff7b-4481-bfe5-5b7e508e330f",
+          "modifie_le": "2026-10-09T01:04:12.212000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-eure-normandie-numerique/20261009-010411/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "2fe1c2f2-3088-432e-a4a9-fd451081740b",
+          "modifie_le": "2026-02-18T04:08:36.731000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-eure-normandie-numerique/20260218-030836/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "9b2d2f28-972a-4798-9d8e-a39a539e9e0b",
+          "modifie_le": "2026-10-09T02:04:46.622000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-eure-normandie-numerique/20261009-020446/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "0670e1ab-3638-4945-b308-21cce2584b8f",
+          "modifie_le": "2026-10-09T23:04:30.868000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-eure-normandie-numerique/20261009-230430/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "ce3ad270-59fe-49e7-ae39-ce2f437f9e04",
+          "modifie_le": "2026-10-09T03:04:08.324000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-eure-normandie-numerique/20261009-030406/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "41a93eae-86d0-4010-8e8c-82e504321c2d",
+          "modifie_le": "2026-10-09T00:05:05.049000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-eure-normandie-numerique/20261009-000504/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Eure Normandie Numérique"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:04:31.198000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672720b2acd2250747936742",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:04:31.199000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-aeroport-marseille-provence",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "873bc1f0-17e5-4769-8dc7-9c0584a070da",
+          "modifie_le": "2026-10-04T06:03:14.733000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-aeroport-marseille-provence/20261004-060314/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "bdc89796-a129-466f-bbce-cb28d6136f9c",
+          "modifie_le": "2026-10-09T01:04:12.631000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-aeroport-marseille-provence/20261009-010412/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "ee1cfda4-8ee1-451e-b504-7ccc8d3ef190",
+          "modifie_le": "2026-02-18T04:08:39.483000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-aeroport-marseille-provence/20260218-030839/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "8d5747c1-89e7-4847-9efc-1f5034a4a047",
+          "modifie_le": "2026-10-09T02:04:47.047000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-aeroport-marseille-provence/20261009-020446/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "2c777a34-cff9-47f4-8d74-c854276127e1",
+          "modifie_le": "2026-10-09T23:04:31.198000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-aeroport-marseille-provence/20261009-230431/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "45e3e890-965b-4da0-98fd-4411ac8b1eaf",
+          "modifie_le": "2026-10-09T03:04:08.748000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-aeroport-marseille-provence/20261009-030408/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "5ef6deec-a3ab-469a-92b0-94122e052d78",
+          "modifie_le": "2026-10-09T00:05:05.410000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-aeroport-marseille-provence/20261009-000505/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Aéroport Marseille Provence"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:04:31.706000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672720b5cc0f6e1e1dba8f00",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:04:31.706000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-cas-marseille",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "7db983d1-9312-41a4-a8e4-9b25feb578dc",
+          "modifie_le": "2026-10-04T06:03:15.195000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cas-marseille/20261004-060315/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "399a158e-98e7-4c29-bc1c-f6d259313b57",
+          "modifie_le": "2026-10-09T01:04:13.061000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cas-marseille/20261009-010412/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "60546489-70e4-4182-a4b9-faafcd19c103",
+          "modifie_le": "2026-02-18T04:08:42.135000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cas-marseille/20260218-030842/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "b5dba56a-3374-4086-8727-aad3d6a8593c",
+          "modifie_le": "2026-10-09T02:04:47.477000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cas-marseille/20261009-020447/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "da97ac77-317d-4923-8b94-c13f2cbfc567",
+          "modifie_le": "2026-10-09T23:04:31.706000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cas-marseille/20261009-230431/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "66801bed-aafc-4ea1-99f5-ca9ca51af8f5",
+          "modifie_le": "2026-10-09T03:04:09.116000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cas-marseille/20261009-030409/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "f420799e-45f3-4809-a2f4-1f19fd62e29b",
+          "modifie_le": "2026-10-09T00:05:05.829000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cas-marseille/20261009-000505/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur CAS Marseille"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:04:32.113000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672720b71f1de4860c84bb00",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:04:32.114000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-territoire-de-la-cote-ouest",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "fc56a7cf-6575-49b1-a7cb-6b0e5885ef41",
+          "modifie_le": "2026-10-04T06:03:15.507000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-territoire-de-la-cote-ouest/20261004-060315/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "db80d591-cbe2-4bc1-9c80-96f4cfabd644",
+          "modifie_le": "2026-10-09T01:04:13.345000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-territoire-de-la-cote-ouest/20261009-010413/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "f622f049-6b06-43bf-b566-469c5781cb46",
+          "modifie_le": "2026-02-18T04:08:44.983000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-territoire-de-la-cote-ouest/20260218-030844/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "8ff3070b-b9d4-42c9-9e07-261c1a106e75",
+          "modifie_le": "2026-10-09T02:04:47.879000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-territoire-de-la-cote-ouest/20261009-020447/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "8c039915-365d-41c1-852d-509a333a1ba0",
+          "modifie_le": "2026-10-09T23:04:32.113000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-territoire-de-la-cote-ouest/20261009-230431/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "8176d6f7-35d9-4f65-a974-02676cc5a69f",
+          "modifie_le": "2026-10-09T03:04:09.441000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-territoire-de-la-cote-ouest/20261009-030409/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "90431abd-b608-48b1-b8b4-192d054256c8",
+          "modifie_le": "2026-10-09T00:05:06.186000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-territoire-de-la-cote-ouest/20261009-000506/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Territoire de la Côte Ouest"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:04:35.991000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672720bb3b056f39537f239f",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:04:35.991000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-departement-vienne",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "7583309f-d84b-4004-ae1f-9d97d64eae90",
+          "modifie_le": "2026-10-04T06:03:16.753000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-departement-vienne/20261004-060316/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "5920f988-b6fa-4249-b884-b8a35fe415aa",
+          "modifie_le": "2026-10-09T01:04:15.432000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-departement-vienne/20261009-010415/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "64b39190-51b1-401f-ae3d-d1210cd811e3",
+          "modifie_le": "2026-02-18T04:08:50.739000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-departement-vienne/20260218-030850/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "154d525b-ce9f-43f2-b520-1d7384eaddd8",
+          "modifie_le": "2026-10-09T02:04:50.345000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-departement-vienne/20261009-020449/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "09959bc3-23d9-471e-8ed8-edd365e37479",
+          "modifie_le": "2026-10-09T23:04:35.991000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-departement-vienne/20261009-230434/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "0847721e-8e4c-4762-9032-6917499a6571",
+          "modifie_le": "2026-10-09T03:04:11.234000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-departement-vienne/20261009-030411/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "202c316d-7088-4c63-b9ad-dbed4fe573d8",
+          "modifie_le": "2026-10-09T00:05:08.480000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-departement-vienne/20261009-000507/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Département Vienne"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:04:44.474000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672720cb97702d39796f4edc",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:04:44.474000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-ville-et-communaute-urbaine-du-grand-reims",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "50773d12-da79-4f7b-ba80-6e97900eee88",
+          "modifie_le": "2026-10-04T06:03:17.596000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-ville-et-communaute-urbaine-du-grand-reims/20261004-060317/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "7722f5d4-b570-43a2-b220-f4dd76643473",
+          "modifie_le": "2026-10-09T01:04:24.339000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-ville-et-communaute-urbaine-du-grand-reims/20261009-010423/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "0c355f46-0f8e-467e-9fa5-c24f29ffe10f",
+          "modifie_le": "2026-02-18T04:09:12.083000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-ville-et-communaute-urbaine-du-grand-reims/20260218-030911/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "3150c4c0-4de7-4d01-a7d6-8dd470d4f5fc",
+          "modifie_le": "2026-10-09T02:05:04.782000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-ville-et-communaute-urbaine-du-grand-reims/20261009-020504/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "171e05af-42ac-4b47-9325-5e8e632521f0",
+          "modifie_le": "2026-10-09T23:04:44.474000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-ville-et-communaute-urbaine-du-grand-reims/20261009-230443/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "553229b8-8460-4bd8-a045-427444679e58",
+          "modifie_le": "2026-10-09T03:04:21.334000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-ville-et-communaute-urbaine-du-grand-reims/20261009-030420/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "30f08643-4c0f-42e0-806d-172a9b3380ac",
+          "modifie_le": "2026-10-09T00:05:12.714000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-ville-et-communaute-urbaine-du-grand-reims/20261009-000511/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Ville et Communauté Urbaine du Grand Reims"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:04:55.573000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672720d97c0997c624f8e336",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:04:55.573000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-montpellier-mediterranee-metropole",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "17f7ce1b-5b08-4e5e-a7ad-3d5e424e876a",
+          "modifie_le": "2026-10-04T06:03:20.905000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-montpellier-mediterranee-metropole/20261004-060320/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "ae790338-8937-47e3-b4bc-29a0838202f0",
+          "modifie_le": "2026-10-09T01:04:37.152000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-montpellier-mediterranee-metropole/20261009-010436/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "8f58dc38-ea14-4114-af3c-9121eca1976b",
+          "modifie_le": "2026-02-18T04:09:37.999000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-montpellier-mediterranee-metropole/20260218-030937/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "ff84cc5b-e818-424f-8273-9374b1cc710a",
+          "modifie_le": "2026-10-09T02:05:16.906000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-montpellier-mediterranee-metropole/20261009-020516/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "c5cce241-f986-471e-86ec-b88a6c136ce7",
+          "modifie_le": "2026-10-09T23:04:55.573000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-montpellier-mediterranee-metropole/20261009-230453/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "ea7be7ca-6096-40f7-940a-131c0f6eca6e",
+          "modifie_le": "2026-10-09T03:04:32.436000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-montpellier-mediterranee-metropole/20261009-030430/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "915a5eee-4bb3-468c-8d61-0e32ca257b11",
+          "modifie_le": "2026-10-09T00:05:19.133000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-montpellier-mediterranee-metropole/20261009-000519/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Montpellier Méditerranée Métropole"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:04:56.114000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672720dbd3c5ca95c62e7c62",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:04:56.114000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-anfh",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "0d3bd6ee-4f0b-4194-b37c-e118d07d2737",
+          "modifie_le": "2026-10-04T06:03:21.392000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-anfh/20261004-060321/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "30cf057b-e4e5-48ca-b83c-3d17f1bbbd27",
+          "modifie_le": "2026-10-09T01:04:37.524000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-anfh/20261009-010437/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "bd755953-f44d-467f-b9c0-fc4ff45dcab7",
+          "modifie_le": "2026-02-18T04:09:40.775000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-anfh/20260218-030940/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "5ce62151-039a-4024-9f73-ba29abde8f8c",
+          "modifie_le": "2026-10-09T02:05:17.216000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-anfh/20261009-020517/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "33e8d7bc-267e-45d5-8173-8db2d9c4bb36",
+          "modifie_le": "2026-10-09T23:04:56.114000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-anfh/20261009-230456/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "803e4013-a220-4df5-9537-49f34b6a761e",
+          "modifie_le": "2026-10-09T03:04:32.779000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-anfh/20261009-030432/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "2db4348d-2cf5-4f3d-b77b-b4615470a5cd",
+          "modifie_le": "2026-10-09T00:05:19.622000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-anfh/20261009-000519/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur ANFH"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:04:58.440000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672720e0cdbaec7aa4f43f4f",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:04:58.440000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-cinor",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "5e0bdbee-3f27-44a4-a868-1bc47123c5cb",
+          "modifie_le": "2026-10-04T06:03:23.022000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cinor/20261004-060322/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "412a1d21-522a-4384-abc0-761b798e30e7",
+          "modifie_le": "2026-10-09T01:04:39.501000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cinor/20261009-010439/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "7dc9a73c-3cd8-436c-9102-3bfa1c58f194",
+          "modifie_le": "2026-02-18T04:09:49.399000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cinor/20260218-030949/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "cb947b02-1f59-4d23-adab-5a1f691d9518",
+          "modifie_le": "2026-10-09T02:05:20.322000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cinor/20261009-020519/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "2a6d3005-4cd5-43bc-a57c-11e97a122453",
+          "modifie_le": "2026-10-09T23:04:58.440000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cinor/20261009-230458/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "c3cf5530-a333-4c68-828d-8b8a5eda42e5",
+          "modifie_le": "2026-10-09T03:04:36.358000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cinor/20261009-030436/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "ed4438fe-a3d8-44dc-bdc2-02cd75d4860c",
+          "modifie_le": "2026-10-09T00:05:23.460000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-cinor/20261009-000523/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur CINOR"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:04:58.731000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672720e2753525dfd8368ac8",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:04:58.731000+00:00",
+      "nombre_ressources_rapportees": 8,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-creos",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "d3a102f3-32cc-411f-a41b-fac8d014b710",
+          "modifie_le": "2026-10-04T06:03:23.452000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-creos/20261004-060323/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "4e979492-092d-4007-883f-4cf6260b70b5",
+          "modifie_le": "2026-10-09T01:04:39.789000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-creos/20261009-010439/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "9b37862a-9aac-4d2c-9984-31a6463ec95c",
+          "modifie_le": "2026-02-18T04:09:52.159000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-creos/20260218-030952/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "56274501-96b7-4969-afc7-5df4c9280ee8",
+          "modifie_le": "2026-10-09T02:05:20.605000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-creos/20261009-020520/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "4fdd4d88-1e86-40de-bca2-a3046343190f",
+          "modifie_le": "2026-10-09T23:04:58.731000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-creos/20261009-230458/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "1b81814c-074f-4838-ae69-0a282730e4b6",
+          "modifie_le": "2026-10-09T03:04:36.643000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-creos/20261009-030436/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "5866159b-3e12-49f7-a45c-52e416f8d709",
+          "modifie_le": "2026-10-09T00:05:23.895000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-creos/20261009-000523/decp-2025.json"
+        },
+        {
+          "format": "json",
+          "id": "4c0171cc-def8-4068-8929-08658dfb1e3e",
+          "modifie_le": "2024-12-29T08:07:09.661000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-creos/20241229-070709/decp-2024.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Creos"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:04:59.179000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672720e451bcff5f90f6f9e4",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:04:59.179000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-region-reunion",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "4ea4b7f1-f9df-40c4-bdbd-f1211aae8434",
+          "modifie_le": "2026-10-04T06:03:24.742000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-region-reunion/20261004-060324/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "f7a59eab-fbfe-4540-93d7-2ed17c420564",
+          "modifie_le": "2026-10-09T01:04:40.325000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-region-reunion/20261009-010440/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "00eccc28-144f-40eb-af95-8498058e8768",
+          "modifie_le": "2026-02-18T04:09:54.939000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-region-reunion/20260218-030954/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "bf5e9612-4127-4fcc-99db-c13475849f67",
+          "modifie_le": "2026-10-09T02:05:20.932000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-region-reunion/20261009-020520/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "97deb3d0-2981-43bf-bbd3-0571099e0fd6",
+          "modifie_le": "2026-10-09T23:04:59.179000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-region-reunion/20261009-230459/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "2868acf5-85f0-460c-a4c9-9cfa5f37cea3",
+          "modifie_le": "2026-10-09T03:04:37.211000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-region-reunion/20261009-030437/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "65a7c7a5-3dba-47b0-b3d1-afb5bffc6011",
+          "modifie_le": "2026-10-09T00:05:25.392000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-region-reunion/20261009-000525/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Région Réunion"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:05:01.168000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672720e71f1de4860c84bb01",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:05:01.169000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-achat-hopital",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "57572673-4342-4afc-a661-d24ab5332a02",
+          "modifie_le": "2026-10-04T06:03:26.840000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-achat-hopital/20261004-060326/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "7e20f962-1863-4e67-a5a7-ed19d2f42252",
+          "modifie_le": "2026-10-09T01:04:41.827000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-achat-hopital/20261009-010441/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "d9950ea7-2d88-4495-8a66-20b4ac4c11c1",
+          "modifie_le": "2026-02-18T04:10:40.171000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-achat-hopital/20260218-031039/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "215e1245-ba15-4941-ac4a-8b15cdbc2ae4",
+          "modifie_le": "2026-10-09T02:05:23.861000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-achat-hopital/20261009-020522/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "a8af5b6f-8421-4e64-af70-ab06076710e8",
+          "modifie_le": "2026-10-09T23:05:01.168000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-achat-hopital/20261009-230500/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "4768291c-6b87-46f2-9cb3-7f947ed128ec",
+          "modifie_le": "2026-10-09T03:04:39.524000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-achat-hopital/20261009-030438/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "80821b71-428a-4fd6-b333-c571eaddb129",
+          "modifie_le": "2026-10-09T00:05:27.544000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-achat-hopital/20261009-000527/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Achat Hôpital"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:05:04.047000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672720eb3d9ba78898cbb6aa",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:05:04.047000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-departement-des-bouches-du-rhone",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "0156eea6-2547-4855-a8d0-da7187738e49",
+          "modifie_le": "2026-10-04T06:03:29.162000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-departement-des-bouches-du-rhone/20261004-060329/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "08f14aab-3225-42b9-b59a-cd37a69bd486",
+          "modifie_le": "2026-10-09T01:04:48.310000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-departement-des-bouches-du-rhone/20261009-010448/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "e7e06697-c698-48e9-a46d-e1ad0dec2d33",
+          "modifie_le": "2026-02-18T04:10:53.203000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-departement-des-bouches-du-rhone/20260218-031053/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "16c9108f-97fd-465f-9da7-5a86c499f1a5",
+          "modifie_le": "2026-10-09T02:05:28.811000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-departement-des-bouches-du-rhone/20261009-020528/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "bb3b075d-a0ee-4d72-a02b-7fcb68a9191b",
+          "modifie_le": "2026-10-09T23:05:04.047000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-departement-des-bouches-du-rhone/20261009-230503/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "a56dfd86-c9d0-41e4-84cf-90448dbb4a72",
+          "modifie_le": "2026-10-09T03:04:45.019000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-departement-des-bouches-du-rhone/20261009-030444/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "35f66606-af44-43a4-a648-ba3084d6342e",
+          "modifie_le": "2026-10-09T00:05:29.642000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-departement-des-bouches-du-rhone/20261009-000529/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Département des Bouches-du-Rhône"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:05:04.743000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672720ee720fd33a184a47a3",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:05:04.743000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-adm76",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "9d210bc0-b160-451a-8fbc-45a222244505",
+          "modifie_le": "2026-10-04T06:03:29.933000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-adm76/20261004-060329/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "e266cd88-db4d-4ef3-b194-58e5e5941c0a",
+          "modifie_le": "2026-10-09T01:04:49.004000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-adm76/20261009-010448/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "0979a4f2-3fd2-4064-9982-e17255a1c27e",
+          "modifie_le": "2026-02-18T04:10:57.543000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-adm76/20260218-031057/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "27f8494c-823a-444d-a129-81202ca366c1",
+          "modifie_le": "2026-10-09T02:05:29.602000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-adm76/20261009-020529/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "4c94f5a7-21bd-4381-a270-2c1fa59f9588",
+          "modifie_le": "2026-10-09T23:05:04.743000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-adm76/20261009-230504/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "e6507bc3-a39e-49b2-abda-7f4c440ffdfc",
+          "modifie_le": "2026-10-09T03:04:46.295000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-adm76/20261009-030445/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "84e0bfea-d6af-417e-893d-9a0668453229",
+          "modifie_le": "2026-10-09T00:05:31.604000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-adm76/20261009-000530/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur ADM76"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:05:05.219000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672720f0f12888a874bc2861",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:05:05.219000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-la-porte-du-hainaut",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "aea8ba3d-6246-444b-a7d3-5647169b7637",
+          "modifie_le": "2026-10-04T06:03:30.626000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-la-porte-du-hainaut/20261004-060330/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "8480beb4-1001-49fe-8c16-ffe1db9d941b",
+          "modifie_le": "2026-10-09T01:04:50.532000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-la-porte-du-hainaut/20261009-010450/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "21a7fc32-b6eb-4361-ab8c-fb35176c2f1c",
+          "modifie_le": "2026-02-18T04:11:02.467000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-la-porte-du-hainaut/20260218-031102/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "cfa468de-84ab-4eae-8e45-565f905f2740",
+          "modifie_le": "2026-10-09T02:05:30.980000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-la-porte-du-hainaut/20261009-020530/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "1b7c6ad1-a651-4c83-9435-99fd6a9e69fb",
+          "modifie_le": "2026-10-09T23:05:05.219000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-la-porte-du-hainaut/20261009-230505/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "1046ca68-fca8-4e4f-a5eb-6408ffeef383",
+          "modifie_le": "2026-10-09T03:04:47.377000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-la-porte-du-hainaut/20261009-030447/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "d4285101-5d59-403f-a048-bf6691c8a7f4",
+          "modifie_le": "2026-10-09T00:05:32.175000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-la-porte-du-hainaut/20261009-000532/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur La Porte du Hainaut"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:05:07.892000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672720f51f1de4860c84bb02",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:05:07.893000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-le-departement-de-la-meuse",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "15322918-6576-48e9-93b4-b0d1d6be3da8",
+          "modifie_le": "2026-10-04T06:03:33.758000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-le-departement-de-la-meuse/20261004-060333/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "5b9775ed-d8d0-4d36-b2e4-03f64d112293",
+          "modifie_le": "2026-10-09T01:04:53.176000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-le-departement-de-la-meuse/20261009-010452/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "78b19fd2-a8bd-4ec8-9043-919a68c77fb2",
+          "modifie_le": "2026-02-18T04:11:05.671000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-le-departement-de-la-meuse/20260218-031105/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "8c2f312e-3a0a-41e5-8a01-2c63c1d196f8",
+          "modifie_le": "2026-10-09T02:05:32.852000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-le-departement-de-la-meuse/20261009-020532/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "b92e8d57-5044-4522-b57c-f95f1b65f6f0",
+          "modifie_le": "2026-10-09T23:05:07.892000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-le-departement-de-la-meuse/20261009-230507/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "77561ae1-d7b9-49da-8b2a-bb45d142b19b",
+          "modifie_le": "2026-10-09T03:04:48.929000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-le-departement-de-la-meuse/20261009-030448/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "3a9ca1ea-4a12-4185-8f40-ea6d915edd36",
+          "modifie_le": "2026-10-09T00:05:34.582000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-le-departement-de-la-meuse/20261009-000534/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Le département de la Meuse"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:05:09.594000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672720f8753525dfd8368ac9",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:05:09.594000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-conseil-regional-des-pays-de-la-loire",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "fcfb7f59-93bf-452b-af52-98db6d571262",
+          "modifie_le": "2026-10-04T06:03:35.940000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-conseil-regional-des-pays-de-la-loire/20261004-060335/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "df60a19e-e042-423a-a826-3f1f02fb9408",
+          "modifie_le": "2026-10-09T01:04:56.321000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-conseil-regional-des-pays-de-la-loire/20261009-010456/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "635019f3-2525-4ee8-9842-7fb9772847c2",
+          "modifie_le": "2026-02-18T04:11:14.023000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-conseil-regional-des-pays-de-la-loire/20260218-031113/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "c5fb073a-fc8c-456e-ad54-5afe3cd31267",
+          "modifie_le": "2026-10-09T02:05:39.151000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-conseil-regional-des-pays-de-la-loire/20261009-020538/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "617941b3-3dfd-4172-8842-8ffdcc82ed22",
+          "modifie_le": "2026-10-09T23:05:09.594000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-conseil-regional-des-pays-de-la-loire/20261009-230508/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "a991ddf6-e848-4b3b-a31e-86fed92a266a",
+          "modifie_le": "2026-10-09T03:04:53.015000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-conseil-regional-des-pays-de-la-loire/20261009-030452/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "e1dc6bfe-ffc8-48cc-a3f2-b851129ad9b4",
+          "modifie_le": "2026-10-09T00:05:37.277000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-conseil-regional-des-pays-de-la-loire/20261009-000536/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Conseil Régional des Pays de la Loire"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:05:10.002000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "672720fa753525dfd8368aca",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:05:10.002000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-syndicat-intercommunal-de-traitement-des-dechets-du-nord-et-de-lest",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "917d251b-1333-4f49-8924-0d4ada5914e5",
+          "modifie_le": "2026-10-04T06:03:36.503000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-syndicat-intercommunal-de-traitement-des-dechets-du-nord-et-de-lest/20261004-060336/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "3e8d34e7-aeaf-432b-8593-8d3d395e464f",
+          "modifie_le": "2026-10-09T01:04:56.636000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-syndicat-intercommunal-de-traitement-des-dechets-du-nord-et-de-lest/20261009-010456/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "8ca8bffd-2a2a-4595-8052-5cee1ebfb2e7",
+          "modifie_le": "2026-02-18T04:11:16.791000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-syndicat-intercommunal-de-traitement-des-dechets-du-nord-et-de-lest/20260218-031116/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "a7f16d05-df90-4fb6-9313-4c7f1c2b6ce4",
+          "modifie_le": "2026-10-09T02:05:39.473000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-syndicat-intercommunal-de-traitement-des-dechets-du-nord-et-de-lest/20261009-020539/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "665490bc-ec21-4fb0-a196-24ff3f994cc9",
+          "modifie_le": "2026-10-09T23:05:10.002000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-syndicat-intercommunal-de-traitement-des-dechets-du-nord-et-de-lest/20261009-230509/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "ff71829a-3947-43c1-992b-1a5915feb485",
+          "modifie_le": "2026-10-09T03:04:53.475000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-syndicat-intercommunal-de-traitement-des-dechets-du-nord-et-de-lest/20261009-030453/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "0c92d8bf-3f1d-40b4-97ff-c9fbd21869e9",
+          "modifie_le": "2026-10-09T00:05:37.894000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-syndicat-intercommunal-de-traitement-des-dechets-du-nord-et-de-lest/20261009-000537/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Syndicat Intercommunal de Traitement des Déchets du Nord et de l'Est"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:05:19.920000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "6727210c720fd33a184a47a4",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:05:19.920000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-gouvernement-de-nouvelle-caledonie",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "21144f6c-719b-4739-93b4-de9f5a8dad79",
+          "modifie_le": "2026-10-04T06:03:42.920000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-gouvernement-de-nouvelle-caledonie/20261004-060342/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "c3396e0d-5f02-49c2-9b68-4bbbffdd0428",
+          "modifie_le": "2026-10-09T01:05:07.282000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-gouvernement-de-nouvelle-caledonie/20261009-010507/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "148cac86-0776-45a2-bbc9-1a205ab6f9ed",
+          "modifie_le": "2026-02-18T04:11:39.980000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-gouvernement-de-nouvelle-caledonie/20260218-031139/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "6e556db5-1f19-4a6b-8a53-629a930957ae",
+          "modifie_le": "2026-10-09T02:05:49.763000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-gouvernement-de-nouvelle-caledonie/20261009-020549/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "70782f6d-95d1-40b1-b266-23bfd77026a9",
+          "modifie_le": "2026-10-09T23:05:19.920000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-gouvernement-de-nouvelle-caledonie/20261009-230519/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "5c691b4e-5476-4286-9bce-95c4f00c19c7",
+          "modifie_le": "2026-10-09T03:05:01.450000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-gouvernement-de-nouvelle-caledonie/20261009-030500/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "65a042fb-8c43-419e-85c3-c2bf6cc17772",
+          "modifie_le": "2026-10-09T00:05:53.973000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-gouvernement-de-nouvelle-caledonie/20261009-000553/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Gouvernement de Nouvelle-Calédonie"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2021-01-29T00:00:00+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
@@ -21081,6 +22763,75 @@
       "reutilisation_potentielle": false,
       "source_deja_suivie": false,
       "titre": "Bibliotheques des collectivites territoriales 76 aout2023"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:04:18.573000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "67305b223bb03813db8efe33",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-09T23:04:18.573000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-acheteur-marches-publics-596280-1",
+      "producteur": "ATEXO - DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "1872cf34-0519-46c0-b2b1-ddc78f468b0e",
+          "modifie_le": "2026-10-04T06:03:05.035000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-marches-publics-596280-1/20261004-060304/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "6821678d-9280-437c-9d77-490149811289",
+          "modifie_le": "2026-10-09T01:03:59.564000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-marches-publics-596280-1/20261009-010358/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "899d9b08-ac35-436f-a633-28cb6c0a8a9b",
+          "modifie_le": "2026-02-18T04:08:10.719000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-marches-publics-596280-1/20260218-030810/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "32c836c6-57ce-4be0-a053-885b8a8a0069",
+          "modifie_le": "2026-10-09T02:04:37.704000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-marches-publics-596280-1/20261009-020437/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "c17e2bcd-8475-4d02-83b8-66c485190e7d",
+          "modifie_le": "2026-10-09T23:04:18.573000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-marches-publics-596280-1/20261009-230417/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "6cba83d2-d0db-4d6b-97f5-ff1a71a9ace7",
+          "modifie_le": "2026-10-09T03:03:58.193000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-marches-publics-596280-1/20261009-030357/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "5b3426e2-c40b-46d2-9a17-cb7cb3aae9af",
+          "modifie_le": "2026-10-09T00:04:51.735000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-acheteur-marches-publics-596280-1/20261009-000451/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil acheteur Marchés Publics 596280"
     },
     {
       "contenu_original_copie": false,
@@ -22634,6 +24385,75 @@
       "reutilisation_potentielle": false,
       "source_deja_suivie": false,
       "titre": "LES ÉTABLISSEMENTS D’ENSEIGNEMENT SUPÉRIEUR EN ILE DE FRANCE"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T23:05:19.491000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "weekly",
+      "id": "674087e9e64c72775cdce31c",
+      "licence_declaree": "odc-odbl",
+      "modifie_le": "2026-10-09T23:05:19.492000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-du-profil-dacheteur-webmarche-adullact",
+      "producteur": "ADULLACT DECP",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "da6a141c-aec9-4b84-a019-b33b3e22e940",
+          "modifie_le": "2026-10-04T06:03:42.537000+00:00",
+          "titre": "decp-2026.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-dacheteur-webmarche-adullact/20261004-060341/decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "3be5e061-1e84-4857-862e-f279a47f0aff",
+          "modifie_le": "2026-10-09T01:05:06.974000+00:00",
+          "titre": "decp-2022.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-dacheteur-webmarche-adullact/20261009-010506/decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "bfccbc4b-5045-43ca-ad02-b3f8518c9e7a",
+          "modifie_le": "2026-02-18T04:11:37.292000+00:00",
+          "titre": "decp-2020.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-dacheteur-webmarche-adullact/20260218-031137/decp-2020.json"
+        },
+        {
+          "format": "json",
+          "id": "60330ee1-8d0f-49a8-bbe3-13c713a11b66",
+          "modifie_le": "2026-10-09T02:05:49.330000+00:00",
+          "titre": "decp-2021.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-dacheteur-webmarche-adullact/20261009-020549/decp-2021.json"
+        },
+        {
+          "format": "json",
+          "id": "76a6746f-bcc8-4685-9cc2-bf520bac482d",
+          "modifie_le": "2026-10-09T23:05:19.491000+00:00",
+          "titre": "decp-2024.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-dacheteur-webmarche-adullact/20261009-230518/decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "55268be0-d364-44ac-85c7-5b4fff515691",
+          "modifie_le": "2026-10-09T03:05:00.262000+00:00",
+          "titre": "decp-2023.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-dacheteur-webmarche-adullact/20261009-030459/decp-2023.json"
+        },
+        {
+          "format": "json",
+          "id": "732f0686-54d3-4be4-bd7c-938a672f491d",
+          "modifie_le": "2026-10-09T00:05:53.600000+00:00",
+          "titre": "decp-2025.json",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-du-profil-dacheteur-webmarche-adullact/20261009-000548/decp-2025.json"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles du profil d'acheteur Webmarché Adullact"
     },
     {
       "contenu_original_copie": false,
@@ -30844,6 +32664,33 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-03-09T14:58:31.414000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "never",
+      "id": "69aee016a397a1fbd8e7d135",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-03-09T14:59:01.503000+00:00",
+      "nombre_ressources_rapportees": 1,
+      "page": "https://www.data.gouv.fr/datasets/2025-donnees-essentielles-marches-publics",
+      "producteur": "Département du Pas de Calais",
+      "recherches": [
+        "marchés publics"
+      ],
+      "ressources": [
+        {
+          "format": "csv",
+          "id": "8f649e83-9679-4f2b-a607-f07e2fe42af7",
+          "modifie_le": "2026-03-09T14:58:31.414000+00:00",
+          "titre": "Données essentielles 2025.csv",
+          "url": "https://static.data.gouv.fr/resources/2025-donnees-essentielles-marches-publics/20260309-145831/donnees-essentielles-2025.csv"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "2025 - Données essentielles marchés publics"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-08-14T09:09:59.650000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "monthly",
@@ -32697,12 +34544,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T22:21:10.003000+00:00",
+      "donnees_actualisees_le": "2026-10-09T23:04:26.388000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "oneMinute",
       "id": "6a75a5620dcff06bc7800727",
       "licence_declaree": "notspecified",
-      "modifie_le": "2026-10-09T22:21:10.003000+00:00",
+      "modifie_le": "2026-10-09T23:04:26.388000+00:00",
       "nombre_ressources_rapportees": 2,
       "page": "https://www.data.gouv.fr/datasets/irve-statique-dynamique-e-clearing-net",
       "producteur": "e-clearing.net",
@@ -32720,9 +34567,9 @@
         {
           "format": "csv",
           "id": "f6f2469e-542f-46a9-998a-46238010a8e7",
-          "modifie_le": "2026-10-09T22:21:10.003000+00:00",
+          "modifie_le": "2026-10-09T23:04:26.388000+00:00",
           "titre": "donnes-schema-irve-dynamique.csv",
-          "url": "https://static.data.gouv.fr/resources/irve-statique-dynamique-e-clearing-net/20261009-222109/donnes-schema-irve-dynamique.csv"
+          "url": "https://static.data.gouv.fr/resources/irve-statique-dynamique-e-clearing-net/20261009-230426/donnes-schema-irve-dynamique.csv"
         }
       ],
       "reutilisation_potentielle": false,
