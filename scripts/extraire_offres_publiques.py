@@ -16,7 +16,10 @@ import tempfile
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
-from scripts.sonder_structure_offres_publiques import choisir
+if __package__:
+    from scripts.sonder_structure_offres_publiques import choisir
+else:
+    from sonder_structure_offres_publiques import choisir
 
 RACINE = Path(__file__).resolve().parents[1]
 DIR = RACINE / "institutionnel" / "besoins_publics"
