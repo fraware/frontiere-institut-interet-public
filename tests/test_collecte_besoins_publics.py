@@ -43,7 +43,7 @@ def test_adresse_boamp_officielle_filtree_bornee():
     assert params["offset"] == ["300"]
     assert params["limit"] == ["100"]
     with pytest.raises(EchecBesoins):
-        adresse_boamp("2026-10-02", 31, 100)
+        adresse_boamp("2026-10-02", 51, 100)
     with pytest.raises(EchecBesoins):
         adresse_boamp("2026/10/02", 1, 100)
 
@@ -113,3 +113,27 @@ def test_inventaire_des_offres_ne_recopie_pas_les_lignes_csv():
 def test_metadonnees_emplois_inaccessibles_sont_refusees():
     with pytest.raises(EchecBesoins):
         relever_emplois(obtenir=lambda *_: {"resources": []})
+
+
+
+def test_balaye_la_fenetre_officielle_sur_plus_de_douze_pages():
+    """Le dernier lot doit être pris en compte sans déclarer une couverture fictive."""
+    def reponse(url, origine):
+        import urllib.parse
+        assert origine == BOAMP
+        decalage = int(urllib.parse.parse_qs(urllib.parse.urlparse(url).query)["offset"][0])
+        reste = max(0, 3055 - decalage)
+        return {
+            "total_count": 3055,
+            "results": [annonce(f"26-{decalage + i:05d}") for i in range(min(100, reste))],
+        }
+
+    archive, bilan = relever_boamp(
+        {"annonces": []}, obtenir=reponse,
+        maintenant=datetime(2026, 10, 9, tzinfo=timezone.utc),
+        attendre=lambda secondes: None,
+    )
+    assert len(archive["annonces"]) == 3055
+    assert bilan["pages_reussies"] == 31
+    assert bilan["recherche_partielle"] is False
+    assert bilan["pages_echouees"] == 0
