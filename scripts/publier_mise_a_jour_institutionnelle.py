@@ -30,6 +30,8 @@ CHEMINS = {
         "institutionnel/besoins_publics/etat_boamp.json",
         "institutionnel/besoins_publics/ressources_emplois_publics.json",
         "institutionnel/besoins_publics/etat_emplois_publics.json",
+        "institutionnel/besoins_publics/schema_emplois_publics.json",
+        "institutionnel/besoins_publics/etat_schema_emplois_publics.json",
     ),
     "sources": (
         "institutionnel/decouverte/candidats_data_gouv.json",
