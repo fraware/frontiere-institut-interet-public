@@ -4,8 +4,10 @@ import json
 
 import pytest
 
+from scripts import extraire_offres_publiques as extraction
 from scripts.extraire_offres_publiques import (
-    CLES, EchecExtraction, executer, ligne_offre, partitions, traiter_csv,
+    CLES, EchecExtraction, executer, ligne_offre, partitions,
+    partitions_verifiees, publier, traiter_csv,
 )
 
 
@@ -103,3 +105,63 @@ def test_refus_d_une_ligne_de_contact_non_couverte():
     resultat = ligne_offre(ligne)
     assert "courriel" not in resultat
     assert "personne@example.org" not in str(resultat)
+
+
+def test_partitions_verifiees_refusent_absence_et_modification(tmp_path):
+    """Un ancien lot incomplet ne doit jamais être pris pour un extrait valide."""
+    offres = {
+        "empreinte-fictive-a": {"reference": "2026-A", "intitule": "Poste A"},
+        "empreinte-fictive-b": {"reference": "2026-B", "intitule": "Poste B"},
+    }
+    manifeste = {"offres_distinctes": 2, "source_id": "fichier-fictif"}
+    publier(offres, tmp_path, manifeste)
+    copie = json.loads((tmp_path / "manifest_offres_postes.json").read_text(encoding="utf-8"))
+    assert len(copie["empreintes_partitions"]) == 16
+    assert partitions_verifiees(tmp_path, copie)
+
+    ancien = dict(copie)
+    ancien.pop("empreintes_partitions")
+    assert not partitions_verifiees(tmp_path, ancien)
+
+    lot = next(p for p in (tmp_path / "offres_postes").glob("*.jsonl")
+               if p.stat().st_size)
+    octets_originaux = lot.read_bytes()
+    lot.write_bytes(octets_originaux + b"\\n")
+    assert not partitions_verifiees(tmp_path, copie)
+    publier(offres, tmp_path, manifeste)
+    assert partitions_verifiees(tmp_path, copie)
+    lot.unlink()
+    assert not partitions_verifiees(tmp_path, copie)
+
+
+def test_extraction_ne_saute_pas_un_lot_endommage(monkeypatch, tmp_path):
+    """À source inchangée, une partition corrompue impose de relire la source."""
+    source_id = "source-fictive"
+    modifie_le = "2026-10-05"
+    (tmp_path / "ressources_emplois_publics.json").write_text(json.dumps({
+        "licence_declaree": "lov2",
+        "ressources": [{
+            "id": source_id, "format": "csv", "modifie_le": modifie_le,
+            "url": "https://static.data.gouv.fr/resources/emplois.csv",
+        }],
+    }), encoding="utf-8")
+    (tmp_path / "schema_emplois_publics.json").write_text(json.dumps({
+        "source_id": source_id, "separateur": "point-virgule",
+        "colonnes": colonnes(),
+    }), encoding="utf-8")
+    publier({"cle-fictive": {"reference": "2026-A", "intitule": "Poste A"}},
+            tmp_path, {
+                "source_id": source_id, "source_modifie_le": modifie_le,
+                "offres_distinctes": 1,
+            })
+    assert executer(tmp_path)["etat"] == "inchangé"
+
+    # Aucun réseau réel. Si une partition manque, la tentative d'extraction
+    # atteint le téléchargeur fictif au lieu de déclarer l'état inchangé.
+    def faux_telechargement(*args, **kwargs):
+        raise EchecExtraction("téléchargement fictif demandé")
+
+    monkeypatch.setattr(extraction, "telecharger_csv", faux_telechargement)
+    (tmp_path / "offres_postes" / "lot_0f.jsonl").unlink()
+    with pytest.raises(EchecExtraction, match="téléchargement fictif"):
+        executer(tmp_path)

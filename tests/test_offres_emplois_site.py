@@ -1,4 +1,5 @@
 """Consultation des postes publiés, sans accès au fichier d'origine."""
+import hashlib
 import importlib
 import json
 from fastapi.testclient import TestClient
@@ -26,10 +27,19 @@ def test_recherche_et_pages_sur_lignes_importees(monkeypatch, tmp_path):
          "employeur": "Université publique", "metier": "Analyse",
          "specialisation": "Chimie", "localisation": "Lyon"},
     ]
+    for i in range(16):
+        (partitions / f"lot_{i:02x}.jsonl").write_text("", encoding="utf-8")
     for i, offre in enumerate(offres):
         (partitions / f"lot_{i:02x}.jsonl").write_text(
             json.dumps(offre, ensure_ascii=False) + "\n", encoding="utf-8",
         )
+    manifeste = repertoire / "manifest_offres_postes.json"
+    donnees = json.loads(manifeste.read_text(encoding="utf-8"))
+    donnees["empreintes_partitions"] = {
+        p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+        for p in sorted(partitions.glob("lot_*.jsonl"))
+    }
+    manifeste.write_text(json.dumps(donnees), encoding="utf-8")
     racine = tmp_path / "app"
     racine.mkdir()
     monkeypatch.setattr(MODULE, "BASE_DIR", racine)
@@ -45,3 +55,12 @@ def test_recherche_et_pages_sur_lignes_importees(monkeypatch, tmp_path):
         page = client.get("/offres-emplois?terme=chimie")
         assert page.status_code == 200
         assert "Technicien de laboratoire" in page.text
+
+        premier_lot = partitions / "lot_00.jsonl"
+        contenu_valide = premier_lot.read_bytes()
+        premier_lot.write_bytes(contenu_valide + b"\n")
+        assert client.get("/api/v1/offres-emplois").status_code == 503
+        premier_lot.write_bytes(contenu_valide)
+
+        (partitions / "lot_0f.jsonl").unlink()
+        assert client.get("/api/v1/offres-emplois").status_code == 503
