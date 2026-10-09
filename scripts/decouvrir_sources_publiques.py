@@ -94,7 +94,7 @@ def telecharger_page(url: str, *, legere: bool = False) -> dict:
     if legere:
         # Le catalogue général ne conserve que les notices. Éviter le transfert
         # de ressources, de descriptions longues et de champs privés sans usage.
-        entetes["X-Fields"] = "id,title,organization,license,last_update"
+        entetes["X-Fields"] = "data{id,title,organization{name},license,last_update},page,page_size,total,next_page"
     requete = Request(url, headers=entetes)
     with build_opener(RefuserRedirection).open(requete, timeout=25) as reponse:
         if reponse.status != 200:
