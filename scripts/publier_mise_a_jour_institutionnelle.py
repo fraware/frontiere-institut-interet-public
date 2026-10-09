@@ -193,7 +193,10 @@ def publier(source: str, racine: Path = RACINE) -> dict:
         raise PublicationRefusee("Une proposition de la même source attend déjà une décision.")
 
     _commande("git", "switch", "-c", branche, cwd=racine)
-    _commande("git", "add", "-A", "--", *CHEMINS[source], cwd=racine)
+    # Indexer exclusivement les modifications attestées par git status.
+    # Les chemins possibles mais absents (p. ex. catalogue MESR indisponible)
+    # ne doivent jamais bloquer l'enregistrement des autres sources.
+    _commande("git", "add", "-A", "--", *rapport["fichiers_modifies"], cwd=racine)
     fichiers = _commande("git", "diff", "--cached", "--name-only", "-z", cwd=racine).split("\0")
     fichiers = [x for x in fichiers if x]
     verifier_portee(source, fichiers)
