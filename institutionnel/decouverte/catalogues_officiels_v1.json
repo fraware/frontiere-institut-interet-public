@@ -77,6 +77,50 @@
       "statut": "deja_ingere_dans_autre_procedure",
       "documentation": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-structures-recherche-publiques-actives/",
       "objet": "laboratoires_domaines_scientifiques"
+    },
+    {
+      "id": "scanr",
+      "nom": "scanR : acteurs, projets, publications et financements de recherche",
+      "producteur": "Ministère chargé de l'enseignement supérieur",
+      "statut": "a_integrer",
+      "documentation": "https://www.data.gouv.fr/dataservices/scanr-moteur-de-la-recherche-et-de-linnovation",
+      "objet": "structures_projets_financements_publications",
+      "remarque": "La source signale explicitement la couverture incomplète et les erreurs possibles de rapprochement"
+    },
+    {
+      "id": "csp_offres",
+      "nom": "Offres diffusées sur Choisir le Service Public",
+      "producteur": "Service public de l'emploi",
+      "statut": "a_integrer",
+      "documentation": "https://www.data.gouv.fr/datasets/les-offres-diffusees-sur-choisir-le-service-public",
+      "objet": "vacances_de_poste_et_besoins_de_recrutement",
+      "remarque": "Publications déclarées hebdomadaires"
+    },
+    {
+      "id": "decp",
+      "nom": "Données essentielles de la commande publique",
+      "producteur": "Ministères économiques et financiers",
+      "statut": "a_integrer",
+      "documentation": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides",
+      "objet": "achats_publics_et_prestations",
+      "remarque": "Archives très volumineuses ; acquisition séparée du catalogue"
+    },
+    {
+      "id": "mesr_rnsr_historique",
+      "nom": "Historique annuel des structures de recherche",
+      "producteur": "Ministère chargé de l'enseignement supérieur",
+      "statut": "a_integrer",
+      "documentation": "https://www.data.gouv.fr/datasets/repertoire-national-des-structures-de-recherche-historique-annuel",
+      "objet": "historique_de_tutelles_et_structures"
+    },
+    {
+      "id": "rna",
+      "nom": "Répertoire national des associations",
+      "producteur": "Ministère de l'Intérieur",
+      "statut": "a_integrer_apres_examen",
+      "documentation": "https://www.data.gouv.fr/datasets/repertoire-national-des-associations",
+      "objet": "associations_et_structures",
+      "remarque": "Contenus potentiellement personnels et volumes très importants ; diffusion conditionnelle"
     }
   ]
 }
