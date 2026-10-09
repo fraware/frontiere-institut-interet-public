@@ -1,0 +1,65 @@
+# Découverte récurrente des sources publiques — première réalisation
+
+## Finalité
+
+FRONTIÈRE entretient deux ensembles complémentaires :
+
+- le registre institutionnel déjà suivi dans `institutionnel/sources_v1.json`, associé aux collectes de l'administration, des territoires et de la recherche ;
+- le catalogue de notices découvertes par interrogation régulière de sources publiques, enregistré dans `institutionnel/decouverte/candidats_data_gouv.json`.
+
+Les métadonnées servent à repérer de nouveaux jeux, leur producteur, leur licence déclarée, leurs ressources et leurs dates de modification. **La découverte d'un jeu n'établit ni sa pertinence opérationnelle, ni son exactitude, ni la permission de recopier intégralement les données sous-jacentes.**
+
+## Première source interrogée
+
+La première collecte automatisée utilise l'[interface officielle du catalogue data.gouv.fr](https://guides.data.gouv.fr/api-de-data.gouv.fr/reference/datasets).
+
+Le fichier `institutionnel/decouverte/recherches_v1.json` énumère **38 recherches thématiques** touchant notamment les institutions, la recherche, les marchés publics, les compétences, les laboratoires, les métiers, le financement et les territoires. Trois pages supplémentaires présentent les ressources récemment actualisées, indépendamment d'un sujet particulier.
+
+Pour chaque résultat, sont conservés : identifiant stable, titre, organisme producteur, licence déclarée, date de modification, date d'actualisation des ressources, fréquence déclarée et liens vers un nombre limité de fichiers. Le programme déduplique les identifiants et conserve les notices déjà enregistrées lors d'une indisponibilité partielle de l'interface.
+
+La recherche est **bornée**, par expression et par nombre de pages. Son résultat ne constitue pas un inventaire exhaustif des données de data.gouv.fr, de toutes les administrations ni de tous les sites Internet. Le [catalogue complet fourni par data.gouv.fr](https://www.data.gouv.fr/datasets/catalogue-des-donnees-de-data-gouv-fr) a été répertorié séparément pour une intégration élargie à l'étape suivante.
+
+## Actualisation permanente
+
+La procédure `.github/workflows/decouverte-sources.yml` est programmée **toutes les six heures**, à 1 h 11, 7 h 11, 13 h 11 et 19 h 11 UTC, et est également exécutable à la demande. Les collectes DILA, territoriales, universitaires et de surveillance déjà présentes conservent leurs propres programmations.
+
+Le nouveau processus :
+
+1. vérifie le programme à l'aide de cas entièrement fictifs ;
+2. interroge exclusivement l'interface publique autorisée, avec une limite de volume par réponse et une temporisation entre demandes ;
+3. conserve cumulativement les notices, leur provenance et les anomalies de téléchargement ;
+4. ouvre une proposition de fusion technique limitée aux deux fichiers de résultats du répertoire de découverte ;
+5. déclenche explicitement les vérifications Python 3.11, Python 3.12 et conteneur sur l'empreinte exacte de cette branche ;
+6. **fusionne automatiquement uniquement ces deux fichiers**, uniquement après réussite des trois contrôles et vérification des chemins et de l'empreinte ;
+7. en cas d'échec, garde la proposition ouverte, conserve les données antérieures et signale l'incident dans les journaux.
+
+Cela organise l'actualisation continue du catalogue **dans GitHub**, dans la limite de la disponibilité de GitHub Actions et de l'interface source. Aucune garantie d'instantanéité n'est avancée. La branche principale n'est jamais écrite directement par cette procédure.
+
+## Accès depuis le site
+
+L'application comporte la page `/sources-publiques` et l'interface de lecture `/api/v1/sources-publiques`. Elles affichent les données versionnées dans le déploiement courant, avec la date de la dernière collecte et le nombre de pages échouées. Le catalogue est consultable par titre ou par producteur et se présente en pages.
+
+**Condition opérationnelle distincte :** un déploiement de l'application doit être reconstruit depuis la version récente de GitHub pour présenter les nouveaux résultats. Cette contribution ne met pas à elle seule en place un hébergement ou un déploiement permanent.
+
+## Droits et qualité des informations
+
+Les [conditions de la Licence Ouverte 2.0](https://www.data.gouv.fr/pages/legal/licences/etalab-2.0) autorisent une large réutilisation avec attribution et respect de la protection des données personnelles. L'absence de mention de licence, une restriction propre à l'interface ou la présence de données personnelles empêchent de présumer qu'un fichier brut est librement redistribuable.
+
+Cette première collecte conserve les **métadonnées et les URL**, sans télécharger automatiquement les fichiers bruts. Le champ `reutilisation_potentielle` ne constitue qu'un indice fondé sur la licence déclarée. Une copie de contenu nécessitera un contrôle distinct de la licence, des conditions techniques d'accès, de la pertinence et de l'absence d'informations sensibles.
+
+Les notices ne prouvent ni l'existence actuelle d'une compétence, ni sa disponibilité pour une mission, ni la réalité d'un besoin institutionnel. La recherche de ressources et leur mobilisation demeurent des questions distinctes.
+
+## Diversification des catalogues
+
+Le registre `institutionnel/decouverte/catalogues_officiels_v1.json` recense des portails complémentaires : annuaire de l'administration, Bulletin officiel des annonces des marchés publics, publication européenne des marchés, recherche d'entreprises, données scientifiques, Répertoire national des structures de recherche et textes juridiques. Il distingue précisément les sources déjà ingérées, le catalogue nouvellement interrogé et les sources **encore à intégrer**.
+
+Les prochains travaux porteront sur la lecture du catalogue complet, la découverte d'interfaces nouvelles par analyse des ressources et le téléchargement contrôlé de fichiers effectivement autorisés, avec déduplication et conservation des changements.
+
+## Vérification locale
+
+```bash
+python -m pytest -q tests/test_decouverte_sources_publiques.py tests/test_catalogue_public_api.py
+python scripts/decouvrir_sources_publiques.py
+```
+
+La seconde commande interroge le service externe et réécrit seulement les deux fichiers de résultats, sans fusion distante. Le contrôle est réalisé dans une instance de test ; les réponses sont conservées avec leur date et leurs erreurs éventuelles.
