@@ -7,6 +7,7 @@ on:
     branches: [main]
     paths:
       - "scripts/collecter_besoins_publics.py"
+      - "scripts/sonder_structure_offres_publiques.py"
       - ".github/workflows/collecte-besoins-publics.yml"
   workflow_dispatch:
 
@@ -43,10 +44,19 @@ jobs:
       - name: Vérifier le collecteur hors connexion
         run: |
           python -m pip install "pytest>=8,<10"
-          python -m pytest -q tests/test_collecte_besoins_publics.py tests/test_publication_institutionnelle.py
+          python -m pytest -q tests/test_collecte_besoins_publics.py tests/test_structure_offres_publiques.py tests/test_publication_institutionnelle.py
 
       - name: Interroger les deux sources officielles
         run: python scripts/collecter_besoins_publics.py
+
+      - name: Relever uniquement les colonnes du plus récent CSV d'emploi
+        shell: bash
+        run: |
+          if python scripts/sonder_structure_offres_publiques.py; then
+            echo "Colonnes du fichier d'emploi identifiées."
+          else
+            echo "::warning::Lecture des colonnes impossible : vérifier les conditions de téléchargement."
+          fi
 
       - name: Soumettre les seules informations publiques autorisées
         env:
@@ -111,7 +121,7 @@ jobs:
           while IFS= read -r chemin; do
             [[ -z "$chemin" ]] && continue
             case "$chemin" in
-              institutionnel/besoins_publics/annonces_boamp.json|institutionnel/besoins_publics/etat_boamp.json|institutionnel/besoins_publics/ressources_emplois_publics.json|institutionnel/besoins_publics/etat_emplois_publics.json) ;;
+              institutionnel/besoins_publics/annonces_boamp.json|institutionnel/besoins_publics/etat_boamp.json|institutionnel/besoins_publics/ressources_emplois_publics.json|institutionnel/besoins_publics/etat_emplois_publics.json|institutionnel/besoins_publics/schema_emplois_publics.json|institutionnel/besoins_publics/etat_schema_emplois_publics.json) ;;
               *) echo "Fichier non autorisé : $chemin." >&2; exit 1 ;;
             esac
           done <<< "$FICHIERS"
