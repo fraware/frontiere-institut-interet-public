@@ -151,7 +151,7 @@ def collecter(base: Path = DOSSIER, obtenir_source=None, obtenir_fichier=None,
         if not isinstance(notice, dict):
             raise RefusFichier("Ancien manifeste mal formé.")
         jour, empreinte = notice.get("jour"), notice.get("sha256")
-        if not isinstance(jour, str) or not re.fullmatch(r"20\\d{2}-\\d{2}-\\d{2}", jour):
+        if not isinstance(jour, str) or not re.fullmatch(r"20\d{2}-\d{2}-\d{2}", jour):
             raise RefusFichier("Date de fichier antérieur incohérente.")
         if not isinstance(empreinte, str) or not re.fullmatch(r"[a-f0-9]{64}", empreinte):
             raise RefusFichier("Empreinte historique absente.")
