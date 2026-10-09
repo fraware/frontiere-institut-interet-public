@@ -213,6 +213,31 @@ def _charger_sources_publiques() -> tuple[list[dict], dict]:
     return liste, rapport
 
 
+@app.get("/api/v1/balayage-national")
+def api_balayage_national() -> dict:
+    """Rendre consultable l'avancement réel du catalogue général."""
+    dossier = BASE_DIR.parent / "institutionnel" / "decouverte"
+    fichier = dossier / "balayage_etat.json"
+    try:
+        etat = json.loads(fichier.read_text(encoding="utf-8")) if fichier.is_file() else {}
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise HTTPException(503, "L'état du balayage national est illisible.") from exc
+    if not isinstance(etat, dict):
+        raise HTTPException(503, "L'état du balayage national est incorrect.")
+    pages = dossier / "balayage_pages"
+    return {
+        "version": "balayage-national-v1",
+        "dernier_controle": etat.get("controle_le"),
+        "page_suivante": etat.get("page_suivante"),
+        "cycles_acheves": etat.get("cycles_acheves", 0),
+        "nombre_pages_presentes": sum(1 for _ in pages.glob("page_*.jsonl")) if pages.is_dir() else 0,
+        "nombre_total_jeux_declare": etat.get("nombre_total_jeux_declare_par_catalogue"),
+        "derniere_experience": etat.get("erreurs", []),
+        "catalogue_exhaustif_atteste": False,
+        "donnees_brutes_copiees": False,
+    }
+
+
 @app.get("/api/v1/sources-publiques")
 def api_sources_publiques(terme: str = "", page: int = 1, limite: int = 30) -> dict:
     if not 1 <= page <= 100_000 or not 1 <= limite <= 100 or len(terme) > 120:
