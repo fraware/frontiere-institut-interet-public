@@ -2,6 +2,54 @@
   "candidats": [
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T19:28:37.225000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "53698e47a3a729239d20340c",
+      "licence_declaree": "odc-odbl",
+      "modifie_le": "2016-01-14T16:34:48.339000+00:00",
+      "nombre_ressources_rapportees": 4,
+      "page": "https://www.data.gouv.fr/datasets/accessibilite-des-arrets-de-bus-ratp-ratp",
+      "producteur": "Régie autonome des transports parisiens (RATP)",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "xls",
+          "id": "6889c366-fcbd-4204-8a0f-8d2f97b0d550",
+          "modifie_le": "2026-10-08T12:15:53.001351+00:00",
+          "titre": "No name",
+          "url": "http://data.ratp.fr/?eID=ics_od_datastoredownload&file=87"
+        },
+        {
+          "format": "pdf",
+          "id": "d2313183-6bdd-48d8-ac21-00fb27176661",
+          "modifie_le": "2026-10-09T19:28:37.225595+00:00",
+          "titre": "No name",
+          "url": "http://data.ratp.fr/?eID=ics_od_datastoredownload&file=84"
+        },
+        {
+          "format": "xls",
+          "id": "076afcdb-02cb-4621-8620-82972e428f8f",
+          "modifie_le": "2026-10-08T11:42:06.790727+00:00",
+          "titre": "Données",
+          "url": "http://data.ratp.fr/?eID=ics_od_datastoredownload&file=87"
+        },
+        {
+          "format": "pdf",
+          "id": "130d8bff-95d8-45b2-8913-89074ab0c099",
+          "modifie_le": "2026-10-08T13:28:56.870988+00:00",
+          "titre": "Document complémentaire",
+          "url": "http://data.ratp.fr/?eID=ics_od_datastoredownload&file=84"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Accessibilité des arrêts de bus RATP"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2013-09-14T19:42:34.382000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
@@ -6321,6 +6369,61 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T19:27:33.581000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "5b55e3f788ee386a9da4f8b7",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2024-04-09T10:14:31.884000+00:00",
+      "nombre_ressources_rapportees": 5,
+      "page": "https://www.data.gouv.fr/datasets/occupation-du-sol",
+      "producteur": "Le Havre Seine Métropole",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "wfs",
+          "id": "5efb9fff-b6a7-4b86-9206-b9054f5104d8",
+          "modifie_le": "2026-09-27T03:33:16.118826+00:00",
+          "titre": "Occupation du sol",
+          "url": "https://data.lehavreseinemetropole.fr/api/v1/file/data/39/RG_OCCUPSOL/WFS"
+        },
+        {
+          "format": "kmz",
+          "id": "6862044f-d05d-4190-95f9-79244e38f3e9",
+          "modifie_le": "2026-10-09T19:27:33.581360+00:00",
+          "titre": "Occupation du sol",
+          "url": "https://data.lehavreseinemetropole.fr/api/v1/file/data/39/RG_OCCUPSOL/kmz"
+        },
+        {
+          "format": "json",
+          "id": "58f9b974-f212-485d-ab83-9839d0f09ad8",
+          "modifie_le": "2026-10-09T15:18:09.440973+00:00",
+          "titre": "Occupation du sol",
+          "url": "https://data.lehavreseinemetropole.fr/api/v1/file/data/39/RG_OCCUPSOL/json"
+        },
+        {
+          "format": "dxf",
+          "id": "6cee8694-9b63-4cc1-ba99-bb0cb5042625",
+          "modifie_le": "2026-10-09T14:38:45.054159+00:00",
+          "titre": "Occupation du sol",
+          "url": "https://data.lehavreseinemetropole.fr/api/v1/file/data/39/RG_OCCUPSOL/dxf"
+        },
+        {
+          "format": "shp",
+          "id": "a3ec8623-68b1-4696-9750-417e7a572558",
+          "modifie_le": "2026-09-02T13:48:31.171404+00:00",
+          "titre": "Occupation du sol",
+          "url": "https://data.lehavreseinemetropole.fr/api/v1/file/data/39/RG_OCCUPSOL/shp"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Occupation du sol"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2018-08-07T10:20:02.050000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "punctual",
@@ -8752,6 +8855,47 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T19:43:36.111000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "daily",
+      "id": "5f83fd39f8d4881899cac7e9",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-10-09T05:10:15.718000+00:00",
+      "nombre_ressources_rapportees": 3,
+      "page": "https://www.data.gouv.fr/datasets/pcaet-v1-demarches-partie-2",
+      "producteur": "ADEME",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "url",
+          "id": "a9dfae09-dddb-4b97-9a83-3e5790a62659",
+          "modifie_le": "2026-10-06T17:04:47.167390+00:00",
+          "titre": "Consultez les données",
+          "url": "https://data.ademe.fr/datasets/pcaet-demarches-partie-2"
+        },
+        {
+          "format": "url",
+          "id": "2db84b31-f76e-4013-9bf6-5ddad7ccddf0",
+          "modifie_le": "2026-10-09T19:43:36.111235+00:00",
+          "titre": "Description des champs",
+          "url": "https://data.ademe.fr/datasets/pcaet-demarches-partie-2"
+        },
+        {
+          "format": "csv",
+          "id": "b4f6918e-2394-4413-8bd4-c06d197c62e3",
+          "modifie_le": "2026-10-09T05:10:26+00:00",
+          "titre": "Fichier csv",
+          "url": "https://data.ademe.fr/data-fair/api/v1/datasets/pcaet-demarches-partie-2/raw"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "PCAET (v1) - Démarches - Partie 2"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-08T23:00:07.470000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "punctual",
@@ -9047,12 +9191,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T18:19:07.197000+00:00",
+      "donnees_actualisees_le": "2026-10-09T19:19:34.687000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "daily",
       "id": "5fc8b732d30fbf1ed6648aab",
       "licence_declaree": "fr-lo",
-      "modifie_le": "2026-10-09T18:19:07.197000+00:00",
+      "modifie_le": "2026-10-09T19:19:34.688000+00:00",
       "nombre_ressources_rapportees": 1,
       "page": "https://www.data.gouv.fr/datasets/deputes-actifs-de-lassemblee-nationale-informations-et-statistiques",
       "producteur": "Datan",
@@ -9063,9 +9207,9 @@
         {
           "format": "csv",
           "id": "092bd7bb-1543-405b-b53c-932ebb49bb8e",
-          "modifie_le": "2026-10-09T18:19:07.197000+00:00",
+          "modifie_le": "2026-10-09T19:19:34.687000+00:00",
           "titre": "deputes-active.csv",
-          "url": "https://static.data.gouv.fr/resources/deputes-actifs-de-lassemblee-nationale-informations-et-statistiques/20261009-181906/deputes-active.csv"
+          "url": "https://static.data.gouv.fr/resources/deputes-actifs-de-lassemblee-nationale-informations-et-statistiques/20261009-191934/deputes-active.csv"
         }
       ],
       "reutilisation_potentielle": false,
@@ -9696,12 +9840,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T18:19:07.552000+00:00",
+      "donnees_actualisees_le": "2026-10-09T19:19:35.027000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "daily",
       "id": "60ed57a9f0c7c3a1eb29733f",
       "licence_declaree": "fr-lo",
-      "modifie_le": "2026-10-09T18:19:07.552000+00:00",
+      "modifie_le": "2026-10-09T19:19:35.028000+00:00",
       "nombre_ressources_rapportees": 1,
       "page": "https://www.data.gouv.fr/datasets/groupes-politiques-actifs-de-lassemblee-nationale-informations-et-statistiques",
       "producteur": "Datan",
@@ -9712,9 +9856,9 @@
         {
           "format": "csv",
           "id": "4612d596-9a78-4ec6-b60c-ccc1ee11f8c0",
-          "modifie_le": "2026-10-09T18:19:07.552000+00:00",
+          "modifie_le": "2026-10-09T19:19:35.027000+00:00",
           "titre": "groupes-active.csv",
-          "url": "https://static.data.gouv.fr/resources/groupes-politiques-actifs-de-lassemblee-nationale-informations-et-statistiques/20261009-181907/groupes-active.csv"
+          "url": "https://static.data.gouv.fr/resources/groupes-politiques-actifs-de-lassemblee-nationale-informations-et-statistiques/20261009-191934/groupes-active.csv"
         }
       ],
       "reutilisation_potentielle": false,
@@ -9723,12 +9867,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T18:19:08.260000+00:00",
+      "donnees_actualisees_le": "2026-10-09T19:19:35.777000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "daily",
       "id": "60f2ffc8284ff5e8c1ed0655",
       "licence_declaree": "fr-lo",
-      "modifie_le": "2026-10-09T18:19:08.260000+00:00",
+      "modifie_le": "2026-10-09T19:19:35.777000+00:00",
       "nombre_ressources_rapportees": 1,
       "page": "https://www.data.gouv.fr/datasets/historique-des-deputes-de-lassemblee-nationale-depuis-2002-informations-et-statistiques",
       "producteur": "Datan",
@@ -9739,9 +9883,9 @@
         {
           "format": "csv",
           "id": "817fda38-d616-43e9-852f-790510f4d157",
-          "modifie_le": "2026-10-09T18:19:08.260000+00:00",
+          "modifie_le": "2026-10-09T19:19:35.777000+00:00",
           "titre": "deputes-historique.csv",
-          "url": "https://static.data.gouv.fr/resources/historique-des-deputes-de-lassemblee-nationale-depuis-2002-informations-et-statistiques/20261009-181908/deputes-historique.csv"
+          "url": "https://static.data.gouv.fr/resources/historique-des-deputes-de-lassemblee-nationale-depuis-2002-informations-et-statistiques/20261009-191935/deputes-historique.csv"
         }
       ],
       "reutilisation_potentielle": false,
@@ -9750,12 +9894,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T18:19:08.565000+00:00",
+      "donnees_actualisees_le": "2026-10-09T19:19:36.190000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "daily",
       "id": "60f30419135bec6a5e480086",
       "licence_declaree": "fr-lo",
-      "modifie_le": "2026-10-09T18:19:08.565000+00:00",
+      "modifie_le": "2026-10-09T19:19:36.190000+00:00",
       "nombre_ressources_rapportees": 1,
       "page": "https://www.data.gouv.fr/datasets/historique-des-groupes-politiques-de-lassemblee-nationale-depuis-2012-informations-et-statistiques",
       "producteur": "Datan",
@@ -9766,9 +9910,9 @@
         {
           "format": "csv",
           "id": "530940ab-45f3-41e3-8de3-759568c728b8",
-          "modifie_le": "2026-10-09T18:19:08.565000+00:00",
+          "modifie_le": "2026-10-09T19:19:36.190000+00:00",
           "titre": "groupes-historique.csv",
-          "url": "https://static.data.gouv.fr/resources/historique-des-groupes-politiques-de-lassemblee-nationale-depuis-2012-informations-et-statistiques/20261009-181908/groupes-historique.csv"
+          "url": "https://static.data.gouv.fr/resources/historique-des-groupes-politiques-de-lassemblee-nationale-depuis-2012-informations-et-statistiques/20261009-191936/groupes-historique.csv"
         }
       ],
       "reutilisation_potentielle": false,
@@ -11079,6 +11223,201 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T19:27:55.684000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "punctual",
+      "id": "61f3ba1456816c41f28c43ac",
+      "licence_declaree": "lov2",
+      "modifie_le": "2025-11-24T10:56:41.440000+00:00",
+      "nombre_ressources_rapportees": 337,
+      "page": "https://www.data.gouv.fr/datasets/transition-s-2050-quatre-scenarios-pour-atteindre-la-neutralite-carbone",
+      "producteur": "ADEME",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "page web",
+          "id": "4a28d046-f96f-4786-81fe-8282fa40452e",
+          "modifie_le": "2026-07-28T03:16:28.859355+00:00",
+          "titre": "Materiaux TE G13 - Chroniques de déploiements des filières éolienne, photovoltaïque, et nucléaire pour les 5 scénarios de Transition(s) 2050 (parc installé, en GW) - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/materiaux-te-g13"
+        },
+        {
+          "format": "page web",
+          "id": "1170018b-c568-468b-ba6d-d07f3e502186",
+          "modifie_le": "2026-07-26T15:43:24.341799+00:00",
+          "titre": "Macroéco TA4. Emplois : S3 (base 100 en 2021) - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/macroeco-ta4"
+        },
+        {
+          "format": "page web",
+          "id": "85fdb0ec-bed4-4a80-ba55-7f3e21c2852f",
+          "modifie_le": "2026-07-29T15:21:52.418841+00:00",
+          "titre": "Numerique G1 G9 - Impact des biens et services numériques sur l’empreinte carbone en Mt CO2eq - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/numerique-g1-g9"
+        },
+        {
+          "format": "page web",
+          "id": "0f4dcc15-b634-4ca3-bb8d-e7a23de04622",
+          "modifie_le": "2026-07-25T19:25:48.090773+00:00",
+          "titre": "Alimentation G5 - Part de la population française en 2020 associée à chacun des 4 groupes de consommateurs proposés - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/alimentation-g5"
+        },
+        {
+          "format": "page web",
+          "id": "f43a0e59-7ffe-4f75-9abf-f469b9080c44",
+          "modifie_le": "2026-07-24T17:42:05.008669+00:00",
+          "titre": "Macroéco G11. Emplois totaux : écarts S4 - TEND (milliers) - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/macroeco-g11"
+        },
+        {
+          "format": "page web",
+          "id": "dd454321-07fe-42a4-8c06-d7956843b71d",
+          "modifie_le": "2026-08-23T17:56:09.645351+00:00",
+          "titre": "Macroéco GC8. Ecarts de financements publics directs S3 - TEND (M€ 2021) - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/macroeco-gc8"
+        },
+        {
+          "format": "page web",
+          "id": "a0196fd2-64c0-4301-bc2b-7a7a016a729f",
+          "modifie_le": "2026-07-24T05:06:03.319150+00:00",
+          "titre": "Macroéco T7. Agrégats macroéconomiques - S3 - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/macroeco-t7"
+        },
+        {
+          "format": "page web",
+          "id": "eea9232f-7a66-4790-9ebb-ff806c475a17",
+          "modifie_le": "2026-07-23T16:46:37.569079+00:00",
+          "titre": "Bâtiment G1 - Scénario Tendanciel – Nombre de résidences principales par équipement de chauffage - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/batiment-g1"
+        },
+        {
+          "format": "page web",
+          "id": "a919fc52-712b-4c12-823c-30dfde3fee57",
+          "modifie_le": "2026-07-24T17:11:23.604454+00:00",
+          "titre": "Mix gaz G3 - Demande en gaz dans le scénario tendanciel en 2015, 2030 et 2050 - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/mix-gaz-g3"
+        },
+        {
+          "format": "page web",
+          "id": "74c845c6-c445-46d8-9b21-088e407fc712",
+          "modifie_le": "2026-08-03T17:07:22.157961+00:00",
+          "titre": "Numerique G7 - Impact des biens et services numériques sur les ressources abiotiques fossiles en MJ - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/numerique-g7"
+        },
+        {
+          "format": "page web",
+          "id": "79051628-ce4a-47be-b9e0-db66f73279ad",
+          "modifie_le": "2026-07-23T17:46:57.519000+00:00",
+          "titre": "Mobilité et Transports G27.3 - Demande énergétique des transports en 2050 par vecteur et par scénario pour le transport de soutes (transports internationaux) - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/mobilite-et-transports-g27-3"
+        },
+        {
+          "format": "page web",
+          "id": "39b66642-f151-4907-ba51-11afc209ade1",
+          "modifie_le": "2026-08-01T21:13:43.683221+00:00",
+          "titre": "Macroéco T3. Investissements : S1 (M EUR 2021) - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/macroeco-t3"
+        },
+        {
+          "format": "page web",
+          "id": "82a3b9b0-8e9e-44d7-b29d-909037b98465",
+          "modifie_le": "2026-07-27T17:05:46.538824+00:00",
+          "titre": "Macroéco GC6. Ecarts de financements publics directs S2 - TEND (M€ 2021) - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/macroeco-gc6"
+        },
+        {
+          "format": "page web",
+          "id": "62e747fd-321c-4684-9a5e-84d34f4006fe",
+          "modifie_le": "2026-07-24T18:00:12.531909+00:00",
+          "titre": "Materiaux TE T3 - Consommation française et production mondiale des différentes matières et métaux étudiés en tonnes - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/materiaux-te-t3"
+        },
+        {
+          "format": "page web",
+          "id": "bd22a9bb-a00f-49fd-b898-8035a0b05110",
+          "modifie_le": "2026-07-28T23:12:31.365908+00:00",
+          "titre": "Productions Industrielles G6 - Evolution (en %) des volumes totaux de demande et de production des industries lourdes (IGCE) en 2050 dans le scénario tendanciel par rapport à 2014 - Consultez les donn",
+          "url": "https://data-transitions2050.ademe.fr/datasets/productions-industrielles-g6"
+        },
+        {
+          "format": "page web",
+          "id": "07fb8218-ffe6-4a9d-ac9b-fd4529fb65c3",
+          "modifie_le": "2026-07-27T11:34:00.999798+00:00",
+          "titre": "Air G7 - Évolution des émissions de polluants du secteur résidentiel-tertiaire, entre 2015 et 2050, par scénario (kt) - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/air-g7"
+        },
+        {
+          "format": "page web",
+          "id": "ade45007-b85b-45d5-a61d-e8937c7ccbd5",
+          "modifie_le": "2026-07-23T17:53:48.952767+00:00",
+          "titre": "Distributif G7 - Consommation énergétique (kWh/an) du logement par décile de niveau de vie en 2030 - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/distributif-g7"
+        },
+        {
+          "format": "page web",
+          "id": "878179ad-7a47-4663-b17c-8f565583646f",
+          "modifie_le": "2026-08-02T20:08:47.286197+00:00",
+          "titre": "Froid et chaleur - réseaux et hors réseaux G4 - Évolution du mix énergétique des réseaux de chaleur entre 2009 et 2019 - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/froid-et-chaleur-reseaux-et-hors-reseaux-g4"
+        },
+        {
+          "format": "page web",
+          "id": "967ead9d-3f4e-43e3-801f-c8177cb24588",
+          "modifie_le": "2026-07-30T18:10:28.536741+00:00",
+          "titre": "Puits de carbone G6 - Bilan du CCS, des puits technologiques et naturels en 2030 et 2050 - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/puits-g6"
+        },
+        {
+          "format": "page web",
+          "id": "53609fb0-3029-4fca-9c87-67834b8e4659",
+          "modifie_le": "2026-07-23T17:57:04.546460+00:00",
+          "titre": "Productions Forestières G8 - Évolution du puits biomasse vivante dans les forêts dans les différents scénarios - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/productions-forestieres-g8"
+        },
+        {
+          "format": "page web",
+          "id": "8737cfc2-c90a-4773-b74d-8969b5bcf3d2",
+          "modifie_le": "2026-07-24T00:01:07.337742+00:00",
+          "titre": "Mix gaz G5 - Demande en gaz dans S1 en 2015, 2030 et 2050 - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/mix-gaz-g5"
+        },
+        {
+          "format": "page web",
+          "id": "a5738245-9f5e-4423-a4c2-71565c1b5871",
+          "modifie_le": "2026-07-24T17:47:28.092070+00:00",
+          "titre": "Mobilité et Transports G26.1 - Comparaison des masses moyennes des voitures neuves par technologie et par scénario en 2050 - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/mobilite-et-transports-g26-1"
+        },
+        {
+          "format": "page web",
+          "id": "5274bfe3-6d39-40b2-b6f5-3e7c901f3e4a",
+          "modifie_le": "2026-07-23T17:48:23.990746+00:00",
+          "titre": "Mix gaz G8 - Mix de gaz dans S2 en 2015, 2030 et 2050 - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/mix-gaz-g8"
+        },
+        {
+          "format": "page web",
+          "id": "c78aad32-e64c-4ecb-9945-63c23b6c094f",
+          "modifie_le": "2026-07-28T13:05:08.458499+00:00",
+          "titre": "Macroéco G6. PIB et contributions de ses composantes : écart S2/TEND (%) - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/macroeco-g6"
+        },
+        {
+          "format": "page web",
+          "id": "bcafb3ed-2710-45d4-8ae8-8191f50a1aba",
+          "modifie_le": "2026-08-05T17:37:17.145195+00:00",
+          "titre": "Empreintes T5 - Empreinte matières de la France et composition en 2015 et en 2050 pour tous les scénarios - Consultez les données",
+          "url": "https://data-transitions2050.ademe.fr/datasets/empreintes-t5"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Transition(s) 2050 - Quatre scénarios pour atteindre la neutralité carbone"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-09T17:49:20.050000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "bimonthly",
@@ -11187,7 +11526,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T06:50:37.653000+00:00",
+      "donnees_actualisees_le": "2026-10-09T18:53:41.105000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "bimonthly",
       "id": "61f924f09c60ab56d9fac9e9",
@@ -11203,7 +11542,7 @@
         {
           "format": "xls",
           "id": "864fbc5e-da3a-4c79-8eeb-700d90d77ae6",
-          "modifie_le": "2026-10-09T06:50:37.653653+00:00",
+          "modifie_le": "2026-10-09T18:53:41.105471+00:00",
           "titre": "Blois - marchés publics 2018",
           "url": "https://blois-agglopolys-centrevaldeloire.opendatasoft.com/explore/dataset/blois-marches-publics-2018/information/"
         }
@@ -13109,12 +13448,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T18:51:06.932000+00:00",
+      "donnees_actualisees_le": "2026-10-09T19:49:05.260000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "monthly",
       "id": "64060c2ac773dcf3fabbe5d2",
       "licence_declaree": "notspecified",
-      "modifie_le": "2026-10-09T18:51:06.932000+00:00",
+      "modifie_le": "2026-10-09T19:49:05.261000+00:00",
       "nombre_ressources_rapportees": 2,
       "page": "https://www.data.gouv.fr/datasets/public-charging-stations-for-electric-cars-from-several-cpos",
       "producteur": "Eco-Movement",
@@ -13125,16 +13464,16 @@
         {
           "format": "csv",
           "id": "b20d2793-db42-4d6d-a0b4-e94bf5ee4279",
-          "modifie_le": "2026-10-09T18:51:06.932000+00:00",
+          "modifie_le": "2026-10-09T19:49:05.260000+00:00",
           "titre": "irve-dynamique.csv",
-          "url": "https://static.data.gouv.fr/resources/public-charging-stations-for-electric-cars-from-several-cpos/20261009-185106/irve-dynamique.csv"
+          "url": "https://static.data.gouv.fr/resources/public-charging-stations-for-electric-cars-from-several-cpos/20261009-194904/irve-dynamique.csv"
         },
         {
           "format": "csv",
           "id": "b11113db-875d-41c7-8673-0cf8ad43e917",
-          "modifie_le": "2026-10-08T19:00:35.770000+00:00",
+          "modifie_le": "2026-10-09T19:00:30.273000+00:00",
           "titre": "irve-statique.csv",
-          "url": "https://static.data.gouv.fr/resources/public-charging-stations-for-electric-cars-from-several-cpos/20261008-190035/irve-statique.csv"
+          "url": "https://static.data.gouv.fr/resources/public-charging-stations-for-electric-cars-from-several-cpos/20261009-190029/irve-statique.csv"
         }
       ],
       "reutilisation_potentielle": false,
@@ -15025,6 +15364,110 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2021-02-25T15:58:15+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "irregular",
+      "id": "65b84046dc73c03f5a75f77e",
+      "licence_declaree": "fr-lo",
+      "modifie_le": "2021-02-25T15:58:15+00:00",
+      "nombre_ressources_rapportees": 12,
+      "page": "https://www.data.gouv.fr/datasets/les-etablissements-denseignement-superieur-sur-bourges-plus",
+      "producteur": "Communauté d'Agglomération de Bourges",
+      "recherches": [
+        "enseignement supérieur"
+      ],
+      "ressources": [
+        {
+          "format": "csv",
+          "id": "14066241-54fa-4665-83e5-a211003641bb",
+          "modifie_le": "2021-02-25T15:58:15+00:00",
+          "titre": "ens_sup-bourgesplus.csv",
+          "url": "https://data.bourgesplus.fr/api/v2/catalog/datasets/ens_sup-bourgesplus/exports/csv?use_labels=true"
+        },
+        {
+          "format": "json",
+          "id": "21a4cf57-4d8e-46a8-9d04-3db0388cb444",
+          "modifie_le": "2021-02-25T15:58:15+00:00",
+          "titre": "ens_sup-bourgesplus.json",
+          "url": "https://data.bourgesplus.fr/api/v2/catalog/datasets/ens_sup-bourgesplus/exports/json"
+        },
+        {
+          "format": "octet-stream",
+          "id": "b12807af-0472-4ba6-b652-c862f68520f7",
+          "modifie_le": "2021-02-25T15:58:15+00:00",
+          "titre": "ens_sup-bourgesplus.fgb",
+          "url": "https://data.bourgesplus.fr/api/v2/catalog/datasets/ens_sup-bourgesplus/exports/fgb"
+        },
+        {
+          "format": "json",
+          "id": "227d5a88-e193-4683-971d-c2e9c8ded52d",
+          "modifie_le": "2021-02-25T15:58:15+00:00",
+          "titre": "ens_sup-bourgesplus.jsonl",
+          "url": "https://data.bourgesplus.fr/api/v2/catalog/datasets/ens_sup-bourgesplus/exports/jsonl"
+        },
+        {
+          "format": "parquet",
+          "id": "06c95263-30c7-4d52-a2fe-10fd79e5b868",
+          "modifie_le": "2021-02-25T15:58:15+00:00",
+          "titre": "ens_sup-bourgesplus.parquet",
+          "url": "https://data.bourgesplus.fr/api/v2/catalog/datasets/ens_sup-bourgesplus/exports/parquet"
+        },
+        {
+          "format": "rdf+xml",
+          "id": "b86b9865-bcfb-4227-a43a-e3fb4dc45975",
+          "modifie_le": "2021-02-25T15:58:15+00:00",
+          "titre": "ens_sup-bourgesplus.rdf",
+          "url": "https://data.bourgesplus.fr/api/v2/catalog/datasets/ens_sup-bourgesplus/exports/rdfxml"
+        },
+        {
+          "format": "ld+json",
+          "id": "4d0af070-8267-43db-85f7-3d9761421dbb",
+          "modifie_le": "2021-02-25T15:58:15+00:00",
+          "titre": "ens_sup-bourgesplus.jsonld",
+          "url": "https://data.bourgesplus.fr/api/v2/catalog/datasets/ens_sup-bourgesplus/exports/jsonld"
+        },
+        {
+          "format": "turtle",
+          "id": "de9bca46-fbf9-438a-bf37-b0971ca2ae7e",
+          "modifie_le": "2021-02-25T15:58:15+00:00",
+          "titre": "ens_sup-bourgesplus.ttl",
+          "url": "https://data.bourgesplus.fr/api/v2/catalog/datasets/ens_sup-bourgesplus/exports/turtle"
+        },
+        {
+          "format": "n3",
+          "id": "509b5927-4c71-4c6c-a273-a8be2684c6ae",
+          "modifie_le": "2021-02-25T15:58:15+00:00",
+          "titre": "ens_sup-bourgesplus.n3",
+          "url": "https://data.bourgesplus.fr/api/v2/catalog/datasets/ens_sup-bourgesplus/exports/n3"
+        },
+        {
+          "format": "xls",
+          "id": "fee48535-4dee-499b-a7f8-b5f80bd2c920",
+          "modifie_le": "2021-02-25T15:58:15+00:00",
+          "titre": "ens_sup-bourgesplus.xls",
+          "url": "https://data.bourgesplus.fr/api/v2/catalog/datasets/ens_sup-bourgesplus/exports/xls"
+        },
+        {
+          "format": "xls",
+          "id": "a476070d-bd7d-4e1b-a5bf-0363c40cdf1a",
+          "modifie_le": "2021-02-25T15:58:15+00:00",
+          "titre": "ens_sup-bourgesplus.xls",
+          "url": "https://data.bourgesplus.fr/api/v2/catalog/datasets/ens_sup-bourgesplus/exports/xls?use_labels=false"
+        },
+        {
+          "format": "xls",
+          "id": "279c42e6-a901-4c58-b8ca-33d8df269707",
+          "modifie_le": "2021-02-25T15:58:15+00:00",
+          "titre": "ens_sup-bourgesplus.xls",
+          "url": "https://data.bourgesplus.fr/api/v2/catalog/datasets/ens_sup-bourgesplus/exports/xls?use_labels=true"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Les établissements d'enseignement supérieur sur Bourges Plus"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2024-02-02T14:24:45.896000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "bimonthly",
@@ -15824,12 +16267,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T18:46:44+00:00",
+      "donnees_actualisees_le": "2026-10-09T19:46:19+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "continuous",
       "id": "65bd1560c73941a5e0ec1891",
       "licence_declaree": "lov2",
-      "modifie_le": "2026-10-09T18:48:00.266000+00:00",
+      "modifie_le": "2026-10-09T19:46:47.474000+00:00",
       "nombre_ressources_rapportees": 539,
       "page": "https://www.data.gouv.fr/datasets/paquets-arome-outre-mer-reunion-mayotte-resolution-0-025deg",
       "producteur": "Météo-France",
@@ -15854,7 +16297,7 @@
         {
           "format": "grib2",
           "id": "ad404216-0ea6-4005-af49-57300f0a0562",
-          "modifie_le": "2026-10-09T06:44:09+00:00",
+          "modifie_le": "2026-10-09T18:45:27+00:00",
           "titre": "arome-om-INDIEN__0025__HP1__000H__2026-10-09T12:00:00Z.grib2",
           "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__000H__2026-10-09T12:00:00Z.grib2"
         },
@@ -15875,7 +16318,7 @@
         {
           "format": "grib2",
           "id": "dab9f0d4-916a-4bd4-b350-66ce882af2c3",
-          "modifie_le": "2026-10-09T06:44:22+00:00",
+          "modifie_le": "2026-10-09T18:45:57+00:00",
           "titre": "arome-om-INDIEN__0025__HP1__003H__2026-10-09T12:00:00Z.grib2",
           "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__003H__2026-10-09T12:00:00Z.grib2"
         },
@@ -15889,7 +16332,7 @@
         {
           "format": "grib2",
           "id": "c6c3746b-987f-49cf-82a3-d481472bc0db",
-          "modifie_le": "2026-10-09T06:45:35+00:00",
+          "modifie_le": "2026-10-09T18:46:08+00:00",
           "titre": "arome-om-INDIEN__0025__HP1__005H__2026-10-09T12:00:00Z.grib2",
           "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__005H__2026-10-09T12:00:00Z.grib2"
         },
@@ -15903,114 +16346,114 @@
         {
           "format": "grib2",
           "id": "32fcbe44-3dd4-4d0e-b093-908d1cf13dac",
-          "modifie_le": "2026-10-09T00:46:21+00:00",
+          "modifie_le": "2026-10-09T18:46:25+00:00",
           "titre": "arome-om-INDIEN__0025__HP1__007H__2026-10-09T12:00:00Z.grib2",
           "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__007H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "4f1dad35-d0be-4c20-8091-f4cfeb294acc",
-          "modifie_le": "2026-10-09T00:46:37+00:00",
-          "titre": "arome-om-INDIEN__0025__HP1__008H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__008H__2026-10-09T06:00:00Z.grib2"
+          "modifie_le": "2026-10-09T18:53:36+00:00",
+          "titre": "arome-om-INDIEN__0025__HP1__008H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__008H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "761baefe-f90a-433f-8eba-52c9b1675366",
-          "modifie_le": "2026-10-09T13:06:25+00:00",
-          "titre": "arome-om-INDIEN__0025__HP1__009H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__009H__2026-10-09T06:00:00Z.grib2"
+          "modifie_le": "2026-10-09T18:53:43+00:00",
+          "titre": "arome-om-INDIEN__0025__HP1__009H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__009H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "d8b07cbd-2b80-4fc2-8270-ec1e13287f0e",
-          "modifie_le": "2026-10-09T00:47:06+00:00",
-          "titre": "arome-om-INDIEN__0025__HP1__010H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__010H__2026-10-09T06:00:00Z.grib2"
+          "modifie_le": "2026-10-09T18:54:23+00:00",
+          "titre": "arome-om-INDIEN__0025__HP1__010H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__010H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "86583605-98c1-48fd-9ac1-fa480dce7196",
-          "modifie_le": "2026-10-09T06:58:27+00:00",
-          "titre": "arome-om-INDIEN__0025__HP1__011H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__011H__2026-10-09T06:00:00Z.grib2"
+          "modifie_le": "2026-10-09T18:54:28+00:00",
+          "titre": "arome-om-INDIEN__0025__HP1__011H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__011H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "178fefab-36bd-4ec0-9ea5-2a1ce6c1cb4d",
-          "modifie_le": "2026-10-09T06:58:30+00:00",
-          "titre": "arome-om-INDIEN__0025__HP1__012H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__012H__2026-10-09T06:00:00Z.grib2"
+          "modifie_le": "2026-10-09T18:54:39+00:00",
+          "titre": "arome-om-INDIEN__0025__HP1__012H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__012H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "482725ec-e928-42d3-bebd-0dbe388331da",
           "modifie_le": "2026-10-09T13:07:22+00:00",
-          "titre": "arome-om-INDIEN__0025__HP1__013H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__013H__2026-10-09T06:00:00Z.grib2"
+          "titre": "arome-om-INDIEN__0025__HP1__013H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__013H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "61c8d959-0704-4e16-a929-d4a0413d8b5f",
-          "modifie_le": "2026-10-09T07:04:48+00:00",
-          "titre": "arome-om-INDIEN__0025__HP1__014H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__014H__2026-10-09T06:00:00Z.grib2"
+          "modifie_le": "2026-10-09T18:59:45+00:00",
+          "titre": "arome-om-INDIEN__0025__HP1__014H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__014H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "1037c37b-1698-4b10-bda0-33a6fac8b4e6",
-          "modifie_le": "2026-10-09T13:07:59+00:00",
-          "titre": "arome-om-INDIEN__0025__HP1__015H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__015H__2026-10-09T06:00:00Z.grib2"
+          "modifie_le": "2026-10-09T19:00:04+00:00",
+          "titre": "arome-om-INDIEN__0025__HP1__015H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__015H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "757d4cc8-669c-49a0-abc4-764427fadbc9",
-          "modifie_le": "2026-10-09T07:05:05+00:00",
-          "titre": "arome-om-INDIEN__0025__HP1__016H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__016H__2026-10-09T06:00:00Z.grib2"
+          "modifie_le": "2026-10-09T19:05:11+00:00",
+          "titre": "arome-om-INDIEN__0025__HP1__016H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__016H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "ab0d2c44-d146-46d1-8270-772e617b11ff",
-          "modifie_le": "2026-10-09T07:05:12+00:00",
-          "titre": "arome-om-INDIEN__0025__HP1__017H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__017H__2026-10-09T06:00:00Z.grib2"
+          "modifie_le": "2026-10-09T19:05:29+00:00",
+          "titre": "arome-om-INDIEN__0025__HP1__017H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__017H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "a107ea82-5167-4e75-b29d-8447d3c6eab4",
           "modifie_le": "2026-10-09T01:03:32+00:00",
-          "titre": "arome-om-INDIEN__0025__HP1__018H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__018H__2026-10-09T06:00:00Z.grib2"
+          "titre": "arome-om-INDIEN__0025__HP1__018H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__018H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "dd20b3a8-f472-4f47-b2a2-23b3c4bddf2c",
-          "modifie_le": "2026-10-09T07:10:37+00:00",
-          "titre": "arome-om-INDIEN__0025__HP1__019H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__019H__2026-10-09T06:00:00Z.grib2"
+          "modifie_le": "2026-10-09T19:11:38+00:00",
+          "titre": "arome-om-INDIEN__0025__HP1__019H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__019H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "20912b1a-5915-48b7-8cc6-2d915a07efba",
           "modifie_le": "2026-10-09T07:10:42+00:00",
-          "titre": "arome-om-INDIEN__0025__HP1__020H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__020H__2026-10-09T06:00:00Z.grib2"
+          "titre": "arome-om-INDIEN__0025__HP1__020H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__020H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "562e165e-0b6d-4321-9da2-ad9f03ca5b5d",
-          "modifie_le": "2026-10-09T13:10:23+00:00",
-          "titre": "arome-om-INDIEN__0025__HP1__021H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__021H__2026-10-09T06:00:00Z.grib2"
+          "modifie_le": "2026-10-09T19:11:48+00:00",
+          "titre": "arome-om-INDIEN__0025__HP1__021H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__021H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "84213454-fa56-4909-830f-afa83a92d71a",
           "modifie_le": "2026-10-09T13:10:42+00:00",
-          "titre": "arome-om-INDIEN__0025__HP1__022H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__022H__2026-10-09T06:00:00Z.grib2"
+          "titre": "arome-om-INDIEN__0025__HP1__022H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/INDIEN/0025/HP1/arome-om-INDIEN__0025__HP1__022H__2026-10-09T12:00:00Z.grib2"
         }
       ],
       "reutilisation_potentielle": true,
@@ -16019,12 +16462,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T18:46:40+00:00",
+      "donnees_actualisees_le": "2026-10-09T19:24:13+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "continuous",
       "id": "65bd162b9dc0d31edfabc2b9",
       "licence_declaree": "lov2",
-      "modifie_le": "2026-10-09T18:47:23.815000+00:00",
+      "modifie_le": "2026-10-09T19:24:58.079000+00:00",
       "nombre_ressources_rapportees": 539,
       "page": "https://www.data.gouv.fr/datasets/paquets-arome-outre-mer-antilles-resolution-0-025deg",
       "producteur": "Météo-France",
@@ -16162,50 +16605,50 @@
           "format": "grib2",
           "id": "f6370019-c32e-4bf4-8f09-f4400da4bfc6",
           "modifie_le": "2026-10-09T06:49:38+00:00",
-          "titre": "arome-om-ANTIL__0025__HP1__017H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/ANTIL/0025/HP1/arome-om-ANTIL__0025__HP1__017H__2026-10-09T06:00:00Z.grib2"
+          "titre": "arome-om-ANTIL__0025__HP1__017H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/ANTIL/0025/HP1/arome-om-ANTIL__0025__HP1__017H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "8538b129-b627-430a-951d-763ea75f14b3",
           "modifie_le": "2026-10-09T06:49:40+00:00",
-          "titre": "arome-om-ANTIL__0025__HP1__018H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/ANTIL/0025/HP1/arome-om-ANTIL__0025__HP1__018H__2026-10-09T06:00:00Z.grib2"
+          "titre": "arome-om-ANTIL__0025__HP1__018H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/ANTIL/0025/HP1/arome-om-ANTIL__0025__HP1__018H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "bf8e4bd7-316a-4395-afd1-770af2ddfdeb",
           "modifie_le": "2026-10-09T06:54:45+00:00",
-          "titre": "arome-om-ANTIL__0025__HP1__019H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/ANTIL/0025/HP1/arome-om-ANTIL__0025__HP1__019H__2026-10-09T06:00:00Z.grib2"
+          "titre": "arome-om-ANTIL__0025__HP1__019H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/ANTIL/0025/HP1/arome-om-ANTIL__0025__HP1__019H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "b9b20b82-a495-46ba-8215-98f34cb1ef99",
           "modifie_le": "2026-10-09T06:54:46+00:00",
-          "titre": "arome-om-ANTIL__0025__HP1__020H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/ANTIL/0025/HP1/arome-om-ANTIL__0025__HP1__020H__2026-10-09T06:00:00Z.grib2"
+          "titre": "arome-om-ANTIL__0025__HP1__020H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/ANTIL/0025/HP1/arome-om-ANTIL__0025__HP1__020H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "62d469e7-2097-443c-ad42-a0396a4e89a3",
           "modifie_le": "2026-10-09T06:54:58+00:00",
-          "titre": "arome-om-ANTIL__0025__HP1__021H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/ANTIL/0025/HP1/arome-om-ANTIL__0025__HP1__021H__2026-10-09T06:00:00Z.grib2"
+          "titre": "arome-om-ANTIL__0025__HP1__021H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/ANTIL/0025/HP1/arome-om-ANTIL__0025__HP1__021H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "6c2f9ed9-2aa6-4657-8a3e-3c61493cc1e6",
           "modifie_le": "2026-10-09T12:52:33+00:00",
-          "titre": "arome-om-ANTIL__0025__HP1__022H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/ANTIL/0025/HP1/arome-om-ANTIL__0025__HP1__022H__2026-10-09T06:00:00Z.grib2"
+          "titre": "arome-om-ANTIL__0025__HP1__022H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/ANTIL/0025/HP1/arome-om-ANTIL__0025__HP1__022H__2026-10-09T12:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "ac80c6bb-5662-47c0-be45-d726f484ec19",
           "modifie_le": "2026-10-09T12:52:35+00:00",
-          "titre": "arome-om-ANTIL__0025__HP1__023H__2026-10-09T06:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/arome-om/ANTIL/0025/HP1/arome-om-ANTIL__0025__HP1__023H__2026-10-09T06:00:00Z.grib2"
+          "titre": "arome-om-ANTIL__0025__HP1__023H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/arome-om/ANTIL/0025/HP1/arome-om-ANTIL__0025__HP1__023H__2026-10-09T12:00:00Z.grib2"
         }
       ],
       "reutilisation_potentielle": true,
@@ -16241,12 +16684,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T18:45:01.133000+00:00",
+      "donnees_actualisees_le": "2026-10-09T19:45:01.358000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "hourly",
       "id": "65e092e4009f18f050b14216",
       "licence_declaree": "notspecified",
-      "modifie_le": "2026-10-09T18:45:01.134000+00:00",
+      "modifie_le": "2026-10-09T19:45:01.359000+00:00",
       "nombre_ressources_rapportees": 2,
       "page": "https://www.data.gouv.fr/datasets/bornes-de-recharge-pour-vehicules-electriques-wattzhub-1",
       "producteur": "WattzHub",
@@ -16257,9 +16700,9 @@
         {
           "format": "csv",
           "id": "1f59da06-130f-4f04-bbfc-9339c13990b1",
-          "modifie_le": "2026-10-09T18:45:01.133000+00:00",
-          "titre": "consolidation-wattzhub-schema-irve-dynamic-20261009-184500.csv",
-          "url": "https://static.data.gouv.fr/resources/bornes-de-recharge-pour-vehicules-electriques-wattzhub-1/20261009-184501/consolidation-wattzhub-schema-irve-dynamic-20261009-184500.csv"
+          "modifie_le": "2026-10-09T19:45:01.358000+00:00",
+          "titre": "consolidation-wattzhub-schema-irve-dynamic-20261009-194500.csv",
+          "url": "https://static.data.gouv.fr/resources/bornes-de-recharge-pour-vehicules-electriques-wattzhub-1/20261009-194501/consolidation-wattzhub-schema-irve-dynamic-20261009-194500.csv"
         },
         {
           "format": "csv",
@@ -18878,6 +19321,33 @@
       "reutilisation_potentielle": true,
       "source_deja_suivie": false,
       "titre": "Liste des implantations liées aux infrastructures inscrites dans la feuille de route française des infrastructures de recherche 2018"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2024-09-12T08:36:35.933000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "continuous",
+      "id": "66e2a50a9abf3c961cecc7ea",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2024-09-12T08:36:35.953000+00:00",
+      "nombre_ressources_rapportees": 1,
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-marches-publics-2024",
+      "producteur": "",
+      "recherches": [
+        "marchés publics"
+      ],
+      "ressources": [
+        {
+          "format": "pdf",
+          "id": "bc88c9b1-f9ea-4fe7-a806-4df6d6d30be1",
+          "modifie_le": "2024-09-12T08:36:35.933000+00:00",
+          "titre": "donnees-essentielles-parcours-sportif.pdf",
+          "url": "https://static.data.gouv.fr/resources/donnees-essentielles-marches-publics-2024/20240912-083558/donnees-essentielles-parcours-sportif.pdf"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données essentielles marchés publics 2024"
     },
     {
       "contenu_original_copie": false,
@@ -22594,6 +23064,131 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T19:45:39.712000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "67eb2fda6d6d5f6e2fa9eaa5",
+      "licence_declaree": "lov2",
+      "modifie_le": "2025-04-01T00:14:18.445000+00:00",
+      "nombre_ressources_rapportees": 15,
+      "page": "https://www.data.gouv.fr/datasets/sync-cd11-restrictions-circulationopendataaudefr-33",
+      "producteur": "Occitanie Pyrénées en Intelligence Géomatique",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "",
+          "id": "bd5daf9d-3c71-4f35-92ae-99eca3ae3e32",
+          "modifie_le": "2026-10-09T03:45:40.030564+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/jsonl",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/jsonl"
+        },
+        {
+          "format": "",
+          "id": "6a9d2e97-6794-4dcd-b0b1-216ea41094e1",
+          "modifie_le": "2026-10-08T15:21:16.850828+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/turtle",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/turtle"
+        },
+        {
+          "format": "",
+          "id": "2baec8de-a4fa-4f5d-94bf-6429c062679a",
+          "modifie_le": "2026-10-09T17:59:08.700566+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/shp",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/shp"
+        },
+        {
+          "format": "",
+          "id": "d9869edf-c86e-421c-a491-52cd17d02c04",
+          "modifie_le": "2026-10-01T18:34:03.850888+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/rdfxml",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/rdfxml"
+        },
+        {
+          "format": "",
+          "id": "f5fa3750-b620-429b-b912-e3ba855d1ecf",
+          "modifie_le": "2026-10-03T01:33:21.492342+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/jsonld",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/jsonld"
+        },
+        {
+          "format": "",
+          "id": "4d925131-e3f8-42f7-b3e9-b1780d1ec05c",
+          "modifie_le": "2026-10-09T01:00:57.765780+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/kml",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/kml"
+        },
+        {
+          "format": "",
+          "id": "b23ee1d5-3e34-49d9-a903-11f1deefd328",
+          "modifie_le": "2026-10-09T03:21:59.409196+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/json",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/json"
+        },
+        {
+          "format": "",
+          "id": "a50fc70b-0db8-4bf2-9fbf-53df77802249",
+          "modifie_le": "2026-10-09T04:14:24.026977+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/xls?use_labels=true",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/xls?use_labels=true"
+        },
+        {
+          "format": "csv",
+          "id": "efad4b9d-503e-4d8c-b16a-d51e6dc60afb",
+          "modifie_le": "2026-10-09T15:59:01.684919+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/csv?use_labels=true",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/csv?use_labels=true"
+        },
+        {
+          "format": "",
+          "id": "6aa8c86b-6343-4533-931b-f8386ce5fd98",
+          "modifie_le": "2026-10-08T15:39:04.775396+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/n3",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/n3"
+        },
+        {
+          "format": "",
+          "id": "d6d2bbf5-09b3-4def-bf97-9c57ac4819c2",
+          "modifie_le": "2026-09-26T11:17:56.938147+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/gpx",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/gpx"
+        },
+        {
+          "format": "",
+          "id": "f49771d5-148f-4587-8958-e14e9b83491f",
+          "modifie_le": "2026-10-09T19:00:18.998122+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/geojson",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/geojson"
+        },
+        {
+          "format": "",
+          "id": "811c63bf-1b61-4556-8356-b532f54081e7",
+          "modifie_le": "2026-10-09T04:58:51.287049+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/parquet",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/parquet"
+        },
+        {
+          "format": "",
+          "id": "7ea040db-8be4-49ea-afb3-bb1fd7e10ade",
+          "modifie_le": "2026-10-09T19:45:39.712144+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/fgb",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/fgb"
+        },
+        {
+          "format": "txt",
+          "id": "ac6d71c3-0598-4ffe-a951-7ee77aa76c47",
+          "modifie_le": "2025-04-01T00:14:18.455000+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/ov2",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/ov2"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Restrictions de circulation permanentes hors chantiers"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-09T17:50:30.608000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
@@ -25297,6 +25892,103 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T19:37:15+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "689c42b9f918f4c8e71c9327",
+      "licence_declaree": "fr-lo",
+      "modifie_le": "2026-06-25T13:00:07.994000+00:00",
+      "nombre_ressources_rapportees": 11,
+      "page": "https://www.data.gouv.fr/datasets/donnees-locales-de-consommation-delectricite-de-gaz-naturel-et-de-chaleur-et-de-froid-periode-2008-2017",
+      "producteur": "Service des données et études statistiques (SDES)",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "pdf",
+          "id": "a41297ff-5767-4494-812c-4c1c7e9d9607",
+          "modifie_le": "2025-07-28T15:46:29+00:00",
+          "titre": "Liste des variables - chaleur et froid",
+          "url": "https://data.statistiques.developpement-durable.gouv.fr/dido/api/files/d893c22d-939b-4d9f-8bc6-5a1006fa09eb"
+        },
+        {
+          "format": "pdf",
+          "id": "c4b575c0-c137-4d0b-bd33-49bb48c3085a",
+          "modifie_le": "2025-07-28T15:46:29+00:00",
+          "titre": "Liste des variables - électricité",
+          "url": "https://data.statistiques.developpement-durable.gouv.fr/dido/api/files/ef619e00-b616-42e8-bf46-4c231c6de712"
+        },
+        {
+          "format": "pdf",
+          "id": "9a0105c3-f05f-4500-94e5-357178c765b5",
+          "modifie_le": "2025-07-28T15:46:29+00:00",
+          "titre": "Non répondants - collecte électricité 2017",
+          "url": "https://data.statistiques.developpement-durable.gouv.fr/dido/api/files/d6e55a84-01ef-433c-81ea-fa67a155e505"
+        },
+        {
+          "format": "pdf",
+          "id": "54f635d4-4edb-4a5c-b04d-86d376635b53",
+          "modifie_le": "2025-07-28T15:46:29+00:00",
+          "titre": "Liste des variables - gaz",
+          "url": "https://data.statistiques.developpement-durable.gouv.fr/dido/api/files/88fecf72-e9ff-4ca5-8cc9-6147ef74e225"
+        },
+        {
+          "format": "pdf",
+          "id": "8a899603-2578-43eb-b23c-e7a89b1144a0",
+          "modifie_le": "2025-07-28T15:46:29+00:00",
+          "titre": "Non répondants - collecte gaz 2017",
+          "url": "https://data.statistiques.developpement-durable.gouv.fr/dido/api/files/4ce35b27-f2e1-4349-93e5-378242843e15"
+        },
+        {
+          "format": "html",
+          "id": "7054490a-e5e5-45b3-9f4d-93f0b2ef476e",
+          "modifie_le": "2026-10-09T16:51:50+00:00",
+          "titre": "Données locales de consommation d'énergie (période 2008-2017) - électricité",
+          "url": "https://www.statistiques.developpement-durable.gouv.fr/catalogue?page=datafile&datafileRid=91256d4d-037a-4df8-b6e2-12b6ab87e3a1"
+        },
+        {
+          "format": "csv",
+          "id": "5d5d4cb8-7993-4151-b4ae-b0260f91c973",
+          "modifie_le": "2025-08-13T07:54:20.900000+00:00",
+          "titre": "Données locales de consommation d'énergie (période 2008-2017) - électricité",
+          "url": "https://data.statistiques.developpement-durable.gouv.fr/dido/api/v1/datafiles/91256d4d-037a-4df8-b6e2-12b6ab87e3a1/csv"
+        },
+        {
+          "format": "html",
+          "id": "a592cb9f-113c-474d-8302-f028e5d39dfa",
+          "modifie_le": "2026-10-09T15:57:58+00:00",
+          "titre": "Données locales de consommation d'énergie (période 2008-2017) - gaz",
+          "url": "https://www.statistiques.developpement-durable.gouv.fr/catalogue?page=datafile&datafileRid=93e51ae0-effa-4c39-bcb5-9f94fc423c98"
+        },
+        {
+          "format": "csv",
+          "id": "e3c864a6-e023-486a-aa9d-e85add239785",
+          "modifie_le": "2025-08-17T04:25:26.086882+00:00",
+          "titre": "Données locales de consommation d'énergie (période 2008-2017) - gaz",
+          "url": "https://data.statistiques.developpement-durable.gouv.fr/dido/api/v1/datafiles/93e51ae0-effa-4c39-bcb5-9f94fc423c98/csv"
+        },
+        {
+          "format": "html",
+          "id": "1bb70e8e-e0ac-4dad-a42e-4bbfe695eac3",
+          "modifie_le": "2026-10-09T19:37:15+00:00",
+          "titre": "Données locales de consommation d'énergie (période 2008-2017) - chaleur et froid",
+          "url": "https://www.statistiques.developpement-durable.gouv.fr/catalogue?page=datafile&datafileRid=845ad1da-2796-4125-9559-522e0cc22b2c"
+        },
+        {
+          "format": "csv",
+          "id": "c191dc33-a0f3-44dc-8585-0aebcb05a28a",
+          "modifie_le": "2025-08-13T07:54:19.984000+00:00",
+          "titre": "Données locales de consommation d'énergie (période 2008-2017) - chaleur et froid",
+          "url": "https://data.statistiques.developpement-durable.gouv.fr/dido/api/v1/datafiles/845ad1da-2796-4125-9559-522e0cc22b2c/csv"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données locales de consommation d'électricité, de gaz naturel et de chaleur et de froid (période 2008-2017)"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-09T18:27:50+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "quarterly",
@@ -26710,12 +27402,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T18:47:17.794000+00:00",
+      "donnees_actualisees_le": "2026-10-09T19:47:17.799000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "fiveMinutes",
       "id": "691467f0f5dd0286d55bdd48",
       "licence_declaree": "lov2",
-      "modifie_le": "2026-10-09T18:47:17.794000+00:00",
+      "modifie_le": "2026-10-09T19:47:17.800000+00:00",
       "nombre_ressources_rapportees": 1,
       "page": "https://www.data.gouv.fr/datasets/irve-dynamique-organisation-parera-mobilite",
       "producteur": "PARERA MOBILITE",
@@ -26726,9 +27418,9 @@
         {
           "format": "csv",
           "id": "eea29849-4ee1-4e38-aa0a-49843ad30dfa",
-          "modifie_le": "2026-10-09T18:47:17.794000+00:00",
+          "modifie_le": "2026-10-09T19:47:17.799000+00:00",
           "titre": "data-gouv-dynamique.csv",
-          "url": "https://static.data.gouv.fr/resources/irve-dynamique-organisation-parera-mobilite/20261009-184717/data-gouv-dynamique.csv"
+          "url": "https://static.data.gouv.fr/resources/irve-dynamique-organisation-parera-mobilite/20261009-194717/data-gouv-dynamique.csv"
         }
       ],
       "reutilisation_potentielle": true,
@@ -28736,6 +29428,270 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T19:27:33+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "severalTimesADay",
+      "id": "6a3294c7190dd2ab81bef620",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-10-09T19:27:40.713000+00:00",
+      "nombre_ressources_rapportees": 99,
+      "page": "https://www.data.gouv.fr/datasets/paquets-arome-ifs-resolution-0-025deg",
+      "producteur": "Météo-France",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "grib2",
+          "id": "ca67224e-e7e2-4078-a40f-bcf3b4a0c614",
+          "modifie_le": "2026-10-09T12:38:42+00:00",
+          "titre": "aromeifs__0025__HP1__00H06H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP1/aromeifs__0025__HP1__00H06H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "51c0526a-b86b-4c37-87d8-7055e7dc806b",
+          "modifie_le": "2026-10-09T18:50:03+00:00",
+          "titre": "aromeifs__0025__HP1__07H12H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP1/aromeifs__0025__HP1__07H12H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "c96f7cd7-d43d-4123-bcc6-6e822b14cd33",
+          "modifie_le": "2026-10-09T12:49:35+00:00",
+          "titre": "aromeifs__0025__HP1__13H18H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP1/aromeifs__0025__HP1__13H18H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "d820d1e2-936a-4525-bf8d-24fb8cb2fcf8",
+          "modifie_le": "2026-10-09T15:54:27+00:00",
+          "titre": "aromeifs__0025__HP1__19H24H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP1/aromeifs__0025__HP1__19H24H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "1abece8a-cfa6-4c6e-bdb4-c4b73fd2f2a7",
+          "modifie_le": "2026-10-09T19:04:19+00:00",
+          "titre": "aromeifs__0025__HP1__25H30H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP1/aromeifs__0025__HP1__25H30H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "b1d3a46c-efcc-4d51-ad86-0527c71337ab",
+          "modifie_le": "2026-10-09T19:10:09+00:00",
+          "titre": "aromeifs__0025__HP1__31H36H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP1/aromeifs__0025__HP1__31H36H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "6b37b729-43e7-40df-8146-f51f56139325",
+          "modifie_le": "2026-10-09T19:19:24+00:00",
+          "titre": "aromeifs__0025__HP1__37H42H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP1/aromeifs__0025__HP1__37H42H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "1b00d57d-376f-4f4b-94d7-588cccad77ec",
+          "modifie_le": "2026-10-09T19:25:30+00:00",
+          "titre": "aromeifs__0025__HP1__43H48H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP1/aromeifs__0025__HP1__43H48H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "03948da4-efb8-476c-9cd0-d291f5d7ce8e",
+          "modifie_le": "2026-10-09T19:25:49+00:00",
+          "titre": "aromeifs__0025__HP1__49H51H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP1/aromeifs__0025__HP1__49H51H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "731f1767-56f0-4ec8-a59e-10365477ec7d",
+          "modifie_le": "2026-10-09T12:39:35+00:00",
+          "titre": "aromeifs__0025__HP2__00H06H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP2/aromeifs__0025__HP2__00H06H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "c36be1b2-6c19-47db-a47b-cd848074e2c6",
+          "modifie_le": "2026-10-09T18:50:46+00:00",
+          "titre": "aromeifs__0025__HP2__07H12H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP2/aromeifs__0025__HP2__07H12H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "1332f554-990d-4dc6-a9f4-eb54cbfe87b7",
+          "modifie_le": "2026-10-09T06:55:40+00:00",
+          "titre": "aromeifs__0025__HP2__13H18H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP2/aromeifs__0025__HP2__13H18H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "7bb5cfc4-0198-44ee-b404-a75e6008c4d4",
+          "modifie_le": "2026-10-09T15:57:08+00:00",
+          "titre": "aromeifs__0025__HP2__19H24H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP2/aromeifs__0025__HP2__19H24H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "f15400f3-6661-4e82-8e4d-6844303b6f7e",
+          "modifie_le": "2026-10-09T19:04:54+00:00",
+          "titre": "aromeifs__0025__HP2__25H30H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP2/aromeifs__0025__HP2__25H30H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "45aad1e9-4d07-42f3-bfdb-ef6ac5cb8d27",
+          "modifie_le": "2026-10-09T19:10:30+00:00",
+          "titre": "aromeifs__0025__HP2__31H36H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP2/aromeifs__0025__HP2__31H36H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "e3e20bab-a486-4b05-baca-2cde22045995",
+          "modifie_le": "2026-10-09T19:19:44+00:00",
+          "titre": "aromeifs__0025__HP2__37H42H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP2/aromeifs__0025__HP2__37H42H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "952b9d6b-6957-4caf-b682-666c8c623827",
+          "modifie_le": "2026-10-09T19:26:14+00:00",
+          "titre": "aromeifs__0025__HP2__43H48H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP2/aromeifs__0025__HP2__43H48H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "04988252-ca5f-43ed-947e-15b26e7b77cc",
+          "modifie_le": "2026-10-09T19:26:32+00:00",
+          "titre": "aromeifs__0025__HP2__49H51H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP2/aromeifs__0025__HP2__49H51H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "25421e4e-91b8-4255-b8c2-5803515afd3c",
+          "modifie_le": "2026-10-09T12:39:39+00:00",
+          "titre": "aromeifs__0025__HP3__00H06H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP3/aromeifs__0025__HP3__00H06H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "894dd3a5-5890-4a14-84ed-862da97f1d85",
+          "modifie_le": "2026-10-09T18:50:49+00:00",
+          "titre": "aromeifs__0025__HP3__07H12H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP3/aromeifs__0025__HP3__07H12H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "fe19f7fb-78ea-4586-9e27-37dc82c2bef1",
+          "modifie_le": "2026-10-09T06:55:42+00:00",
+          "titre": "aromeifs__0025__HP3__13H18H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP3/aromeifs__0025__HP3__13H18H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "5a8150e6-ee3b-4e4a-b054-92035872f6f2",
+          "modifie_le": "2026-10-09T16:03:29+00:00",
+          "titre": "aromeifs__0025__HP3__19H24H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP3/aromeifs__0025__HP3__19H24H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "272d2a99-b776-43c8-92de-946d5f866e16",
+          "modifie_le": "2026-10-09T19:04:56+00:00",
+          "titre": "aromeifs__0025__HP3__25H30H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP3/aromeifs__0025__HP3__25H30H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "15336078-8094-4e46-aaf4-8dd4ff1f2a6c",
+          "modifie_le": "2026-10-09T19:10:32+00:00",
+          "titre": "aromeifs__0025__HP3__31H36H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP3/aromeifs__0025__HP3__31H36H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "e5ec746f-9c9d-4a6a-aad8-438a0bb1a6f3",
+          "modifie_le": "2026-10-09T19:19:46+00:00",
+          "titre": "aromeifs__0025__HP3__37H42H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/aromeifs/0025/HP3/aromeifs__0025__HP3__37H42H__2026-10-09T12:00:00Z.grib2"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Paquets Arome IFS - Résolution 0,025°"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T19:36:25+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "daily",
+      "id": "6a329577bebe7e84fb8fb689",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-10-09T19:36:32.687000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/produits-dindices-biometeorologiques-uv",
+      "producteur": "Météo-France",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "grib2",
+          "id": "5be61652-9502-4f13-b7b6-2b74a9ee2e3e",
+          "modifie_le": "2026-10-09T19:18:27+00:00",
+          "titre": "phealth__GUYANE0025__UVQ__001H048H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/phealth/GUYANE0025/UVQ/phealth__GUYANE0025__UVQ__001H048H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "0b03e8ee-92a2-44f6-8f28-42de19926b2a",
+          "modifie_le": "2026-10-09T19:21:29+00:00",
+          "titre": "phealth__NCALED0025__UVQ__001H048H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/phealth/NCALED0025/UVQ/phealth__NCALED0025__UVQ__001H048H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "c417fa19-3f2a-4696-9000-febe24102f70",
+          "modifie_le": "2026-10-09T19:36:25+00:00",
+          "titre": "phealth__CARAIB0025__UVQ__001H048H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/phealth/CARAIB0025/UVQ/phealth__CARAIB0025__UVQ__001H048H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "ed0eb1e0-993c-4ce2-a5ab-3a25a6aabce3",
+          "modifie_le": "2026-10-09T14:18:28+00:00",
+          "titre": "phealth__INDIEN0025__UVQ__001H048H__2026-10-09T06:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T06:00:00Z/phealth/INDIEN0025/UVQ/phealth__INDIEN0025__UVQ__001H048H__2026-10-09T06:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "faa2b0ee-f699-4baf-a004-5493d8415bf0",
+          "modifie_le": "2026-10-09T19:18:30+00:00",
+          "titre": "phealth__GLOBE025__UVQ__001H102H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/phealth/GLOBE025/UVQ/phealth__GLOBE025__UVQ__001H102H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "5352ed3b-da8c-4124-8155-569795739d31",
+          "modifie_le": "2026-10-09T19:24:29+00:00",
+          "titre": "phealth__POLYN0025__UVQ__001H048H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/phealth/POLYN0025/UVQ/phealth__POLYN0025__UVQ__001H048H__2026-10-09T12:00:00Z.grib2"
+        },
+        {
+          "format": "grib2",
+          "id": "87dc4775-1f91-4cbd-8b33-b4909b0d67eb",
+          "modifie_le": "2026-10-09T16:09:41+00:00",
+          "titre": "phealth__EURW1S40__UVQ__001H051H__2026-10-09T12:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-09T12:00:00Z/phealth/EURW1S40/UVQ/phealth__EURW1S40__UVQ__001H051H__2026-10-09T12:00:00Z.grib2"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Produits d’Indices Biométéorologiques - UV"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-09T17:48:08+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "annual",
@@ -29372,12 +30328,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T18:50:44.122000+00:00",
+      "donnees_actualisees_le": "2026-10-09T19:48:11.080000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "oneMinute",
       "id": "6a75a5620dcff06bc7800727",
       "licence_declaree": "notspecified",
-      "modifie_le": "2026-10-09T18:50:44.122000+00:00",
+      "modifie_le": "2026-10-09T19:48:11.081000+00:00",
       "nombre_ressources_rapportees": 2,
       "page": "https://www.data.gouv.fr/datasets/irve-statique-dynamique-e-clearing-net",
       "producteur": "e-clearing.net",
@@ -29395,9 +30351,9 @@
         {
           "format": "csv",
           "id": "f6f2469e-542f-46a9-998a-46238010a8e7",
-          "modifie_le": "2026-10-09T18:50:44.122000+00:00",
+          "modifie_le": "2026-10-09T19:48:11.080000+00:00",
           "titre": "donnes-schema-irve-dynamique.csv",
-          "url": "https://static.data.gouv.fr/resources/irve-statique-dynamique-e-clearing-net/20261009-185044/donnes-schema-irve-dynamique.csv"
+          "url": "https://static.data.gouv.fr/resources/irve-statique-dynamique-e-clearing-net/20261009-194810/donnes-schema-irve-dynamique.csv"
         }
       ],
       "reutilisation_potentielle": false,
@@ -29733,6 +30689,33 @@
       "reutilisation_potentielle": true,
       "source_deja_suivie": false,
       "titre": "Établissements d'enseignement supérieur labellisés \"génération 2030\""
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T19:24:05.581000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "monthly",
+      "id": "6ac93f551c188a59999b31d3",
+      "licence_declaree": "cc-by",
+      "modifie_le": "2026-10-09T19:25:00.491000+00:00",
+      "nombre_ressources_rapportees": 1,
+      "page": "https://www.data.gouv.fr/datasets/barometre-des-prix-du-coworking-en-france",
+      "producteur": "comparatifcoworking.com",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "csv",
+          "id": "747d71f0-b103-42e1-ab40-7780b8f93e95",
+          "modifie_le": "2026-10-09T19:24:05.581000+00:00",
+          "titre": "Baromètre des prix du coworking (dernier relevé, CSV)",
+          "url": "https://comparatifcoworking.com/donnees/barometre-coworking.csv"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Baromètre des prix du coworking en France"
     }
   ],
   "version": "candidats-data-gouv-v1"
