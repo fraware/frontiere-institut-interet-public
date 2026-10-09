@@ -20,11 +20,11 @@ Le nombre total d'annonces indiqué par la source est enregistré lorsqu'il est 
 
 Le jeu [Les offres diffusées sur Choisir le Service Public](https://www.data.gouv.fr/datasets/les-offres-diffusees-sur-choisir-le-service-public), produit par la Direction générale de l'administration et de la fonction publique, publie des fichiers CSV bruts à fréquence déclarée hebdomadaire et sous Licence Ouverte 2.0. Les fichiers recensent les annonces déposées directement et celles diffusées depuis des sites partenaires.
 
-La première étape spécialisée conserve la **liste vérifiée des ressources du jeu**, leurs identifiants, dates, formats, tailles et adresses officielles. Les fichiers originaux sont actuellement volumineux et ne sont pas encore copiés. L'index n'identifie donc encore aucun poste individuel : les deux fichiers `ressources_emplois_publics.json` et `etat_emplois_publics.json` signalent explicitement cette limite.
+La collecte conserve d'abord les métadonnées des ressources officielles dans `ressources_emplois_publics.json`, ainsi que le schéma effectivement observé du CSV dans `schema_emplois_publics.json`. **Une seconde opération distincte importe désormais les lignes d'offres individuelles** dans seize partitions `offres_postes/lot_XX.jsonl`, sans conserver le fichier source brut dans Git et sans recopier les coordonnées de contact.
 
-Un programme expérimental de lecture partielle inspecte désormais l'en-tête du CSV le plus récent et conserve uniquement les noms de colonnes, le séparateur et l'identifiant du fichier, sous réserve que la source accepte le téléchargement borné. Il ne conserve aucune ligne d'offre d'emploi. Cette observation de schéma devra réussir sur le fichier officiel avant toute extraction de lignes.
+La première extraction réelle datée du 9 octobre 2026 est décrite par `manifest_offres_postes.json` : 120 111 905 octets téléchargés, 261 536 lignes lues, 260 880 enregistrements distincts et 258 947 références distinctes. Elle conserve 1 146 références ayant plusieurs variantes et signale 3 693 cellules tronquées suivant des plafonds de longueur déclarés. Le manifeste fournit l'empreinte SHA-256 du fichier source. Ces nombres correspondent au contenu du fichier consulté, pas à un dénombrement des postes vacants ou des besoins scientifiques démontrés.
 
-L'étape suivante consistera à extraire les annonces pertinentes avec identifiants stables, intitulés, employeurs publics, domaines, dates et géographie, en excluant les contacts individuels et en enregistrant les règles de réutilisation. L'étendue du fichier téléchargé et la couverture obtenue devront être mesurées.
+Le fichier `etat_emplois_publics.json` décrit la collecte **du catalogue de ressources**, tandis que `manifest_offres_postes.json` décrit l'extraction **des lignes individuelles**. Le champ `actualisation_des_offres_individuelles_constatee` du premier n'atteste pas la seconde opération et ne doit pas être présenté comme le bilan de l'importation.
 
 ## Actualisation automatique
 
@@ -33,15 +33,15 @@ Le programme `.github/workflows/collecte-besoins-publics.yml` est programmé qua
 Chaque exécution :
 1. vérifie les transformations avec des données d'essai ;
 2. interroge les deux sources indépendamment et conserve les anciens fichiers si l'une est inaccessible ;
-3. ouvre une proposition de mise à jour limitée aux quatre fichiers de résultats ;
-4. vérifie la réussite des trois essais automatisés sur l'empreinte exacte de la proposition ;
-5. fusionne les seules notices admissibles, sans exécuter d'action auprès d'une institution.
+3. ouvre une proposition de mise à jour limitée aux fichiers publics autorisés de cette source, y compris le manifeste et les seize partitions d'offres ;
+4. vérifie la réussite des contrôles Python 3.11, Python 3.12 et conteneur sur l'empreinte exacte de la proposition ;
+5. **fusionne automatiquement** la proposition uniquement si ces contrôles réussissent et si l'ensemble des fichiers modifiés appartient au périmètre prévu, sans exécuter d'action auprès d'une institution.
 
 Les résultats sont consultables dans l'application sur `/besoins-publics` et par `/api/v1/besoins-publics?source=marches` ou `source=emplois`. La disponibilité sur un site externe dépend d'un déploiement actualisé depuis GitHub ; une nouvelle version du dépôt ne modifie pas à elle seule un serveur déjà installé.
 
 ## Conditions de lecture et limites
 
-La première version privilégie la disponibilité des données et l'identification de leurs producteurs. Les annonces BOAMP consultées forment une fenêtre glissante de sept jours, limitée à 4 500 annonces interrogées par exécution, et **ne représentent pas tous les avis historiques**. Les ressources d'emploi sont référencées mais leurs lignes ne sont pas encore importées. Une couverture totale exige des partitions historiques, le traitement des modifications et suppressions à la source, le suivi des licences et une stratégie adaptée aux fichiers importants.
+La première version privilégie la disponibilité des données et l'identification de leurs producteurs. Les annonces BOAMP consultées forment une fenêtre glissante de sept jours, limitée à 4 500 annonces interrogées par exécution, et **ne représentent pas tous les avis historiques**. Les lignes d'offres du fichier DGAFP courant ont été extraites et partitionnées. La donnée ne constitue pas un inventaire instantané de postes ouverts. Une couverture historique complète exige une collecte des fichiers antérieurs, le traitement des modifications et suppressions à la source, le suivi des licences et une stratégie d'archivage des fichiers importants.
 
 Les échecs de réseau ne sont jamais traduits en absence de besoins. Chaque source conserve son propre suivi, avec les dates de consultation et limites de collecte. Aucune validation institutionnelle humaine n'est revendiquée.
 
@@ -64,4 +64,8 @@ Il retient les identifiants de poste, les organismes et employeurs, les métiers
 
 Les offres sont classées dans seize partitions `institutionnel/besoins_publics/offres_postes/lot_XX.jsonl`. Le manifeste `institutionnel/besoins_publics/manifest_offres_postes.json` consigne la source, son empreinte, les nombres de lignes et les limites de la transformation. Ce dispositif suit le **fichier courant** et conserve les états antérieurs dans l'historique des modifications du dépôt ; l'archivage exhaustif des fichiers annuels originaux relève d'un chantier distinct.
 
-La première exécution sur le fichier réel reste à contrôler. Si le schéma ou la taille ne correspond pas aux renseignements publiés, les anciennes partitions sont conservées et un avertissement est porté au journal d'exécution. Le programme de collecte des marchés poursuit son fonctionnement indépendamment.
+La première extraction réelle a été publiée avec son manifeste le 9 octobre 2026 ; son contenu n'a pas fait l'objet d'une relecture institutionnelle indépendante. Si le schéma ou la taille diffère des renseignements publiés, l'extraction échoue et les anciennes partitions sont conservées ; la collecte des marchés poursuit son fonctionnement indépendamment.
+
+À compter de la présente révision, chaque partition publiée possède une empreinte SHA-256 enregistrée dans le manifeste. Lors d'une actualisation ultérieure, **l'absence ou la modification d'une seule des seize partitions interdit de conclure que l'extrait antérieur est inchangé**. Un ancien manifeste sans empreintes de partitions impose une nouvelle extraction depuis la source officielle ; la reconstruction ne constitue pas un nouvel épisode empirique.
+
+Le champ `couverture_integrale_du_csv` exige simultanément l'absence de ligne écartée et l'absence de cellule tronquée. Sa valeur `false` pour le fichier du 9 octobre provient au moins des 3 693 troncatures signalées : elle ne signifie pas que seules certaines lignes du CSV ont été lues. La vérification de l'exactitude de toutes les valeurs extraites demanderait une procédure supplémentaire de rapprochement avec le fichier original.
