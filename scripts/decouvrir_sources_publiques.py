@@ -87,13 +87,15 @@ class RefuserRedirection(HTTPRedirectHandler):
         raise ErreurCollecte("Redirection HTTP imprévue : contrôle de domaine conservatoire.")
 
 
-def telecharger_page(url: str) -> dict:
+def telecharger_page(url: str, *, legere: bool = False) -> dict:
     if not url.startswith(ORIGINE + "?"):
         raise ErreurCollecte("Adresse distante non autorisée.")
-    requete = Request(url, headers={
-        "Accept": "application/json",
-        "User-Agent": AGENT,
-    })
+    entetes = {"Accept": "application/json", "User-Agent": AGENT}
+    if legere:
+        # Le catalogue général ne conserve que les notices. Éviter le transfert
+        # de ressources, de descriptions longues et de champs privés sans usage.
+        entetes["X-Fields"] = "id,title,organization,license,last_update"
+    requete = Request(url, headers=entetes)
     with build_opener(RefuserRedirection).open(requete, timeout=25) as reponse:
         if reponse.status != 200:
             raise ErreurCollecte("Réponse HTTP non conforme.")
