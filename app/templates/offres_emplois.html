@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Offres individuelles de l'emploi public — FRONTIÈRE{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">BESOINS PUBLIÉS</p>
+    <h1>Offres d'emploi dans le service public</h1>
+    <p>Postes publiés et identifiés dans les fichiers officiels de la DGAFP. Les champs présentés ne comportent aucune information privée de contact. La publication d'une offre constitue un indice de recherche de compétence, pas une preuve de difficulté de recrutement.</p>
+  </div>
+</section>
+<section class="metrics">
+  <article><span>Offres dans le registre</span><strong>{{ resultat.total }}</strong></article>
+  <article><span>Date d'extraction</span><strong style="font-size:1rem">{{ resultat.date_extraction or "Non exécutée" }}</strong></article>
+  <article><span>Lignes extraites de la source</span><strong>{{ resultat.lignes_officielles_identifiees }}</strong></article>
+</section>
+<section class="panel">
+  <div class="panel-head"><h2>Rechercher par métier, employeur ou spécialité</h2><a href="/besoins-publics?source=emplois">Fichiers sources</a></div>
+  <form method="get" action="/offres-emplois">
+    <label for="terme">Expression recherchée</label>
+    <input id="terme" name="terme" type="search" maxlength="120" value="{{ terme }}" placeholder="ex. mathématiques, ingénieur, laboratoire">
+    <button type="submit">Rechercher</button>
+  </form>
+  {% if resultat.couverture_integrale_csv == false %}<p>Le manifeste déclare des lignes sans référence ou des valeurs tronquées. Consulter les métadonnées d'extraction pour déterminer la portée réelle.</p>{% endif %}
+</section>
+<section class="panel">
+  {% if resultat.offres %}
+  <table>
+  <thead><tr><th>Intitulé</th><th>Employeur</th><th>Métier</th><th>Lieu</th><th>Première publication</th></tr></thead>
+  <tbody>
+    {% for item in resultat.offres %}
+    <tr>
+      <td><strong>{{ item.intitule or "Non indiqué" }}</strong></td>
+      <td>{{ item.employeur or item.organisme or "Non indiqué" }}</td>
+      <td>{{ item.metier or "Non indiqué" }}</td>
+      <td>{{ item.localisation or item.lieu_affectation or "Non indiqué" }}</td>
+      <td>{{ item.premiere_publication or "Non indiquée" }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  </table>
+  {% else %}
+  <p class="empty">Aucune offre enregistrée pour cette recherche dans la version déployée.</p>
+  {% endif %}
+  <p>
+    {% if resultat.page > 1 %}<a href="/offres-emplois?page={{ resultat.page-1 }}&terme={{ terme|urlencode }}">Page précédente</a>{% endif %}
+    {% if resultat.page * resultat.limite < resultat.total %}<a href="/offres-emplois?page={{ resultat.page+1 }}&terme={{ terme|urlencode }}">Page suivante</a>{% endif %}
+  </p>
+</section>
+{% endblock %}
