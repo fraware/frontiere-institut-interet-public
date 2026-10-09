@@ -71,7 +71,13 @@ jobs:
           fi
 
       - name: Compléter les archives BOAMP des journées closes
-        run: python scripts/collecter_historique_boamp.py --jours 8
+        shell: bash
+        run: |
+          if python scripts/collecter_historique_boamp.py --jours 8; then
+            echo "Rattrapage historique BOAMP achevé pour ce lot."
+          else
+            echo "::warning::Rattrapage BOAMP indisponible : poursuivre les autres collectes sans publier de journée incomplète."
+          fi
 
       - name: Soumettre les seules informations publiques autorisées
         env:
