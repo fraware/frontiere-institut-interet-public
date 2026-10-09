@@ -16,7 +16,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
-BASE = "https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/catalog/datasets"
+BASE = "https://mesr.opendatasoft.com/api/explore/v2.1/catalog/datasets"
 PAGE = "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/"
 ROOT = Path(__file__).resolve().parents[1]
 DIR = ROOT / "institutionnel/decouverte"
