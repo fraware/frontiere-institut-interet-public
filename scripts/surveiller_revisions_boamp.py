@@ -66,7 +66,7 @@ def choisir_jours(fiches: list[Path], dernier_jour: str | None,
         raise RelectureInvalide("Curseur de relecture incorrect.")
     choix = {p.stem: p for p in fiches[-recents:]}
     debut = bisect_right(identifiants, dernier_jour) if dernier_jour else 0
-    index = debut
+    index = debut % len(fiches)
     for _ in range(min(rotation, len(fiches))):
         choix[fiches[index].stem] = fiches[index]
         index = (index + 1) % len(fiches)
