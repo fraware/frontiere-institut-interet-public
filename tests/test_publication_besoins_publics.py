@@ -18,6 +18,12 @@ def test_publication_limitee_aux_besoins_publics():
         "institutionnel/besoins_publics/etat_emplois_publics.json",
     ]
     assert verifier_portee("besoins", admis)["nombre_fichiers"] == 4
+    historique = [
+        "institutionnel/besoins_publics/etat_historique_boamp.json",
+        "institutionnel/besoins_publics/historique_boamp/2026/09/2026-09-30.jsonl.gz",
+        "institutionnel/besoins_publics/historique_boamp/2026/09/2026-09-30.json",
+    ]
+    assert verifier_portee("besoins", historique)["nombre_fichiers"] == 3
     assert identite_branche("besoins", "1435", "1") == "automatisation/besoins-1435-1"
     for interdit in ("institutionnel/entites/locales/unite.jsonl",
                      "institutionnel/besoins_publics/contacts_prives.json",
