@@ -60,3 +60,42 @@ def test_etat_balayage_national_ne_pretend_pas_une_exhaustivite(monkeypatch, tmp
         assert data["nombre_pages_presentes"] == 1
         assert data["catalogue_exhaustif_atteste"] is False
         assert data["donnees_brutes_copiees"] is False
+
+
+def test_navigation_pages_generales_sans_lire_toute_la_collection(monkeypatch, tmp_path):
+    import json
+    repertoire = tmp_path / "institutionnel" / "decouverte"
+    pages = repertoire / "balayage_pages"
+    pages.mkdir(parents=True)
+    (repertoire / "balayage_etat.json").write_text(
+        '{"controle_le":"2026-10-09T16:00:00+00:00",'
+        '"page_suivante":2,"cycles_acheves":0,"erreurs":[]}',
+        encoding="utf-8",
+    )
+    notices = [{
+        "id": "jeu-00001",
+        "titre": "Atlas des capacités scientifiques",
+        "producteur": "Producteur public",
+        "page": "https://www.data.gouv.fr/datasets/jeu-00001/",
+        "licence": "lov2",
+        "actualise_le": "2026-10-09T00:00:00+00:00",
+    }]
+    (pages / "page_00001.jsonl").write_text(
+        json.dumps(notices[0], ensure_ascii=False) + "\n", encoding="utf-8",
+    )
+    racine = tmp_path / "app"
+    racine.mkdir()
+    monkeypatch.setattr(MODULE, "BASE_DIR", racine)
+    with TestClient(app) as client:
+        rep = client.get("/api/v1/catalogue-national?page=1")
+        assert rep.status_code == 200
+        assert rep.json()["page_presente"] is True
+        assert rep.json()["notices"][0]["titre"] == "Atlas des capacités scientifiques"
+        assert rep.json()["couverture_complete_attestee"] is False
+        absent = client.get("/api/v1/catalogue-national?page=2")
+        assert absent.status_code == 200 and absent.json()["page_presente"] is False
+        assert client.get("/api/v1/catalogue-national?page=2001").status_code == 422
+        page = client.get("/catalogue-national")
+        assert page.status_code == 200
+        assert "Atlas des capacités scientifiques" in page.text
+        assert "Page suivante" in page.text

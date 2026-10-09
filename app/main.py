@@ -213,6 +213,49 @@ def _charger_sources_publiques() -> tuple[list[dict], dict]:
     return liste, rapport
 
 
+@app.get("/api/v1/catalogue-national")
+def api_catalogue_national(page: int = 1) -> dict:
+    """Lire exactement une page versionnée, sans charger toutes les notices."""
+    if not 1 <= page <= 2000:
+        raise HTTPException(422, "Numéro de page hors limites.")
+    dossier = BASE_DIR.parent / "institutionnel" / "decouverte"
+    fichier = dossier / "balayage_pages" / f"page_{page:05d}.jsonl"
+    if not fichier.is_file():
+        return {
+            "version": "catalogue-national-v1",
+            "page": page,
+            "page_presente": False,
+            "notices": [],
+            "couverture_complete_attestee": False,
+        }
+    try:
+        lignes = fichier.read_text(encoding="utf-8").splitlines()
+        if len(lignes) > 100:
+            raise ValueError("La page contient trop de notices.")
+        notices = [json.loads(ligne) for ligne in lignes if ligne.strip()]
+    except (OSError, UnicodeError, ValueError, json.JSONDecodeError) as exc:
+        raise HTTPException(503, "Une page du catalogue national est illisible.") from exc
+    if not all(isinstance(x, dict) for x in notices):
+        raise HTTPException(503, "Le format des notices est incorrect.")
+    return {
+        "version": "catalogue-national-v1",
+        "page": page,
+        "page_presente": True,
+        "notices": notices,
+        "couverture_complete_attestee": False,
+    }
+
+
+@app.get("/catalogue-national", response_class=HTMLResponse)
+def page_catalogue_national(request: Request, page: int = 1):
+    donnees = api_catalogue_national(page=page)
+    etat = api_balayage_national()
+    return templates.TemplateResponse(
+        request=request, name="catalogue_national.html",
+        context={"donnees": donnees, "etat": etat},
+    )
+
+
 @app.get("/api/v1/balayage-national")
 def api_balayage_national() -> dict:
     """Rendre consultable l'avancement réel du catalogue général."""

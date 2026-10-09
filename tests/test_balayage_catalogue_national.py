@@ -93,3 +93,22 @@ def test_configuration_refuse_source_externe():
     c["origine"] = "https://hostile.example.org/"
     with pytest.raises(ErreurCollecte):
         verifier_configuration(c)
+
+
+
+def test_importation_directe_du_script_charge_ses_validateurs():
+    """Reproduire l'importation employée par python scripts/nom_du_fichier.py."""
+    import subprocess
+    import sys
+    racine = Path(__file__).resolve().parents[1]
+    code = (
+        "from balayer_catalogue_national import reduire_notice; "
+        "print(reduire_notice({'id':'abc12345','title':'Référentiel fictif',"
+        "'organization':{'name':'Organisme de test'},'resources':[]})['id'])"
+    )
+    resultat = subprocess.run(
+        [sys.executable, "-c", code],
+        cwd=racine / "scripts", capture_output=True, text=True, check=False,
+    )
+    assert resultat.returncode == 0, resultat.stderr
+    assert resultat.stdout.strip() == "abc12345"

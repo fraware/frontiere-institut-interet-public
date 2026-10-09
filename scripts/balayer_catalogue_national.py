@@ -19,7 +19,7 @@ if __package__:
 else:
     from decouvrir_sources_publiques import (
         DOSSIER, ErreurCollecte, enregistrer_json, horodatage,
-        lire_json, telecharger_page, url_catalogue, _texte,
+        lire_json, telecharger_page, url_catalogue, _texte, ID,
     )
 
 CONFIG = DOSSIER / "balayage_config_v1.json"
