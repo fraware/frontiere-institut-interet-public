@@ -167,18 +167,55 @@ def partitions(offres: dict[str, dict]) -> dict[str, list[str]]:
     return resultat
 
 
+def empreinte_partition(chemin: Path) -> str:
+    """Calculer l'empreinte d'une partition sans charger son contenu en mémoire."""
+    empreinte = hashlib.sha256()
+    with chemin.open("rb") as flux:
+        for bloc in iter(lambda: flux.read(1024 * 1024), b""):
+            empreinte.update(bloc)
+    return empreinte.hexdigest()
+
+
+def partitions_verifiees(dossier: Path, manifeste: dict) -> bool:
+    """Vérifier les seize fichiers avant de réutiliser un extrait précédent.
+
+    Un ancien manifeste dépourvu d'empreintes est considéré comme non vérifié :
+    l'extraction suivante le remplacera à partir de la source officielle.
+    """
+    attendu = {f"lot_{x:02x}.jsonl" for x in range(16)}
+    empreintes = manifeste.get("empreintes_partitions")
+    if not isinstance(empreintes, dict) or set(empreintes) != attendu:
+        return False
+    if not isinstance(manifeste.get("offres_distinctes"), int) or manifeste["offres_distinctes"] <= 0:
+        return False
+    for nom in sorted(attendu):
+        empreinte = empreintes[nom]
+        if not isinstance(empreinte, str) or len(empreinte) != 64:
+            return False
+        chemin = dossier / "offres_postes" / nom
+        if not chemin.is_file() or empreinte_partition(chemin) != empreinte:
+            return False
+    return True
+
+
 def publier(offres: dict[str, dict], dossier: Path, manifeste: dict) -> None:
     cible = dossier / "offres_postes"
     cible.mkdir(parents=True, exist_ok=True)
     lignes = partitions(offres)
+    empreintes = {}
     for cle in sorted(lignes):
-        dest = cible / f"lot_{cle}.jsonl"
+        nom = f"lot_{cle}.jsonl"
+        dest = cible / nom
         contenu = "".join(lignes[cle])
-        if dest.is_file() and dest.read_text(encoding="utf-8") == contenu:
+        octets = contenu.encode("utf-8")
+        empreintes[nom] = hashlib.sha256(octets).hexdigest()
+        if dest.is_file() and empreinte_partition(dest) == empreintes[nom]:
             continue
         temporaire = dest.with_suffix(".jsonl.tmp")
-        temporaire.write_text(contenu, encoding="utf-8")
+        temporaire.write_bytes(octets)
         temporaire.replace(dest)
+    # Le manifeste est publié en dernier, après la remise en état des seize lots.
+    manifeste["empreintes_partitions"] = empreintes
     fichier = dossier / "manifest_offres_postes.json"
     temp = fichier.with_suffix(".json.tmp")
     temp.write_text(json.dumps(manifeste, ensure_ascii=False, sort_keys=True, indent=2) +
@@ -198,7 +235,7 @@ def executer(dossier: Path = DIR) -> dict:
     ancien = json.loads(cible.read_text(encoding="utf-8")) if cible.is_file() else {}
     if (ancien.get("source_id") == fichier["id"]
             and ancien.get("source_modifie_le") == fichier.get("modifie_le")
-            and (dossier / "offres_postes" / "lot_00.jsonl").is_file()):
+            and partitions_verifiees(dossier, ancien)):
         return {"etat": "inchangé", "source_id": fichier["id"],
                 "offres_distinctes": ancien.get("offres_distinctes")}
     with tempfile.TemporaryDirectory(prefix="frontiere-csp-") as tmp:
