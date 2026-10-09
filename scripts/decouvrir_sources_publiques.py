@@ -76,7 +76,7 @@ def url_catalogue(terme: str | None, page: int, taille: int,
             raise ErreurCollecte("Expression de recherche incorrecte.")
         params["q"] = terme
     if tri is not None:
-        if tri not in {"-last_update", "-created"}:
+        if tri not in {"-last_update", "-created", "title"}:
             raise ErreurCollecte("Tri non autorisé.")
         params["sort"] = tri
     return ORIGINE + "?" + urlencode(params)
