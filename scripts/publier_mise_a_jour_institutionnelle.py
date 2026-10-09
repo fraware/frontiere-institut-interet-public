@@ -25,6 +25,10 @@ CHEMINS = {
         "institutionnel/etat_sources.json",
         "institutionnel/alertes_sources.json",
     ),
+    "sources": (
+        "institutionnel/decouverte/candidats_data_gouv.json",
+        "institutionnel/decouverte/etat_collecte.json",
+    ),
     "referentiel": (
         "institutionnel/entites/roae",
         "institutionnel/relations/roae",
@@ -51,9 +55,10 @@ CHEMINS = {
 TITRES = {
     "rnsr": "Actualiser les structures publiques de recherche",
     "surveillance": "Actualiser la surveillance des sources institutionnelles",
+    "sources": "Actualiser le catalogue des sources publiques découvertes",
     "referentiel": "Actualiser le référentiel administratif et territorial",
 }
-BRANCH = re.compile(r"^automatisation/(rnsr|surveillance|referentiel)-([0-9]+)-([1-9][0-9]*)$")
+BRANCH = re.compile(r"^automatisation/(rnsr|surveillance|referentiel|sources)-([0-9]+)-([1-9][0-9]*)$")
 REPO = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 
 
