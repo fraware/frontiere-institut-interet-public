@@ -24,7 +24,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: ${{ format('validation-referentiel-pr-{0}', github.event.pull_request.number) }}
+  group: ${{ format('validation-{0}-pr-{1}', github.workflow, github.event.pull_request.number) }}
   cancel-in-progress: true
 
 jobs:
