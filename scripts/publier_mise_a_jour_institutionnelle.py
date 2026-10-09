@@ -169,6 +169,33 @@ def indexer_changements(source: str, changements: list[str], racine: Path = RACI
     return fichiers
 
 
+def verifier_reprise_sans_conflit(
+    depart: str, actuel: str, modifications: list[str], racine: Path = RACINE,
+) -> bool:
+    """Autoriser la reprise d'une collecte si main a avancé sur d'autres fichiers.
+
+    Les entrées de la collecte sont comparées aux chemins modifiés par main ;
+    un chevauchement ou un historique divergent interrompt la publication.
+    """
+    if depart == actuel:
+        return False
+    ancetre = _commande("git", "merge-base", depart, actuel, cwd=racine).strip()
+    if ancetre != depart:
+        raise PublicationRefusee("La branche principale présente un historique divergent.")
+    modifies_sur_main = set(filter(None, _commande(
+        "git", "diff", "--no-renames", "--name-only", "-z", depart, actuel,
+        cwd=racine,
+    ).split("\0")))
+    conflits = modifies_sur_main.intersection(modifications)
+    if conflits:
+        raise PublicationRefusee(
+            "Les sources ont changé dans main pendant la collecte : "
+            + ", ".join(sorted(conflits)[:10])
+            + ". Relancer cette ingestion."
+        )
+    return True
+
+
 def identite_branche(source: str, id_execution: str, tentative: str) -> str:
     nom = f"automatisation/{source}-{id_execution}-{tentative}"
     if source not in CHEMINS or not BRANCH.fullmatch(nom):
@@ -201,8 +228,9 @@ def publier(source: str, racine: Path = RACINE) -> dict:
     _commande("git", "fetch", "--quiet", "origin", "main", cwd=racine)
     depart = _commande("git", "rev-parse", "HEAD", cwd=racine).strip()
     actuel = _commande("git", "rev-parse", "origin/main", cwd=racine).strip()
-    if depart != actuel:
-        raise PublicationRefusee("La branche principale a avancé depuis la collecte : relancer les ingestions.")
+    reprise = verifier_reprise_sans_conflit(
+        depart, actuel, rapport["fichiers_modifies"], racine,
+    )
 
     # Une seule proposition en attente par source afin d'éviter les publications
     # concurrentes issues de la même base.
@@ -230,6 +258,10 @@ def publier(source: str, racine: Path = RACINE) -> dict:
     _commande("git", "config", "user.name", "frontiere-referentiel[bot]", cwd=racine)
     _commande("git", "config", "user.email", "frontiere-referentiel@users.noreply.github.com", cwd=racine)
     _commande("git", "commit", "-m", TITRES[source], cwd=racine)
+    # Reporter le commit de données sur le dernier état de main seulement
+    # si les chemins d'origine et les chemins produits sont disjoints.
+    if reprise:
+        _commande("git", "rebase", "--no-autostash", "origin/main", cwd=racine)
     _commande("gh", "auth", "setup-git", cwd=racine)
     _commande("git", "push", "origin", f"HEAD:refs/heads/{branche}", cwd=racine)
     description = (
