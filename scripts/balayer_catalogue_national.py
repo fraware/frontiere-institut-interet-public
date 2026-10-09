@@ -27,6 +27,10 @@ ETAT = DOSSIER / "balayage_etat.json"
 PAGES = DOSSIER / "balayage_pages"
 
 
+def telecharger_page_legere(url: str) -> dict:
+    return telecharger_page(url, legere=True)
+
+
 def verifier_configuration(config: dict) -> None:
     if not isinstance(config, dict) or config.get("origine") != "https://www.data.gouv.fr/api/1/datasets/":
         raise ErreurCollecte("Origine nationale du catalogue incorrecte.")
@@ -62,11 +66,11 @@ def reduire_notice(brut: object) -> dict | None:
         "licence": _texte(brut.get("license"), 70) or "non_precisee",
         "actualise_le": _texte(brut.get("last_update"), 45) or None,
         "page": "https://www.data.gouv.fr/datasets/" + uid + "/",
-        "nombre_ressources": len(brut.get("resources") or []),
+        "nombre_ressources": len(brut["resources"]) if isinstance(brut.get("resources"), list) else None,
     }
 
 
-def preparer_lot(config: dict, etat: dict, charge=telecharger_page,
+def preparer_lot(config: dict, etat: dict, charge=telecharger_page_legere,
                  patienter=time.sleep) -> tuple[list[tuple[int, list[dict]]], dict]:
     verifier_configuration(config)
     if not isinstance(etat, dict):
@@ -107,7 +111,10 @@ def preparer_lot(config: dict, etat: dict, charge=telecharger_page,
                 erreurs.append({"page": page, "motif": "limite_de_pagination"})
                 break
         except (OSError, TimeoutError, ValueError) as e:
-            erreurs.append({"page": page, "motif": type(e).__name__})
+            erreurs.append({
+                "page": page, "motif": type(e).__name__,
+                "detail": str(e)[:160] if isinstance(e, ErreurCollecte) else None,
+            })
             break
         finally:
             patienter(config.get("secondes_entre_appels", 0))
