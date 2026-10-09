@@ -78,7 +78,7 @@ def recevoir(url: str, origine: str) -> dict:
 def adresse_boamp(debut: str, page: int, taille: int) -> str:
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", debut):
         raise EchecBesoins("Date de recherche incorrecte.")
-    if not 0 <= page <= 30 or not 1 <= taille <= 100:
+    if not 0 <= page <= 50 or not 1 <= taille <= 100:
         raise EchecBesoins("Pagination hors limites.")
     return BOAMP + "?" + urlencode({
         "where": f'dateparution >= "{debut}"',
@@ -112,10 +112,10 @@ def notice_boamp(enregistrement: object) -> dict | None:
 
 
 def relever_boamp(ancien: dict, obtenir=recevoir, maintenant=None,
-                  pages: int = 12, taille: int = 100, attendre=time.sleep) -> tuple[dict, dict]:
+                  pages: int = 45, taille: int = 100, attendre=time.sleep) -> tuple[dict, dict]:
     if not isinstance(ancien, dict) or not isinstance(ancien.get("annonces", []), list):
         raise EchecBesoins("Index antérieur incorrect.")
-    if not 1 <= pages <= 30 or not 1 <= taille <= 100:
+    if not 1 <= pages <= 50 or not 1 <= taille <= 100:
         raise EchecBesoins("Plafond de consultation incorrect.")
     instant = maintenant or datetime.now(timezone.utc)
     debut = (instant.date() - timedelta(days=7)).isoformat()
