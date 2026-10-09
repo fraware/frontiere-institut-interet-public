@@ -14,8 +14,10 @@ def test_publication_sources_uniquement_deux_fichiers_de_metadonnees():
     paths = [
         "institutionnel/decouverte/candidats_data_gouv.json",
         "institutionnel/decouverte/etat_collecte.json",
+        "institutionnel/decouverte/balayage_etat.json",
+        "institutionnel/decouverte/balayage_pages/page_00001.jsonl",
     ]
-    assert verifier_portee("sources", paths)["nombre_fichiers"] == 2
+    assert verifier_portee("sources", paths)["nombre_fichiers"] == 4
     for interdit in (
         "institutionnel/entites/rnsr/source.jsonl",
         "donnees/sensibles.json",
@@ -34,6 +36,8 @@ def test_rythme_et_controles_explicites_de_la_decouverte():
     assert 'cron: "11 1,7,13,19 * * *"' in source
     assert "cancel-in-progress: false" in source
     assert "scripts/decouvrir_sources_publiques.py" in source
+    assert "scripts/balayer_catalogue_national.py" in source
+    assert "institutionnel/decouverte/balayage_pages/page_*.jsonl" in source
     assert "scripts/publier_mise_a_jour_institutionnelle.py --source sources --publier" in source
     assert "gh run watch" in source
     assert "Python 3.11" in source and "Python 3.12" in source and "Conteneur" in source
