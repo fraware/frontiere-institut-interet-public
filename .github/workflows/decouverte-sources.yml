@@ -7,6 +7,8 @@ on:
     branches: [main]
     paths:
       - "scripts/decouvrir_sources_publiques.py"
+      - "scripts/balayer_catalogue_national.py"
+      - "institutionnel/decouverte/balayage_config_v1.json"
       - "institutionnel/decouverte/recherches_v1.json"
       - ".github/workflows/decouverte-sources.yml"
   workflow_dispatch:
@@ -44,10 +46,13 @@ jobs:
       - name: Tester la découverte sans accès réseau
         run: |
           python -m pip install "pytest>=8,<10"
-          python -m pytest -q tests/test_decouverte_sources_publiques.py tests/test_publication_institutionnelle.py
+          python -m pytest -q tests/test_decouverte_sources_publiques.py tests/test_balayage_catalogue_national.py tests/test_decouverte_publication.py tests/test_publication_institutionnelle.py
 
       - name: Interroger le catalogue national et conserver les notices
         run: python scripts/decouvrir_sources_publiques.py
+
+      - name: Balayer progressivement le catalogue entier par pages
+        run: python scripts/balayer_catalogue_national.py
 
       - name: Publier les métadonnées uniquement dans une proposition distincte
         env:
@@ -112,7 +117,7 @@ jobs:
           while IFS= read -r chemin; do
             [[ -z "$chemin" ]] && continue
             case "$chemin" in
-              institutionnel/decouverte/candidats_data_gouv.json|institutionnel/decouverte/etat_collecte.json) ;;
+              institutionnel/decouverte/candidats_data_gouv.json|institutionnel/decouverte/etat_collecte.json|institutionnel/decouverte/balayage_etat.json|institutionnel/decouverte/balayage_pages/page_*.jsonl) ;;
               *) echo "Fichier non autorisé : $chemin." >&2; exit 1 ;;
             esac
           done <<< "$FICHIERS"

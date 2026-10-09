@@ -13,11 +13,23 @@ Les métadonnées servent à repérer de nouveaux jeux, leur producteur, leur li
 
 La première collecte automatisée utilise l'[interface officielle du catalogue data.gouv.fr](https://guides.data.gouv.fr/api-de-data.gouv.fr/reference/datasets).
 
-Le fichier `institutionnel/decouverte/recherches_v1.json` énumère **38 recherches thématiques** touchant notamment les institutions, la recherche, les marchés publics, les compétences, les laboratoires, les métiers, le financement et les territoires. Trois pages supplémentaires présentent les ressources récemment actualisées, indépendamment d'un sujet particulier.
+Le fichier `institutionnel/decouverte/recherches_v1.json` énumère **38 recherches thématiques** touchant notamment les institutions, la recherche, les marchés publics, les compétences, les laboratoires, les métiers, le financement et les territoires. Trois pages supplémentaires présentent les ressources récemment actualisées, indépendamment d'un sujet particulier. Les interrogations sans deuxième page disponible sont désormais écartées, afin de ne pas assimiler une fin de liste à une panne. La recherche des dernières actualisations utilise des réponses plus petites pour éviter des transferts excessifs.
 
 Pour chaque résultat, sont conservés : identifiant stable, titre, organisme producteur, licence déclarée, date de modification, date d'actualisation des ressources, fréquence déclarée et liens vers un nombre limité de fichiers. Le programme déduplique les identifiants et conserve les notices déjà enregistrées lors d'une indisponibilité partielle de l'interface.
 
-La recherche est **bornée**, par expression et par nombre de pages. Son résultat ne constitue pas un inventaire exhaustif des données de data.gouv.fr, de toutes les administrations ni de tous les sites Internet. Le [catalogue complet fourni par data.gouv.fr](https://www.data.gouv.fr/datasets/catalogue-des-donnees-de-data-gouv-fr) a été répertorié séparément pour une intégration élargie à l'étape suivante.
+La recherche est **bornée**, par expression et par nombre de pages. Son résultat ne constitue pas un inventaire exhaustif des données de data.gouv.fr, de toutes les administrations ni de tous les sites Internet. Le [catalogue complet fourni par data.gouv.fr](https://www.data.gouv.fr/datasets/catalogue-des-donnees-de-data-gouv-fr) est également inscrit dans le registre. Ses exports de plusieurs centaines de mégaoctets à un gigaoctet sont traités séparément des notices légères.
+
+Le premier [essai automatisé](https://github.com/fraware/frontiere-institut-interet-public/pull/130) a conservé 500 notices distinctes. Il a réussi 46 des 79 demandes initiales et consigné 33 anomalies, essentiellement sur des secondes pages non disponibles. La présente révision utilise le nombre de résultats annoncé et le lien de page suivante afin d'éviter les interrogations sans suite ; le rapport suivant devra confirmer la diminution réelle de ces échecs.
+
+## Balayage général indépendant des mots-clés
+
+Le programme `scripts/balayer_catalogue_national.py` ajoute une deuxième méthode de découverte : parcourir **toutes les pages du catalogue national**, y compris celles dont le titre ne correspond à aucune recherche thématique.
+
+Le curseur figure dans `institutionnel/decouverte/balayage_etat.json`, et chaque page traitée est conservée séparément sous `institutionnel/decouverte/balayage_pages/page_XXXXX.jsonl`. Un cycle traite jusqu'à **60 pages de 50 notices**, soit 3 000 notices reçues au maximum par exécution, puis repart de la page suivante lors du prochain passage. À la fin du catalogue, il reprend au début pour actualiser les pages.
+
+Les fichiers conservent seulement les identifiants officiels, titres, producteurs, licences, dates de mise à jour, liens de notices et nombres de ressources. Les descriptions libres et fichiers bruts ne sont pas copiés dans cet inventaire général. Les pages historiques sont conservées en cas d'échec réseau ; le curseur ne franchit jamais une page inaccessible. Un tour complet de pages n'est pas une preuve de présence de chaque jeu publié, car le catalogue évolue au cours du balayage.
+
+Les tableaux des recherches thématiques et du balayage général sont complémentaires. Le premier privilégie les sources utiles au projet ; le second cherche l'étendue et rend les omissions plus faciles à détecter. Le volume final se mesure par les fichiers effectivement présents et non par une promesse d'exhaustivité.
 
 ## Actualisation permanente
 
@@ -26,11 +38,11 @@ La procédure `.github/workflows/decouverte-sources.yml` est programmée **toute
 Le nouveau processus :
 
 1. vérifie le programme à l'aide de cas entièrement fictifs ;
-2. interroge exclusivement l'interface publique autorisée, avec une limite de volume par réponse et une temporisation entre demandes ;
+2. interroge exclusivement l'interface publique autorisée, avec une limite de volume par réponse et une temporisation entre demandes, puis avance dans le balayage général ;
 3. conserve cumulativement les notices, leur provenance et les anomalies de téléchargement ;
-4. ouvre une proposition de fusion technique limitée aux deux fichiers de résultats du répertoire de découverte ;
+4. ouvre une proposition technique limitée aux notices, aux états de suivi et aux pages du balayage général ;
 5. déclenche explicitement les vérifications Python 3.11, Python 3.12 et conteneur sur l'empreinte exacte de cette branche ;
-6. **fusionne automatiquement uniquement ces deux fichiers**, uniquement après réussite des trois contrôles et vérification des chemins et de l'empreinte ;
+6. **fusionne automatiquement uniquement ces fichiers de métadonnées strictement autorisés**, uniquement après réussite des trois contrôles et vérification des chemins et de l'empreinte ;
 7. en cas d'échec, garde la proposition ouverte, conserve les données antérieures et signale l'incident dans les journaux.
 
 Cela organise l'actualisation continue du catalogue **dans GitHub**, dans la limite de la disponibilité de GitHub Actions et de l'interface source. Aucune garantie d'instantanéité n'est avancée. La branche principale n'est jamais écrite directement par cette procédure.

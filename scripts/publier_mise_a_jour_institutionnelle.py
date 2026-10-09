@@ -28,6 +28,8 @@ CHEMINS = {
     "sources": (
         "institutionnel/decouverte/candidats_data_gouv.json",
         "institutionnel/decouverte/etat_collecte.json",
+        "institutionnel/decouverte/balayage_etat.json",
+        "institutionnel/decouverte/balayage_pages",
     ),
     "referentiel": (
         "institutionnel/entites/roae",

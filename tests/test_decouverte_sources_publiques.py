@@ -104,7 +104,7 @@ def test_collecte_conserve_les_anciens_et_signale_les_echecs():
         query = parse_qs(urlparse(url).query)
         if query.get("q") == ["marchés publics"] and query["page"] == ["2"]:
             raise OSError("Échec réseau fictif")
-        return {"data": [fiche("ab1234")]}
+        return {"data": [fiche("ab1234")], "next_page": "https://www.data.gouv.fr/api/1/datasets/?page=2"}
 
     initiaux = {"candidats": [normaliser_fiche(fiche("ancien99", "Source historique"))]}
     resultat, rapport = executer(

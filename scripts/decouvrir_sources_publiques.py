@@ -76,7 +76,7 @@ def url_catalogue(terme: str | None, page: int, taille: int,
             raise ErreurCollecte("Expression de recherche incorrecte.")
         params["q"] = terme
     if tri is not None:
-        if tri not in {"-last_update", "-created"}:
+        if tri not in {"-last_update", "-created", "title"}:
             raise ErreurCollecte("Tri non autorisé.")
         params["sort"] = tri
     return ORIGINE + "?" + urlencode(params)
@@ -266,8 +266,15 @@ def executer(configuration: dict, anciennes: dict, sources: dict,
         for x in configuration.get("recherches_transversales", [])
         for p in range(1, x["pages"] + 1)
     )
+    sans_page_suivante = set()
+    pages_ignorees, tentatives = 0, 0
     for mot, p, taille, tri in cas:
+        cle = (mot, tri)
+        if cle in sans_page_suivante:
+            pages_ignorees += 1
+            continue
         url = url_catalogue(None if tri else mot, p, taille, tri)
+        tentatives += 1
         try:
             donnees = telecharger(url)
             if not isinstance(donnees, dict) or not isinstance(donnees.get("data"), list):
@@ -276,16 +283,25 @@ def executer(configuration: dict, anciennes: dict, sources: dict,
             nouveaux += inserer(resultat, donnees, mot, ensemble_sources,
                                 configuration["limite_fiches_enregistrees"])
             succes += 1
+            total = donnees.get("total")
+            suite = bool(donnees.get("next_page"))
+            if not suite:
+                suite = (p * taille < total if type(total) is int
+                         else len(donnees["data"]) >= taille)
+            if not suite:
+                sans_page_suivante.add(cle)
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as err:
-            erreurs.append({"expression": mot, "page": p,
-                            "motif": type(err).__name__})
+            motif = f"HTTP_{err.code}" if isinstance(err, HTTPError) else type(err).__name__
+            erreurs.append({"expression": mot, "page": p, "motif": motif})
+            sans_page_suivante.add(cle)
         pause(configuration.get("secondes_entre_appels", 0))
     horodatage_observation = instant or horodatage()
     candidats = sorted(resultat.values(), key=lambda x: x["id"])
     rapport = {
         "version": "veille-catalogue-v1",
         "controle_le": horodatage_observation,
-        "pages_tentees": len(cas),
+        "pages_tentees": tentatives,
+        "pages_ignorees_sans_suite": pages_ignorees,
         "pages_reussies": succes,
         "pages_echouees": len(erreurs),
         "fiches_recues_avec_doublons": examines,
