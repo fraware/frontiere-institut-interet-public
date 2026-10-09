@@ -1,8 +1,8 @@
 {
   "categories_export": {
-    "SI": 7907,
+    "SI": 7909,
     "SIL": 6297,
-    "SL": 79582
+    "SL": 79580
   },
   "competence_geographique": {
     "dataset": "api-lannuaire-administration-locale-competence-geographique",
@@ -11,25 +11,25 @@
     "url": "https://api-lannuaire.service-public.gouv.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration-locale-competence-geographique"
   },
   "couverture": {
-    "avec_coordonnees": 85696,
+    "avec_coordonnees": 85694,
     "avec_fondement_juridique": 1546,
-    "avec_mission": 29905,
+    "avec_mission": 29903,
     "avec_responsable": 5204,
-    "avec_siren": 44062,
+    "avec_siren": 44079,
     "avec_siret": 54650,
-    "avec_territoire_direct": 85681
+    "avec_territoire_direct": 85679
   },
   "hierarchie": {
     "anomalies": 100,
     "avec_parent_principal": 3539,
     "entites_a_parents_directs_multiples": 0,
-    "sans_parent_principal": 82340
+    "sans_parent_principal": 82338
   },
   "nombre_enregistrements_export_complet": 93786,
-  "nombre_entites_canoniques": 85879,
+  "nombre_entites_canoniques": 85877,
   "nombre_relations_hierarchiques": 4158,
-  "nombre_services_locaux_source": 85879,
-  "observe_le": "2026-10-08T12:17:17+00:00",
+  "nombre_services_locaux_source": 85877,
+  "observe_le": "2026-10-09T12:08:44+00:00",
   "resolution_croisee_roae": {
     "anomalies_roae_initiales": 158,
     "resolues_par_annuaire_local": 158,
@@ -37,9 +37,9 @@
   },
   "source_id": "dila_annuaire_local",
   "stockage": {
-    "octets_entites": 226573835,
+    "octets_entites": 226576229,
     "octets_relations": 3671842,
-    "octets_total_canonique": 230245677
+    "octets_total_canonique": 230248071
   },
   "types_institutionnels_source": {
     "Administration centrale (ou Ministère)": 4,
@@ -115,7 +115,7 @@
     "Service local — fdapp": 93,
     "Service local — fdc": 94,
     "Service local — fr_renov": 465,
-    "Service local — france_services": 3069,
+    "Service local — france_services": 3067,
     "Service local — france_travail": 874,
     "Service local — gendarmerie": 3064,
     "Service local — gendarmerie_montagne": 21,
@@ -295,7 +295,7 @@
     "fdapp": 93,
     "fdc": 94,
     "fr_renov": 465,
-    "france_services": 3069,
+    "france_services": 3067,
     "france_travail": 874,
     "gendarmerie": 3064,
     "gendarmerie_departementale": 97,
