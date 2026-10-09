@@ -7,6 +7,7 @@ on:
     branches: [main]
     paths:
       - "scripts/collecter_besoins_publics.py"
+      - "scripts/publier_mise_a_jour_institutionnelle.py"
       - "scripts/sonder_structure_offres_publiques.py"
       - "scripts/extraire_offres_publiques.py"
       - ".github/workflows/collecte-besoins-publics.yml"
