@@ -72,7 +72,8 @@ def _commande(*args: str, cwd: Path = RACINE, env: dict | None = None) -> str:
             f"Commande refusée ({args[0]} {args[1] if len(args) > 1 else ''}), "
             f"code {retour.returncode}."
         )
-    return retour.stdout.strip()
+    # Conserver les octets de séparation représentés par \0 et les espaces du statut Git.
+    return retour.stdout
 
 
 def _autorise(chemin: str, autorises: tuple[str, ...]) -> bool:
@@ -163,15 +164,15 @@ def publier(source: str, racine: Path = RACINE) -> dict:
         return dict(rapport, etat="inchangé")
 
     _commande("git", "fetch", "--quiet", "origin", "main", cwd=racine)
-    depart = _commande("git", "rev-parse", "HEAD", cwd=racine)
-    actuel = _commande("git", "rev-parse", "origin/main", cwd=racine)
+    depart = _commande("git", "rev-parse", "HEAD", cwd=racine).strip()
+    actuel = _commande("git", "rev-parse", "origin/main", cwd=racine).strip()
     if depart != actuel:
         raise PublicationRefusee("La branche principale a avancé depuis la collecte : relancer les ingestions.")
 
     # Une seule proposition en attente par source afin d'éviter les publications
     # concurrentes issues de la même base.
     liste = _commande("gh", "pr", "list", "--repo", depot, "--state", "open",
-                     "--base", "main", "--json", "headRefName", cwd=racine)
+                     "--base", "main", "--json", "headRefName", "--limit", "1000", cwd=racine)
     try:
         propositions = json.loads(liste)
     except json.JSONDecodeError as exc:
