@@ -6,7 +6,7 @@ import pytest
 
 from scripts.publier_mise_a_jour_institutionnelle import (
     PublicationRefusee, changements_git, identite_branche, indexer_changements,
-    verifier_arbre_sain, verifier_portee,
+    verifier_arbre_sain, verifier_portee, verifier_reprise_sans_conflit,
 )
 
 
@@ -133,3 +133,71 @@ def test_indexation_garde_les_suppressions_prevues(tmp_path: Path):
 def test_indexation_refuse_les_changements_hors_perimetre(tmp_path: Path):
     with pytest.raises(PublicationRefusee, match="hors périmètre"):
         indexer_changements("sources", ["app/main.py"], tmp_path)
+
+
+
+def _commit_retour(racine: Path, message: str) -> str:
+    """Créer un commit artificiel et en lire l'identifiant Git."""
+    _git(racine, "add", "-A")
+    _git(racine, "commit", "-qm", message)
+    return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=racine, text=True).strip()
+
+
+def _dossier_pour_reprise(tmp_path: Path) -> tuple[Path, str, str]:
+    _git(tmp_path, "init", "-q")
+    _git(tmp_path, "config", "user.name", "Essai fictif")
+    _git(tmp_path, "config", "user.email", "test@example.org")
+    dossier = tmp_path / "institutionnel" / "besoins_publics"
+    dossier.mkdir(parents=True)
+    (dossier / "etat_boamp.json").write_text('{"initial":true}\n', encoding="utf-8")
+    (tmp_path / "README.md").write_text("Version initiale\n", encoding="utf-8")
+    origine = _commit_retour(tmp_path, "Point initial")
+    _git(tmp_path, "switch", "-qc", "plus-recent")
+    (tmp_path / "README.md").write_text("Version documentaire suivante\n", encoding="utf-8")
+    actuel = _commit_retour(tmp_path, "Document actualisé")
+    _git(tmp_path, "switch", "-q", "--detach", origine)
+    return dossier, origine, actuel
+
+
+def test_reprise_si_main_change_uniquement_des_fichiers_independants(tmp_path: Path):
+    dossier, depart, actuel = _dossier_pour_reprise(tmp_path)
+    (dossier / "etat_boamp.json").write_text('{"actualise":true}\n', encoding="utf-8")
+    changements = changements_git(tmp_path)
+    assert changements == ["institutionnel/besoins_publics/etat_boamp.json"]
+    assert verifier_reprise_sans_conflit(depart, actuel, changements, tmp_path) is True
+    _git(tmp_path, "switch", "-qc", "lot-donnees")
+    _git(tmp_path, "add", "-A")
+    _git(tmp_path, "commit", "-qm", "Lot empirique fictif")
+    _git(tmp_path, "rebase", "--no-autostash", "plus-recent")
+    assert (tmp_path / "README.md").read_text(encoding="utf-8") == "Version documentaire suivante\n"
+    assert (dossier / "etat_boamp.json").read_text(encoding="utf-8") == '{"actualise":true}\n'
+
+
+def test_reprise_refuse_lorsque_main_modifie_un_meme_fichier(tmp_path: Path):
+    dossier, depart, actuel = _dossier_pour_reprise(tmp_path)
+    _git(tmp_path, "switch", "-q", "plus-recent")
+    (dossier / "etat_boamp.json").write_text('{"modifie_par_main":true}\n', encoding="utf-8")
+    nouveau = _commit_retour(tmp_path, "Changement concurrent des données")
+    _git(tmp_path, "switch", "-q", "--detach", depart)
+    with pytest.raises(PublicationRefusee, match="sources ont changé"):
+        verifier_reprise_sans_conflit(
+            depart, nouveau, ["institutionnel/besoins_publics/etat_boamp.json"], tmp_path,
+        )
+
+
+def test_reprise_refuse_historique_divergent(tmp_path: Path):
+    dossier, depart, actuel = _dossier_pour_reprise(tmp_path)
+    _git(tmp_path, "switch", "-qc", "historique-parallele")
+    (dossier / "etat_boamp.json").write_text('{"parallele":true}\n', encoding="utf-8")
+    divergence = _commit_retour(tmp_path, "Historique parallèle")
+    with pytest.raises(PublicationRefusee, match="divergent"):
+        verifier_reprise_sans_conflit(
+            divergence, actuel, ["institutionnel/besoins_publics/etat_boamp.json"], tmp_path,
+        )
+
+
+def test_base_identique_ne_demande_aucune_reprise(tmp_path: Path):
+    dossier, depart, actuel = _dossier_pour_reprise(tmp_path)
+    assert verifier_reprise_sans_conflit(
+        actuel, actuel, ["institutionnel/besoins_publics/etat_boamp.json"], tmp_path,
+    ) is False
