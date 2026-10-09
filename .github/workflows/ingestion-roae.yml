@@ -16,6 +16,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ format('validation-{0}-pr-{1}', github.workflow, github.event.pull_request.number) }}
+  cancel-in-progress: true
+
 jobs:
   verification:
     name: Vérifier le référentiel administratif sans écriture
