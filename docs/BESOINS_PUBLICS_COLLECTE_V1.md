@@ -55,3 +55,13 @@ python scripts/collecter_besoins_publics.py
 La seconde commande interroge les interfaces officielles et conserve les résultats dans le répertoire local. Les propositions de fusion distantes relèvent exclusivement de la procédure GitHub autorisée.
 
 Le premier relevé réel du 9 octobre 2026 a reçu 1 200 annonces sur 3 055 annoncées par la source, avec douze pages réussies et aucun échec. La présente révision porte la recherche à quarante-cinq pages ; la couverture effective de la fenêtre sera contrôlée lors de l'exécution suivante.
+
+## Extraction expérimentale des offres individuelles
+
+Après observation effective de trente colonnes du CSV officiel, le programme `scripts/extraire_offres_publiques.py` vérifie l'identifiant de la ressource, son schéma, sa licence déclarée et la taille du fichier. Il télécharge temporairement les octets du CSV courant, calcule leur empreinte SHA-256 et vérifie la taille déclarée avant toute publication.
+
+Il retient les identifiants de poste, les organismes et employeurs, les métiers, intitulés, lieux, modalités contractuelles, dates, niveaux d'études, expérience et compétences attendues. Les autres colonnes, contacts et fichiers originaux ne sont pas recopiés. Les textes longs sont limités à une longueur déclarée, avec un compte explicite des cellules tronquées. Les doublons identiques sont comptés ; un même identifiant portant deux contenus contradictoires interrompt le traitement.
+
+Les offres sont classées dans seize partitions `institutionnel/besoins_publics/offres_postes/lot_XX.jsonl`. Le manifeste `institutionnel/besoins_publics/manifest_offres_postes.json` consigne la source, son empreinte, les nombres de lignes et les limites de la transformation. Ce dispositif suit le **fichier courant** et conserve les états antérieurs dans l'historique des modifications du dépôt ; l'archivage exhaustif des fichiers annuels originaux relève d'un chantier distinct.
+
+La première exécution sur le fichier réel reste à contrôler. Si le schéma ou la taille ne correspond pas aux renseignements publiés, les anciennes partitions sont conservées et un avertissement est porté au journal d'exécution. Le programme de collecte des marchés poursuit son fonctionnement indépendamment.
