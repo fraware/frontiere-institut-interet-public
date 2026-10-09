@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Sources publiques découvertes — FRONTIÈRE{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">RECHERCHE DOCUMENTAIRE</p>
+    <h1>Sources publiques découvertes</h1>
+    <p>Notices et références vers les fichiers publiés par les producteurs. La consultation d'une notice ne certifie ni son exactitude ni la possibilité de réutiliser ses fichiers.</p>
+  </div>
+</section>
+<section class="metrics">
+  <article><span>Notices découvertes</span><strong>{{ catalogue.total }}</strong></article>
+  <article><span>Dernière interrogation</span><strong style="font-size:1rem">{{ catalogue.derniere_collecte or "Non exécutée" }}</strong></article>
+  <article><span>Pages en échec</span><strong>{{ catalogue.pages_echouees_derniere_collecte if catalogue.pages_echouees_derniere_collecte is not none else "Inconnu" }}</strong></article>
+</section>
+<section class="panel">
+  <div class="panel-head"><h2>Rechercher les notices</h2></div>
+  <form method="get" action="/sources-publiques">
+    <label for="terme">Nom du jeu ou organisme producteur</label>
+    <input id="terme" name="terme" type="search" maxlength="120" value="{{ terme }}" placeholder="ex. recherche publique">
+    <button type="submit">Rechercher</button>
+  </form>
+  <p class="muted">Inventaire documentaire partiel : les collectes sont programmées toutes les six heures. Le catalogue affiché reflète les fichiers présents dans la version actuellement déployée de l'application.</p>
+</section>
+<section class="panel">
+  <div class="panel-head"><h2>Jeux et producteurs</h2></div>
+  {% if catalogue.notices %}
+  <table>
+    <thead><tr><th>Jeu de données</th><th>Producteur</th><th>Licence déclarée</th><th>Données actualisées</th></tr></thead>
+    <tbody>
+    {% for fiche in catalogue.notices %}
+      <tr>
+        <td><a href="{{ fiche.page }}" rel="noopener noreferrer" target="_blank">{{ fiche.titre }}</a></td>
+        <td>{{ fiche.producteur }}</td>
+        <td>{{ fiche.licence_declaree }}</td>
+        <td>{{ fiche.donnees_actualisees_le or "Inconnu" }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}<p class="empty">Aucune notice pour cette recherche dans la version déployée.</p>{% endif %}
+  {% if catalogue.page > 1 %}<a href="/sources-publiques?page={{ catalogue.page - 1 }}&terme={{ terme|urlencode }}">Page précédente</a>{% endif %}
+  {% if catalogue.page * catalogue.limite < catalogue.total %}<a href="/sources-publiques?page={{ catalogue.page + 1 }}&terme={{ terme|urlencode }}">Page suivante</a>{% endif %}
+</section>
+{% endblock %}

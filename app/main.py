@@ -197,6 +197,59 @@ def api_metrics(db: Session = Depends(get_db)) -> dict:
     return dashboard_metrics(db)
 
 
+def _charger_sources_publiques() -> tuple[list[dict], dict]:
+    """Lire l'état versionné sans effectuer de collecte à chaque consultation."""
+    dossier = BASE_DIR.parent / "institutionnel" / "decouverte"
+    fichier = dossier / "candidats_data_gouv.json"
+    etat = dossier / "etat_collecte.json"
+    try:
+        contenu = json.loads(fichier.read_text(encoding="utf-8")) if fichier.is_file() else {}
+        rapport = json.loads(etat.read_text(encoding="utf-8")) if etat.is_file() else {}
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise HTTPException(503, "Le catalogue des sources publiques est temporairement illisible.") from exc
+    liste = contenu.get("candidats", [])
+    if not isinstance(liste, list) or not isinstance(rapport, dict):
+        raise HTTPException(503, "Le catalogue des sources publiques présente un format incorrect.")
+    return liste, rapport
+
+
+@app.get("/api/v1/sources-publiques")
+def api_sources_publiques(terme: str = "", page: int = 1, limite: int = 30) -> dict:
+    if not 1 <= page <= 100_000 or not 1 <= limite <= 100 or len(terme) > 120:
+        raise HTTPException(422, "Paramètre de consultation hors limites.")
+    notices, rapport = _charger_sources_publiques()
+    recherche = terme.casefold().strip()
+    if recherche:
+        notices = [
+            fiche for fiche in notices if recherche in
+            (str(fiche.get("titre", "")) + " " + str(fiche.get("producteur", ""))).casefold()
+        ]
+    debut = (page - 1) * limite
+    return {
+        "version": "sources-publiques-v1",
+        "total": len(notices),
+        "page": page,
+        "limite": limite,
+        "derniere_collecte": rapport.get("controle_le"),
+        "pages_echouees_derniere_collecte": rapport.get("pages_echouees"),
+        "couverture_exhaustive_du_web": False,
+        "contenus_originaux_recopies": False,
+        "notices": notices[debut:debut + limite],
+    }
+
+
+@app.get("/sources-publiques", response_class=HTMLResponse)
+def page_sources_publiques(request: Request, terme: str = "", page: int = 1):
+    if not 1 <= page <= 100_000 or len(terme) > 120:
+        raise HTTPException(422, "Paramètre de consultation hors limites.")
+    resultat = api_sources_publiques(terme=terme, page=page, limite=40)
+    return templates.TemplateResponse(
+        request=request,
+        name="sources_publiques.html",
+        context={"catalogue": resultat, "terme": terme},
+    )
+
+
 @app.get("/api/v1/episodes")
 def api_episodes(db: Session = Depends(get_db)) -> list[dict]:
     rows = db.scalars(select(Episode).options(selectinload(Episode.organization)).where(Episode.synthetic.is_(False)).order_by(Episode.created_at.desc())).all()
