@@ -1,53 +1,38 @@
-# Gouvernance de main — transition avant protection
+# Gouvernance des actualisations institutionnelles
 
-**État : audit et migration à préparer.** Ce document ne prétend pas qu'une règle de branche soit activée. Le contrôle exécuté localement n'accède pas aux réglages administratifs de GitHub.
+## Situation observée et portée de la migration
 
-## Constat vérifié dans les procédures
+La chaîne dépendante associe trois collectes publiques dans cet ordre : organisation administrative de l’État, services publics locaux et territoires de l’Insee. La procédure `preparer-proposition-referentiel.yml` exécute les trois collectes dans une copie de travail unique, vérifie leurs résultats et construit une proposition distincte en présence de modifications admissibles.
 
-Trois procédures administratives et territoriales exécutent encore une commande de poussée Git vers `main` : organisation administrative de l'État, Annuaire local et territoires de l'Insee. Les structures de recherche et la surveillance publient désormais leurs modifications sous forme de propositions distinctes. Le contrôle `python scripts/auditer_ecritures_main.py` énumère ces écritures historiques et fait échouer l'intégration si une **nouvelle procédure** ajoute une écriture directe littérale. Il ne détecte pas les actions tierces ou les commandes construites dynamiquement.
+L’[essai intégral sans publication du 9 octobre 2026](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/37890327489) s’est terminé avec succès. Il établit la bonne exécution technique des trois collectes et de leurs contrôles ce jour-là, sans conclure à une disponibilité institutionnelle des compétences.
 
-Les ingestions référentiel de l'organisation administrative de l'État, Annuaire local et COG fonctionnent actuellement avec dépendances et déclenchements successifs. **Protéger `main` en interdisant les poussées directes avant d'avoir migré ces procédures entraînerait un risque d'interruption des actualisations.**
+La création d’une proposition par le jeton de GitHub Actions a été [vérifiée au moyen d’un dossier fictif](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/37950043096). La proposition n° 122 a été fermée sans fusion et sa branche temporaire supprimée. Le précédent échec de permission et la période de repli sont documentés dans le [suivi de gouvernance n° 54](https://github.com/fraware/frontiere-institut-interet-public/issues/54).
 
-## Politique cible
+## Organisation cible du code
 
-- Toute modification de code et de référentiel doit passer par une proposition de fusion avec contrôles obligatoires des environnements Python 3.11 et 3.12 ainsi que du conteneur.
-- Interdire les poussées forcées et la suppression de `main`, limiter les contournements et maintenir un registre des identités habilitées.
-- Les procédures automatiques ne doivent disposer que des autorisations indispensables. Les essais déclenchés par une proposition externe restent séparés des opérations dotées de droits d'écriture.
-- Conserver une preuve vérifiable du contenu exact des sources et de l'état du référentiel utilisé pour chaque génération.
-- Ne pas présumer qu'une vérification portant sur les données brutes valide à elle seule la pertinence scientifique de leur interprétation.
+- La procédure commune réalise les collectes et contrôles, puis soumet leurs changements au moyen d’une branche technique et d’une proposition de fusion.
+- Son déclenchement programmé a lieu chaque jour à 5 h 47 UTC. Un lancement manuel permet une vérification sans publication, par défaut, ou une publication demandée explicitement.
+- Les trois procédures individuelles sont conservées pour les essais sur les modifications proposées. Elles disposent de droits de lecture uniquement et ne déclenchent plus de collectes périodiques ni d’écritures dans `main`.
+- Les collectes indépendantes de structures de recherche et de surveillance conservent leur propre publication sous forme de propositions, sans fusion automatique.
+- L’outil de publication refuse une liste de fichiers hors périmètre, une base devenue périmée et plusieurs propositions simultanément ouvertes pour une même source.
 
-## Transition proposée
+La fusion des données produites reste une opération distincte. Le contrôle de compatibilité des fichiers, les vérifications sur deux versions de Python et les essais du conteneur ne remplacent ni la relecture des sources de données ni l’évaluation indépendante de la contribution du projet.
 
-1. Enregistrer les vérifications obligatoires **réellement présentes** dans les résultats d'intégration continue avant d'éditer une règle de protection.
-2. Réunir la chaîne référentiel de l'organisation administrative de l'État → Annuaire local → COG dans une orchestration privilégiée distincte des essais externes. Pour chaque nouveau lot, créer une branche technique et une proposition de fusion portant sur les données normalisées et leurs manifestes, sans pousser directement sur `main`.
-3. Réexaminer les déclenchements `déclenchement à la fin d'une autre procédure` : aujourd'hui la fin de l'import référentiel de l'organisation administrative de l'État signifie aussi la fin de son écriture. Avec une proposition de fusion en attente, cette hypothèse devient fausse. Déclencher les étapes dépendantes après la fusion appropriée ou exécuter leur chaîne dans une même orchestration.
-4. Vérifier lors de chaque exécution des structures de recherche et de la surveillance que les propositions sont créées et que leurs contrôles sont effectivement déclenchés ; conserver la sérialisation des écritures communes.
-5. Vérifier sur une branche expérimentale les autorisations des jetons, les contrôles de fusion et les réactions aux changements du référentiel. Une fusion automatique exige une identité et des permissions correctement configurées : ne jamais lui accorder un contournement général pour simplifier l'intégration.
-6. Activer ensuite la règle administrative `main` et vérifier par lecture des réglages et par essais non destructifs qu'elle est effectivement appliquée. Le ticket n° 54 reste ouvert jusqu'à cette preuve.
+## Procédure de réception de la migration
 
-## Limites du contrôle livré
+1. Constater que l’essai réel avec publication autorisée a terminé toutes ses étapes. Si les sources sont inchangées, constater explicitement l’absence de proposition créée ; ce résultat ne teste pas le chemin de création d’un lot de données.
+2. Vérifier l’absence de nouvelle commande `git push` directement vers `main` dans les procédures, ainsi que le périmètre des permissions accordées à chaque tâche.
+3. Vérifier l’activation de la programmation commune et la suppression des anciens déclenchements des trois procédures individuelles.
+4. Sur le premier lot effectivement modifié, vérifier la présence d’une proposition en provenance de la branche technique, son empreinte de commit, puis les trois contrôles explicitement lancés sur cette empreinte.
+5. Contrôler manuellement la proposition avant fusion, avec conservation des empreintes et du sens des données. Une absence de modifications ne justifie aucune proposition.
+6. Ensuite seulement, activer les règles administratives de protection de `main` et exercer des essais non destructifs de refus d’écriture directe.
 
-L'inventaire des trois écrivains actuels n'est **pas** une approbation de leurs écritures directes. Il identifie la dette préalable et empêche de l'étendre silencieusement. Une recherche textuelle ne remplace ni un analyseur sémantique de procédures YAML, ni une inspection des actions tierces ou des réglages GitHub.
+**Limite :** le connecteur GitHub disponible ne possède pas d’action administrative permettant d’activer lui-même les règles de protection. La réussite des contrôles de code ne constitue pas une preuve que ces règles sont actives. Le suivi n° 54 reste ouvert jusqu’à cette confirmation.
 
-Le connecteur GitHub actuel n'expose pas une action d'administration permettant de modifier directement les règles de protection. Leur activation n'est donc pas revendiquée.
+## Conditions de sécurité
 
-## Blocage de publication constaté le 9 octobre 2026
+Les essais issus de propositions externes disposent de droits de lecture uniquement. Aucun jeton de publication n’est conservé par l’étape de récupération initiale du dépôt. Les permissions de création de branches, propositions et déclenchement des contrôles sont limitées à la tâche de collecte autorisée.
 
-Le premier essai ponctuel du 9 octobre 2026, sur une branche contenant uniquement un document fictif, avait démontré que le jeton GitHub ne disposait pas encore de la permission de créer des propositions. GitHub a répondu : « GitHub Actions is not permitted to create or approve pull requests ». [Consulter l'exécution](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/37890689595).
+La procédure commune partage un groupe de sérialisation avec les autres collectes institutionnelles. Les validations de volume, de qualité structurelle, de liens administratifs et de variation des sources interrompent la publication lorsqu’elles échouent.
 
-Un repli temporaire des deux procédures indépendantes avait alors préservé les actualisations courantes. La permission a ensuite été modifiée et vérifiée, permettant de réactiver leur publication par propositions distinctes. **Aucune protection stricte de `main` n'est déclarée active.** La procédure contrôlée des trois référentiels administratifs a toutefois réussi un essai complet sans publication sur les sources réelles : [exécution](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/37890327489).
-
-La permission de création des propositions a été confirmée par une seconde exécution réelle, après modification des paramètres. Les trois procédures administratives encore historiques seront migrées seulement après vérification d'un lot complet publié sur une branche technique.
-
-## Limitation des droits des essais — 9 octobre 2026
-
-Les deux procédures responsables des services locaux et des territoires sont désormais séparées en deux tâches. La première vérifie les propositions externes uniquement avec des autorisations de lecture. La seconde réalise les actualisations programmées ou déclenchées à la suite d'une collecte précédente, avec un droit d'écriture limité à son propre travail. Les identifiants nécessaires à l'écriture ne sont fournis que lors de l'enregistrement final.
-
-Cette séparation des droits est conservée pendant la transition des trois écritures historiques restantes. Elle ne remplace ni une règle de protection de la branche principale, ni l'identité technique nécessaire pour ouvrir des propositions automatiquement. Le traitement expérimental unique des trois référentiels demeure disponible et a réussi son essai sans publication.
-
-
-## Nouvelle vérification des droits et migration des deux sources indépendantes
-
-Le [second essai de création de proposition](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/37950043096) a réussi avec le jeton propre à GitHub Actions. Une proposition entièrement fictive, n° 122, a été ouverte, puis fermée sans fusion et la branche a été supprimée. Cette preuve lève le blocage de création constaté plus tôt ; elle ne démontre pas encore la réussite du cycle complet de publication de données et d'exécution explicite des contrôles sur la nouvelle branche.
-
-Les procédures de structures de recherche et de surveillance ont été migrées à nouveau vers des propositions distinctes, sans fusion automatique. Une seule proposition en attente par source est admise ; le mécanisme refuse tout état de départ dépassé. Les trois collectes dépendantes gardent temporairement leurs écritures directes afin de préserver leur continuité jusqu'à une validation distincte de publication. **La branche `main` n'est toujours pas déclarée administrativement protégée.**
+En cas d’échec, l’équipe responsable doit examiner les journaux et corriger la cause. Le mécanisme refuse de remplacer automatiquement des données historiques ou de franchir un contrôle de sécurité pour obtenir une publication.
