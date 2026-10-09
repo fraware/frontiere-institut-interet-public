@@ -1,0 +1,181 @@
+{
+  "collecte_complete": false,
+  "controle_le": "2026-10-09T18:08:11+00:00",
+  "couverture_exhaustive_du_web": false,
+  "erreurs": [
+    {
+      "expression": "compétences scientifiques",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "recherche publique",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "laboratoires recherche",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "infrastructures recherche",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "expertise scientifique",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "personnel scientifique",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "fonction publique emploi",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "recrutement administration",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "intelligence artificielle administration",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "transformation publique",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "administration centrale",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "opérateurs État",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "BOAMP",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "subventions publiques",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "projets recherche",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "instituts recherche",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "institutions scientifiques",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "biodiversité expertise",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "cybersécurité administration",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "compétences territoriales",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "formation professionnelle",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "financement recherche",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "agences publiques",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "organismes recherche",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "données ouvertes scientifiques",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "France 2030",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "investissements publics",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "santé recherche",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "infrastructures scientifiques",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "recherche développement innovation",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "appels projets recherche",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "métiers numérique public",
+      "motif": "HTTPError",
+      "page": 2
+    },
+    {
+      "expression": "actualisations recentes",
+      "motif": "ErreurCollecte",
+      "page": 1
+    }
+  ],
+  "fiches_recues_avec_doublons": 519,
+  "fichiers_sources_originaux_telecharges": 0,
+  "identifiants_distincts_conserves": 500,
+  "nouveaux_identifiants": 500,
+  "pages_echouees": 33,
+  "pages_reussies": 46,
+  "pages_tentees": 79,
+  "sources_deja_suivies_dans_le_resultat": 0,
+  "version": "veille-catalogue-v1"
+}
