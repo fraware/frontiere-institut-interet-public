@@ -213,6 +213,44 @@ def _charger_sources_publiques() -> tuple[list[dict], dict]:
     return liste, rapport
 
 
+@app.get("/api/v1/domaines-sources")
+def api_domaines_sources(terme: str = "", page: int = 1, limite: int = 50) -> dict:
+    """Liste consultable des hébergements découverts dans les notices officielles."""
+    if not 1 <= page <= 10000 or not 1 <= limite <= 100 or len(terme) > 120:
+        raise HTTPException(422, "Paramètres du registre des domaines invalides.")
+    fichier = BASE_DIR.parent / "institutionnel/decouverte/domaines_sources.json"
+    try:
+        contenu = json.loads(fichier.read_text(encoding="utf-8")) if fichier.is_file() else {}
+    except (OSError, UnicodeError, ValueError) as exc:
+        raise HTTPException(503, "Inventaire des domaines temporairement illisible.") from exc
+    domaines = contenu.get("domaines", [])
+    if not isinstance(domaines, list):
+        raise HTTPException(503, "Format de l'inventaire des domaines incorrect.")
+    recherche = terme.casefold().strip()
+    if recherche:
+        domaines = [d for d in domaines if isinstance(d, dict)
+                    and recherche in str(d.get("domaine", "")).casefold()]
+    debut = (page - 1) * limite
+    return {
+        "version": "domaines-sources-v1",
+        "total": len(domaines),
+        "page": page,
+        "limite": limite,
+        "dernier_controle": contenu.get("controle_le"),
+        "connexions_automatiquement_autorisees": 0,
+        "domaines": domaines[debut:debut + limite],
+    }
+
+
+@app.get("/domaines-sources", response_class=HTMLResponse)
+def page_domaines_sources(request: Request, terme: str = "", page: int = 1):
+    resultat = api_domaines_sources(terme=terme, page=page, limite=50)
+    return templates.TemplateResponse(
+        request=request, name="domaines_sources.html",
+        context={"catalogue": resultat, "terme": terme},
+    )
+
+
 @app.get("/api/v1/catalogue-recherche")
 def api_catalogue_recherche(terme: str = "", page: int = 1, limite: int = 30) -> dict:
     """Consulter les notices officielles du catalogue scientifique, sans fichiers bruts."""
