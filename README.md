@@ -69,6 +69,7 @@ La principale frontière empirique se situe désormais entre trois explications 
 
 → [Découverte récurrente et catalogue des sources publiques](docs/DECOUVERTE_SOURCES_PERMANENTE_V1.md)  
 → [Collecte régulière des annonces de marchés et offres d'emploi](docs/BESOINS_PUBLICS_COLLECTE_V1.md)  
+→ [Archives de marchés attribués enrichis BeauAMP](docs/COLLECTE_BEAUAMP_V1.md)  
 → [État détaillé du projet](docs/ETAT_DU_PROJET.md)  
 → [Organisation administrative de l’État : source, couverture et mise à jour](docs/INGESTION_ROAE_V1.md)  
 → [Couverture territoriale de l'Annuaire](docs/INGESTION_ANNUAIRE_LOCAL_V1.md)  
