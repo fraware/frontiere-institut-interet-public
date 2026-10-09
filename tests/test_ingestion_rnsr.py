@@ -166,3 +166,45 @@ def test_partition_modifiee_est_reconstruite_meme_si_source_inchangee(tmp_path):
     recalcule = produire(source, tmp_path, minimum=1, date_collecte="2026-10-09")
     assert recalcule["statut"] == "actualisé"
     assert {f.name: f.read_bytes() for f in fichiers} == archive
+
+
+
+def test_url_rnsr_ordonne_explicitement_les_pages(monkeypatch):
+    """Les pages d'une même collecte utilisent un ordre explicite constant."""
+    from urllib.parse import parse_qs, urlparse
+    import scripts.ingerer_structures_rnsr as ing
+
+    appels = []
+
+    class FauxReponse:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return False
+
+        def read(self):
+            return b'{"total_count":1,"results":[{"numero_national_de_structure":"200610662T"}]}'
+
+    def ouvrir(requete, timeout):
+        appels.append(requete.full_url)
+        return FauxReponse()
+
+    monkeypatch.setattr(ing.urllib.request, "urlopen", ouvrir)
+    assert ing.lire_page_api(200, 100)["total_count"] == 1
+    params = parse_qs(urlparse(appels[0]).query)
+    assert params == {
+        "limit": ["100"],
+        "offset": ["200"],
+        "order_by": ["numero_national_de_structure"],
+    }
+
+
+def test_diagnostic_rnsr_doublon_preserve_le_rejet():
+    a = structure("200610662T")
+    b = structure("200710662T")
+    reponses = {
+        0: {"total_count": 2, "results": [a, a]},
+    }
+    with pytest.raises(ValueError, match="200610662T"):
+        telecharger(lambda offset, limite: reponses[offset])
