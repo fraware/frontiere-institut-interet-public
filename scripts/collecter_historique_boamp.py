@@ -33,7 +33,7 @@ VERSION = "boamp-historique-journalier-v1"
 PLANCHER = date(2018, 1, 1)
 PAGES_MAX = 50
 TAILLE_PAGE = 100
-JOURS_PAR_EXECUTION = 8
+JOURS_PAR_EXECUTION = 24
 PAUSE_SECONDES = 0.25
 DATE_ISO = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
@@ -175,7 +175,7 @@ def executer(dossier: Path = DOSSIER, instant: datetime | None = None,
              obtenir=recevoir, patienter=time.sleep,
              jours_par_execution: int = JOURS_PAR_EXECUTION,
              plancher: date = PLANCHER) -> dict:
-    if not 1 <= jours_par_execution <= 12:
+    if not 1 <= jours_par_execution <= 24:
         raise HistoriqueIncomplet("Nombre de journées par exécution incorrect.")
     maintenant = instant or datetime.now(timezone.utc)
     if maintenant.tzinfo is None:
