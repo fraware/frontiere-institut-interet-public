@@ -175,10 +175,14 @@ def evaluer_github(branche: dict, regles: list[dict]) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--exiger", action="store_true",
-                        help="Échouer si les règles actives ne sont pas vérifiables.")
+                        help="Exiger les protections publiquement vérifiables.")
+    parser.add_argument("--exiger-integral", action="store_true",
+                        help="Exiger aussi une liste de contournement complète, accessible aux administrateurs.")
     parser.add_argument("--modele-seulement", action="store_true",
                         help="Examiner la politique proposée sans accès réseau.")
     args = parser.parse_args()
+    if args.modele_seulement and (args.exiger or args.exiger_integral):
+        parser.error("La validation de la protection active exige une lecture de GitHub.")
     try:
         projet = json.loads(MODELE.read_text(encoding="utf-8"))
         proposition = verifier_modele(projet)
@@ -194,8 +198,12 @@ def main() -> None:
     except (OSError, UnicodeError, json.JSONDecodeError, ErreurProtection) as exc:
         parser.exit(2, f"Contrôle non établi : {exc}\n")
     print(json.dumps(resultat, ensure_ascii=False, indent=2))
-    if args.exiger and not args.modele_seulement and not resultat["etat_actuel"]["audit_complet"]:
-        parser.exit(1, "La protection administrative complète n'est pas attestée.\n")
+    if not args.modele_seulement:
+        actif = resultat["etat_actuel"]
+        if args.exiger and not actif["conformite_regles_lisibles"]:
+            parser.exit(1, "Les protections publiquement vérifiables sont incomplètes.\n")
+        if args.exiger_integral and not actif["audit_complet"]:
+            parser.exit(1, "La liste des contournements n'est pas intégralement attestée.\n")
 
 
 if __name__ == "__main__":
