@@ -68,7 +68,8 @@ def test_deux_jours_identiques_et_cursor_rotatif(tmp_path):
     suite = surveiller(tmp_path, obtenir=api_jours(valeurs), patienter=lambda x: None,
                        instant=datetime(2026, 10, 9, tzinfo=timezone.utc),
                        recents=1, rotation=2)
-    assert suite["jours_controles"] == 3
+    # La journée récente figure aussi dans la rotation : ne pas la compter deux fois.
+    assert suite["jours_controles"] == 2
     assert [x["jour"] for x in suite["controles"]] == [
         "2026-09-30", "2026-10-01",
     ]
