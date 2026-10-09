@@ -33,15 +33,42 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: ${{ github.event_name == 'pull_request' && format('referentiel-cog-pr-{0}', github.event.pull_request.number) || 'referentiel-institutionnel-main' }}
   cancel-in-progress: false
 
 jobs:
+  verification-proposition:
+    if: github.event_name == 'pull_request'
+    name: Vérifier les transformations des territoires de référence en lecture seule
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: read
+    steps:
+      - name: Récupérer la proposition sans jeton persistant
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+
+      - name: Installer Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Installer les outils de contrôle
+        run: python -m pip install "pytest>=8,<10"
+
+      - name: Contrôler les transformations et les données d'essai
+        run: python -m pytest -q tests/test_ingestion_cog.py tests/test_variation_referentiel.py tests/test_resume_referentiel.py tests/test_snapshot_cog.py
+
   ingestion:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    if: github.event_name != 'pull_request' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
+    permissions:
+      contents: write
     name: Construire le référentiel territorial COG
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -50,7 +77,8 @@ jobs:
       - name: Récupérer le dépôt
         uses: actions/checkout@v7
         with:
-          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || 'main' }}
+          ref: main
+          persist-credentials: false
           fetch-depth: 0
 
       - name: Installer Python
@@ -127,7 +155,8 @@ jobs:
           python scripts/actualiser_resume_referentiel.py --verifier
 
       - name: Enregistrer le nouvel état
-        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
         run: |
           git add \
@@ -149,4 +178,5 @@ jobs:
           git config user.name "frontiere-referentiel"
           git config user.email "frontiere-referentiel@users.noreply.github.com"
           git commit -m "Territoires COG — actualiser le référentiel géographique"
+          gh auth setup-git
           git push origin HEAD:main
