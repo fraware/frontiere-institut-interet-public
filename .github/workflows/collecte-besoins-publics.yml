@@ -163,3 +163,13 @@ jobs:
             exit 1
           fi
           gh pr merge "$BRANCHE" --repo "$GITHUB_REPOSITORY" --squash --delete-branch
+
+          # L'actualisation fusionnée par un jeton GitHub automatique ne
+          # déclenche pas les autres procédures par un événement push ordinaire.
+          # workflow_dispatch est explicite et construit l'index depuis le
+          # commit effectivement consulté sur main.
+          if gh workflow run index-boamp-historique.yml --repo "$GITHUB_REPOSITORY" --ref main; then
+            echo "Fabrication de l'index BOAMP demandée après la publication."
+          else
+            echo "::warning::Index différé : la fabrication quotidienne reste programmée."
+          fi
