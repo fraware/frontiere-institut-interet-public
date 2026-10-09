@@ -13448,12 +13448,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T19:49:05.260000+00:00",
+      "donnees_actualisees_le": "2026-10-09T19:57:05.652000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "monthly",
       "id": "64060c2ac773dcf3fabbe5d2",
       "licence_declaree": "notspecified",
-      "modifie_le": "2026-10-09T19:49:05.261000+00:00",
+      "modifie_le": "2026-10-09T19:57:05.652000+00:00",
       "nombre_ressources_rapportees": 2,
       "page": "https://www.data.gouv.fr/datasets/public-charging-stations-for-electric-cars-from-several-cpos",
       "producteur": "Eco-Movement",
@@ -13464,9 +13464,9 @@
         {
           "format": "csv",
           "id": "b20d2793-db42-4d6d-a0b4-e94bf5ee4279",
-          "modifie_le": "2026-10-09T19:49:05.260000+00:00",
+          "modifie_le": "2026-10-09T19:57:05.652000+00:00",
           "titre": "irve-dynamique.csv",
-          "url": "https://static.data.gouv.fr/resources/public-charging-stations-for-electric-cars-from-several-cpos/20261009-194904/irve-dynamique.csv"
+          "url": "https://static.data.gouv.fr/resources/public-charging-stations-for-electric-cars-from-several-cpos/20261009-195705/irve-dynamique.csv"
         },
         {
           "format": "csv",
@@ -16267,12 +16267,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T19:46:19+00:00",
+      "donnees_actualisees_le": "2026-10-09T19:56:48+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "continuous",
       "id": "65bd1560c73941a5e0ec1891",
       "licence_declaree": "lov2",
-      "modifie_le": "2026-10-09T19:46:47.474000+00:00",
+      "modifie_le": "2026-10-09T19:57:14.704000+00:00",
       "nombre_ressources_rapportees": 539,
       "page": "https://www.data.gouv.fr/datasets/paquets-arome-outre-mer-reunion-mayotte-resolution-0-025deg",
       "producteur": "Météo-France",
@@ -23743,6 +23743,68 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-09T19:54:03.912000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "680ec678fea33350619e6b82",
+      "licence_declaree": "other-at",
+      "modifie_le": "2025-04-28T00:06:16.793000+00:00",
+      "nombre_ressources_rapportees": 6,
+      "page": "https://www.data.gouv.fr/datasets/sync-httpswwwarcgiscomhomeitemhtmlid19d9aa97511241dd8c7e1752e2a34adfsublayer27-107",
+      "producteur": "Occitanie Pyrénées en Intelligence Géomatique",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "",
+          "id": "5ff364ad-e3f8-4c95-a1dc-f620b1fde4db",
+          "modifie_le": "2026-10-09T19:54:03.912829+00:00",
+          "titre": "https://geometropole.perpignan-mediterranee.org/arcgis/rest/services/OPENDATA/OpenData_2022/FeatureServer/27",
+          "url": "https://geometropole.perpignan-mediterranee.org/arcgis/rest/services/OPENDATA/OpenData_2022/FeatureServer/27"
+        },
+        {
+          "format": "",
+          "id": "027503c7-203f-4c6c-87b6-d95daf6b0d4d",
+          "modifie_le": "2026-05-04T13:35:07+00:00",
+          "titre": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/shapefile?layers=27",
+          "url": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/shapefile?layers=27"
+        },
+        {
+          "format": "",
+          "id": "74642953-fda4-4519-9a06-d7e099de2db2",
+          "modifie_le": "2026-05-27T18:14:20.635721+00:00",
+          "titre": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/datasets/perpignan-mediterranee::eco-lotzae-perimetre-eco-point-1",
+          "url": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/datasets/perpignan-mediterranee::eco-lotzae-perimetre-eco-point-1"
+        },
+        {
+          "format": "",
+          "id": "98193300-0d0b-4b7e-b5da-b327c8f58677",
+          "modifie_le": "2026-05-04T13:35:03+00:00",
+          "titre": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/geojson?layers=27",
+          "url": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/geojson?layers=27"
+        },
+        {
+          "format": "",
+          "id": "9a94b472-b0e6-40eb-a547-4f35c3018983",
+          "modifie_le": "2026-05-04T13:35:09+00:00",
+          "titre": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/csv?layers=27",
+          "url": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/csv?layers=27"
+        },
+        {
+          "format": "",
+          "id": "4c6d5170-06fa-4b36-8502-93cc9a2f9b7d",
+          "modifie_le": "2026-05-04T13:35:05+00:00",
+          "titre": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/kml?layers=27",
+          "url": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/kml?layers=27"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "eco lotZAE perimetre eco point"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2025-01-17T00:00:00+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
@@ -27402,12 +27464,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T19:47:17.799000+00:00",
+      "donnees_actualisees_le": "2026-10-09T19:57:17.755000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "fiveMinutes",
       "id": "691467f0f5dd0286d55bdd48",
       "licence_declaree": "lov2",
-      "modifie_le": "2026-10-09T19:47:17.800000+00:00",
+      "modifie_le": "2026-10-09T19:57:17.755000+00:00",
       "nombre_ressources_rapportees": 1,
       "page": "https://www.data.gouv.fr/datasets/irve-dynamique-organisation-parera-mobilite",
       "producteur": "PARERA MOBILITE",
@@ -27418,9 +27480,9 @@
         {
           "format": "csv",
           "id": "eea29849-4ee1-4e38-aa0a-49843ad30dfa",
-          "modifie_le": "2026-10-09T19:47:17.799000+00:00",
+          "modifie_le": "2026-10-09T19:57:17.755000+00:00",
           "titre": "data-gouv-dynamique.csv",
-          "url": "https://static.data.gouv.fr/resources/irve-dynamique-organisation-parera-mobilite/20261009-194717/data-gouv-dynamique.csv"
+          "url": "https://static.data.gouv.fr/resources/irve-dynamique-organisation-parera-mobilite/20261009-195717/data-gouv-dynamique.csv"
         }
       ],
       "reutilisation_potentielle": true,
@@ -30328,12 +30390,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T19:48:11.080000+00:00",
+      "donnees_actualisees_le": "2026-10-09T19:57:14.377000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "oneMinute",
       "id": "6a75a5620dcff06bc7800727",
       "licence_declaree": "notspecified",
-      "modifie_le": "2026-10-09T19:48:11.081000+00:00",
+      "modifie_le": "2026-10-09T19:57:14.377000+00:00",
       "nombre_ressources_rapportees": 2,
       "page": "https://www.data.gouv.fr/datasets/irve-statique-dynamique-e-clearing-net",
       "producteur": "e-clearing.net",
@@ -30351,9 +30413,9 @@
         {
           "format": "csv",
           "id": "f6f2469e-542f-46a9-998a-46238010a8e7",
-          "modifie_le": "2026-10-09T19:48:11.080000+00:00",
+          "modifie_le": "2026-10-09T19:57:14.377000+00:00",
           "titre": "donnes-schema-irve-dynamique.csv",
-          "url": "https://static.data.gouv.fr/resources/irve-statique-dynamique-e-clearing-net/20261009-194810/donnes-schema-irve-dynamique.csv"
+          "url": "https://static.data.gouv.fr/resources/irve-statique-dynamique-e-clearing-net/20261009-195714/donnes-schema-irve-dynamique.csv"
         }
       ],
       "reutilisation_potentielle": false,
