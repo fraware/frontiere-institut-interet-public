@@ -10,7 +10,7 @@ def test_inventory_actuel_signale_dette_sans_fausse_protection():
     assert bilan["protection_main_confirmee"] is False
     assert {x["procedure"] for x in bilan["ecritures_directes_detectees"]} == {
         "ingestion-roae.yml", "ingestion-annuaire-local.yml",
-        "ingestion-cog.yml",
+        "ingestion-cog.yml", "ingestion-rnsr.yml", "surveillance-institutionnelle.yml",
     }
 
 
