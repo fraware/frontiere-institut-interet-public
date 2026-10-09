@@ -1,0 +1,90 @@
+{
+  "fichiers_originaux_telecharges": 0,
+  "jeu": "Les offres diffusées sur Choisir le Service Public",
+  "licence_declaree": "lov2",
+  "producteur": "Direction générale de l'administration et de la fonction publique",
+  "ressources": [
+    {
+      "fichier_integral_copie": false,
+      "format": "pdf",
+      "id": "1f838ec3-73f0-410d-a1f9-51df23dcb7f6",
+      "modifie_le": "2023-01-10T18:29:56.637000+00:00",
+      "taille_octets_declaree": 201701,
+      "titre": "documentation.pdf",
+      "url": "https://static.data.gouv.fr/resources/les-offres-diffusees-sur-la-place-de-lemploi-public/20230110-182631/documentation.pdf"
+    },
+    {
+      "fichier_integral_copie": false,
+      "format": "pdf",
+      "id": "302af58f-d84e-4082-b64e-c2ada3dc6c6f",
+      "modifie_le": "2023-04-24T11:11:00.187000+00:00",
+      "taille_octets_declaree": 1308994,
+      "titre": "guide-pedagogique-csp-rmfp.pdf",
+      "url": "https://static.data.gouv.fr/resources/les-offres-diffusees-sur-la-place-de-lemploi-public/20230110-182640/guide-pedagogique-pep-rmfp.pdf"
+    },
+    {
+      "fichier_integral_copie": false,
+      "format": "csv",
+      "id": "72af0662-06b0-4e31-be78-2711cda3c73e",
+      "modifie_le": "2024-12-30T08:01:00.762000+00:00",
+      "taille_octets_declaree": 168159826,
+      "titre": "offres-datagouv-20241229.csv",
+      "url": "https://static.data.gouv.fr/resources/les-offres-diffusees-sur-choisir-le-service-public/20241230-070051/offres-datagouv-20241229.csv"
+    },
+    {
+      "fichier_integral_copie": false,
+      "format": "csv",
+      "id": "73f35aaa-15a2-4ddb-8be1-0a650e65fd7d",
+      "modifie_le": "2025-12-29T08:02:25.370000+00:00",
+      "taille_octets_declaree": 163994301,
+      "titre": "offres-datagouv-20251221.csv",
+      "url": "https://static.data.gouv.fr/resources/les-offres-diffusees-sur-choisir-le-service-public/20251229-070216/offres-datagouv-20251221.csv"
+    },
+    {
+      "fichier_integral_copie": false,
+      "format": "csv",
+      "id": "867034a2-2fa1-41b4-bd39-c84691ea618f",
+      "modifie_le": "2026-10-05T06:01:02.808000+00:00",
+      "taille_octets_declaree": 120111905,
+      "titre": "offres-datagouv-20260913.csv",
+      "url": "https://static.data.gouv.fr/resources/les-offres-diffusees-sur-choisir-le-service-public/20261005-060055/offres-datagouv-20260913.csv"
+    },
+    {
+      "fichier_integral_copie": false,
+      "format": "csv",
+      "id": "a6792853-eb46-4897-a4dd-72fd717f9326",
+      "modifie_le": "2026-01-05T08:00:22.586000+00:00",
+      "taille_octets_declaree": 1680032,
+      "titre": "offres-datagouv-20251228.csv",
+      "url": "https://static.data.gouv.fr/resources/les-offres-diffusees-sur-choisir-le-service-public/20260105-070021/offres-datagouv-20251228.csv"
+    },
+    {
+      "fichier_integral_copie": false,
+      "format": "xlsx",
+      "id": "dd3cf2d3-1c66-4fa2-af3a-66cdb32ca9ab",
+      "modifie_le": "2023-04-24T11:10:43.993000+00:00",
+      "taille_octets_declaree": 38784,
+      "titre": "referentiels-csp.xlsx",
+      "url": "https://static.data.gouv.fr/resources/les-offres-diffusees-sur-la-place-de-lemploi-public/20220920-093438/referentiels-pep.xlsx"
+    },
+    {
+      "fichier_integral_copie": false,
+      "format": "csv",
+      "id": "e215cdb4-4995-4420-9650-8490a79f71df",
+      "modifie_le": "2024-02-20T14:33:46.461000+00:00",
+      "taille_octets_declaree": 167427099,
+      "titre": "offres-datagouv-20231224.csv",
+      "url": "https://static.data.gouv.fr/resources/les-offres-diffusees-sur-choisir-le-service-public/20240220-143330/offres-datagouv-20231224.csv"
+    },
+    {
+      "fichier_integral_copie": false,
+      "format": "csv",
+      "id": "f3028dbd-6e48-40ba-b79b-0995b92d3196",
+      "modifie_le": "2022-12-28T09:51:33.024000+00:00",
+      "taille_octets_declaree": 141408675,
+      "titre": "offres-datagouv-20221225.csv",
+      "url": "https://static.data.gouv.fr/resources/les-offres-diffusees-sur-la-place-de-lemploi-public/20221228-095125/offres-datagouv-20221225.csv"
+    }
+  ],
+  "version": "ressources-emplois-publics-v1"
+}
