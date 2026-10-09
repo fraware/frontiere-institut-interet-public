@@ -1,0 +1,19 @@
+{
+  "controle_le": "2026-10-09T18:24:54+00:00",
+  "cycles_acheves": 0,
+  "derniere_execution_est_un_tour_complet": false,
+  "derniere_page_traitee": 22,
+  "erreurs": [
+    {
+      "motif": "ErreurCollecte",
+      "page": 23
+    }
+  ],
+  "exhaustivite_du_web": false,
+  "fichiers_bruts_copies": 0,
+  "nombre_total_jeux_declare_par_catalogue": 74540,
+  "notices_relevees_cette_execution": 1100,
+  "page_suivante": 23,
+  "pages_examinees_cette_execution": 22,
+  "version": "balayage-national-v1"
+}
