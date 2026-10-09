@@ -297,13 +297,22 @@ def api_offres_emplois(terme: str = "", page: int = 1, limite: int = 30) -> dict
     debut = (page - 1) * limite
     notices = []
     compteur = 0
-    for shard in range(16):
-        chemin = racine / "offres_postes" / f"lot_{shard:02x}.jsonl"
+    noms = [f"lot_{shard:02x}.jsonl" for shard in range(16)]
+    empreintes = metadonnees.get("empreintes_partitions")
+    if empreintes is not None and (not isinstance(empreintes, dict)
+                                  or set(empreintes) != set(noms)):
+        raise HTTPException(503, "Manifeste d'intégrité des offres incorrect.")
+    for nom in noms:
+        chemin = racine / "offres_postes" / nom
         if not chemin.is_file():
+            if metadonnees.get("offres_distinctes", 0):
+                raise HTTPException(503, "Partition des offres publiques manquante.")
             continue
+        empreinte = hashlib.sha256()
         try:
-            with chemin.open("r", encoding="utf-8") as flux:
+            with chemin.open("rb") as flux:
                 for ligne in flux:
+                    empreinte.update(ligne)
                     if not ligne.strip():
                         continue
                     item = json.loads(ligne)
@@ -318,6 +327,11 @@ def api_offres_emplois(terme: str = "", page: int = 1, limite: int = 30) -> dict
                     compteur += 1
         except (OSError, UnicodeError, ValueError) as e:
             raise HTTPException(503, "Partition des emplois publics illisible.") from e
+        if empreintes is not None and empreinte.hexdigest() != empreintes[nom]:
+            raise HTTPException(503, "Empreinte des offres publiques incohérente.")
+    if not recherche and metadonnees.get("offres_distinctes") is not None:
+        if compteur != metadonnees["offres_distinctes"]:
+            raise HTTPException(503, "Nombre d'offres incohérent avec le manifeste.")
     return {
         "version": "emplois-publics-extraits-v1",
         "total": compteur,
