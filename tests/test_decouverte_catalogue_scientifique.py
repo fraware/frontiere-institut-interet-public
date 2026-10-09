@@ -70,3 +70,31 @@ def test_erreur_conserve_les_anciennes_notices():
 def test_identifiant_ou_notice_incorrecte_refusee():
     assert notice(fiche("../../autre")) is None
     assert notice({"dataset": {"dataset_id": "okay"}})["id"] == "okay"
+
+
+
+def test_echec_total_affiche_la_cause_sans_modifier_les_notices(monkeypatch, tmp_path, capsys):
+    import sys
+    import scripts.decouvrir_catalogue_scientifique as col
+
+    sortie = tmp_path / "catalogue_mesr.json"
+    etat = tmp_path / "catalogue_mesr_etat.json"
+    sortie.write_text('{"notices":[{"id":"ancienne-notice"}]}', encoding="utf-8")
+    avant = sortie.read_bytes()
+
+    monkeypatch.setattr(col, "SORTIE", sortie)
+    monkeypatch.setattr(col, "ETAT", etat)
+    monkeypatch.setattr(
+        col, "executer",
+        lambda ancien: (
+            ancien,
+            {"pages_reussies": 0, "erreurs": [{"page": 1, "motif": "HTTP_403"}]},
+        ),
+    )
+    monkeypatch.setattr(sys, "argv", ["decouvrir_catalogue_scientifique.py"])
+    with pytest.raises(SystemExit) as e:
+        col.main()
+    assert e.value.code == 1
+    assert "HTTP_403" in capsys.readouterr().err
+    assert sortie.read_bytes() == avant
+    assert not etat.exists()
