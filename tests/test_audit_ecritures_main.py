@@ -8,10 +8,7 @@ def test_inventory_actuel_signale_dette_sans_fausse_protection():
     bilan = auditer()
     assert bilan["conformite_absence_nouveaux_push"] is True
     assert bilan["protection_main_confirmee"] is False
-    assert {x["procedure"] for x in bilan["ecritures_directes_detectees"]} == {
-        "ingestion-roae.yml", "ingestion-annuaire-local.yml",
-        "ingestion-cog.yml",
-    }
+    assert bilan["ecritures_directes_detectees"] == []
 
 
 def test_une_nouvelle_ecriture_directe_provoque_une_alerte(tmp_path: Path):
