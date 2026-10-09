@@ -1,21 +1,9 @@
 name: Ingestion du Code officiel géographique
 
+# Contrôle en lecture seule des modifications proposées.
+# Les trois collectes réelles sont traitées ensemble dans
+# preparer-proposition-referentiel.yml.
 on:
-  schedule:
-    - cron: "19 6 * * 1"
-  workflow_run:
-    workflows: ["Ingestion de l'annuaire local"]
-    types: [completed]
-    branches: [main]
-  push:
-    branches: [main]
-    paths:
-      - "scripts/ingerer_cog.py"
-      - "scripts/verifier_variation_referentiel.py"
-      - "scripts/actualiser_resume_referentiel.py"
-      - "institutionnel/schema_territoire_v1.json"
-      - "institutionnel/schema_relation_territoriale_v1.json"
-      - ".github/workflows/ingestion-cog.yml"
   pull_request:
     branches: [main]
     paths:
@@ -30,18 +18,17 @@ on:
       - "institutionnel/schema_relation_territoriale_v1.json"
       - "docs/INGESTION_COG_V1.md"
       - ".github/workflows/ingestion-cog.yml"
-  workflow_dispatch:
+      - ".github/workflows/preparer-proposition-referentiel.yml"
 
 permissions:
   contents: read
 
 concurrency:
-  group: ${{ github.event_name == 'pull_request' && format('referentiel-cog-pr-{0}', github.event.pull_request.number) || 'referentiel-institutionnel-main' }}
-  cancel-in-progress: false
+  group: ${{ format('validation-referentiel-pr-{0}', github.event.pull_request.number) }}
+  cancel-in-progress: true
 
 jobs:
   verification-proposition:
-    if: github.event_name == 'pull_request'
     name: Vérifier les transformations des territoires de référence en lecture seule
     runs-on: ubuntu-latest
     timeout-minutes: 12
@@ -65,118 +52,3 @@ jobs:
       - name: Contrôler les transformations et les données d'essai
         run: python -m pytest -q tests/test_ingestion_cog.py tests/test_variation_referentiel.py tests/test_resume_referentiel.py tests/test_snapshot_cog.py
 
-  ingestion:
-    if: github.event_name != 'pull_request' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
-    permissions:
-      contents: write
-    name: Construire le référentiel territorial COG
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-
-    steps:
-      - name: Récupérer le dépôt
-        uses: actions/checkout@v7
-        with:
-          ref: main
-          persist-credentials: false
-          fetch-depth: 0
-
-      - name: Installer Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: "3.12"
-
-      - name: Installer les outils de test
-        run: python -m pip install "pytest>=8,<10"
-
-      - name: Vérifier l'importeur et les contrôles
-        run: python -m pytest -q tests/test_ingestion_cog.py tests/test_variation_referentiel.py tests/test_resume_referentiel.py
-
-      - name: Ingérer le millésime COG courant
-        run: python scripts/ingerer_cog.py
-
-      - name: Vérifier le snapshot territorial
-        run: python -m pytest -q tests/test_snapshot_cog.py
-
-      - name: Vérifier les invariants essentiels
-        shell: bash
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          stats = json.loads(Path("institutionnel/statistiques_cog.json").read_text(encoding="utf-8"))
-          resolution = json.loads(Path("institutionnel/resolution_annuaire_cog.json").read_text(encoding="utf-8"))
-          manifeste = json.loads(Path("institutionnel/instantanes/cog_manifest.json").read_text(encoding="utf-8"))
-
-          assert 30_000 <= stats["types_territoires"].get("COM", 0) <= 40_000
-          assert stats["types_territoires"].get("DEP", 0) >= 100
-          assert stats["types_territoires"].get("REG", 0) >= 18
-          assert stats["types_territoires"].get("CTCD", 0) == 0
-          assert stats["collectivites_competence_departementale_source"] >= 100
-          assert stats["nombre_territoires"] >= 35_000
-          assert stats["nombre_relations"] > stats["nombre_territoires"]
-          assert resolution["references_codes_insee"] > 80_000
-          assert resolution["taux_resolution"] >= 0.95
-          assert (
-              resolution["absentes"]
-              == resolution["absentes_courantes_expliquees_historiquement"]
-              + resolution["absentes_sans_trace_historique"]
-          )
-          assert resolution["ambigues"] == 0
-          assert resolution["absentes_sans_trace_historique"] == 0
-          assert resolution["taux_references_expliquees"] == 1.0
-          assert manifeste["empreinte_dependance_annuaire"]
-          print(json.dumps({
-              "territoires": stats["nombre_territoires"],
-              "relations": stats["nombre_relations"],
-              "types": stats["types_territoires"],
-              "anomalies": stats["anomalies_relations"],
-              "resolution_annuaire": stats["resolution_annuaire"],
-              "exemples_codes_absents": resolution.get("exemples_absents", [])[:20],
-              "exemples_codes_historiques": resolution.get("exemples_absents_historiques", [])[:20],
-              "exemples_codes_inconnus": resolution.get("exemples_absents_inconnus", [])[:20],
-              "exemples_codes_ambigus": resolution.get("exemples_ambigus", [])[:20],
-              "fichiers_non_classes": [
-                  {"nom": f.get("nom"), "colonnes": f.get("colonnes", [])}
-                  for f in manifeste.get("fichiers_source", [])
-                  if f.get("classe_detectee") is None and str(f.get("nom", "")).lower().endswith(".csv")
-              ],
-              "sha256_zip": manifeste["sha256_zip"],
-          }, ensure_ascii=False))
-          PY
-
-      - name: Vérifier l'amplitude du changement
-        run: python scripts/verifier_variation_referentiel.py --source cog
-
-      - name: Synchroniser la synthèse documentaire
-        run: |
-          python scripts/actualiser_resume_referentiel.py
-          python scripts/actualiser_resume_referentiel.py --verifier
-
-      - name: Enregistrer le nouvel état
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        shell: bash
-        run: |
-          git add \
-            institutionnel/territoires/cog \
-            institutionnel/relations/territoriales/cog \
-            institutionnel/instantanes/cog_manifest.json \
-            institutionnel/statistiques_cog.json \
-            institutionnel/anomalies_cog.json \
-            institutionnel/resolution_annuaire_cog.json \
-            README.md \
-            institutionnel/README.md \
-            docs/INGESTION_COG_V1.md
-
-          if git diff --cached --quiet; then
-            echo "Le référentiel COG et sa synthèse sont déjà à jour."
-            exit 0
-          fi
-
-          git config user.name "frontiere-referentiel"
-          git config user.email "frontiere-referentiel@users.noreply.github.com"
-          git commit -m "Territoires COG — actualiser le référentiel géographique"
-          gh auth setup-git
-          git push origin HEAD:main
