@@ -385,13 +385,24 @@
       "sha256": "ef431ff848bda8ec74077f0100e3da1f376f2edc9ba136e5491ba04e240cf76e",
       "titre": "beauamp-08-10-2026.csv",
       "url": "https://static.data.gouv.fr/resources/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/20261009-061342/beauamp-08-10-2026.csv"
+    },
+    {
+      "chemin": "quotidiens/2026-10-09.csv",
+      "id": "22ae56a9-b2e4-4a84-af15-61fe75da5159",
+      "jour": "2026-10-09",
+      "modifie_le": "2026-10-10T06:14:24.191000+00:00",
+      "octets_archives": 268837,
+      "octets_declares": 268837,
+      "sha256": "e396eb7a28d75deaded28280ba0e83db60df52cbf367020f93fc5ab285ffed29",
+      "titre": "beauamp-09-10-2026.csv",
+      "url": "https://static.data.gouv.fr/resources/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics/20261010-061423/beauamp-09-10-2026.csv"
     }
   ],
   "fichiers_en_echec": [],
   "licence": "cc-by-sa",
   "mention": "Données dérivées, estimations et rapprochements à confirmer auprès du BOAMP.",
-  "nombre_fichiers": 35,
-  "nombre_jours_anterieurs_conserves": 6,
+  "nombre_fichiers": 36,
+  "nombre_jours_anterieurs_conserves": 7,
   "producteur": "Adrien Deschamps",
   "source": "https://www.data.gouv.fr/datasets/base-etendue-amelioree-et-unifiee-des-annonces-des-marches-publics",
   "version": "beauamp-quotidiens-v1"
