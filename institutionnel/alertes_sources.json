@@ -1,17 +1,24 @@
 {
   "alertes": [
     {
-      "ancienne_empreinte": "afe5a2673b26d1ca9ef57c0dbef350509d085528ae836b9886b411717927b286",
+      "ancienne_empreinte": "431c646f3b5bb80f6883ed009bb40fe027bfb335d505286ffaf231366b6d526c",
       "criticite": "critique",
-      "nouvelle_empreinte": "ca6a3a542b37a200d01f39e104330c18f92cffa7034797c8341e479099a8c82b",
-      "source_id": "dila_roae",
+      "nouvelle_empreinte": "7b6afc6440f91acee6e7ae27be6e8755c564df13cca08cee40348cd81710808a",
+      "source_id": "dila_annuaire_local",
       "type": "SOURCE_MODIFIEE"
     },
     {
-      "ancienne_empreinte": "9d8f16ddd80406d41e5b5f6518a9ead50c2f3855a0f50f3bc8ab829b39efaa55",
+      "ancienne_empreinte": "997f3c726e85c9a4c9c64dfb9dd789180b5019b0b22a705a756e0a7b1b3efe39",
       "criticite": "critique",
-      "nouvelle_empreinte": "997f3c726e85c9a4c9c64dfb9dd789180b5019b0b22a705a756e0a7b1b3efe39",
+      "nouvelle_empreinte": "e67f8a1f9195163f613297bf362a89de0e72f1ba6657b1f1863a872cb71c3f7d",
       "source_id": "dila_competence_geographique",
+      "type": "SOURCE_MODIFIEE"
+    },
+    {
+      "ancienne_empreinte": "bc82b6a567fa52011c379f2fdbb05931dafa6e635ebe5ddda7f6c21092dfc4cf",
+      "criticite": "critique",
+      "nouvelle_empreinte": "5187f243c8e5d1c7e3ecc25ab03e50aa144d90176333808be276c2eca6de53e4",
+      "source_id": "dgcl_banatic",
       "type": "SOURCE_MODIFIEE"
     },
     {
@@ -29,7 +36,7 @@
     {
       "criticite": "critique",
       "detail": {
-        "age_jours": 7,
+        "age_jours": 8,
         "seuil_jours": 3,
         "statut": "A_REVOIR"
       },
@@ -37,30 +44,37 @@
       "type": "FRAICHEUR_A_REVOIR"
     },
     {
-      "ancienne_empreinte": "98ee73a68cd90c40388b5c6640d9f5a27859577e9e46ab96dc0eba073870c838",
+      "ancienne_empreinte": "ca10bba4e2bc45ee1ff8e638adaf1ad9b5e1d3a4ed81c02bff4417738acdbb5b",
       "criticite": "haute",
-      "nouvelle_empreinte": "ca10bba4e2bc45ee1ff8e638adaf1ad9b5e1d3a4ed81c02bff4417738acdbb5b",
+      "nouvelle_empreinte": "9754af63e8270a5195827aaec27f846f26248250e2e41249e5281b24db74ad70",
       "source_id": "mesr_etablissements",
       "type": "SOURCE_MODIFIEE"
     },
     {
-      "ancienne_empreinte": "31593b124bb1a1573c37f258ef7e7d1f1dd41fa36890ae9776082d9d055d128b",
+      "ancienne_empreinte": "4f4b6aad5a43b7983cdb59779a3e43450a46805efba3472ae68422650a28f8b2",
       "criticite": "haute",
-      "nouvelle_empreinte": "4f4b6aad5a43b7983cdb59779a3e43450a46805efba3472ae68422650a28f8b2",
+      "nouvelle_empreinte": "1f4877d3bdc6d0827f51ab8af7ad1c87ed59ef4b67a0bad5b70765e95346031d",
       "source_id": "mesr_rnsr",
       "type": "SOURCE_MODIFIEE"
     },
     {
-      "ancienne_empreinte": "6e710bb6d9e8a6ef0d6e9020c515d2b90efb58e87068db7d43270c46a368f35d",
+      "ancienne_empreinte": "8f3b4ca35d5eb6710b11bfdb05c5fcfc449c1bb055616c4f7cec016238a73f1e",
       "criticite": "haute",
-      "nouvelle_empreinte": "561c495cdeef6a61d1630b2ba0cc2d0cdb11fb4c2762a16e5257a3bbd357f975",
+      "nouvelle_empreinte": "35eb6a041a65b7483729d8d58b40e769dd799883ddf8c45bedfeceb080c6efdd",
+      "source_id": "mesr_rnsr_structures_actives",
+      "type": "SOURCE_MODIFIEE"
+    },
+    {
+      "ancienne_empreinte": "561c495cdeef6a61d1630b2ba0cc2d0cdb11fb4c2762a16e5257a3bbd357f975",
+      "criticite": "haute",
+      "nouvelle_empreinte": "028b66f3a2d46aa6c11ef6e1eca2a6545bfc35708318535afe1d9f586e4c53f6",
       "source_id": "ans_finess_structures",
       "type": "SOURCE_MODIFIEE"
     },
     {
-      "ancienne_empreinte": "8c0552a962dd1c3e2e8bfdc623257cbd4b268e597ca9fa52e6d58906303d4080",
+      "ancienne_empreinte": "d526c2b692419526369c27fa04ec8e7209591e700edc5899095f94dfca8df720",
       "criticite": "haute",
-      "nouvelle_empreinte": "d526c2b692419526369c27fa04ec8e7209591e700edc5899095f94dfca8df720",
+      "nouvelle_empreinte": "5e25dff3efae416ffe965afc3fb56157834b144ba7b9ecc8794800eff812e5d2",
       "source_id": "ans_finess_activites",
       "type": "SOURCE_MODIFIEE"
     },
@@ -71,6 +85,6 @@
       "type": "SOURCE_INDISPONIBLE"
     }
   ],
-  "observe_le": "2026-10-09T11:54:14+00:00",
+  "observe_le": "2026-10-10T11:11:21+00:00",
   "version": "1"
 }
