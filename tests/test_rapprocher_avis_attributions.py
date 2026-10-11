@@ -98,3 +98,26 @@ def test_manifest_corrompu_ne_remplace_pas_la_sortie(tmp_path):
     with pytest.raises(BilanInvalide, match="Empreinte"):
         rapprocher(index, preuve, source)
     assert sortie.read_bytes() == original
+
+
+def test_dates_divergentes_sur_un_meme_contrat_sont_exclues(tmp_path):
+    index, preuve, source, fichier = exemple(tmp_path)
+    with fichier.open("r", encoding="utf-8-sig", newline="") as handle:
+        lecteur = csv.DictReader(handle, delimiter=";")
+        colonnes = lecteur.fieldnames
+        lignes = list(lecteur)
+    lignes[1]["date_avis_attribution"] = "2026-09-07"
+    with fichier.open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=colonnes, delimiter=";")
+        writer.writeheader()
+        writer.writerows(lignes)
+    chemin = source / "manifest.json"
+    manifeste = json.loads(chemin.read_text(encoding="utf-8"))
+    manifeste["fichiers"][0]["octets_archives"] = fichier.stat().st_size
+    manifeste["fichiers"][0]["sha256"] = hashlib.sha256(fichier.read_bytes()).hexdigest()
+    chemin.write_text(json.dumps(manifeste), encoding="utf-8")
+    rapport = rapprocher(index, preuve, source)
+    assert rapport["contrats_avec_dates_publication_divergentes"] == 1
+    assert rapport["dates_publication_par_contrat_distinct_non_ambigues"] == 0
+    assert rapport["jours_ecart_contrats_distincts"]["mediane"] is None
+    assert rapport["ecarts_publication_contrat_attribution_positifs_observes"] == 2
