@@ -16,7 +16,7 @@ import re
 import tempfile
 
 VERSION = "audit-concentration-preuves-v1"
-VERSION_CROISEMENT = "croisement-avis-capacites-v2"
+VERSION_CROISEMENT = "croisement-avis-capacites-v3"
 SHA_RE = re.compile(r"[a-f0-9]{64}")
 NIVEAUX = ("capacite_publiee", "mission_publiee",
            "domaine_scientifique_publie", "nom_seul")
