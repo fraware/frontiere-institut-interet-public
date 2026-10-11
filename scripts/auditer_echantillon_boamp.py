@@ -111,7 +111,9 @@ def verifier_rapports(index: Path, preuve: Path, echantillon: Path) -> dict:
             or source.get("revision_depot") != resultat.get("revision_depot_source")
             or resultat.get("version") != VERSION_TIRAGE
             or resultat.get("stratification_categorie_marche_effective") is not False
-            and resultat.get("nombre_categories_marche_renseignees") == 0):
+            or resultat.get("stratification_effective") != [
+                "mois_civil_complet", "etat_documentaire", "domaine_lexical",
+            ]):
         raise ControleInvalide("Provenance ou version du tirage incohérente.")
     quota = resultat.get("quota_par_strate")
     semence = resultat.get("semence")
