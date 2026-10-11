@@ -35,6 +35,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [Fiche de mission documentaire](../evaluation/FICHE_MISSION_RELECTURE_V1.md) | Mandat attendu et texte de prise de contact |
 | [../evaluation/CAS_RETROSPECTIFS_DEVELOPPEMENT.md](../evaluation/CAS_RETROSPECTIFS_DEVELOPPEMENT.md) | Douze cas historiques structurés pour le développement |
 | [Premiers enseignements empiriques](PREMIERS_ENSEIGNEMENTS_EMPIRIQUES.md) | Première synthèse des mécanismes observés |
+| [Échantillonnage documentaire BOAMP](PLAN_ECHANTILLONNAGE_BOAMP_V1.md) | Sélection exploratoire par mois, catégorie et domaine avec avis témoins |
 | [Analyse actuelle des délais](ANALYSE_DELAIS_V10.md) | État actuel des chronologies et des délais exploitables |
 
 ## Référentiel institutionnel
