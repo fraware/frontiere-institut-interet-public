@@ -15,6 +15,7 @@ on:
       - "institutionnel/marches_attribues/manifest.json"
       - "institutionnel/marches_attribues/quotidiens/**"
       - "scripts/croiser_pistes_capacites.py"
+      - "scripts/evaluer_rappel_textuel.py"
       - "scripts/auditer_concentration_croisements.py"
       - "scripts/rechercher_capacites_institutionnelles.py"
       - "institutionnel/entites/**"
@@ -203,6 +204,20 @@ jobs:
             --sortie "$DOSSIER/rapprochements-attributions.json"
           python -m pytest -q tests/test_rapprocher_avis_attributions.py
 
+      - name: Évaluer le rappel des deux recherches sur les expressions exactes
+        shell: bash
+        run: |
+          set -euo pipefail
+          DOSSIER="$RUNNER_TEMP/frontiere-boamp"
+          python scripts/evaluer_rappel_textuel.py \
+            --index-boamp "$DOSSIER/index-avis-boamp.sqlite3" \
+            --preuve-index "$DOSSIER/preuve-index.json" \
+            --bilan "$DOSSIER/bilan-documentaire.json" \
+            --index-institutions "$DOSSIER/index-capacites-publiques.sqlite3" \
+            --entites institutionnel/entites \
+            --sortie "$DOSSIER/banc-rappel-textuel.json"
+          python -m pytest -q tests/test_evaluer_rappel_textuel.py
+
       - name: Publier l'index vérifié en artefact téléchargeable
         uses: actions/upload-artifact@v4
         with:
@@ -216,6 +231,7 @@ jobs:
             ${{ runner.temp }}/frontiere-boamp/rapprochements-attributions.json
             ${{ runner.temp }}/frontiere-boamp/echantillon-temporel-boamp.json
             ${{ runner.temp }}/frontiere-boamp/croisements-avis-capacites.json
+            ${{ runner.temp }}/frontiere-boamp/banc-rappel-textuel.json
             ${{ runner.temp }}/frontiere-boamp/bilan-capacites-publiques.json
             ${{ runner.temp }}/frontiere-boamp/verification-capacites-publiques.json
             ${{ runner.temp }}/frontiere-boamp/audit-concentration.json
