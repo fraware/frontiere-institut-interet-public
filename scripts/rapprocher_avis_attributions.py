@@ -162,6 +162,19 @@ def rapprocher(index, preuve, racine_beauamp):
                                 ecarts.append(delta)
                                 ecarts_par_contrat[identifiant].add(delta)
     ecarts.sort()
+    ecarts_par_identifiant = sorted(
+        next(iter(valeurs)) for valeurs in ecarts_par_contrat.values()
+        if len(valeurs) == 1
+    )
+    contrats_dates_divergentes = sum(
+        len(valeurs) > 1 for valeurs in ecarts_par_contrat.values()
+    )
+    exemples = []
+    for strate in sorted(exemples_par_jour_et_type):
+        for observation in sorted(exemples_par_jour_et_type[strate],
+                                  key=lambda item: item["_rang"]):
+            observation.pop("_rang")
+            exemples.append(observation)
     union = uniques["id_boamp_attribution"] | uniques["id_boamp_contrat"]
     return {
         "version": VERSION,
@@ -183,6 +196,21 @@ def rapprocher(index, preuve, racine_beauamp):
             champ: len(ensemble) for champ, ensemble in sorted(uniques.items())
         },
         "identifiants_boamp_distincts_apparies": len(union),
+        "lignes_jour_secondaire_hors_intervalle_boamp":
+            lignes_jour_secondaire_hors_fenetre,
+        "dates_publication_par_contrat_distinct_non_ambigues":
+            len(ecarts_par_identifiant),
+        "contrats_avec_dates_publication_divergentes":
+            contrats_dates_divergentes,
+        "jours_ecart_contrats_distincts": {
+            "minimum": ecarts_par_identifiant[0] if ecarts_par_identifiant else None,
+            "mediane": (
+                (ecarts_par_identifiant[(len(ecarts_par_identifiant)-1)//2]
+                 + ecarts_par_identifiant[len(ecarts_par_identifiant)//2]) / 2
+                if ecarts_par_identifiant else None
+            ),
+            "maximum": ecarts_par_identifiant[-1] if ecarts_par_identifiant else None,
+        },
         "ecarts_publication_contrat_attribution_positifs_observes": len(ecarts),
         "ecarts_publication_negatifs_ecartes": ecarts_negatifs,
         "jours_ecart_publication_positifs": {
@@ -191,7 +219,7 @@ def rapprocher(index, preuve, racine_beauamp):
             if ecarts else None,
             "maximum": ecarts[-1] if ecarts else None,
         },
-        "exemples_premiers_dans_les_fichiers": exemples,
+        "exemples_repartis_par_jour_et_type": exemples,
         "completude_des_attributions_etablie": False,
         "fichiers_secondaires_limites_a_leur_fenetre": True,
         "attribution_officielle_verifiee": False,
