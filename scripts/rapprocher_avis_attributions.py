@@ -40,3 +40,27 @@ def lire_identifiant(valeur):
     return texte if IDENTIFIANT.fullmatch(texte) else None
 
 
+def fichiers_beauamp(racine):
+    manifeste = json.loads((racine / "manifest.json").read_text(encoding="utf-8"))
+    if (manifeste.get("version") != VERSION_BEAUAMP
+            or manifeste.get("licence") != "cc-by-sa"
+            or len(manifeste.get("fichiers", [])) != manifeste.get("nombre_fichiers")):
+        raise BilanInvalide("Manifeste BeauAMP incorrect.")
+    uniques, resultat = set(), []
+    for fiche in manifeste["fichiers"]:
+        jour = fiche.get("jour")
+        if not isinstance(jour, str) or not JOUR.fullmatch(jour):
+            raise BilanInvalide("Date BeauAMP incorrecte.")
+        if date.fromisoformat(jour).isoformat() != jour:
+            raise BilanInvalide("Date BeauAMP non canonique.")
+        chemin_relatif = f"quotidiens/{jour}.csv"
+        if fiche.get("chemin") != chemin_relatif or jour in uniques:
+            raise BilanInvalide("Fichier BeauAMP dupliqué ou déplacé.")
+        uniques.add(jour)
+        chemin = racine / chemin_relatif
+        if not chemin.is_file() or chemin.is_symlink():
+            raise BilanInvalide("Fichier BeauAMP manquant.")
+        resultat.append((jour, chemin, fiche))
+    return sorted(resultat), manifeste
+
+
