@@ -82,6 +82,11 @@ def test_lots_et_identifiants_distincts(tmp_path):
         "minimum": 5, "mediane": 5.0, "maximum": 5,
     }
     assert r["attribution_officielle_verifiee"] is False
+    assert r["dates_publication_par_contrat_distinct_non_ambigues"] == 1
+    assert r["contrats_avec_dates_publication_divergentes"] == 0
+    assert r["jours_ecart_contrats_distincts"]["mediane"] == 5
+    assert r["lignes_jour_secondaire_hors_intervalle_boamp"] == 4
+    assert r["exemples_repartis_par_jour_et_type"]
 
 
 def test_manifest_corrompu_ne_remplace_pas_la_sortie(tmp_path):
