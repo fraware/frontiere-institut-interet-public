@@ -1,0 +1,36 @@
+name: Diagnostic des champs techniques BOAMP
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/auditer_types_champs_boamp.py"
+      - ".github/workflows/audit-champs-boamp.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  types:
+    name: Vérifier le format des catégories BOAMP
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Interroger les seuls champs de classification officiels
+        run: |
+          python scripts/auditer_types_champs_boamp.py | tee "$RUNNER_TEMP/schema-boamp.json"
+      - name: Publier les résultats de diagnostic
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostic-champs-boamp
+          path: ${{ runner.temp }}/schema-boamp.json
+          retention-days: 14
+          if-no-files-found: error
