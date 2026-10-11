@@ -71,3 +71,60 @@ def fichiers_beauamp(racine):
     return sorted(resultat), manifeste
 
 
+def rapprocher(index, preuve, racine_beauamp):
+    bilan = produire(index, preuve)
+    fichiers, manifeste = fichiers_beauamp(racine_beauamp)
+    avis, ambigus = {}, set()
+    with closing(sqlite3.connect(f"file:{index.resolve().as_posix()}?mode=ro", uri=True)) as conn:
+        for jour, identifiant, objet, source in conn.execute(
+            "SELECT jour, identifiant, objet, archive_source FROM recherche"
+        ):
+            if identifiant in avis:
+                ambigus.add(identifiant)
+            avis[identifiant] = (jour, objet, source)
+    for identifiant in ambigus:
+        del avis[identifiant]
+    if len(avis) + len(ambigus) > bilan["nombre_avis"]:
+        raise BilanInvalide("Population BOAMP incohérente.")
+    rencontres = Counter()
+    uniques = {"id_boamp_attribution": set(), "id_boamp_contrat": set()}
+    exemples = []
+    total_lignes, vides, malformes, ecarts_negatifs = 0, 0, 0, 0
+    ecarts = []
+    for jour_fichier, chemin, fiche in fichiers:
+        with chemin.open("r", encoding="utf-8-sig", newline="") as handle:
+            lecteur = csv.DictReader(handle, delimiter=";")
+            if not lecteur.fieldnames or not set(COLONNES) <= set(lecteur.fieldnames):
+                raise BilanInvalide("Colonnes BeauAMP obligatoires absentes.")
+            for ligne in lecteur:
+                total_lignes += 1
+                ids = [
+                    (champ, lire_identifiant(ligne.get(champ)))
+                    for champ in ("id_boamp_attribution", "id_boamp_contrat")
+                ]
+                if not any(ligne.get(champ) for champ, _ in ids):
+                    vides += 1
+                malformes += sum(bool(ligne.get(champ)) and valeur is None
+                                 for champ, valeur in ids)
+                for champ, identifiant in ids:
+                    if identifiant is None or identifiant not in avis:
+                        continue
+                    rencontres[champ] += 1
+                    uniques[champ].add(identifiant)
+                    jour_boamp, objet_boamp, archive_boamp = avis[identifiant]
+                    if len(exemples) < 60:
+                        exemples.append({
+                            "identifiant_boamp": identifiant,
+                            "nature_lien_exact": champ,
+                            "jour_parution_boamp": jour_boamp,
+                            "archive_boamp": archive_boamp,
+                            "objet_boamp": objet_boamp[:350],
+                            "jour_fichier_beauamp": jour_fichier,
+                            "archive_beauamp": fiche["chemin"],
+                            "identifiant_attribution": ligne.get("id_boamp_attribution"),
+                            "identifiant_contrat": ligne.get("id_boamp_contrat"),
+                            "date_attribution_declaree": ligne.get("date_avis_attribution"),
+                            "objet_beauamp": (ligne.get("objet") or "")[:350],
+                            "statut": "rapprochement_documentaire_indicatif",
+                            "validation_du_marche": False,
+                        })
