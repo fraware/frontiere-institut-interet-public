@@ -146,3 +146,47 @@ def comparer(index_boamp, preuve, bilan, index_institutions, entites):
     }
 
 
+def ecrire(resultat, cible):
+    cible.parent.mkdir(parents=True, exist_ok=True)
+    fd, nom = tempfile.mkstemp(prefix=".rappel-textuel-", suffix=".json",
+                               dir=cible.parent)
+    os.close(fd)
+    temporaire = Path(nom)
+    try:
+        temporaire.write_text(
+            json.dumps(resultat, ensure_ascii=False, sort_keys=True, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        os.replace(temporaire, cible)
+    finally:
+        temporaire.unlink(missing_ok=True)
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--index-boamp", type=Path, required=True)
+    p.add_argument("--preuve-index", type=Path, required=True)
+    p.add_argument("--bilan", type=Path, required=True)
+    p.add_argument("--index-institutions", type=Path, required=True)
+    p.add_argument("--entites", type=Path, required=True)
+    p.add_argument("--sortie", type=Path, required=True)
+    a = p.parse_args()
+    try:
+        resultat = comparer(a.index_boamp, a.preuve_index, a.bilan,
+                            a.index_institutions, a.entites)
+        ecrire(resultat, a.sortie)
+        print(json.dumps({
+            "version": VERSION,
+            "expressions": resultat["nombre_expressions_distinctes"],
+            "rappel_ancien": resultat[
+                "rappel_global_ancien_sur_occurrences_textuelles"],
+            "rappel_nouveau": resultat[
+                "rappel_global_nouveau_sur_occurrences_textuelles"],
+            "sortie": str(a.sortie),
+        }, ensure_ascii=False))
+    except (OSError, ValueError, sqlite3.Error) as erreur:
+        p.exit(1, f"Comparaison textuelle interrompue : {erreur}\n")
+
+
+if __name__ == "__main__":
+    main()
