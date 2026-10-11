@@ -10,6 +10,10 @@ on:
       - "tests/test_collecter_notices_pilotes_boamp.py"
       - "scripts/qualifier_captures_notices_boamp.py"
       - "tests/test_qualifier_captures_notices_boamp.py"
+      - "scripts/reconstituer_chronologies_pilotes_boamp.py"
+      - "tests/test_reconstituer_chronologies_pilotes_boamp.py"
+      - "scripts/collecter_avis_lies_boamp.py"
+      - "tests/test_collecter_avis_lies_boamp.py"
       - ".github/workflows/captures-notices-pilotes.yml"
   schedule:
     - cron: "19 4 * * 1"
@@ -46,7 +50,9 @@ jobs:
           python -m pip install "pytest>=8,<10"
           python -m pytest -q \
             tests/test_collecter_notices_pilotes_boamp.py \
-            tests/test_qualifier_captures_notices_boamp.py
+            tests/test_qualifier_captures_notices_boamp.py \
+            tests/test_reconstituer_chronologies_pilotes_boamp.py \
+            tests/test_collecter_avis_lies_boamp.py
 
       - name: Capturer les six réponses auprès de la source officielle
         shell: bash
@@ -81,6 +87,26 @@ jobs:
             --registre evaluation/cas_pilotes_boamp_v1.json \
             --sortie "$RUNNER_TEMP/qualification-nature-avis.json"
 
+      - name: Reconstituer les événements de contrat et les résultats par lot
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/reconstituer_chronologies_pilotes_boamp.py \
+            --captures "$RUNNER_TEMP/captures-notices-pilotes" \
+            --registre evaluation/cas_pilotes_boamp_v1.json \
+            --sortie "$RUNNER_TEMP/chronologies-pilotes.json"
+
+      - name: Capturer les avis explicitement antérieurs aux rectificatifs
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/collecter_avis_lies_boamp.py \
+            --principaux "$RUNNER_TEMP/captures-notices-pilotes" \
+            --sortie "$RUNNER_TEMP/avis-anterieurs"
+          python scripts/collecter_avis_lies_boamp.py \
+            --principaux "$RUNNER_TEMP/captures-notices-pilotes" \
+            --verifier "$RUNNER_TEMP/avis-anterieurs"
+
       - name: Conserver les réponses exactes et leurs empreintes
         uses: actions/upload-artifact@v4
         with:
@@ -88,5 +114,7 @@ jobs:
           path: |
             ${{ runner.temp }}/captures-notices-pilotes/
             ${{ runner.temp }}/qualification-nature-avis.json
+            ${{ runner.temp }}/chronologies-pilotes.json
+            ${{ runner.temp }}/avis-anterieurs/
           retention-days: 30
           if-no-files-found: error
