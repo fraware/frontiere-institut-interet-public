@@ -8,6 +8,7 @@ on:
       - "institutionnel/besoins_publics/revisions_boamp/**"
       - "scripts/verifier_revisions_boamp.py"
       - "scripts/rechercher_historique_boamp.py"
+      - "scripts/analyser_historique_boamp.py"
       - ".github/workflows/index-boamp-historique.yml"
   schedule:
     - cron: "37 2 * * *"
@@ -111,6 +112,14 @@ jobs:
           print(json.dumps(preuve, ensure_ascii=False))
           PY
 
+      - name: Produire un bilan documentaire descriptif lié à l'index
+        shell: bash
+        run: |
+          set -euo pipefail
+          DOSSIER="$RUNNER_TEMP/frontiere-boamp"
+          python scripts/analyser_historique_boamp.py             --index "$DOSSIER/index-avis-boamp.sqlite3"             --preuve-index "$DOSSIER/preuve-index.json"             --sortie "$DOSSIER/bilan-documentaire.json"
+          python -m pytest -q tests/test_analyser_historique_boamp.py
+
       - name: Publier l'index vérifié en artefact téléchargeable
         uses: actions/upload-artifact@v4
         with:
@@ -119,5 +128,6 @@ jobs:
             ${{ runner.temp }}/frontiere-boamp/index-avis-boamp.sqlite3
             ${{ runner.temp }}/frontiere-boamp/bilan-index.json
             ${{ runner.temp }}/frontiere-boamp/preuve-index.json
+            ${{ runner.temp }}/frontiere-boamp/bilan-documentaire.json
           retention-days: 14
           if-no-files-found: error
