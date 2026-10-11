@@ -1,0 +1,74 @@
+{
+  "version": "cas-pilotes-boamp-v1",
+  "reference": "docs/SIX_CAS_PILOTES_BOAMP_2026-10.md",
+  "cas": [
+    {
+      "identifiant": "26-77392",
+      "date_attendue": "2026-08-03",
+      "theme": "evaluation_ia",
+      "hypotheses": [
+        "expertise_specialisee",
+        "independance_de_l_evaluation",
+        "prestation_ponctuelle",
+        "capacite_publique_difficile_a_mobiliser"
+      ]
+    },
+    {
+      "identifiant": "26-81972",
+      "date_attendue": "2026-08-21",
+      "theme": "robotique_ngs",
+      "hypotheses": [
+        "achat_equipement",
+        "integration_instrument",
+        "exploitation_technique",
+        "competence_specialisee"
+      ]
+    },
+    {
+      "identifiant": "26-74896",
+      "date_attendue": "2026-07-28",
+      "theme": "calcul_intensif",
+      "hypotheses": [
+        "infrastructure_renouvelee",
+        "capacite_de_calcul",
+        "contrainte_d_hebergement",
+        "exploitation_scientifique"
+      ]
+    },
+    {
+      "identifiant": "26-30147",
+      "date_attendue": "2026-03-25",
+      "theme": "teledetection_radar",
+      "hypotheses": [
+        "instrument_externe",
+        "acces_aux_donnees",
+        "analyse_specialisee",
+        "collaboration_existante"
+      ]
+    },
+    {
+      "identifiant": "26-83870",
+      "date_attendue": "2026-08-29",
+      "theme": "cybersecurite_metro",
+      "hypotheses": [
+        "audit_independant",
+        "expertise_industrielle",
+        "prestation_courante",
+        "competence_difficile_a_mobiliser"
+      ]
+    },
+    {
+      "identifiant": "25-71164",
+      "date_attendue": "2025-06-26",
+      "theme": "geomatique_proximites",
+      "hypotheses": [
+        "prestation_ponctuelle",
+        "capacite_geographique_publique",
+        "donnees_ou_methode_specialisee",
+        "partenariat_existant"
+      ]
+    }
+  ],
+  "verification_interpretative_effectuee": false,
+  "completude_des_attributions_etablie": false
+}
