@@ -121,3 +121,83 @@ def test_dates_divergentes_sur_un_meme_contrat_sont_exclues(tmp_path):
     assert rapport["dates_publication_par_contrat_distinct_non_ambigues"] == 0
     assert rapport["jours_ecart_contrats_distincts"]["mediane"] is None
     assert rapport["ecarts_publication_contrat_attribution_positifs_observes"] == 2
+
+
+def registre_pilotes(tmp_path):
+    chemin = tmp_path / "pilotes.json"
+    chemin.write_text(json.dumps({
+        "version": "cas-pilotes-boamp-v1",
+        "verification_interpretative_effectuee": False,
+        "cas": [
+            {"identifiant": "26-100", "date_attendue": "2026-09-01",
+             "theme": "geomatique", "hypotheses": ["prestation_specialisee"]},
+            {"identifiant": "26-101", "date_attendue": "2026-09-01",
+             "theme": "calcul_intensif", "hypotheses": ["materiel", "expertise"]},
+        ],
+    }), encoding="utf-8")
+    return chemin
+
+
+def test_pilotes_distinguent_identifiants_lots_et_etat_non_valide(tmp_path):
+    from scripts.preparer_dossiers_pilotes_boamp import produire_dossiers
+    index, preuve, beauamp, _ = exemple(tmp_path)
+    registre = registre_pilotes(tmp_path)
+    r = produire_dossiers(index, preuve, beauamp, registre)
+    assert r["cas_enregistres"] == 2
+    assert r["cas_retrouves_par_identifiant_unique"] == 2
+    assert r["cas_avec_au_moins_un_identifiant_secondaire"] == 2
+    assert r["validite_du_besoin_suppose_etablie"] is False
+    a, b = r["cas"]
+    assert a["identifiant_avis"] == "26-100"
+    assert a["effectifs_lignes_par_identifiant_secondaire"] == {
+        "id_boamp_attribution": 0, "id_boamp_contrat": 2,
+    }
+    assert a["nombre_lots_de_tranches_distincts_declares"] == 2
+    assert a["nombre_lignes_secondaires_retrouvees_avec_repetitions"] == 2
+    assert not a["attribution_officielle_validee"]
+    assert b["identifiant_avis"] == "26-101"
+    assert b["effectifs_lignes_par_identifiant_secondaire"] == {
+        "id_boamp_attribution": 1, "id_boamp_contrat": 0,
+    }
+    assert b["pieces_de_consultation_examinees"] is False
+    assert b["origine_exacte_du_besoin_etablie"] is False
+
+
+def test_pilotes_refusent_date_erreur_et_fichier_secondaire_modifie(tmp_path):
+    from scripts.preparer_dossiers_pilotes_boamp import (
+        produire_dossiers, ecrire as ecrire_pilotes,
+    )
+    index, preuve, beauamp, fichier = exemple(tmp_path)
+    registre = registre_pilotes(tmp_path)
+    sortie = tmp_path / "dossiers-pilotes.json"
+    ecrire_pilotes(produire_dossiers(index, preuve, beauamp, registre), sortie)
+    original = sortie.read_bytes()
+    registre_alt = json.loads(registre.read_text(encoding="utf-8"))
+    registre_alt["cas"][0]["date_attendue"] = "2026-09-02"
+    registre.write_text(json.dumps(registre_alt), encoding="utf-8")
+    with pytest.raises(BilanInvalide, match="Date de parution"):
+        produire_dossiers(index, preuve, beauamp, registre)
+    registre = registre_pilotes(tmp_path)
+    fichier.write_bytes(fichier.read_bytes() + b"alteration")
+    with pytest.raises(BilanInvalide, match="Empreinte"):
+        produire_dossiers(index, preuve, beauamp, registre)
+    assert sortie.read_bytes() == original
+
+
+def test_pilote_rectificatif_n_est_pas_avis_initial(tmp_path):
+    from scripts.preparer_dossiers_pilotes_boamp import produire_dossiers
+    index, preuve, beauamp, _ = exemple(tmp_path)
+    registre = registre_pilotes(tmp_path)
+    with closing(sqlite3.connect(index)) as conn:
+        conn.execute("UPDATE recherche SET etat = 'RECTIFICATIF' "
+                     "WHERE identifiant = '26-100'")
+        conn.commit()
+    p = json.loads(preuve.read_text(encoding="utf-8"))
+    p["sha256_index"] = hashlib.sha256(index.read_bytes()).hexdigest()
+    preuve.write_text(json.dumps(p), encoding="utf-8")
+    resultat = produire_dossiers(index, preuve, beauamp, registre)
+    assert resultat["cas_avec_rectificatif"] == 1
+    fiche = resultat["cas"][0]
+    assert fiche["etat_documentaire"] == "RECTIFICATIF"
+    assert fiche["premier_avis_initial_retrouve"] is False
+    assert fiche["conclusion_documentaire"] == "rectificatif_sans_evenement_initial_etabli"

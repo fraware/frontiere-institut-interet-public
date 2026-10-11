@@ -13,6 +13,8 @@ on:
       - "scripts/echantillonner_avis_boamp.py"
       - "scripts/auditer_echantillon_boamp.py"
       - "scripts/rapprocher_avis_attributions.py"
+      - "scripts/preparer_dossiers_pilotes_boamp.py"
+      - "evaluation/cas_pilotes_boamp_v1.json"
       - "institutionnel/marches_attribues/manifest.json"
       - "institutionnel/marches_attribues/quotidiens/**"
       - "scripts/croiser_pistes_capacites.py"
@@ -216,6 +218,19 @@ jobs:
             --sortie "$DOSSIER/rapprochements-attributions.json"
           python -m pytest -q tests/test_rapprocher_avis_attributions.py
 
+      - name: Vérifier les six cas pilotes et leurs liens BeauAMP éventuels
+        shell: bash
+        run: |
+          set -euo pipefail
+          DOSSIER="$RUNNER_TEMP/frontiere-boamp"
+          python scripts/preparer_dossiers_pilotes_boamp.py \
+            --index "$DOSSIER/index-avis-boamp.sqlite3" \
+            --preuve-index "$DOSSIER/preuve-index.json" \
+            --beauamp institutionnel/marches_attribues \
+            --registre evaluation/cas_pilotes_boamp_v1.json \
+            --sortie "$DOSSIER/dossiers-pilotes-documentaires.json"
+          python -m pytest -q tests/test_rapprocher_avis_attributions.py
+
       - name: Évaluer le rappel des deux recherches sur les expressions exactes
         shell: bash
         run: |
@@ -241,6 +256,7 @@ jobs:
             ${{ runner.temp }}/frontiere-boamp/bilan-documentaire.json
             ${{ runner.temp }}/frontiere-boamp/pistes-a-examiner.json
             ${{ runner.temp }}/frontiere-boamp/rapprochements-attributions.json
+            ${{ runner.temp }}/frontiere-boamp/dossiers-pilotes-documentaires.json
             ${{ runner.temp }}/frontiere-boamp/echantillon-temporel-boamp.json
             ${{ runner.temp }}/frontiere-boamp/contre-verification-echantillon.json
             ${{ runner.temp }}/frontiere-boamp/croisements-avis-capacites.json
