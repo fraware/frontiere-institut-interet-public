@@ -44,7 +44,8 @@ def fichiers_beauamp(racine):
     manifeste = json.loads((racine / "manifest.json").read_text(encoding="utf-8"))
     if (manifeste.get("version") != VERSION_BEAUAMP
             or manifeste.get("licence") != "cc-by-sa"
-            or len(manifeste.get("fichiers", [])) != manifeste.get("nombre_fichiers")):
+            or not isinstance(manifeste.get("fichiers"), list)
+            or len(manifeste["fichiers"]) != manifeste.get("nombre_fichiers")):
         raise BilanInvalide("Manifeste BeauAMP incorrect.")
     uniques, resultat = set(), []
     for fiche in manifeste["fichiers"]:
@@ -60,6 +61,12 @@ def fichiers_beauamp(racine):
         chemin = racine / chemin_relatif
         if not chemin.is_file() or chemin.is_symlink():
             raise BilanInvalide("Fichier BeauAMP manquant.")
+        if (not 0 < chemin.stat().st_size <= 1_500_000
+                or chemin.stat().st_size != fiche.get("octets_archives")
+                or not isinstance(fiche.get("sha256"), str)
+                or not SHA.fullmatch(fiche["sha256"])
+                or sha256(chemin) != fiche["sha256"]):
+            raise BilanInvalide("Empreinte BeauAMP ou taille incohérente.")
         resultat.append((jour, chemin, fiche))
     return sorted(resultat), manifeste
 
