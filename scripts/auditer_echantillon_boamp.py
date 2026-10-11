@@ -202,7 +202,10 @@ def auditer(index: Path, preuve: Path, echantillon: Path) -> dict:
             or categories_renseignees != fichier.get("nombre_categories_marche_renseignees")
             or total - categories_renseignees != fichier.get("nombre_categories_marche_manquantes")
             or etats_absents != fichier.get("nombre_etats_documentaires_absents")
-            or (categories_renseignees > 0) != fichier.get("stratification_categorie_marche_effective")
+            or fichier.get("stratification_categorie_marche_effective") is not False
+            or fichier.get("stratification_effective") != [
+                "mois_civil_complet", "etat_documentaire", "domaine_lexical",
+            ]
             or mois != fichier.get("mois_complets")
             or couverture != fichier.get("couverture_calendaire")):
         raise ControleInvalide("Dénominateurs ou couverture du tirage incohérents.")
