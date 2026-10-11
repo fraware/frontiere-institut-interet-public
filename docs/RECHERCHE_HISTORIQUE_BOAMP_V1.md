@@ -28,6 +28,12 @@ Ce choix décrit les **états observés à plusieurs instants** : un identifiant
 
 La recherche couvre **uniquement** les journées déjà présentes dans le dossier d'archives. Les fichiers arrivés depuis la construction de l'index exigent une nouvelle exécution de `indexer`. Les résultats retournent la date, l'identifiant BOAMP, l'objet, l'acheteur, la catégorie, l'état de l'avis et le lien officiel disponible. Les champs de contact ou d'attribution nominative ne sont pas ajoutés.
 
+## Sélection à la dernière observation
+
+Le programme utilise aussi, lorsqu'il existe, l'état documenté par `etat_revisions_boamp.json`. Si un état initial A est suivi d'une correction B, puis d'un retour observé aux octets A, **la recherche retient A à la date du retour**. La version B demeure dans la table des versions. Chaque correspondance signale l'archive effectivement utilisée et la date de contrôle la plus récente enregistrée.
+
+L'empreinte du dernier état doit correspondre à un relevé initial ou à une version corrigée dont l'intégrité a été vérifiée. Une référence vers des octets manquants interrompt la construction. Les corrections observées entre deux consultations successives et déjà disparues au contrôle suivant demeurent hors de la portée documentaire démontrée.
+
 ## Fabrication automatique et accès au fichier indexé
 
 La procédure `.github/workflows/index-boamp-historique.yml` construit l'index depuis les archives officielles publiées dans la branche principale, lors de l'ajout ou de la modification de ces archives, une fois par jour et sur demande. L'exécution relève les erreurs de fichier, vérifie chaque empreinte et réalise un contrôle de cohérence SQLite avant de publier un artefact temporaire téléchargeable depuis GitHub Actions.

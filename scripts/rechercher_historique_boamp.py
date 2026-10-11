@@ -21,7 +21,7 @@ import unicodedata
 RACINE = Path(__file__).resolve().parents[1]
 DOSSIER = RACINE / "institutionnel" / "besoins_publics"
 INDEX = RACINE / "data" / "boamp_historique.sqlite3"
-VERSION = "recherche-boamp-historique-v2"
+VERSION = "recherche-boamp-historique-v3"
 DATE_RE = re.compile(r"^20\d{2}-\d{2}-\d{2}$")
 SHA_RE = re.compile(r"^[a-f0-9]{64}$")
 LIMITE_COMPRESSEE = 10_000_000
@@ -154,11 +154,20 @@ def indexer(dossier: Path, cible: Path) -> dict:
         for dossier_jour in base_revisions.glob("20??/??/20??-??-??"):
             if dossier_jour.name not in dates_archives:
                 raise ArchiveIncoherente("Révision sur une date sans relevé initial.")
+    etat_relectures = dossier / "etat_revisions_boamp.json"
+    suivi = (json.loads(etat_relectures.read_text(encoding="utf-8"))
+             if etat_relectures.is_file() else {})
+    etats_observes = suivi.get("etat_connu_par_jour", {})
+    if not isinstance(etats_observes, dict):
+        raise ArchiveIncoherente("État des relectures historiques incorrect.")
+    dates_connues = {p.stem for p in fiches}
+    if any(jour not in dates_connues for jour in etats_observes):
+        raise ArchiveIncoherente("Observation sans archive historique correspondante.")
     cible.parent.mkdir(parents=True, exist_ok=True)
     fd, nom = tempfile.mkstemp(prefix=".boamp-index-", suffix=".sqlite3", dir=cible.parent)
     os.close(fd)
     temporaire = Path(nom)
-    total, versions_verifiees, jours_corriges = 0, 0, 0
+    total, versions_verifiees, jours_corriges, retours_initial = 0, 0, 0, 0
     try:
         with closing(sqlite3.connect(temporaire)) as connexion:
             preparer_base(connexion)
@@ -170,6 +179,7 @@ def indexer(dossier: Path, cible: Path) -> dict:
                 retenus, archive_retenue, sha_retenue = initiales, archive, sha
                 date_retenue = date_initiale
                 nb_versions = 0
+                disponibles = {sha: (date_initiale, archive, initiales)}
                 connexion.execute(
                     "INSERT INTO versions VALUES (?,?,?,?,?,?)",
                     (jour, releve_initial, archive, sha, len(initiales), 1),
@@ -183,6 +193,9 @@ def indexer(dossier: Path, cible: Path) -> dict:
                         (jour, date_revision.isoformat(), chemin, sha_revision,
                          len(notices), 0),
                     )
+                    disponibles[sha_revision] = (
+                        date_revision, chemin, notices,
+                    )
                     if date_revision == date_retenue:
                         raise ArchiveIncoherente(
                             "Deux versions distinctes déclarées au même instant."
@@ -193,6 +206,29 @@ def indexer(dossier: Path, cible: Path) -> dict:
                         )
                         retenus = notices
                     nb_versions += 1
+                # Une consultation ultérieure peut revenir à un état déjà
+                # observé. L'instant de cette relecture prime alors sur la
+                # date de première apparition des octets archivés.
+                observation = etats_observes.get(jour)
+                if observation is not None:
+                    if not isinstance(observation, dict):
+                        raise ArchiveIncoherente("Observation BOAMP mal formée.")
+                    sha_observe = observation.get("sha256_gzip")
+                    if sha_observe not in disponibles:
+                        raise ArchiveIncoherente(
+                            "Dernier état observé sans archive vérifiée correspondante."
+                        )
+                    date_observation = horodatage(
+                        observation.get("observe_le"), "dernier contrôle",
+                    )
+                    version_date, archive_retenue, retenus = disponibles[sha_observe]
+                    if date_observation < version_date:
+                        raise ArchiveIncoherente(
+                            "Dernier état observé antérieur à sa version publiée."
+                        )
+                    sha_retenue = sha_observe
+                    date_retenue = date_observation
+                    retours_initial += bool(nb_versions and sha_observe == sha)
                 versions_verifiees += nb_versions
                 jours_corriges += bool(nb_versions)
                 connexion.execute(
@@ -213,6 +249,7 @@ def indexer(dossier: Path, cible: Path) -> dict:
                 ("nombre_avis", str(total)),
                 ("nombre_revisions_verifiees", str(versions_verifiees)),
                 ("nombre_jours_avec_revision", str(jours_corriges)),
+                ("retours_au_releve_initial_retenus", str(retours_initial)),
                 ("completude_historique_etablie", "false"),
             ])
             connexion.commit()
@@ -228,7 +265,8 @@ def indexer(dossier: Path, cible: Path) -> dict:
         "nombre_avis_indexes": total,
         "nombre_versions_corrigees_verifiees": versions_verifiees,
         "nombre_jours_avec_revision": jours_corriges,
-        "choix_version": "dernier_releve_verifie_par_jour",
+        "retours_au_releve_initial_retenus": retours_initial,
+        "choix_version": "dernier_etat_observe_et_verifie_par_jour",
         "completude_historique_etablie": False,
         "index": str(cible),
     }
@@ -271,7 +309,7 @@ def chercher(index: Path, terme: str, limite: int = 30, page: int = 1) -> dict:
     return {
         "version": VERSION, "expression": terme, "total_candidats": nombre,
         "page": page, "resultats": resultats,
-        "choix_version": "dernier_releve_verifie_par_jour",
+        "choix_version": "dernier_etat_observe_et_verifie_par_jour",
         "preuve_de_besoin_scientifique": False,
         "completude_historique_etablie": False,
     }

@@ -139,18 +139,52 @@ def conserver_revision(dossier: Path, jour: str, ancien_hash: str,
             "ajoutes": len(ajoutes), "absents": len(disparus), "modifies": len(modifies)}
 
 
+def etat_precedemment_connu(dossier: Path, jour: str,
+                            empreinte_initiale: str, initiales: list[dict],
+                            instant_initial: str) -> dict:
+    """Reconstituer le dernier état archivé lors d'une migration de schéma."""
+    from datetime import datetime
+    try:
+        from scripts.verifier_revisions_boamp import (
+            fichiers_revision, lire_revision, horodatage,
+        )
+    except ModuleNotFoundError:
+        from verifier_revisions_boamp import (
+            fichiers_revision, lire_revision, horodatage,
+        )
+    date_initiale = horodatage(instant_initial, "relevé initial")
+    resultat = {
+        "sha256_gzip": empreinte_initiale,
+        "observe_le": date_initiale.isoformat(),
+    }
+    for fiche in fichiers_revision(dossier, jour):
+        date_revision, _archive, sha, _notices = lire_revision(
+            fiche, dossier, jour, empreinte_initiale, initiales, date_initiale,
+        )
+        if date_revision > horodatage(resultat["observe_le"], "dernier état"):
+            resultat = {"sha256_gzip": sha, "observe_le": date_revision.isoformat()}
+    return resultat
+
+
 def surveiller(dossier: Path = DOSSIER, obtenir=None, patienter=time.sleep,
                instant: datetime | None = None, recents: int = JOURS_RECENTS,
                rotation: int = JOURS_ROTATION) -> dict:
     maintenant = instant or datetime.now(timezone.utc)
-    if maintenant.tzinfo is None:
+    if maintenant.tzinfo is None or maintenant.utcoffset() is None:
         raise RelectureInvalide("Horodatage sans fuseau horaire.")
+    maintenant = maintenant.replace(microsecond=0)
     etat_path = dossier / ETAT
     precedent = json.loads(etat_path.read_text(encoding="utf-8")) if etat_path.is_file() else {}
     fiches, curseur = choisir_jours(
         jours_archives(dossier), precedent.get("dernier_jour_relecture_circulaire"),
         recents, rotation,
     )
+    etats = precedent.get("etat_connu_par_jour", {})
+    evenements = precedent.get("changements_observes", [])
+    if not isinstance(etats, dict) or not isinstance(evenements, list):
+        raise RelectureInvalide("Historique des états déjà contrôlés mal formé.")
+    etats = dict(etats)
+    evenements = list(evenements)
     controles, erreurs = [], []
     for fiche in fiches:
         try:
@@ -159,40 +193,88 @@ def surveiller(dossier: Path = DOSSIER, obtenir=None, patienter=time.sleep,
             initial_le = meta_initiale.get("collecte_le")
             if not isinstance(initial_le, str) or not initial_le:
                 raise RelectureInvalide("Date du relevé initial absente.")
-            # La source garde sa politique de requêtes et ses limites habituelles.
+            anciens_tries = sorted(anciens, key=lambda x: x["id"])
+            precedent_jour = etats.get(jour)
+            if precedent_jour is None:
+                precedent_jour = etat_precedemment_connu(
+                    dossier, jour, ancien_hash, anciens_tries, initial_le,
+                )
+            if (not isinstance(precedent_jour, dict)
+                    or not isinstance(precedent_jour.get("sha256_gzip"), str)
+                    or not SHA_RE.fullmatch(precedent_jour["sha256_gzip"])):
+                raise RelectureInvalide("Empreinte du précédent contrôle incorrecte.")
+            try:
+                from scripts.verifier_revisions_boamp import horodatage
+            except ModuleNotFoundError:
+                from verifier_revisions_boamp import horodatage
+            instant_precedent = horodatage(
+                precedent_jour.get("observe_le"), "précédent contrôle",
+            )
+            # L'interface ne promet pas une photographie transactionnelle
+            # pendant la pagination. Chaque comparaison concerne deux relevés.
             from datetime import date
             jour_date = date.fromisoformat(jour)
             kwargs = {"patienter": patienter}
             if obtenir is not None:
                 kwargs["obtenir"] = obtenir
             nouveaux, _total = lire_jour(jour_date, **kwargs)
-            anciens_tries = sorted(anciens, key=lambda x: x["id"])
+            binaire, _sha_contenu = serialiser(nouveaux)
+            nouvel_hash = hashlib.sha256(binaire).hexdigest()
+            precedent_hash = precedent_jour["sha256_gzip"]
+            if maintenant < instant_precedent or (
+                maintenant == instant_precedent and nouvel_hash != precedent_hash
+            ):
+                raise RelectureInvalide("Ordre temporel des observations incohérent.")
+            etat_change = nouvel_hash != precedent_hash
             if anciens_tries == nouveaux:
-                controles.append({"jour": jour, "variation": False})
+                compte_rendu = {"jour": jour, "variation": etat_change,
+                                 "retour_releve_initial": etat_change}
             else:
-                controles.append(conserver_revision(
-                    dossier, jour, ancien_hash, anciens_tries, nouveaux, maintenant, initial_le,
-                ))
+                compte_rendu = conserver_revision(
+                    dossier, jour, ancien_hash, anciens_tries, nouveaux,
+                    maintenant, initial_le,
+                )
+                compte_rendu["variation"] = etat_change
+                compte_rendu["retour_releve_initial"] = False
+            if etat_change:
+                evenements.append({
+                    "jour": jour,
+                    "observe_le": maintenant.isoformat(),
+                    "precedent_sha256_gzip": precedent_hash,
+                    "nouveau_sha256_gzip": nouvel_hash,
+                    "retour_releve_initial": nouvel_hash == ancien_hash,
+                    "cause_modification_etablie": False,
+                })
+            etats[jour] = {
+                "sha256_gzip": nouvel_hash,
+                "observe_le": maintenant.isoformat(),
+            }
+            controles.append(compte_rendu)
         except (OSError, ValueError, EOFError, json.JSONDecodeError) as erreur:
             erreurs.append({"jour": fiche.stem, "motif": type(erreur).__name__})
-            # Un échec de contrôle ne doit pas être considéré comme une absence
-            # de changement ; la rotation devra revoir cette journée.
+            # Une lecture impossible n'est jamais un constat d'absence de variation.
             break
     if erreurs:
-        # Ne pas avancer le curseur circulaire : un nouveau lot reprendra la
-        # période examinée, y compris toute date en échec.
+        # L'échec de relecture n'avance pas la rotation, même si les premiers
+        # contrôles du passage étaient complets.
         curseur = precedent.get("dernier_jour_relecture_circulaire")
     if not controles and erreurs:
         raise RelectureInvalide("Aucune journée réexaminée avec succès.")
     bilan = {
         "version": VERSION,
-        "controle_le": maintenant.replace(microsecond=0).isoformat(),
+        "controle_le": maintenant.isoformat(),
         "jours_controles": len(controles),
         "jours_avec_variation": sum(x["variation"] for x in controles),
         "nouvelles_revisions_archivees": sum(
-            x["variation"] and not x.get("revision_deja_conservee", False)
+            x["variation"] and not x.get("retour_releve_initial", False)
+            and not x.get("revision_deja_conservee", False)
             for x in controles
         ),
+        "retours_au_releve_initial": sum(
+            x["retour_releve_initial"] for x in controles
+        ),
+        "etat_connu_par_jour": etats,
+        "changements_observes": evenements,
         "dernier_jour_relecture_circulaire": curseur,
         "controles": controles,
         "erreurs": erreurs,
@@ -205,7 +287,6 @@ def surveiller(dossier: Path = DOSSIER, obtenir=None, patienter=time.sleep,
                     encoding="utf-8")
     temp.replace(etat_path)
     return bilan
-
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)

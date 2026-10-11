@@ -67,10 +67,14 @@ jobs:
               avis = con.execute("SELECT COUNT(*) FROM recherche").fetchone()[0]
               versions = con.execute("SELECT COUNT(*) FROM versions WHERE version_originale = 0").fetchone()[0]
               jours_revises = con.execute("SELECT COUNT(*) FROM provenance WHERE revisions_verifiees > 0").fetchone()[0]
+              retours = con.execute(
+                  "SELECT COUNT(*) FROM provenance "
+                  "WHERE revisions_verifiees > 0 AND sha256_retenue = sha256_initial"
+              ).fetchone()[0]
               integrite = con.execute("PRAGMA integrity_check").fetchone()[0]
           if integrite != "ok" or (jours, avis) != (
               bilan["nombre_jours_indexes"], bilan["nombre_avis_indexes"]
-          ) or versions != bilan["nombre_versions_corrigees_verifiees"] or jours_revises != bilan["nombre_jours_avec_revision"]:
+          ) or versions != bilan["nombre_versions_corrigees_verifiees"] or jours_revises != bilan["nombre_jours_avec_revision"] or retours != bilan["retours_au_releve_initial_retenus"]:
               raise SystemExit("Index de recherche incohérent avec le bilan.")
           archives = Path("institutionnel/besoins_publics/historique_boamp")
           comprimés = sorted(archives.glob("20??/??/20??-??-??.jsonl.gz"))
@@ -91,7 +95,8 @@ jobs:
               "avis_indexes": avis,
               "versions_corrigees_verifiees": versions,
               "jours_avec_revision": jours_revises,
-              "choix_version": "dernier_releve_verifie_par_jour",
+              "retours_au_releve_initial_retenus": retours,
+              "choix_version": "dernier_etat_observe_et_verifie_par_jour",
               "octets_archives_compressees": sum(p.stat().st_size for p in comprimés),
               "octets_manifestes": sum(p.stat().st_size for p in manifestes),
               "octets_index": base.stat().st_size,
