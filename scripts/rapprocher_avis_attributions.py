@@ -128,3 +128,99 @@ def rapprocher(index, preuve, racine_beauamp):
                             "statut": "rapprochement_documentaire_indicatif",
                             "validation_du_marche": False,
                         })
+                    if champ == "id_boamp_contrat":
+                        texte = (ligne.get("date_avis_attribution") or "").strip()
+                        try:
+                            jour_attribution = date.fromisoformat(texte)
+                        except ValueError:
+                            jour_attribution = None
+                        if jour_attribution is not None:
+                            delta = (jour_attribution - date.fromisoformat(jour_boamp)).days
+                            if delta < 0:
+                                ecarts_negatifs += 1
+                            else:
+                                ecarts.append(delta)
+    ecarts.sort()
+    union = uniques["id_boamp_attribution"] | uniques["id_boamp_contrat"]
+    return {
+        "version": VERSION,
+        "revision_depot_source": bilan["revision_depot"],
+        "sha256_index_boamp": bilan["sha256_index"],
+        "avis_boamp_dans_index": bilan["nombre_avis"],
+        "identifiants_boamp_ambigus_exclus": len(ambigus),
+        "source_beauamp": manifeste.get("source"),
+        "producteur_beauamp": manifeste.get("producteur"),
+        "licence_beauamp": manifeste["licence"],
+        "fichiers_beauamp_verifies": len(fichiers),
+        "premier_fichier_beauamp": fichiers[0][0] if fichiers else None,
+        "dernier_fichier_beauamp": fichiers[-1][0] if fichiers else None,
+        "lignes_beauamp_examinees": total_lignes,
+        "lignes_sans_identifiant_boamp": vides,
+        "identifiants_non_canoniques": malformes,
+        "liaisons_sur_lignes_par_type": dict(sorted(rencontres.items())),
+        "identifiants_boamp_distincts_par_type": {
+            champ: len(ensemble) for champ, ensemble in sorted(uniques.items())
+        },
+        "identifiants_boamp_distincts_apparies": len(union),
+        "ecarts_publication_contrat_attribution_positifs_observes": len(ecarts),
+        "ecarts_publication_negatifs_ecartes": ecarts_negatifs,
+        "jours_ecart_publication_positifs": {
+            "minimum": ecarts[0] if ecarts else None,
+            "mediane": (ecarts[(len(ecarts)-1)//2] + ecarts[len(ecarts)//2]) / 2
+            if ecarts else None,
+            "maximum": ecarts[-1] if ecarts else None,
+        },
+        "exemples_premiers_dans_les_fichiers": exemples,
+        "completude_des_attributions_etablie": False,
+        "fichiers_secondaires_limites_a_leur_fenetre": True,
+        "attribution_officielle_verifiee": False,
+        "delai_de_mobilisation_scientifique_etabli": False,
+        "interpretation": (
+            "Joins documentaires par identifiants explicites uniquement. "
+            "BeauAMP est une source enrichie indicative. Les lignes représentent "
+            "potentiellement des lots ou répétitions et non des marchés uniques. "
+            "Les écarts de dates concernent les publications mentionnées, non "
+            "un délai entre besoin et mobilisation. Une absence de jonction "
+            "ne prouve aucune absence d'attribution."
+        ),
+    }
+
+
+def ecrire(resultat, cible):
+    cible.parent.mkdir(parents=True, exist_ok=True)
+    fd, fichier = tempfile.mkstemp(prefix=".appariement-", suffix=".json", dir=cible.parent)
+    os.close(fd)
+    temp = Path(fichier)
+    try:
+        temp.write_text(
+            json.dumps(resultat, ensure_ascii=False, sort_keys=True, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        os.replace(temp, cible)
+    finally:
+        temp.unlink(missing_ok=True)
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--index", required=True, type=Path)
+    p.add_argument("--preuve-index", required=True, type=Path)
+    p.add_argument("--beauamp", default="institutionnel/marches_attribues", type=Path)
+    p.add_argument("--sortie", required=True, type=Path)
+    a = p.parse_args()
+    try:
+        resultat = rapprocher(a.index, a.preuve_index, a.beauamp)
+        ecrire(resultat, a.sortie)
+        print(json.dumps({
+            "version": VERSION,
+            "fichiers": resultat["fichiers_beauamp_verifies"],
+            "lignes": resultat["lignes_beauamp_examinees"],
+            "identifiants_apparies": resultat["identifiants_boamp_distincts_apparies"],
+            "sortie": str(a.sortie),
+        }, ensure_ascii=False))
+    except (OSError, ValueError, sqlite3.Error, csv.Error) as e:
+        p.exit(1, f"Appariement interrompu : {e}\n")
+
+
+if __name__ == "__main__":
+    main()
