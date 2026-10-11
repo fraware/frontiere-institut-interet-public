@@ -154,3 +154,112 @@ def produire_dossiers(index: Path, preuve: Path,
                             "objet_secondaire": (ligne.get("objet") or "")[:250],
                             "source_indicative": True,
                         })
+    resultat = []
+    for fiche in cas:
+        code = fiche["identifiant"]
+        item = fiches[code]
+        item["effectifs_lignes_par_identifiant_secondaire"] = {
+            nature: suivis[(code, nature)]
+            for nature in ("id_boamp_attribution", "id_boamp_contrat")
+        }
+        item["nombre_lots_de_tranches_distincts_declares"] = len(
+            identifiants_lots[code]
+        )
+        item["fichiers_secondaires_correspondants"] = sorted(fichiers_proches[code])
+        item["dates_attribution_secondaires_declarees"] = sorted(dates_secondaires[code])
+        item["nombre_observations_secondaires_affichees"] = len(
+            item["appariements_secondaires"]
+        )
+        item["nombre_lignes_secondaires_retrouvees_avec_repetitions"] = sum(
+            item["effectifs_lignes_par_identifiant_secondaire"].values()
+        )
+        item["exemples_secondaires_tronques"] = (
+            item["nombre_lignes_secondaires_retrouvees_avec_repetitions"] > 20
+        )
+        item["absence_de_correspondance_n_est_pas_absence_d_attribution"] = True
+        item["conclusion_documentaire"] = (
+            "rectificatif_sans_evenement_initial_etabli"
+            if item["etat_documentaire"] == "RECTIFICATIF"
+            else "etat_de_notice_verifie_sans_besoin_valide"
+        )
+        resultat.append(item)
+    return {
+        "version": VERSION,
+        "revision_depot_source": bilan["revision_depot"],
+        "sha256_index_boamp": bilan["sha256_index"],
+        "fichiers_beauamp_verifies": len(archives),
+        "premier_fichier_secondaire": archives[0][0] if archives else None,
+        "dernier_fichier_secondaire": archives[-1][0] if archives else None,
+        "licence_secondaire": manifeste.get("licence"),
+        "cas_enregistres": len(cas),
+        "cas_retrouves_par_identifiant_unique": len(resultat),
+        "cas_avec_rectificatif": sum(
+            x["etat_documentaire"] == "RECTIFICATIF" for x in resultat
+        ),
+        "cas_avec_au_moins_un_identifiant_secondaire": sum(
+            x["nombre_lignes_secondaires_retrouvees_avec_repetitions"] > 0
+            for x in resultat
+        ),
+        "cas_sans_correspondance_dans_la_fenetre_secondaire": sum(
+            x["nombre_lignes_secondaires_retrouvees_avec_repetitions"] == 0
+            for x in resultat
+        ),
+        "cas": resultat,
+        "validite_du_besoin_suppose_etablie": False,
+        "attribution_officielle_etablie": False,
+        "completude_des_procedures_etablie": False,
+        "interpretation": (
+            "Six avis identifiés et datés au regard de l'index BOAMP, "
+            "avec liens exacts éventuels vers BeauAMP. Les données BeauAMP sont "
+            "secondaires et partielles, les lignes peuvent être des lots ou des "
+            "répétitions. Un rectificatif n'est pas une preuve de l'avis initial. "
+            "Aucune durée de mobilisation ni absence de compétence publique "
+            "n'est inférée de ces notices."
+        ),
+    }
+
+
+def ecrire(rapport: dict, destination: Path) -> None:
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    fd, nom = tempfile.mkstemp(prefix=".pilotes-boamp-", suffix=".json",
+                               dir=destination.parent)
+    os.close(fd)
+    temporaire = Path(nom)
+    try:
+        temporaire.write_text(
+            json.dumps(rapport, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        os.replace(temporaire, destination)
+    finally:
+        temporaire.unlink(missing_ok=True)
+
+
+def main() -> None:
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--index", type=Path, required=True)
+    p.add_argument("--preuve-index", type=Path, required=True)
+    p.add_argument("--beauamp", type=Path,
+                   default=Path("institutionnel/marches_attribues"))
+    p.add_argument("--registre", type=Path,
+                   default=Path("evaluation/cas_pilotes_boamp_v1.json"))
+    p.add_argument("--sortie", type=Path, required=True)
+    args = p.parse_args()
+    try:
+        resultat = produire_dossiers(
+            args.index, args.preuve_index, args.beauamp, args.registre,
+        )
+        ecrire(resultat, args.sortie)
+        print(json.dumps({
+            "version": VERSION,
+            "cas": resultat["cas_enregistres"],
+            "rectificatifs": resultat["cas_avec_rectificatif"],
+            "avec_lien_secondaire":
+                resultat["cas_avec_au_moins_un_identifiant_secondaire"],
+        }, ensure_ascii=False))
+    except (OSError, ValueError, sqlite3.Error, csv.Error) as erreur:
+        p.exit(1, f"Qualification documentaire pilote interrompue : {erreur}\n")
+
+
+if __name__ == "__main__":
+    main()
