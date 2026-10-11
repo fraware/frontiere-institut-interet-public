@@ -10,6 +10,9 @@ on:
       - "scripts/rechercher_historique_boamp.py"
       - "scripts/analyser_historique_boamp.py"
       - "scripts/constituer_pistes_boamp.py"
+      - "scripts/croiser_pistes_capacites.py"
+      - "scripts/rechercher_capacites_institutionnelles.py"
+      - "institutionnel/entites/**"
       - ".github/workflows/index-boamp-historique.yml"
   schedule:
     - cron: "37 2 * * *"
@@ -130,6 +133,34 @@ jobs:
           python scripts/constituer_pistes_boamp.py             --index "$DOSSIER/index-avis-boamp.sqlite3"             --preuve-index "$DOSSIER/preuve-index.json"             --bilan "$DOSSIER/bilan-documentaire.json"             --sortie "$DOSSIER/pistes-a-examiner.json"
           python -m pytest -q tests/test_constituer_pistes_boamp.py
 
+      - name: Construire l'index documentaire des capacités publiques
+        shell: bash
+        run: |
+          set -euo pipefail
+          DOSSIER="$RUNNER_TEMP/frontiere-boamp"
+          python scripts/rechercher_capacites_institutionnelles.py \
+            --construire \
+            --index "$DOSSIER/index-capacites-publiques.sqlite3" \
+            > "$DOSSIER/bilan-capacites-publiques.json"
+          python scripts/rechercher_capacites_institutionnelles.py \
+            --verifier-index \
+            --index "$DOSSIER/index-capacites-publiques.sqlite3" \
+            > "$DOSSIER/verification-capacites-publiques.json"
+
+      - name: Rapprocher les demandes documentaires et les capacités publiées
+        shell: bash
+        run: |
+          set -euo pipefail
+          DOSSIER="$RUNNER_TEMP/frontiere-boamp"
+          python scripts/croiser_pistes_capacites.py \
+            --index-boamp "$DOSSIER/index-avis-boamp.sqlite3" \
+            --preuve-index "$DOSSIER/preuve-index.json" \
+            --bilan "$DOSSIER/bilan-documentaire.json" \
+            --index-institutions "$DOSSIER/index-capacites-publiques.sqlite3" \
+            --entites institutionnel/entites \
+            --sortie "$DOSSIER/croisements-avis-capacites.json"
+          python -m pytest -q tests/test_croiser_pistes_capacites.py
+
       - name: Publier l'index vérifié en artefact téléchargeable
         uses: actions/upload-artifact@v4
         with:
@@ -140,5 +171,8 @@ jobs:
             ${{ runner.temp }}/frontiere-boamp/preuve-index.json
             ${{ runner.temp }}/frontiere-boamp/bilan-documentaire.json
             ${{ runner.temp }}/frontiere-boamp/pistes-a-examiner.json
+            ${{ runner.temp }}/frontiere-boamp/croisements-avis-capacites.json
+            ${{ runner.temp }}/frontiere-boamp/bilan-capacites-publiques.json
+            ${{ runner.temp }}/frontiere-boamp/verification-capacites-publiques.json
           retention-days: 14
           if-no-files-found: error
