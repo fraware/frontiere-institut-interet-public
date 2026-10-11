@@ -116,3 +116,10 @@ jobs:
             exit 1
           fi
           gh pr merge "$BRANCHE" --repo "$GITHUB_REPOSITORY" --squash --delete-branch
+          # Les fusions faites avec le jeton automatique GitHub ne produisent
+          # pas toujours les déclenchements push attendus pour l'index aval.
+          if gh workflow run index-boamp-historique.yml --repo "$GITHUB_REPOSITORY" --ref main; then
+            echo "Analyse documentaire BOAMP–BeauAMP demandée."
+          else
+            echo "::warning::Analyse différée : la reconstruction quotidienne reste programmée."
+          fi

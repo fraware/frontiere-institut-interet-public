@@ -36,6 +36,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [../evaluation/CAS_RETROSPECTIFS_DEVELOPPEMENT.md](../evaluation/CAS_RETROSPECTIFS_DEVELOPPEMENT.md) | Douze cas historiques structurés pour le développement |
 | [Premiers enseignements empiriques](PREMIERS_ENSEIGNEMENTS_EMPIRIQUES.md) | Première synthèse des mécanismes observés |
 | [Échantillonnage documentaire BOAMP](PLAN_ECHANTILLONNAGE_BOAMP_V1.md) | Sélection exploratoire par mois, catégorie et domaine avec avis témoins |
+| [Rapprochement BOAMP–BeauAMP](RAPPROCHEMENTS_BOAMP_BEAUAMP_V1.md) | Liens exacts entre avis et attributions enrichies, sans inférence de mobilisation |
 | [Analyse actuelle des délais](ANALYSE_DELAIS_V10.md) | État actuel des chronologies et des délais exploitables |
 
 ## Référentiel institutionnel
