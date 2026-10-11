@@ -59,6 +59,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [Premier cas prospectif](CAS_PROSPECTIF_V1.md) | Enregistrement de l’état initial, comparaison de deux méthodes et mesures du premier cas prospectif |
 | [Lancement opérationnel](LANCEMENT_OPERATIONNEL.md) | Première vague opérationnelle |
 | [Demandes de données ciblées](PASSAGE_DONNEES_EXECUTION_V1.md) | Quatre demandes minimales vers les détenteurs de données |
+| [Six cas pilotes techniques BOAMP](SIX_CAS_PILOTES_BOAMP_2026-10.md) | Six situations documentées et hypothèses concurrentes à vérifier avant toute conclusion |
 | [Exécution terrain](EXECUTION_TERRAIN_V1.md) | Canaux vérifiés, messages prêts à envoyer et règles de relance |
 | [Plan des sources publiques](PLAN_SOURCES_PUBLIQUES.md) | Constitution et approfondissement du corpus public |
 | [Limite actuelle des sources publiques](LIMITE_SOURCES_PUBLIQUES_V2.md) | Point où la recherche publique générale cesse d’être productive |
