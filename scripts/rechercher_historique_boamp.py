@@ -21,7 +21,7 @@ import unicodedata
 RACINE = Path(__file__).resolve().parents[1]
 DOSSIER = RACINE / "institutionnel" / "besoins_publics"
 INDEX = RACINE / "data" / "boamp_historique.sqlite3"
-VERSION = "recherche-boamp-historique-v1"
+VERSION = "recherche-boamp-historique-v2"
 DATE_RE = re.compile(r"^20\d{2}-\d{2}-\d{2}$")
 SHA_RE = re.compile(r"^[a-f0-9]{64}$")
 LIMITE_COMPRESSEE = 10_000_000
@@ -107,12 +107,23 @@ def avis_archive(chemin_fiche: Path, dossier: Path):
 def preparer_base(connexion: sqlite3.Connection) -> None:
     connexion.executescript("""
         CREATE TABLE provenance (
-            jour TEXT PRIMARY KEY, archive TEXT NOT NULL, sha256 TEXT NOT NULL,
-            nombre_avis INTEGER NOT NULL
+            jour TEXT PRIMARY KEY,
+            archive_initiale TEXT NOT NULL, sha256_initial TEXT NOT NULL,
+            nombre_initial INTEGER NOT NULL,
+            archive_retendue TEXT NOT NULL, sha256_retenue TEXT NOT NULL,
+            nombre_retenu INTEGER NOT NULL, releve_retenu_le TEXT NOT NULL,
+            revisions_verifiees INTEGER NOT NULL
+        );
+        CREATE TABLE versions (
+            jour TEXT NOT NULL, releve_le TEXT NOT NULL,
+            archive TEXT NOT NULL, sha256 TEXT NOT NULL,
+            nombre_avis INTEGER NOT NULL, version_originale INTEGER NOT NULL,
+            PRIMARY KEY (jour, sha256)
         );
         CREATE VIRTUAL TABLE recherche USING fts5(
             jour UNINDEXED, identifiant UNINDEXED, objet, acheteur,
             avis UNINDEXED, categorie UNINDEXED, etat UNINDEXED,
+            archive_source UNINDEXED, releve_le UNINDEXED,
             tokenize='unicode61 remove_diacritics 2'
         );
         CREATE TABLE informations(cle TEXT PRIMARY KEY, valeur TEXT NOT NULL);
@@ -120,36 +131,88 @@ def preparer_base(connexion: sqlite3.Connection) -> None:
 
 
 def indexer(dossier: Path, cible: Path) -> dict:
+    # Import différé pour laisser ce module exploitable directement en commande
+    # et pour isoler la logique d'intégrité des versions historiques.
+    try:
+        from scripts.verifier_revisions_boamp import (
+            fichiers_revision, lire_revision, horodatage,
+        )
+    except ModuleNotFoundError:
+        from verifier_revisions_boamp import (
+            fichiers_revision, lire_revision, horodatage,
+        )
     racine = dossier / "historique_boamp"
     if not racine.is_dir() or racine.is_symlink():
         raise ArchiveIncoherente("Répertoire d'archives historiques absent.")
     fiches = sorted(racine.glob("20??/??/20??-??-??.json"))
     if not fiches:
         raise ArchiveIncoherente("Aucune journée historique vérifiable.")
+    # Refuser toute révision attachée à une journée historique inconnue.
+    base_revisions = dossier / "revisions_boamp"
+    if base_revisions.is_dir():
+        dates_archives = {p.stem for p in fiches}
+        for dossier_jour in base_revisions.glob("20??/??/20??-??-??"):
+            if dossier_jour.name not in dates_archives:
+                raise ArchiveIncoherente("Révision sur une date sans relevé initial.")
     cible.parent.mkdir(parents=True, exist_ok=True)
     fd, nom = tempfile.mkstemp(prefix=".boamp-index-", suffix=".sqlite3", dir=cible.parent)
     os.close(fd)
     temporaire = Path(nom)
-    total = 0
+    total, versions_verifiees, jours_corriges = 0, 0, 0
     try:
         with closing(sqlite3.connect(temporaire)) as connexion:
             preparer_base(connexion)
             for fiche in fiches:
-                jour, archive, sha, lignes = avis_archive(fiche, dossier)
+                jour, archive, sha, initiales = avis_archive(fiche, dossier)
+                meta = json.loads(fiche.read_text(encoding="utf-8"))
+                releve_initial = meta.get("collecte_le")
+                date_initiale = horodatage(releve_initial, "relevé initial")
+                retenus, archive_retenue, sha_retenue = initiales, archive, sha
+                date_retenue = date_initiale
+                nb_versions = 0
                 connexion.execute(
-                    "INSERT INTO provenance VALUES(?,?,?,?)",
-                    (jour, archive, sha, len(lignes)),
+                    "INSERT INTO versions VALUES (?,?,?,?,?,?)",
+                    (jour, releve_initial, archive, sha, len(initiales), 1),
+                )
+                for chemin_revision in fichiers_revision(dossier, jour):
+                    date_revision, chemin, sha_revision, notices = lire_revision(
+                        chemin_revision, dossier, jour, sha, initiales, date_initiale,
+                    )
+                    connexion.execute(
+                        "INSERT INTO versions VALUES (?,?,?,?,?,?)",
+                        (jour, date_revision.isoformat(), chemin, sha_revision,
+                         len(notices), 0),
+                    )
+                    if date_revision == date_retenue:
+                        raise ArchiveIncoherente(
+                            "Deux versions distinctes déclarées au même instant."
+                        )
+                    if date_revision > date_retenue:
+                        date_retenue, archive_retenue, sha_retenue = (
+                            date_revision, chemin, sha_revision
+                        )
+                        retenus = notices
+                    nb_versions += 1
+                versions_verifiees += nb_versions
+                jours_corriges += bool(nb_versions)
+                connexion.execute(
+                    "INSERT INTO provenance VALUES (?,?,?,?,?,?,?,?,?)",
+                    (jour, archive, sha, len(initiales), archive_retenue, sha_retenue,
+                     len(retenus), date_retenue.isoformat(), nb_versions),
                 )
                 connexion.executemany(
-                    "INSERT INTO recherche VALUES(?,?,?,?,?,?,?)",
+                    "INSERT INTO recherche VALUES(?,?,?,?,?,?,?,?,?)",
                     [(jour, x["id"], x["objet"], x["acheteur"], x.get("avis"),
-                      x.get("categorie_marche"), x.get("etat_avis")) for x in lignes],
+                      x.get("categorie_marche"), x.get("etat_avis"),
+                      archive_retenue, date_retenue.isoformat()) for x in retenus],
                 )
-                total += len(lignes)
+                total += len(retenus)
             connexion.executemany("INSERT INTO informations VALUES(?,?)", [
                 ("version", VERSION),
                 ("nombre_jours", str(len(fiches))),
                 ("nombre_avis", str(total)),
+                ("nombre_revisions_verifiees", str(versions_verifiees)),
+                ("nombre_jours_avec_revision", str(jours_corriges)),
                 ("completude_historique_etablie", "false"),
             ])
             connexion.commit()
@@ -163,10 +226,12 @@ def indexer(dossier: Path, cible: Path) -> dict:
         "version": VERSION,
         "nombre_jours_indexes": len(fiches),
         "nombre_avis_indexes": total,
+        "nombre_versions_corrigees_verifiees": versions_verifiees,
+        "nombre_jours_avec_revision": jours_corriges,
+        "choix_version": "dernier_releve_verifie_par_jour",
         "completude_historique_etablie": False,
         "index": str(cible),
     }
-
 
 def mots(terme: str) -> str:
     if not isinstance(terme, str) or not 2 <= len(terme.strip()) <= 250:
@@ -193,7 +258,7 @@ def chercher(index: Path, terme: str, limite: int = 30, page: int = 1) -> dict:
             "SELECT COUNT(*) FROM recherche WHERE recherche MATCH ?", (requete,)
         ).fetchone()[0]
         curseur = connexion.execute(
-            "SELECT jour,identifiant,objet,acheteur,avis,categorie,etat "
+            "SELECT jour,identifiant,objet,acheteur,avis,categorie,etat,archive_source,releve_le "
             "FROM recherche WHERE recherche MATCH ? ORDER BY rank LIMIT ? OFFSET ?",
             (requete, limite, (page - 1) * limite),
         )
@@ -201,10 +266,12 @@ def chercher(index: Path, terme: str, limite: int = 30, page: int = 1) -> dict:
             "date_parution": x[0], "identifiant": x[1], "objet": x[2],
             "acheteur": x[3], "avis": x[4],
             "categorie_marche": x[5], "etat_avis": x[6],
+            "archive_source": x[7], "releve_le": x[8],
         } for x in curseur]
     return {
         "version": VERSION, "expression": terme, "total_candidats": nombre,
         "page": page, "resultats": resultats,
+        "choix_version": "dernier_releve_verifie_par_jour",
         "preuve_de_besoin_scientifique": False,
         "completude_historique_etablie": False,
     }
