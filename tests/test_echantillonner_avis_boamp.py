@@ -73,7 +73,8 @@ def test_selection_avec_mois_complets_et_temoin(tmp_path):
     assert e["nombre_avis_mois_incomplets_exclus"] == 1
     assert e["nombre_avis_multithemes"] == 1
     assert e["nombre_categories_marche_renseignees"] == 63
-    assert e["stratification_categorie_marche_effective"] is True
+    assert e["stratification_categorie_marche_effective"] is False
+    assert e["stratification_effective"] == ["mois_civil_complet", "etat_documentaire", "domaine_lexical"]
     assert e["nombre_strates"] == 3
     assert e["nombre_tirages"] == 7
     assert e["nombre_avis_distincts"] in (6, 7)
@@ -133,3 +134,55 @@ def test_categories_entierement_absentes_ne_creent_pas_de_fausses_strates(tmp_pa
     assert r["stratification_categorie_marche_effective"] is False
     assert r["nombre_etats_documentaires_absents"] == 0
     assert {s["etat_documentaire"] for s in r["strates"]} == {"INITIAL"}
+
+
+def test_contre_verification_integre_et_replications(tmp_path):
+    from scripts.auditer_echantillon_boamp import auditer
+    index, preuve, bilan = jeu(tmp_path)
+    rapport = constituer(index, preuve, bilan, quota=3)
+    selection = tmp_path / "tirages.json"
+    ecrire(rapport, selection)
+    resultat = auditer(index, preuve, selection)
+    assert resultat["conformite_du_tirage"] is True
+    assert resultat["nombre_avis_verifies"] == 63
+    assert resultat["nombre_journees_verifiees"] == 32
+    assert resultat["mois_civils_complets"] == 1
+    assert resultat["avis_exclus_mois_incomplets"] == 1
+    assert resultat["strates_integralement_rejouees"] == 3
+    assert resultat["tirages_integralement_rejoues"] == 7
+    assert resultat["categories_de_marche_presentes"] == 63
+    assert len(resultat["sensibilite_a_deux_semences"]) == 2
+    assert all(0 <= x["fraction_de_tirages_communs"] <= 1
+               for x in resultat["sensibilite_a_deux_semences"])
+
+
+@pytest.mark.parametrize("alteration", ["rang", "population", "archive", "stratification"])
+def test_contre_verification_refuse_rapports_alteres(tmp_path, alteration):
+    from scripts.auditer_echantillon_boamp import auditer, ControleInvalide
+    index, preuve, bilan = jeu(tmp_path)
+    selection = tmp_path / "tirages.json"
+    ecrire(constituer(index, preuve, bilan, quota=3), selection)
+    contenu = json.loads(selection.read_text(encoding="utf-8"))
+    if alteration == "rang":
+        contenu["strates"][0]["avis"][0]["rang_sha256"] = "f" * 64
+    elif alteration == "population":
+        contenu["strates"][0]["population_documentaire"] += 1
+    elif alteration == "archive":
+        contenu["strates"][0]["avis"][0]["archive_source"] = "archive_frauduleuse.gz"
+    elif alteration == "stratification":
+        contenu["stratification_categorie_marche_effective"] = True
+    selection.write_text(json.dumps(contenu), encoding="utf-8")
+    with pytest.raises(ControleInvalide):
+        auditer(index, preuve, selection)
+
+
+def test_contre_verification_source_changee_refusee(tmp_path):
+    from scripts.auditer_echantillon_boamp import auditer, ControleInvalide
+    index, preuve, bilan = jeu(tmp_path)
+    selection = tmp_path / "tirages.json"
+    ecrire(constituer(index, preuve, bilan), selection)
+    with closing(sqlite3.connect(index)) as con:
+        con.execute("INSERT INTO informations VALUES ('modification', '1')")
+        con.commit()
+    with pytest.raises(ControleInvalide, match="Provenance"):
+        auditer(index, preuve, selection)
