@@ -21,3 +21,14 @@ Cette première correction porte sur les futures collectes. **Elle ne restaure p
 Tant qu'une période n'est pas intégralement enrichie, la comparaison statistique par catégorie de marché reste limitée aux valeurs effectivement renseignées. L'échantillonnage historique conserve pour l'instant ses strates par mois civil, état documentaire et domaine lexical ; il n'annonce aucune stratification par catégorie de marché.
 
 Source du diagnostic : procédure `Diagnostic des champs techniques BOAMP` du dépôt, exécution du 11 octobre 2026, avec comptes agrégés et sans copie du contenu intégral des avis.
+
+
+## Compléments historiques indépendants
+
+Le programme `scripts/completer_categories_boamp.py` récupère les catégories officielles de douze journées antérieures par passage. Il sélectionne les identifiants du relevé historique initial dont l'empreinte a été vérifiée, puis consulte de nouveau la source avec les seuls champs `idweb`, `dateparution` et `type_marche`.
+
+Chaque journée est conservée séparément dans `institutionnel/besoins_publics/categories_boamp/AAAA/MM/AAAA-MM-JJ.jsonl.gz`, avec manifeste SHA-256 et heure de contrôle. La correspondance avec les identifiants du relevé initial est explicite. Les identifiants apparus ou disparus depuis ce relevé sont comptés ; les avis absents du nouveau contrôle portent une catégorie inconnue.
+
+**Une catégorie récupérée en octobre 2026 n'est pas présumée être la catégorie qui était publiée à la date initiale de l'avis.** Les catégories ainsi observées sont documentaires et datées. L'archive BOAMP originale, son contenu et son empreinte ne sont jamais modifiés par ce traitement.
+
+Le programme vérifie toutes les archives complémentaires existantes avant d'ajouter un nouveau lot. Les limites de taille et de pagination empêchent de publier une consultation partielle comme exhaustive. Les fichiers complémentaires et leur état sont inclus dans la publication automatisée, avec vérifications Python et conteneur. Leur nombre et leur couverture doivent être mesurés sur les exécutions réelles avant toute interprétation statistique.
