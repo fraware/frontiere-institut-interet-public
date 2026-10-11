@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+import hashlib
 from contextlib import closing
 import json
 import os
@@ -36,7 +37,7 @@ except ModuleNotFoundError:
         ouvrir_index, chercher, verifier_sources, normaliser as mots_organisme,
     )
 
-VERSION = "croisement-avis-capacites-v1"
+VERSION = "croisement-avis-capacites-v2"
 RESTITUTION_MOTEUR = 25
 MAX_PISTES_PAR_THEME = 12
 MAX_RESULTATS_PAR_CLASSE = 3
@@ -109,12 +110,13 @@ def preuves_exactes(db: sqlite3.Connection, identifiant: str, expression: str) -
                     "expression": expression,
                     "texte_publie": passage["texte"][:350],
                     "source_id": passage["source_id"],
+                    "sha256_passage_complet": hashlib.sha256(json.dumps([passage["source_id"], passage["texte"]], ensure_ascii=False, separators=(",", ":")).encode("utf-8")).hexdigest(),
                 })
     if not resultat and contient_expression(ligne["nom"], expression):
         resultat.append({
             "niveau": "nom_seul", "expression": expression,
             "texte_publie": ligne["nom"][:350],
-            "source_id": None,
+            "source_id": None, "sha256_passage_complet": None,
         })
     return resultat
 

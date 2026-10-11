@@ -11,6 +11,7 @@ on:
       - "scripts/analyser_historique_boamp.py"
       - "scripts/constituer_pistes_boamp.py"
       - "scripts/croiser_pistes_capacites.py"
+      - "scripts/auditer_concentration_croisements.py"
       - "scripts/rechercher_capacites_institutionnelles.py"
       - "institutionnel/entites/**"
       - ".github/workflows/index-boamp-historique.yml"
@@ -161,6 +162,18 @@ jobs:
             --sortie "$DOSSIER/croisements-avis-capacites.json"
           python -m pytest -q tests/test_croiser_pistes_capacites.py
 
+      - name: Auditer la diversité des passages et les répétitions documentaires
+        shell: bash
+        run: |
+          set -euo pipefail
+          DOSSIER="$RUNNER_TEMP/frontiere-boamp"
+          python scripts/auditer_concentration_croisements.py \
+            --croisements "$DOSSIER/croisements-avis-capacites.json" \
+            --bilan-capacites "$DOSSIER/bilan-capacites-publiques.json" \
+            --sortie-json "$DOSSIER/audit-concentration.json" \
+            --sortie-md "$DOSSIER/audit-concentration.md"
+          python -m pytest -q tests/test_auditer_concentration_croisements.py
+
       - name: Publier l'index vérifié en artefact téléchargeable
         uses: actions/upload-artifact@v4
         with:
@@ -174,5 +187,7 @@ jobs:
             ${{ runner.temp }}/frontiere-boamp/croisements-avis-capacites.json
             ${{ runner.temp }}/frontiere-boamp/bilan-capacites-publiques.json
             ${{ runner.temp }}/frontiere-boamp/verification-capacites-publiques.json
+            ${{ runner.temp }}/frontiere-boamp/audit-concentration.json
+            ${{ runner.temp }}/frontiere-boamp/audit-concentration.md
           retention-days: 14
           if-no-files-found: error
