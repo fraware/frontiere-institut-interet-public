@@ -14,6 +14,10 @@ on:
       - "tests/test_reconstituer_chronologies_pilotes_boamp.py"
       - "scripts/collecter_avis_lies_boamp.py"
       - "tests/test_collecter_avis_lies_boamp.py"
+      - "scripts/capturer_avis_amont_boamp.py"
+      - "scripts/inventorier_pieces_consultation_boamp.py"
+      - "tests/test_preuves_amont_pieces_boamp.py"
+      - "evaluation/avis_amont_cibles_boamp_v1.json"
       - ".github/workflows/captures-notices-pilotes.yml"
   schedule:
     - cron: "19 4 * * 1"
@@ -52,7 +56,8 @@ jobs:
             tests/test_collecter_notices_pilotes_boamp.py \
             tests/test_qualifier_captures_notices_boamp.py \
             tests/test_reconstituer_chronologies_pilotes_boamp.py \
-            tests/test_collecter_avis_lies_boamp.py
+            tests/test_collecter_avis_lies_boamp.py \
+            tests/test_preuves_amont_pieces_boamp.py
 
       - name: Capturer les six réponses auprès de la source officielle
         shell: bash
@@ -107,6 +112,32 @@ jobs:
             --principaux "$RUNNER_TEMP/captures-notices-pilotes" \
             --verifier "$RUNNER_TEMP/avis-anterieurs"
 
+      - name: Capturer les avis amont préenregistrés et vérifier leurs références internes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/capturer_avis_amont_boamp.py \
+            --principaux "$RUNNER_TEMP/captures-notices-pilotes" \
+            --lies "$RUNNER_TEMP/avis-anterieurs" \
+            --registre evaluation/avis_amont_cibles_boamp_v1.json \
+            --sortie "$RUNNER_TEMP/avis-amont"
+          python scripts/capturer_avis_amont_boamp.py \
+            --principaux "$RUNNER_TEMP/captures-notices-pilotes" \
+            --lies "$RUNNER_TEMP/avis-anterieurs" \
+            --registre evaluation/avis_amont_cibles_boamp_v1.json \
+            --verifier "$RUNNER_TEMP/avis-amont"
+
+      - name: Inventorier les références officielles aux pièces de consultation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/inventorier_pieces_consultation_boamp.py \
+            --principaux "$RUNNER_TEMP/captures-notices-pilotes" \
+            --lies "$RUNNER_TEMP/avis-anterieurs" \
+            --amont "$RUNNER_TEMP/avis-amont" \
+            --registre evaluation/avis_amont_cibles_boamp_v1.json \
+            --sortie "$RUNNER_TEMP/inventaire-pieces-consultation.json"
+
       - name: Conserver les réponses exactes et leurs empreintes
         uses: actions/upload-artifact@v4
         with:
@@ -116,5 +147,7 @@ jobs:
             ${{ runner.temp }}/qualification-nature-avis.json
             ${{ runner.temp }}/chronologies-pilotes.json
             ${{ runner.temp }}/avis-anterieurs/
+            ${{ runner.temp }}/avis-amont/
+            ${{ runner.temp }}/inventaire-pieces-consultation.json
           retention-days: 30
           if-no-files-found: error
