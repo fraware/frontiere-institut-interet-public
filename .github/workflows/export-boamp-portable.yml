@@ -1,0 +1,88 @@
+name: "Conservation portable des archives BOAMP"
+
+on:
+  schedule:
+    - cron: "43 6 * * 0"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/exporter_archive_boamp.py"
+      - ".github/workflows/export-boamp-portable.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sauvegarde-portable-boamp
+  cancel-in-progress: false
+
+jobs:
+  exporter:
+    if: github.repository == 'fraware/frontiere-institut-interet-public'
+    name: Vérifier et préparer le paquet BOAMP portable
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Extraire la version publique du dépôt
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: Installer Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Exécuter les contrôles hors connexion
+        shell: bash
+        run: |
+          python -m pip install "pytest>=8,<10"
+          python -m pytest -q tests/test_exporter_archive_boamp.py tests/test_versions_revisions_boamp.py tests/test_reversions_boamp.py
+
+      - name: Construire le paquet et vérifier sa restitution documentaire
+        shell: bash
+        run: |
+          set -euo pipefail
+          DOSSIER="$RUNNER_TEMP/frontiere-archives"
+          mkdir -p "$DOSSIER"
+          REVISION=$(git rev-parse HEAD)
+          python scripts/exporter_archive_boamp.py exporter \
+            --revision "$REVISION" \
+            --paquet "$DOSSIER/archives-boamp.zip" > "$DOSSIER/bilan.json"
+          python scripts/exporter_archive_boamp.py verifier \
+            --paquet "$DOSSIER/archives-boamp.zip" > "$DOSSIER/verification.json"
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          racine = Path(os.environ["RUNNER_TEMP"]) / "frontiere-archives"
+          bilan = json.loads((racine / "bilan.json").read_text(encoding="utf-8"))
+          controle = json.loads((racine / "verification.json").read_text(encoding="utf-8"))
+          archive = racine / "archives-boamp.zip"
+          digest = hashlib.sha256(archive.read_bytes()).hexdigest()
+          if (digest != bilan["sha256_paquet"] or digest != controle["sha256_paquet"]
+                  or controle["fichiers_verifies"] != bilan["fichiers_verifies"]):
+              raise SystemExit("Paquet BOAMP ou preuve de vérification discordants.")
+          print(json.dumps({
+              "sha256_paquet": digest,
+              "revision_source": bilan["revision_depot"],
+              "fichiers_verifies": bilan["fichiers_verifies"],
+              "avis_indexes_au_depart": bilan["avis_indexes_au_depart"],
+              "copie_hors_site_effectuee": False,
+          }, ensure_ascii=False))
+          PY
+
+      - name: Conserver temporairement le paquet et ses preuves
+        uses: actions/upload-artifact@v4
+        with:
+          name: archives-boamp-portables-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/frontiere-archives/archives-boamp.zip
+            ${{ runner.temp }}/frontiere-archives/bilan.json
+            ${{ runner.temp }}/frontiere-archives/verification.json
+          retention-days: 30
+          if-no-files-found: error
