@@ -1,21 +1,15 @@
 {
-  "collecte_complete": false,
-  "controle_le": "2026-10-10T22:29:52+00:00",
+  "collecte_complete": true,
+  "controle_le": "2026-10-11T07:09:36+00:00",
   "couverture_exhaustive_du_web": false,
-  "erreurs": [
-    {
-      "expression": "expertise scientifique",
-      "motif": "URLError",
-      "page": 1
-    }
-  ],
+  "erreurs": [],
   "fiches_recues_avec_doublons": 449,
   "fichiers_sources_originaux_telecharges": 0,
-  "identifiants_distincts_conserves": 714,
-  "nouveaux_identifiants": 11,
-  "pages_echouees": 1,
+  "identifiants_distincts_conserves": 729,
+  "nouveaux_identifiants": 15,
+  "pages_echouees": 0,
   "pages_ignorees_sans_suite": 32,
-  "pages_reussies": 46,
+  "pages_reussies": 47,
   "pages_tentees": 47,
   "sources_deja_suivies_dans_le_resultat": 0,
   "version": "veille-catalogue-v1"
