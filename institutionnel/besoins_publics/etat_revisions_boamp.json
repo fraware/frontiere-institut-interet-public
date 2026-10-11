@@ -2,15 +2,25 @@
   "aucune_variation_ne_prouve_stabilite_totale": true,
   "changements_observes": [],
   "completude_historique_etablie": false,
-  "controle_le": "2026-10-11T19:46:26+00:00",
+  "controle_le": "2026-10-11T21:44:13+00:00",
   "controles": [
     {
-      "jour": "2026-09-28",
+      "jour": "2025-01-08",
       "retour_releve_initial": false,
       "variation": false
     },
     {
-      "jour": "2026-09-29",
+      "jour": "2025-01-09",
+      "retour_releve_initial": false,
+      "variation": false
+    },
+    {
+      "jour": "2025-01-10",
+      "retour_releve_initial": false,
+      "variation": false
+    },
+    {
+      "jour": "2025-01-11",
       "retour_releve_initial": false,
       "variation": false
     },
@@ -25,9 +35,25 @@
       "variation": false
     }
   ],
-  "dernier_jour_relecture_circulaire": "2026-10-01",
+  "dernier_jour_relecture_circulaire": "2025-01-11",
   "erreurs": [],
   "etat_connu_par_jour": {
+    "2025-01-08": {
+      "observe_le": "2026-10-11T21:44:13+00:00",
+      "sha256_gzip": "4cee527378e091de1f23be00f0e3a0506c2cf23e8db041139caf3a1ed8edaaee"
+    },
+    "2025-01-09": {
+      "observe_le": "2026-10-11T21:44:13+00:00",
+      "sha256_gzip": "6d63a8a2c973654ae0ccacc88d4716960af06e4e13bc73b4c8dcba759c464376"
+    },
+    "2025-01-10": {
+      "observe_le": "2026-10-11T21:44:13+00:00",
+      "sha256_gzip": "13dde3da49873ce0a91b220e2f9745c8b8e8e9e6ef72de831bc92b21c80c802f"
+    },
+    "2025-01-11": {
+      "observe_le": "2026-10-11T21:44:13+00:00",
+      "sha256_gzip": "bdb537c2bebf5bfa3e8d984e85663497a048562cb6bd48a0f216fd1583b8c3d7"
+    },
     "2026-09-08": {
       "observe_le": "2026-10-11T18:03:28+00:00",
       "sha256_gzip": "3e87f10442912e2fbb951239d518ffb2f0b0b26032982cc7af2c563a4d19c187"
@@ -117,16 +143,16 @@
       "sha256_gzip": "5a17f5a4d152a258d48c39a29f9bdd5ae69d4d6f04c2bbede2d5802b8e0ea629"
     },
     "2026-09-30": {
-      "observe_le": "2026-10-11T19:46:26+00:00",
+      "observe_le": "2026-10-11T21:44:13+00:00",
       "sha256_gzip": "d5901bbfc1c69c8c6bec27ba723d28e7dea71fc01e3a4b1402327e8f7773bad9"
     },
     "2026-10-01": {
-      "observe_le": "2026-10-11T19:46:26+00:00",
+      "observe_le": "2026-10-11T21:44:13+00:00",
       "sha256_gzip": "e733cd80fc9fa22fe2ac6fe148517d1c07cf68fb5994e9149662494b7b69ae53"
     }
   },
   "jours_avec_variation": 0,
-  "jours_controles": 4,
+  "jours_controles": 6,
   "nouvelles_revisions_archivees": 0,
   "retours_au_releve_initial": 0,
   "version": "surveillance-revisions-boamp-v1"
