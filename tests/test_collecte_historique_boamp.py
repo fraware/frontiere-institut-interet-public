@@ -143,3 +143,64 @@ def test_lot_de_soixante_douze_jours_et_plafond_explicite(tmp_path):
     with pytest.raises(HistoriqueIncomplet, match="incorrect"):
         executer(tmp_path, instant=instant, obtenir=api,
                  patienter=lambda n: None, jours_par_execution=73)
+
+
+def test_fin_plancher_ne_recommence_jamais_le_rattrapage(tmp_path):
+    instant = datetime(2026, 10, 9, tzinfo=timezone.utc)
+    plancher = date(2026, 10, 1)
+    etat_path = tmp_path / "etat_historique_boamp.json"
+    etat_path.write_text(
+        json.dumps({"jour_suivant_a_relever": "2026-10-02"}),
+        encoding="utf-8",
+    )
+    visites = []
+    def api(url, _origine):
+        q = parse_qs(urlparse(url).query)
+        visites.append(q["where"][0].split('"')[1])
+        return {"total_count": 0, "results": []}
+    premier = executer(
+        tmp_path, instant=instant, obtenir=api, patienter=lambda x: None,
+        jours_par_execution=5, plancher=plancher,
+    )
+    assert visites == ["2026-10-02", "2026-10-01"]
+    assert premier["jours_complets_cette_execution"] == 2
+    assert premier["jour_suivant_a_relever"] is None
+    assert premier["plancher_atteint"] is True
+    avant = etat_path.read_bytes()
+    ensuite = executer(
+        tmp_path, instant=instant, obtenir=lambda *_: (_ for _ in ()).throw(
+            AssertionError("La collecte historique est terminée.")
+        ), patienter=lambda x: None, jours_par_execution=72,
+        plancher=plancher,
+    )
+    assert ensuite == premier
+    assert etat_path.read_bytes() == avant
+
+
+def test_un_curseur_nul_ne_simule_pas_une_fin_historique(tmp_path):
+    instant = datetime(2026, 10, 9, tzinfo=timezone.utc)
+    (tmp_path / "etat_historique_boamp.json").write_text(
+        json.dumps({
+            "plancher": "2026-10-01",
+            "plancher_atteint": True,
+            "jour_suivant_a_relever": "2026-10-02",
+        }), encoding="utf-8",
+    )
+    with pytest.raises(HistoriqueIncomplet, match="terminal"):
+        executer(tmp_path, instant=instant, obtenir=lambda *_: {}, plancher=date(2026, 10, 1))
+
+
+def test_initialisation_sans_curseur_reste_distincte_de_la_fin(tmp_path):
+    instant = datetime(2026, 10, 9, tzinfo=timezone.utc)
+    visites = []
+    def api(url, _origine):
+        q = parse_qs(urlparse(url).query)
+        visites.append(q["where"][0].split('"')[1])
+        return {"total_count": 0, "results": []}
+    bilan = executer(
+        tmp_path, instant=instant, obtenir=api, patienter=lambda x: None,
+        jours_par_execution=1,
+    )
+    assert visites == ["2026-10-01"]
+    assert bilan["plancher_atteint"] is False
+    assert bilan["jour_suivant_a_relever"] == "2026-09-30"
