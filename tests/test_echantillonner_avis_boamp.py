@@ -15,7 +15,7 @@ from scripts.echantillonner_avis_boamp import (
 )
 
 
-def jeu(tmp_path):
+def jeu(tmp_path, categorie="SERVICES"):
     index, preuve, bilan = (
         tmp_path / "index.sqlite3",
         tmp_path / "preuve.json",
@@ -41,7 +41,7 @@ def jeu(tmp_path):
                 conn.execute(
                     "INSERT INTO recherche VALUES (?,?,?,?,?,?,?,?,?)",
                     (jour, code, objet, "Acheteur fictif",
-                     "https://www.boamp.fr/" + code, "SERVICES",
+                     "https://www.boamp.fr/" + code, categorie,
                      "INITIAL", "archive.gz", "2026-02-02T00:00:00+00:00"),
                 )
         conn.execute(
@@ -52,7 +52,7 @@ def jeu(tmp_path):
         conn.execute(
             "INSERT INTO recherche VALUES(?,?,?,?,?,?,?,?,?)",
             ("2026-02-01", "26-999", "Cybersecurite des réseaux", "Temoin",
-             "https://www.boamp.fr/26-999", "SERVICES",
+             "https://www.boamp.fr/26-999", categorie,
              "INITIAL", "archive.gz", "2026-02-02T00:00:00+00:00"),
         )
         conn.commit()
@@ -123,3 +123,13 @@ def test_controle_mois_incomplets_et_categories():
         mois_couverts(["2026-02-01", "2026-02-01"])
     with pytest.raises(BilanInvalide):
         mois_couverts(["2026-02-31"])
+
+
+def test_categories_entierement_absentes_ne_creent_pas_de_fausses_strates(tmp_path):
+    index, preuve, bilan = jeu(tmp_path, categorie=None)
+    r = constituer(index, preuve, bilan, quota=2)
+    assert r["nombre_categories_marche_renseignees"] == 0
+    assert r["nombre_categories_marche_manquantes"] == 63
+    assert r["stratification_categorie_marche_effective"] is False
+    assert r["nombre_etats_documentaires_absents"] == 0
+    assert {s["etat_documentaire"] for s in r["strates"]} == {"INITIAL"}
