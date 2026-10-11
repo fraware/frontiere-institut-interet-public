@@ -11,7 +11,7 @@ from scripts.analyser_historique_boamp import (
 )
 from scripts.rechercher_historique_boamp import VERSION, preparer_base
 from scripts.echantillonner_avis_boamp import (
-    constituer, ecrire, mois_couverts, categorie_strate, TEMOIN,
+    constituer, ecrire, mois_couverts, etat_strate, TEMOIN,
 )
 
 
@@ -72,17 +72,19 @@ def test_selection_avec_mois_complets_et_temoin(tmp_path):
     assert e["mois_complets"] == ["2026-01"]
     assert e["nombre_avis_mois_incomplets_exclus"] == 1
     assert e["nombre_avis_multithemes"] == 1
+    assert e["nombre_categories_marche_renseignees"] == 63
+    assert e["stratification_categorie_marche_effective"] is True
     assert e["nombre_strates"] == 3
     assert e["nombre_tirages"] == 7
     assert e["nombre_avis_distincts"] in (6, 7)
     assert e["temoin_ne_signifie_pas_absence_de_besoin"]
-    s = {(r["mois"], r["categorie"], r["domaine"]): r for r in e["strates"]}
-    ai = s[("2026-01", "SERVICES", "intelligence_artificielle")]
+    s = {(r["mois"], r["etat_documentaire"], r["domaine"]): r for r in e["strates"]}
+    ai = s[("2026-01", "INITIAL", "intelligence_artificielle")]
     assert ai["population_documentaire"] == 31
     assert ai["nombre_tire"] == 3
     assert ai["fraction_tirage"] == {"numerateur": 3, "denominateur": 31}
-    assert len(s[("2026-01", "SERVICES", TEMOIN)]["avis"]) == 3
-    assert s[("2026-01", "SERVICES", "robotique")]["nombre_tire"] == 1
+    assert len(s[("2026-01", "INITIAL", TEMOIN)]["avis"]) == 3
+    assert s[("2026-01", "INITIAL", "robotique")]["nombre_tire"] == 1
     assert all(not v["besoin_scientifique_valide"]
                for st in e["strates"] for v in st["avis"])
 
@@ -114,9 +116,9 @@ def test_controle_mois_incomplets_et_categories():
     complets, stats = mois_couverts(jours)
     assert complets == ["2026-01"]
     assert stats[-1]["jours_archives"] == 1
-    assert categorie_strate("Fournitures") == "FOURNITURES"
-    assert categorie_strate("Prestations de services") == "SERVICES"
-    assert categorie_strate(None) == "AUTRE"
+    assert etat_strate("RECTIFICATIF") == "RECTIFICATIF"
+    assert etat_strate("initial") == "INITIAL"
+    assert etat_strate(None) == "NON_RENSEIGNE"
     with pytest.raises(BilanInvalide):
         mois_couverts(["2026-02-01", "2026-02-01"])
     with pytest.raises(BilanInvalide):
