@@ -1,7 +1,7 @@
 """Rapprocher des identifiants BOAMP explicites d'archives BeauAMP vérifiées."""
 from __future__ import annotations
 import argparse
-from collections import Counter
+from collections import Counter, defaultdict
 from contextlib import closing
 import csv
 from datetime import date
@@ -18,7 +18,7 @@ try:
 except ModuleNotFoundError:
     from analyser_historique_boamp import BilanInvalide, produire
 
-VERSION = "appariement-documentaire-boamp-beauamp-v1"
+VERSION = "appariement-documentaire-boamp-beauamp-v2"
 VERSION_BEAUAMP = "beauamp-quotidiens-v1"
 IDENTIFIANT = re.compile(r"[0-9]{2}-[0-9]{2,8}")
 SHA = re.compile(r"[0-9a-f]{64}")
@@ -88,8 +88,10 @@ def rapprocher(index, preuve, racine_beauamp):
         raise BilanInvalide("Population BOAMP incohérente.")
     rencontres = Counter()
     uniques = {"id_boamp_attribution": set(), "id_boamp_contrat": set()}
-    exemples = []
+    exemples_par_jour_et_type = defaultdict(list)
+    ecarts_par_contrat = defaultdict(set)
     total_lignes, vides, malformes, ecarts_negatifs = 0, 0, 0, 0
+    lignes_jour_secondaire_hors_fenetre = 0
     ecarts = []
     for jour_fichier, chemin, fiche in fichiers:
         with chemin.open("r", encoding="utf-8-sig", newline="") as handle:
@@ -98,6 +100,10 @@ def rapprocher(index, preuve, racine_beauamp):
                 raise BilanInvalide("Colonnes BeauAMP obligatoires absentes.")
             for ligne in lecteur:
                 total_lignes += 1
+                lignes_jour_secondaire_hors_fenetre += not (
+                    bilan["couverture"]["premier_jour"] <= jour_fichier
+                    <= bilan["couverture"]["dernier_jour"]
+                )
                 ids = [
                     (champ, lire_identifiant(ligne.get(champ)))
                     for champ in ("id_boamp_attribution", "id_boamp_contrat")
@@ -112,22 +118,36 @@ def rapprocher(index, preuve, racine_beauamp):
                     rencontres[champ] += 1
                     uniques[champ].add(identifiant)
                     jour_boamp, objet_boamp, archive_boamp = avis[identifiant]
-                    if len(exemples) < 60:
-                        exemples.append({
-                            "identifiant_boamp": identifiant,
-                            "nature_lien_exact": champ,
-                            "jour_parution_boamp": jour_boamp,
-                            "archive_boamp": archive_boamp,
-                            "objet_boamp": objet_boamp[:350],
-                            "jour_fichier_beauamp": jour_fichier,
-                            "archive_beauamp": fiche["chemin"],
-                            "identifiant_attribution": ligne.get("id_boamp_attribution"),
-                            "identifiant_contrat": ligne.get("id_boamp_contrat"),
-                            "date_attribution_declaree": ligne.get("date_avis_attribution"),
-                            "objet_beauamp": (ligne.get("objet") or "")[:350],
-                            "statut": "rapprochement_documentaire_indicatif",
-                            "validation_du_marche": False,
-                        })
+                    strate_exemple = (jour_fichier, champ)
+                    paquet = exemples_par_jour_et_type[strate_exemple]
+                    cle_rang = hashlib.sha256(
+                        json.dumps([jour_fichier, champ, identifiant],
+                                   separators=(",", ":")).encode("utf-8")
+                    ).hexdigest()
+                    exemple = {
+                        "identifiant_boamp": identifiant,
+                        "nature_lien_exact": champ,
+                        "jour_parution_boamp": jour_boamp,
+                        "archive_boamp": archive_boamp,
+                        "objet_boamp": objet_boamp[:350],
+                        "jour_fichier_beauamp": jour_fichier,
+                        "archive_beauamp": fiche["chemin"],
+                        "identifiant_attribution": ligne.get("id_boamp_attribution"),
+                        "identifiant_contrat": ligne.get("id_boamp_contrat"),
+                        "date_attribution_declaree": ligne.get("date_avis_attribution"),
+                        "objet_beauamp": (ligne.get("objet") or "")[:350],
+                        "statut": "rapprochement_documentaire_indicatif",
+                        "validation_du_marche": False,
+                        "_rang": cle_rang,
+                    }
+                    if not any(x["identifiant_boamp"] == identifiant for x in paquet):
+                        if len(paquet) < 3:
+                            paquet.append(exemple)
+                        else:
+                            pire = max(range(len(paquet)),
+                                       key=lambda n: paquet[n]["_rang"])
+                            if cle_rang < paquet[pire]["_rang"]:
+                                paquet[pire] = exemple
                     if champ == "id_boamp_contrat":
                         texte = (ligne.get("date_avis_attribution") or "").strip()
                         try:
@@ -140,7 +160,21 @@ def rapprocher(index, preuve, racine_beauamp):
                                 ecarts_negatifs += 1
                             else:
                                 ecarts.append(delta)
+                                ecarts_par_contrat[identifiant].add(delta)
     ecarts.sort()
+    ecarts_par_identifiant = sorted(
+        next(iter(valeurs)) for valeurs in ecarts_par_contrat.values()
+        if len(valeurs) == 1
+    )
+    contrats_dates_divergentes = sum(
+        len(valeurs) > 1 for valeurs in ecarts_par_contrat.values()
+    )
+    exemples = []
+    for strate in sorted(exemples_par_jour_et_type):
+        for observation in sorted(exemples_par_jour_et_type[strate],
+                                  key=lambda item: item["_rang"]):
+            observation.pop("_rang")
+            exemples.append(observation)
     union = uniques["id_boamp_attribution"] | uniques["id_boamp_contrat"]
     return {
         "version": VERSION,
@@ -162,6 +196,21 @@ def rapprocher(index, preuve, racine_beauamp):
             champ: len(ensemble) for champ, ensemble in sorted(uniques.items())
         },
         "identifiants_boamp_distincts_apparies": len(union),
+        "lignes_jour_secondaire_hors_intervalle_boamp":
+            lignes_jour_secondaire_hors_fenetre,
+        "dates_publication_par_contrat_distinct_non_ambigues":
+            len(ecarts_par_identifiant),
+        "contrats_avec_dates_publication_divergentes":
+            contrats_dates_divergentes,
+        "jours_ecart_contrats_distincts": {
+            "minimum": ecarts_par_identifiant[0] if ecarts_par_identifiant else None,
+            "mediane": (
+                (ecarts_par_identifiant[(len(ecarts_par_identifiant)-1)//2]
+                 + ecarts_par_identifiant[len(ecarts_par_identifiant)//2]) / 2
+                if ecarts_par_identifiant else None
+            ),
+            "maximum": ecarts_par_identifiant[-1] if ecarts_par_identifiant else None,
+        },
         "ecarts_publication_contrat_attribution_positifs_observes": len(ecarts),
         "ecarts_publication_negatifs_ecartes": ecarts_negatifs,
         "jours_ecart_publication_positifs": {
@@ -170,7 +219,7 @@ def rapprocher(index, preuve, racine_beauamp):
             if ecarts else None,
             "maximum": ecarts[-1] if ecarts else None,
         },
-        "exemples_premiers_dans_les_fichiers": exemples,
+        "exemples_repartis_par_jour_et_type": exemples,
         "completude_des_attributions_etablie": False,
         "fichiers_secondaires_limites_a_leur_fenetre": True,
         "attribution_officielle_verifiee": False,

@@ -18,6 +18,14 @@ Pour les références contractuelles reliées, la méthode calcule uniquement l'
 
 Cet intervalle ne mesure ni la durée totale de la procédure de marché, ni le délai depuis la formulation d'un besoin, ni le temps de mobilisation d'une compétence. Une absence de rapprochement ne démontre aucune absence d'attribution, en particulier hors des dates des petits fichiers quotidiens archivés.
 
+## Contrôle de l'unité d'analyse et de la fenêtre
+
+La deuxième version calcule séparément les écarts portant sur les **lignes** de BeauAMP et ceux portant sur les **identifiants de contrat distincts**. Un contrat présent sur plusieurs lots reçoit un seul intervalle si toutes les dates d'attribution enregistrées pour cet identifiant concordent. Les identifiants présentant des dates divergentes sont dénombrés et exclus de cette statistique par contrat.
+
+Le rapport distingue également les lignes des fichiers quotidiens BeauAMP datés hors de l'intervalle couvert par l'index BOAMP. Une ligne de ce type ne doit pas entrer dans un taux de rapprochement supposé avoir le même univers temporel. Les exemples publiés sont désormais répartis par jour et par type de lien, avec un nombre borné de références distinctes, pour éviter une liste provenant exclusivement des premiers fichiers.
+
+Aucune de ces protections ne transforme l'écart entre dates de publication en délai d'accès à une compétence ou en estimation représentative de la durée des marchés publics.
+
 ## Exécution
 
 ```bash
