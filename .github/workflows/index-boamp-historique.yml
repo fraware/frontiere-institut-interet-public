@@ -118,6 +118,7 @@ jobs:
           set -euo pipefail
           DOSSIER="$RUNNER_TEMP/frontiere-boamp"
           python scripts/analyser_historique_boamp.py             --index "$DOSSIER/index-avis-boamp.sqlite3"             --preuve-index "$DOSSIER/preuve-index.json"             --sortie "$DOSSIER/bilan-documentaire.json"
+          python -m pip install "pytest>=8,<10"
           python -m pytest -q tests/test_analyser_historique_boamp.py
 
       - name: Publier l'index vérifié en artefact téléchargeable
