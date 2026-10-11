@@ -95,16 +95,15 @@ def analyser_attribution(notice):
         emission = champ_date(contrat.get("cbc:IssueDate"), "émission du contrat")
         if attribution and emission and attribution > emission:
             raise ChronologieInvalide("Émission du contrat antérieure à l'attribution.")
+        origine_contrat = RACINE + "/efac:SettledContract" + (
+            f"/{numero}" if isinstance(ensemble.get("efac:SettledContract"), list) else ""
+        )
         contrats.append({
             "identifiant_contrat": code,
             "date_attribution_declaree": attribution,
             "date_emission_contrat_declaree": emission,
-            "origine_date_attribution": RACINE + (
-                f"/efac:SettledContract/{numero}/cbc:AwardDate"
-            ),
-            "origine_date_emission": RACINE + (
-                f"/efac:SettledContract/{numero}/cbc:IssueDate"
-            ),
+            "origine_date_attribution": origine_contrat + "/cbc:AwardDate",
+            "origine_date_emission": origine_contrat + "/cbc:IssueDate",
             "date_debut_execution": None,
             "date_premiere_contribution_utile": None,
         })
@@ -115,6 +114,9 @@ def analyser_attribution(notice):
         motif = chemin(resultat, ["efac:DecisionReason", "efbc:DecisionReasonCode", "#text"])
         if motif is not None and not isinstance(motif, str):
             raise ChronologieInvalide("Motif de non-attribution illisible.")
+        origine_lot = RACINE + "/efac:LotResult" + (
+            f"/{numero}" if isinstance(ensemble.get("efac:LotResult"), list) else ""
+        )
         lots.append({
             "identifiant_lot": code_lot,
             "code_resultat_officiel": code,
@@ -123,9 +125,7 @@ def analyser_attribution(notice):
                 "non_attribue" if code == "clos-nw" else "indetermine"
             ),
             "motif_officiel": motif,
-            "origine_resultat": RACINE + (
-                f"/efac:LotResult/{numero}/cbc:TenderResultCode/#text"
-            ),
+            "origine_resultat": origine_lot + "/cbc:TenderResultCode/#text",
             "contrat_reference": (
                 identite(chemin(resultat, ["efac:SettledContract", "cbc:ID"]))
                 if resultat.get("efac:SettledContract") else None
