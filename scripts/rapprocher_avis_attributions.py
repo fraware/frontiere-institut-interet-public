@@ -118,22 +118,36 @@ def rapprocher(index, preuve, racine_beauamp):
                     rencontres[champ] += 1
                     uniques[champ].add(identifiant)
                     jour_boamp, objet_boamp, archive_boamp = avis[identifiant]
-                    if len(exemples) < 60:
-                        exemples.append({
-                            "identifiant_boamp": identifiant,
-                            "nature_lien_exact": champ,
-                            "jour_parution_boamp": jour_boamp,
-                            "archive_boamp": archive_boamp,
-                            "objet_boamp": objet_boamp[:350],
-                            "jour_fichier_beauamp": jour_fichier,
-                            "archive_beauamp": fiche["chemin"],
-                            "identifiant_attribution": ligne.get("id_boamp_attribution"),
-                            "identifiant_contrat": ligne.get("id_boamp_contrat"),
-                            "date_attribution_declaree": ligne.get("date_avis_attribution"),
-                            "objet_beauamp": (ligne.get("objet") or "")[:350],
-                            "statut": "rapprochement_documentaire_indicatif",
-                            "validation_du_marche": False,
-                        })
+                    strate_exemple = (jour_fichier, champ)
+                    paquet = exemples_par_jour_et_type[strate_exemple]
+                    cle_rang = hashlib.sha256(
+                        json.dumps([jour_fichier, champ, identifiant],
+                                   separators=(",", ":")).encode("utf-8")
+                    ).hexdigest()
+                    exemple = {
+                        "identifiant_boamp": identifiant,
+                        "nature_lien_exact": champ,
+                        "jour_parution_boamp": jour_boamp,
+                        "archive_boamp": archive_boamp,
+                        "objet_boamp": objet_boamp[:350],
+                        "jour_fichier_beauamp": jour_fichier,
+                        "archive_beauamp": fiche["chemin"],
+                        "identifiant_attribution": ligne.get("id_boamp_attribution"),
+                        "identifiant_contrat": ligne.get("id_boamp_contrat"),
+                        "date_attribution_declaree": ligne.get("date_avis_attribution"),
+                        "objet_beauamp": (ligne.get("objet") or "")[:350],
+                        "statut": "rapprochement_documentaire_indicatif",
+                        "validation_du_marche": False,
+                        "_rang": cle_rang,
+                    }
+                    if not any(x["identifiant_boamp"] == identifiant for x in paquet):
+                        if len(paquet) < 3:
+                            paquet.append(exemple)
+                        else:
+                            pire = max(range(len(paquet)),
+                                       key=lambda n: paquet[n]["_rang"])
+                            if cle_rang < paquet[pire]["_rang"]:
+                                paquet[pire] = exemple
                     if champ == "id_boamp_contrat":
                         texte = (ligne.get("date_avis_attribution") or "").strip()
                         try:
