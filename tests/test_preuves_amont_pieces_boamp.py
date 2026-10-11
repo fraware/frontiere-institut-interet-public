@@ -186,4 +186,4 @@ def test_date_officielle_divergente_est_archivee_sans_validation_abusive(tmp_pat
     inventaire = produire(principaux, lies, dossier, registre)
     assert next(x for x in inventaire["avis"] if x["avis"] == "24-119544")[
         "statut_observation"
-    ] == "absent_du_releve"
+    ] == "notice_relevee_date_divergente"
