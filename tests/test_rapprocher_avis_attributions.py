@@ -68,3 +68,28 @@ def exemple(tmp_path):
     return index, preuve, source, fichier
 
 
+def test_lots_et_identifiants_distincts(tmp_path):
+    index, preuve, source, _ = exemple(tmp_path)
+    r = rapprocher(index, preuve, source)
+    assert r["lignes_beauamp_examinees"] == 4
+    assert r["fichiers_beauamp_verifies"] == 1
+    assert r["liaisons_sur_lignes_par_type"] == {
+        "id_boamp_attribution": 1, "id_boamp_contrat": 2,
+    }
+    assert r["identifiants_boamp_distincts_apparies"] == 2
+    assert r["ecarts_publication_contrat_attribution_positifs_observes"] == 2
+    assert r["jours_ecart_publication_positifs"] == {
+        "minimum": 5, "mediane": 5.0, "maximum": 5,
+    }
+    assert r["attribution_officielle_verifiee"] is False
+
+
+def test_manifest_corrompu_ne_remplace_pas_la_sortie(tmp_path):
+    index, preuve, source, fichier = exemple(tmp_path)
+    sortie = tmp_path / "rapport.json"
+    ecrire(rapprocher(index, preuve, source), sortie)
+    original = sortie.read_bytes()
+    fichier.write_bytes(fichier.read_bytes() + b"changement")
+    with pytest.raises(BilanInvalide, match="Empreinte"):
+        rapprocher(index, preuve, source)
+    assert sortie.read_bytes() == original
