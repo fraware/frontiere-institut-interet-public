@@ -10,6 +10,7 @@ on:
       - "scripts/rechercher_historique_boamp.py"
       - "scripts/analyser_historique_boamp.py"
       - "scripts/constituer_pistes_boamp.py"
+      - "scripts/echantillonner_avis_boamp.py"
       - "scripts/croiser_pistes_capacites.py"
       - "scripts/auditer_concentration_croisements.py"
       - "scripts/rechercher_capacites_institutionnelles.py"
@@ -174,6 +175,19 @@ jobs:
             --sortie-md "$DOSSIER/audit-concentration.md"
           python -m pytest -q tests/test_auditer_concentration_croisements.py
 
+      - name: Tirer des annonces comparables sur des mois intégralement couverts
+        shell: bash
+        run: |
+          set -euo pipefail
+          DOSSIER="$RUNNER_TEMP/frontiere-boamp"
+          python scripts/echantillonner_avis_boamp.py \
+            --index "$DOSSIER/index-avis-boamp.sqlite3" \
+            --preuve-index "$DOSSIER/preuve-index.json" \
+            --bilan "$DOSSIER/bilan-documentaire.json" \
+            --quota 4 --semence frontiere-exploration-2026-10-v1 \
+            --sortie "$DOSSIER/echantillon-temporel-boamp.json"
+          python -m pytest -q tests/test_echantillonner_avis_boamp.py
+
       - name: Publier l'index vérifié en artefact téléchargeable
         uses: actions/upload-artifact@v4
         with:
@@ -184,6 +198,7 @@ jobs:
             ${{ runner.temp }}/frontiere-boamp/preuve-index.json
             ${{ runner.temp }}/frontiere-boamp/bilan-documentaire.json
             ${{ runner.temp }}/frontiere-boamp/pistes-a-examiner.json
+            ${{ runner.temp }}/frontiere-boamp/echantillon-temporel-boamp.json
             ${{ runner.temp }}/frontiere-boamp/croisements-avis-capacites.json
             ${{ runner.temp }}/frontiere-boamp/bilan-capacites-publiques.json
             ${{ runner.temp }}/frontiere-boamp/verification-capacites-publiques.json
