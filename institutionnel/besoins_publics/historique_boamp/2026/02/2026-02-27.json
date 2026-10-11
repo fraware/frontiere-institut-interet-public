@@ -1,0 +1,16 @@
+{
+  "archive_relative": "historique_boamp/2026/02/2026-02-27.jsonl.gz",
+  "attribution": "Direction de l'information légale et administrative (DILA), BOAMP",
+  "avis_distincts": 336,
+  "avis_recus": 336,
+  "collecte_le": "2026-10-11T10:11:42+00:00",
+  "exhaustif_pour_l_historique_du_boamp": false,
+  "exhaustif_pour_la_journee_au_moment_de_la_collecte": true,
+  "jour_parution": "2026-02-27",
+  "octets_archive": 24775,
+  "pages_completes": true,
+  "sha256_archive_gzip": "f04879661ad31a730efff45382cd1ea99604c9597220115fff97667b2b8e4a85",
+  "sha256_octets_decompresses": "20b2e166a4fa10f538369cd279c23146492e469f82b0f653719b884fdd8b8f31",
+  "source": "https://boamp-datadila.opendatasoft.com/api/explore/v2.1/catalog/datasets/boamp/records",
+  "version": "boamp-historique-journalier-v1"
+}
