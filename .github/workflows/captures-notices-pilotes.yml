@@ -1,0 +1,77 @@
+name: "Captures primaires des six pilotes BOAMP"
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/collecter_notices_pilotes_boamp.py"
+      - "scripts/preparer_dossiers_pilotes_boamp.py"
+      - "evaluation/cas_pilotes_boamp_v1.json"
+      - "tests/test_collecter_notices_pilotes_boamp.py"
+      - ".github/workflows/captures-notices-pilotes.yml"
+  schedule:
+    - cron: "19 4 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: captures-primaires-boamp
+  cancel-in-progress: false
+
+jobs:
+  capturer:
+    if: github.repository == 'fraware/frontiere-institut-interet-public'
+    name: Capturer et contrôler les notices officielles
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Récupérer la révision exacte
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Préparer Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Vérifier les règles de capture sans accès distant
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install "pytest>=8,<10"
+          python -m pytest -q tests/test_collecter_notices_pilotes_boamp.py
+
+      - name: Capturer les six réponses auprès de la source officielle
+        shell: bash
+        run: |
+          set -euo pipefail
+          DOSSIER="$RUNNER_TEMP/captures-notices-pilotes"
+          python scripts/collecter_notices_pilotes_boamp.py \
+            --registre evaluation/cas_pilotes_boamp_v1.json \
+            --sortie "$DOSSIER"
+          python scripts/collecter_notices_pilotes_boamp.py --verifier "$DOSSIER"
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          path = Path(os.environ["RUNNER_TEMP"]) / "captures-notices-pilotes" / "rapport.json"
+          bilan = json.loads(path.read_text(encoding="utf-8"))
+          print(json.dumps({
+              "cas": bilan["nombre_cas"],
+              "notices_retrouvees": bilan["nombre_notices_retrouvees"],
+              "notices_non_retrouvees": bilan["nombre_cas"] - bilan["nombre_notices_retrouvees"],
+              "source": "DILA / BOAMP, relevé actuel",
+              "observation": bilan["observe_le"],
+          }, ensure_ascii=False))
+          PY
+
+      - name: Conserver les réponses exactes et leurs empreintes
+        uses: actions/upload-artifact@v4
+        with:
+          name: notices-primaires-pilotes-${{ github.run_id }}
+          path: ${{ runner.temp }}/captures-notices-pilotes/
+          retention-days: 30
+          if-no-files-found: error
