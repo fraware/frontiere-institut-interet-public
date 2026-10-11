@@ -26,10 +26,10 @@ Depuis la racine du dépôt :
 
 ```bash
 python -m pytest -q tests/test_collecte_historique_boamp.py tests/test_publication_besoins_publics.py
-python scripts/collecter_historique_boamp.py --jours 24
+python scripts/collecter_historique_boamp.py --jours 72
 ```
 
-En absence de curseur, le programme commence huit jours avant la date d'exécution, pour limiter le chevauchement avec la collecte courante. Les premiers relevés effectifs ont commencé le 9 octobre 2026 et ont confirmé huit journées complètes, du 24 septembre au 1er octobre 2026, pour 2 817 avis normalisés. Le programme est ensuite réglé pour traiter au plus vingt-quatre journées par exécution, en remontant vers le 1er janvier 2018. La collecte programmée publie ses modifications dans des propositions soumises aux trois contrôles du dépôt. La portée historique complète et la stabilité transactionnelle de la source restent non établies.
+En absence de curseur, le programme commence huit jours avant la date d'exécution, pour limiter le chevauchement avec la collecte courante. Les premiers relevés effectifs ont commencé le 9 octobre 2026 et ont confirmé huit journées complètes, du 24 septembre au 1er octobre 2026, pour 2 817 avis normalisés. Le programme est ensuite réglé pour traiter au plus soixante-douze journées par exécution, en remontant vers le 1er janvier 2018. La collecte programmée publie ses modifications dans des propositions soumises aux trois contrôles du dépôt. La portée historique complète et la stabilité transactionnelle de la source restent non établies.
 
 Les journées entièrement traitées comptent des **avis BOAMP** et non des marchés distincts, des difficultés de recrutement, des besoins scientifiques avérés ou des interventions FRONTIÈRE. Une déclaration de complétude ne concerne que la journée et l'instant du relevé. Les corrections ultérieures à la source, les avis antérieurs au plancher, les archives historiques officielles en dehors de cette interface et les erreurs de classification restent hors du périmètre démontré.
 
