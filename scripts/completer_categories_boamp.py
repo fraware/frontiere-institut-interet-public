@@ -163,3 +163,143 @@ def completer_jour(base: Path, fiche_initiale: Path, *,
         "date_origine_de_la_categorie_etablie": False,
         "completude_historique_de_la_source_etablie": False,
     }
+    categorie_path.parent.mkdir(parents=True, exist_ok=True)
+    tmp_archive = categorie_path.with_suffix(".gz.tmp")
+    tmp_fiche = manifeste_path.with_suffix(".json.tmp")
+    tmp_archive.write_bytes(compresse)
+    tmp_fiche.write_text(
+        json.dumps(manifeste, ensure_ascii=False, sort_keys=True, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    tmp_archive.replace(categorie_path)
+    tmp_fiche.replace(manifeste_path)
+    return verifier_complement(base, fiche_initiale)
+
+
+def verifier_complement(base: Path, fiche_initiale: Path) -> dict:
+    jour, _archive, sha_original, notices = avis_archive(fiche_initiale, base)
+    fichier, fiche = chemins(base, jour)
+    if (not fichier.is_file() or fichier.is_symlink()
+            or not fiche.is_file() or fiche.is_symlink()):
+        raise CategoriesIncompletes("Complément et manifeste doivent être présents.")
+    info = json.loads(fiche.read_text(encoding="utf-8"))
+    if (not isinstance(info, dict)
+            or info.get("version") != VERSION
+            or info.get("jour_parution") != jour
+            or info.get("archive_originale_sha256_gzip") != sha_original
+            or info.get("nombre_identifiants_initiaux") != len(notices)
+            or info.get("archive_relative") != fichier.relative_to(base).as_posix()
+            or info.get("photographie_initiale_modifiee") is not False
+            or info.get("date_origine_de_la_categorie_etablie") is not False):
+        raise CategoriesIncompletes("Provenance du complément incohérente.")
+    b = fichier.read_bytes()
+    if not 0 < len(b) <= 2_000_000 or len(b) != info.get("octets_archive"):
+        raise CategoriesIncompletes("Taille de complément incohérente.")
+    if empreinte(b) != info.get("sha256_archive_gzip"):
+        raise CategoriesIncompletes("Empreinte comprimée du complément incorrecte.")
+    try:
+        contenu = gzip.decompress(b)
+    except (OSError, EOFError) as err:
+        raise CategoriesIncompletes("Complément comprimé illisible.") from err
+    if len(contenu) > 8_000_000 or empreinte(contenu) != info.get("sha256_octets_decompresses"):
+        raise CategoriesIncompletes("Empreinte décompressée du complément incorrecte.")
+    documents = []
+    try:
+        for ligne in contenu.splitlines():
+            documents.append(json.loads(ligne))
+    except (ValueError, UnicodeDecodeError) as erreur:
+        raise CategoriesIncompletes("Lignes du complément incorrectes.") from erreur
+    ids_originaux = sorted(x["id"] for x in notices)
+    if ([x.get("id") for x in documents] != ids_originaux
+            or any(x.get("categorie_marche") not in (
+                None, "SERVICES", "FOURNITURES", "TRAVAUX",
+            ) or type(x.get("present_dans_releve_complementaire")) is not bool
+                   for x in documents)):
+        raise CategoriesIncompletes("Identifiants ou catégories du complément incorrects.")
+    if (sum(x["categorie_marche"] is not None for x in documents)
+            != info.get("categories_renseignees_pour_identifiants_initiaux")
+            or sum(x["categorie_marche"] is None for x in documents)
+            != info.get("categories_non_renseignees_pour_identifiants_initiaux")):
+        raise CategoriesIncompletes("Décomptes de catégories incorrects.")
+    return info
+
+
+def executer(base: Path = DOSSIER, *, instant: datetime | None = None,
+            obtenir=recevoir, patienter=time.sleep,
+            jours_par_execution: int = 12) -> dict:
+    if type(jours_par_execution) is not int or not 1 <= jours_par_execution <= MAX_JOURS:
+        raise CategoriesIncompletes("Taille du lot de compléments incorrecte.")
+    instant = instant or datetime.now(timezone.utc)
+    if instant.tzinfo is None or instant.utcoffset() is None:
+        raise CategoriesIncompletes("Horodatage non défini.")
+    fiches = jours_archives(base)
+    deja = []
+    a_completer = []
+    for fiche in sorted(fiches, reverse=True):
+        _, cible = chemins(base, fiche.stem)
+        if cible.exists() or cible.with_suffix(".jsonl.gz").exists():
+            verifier_complement(base, fiche)
+            deja.append(fiche.stem)
+        else:
+            a_completer.append(fiche)
+    resultats, erreurs = [], []
+    for fiche in a_completer[:jours_par_execution]:
+        try:
+            resultat = completer_jour(
+                base, fiche, instant=instant, obtenir=obtenir, patienter=patienter,
+            )
+            resultats.append({
+                "jour": fiche.stem,
+                "identifiants": resultat["nombre_identifiants_initiaux"],
+                "categories_renseignees": resultat[
+                    "categories_renseignees_pour_identifiants_initiaux"
+                ],
+                "absents_source": resultat[
+                    "nombre_identifiants_absents_depuis_initial"
+                ],
+            })
+        except (OSError, ValueError, TimeoutError) as exc:
+            erreurs.append({"jour": fiche.stem, "motif": type(exc).__name__})
+    bilan = {
+        "version": VERSION,
+        "controle_le": instant.replace(microsecond=0).isoformat(),
+        "jours_deja_completes_et_verifies": len(deja),
+        "jours_nouveaux": len(resultats),
+        "complements": resultats,
+        "erreurs": erreurs,
+        "jours_initiaux_sans_complement_avant_traitement": len(a_completer),
+        "completude_historique_etablie": False,
+        "categorie_initiale_de_l_avis_etablie": False,
+    }
+    if resultats:
+        state = base / "etat_categories_boamp.json"
+        temporaire = state.with_suffix(".json.tmp")
+        temporaire.write_text(
+            json.dumps(bilan, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        temporaire.replace(state)
+    if not resultats and erreurs:
+        raise CategoriesIncompletes("Aucune catégorie historique récupérée.")
+    return bilan
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--jours", type=int, default=12)
+    args = parser.parse_args()
+    try:
+        bilan = executer(jours_par_execution=args.jours)
+        print(json.dumps({
+            "version": VERSION, "jours_nouveaux": bilan["jours_nouveaux"],
+            "erreurs": bilan["erreurs"],
+            "jours_a_completer_avant": bilan[
+                "jours_initiaux_sans_complement_avant_traitement"
+            ],
+        }, ensure_ascii=False))
+    except (ValueError, OSError, TypeError) as exc:
+        parser.exit(1, f"Complément BOAMP interrompu : {type(exc).__name__}: {exc}\n")
+
+
+if __name__ == "__main__":
+    main()
