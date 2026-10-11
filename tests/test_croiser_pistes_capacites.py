@@ -55,7 +55,7 @@ def donnees(tmp_path):
         organisme("E", "Unité non sourcée",
                   mission="Intelligence artificielle", source=False),
         organisme("F", "Service inactif", mission="Intelligence artificielle", etat="SUPPRIME"),
-        organisme("G", "Unité cybersécurité", mission="Sécurité informatique"),
+        organisme("G", "Unité des systèmes informatiques", mission="Sécurité informatique"),
     ]
     chemin_source = entites / "roae" / "donnees.jsonl"
     chemin_source.write_text(
