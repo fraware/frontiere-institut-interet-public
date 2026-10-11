@@ -1,0 +1,20 @@
+{
+  "version": "avis-amont-cibles-boamp-v1",
+  "methode": "Candidats repérés dans les publications publiques ; filiation à établir par une référence interne de marché concordante et des notices officielles préservées.",
+  "candidats": [
+    {
+      "avis_amont": "24-119544",
+      "date_attendue": "2024-10-18",
+      "avis_aval": "26-74896",
+      "reference_interne_normalisee": "METEOFRANCE2432F0342",
+      "source_piste": "https://www.boamp.fr/telechargements/FILES/PDF/2024/10/24-119544.pdf"
+    },
+    {
+      "avis_amont": "26-55633",
+      "date_attendue": "2026-06-07",
+      "avis_aval": "26-81640",
+      "reference_interne_normalisee": "M3202604147M",
+      "source_piste": "https://tisseo.marches-publics.info/avis/index.cfm?IDS=4210&fuseaction=pub.affPublication&refPub=MPI-pub-20261581295&serveur=MPI"
+    }
+  ]
+}
