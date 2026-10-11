@@ -71,7 +71,7 @@ def lire_revision(fiche_path: Path, dossier: Path, jour: str,
                   date_initiale: datetime) -> tuple[datetime, str, str, list[dict]]:
     """Vérification complète des octets, des champs et du delta au cliché initial."""
     chemin = fiche_path.relative_to(dossier)
-    if (len(chemin.parts) != 6 or chemin.parts[:1] != ("revisions_boamp",)
+    if (len(chemin.parts) != 5 or chemin.parts[:1] != ("revisions_boamp",)
             or chemin.parts[1] != jour[:4] or chemin.parts[2] != jour[5:7]
             or chemin.parts[3] != jour):
         raise ArchiveIncoherente("Arborescence de révision incorrecte.")
