@@ -16,11 +16,19 @@ Pour chaque piste, il utilise uniquement les expressions expressément retrouvé
 
 Cette méthode est volontairement plus restrictive que la recherche institutionnelle usuelle. Elle ignore notamment les synonymes, descriptions implicites, relations entre organismes et ressources absentes des notices publiées. Elle ne réalise aucune résolution de l'identité de l'acheteur par rapprochement incertain de noms.
 
+## Révision méthodologique : interrogations par expressions complètes
+
+La troisième version de la méthode corrige un biais du premier rapprochement. Auparavant, le moteur recherchait les mots de l'expression séparément, puis ne conservait qu'un nombre restreint de candidats avant de vérifier la présence de l'expression entière. Une expression telle que « intelligence artificielle » pouvait être masquée par plusieurs organismes dont les notices contenaient uniquement « intelligence » ou uniquement « artificielle ».
+
+Le nouvel interrogateur utilise la recherche d'expression entière du moteur documentaire, séparément pour les **capacités**, les **missions**, les **domaines scientifiques** et les **noms**, puis vérifie directement la présence contiguë de cette expression dans les passages officiellement publiés et sourcés. Chaque catégorie dispose d'un plafond explicite de cinq cents candidats par expression, avec signalement des troncatures. Les listes restituées restent limitées pour permettre l'examen des justificatifs. Les requêtes n'utilisent ni correspondance partielle fondée sur un mot isolé ni génération sémantique non vérifiable.
+
+L'audit de concentration des passages est exécuté sur ce nouveau résultat. Ses effectifs ne doivent pas être comparés sans précaution à ceux de la version précédente : le changement de méthode élargit volontairement la recherche des expressions entières. La présence de centaines de réponses identiques dans un champ justifie une mesure de diversité des justificatifs, pas un décompte de centaines de compétences indépendantes.
+
 ## Classes et limites
 
 Les résultats sont classés en quatre catégories documentaires : capacité publiée, mission publiée, domaine scientifique publié et concordance nominale seule. Chaque résultat possède l'identifiant de l'organisme, sa famille, les extraits justifiant la concordance, les références de provenance et la date du relevé institutionnel. Les expressions retrouvées, les paramètres de recherche et les limites de restitution sont conservés.
 
-Les résultats sont bornés à vingt-cinq candidats restitués par catégorie du moteur et par requête, puis à trois organismes affichés par classe et par piste par défaut. Une catégorie saturée est déclarée tronquée. Les résultats négatifs sont exprimés comme **absence de concordance dans les bornes explorées**.
+Les résultats sont bornés à cinq cents candidats interrogés par champ documentaire et par expression, puis à trois organismes affichés par classe et par piste par défaut. Une catégorie saturée est déclarée tronquée. Les résultats négatifs sont exprimés comme **absence de concordance dans les bornes explorées**.
 
 Chaque dossier porte explicitement les états non validés : besoin scientifique, capacité opérationnelle, disponibilité de la ressource, lien contractuel avec l'acheteur et qualification humaine. Ces états ne signifient pas que les réalités correspondantes sont absentes ; ils signalent qu'aucune vérification n'a été effectuée dans ce programme.
 

@@ -37,8 +37,8 @@ except ModuleNotFoundError:
         ouvrir_index, chercher, verifier_sources, normaliser as mots_organisme,
     )
 
-VERSION = "croisement-avis-capacites-v2"
-RESTITUTION_MOTEUR = 25
+VERSION = "croisement-avis-capacites-v3"
+RESTITUTION_MOTEUR = 500
 MAX_PISTES_PAR_THEME = 12
 MAX_RESULTATS_PAR_CLASSE = 3
 CLASSES = (
@@ -121,6 +121,57 @@ def preuves_exactes(db: sqlite3.Connection, identifiant: str, expression: str) -
     return resultat
 
 
+def chercher_expressions_exactes(
+    db: sqlite3.Connection, expression: str, *, plafond: int = RESTITUTION_MOTEUR,
+) -> dict:
+    """Interroger les quatre champs par expression FTS5 entière.
+
+    Le nombre total de résultats demeure inconnu lorsqu'un champ atteint le
+    plafond. On conserve une borne inférieure et une indication explicite.
+    """
+    if type(plafond) is not int or not 1 <= plafond <= 2000:
+        raise BilanInvalide("Plafond de candidats incorrect.")
+    mots = mots_organisme(expression)
+    if not mots or len(mots) > 10:
+        raise BilanInvalide("Expression normalisée invalide.")
+    # La syntaxe FTS est entièrement produite à partir des jetons normalisés.
+    phrase = " ".join(mots)
+    candidats = {}
+    effectifs_par_champ = {}
+    tronques = []
+    for colonne in ("capacite_index", "mission_index", "domaine_index", "nom_index"):
+        requete = f'{colonne} : "{phrase}"'
+        lignes = db.execute(
+            "SELECT o.identifiant, o.nom, o.famille, o.observe_le, o.fichier, "
+            "o.sources_json FROM termes AS t "
+            "JOIN organismes AS o ON o.numero = t.rowid "
+            "WHERE termes MATCH ? AND o.etat = 'ACTIF' "
+            "ORDER BY o.identifiant LIMIT ?",
+            (requete, plafond + 1),
+        ).fetchall()
+        effectifs_par_champ[colonne] = min(len(lignes), plafond)
+        if len(lignes) > plafond:
+            tronques.append(colonne)
+        for row in lignes[:plafond]:
+            code = row["identifiant"]
+            if code not in candidats:
+                candidats[code] = {
+                    "identifiant": code,
+                    "nom": row["nom"],
+                    "famille": row["famille"],
+                    "observe_le": row["observe_le"],
+                    "fichier_indexe": row["fichier"],
+                    "provenance_notice": json.loads(row["sources_json"]),
+                }
+    return {
+        "candidats": [candidats[k] for k in sorted(candidats)],
+        "candidats_examines": len(candidats),
+        "effectifs_par_champ_bornes": effectifs_par_champ,
+        "champs_tronques": tronques,
+        "methode": "expression_entiere_par_champ_fts5",
+    }
+
+
 def croiser(index_boamp: Path, preuve: Path, bilan: Path,
             index_organismes: Path, entites: Path,
             limite: int = MAX_RESULTATS_PAR_CLASSE) -> dict:
@@ -157,50 +208,48 @@ def croiser(index_boamp: Path, preuve: Path, bilan: Path,
                 tronque = False
                 for expression in expressions:
                     if expression not in expression_memo:
-                        expression_memo[expression] = chercher(
-                            db, expression, limite=RESTITUTION_MOTEUR,
+                        expression_memo[expression] = chercher_expressions_exactes(
+                            db, expression,
                         )
                         n_queries += 1
                     resultat = expression_memo[expression]
-                    coupe = bool(resultat["champs_dont_les_resultats_sont_tronques"])
-                    if any(
-                        v["resultat_tronque"]
-                        for v in resultat["restitution_par_classe"].values()
-                    ):
-                        coupe = True
+                    coupe = bool(resultat["champs_tronques"])
                     tronque |= coupe
                     controles.append({
                         "expression": expression,
-                        "candidats_lexicaux_examines": resultat["candidats_lexicaux_examines"],
+                        "candidats_lexicaux_examines": resultat["candidats_examines"],
+                        "candidats_par_champ_bornes":
+                            resultat["effectifs_par_champ_bornes"],
+                        "champs_tronques": resultat["champs_tronques"],
                         "recherche_tronquee": coupe,
+                        "methode": resultat["methode"],
                     })
-                    for cle in COLONNES:
-                        for ref in resultat[cle]:
-                            preuves = preuves_exactes(db, ref["identifiant"], expression)
-                            if not preuves:
-                                continue
-                            ancien = candidats.get(ref["identifiant"])
-                            if ancien is None:
-                                candidats[ref["identifiant"]] = {
-                                    "identifiant": ref["identifiant"],
-                                    "nom": ref["nom"],
-                                    "famille": ref["famille"],
-                                    "observe_le": ref["observe_le"],
-                                    "fichier_indexe": ref["fichier_indexe"],
-                                    "provenance_notice": ref["provenance_notice"],
-                                    "passages_justificatifs": [],
-                                    "disponibilite": "INCONNUE",
-                                    "mobilisabilite": "NON_ETABLIE",
-                                }
-                                ancien = candidats[ref["identifiant"]]
-                            deja = {(p["niveau"], p["expression"], p["texte_publie"], p["source_id"])
-                                    for p in ancien["passages_justificatifs"]}
-                            for passage in preuves:
-                                signature = (passage["niveau"], passage["expression"],
-                                             passage["texte_publie"], passage["source_id"])
-                                if signature not in deja:
-                                    ancien["passages_justificatifs"].append(passage)
-                                    deja.add(signature)
+                    for ref in resultat["candidats"]:
+                        preuves = preuves_exactes(db, ref["identifiant"], expression)
+                        if not preuves:
+                            continue
+                        ancien = candidats.get(ref["identifiant"])
+                        if ancien is None:
+                            candidats[ref["identifiant"]] = {
+                                "identifiant": ref["identifiant"],
+                                "nom": ref["nom"],
+                                "famille": ref["famille"],
+                                "observe_le": ref["observe_le"],
+                                "fichier_indexe": ref["fichier_indexe"],
+                                "provenance_notice": ref["provenance_notice"],
+                                "passages_justificatifs": [],
+                                "disponibilite": "INCONNUE",
+                                "mobilisabilite": "NON_ETABLIE",
+                            }
+                            ancien = candidats[ref["identifiant"]]
+                        deja = {(p["niveau"], p["expression"], p["texte_publie"], p["source_id"])
+                                for p in ancien["passages_justificatifs"]}
+                        for passage in preuves:
+                            signature = (passage["niveau"], passage["expression"],
+                                         passage["texte_publie"], passage["source_id"])
+                            if signature not in deja:
+                                ancien["passages_justificatifs"].append(passage)
+                                deja.add(signature)
                 groupes = {x[0]: [] for x in CLASSES}
                 priorites = {x[0]: n for n, x in enumerate(CLASSES)}
                 for ressource in candidats.values():
@@ -257,7 +306,8 @@ def croiser(index_boamp: Path, preuve: Path, bilan: Path,
         "pistes_sans_resultat_dans_les_limites": sum(
             not any(d["groupes"].values()) for d in dossiers
         ),
-        "limite_candidats_par_classe_et_requete": RESTITUTION_MOTEUR,
+        "limite_candidats_par_champ_et_expression": RESTITUTION_MOTEUR,
+        "methode_recherche": "expression_entiere_par_champ_fts5",
         "limite_restitution_par_classe_et_piste": limite,
         "selection_non_representative": True,
         "aucune_preuve_d_insuffisance_de_competences": True,

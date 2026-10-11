@@ -179,3 +179,65 @@ def test_limite_et_orphelins_rejetes(tmp_path):
         croiser(index, preuve, bilan, institution, entites, limite=0)
     with pytest.raises(ValueError, match="Index absent"):
         croiser(index, preuve, bilan, tmp_path / "sans-index.sqlite3", entites)
+
+
+def test_recherche_exacte_surclasse_les_decoys_or_et_mesure_les_plafonds(tmp_path):
+    from scripts.croiser_pistes_capacites import chercher_expressions_exactes
+    from scripts.rechercher_capacites_institutionnelles import ouvrir_index
+    reper = tmp_path / "enregistrements"
+    (reper / "roae").mkdir(parents=True)
+    # 80 faux candidats portant un seul des deux termes ; avec le tri initial
+    # borné sur une expression OR, ils masquaient l'organisme pertinent.
+    organes = [
+        organisme(f"DECOY-{i:04d}", f"Service {i}",
+                  mission="Programme d'intelligence stratégique")
+        for i in range(80)
+    ]
+    organes.append(
+        organisme("Z-EXACT", "Service scientifique",
+                  mission="Évaluation des modèles d'intelligence artificielle")
+    )
+    chemin = reper / "roae" / "institutions.jsonl"
+    chemin.write_text(
+        "".join(json.dumps(x, ensure_ascii=False) + "\n" for x in organes),
+        encoding="utf-8",
+    )
+    idx = tmp_path / "org.sqlite3"
+    construire_index(reper, idx)
+    with ouvrir_index(idx) as db:
+        vrai = chercher_expressions_exactes(
+            db, "intelligence artificielle", plafond=25,
+        )
+        assert vrai["candidats_examines"] == 1
+        assert vrai["candidats"][0]["identifiant"] == "FRONTIERE-INST-Z-EXACT"
+        assert vrai["champs_tronques"] == []
+        # Requête simple artificiellement bornée : l'outil annonce que le
+        # nombre d'organismes retenus n'est pas exhaustif.
+        limite = chercher_expressions_exactes(db, "intelligence", plafond=7)
+        assert limite["candidats_examines"] == 7
+        assert limite["champs_tronques"] == ["mission_index"]
+        assert limite["effectifs_par_champ_bornes"]["mission_index"] == 7
+        with pytest.raises(BilanInvalide, match="Plafond"):
+            chercher_expressions_exactes(db, "intelligence", plafond=0)
+
+
+def test_recherche_exacte_ne_proclame_pas_l_absence_en_cas_de_troncature(tmp_path):
+    from scripts.croiser_pistes_capacites import chercher_expressions_exactes
+    from scripts.rechercher_capacites_institutionnelles import ouvrir_index
+    repertoire = tmp_path / "entites"
+    (repertoire / "roae").mkdir(parents=True)
+    membres = [
+        organisme(f"N-{i:03d}", f"Unité {i}", domaine="Robotique scientifique")
+        for i in range(10)
+    ]
+    (repertoire / "roae" / "n.jsonl").write_text(
+        "".join(json.dumps(x, ensure_ascii=False) + "\n" for x in membres),
+        encoding="utf-8",
+    )
+    idx = tmp_path / "in.sqlite3"
+    construire_index(repertoire, idx)
+    with ouvrir_index(idx) as db:
+        result = chercher_expressions_exactes(db, "robotique", plafond=3)
+    assert result["champs_tronques"] == ["domaine_index"]
+    assert result["effectifs_par_champ_bornes"]["domaine_index"] == 3
+    assert result["candidats_examines"] == 3
