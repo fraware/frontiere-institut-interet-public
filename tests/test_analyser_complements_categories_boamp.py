@@ -97,7 +97,7 @@ def test_qualite_recontrole_divergent_et_comparaison_mensuelle(tmp_path):
 
     complement, _manifest = chemins(base, jour)
     complement.write_bytes(b"corrompu")
-    with pytest.raises(BilanInvalide, match="Empreinte|Taille"):
+    with pytest.raises(ValueError, match="Empreinte|Taille"):
         analyser(index, preuve, base)
 
 
