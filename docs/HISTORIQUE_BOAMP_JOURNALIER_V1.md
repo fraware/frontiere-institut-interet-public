@@ -40,3 +40,7 @@ Le programme utilise exclusivement l'adresse de l'interface publique et n'accept
 ## Contrôle continu et limites après activation
 
 Vérifier par une exécution réelle la validité des filtres de dates et de l'ordre de tri de l'interface actuelle. Contrôler ensuite, sur plusieurs journées incluant une journée sans avis, la cohérence entre `total_count` et les enregistrements réellement archivés, puis identifier les dates dont le volume dépasse le plafond. Les tests fictifs constituent des contrôles de fonctionnement, jamais une preuve de complétude des archives institutionnelles.
+
+## Fin du rattrapage et reprise sans doublon
+
+Le fichier `etat_historique_boamp.json` distingue une première exécution sans curseur d'un rattrapage arrivé au plancher fixé au 1er janvier 2018. Le champ booléen `plancher_atteint` est vrai uniquement si toutes les journées prévues par la remontée ont franchi ce plancher, avec un curseur `jour_suivant_a_relever` nul. Une exécution ultérieure retourne l'état déjà publié, sans interroger la source et sans réécrire les fichiers. Un curseur nul associé à un marqueur final contradictoire est refusé. Ce résultat décrit la couverture des journées interrogées ; il ne prouve pas que la source historique soit demeurée identique à chaque date.
