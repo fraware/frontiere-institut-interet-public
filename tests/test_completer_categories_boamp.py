@@ -86,7 +86,7 @@ def test_enrichissement_identifiants_changes_et_immutabilite(tmp_path):
     suite = executer(tmp_path, instant=instant, obtenir=interdit,
                      patienter=lambda _: None, jours_par_execution=1)
     assert suite["jours_nouveaux"] == 0
-    paquet.write_bytes(b"fichier altéré")
+    paquet.write_bytes("fichier altéré".encode("utf-8"))
     with pytest.raises(CategoriesIncompletes, match="Empreinte|Taille"):
         executer(tmp_path, instant=instant, obtenir=interdit,
                  patienter=lambda _: None, jours_par_execution=1)
