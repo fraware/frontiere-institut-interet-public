@@ -137,3 +137,85 @@ def constituer(index, preuve, bilan, *, quota=4, semence=SEMENCE):
                 }, quota)
     if nombre != reference["nombre_avis"] or not complets:
         raise BilanInvalide("Couverture historique insuffisante ou incohérente.")
+    resultats, references = [], set()
+    for strate in sorted(effectifs):
+        items = sorted(groupes[strate], key=lambda x: (
+            x["rang_sha256"], x["date_parution"], x["identifiant"]))
+        for x in items:
+            references.add((x["date_parution"], x["identifiant"]))
+        n = effectifs[strate]
+        resultats.append({
+            "mois": strate[0], "categorie": strate[1], "domaine": strate[2],
+            "population_documentaire": n, "nombre_tire": len(items),
+            "fraction_tirage": {"numerateur": len(items), "denominateur": n},
+            "avis": items,
+        })
+    return {
+        "version": VERSION,
+        "revision_depot_source": reference["revision_depot"],
+        "sha256_index_boamp": reference["sha256_index"],
+        "semence": semence, "quota_par_strate": quota,
+        "nombre_avis_examines": nombre,
+        "nombre_avis_mois_incomplets_exclus": exclus,
+        "nombre_avis_multithemes": multit,
+        "mois_complets": complets, "couverture_calendaire": couverture,
+        "nombre_strates": len(resultats),
+        "nombre_tirages": sum(x["nombre_tire"] for x in resultats),
+        "nombre_avis_distincts": len(references),
+        "strates": resultats,
+        "methode": "classement_sha256_dans_mois_categorie_et_domaine",
+        "selection_non_representative_de_la_demande_nationale": True,
+        "temoin_ne_signifie_pas_absence_de_besoin": True,
+        "chevauchements_de_domaines_conserves": True,
+        "evaluation_externe_effectuee": False,
+    }
+
+
+def ecrire(rapport, destination):
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    fd, temporaire_nom = tempfile.mkstemp(
+        prefix=".echantillon-boamp-", suffix=".json", dir=destination.parent,
+    )
+    os.close(fd)
+    temporaire = Path(temporaire_nom)
+    try:
+        temporaire.write_text(
+            json.dumps(rapport, ensure_ascii=False, sort_keys=True, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        os.replace(temporaire, destination)
+    finally:
+        temporaire.unlink(missing_ok=True)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--index", required=True, type=Path)
+    parser.add_argument("--preuve-index", required=True, type=Path)
+    parser.add_argument("--bilan", required=True, type=Path)
+    parser.add_argument("--sortie", required=True, type=Path)
+    parser.add_argument("--quota", type=int, default=4)
+    parser.add_argument("--semence", default=SEMENCE)
+    arguments = parser.parse_args()
+    try:
+        rapport = constituer(
+            arguments.index, arguments.preuve_index, arguments.bilan,
+            quota=arguments.quota, semence=arguments.semence,
+        )
+        ecrire(rapport, arguments.sortie)
+        print(json.dumps({
+            "version": VERSION,
+            "mois_complets": len(rapport["mois_complets"]),
+            "strates": rapport["nombre_strates"],
+            "tirages": rapport["nombre_tirages"],
+            "avis_distincts": rapport["nombre_avis_distincts"],
+            "exclus_mois_incomplets":
+                rapport["nombre_avis_mois_incomplets_exclus"],
+            "sortie": str(arguments.sortie),
+        }, ensure_ascii=False))
+    except (OSError, ValueError, sqlite3.Error) as erreur:
+        parser.exit(1, f"Échantillonnage BOAMP interrompu : {erreur}\n")
+
+
+if __name__ == "__main__":
+    main()
