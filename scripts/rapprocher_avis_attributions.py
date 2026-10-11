@@ -1,7 +1,7 @@
 """Rapprocher des identifiants BOAMP explicites d'archives BeauAMP vérifiées."""
 from __future__ import annotations
 import argparse
-from collections import Counter
+from collections import Counter, defaultdict
 from contextlib import closing
 import csv
 from datetime import date
@@ -18,7 +18,7 @@ try:
 except ModuleNotFoundError:
     from analyser_historique_boamp import BilanInvalide, produire
 
-VERSION = "appariement-documentaire-boamp-beauamp-v1"
+VERSION = "appariement-documentaire-boamp-beauamp-v2"
 VERSION_BEAUAMP = "beauamp-quotidiens-v1"
 IDENTIFIANT = re.compile(r"[0-9]{2}-[0-9]{2,8}")
 SHA = re.compile(r"[0-9a-f]{64}")
@@ -88,8 +88,10 @@ def rapprocher(index, preuve, racine_beauamp):
         raise BilanInvalide("Population BOAMP incohérente.")
     rencontres = Counter()
     uniques = {"id_boamp_attribution": set(), "id_boamp_contrat": set()}
-    exemples = []
+    exemples_par_jour_et_type = defaultdict(list)
+    ecarts_par_contrat = defaultdict(set)
     total_lignes, vides, malformes, ecarts_negatifs = 0, 0, 0, 0
+    lignes_jour_secondaire_hors_fenetre = 0
     ecarts = []
     for jour_fichier, chemin, fiche in fichiers:
         with chemin.open("r", encoding="utf-8-sig", newline="") as handle:
@@ -98,6 +100,10 @@ def rapprocher(index, preuve, racine_beauamp):
                 raise BilanInvalide("Colonnes BeauAMP obligatoires absentes.")
             for ligne in lecteur:
                 total_lignes += 1
+                lignes_jour_secondaire_hors_fenetre += not (
+                    bilan["couverture"]["premier_jour"] <= jour_fichier
+                    <= bilan["couverture"]["dernier_jour"]
+                )
                 ids = [
                     (champ, lire_identifiant(ligne.get(champ)))
                     for champ in ("id_boamp_attribution", "id_boamp_contrat")
@@ -140,6 +146,7 @@ def rapprocher(index, preuve, racine_beauamp):
                                 ecarts_negatifs += 1
                             else:
                                 ecarts.append(delta)
+                                ecarts_par_contrat[identifiant].add(delta)
     ecarts.sort()
     union = uniques["id_boamp_attribution"] | uniques["id_boamp_contrat"]
     return {
