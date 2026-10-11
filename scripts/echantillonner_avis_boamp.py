@@ -85,3 +85,55 @@ def selectionner(groupes, strate, notice, quota):
         liste[pire] = notice
 
 
+def constituer(index, preuve, bilan, *, quota=4, semence=SEMENCE):
+    if type(quota) is not int or not 1 <= quota <= 50:
+        raise BilanInvalide("Quota par strate incorrect.")
+    if not isinstance(semence, str) or not re.fullmatch(r"[A-Za-z0-9_.-]{8,120}", semence):
+        raise BilanInvalide("Semence incorrecte.")
+    reference = produire(index, preuve)
+    if json.loads(bilan.read_text(encoding="utf-8")) != reference:
+        raise BilanInvalide("Bilan différent de l'index vérifié.")
+    groupes = defaultdict(list)
+    effectifs = Counter()
+    suivis = set()
+    nombre, exclus, multit = 0, 0, 0
+    motifs = {t: [re.compile(x) for x in m] for t, m in MOTIFS.items()}
+    with closing(sqlite3.connect(f"file:{index.resolve().as_posix()}?mode=ro", uri=True)) as con:
+        dates = [j for (j,) in con.execute("SELECT jour FROM provenance ORDER BY jour")]
+        complets, couverture = mois_couverts(dates)
+        retenus = set(complets)
+        for jour, code, objet, acheteur, categorie, lien, archive, releve in con.execute(
+            "SELECT jour,identifiant,objet,acheteur,categorie,avis,archive_source,releve_le "
+            "FROM recherche ORDER BY jour,identifiant"
+        ):
+            nombre += 1
+            if (jour, code) in suivis:
+                raise BilanInvalide("Avis dupliqué dans l'index.")
+            suivis.add((jour, code))
+            if not isinstance(objet, str):
+                raise BilanInvalide("Objet documentaire incorrect.")
+            expression = normaliser(objet)
+            domaines = [theme for theme, regles in motifs.items()
+                        if any(r.search(expression) for r in regles)]
+            multit += len(domaines) > 1
+            mois = jour[:7]
+            if mois not in retenus:
+                exclus += 1
+                continue
+            cat = categorie_strate(categorie)
+            for theme in domaines or [TEMOIN]:
+                strate = (mois, cat, theme)
+                effectifs[strate] += 1
+                selectionner(groupes, strate, {
+                    "date_parution": jour, "identifiant": code,
+                    "objet": objet[:500],
+                    "acheteur_declare": (acheteur or "")[:200],
+                    "categorie_declaree": categorie,
+                    "lien_officiel": lien, "archive_source": archive,
+                    "releve_le": releve, "themes_detectes": domaines,
+                    "rang_sha256": rang(semence, strate, jour, code),
+                    "besoin_scientifique_valide": False,
+                    "competence_mobilisable_etablie": False,
+                }, quota)
+    if nombre != reference["nombre_avis"] or not complets:
+        raise BilanInvalide("Couverture historique insuffisante ou incohérente.")
