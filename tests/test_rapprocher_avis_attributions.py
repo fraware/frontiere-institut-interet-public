@@ -36,3 +36,35 @@ def exemple(tmp_path):
         "sha256_index": hashlib.sha256(index.read_bytes()).hexdigest(),
         "jours_indexes": 1, "avis_indexes": 2,
     }), encoding="utf-8")
+    rows = [
+        {"id_boamp_contrat": "26-100", "id_boamp_attribution": "26-900",
+         "date_avis_attribution": "2026-09-06", "id_lot": "lot-1"},
+        {"id_boamp_contrat": "26-100", "id_boamp_attribution": "26-900",
+         "date_avis_attribution": "2026-09-06", "id_lot": "lot-2"},
+        {"id_boamp_contrat": "", "id_boamp_attribution": "26-101",
+         "date_avis_attribution": "2026-09-06", "id_lot": "lot-3"},
+        {"id_boamp_contrat": "26-999", "id_boamp_attribution": "",
+         "date_avis_attribution": "2026-09-06", "id_lot": "lot-4"},
+    ]
+    fichier = source / "quotidiens" / "2026-09-06.csv"
+    champs = ["id_boamp_attribution", "id_boamp_contrat",
+              "date_avis_attribution", "date_avis_marche", "objet", "id_lot"]
+    with fichier.open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=champs, delimiter=";")
+        writer.writeheader()
+        writer.writerows(rows)
+    manifeste = {
+        "version": "beauamp-quotidiens-v1",
+        "nombre_fichiers": 1, "licence": "cc-by-sa",
+        "producteur": "Producteur fictif",
+        "source": "https://example.org/beauamp",
+        "fichiers": [{
+            "jour": "2026-09-06", "chemin": "quotidiens/2026-09-06.csv",
+            "octets_archives": fichier.stat().st_size,
+            "sha256": hashlib.sha256(fichier.read_bytes()).hexdigest(),
+        }],
+    }
+    (source / "manifest.json").write_text(json.dumps(manifeste), encoding="utf-8")
+    return index, preuve, source, fichier
+
+
