@@ -109,13 +109,16 @@ def produire(principaux: Path, lies: Path, amont: Path, registre: Path) -> dict:
                 raise InventaireInvalide("Avis dupliqué entre archives.")
             codes.add(code)
             observe = fiche[etatcle] == etat_ok
+            etat_observation = ("notice_observee" if observe else
+                "notice_relevee_date_divergente" if fiche[etatcle] == "date_officielle_divergente"
+                else "absent_du_releve")
             references_documentaires = []
             if observe:
                 notice = json.loads((dossier / fiche[fcle]).read_bytes())["results"][0]
                 references_documentaires = references(notice)
             inventaire.append({
                 "avis": code, "famille": famille,
-                "statut_observation": "notice_observee" if observe else "absent_du_releve",
+                "statut_observation": etat_observation,
                 "fichier_source": fiche[fcle],
                 "sha256_reponse_http": fiche[sha_cle],
                 "references_documentaires_officielles": references_documentaires,

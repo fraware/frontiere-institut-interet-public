@@ -39,7 +39,7 @@ Source : https://www.marches-publics.gouv.fr/index.php?id=2636711&orgAcronyme=d4
 
 ## Exécution, contrôle et limites
 
-Le collecteur utilise les archives déjà vérifiées des six cas pilotes et de leur avis explicitement lié. Chaque réponse amont est conservée avec empreinte SHA-256, adresse exacte et horodatage. Une réponse absente produit un inconnu ; une contradiction d'identifiant, de date, de référence interne ou d'acheteur bloque l'archive entière.
+Le collecteur utilise les archives déjà vérifiées des six cas pilotes et de leur avis explicitement lié. Chaque réponse amont est conservée avec empreinte SHA-256, adresse exacte et horodatage. Une réponse absente produit un inconnu. Si la date officielle diffère du registre, les octets et la date observée sont archivés sous le statut **date_officielle_divergente**, sans qualifier la correspondance de marché ; l'avis est exclu de l'inventaire des références documentaires validées. Les autres contradictions d'identité, de structure, d'acheteur ou de référence interne bloquent la capture entière. La divergence doit être vérifiée sur sa source primaire avant toute correction versionnée du registre.
 
 Le programme d'inventaire conserve des indicateurs distincts : contenu des pièces obtenu, procès-verbal de réception obtenu et première utilisation scientifique documentée. Ces valeurs sont **fausses** jusqu'à examen d'une preuve primaire correspondante.
 

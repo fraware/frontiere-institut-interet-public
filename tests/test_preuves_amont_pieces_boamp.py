@@ -166,3 +166,24 @@ def test_adresse_generique_acheteur_exclue_et_schema_dce_invalide_rejete():
     }})}
     with pytest.raises(InventaireInvalide):
         references(interdit)
+
+def test_date_officielle_divergente_est_archivee_sans_validation_abusive(tmp_path):
+    principaux, lies, registre, sources = preparer(tmp_path)
+    sources["24-119544"] = reponse(
+        "24-119544", "2024-10-21", "METEO-FRANCE2432F0342", "Météo-France"
+    )
+    dossier = tmp_path / "amont"
+    bilan = capturer_amont(principaux, lies, registre, dossier,
+                          obtenir=obtenir_de(sources))
+    assert bilan["retrouves"] == 1
+    assert bilan["dates_divergentes"] == 1
+    divergence = bilan["avis"][0]
+    assert divergence["statut"] == "date_officielle_divergente"
+    assert divergence["date_parution"] == "2024-10-21"
+    assert divergence["date_attendue_registre"] == "2024-10-18"
+    assert divergence["reference_interne_observee"] is None
+    assert verifier_amont(dossier, principaux, lies, registre) == bilan
+    inventaire = produire(principaux, lies, dossier, registre)
+    assert next(x for x in inventaire["avis"] if x["avis"] == "24-119544")[
+        "statut_observation"
+    ] == "notice_relevee_date_divergente"
