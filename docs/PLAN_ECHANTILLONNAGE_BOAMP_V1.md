@@ -17,3 +17,14 @@ Chaque annonce reçoit un rang SHA-256 fondé sur une semence annoncée, la stra
 Les données publiées contiennent objets, liens officiels, états documentaires, catégories déclarées lorsqu'elles sont renseignées, acheteurs, références d'archives, dates de relevé, rangs, volumes et fractions conditionnelles. Aucun plafond par acheteur n'est appliqué, car il modifierait les fractions d'inclusion. Les concentrations d'acheteurs seront analysées séparément.
 
 La variation de semence permet de tester la sensibilité des sélections. La comparaison de périodes porte sur les seules périodes complètement couvertes, et la diversité des annonces ne démontre aucune compétence mobilisable.
+
+
+## Contre-vérification intégrale et sensibilité aux semences
+
+Le programme `scripts/auditer_echantillon_boamp.py` relit **l'intégralité** de l'index des avis, vérifie son empreinte, reconstitue indépendamment les mois complètement archivés et les effectifs de chaque strate, puis recalcule les rangs SHA-256 et les annonces sélectionnées. Il compare directement les objets et références d'archives, les états documentaires, les nombres de tirages et les chevauchements. Toute divergence interrompt la publication du fichier d'analyse.
+
+La contre-vérification exécute également deux tirages supplémentaires, avec des semences distinctes et annoncées, sur le même cadre documentaire. Pour chaque réplication, elle produit le nombre de tirages communs à l'échantillon de référence et leur part, ainsi que le chevauchement attendu si les rangs des deux tirages étaient indépendants et uniformément répartis dans chaque strate. Ces valeurs documentent la sensibilité des choix individuels et la concentration des petites strates ; elles ne mesurent ni la pertinence scientifique ni une performance opérationnelle.
+
+L'instrument emploie une autre procédure de maintien des plus petits rangs, mais conserve les règles lexicales et le même index de référence. Ce contrôle constitue donc une **vérification d'implémentation et de reproductibilité**, distincte d'une évaluation empirique indépendante de la qualité des besoins.
+
+La publication indique explicitement que la stratification effective porte sur le mois, l'état documentaire et le domaine lexical. Même si une catégorie de marché est renseignée dans un jeu futur, ce constat ne sera jamais présenté comme une stratification par catégorie sans modification vérifiable du plan et des tests.
