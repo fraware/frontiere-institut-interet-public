@@ -67,3 +67,82 @@ def ids_verifies(db, candidats, expression):
     }
 
 
+def comparer(index_boamp, preuve, bilan, index_institutions, entites):
+    b = produire(index_boamp, preuve)
+    if json.loads(bilan.read_text(encoding="utf-8")) != b:
+        raise BilanInvalide("Bilan BOAMP non reproductible.")
+    pistes = constituer(index_boamp, preuve, bilan)
+    expressions = {
+        terme for theme, bloc in pistes["pistes"].items()
+        for avis in bloc["pistes"]
+        for terme in expressions_avis(avis, theme)
+    }
+    if not expressions:
+        raise BilanInvalide("Aucune expression technique à comparer.")
+    lignes, sommes = [], {"reference": 0, "ancien": 0, "nouveau": 0}
+    with closing(ouvrir_index(index_institutions)) as db:
+        validation = verifier_sources(db, entites)
+        if not validation["conforme"]:
+            raise BilanInvalide("Fichiers institutionnels modifiés depuis l'index.")
+        identite = db.execute(
+            "SELECT valeur FROM informations WHERE cle='empreinte_sources'"
+        ).fetchone()["valeur"]
+        for expression in sorted(expressions):
+            oracle, digest = reference_exacte(db, expression)
+            ancienne = chercher(db, expression, limite=25)
+            avant = ids_verifies(
+                db, [item for nom in SORTIES for item in ancienne[nom]], expression,
+            )
+            nouvelle = chercher_expressions_exactes(db, expression, plafond=500)
+            apres = ids_verifies(db, nouvelle["candidats"], expression)
+            if not avant <= oracle or not apres <= oracle:
+                raise BilanInvalide("Résultat hors du recensement textuel de référence.")
+            manquants_nouveau = oracle - apres
+            if manquants_nouveau and not nouvelle["champs_tronques"]:
+                raise BilanInvalide("Omission inexpliquée du moteur de recherche exact.")
+            for key, n in (
+                ("reference", len(oracle)), ("ancien", len(avant)),
+                ("nouveau", len(apres)),
+            ):
+                sommes[key] += n
+            lignes.append({
+                "expression": expression,
+                "reference_textuelle": len(oracle),
+                "sha256_identifiants_reference": digest,
+                "ancien_trouves": len(avant),
+                "nouveau_trouves": len(apres),
+                "ancien_manques": len(oracle - avant),
+                "nouveau_manques": len(manquants_nouveau),
+                "nouvelle_recherche_tronquee": bool(nouvelle["champs_tronques"]),
+                "champs_tronques": nouvelle["champs_tronques"],
+                "rappel_ancien": len(avant) / len(oracle) if oracle else None,
+                "rappel_nouveau": len(apres) / len(oracle) if oracle else None,
+                "reference_scientifique_humaine": False,
+            })
+    return {
+        "version": VERSION,
+        "revision_depot_source": b["revision_depot"],
+        "sha256_index_boamp": b["sha256_index"],
+        "empreinte_referentiel_institutionnel": identite,
+        "nombre_expressions_distinctes": len(expressions),
+        "sommes_non_dedoublonnees_entre_expressions": sommes,
+        "rappel_global_ancien_sur_occurrences_textuelles": (
+            sommes["ancien"] / sommes["reference"] if sommes["reference"] else None
+        ),
+        "rappel_global_nouveau_sur_occurrences_textuelles": (
+            sommes["nouveau"] / sommes["reference"] if sommes["reference"] else None
+        ),
+        "resultats": lignes,
+        "reference": "recensement_exhaustif_des_expressions_exactes_dans_le_referentiel_indexe",
+        "mesure_de_pertinence_scientifique": False,
+        "mesure_de_disponibilite": False,
+        "interpretation": (
+            "Le recensement vérifie des correspondances textuelles exactes "
+            "dans la même source. Les identifiants peuvent se répéter entre "
+            "expressions. Ce rappel technique ne mesure ni la pertinence "
+            "des organismes ni leur disponibilité ni la valeur d'une méthode "
+            "sur des besoins réels."
+        ),
+    }
+
+
