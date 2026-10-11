@@ -106,7 +106,22 @@ def lire_candidats(chemin: Path) -> list[dict]:
 
 
 def qualifier_amont(brut: bytes, candidat: dict, aval: dict) -> dict:
-    observation = qualifier(brut, candidat["avis_amont"], candidat["date_attendue"])
+    try:
+        observation = qualifier(brut, candidat["avis_amont"], candidat["date_attendue"])
+    except ValueError as erreur:
+        if str(erreur) != "Date officielle différente de la référence pilote.":
+            raise
+        # Identifiant et structure ont déjà été contrôlés par qualifier().
+        # Archiver l'écart sans attribuer à l'avis une filiation confirmée.
+        notice = json.loads(brut)["results"][0]
+        return {
+            "statut": "date_officielle_divergente",
+            "date_parution": notice["dateparution"],
+            "date_attendue_registre": candidat["date_attendue"],
+            "nature": notice.get("nature"), "etat": notice.get("etat"),
+            "reference_interne_observee": None,
+            "acheteur_concordant": None,
+        }
     if observation["etat_observation"] != "notice_retrouvee_et_identifiee":
         return {"statut": "non_retrouve_lors_du_releve", "date_parution": None,
                 "nature": None, "etat": None,
@@ -159,6 +174,8 @@ def verifier_amont(dossier: Path, principaux: Path, lies: Path, registre: Path) 
             raise AvisAmontInvalide("Qualification documentaire incohérente.")
     if rapport.get("retrouves") != sum(x["statut"] == "avis_amont_identifie_par_reference" for x in fiches):
         raise AvisAmontInvalide("Nombre d'avis amont trouvés incohérent.")
+    if rapport.get("dates_divergentes") != sum(x["statut"] == "date_officielle_divergente" for x in fiches):
+        raise AvisAmontInvalide("Nombre de divergences de date incohérent.")
     return rapport
 
 
@@ -197,6 +214,7 @@ def capturer_amont(principaux: Path, lies: Path, registre: Path,
             "sha256_registre": hashlib.sha256(registre.read_bytes()).hexdigest(),
             "avis": fiches,
             "retrouves": sum(x["statut"] == "avis_amont_identifie_par_reference" for x in fiches),
+            "dates_divergentes": sum(x["statut"] == "date_officielle_divergente" for x in fiches),
             "pieces_contractuelles_obtenues": False,
             "livraison_et_reception_verifiees": False,
             "premiere_contribution_utile_etablie": False,
@@ -231,7 +249,9 @@ def main() -> None:
         else:
             raise AvisAmontInvalide("Préciser --sortie ou --verifier.")
         print(json.dumps({"candidats": len(bilan["avis"]),
-                          "retrouves": bilan["retrouves"]}, ensure_ascii=False))
+                          "retrouves": bilan["retrouves"],
+                          "dates_divergentes": bilan.get("dates_divergentes", 0)},
+                         ensure_ascii=False))
     except (OSError, ValueError, KeyError, TypeError) as exc:
         p.exit(1, f"Capture amont non validée : {exc}\n")
 
