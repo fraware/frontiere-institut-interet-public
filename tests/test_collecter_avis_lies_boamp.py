@@ -77,7 +77,7 @@ def test_absence_est_inconnue_pas_absence_de_consultation(tmp_path):
     b'{"total_count":2,"results":[]}',
     b'{"total_count":1,"results":[]}',
     b'{"total_count":true,"results":[]}',
-    b"texte impossible à analyser",
+    "texte impossible à analyser".encode("utf-8"),
 ])
 def test_contradictions_n_enterrent_pas_de_fichier(tmp_path, source):
     captures = preparer(tmp_path)
