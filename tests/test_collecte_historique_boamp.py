@@ -204,3 +204,35 @@ def test_initialisation_sans_curseur_reste_distincte_de_la_fin(tmp_path):
     assert visites == ["2026-10-01"]
     assert bilan["plancher_atteint"] is False
     assert bilan["jour_suivant_a_relever"] == "2026-09-30"
+
+
+def test_categorie_liste_source_et_compatibilite_des_archives_anciennes(tmp_path):
+    from scripts.collecter_besoins_publics import (
+        notice_boamp, categorie_marche_officielle,
+    )
+    jour = "2026-10-01"
+    ligne = annoncer("26-234", jour)
+    ligne["type_marche"] = ["SERVICES"]
+    assert categorie_marche_officielle(ligne["type_marche"]) == "SERVICES"
+    assert notice_boamp(ligne)["categorie_marche"] is None
+    assert notice_boamp(ligne, categories_v2=True)["categorie_marche"] == "SERVICES"
+    assert categorie_marche_officielle(["SERVICES", "TRAVAUX"]) is None
+    assert categorie_marche_officielle(["INCONNU"]) is None
+    assert categorie_marche_officielle([]) is None
+    assert categorie_marche_officielle("  fournitures ") == "FOURNITURES"
+
+    t0 = datetime(2026, 10, 9, tzinfo=timezone.utc)
+    dossier = tmp_path / "nouveau"
+    def api(url, _):
+        return {"total_count": 1, "results": [ligne]}
+    bilan = executer(
+        dossier, instant=t0, obtenir=api, patienter=lambda _: None,
+        jours_par_execution=1,
+    )
+    archive, meta = chemins_jour(dossier, date.fromisoformat(jour))
+    fiche = json.loads(meta.read_text(encoding="utf-8"))
+    assert fiche["normalisation_categories"] == "liste_v2"
+    assert json.loads(gzip.decompress(archive.read_bytes()).splitlines()[0])[
+        "categorie_marche"
+    ] == "SERVICES"
+    assert bilan["jours_complets_cette_execution"] == 1

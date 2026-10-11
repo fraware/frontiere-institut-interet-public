@@ -138,3 +138,38 @@ def test_bornes_jour_et_limites(tmp_path):
         repertoires_revision(tmp_path, "../../fuite", "a" * 64)
     with pytest.raises(RelectureInvalide):
         choisir_jours([Path("2026-10-01.json")], None, rotation=11)
+
+
+def test_normalisation_versionnee_n_invente_pas_une_revision_source(tmp_path):
+    jour = "2026-10-01"
+    ancienne_ligne = annonce("26-300", jour)
+    ancienne_ligne["type_marche"] = ["SERVICES"]
+    instant = datetime(2026, 10, 8, tzinfo=timezone.utc)
+    initial = notice_boamp(ancienne_ligne)
+    assert initial["categorie_marche"] is None
+    publier_jour(
+        tmp_path / "v1", date.fromisoformat(jour), [initial], 1, instant,
+    )
+    bilan_v1 = surveiller(
+        tmp_path / "v1", obtenir=api_jours({jour: [ancienne_ligne]}),
+        patienter=lambda _: None,
+        instant=datetime(2026, 10, 9, tzinfo=timezone.utc),
+    )
+    assert bilan_v1["jours_controles"] == 1
+    assert bilan_v1["jours_avec_variation"] == 0
+    assert not list((tmp_path / "v1" / "revisions_boamp").glob("**/*.jsonl.gz"))
+
+    initial_v2 = notice_boamp(ancienne_ligne, categories_v2=True)
+    assert initial_v2["categorie_marche"] == "SERVICES"
+    publier_jour(
+        tmp_path / "v2", date.fromisoformat(jour),
+        [initial_v2], 1, instant, categories_v2=True,
+    )
+    bilan_v2 = surveiller(
+        tmp_path / "v2", obtenir=api_jours({jour: [ancienne_ligne]}),
+        patienter=lambda _: None,
+        instant=datetime(2026, 10, 9, tzinfo=timezone.utc),
+    )
+    assert bilan_v2["jours_controles"] == 1
+    assert bilan_v2["jours_avec_variation"] == 0
+    assert not list((tmp_path / "v2" / "revisions_boamp").glob("**/*.jsonl.gz"))

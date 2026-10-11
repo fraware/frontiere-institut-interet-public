@@ -61,7 +61,8 @@ def adresse_jour(jour: date, page: int, taille: int = TAILLE_PAGE) -> str:
 
 
 def lire_jour(jour: date, obtenir=recevoir, patienter=time.sleep,
-              pages_max: int = PAGES_MAX, taille: int = TAILLE_PAGE) -> tuple[list[dict], int]:
+              pages_max: int = PAGES_MAX, taille: int = TAILLE_PAGE,
+              categories_v2: bool = False) -> tuple[list[dict], int]:
     """Refuser toute page manquante, tout compte instable et toute date erronée."""
     if not 1 <= pages_max <= PAGES_MAX or not 1 <= taille <= TAILLE_PAGE:
         raise HistoriqueIncomplet("Limites de consultation incorrectes.")
@@ -93,7 +94,7 @@ def lire_jour(jour: date, obtenir=recevoir, patienter=time.sleep,
         if len(lignes) != taille_attendue:
             raise HistoriqueIncomplet("Page absente, dupliquée ou incomplète.")
         for brut in lignes:
-            notice = notice_boamp(brut)
+            notice = notice_boamp(brut, categories_v2=categories_v2)
             if notice is None:
                 raise HistoriqueIncomplet("Annonce sans identifiant exploitable.")
             parution = notice.get("date_parution")
@@ -127,7 +128,8 @@ def chemins_jour(dossier: Path, jour: date) -> tuple[Path, Path]:
 
 
 def publier_jour(dossier: Path, jour: date, notices: list[dict],
-                 total: int, instant: datetime) -> dict:
+                 total: int, instant: datetime,
+                 categories_v2: bool = False) -> dict:
     archive, fiche = chemins_jour(dossier, jour)
     archive.parent.mkdir(parents=True, exist_ok=True)
     brut, empreinte_source = serialiser(notices)
@@ -148,6 +150,8 @@ def publier_jour(dossier: Path, jour: date, notices: list[dict],
         "sha256_archive_gzip": empreinte_archive,
         "octets_archive": len(brut),
     }
+    if categories_v2:
+        fiche_donnees["normalisation_categories"] = "liste_v2"
     # Ne plus modifier les octets archivés pour un même jour sans opération
     # d'actualisation distincte ; les corrections à la source restent à suivre.
     if archive.exists() or fiche.exists():
@@ -207,8 +211,14 @@ def executer(dossier: Path = DOSSIER, instant: datetime | None = None,
         if curseur < plancher:
             break
         try:
-            notices, total = lire_jour(curseur, obtenir=obtenir, patienter=patienter)
-            fiche = publier_jour(dossier, curseur, notices, total, maintenant)
+            notices, total = lire_jour(
+                curseur, obtenir=obtenir, patienter=patienter,
+                categories_v2=True,
+            )
+            fiche = publier_jour(
+                dossier, curseur, notices, total, maintenant,
+                categories_v2=True,
+            )
             acheves.append({"jour": curseur.isoformat(), "avis": fiche["avis_distincts"]})
         except (OSError, ValueError, TimeoutError, json.JSONDecodeError) as exc:
             erreurs.append({"jour": curseur.isoformat(), "motif": type(exc).__name__})

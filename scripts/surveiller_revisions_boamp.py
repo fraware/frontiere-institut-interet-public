@@ -214,7 +214,13 @@ def surveiller(dossier: Path = DOSSIER, obtenir=None, patienter=time.sleep,
             # pendant la pagination. Chaque comparaison concerne deux relevés.
             from datetime import date
             jour_date = date.fromisoformat(jour)
-            kwargs = {"patienter": patienter}
+            normalisation = meta_initiale.get("normalisation_categories")
+            if normalisation not in (None, "liste_v2"):
+                raise RelectureInvalide("Version du schéma des catégories BOAMP inconnue.")
+            kwargs = {
+                "patienter": patienter,
+                "categories_v2": normalisation == "liste_v2",
+            }
             if obtenir is not None:
                 kwargs["obtenir"] = obtenir
             nouveaux, _total = lire_jour(jour_date, **kwargs)
