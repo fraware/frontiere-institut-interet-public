@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 from datetime import date, datetime, timedelta, timezone
 import gzip
+import io
 import hashlib
 import json
 from pathlib import Path
@@ -198,7 +199,8 @@ def verifier_complement(base: Path, fiche_initiale: Path) -> dict:
     if empreinte(b) != info.get("sha256_archive_gzip"):
         raise CategoriesIncompletes("Empreinte comprimée du complément incorrecte.")
     try:
-        contenu = gzip.decompress(b)
+        with gzip.GzipFile(fileobj=io.BytesIO(b)) as handle:
+            contenu = handle.read(8_000_001)
     except (OSError, EOFError) as err:
         raise CategoriesIncompletes("Complément comprimé illisible.") from err
     if len(contenu) > 8_000_000 or empreinte(contenu) != info.get("sha256_octets_decompresses"):
@@ -211,16 +213,33 @@ def verifier_complement(base: Path, fiche_initiale: Path) -> dict:
         raise CategoriesIncompletes("Lignes du complément incorrectes.") from erreur
     ids_originaux = sorted(x["id"] for x in notices)
     if ([x.get("id") for x in documents] != ids_originaux
-            or any(x.get("categorie_marche") not in (
-                None, "SERVICES", "FOURNITURES", "TRAVAUX",
-            ) or type(x.get("present_dans_releve_complementaire")) is not bool
-                   for x in documents)):
+            or any(
+                not isinstance(x, dict)
+                or x.get("categorie_marche") not in (
+                    None, "SERVICES", "FOURNITURES", "TRAVAUX",
+                )
+                or type(x.get("present_dans_releve_complementaire")) is not bool
+                or (
+                    x.get("present_dans_releve_complementaire") is False
+                    and x.get("categorie_marche") is not None
+                )
+                for x in documents
+            )):
         raise CategoriesIncompletes("Identifiants ou catégories du complément incorrects.")
     if (sum(x["categorie_marche"] is not None for x in documents)
             != info.get("categories_renseignees_pour_identifiants_initiaux")
             or sum(x["categorie_marche"] is None for x in documents)
             != info.get("categories_non_renseignees_pour_identifiants_initiaux")):
         raise CategoriesIncompletes("Décomptes de catégories incorrects.")
+    presents = sum(x["present_dans_releve_complementaire"] for x in documents)
+    absents = len(documents) - presents
+    n_source = info.get("nombre_identifiants_source")
+    ajoutes = info.get("nombre_identifiants_ajoutes_depuis_initial")
+    if (type(n_source) is not int or type(ajoutes) is not int
+            or absents != info.get("nombre_identifiants_absents_depuis_initial")
+            or ajoutes < 0 or presents < 0
+            or n_source != presents + ajoutes):
+        raise CategoriesIncompletes("Effectifs des identifiants historiques incohérents.")
     return info
 
 
