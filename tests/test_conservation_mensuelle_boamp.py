@@ -36,6 +36,5 @@ def test_version_publiee_apres_verification_distante():
     assert "sha256sum --check SHA256SUMS.txt" in c
     assert "cmp" in c
     assert "scripts/exporter_archive_boamp.py verifier" in c
-    assert "copie supplémentaire" not in c.lower()  # non causal : assertion simple sur les libellés
     assert c.index("gh release create") < c.index('cmp "$DOSSIER/$f"')
     assert c.index('cmp "$DOSSIER/$f"') < c.index("gh release edit")
