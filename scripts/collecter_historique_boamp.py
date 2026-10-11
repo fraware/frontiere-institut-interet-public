@@ -184,6 +184,14 @@ def executer(dossier: Path = DOSSIER, instant: datetime | None = None,
         raise HistoriqueIncomplet("Le plancher historique est dans le futur.")
     etat_path = dossier / "etat_historique_boamp.json"
     ancien = json.loads(etat_path.read_text(encoding="utf-8")) if etat_path.is_file() else {}
+    # Un curseur nul accompagné d'un état final confirme une collecte
+    # arrivée au plancher. Sans ce marqueur, il signifie « initialisation ».
+    # Ne jamais repartir à la date courante après le dernier jour archivé.
+    if ancien.get("plancher_atteint") is True:
+        if (ancien.get("jour_suivant_a_relever") is not None
+                or ancien.get("plancher") != plancher.isoformat()):
+            raise HistoriqueIncomplet("État terminal du rattrapage incohérent.")
+        return ancien
     valeur = ancien.get("jour_suivant_a_relever")
     if valeur is None:
         # La veille courante traite déjà les sept derniers jours.
@@ -220,6 +228,7 @@ def executer(dossier: Path = DOSSIER, instant: datetime | None = None,
         "jours": acheves,
         "erreurs": erreurs,
         "plancher": plancher.isoformat(),
+        "plancher_atteint": curseur < plancher,
         "historique_integral_non_etabli": True,
         "modifications_retroactives_non_suivies": True,
     }
