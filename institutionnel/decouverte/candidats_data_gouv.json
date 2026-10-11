@@ -2,7 +2,7 @@
   "candidats": [
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T19:28:37.225000+00:00",
+      "donnees_actualisees_le": "2026-10-11T22:54:35.703000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
       "id": "53698e47a3a729239d20340c",
@@ -18,28 +18,28 @@
         {
           "format": "xls",
           "id": "6889c366-fcbd-4204-8a0f-8d2f97b0d550",
-          "modifie_le": "2026-10-08T12:15:53.001351+00:00",
+          "modifie_le": "2026-10-10T15:31:19.171060+00:00",
           "titre": "No name",
           "url": "http://data.ratp.fr/?eID=ics_od_datastoredownload&file=87"
         },
         {
           "format": "pdf",
           "id": "d2313183-6bdd-48d8-ac21-00fb27176661",
-          "modifie_le": "2026-10-09T19:28:37.225595+00:00",
+          "modifie_le": "2026-10-11T22:54:35.703435+00:00",
           "titre": "No name",
           "url": "http://data.ratp.fr/?eID=ics_od_datastoredownload&file=84"
         },
         {
           "format": "xls",
           "id": "076afcdb-02cb-4621-8620-82972e428f8f",
-          "modifie_le": "2026-10-08T11:42:06.790727+00:00",
+          "modifie_le": "2026-10-10T14:15:59.609015+00:00",
           "titre": "Données",
           "url": "http://data.ratp.fr/?eID=ics_od_datastoredownload&file=87"
         },
         {
           "format": "pdf",
           "id": "130d8bff-95d8-45b2-8913-89074ab0c099",
-          "modifie_le": "2026-10-08T13:28:56.870988+00:00",
+          "modifie_le": "2026-10-10T15:13:30.599816+00:00",
           "titre": "Document complémentaire",
           "url": "http://data.ratp.fr/?eID=ics_od_datastoredownload&file=84"
         }
@@ -5101,6 +5101,47 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:42:15.655000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "58ef2d03a3a7293d4ac4e185",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-07-28T08:50:44.265000+00:00",
+      "nombre_ressources_rapportees": 3,
+      "page": "https://www.data.gouv.fr/datasets/elections-departementales-et-regionales-2015-tours-1-et-2-poitiers-resultats",
+      "producteur": "Grand Poitiers Open Data",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "url",
+          "id": "45041446-b98b-4fec-b42e-c2ec55466afc",
+          "modifie_le": "2026-10-11T17:47:03.955425+00:00",
+          "titre": "Consultez les données",
+          "url": "https://data.grandpoitiers.fr/datasets/citoyennete-poitiers-resultats-electoraux-a-partir-de-2015"
+        },
+        {
+          "format": "url",
+          "id": "c5dfc62f-575d-458e-ac7d-0acf2158d9a5",
+          "modifie_le": "2026-10-11T22:42:15.655568+00:00",
+          "titre": "Description des champs",
+          "url": "https://data.grandpoitiers.fr/datasets/citoyennete-poitiers-resultats-electoraux-a-partir-de-2015"
+        },
+        {
+          "format": "csv",
+          "id": "2b7954ed-e518-49a1-b90d-11e488f13e7a",
+          "modifie_le": "2026-01-29T21:03:01+00:00",
+          "titre": "Fichier csv",
+          "url": "https://data.grandpoitiers.fr/data-fair/api/v1/datasets/citoyennete-poitiers-resultats-electoraux-a-partir-de-2015/raw"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Elections départementales et régionales 2015 Tours 1 et 2 Poitiers Résultats"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-11T06:55:26.595000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "annual",
@@ -5630,6 +5671,33 @@
       "reutilisation_potentielle": true,
       "source_deja_suivie": false,
       "titre": "Elections législatives_ 2017_tour 2_2eme circonscription_ Poitiers_ résultats"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:42:48.432000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "irregular",
+      "id": "594d1b8088ee387c6695abf7",
+      "licence_declaree": "fr-lo",
+      "modifie_le": "2017-06-23T15:45:51.139000+00:00",
+      "nombre_ressources_rapportees": 1,
+      "page": "https://www.data.gouv.fr/datasets/actualites-6",
+      "producteur": "Communauté d'Agglomération Bar-le-Duc Sud Meuse",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "rss",
+          "id": "ba88c6be-635e-4f87-b0e4-8e6ac184e5d9",
+          "modifie_le": "2026-10-11T22:42:48.432492+00:00",
+          "titre": "Flux RSS",
+          "url": "http://www.meusegrandsud.fr/?type=9818"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Actualités"
     },
     {
       "contenu_original_copie": false,
@@ -9162,6 +9230,138 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:43:17.831000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "punctual",
+      "id": "5d79f029634f4132b427a462",
+      "licence_declaree": "lov2",
+      "modifie_le": "2020-09-12T06:38:07.934000+00:00",
+      "nombre_ressources_rapportees": 16,
+      "page": "https://www.data.gouv.fr/datasets/aires-dalimentation-de-captage-guadeloupe",
+      "producteur": "Système d'Information sur l'Eau",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "83e3b4f9-0e93-4617-8cfd-d9997b3d643e",
+          "modifie_le": "2025-01-15T22:19:16.184189+00:00",
+          "titre": "Consulter le dictionnaire \"Zonages de gestion de la qualité des ressources\"",
+          "url": "http://id.eaufrance.fr/DDD/ZGR"
+        },
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "27c8fbd6-7d1d-45b5-8738-c29a93d6decb",
+          "modifie_le": "2025-07-04T15:22:38+00:00",
+          "titre": "Consulter le scénario d'échange du référentiel.",
+          "url": "http://www.sandre.eaufrance.fr/urn.php?urn=urn:sandre:scenario-d-echanges-geographique:AAC:FRA:::ressource:latest:::pdf"
+        },
+        {
+          "format": "",
+          "id": "00e96fbb-a94f-4770-8f61-0277c7ec6fc5",
+          "modifie_le": "2020-06-10T15:09:45+00:00",
+          "titre": "Canevas du référentiel géographique des AAC - CSV",
+          "url": "http://services.sandre.eaufrance.fr/telechargement/geo/ZGR/AAC/Canevas_AAC.csv"
+        },
+        {
+          "format": "",
+          "id": "4b3ac957-f176-46a3-a38f-007bce7e64ff",
+          "modifie_le": "2019-10-09T07:58:32+00:00",
+          "titre": "Canevas du référentiel géographique des AAC - ESRI shapefile .shp",
+          "url": "http://services.sandre.eaufrance.fr/telechargement/geo/ZGR/AAC/Template_SHP_AAC_SANDRE_sc_v3_shp.zip"
+        },
+        {
+          "format": "",
+          "id": "f3984a38-89e7-4803-a2bd-50ee7dbedc6a",
+          "modifie_le": "2020-06-10T15:14:37+00:00",
+          "titre": "Canevas des Ouvrages de prélèvement associés aux AAC (Scénario d’échange des ACC v3)",
+          "url": "http://services.sandre.eaufrance.fr/telechargement/geo/ZGR/AAC/Canevas_AAC_Ouvrages.csv"
+        },
+        {
+          "format": "",
+          "id": "d50c4955-3e0e-4f5e-ba3d-3f2e29023a10",
+          "modifie_le": "2020-08-14T07:43:05+00:00",
+          "titre": "Consulter le descriptif de gestion des AAC",
+          "url": "http://www.sandre.eaufrance.fr/ftp/documents/fr/ref/aac/2/RegleGestionReferentiel_AAC_2.pdf"
+        },
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "c24ceda2-e143-46a5-a70c-fa759c27153a",
+          "modifie_le": "2026-08-12T12:13:48+00:00",
+          "titre": "Consulter le rapport de contrôles de conformité des AAC",
+          "url": "http://mdm.sandre.eaufrance.fr/geo/rapports/public/AAC"
+        },
+        {
+          "format": "",
+          "id": "0a5037f8-0a96-4acc-a283-e02f3af8d33d",
+          "modifie_le": "2026-10-11T22:43:17.831355+00:00",
+          "titre": "Télécharger les données - Format ESRI Shapefile",
+          "url": "https://sandre.eaufrance.fr/geo/zgr?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typename=AAC_GLP&SRSNAME=EPSG:4559&OUTPUTFORMAT=SHAPEZIP"
+        },
+        {
+          "format": "",
+          "id": "b154e0b8-4f35-4f1d-9886-98c46331e82d",
+          "modifie_le": "2026-10-11T17:51:47.043989+00:00",
+          "titre": "Télécharger les données - Format Géopackage",
+          "url": "https://sandre.eaufrance.fr/geo/zgr?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typename=AAC_GLP&SRSNAME=EPSG:4559&OUTPUTFORMAT=GPKG"
+        },
+        {
+          "format": "",
+          "id": "7d4904a5-3ad5-455a-9519-92098c55defb",
+          "modifie_le": "2026-10-11T15:09:39.323616+00:00",
+          "titre": "Télécharger les données - Format MIF/MID",
+          "url": "https://sandre.eaufrance.fr/geo/zgr?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typename=AAC_GLP&SRSNAME=EPSG:4559&OUTPUTFORMAT=MIFMIF"
+        },
+        {
+          "format": "wms",
+          "id": "b622d1d4-e53e-436d-8187-d8309a410ef9",
+          "modifie_le": "2026-10-11T15:55:14.942657+00:00",
+          "titre": "AAC_GLP",
+          "url": "https://sandre.eaufrance.fr/geo/zgr?"
+        },
+        {
+          "format": "wfs",
+          "id": "21f3f9f5-dfc7-484a-80c4-b40e86060315",
+          "modifie_le": "2026-10-11T11:28:18.772433+00:00",
+          "titre": "AAC_GLP",
+          "url": "https://sandre.eaufrance.fr/geo/zgr?Request=GetCapabilities&SERVICE=WFS&VERSION=2.0.0"
+        },
+        {
+          "format": "",
+          "id": "62074442-a354-4363-a205-b3985ef3e0c7",
+          "modifie_le": "2024-06-07T15:27:48.494000+00:00",
+          "titre": "AAC_relations_referentiels",
+          "url": "https://services.sandre.eaufrance.fr/geo/zgr?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&typename=AAC_OuvragePrelAEP&SRSNAME=EPSG:4326&OUTPUTFORMAT=CSV"
+        },
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "d9754838-90b4-48f6-93e9-63791c314d19",
+          "modifie_le": "2025-07-04T15:22:38+00:00",
+          "titre": "Consulter le scénario d'échange du référentiel.",
+          "url": "https://www.sandre.eaufrance.fr/urn.php?urn=urn:sandre:scenario-d-echanges-geographique:AAC:FRA:::ressource:latest:::pdf"
+        },
+        {
+          "format": "",
+          "id": "fc2b969b-c458-4500-b289-faff5bcde242",
+          "modifie_le": "2025-04-18T00:11:04.007000+00:00",
+          "titre": "AAC_GLP",
+          "url": "https://services.sandre.eaufrance.fr/geo/zgr"
+        },
+        {
+          "format": "",
+          "id": "f9e94749-c918-4d70-947a-4c323955548d",
+          "modifie_le": "2026-07-30T10:59:13.647240+00:00",
+          "titre": "sa:AAC_GLP",
+          "url": "http://services.sandre.eaufrance.fr/geo/AAC?Request=GetCapabilities&SERVICE=WFS&VERSION=1.1.0"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Aires d'Alimentation de Captage - Guadeloupe"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2019-10-04T10:10:54.307000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "monthly",
@@ -10319,6 +10519,47 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:42:14.163000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "5f17ba55363714ac6ed05ffd",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-07-28T08:49:47.382000+00:00",
+      "nombre_ressources_rapportees": 3,
+      "page": "https://www.data.gouv.fr/datasets/culture-frequentation-de-la-mediatheque",
+      "producteur": "Grand Poitiers Open Data",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "url",
+          "id": "82731148-3db7-474f-bb2e-c7276739e415",
+          "modifie_le": "2026-10-11T22:42:14.163315+00:00",
+          "titre": "Consultez les données",
+          "url": "https://data.grandpoitiers.fr/datasets/culture-frequentation-de-la-mediatheque"
+        },
+        {
+          "format": "url",
+          "id": "6939851f-13e3-4a76-a3e8-679577b76363",
+          "modifie_le": "2026-10-11T18:09:13.179261+00:00",
+          "titre": "Description des champs",
+          "url": "https://data.grandpoitiers.fr/datasets/culture-frequentation-de-la-mediatheque"
+        },
+        {
+          "format": "csv",
+          "id": "c7584717-520a-407e-b9bb-c50bb91d3574",
+          "modifie_le": "2026-01-29T21:04:16+00:00",
+          "titre": "Fichier csv",
+          "url": "https://data.grandpoitiers.fr/data-fair/api/v1/datasets/culture-frequentation-de-la-mediatheque/raw"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Culture - Fréquentation de la médiathèque"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2020-09-24T00:00:00+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
@@ -10702,7 +10943,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T18:16:56.799000+00:00",
+      "donnees_actualisees_le": "2026-10-11T22:42:43.239000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "punctual",
       "id": "5fb67cd47272e7ee8bec8f27",
@@ -10725,28 +10966,28 @@
         {
           "format": "xml",
           "id": "897cf880-5353-4753-8145-d5a922ea43e4",
-          "modifie_le": "2026-10-09T14:48:08.807183+00:00",
+          "modifie_le": "2026-10-11T15:59:27.204832+00:00",
           "titre": "Règles de calcul du simulateur documents nécessaires au dossier de naturalisation",
           "url": "https://gitlab.com/pidila/sp-simulateurs-data/-/blob/master/definitions-des-simulateurs/Naturalisation.xml"
         },
         {
           "format": "css",
           "id": "90bb0a75-43d9-4de7-b685-a5c592eaebbb",
-          "modifie_le": "2026-10-09T18:16:56.799108+00:00",
+          "modifie_le": "2026-10-11T22:42:43.239734+00:00",
           "titre": "Feuille de style (CSS) du simulateur documents nécessaires au dossier de naturalisation",
           "url": "https://gitlab.com/pidila/sp-simulateurs-data/-/blob/master/feuilles-de-styles/Naturalisation.css"
         },
         {
           "format": "json",
           "id": "ba6a7e97-93b6-45f9-8c06-3c69c98f8b4b",
-          "modifie_le": "2026-10-09T13:53:28.714973+00:00",
+          "modifie_le": "2026-10-11T15:31:36.618040+00:00",
           "titre": "Données de référence (JSON) du simulateur documents nécessaires au dossier de naturalisation",
           "url": "https://gitlab.com/pidila/sp-simulateurs-data/-/blob/master/donnees-de-reference/documents_de_naturalisation.json"
         },
         {
           "format": "schema.json",
           "id": "13557f31-82b0-4b5d-98ec-b9489b908487",
-          "modifie_le": "2026-10-09T08:34:06.911673+00:00",
+          "modifie_le": "2026-10-11T11:34:32.599015+00:00",
           "titre": "Schéma des données de référence (Schéma JSON) du simulateur documents nécessaires au dossier de naturalisation",
           "url": "https://gitlab.com/pidila/sp-simulateurs-data/-/blob/master/donnees-de-reference/documents_de_naturalisation.schema.json"
         }
@@ -15991,12 +16232,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-11T21:46:04.757000+00:00",
+      "donnees_actualisees_le": "2026-10-11T22:54:04.386000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "monthly",
       "id": "64060c2ac773dcf3fabbe5d2",
       "licence_declaree": "notspecified",
-      "modifie_le": "2026-10-11T21:46:04.757000+00:00",
+      "modifie_le": "2026-10-11T22:54:04.387000+00:00",
       "nombre_ressources_rapportees": 2,
       "page": "https://www.data.gouv.fr/datasets/public-charging-stations-for-electric-cars-from-several-cpos",
       "producteur": "Eco-Movement",
@@ -16007,9 +16248,9 @@
         {
           "format": "csv",
           "id": "b20d2793-db42-4d6d-a0b4-e94bf5ee4279",
-          "modifie_le": "2026-10-11T21:46:04.757000+00:00",
+          "modifie_le": "2026-10-11T22:54:04.386000+00:00",
           "titre": "irve-dynamique.csv",
-          "url": "https://static.data.gouv.fr/resources/public-charging-stations-for-electric-cars-from-several-cpos/20261011-214603/irve-dynamique.csv"
+          "url": "https://static.data.gouv.fr/resources/public-charging-stations-for-electric-cars-from-several-cpos/20261011-225403/irve-dynamique.csv"
         },
         {
           "format": "csv",
@@ -18701,12 +18942,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-10T22:27:06+00:00",
+      "donnees_actualisees_le": "2026-10-11T22:53:00+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "continuous",
       "id": "65bd1247a6238f16e864fa80",
       "licence_declaree": "lov2",
-      "modifie_le": "2026-10-10T22:27:38.218000+00:00",
+      "modifie_le": "2026-10-11T22:52:58.545000+00:00",
       "nombre_ressources_rapportees": 211,
       "page": "https://www.data.gouv.fr/datasets/paquets-arome-resolution-0-01deg",
       "producteur": "Météo-France",
@@ -18724,170 +18965,170 @@
         {
           "format": "grib2",
           "id": "f42f396c-cc81-4c65-a977-354ac91cd032",
-          "modifie_le": "2026-10-10T22:13:32+00:00",
-          "titre": "arome__001__HP1__00H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__00H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:12:33+00:00",
+          "titre": "arome__001__HP1__00H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__00H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "22ebee51-5e66-449c-b9ba-cae36483e74b",
-          "modifie_le": "2026-10-10T22:13:54+00:00",
-          "titre": "arome__001__HP1__01H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__01H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:12:40+00:00",
+          "titre": "arome__001__HP1__01H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__01H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "47fd623e-095c-467c-84ee-27a8427bf538",
-          "modifie_le": "2026-10-10T22:14:19+00:00",
-          "titre": "arome__001__HP1__02H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__02H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:12:47+00:00",
+          "titre": "arome__001__HP1__02H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__02H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "ff46ef37-2117-4dbb-a9f7-2dcf7949543e",
-          "modifie_le": "2026-10-10T22:14:45+00:00",
-          "titre": "arome__001__HP1__03H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__03H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:12:56+00:00",
+          "titre": "arome__001__HP1__03H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__03H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "86e0e59a-73dd-403f-a54b-27d8d347e83b",
-          "modifie_le": "2026-10-10T22:15:13+00:00",
-          "titre": "arome__001__HP1__04H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__04H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:13:04+00:00",
+          "titre": "arome__001__HP1__04H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__04H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "5f116e7c-de2e-48b5-a085-ecc9197f01f0",
-          "modifie_le": "2026-10-10T22:15:56+00:00",
-          "titre": "arome__001__HP1__05H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__05H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:13:20+00:00",
+          "titre": "arome__001__HP1__05H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__05H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "fe3247fe-cd20-410a-8dfb-dd40e48188d7",
-          "modifie_le": "2026-10-10T22:16:33+00:00",
-          "titre": "arome__001__HP1__06H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__06H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:13:40+00:00",
+          "titre": "arome__001__HP1__06H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__06H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "10dd6974-fb16-4344-8aab-54d1dcc6f806",
-          "modifie_le": "2026-10-10T22:17:00+00:00",
-          "titre": "arome__001__HP1__07H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__07H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:18:42+00:00",
+          "titre": "arome__001__HP1__07H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__07H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "a377c961-619d-4d0f-8a69-caf22c31ec95",
-          "modifie_le": "2026-10-10T22:17:26+00:00",
-          "titre": "arome__001__HP1__08H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__08H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:18:51+00:00",
+          "titre": "arome__001__HP1__08H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__08H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "bc77761d-51e8-4353-8bd9-46dae1f3e379",
-          "modifie_le": "2026-10-10T22:17:56+00:00",
-          "titre": "arome__001__HP1__09H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__09H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:19:05+00:00",
+          "titre": "arome__001__HP1__09H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__09H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "7e3aa10a-52f1-4050-8ea3-b66078491879",
-          "modifie_le": "2026-10-10T22:18:27+00:00",
-          "titre": "arome__001__HP1__10H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__10H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:19:19+00:00",
+          "titre": "arome__001__HP1__10H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__10H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "49a383f3-0b4c-4ae5-8424-a91218da846d",
-          "modifie_le": "2026-10-10T22:18:58+00:00",
-          "titre": "arome__001__HP1__11H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__11H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:19:34+00:00",
+          "titre": "arome__001__HP1__11H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__11H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "5e46e531-d54f-478f-9707-fad0dce6d9ad",
-          "modifie_le": "2026-10-10T22:19:31+00:00",
-          "titre": "arome__001__HP1__12H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__12H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:19:46+00:00",
+          "titre": "arome__001__HP1__12H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__12H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "0626bb30-fc4a-453b-a9cf-b721ca7594f6",
-          "modifie_le": "2026-10-10T22:22:45+00:00",
-          "titre": "arome__001__HP1__13H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__13H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:23:35+00:00",
+          "titre": "arome__001__HP1__13H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__13H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "8f0ae33d-fa1d-4f5b-959a-927783676bf4",
-          "modifie_le": "2026-10-10T22:22:59+00:00",
-          "titre": "arome__001__HP1__14H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__14H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:23:39+00:00",
+          "titre": "arome__001__HP1__14H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__14H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "2825c3c5-0aa0-4f6d-a58b-a5bc29f15d0b",
-          "modifie_le": "2026-10-10T22:23:11+00:00",
-          "titre": "arome__001__HP1__15H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__15H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:23:44+00:00",
+          "titre": "arome__001__HP1__15H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__15H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "2447b9f0-7ab5-4c46-aa3f-19af5d6e937d",
-          "modifie_le": "2026-10-10T22:23:23+00:00",
-          "titre": "arome__001__HP1__16H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__16H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:23:51+00:00",
+          "titre": "arome__001__HP1__16H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__16H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "f1bddf35-b411-47dc-b76f-1be08eafc4d2",
-          "modifie_le": "2026-10-10T22:23:36+00:00",
-          "titre": "arome__001__HP1__17H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__17H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:23:54+00:00",
+          "titre": "arome__001__HP1__17H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__17H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "4efe40e9-3761-477d-bbc0-fc0a861fd7bb",
-          "modifie_le": "2026-10-10T22:23:47+00:00",
-          "titre": "arome__001__HP1__18H__2026-10-10T18:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T18:00:00Z/arome/001/HP1/arome__001__HP1__18H__2026-10-10T18:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:23:58+00:00",
+          "titre": "arome__001__HP1__18H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__18H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "8020921d-d088-4ce4-a5c5-c753ce2b4794",
-          "modifie_le": "2026-10-10T18:22:35+00:00",
-          "titre": "arome__001__HP1__19H__2026-10-10T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T15:00:00Z/arome/001/HP1/arome__001__HP1__19H__2026-10-10T15:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:31:52+00:00",
+          "titre": "arome__001__HP1__19H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__19H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "56846ef5-781d-4ab6-a69f-7107cf2365c7",
-          "modifie_le": "2026-10-10T18:22:40+00:00",
-          "titre": "arome__001__HP1__20H__2026-10-10T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T15:00:00Z/arome/001/HP1/arome__001__HP1__20H__2026-10-10T15:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:32:13+00:00",
+          "titre": "arome__001__HP1__20H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__20H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "e69385a2-f65a-4c57-8994-955768d7e0db",
-          "modifie_le": "2026-10-10T18:22:44+00:00",
-          "titre": "arome__001__HP1__21H__2026-10-10T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T15:00:00Z/arome/001/HP1/arome__001__HP1__21H__2026-10-10T15:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:32:34+00:00",
+          "titre": "arome__001__HP1__21H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__21H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "502c1e1f-bc2a-47f1-b00e-13982ab69f6b",
-          "modifie_le": "2026-10-10T18:22:49+00:00",
-          "titre": "arome__001__HP1__22H__2026-10-10T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T15:00:00Z/arome/001/HP1/arome__001__HP1__22H__2026-10-10T15:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:33:02+00:00",
+          "titre": "arome__001__HP1__22H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__22H__2026-10-11T18:00:00Z.grib2"
         },
         {
           "format": "grib2",
           "id": "d6c15a09-0da4-4f98-af2a-91c54f88a76b",
-          "modifie_le": "2026-10-10T18:22:54+00:00",
-          "titre": "arome__001__HP1__23H__2026-10-10T15:00:00Z.grib2",
-          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-10T15:00:00Z/arome/001/HP1/arome__001__HP1__23H__2026-10-10T15:00:00Z.grib2"
+          "modifie_le": "2026-10-11T22:33:30+00:00",
+          "titre": "arome__001__HP1__23H__2026-10-11T18:00:00Z.grib2",
+          "url": "https://meteofrance-pnt.s3.rbx.io.cloud.ovh.net/pnt/2026-10-11T18:00:00Z/arome/001/HP1/arome__001__HP1__23H__2026-10-11T18:00:00Z.grib2"
         }
       ],
       "reutilisation_potentielle": true,
@@ -20705,12 +20946,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-11T21:45:01.693000+00:00",
+      "donnees_actualisees_le": "2026-10-11T22:45:00.901000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "hourly",
       "id": "65e092e4009f18f050b14216",
       "licence_declaree": "notspecified",
-      "modifie_le": "2026-10-11T21:45:01.694000+00:00",
+      "modifie_le": "2026-10-11T22:45:00.903000+00:00",
       "nombre_ressources_rapportees": 2,
       "page": "https://www.data.gouv.fr/datasets/bornes-de-recharge-pour-vehicules-electriques-wattzhub-1",
       "producteur": "WattzHub",
@@ -20721,9 +20962,9 @@
         {
           "format": "csv",
           "id": "1f59da06-130f-4f04-bbfc-9339c13990b1",
-          "modifie_le": "2026-10-11T21:45:01.693000+00:00",
-          "titre": "consolidation-wattzhub-schema-irve-dynamic-20261011-214501.csv",
-          "url": "https://static.data.gouv.fr/resources/bornes-de-recharge-pour-vehicules-electriques-wattzhub-1/20261011-214501/consolidation-wattzhub-schema-irve-dynamic-20261011-214501.csv"
+          "modifie_le": "2026-10-11T22:45:00.901000+00:00",
+          "titre": "consolidation-wattzhub-schema-irve-dynamic-20261011-224500.csv",
+          "url": "https://static.data.gouv.fr/resources/bornes-de-recharge-pour-vehicules-electriques-wattzhub-1/20261011-224500/consolidation-wattzhub-schema-irve-dynamic-20261011-224500.csv"
         },
         {
           "format": "csv",
@@ -21817,7 +22058,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-09T17:50:43.121000+00:00",
+      "donnees_actualisees_le": "2026-10-11T22:44:44.126000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
       "id": "66601a411fd7f3661df23bab",
@@ -21833,7 +22074,7 @@
         {
           "format": "www:link-1.0-http--link",
           "id": "ce9a2b57-cd02-45e4-98b2-e8f05de49d48",
-          "modifie_le": "2026-10-09T17:50:43.121993+00:00",
+          "modifie_le": "2026-10-11T22:44:44.126685+00:00",
           "titre": "Documentation de l'API",
           "url": "https://taxref.mnhn.fr/taxref-web/api/doc"
         },
@@ -21965,6 +22206,110 @@
       "reutilisation_potentielle": true,
       "source_deja_suivie": false,
       "titre": "Bassins versant topographiques - Métropole 2023 - BD Topage®"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:44:00.223000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "annual",
+      "id": "6663268e7683aed116fd0fa6",
+      "licence_declaree": "fr-lo",
+      "modifie_le": "2024-06-07T15:26:06.330000+00:00",
+      "nombre_ressources_rapportees": 12,
+      "page": "https://www.data.gouv.fr/datasets/plans-deau-metropole-2019-bd-topage-r",
+      "producteur": "Système d'Information sur l'Eau",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "www:link-1.0-http--related",
+          "id": "05233ef0-16de-49a3-a46a-0271f9d59517",
+          "modifie_le": "2026-10-11T22:44:00.223194+00:00",
+          "titre": "Consulter le dictionnaire interactif en ligne",
+          "url": "http://id.eaufrance.fr/ddd/ETH/2/PlanEau"
+        },
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "e9b36e13-4c05-439b-9874-8e9e04440699",
+          "modifie_le": "2020-12-18T09:03:20+00:00",
+          "titre": "Consulter le scénario d'échange géographique du référentiel hydrographique 2019",
+          "url": "https://www.sandre.eaufrance.fr/ftp/documents/fr/scn/topage/1.0/sandre_scenario_geo_topage_2019_v1.pdf"
+        },
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "3e1d05a2-00e1-4f92-a955-6c13b55ad51d",
+          "modifie_le": "2020-06-15T08:08:57+00:00",
+          "titre": "Consulter le document de présentation",
+          "url": "http://www.sandre.eaufrance.fr/ftp/documents/fr/pre/eth/1/sandre_pres_eth_1.pdf"
+        },
+        {
+          "format": "www:link-1.0-http--related",
+          "id": "e3992257-5e7d-4cc0-ba52-7903fbe838f4",
+          "modifie_le": "2026-10-09T16:56:29+00:00",
+          "titre": "Consulter le rapport de contrôles en ligne",
+          "url": "http://mdm.sandre.eaufrance.fr/geo/rapportsv3/rapport/288"
+        },
+        {
+          "format": "wms",
+          "id": "ffdb5ab8-08c1-48d5-951c-13fe431add0a",
+          "modifie_le": "2024-06-07T15:26:06.331000+00:00",
+          "titre": "PlanEau_FXX_Topage2019",
+          "url": "https://services.sandre.eaufrance.fr/geo/topage2019?"
+        },
+        {
+          "format": "",
+          "id": "c63d4e10-cf4e-4efd-83eb-091c725a6dd7",
+          "modifie_le": "2020-05-14T07:10:52+00:00",
+          "titre": "Télécharger les plans d'eau métropole - Format ESRI Shapefile",
+          "url": "http://services.sandre.eaufrance.fr/telechargement/geo/ETH/BDTopage/2019/PlanEau/PlanEau_FXX-shp.zip"
+        },
+        {
+          "format": "",
+          "id": "53ec4fc3-1fb4-4ed5-bf27-b646d95dd7ea",
+          "modifie_le": "2020-08-24T08:03:32+00:00",
+          "titre": "Télécharger les plans d'eau métropole - Format GPKG",
+          "url": "http://services.sandre.eaufrance.fr/telechargement/geo/ETH/BDTopage/2019/PlanEau/PlanEau_FXX-gpkg.zip"
+        },
+        {
+          "format": "",
+          "id": "aacd832b-4fd1-4450-8a52-3fe908ced34b",
+          "modifie_le": "2020-08-24T07:57:24+00:00",
+          "titre": "Télécharger les plans d'eau métropole - Format GeoJSON",
+          "url": "http://services.sandre.eaufrance.fr/telechargement/geo/ETH/BDTopage/2019/PlanEau/PlanEau_FXX-geojson.zip"
+        },
+        {
+          "format": "",
+          "id": "b809cc88-1c4f-4462-8320-bb8843ac0dec",
+          "modifie_le": "2026-07-26T01:00:24.643998+00:00",
+          "titre": "Télécharger les données par bassin - ESRI Shapefile",
+          "url": "http://services.sandre.eaufrance.fr/telechargement/geo/ETH/BDTopage/2019/PlanEau/Bassin"
+        },
+        {
+          "format": "www:link-1.0-http--partners",
+          "id": "7a52faf1-f13b-4a1d-84d4-f382f13cd9d7",
+          "modifie_le": "2026-01-15T17:21:43+00:00",
+          "titre": "Pour en savoir plus, consulter le site de la BD Topage®",
+          "url": "https://bdtopage.eaufrance.fr/"
+        },
+        {
+          "format": "www:link-1.0-http--partners",
+          "id": "e5d6c0f8-73b7-4dab-98ee-b5db5a34c6e0",
+          "modifie_le": "2026-07-23T05:54:35.919189+00:00",
+          "titre": "Participer à la mise à jour collaborative de la BD Topage®",
+          "url": "https://espacecollaboratif.ign.fr"
+        },
+        {
+          "format": "wfs",
+          "id": "923753d6-6f20-4bdb-bc25-d3ce6354fef4",
+          "modifie_le": "2026-07-23T10:06:15.087000+00:00",
+          "titre": "sa:PlanEau_FXX_Topage2019",
+          "url": "https://services.sandre.eaufrance.fr/geo/topage2019?"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Plans d'eau - Métropole 2019 - BD Topage®"
     },
     {
       "contenu_original_copie": false,
@@ -22878,6 +23223,47 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:44:54.248000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "annual",
+      "id": "667e98ec0ebce4113a3a452d",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-10-06T14:56:53.710000+00:00",
+      "nombre_ressources_rapportees": 3,
+      "page": "https://www.data.gouv.fr/datasets/production-denergie-en-bretagne",
+      "producteur": "Observatoire de l'environnement en Bretagne",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "url",
+          "id": "284e6c68-dfb2-4694-9ed3-6d6132489dcc",
+          "modifie_le": "2026-10-11T22:44:54.248747+00:00",
+          "titre": "Consultez les données",
+          "url": "https://data.bretagne-environnement.fr/datasets/production-denergie-en-bretagne"
+        },
+        {
+          "format": "url",
+          "id": "772b01b1-810f-4125-a579-bca2136885d0",
+          "modifie_le": "2026-09-15T16:39:18.139331+00:00",
+          "titre": "Description des champs",
+          "url": "https://data.bretagne-environnement.fr/datasets/production-denergie-en-bretagne"
+        },
+        {
+          "format": "csv",
+          "id": "33566ef7-9f4a-493b-8b8f-dc8734e681d3",
+          "modifie_le": "2026-09-03T14:06:22+00:00",
+          "titre": "Fichier csv",
+          "url": "https://data.bretagne-environnement.fr/data-fair/api/v1/datasets/production-denergie-en-bretagne/raw"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Production d'énergie en Bretagne"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-11T21:36:03.151000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "annual",
@@ -22997,7 +23383,7 @@
         {
           "format": "www:link-1.0-http--link",
           "id": "ec3abf3b-3e08-4fa1-8188-edf70fc0d062",
-          "modifie_le": "2026-10-09T04:43:55+00:00",
+          "modifie_le": "2026-10-11T10:12:44+00:00",
           "titre": "exercice 2011",
           "url": "http://www.services.eaufrance.fr/documents/openData/SISPEA_FR_2011_ANC.zip"
         },
@@ -23074,7 +23460,7 @@
         {
           "format": "www:link-1.0-http--link",
           "id": "bde1c6f0-3815-42b1-9567-3fa39507d406",
-          "modifie_le": "2026-10-09T04:44:35+00:00",
+          "modifie_le": "2026-10-11T10:13:22+00:00",
           "titre": "exercice 2018",
           "url": "http://www.services.eaufrance.fr/documents/openData/SISPEA_FR_2018_ANC.ods"
         },
@@ -28480,6 +28866,47 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:43:52.159000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "daily",
+      "id": "6748f6a81f82ad3b47452f8d",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-07-29T22:05:52.621000+00:00",
+      "nombre_ressources_rapportees": 3,
+      "page": "https://www.data.gouv.fr/datasets/annuaire-de-solutions-de-reduction-et-gestion-des-dechets-pour-les-professionnels-de-la-metropole-de-lyon",
+      "producteur": "Métropole de Lyon",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "shp",
+          "id": "01302cf6-06b9-4218-9222-33298a7197c6",
+          "modifie_le": "2026-10-11T16:26:56.604870+00:00",
+          "titre": "metropole-de-lyon:eco_ecologie.ecoannuproducteur",
+          "url": "https://data.grandlyon.com/geoserver/metropole-de-lyon/ows?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=metropole-de-lyon:eco_ecologie.ecoannuproducteur&outputFormat=shape-zip&SRSNAME=EPSG:2154"
+        },
+        {
+          "format": "geojson",
+          "id": "b531115d-9604-420e-a49e-bd366203d7d2",
+          "modifie_le": "2026-10-11T17:42:14.578901+00:00",
+          "titre": "metropole-de-lyon:eco_ecologie.ecoannuproducteur",
+          "url": "https://data.grandlyon.com/geoserver/metropole-de-lyon/ows?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=metropole-de-lyon:eco_ecologie.ecoannuproducteur&outputFormat=application/json&SRSNAME=EPSG:4326"
+        },
+        {
+          "format": "csv",
+          "id": "a1f18e68-2f1e-4f5e-b056-f84ef28fc434",
+          "modifie_le": "2026-10-11T22:43:52.159675+00:00",
+          "titre": "metropole-de-lyon:eco_ecologie.ecoannuproducteur",
+          "url": "https://data.grandlyon.com/geoserver/metropole-de-lyon/ows?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=metropole-de-lyon:eco_ecologie.ecoannuproducteur&outputFormat=CSV&SRSNAME=EPSG:4326"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Annuaire de solutions de réduction et gestion des déchets pour les professionnels de la Métropole de Lyon"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-06-16T15:41:20.014000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "irregular",
@@ -29035,6 +29462,47 @@
       "reutilisation_potentielle": false,
       "source_deja_suivie": false,
       "titre": "[Archive] Organismes de formation professionnelle en Région Centre-Val de Loire (données détaillées)-2023"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:44:40.175000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "continuous",
+      "id": "676011e49d5d6d5ea16ea494",
+      "licence_declaree": "fr-lo",
+      "modifie_le": "2026-02-09T10:39:50.562000+00:00",
+      "nombre_ressources_rapportees": 3,
+      "page": "https://www.data.gouv.fr/datasets/prix-des-carburants-en-temps-reel-par-station-sur-le-territoire-de-saintes-grandes-rives-lagglo",
+      "producteur": "Saintes Grandes Rives, l'Agglo",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "page web",
+          "id": "b6158723-97d9-4b83-a202-9283d23f1f0f",
+          "modifie_le": "2026-10-11T17:48:17.685681+00:00",
+          "titre": "Consultez les données",
+          "url": "https://opendata.agglo-saintes.fr/datasets/prix-des-carburants-par-station-epci"
+        },
+        {
+          "format": "page web",
+          "id": "ffc6d832-7271-4bff-be87-26bbc72da6e3",
+          "modifie_le": "2026-10-11T18:09:58.065576+00:00",
+          "titre": "Description des champs",
+          "url": "https://opendata.agglo-saintes.fr/datasets/prix-des-carburants-par-station-epci"
+        },
+        {
+          "format": "page web",
+          "id": "1b1f3f02-f3a5-4630-a11c-169b55bf82a3",
+          "modifie_le": "2026-10-11T22:44:40.175864+00:00",
+          "titre": "Documentation de l'API",
+          "url": "https://opendata.agglo-saintes.fr/datasets/prix-des-carburants-par-station-epci/api-doc"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Prix des carburants en temps réel, par station, sur le territoire de Saintes Grandes Rives, l'Agglo"
     },
     {
       "contenu_original_copie": false,
@@ -29983,12 +30451,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-10T22:29:17+00:00",
+      "donnees_actualisees_le": "2026-10-11T22:54:26+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "severalTimesADay",
       "id": "67ac5dffb832ee7684ed1c40",
       "licence_declaree": "lov2",
-      "modifie_le": "2026-10-10T22:29:32.177000+00:00",
+      "modifie_le": "2026-10-11T22:54:43.068000+00:00",
       "nombre_ressources_rapportees": 103,
       "page": "https://www.data.gouv.fr/datasets/pe-arpege-glob025",
       "producteur": "Météo-France",
@@ -29999,177 +30467,177 @@
         {
           "format": "grib",
           "id": "c57f5a24-d18f-4bb5-8267-1a9d281f36e0",
-          "modifie_le": "2026-10-10T22:06:02+00:00",
-          "titre": "pearp_glob025_202610101800_00:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101800/arpege_glob025_202610101800_00:00.grib"
+          "modifie_le": "2026-10-11T21:59:29+00:00",
+          "titre": "pearp_glob025_202610111800_00:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_00:00.grib"
         },
         {
           "format": "grib",
           "id": "7c045652-ed80-4636-9a8d-db52ae57171c",
-          "modifie_le": "2026-10-10T22:02:28+00:00",
-          "titre": "pearp_glob025_202610101800_01:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101800/arpege_glob025_202610101800_01:00.grib"
+          "modifie_le": "2026-10-11T22:04:27+00:00",
+          "titre": "pearp_glob025_202610111800_01:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_01:00.grib"
         },
         {
           "format": "grib",
           "id": "bdcd4f2b-1b36-48bf-8263-8a1127d5c676",
-          "modifie_le": "2026-10-10T22:08:47+00:00",
-          "titre": "pearp_glob025_202610101800_02:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101800/arpege_glob025_202610101800_02:00.grib"
+          "modifie_le": "2026-10-11T22:02:04+00:00",
+          "titre": "pearp_glob025_202610111800_02:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_02:00.grib"
         },
         {
           "format": "grib",
           "id": "0a20b95a-6722-4d91-ab36-483426c47c14",
-          "modifie_le": "2026-10-10T22:13:13+00:00",
-          "titre": "pearp_glob025_202610101800_03:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101800/arpege_glob025_202610101800_03:00.grib"
+          "modifie_le": "2026-10-11T22:08:23+00:00",
+          "titre": "pearp_glob025_202610111800_03:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_03:00.grib"
         },
         {
           "format": "grib",
           "id": "ed27bf20-58bf-4422-8081-d06d727cf7fd",
-          "modifie_le": "2026-10-10T22:05:52+00:00",
-          "titre": "pearp_glob025_202610101800_04:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101800/arpege_glob025_202610101800_04:00.grib"
+          "modifie_le": "2026-10-11T22:09:46+00:00",
+          "titre": "pearp_glob025_202610111800_04:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_04:00.grib"
         },
         {
           "format": "grib",
           "id": "74616d35-372d-4a70-9093-7c574d3cbe1a",
-          "modifie_le": "2026-10-10T22:08:59+00:00",
-          "titre": "pearp_glob025_202610101800_05:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101800/arpege_glob025_202610101800_05:00.grib"
+          "modifie_le": "2026-10-11T22:13:52+00:00",
+          "titre": "pearp_glob025_202610111800_05:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_05:00.grib"
         },
         {
           "format": "grib",
           "id": "d5c4d1a7-e56c-40e3-b988-3e80f07aaa1c",
-          "modifie_le": "2026-10-10T22:15:35+00:00",
-          "titre": "pearp_glob025_202610101800_06:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101800/arpege_glob025_202610101800_06:00.grib"
+          "modifie_le": "2026-10-11T22:11:41+00:00",
+          "titre": "pearp_glob025_202610111800_06:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_06:00.grib"
         },
         {
           "format": "grib",
           "id": "14a72f38-ca0d-4d82-aae7-ab4cceaafe32",
-          "modifie_le": "2026-10-10T22:12:05+00:00",
-          "titre": "pearp_glob025_202610101800_07:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101800/arpege_glob025_202610101800_07:00.grib"
+          "modifie_le": "2026-10-11T22:11:52+00:00",
+          "titre": "pearp_glob025_202610111800_07:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_07:00.grib"
         },
         {
           "format": "grib",
           "id": "0fc606a7-7d7e-4590-8fca-aabdc660d34f",
-          "modifie_le": "2026-10-10T22:14:30+00:00",
-          "titre": "pearp_glob025_202610101800_08:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101800/arpege_glob025_202610101800_08:00.grib"
+          "modifie_le": "2026-10-11T22:14:19+00:00",
+          "titre": "pearp_glob025_202610111800_08:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_08:00.grib"
         },
         {
           "format": "grib",
           "id": "97b990e4-f38e-4f3a-9d48-63774d26d868",
-          "modifie_le": "2026-10-10T22:19:11+00:00",
-          "titre": "pearp_glob025_202610101800_09:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101800/arpege_glob025_202610101800_09:00.grib"
+          "modifie_le": "2026-10-11T22:18:46+00:00",
+          "titre": "pearp_glob025_202610111800_09:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_09:00.grib"
         },
         {
           "format": "grib",
           "id": "d52d890a-e989-47a1-92dd-1a6612a0cfd7",
-          "modifie_le": "2026-10-10T22:17:55+00:00",
-          "titre": "pearp_glob025_202610101800_10:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101800/arpege_glob025_202610101800_10:00.grib"
+          "modifie_le": "2026-10-11T22:21:18+00:00",
+          "titre": "pearp_glob025_202610111800_10:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_10:00.grib"
         },
         {
           "format": "grib",
           "id": "1edd0878-18e9-47f1-a34c-f95e74cb815f",
-          "modifie_le": "2026-10-10T22:20:15+00:00",
-          "titre": "pearp_glob025_202610101800_11:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101800/arpege_glob025_202610101800_11:00.grib"
+          "modifie_le": "2026-10-11T22:18:17+00:00",
+          "titre": "pearp_glob025_202610111800_11:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_11:00.grib"
         },
         {
           "format": "grib",
           "id": "f607baf9-845f-485d-a529-8c46a5822338",
-          "modifie_le": "2026-10-10T22:23:33+00:00",
-          "titre": "pearp_glob025_202610101800_12:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101800/arpege_glob025_202610101800_12:00.grib"
+          "modifie_le": "2026-10-11T22:24:31+00:00",
+          "titre": "pearp_glob025_202610111800_12:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_12:00.grib"
         },
         {
           "format": "grib",
           "id": "cc6a808b-905c-48fb-aa03-7267c90f68a3",
-          "modifie_le": "2026-10-10T22:26:12+00:00",
-          "titre": "pearp_glob025_202610101800_13:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101800/arpege_glob025_202610101800_13:00.grib"
+          "modifie_le": "2026-10-11T22:20:54+00:00",
+          "titre": "pearp_glob025_202610111800_13:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_13:00.grib"
         },
         {
           "format": "grib",
           "id": "ca83465e-d8bb-4023-bae3-dfdc5c0ee447",
-          "modifie_le": "2026-10-10T22:27:25+00:00",
-          "titre": "pearp_glob025_202610101800_14:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101800/arpege_glob025_202610101800_14:00.grib"
+          "modifie_le": "2026-10-11T22:23:38+00:00",
+          "titre": "pearp_glob025_202610111800_14:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_14:00.grib"
         },
         {
           "format": "grib",
           "id": "88b13565-0c59-44cc-ad6f-394d619ae033",
-          "modifie_le": "2026-10-10T22:25:11+00:00",
-          "titre": "pearp_glob025_202610101800_15:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101800/arpege_glob025_202610101800_15:00.grib"
+          "modifie_le": "2026-10-11T22:28:03+00:00",
+          "titre": "pearp_glob025_202610111800_15:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_15:00.grib"
         },
         {
           "format": "grib",
           "id": "648510ce-17ef-4016-bc4c-2d0a9d0f42a6",
-          "modifie_le": "2026-10-10T22:29:17+00:00",
-          "titre": "pearp_glob025_202610101800_16:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101800/arpege_glob025_202610101800_16:00.grib"
+          "modifie_le": "2026-10-11T22:32:55+00:00",
+          "titre": "pearp_glob025_202610111800_16:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_16:00.grib"
         },
         {
           "format": "grib",
           "id": "139cb3e8-d6cd-4371-aa54-de923224f32e",
-          "modifie_le": "2026-10-10T22:26:49+00:00",
-          "titre": "pearp_glob025_202610101800_17:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101800/arpege_glob025_202610101800_17:00.grib"
+          "modifie_le": "2026-10-11T22:38:05+00:00",
+          "titre": "pearp_glob025_202610111800_17:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_17:00.grib"
         },
         {
           "format": "grib",
           "id": "888aac89-605b-431a-8751-6da126d67889",
-          "modifie_le": "2026-10-10T15:29:59+00:00",
-          "titre": "pearp_glob025_202610101200_18:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101200/arpege_glob025_202610101200_18:00.grib"
+          "modifie_le": "2026-10-11T22:32:04+00:00",
+          "titre": "pearp_glob025_202610111800_18:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_18:00.grib"
         },
         {
           "format": "grib",
           "id": "f60517d9-0004-4d75-9e61-7f520b1a668a",
-          "modifie_le": "2026-10-10T15:30:06+00:00",
-          "titre": "pearp_glob025_202610101200_19:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101200/arpege_glob025_202610101200_19:00.grib"
+          "modifie_le": "2026-10-11T22:35:39+00:00",
+          "titre": "pearp_glob025_202610111800_19:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_19:00.grib"
         },
         {
           "format": "grib",
           "id": "ffb9c939-8480-4f5a-aa58-94862aef83a0",
-          "modifie_le": "2026-10-10T15:32:47+00:00",
-          "titre": "pearp_glob025_202610101200_20:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101200/arpege_glob025_202610101200_20:00.grib"
+          "modifie_le": "2026-10-11T22:36:57+00:00",
+          "titre": "pearp_glob025_202610111800_20:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_20:00.grib"
         },
         {
           "format": "grib",
           "id": "9910a554-58c3-4610-adb0-b451b093e12c",
-          "modifie_le": "2026-10-10T15:39:40+00:00",
-          "titre": "pearp_glob025_202610101200_21:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101200/arpege_glob025_202610101200_21:00.grib"
+          "modifie_le": "2026-10-11T22:35:29+00:00",
+          "titre": "pearp_glob025_202610111800_21:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_21:00.grib"
         },
         {
           "format": "grib",
           "id": "94079791-003a-4b40-9275-b6fb5aa4cb78",
-          "modifie_le": "2026-10-10T15:32:28+00:00",
-          "titre": "pearp_glob025_202610101200_22:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101200/arpege_glob025_202610101200_22:00.grib"
+          "modifie_le": "2026-10-11T22:42:06+00:00",
+          "titre": "pearp_glob025_202610111800_22:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_22:00.grib"
         },
         {
           "format": "grib",
           "id": "5e16670a-bdfa-4ec1-80c5-ccd5f6b30b0e",
-          "modifie_le": "2026-10-10T15:36:36+00:00",
-          "titre": "pearp_glob025_202610101200_23:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101200/arpege_glob025_202610101200_23:00.grib"
+          "modifie_le": "2026-10-11T22:47:18+00:00",
+          "titre": "pearp_glob025_202610111800_23:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_23:00.grib"
         },
         {
           "format": "grib",
           "id": "8f4c5fc3-5951-4217-a534-5fcd9b1b63a6",
-          "modifie_le": "2026-10-10T15:41:28+00:00",
-          "titre": "pearp_glob025_202610101200_24:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610101200/arpege_glob025_202610101200_24:00.grib"
+          "modifie_le": "2026-10-11T22:43:21+00:00",
+          "titre": "pearp_glob025_202610111800_24:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/glob025/202610111800/arpege_glob025_202610111800_24:00.grib"
         }
       ],
       "reutilisation_potentielle": true,
@@ -30178,12 +30646,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-10T22:28:04+00:00",
+      "donnees_actualisees_le": "2026-10-11T22:50:54+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "severalTimesADay",
       "id": "67ac5e277e258045630bf687",
       "licence_declaree": "lov2",
-      "modifie_le": "2026-10-10T22:28:17.252000+00:00",
+      "modifie_le": "2026-10-11T22:51:09.160000+00:00",
       "nombre_ressources_rapportees": 103,
       "page": "https://www.data.gouv.fr/datasets/pe-arpege-eurat01",
       "producteur": "Météo-France",
@@ -30194,177 +30662,177 @@
         {
           "format": "grib",
           "id": "cb88a680-fb85-4bdf-9657-e5974223c4ca",
-          "modifie_le": "2026-10-10T22:02:46+00:00",
-          "titre": "pearp_eurat01_202610101800_00:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101800/arpege_eurat01_202610101800_00:00.grib"
+          "modifie_le": "2026-10-11T21:57:52+00:00",
+          "titre": "pearp_eurat01_202610111800_00:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_00:00.grib"
         },
         {
           "format": "grib",
           "id": "a3ae7bd7-f818-4fde-b90a-2c3453648bb8",
-          "modifie_le": "2026-10-10T22:01:42+00:00",
-          "titre": "pearp_eurat01_202610101800_01:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101800/arpege_eurat01_202610101800_01:00.grib"
+          "modifie_le": "2026-10-11T22:02:40+00:00",
+          "titre": "pearp_eurat01_202610111800_01:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_01:00.grib"
         },
         {
           "format": "grib",
           "id": "94aedd7b-2ab5-452d-914b-34413a9643d7",
-          "modifie_le": "2026-10-10T22:04:14+00:00",
-          "titre": "pearp_eurat01_202610101800_02:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101800/arpege_eurat01_202610101800_02:00.grib"
+          "modifie_le": "2026-10-11T22:01:31+00:00",
+          "titre": "pearp_eurat01_202610111800_02:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_02:00.grib"
         },
         {
           "format": "grib",
           "id": "1e7e014c-24cb-40c4-ad63-b7a913055be7",
-          "modifie_le": "2026-10-10T22:06:32+00:00",
-          "titre": "pearp_eurat01_202610101800_03:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101800/arpege_eurat01_202610101800_03:00.grib"
+          "modifie_le": "2026-10-11T22:06:06+00:00",
+          "titre": "pearp_eurat01_202610111800_03:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_03:00.grib"
         },
         {
           "format": "grib",
           "id": "98d62ddf-4e07-47c6-aaaf-bf253e2160d6",
-          "modifie_le": "2026-10-10T22:05:02+00:00",
-          "titre": "pearp_eurat01_202610101800_04:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101800/arpege_eurat01_202610101800_04:00.grib"
+          "modifie_le": "2026-10-11T22:04:44+00:00",
+          "titre": "pearp_eurat01_202610111800_04:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_04:00.grib"
         },
         {
           "format": "grib",
           "id": "ff63c84a-f9fc-448d-9735-696a0369dd96",
-          "modifie_le": "2026-10-10T22:07:42+00:00",
-          "titre": "pearp_eurat01_202610101800_05:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101800/arpege_eurat01_202610101800_05:00.grib"
+          "modifie_le": "2026-10-11T22:07:28+00:00",
+          "titre": "pearp_eurat01_202610111800_05:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_05:00.grib"
         },
         {
           "format": "grib",
           "id": "c87d55c4-32c5-4d99-a9e8-02e856036e96",
-          "modifie_le": "2026-10-10T22:09:20+00:00",
-          "titre": "pearp_eurat01_202610101800_06:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101800/arpege_eurat01_202610101800_06:00.grib"
+          "modifie_le": "2026-10-11T22:08:33+00:00",
+          "titre": "pearp_eurat01_202610111800_06:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_06:00.grib"
         },
         {
           "format": "grib",
           "id": "f4c88860-9517-4828-b064-3efa5c4cc980",
-          "modifie_le": "2026-10-10T22:12:18+00:00",
-          "titre": "pearp_eurat01_202610101800_07:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101800/arpege_eurat01_202610101800_07:00.grib"
+          "modifie_le": "2026-10-11T22:10:37+00:00",
+          "titre": "pearp_eurat01_202610111800_07:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_07:00.grib"
         },
         {
           "format": "grib",
           "id": "16495b56-fc9e-4190-9f20-9463c761263e",
-          "modifie_le": "2026-10-10T22:11:02+00:00",
-          "titre": "pearp_eurat01_202610101800_08:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101800/arpege_eurat01_202610101800_08:00.grib"
+          "modifie_le": "2026-10-11T22:14:14+00:00",
+          "titre": "pearp_eurat01_202610111800_08:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_08:00.grib"
         },
         {
           "format": "grib",
           "id": "38a4ea09-ee43-4d5c-adf5-bc9a8727a8fb",
-          "modifie_le": "2026-10-10T22:13:34+00:00",
-          "titre": "pearp_eurat01_202610101800_09:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101800/arpege_eurat01_202610101800_09:00.grib"
+          "modifie_le": "2026-10-11T22:15:32+00:00",
+          "titre": "pearp_eurat01_202610111800_09:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_09:00.grib"
         },
         {
           "format": "grib",
           "id": "f79d9cb7-06ba-42fd-95ec-332a8cf9de28",
-          "modifie_le": "2026-10-10T22:17:52+00:00",
-          "titre": "pearp_eurat01_202610101800_10:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101800/arpege_eurat01_202610101800_10:00.grib"
+          "modifie_le": "2026-10-11T22:17:32+00:00",
+          "titre": "pearp_eurat01_202610111800_10:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_10:00.grib"
         },
         {
           "format": "grib",
           "id": "293d50f9-9634-4db4-a216-94e0d43bba8c",
-          "modifie_le": "2026-10-10T22:16:31+00:00",
-          "titre": "pearp_eurat01_202610101800_11:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101800/arpege_eurat01_202610101800_11:00.grib"
+          "modifie_le": "2026-10-11T22:16:31+00:00",
+          "titre": "pearp_eurat01_202610111800_11:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_11:00.grib"
         },
         {
           "format": "grib",
           "id": "1ee218c9-ef04-445b-9d31-f95f12bb1617",
-          "modifie_le": "2026-10-10T22:21:18+00:00",
-          "titre": "pearp_eurat01_202610101800_12:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101800/arpege_eurat01_202610101800_12:00.grib"
+          "modifie_le": "2026-10-11T22:19:26+00:00",
+          "titre": "pearp_eurat01_202610111800_12:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_12:00.grib"
         },
         {
           "format": "grib",
           "id": "049e43a5-5be3-429d-a708-15af209ebffb",
-          "modifie_le": "2026-10-10T22:19:42+00:00",
-          "titre": "pearp_eurat01_202610101800_13:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101800/arpege_eurat01_202610101800_13:00.grib"
+          "modifie_le": "2026-10-11T22:21:01+00:00",
+          "titre": "pearp_eurat01_202610111800_13:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_13:00.grib"
         },
         {
           "format": "grib",
           "id": "50b62fad-7620-4f74-901e-2e07e99aa970",
-          "modifie_le": "2026-10-10T22:23:13+00:00",
-          "titre": "pearp_eurat01_202610101800_14:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101800/arpege_eurat01_202610101800_14:00.grib"
+          "modifie_le": "2026-10-11T22:22:45+00:00",
+          "titre": "pearp_eurat01_202610111800_14:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_14:00.grib"
         },
         {
           "format": "grib",
           "id": "167f294a-d6ac-49e5-b4d0-b9ad9a5ec54a",
-          "modifie_le": "2026-10-10T22:25:15+00:00",
-          "titre": "pearp_eurat01_202610101800_15:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101800/arpege_eurat01_202610101800_15:00.grib"
+          "modifie_le": "2026-10-11T22:25:19+00:00",
+          "titre": "pearp_eurat01_202610111800_15:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_15:00.grib"
         },
         {
           "format": "grib",
           "id": "be552b02-c071-4b23-861f-e5a793f4b63a",
-          "modifie_le": "2026-10-10T22:26:33+00:00",
-          "titre": "pearp_eurat01_202610101800_16:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101800/arpege_eurat01_202610101800_16:00.grib"
+          "modifie_le": "2026-10-11T22:26:18+00:00",
+          "titre": "pearp_eurat01_202610111800_16:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_16:00.grib"
         },
         {
           "format": "grib",
           "id": "b3880f61-92bf-4f79-99c6-d55ce91e3925",
-          "modifie_le": "2026-10-10T22:28:04+00:00",
-          "titre": "pearp_eurat01_202610101800_17:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101800/arpege_eurat01_202610101800_17:00.grib"
+          "modifie_le": "2026-10-11T22:30:22+00:00",
+          "titre": "pearp_eurat01_202610111800_17:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_17:00.grib"
         },
         {
           "format": "grib",
           "id": "3cff8b29-e975-4761-a970-d1ab6b058ede",
-          "modifie_le": "2026-10-10T15:25:20+00:00",
-          "titre": "pearp_eurat01_202610101200_18:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101200/arpege_eurat01_202610101200_18:00.grib"
+          "modifie_le": "2026-10-11T22:35:42+00:00",
+          "titre": "pearp_eurat01_202610111800_18:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_18:00.grib"
         },
         {
           "format": "grib",
           "id": "02ca4a4d-69f3-4708-9a0d-be3530457769",
-          "modifie_le": "2026-10-10T15:28:41+00:00",
-          "titre": "pearp_eurat01_202610101200_19:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101200/arpege_eurat01_202610101200_19:00.grib"
+          "modifie_le": "2026-10-11T22:28:23+00:00",
+          "titre": "pearp_eurat01_202610111800_19:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_19:00.grib"
         },
         {
           "format": "grib",
           "id": "f96809a9-61c4-4235-a8b7-1ebf1588d231",
-          "modifie_le": "2026-10-10T15:30:02+00:00",
-          "titre": "pearp_eurat01_202610101200_20:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101200/arpege_eurat01_202610101200_20:00.grib"
+          "modifie_le": "2026-10-11T22:32:27+00:00",
+          "titre": "pearp_eurat01_202610111800_20:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_20:00.grib"
         },
         {
           "format": "grib",
           "id": "d57aae68-b460-442a-8c1b-052aeebf3353",
-          "modifie_le": "2026-10-10T15:33:41+00:00",
-          "titre": "pearp_eurat01_202610101200_21:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101200/arpege_eurat01_202610101200_21:00.grib"
+          "modifie_le": "2026-10-11T22:35:25+00:00",
+          "titre": "pearp_eurat01_202610111800_21:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_21:00.grib"
         },
         {
           "format": "grib",
           "id": "71f9bc75-c5e6-4479-961e-0b57d3791e77",
-          "modifie_le": "2026-10-10T15:31:52+00:00",
-          "titre": "pearp_eurat01_202610101200_22:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101200/arpege_eurat01_202610101200_22:00.grib"
+          "modifie_le": "2026-10-11T22:37:35+00:00",
+          "titre": "pearp_eurat01_202610111800_22:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_22:00.grib"
         },
         {
           "format": "grib",
           "id": "e99650b4-9e44-4824-951c-3791f7139507",
-          "modifie_le": "2026-10-10T15:35:38+00:00",
-          "titre": "pearp_eurat01_202610101200_23:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101200/arpege_eurat01_202610101200_23:00.grib"
+          "modifie_le": "2026-10-11T22:35:59+00:00",
+          "titre": "pearp_eurat01_202610111800_23:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_23:00.grib"
         },
         {
           "format": "grib",
           "id": "001b0674-ebe5-4acc-9a44-8b712198baa1",
-          "modifie_le": "2026-10-10T15:39:36+00:00",
-          "titre": "pearp_eurat01_202610101200_24:00.grib",
-          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610101200/arpege_eurat01_202610101200_24:00.grib"
+          "modifie_le": "2026-10-11T22:39:44+00:00",
+          "titre": "pearp_eurat01_202610111800_24:00.grib",
+          "url": "https://meteofrance-pe.s3.rbx.io.cloud.ovh.net/prod/data/arpege/eurat01/202610111800/arpege_eurat01_202610111800_24:00.grib"
         }
       ],
       "reutilisation_potentielle": true,
@@ -31809,6 +32277,130 @@
       "reutilisation_potentielle": false,
       "source_deja_suivie": false,
       "titre": "Masses d'eau plan d'eau - France Entière - Version Rapportage 2022"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:43:04.386000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "punctual",
+      "id": "680198a393473505d4622e5e",
+      "licence_declaree": "fr-lo",
+      "modifie_le": "2025-04-18T00:11:15.415000+00:00",
+      "nombre_ressources_rapportees": 6,
+      "page": "https://www.data.gouv.fr/datasets/masses-deau-souterraines-mayotte-version-rapportage-2022",
+      "producteur": "Système d'Information sur l'Eau",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "fa95de76-a592-433f-9e80-73250644d167",
+          "modifie_le": "2026-10-11T22:43:04.386511+00:00",
+          "titre": "Consulter le dictionnaire Masses d'eau (MDO)",
+          "url": "https://id.eaufrance.fr/ddd/MDO/1.4/MasseDEauSouterraine"
+        },
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "7bbd6625-2541-45f9-a6d8-17b90c9faddb",
+          "modifie_le": "2026-10-11T14:58:17+00:00",
+          "titre": "Consulter le scénario d'échange géographique",
+          "url": "https://www.sandre.eaufrance.fr/notice-doc/diffusion-du-référentiel-des-masses-deau-vedl-2019-aux-formats-géographiques"
+        },
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "76b322c4-add9-499f-b10b-2bd734e0fb1f",
+          "modifie_le": "2026-10-08T23:44:51+00:00",
+          "titre": "Consulter le rapport de contrôles en ligne",
+          "url": "https://mdm.sandre.eaufrance.fr/geo/rapportsv3/rapport/3311"
+        },
+        {
+          "format": "wfs",
+          "id": "0eadd0b4-f8de-4c64-9c88-a6391fe36be2",
+          "modifie_le": "2025-04-18T00:11:15.420000+00:00",
+          "titre": "MasseDEauSouterraine_VRAP2022_MYT",
+          "url": "https://services.sandre.eaufrance.fr/geo/MasseDEau_VRAP2022?"
+        },
+        {
+          "format": "shp",
+          "id": "14214f9f-d073-4fc7-9b1c-f4cc164c448a",
+          "modifie_le": "2024-10-04T15:48:04+00:00",
+          "titre": "Téléchargement des données - Format ESRI Shapefile",
+          "url": "https://services.sandre.eaufrance.fr/telechargement/geo/MDO/MasseDEau/vrap_2022/MasseDEauSouterraine/MasseDEauSouterraine_MYT-shp.zip"
+        },
+        {
+          "format": "gpkg",
+          "id": "e7f2e698-6c6c-4164-bc9f-a054559f128a",
+          "modifie_le": "2024-10-04T15:43:21+00:00",
+          "titre": "Téléchargement des données - Format GeoPackage",
+          "url": "https://services.sandre.eaufrance.fr/telechargement/geo/MDO/MasseDEau/vrap_2022/MasseDEauSouterraine/MasseDEauSouterraine_MYT-gpkg.zip"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Masses d'eau souterraines - Mayotte - Version Rapportage 2022"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:43:16.810000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "punctual",
+      "id": "680198d893473505d4622e66",
+      "licence_declaree": "fr-lo",
+      "modifie_le": "2025-04-18T00:12:08.269000+00:00",
+      "nombre_ressources_rapportees": 6,
+      "page": "https://www.data.gouv.fr/datasets/troncons-elementaires-de-masse-deau-cours-deau-guyane-version-rapportage-2022",
+      "producteur": "Système d'Information sur l'Eau",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "1882a214-2ca5-48fc-8fc4-ccdaa1f707e9",
+          "modifie_le": "2026-10-11T22:43:16.810357+00:00",
+          "titre": "Consulter le dictionnaire Masses d'eau (MDO)",
+          "url": "http://id.eaufrance.fr/ddd/MDO/1.4/TronconElemMasseDEauRiviere"
+        },
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "c0a30294-3863-4461-a6ee-206481886c9b",
+          "modifie_le": "2026-09-06T21:47:02+00:00",
+          "titre": "Consulter le scénario d'échange géographique",
+          "url": "https://www.sandre.eaufrance.fr/notice-doc/diffusion-du-référentiel-des-masses-deau-vedl-2019-aux-formats-géographiques"
+        },
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "59fe4191-130e-4db1-86d9-a1e37fea665c",
+          "modifie_le": "2026-10-10T04:03:00+00:00",
+          "titre": "Consulter le rapport de contrôles en ligne",
+          "url": "https://mdm.sandre.eaufrance.fr/geo/rapportsv3/rapport/3264"
+        },
+        {
+          "format": "wfs",
+          "id": "f9a56907-10fd-4312-85a5-13705fd143e7",
+          "modifie_le": "2025-04-18T00:12:08.272000+00:00",
+          "titre": "TronconElemMasseDEauRiviere_VRAP2022_GUF",
+          "url": "https://services.sandre.eaufrance.fr/geo/MasseDEau_VRAP2022?"
+        },
+        {
+          "format": "shp",
+          "id": "736ac501-3480-4cfa-b17e-b66796baa3d9",
+          "modifie_le": "2024-10-01T09:53:58+00:00",
+          "titre": "Téléchargement des données - Format ESRI Shapefile",
+          "url": "https://services.sandre.eaufrance.fr/telechargement/geo/MDO/MasseDEau/vrap_2022/TronconElemMasseDEauRiviere/TronconElemMasseDEauRiviere_GUF-shp.zip"
+        },
+        {
+          "format": "gpkg",
+          "id": "78e41ac0-e235-4f5e-a924-a210affd229d",
+          "modifie_le": "2024-10-02T07:36:27+00:00",
+          "titre": "Téléchargement des données - Format GeoPackage",
+          "url": "https://services.sandre.eaufrance.fr/telechargement/geo/MDO/MasseDEau/vrap_2022/TronconElemMasseDEauRiviere/TronconElemMasseDEauRiviere_GUF-gpkg.zip"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Tronçons élémentaires de masse d'eau cours d'eau - Guyane - Version Rapportage 2022"
     },
     {
       "contenu_original_copie": false,
@@ -33617,6 +34209,40 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:42:10.329000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "continuous",
+      "id": "68594fa05a5beedf78d17ad8",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-09-23T15:38:10.031000+00:00",
+      "nombre_ressources_rapportees": 2,
+      "page": "https://www.data.gouv.fr/datasets/ou-louer-une-salle",
+      "producteur": "Grand Poitiers Open Data",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "url",
+          "id": "7d132217-932c-44df-8c33-4dc435d8fd62",
+          "modifie_le": "2026-10-11T17:58:36.251498+00:00",
+          "titre": "Consultez les données",
+          "url": "https://data.grandpoitiers.fr/datasets/ou-louer-une-salle-3"
+        },
+        {
+          "format": "url",
+          "id": "32bedee2-714a-4e34-b0ca-46fb458da281",
+          "modifie_le": "2026-10-11T22:42:10.329533+00:00",
+          "titre": "Description des champs",
+          "url": "https://data.grandpoitiers.fr/datasets/ou-louer-une-salle-3"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Où louer une salle ?"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-03-09T15:01:23.171000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "irregular",
@@ -33641,6 +34267,75 @@
       "reutilisation_potentielle": true,
       "source_deja_suivie": false,
       "titre": "Catalogue des dispositifs d'aides à la transition écologique pour les entreprises"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:46:27.398000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "685b2e1a2fc7d5d97b63425b",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2025-06-24T23:00:42.712000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/ct2m-base-gnss-du-site-eugene-beaune-a-saint-etienne-42",
+      "producteur": "Centre Régional Auvergne-Rhône-Alpes de l'Information Géographique",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "137cb9f1-78f4-40bd-9c32-61378bae58ef",
+          "modifie_le": "2026-10-11T17:55:10.203730+00:00",
+          "titre": "Caster NTRIP Centipède",
+          "url": "http://crtk.net:2101"
+        },
+        {
+          "format": "ogc:wms",
+          "id": "edf35d42-b8d6-48a0-9af1-ea2fe53f5585",
+          "modifie_le": "2025-06-24T23:00:42.726000+00:00",
+          "titre": "centipede_bases_gnss",
+          "url": "http://ids.craig.fr/wxs/public/wms"
+        },
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "1740f39d-295c-4242-9aa3-5bb4e0443ff1",
+          "modifie_le": "2026-10-11T22:46:27.398939+00:00",
+          "titre": "Grâce à la force d’un réseau ouvert et collaboratif, le CRAIG développe le levé centimétrique en Auvergne-Rhône-Alpes !",
+          "url": "https://www.craig.fr/fr/projet/3772-centipede"
+        },
+        {
+          "format": "www:download:rinex",
+          "id": "3e2f34c3-469f-4add-ab57-0a350027dd09",
+          "modifie_le": "2025-06-24T23:00:42.729000+00:00",
+          "titre": "renag.resif.fr/pub/centipede_1s",
+          "url": null
+        },
+        {
+          "format": "www:download:rinex",
+          "id": "7b13c56a-78d7-4cc2-96d1-6c39752bc25c",
+          "modifie_le": "2025-06-24T23:00:42.730000+00:00",
+          "titre": "renag.resif.fr/pub/centipede_30s",
+          "url": null
+        },
+        {
+          "format": "www:download:pdf",
+          "id": "b42777d7-786d-461b-9b12-ec05fecbf973",
+          "modifie_le": "2025-08-20T00:11:57.641000+00:00",
+          "titre": "CT2M_Fiche_descriptive.pdf",
+          "url": "https://ids.craig.fr/geocat/srv/api/records/21127cbe-2cde-4046-b3f0-46151aedf230/attachments/CT2M_Fiche_descriptive.pdf"
+        },
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "ae24f803-75c6-4500-8dfc-a6d31e2f974e",
+          "modifie_le": "2026-08-04T13:28:24.374674+00:00",
+          "titre": "Grâce à la force d’un réseau ouvert et collaboratif, le CRAIG développe le levé centimétrique en Auvergne-Rhône-Alpes !",
+          "url": "https://www.craig.fr/services/centipede"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "CT2M - Base GNSS du site Eugène Beaune à Saint-Étienne (42)"
     },
     {
       "contenu_original_copie": false,
@@ -37911,6 +38606,117 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:42:03.513000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "annual",
+      "id": "68fac59bc89d6a51049cb50a",
+      "licence_declaree": "lov2",
+      "modifie_le": "2025-10-24T00:17:31.089000+00:00",
+      "nombre_ressources_rapportees": 13,
+      "page": "https://www.data.gouv.fr/datasets/bd-topage-r-metropole-2025",
+      "producteur": "Système d'Information sur l'Eau",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "",
+          "id": "a44611a8-d807-4960-869f-b96a602f847b",
+          "modifie_le": "2026-10-11T22:42:03.513190+00:00",
+          "titre": "Consulter le dictionnaire interactif en ligne",
+          "url": "https://id.eaufrance.fr/ddd/ETH/2.1"
+        },
+        {
+          "format": "",
+          "id": "c65f6e2b-a9dc-46d7-97af-4381c95a22c0",
+          "modifie_le": "2023-07-17T10:21:30+00:00",
+          "titre": "Consulter le scénario d'échange géographique du référentiel hydrographique",
+          "url": "https://www.sandre.eaufrance.fr/ftp/documents/fr/scn/topage/2.1/sandre_scenario_geo_topage_v2.1.pdf"
+        },
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "fb17b47f-d75f-4d15-b2c4-d56dd3c9fb04",
+          "modifie_le": "2020-06-15T08:08:57+00:00",
+          "titre": "Consulter le document de présentation",
+          "url": "https://www.sandre.eaufrance.fr/ftp/documents/fr/pre/eth/1/sandre_pres_eth_1.pdf"
+        },
+        {
+          "format": "www:link-1.0-http--partners",
+          "id": "234d56ad-a81a-4c3c-821c-2ab4377e9604",
+          "modifie_le": "2026-07-04T08:25:40.656340+00:00",
+          "titre": "Participer à la mise à jour collaborative de la BD Topage®",
+          "url": "https://espacecollaboratif.ign.fr"
+        },
+        {
+          "format": "",
+          "id": "493ff615-a7d5-467a-8701-56e1f90343b6",
+          "modifie_le": "2025-10-23T07:46:23+00:00",
+          "titre": "Télécharger les données de la BD Topage® - Métropole 2025 - Format ESRI Shapefile",
+          "url": "https://services.sandre.eaufrance.fr/telechargement/geo/ETH/BDTopage/2025/BD_Topage_FXX_2025-shp.zip"
+        },
+        {
+          "format": "wms",
+          "id": "3d83d7b0-6b4f-46f1-afa4-57036a5063b6",
+          "modifie_le": "2025-10-24T00:17:31.094000+00:00",
+          "titre": "CoursEau_FXX_Topage2025",
+          "url": "https://services.sandre.eaufrance.fr/geo/sandre?"
+        },
+        {
+          "format": "wms",
+          "id": "91ec193b-a7ac-4b55-9da4-ae465c92708c",
+          "modifie_le": "2026-07-23T11:19:19.529000+00:00",
+          "titre": "PlanEau_FXX_Topage2025",
+          "url": "https://services.sandre.eaufrance.fr/geo/sandre?"
+        },
+        {
+          "format": "wms",
+          "id": "2ca1cc36-3ca1-412c-86ee-17c20c085e7a",
+          "modifie_le": "2026-07-23T11:19:19.529000+00:00",
+          "titre": "TronconHydrographique_FXX_Topage2025",
+          "url": "https://services.sandre.eaufrance.fr/geo/sandre?"
+        },
+        {
+          "format": "wms",
+          "id": "2c7e8f69-c4d1-4171-9278-d7a01129a9dd",
+          "modifie_le": "2026-07-23T11:19:19.530000+00:00",
+          "titre": "SurfaceElementaire_FXX_Topage2025",
+          "url": "https://services.sandre.eaufrance.fr/geo/sandre?"
+        },
+        {
+          "format": "wms",
+          "id": "9b4d6b91-dd28-413f-9b36-5e5eb9def45c",
+          "modifie_le": "2026-07-23T11:19:19.530000+00:00",
+          "titre": "BassinHydrographique_FXX_Topage2025",
+          "url": "https://services.sandre.eaufrance.fr/geo/sandre?"
+        },
+        {
+          "format": "wms",
+          "id": "849bc92d-49e0-4751-908f-73b9c4637b70",
+          "modifie_le": "2026-07-23T11:19:19.531000+00:00",
+          "titre": "BassinVersantTopographique_FXX_Topage2025",
+          "url": "https://services.sandre.eaufrance.fr/geo/sandre?"
+        },
+        {
+          "format": "wms",
+          "id": "298c491a-9394-44b8-8fc4-4940b28df82f",
+          "modifie_le": "2026-07-23T11:19:19.532000+00:00",
+          "titre": "NoeudHydrographique_FXX_Topage2025",
+          "url": "https://services.sandre.eaufrance.fr/geo/sandre?"
+        },
+        {
+          "format": "wms",
+          "id": "e2fa9ddb-1bd6-463d-9b52-d287785f44ff",
+          "modifie_le": "2026-07-23T11:19:19.532000+00:00",
+          "titre": "LimiteTerreEau_FXX_Topage2025",
+          "url": "https://services.sandre.eaufrance.fr/geo/sandre?"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "BD Topage® - Métropole 2025"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-11T06:56:29.157000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "irregular",
@@ -37966,12 +38772,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-11T21:41:51.738000+00:00",
+      "donnees_actualisees_le": "2026-10-11T22:51:51.593000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "fiveMinutes",
       "id": "691467f0f5dd0286d55bdd48",
       "licence_declaree": "lov2",
-      "modifie_le": "2026-10-11T21:41:51.738000+00:00",
+      "modifie_le": "2026-10-11T22:51:51.593000+00:00",
       "nombre_ressources_rapportees": 1,
       "page": "https://www.data.gouv.fr/datasets/irve-dynamique-organisation-parera-mobilite",
       "producteur": "PARERA MOBILITE",
@@ -37982,9 +38788,9 @@
         {
           "format": "csv",
           "id": "eea29849-4ee1-4e38-aa0a-49843ad30dfa",
-          "modifie_le": "2026-10-11T21:41:51.738000+00:00",
+          "modifie_le": "2026-10-11T22:51:51.593000+00:00",
           "titre": "data-gouv-dynamique.csv",
-          "url": "https://static.data.gouv.fr/resources/irve-dynamique-organisation-parera-mobilite/20261011-214151/data-gouv-dynamique.csv"
+          "url": "https://static.data.gouv.fr/resources/irve-dynamique-organisation-parera-mobilite/20261011-225151/data-gouv-dynamique.csv"
         }
       ],
       "reutilisation_potentielle": true,
@@ -39483,6 +40289,40 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:50:42.775000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "annual",
+      "id": "698e69bcebf3fdf6036e38f1",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-02-13T00:01:00.462000+00:00",
+      "nombre_ressources_rapportees": 2,
+      "page": "https://www.data.gouv.fr/datasets/creations-dentreprises-series-longues",
+      "producteur": "Institut national de la statistique et des études économiques (Insee)",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "",
+          "id": "c1bafe65-e6a5-49f9-a5ce-bf75a6875ef5",
+          "modifie_le": "2026-10-11T22:50:42.775116+00:00",
+          "titre": "Créations d'entreprises - séries longues",
+          "url": "https://api.insee.fr/melodi/file/DS_SIDE_CREA_ENT_SERIES/DS_SIDE_CREA_ENT_SERIES_CSV_FR"
+        },
+        {
+          "format": "",
+          "id": "9b41b11c-3da8-41b7-b107-48092a95468d",
+          "modifie_le": "2026-10-09T00:01:36.411000+00:00",
+          "titre": "Créations d'entreprises - séries longues",
+          "url": "https://api-diffusion-catalogue-donnees-externe.insee.fr/file/DS_SIDE_CREA_ENT_SERIES/DS_SIDE_CREA_ENT_SERIES_CSV_FR"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Créations d'entreprises - séries longues"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-10T13:37:25+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "annual",
@@ -40311,6 +41151,172 @@
       "reutilisation_potentielle": false,
       "source_deja_suivie": false,
       "titre": "Points de repères des routes départementales de l'Aude"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:53:55.456000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "69a38486670c57649f2f5494",
+      "licence_declaree": "other-at",
+      "modifie_le": "2026-03-01T00:12:54.357000+00:00",
+      "nombre_ressources_rapportees": 15,
+      "page": "https://www.data.gouv.fr/datasets/sync-cd11-reseau-routieropendataaudefr-41",
+      "producteur": "Occitanie Pyrénées en Intelligence Géomatique",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "",
+          "id": "8e90fec9-f1c4-42fa-b1bc-685ee9f1f9c7",
+          "modifie_le": "2026-10-10T12:30:15.754849+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/gpx",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/gpx"
+        },
+        {
+          "format": "",
+          "id": "b59849a1-437a-4af5-809b-84bdec442eba",
+          "modifie_le": "2026-10-06T04:32:35.500360+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/parquet",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/parquet"
+        },
+        {
+          "format": "",
+          "id": "33f30703-fef4-4c99-8713-1001c5f015c9",
+          "modifie_le": "2026-10-11T22:53:55.456670+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/n3",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/n3"
+        },
+        {
+          "format": "txt",
+          "id": "3712ac7c-3197-42cd-b52e-590609a8de2d",
+          "modifie_le": "2026-03-01T00:12:54.360000+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/ov2",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/ov2"
+        },
+        {
+          "format": "",
+          "id": "58e5184d-6632-4e3d-a94f-588f8e70ab5c",
+          "modifie_le": "2026-10-03T10:53:16.103140+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/fgb",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/fgb"
+        },
+        {
+          "format": "",
+          "id": "027a41b3-e803-47cf-949d-53e69b4f9918",
+          "modifie_le": "2026-10-03T11:07:14.152586+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/geojson",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/geojson"
+        },
+        {
+          "format": "",
+          "id": "00a9bfa5-f8d0-4a86-ba0d-718cb6cf1dbe",
+          "modifie_le": "2026-10-03T11:31:41.363432+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/jsonl",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/jsonl"
+        },
+        {
+          "format": "",
+          "id": "5d1dcdb7-057c-4d73-8ff0-bf49bf7bd470",
+          "modifie_le": "2026-10-11T18:01:58.425707+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/jsonld",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/jsonld"
+        },
+        {
+          "format": "",
+          "id": "00646e4c-a694-44c0-8c87-7bf63b5a0ac7",
+          "modifie_le": "2026-10-03T11:02:25.762961+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/kml",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/kml"
+        },
+        {
+          "format": "csv",
+          "id": "8e82ce2d-eaac-4c07-8819-265e81e1fd8e",
+          "modifie_le": "2026-10-07T01:43:12.176820+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/csv?use_labels=true",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/csv?use_labels=true"
+        },
+        {
+          "format": "",
+          "id": "088bb85c-37bf-4ee5-8da4-6a843b543e55",
+          "modifie_le": "2026-10-03T11:08:51.337265+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/xls?use_labels=true",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/xls?use_labels=true"
+        },
+        {
+          "format": "",
+          "id": "33818165-8c6a-464e-9152-9af4a3e2b8b0",
+          "modifie_le": "2026-10-11T12:22:03.693727+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/shp",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/shp"
+        },
+        {
+          "format": "",
+          "id": "69a22705-c31f-4449-a401-046acd9b3d2d",
+          "modifie_le": "2026-10-08T12:01:12.988245+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/rdfxml",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/rdfxml"
+        },
+        {
+          "format": "",
+          "id": "59bcfd44-d9b4-4130-95e8-c7fd1d163ccf",
+          "modifie_le": "2026-10-10T13:56:38.467681+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/json",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/json"
+        },
+        {
+          "format": "",
+          "id": "7cd180aa-c436-4f0c-9739-20899f6bc345",
+          "modifie_le": "2026-10-03T11:11:54.147760+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/turtle",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_reseau_routier/exports/turtle"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Réseau routier de l'Aude"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:45:26.728000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "69a7fd36887a39308c4f8621",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-10-05T01:35:15.975000+00:00",
+      "nombre_ressources_rapportees": 3,
+      "page": "https://www.data.gouv.fr/datasets/courbes-de-niveaux-montigny-le-bx-ca-saint-quentin-en-yvelines",
+      "producteur": "SAINT-QUENTIN-EN-YVELINES",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "url",
+          "id": "03cdc89c-454a-463d-84d0-287dd5f687a3",
+          "modifie_le": "2026-10-11T18:01:11.912877+00:00",
+          "titre": "Consultez les données",
+          "url": "https://opendata.sqy.fr/datasets/courbes-de-niveaux-montigny-le-bx-ca-saint-quentin-en-yvelines"
+        },
+        {
+          "format": "url",
+          "id": "977d2347-65f3-4d8e-8190-4ba990243d7b",
+          "modifie_le": "2026-10-11T22:45:26.728339+00:00",
+          "titre": "Description des champs",
+          "url": "https://opendata.sqy.fr/datasets/courbes-de-niveaux-montigny-le-bx-ca-saint-quentin-en-yvelines"
+        },
+        {
+          "format": "geojson",
+          "id": "273384d2-f931-4812-a4bc-f830bb648772",
+          "modifie_le": "2026-09-14T01:35:40+00:00",
+          "titre": "Fichier geojson",
+          "url": "https://opendata.sqy.fr/data-fair/api/v1/datasets/courbes-de-niveaux-montigny-le-bx-ca-saint-quentin-en-yvelines/raw"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Courbes de niveaux Montigny le Bx - CA Saint-Quentin-en-Yvelines"
     },
     {
       "contenu_original_copie": false,
@@ -41625,6 +42631,131 @@
       "reutilisation_potentielle": false,
       "source_deja_suivie": false,
       "titre": "Zones de préemption dans le cadre des Espaces Naturels Sensibles de l’Aude"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:43:41.417000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "6a1ccce069cdf0c82687dac7",
+      "licence_declaree": "other-at",
+      "modifie_le": "2026-06-01T00:05:52.279000+00:00",
+      "nombre_ressources_rapportees": 15,
+      "page": "https://www.data.gouv.fr/datasets/sync-cd11-comptages-routiers-ponctuelsopendataaudefr-44",
+      "producteur": "Occitanie Pyrénées en Intelligence Géomatique",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "",
+          "id": "4f574fd8-84f9-44bc-92b1-23cb5ff799cc",
+          "modifie_le": "2026-08-16T03:04:45.704263+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/fgb",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/fgb"
+        },
+        {
+          "format": "",
+          "id": "6cc14fd7-2e58-4bac-87cf-7bcbd7634e8a",
+          "modifie_le": "2026-08-16T02:51:06.661753+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/kml",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/kml"
+        },
+        {
+          "format": "",
+          "id": "c99b6488-1d05-4666-9bac-8be6247914ad",
+          "modifie_le": "2026-08-16T04:48:29.476912+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/json",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/json"
+        },
+        {
+          "format": "",
+          "id": "c8137aa6-032c-4dc2-955f-edfc49faf5bb",
+          "modifie_le": "2026-08-16T04:51:27.369234+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/gpx",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/gpx"
+        },
+        {
+          "format": "",
+          "id": "b5c54a94-0fcb-40d8-aa91-7751ae23423d",
+          "modifie_le": "2026-08-16T04:49:09.708402+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/n3",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/n3"
+        },
+        {
+          "format": "",
+          "id": "bc4cdf4b-a843-4d3f-bfad-3c8881817b4d",
+          "modifie_le": "2026-08-16T02:42:19.317007+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/xls?use_labels=true",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/xls?use_labels=true"
+        },
+        {
+          "format": "txt",
+          "id": "df6599a8-ffbe-406f-8768-01c2939122b0",
+          "modifie_le": "2026-06-01T00:05:52.281000+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/ov2",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/ov2"
+        },
+        {
+          "format": "",
+          "id": "7aa0d593-f497-45f7-a0e8-dbc190df429a",
+          "modifie_le": "2026-08-17T04:51:27.949067+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/parquet",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/parquet"
+        },
+        {
+          "format": "",
+          "id": "bf4afccf-7a10-4733-8a40-1ef0e3620d24",
+          "modifie_le": "2026-08-16T04:47:58.704737+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/geojson",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/geojson"
+        },
+        {
+          "format": "",
+          "id": "878a41dd-04fc-476d-b8af-dd637a8f2267",
+          "modifie_le": "2026-08-16T03:13:28.033028+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/jsonl",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/jsonl"
+        },
+        {
+          "format": "",
+          "id": "52eeb5c4-4147-40cb-8efb-c5af6ca5375f",
+          "modifie_le": "2026-10-11T17:06:09.270346+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/rdfxml",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/rdfxml"
+        },
+        {
+          "format": "",
+          "id": "470e9215-9a6b-43c8-ab80-115d80f52164",
+          "modifie_le": "2026-10-11T22:43:41.417232+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/shp",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/shp"
+        },
+        {
+          "format": "",
+          "id": "aae1251b-c251-413e-8915-95bad29c5dae",
+          "modifie_le": "2026-08-16T02:55:56.784967+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/turtle",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/turtle"
+        },
+        {
+          "format": "csv",
+          "id": "4047996e-d6ec-482f-9eb1-f0afd84aa0ab",
+          "modifie_le": "2026-08-15T10:13:01.594455+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/csv?use_labels=true",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/csv?use_labels=true"
+        },
+        {
+          "format": "",
+          "id": "51bc5168-6804-4f8e-9e14-c7f1009972f3",
+          "modifie_le": "2026-10-10T13:03:25.102040+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/jsonld",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_comptages_routiers_ponctuels/exports/jsonld"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Comptages routiers ponctuels sur la voirie départementale de l'Aude"
     },
     {
       "contenu_original_copie": false,
@@ -43125,12 +44256,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-11T21:45:22.627000+00:00",
+      "donnees_actualisees_le": "2026-10-11T22:54:49.696000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "oneMinute",
       "id": "6a75a5620dcff06bc7800727",
       "licence_declaree": "notspecified",
-      "modifie_le": "2026-10-11T21:45:22.627000+00:00",
+      "modifie_le": "2026-10-11T22:54:49.696000+00:00",
       "nombre_ressources_rapportees": 2,
       "page": "https://www.data.gouv.fr/datasets/irve-statique-dynamique-e-clearing-net",
       "producteur": "e-clearing.net",
@@ -43148,9 +44279,9 @@
         {
           "format": "csv",
           "id": "f6f2469e-542f-46a9-998a-46238010a8e7",
-          "modifie_le": "2026-10-11T21:45:22.627000+00:00",
+          "modifie_le": "2026-10-11T22:54:49.696000+00:00",
           "titre": "donnes-schema-irve-dynamique.csv",
-          "url": "https://static.data.gouv.fr/resources/irve-statique-dynamique-e-clearing-net/20261011-214522/donnes-schema-irve-dynamique.csv"
+          "url": "https://static.data.gouv.fr/resources/irve-statique-dynamique-e-clearing-net/20261011-225449/donnes-schema-irve-dynamique.csv"
         }
       ],
       "reutilisation_potentielle": false,
@@ -43366,6 +44497,89 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:44:41.638000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "6ab1c77de7644faeee083bc8",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-09-22T00:10:37.550000+00:00",
+      "nombre_ressources_rapportees": 9,
+      "page": "https://www.data.gouv.fr/datasets/thermographie-1-m-roanne-ete-2026",
+      "producteur": "Centre Régional Auvergne-Rhône-Alpes de l'Information Géographique",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "",
+          "id": "d3890e9f-2a68-4cf5-88a2-fe49cd4cdfb3",
+          "modifie_le": "2026-09-17T09:17:33+00:00",
+          "titre": "Roanne_2026_thermo_soir_1m_L93.cog.tif",
+          "url": null
+        },
+        {
+          "format": "",
+          "id": "aece7bfb-ecac-406a-a382-ec1f97063f65",
+          "modifie_le": "2026-10-04T15:27:29.304667+00:00",
+          "titre": "02_Dalles",
+          "url": "https://drive.opendata.craig.fr/s/opendata?path=%2Fthermo%2F2026_roanne%2F02_Dalles"
+        },
+        {
+          "format": "",
+          "id": "02496b2d-2b9b-46f6-8357-473b517afe6e",
+          "modifie_le": "2026-09-17T09:16:03+00:00",
+          "titre": "TA_Roanne_2026_thermo_L93.gpkg",
+          "url": null
+        },
+        {
+          "format": "",
+          "id": "73d00596-5705-4622-b56b-b2d6b08f02df",
+          "modifie_le": "2026-09-22T00:10:37.553000+00:00",
+          "titre": "Roanne_2026_thermo_soir_1m_L93.cog.qml",
+          "url": "https://ids.craig.fr/geocat/srv/api/records/880a94bc-0e03-4460-8fe7-7d52ca4be762/attachments/Roanne_2026_thermo_soir_1m_L93.cog.qml"
+        },
+        {
+          "format": "",
+          "id": "fc8fb101-0ecd-4b0a-a161-174221321ed9",
+          "modifie_le": "2026-09-17T09:17:31+00:00",
+          "titre": "Roanne_2026_thermo_matin_1m_L93.cog.tif",
+          "url": null
+        },
+        {
+          "format": "",
+          "id": "a623988b-91fc-4ae5-931d-3188fc7a958f",
+          "modifie_le": "2026-09-17T09:17:29+00:00",
+          "titre": "Roanne_2026_thermo_difference_1m_L93.cog.tif",
+          "url": null
+        },
+        {
+          "format": "",
+          "id": "73bfafad-6c76-490a-b7ab-048ca5a23b3e",
+          "modifie_le": "2026-09-22T00:10:37.554000+00:00",
+          "titre": "Roanne_2026_thermo_matin_1m_L93.cog.qml",
+          "url": "https://ids.craig.fr/geocat/srv/api/records/880a94bc-0e03-4460-8fe7-7d52ca4be762/attachments/Roanne_2026_thermo_matin_1m_L93.cog.qml"
+        },
+        {
+          "format": "",
+          "id": "b9142d5e-6910-4d35-88a1-a3759f742a80",
+          "modifie_le": "2026-09-22T00:10:37.554000+00:00",
+          "titre": "Roanne_2026_thermo_difference_1m_L93.cog.qml",
+          "url": "https://ids.craig.fr/geocat/srv/api/records/880a94bc-0e03-4460-8fe7-7d52ca4be762/attachments/Roanne_2026_thermo_difference_1m_L93.cog.qml"
+        },
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "d887e7c9-ecd2-40fe-acd6-d1ba842014c4",
+          "modifie_le": "2026-10-11T22:44:41.638364+00:00",
+          "titre": "2026_roanne",
+          "url": "https://drive.opendata.craig.fr/s/opendata?path=%2Fthermo%2F2026_roanne"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Thermographie 1 m - Roanne - été 2026"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-09-24T12:50:46.496000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
@@ -43523,6 +44737,33 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:49:46.257000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "continuous",
+      "id": "6aba378c648e36cf1c52ebc3",
+      "licence_declaree": "odc-odbl",
+      "modifie_le": "2026-10-01T08:21:35.989000+00:00",
+      "nombre_ressources_rapportees": 1,
+      "page": "https://www.data.gouv.fr/datasets/prix-dentree-des-chateaux-de-france-2026",
+      "producteur": "",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "csv",
+          "id": "b3b6fc21-60b9-4b75-8977-d74567300c34",
+          "modifie_le": "2026-10-11T22:49:46.257776+00:00",
+          "titre": "Prix d'entrée 2026 (CSV)",
+          "url": "https://chateaupedia.com/opendata/prix-2026.csv"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Prix d'entrée des châteaux de France 2026"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-09T22:00:01.189000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "daily",
@@ -43588,6 +44829,33 @@
       "reutilisation_potentielle": true,
       "source_deja_suivie": false,
       "titre": "Numéros de garde et de permanence des soins en France : relevé vérifié des numéros, coûts réels et sources officielles (2026)"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-11T22:44:06.990000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "weekly",
+      "id": "6abf861f823f64dc80b7b335",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-10-02T10:24:05.037000+00:00",
+      "nombre_ressources_rapportees": 1,
+      "page": "https://www.data.gouv.fr/datasets/prises-de-parole-des-candidats-a-lelection-presidentielle-2027",
+      "producteur": "2027etmoi",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "json",
+          "id": "96a9fd3f-9962-4d53-ac1a-08ac6895c100",
+          "modifie_le": "2026-10-11T22:44:06.990330+00:00",
+          "titre": "Prises de parole des candidats à l'élection présidentielle 2027",
+          "url": "https://2027etmoi.fr/data/prises-de-parole.json"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Prises de parole des candidats à l'élection présidentielle 2027"
     },
     {
       "contenu_original_copie": false,
