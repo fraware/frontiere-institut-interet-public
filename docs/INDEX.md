@@ -60,6 +60,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | --- | --- |
 | [Plan de recherche sur douze semaines](PLAN_12_SEMAINES.md) | Séquence de recherche sur douze semaines |
 | [Premier cas prospectif](CAS_PROSPECTIF_V1.md) | Enregistrement de l’état initial, comparaison de deux méthodes et mesures du premier cas prospectif |
+| [Vérification des six cas pilotes BOAMP](CONTROLE_AUTOMATIQUE_SIX_CAS_V1.md) | Avis exacts, rectificatifs et liens secondaires BeauAMP vérifiés |
 | [Lancement opérationnel](LANCEMENT_OPERATIONNEL.md) | Première vague opérationnelle |
 | [Demandes de données ciblées](PASSAGE_DONNEES_EXECUTION_V1.md) | Quatre demandes minimales vers les détenteurs de données |
 | [Six cas pilotes techniques BOAMP](SIX_CAS_PILOTES_BOAMP_2026-10.md) | Six situations documentées et hypothèses concurrentes à vérifier avant toute conclusion |
