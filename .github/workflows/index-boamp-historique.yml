@@ -11,6 +11,9 @@ on:
       - "scripts/analyser_historique_boamp.py"
       - "scripts/constituer_pistes_boamp.py"
       - "scripts/echantillonner_avis_boamp.py"
+      - "scripts/rapprocher_avis_attributions.py"
+      - "institutionnel/marches_attribues/manifest.json"
+      - "institutionnel/marches_attribues/quotidiens/**"
       - "scripts/croiser_pistes_capacites.py"
       - "scripts/auditer_concentration_croisements.py"
       - "scripts/rechercher_capacites_institutionnelles.py"
@@ -188,6 +191,18 @@ jobs:
             --sortie "$DOSSIER/echantillon-temporel-boamp.json"
           python -m pytest -q tests/test_echantillonner_avis_boamp.py
 
+      - name: Rapprocher les avis et les marchés attribués par identifiants exacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          DOSSIER="$RUNNER_TEMP/frontiere-boamp"
+          python scripts/rapprocher_avis_attributions.py \
+            --index "$DOSSIER/index-avis-boamp.sqlite3" \
+            --preuve-index "$DOSSIER/preuve-index.json" \
+            --beauamp institutionnel/marches_attribues \
+            --sortie "$DOSSIER/rapprochements-attributions.json"
+          python -m pytest -q tests/test_rapprocher_avis_attributions.py
+
       - name: Publier l'index vérifié en artefact téléchargeable
         uses: actions/upload-artifact@v4
         with:
@@ -198,6 +213,7 @@ jobs:
             ${{ runner.temp }}/frontiere-boamp/preuve-index.json
             ${{ runner.temp }}/frontiere-boamp/bilan-documentaire.json
             ${{ runner.temp }}/frontiere-boamp/pistes-a-examiner.json
+            ${{ runner.temp }}/frontiere-boamp/rapprochements-attributions.json
             ${{ runner.temp }}/frontiere-boamp/echantillon-temporel-boamp.json
             ${{ runner.temp }}/frontiere-boamp/croisements-avis-capacites.json
             ${{ runner.temp }}/frontiere-boamp/bilan-capacites-publiques.json
