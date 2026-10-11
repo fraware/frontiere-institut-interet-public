@@ -210,7 +210,7 @@ def verifier_capture(dossier: Path) -> dict:
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--registre", type=Path, default=Path("evaluation/cas_pilotes_boamp_v1.json"))
-    p.add_argument("--sortie", type=Path, required=True)
+    p.add_argument("--sortie", type=Path, help="Nouveau dossier de capture.")
     p.add_argument("--verifier", type=Path, help="Contrôler une capture existante sans collecte.")
     args = p.parse_args()
     try:
@@ -220,6 +220,8 @@ def main() -> None:
                 "cas_verifies": verifier_capture(args.verifier)["nombre_cas"],
             }, ensure_ascii=False))
         else:
+            if args.sortie is None:
+                raise CaptureInvalide("Le dossier --sortie est nécessaire pour collecter.")
             resultat = capturer(args.registre, args.sortie)
             print(json.dumps({
                 "version": VERSION,
