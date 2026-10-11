@@ -89,7 +89,29 @@ def adresse_boamp(debut: str, page: int, taille: int) -> str:
     })
 
 
-def notice_boamp(enregistrement: object) -> dict | None:
+CATEGORIES_MARCHE = frozenset(("SERVICES", "FOURNITURES", "TRAVAUX"))
+
+
+def categorie_marche_officielle(valeur: object) -> str | None:
+    """Les facettes du BOAMP sont des listes, fréquemment à un élément.
+
+    Une liste portant plusieurs catégories est ambiguë pour la valeur
+    scalaire actuelle du schéma : ne pas choisir arbitrairement l'une d'elles.
+    """
+    if isinstance(valeur, str):
+        valeurs = [valeur]
+    elif isinstance(valeur, list):
+        valeurs = valeur
+    else:
+        return None
+    if len(valeurs) != 1 or not isinstance(valeurs[0], str):
+        return None
+    categorie = valeurs[0].strip().upper()
+    return categorie if categorie in CATEGORIES_MARCHE else None
+
+
+def notice_boamp(enregistrement: object, *,
+                 categories_v2: bool = False) -> dict | None:
     if not isinstance(enregistrement, dict):
         return None
     identifiant = enregistrement.get("idweb")
@@ -103,7 +125,11 @@ def notice_boamp(enregistrement: object) -> dict | None:
         "acheteur": texte(enregistrement.get("nomacheteur"), 200),
         "date_parution": texte(enregistrement.get("dateparution"), 32) or None,
         "date_limite_reponse": texte(enregistrement.get("datelimitereponse"), 32) or None,
-        "categorie_marche": texte(enregistrement.get("type_marche"), 80) or None,
+        "categorie_marche": (
+            categorie_marche_officielle(enregistrement.get("type_marche"))
+            if categories_v2
+            else texte(enregistrement.get("type_marche"), 80) or None
+        ),
         "etat_avis": texte(enregistrement.get("etat"), 60) or None,
         "avis": url_publique(enregistrement.get("url_avis")),
         "catalogue_source": "https://boamp-datadila.opendatasoft.com/explore/dataset/boamp/",
@@ -133,7 +159,7 @@ def relever_boamp(ancien: dict, obtenir=recevoir, maintenant=None,
                 total = reponse["total_count"]
             lus += len(donnees)
             for brut in donnees:
-                val = notice_boamp(brut)
+                val = notice_boamp(brut, categories_v2=True)
                 if val is None:
                     continue
                 valides += 1
