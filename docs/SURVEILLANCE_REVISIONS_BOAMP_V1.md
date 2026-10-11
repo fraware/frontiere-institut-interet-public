@@ -16,6 +16,14 @@ Lorsqu'une différence est observée, le dépôt reçoit sous `institutionnel/be
 
 Le fichier `etat_revisions_boamp.json` présente le lot vérifié, les erreurs, les journées avec variation et le curseur. Il établit uniquement ce qui a été contrôlé pendant le passage considéré. **Un résultat sans variation ne démontre jamais l'absence de toute modification historique.**
 
+## Transitions, retours et dernier état observé
+
+Le compte rendu conserve également un `etat_connu_par_jour`, récapitulant pour chaque journée déjà contrôlée l'empreinte du dernier état et la date de cette observation. Le champ `changements_observes` conserve la suite des transitions effectivement constatées entre relevés complets. Chaque transition relie les empreintes avant et après le contrôle et indique s'il s'agit d'un retour exact aux octets du relevé initial. La cause du changement reste indéterminée.
+
+Ainsi, une journée initialement relevée dans l'état A, puis observée dans l'état B et de nouveau dans l'état A produit **deux transitions distinctes**. Le deuxième changement ne crée pas de doublon des octets déjà archivés. L'index documentaire choisit l'état A pour la dernière observation, tout en préservant B comme version intermédiaire et le journal des transitions.
+
+Au premier contrôle d'une journée absente de ce récapitulatif, le programme vérifie les versions révisées déjà archivées afin de retrouver le dernier état antérieur connu. Le récapitulatif constitue une description des derniers instants effectivement examinés, sans prétendre connaître des modifications qui auraient eu lieu entre deux contrôles. Les dates et empreintes des transitions sont intégrées aux fichiers publics soumis aux vérifications habituelles.
+
 ## Exécution et contrôles
 
 Depuis la racine du projet :
