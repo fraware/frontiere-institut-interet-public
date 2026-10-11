@@ -40,6 +40,14 @@ python scripts/croiser_pistes_capacites.py \
 
 La procédure automatique `.github/workflows/index-boamp-historique.yml` produit désormais le fichier `croisements-avis-capacites.json`, en conservant conjointement les bilans des deux index. Elle échoue si une preuve de source manque ou si les fichiers institutionnels ont évolué depuis la construction de l'index. Les tests hors connexion utilisent exclusivement des avis et organismes artificiels.
 
+## Audit de concentration documentaire
+
+Les rapprochements comprennent un **audit de diversité des preuves** pour chaque domaine technique. Il distingue les annonces examinées, les candidats affichés, les organismes distincts par identifiant et les passages documentaires effectivement distincts. Chaque passage officiellement publié est identifié par l'empreinte SHA-256 de son texte intégral et de son identifiant de source. La simple reprise d'un même texte dans plusieurs fiches institutionnelles ne multiplie donc pas artificiellement le nombre de pièces distinctes.
+
+L'audit indique également la part occupée par le passage le plus récurrent, les recherches ou restitutions tronquées et les correspondances uniquement nominales. Un rapport lisible `audit-concentration.md` et un fichier calculable `audit-concentration.json` sont produits avec les autres résultats du traitement automatique. La première analyse réelle, portant sur 69 pistes, a révélé de très fortes répétitions des mêmes descriptions administratives, en particulier dans les domaines de l'intelligence artificielle et de la cybersécurité. Ces répétitions rendent indispensable une qualification de la pertinence opérationnelle par cas.
+
+Cette mesure décrit **des répétitions de texte**, pas l'indépendance institutionnelle des organismes, le nombre de compétences effectivement accessibles, ni l'utilité d'une réponse. Deux organismes différents peuvent avoir un texte identique, et un même organisme peut disposer de moyens que les descriptions publiées ne mentionnent pas. Les passages nominaux dépourvus de source de mission restent comptés séparément.
+
 ## Usage dans l'enquête
 
 Le rapprochement doit servir à vérifier une hypothèse concrète, par exemple : une mission publique publiée recoupe-t-elle le domaine d'une commande technique ? L'étape suivante doit confronter les textes intégraux, l'objet réel de la commande, les ressources de l'acheteur, la compétence pratique du candidat, ses mécanismes de mise à disposition et les délais mesurés.
