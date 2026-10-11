@@ -22,21 +22,17 @@ except ModuleNotFoundError:
         MOTIFS, BilanInvalide, produire, normaliser,
     )
 
-VERSION = "echantillon-exploratoire-boamp-v1"
+VERSION = "echantillon-exploratoire-boamp-v2"
 TEMOIN = "temoin_sans_expression_des_sept_domaines"
 SEMENCE = "frontiere-exploration-2026-10-v1"
 
 
-def categorie_strate(valeur):
-    if valeur is None:
-        return "AUTRE"
+def etat_strate(valeur):
     if not isinstance(valeur, str):
-        raise BilanInvalide("Catégorie incorrecte.")
-    texte = normaliser(valeur)
-    for categorie in ("SERVICES", "FOURNITURES", "TRAVAUX"):
-        if categorie.lower() in texte:
-            return categorie
-    return "AUTRE"
+        return "NON_RENSEIGNE"
+    texte = valeur.strip().upper()
+    return texte if texte in ("INITIAL", "RECTIFICATIF",
+                              "MODIFICATION", "ANNULATION") else "AUTRE"
 
 
 def mois_couverts(jours):
@@ -96,17 +92,19 @@ def constituer(index, preuve, bilan, *, quota=4, semence=SEMENCE):
     groupes = defaultdict(list)
     effectifs = Counter()
     suivis = set()
-    nombre, exclus, multit = 0, 0, 0
+    nombre, exclus, multit, categories_renseignees, etats_absents = 0, 0, 0, 0, 0
     motifs = {t: [re.compile(x) for x in m] for t, m in MOTIFS.items()}
     with closing(sqlite3.connect(f"file:{index.resolve().as_posix()}?mode=ro", uri=True)) as con:
         dates = [j for (j,) in con.execute("SELECT jour FROM provenance ORDER BY jour")]
         complets, couverture = mois_couverts(dates)
         retenus = set(complets)
-        for jour, code, objet, acheteur, categorie, lien, archive, releve in con.execute(
-            "SELECT jour,identifiant,objet,acheteur,categorie,avis,archive_source,releve_le "
+        for jour, code, objet, acheteur, categorie, etat, lien, archive, releve in con.execute(
+            "SELECT jour,identifiant,objet,acheteur,categorie,etat,avis,archive_source,releve_le "
             "FROM recherche ORDER BY jour,identifiant"
         ):
             nombre += 1
+            categories_renseignees += bool(isinstance(categorie, str) and categorie.strip())
+            etats_absents += etat_strate(etat) == "NON_RENSEIGNE"
             if (jour, code) in suivis:
                 raise BilanInvalide("Avis dupliqué dans l'index.")
             suivis.add((jour, code))
@@ -120,15 +118,16 @@ def constituer(index, preuve, bilan, *, quota=4, semence=SEMENCE):
             if mois not in retenus:
                 exclus += 1
                 continue
-            cat = categorie_strate(categorie)
+            etat_documentaire = etat_strate(etat)
             for theme in domaines or [TEMOIN]:
-                strate = (mois, cat, theme)
+                strate = (mois, etat_documentaire, theme)
                 effectifs[strate] += 1
                 selectionner(groupes, strate, {
                     "date_parution": jour, "identifiant": code,
                     "objet": objet[:500],
                     "acheteur_declare": (acheteur or "")[:200],
                     "categorie_declaree": categorie,
+                    "etat_documentaire_declare": etat,
                     "lien_officiel": lien, "archive_source": archive,
                     "releve_le": releve, "themes_detectes": domaines,
                     "rang_sha256": rang(semence, strate, jour, code),
@@ -145,7 +144,7 @@ def constituer(index, preuve, bilan, *, quota=4, semence=SEMENCE):
             references.add((x["date_parution"], x["identifiant"]))
         n = effectifs[strate]
         resultats.append({
-            "mois": strate[0], "categorie": strate[1], "domaine": strate[2],
+            "mois": strate[0], "etat_documentaire": strate[1], "domaine": strate[2],
             "population_documentaire": n, "nombre_tire": len(items),
             "fraction_tirage": {"numerateur": len(items), "denominateur": n},
             "avis": items,
@@ -158,12 +157,16 @@ def constituer(index, preuve, bilan, *, quota=4, semence=SEMENCE):
         "nombre_avis_examines": nombre,
         "nombre_avis_mois_incomplets_exclus": exclus,
         "nombre_avis_multithemes": multit,
+        "nombre_categories_marche_renseignees": categories_renseignees,
+        "nombre_categories_marche_manquantes": nombre - categories_renseignees,
+        "nombre_etats_documentaires_absents": etats_absents,
+        "stratification_categorie_marche_effective": categories_renseignees > 0,
         "mois_complets": complets, "couverture_calendaire": couverture,
         "nombre_strates": len(resultats),
         "nombre_tirages": sum(x["nombre_tire"] for x in resultats),
         "nombre_avis_distincts": len(references),
         "strates": resultats,
-        "methode": "classement_sha256_dans_mois_categorie_et_domaine",
+        "methode": "classement_sha256_dans_mois_etat_documentaire_et_domaine",
         "selection_non_representative_de_la_demande_nationale": True,
         "temoin_ne_signifie_pas_absence_de_besoin": True,
         "chevauchements_de_domaines_conserves": True,
