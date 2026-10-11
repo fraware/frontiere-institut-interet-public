@@ -23,3 +23,14 @@ def test_index_boamp_automatise_depuis_main_et_sans_push():
     assert "git push" not in contenu
     assert "contents: write" not in contenu
     assert "contents: read" in contenu
+
+
+def test_bilan_boamp_installe_ses_dependances_avant_execution():
+    source = (RACINE / ".github/workflows/index-boamp-historique.yml").read_text(
+        encoding="utf-8",
+    )
+    dependance = source.index('python -m pip install "pytest>=8,<10"')
+    tests = source.index("python -m pytest -q tests/test_analyser_historique_boamp.py")
+    assert dependance < tests
+    assert 'scripts/analyser_historique_boamp.py' in source
+    assert 'bilan-documentaire.json' in source
