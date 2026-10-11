@@ -1,0 +1,185 @@
+name: "Conservation mensuelle des archives BOAMP publiées"
+
+on:
+  schedule:
+    - cron: "17 6 1 * *"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/conservation-boamp-versions.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: conservation-mensuelle-boamp
+  cancel-in-progress: false
+
+jobs:
+  conserver:
+    if: github.repository == 'fraware/frontiere-institut-interet-public'
+    name: Vérifier puis conserver un instantané mensuel
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    permissions:
+      contents: write
+    steps:
+      - name: Extraire la version source des archives publiques
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Installer Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Fixer la révision réelle et l'identifiant mensuel
+        id: edition
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          SOURCE=$(git rev-parse HEAD)
+          MOIS=$(date -u +%Y-%m)
+          NOM="archives-boamp-$MOIS"
+          [[ "$SOURCE" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$NOM" =~ ^archives-boamp-20[0-9]{2}-(0[1-9]|1[0-2])$ ]]
+          echo "source=$SOURCE" >> "$GITHUB_OUTPUT"
+          echo "nom=$NOM" >> "$GITHUB_OUTPUT"
+          if gh release view "$NOM" --repo "$GITHUB_REPOSITORY" --json tagName >/dev/null 2>&1; then
+            echo "existe=true" >> "$GITHUB_OUTPUT"
+            echo "Instantané mensuel déjà publié : vérifier sans le remplacer."
+          else
+            echo "existe=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Valider un instantané mensuel existant sans le modifier
+        if: steps.edition.outputs.existe == 'true'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ETIQUETTE: ${{ steps.edition.outputs.nom }}
+        run: |
+          set -euo pipefail
+          DOSSIER="$RUNNER_TEMP/boamp-existing"
+          mkdir -p "$DOSSIER"
+          gh release download "$ETIQUETTE" --repo "$GITHUB_REPOSITORY" --dir "$DOSSIER"
+          (
+            cd "$DOSSIER"
+            sha256sum --check SHA256SUMS.txt
+          )
+          python scripts/exporter_archive_boamp.py verifier \
+            --paquet "$DOSSIER/archives-boamp.zip"
+          python - "$DOSSIER" <<'PY'
+          import json
+          import pathlib
+          import sys
+          d = pathlib.Path(sys.argv[1])
+          bilan = json.loads((d / "bilan.json").read_text(encoding="utf-8"))
+          verification = json.loads((d / "verification.json").read_text(encoding="utf-8"))
+          assert bilan["sha256_paquet"] == verification["sha256_paquet"]
+          assert bilan["fichiers_verifies"] == verification["fichiers_verifies"]
+          assert bilan["revision_depot"] is not None
+          print("Instantané existant contrôlé sans écrasement.")
+          PY
+
+      - name: Valider le collecteur et les limites de publication
+        if: steps.edition.outputs.existe == 'false'
+        run: |
+          python -m pip install "pytest>=8,<10"
+          python -m pytest -q tests/test_exporter_archive_boamp.py tests/test_versions_revisions_boamp.py tests/test_reversions_boamp.py
+
+      - name: Fabriquer le paquet et les preuves
+        if: steps.edition.outputs.existe == 'false'
+        shell: bash
+        env:
+          REVISION: ${{ steps.edition.outputs.source }}
+        run: |
+          set -euo pipefail
+          DOSSIER="$RUNNER_TEMP/boamp-monthly"
+          mkdir -p "$DOSSIER"
+          python scripts/exporter_archive_boamp.py exporter \
+            --revision "$REVISION" \
+            --paquet "$DOSSIER/archives-boamp.zip" > "$DOSSIER/bilan.json"
+          python scripts/exporter_archive_boamp.py verifier \
+            --paquet "$DOSSIER/archives-boamp.zip" > "$DOSSIER/verification.json"
+          (
+            cd "$DOSSIER"
+            sha256sum archives-boamp.zip bilan.json verification.json > SHA256SUMS.txt
+            sha256sum --check SHA256SUMS.txt
+          )
+          python - "$DOSSIER" "$REVISION" <<'PY'
+          import json
+          from pathlib import Path
+          import sys
+          racine, revision = Path(sys.argv[1]), sys.argv[2]
+          bilan = json.loads((racine / "bilan.json").read_text(encoding="utf-8"))
+          controle = json.loads((racine / "verification.json").read_text(encoding="utf-8"))
+          if (bilan["sha256_paquet"] != controle["sha256_paquet"]
+                  or bilan["revision_depot"] != revision
+                  or bilan["fichiers_verifies"] != controle["fichiers_verifies"]):
+              raise SystemExit("Preuves incohérentes : refuser la publication.")
+          (racine / "notice.txt").write_text(
+              "Instantané mensuel BOAMP de FRONTIÈRE\n\n"
+              f"Révision du dépôt source : {revision}\n"
+              f"Avis indexés : {bilan['avis_indexes_au_depart']}\n"
+              f"Fichiers vérifiés : {bilan['fichiers_verifies']}\n"
+              f"SHA-256 du paquet : {bilan['sha256_paquet']}\n\n"
+              "Copie supplémentaire sur GitHub, distincte de l'artefact éphémère. "
+              "Cette version ne constitue pas une sauvegarde hors site indépendante. "
+              "Relevé partiel de notices publiques : aucune preuve de déficit scientifique.\n",
+              encoding="utf-8",
+          )
+          PY
+
+      - name: Publier d'abord une version provisoire
+        if: steps.edition.outputs.existe == 'false'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ETIQUETTE: ${{ steps.edition.outputs.nom }}
+          REVISION: ${{ steps.edition.outputs.source }}
+        run: |
+          set -euo pipefail
+          DOSSIER="$RUNNER_TEMP/boamp-monthly"
+          gh release create "$ETIQUETTE" \
+            "$DOSSIER/archives-boamp.zip" \
+            "$DOSSIER/bilan.json" \
+            "$DOSSIER/verification.json" \
+            "$DOSSIER/SHA256SUMS.txt" \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$REVISION" \
+            --title "Archives BOAMP — $ETIQUETTE" \
+            --notes-file "$DOSSIER/notice.txt" \
+            --draft
+
+      - name: Relire les actifs distants avant publication définitive
+        if: steps.edition.outputs.existe == 'false'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ETIQUETTE: ${{ steps.edition.outputs.nom }}
+        run: |
+          set -euo pipefail
+          DOSSIER="$RUNNER_TEMP/boamp-monthly"
+          COPIE="$RUNNER_TEMP/boamp-downloaded"
+          mkdir -p "$COPIE"
+          gh release download "$ETIQUETTE" --repo "$GITHUB_REPOSITORY" --dir "$COPIE"
+          (
+            cd "$COPIE"
+            sha256sum --check SHA256SUMS.txt
+          )
+          for f in archives-boamp.zip bilan.json verification.json SHA256SUMS.txt; do
+            cmp "$DOSSIER/$f" "$COPIE/$f"
+          done
+          python scripts/exporter_archive_boamp.py verifier \
+            --paquet "$COPIE/archives-boamp.zip"
+          gh release edit "$ETIQUETTE" --repo "$GITHUB_REPOSITORY" --draft=false
+          gh release view "$ETIQUETTE" --repo "$GITHUB_REPOSITORY" \
+            --json isDraft --jq '.isDraft' | grep -x false
+          echo "Instantané mensuel publié après vérification du téléchargement."
