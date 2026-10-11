@@ -32,3 +32,12 @@ Chaque journée est conservée séparément dans `institutionnel/besoins_publics
 **Une catégorie récupérée en octobre 2026 n'est pas présumée être la catégorie qui était publiée à la date initiale de l'avis.** Les catégories ainsi observées sont documentaires et datées. L'archive BOAMP originale, son contenu et son empreinte ne sont jamais modifiés par ce traitement.
 
 Le programme vérifie toutes les archives complémentaires existantes avant d'ajouter un nouveau lot. Les limites de taille et de pagination empêchent de publier une consultation partielle comme exhaustive. Les fichiers complémentaires et leur état sont inclus dans la publication automatisée, avec vérifications Python et conteneur. Leur nombre et leur couverture doivent être mesurés sur les exécutions réelles avant toute interprétation statistique.
+
+
+## Bilan quantitatif des compléments
+
+Le programme `scripts/analyser_complements_categories_boamp.py` publie, lors de chaque reconstruction de l'index, un bilan `bilan-categories-reobservees.json`. Il compte pour chaque mois les journées historiques initialement archivées, les journées disposant d'un complément vérifié, les identifiants d'avis initiaux couverts, les catégories effectivement retrouvées dans la nouvelle consultation et les identifiants ajoutés ou absents depuis la photographie initiale.
+
+Il vérifie les empreintes de chaque complément et celles des archives BOAMP initiales auxquelles il se rapporte. Une fiche manquante, une archive altérée ou une journée sans source initiale interrompt la production du bilan. Le dénominateur est celui des **identifiants d'avis documentaires archivés**, jamais un nombre de marchés distincts ni un échantillon national de besoins.
+
+Les colonnes `categories_du_dernier_etat_BOAMP_deja_dans_index` et `categories_retrouvees_lors_des_recontroles` décrivent deux observations distinctes. Elles ne doivent pas être additionnées comme s'il s'agissait d'une même photographie temporelle. Une couverture faible, même avec des catégories systématiquement retrouvées dans les journées réexaminées, interdit de généraliser les distributions aux années entières.

@@ -11,6 +11,8 @@ on:
       - "scripts/analyser_historique_boamp.py"
       - "scripts/constituer_pistes_boamp.py"
       - "scripts/echantillonner_avis_boamp.py"
+      - "scripts/analyser_complements_categories_boamp.py"
+      - "institutionnel/besoins_publics/categories_boamp/**"
       - "scripts/auditer_echantillon_boamp.py"
       - "scripts/rapprocher_avis_attributions.py"
       - "scripts/preparer_dossiers_pilotes_boamp.py"
@@ -245,6 +247,18 @@ jobs:
             --sortie "$DOSSIER/banc-rappel-textuel.json"
           python -m pytest -q tests/test_evaluer_rappel_textuel.py
 
+      - name: Mesurer la couverture des catégories BOAMP réobservées
+        shell: bash
+        run: |
+          set -euo pipefail
+          DOSSIER="$RUNNER_TEMP/frontiere-boamp"
+          python scripts/analyser_complements_categories_boamp.py \
+            --index "$DOSSIER/index-avis-boamp.sqlite3" \
+            --preuve-index "$DOSSIER/preuve-index.json" \
+            --sources institutionnel/besoins_publics \
+            --sortie "$DOSSIER/bilan-categories-reobservees.json"
+          python -m pytest -q tests/test_analyser_complements_categories_boamp.py
+
       - name: Publier l'index vérifié en artefact téléchargeable
         uses: actions/upload-artifact@v4
         with:
@@ -254,6 +268,7 @@ jobs:
             ${{ runner.temp }}/frontiere-boamp/bilan-index.json
             ${{ runner.temp }}/frontiere-boamp/preuve-index.json
             ${{ runner.temp }}/frontiere-boamp/bilan-documentaire.json
+            ${{ runner.temp }}/frontiere-boamp/bilan-categories-reobservees.json
             ${{ runner.temp }}/frontiere-boamp/pistes-a-examiner.json
             ${{ runner.temp }}/frontiere-boamp/rapprochements-attributions.json
             ${{ runner.temp }}/frontiere-boamp/dossiers-pilotes-documentaires.json
