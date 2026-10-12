@@ -5,6 +5,7 @@ import json
 import pytest
 from scripts.reconstituer_chronologies_pilotes_boamp import (
     analyser_attribution, champ_date, produire, ChronologieInvalide,
+    qualifier_effectifs_soumissions,
 )
 
 
@@ -294,3 +295,63 @@ def test_refus_de_regrouper_contrats_dupliques():
     source["donnees"] = json.dumps(d)
     with pytest.raises(ChronologieInvalide, match="répétée"):
         analyser_attribution(source)
+
+
+
+def test_zero_offre_totale_et_motif_autre_sont_deux_faits_distincts():
+    exemple = avec_statistiques(
+        statistique("tenders", "2"), statistique("tenders", "0")
+    )
+    structure = json.loads(exemple["donnees"])
+    lot2 = structure["EFORMS"]["ContractAwardNotice"]["ext:UBLExtensions"][
+        "ext:UBLExtension"]["ext:ExtensionContent"]["efext:EformsExtension"][
+        "efac:NoticeResult"]["efac:LotResult"][1]
+    lot2["efac:DecisionReason"]["efbc:DecisionReasonCode"]["#text"] = "other"
+    exemple["donnees"] = json.dumps(structure)
+    resultat = analyser_attribution(exemple)["resultats_par_lot"][1]
+    assert resultat["motif_officiel"] == "other"
+    etat = resultat["observation_effectifs_soumissions"]
+    assert etat["qualification_effectif"] == "zero_offre_totale_declaree"
+    assert etat["code_mesure_utilise"] == "tenders"
+    assert etat["effectif_utilise"] == 0
+    assert etat["motif_officiel_non_deduit_des_effectifs"] is True
+
+
+def test_zero_electronique_seul_ne_prouve_pas_zero_offre_totale():
+    observation = qualifier_effectifs_soumissions([{
+        "code_statistique_officiel": "t-esubm",
+        "effectif_declare": 0,
+        "origine_effectif": "/test/t-esubm",
+    }])
+    assert observation["qualification_effectif"] == (
+        "zero_soumission_electronique_total_inconnu"
+    )
+    assert observation["code_mesure_utilise"] == "t-esubm"
+
+
+def test_effectif_absent_reste_inconnu():
+    assert qualifier_effectifs_soumissions([])["qualification_effectif"] == (
+        "effectif_total_inconnu"
+    )
+    assert qualifier_effectifs_soumissions([])["effectif_utilise"] is None
+
+
+def test_nombre_electronique_superieur_au_total_est_refuse():
+    with pytest.raises(ChronologieInvalide, match="électroniques"):
+        qualifier_effectifs_soumissions([
+            {"code_statistique_officiel": "tenders", "effectif_declare": 0,
+             "origine_effectif": "/total"},
+            {"code_statistique_officiel": "t-esubm", "effectif_declare": 1,
+             "origine_effectif": "/electronique"},
+        ])
+
+
+def test_comptes_total_et_electronique_ne_s_additionnent_pas():
+    observation = qualifier_effectifs_soumissions([
+        {"code_statistique_officiel": "tenders", "effectif_declare": 4,
+         "origine_effectif": "/total"},
+        {"code_statistique_officiel": "t-esubm", "effectif_declare": 3,
+         "origine_effectif": "/electronique"},
+    ])
+    assert observation["effectif_utilise"] == 4
+    assert observation["qualification_effectif"] == "offres_totales_positives"
