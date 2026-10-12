@@ -1,6 +1,7 @@
 {
   "couverture_exhaustive_des_besoins_publics": false,
-  "cycle_le": "2026-10-12T22:05:11+00:00",
+  "cycle_le": "2026-10-12T22:11:29+00:00",
+  "enrichissements_metadonnees": 0,
   "nombre_signaux_distincts": 282,
   "nouveaux_signaux": 0,
   "qualification_de_besoins_effectuee": false,
@@ -9,8 +10,9 @@
     {
       "actif": true,
       "cadence_heures": 6,
-      "dernier_succes": "2026-10-12T22:05:11+00:00",
+      "dernier_succes": "2026-10-12T22:11:29+00:00",
       "elements_lus": 16,
+      "enrichissements_metadonnees": 0,
       "erreur": null,
       "etat": "succes",
       "id": "anr_appels",
@@ -21,21 +23,22 @@
     {
       "actif": true,
       "cadence_heures": 12,
-      "dernier_succes": "2026-10-12T22:05:11+00:00",
+      "dernier_succes": "2026-10-12T22:11:29+00:00",
       "elements_lus": 100,
+      "enrichissements_metadonnees": 0,
       "erreur": null,
       "etat": "succes",
       "id": "service_public_pro",
       "nom": "DILA — actualités des professionnels",
       "nouveaux": 0,
-      "revisions": 0,
-      "enrichissements_metadonnees": 100
+      "revisions": 0
     },
     {
       "actif": true,
       "cadence_heures": 6,
-      "dernier_succes": "2026-10-12T22:05:11+00:00",
+      "dernier_succes": "2026-10-12T22:11:29+00:00",
       "elements_lus": 92,
+      "enrichissements_metadonnees": 0,
       "erreur": null,
       "etat": "succes",
       "id": "anr_bluesky",
@@ -46,8 +49,9 @@
     {
       "actif": true,
       "cadence_heures": 6,
-      "dernier_succes": "2026-10-12T22:05:11+00:00",
+      "dernier_succes": "2026-10-12T22:11:29+00:00",
       "elements_lus": 20,
+      "enrichissements_metadonnees": 0,
       "erreur": null,
       "etat": "succes",
       "id": "anr_actualites",
@@ -58,8 +62,9 @@
     {
       "actif": true,
       "cadence_heures": 6,
-      "dernier_succes": "2026-10-12T22:05:11+00:00",
+      "dernier_succes": "2026-10-12T22:11:29+00:00",
       "elements_lus": 10,
+      "enrichissements_metadonnees": 0,
       "erreur": null,
       "etat": "succes",
       "id": "economie_actualites",
@@ -70,8 +75,9 @@
     {
       "actif": true,
       "cadence_heures": 12,
-      "dernier_succes": "2026-10-12T22:05:11+00:00",
+      "dernier_succes": "2026-10-12T22:11:29+00:00",
       "elements_lus": 10,
+      "enrichissements_metadonnees": 0,
       "erreur": null,
       "etat": "succes",
       "id": "economie_achats_etat",
@@ -82,8 +88,9 @@
     {
       "actif": true,
       "cadence_heures": 12,
-      "dernier_succes": "2026-10-12T22:05:11+00:00",
+      "dernier_succes": "2026-10-12T22:11:29+00:00",
       "elements_lus": 10,
+      "enrichissements_metadonnees": 0,
       "erreur": null,
       "etat": "succes",
       "id": "economie_affaires_juridiques",
@@ -94,8 +101,9 @@
     {
       "actif": true,
       "cadence_heures": 12,
-      "dernier_succes": "2026-10-12T22:05:11+00:00",
+      "dernier_succes": "2026-10-12T22:11:29+00:00",
       "elements_lus": 14,
+      "enrichissements_metadonnees": 0,
       "erreur": null,
       "etat": "succes",
       "id": "economie_bulletins_officiels",
@@ -106,8 +114,9 @@
     {
       "actif": true,
       "cadence_heures": 12,
-      "dernier_succes": "2026-10-12T22:05:11+00:00",
+      "dernier_succes": "2026-10-12T22:11:29+00:00",
       "elements_lus": 10,
+      "enrichissements_metadonnees": 0,
       "erreur": null,
       "etat": "succes",
       "id": "economie_tracfin",
@@ -118,16 +127,5 @@
   ],
   "sources_en_echec": 0,
   "sources_reussies": 9,
-  "version": 1,
-  "enrichissements_metadonnees": 100,
-  "rectification_historique": {
-    "raison": "100 dates RSS auparavant non extraites puis reconnues lors du second relevé",
-    "classification": "enrichissements_de_metadonnees_non_revisions_du_texte_source",
-    "instant_du_releve_initial": "2026-10-12T21:58:28+00:00",
-    "instant_du_second_releve": "2026-10-12T22:05:11+00:00",
-    "nombre_publications_concernees": 100,
-    "premiere_version": "f3d2c0e93def41ff1ae7ac9870d27d6dcaa50835",
-    "controle": "comparaison_identifiant_par_identifiant_titres_descriptions_liens_et_sources_identiques",
-    "rectifie_le": "2026-10-12"
-  }
+  "version": 1
 }
