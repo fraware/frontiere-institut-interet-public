@@ -88,3 +88,81 @@ def test_produire_a_partir_d_un_releve_sans_inference(monkeypatch, tmp_path):
     assert result["delais_besoin_vers_contribution_mesurables"] == 0
     assert result["cas"][0]["contribution_utile_observee"] is False
     assert result["cas"][0]["deficit_competences_etabli"] is False
+
+
+
+def avec_statistiques(statistiques_lot1, statistiques_lot2):
+    """Deux lots, un seul soumis et un sans offre selon l'avis original."""
+    avis = attribution()
+    formulaire = json.loads(avis["donnees"])
+    lots = formulaire["EFORMS"]["ContractAwardNotice"]["ext:UBLExtensions"][
+        "ext:UBLExtension"
+    ]["ext:ExtensionContent"]["efext:EformsExtension"]["efac:NoticeResult"][
+        "efac:LotResult"
+    ]
+    lots[0]["efac:ReceivedSubmissionsStatistics"] = statistiques_lot1
+    lots[1]["efac:ReceivedSubmissionsStatistics"] = statistiques_lot2
+    avis["donnees"] = json.dumps(formulaire)
+    return avis
+
+
+def statistique(code, valeur):
+    return {
+        "efbc:StatisticsCode": {"#text": code},
+        "efbc:StatisticsNumeric": valeur,
+    }
+
+
+def test_comptes_officiels_par_lot_et_portee_separee():
+    bilan = analyser_attribution(
+        avec_statistiques(statistique("t-esubm", "1"),
+                          statistique("t-esubm", "0"))
+    )
+    lot1, lot2 = bilan["resultats_par_lot"]
+    assert lot1["statistiques_soumissions"][0]["effectif_declare"] == 1
+    assert lot1["statistiques_soumissions"][0]["portee_de_la_mesure"] == (
+        "soumissions_electroniques"
+    )
+    assert lot2["statistiques_soumissions"][0]["effectif_declare"] == 0
+    assert lot2["statistiques_soumissions"][0]["code_statistique_officiel"] == "t-esubm"
+    assert lot2["motif_officiel"] == "no-rece"
+    assert lot2["statut_lot"] == "non_attribue"
+    assert lot2["statistiques_soumissions"][0]["origine_effectif"].endswith(
+        "/efac:LotResult/1/efac:ReceivedSubmissionsStatistics/efbc:StatisticsNumeric"
+    )
+
+
+def test_statistique_tenders_distincte_de_t_esubm():
+    bilan = analyser_attribution(avec_statistiques(
+        [statistique("tenders", "3"), statistique("t-esubm", 2)],
+        statistique("tenders", "0"),
+    ))
+    marqueurs = bilan["resultats_par_lot"][0]["statistiques_soumissions"]
+    assert [(x["code_statistique_officiel"], x["effectif_declare"]) for x in marqueurs] == [
+        ("tenders", 3), ("t-esubm", 2),
+    ]
+    assert marqueurs[0]["portee_de_la_mesure"] == "soumissions_tous_canaux_declares"
+    assert "/efac:ReceivedSubmissionsStatistics/0/" in marqueurs[0]["origine_effectif"]
+
+
+@pytest.mark.parametrize("nombre", [
+    "-1", "1.5", True, None, "moins-un", "4e2",
+])
+def test_refuser_comptes_incompatibles(nombre):
+    with pytest.raises(ChronologieInvalide):
+        analyser_attribution(avec_statistiques(
+            statistique("t-esubm", "1"), statistique("t-esubm", nombre),
+        ))
+
+
+def test_refuser_soumission_positive_si_motif_aucune_offre():
+    with pytest.raises(ChronologieInvalide, match="contradictoire"):
+        analyser_attribution(avec_statistiques(
+            statistique("t-esubm", "1"), statistique("t-esubm", "1"),
+        ))
+
+
+def test_absence_statistique_reste_inconnue():
+    bilan = analyser_attribution(attribution())
+    assert bilan["resultats_par_lot"][0]["statistiques_soumissions"] == []
+    assert bilan["resultats_par_lot"][1]["statistiques_soumissions"] == []
