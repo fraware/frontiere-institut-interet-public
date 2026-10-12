@@ -17,6 +17,8 @@ on:
       - "scripts/capturer_avis_amont_boamp.py"
       - "scripts/inventorier_pieces_consultation_boamp.py"
       - "tests/test_preuves_amont_pieces_boamp.py"
+      - "scripts/etudier_consultation_caen.py"
+      - "tests/test_etudier_consultation_caen.py"
       - "evaluation/avis_amont_cibles_boamp_v1.json"
       - "evaluation/avis_amont_cibles_boamp_v2.json"
       - ".github/workflows/captures-notices-pilotes.yml"
@@ -58,7 +60,8 @@ jobs:
             tests/test_qualifier_captures_notices_boamp.py \
             tests/test_reconstituer_chronologies_pilotes_boamp.py \
             tests/test_collecter_avis_lies_boamp.py \
-            tests/test_preuves_amont_pieces_boamp.py
+            tests/test_preuves_amont_pieces_boamp.py \
+            tests/test_etudier_consultation_caen.py
 
       - name: Capturer les six réponses auprès de la source officielle
         shell: bash
@@ -83,6 +86,14 @@ jobs:
               "observation": bilan["observe_le"],
           }, ensure_ascii=False))
           PY
+
+      - name: Reconstituer la consultation initiale du radar de Caen
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/etudier_consultation_caen.py \
+            --captures "$RUNNER_TEMP/captures-notices-pilotes" \
+            --sortie "$RUNNER_TEMP/consultation-initiale-caen"
 
       - name: Qualifier la nature documentaire et les liens des six avis
         shell: bash
@@ -149,6 +160,7 @@ jobs:
             ${{ runner.temp }}/chronologies-pilotes.json
             ${{ runner.temp }}/avis-anterieurs/
             ${{ runner.temp }}/avis-amont/
+            ${{ runner.temp }}/consultation-initiale-caen/
             ${{ runner.temp }}/inventaire-pieces-consultation.json
           retention-days: 30
           if-no-files-found: error
