@@ -228,3 +228,69 @@ def test_contrats_repetes_sur_un_meme_lot_refuses():
     avis["donnees"] = json.dumps(d)
     with pytest.raises(ChronologieInvalide, match="plusieurs fois"):
         analyser_attribution(avis)
+
+
+
+def trois_resultats_meme_lot(*, divergence=None):
+    from copy import deepcopy
+    source = attribution()
+    d = json.loads(source["donnees"])
+    n = d["EFORMS"]["ContractAwardNotice"]["ext:UBLExtensions"][
+        "ext:UBLExtension"]["ext:ExtensionContent"]["efext:EformsExtension"][
+        "efac:NoticeResult"
+    ]
+    premier, second = n["efac:LotResult"]
+    repete = []
+    for i in range(3):
+        ligne = deepcopy(premier)
+        ligne["efac:SettledContract"] = {
+            "cbc:ID": {"#text": f"CON-000{i+1}"}
+        }
+        ligne["efac:ReceivedSubmissionsStatistics"] = {
+            "efbc:StatisticsCode": {"#text": "tenders"},
+            "efbc:StatisticsNumeric": "4" if divergence == i else "3",
+        }
+        repete.append(ligne)
+    n["efac:LotResult"] = repete + [second]
+    n["efac:SettledContract"] = [
+        {"cbc:ID": {"#text": f"CON-000{i+1}"}} for i in range(3)
+    ]
+    source["donnees"] = json.dumps(d)
+    return source
+
+
+def test_plusieurs_attributions_pour_meme_lot_comptent_un_seul_lot():
+    bilan = analyser_attribution(trois_resultats_meme_lot())
+    assert len(bilan["resultats_par_lot"]) == 2
+    attribue, non_attribue = bilan["resultats_par_lot"]
+    assert attribue["identifiant_lot"] == "LOT-0001"
+    assert attribue["nombre_decisions_par_lot"] == 3
+    assert len(attribue["origines_resultats"]) == 3
+    assert attribue["contrats_references"] == [
+        "CON-0001", "CON-0002", "CON-0003"
+    ]
+    assert attribue["contrat_reference"] is None
+    assert len(attribue["statistiques_soumissions"]) == 1
+    stats = attribue["statistiques_soumissions"][0]
+    assert stats["code_statistique_officiel"] == "tenders"
+    assert stats["effectif_declare"] == 3
+    assert len(stats["occurrences_identiques"]) == 2
+    assert non_attribue["statut_lot"] == "non_attribue"
+    assert non_attribue["nombre_decisions_par_lot"] == 1
+
+
+def test_mesures_non_identiques_d_un_meme_lot_refusees():
+    with pytest.raises(ChronologieInvalide, match="contradictoires"):
+        analyser_attribution(trois_resultats_meme_lot(divergence=2))
+
+
+def test_refus_de_regrouper_contrats_dupliques():
+    source = trois_resultats_meme_lot()
+    d = json.loads(source["donnees"])
+    resultats = d["EFORMS"]["ContractAwardNotice"]["ext:UBLExtensions"][
+        "ext:UBLExtension"]["ext:ExtensionContent"]["efext:EformsExtension"][
+        "efac:NoticeResult"]["efac:LotResult"]
+    resultats[1]["efac:SettledContract"]["cbc:ID"]["#text"] = "CON-0001"
+    source["donnees"] = json.dumps(d)
+    with pytest.raises(ChronologieInvalide, match="répétée"):
+        analyser_attribution(source)
