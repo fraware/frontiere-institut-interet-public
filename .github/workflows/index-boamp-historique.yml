@@ -11,6 +11,8 @@ on:
       - "scripts/analyser_historique_boamp.py"
       - "scripts/constituer_pistes_boamp.py"
       - "scripts/echantillonner_avis_boamp.py"
+      - "scripts/tirer_jeu_independant_boamp.py"
+      - "tests/test_tirer_jeu_independant_boamp.py"
       - "scripts/analyser_complements_categories_boamp.py"
       - "institutionnel/besoins_publics/categories_boamp/**"
       - "scripts/auditer_echantillon_boamp.py"
@@ -197,6 +199,17 @@ jobs:
             --sortie "$DOSSIER/echantillon-temporel-boamp.json"
           python -m pytest -q tests/test_echantillonner_avis_boamp.py
 
+      - name: Tirer les 36 avis techniques pour un examen indépendant
+        shell: bash
+        run: |
+          set -euo pipefail
+          DOSSIER="$RUNNER_TEMP/frontiere-boamp"
+          python -m pytest -q tests/test_tirer_jeu_independant_boamp.py
+          python scripts/tirer_jeu_independant_boamp.py \
+            --index "$DOSSIER/index-avis-boamp.sqlite3" \
+            --preuve-index "$DOSSIER/preuve-index.json" \
+            --sortie "$DOSSIER/echantillon-independant-technique.json"
+
       - name: Rejouer intégralement le tirage et mesurer sa sensibilité
         shell: bash
         run: |
@@ -273,6 +286,7 @@ jobs:
             ${{ runner.temp }}/frontiere-boamp/rapprochements-attributions.json
             ${{ runner.temp }}/frontiere-boamp/dossiers-pilotes-documentaires.json
             ${{ runner.temp }}/frontiere-boamp/echantillon-temporel-boamp.json
+            ${{ runner.temp }}/frontiere-boamp/echantillon-independant-technique.json
             ${{ runner.temp }}/frontiere-boamp/contre-verification-echantillon.json
             ${{ runner.temp }}/frontiere-boamp/croisements-avis-capacites.json
             ${{ runner.temp }}/frontiere-boamp/banc-rappel-textuel.json
