@@ -182,3 +182,42 @@ def test_index_invalide_est_refuse():
                 {"identifiant_publication": "duplicat"},
             ]}, _etat(), _telecharger,
         )
+
+
+RSS_DC = b"""<?xml version="1.0"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+<channel><title>Bulletin ministeriel</title><item>
+<guid>https://www.economie.gouv.fr/bulletins-officiels/texte-2026</guid>
+<title>Decision de financement</title>
+<dc:date>2026-10-12T09:15:00Z</dc:date>
+</item></channel></rss>"""
+
+RSS_HREF = b"""<rss version="2.0"><channel><item>
+<guid>decision-2</guid><title>Nouvelle consultation</title>
+<link href="https://www.economie.gouv.fr/dae/appel-2"/>
+<published>2026-10-12T10:05:00Z</published>
+</item></channel></rss>"""
+
+
+def test_date_normalisee_depuis_champ_dc_date():
+    src = next(x for x in _configuration()["sources"] if x["id"] == "economie_bulletins_officiels")
+    entree = extraire_syndication(RSS_DC, src)[0]
+    assert entree["date_publication"] == "2026-10-12T09:15:00+00:00"
+    assert entree["lien"] == "https://www.economie.gouv.fr/bulletins-officiels/texte-2026"
+
+
+def test_lien_rss_href_et_date_published():
+    src = next(x for x in _configuration()["sources"] if x["id"] == "economie_achats_etat")
+    entree = extraire_syndication(RSS_HREF, src)[0]
+    assert entree["lien"] == "https://www.economie.gouv.fr/dae/appel-2"
+    assert entree["date_publication"] == "2026-10-12T10:05:00+00:00"
+
+
+def test_guid_opaque_ne_devient_pas_un_lien_invente():
+    src = _configuration()["sources"][0]
+    entree = extraire_syndication(
+        b'<rss><channel><item><guid>opaque</guid><title>Titre</title></item></channel></rss>',
+        src,
+    )[0]
+    assert entree["lien"] is None
+    assert entree["date_publication"] is None
