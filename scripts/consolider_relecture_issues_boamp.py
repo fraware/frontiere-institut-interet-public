@@ -102,18 +102,25 @@ def verifier_formulaire(paquet: dict, fichier: Path, empreinte: str) -> dict:
             total, electroniques = lot.get("offres_totales"), lot.get("offres_electroniques")
             if total is not None and electroniques is not None and electroniques > total:
                 raise JugementInvalide("Effectif électronique supérieur au total.")
-            if (not isinstance(lot.get("preuve_decision"), str)
-                    or not lot["preuve_decision"].strip()):
-                raise JugementInvalide("Preuve de décision de lot manquante.")
-            if (total is not None or electroniques is not None) and (
-                    not isinstance(lot.get("preuve_effectifs"), str)
-                    or not lot["preuve_effectifs"].strip()):
-                raise JugementInvalide("Chiffres d'offres sans passage source.")
+            for champ in ("preuve_identifiant_lot", "preuve_decision"):
+                if not isinstance(lot.get(champ), str) or not lot[champ].startswith("/"):
+                    raise JugementInvalide("Preuve de numéro ou décision de lot manquante.")
+            if lot.get("code_motif") is not None and (
+                    not isinstance(lot.get("preuve_motif"), str)
+                    or not lot["preuve_motif"].startswith("/")):
+                raise JugementInvalide("Motif administratif sans preuve source.")
+            for nombre, preuve in (
+                    ("offres_totales", "preuve_offres_totales"),
+                    ("offres_electroniques", "preuve_offres_electroniques")):
+                if lot.get(nombre) is not None and (
+                        not isinstance(lot.get(preuve), str)
+                        or not lot[preuve].startswith("/")):
+                    raise JugementInvalide("Chiffres d'offres sans passage source.")
     return formulaire
 
 
 def consolider(paquet_path: Path, lecture_1: Path, lecture_2: Path,
-              sortie: Path) -> dict:
+              sortie: Path, dossier_sources: Path | None = None) -> dict:
     if sortie.exists() or sortie.is_symlink():
         raise JugementInvalide("Sortie existante : aucun écrasement.")
     paquet = ouvrir(paquet_path)
@@ -127,6 +134,16 @@ def consolider(paquet_path: Path, lecture_1: Path, lecture_2: Path,
     b = verifier_formulaire(paquet, lecture_2, empreinte)
     if a["identifiant_relecteur"] == b["identifiant_relecteur"]:
         raise JugementInvalide("Les deux fichiers déclarent le même lecteur.")
+    ancrages = None
+    if dossier_sources is not None:
+        try:
+            from scripts.auditer_ancrages_relecture_issues_boamp import auditer
+        except ModuleNotFoundError:
+            from auditer_ancrages_relecture_issues_boamp import auditer
+        ancrages = [
+            auditer(paquet_path, lecture_1, dossier_sources),
+            auditer(paquet_path, lecture_2, dossier_sources),
+        ]
     accords = Counter()
     desaccords = []
     resultats = []
@@ -171,6 +188,12 @@ def consolider(paquet_path: Path, lecture_1: Path, lecture_2: Path,
         "nombre_desaccords": len(desaccords),
         "desaccords": desaccords,
         "cas": resultats,
+        "ancrages_sources_verifies": ancrages is not None,
+        "rapports_ancrages": [{
+            "avis_controles": a["avis_controles"],
+            "lots_ancres": a["lots_ancres"],
+            "statistiques_verifiees": a["statistiques_verifiees"],
+        } for a in ancrages] if ancrages is not None else [],
         "reference_consensuelle_etablie": False,
         "adjudication_independante_effectuee": False,
         "independance_reelle_verifiee_par_logiciel": False,
@@ -190,10 +213,11 @@ def main():
     p.add_argument("--paquet", type=Path, required=True)
     p.add_argument("--lecture-1", type=Path, required=True)
     p.add_argument("--lecture-2", type=Path, required=True)
+    p.add_argument("--sources", type=Path, required=True)
     p.add_argument("--sortie", type=Path, required=True)
     a = p.parse_args()
     try:
-        bilan = consolider(a.paquet, a.lecture_1, a.lecture_2, a.sortie)
+        bilan = consolider(a.paquet, a.lecture_1, a.lecture_2, a.sortie, a.sources)
         print(json.dumps({
             "cas": bilan["nombre_cas"],
             "desaccords": bilan["nombre_desaccords"],

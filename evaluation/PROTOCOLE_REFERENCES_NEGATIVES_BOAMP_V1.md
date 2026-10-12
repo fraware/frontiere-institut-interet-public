@@ -46,12 +46,22 @@ python scripts/consolider_relecture_issues_boamp.py \
   --paquet /espace/prive/relecture-issues-001/paquet_commun.json \
   --lecture-1 /espace/prive/relecture-issues-001/relecteur_1/jugements_vierges.json \
   --lecture-2 /espace/prive/relecture-issues-001/relecteur_2/jugements_vierges.json \
+  --sources /espace/prive/relecture-issues-001/sources \
   --sortie /espace/prive/relecture-issues-001/bilan-double-lecture.json
 ````
 
 Le vérificateur refuse des formulaires incomplets, deux identifiants de lecteur égaux, des lots répétés, des comptes incohérents, des chiffres sans localisation documentaire et un jugement causal `DOCUMENTEE` sans pièce propre. Il contrôle le rattachement des avis au même paquet et mesure l'accord séparément sur le statut de l'avis, les identifiants de lots, les décisions, les motifs, les deux effectifs et les jugements de causalité.
 
 Les désaccords sont publiés avec les deux appréciations distinctes. Même avec 100 % d'accord, le logiciel ne délivre **aucune référence consensuelle**. Il reste à documenter la séparation effective des lecteurs, à arbitrer les désaccords par une troisième procédure et à fixer les références avant de dévoiler les prédictions des méthodes.
+
+### Ancrage des valeurs dans les documents primaires
+
+La consolidation exige aussi les 60 fichiers sources originaux grâce à `--sources`. Chaque décision portant sur un lot doit fournir `preuve_identifiant_lot` et `preuve_decision`, ainsi que `preuve_motif` lorsque le motif est renseigné. Chaque nombre exige son chemin propre `preuve_offres_totales` et/ou `preuve_offres_electroniques`, avec le code statistique correspondant dans le même nœud.
+
+Ces chemins sont des pointeurs JSON absolus partant de `/results/0/donnees/` puis traversant le formulaire eForms, par exemple `/results/0/donnees/EFORMS/ContractAwardNotice/.../efac:ReceivedSubmissionsStatistics/0/efbc:StatisticsNumeric`. Les points de suspension figurent uniquement ici à titre explicatif : **les dossiers rendus exigent un chemin intégral sans abréviation**. La décision et l'identifiant de lot doivent provenir du même nœud `efac:LotResult`. Une statistique `t-esubm` ne sera jamais acceptée comme attestation de `tenders`.
+
+Le programme confronte les chemins à la valeur et au code **réellement présents dans les octets officiels**, après vérification de l'empreinte SHA-256. Une validation réussie établit la traçabilité des valeurs déclarées, sans démontrer que tous les lots ont été découverts ni que deux personnes ont réellement produit des jugements indépendants.
+
 
 ## Conditions d'une évaluation scientifique ultérieure
 
