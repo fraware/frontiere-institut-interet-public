@@ -88,7 +88,20 @@ jobs:
           set -euo pipefail
           python scripts/preparer_relecture_issues_boamp.py \
             --archive "$RUNNER_TEMP/corpus-60.zip" \
-            --sortie "$${{ runner.temp }}/double-relecture-60"
+            --sortie "$RUNNER_TEMP/double-relecture-60"
+
+      - name: Vérifier les deux dossiers autonomes et l'absence de correspondance privée
+        shell: bash
+        run: |
+          set -euo pipefail
+          for NUMERO in 1 2; do
+            DOSSIER="$RUNNER_TEMP/double-relecture-60/relecteur_$NUMERO"
+            test -s "$DOSSIER/paquet_commun.json"
+            test -s "$DOSSIER/jugements_vierges.json"
+            test -s "$DOSSIER/CONSIGNES.md"
+            test "$(find "$DOSSIER/sources" -name 'CAS*.json' -type f | wc -l)" -eq 60
+            test ! -e "$DOSSIER/correspondances_privees.json"
+          done
 
       - name: Paquet du premier lecteur — aucune correspondance privée
         uses: actions/upload-artifact@v4
