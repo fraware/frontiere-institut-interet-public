@@ -85,7 +85,7 @@ def obtenir_avis_aval(principaux: Path, lies: Path) -> dict:
 
 def lire_candidats(chemin: Path) -> list[dict]:
     registre = json.loads(chemin.read_text(encoding="utf-8"))
-    if registre.get("version") != "avis-amont-cibles-boamp-v1":
+    if registre.get("version") not in {"avis-amont-cibles-boamp-v1", "avis-amont-cibles-boamp-v2"}:
         raise AvisAmontInvalide("Version du registre de candidats inconnue.")
     candidats = registre.get("candidats")
     if not isinstance(candidats, list) or not candidats or len(candidats) > 12:

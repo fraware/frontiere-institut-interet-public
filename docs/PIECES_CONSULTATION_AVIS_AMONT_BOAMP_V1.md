@@ -44,3 +44,14 @@ Le collecteur utilise les archives déjà vérifiées des six cas pilotes et de 
 Le programme d'inventaire conserve des indicateurs distincts : contenu des pièces obtenu, procès-verbal de réception obtenu et première utilisation scientifique documentée. Ces valeurs sont **fausses** jusqu'à examen d'une preuve primaire correspondante.
 
 Le prochain seuil scientifique est la récupération et la vérification de pièces publiques authentiques, puis de sources démontrant livraison, réception ou utilisation effective. Les annonces et les dates de marché sont insuffisantes pour mesurer le délai entre le besoin et la première contribution utile.
+
+
+## Révision datée du registre — version 2
+
+Le relevé du 11 octobre 2026, exécution [38186268810](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/38186268810), archive [11720150455](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/38186268810/artifacts/11720150455), confirme une divergence pour **Météo-France 24-119544** : document PDF daté du 18 octobre 2024 ; champ de parution du jeu DILA daté du **20 octobre 2024**. La réponse conservée possède l'empreinte SHA-256 `b0f582826fe0acf87b1f1b0a2eff7b8ee06e7133e960887c7db761d38cbf82c4`. L'avis Tisséo 26-55633 du 7 juin 2026 concorde avec le formulaire de l'appel d'offres initial par référence interne et acheteur.
+
+Le registre initial `evaluation/avis_amont_cibles_boamp_v1.json` est conservé sans modification. Le nouveau registre `evaluation/avis_amont_cibles_boamp_v2.json` contient la date de parution DILA pour Météo-France, conserve la date du PDF, documente la raison et référence la preuve archivée. La procédure active utilise v2. Les deux versions et les archives restent séparées.
+
+Le premier inventaire comporte neuf avis, dont **cinq avec une adresse inscrite dans un champ officiel de référence documentaire** ; certains liens pointent seulement vers des portails génériques. Le schéma distingue maintenant `lien_portail_generique` et `lien_dossier_consultation_identifie`. La deuxième catégorie est reconnue de façon conservatrice uniquement quand l'adresse sur `www.marches-publics.info` fournit un paramètre DCE avec identifiant numérique IDM. La règle n'établit aucune disponibilité des fichiers sous-jacents.
+
+La référence d'un dossier DCE, son contenu réellement téléchargé, une réception contractuelle et une première utilisation scientifique constituent quatre niveaux de preuve distincts. Aucun des trois derniers n'est attesté par ce cycle.

@@ -1,0 +1,24 @@
+{
+  "version": "avis-amont-cibles-boamp-v2",
+  "reprise_de": "evaluation/avis_amont_cibles_boamp_v1.json",
+  "raison_revision": "Le formulaire PDF de l'avis 24-119544 porte la date documentaire 2024-10-18 ; la dateparution de la notice brute de l'API DILA/BOAMP capturée le 11 octobre 2026 est 2024-10-20.",
+  "preuve_capture": "https://github.com/fraware/frontiere-institut-interet-public/actions/runs/38186268810/artifacts/11720150455",
+  "sha256_capture_amont_24_119544": "b0f582826fe0acf87b1f1b0a2eff7b8ee06e7133e960887c7db761d38cbf82c4",
+  "candidats": [
+    {
+      "avis_amont": "24-119544",
+      "date_attendue": "2024-10-20",
+      "date_fichier_pdf_boamp": "2024-10-18",
+      "avis_aval": "26-74896",
+      "reference_interne_normalisee": "METEOFRANCE2432F0342",
+      "source_piste": "https://www.boamp.fr/telechargements/FILES/PDF/2024/10/24-119544.pdf"
+    },
+    {
+      "avis_amont": "26-55633",
+      "date_attendue": "2026-06-07",
+      "avis_aval": "26-81640",
+      "reference_interne_normalisee": "M3202604147M",
+      "source_piste": "https://tisseo.marches-publics.info/avis/index.cfm?IDS=4210&fuseaction=pub.affPublication&refPub=MPI-pub-20261581295&serveur=MPI"
+    }
+  ]
+}

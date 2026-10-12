@@ -10,7 +10,7 @@ from collections import Counter
 import html
 import json
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urlsplit
 
 try:
     from scripts.collecter_notices_pilotes_boamp import verifier_capture
@@ -78,10 +78,22 @@ def references(notice: dict) -> list[dict]:
         if (cible.scheme not in ("https", "http") or not cible.netloc or
                 cible.username or cible.password):
             raise InventaireInvalide("URI documentaire non admissible.")
+        parametres = parse_qs(cible.query)
+        # Pour cette plateforme, seul un identifiant DCE explicite
+        # distingue un dossier déterminé du portail générique.
+        dossier_precis = (
+            cible.hostname == "www.marches-publics.info"
+            and parametres.get("type") == ["DCE"]
+            and len(parametres.get("IDM", [])) == 1
+            and parametres["IDM"][0].isdigit()
+        )
         documents.append({
             "origine_champ": origine, "identifiant_document_declare": identifiant,
             "uri_litterale": uri, "uri_normalisee": url,
-            "statut": "lien_vers_plateforme_cite_dans_avis",
+            "statut": (
+                "lien_dossier_consultation_identifie"
+                if dossier_precis else "lien_portail_generique"
+            ),
             "contenu_piece_obtenu": False,
         })
     return documents
@@ -134,6 +146,16 @@ def produire(principaux: Path, lies: Path, amont: Path, registre: Path) -> dict:
             any(d["uri_normalisee"] for d in x["references_documentaires_officielles"])
             for x in inventaire
         ),
+        "avis_avec_lien_dossier_precis": sum(
+            any(d["statut"] == "lien_dossier_consultation_identifie"
+                for d in x["references_documentaires_officielles"])
+            for x in inventaire
+        ),
+        "avis_avec_lien_portail_generique": sum(
+            any(d["statut"] == "lien_portail_generique"
+                for d in x["references_documentaires_officielles"])
+            for x in inventaire
+        ),
         "nombre_pieces_contenu_obtenu": 0,
         "preuves_de_reception_obtenues": 0,
         "preuves_de_premiere_utilisation_obtenues": 0,
@@ -162,6 +184,7 @@ def main() -> None:
         print(json.dumps({
             "avis": rapport["nombre_avis"],
             "avec_lien_consultation": rapport["avis_avec_lien_de_consultation"],
+            "avec_lien_dossier_precis": rapport["avis_avec_lien_dossier_precis"],
             "pieces_obtenues": rapport["nombre_pieces_contenu_obtenu"],
         }, ensure_ascii=False))
     except (OSError, ValueError, KeyError, TypeError) as exc:
