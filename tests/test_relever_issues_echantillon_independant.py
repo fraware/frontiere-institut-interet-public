@@ -139,3 +139,76 @@ def test_mutation_du_tirage_refusee(tmp_path):
     f.write_text(json.dumps(data), encoding="utf-8")
     with pytest.raises(ReleveInvalide):
         charger_tirage(f)
+
+
+
+def test_formulaire_mapa_attribution_sans_inventer_de_numero_lot():
+    source = json.dumps({
+        "MAPA": {"attribution": {
+            "attribution": {"resultat": {"attribue": {
+                "titulaire": {"PersonneMorale": "LIBRICIEL SCOP"}
+            }}},
+            "autresInformations": {
+                "dateAttribution": "2025-10-16",
+                "nbOffresRecues": "1",
+            },
+        }}
+    })
+    raw = json.dumps({"total_count": 1, "results": [{
+        "idweb": "25-121097", "dateparution": "2025-10-30",
+        "nature": "ATTRIBUTION", "donnees": source,
+    }]}).encode()
+    qual = qualifier(raw, "25-121097", "2025-10-30")
+    assert qual["statut_releve"] == "attribution_structuree_sans_numero_lot"
+    assert qual["format_source"] == "mapa"
+    assert qual["resultats_lots"] == []
+    assert qual["observations_hors_lots"][0]["titulaire_declare"] == "LIBRICIEL SCOP"
+    assert qual["observations_hors_lots"][0]["nombre_offres_declare"] == 1
+    assert qual["observations_hors_lots"][0]["identifiant_lot_verifie"] is None
+
+
+def test_fnsimple_attribution_en_texte_libre_n_est_pas_classee_par_lot():
+    phrase = "Lots 1 et 2 attribués à ECLIPSE ISTEC SAS"
+    raw = json.dumps({"total_count": 1, "results": [{
+        "idweb": "25-121801", "dateparution": "2025-10-31",
+        "nature": "ATTRIBUTION",
+        "donnees": json.dumps({"FNSimple": {"attribution": {
+            "attributionMarche": phrase,
+        }}}),
+    }]}).encode()
+    qual = qualifier(raw, "25-121801", "2025-10-31")
+    assert qual["statut_releve"] == "attribution_textuelle_non_lotifiee"
+    assert qual["resultats_lots"] == []
+    assert qual["observations_hors_lots"][0]["texte_officiel"] == phrase
+    assert qual["observations_hors_lots"][0]["qualification_regle_automatique"] is None
+    assert qual["observations_hors_lots"][0]["confirmation_independante"] is False
+
+
+def test_mapa_invalide_ne_cree_aucune_attribution():
+    raw = json.dumps({"total_count": 1, "results": [{
+        "idweb": "25-121097", "dateparution": "2025-10-30",
+        "nature": "ATTRIBUTION", "donnees": json.dumps({
+            "MAPA": {"attribution": {
+                "attribution": {"resultat": {"attribue": {
+                    "titulaire": {"PersonneMorale": "EXEMPLE"}
+                }}},
+                "autresInformations": {"nbOffresRecues": "0"},
+            }}
+        }),
+    }]}).encode()
+    qual = qualifier(raw, "25-121097", "2025-10-30")
+    assert qual["statut_releve"] == "resultat_officiel_structure_non_interpretee"
+    assert qual["resultats_lots"] == []
+    assert qual["format_source"] == "mapa"
+
+
+def test_formulaire_inconnu_reste_explicitement_ininterprete():
+    raw = json.dumps({"total_count": 1, "results": [{
+        "idweb": "25-121801", "dateparution": "2025-10-31",
+        "nature": "ATTRIBUTION", "donnees": json.dumps({
+            "AutreSchema": {"attribution": "indéfinie"}
+        }),
+    }]}).encode()
+    qual = qualifier(raw, "25-121801", "2025-10-31")
+    assert qual["statut_releve"] == "resultat_officiel_structure_non_interpretee"
+    assert qual["format_source"] == "autreschema"
