@@ -68,7 +68,6 @@ def remplir(chemin, nom, *, chiffres=None):
     for cas in j["jugements"]:
         cas["statut_avis"] = "SANS_RESULTAT_DANS_CET_AVIS"
         cas["preuve_statut"] = "/results/0/nature"
-        cas["cause_de_non_attribution"] = "NON_ETABLIE"
     if chiffres is not None:
         exemple = j["jugements"][0]
         exemple["statut_avis"] = "RESULTATS_PAR_LOT"
@@ -76,6 +75,7 @@ def remplir(chemin, nom, *, chiffres=None):
             "lot": "LOT-0001", "decision": "NON_ATTRIBUE",
             "code_motif": "other", "offres_totales": chiffres,
             "offres_electroniques": None,
+            "cause_non_attribution": "NON_ETABLIE", "preuve_causale": "",
             "preuve_decision": "/EFORMS/.../cbc:TenderResultCode",
             "preuve_effectifs": "/EFORMS/.../efbc:StatisticsNumeric",
         }]
@@ -181,7 +181,7 @@ def test_cause_documentee_exige_piece_specifique(tmp_path, monkeypatch):
     prep.preparer(entree, dossier)
     premier = dossier / "relecteur_1" / "jugements_vierges.json"
     formulaire = remplir(premier, "lecteur-A")
-    formulaire["jugements"][0]["cause_de_non_attribution"] = "DOCUMENTEE"
+    formulaire["jugements"][0]["lots"][0]["cause_non_attribution"] = "DOCUMENTEE"
     premier.write_text(json.dumps(formulaire))
     paquet = json.loads((dossier / "paquet_commun.json").read_text())
     with pytest.raises(JugementInvalide, match="sans preuve distincte"):
