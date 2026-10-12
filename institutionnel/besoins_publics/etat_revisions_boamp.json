@@ -2,25 +2,25 @@
   "aucune_variation_ne_prouve_stabilite_totale": true,
   "changements_observes": [],
   "completude_historique_etablie": false,
-  "controle_le": "2026-10-12T22:04:33+00:00",
+  "controle_le": "2026-10-12T22:38:23+00:00",
   "controles": [
     {
-      "jour": "2025-01-24",
+      "jour": "2025-01-28",
       "retour_releve_initial": false,
       "variation": false
     },
     {
-      "jour": "2025-01-25",
+      "jour": "2025-01-29",
       "retour_releve_initial": false,
       "variation": false
     },
     {
-      "jour": "2025-01-26",
+      "jour": "2025-01-30",
       "retour_releve_initial": false,
       "variation": false
     },
     {
-      "jour": "2025-01-27",
+      "jour": "2025-01-31",
       "retour_releve_initial": false,
       "variation": false
     },
@@ -35,7 +35,7 @@
       "variation": false
     }
   ],
-  "dernier_jour_relecture_circulaire": "2025-01-27",
+  "dernier_jour_relecture_circulaire": "2025-01-31",
   "erreurs": [],
   "etat_connu_par_jour": {
     "2025-01-08": {
@@ -117,6 +117,22 @@
     "2025-01-27": {
       "observe_le": "2026-10-12T22:04:33+00:00",
       "sha256_gzip": "dccd299e76e545c5e5540068bbe873c8409d74c2fa0a4f5b24ed2392e2da098b"
+    },
+    "2025-01-28": {
+      "observe_le": "2026-10-12T22:38:23+00:00",
+      "sha256_gzip": "e353fa4f05c8db7d7736b584242772eb219ddcec3fedcdb0baf52940c5d81167"
+    },
+    "2025-01-29": {
+      "observe_le": "2026-10-12T22:38:23+00:00",
+      "sha256_gzip": "8b5777a3abf264693538b8fae31f04fee1abf86f87ba6ffde561d4dc8c41fbf1"
+    },
+    "2025-01-30": {
+      "observe_le": "2026-10-12T22:38:23+00:00",
+      "sha256_gzip": "11281a752788284f9d5329c09acd3352001e2212d671b9932c47d6a1fd2b290a"
+    },
+    "2025-01-31": {
+      "observe_le": "2026-10-12T22:38:23+00:00",
+      "sha256_gzip": "5d75dc1bed37e5fd5f15b2dbf0206b656a66d178d894c8b824a4180f72874de1"
     },
     "2026-09-08": {
       "observe_le": "2026-10-11T18:03:28+00:00",
@@ -207,11 +223,11 @@
       "sha256_gzip": "5a17f5a4d152a258d48c39a29f9bdd5ae69d4d6f04c2bbede2d5802b8e0ea629"
     },
     "2026-09-30": {
-      "observe_le": "2026-10-12T22:04:33+00:00",
+      "observe_le": "2026-10-12T22:38:23+00:00",
       "sha256_gzip": "d5901bbfc1c69c8c6bec27ba723d28e7dea71fc01e3a4b1402327e8f7773bad9"
     },
     "2026-10-01": {
-      "observe_le": "2026-10-12T22:04:33+00:00",
+      "observe_le": "2026-10-12T22:38:23+00:00",
       "sha256_gzip": "e733cd80fc9fa22fe2ac6fe148517d1c07cf68fb5994e9149662494b7b69ae53"
     }
   },
