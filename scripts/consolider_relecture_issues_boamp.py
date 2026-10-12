@@ -22,7 +22,7 @@ STATUTS = {"RESULTATS_PAR_LOT", "ATTRIBUTION_SANS_LOT",
            "SANS_RESULTAT_DANS_CET_AVIS", "INDETERMINE"}
 DECISIONS = {"ATTRIBUE", "NON_ATTRIBUE", "INDETERMINE"}
 CAUSES = {"NON_ETABLIE", "DOCUMENTEE", "INDETERMINEE"}
-CHAMPS = ("decision", "code_motif", "offres_totales", "offres_electroniques")
+CHAMPS = ("decision", "code_motif", "offres_totales", "offres_electroniques", "cause_non_attribution")
 
 
 class JugementInvalide(ValueError):
@@ -61,15 +61,10 @@ def verifier_formulaire(paquet: dict, fichier: Path, empreinte: str) -> dict:
     for i, j in enumerate(jugements):
         code = attendu[i]
         statut = j.get("statut_avis")
-        cause = j.get("cause_de_non_attribution")
-        if statut not in STATUTS or cause not in CAUSES:
-            raise JugementInvalide("Avis ou cause non jugés : " + code)
+        if statut not in STATUTS:
+            raise JugementInvalide("Avis non jugé : " + code)
         if not isinstance(j.get("preuve_statut"), str) or not j["preuve_statut"].strip():
             raise JugementInvalide("Preuve de statut manquante : " + code)
-        if cause == "DOCUMENTEE" and (
-                not isinstance(j.get("preuve_causale_supplementaire"), str)
-                or not j["preuve_causale_supplementaire"].strip()):
-            raise JugementInvalide("Cause annoncée sans preuve distincte : " + code)
         lots = j.get("lots")
         if not isinstance(lots, list):
             raise JugementInvalide("Liste de lots absente.")
@@ -86,6 +81,16 @@ def verifier_formulaire(paquet: dict, fichier: Path, empreinte: str) -> dict:
             deja.add(nom)
             if lot.get("decision") not in DECISIONS:
                 raise JugementInvalide("Décision de lot invalide.")
+            cause = lot.get("cause_non_attribution")
+            if lot["decision"] == "ATTRIBUE":
+                if cause != "SANS_OBJET":
+                    raise JugementInvalide("Cause de non-attribution inappropriée.")
+            elif cause not in CAUSES:
+                raise JugementInvalide("Cause du lot non jugée.")
+            if cause == "DOCUMENTEE" and (
+                    not isinstance(lot.get("preuve_causale"), str)
+                    or not lot["preuve_causale"].strip()):
+                raise JugementInvalide("Cause annoncée sans preuve distincte.")
             if (lot.get("code_motif") is not None and
                     (not isinstance(lot["code_motif"], str)
                      or not lot["code_motif"].strip())):
@@ -128,9 +133,7 @@ def consolider(paquet_path: Path, lecture_1: Path, lecture_2: Path,
     for un, deux in zip(a["jugements"], b["jugements"]):
         code = un["cas"]
         statut_accord = un["statut_avis"] == deux["statut_avis"]
-        cause_accord = un["cause_de_non_attribution"] == deux["cause_de_non_attribution"]
         accords["avis_statut_accord"] += int(statut_accord)
-        accords["avis_cause_accord"] += int(cause_accord)
         lots_a = {lot["lot"]: lot for lot in un["lots"]}
         lots_b = {lot["lot"]: lot for lot in deux["lots"]}
         identifiants_egaux = set(lots_a) == set(lots_b)
@@ -139,10 +142,6 @@ def consolider(paquet_path: Path, lecture_1: Path, lecture_2: Path,
             desaccords.append({"cas": code, "dimension": "statut_avis",
                                "lecteur_1": un["statut_avis"],
                                "lecteur_2": deux["statut_avis"]})
-        if not cause_accord:
-            desaccords.append({"cas": code, "dimension": "cause",
-                               "lecteur_1": un["cause_de_non_attribution"],
-                               "lecteur_2": deux["cause_de_non_attribution"]})
         if not identifiants_egaux:
             desaccords.append({"cas": code, "dimension": "identifiants_lots",
                                "lecteur_1": sorted(lots_a),
@@ -160,7 +159,7 @@ def consolider(paquet_path: Path, lecture_1: Path, lecture_2: Path,
                     })
         resultats.append({
             "cas": code, "statut_accord": statut_accord,
-            "cause_accord": cause_accord, "identifiants_lots_accord": identifiants_egaux,
+            "identifiants_lots_accord": identifiants_egaux,
             "aucune_reference_automatiquement_etablie": True,
         })
     resultat = {
