@@ -180,7 +180,7 @@ def test_cause_documentee_exige_piece_specifique(tmp_path, monkeypatch):
     dossier = tmp_path / "pack"
     prep.preparer(entree, dossier)
     premier = dossier / "relecteur_1" / "jugements_vierges.json"
-    formulaire = remplir(premier, "lecteur-A")
+    formulaire = remplir(premier, "lecteur-A", chiffres=0)
     formulaire["jugements"][0]["lots"][0]["cause_non_attribution"] = "DOCUMENTEE"
     premier.write_text(json.dumps(formulaire))
     paquet = json.loads((dossier / "paquet_commun.json").read_text())
