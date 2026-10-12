@@ -62,7 +62,7 @@ def _telecharger(source, url):
 
 def test_catalogue_reel_et_domaines():
     sources = verifier_sources(_configuration())
-    assert len(sources) == 3
+    assert len(sources) == 9
     assert {src["type"] for src in sources} == {"rss", "bluesky"}
     assert all(src["active"] for src in sources)
 
@@ -73,9 +73,9 @@ def test_collecte_indexe_et_dedoublonne():
         config, _ancien(), _etat(),
         telecharger=_telecharger, horodatage="2026-10-12T12:00:00+00:00",
     )
-    assert etat["sources_reussies"] == 3
-    assert etat["nouveaux_signaux"] == 3
-    assert etat["nombre_signaux_distincts"] == 3
+    assert etat["sources_reussies"] == 9
+    assert etat["nouveaux_signaux"] == 9
+    assert etat["nombre_signaux_distincts"] == 9
     assert not etat["couverture_exhaustive_des_besoins_publics"]
     assert not etat["qualification_de_besoins_effectuee"]
     assert all(x["nature_signal"] == "publication_publique_non_qualifiee"
@@ -131,7 +131,7 @@ def test_revision_effective_comptee_une_fois():
     apres, bilan = executer(config, avant, etat, modifie,
                             "2026-10-12T18:00:00+00:00")
     assert bilan["revisions"] == 1
-    assert bilan["nombre_signaux_distincts"] == 3
+    assert bilan["nombre_signaux_distincts"] == 9
     entree = next(x for x in apres["observations"] if x["source_id"] == "anr_appels")
     assert entree["nombre_revisions"] == 1
     assert entree["observe_initialement_le"] == "2026-10-12T12:00:00+00:00"
@@ -156,7 +156,7 @@ def test_pas_de_dtd_ni_de_format_arbitraire():
 
 
 def test_identite_officielle_did_filtre_repartages_et_tiers():
-    src = _configuration()["sources"][-1]
+    src = next(x for x in _configuration()["sources"] if x["id"] == "anr_bluesky")
     lignes = extraire_bluesky(BSKY, src)
     assert len(lignes) == 1
     assert "/profile/agencerecherche.bsky.social/post/3m12345" in lignes[0]["lien"]
@@ -168,7 +168,7 @@ def test_hote_et_acces_restreints():
     with pytest.raises(CollecteInvalide):
         verifier_sources(original)
     original = _configuration()
-    original["sources"][-1]["did"] = "agencerecherche.bsky.social"
+    next(x for x in original["sources"] if x["id"] == "anr_bluesky")["did"] = "agencerecherche.bsky.social"
     with pytest.raises(CollecteInvalide):
         verifier_sources(original)
 
