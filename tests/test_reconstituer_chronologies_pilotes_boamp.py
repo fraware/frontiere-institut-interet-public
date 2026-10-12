@@ -166,3 +166,65 @@ def test_absence_statistique_reste_inconnue():
     bilan = analyser_attribution(attribution())
     assert bilan["resultats_par_lot"][0]["statistiques_soumissions"] == []
     assert bilan["resultats_par_lot"][1]["statistiques_soumissions"] == []
+
+
+def test_statistique_repetee_identique_conserve_les_deux_provenances():
+    valeurs = [
+        statistique("t-esubm", "2"),
+        statistique("t-sme", "0"),
+        statistique("t-esubm", "2"),
+    ]
+    bilan = analyser_attribution(avec_statistiques(
+        valeurs, statistique("t-esubm", "0")
+    ))
+    mesure = bilan["resultats_par_lot"][0]["statistiques_soumissions"][0]
+    assert mesure["effectif_declare"] == 2
+    assert len(mesure["occurrences_identiques"]) == 1
+    assert mesure["occurrences_identiques"][0]["origine_effectif"].endswith(
+        "/efac:ReceivedSubmissionsStatistics/2/efbc:StatisticsNumeric"
+    )
+    assert len(bilan["resultats_par_lot"][0]["statistiques_soumissions"]) == 2
+
+
+def test_statistique_repetee_contradictoire_refusee():
+    valeurs = [
+        statistique("t-esubm", "2"),
+        statistique("t-esubm", "3"),
+    ]
+    with pytest.raises(ChronologieInvalide, match="contradictoires"):
+        analyser_attribution(avec_statistiques(
+            valeurs, statistique("t-esubm", "0")
+        ))
+
+
+def test_trois_contrats_sur_un_lot_sont_preserves_sans_reference_unique():
+    avis = attribution()
+    d = json.loads(avis["donnees"])
+    resultats = d["EFORMS"]["ContractAwardNotice"][
+        "ext:UBLExtensions"]["ext:UBLExtension"]["ext:ExtensionContent"][
+        "efext:EformsExtension"]["efac:NoticeResult"]["efac:LotResult"]
+    resultats[0]["efac:SettledContract"] = [
+        {"cbc:ID": {"#text": f"CON-000{i}"}} for i in range(1, 4)
+    ]
+    avis["donnees"] = json.dumps(d)
+    bilan = analyser_attribution(avis)
+    lot = bilan["resultats_par_lot"][0]
+    assert lot["statut_lot"] == "attribue"
+    assert lot["contrats_references"] == ["CON-0001", "CON-0002", "CON-0003"]
+    assert lot["contrat_reference"] is None
+    assert bilan["resultats_par_lot"][1]["contrats_references"] == []
+
+
+def test_contrats_repetes_sur_un_meme_lot_refuses():
+    avis = attribution()
+    d = json.loads(avis["donnees"])
+    resultats = d["EFORMS"]["ContractAwardNotice"][
+        "ext:UBLExtensions"]["ext:UBLExtension"]["ext:ExtensionContent"][
+        "efext:EformsExtension"]["efac:NoticeResult"]["efac:LotResult"]
+    resultats[0]["efac:SettledContract"] = [
+        {"cbc:ID": {"#text": "CON-0001"}},
+        {"cbc:ID": {"#text": "CON-0001"}},
+    ]
+    avis["donnees"] = json.dumps(d)
+    with pytest.raises(ChronologieInvalide, match="plusieurs fois"):
+        analyser_attribution(avis)
