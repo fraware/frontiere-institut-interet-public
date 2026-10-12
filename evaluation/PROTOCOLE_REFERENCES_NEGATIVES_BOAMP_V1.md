@@ -19,7 +19,7 @@ L'analyse automatique antérieure décrit 28 résultats de lots attribués dans 
 python scripts/preparer_relecture_issues_boamp.py \
   --archive /donnees/frontiere-etats-offres-et-motifs-20261012.zip \
   --sortie /espace/prive/relecture-issues-001
-\`\`\``
+````
 
 Le programme contrôle l'intégrité ZIP, l'identité, la date officielle et l'empreinte SHA-256 de chaque réponse, les 60 identifiants des deux tirages, leur ordre et leur séparation. Il s'interrompt si la sélection ou les octets changent et refuse d'écraser un dossier existant.
 
@@ -47,7 +47,7 @@ python scripts/consolider_relecture_issues_boamp.py \
   --lecture-1 /espace/prive/relecture-issues-001/relecteur_1/jugements_vierges.json \
   --lecture-2 /espace/prive/relecture-issues-001/relecteur_2/jugements_vierges.json \
   --sortie /espace/prive/relecture-issues-001/bilan-double-lecture.json
-\`\`\``
+````
 
 Le vérificateur refuse des formulaires incomplets, deux identifiants de lecteur égaux, des lots répétés, des comptes incohérents, des chiffres sans localisation documentaire et un jugement causal `DOCUMENTEE` sans pièce propre. Il contrôle le rattachement des avis au même paquet et mesure l'accord séparément sur le statut de l'avis, les identifiants de lots, les décisions, les motifs, les deux effectifs et les jugements de causalité.
 
