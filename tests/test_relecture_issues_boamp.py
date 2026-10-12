@@ -76,8 +76,11 @@ def remplir(chemin, nom, *, chiffres=None):
             "code_motif": "other", "offres_totales": chiffres,
             "offres_electroniques": None,
             "cause_non_attribution": "NON_ETABLIE", "preuve_causale": "",
+            "preuve_identifiant_lot": "/EFORMS/exemple/TenderLot/ID",
             "preuve_decision": "/EFORMS/.../cbc:TenderResultCode",
-            "preuve_effectifs": "/EFORMS/.../efbc:StatisticsNumeric",
+            "preuve_motif": "/EFORMS/exemple/DecisionReasonCode",
+            "preuve_offres_totales": "/EFORMS/.../efbc:StatisticsNumeric",
+            "preuve_offres_electroniques": None,
         }]
     chemin.write_text(json.dumps(j, ensure_ascii=False))
     return j
@@ -167,7 +170,7 @@ def test_une_deduction_sans_preuve_est_refusee(tmp_path, monkeypatch):
     prep.preparer(entree, dossier)
     premier = dossier / "relecteur_1" / "jugements_vierges.json"
     formulaire = remplir(premier, "lecteur-A", chiffres=0)
-    formulaire["jugements"][0]["lots"][0]["preuve_effectifs"] = ""
+    formulaire["jugements"][0]["lots"][0]["preuve_offres_totales"] = ""
     premier.write_text(json.dumps(formulaire))
     paquet = json.loads((dossier / "paquet_commun.json").read_text())
     with pytest.raises(JugementInvalide, match="sans passage source"):
