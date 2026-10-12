@@ -102,13 +102,20 @@ def verifier_formulaire(paquet: dict, fichier: Path, empreinte: str) -> dict:
             total, electroniques = lot.get("offres_totales"), lot.get("offres_electroniques")
             if total is not None and electroniques is not None and electroniques > total:
                 raise JugementInvalide("Effectif électronique supérieur au total.")
-            if (not isinstance(lot.get("preuve_decision"), str)
-                    or not lot["preuve_decision"].strip()):
-                raise JugementInvalide("Preuve de décision de lot manquante.")
-            if (total is not None or electroniques is not None) and (
-                    not isinstance(lot.get("preuve_effectifs"), str)
-                    or not lot["preuve_effectifs"].strip()):
-                raise JugementInvalide("Chiffres d'offres sans passage source.")
+            for champ in ("preuve_identifiant_lot", "preuve_decision"):
+                if not isinstance(lot.get(champ), str) or not lot[champ].startswith("/"):
+                    raise JugementInvalide("Preuve de numéro ou décision de lot manquante.")
+            if lot.get("code_motif") is not None and (
+                    not isinstance(lot.get("preuve_motif"), str)
+                    or not lot["preuve_motif"].startswith("/")):
+                raise JugementInvalide("Motif administratif sans preuve source.")
+            for nombre, preuve in (
+                    ("offres_totales", "preuve_offres_totales"),
+                    ("offres_electroniques", "preuve_offres_electroniques")):
+                if lot.get(nombre) is not None and (
+                        not isinstance(lot.get(preuve), str)
+                        or not lot[preuve].startswith("/")):
+                    raise JugementInvalide("Chiffres d'offres sans passage source.")
     return formulaire
 
 
