@@ -324,7 +324,7 @@ def executer(
         src["id"]: src for src in ancien_etat.get("sources", [])
     } if isinstance(ancien_etat, dict) else {}
     bilans = []
-    reussites = nouvelles = revisions = 0
+    reussites = nouvelles = revisions = enrichissements = 0
     for src in sources:
         etat = {
             "id": src["id"], "nom": src["nom"],
@@ -332,6 +332,7 @@ def executer(
             "etat": "inactif" if not src["active"] else "echec",
             "dernier_succes": precedents.get(src["id"], {}).get("dernier_succes"),
             "elements_lus": 0, "nouveaux": 0, "revisions": 0,
+            "enrichissements_metadonnees": 0,
             "erreur": None,
         }
         if not src["active"]:
@@ -358,11 +359,32 @@ def executer(
                     nouvelles += 1
                     etat["nouveaux"] += 1
                 elif precedent.get("empreinte_contenu") != courant["empreinte_contenu"]:
+                    # L'empreinte inclut des métadonnées. Une nouvelle
+                    # extraction de date n'est pas une édition du document.
+                    champs_document = ("titre", "description", "lien")
+                    changement_document = any(
+                        precedent.get(champ) != courant.get(champ)
+                        for champ in champs_document
+                    )
                     courant["observe_initialement_le"] = precedent["observe_initialement_le"]
-                    courant["nombre_revisions"] = precedent.get("nombre_revisions", 0) + 1
+                    courant["nombre_revisions"] = (
+                        precedent.get("nombre_revisions", 0)
+                        + int(changement_document)
+                    )
+                    courant["nombre_enrichissements_metadonnees"] = (
+                        precedent.get("nombre_enrichissements_metadonnees", 0)
+                        + int(not changement_document)
+                    )
+                    # Conserver toute annotation de rectification antérieure.
+                    if "rectification_extraction" in precedent:
+                        courant["rectification_extraction"] = precedent["rectification_extraction"]
                     index[identifiant] = courant
-                    revisions += 1
-                    etat["revisions"] += 1
+                    if changement_document:
+                        revisions += 1
+                        etat["revisions"] += 1
+                    else:
+                        enrichissements += 1
+                        etat["enrichissements_metadonnees"] += 1
             etat["etat"] = "succes"
             etat["dernier_succes"] = date_cycle
             reussites += 1
@@ -381,6 +403,7 @@ def executer(
             "sources": bilans, "sources_reussies": reussites,
             "sources_en_echec": sum(s["etat"] == "echec" for s in bilans),
             "nouveaux_signaux": nouvelles, "revisions": revisions,
+            "enrichissements_metadonnees": enrichissements,
             "nombre_signaux_distincts": len(index),
             "couverture_exhaustive_des_besoins_publics": False,
             "qualification_de_besoins_effectuee": False,
