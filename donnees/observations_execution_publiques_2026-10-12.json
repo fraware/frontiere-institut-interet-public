@@ -1,0 +1,55 @@
+{
+  "version": "1",
+  "date_recherche": "2026-10-12",
+  "objet": "Compléments de cas d'exécution fondés sur des documents primaires, en séparant attestations publiques, actions réelles et dates inconnues.",
+  "observations": [
+    {
+      "id_observation": "OBS-S024-20240214",
+      "id_signal": "S024",
+      "nature": "attestation_retrospective_datee",
+      "evenement": "Le 14 février 2024, la DDTM des Côtes-d'Armor indique publiquement avoir déjà sollicité l'Ifremer, le Cerema et le Shom pour des expertises scientifiques sur des sujets halieutiques, de turbidité et d'acoustique.",
+      "date_attestation": "2024-02-14",
+      "date_action_exacte": null,
+      "borne_superieure_action_collective": "2024-02-14",
+      "statut_borne": "au_moins_une_sollicitation_anterieure_ou_contemporaine_a_l_attestation",
+      "source": {
+        "url": "https://www.debatpublic.fr/sites/default/files/2024-05/Verbatim-Visite-Parc-eolien-St-Brieuc-14022024.pdf",
+        "organisme": "Commission nationale du débat public",
+        "intitule": "Compte rendu de visite-débat du 14 février 2024",
+        "page_pdf": 4,
+        "intervenante": "Léa Nativel, DDTM des Côtes-d'Armor"
+      },
+      "inconnues": [
+        "dates de sollicitation propres à chaque établissement",
+        "dates de remise et contenu des avis correspondants",
+        "délai réel entre saisine et remise",
+        "preuve que chacun des établissements a effectivement remis un avis"
+      ],
+      "portee": "L'attestation publique précède le rapport IGEDD de juin 2025 ; le délai de production d'un avis reste indéterminé."
+    },
+    {
+      "id_observation": "OBS-S001-FICHE2025",
+      "id_signal": "S001",
+      "nature": "description_publique_poste_non_datee",
+      "evenement": "Fiche de poste d'un chargé d'études statistiques à la Direction de l'Observation et de l'Evaluation de France compétences : maîtrise de R et CDD de neuf mois.",
+      "date_attestation": null,
+      "date_action_exacte": null,
+      "borne_superieure_action_collective": null,
+      "statut_borne": "aucune_date_d_action_etablie",
+      "source": {
+        "url": "https://www.francecompetences.fr/app/uploads/2025/04/Fiche-de-poste_Charge-detudes-statistiques_2025.pdf",
+        "organisme": "France compétences",
+        "intitule": "Fiche de poste — Chargé(e) d'études statistiques",
+        "page_pdf": 2,
+        "complement_page_pdf": 3
+      },
+      "inconnues": [
+        "date effective de publication du poste : le répertoire de l'URL n'est pas une date probante",
+        "identité éventuelle avec la recherche de remplacement signalée au Sénat",
+        "date de recrutement ou première contribution utile",
+        "date de rétablissement de la capacité R"
+      ],
+      "portee": "Le besoin public et les conditions contractuelles sont identifiés ; aucun recrutement ni rétablissement de capacité n'est attesté."
+    }
+  ]
+}
