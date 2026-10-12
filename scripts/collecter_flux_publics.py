@@ -161,6 +161,40 @@ def _element(parent: ET.Element, nom: str) -> str:
     return ""
 
 
+def _lien_syndication(item: ET.Element, *, atom: bool) -> str:
+    """Lire les liens RSS classiques, Atom et les liens de repli explicites.
+
+    Une valeur GUID n'est un lien que si elle est déjà une URL absolue. On
+    n'invente jamais d'adresse depuis un titre ou un identifiant opaque.
+    """
+    for element in item:
+        if element.tag.rsplit("}", 1)[-1] != "link":
+            continue
+        if atom and element.attrib.get("rel", "alternate") != "alternate":
+            continue
+        contenu = "".join(element.itertext()).strip()
+        if contenu:
+            return contenu
+        href = element.attrib.get("href")
+        if isinstance(href, str) and href.strip():
+            return href.strip()
+    guid = _element(item, "guid")
+    return guid if urlsplit(guid).scheme == "https" else ""
+
+
+def _date_syndication(item: ET.Element, *, atom: bool) -> str | None:
+    """Conserver les dates publiées explicitement, y compris dc:date."""
+    champs = (
+        ("updated", "published", "date")
+        if atom else ("pubDate", "date", "published", "updated")
+    )
+    for champ in champs:
+        instant = _date(_element(item, champ))
+        if instant is not None:
+            return instant
+    return None
+
+
 def extraire_syndication(contenu: bytes, source: dict) -> list[dict]:
     """Accepter les formats RSS 2.0 et Atom publics, sans entités DTD."""
     if b"<!DOCTYPE" in contenu.upper() or b"<!ENTITY" in contenu.upper():
@@ -182,13 +216,7 @@ def extraire_syndication(contenu: bytes, source: dict) -> list[dict]:
     resultats = []
     for item in entrees[:MAX_ELEMENTS_SOURCE]:
         titre = _texte(_element(item, "title"), 260)
-        lien = _element(item, "link")
-        if atom:
-            lien = next((
-                e.attrib.get("href", "") for e in item
-                if e.tag.rsplit("}", 1)[-1] == "link"
-                and e.attrib.get("rel", "alternate") == "alternate"
-            ), "")
+        lien = _lien_syndication(item, atom=atom)
         cle = _element(item, "id" if atom else "guid") or lien
         if not cle or not titre:
             continue
@@ -199,7 +227,7 @@ def extraire_syndication(contenu: bytes, source: dict) -> list[dict]:
             and not p.username and not p.password and len(lien) <= 2048
             else None
         )
-        date = _date(_element(item, "updated" if atom else "pubDate"))
+        date = _date_syndication(item, atom=atom)
         texte = _texte(_element(item, "summary" if atom else "description"), 500)
         resultats.append({
             "cle_distante": _texte(cle, 900), "titre": titre,
