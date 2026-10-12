@@ -221,3 +221,55 @@ def test_guid_opaque_ne_devient_pas_un_lien_invente():
     )[0]
     assert entree["lien"] is None
     assert entree["date_publication"] is None
+
+
+def test_enrichissement_date_sans_revision_du_document():
+    """Une date auparavant non lue ne constitue pas une édition de l'avis."""
+    config = _configuration()
+    origine, premier_etat = executer(
+        config, _ancien(), _etat(), _telecharger,
+        "2026-10-12T21:58:28+00:00",
+    )
+    ajout_date = RSS.replace(
+        b"</pubDate>", b"</pubDate>"
+    ).replace(
+        b"Mon, 12 Oct 2026 10:00:00 GMT",
+        b"Tue, 13 Oct 2026 10:00:00 GMT",
+    )
+
+    def relecture(source, url):
+        return ajout_date if source["id"] == "anr_appels" else _telecharger(source, url)
+
+    suivant, etat = executer(
+        config, origine, premier_etat, relecture,
+        "2026-10-12T22:05:11+00:00",
+    )
+    original = next(v for v in origine["observations"] if v["source_id"] == "anr_appels")
+    nouveau = next(v for v in suivant["observations"] if v["source_id"] == "anr_appels")
+    assert original["titre"] == nouveau["titre"]
+    assert original["description"] == nouveau["description"]
+    assert etat["revisions"] == 0
+    assert etat["enrichissements_metadonnees"] == 1
+    assert nouveau["nombre_revisions"] == 0
+    assert nouveau["nombre_enrichissements_metadonnees"] == 1
+
+
+def test_rectificatif_du_second_cycle_reclasse_100_dates():
+    """Le rectificatif conserve les annotations et les observations originales."""
+    chemin = Path("institutionnel/flux_publics/observations.json")
+    etat_chemin = Path("institutionnel/flux_publics/etat_collecte.json")
+    if not chemin.is_file() or not etat_chemin.is_file():
+        pytest.skip("Premières collectes publiques non encore publiées")
+    observations = json.loads(chemin.read_text(encoding="utf-8"))["observations"]
+    etat = json.loads(etat_chemin.read_text(encoding="utf-8"))
+    classes = [x for x in observations if x.get("rectification_extraction")]
+    assert len(classes) == 100
+    assert all(
+        x["nombre_revisions"] == 0
+        and x["nombre_enrichissements_metadonnees"] == 1
+        and x["source_id"] == "service_public_pro"
+        for x in classes
+    )
+    assert etat["rectification_historique"]["nombre_publications_concernees"] == 100
+    assert etat["revisions"] == 0
+    assert etat["enrichissements_metadonnees"] == 100
