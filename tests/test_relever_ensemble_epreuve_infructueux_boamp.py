@@ -57,9 +57,9 @@ def test_releve_24_consultations_toujours_indeterminees(tmp_path, monkeypatch):
 
 def test_empreinte_incoherente_refusee(tmp_path, monkeypatch):
     chemin, _ = registre(tmp_path, monkeypatch)
-    registre = json.loads(chemin.read_text())
-    registre["cas"][0]["avis"] = "26-30147"
-    chemin.write_text(json.dumps(registre))
+    contenu = json.loads(chemin.read_text())
+    contenu["cas"][0]["avis"] = "26-30147"
+    chemin.write_text(json.dumps(contenu))
     with pytest.raises(module.EpreuveInvalide, match="modifié"):
         module.charger(chemin)
 
