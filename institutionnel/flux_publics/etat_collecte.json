@@ -1,0 +1,121 @@
+{
+  "couverture_exhaustive_des_besoins_publics": false,
+  "cycle_le": "2026-10-12T21:58:28+00:00",
+  "nombre_signaux_distincts": 282,
+  "nouveaux_signaux": 282,
+  "qualification_de_besoins_effectuee": false,
+  "revisions": 0,
+  "sources": [
+    {
+      "actif": true,
+      "cadence_heures": 6,
+      "dernier_succes": "2026-10-12T21:58:28+00:00",
+      "elements_lus": 16,
+      "erreur": null,
+      "etat": "succes",
+      "id": "anr_appels",
+      "nom": "ANR — appels à projets",
+      "nouveaux": 16,
+      "revisions": 0
+    },
+    {
+      "actif": true,
+      "cadence_heures": 12,
+      "dernier_succes": "2026-10-12T21:58:28+00:00",
+      "elements_lus": 100,
+      "erreur": null,
+      "etat": "succes",
+      "id": "service_public_pro",
+      "nom": "DILA — actualités des professionnels",
+      "nouveaux": 100,
+      "revisions": 0
+    },
+    {
+      "actif": true,
+      "cadence_heures": 6,
+      "dernier_succes": "2026-10-12T21:58:28+00:00",
+      "elements_lus": 92,
+      "erreur": null,
+      "etat": "succes",
+      "id": "anr_bluesky",
+      "nom": "ANR — compte social institutionnel Bluesky",
+      "nouveaux": 92,
+      "revisions": 0
+    },
+    {
+      "actif": true,
+      "cadence_heures": 6,
+      "dernier_succes": "2026-10-12T21:58:28+00:00",
+      "elements_lus": 20,
+      "erreur": null,
+      "etat": "succes",
+      "id": "anr_actualites",
+      "nom": "ANR — actualités scientifiques",
+      "nouveaux": 20,
+      "revisions": 0
+    },
+    {
+      "actif": true,
+      "cadence_heures": 6,
+      "dernier_succes": "2026-10-12T21:58:28+00:00",
+      "elements_lus": 10,
+      "erreur": null,
+      "etat": "succes",
+      "id": "economie_actualites",
+      "nom": "Ministères économiques et financiers — actualités",
+      "nouveaux": 10,
+      "revisions": 0
+    },
+    {
+      "actif": true,
+      "cadence_heures": 12,
+      "dernier_succes": "2026-10-12T21:58:28+00:00",
+      "elements_lus": 10,
+      "erreur": null,
+      "etat": "succes",
+      "id": "economie_achats_etat",
+      "nom": "Direction des achats de l'État — actualités",
+      "nouveaux": 10,
+      "revisions": 0
+    },
+    {
+      "actif": true,
+      "cadence_heures": 12,
+      "dernier_succes": "2026-10-12T21:58:28+00:00",
+      "elements_lus": 10,
+      "erreur": null,
+      "etat": "succes",
+      "id": "economie_affaires_juridiques",
+      "nom": "Direction des affaires juridiques — actualités",
+      "nouveaux": 10,
+      "revisions": 0
+    },
+    {
+      "actif": true,
+      "cadence_heures": 12,
+      "dernier_succes": "2026-10-12T21:58:28+00:00",
+      "elements_lus": 14,
+      "erreur": null,
+      "etat": "succes",
+      "id": "economie_bulletins_officiels",
+      "nom": "Ministères économiques — bulletin officiel",
+      "nouveaux": 14,
+      "revisions": 0
+    },
+    {
+      "actif": true,
+      "cadence_heures": 12,
+      "dernier_succes": "2026-10-12T21:58:28+00:00",
+      "elements_lus": 10,
+      "erreur": null,
+      "etat": "succes",
+      "id": "economie_tracfin",
+      "nom": "Tracfin — actualités institutionnelles",
+      "nouveaux": 10,
+      "revisions": 0
+    }
+  ],
+  "sources_en_echec": 0,
+  "sources_reussies": 9,
+  "version": 1
+}
