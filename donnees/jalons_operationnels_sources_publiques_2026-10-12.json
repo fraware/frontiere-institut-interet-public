@@ -1,0 +1,149 @@
+{
+  "version": "1",
+  "date_recherche": "2026-10-12",
+  "objet": "Faits opérationnels supplémentaires : production, formation et utilisation d'infrastructures, conservés distincts des dates individuelles de recrutement et des marchés ultérieurs.",
+  "sources": [
+    {
+      "id": "IGN-PA2025",
+      "organisme": "Institut national de l'information géographique et forestière",
+      "titre": "Plan d'activités 2025 de l'IGN",
+      "url": "https://www.ign.fr/publications-de-l-ign/institut/Publications/plan-activites-ign-2025.pdf",
+      "repere": "page imprimée 27, page PDF 27 : feuille de route de l'intelligence artificielle",
+      "publication": "2025"
+    },
+    {
+      "id": "ASNR-RA2025",
+      "organisme": "Autorité de sûreté nucléaire et de radioprotection",
+      "titre": "Rapport de l'ASNR sur l'état de la sûreté nucléaire et de la radioprotection en France en 2025",
+      "url": "https://reglementation-controle.asnr.fr/annual_report/2025-fr/130/",
+      "repere": "page imprimée 130, section 1.4.3 Fonctionnement, ressources humaines et compétences",
+      "publication": "rapport 2025"
+    },
+    {
+      "id": "METEO-COP2022",
+      "organisme": "Météo-France",
+      "titre": "Contrat d'objectifs et de performance 2022-2026",
+      "url": "https://meteofrance.fr/sites/meteofrance.fr/files/files/editorial/Rapport_COP_V14.pdf",
+      "repere": "page imprimée 11, page PDF 6, Axe 3, bilan du COP précédent",
+      "publication": "2022"
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-S016-PROD10",
+      "id_signal": "S016",
+      "source_id": "IGN-PA2025",
+      "type": "production_effective",
+      "domaine": "capacite_ia",
+      "objet": "Systèmes d'intelligence artificielle déjà utilisés dans les chaînes de production géographique de l'IGN.",
+      "periode_reference": "au_plus_tard_plan_activites_2025",
+      "precision_date": "borne_documentaire",
+      "date_jour": null,
+      "indicateur": {
+        "valeur": 10,
+        "unite": "systemes_en_production"
+      },
+      "lien_avec_cas": "production_collective_meme_organisme",
+      "limite": "La publication n'établit ni les dates de première utilisation de chacun des systèmes, ni la contribution causale des recrutements de 2022-2024."
+    },
+    {
+      "id": "OBS-S016-OCSGE3",
+      "id_signal": "S016",
+      "source_id": "IGN-PA2025",
+      "type": "performance_operationnelle",
+      "domaine": "occupation_des_sols",
+      "objet": "La refonte des processus de production de l'OCS GE s'appuyant sur l'IA a réduit d'un facteur trois les temps et coûts de production déclarés.",
+      "periode_reference": "au_plus_tard_plan_activites_2025",
+      "precision_date": "borne_documentaire",
+      "date_jour": null,
+      "indicateur": {
+        "valeur": 3,
+        "unite": "facteur_de_reduction_declare"
+      },
+      "lien_avec_cas": "resultat_collectif_meme_organisme",
+      "limite": "La méthode de calcul et les points de comparaison ne sont pas détaillés dans ce passage ; le facteur déclaré ne mesure pas un délai individuel de recrutement."
+    },
+    {
+      "id": "OBS-S042-HABIL367",
+      "id_signal": "S042",
+      "source_id": "ASNR-RA2025",
+      "type": "habilitation_operationnelle",
+      "domaine": "inspection_nucleaire_radioprotection",
+      "objet": "Inspecteurs de la sûreté nucléaire ou de la radioprotection possédant au moins une habilitation au 31 décembre 2025.",
+      "periode_reference": "2025-12-31",
+      "precision_date": "jour",
+      "date_jour": "2025-12-31",
+      "indicateur": {
+        "valeur": 367,
+        "unite": "inspecteurs_ayant_au_moins_une_habilitation"
+      },
+      "lien_avec_cas": "capacite_interne_meme_organisme",
+      "limite": "Cet effectif qualifié ne renseigne ni les recrutements 2025 par métier, ni les postes vacants par spécialité."
+    },
+    {
+      "id": "OBS-S042-FORM9135",
+      "id_signal": "S042",
+      "source_id": "ASNR-RA2025",
+      "type": "formation_effective",
+      "domaine": "developpement_competences",
+      "objet": "Journées de formation dispensées aux personnels de l'ASNR pendant l'année 2025.",
+      "periode_reference": "2025",
+      "precision_date": "annee",
+      "date_jour": null,
+      "indicateur": {
+        "valeur": 9135,
+        "unite": "jours_de_formation_dispensés"
+      },
+      "lien_avec_cas": "capacite_interne_meme_organisme",
+      "limite": "Le total ne mesure ni le nombre de personnes distinctes formées ni leur première contribution utile."
+    },
+    {
+      "id": "OBS-S050-ANCIENS-REC2020",
+      "id_signal": "S050",
+      "source_id": "METEO-COP2022",
+      "type": "reception_equipement",
+      "domaine": "calcul_intensif",
+      "objet": "Météo-France indique avoir réceptionné deux supercalculateurs de la génération antérieure en 2020.",
+      "periode_reference": "2020",
+      "precision_date": "annee",
+      "date_jour": null,
+      "indicateur": {
+        "valeur": 2,
+        "unite": "supercalculateurs_receptionnes"
+      },
+      "lien_avec_cas": "generation_anterieure_distincte_du_marche_2026",
+      "limite": "Cette réception ne concerne pas le marché METEO-FRANCE2432F0342 attribué en juillet 2026."
+    },
+    {
+      "id": "OBS-S050-ANCIENS-OP2021",
+      "id_signal": "S050",
+      "source_id": "METEO-COP2022",
+      "type": "mise_en_exploitation",
+      "domaine": "calcul_intensif",
+      "objet": "Migration des chaînes de production opérationnelle des modèles météorologiques sur les supercalculateurs de la génération précédente au début de 2021.",
+      "periode_reference": "debut_2021",
+      "precision_date": "periode_qualitative",
+      "date_jour": null,
+      "indicateur": null,
+      "lien_avec_cas": "generation_anterieure_distincte_du_marche_2026",
+      "limite": "La formulation 'début 2021' n'autorise aucune date journalière et ne prouve aucune utilisation du nouvel équipement 2026."
+    },
+    {
+      "id": "OBS-S050-ANCIENS-GAIN55",
+      "id_signal": "S050",
+      "source_id": "METEO-COP2022",
+      "type": "performance_operationnelle",
+      "domaine": "calcul_intensif",
+      "objet": "Gain de performance effectivement mesuré déclaré de facteur 5,5 sur la génération antérieure de calculateurs.",
+      "periode_reference": "bilan_2017_2021",
+      "precision_date": "periode_qualitative",
+      "date_jour": null,
+      "indicateur": {
+        "valeur": 5.5,
+        "unite": "facteur_de_gain_declare"
+      },
+      "lien_avec_cas": "generation_anterieure_distincte_du_marche_2026",
+      "limite": "Ce gain ne peut servir d'indicateur de performance du marché attribué en juillet 2026."
+    }
+  ]
+}
