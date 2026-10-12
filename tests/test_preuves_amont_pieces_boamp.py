@@ -103,6 +103,8 @@ def test_capture_amont_et_inventaire_integral(tmp_path):
     bilan = produire(principaux, lies, destination, registre)
     assert bilan["nombre_avis"] == 5
     assert bilan["avis_avec_lien_de_consultation"] == 2
+    assert bilan["avis_avec_lien_dossier_precis"] == 2
+    assert bilan["avis_avec_lien_portail_generique"] == 0
     assert bilan["nombre_pieces_contenu_obtenu"] == 0
     assert bilan["preuves_de_reception_obtenues"] == 0
     assert bilan["preuves_de_premiere_utilisation_obtenues"] == 0
@@ -187,3 +189,34 @@ def test_date_officielle_divergente_est_archivee_sans_validation_abusive(tmp_pat
     assert next(x for x in inventaire["avis"] if x["avis"] == "24-119544")[
         "statut_observation"
     ] == "notice_relevee_date_divergente"
+
+
+def test_version_deux_reproduit_les_deux_dates_officielles(tmp_path):
+    principaux, lies, registre, sources = preparer(tmp_path)
+    valeur = json.loads(registre.read_text(encoding="utf-8"))
+    valeur["version"] = "avis-amont-cibles-boamp-v2"
+    valeur["candidats"][0]["date_fichier_pdf_boamp"] = "2024-10-18"
+    valeur["candidats"][0]["date_attendue"] = "2024-10-20"
+    registre.write_text(json.dumps(valeur), encoding="utf-8")
+    sources["24-119544"] = reponse(
+        "24-119544", "2024-10-20", "METEO-FRANCE2432F0342", "Météo-France"
+    )
+    sortie = tmp_path / "avis_amont"
+    rapport = capturer_amont(principaux, lies, registre, sortie,
+                            obtenir=obtenir_de(sources))
+    assert rapport["retrouves"] == 2
+    assert rapport["dates_divergentes"] == 0
+    assert verifier_amont(sortie, principaux, lies, registre) == rapport
+
+
+def test_le_portail_generique_ne_devient_pas_un_dossier_identifie():
+    notice = {"donnees": json.dumps({"cac:CallForTendersDocumentReference": {
+        "cbc:ID": "CONSULTATION GENERALE",
+        "cac:Attachment": {"cac:ExternalReference": {
+            "cbc:URI": "https://www.marches-publics.gouv.fr"
+        }},
+    }})}
+    donnees = references(notice)
+    assert len(donnees) == 1
+    assert donnees[0]["statut"] == "lien_portail_generique"
+    assert donnees[0]["contenu_piece_obtenu"] is False
