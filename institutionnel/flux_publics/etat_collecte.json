@@ -4,7 +4,7 @@
   "nombre_signaux_distincts": 282,
   "nouveaux_signaux": 0,
   "qualification_de_besoins_effectuee": false,
-  "revisions": 100,
+  "revisions": 0,
   "sources": [
     {
       "actif": true,
@@ -28,7 +28,8 @@
       "id": "service_public_pro",
       "nom": "DILA — actualités des professionnels",
       "nouveaux": 0,
-      "revisions": 100
+      "revisions": 0,
+      "enrichissements_metadonnees": 100
     },
     {
       "actif": true,
@@ -117,5 +118,16 @@
   ],
   "sources_en_echec": 0,
   "sources_reussies": 9,
-  "version": 1
+  "version": 1,
+  "enrichissements_metadonnees": 100,
+  "rectification_historique": {
+    "raison": "100 dates RSS auparavant non extraites puis reconnues lors du second relevé",
+    "classification": "enrichissements_de_metadonnees_non_revisions_du_texte_source",
+    "instant_du_releve_initial": "2026-10-12T21:58:28+00:00",
+    "instant_du_second_releve": "2026-10-12T22:05:11+00:00",
+    "nombre_publications_concernees": 100,
+    "premiere_version": "f3d2c0e93def41ff1ae7ac9870d27d6dcaa50835",
+    "controle": "comparaison_identifiant_par_identifiant_titres_descriptions_liens_et_sources_identiques",
+    "rectifie_le": "2026-10-12"
+  }
 }
