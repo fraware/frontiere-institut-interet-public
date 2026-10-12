@@ -11,7 +11,7 @@ from scripts.capturer_avis_amont_boamp import (
     AvisAmontInvalide, capturer_amont, verifier_amont,
 )
 from scripts.inventorier_pieces_consultation_boamp import (
-    InventaireInvalide, references, produire,
+    InventaireInvalide, references, produire, format_formulaire,
 )
 
 
@@ -104,6 +104,13 @@ def test_capture_amont_et_inventaire_integral(tmp_path):
     assert bilan["nombre_avis"] == 5
     assert bilan["avis_avec_lien_de_consultation"] == 2
     assert bilan["avis_avec_lien_dossier_precis"] == 2
+    assert bilan["nombre_dossiers_consultation_uniques"] == 1
+    assert bilan["dossiers_consultation_uniques"] == [{
+        "cle_dossier": "www.marches-publics.info:IDM:1862843",
+        "avis_qui_citent_le_dossier": ["26-81640", "26-83870"],
+        "pieces_obtenues": False,
+    }]
+    assert bilan["couverture_formats"] == {"eforms": 5}
     assert bilan["avis_avec_lien_portail_generique"] == 0
     assert bilan["nombre_pieces_contenu_obtenu"] == 0
     assert bilan["preuves_de_reception_obtenues"] == 0
@@ -220,3 +227,86 @@ def test_le_portail_generique_ne_devient_pas_un_dossier_identifie():
     assert len(donnees) == 1
     assert donnees[0]["statut"] == "lien_portail_generique"
     assert donnees[0]["contenu_piece_obtenu"] is False
+
+
+
+def test_fnsimple_reference_et_acces_securise_sans_piece_recue():
+    notice = {"donnees": json.dumps({
+        "FNSimple": {
+            "initial": {
+                "communication": {
+                    "urlDocConsul": "https://www.marches-publics.gouv.fr/entreprise",
+                    "docSecurite": {"oui": ""},
+                    "identifiantInterne": "SGDSN_BAM_2026_12",
+                },
+            },
+        },
+    })}
+    assert format_formulaire(notice) == "fnsimple"
+    documents = references(notice)
+    assert len(documents) == 1
+    lien = documents[0]
+    assert lien["origine_champ"] == "/FNSimple/initial/communication/urlDocConsul"
+    assert lien["format_source"] == "fnsimple"
+    assert lien["mesures_securite_documentaire_declarees"] is True
+    assert lien["statut"] == "lien_portail_generique"
+    assert lien["dossier_identifie"] is None
+    assert lien["contenu_piece_obtenu"] is False
+    assert lien["identifiant_document_declare"] is None
+
+
+def test_fnsimple_et_eforms_ensemble_sont_rejetes():
+    source = {"donnees": json.dumps({
+        "FNSimple": {}, "EFORMS": {"ContractNotice": {}}
+    })}
+    with pytest.raises(InventaireInvalide, match="contradictoires"):
+        format_formulaire(source)
+
+
+def test_format_absent_ne_justifie_pas_l_absence_de_lien():
+    source = {"donnees": json.dumps({"FormatNouveau": {
+        "urlDocConsul": "https://exemple.org/dossier"
+    }})}
+    assert format_formulaire(source) == "format_non_couvert"
+    assert references(source) == []
+
+
+def test_fnsimple_reference_vide_et_securite_inconnue():
+    source = {"donnees": json.dumps({
+        "FNSimple": {"initial": {"communication": {
+            "urlDocConsul": "https://www.marches-publics.gouv.fr",
+        }}}
+    })}
+    assert references(source)[0]["mesures_securite_documentaire_declarees"] is None
+
+
+def test_identifiant_dce_non_precis_et_repetition_de_contenu():
+    source = {"donnees": json.dumps({"EFORMS": {"ContractNotice": {
+        "cac:CallForTendersDocumentReference": [
+            {"cbc:ID": "X", "cac:Attachment": {"cac:ExternalReference": {
+                "cbc:URI": "https://www.marches-publics.info/dce?type=DCE&amp;IDM=1862843",
+            }}},
+            {"cbc:ID": "Y", "cac:Attachment": {"cac:ExternalReference": {
+                "cbc:URI": "https://www.marches-publics.info/dce?type=DCE&amp;IDM=1862843",
+            }}},
+        ],
+    }}})}
+    docs = references(source)
+    assert len(docs) == 2
+    assert {x["dossier_identifie"] for x in docs} == {
+        "www.marches-publics.info:IDM:1862843"
+    }
+    assert all(x["contenu_piece_obtenu"] is False for x in docs)
+
+
+@pytest.mark.parametrize("adresse", [
+    "javascript:alert('test')",
+    "file:///etc/passwd",
+    "https://user:password@www.marches-publics.gouv.fr",
+])
+def test_fnsimple_refuse_les_uris_non_admissibles(adresse):
+    source = {"donnees": json.dumps({"FNSimple": {
+        "initial": {"communication": {"urlDocConsul": adresse}}
+    }})}
+    with pytest.raises(InventaireInvalide):
+        references(source)

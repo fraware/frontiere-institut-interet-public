@@ -23,7 +23,7 @@ except ModuleNotFoundError:
     from capturer_avis_amont_boamp import verifier_amont
     from qualifier_captures_notices_boamp import ecrire
 
-VERSION = "inventaire-references-pieces-boamp-v1"
+VERSION = "inventaire-references-pieces-boamp-v2"
 
 
 class InventaireInvalide(ValueError):
@@ -47,6 +47,106 @@ def parcourir(noeud, chemin=""):
             yield from parcourir(item, chemin + "/" + str(indice))
 
 
+
+def format_formulaire(notice: dict) -> str:
+    """Déclarer les formats couverts, sans assimiler les autres à des zéros."""
+    brut = notice.get("donnees")
+    if not isinstance(brut, str):
+        raise InventaireInvalide("Formulaire officiel absent.")
+    try:
+        racine = json.loads(brut)
+    except json.JSONDecodeError as erreur:
+        raise InventaireInvalide("Formulaire officiel illisible.") from erreur
+    if not isinstance(racine, dict):
+        raise InventaireInvalide("Formulaire officiel non structuré.")
+    if "EFORMS" in racine and "FNSimple" in racine:
+        raise InventaireInvalide("Formats de formulaires contradictoires.")
+    if "EFORMS" in racine:
+        if not isinstance(racine["EFORMS"], dict):
+            raise InventaireInvalide("Formulaire eForms non structuré.")
+        return "eforms"
+    if "FNSimple" in racine:
+        if not isinstance(racine["FNSimple"], dict):
+            raise InventaireInvalide("Formulaire FNSimple non structuré.")
+        return "fnsimple"
+    return "format_non_couvert"
+
+
+def reference_fnsimple(formulaire: dict) -> list[dict]:
+    """Extraire le champ direct d'accès aux pièces de FNSimple.
+
+    La mention de sécurisation appartient au formulaire ; elle n'est pas
+    une preuve de restriction effective ni de pièce reçue.
+    """
+    racine = formulaire.get("FNSimple")
+    if not isinstance(racine, dict):
+        return []
+    initial = racine.get("initial")
+    communication = initial.get("communication") if isinstance(initial, dict) else None
+    if communication is None:
+        return []
+    if not isinstance(communication, dict):
+        raise InventaireInvalide("Communication FNSimple mal structurée.")
+    url = communication.get("urlDocConsul")
+    if url is None:
+        return []
+    securite = communication.get("docSecurite")
+    flag = None
+    if isinstance(securite, dict):
+        if "oui" in securite and "non" in securite:
+            raise InventaireInvalide("Déclarations de sécurité contradictoires.")
+        if "oui" in securite:
+            flag = True
+        elif "non" in securite:
+            flag = False
+    lien = qualifier_lien(
+        "/FNSimple/initial/communication/urlDocConsul",
+        None, url,
+    )
+    lien["format_source"] = "fnsimple"
+    lien["mesures_securite_documentaire_declarees"] = flag
+    return [lien]
+
+
+def qualifier_lien(origine: str, identifiant: str | None, uri: str | None) -> dict:
+    """Appliquer la même vérification d'URI aux deux formats officiels."""
+    resultat = {
+        "origine_champ": origine,
+        "identifiant_document_declare": identifiant,
+        "uri_litterale": uri,
+        "uri_normalisee": None,
+        "statut": "reference_sans_uri",
+        "dossier_identifie": None,
+        "contenu_piece_obtenu": False,
+    }
+    if uri is None:
+        return resultat
+    if not isinstance(uri, str):
+        raise InventaireInvalide("URI documentaire non textuelle.")
+    url = html.unescape(uri)
+    cible = urlsplit(url)
+    if (cible.scheme not in ("https", "http") or not cible.netloc
+            or cible.username or cible.password):
+        raise InventaireInvalide("URI documentaire non admissible.")
+    parametres = parse_qs(cible.query)
+    dossier_precis = (
+        cible.scheme == "https"
+        and cible.hostname == "www.marches-publics.info"
+        and parametres.get("type") == ["DCE"]
+        and len(parametres.get("IDM", [])) == 1
+        and parametres["IDM"][0].isdigit()
+    )
+    resultat["uri_normalisee"] = url
+    resultat["statut"] = (
+        "lien_dossier_consultation_identifie"
+        if dossier_precis else "lien_portail_generique"
+    )
+    if dossier_precis:
+        resultat["dossier_identifie"] = (
+            "www.marches-publics.info:IDM:" + str(int(parametres["IDM"][0]))
+        )
+    return resultat
+
 def references(notice: dict) -> list[dict]:
     brut = notice.get("donnees")
     if not isinstance(brut, str):
@@ -55,7 +155,7 @@ def references(notice: dict) -> list[dict]:
         formulaire = json.loads(brut)
     except json.JSONDecodeError as exc:
         raise InventaireInvalide("Formulaire officiel illisible.") from exc
-    documents = []
+    documents = reference_fnsimple(formulaire)
     for origine, reference in parcourir(formulaire):
         attachement = reference.get("cac:Attachment")
         externe = attachement.get("cac:ExternalReference") if isinstance(attachement, dict) else None
@@ -64,38 +164,7 @@ def references(notice: dict) -> list[dict]:
         if isinstance(identifiant, dict):
             identifiant = identifiant.get("#text")
         identifiant = identifiant if isinstance(identifiant, str) else None
-        if uri is None:
-            documents.append({
-                "origine_champ": origine, "identifiant_document_declare": identifiant,
-                "uri_litterale": None, "uri_normalisee": None,
-                "statut": "reference_sans_uri", "contenu_piece_obtenu": False,
-            })
-            continue
-        if not isinstance(uri, str):
-            raise InventaireInvalide("URI documentaire non textuelle.")
-        url = html.unescape(uri)
-        cible = urlsplit(url)
-        if (cible.scheme not in ("https", "http") or not cible.netloc or
-                cible.username or cible.password):
-            raise InventaireInvalide("URI documentaire non admissible.")
-        parametres = parse_qs(cible.query)
-        # Pour cette plateforme, seul un identifiant DCE explicite
-        # distingue un dossier déterminé du portail générique.
-        dossier_precis = (
-            cible.hostname == "www.marches-publics.info"
-            and parametres.get("type") == ["DCE"]
-            and len(parametres.get("IDM", [])) == 1
-            and parametres["IDM"][0].isdigit()
-        )
-        documents.append({
-            "origine_champ": origine, "identifiant_document_declare": identifiant,
-            "uri_litterale": uri, "uri_normalisee": url,
-            "statut": (
-                "lien_dossier_consultation_identifie"
-                if dossier_precis else "lien_portail_generique"
-            ),
-            "contenu_piece_obtenu": False,
-        })
+        documents.append(qualifier_lien(origine, identifiant, uri))
     return documents
 
 
@@ -125,12 +194,19 @@ def produire(principaux: Path, lies: Path, amont: Path, registre: Path) -> dict:
                 "notice_relevee_date_divergente" if fiche[etatcle] == "date_officielle_divergente"
                 else "absent_du_releve")
             references_documentaires = []
+            format_source = "non_observe"
             if observe:
                 notice = json.loads((dossier / fiche[fcle]).read_bytes())["results"][0]
+                format_source = format_formulaire(notice)
                 references_documentaires = references(notice)
             inventaire.append({
                 "avis": code, "famille": famille,
                 "statut_observation": etat_observation,
+                "format_source": format_source,
+                "couverture_extraction": (
+                    "format_pris_en_charge" if format_source in ("eforms", "fnsimple")
+                    else "format_non_couvert" if observe else "avis_non_observe"
+                ),
                 "fichier_source": fiche[fcle],
                 "sha256_reponse_http": fiche[sha_cle],
                 "references_documentaires_officielles": references_documentaires,
@@ -138,9 +214,28 @@ def produire(principaux: Path, lies: Path, amont: Path, registre: Path) -> dict:
                 "proces_verbal_de_reception_obtenu": False,
                 "premiere_utilisation_scientifique_documentee": False,
             })
+    dossiers = {}
+    for avis in inventaire:
+        for reference in avis["references_documentaires_officielles"]:
+            cle = reference["dossier_identifie"]
+            if cle:
+                dossiers.setdefault(cle, set()).add(avis["avis"])
+    dossiers_uniques = [
+        {
+            "cle_dossier": cle,
+            "avis_qui_citent_le_dossier": sorted(codes),
+            "pieces_obtenues": False,
+        }
+        for cle, codes in sorted(dossiers.items())
+    ]
     return {
         "version": VERSION,
         "nombre_avis": len(inventaire),
+        "couverture_formats": dict(sorted(Counter(
+            x["format_source"] for x in inventaire
+        ).items())),
+        "nombre_dossiers_consultation_uniques": len(dossiers_uniques),
+        "dossiers_consultation_uniques": dossiers_uniques,
         "repartition_familles": dict(sorted(Counter(x["famille"] for x in inventaire).items())),
         "avis_avec_lien_de_consultation": sum(
             any(d["uri_normalisee"] for d in x["references_documentaires_officielles"])
@@ -185,6 +280,8 @@ def main() -> None:
             "avis": rapport["nombre_avis"],
             "avec_lien_consultation": rapport["avis_avec_lien_de_consultation"],
             "avec_lien_dossier_precis": rapport["avis_avec_lien_dossier_precis"],
+            "dossiers_uniques": rapport["nombre_dossiers_consultation_uniques"],
+            "formats": rapport["couverture_formats"],
             "pieces_obtenues": rapport["nombre_pieces_contenu_obtenu"],
         }, ensure_ascii=False))
     except (OSError, ValueError, KeyError, TypeError) as exc:
