@@ -168,3 +168,35 @@ def test_decision_attribuee_incompatible_avec_clos_nw(tmp_path):
     l.write_text(json.dumps(fiche))
     with pytest.raises(JugementInvalide, match="Décision de lot différente"):
         auditer(p, l, d)
+
+
+
+def test_consolidation_exige_et_verifie_les_deux_lectures_sourcees(tmp_path):
+    from scripts.consolider_relecture_issues_boamp import consolider
+    p, l, d = paquet_fictif(tmp_path)
+    second = tmp_path / "lecture2.json"
+    fiche = json.loads(l.read_text())
+    fiche["identifiant_relecteur"] = "second-lecteur-fictif"
+    second.write_text(json.dumps(fiche))
+    resultat = consolider(p, l, second, tmp_path / "rapport.json", d)
+    assert resultat["ancrages_sources_verifies"] is True
+    assert len(resultat["rapports_ancrages"]) == 2
+    assert resultat["rapports_ancrages"][0]["statistiques_verifiees"] == 2
+    assert resultat["nombre_desaccords"] == 0
+    assert resultat["reference_consensuelle_etablie"] is False
+    assert resultat["independance_reelle_verifiee_par_logiciel"] is False
+
+
+def test_consolidation_refuse_une_decision_non_ancree(tmp_path):
+    from scripts.consolider_relecture_issues_boamp import consolider
+    p, l, d = paquet_fictif(tmp_path)
+    second = tmp_path / "lecture2.json"
+    fiche = json.loads(l.read_text())
+    fiche["identifiant_relecteur"] = "second-lecteur-fictif"
+    fiche["jugements"][0]["lots"][0]["preuve_decision"] = (
+        DEBUT + "/cbc:ID/#text"
+    )
+    second.write_text(json.dumps(fiche))
+    with pytest.raises(JugementInvalide, match="Preuve de décision"):
+        consolider(p, l, second, tmp_path / "rapport.json", d)
+    assert not (tmp_path / "rapport.json").exists()
