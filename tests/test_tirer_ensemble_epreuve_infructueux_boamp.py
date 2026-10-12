@@ -82,7 +82,7 @@ def test_quota_impossible_est_refuse(tmp_path, monkeypatch):
 def test_empreinte_source_modifiee_est_refusee(tmp_path, monkeypatch):
     dbp, preuve, base = preparer(tmp_path, monkeypatch)
     with dbp.open("ab") as f:
-        f.write(b"altération")
+        f.write("altération".encode("utf-8"))
     with pytest.raises(module.EpreuveInvalide, match="Index"):
         module.tirer(dbp, preuve, base)
 
