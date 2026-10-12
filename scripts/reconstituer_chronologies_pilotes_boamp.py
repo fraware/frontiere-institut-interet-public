@@ -124,6 +124,45 @@ def lire_statistiques_soumissions(resultat: dict, origine_lot: str) -> list[dict
     return observations
 
 
+
+def qualifier_effectifs_soumissions(statistiques: list[dict]) -> dict:
+    """Séparer absence totale d'offres, absence électronique et inconnue.
+
+    'tenders' compte les offres reçues ; 't-esubm' ne renseigne que le
+    canal électronique. Le motif légal de non-attribution est une autre
+    variable et ne doit jamais être déduit de ces compteurs.
+    """
+    mesures = {x["code_statistique_officiel"]: x for x in statistiques}
+    total = mesures.get("tenders")
+    electronique = mesures.get("t-esubm")
+    if total and electronique and electronique["effectif_declare"] > total["effectif_declare"]:
+        raise ChronologieInvalide(
+            "Plus de soumissions électroniques que de soumissions totales."
+        )
+    if total:
+        categorie = (
+            "zero_offre_totale_declaree" if total["effectif_declare"] == 0
+            else "offres_totales_positives"
+        )
+        observation = total
+    elif electronique:
+        categorie = (
+            "zero_soumission_electronique_total_inconnu"
+            if electronique["effectif_declare"] == 0
+            else "soumissions_electroniques_positives_total_inconnu"
+        )
+        observation = electronique
+    else:
+        categorie = "effectif_total_inconnu"
+        observation = None
+    return {
+        "qualification_effectif": categorie,
+        "effectif_utilise": observation["effectif_declare"] if observation else None,
+        "code_mesure_utilise": observation["code_statistique_officiel"] if observation else None,
+        "origine_effectif": observation["origine_effectif"] if observation else None,
+        "motif_officiel_non_deduit_des_effectifs": True,
+    }
+
 def regrouper_resultats_par_lot(resultats: list[dict]) -> list[dict]:
     """Réunir les décisions compatibles d'un lot sans additionner ses offres.
 
@@ -262,9 +301,14 @@ def analyser_attribution(notice):
                 references_contrats[0] if len(references_contrats) == 1 else None
             ),
         })
+    lots_regroupes = regrouper_resultats_par_lot(lots)
+    for lot in lots_regroupes:
+        lot["observation_effectifs_soumissions"] = qualifier_effectifs_soumissions(
+            lot["statistiques_soumissions"]
+        )
     return {
         "contrats": contrats,
-        "resultats_par_lot": regrouper_resultats_par_lot(lots),
+        "resultats_par_lot": lots_regroupes,
     }
 
 
