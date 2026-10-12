@@ -52,14 +52,14 @@ Les décisions institutionnelles restent humaines. Le logiciel structure les fai
 <!-- FRONTIERE:ETAT_REFERENTIEL:DEBUT -->
 | Couverture institutionnelle | État |
 | --- | ---: |
-| Enregistrements de l’Annuaire de l’administration couverts | 93 786 / 93 786 |
+| Enregistrements de l’Annuaire de l’administration couverts | 93 784 / 93 784 |
 | Services issus du Référentiel de l’organisation administrative de l’État | 7 909 |
-| Services et guichets locaux issus de l’Annuaire | 85 877 |
+| Services et guichets locaux issus de l’Annuaire | 85 875 |
 | Relations hiérarchiques résolues dans l’organisation de l’État | 8 077 |
 | Relations hiérarchiques résolues parmi les services locaux | 4 158 |
 | Unités territoriales issues du Code officiel géographique 2026 | 40 345 |
 | Relations entre unités territoriales | 150 421 |
-| Références de l’Annuaire reliées à une unité territoriale actuelle | 305 548 / 305 555 |
+| Références de l’Annuaire reliées à une unité territoriale actuelle | 305 545 / 305 552 |
 | Références territoriales anciennes expliquées par l’historique officiel | 7 / 7 |
 <!-- FRONTIERE:ETAT_REFERENTIEL:FIN -->
 
