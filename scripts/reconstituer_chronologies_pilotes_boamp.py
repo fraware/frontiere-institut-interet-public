@@ -22,7 +22,7 @@ except ModuleNotFoundError:
     from preparer_dossiers_pilotes_boamp import lire_cas
     from qualifier_captures_notices_boamp import ecrire
 
-VERSION = "chronologie-documentaire-pilotes-v1"
+VERSION = "chronologie-documentaire-pilotes-v2"
 RACINE = "/EFORMS/ContractAwardNotice/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult"
 
 
@@ -71,6 +71,46 @@ def chemin(obj, champs):
     return obj
 
 
+
+def lire_statistiques_soumissions(resultat: dict, origine_lot: str) -> list[dict]:
+    """Conserver l'effectif et le type exact des soumissions déclarées.
+
+    Le code t-esubm concerne les seules soumissions électroniques. Le code
+    tenders a une autre portée : ces deux dénominateurs ne sont pas sommés.
+    """
+    valeurs = elements(resultat.get("efac:ReceivedSubmissionsStatistics"))
+    observations, codes = [], set()
+    for indice, statistique in enumerate(valeurs):
+        code = identite(chemin(statistique, [
+            "efbc:StatisticsCode", "#text",
+        ]))
+        nombre = statistique.get("efbc:StatisticsNumeric")
+        if type(nombre) is int:
+            total = nombre
+        elif isinstance(nombre, str) and nombre.isascii() and nombre.isdecimal():
+            total = int(nombre)
+        else:
+            raise ChronologieInvalide("Effectif de soumissions non entier ou absent.")
+        if total < 0 or code in codes:
+            raise ChronologieInvalide("Effectif négatif ou code statistique dupliqué.")
+        codes.add(code)
+        origine_statistique = origine_lot + "/efac:ReceivedSubmissionsStatistics" + (
+            f"/{indice}" if isinstance(resultat.get("efac:ReceivedSubmissionsStatistics"), list)
+            else ""
+        )
+        observations.append({
+            "code_statistique_officiel": code,
+            "effectif_declare": total,
+            "portee_de_la_mesure": (
+                "soumissions_electroniques" if code == "t-esubm" else
+                "soumissions_tous_canaux_declares" if code == "tenders"
+                else "code_non_interprete"
+            ),
+            "origine_effectif": origine_statistique + "/efbc:StatisticsNumeric",
+            "origine_code": origine_statistique + "/efbc:StatisticsCode/#text",
+        })
+    return observations
+
 def analyser_attribution(notice):
     brut = notice.get("donnees")
     if not isinstance(brut, str):
@@ -117,8 +157,14 @@ def analyser_attribution(notice):
         origine_lot = RACINE + "/efac:LotResult" + (
             f"/{numero}" if isinstance(ensemble.get("efac:LotResult"), list) else ""
         )
+        soumissions = lire_statistiques_soumissions(resultat, origine_lot)
+        if motif == "no-rece" and any(x["effectif_declare"] > 0 for x in soumissions):
+            raise ChronologieInvalide(
+                "Avis contradictoire : non-attribution sans offre mais statistique positive."
+            )
         lots.append({
             "identifiant_lot": code_lot,
+            "statistiques_soumissions": soumissions,
             "code_resultat_officiel": code,
             "statut_lot": (
                 "attribue" if code == "selec-w" else
@@ -181,6 +227,15 @@ def produire(captures: Path, registre: Path):
         "lots_non_attribues": sum(
             x["statut_lot"] == "non_attribue" for r in resultat for x in r["resultats_par_lot"]
         ),
+        "lots_avec_motif_absence_offres": sum(
+            x["motif_officiel"] == "no-rece"
+            for r in resultat for x in r["resultats_par_lot"]
+        ),
+        "statistiques_par_code": dict(sorted(Counter(
+            s["code_statistique_officiel"]
+            for r in resultat for lot in r["resultats_par_lot"]
+            for s in lot["statistiques_soumissions"]
+        ).items())),
         "cas": resultat,
         "delais_besoin_vers_contribution_mesurables": 0,
         "avertissement": (
@@ -205,6 +260,8 @@ def main():
             "cas": rapport["nombre_cas"],
             "lots_attribues": rapport["lots_attribues"],
             "lots_non_attribues": rapport["lots_non_attribues"],
+            "lots_motif_sans_offre": rapport["lots_avec_motif_absence_offres"],
+            "codes_soumissions": rapport["statistiques_par_code"],
             "delais_utiles": rapport["delais_besoin_vers_contribution_mesurables"],
         }, ensure_ascii=False))
     except (OSError, ValueError, TypeError, KeyError) as exc:
