@@ -28,6 +28,7 @@ API_BSKY = "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed"
 MAX_REPONSE = 2_000_000
 MAX_ELEMENTS_SOURCE = 100
 MAX_OBSERVATIONS = 25_000
+DOMAINES_AUTORISES = frozenset({"anr.fr", "www.service-public.gouv.fr", "public.api.bsky.app"})
 IDENTITE = re.compile(r"^[a-z0-9][a-z0-9_-]{2,60}$")
 
 
@@ -92,8 +93,8 @@ def verifier_sources(document: object) -> list[dict]:
         if not _texte(src.get("nom")) or not _texte(src.get("categorie")):
             raise CollecteInvalide("Nom ou catégorie manquants")
         domaine = src.get("domaine")
-        if not isinstance(domaine, str) or not domaine:
-            raise CollecteInvalide("Domaine non défini")
+        if not isinstance(domaine, str) or domaine not in DOMAINES_AUTORISES:
+            raise CollecteInvalide("Domaine hors liste des éditeurs publics autorisés")
         if src.get("type") == "rss":
             _adresse(src.get("url"), domaine)
         elif src.get("type") == "bluesky":
