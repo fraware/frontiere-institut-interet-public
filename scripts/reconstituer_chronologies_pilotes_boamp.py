@@ -123,6 +123,73 @@ def lire_statistiques_soumissions(resultat: dict, origine_lot: str) -> list[dict
         })
     return observations
 
+
+def regrouper_resultats_par_lot(resultats: list[dict]) -> list[dict]:
+    """Réunir les décisions compatibles d'un lot sans additionner ses offres.
+
+    Plusieurs contrats peuvent être attribués au même lot. Les différents
+    enregistrements 'LotResult' ne constituent pas plusieurs lots.
+    """
+    groupes: dict[str, dict] = {}
+    for resultat in resultats:
+        cle = resultat["identifiant_lot"]
+        if cle not in groupes:
+            groupes[cle] = {
+                **resultat,
+                "contrats_references": list(resultat["contrats_references"]),
+                "statistiques_soumissions": [
+                    {**x, "occurrences_identiques": list(x.get("occurrences_identiques", []))}
+                    for x in resultat["statistiques_soumissions"]
+                ],
+                "origines_resultats": [resultat["origine_resultat"]],
+                "nombre_decisions_par_lot": 1,
+            }
+            continue
+        ancien = groupes[cle]
+        if (ancien["code_resultat_officiel"] != resultat["code_resultat_officiel"]
+                or ancien["motif_officiel"] != resultat["motif_officiel"]):
+            raise ChronologieInvalide(
+                "Plusieurs décisions contradictoires pour le même lot."
+            )
+        references = resultat["contrats_references"]
+        if set(references) & set(ancien["contrats_references"]):
+            raise ChronologieInvalide(
+                "Référence de contrat répétée entre résultats du même lot."
+            )
+        ancien["contrats_references"].extend(references)
+        ancien["contrat_reference"] = (
+            ancien["contrats_references"][0]
+            if len(ancien["contrats_references"]) == 1 else None
+        )
+        mesures = {
+            x["code_statistique_officiel"]: x
+            for x in ancien["statistiques_soumissions"]
+        }
+        for entree in resultat["statistiques_soumissions"]:
+            code = entree["code_statistique_officiel"]
+            if code not in mesures:
+                ajout = {**entree, "occurrences_identiques": list(
+                    entree.get("occurrences_identiques", [])
+                )}
+                ancien["statistiques_soumissions"].append(ajout)
+                mesures[code] = ajout
+                continue
+            precedent = mesures[code]
+            if precedent["effectif_declare"] != entree["effectif_declare"]:
+                raise ChronologieInvalide(
+                    "Mesures de soumission contradictoires entre décisions d'un lot."
+                )
+            precedent["occurrences_identiques"].append({
+                "origine_code": entree["origine_code"],
+                "origine_effectif": entree["origine_effectif"],
+            })
+            precedent["occurrences_identiques"].extend(
+                entree.get("occurrences_identiques", [])
+            )
+        ancien["origines_resultats"].append(resultat["origine_resultat"])
+        ancien["nombre_decisions_par_lot"] += 1
+    return list(groupes.values())
+
 def analyser_attribution(notice):
     brut = notice.get("donnees")
     if not isinstance(brut, str):
@@ -195,9 +262,10 @@ def analyser_attribution(notice):
                 references_contrats[0] if len(references_contrats) == 1 else None
             ),
         })
-    if len({x["identifiant_lot"] for x in lots}) != len(lots):
-        raise ChronologieInvalide("Plusieurs résultats non distingués pour un lot.")
-    return {"contrats": contrats, "resultats_par_lot": lots}
+    return {
+        "contrats": contrats,
+        "resultats_par_lot": regrouper_resultats_par_lot(lots),
+    }
 
 
 def produire(captures: Path, registre: Path):
