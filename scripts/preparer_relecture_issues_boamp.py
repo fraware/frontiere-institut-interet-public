@@ -181,6 +181,12 @@ def preparer(archive: Path, sortie: Path) -> dict:
             "A_VERIFIER ne constitue pas un verdict.\n",
             encoding="utf-8",
         )
+        # Dossiers prêts à transmettre séparément, sans correspondances privées.
+        for nom in ("relecteur_1", "relecteur_2"):
+            dossier = temporaire / nom
+            shutil.copy2(temporaire / "paquet_commun.json", dossier / "paquet_commun.json")
+            shutil.copy2(temporaire / "CONSIGNES.md", dossier / "CONSIGNES.md")
+            shutil.copytree(temporaire / "sources", dossier / "sources")
         temporaire.rename(sortie)
         return {"nombre_cas": len(fiches), "sha256_paquet": empreinte,
                 "references_independantes_etablies": False}
