@@ -1,0 +1,47 @@
+{
+  "version": "1",
+  "date_recherche": "2026-10-12",
+  "id_avis_pilote": "26-30147",
+  "acheteur": "Université de Caen Normandie",
+  "objet_consultation": "Caractérisation de l'hydrodynamique de surface du raz Blanchard par télédétection radar",
+  "lot_cible": {
+    "id": "LOT-0002",
+    "objet": "Traitement du signal et algorithmique radar HF",
+    "resultat": "clos-nw",
+    "motif": "no-rece",
+    "nombre_soumissions_electroniques_declare": 0,
+    "source": "Captures BOAMP 26-30147, reconstitution documentaire du 11 octobre 2026 dans docs/RESULTATS_CHRONOLOGIES_BOAMP_OBSERVATION_2026-10-11.md"
+  },
+  "antecedent_recherche": {
+    "id": "HYD2M",
+    "periode": "2016-2019",
+    "duree_mois_declaree": 44,
+    "titre": "Hydrodynamique du Raz Blanchard : mesures et modélisation",
+    "source": {
+      "url": "https://www.france-energies-marines.org/projet-retd/hyd2m/",
+      "organisme": "France Énergies Marines",
+      "section": "Principales réalisations et ressources générées"
+    },
+    "partenaire_pilote": "Université de Caen Normandie et France Énergies Marines",
+    "resultats_documentes": [
+      "Observations in situ et avec radars haute fréquence pour comprendre les interactions vagues-courants.",
+      "Construction d'une plateforme numérique pour la prévision de l'hydrodynamique du Raz Blanchard.",
+      "Nouvel algorithme de traitement de données radar acquises dans un environnement extrême.",
+      "Cartographie des ressources hydrocinétiques par radar HF et VHF.",
+      "Données intégrées dans un modèle déclaré disponible pour les acteurs de la filière hydrolienne."
+    ]
+  },
+  "nature_rapprochement": "proximite_thematique_et_acheteur",
+  "identite_de_mission_demontree": false,
+  "identite_des_livrables_demontree": false,
+  "disponibilite_technique_en_2025_demontree": false,
+  "capacite_mobilisable_sur_le_lot_2_demontree": false,
+  "cause_absence_offres_etablie": false,
+  "raisonnement_autorise": "Les travaux HYD2M documentent une compétence collective historique dans la même aire scientifique et géographique. Ils donnent une piste de recherche sur les capacités, sans prouver qu'un prestataire répondait aux conditions du lot 2 en 2025.",
+  "questions_non_resolues": [
+    "Le lot 2 concerne-t-il des données, traitements ou livrables effectivement identiques à ceux de HYD2M ?",
+    "Quels membres du consortium conservaient en 2025 la capacité technique et les droits nécessaires à la prestation ?",
+    "Les critères d'éligibilité, la rémunération, les délais ou les conditions de propriété intellectuelle ont-ils restreint la participation ?",
+    "Une éventuelle nouvelle procédure est-elle rattachée formellement à l'avis initial et au lot 2 ?"
+  ]
+}
