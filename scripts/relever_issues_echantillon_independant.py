@@ -124,6 +124,7 @@ def qualifier(brut: bytes, identifiant: str, date_attendue: str):
             "code_resultat": lot["code_resultat_officiel"],
             "code_motif": lot["motif_officiel"],
             "statistiques": lot["statistiques_soumissions"],
+            "observation_effectifs_soumissions": lot["observation_effectifs_soumissions"],
             "origine_resultat": lot["origine_resultat"],
             "confirmation_independante": False,
         })
@@ -175,6 +176,10 @@ def capturer(tirage_path: Path, sortie: Path, obtenir=obtenir_octets,
             "observations_hors_lots": sum(
                 len(x.get("observations_hors_lots", [])) for x in cas
             ),
+            "qualifications_effectifs_lots": dict(sorted(Counter(
+                lot["observation_effectifs_soumissions"]["qualification_effectif"]
+                for x in cas for lot in x["resultats_lots"]
+            ).items())),
             "cas": cas,
             "resultats_independamment_etiquetes": False,
             "comparaison_avec_classifications_concurrentes_effectuee": False,
