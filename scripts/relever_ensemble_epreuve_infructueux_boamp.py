@@ -98,6 +98,16 @@ def relever(chemin_tirage: Path, sortie: Path,
             "nombre_avis": len(cas),
             "statuts": dict(sorted(compte.items())),
             "prequalifications_par_lot": dict(sorted(issues.items())),
+            "effectifs_soumissions_par_lot": dict(sorted(Counter(
+                lot["observation_effectifs_soumissions"]["qualification_effectif"]
+                for x in cas for lot in x["resultats_lots"]
+            ).items())),
+            "lots_a_zero_offre_totale_et_motif_autre": sum(
+                lot["observation_effectifs_soumissions"]["qualification_effectif"]
+                == "zero_offre_totale_declaree"
+                and lot["code_motif"] != "no-rece"
+                for x in cas for lot in x["resultats_lots"]
+            ),
             "cas": cas,
             "faux_equivalence_mot_titre_et_absence_offre": False,
             "interpretation_independante_realisee": False,
@@ -131,6 +141,8 @@ def main():
             "avis": resultat["nombre_avis"],
             "statuts": resultat["statuts"],
             "lots": resultat["prequalifications_par_lot"],
+            "effectifs_offres": resultat["effectifs_soumissions_par_lot"],
+            "zero_offre_motif_distinct": resultat["lots_a_zero_offre_totale_et_motif_autre"],
             "comparaison_independante": False,
         }, ensure_ascii=False))
     except (OSError, ValueError, TypeError, KeyError) as exc:
