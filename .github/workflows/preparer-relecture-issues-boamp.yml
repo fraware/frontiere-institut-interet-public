@@ -8,6 +8,8 @@ on:
       - "scripts/preparer_relecture_issues_boamp.py"
       - "scripts/consolider_relecture_issues_boamp.py"
       - "tests/test_relecture_issues_boamp.py"
+      - "scripts/auditer_ancrages_relecture_issues_boamp.py"
+      - "tests/test_auditer_ancrages_relecture_issues_boamp.py"
       - ".github/workflows/preparer-relecture-issues-boamp.yml"
 
 permissions:
@@ -36,7 +38,7 @@ jobs:
         run: python -m pip install pytest
 
       - name: Vérifier les instruments
-        run: python -m pytest -q tests/test_relecture_issues_boamp.py
+        run: python -m pytest -q tests/test_relecture_issues_boamp.py tests/test_auditer_ancrages_relecture_issues_boamp.py
 
       - name: Télécharger l'archive BOAMP préexistante et vérifiée
         shell: bash
