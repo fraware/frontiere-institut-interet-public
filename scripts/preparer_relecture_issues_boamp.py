@@ -145,9 +145,7 @@ def preparer(archive: Path, sortie: Path) -> dict:
         forme = [{
             "cas": x["cas"], "statut_avis": "A_VERIFIER",
             "preuve_statut": "", "lots": [],
-            "observation_hors_lot": "",
-            "cause_de_non_attribution": "A_VERIFIER",
-            "preuve_causale_supplementaire": "", "notes": "",
+            "observation_hors_lot": "", "notes": "",
         } for x in fiches]
         for nom in ("relecteur_1", "relecteur_2"):
             dest = temporaire / nom
@@ -174,8 +172,9 @@ def preparer(archive: Path, sortie: Path) -> dict:
             "preuve_decision et preuve_effectifs (chemin dans donnees). "
             "Ne jamais déduire tenders=0 de no-rece, ni no-rece de tenders=0. "
             "t-esubm=0 seul ne prouve pas zéro offre totale.\n\n"
-            "Cause de non-attribution : NON_ETABLIE, DOCUMENTEE ou INDETERMINEE. "
-            "Pour DOCUMENTEE fournir un passage supplémentaire étayant le lien causal, "
+            "Pour chaque lot non attribué, renseigner cause_non_attribution : "
+            "NON_ETABLIE, DOCUMENTEE ou INDETERMINEE ; pour un lot attribué : SANS_OBJET. "
+            "Pour DOCUMENTEE fournir une preuve_causale distincte étayant le lien causal, "
             "sans substituer une hypothèse plausible à une preuve. "
             "Les deux formulaires sont à finaliser et sceller séparément ; "
             "A_VERIFIER ne constitue pas un verdict.\n",
