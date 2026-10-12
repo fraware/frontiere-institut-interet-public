@@ -28,7 +28,7 @@ API_BSKY = "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed"
 MAX_REPONSE = 2_000_000
 MAX_ELEMENTS_SOURCE = 100
 MAX_OBSERVATIONS = 25_000
-DOMAINES_AUTORISES = frozenset({"anr.fr", "www.service-public.gouv.fr", "public.api.bsky.app"})
+DOMAINES_AUTORISES = frozenset({"anr.fr", "www.service-public.gouv.fr", "www.economie.gouv.fr", "public.api.bsky.app"})
 IDENTITE = re.compile(r"^[a-z0-9][a-z0-9_-]{2,60}$")
 
 
