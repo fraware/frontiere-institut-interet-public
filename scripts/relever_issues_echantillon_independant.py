@@ -19,13 +19,15 @@ import tempfile
 try:
     from scripts.collecter_notices_pilotes_boamp import adresse, obtenir_octets
     from scripts.reconstituer_chronologies_pilotes_boamp import analyser_attribution
+    from scripts.qualifier_attributions_autres_formats_boamp import qualification_hors_eforms
     from scripts.tirer_jeu_independant_boamp import VERSION as VERSION_TIRAGE, MOIS, QUOTA, EXCLUS
 except ModuleNotFoundError:
     from collecter_notices_pilotes_boamp import adresse, obtenir_octets
     from reconstituer_chronologies_pilotes_boamp import analyser_attribution
+    from qualifier_attributions_autres_formats_boamp import qualification_hors_eforms
     from tirer_jeu_independant_boamp import VERSION as VERSION_TIRAGE, MOIS, QUOTA, EXCLUS
 
-VERSION = "releve-issues-boamp-independant-v1"
+VERSION = "releve-issues-boamp-independant-v2"
 
 
 class ReleveInvalide(ValueError):
@@ -88,11 +90,22 @@ def qualifier(brut: bytes, identifiant: str, date_attendue: str):
             "erreur_extracteur": None,
         }
     try:
+        formulaire = json.loads(notice.get("donnees") or "null")
+        if not isinstance(formulaire, dict):
+            raise ValueError("Formulaire absent ou non structuré.")
+        if "EFORMS" not in formulaire:
+            return qualification_hors_eforms(notice)
         resultat = analyser_attribution(notice)
     except (ValueError, KeyError, TypeError) as exc:
+        format_source = (
+            next(iter(formulaire), "non_reconnu")
+            if isinstance(formulaire, dict) else "non_reconnu"
+        )
         return {
             "statut_releve": "resultat_officiel_structure_non_interpretee",
             "nature": "ATTRIBUTION", "resultats_lots": [],
+            "observations_hors_lots": [],
+            "format_source": format_source.lower(),
             "erreur_extracteur": type(exc).__name__,
         }
     issues = []
@@ -117,6 +130,8 @@ def qualifier(brut: bytes, identifiant: str, date_attendue: str):
     return {
         "statut_releve": "attribution_officielle_avec_resultats",
         "nature": "ATTRIBUTION",
+        "format_source": "eforms",
+        "observations_hors_lots": [],
         "resultats_lots": issues, "erreur_extracteur": None,
     }
 
@@ -157,6 +172,9 @@ def capturer(tirage_path: Path, sortie: Path, obtenir=obtenir_octets,
                 lot["qualification_regle_automatique"]
                 for x in cas for lot in x["resultats_lots"]
             ).items())),
+            "observations_hors_lots": sum(
+                len(x.get("observations_hors_lots", [])) for x in cas
+            ),
             "cas": cas,
             "resultats_independamment_etiquetes": False,
             "comparaison_avec_classifications_concurrentes_effectuee": False,
