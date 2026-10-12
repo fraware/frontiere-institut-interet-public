@@ -1,0 +1,107 @@
+name: Préparer la double relecture des 60 avis BOAMP
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/preparer_relecture_issues_boamp.py"
+      - "scripts/consolider_relecture_issues_boamp.py"
+      - "tests/test_relecture_issues_boamp.py"
+      - ".github/workflows/preparer-relecture-issues-boamp.yml"
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: double-relecture-boamp-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  preparation:
+    name: Préparer deux paquets aveugles de 60 notices
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installer le cadre de test
+        run: python -m pip install pytest
+
+      - name: Vérifier les instruments
+        run: python -m pytest -q tests/test_relecture_issues_boamp.py
+
+      - name: Télécharger l'archive BOAMP préexistante et vérifiée
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/entree"
+          gh run download 38260128904 \
+            -n index-public-boamp-38260128904 \
+            --dir "$RUNNER_TEMP/entree"
+
+      - name: Construire l'archive minimale des soixante réponses
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile, ZIP_DEFLATED
+          import os
+
+          racine = Path(os.environ["RUNNER_TEMP"]) / "entree"
+          paths = {
+              "echantillon-independant-technique.json",
+              "epreuve-enrichie-infructueux.json",
+              "releve-issues-36/rapport.json",
+              "releve-epreuve-enrichie/rapport.json",
+          }
+          premiers = list(racine.glob("releve-issues-36/[0-9]*.json"))
+          seconds = list(racine.glob("releve-epreuve-enrichie/[0-9]*.json"))
+          if len(premiers) != 36 or len(seconds) != 24:
+              raise SystemExit("Le nombre de réponses du relevé officiel est incorrect.")
+          paths.update(str(p.relative_to(racine)) for p in premiers + seconds)
+          if len(paths) != 64:
+              raise SystemExit("Nombre de fichiers ou noms répétés non conformes.")
+          cible = Path(os.environ["RUNNER_TEMP"]) / "corpus-60.zip"
+          with ZipFile(cible, "w", compression=ZIP_DEFLATED) as z:
+              for nom in sorted(paths):
+                  source = racine / nom
+                  if not source.is_file():
+                      raise SystemExit("Source absente : " + nom)
+                  z.write(source, nom)
+          print("Corpus de", len(paths), "fichiers assemblé.")
+          PY
+
+      - name: Contrôler et préparer deux paquets sans les prédictions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/preparer_relecture_issues_boamp.py \
+            --archive "$RUNNER_TEMP/corpus-60.zip" \
+            --sortie "$${{ runner.temp }}/double-relecture-60"
+
+      - name: Paquet du premier lecteur — aucune correspondance privée
+        uses: actions/upload-artifact@v4
+        with:
+          name: double-relecture-boamp-lecteur-1-${{ github.run_id }}
+          path: ${{ runner.temp }}/double-relecture-60/relecteur_1/
+          retention-days: 14
+          if-no-files-found: error
+
+      - name: Paquet du second lecteur — aucune correspondance privée
+        uses: actions/upload-artifact@v4
+        with:
+          name: double-relecture-boamp-lecteur-2-${{ github.run_id }}
+          path: ${{ runner.temp }}/double-relecture-60/relecteur_2/
+          retention-days: 14
+          if-no-files-found: error
