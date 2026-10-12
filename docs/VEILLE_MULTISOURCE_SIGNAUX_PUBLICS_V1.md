@@ -6,13 +6,15 @@ FRONTIÈRE dispose déjà d'un relevé BOAMP, d'une extraction des offres de la 
 
 **Une publication observée n'est pas un besoin public établi.** Le champ `nature_signal=publication_publique_non_qualifiee` interdit de confondre la présence d'une annonce avec une demande effectivement financée, une mission nouvelle ou une difficulté de mobilisation. Aucune extrapolation nationale ne découle de ce relevé.
 
-## Trois sources primaires initiales
+## Neuf sources primaires initiales
 
 | Identifiant | Producteur | Canal | Origine officielle et portée |
 | --- | --- | --- | --- |
 | `anr_appels` | Agence nationale de la recherche | RSS des appels à projets | [Page officielle des trois flux](https://anr.fr/fr/flux-rss-et-reseaux-sociaux/) ; [filtre des appels à projets](https://anr.fr/rss/?aap=) |
 | `service_public_pro` | DILA / Service Public | RSS des actualités professionnelles | [Documentation du fil](https://entreprendre.service-public.gouv.fr/P10008) ; [flux RSS](https://www.service-public.gouv.fr/abonnements/rss/actu-actu-pro.rss) |
 | `anr_bluesky` | Agence nationale de la recherche | Compte officiel Bluesky | [Lien fourni par l'ANR](https://anr.fr/fr/flux-rss-et-reseaux-sociaux/) ; identifiant technique déclaré `did:plc:poa5nra3tnvjpki64nprt27d`. Le collecteur utilise l'[interface publique Bluesky](https://docs.bsky.app/docs/api/app-bsky-feed-get-author-feed) sans authentification. |
+
+Le catalogue comporte en outre six flux officiels supplémentaires : les actualités de l'ANR, les actualités générales des ministères économiques et financiers, celles de la Direction des achats de l'État, de la Direction des affaires juridiques, leurs bulletins officiels et les actualités institutionnelles de Tracfin. Les cinq flux économiques sont documentés dans la [page officielle des fils d'informations](https://www.economie.gouv.fr/tous-les-fils-d-infos). Le nouveau domaine `www.economie.gouv.fr` est explicitement autorisé, sans accès aux autres domaines par simple saisie de configuration.
 
 Le lien social est identifié par son identifiant décentralisé, en plus du nom de compte, pour écarter les messages publiés par des tiers et les repartages.
 
