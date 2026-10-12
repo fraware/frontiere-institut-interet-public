@@ -36,6 +36,72 @@
       "cadence_heures": 6,
       "page_reference": "https://anr.fr/fr/flux-rss-et-reseaux-sociaux/",
       "active": true
+    },
+    {
+      "id": "anr_actualites",
+      "nom": "ANR — actualités scientifiques",
+      "type": "rss",
+      "url": "https://anr.fr/rss/?news=",
+      "domaine": "anr.fr",
+      "categorie": "actualite_recherche",
+      "cadence_heures": 6,
+      "page_reference": "https://anr.fr/fr/flux-rss-et-reseaux-sociaux/",
+      "active": true
+    },
+    {
+      "id": "economie_actualites",
+      "nom": "Ministères économiques et financiers — actualités",
+      "type": "rss",
+      "url": "https://www.economie.gouv.fr/rss/toutesactualites",
+      "domaine": "www.economie.gouv.fr",
+      "categorie": "actualite_ministerielle",
+      "cadence_heures": 6,
+      "page_reference": "https://www.economie.gouv.fr/rss",
+      "active": true
+    },
+    {
+      "id": "economie_achats_etat",
+      "nom": "Direction des achats de l'État — actualités",
+      "type": "rss",
+      "url": "https://www.economie.gouv.fr/dae/rss",
+      "domaine": "www.economie.gouv.fr",
+      "categorie": "achats_publics",
+      "cadence_heures": 12,
+      "page_reference": "https://www.economie.gouv.fr/tous-les-fils-d-infos",
+      "active": true
+    },
+    {
+      "id": "economie_affaires_juridiques",
+      "nom": "Direction des affaires juridiques — actualités",
+      "type": "rss",
+      "url": "https://www.economie.gouv.fr/daj/rss",
+      "domaine": "www.economie.gouv.fr",
+      "categorie": "commande_publique_et_droit",
+      "cadence_heures": 12,
+      "page_reference": "https://www.economie.gouv.fr/tous-les-fils-d-infos",
+      "active": true
+    },
+    {
+      "id": "economie_bulletins_officiels",
+      "nom": "Ministères économiques — bulletin officiel",
+      "type": "rss",
+      "url": "https://www.economie.gouv.fr/bulletins-officiels/rss",
+      "domaine": "www.economie.gouv.fr",
+      "categorie": "decision_administrative",
+      "cadence_heures": 12,
+      "page_reference": "https://www.economie.gouv.fr/tous-les-fils-d-infos",
+      "active": true
+    },
+    {
+      "id": "economie_tracfin",
+      "nom": "Tracfin — actualités institutionnelles",
+      "type": "rss",
+      "url": "https://www.economie.gouv.fr/tracfin/rss",
+      "domaine": "www.economie.gouv.fr",
+      "categorie": "actualite_institutionnelle",
+      "cadence_heures": 12,
+      "page_reference": "https://www.economie.gouv.fr/tous-les-fils-d-infos",
+      "active": true
     }
   ]
 }
