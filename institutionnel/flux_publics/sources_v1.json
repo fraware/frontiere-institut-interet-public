@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "date_configuration": "2026-10-12",
+  "objet": "Signaux publics supplémentaires; ils ne constituent pas automatiquement des demandes opérationnelles.",
+  "sources": [
+    {
+      "id": "anr_appels",
+      "nom": "ANR — appels à projets",
+      "type": "rss",
+      "url": "https://anr.fr/rss/?aap=",
+      "domaine": "anr.fr",
+      "categorie": "appel_a_projets",
+      "cadence_heures": 6,
+      "page_reference": "https://anr.fr/fr/flux-rss-et-reseaux-sociaux/",
+      "active": true
+    },
+    {
+      "id": "service_public_pro",
+      "nom": "DILA — actualités des professionnels",
+      "type": "rss",
+      "url": "https://www.service-public.gouv.fr/abonnements/rss/actu-actu-pro.rss",
+      "domaine": "www.service-public.gouv.fr",
+      "categorie": "actualite_administrative",
+      "cadence_heures": 12,
+      "page_reference": "https://entreprendre.service-public.gouv.fr/P10008",
+      "active": true
+    },
+    {
+      "id": "anr_bluesky",
+      "nom": "ANR — compte social institutionnel Bluesky",
+      "type": "bluesky",
+      "acteur": "agencerecherche.bsky.social",
+      "did": "did:plc:poa5nra3tnvjpki64nprt27d",
+      "domaine": "public.api.bsky.app",
+      "categorie": "communication_institutionnelle",
+      "cadence_heures": 6,
+      "page_reference": "https://anr.fr/fr/flux-rss-et-reseaux-sociaux/",
+      "active": true
+    }
+  ]
+}
