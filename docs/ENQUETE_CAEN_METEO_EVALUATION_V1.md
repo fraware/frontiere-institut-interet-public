@@ -42,6 +42,10 @@ Les articles institutionnels sur Belenos et Taranis attestent que ces machines *
 
 Sources : https://meteofrance.com/meteo-a-z/les-supercalculateurs-de-meteo-france et https://meteofrance.com/presse/meteo-france-deploie-ses-deux-nouveaux-supercalculateurs
 
+**Calendrier public de déploiement du nouveau parc.** Météo-France annonçait en janvier 2025 un premier déploiement en 2027, un renforcement de la puissance en 2029 et un contrat jusqu'en 2033. Le projet annuel de performances pour 2026 indique un report d'un an de la mise en service, alors envisagée **à partir de mi-2027**. Le Sénat distingue le coût global du programme, estimé à **415 millions d'euros sur 2025–2033**, du montant du marché attribué en juillet 2026, **217 millions d'euros**. Il s'agit de prévisions et de périmètres comptables distincts, jamais de preuves d'achèvement.
+
+Sources : https://meteofrance.fr/actualite/presse/meteo-france-renouvelle-ses-supercalculateurs ; https://www.budget.gouv.fr/documentation/file-download/30943 ; https://www.senat.fr/rap/l25-139-310-3/l25-139-310-32.html
+
 Données non obtenues pour le marché 2026 : livraison initiale, installation, réception, mise en production, première simulation ou prévision effectivement produite par la nouvelle machine. Aucune de ces dates ne peut être inférée de l'attribution ou de la mise en service d'équipements antérieurs.
 
 ## Évaluation indépendante — séparation du tirage et des résultats
