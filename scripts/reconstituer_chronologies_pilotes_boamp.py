@@ -79,7 +79,7 @@ def lire_statistiques_soumissions(resultat: dict, origine_lot: str) -> list[dict
     tenders a une autre portée : ces deux dénominateurs ne sont pas sommés.
     """
     valeurs = elements(resultat.get("efac:ReceivedSubmissionsStatistics"))
-    observations, codes = [], set()
+    observations, codes = [], {}
     for indice, statistique in enumerate(valeurs):
         code = identite(chemin(statistique, [
             "efbc:StatisticsCode", "#text",
@@ -91,13 +91,25 @@ def lire_statistiques_soumissions(resultat: dict, origine_lot: str) -> list[dict
             total = int(nombre)
         else:
             raise ChronologieInvalide("Effectif de soumissions non entier ou absent.")
-        if total < 0 or code in codes:
-            raise ChronologieInvalide("Effectif négatif ou code statistique dupliqué.")
-        codes.add(code)
+        if total < 0:
+            raise ChronologieInvalide("Effectif de soumissions négatif.")
         origine_statistique = origine_lot + "/efac:ReceivedSubmissionsStatistics" + (
             f"/{indice}" if isinstance(resultat.get("efac:ReceivedSubmissionsStatistics"), list)
             else ""
         )
+        origine_effectif = origine_statistique + "/efbc:StatisticsNumeric"
+        origine_code = origine_statistique + "/efbc:StatisticsCode/#text"
+        if code in codes:
+            precedente = observations[codes[code]]
+            if precedente["effectif_declare"] != total:
+                raise ChronologieInvalide(
+                    "Statistiques contradictoires pour le même code officiel."
+                )
+            precedente.setdefault("occurrences_identiques", []).append({
+                "origine_effectif": origine_effectif, "origine_code": origine_code,
+            })
+            continue
+        codes[code] = len(observations)
         observations.append({
             "code_statistique_officiel": code,
             "effectif_declare": total,
@@ -106,8 +118,8 @@ def lire_statistiques_soumissions(resultat: dict, origine_lot: str) -> list[dict
                 "soumissions_tous_canaux_declares" if code == "tenders"
                 else "code_non_interprete"
             ),
-            "origine_effectif": origine_statistique + "/efbc:StatisticsNumeric",
-            "origine_code": origine_statistique + "/efbc:StatisticsCode/#text",
+            "origine_effectif": origine_effectif,
+            "origine_code": origine_code,
         })
     return observations
 
@@ -162,9 +174,16 @@ def analyser_attribution(notice):
             raise ChronologieInvalide(
                 "Avis contradictoire : non-attribution sans offre mais statistique positive."
             )
+        references_contrats = [
+            identite(c.get("cbc:ID"))
+            for c in elements(resultat.get("efac:SettledContract"))
+        ]
+        if len(references_contrats) != len(set(references_contrats)):
+            raise ChronologieInvalide("Contrat référencé plusieurs fois pour un même lot.")
         lots.append({
             "identifiant_lot": code_lot,
             "statistiques_soumissions": soumissions,
+            "contrats_references": references_contrats,
             "code_resultat_officiel": code,
             "statut_lot": (
                 "attribue" if code == "selec-w" else
@@ -173,8 +192,7 @@ def analyser_attribution(notice):
             "motif_officiel": motif,
             "origine_resultat": origine_lot + "/cbc:TenderResultCode/#text",
             "contrat_reference": (
-                identite(chemin(resultat, ["efac:SettledContract", "cbc:ID"]))
-                if resultat.get("efac:SettledContract") else None
+                references_contrats[0] if len(references_contrats) == 1 else None
             ),
         })
     if len({x["identifiant_lot"] for x in lots}) != len(lots):
