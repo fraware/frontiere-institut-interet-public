@@ -23,6 +23,7 @@ ETAT = RACINE / "institutionnel/decp/etat_ressources.json"
 URLS = frozenset({
     "https://www.data.gouv.fr/api/1/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides/",
     "https://www.data.gouv.fr/api/1/datasets/donnees-essentielles-de-la-commande-publique-transmises-via-le-pes-marche-depuis-2024/",
+    "https://www.data.gouv.fr/api/1/datasets/api-decp/",
 })
 MAX_OCTETS = 32_000_000
 MAX_RESSOURCES = 30_000
@@ -59,8 +60,8 @@ def verifier_catalogue(configuration: dict) -> list[dict]:
     if not isinstance(configuration, dict) or configuration.get("version") != "decp-metadonnees-v1":
         raise ErreurDECP("Version du registre inconnue")
     sources = configuration.get("sources")
-    if not isinstance(sources, list) or len(sources) != 2:
-        raise ErreurDECP("Deux sources officielles sont attendues")
+    if not isinstance(sources, list) or len(sources) != 3:
+        raise ErreurDECP("Trois sources officielles sont attendues")
     vus = set()
     for source in sources:
         if not isinstance(source, dict):
