@@ -1,0 +1,48 @@
+{
+  "version": "inventaire-canaux-v1",
+  "limite_editeurs_detailles": 600,
+  "organismes_renseignes": [
+    {
+      "id": "anr",
+      "nom": "Agence nationale de la recherche",
+      "editeurs_data_gouv": [
+        "Agence nationale de la recherche",
+        "ANR"
+      ],
+      "source_officielle": "https://anr.fr/fr/flux-rss-et-reseaux-sociaux/",
+      "canaux": [
+        "anr_appels",
+        "anr_actualites",
+        "anr_bluesky"
+      ]
+    },
+    {
+      "id": "dila",
+      "nom": "Direction de l'information légale et administrative",
+      "editeurs_data_gouv": [
+        "Direction de l'information légale et administrative",
+        "DILA"
+      ],
+      "source_officielle": "https://entreprendre.service-public.gouv.fr/P10008",
+      "canaux": [
+        "service_public_pro"
+      ]
+    },
+    {
+      "id": "mef",
+      "nom": "Ministères économiques et financiers",
+      "editeurs_data_gouv": [
+        "Ministères économiques et financiers"
+      ],
+      "source_officielle": "https://www.economie.gouv.fr/tous-les-fils-d-infos",
+      "canaux": [
+        "economie_actualites",
+        "economie_achats_etat",
+        "economie_affaires_juridiques",
+        "economie_bulletins_officiels",
+        "economie_tracfin"
+      ]
+    }
+  ],
+  "note": "Les noms de producteurs data.gouv.fr constituent des libellés publiés et non une résolution garantie d'identité d'organisme."
+}
