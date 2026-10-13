@@ -1,9 +1,9 @@
 {
   "couverture_exhaustive_des_besoins_publics": false,
-  "cycle_le": "2026-10-13T18:46:25+00:00",
+  "cycle_le": "2026-10-13T20:21:38+00:00",
   "enrichissements_metadonnees": 0,
   "nombre_signaux_distincts": 286,
-  "nouveaux_signaux": 2,
+  "nouveaux_signaux": 0,
   "qualification_de_besoins_effectuee": false,
   "rectification_historique": {
     "classification": "enrichissements_de_metadonnees_non_revisions_du_texte_source",
@@ -15,12 +15,12 @@
     "raison": "100 dates RSS auparavant non extraites puis reconnues lors du second relevé",
     "rectifie_le": "2026-10-12"
   },
-  "revisions": 1,
+  "revisions": 0,
   "sources": [
     {
       "actif": true,
       "cadence_heures": 6,
-      "dernier_succes": "2026-10-13T18:46:25+00:00",
+      "dernier_succes": "2026-10-13T20:21:38+00:00",
       "elements_lus": 16,
       "enrichissements_metadonnees": 0,
       "erreur": null,
@@ -28,12 +28,12 @@
       "id": "anr_appels",
       "nom": "ANR — appels à projets",
       "nouveaux": 0,
-      "revisions": 1
+      "revisions": 0
     },
     {
       "actif": true,
       "cadence_heures": 12,
-      "dernier_succes": "2026-10-13T18:46:25+00:00",
+      "dernier_succes": "2026-10-13T20:21:38+00:00",
       "elements_lus": 100,
       "enrichissements_metadonnees": 0,
       "erreur": null,
@@ -46,20 +46,20 @@
     {
       "actif": true,
       "cadence_heures": 6,
-      "dernier_succes": "2026-10-13T18:46:25+00:00",
+      "dernier_succes": "2026-10-13T20:21:38+00:00",
       "elements_lus": 92,
       "enrichissements_metadonnees": 0,
       "erreur": null,
       "etat": "succes",
       "id": "anr_bluesky",
       "nom": "ANR — compte social institutionnel Bluesky",
-      "nouveaux": 1,
+      "nouveaux": 0,
       "revisions": 0
     },
     {
       "actif": true,
       "cadence_heures": 6,
-      "dernier_succes": "2026-10-13T18:46:25+00:00",
+      "dernier_succes": "2026-10-13T20:21:38+00:00",
       "elements_lus": 20,
       "enrichissements_metadonnees": 0,
       "erreur": null,
@@ -72,20 +72,20 @@
     {
       "actif": true,
       "cadence_heures": 6,
-      "dernier_succes": "2026-10-13T18:46:25+00:00",
+      "dernier_succes": "2026-10-13T20:21:38+00:00",
       "elements_lus": 10,
       "enrichissements_metadonnees": 0,
       "erreur": null,
       "etat": "succes",
       "id": "economie_actualites",
       "nom": "Ministères économiques et financiers — actualités",
-      "nouveaux": 1,
+      "nouveaux": 0,
       "revisions": 0
     },
     {
       "actif": true,
       "cadence_heures": 12,
-      "dernier_succes": "2026-10-13T18:46:25+00:00",
+      "dernier_succes": "2026-10-13T20:21:38+00:00",
       "elements_lus": 10,
       "enrichissements_metadonnees": 0,
       "erreur": null,
@@ -98,7 +98,7 @@
     {
       "actif": true,
       "cadence_heures": 12,
-      "dernier_succes": "2026-10-13T18:46:25+00:00",
+      "dernier_succes": "2026-10-13T20:21:38+00:00",
       "elements_lus": 10,
       "enrichissements_metadonnees": 0,
       "erreur": null,
@@ -111,7 +111,7 @@
     {
       "actif": true,
       "cadence_heures": 12,
-      "dernier_succes": "2026-10-13T18:46:25+00:00",
+      "dernier_succes": "2026-10-13T20:21:38+00:00",
       "elements_lus": 14,
       "enrichissements_metadonnees": 0,
       "erreur": null,
@@ -124,7 +124,7 @@
     {
       "actif": true,
       "cadence_heures": 12,
-      "dernier_succes": "2026-10-13T18:46:25+00:00",
+      "dernier_succes": "2026-10-13T20:21:38+00:00",
       "elements_lus": 10,
       "enrichissements_metadonnees": 0,
       "erreur": null,
