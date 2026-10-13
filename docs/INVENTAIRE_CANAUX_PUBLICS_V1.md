@@ -34,7 +34,7 @@ La procédure `.github/workflows/inventaire-canaux.yml` l'actualise quatre fois 
 
 Le présent inventaire constitue un point de départ mesuré, pas encore un répertoire exhaustif des administrations. Les prochaines étapes sont :
 
-- rapprochement progressif des producteurs avec les identifiants administratifs ROAE, l'Annuaire et SIREN/SIRET, en gardant les ambiguïtés ;
+- rapprochement progressif des producteurs avec les identifiants du référentiel d'organisation administrative de l'État, de l'Annuaire et des répertoires d'entreprises, en gardant les ambiguïtés ;
 - recherche des sites officiels propres à chaque organisme et analyse de leurs en-têtes RSS/Atom, cartes de site et pages de publications ;
 - collecte des appels à projets, consultations, rapports, annonces de mission et autres signaux pertinents ;
 - ajout des comptes sociaux uniquement par références institutionnelles explicites ou vérification d'identité technique ;
