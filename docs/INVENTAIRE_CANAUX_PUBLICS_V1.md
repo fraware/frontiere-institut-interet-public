@@ -7,7 +7,7 @@ Un premier inventaire des organismes et de leurs moyens de publication doit part
 1. les pages locales du catalogue national `institutionnel/decouverte/balayage_pages/page_*.jsonl`, identifiants de jeux de données et libellés des producteurs publiés ;
 2. les neuf flux RSS et Bluesky répertoriés dans `institutionnel/flux_publics/sources_v1.json`, reliés explicitement à trois institutions par `institutionnel/canaux_publics/configuration_v1.json`.
 
-Les correspondances de producteurs data.gouv.fr sont faites **sur des libellés configurés**, pas sur des suppositions d'identité. Deux noms différents demeurent séparés, y compris s'ils semblent parler du même ministère. Aucun rapprochement SIREN, SIRET ou identifiant ROAE n'est revendiqué.
+Les correspondances de producteurs data.gouv.fr sont faites **sur des libellés configurés**, pas sur des suppositions d'identité. Deux noms différents demeurent séparés, y compris s'ils semblent parler du même ministère. Aucun rapprochement avec les identifiants d'entreprises ni ceux du référentiel administratif de l'État n'est revendiqué.
 
 ## Statistiques produites
 
