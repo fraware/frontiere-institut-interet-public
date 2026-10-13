@@ -19,7 +19,7 @@ from urllib.error import HTTPError, URLError
 try:
     from scripts.collecter_catalogues_decp import telecharger as lire_fiche_officielle
     from scripts.ingerer_fichier_decp_json import (
-        iterer_documents, normaliser_marche, DocumentDECPInvalide,
+        iterer_documents, normaliser_marche, DocumentDECPInvalide, MAX_NOTICES,
     )
     from scripts.rapprocher_references_decp_boamp import reference_normalisee
     from scripts.sonder_ressource_decp_aife import (
@@ -30,7 +30,7 @@ except ModuleNotFoundError as exc:
         raise
     from collecter_catalogues_decp import telecharger as lire_fiche_officielle
     from ingerer_fichier_decp_json import (
-        iterer_documents, normaliser_marche, DocumentDECPInvalide,
+        iterer_documents, normaliser_marche, DocumentDECPInvalide, MAX_NOTICES,
     )
     from rapprocher_references_decp_boamp import reference_normalisee
     from sonder_ressource_decp_aife import (
@@ -207,7 +207,7 @@ def recevoir(selection: dict, fichier: Path, *, plafond: int = PLAFOND_PAR_FICHI
 
 
 def analyser(chemin: Path, selection: dict, cibles_par_identite: dict,
-             *, observer=None) -> dict:
+             *, observer=None, plafond_notices: int = MAX_NOTICES) -> dict:
     """Parcourir intégralement le fichier ; conserver les seuls candidats."""
     if chemin.stat().st_size != selection["taille_octets"]:
         raise BalayageInvalide("Taille réelle du fichier incorrecte")
@@ -218,7 +218,9 @@ def analyser(chemin: Path, selection: dict, cibles_par_identite: dict,
     correspondances = []
     references = {cle for (_, cle) in cibles_par_identite}
     with chemin.open("r", encoding="utf-8-sig") as flux:
-        for type_objet, objet in iterer_documents(flux):
+        for type_objet, objet in iterer_documents(
+            flux, plafond_notices=plafond_notices,
+        ):
             stats["objets_lus"] += 1
             if type_objet == "contrat-concession":
                 stats["concessions_exclues"] += 1
