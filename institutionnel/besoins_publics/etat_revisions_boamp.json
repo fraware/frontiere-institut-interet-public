@@ -2,25 +2,25 @@
   "aucune_variation_ne_prouve_stabilite_totale": true,
   "changements_observes": [],
   "completude_historique_etablie": false,
-  "controle_le": "2026-10-13T03:52:15+00:00",
+  "controle_le": "2026-10-13T04:26:04+00:00",
   "controles": [
     {
-      "jour": "2025-02-13",
+      "jour": "2025-02-17",
       "retour_releve_initial": false,
       "variation": false
     },
     {
-      "jour": "2025-02-14",
+      "jour": "2025-02-18",
       "retour_releve_initial": false,
       "variation": false
     },
     {
-      "jour": "2025-02-15",
+      "jour": "2025-02-19",
       "retour_releve_initial": false,
       "variation": false
     },
     {
-      "jour": "2025-02-16",
+      "jour": "2025-02-20",
       "retour_releve_initial": false,
       "variation": false
     },
@@ -35,7 +35,7 @@
       "variation": false
     }
   ],
-  "dernier_jour_relecture_circulaire": "2025-02-16",
+  "dernier_jour_relecture_circulaire": "2025-02-20",
   "erreurs": [],
   "etat_connu_par_jour": {
     "2025-01-08": {
@@ -198,6 +198,22 @@
       "observe_le": "2026-10-13T03:52:15+00:00",
       "sha256_gzip": "3e36465a5b695520a1e06496ff89a7684b66a55e2c3fe15f406f20284ebe9d94"
     },
+    "2025-02-17": {
+      "observe_le": "2026-10-13T04:26:04+00:00",
+      "sha256_gzip": "8f865b18f97dc4cbc7499e31fbb76c4cf263bbfb58093d12a26b61313374bcb4"
+    },
+    "2025-02-18": {
+      "observe_le": "2026-10-13T04:26:04+00:00",
+      "sha256_gzip": "bc58eee0af11fa654c4462b6b803a77c03204f752675bbf9359e672c3f4e00ed"
+    },
+    "2025-02-19": {
+      "observe_le": "2026-10-13T04:26:04+00:00",
+      "sha256_gzip": "e06ff6c2db7598ea033ef5ce829c96ac1f487e3646feaaee0ffd5af5a3dd83d5"
+    },
+    "2025-02-20": {
+      "observe_le": "2026-10-13T04:26:04+00:00",
+      "sha256_gzip": "58ad28c078d243162d2a00d4ac679508d5ddb9bc205a4612590bf4696ba47a38"
+    },
     "2026-09-08": {
       "observe_le": "2026-10-11T18:03:28+00:00",
       "sha256_gzip": "3e87f10442912e2fbb951239d518ffb2f0b0b26032982cc7af2c563a4d19c187"
@@ -287,11 +303,11 @@
       "sha256_gzip": "5a17f5a4d152a258d48c39a29f9bdd5ae69d4d6f04c2bbede2d5802b8e0ea629"
     },
     "2026-09-30": {
-      "observe_le": "2026-10-13T03:52:15+00:00",
+      "observe_le": "2026-10-13T04:26:04+00:00",
       "sha256_gzip": "d5901bbfc1c69c8c6bec27ba723d28e7dea71fc01e3a4b1402327e8f7773bad9"
     },
     "2026-10-01": {
-      "observe_le": "2026-10-13T03:52:15+00:00",
+      "observe_le": "2026-10-13T04:26:04+00:00",
       "sha256_gzip": "e733cd80fc9fa22fe2ac6fe148517d1c07cf68fb5994e9149662494b7b69ae53"
     }
   },
