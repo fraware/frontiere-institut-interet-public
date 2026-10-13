@@ -1,7 +1,8 @@
 name: "Données essentielles : sonde JSON AIFE"
 
 on:
-  # Première sonde déclenchée sur la fusion et manuellement ; pas de fréquence annoncée avant validation.
+  schedule:
+    - cron: "23 3,9,15,21 * * *"
   push:
     branches: [main]
     paths:
