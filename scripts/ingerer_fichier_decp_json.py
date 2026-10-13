@@ -93,11 +93,12 @@ class LecteurJSON:
                     raise DocumentDECPInvalide("Document JSON tronqué ou incorrect") from exc
 
 
-def _iterer_tableau(lecteur: LecteurJSON, categorie: str, total: list[int]):
+def _iterer_tableau(lecteur: LecteurJSON, categorie: str, total: list[int],
+                   plafond_notices: int):
     """Parcourir un tableau nommé, avec plafond global sur les deux catégories."""
     lecteur.attendre("[")
     while lecteur.caractere() != "]":
-        if total[0] >= MAX_NOTICES:
+        if total[0] >= plafond_notices:
             raise DocumentDECPInvalide("Nombre total de notices supérieur au plafond")
         enregistrement = lecteur.valeur()
         total[0] += 1
@@ -112,7 +113,7 @@ def _iterer_tableau(lecteur: LecteurJSON, categorie: str, total: list[int]):
     lecteur.attendre("]")
 
 
-def iterer_documents(flux: TextIO):
+def iterer_documents(flux: TextIO, *, plafond_notices: int = MAX_NOTICES):
     """Parcourir marchés et concessions comme catégories documentaires distinctes.
 
     L'interface AIFE observée le 13 octobre 2026 utilise :
@@ -120,18 +121,21 @@ def iterer_documents(flux: TextIO):
     L'ordre des deux membres ne porte aucune signification. Une structure
     inconnue est refusée, sans omission silencieuse.
     """
+    if (type(plafond_notices) is not int
+            or not 1 <= plafond_notices <= 200_000):
+        raise DocumentDECPInvalide("Plafond de notices non admissible")
     lecteur = LecteurJSON(flux)
     total = [0]
     racine = lecteur.caractere()
     if racine == "[":
-        yield from _iterer_tableau(lecteur, "marche", total)
+        yield from _iterer_tableau(lecteur, "marche", total, plafond_notices)
     elif racine == "{":
         lecteur.attendre("{")
         if lecteur.valeur() != "marches":
             raise DocumentDECPInvalide("Seule la clé principale marches est reconnue")
         lecteur.attendre(":")
         if lecteur.caractere() == "[":
-            yield from _iterer_tableau(lecteur, "marche", total)
+            yield from _iterer_tableau(lecteur, "marche", total, plafond_notices)
         elif lecteur.caractere() == "{":
             lecteur.attendre("{")
             noms = set()
@@ -141,7 +145,7 @@ def iterer_documents(flux: TextIO):
                     raise DocumentDECPInvalide("Collection inconnue ou répétée dans marches")
                 noms.add(nom)
                 lecteur.attendre(":")
-                yield from _iterer_tableau(lecteur, nom, total)
+                yield from _iterer_tableau(lecteur, nom, total, plafond_notices)
                 symbole = lecteur.caractere()
                 if symbole == ",":
                     lecteur.attendre(",")
