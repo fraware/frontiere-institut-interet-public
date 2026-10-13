@@ -199,11 +199,20 @@ def analyser_fichier(
         if racine is None or profondeur != 0:
             raise XMLDECPInvalide("Document XML sans racine complète")
     except ET.ParseError as exc:
-        # Seul le code de diagnostic et la position sont publiés, jamais le
-        # fragment de texte contractuel à l'origine de l'erreur.
+        # Ne conserver qu'une fenêtre de codes numériques autour de l'erreur.
+        # Aucun texte de marché ni fragment XML n'est journalisé.
         ligne, colonne = exc.position
+        with fichier.open("rb") as raw:
+            lignes = raw.read(min(taille, 4096)).splitlines()
+        fenetre = []
+        if 0 < ligne <= len(lignes):
+            fragment = lignes[ligne - 1]
+            debut = max(0, colonne - 4)
+            fin = min(len(fragment), colonne + 5)
+            fenetre = list(fragment[debut:fin])
         raise XMLDECPInvalide(
-            f"Erreur de syntaxe XML (code {exc.code}, ligne {ligne}, colonne {colonne})"
+            f"Erreur de syntaxe XML (code {exc.code}, ligne {ligne}, "
+            f"colonne {colonne}, octets_proches={fenetre})"
         ) from exc
     return {
         "version": "decp-fichier-xml-v1", "source_catalogue": source_id,
