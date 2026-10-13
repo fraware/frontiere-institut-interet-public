@@ -20,6 +20,7 @@ try:
         chemin, elements, identite, identifiant_acheteur_14_non_qualifie,
     )
     from scripts.reconstituer_chronologies_pilotes_boamp import analyser_attribution
+    from scripts.rapprocher_references_decp_boamp import lire_marches, reference_normalisee
     from scripts.verifier_identifiants_acheteurs_api_entreprises import (
         VERSION as VERSION_ADMIN, adresse as adresse_administrative,
         classer_reponse,
@@ -32,6 +33,7 @@ except ModuleNotFoundError as exc:
         chemin, elements, identite, identifiant_acheteur_14_non_qualifie,
     )
     from reconstituer_chronologies_pilotes_boamp import analyser_attribution
+    from rapprocher_references_decp_boamp import lire_marches, reference_normalisee
     from verifier_identifiants_acheteurs_api_entreprises import (
         VERSION as VERSION_ADMIN, adresse as adresse_administrative,
         classer_reponse,
@@ -39,6 +41,8 @@ except ModuleNotFoundError as exc:
 
 VERSION = "chaines-documentaires-acheteurs-17-avis-v1"
 EMPREINTE = re.compile(r"[0-9a-f]{64}")
+REFERENCE_COMPARABLE = re.compile(r"[A-Za-z0-9][A-Za-z0-9._/-]{5,99}")
+
 
 
 class ChaineInvalide(ValueError):
@@ -109,6 +113,39 @@ def attributs_attribution(notice: dict, codes_lots: list[str]) -> dict:
     """Rattacher contrats et lots à l'intérieur de ce seul avis."""
     analyse = analyser_attribution(notice)
     contrats = analyse["contrats"]
+    formulaires = json.loads(notice["donnees"])
+    racine = chemin(formulaires, "EFORMS", "ContractAwardNotice")
+    details = chemin(
+        racine, "ext:UBLExtensions", "ext:UBLExtension",
+        "ext:ExtensionContent", "efext:EformsExtension",
+        "efac:NoticeResult", "efac:SettledContract",
+    )
+    documents = elements(details)
+    references_documentaires = {}
+    for indice, document in enumerate(documents):
+        identifiant = texte(document.get("cbc:ID"))
+        reference_externe = texte(chemin(
+            document, "efac:ContractReference", "cbc:ID",
+        ))
+        if not identifiant or identifiant in references_documentaires:
+            raise ChaineInvalide("Référence contractuelle locale dupliquée")
+        references_documentaires[identifiant] = {
+            "reference_contrat_declaree": reference_externe,
+            "reference_contrat_comparable_decp": (
+                bool(REFERENCE_COMPARABLE.fullmatch(reference_externe))
+                if isinstance(reference_externe, str) else False
+            ),
+            "origine_reference_contrat": (
+                "/donnees/EFORMS/ContractAwardNotice/ext:UBLExtensions/"
+                "ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/"
+                "efac:NoticeResult/efac:SettledContract/"
+                + (str(indice) if isinstance(details, list) else "")
+                + "/efac:ContractReference/cbc:ID"
+                if reference_externe is not None else None
+            ),
+        }
+    if set(references_documentaires) != {x["identifiant_contrat"] for x in contrats}:
+        raise ChaineInvalide("Détail de contrat non concordant avec les résultats")
     ids_contrats = [c["identifiant_contrat"] for c in contrats]
     if len(ids_contrats) != len(set(ids_contrats)):
         raise ChaineInvalide("Référence contractuelle ambiguë dans l'avis")
@@ -130,6 +167,7 @@ def attributs_attribution(notice: dict, codes_lots: list[str]) -> dict:
             "reference_locale": c["identifiant_contrat"],
             "date_decision_attribution_declaree": c["date_attribution_declaree"],
             "date_emission_contrat_declaree": c["date_emission_contrat_declaree"],
+            **references_documentaires[c["identifiant_contrat"]],
             "debut_execution_observe": False,
         } for c in contrats],
         "resultats_lots": [{
