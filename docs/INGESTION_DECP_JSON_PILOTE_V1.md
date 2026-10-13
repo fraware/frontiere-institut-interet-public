@@ -4,7 +4,7 @@
 
 Les textes français applicables depuis le 1er janvier 2024 définissent notamment l'identifiant du marché, l'identifiant de l'acheteur, l'objet, le code commun des marchés, la date de notification et la publication des données essentielles. Les structures sont décrites dans le [schéma national de données 2.0](https://schema.data.gouv.fr/139bercy/format-commande-publique/2.0.0/) et dans l'[annexe de l'arrêté du 22 décembre 2022](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000048876441).
 
-Le [dépôt officiel du format](https://github.com/139bercy/format-commande-publique) contient plusieurs exemples JSON, dont une structure `{"marches":{"marche":[...]}}`, alors que le schéma JSON décrit `{"marches":[...]}`. L'importateur prend en charge ces deux enveloppes et les tableaux racines. Il refuse une structure nouvelle sans la traiter silencieusement.
+Le [dépôt officiel du format](https://github.com/139bercy/format-commande-publique) contient des exemples avec `{"marches":{"marche":[...]}}`, tandis que le schéma JSON décrit `{"marches":[...]}`. **La première ressource AIFE réellement téléchargée le 13 octobre 2026 présente deux collections à l’intérieur de `marches` : `marche` et `contrat-concession`.** L’importateur prend désormais en charge cet ensemble, quel que soit l’ordre des deux collections, ainsi que les tableaux racines. Il compte les concessions séparément sans les qualifier comme marchés. Les formes inconnues sont refusées.
 
 **L'origine des champs normalisés est réglementaire ; le traitement fourni ne constitue pas une vérification complète de conformité à ce schéma.** Une vérification normative ultérieure devra appliquer la version du schéma correspondant à chaque fichier et isoler les concessions.
 
@@ -38,7 +38,7 @@ La sonde distante, exécutée uniquement sur une machine autorisée à accéder 
 python scripts/sonder_ressource_decp_aife.py
 ```
 
-Elle échoue sans produire de nouvelle sortie si les ressources officielles ne sont pas consultables, si le domaine de stockage n'est pas autorisé, si la taille diverge ou si le fichier ne respecte pas l'un des formats d'enveloppe pris en charge. Il n'existe pas de contournement automatique d'un refus d'accès.
+Elle échoue sans produire de nouvelle sortie si les ressources officielles ne sont pas consultables, si le domaine de stockage n'est pas autorisé, si la taille diverge ou si le fichier ne respecte pas les enveloppes reconnues. Un diagnostic de forme limité aux noms et types de champs accompagne les refus, sans journaliser de texte contractuel. Il n'existe pas de contournement automatique d'un refus d'accès.
 
 ## Limites empiriques
 
