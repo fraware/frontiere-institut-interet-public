@@ -1,0 +1,116 @@
+"""Essais sans réseau de l'avancement progressif des ressources XML DGFiP."""
+from copy import deepcopy
+import json
+from pathlib import Path
+
+import pytest
+
+from scripts.sonder_lot_decp_dgfip import (
+    LotDECPInvalide, choisir_ressources, executer,
+)
+
+XML = b"""<?xml version="1.0" encoding="UTF-8"?>
+<marches><marche><id>APPEL-001</id><acheteur><id>21750001630066</id></acheteur>
+<objet>Mission de recherche scientifique</objet><codeCPV>73100000-3</codeCPV>
+<dateNotification>2026-10-01</dateNotification><montant>1234.50</montant>
+</marche></marches>"""
+
+
+def donnees(nombre=3):
+    locaux, distants = [], []
+    for numero in range(nombre):
+        uid = f"{numero+1:08d}-eeee-4444-8888-1234567890ab"
+        locaux.append({
+            "id": uid, "format": "xml", "titre": f"decp-{numero}.xml",
+            "taille_octets_declaree": len(XML),
+            "modifie_le": f"2026-10-{numero+1:02d}T11:00:00+00:00",
+        })
+        distants.append({
+            "id": uid, "format": "xml", "filesize": len(XML),
+            "url": f"https://static.data.gouv.fr/resources/decp/{numero}.xml",
+        })
+    return (
+        {"catalogues": [{"source_id": "dgfip_pes_marche",
+                          "ressources_recentes": locaux}]},
+        {"resources": distants},
+    )
+
+
+def _recevoir(meta, cible):
+    cible.write_bytes(XML)
+    return len(XML)
+
+
+def test_prise_en_charge_de_plusieurs_fichiers_et_reprise_sans_doublons():
+    local, distant = donnees(4)
+    premier = executer(local, distant, {}, recuperer=_recevoir,
+                       maximum=2, moment="2026-10-13T04:00:00+00:00")
+    assert premier["nombre_fichiers_du_cycle"] == 2
+    assert premier["nombre_fichiers_historises"] == 2
+    assert all(x["releves"]["marches_uniques_valides"] == 1
+               for x in premier["fichiers"])
+    assert all(not x["besoin_encore_ouvert_demontre"]
+               for x in premier["fichiers"])
+    suivant = executer(local, distant, premier, recuperer=_recevoir,
+                       maximum=2, moment="2026-10-13T05:00:00+00:00")
+    assert suivant["nombre_fichiers_historises"] == 4
+    assert len({x["id"] for x in suivant["fichiers"]}) == 4
+    assert choisir_ressources(local, distant, suivant, maximum=2) == []
+    assert executer(local, distant, suivant, recuperer=_recevoir) == suivant
+
+
+def test_meme_identifiant_avec_nouvelles_metadonnees_est_repris():
+    local, distant = donnees(1)
+    first = executer(local, distant, {}, recuperer=_recevoir)
+    updated = deepcopy(local)
+    updated["catalogues"][0]["ressources_recentes"][0][
+        "modifie_le"
+    ] = "2026-10-13T06:00:00+00:00"
+    second = executer(updated, distant, first, recuperer=_recevoir)
+    assert second["nombre_fichiers_historises"] == 2
+    assert second["fichiers"][0]["id"] == second["fichiers"][1]["id"]
+    assert second["fichiers"][0]["empreinte_sha256"] == second["fichiers"][1]["empreinte_sha256"]
+
+
+def test_echec_individuel_non_marque_comme_traite():
+    local, distant = donnees(2)
+    def recup(meta, cible):
+        if meta["id"].startswith("00000001"):
+            raise TimeoutError("simulateur")
+        return _recevoir(meta, cible)
+    result = executer(local, distant, {}, recuperer=recup)
+    assert result["nombre_fichiers_du_cycle"] == 1
+    assert result["echecs_du_dernier_cycle"][0]["type_erreur"] == "TimeoutError"
+    assert result["nombre_fichiers_historises"] == 1
+    assert len(choisir_ressources(local, distant, result)) == 1
+
+
+def test_tous_les_echecs_preservent_le_curseur():
+    local, distant = donnees(2)
+    with pytest.raises(LotDECPInvalide):
+        executer(local, distant, {},
+                recuperer=lambda meta, path: (_ for _ in ()).throw(TimeoutError()))
+
+
+def test_incoherence_de_taille_refusee_avant_telechargement():
+    local, distant = donnees()
+    distant["resources"][0]["filesize"] += 100
+    selection = choisir_ressources(local, distant, {})
+    assert len(selection) == 2
+    assert not any(x["id"].startswith("00000001") for x in selection)
+
+
+def test_url_exterieure_ne_provoque_aucune_requete():
+    local, distant = donnees(1)
+    distant["resources"][0]["url"] = "https://exemple.invalid/fichier.xml"
+    with pytest.raises(ValueError):
+        choisir_ressources(local, distant, {})
+
+
+def test_document_xml_incorrect_ne_devient_pas_succes():
+    local, distant = donnees(1)
+    def mauvais(meta, cible):
+        cible.write_bytes(b"\x00" * len(XML))
+        return len(XML)
+    with pytest.raises(LotDECPInvalide):
+        executer(local, distant, {}, recuperer=mauvais)
