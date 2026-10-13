@@ -9,7 +9,7 @@ import pytest
 
 from scripts.collecter_notices_pilotes_boamp import adresse, capturer
 from scripts.extraire_references_boamp_decp import (
-    references_notice, produire,
+    references_notice, produire, identifiant_acheteur_14_non_qualifie,
 )
 
 SIRET = "12345678901234"
@@ -151,3 +151,43 @@ def test_provenance_avec_candidat_incomplet():
     refs, why = references_notice(notice(data))
     assert refs == []
     assert why == "reference_projet_absente_ou_ambigue"
+
+
+def test_identifiant_14_sans_schema_est_une_categorie_distincte():
+    # Forme structurelle constatée dans les captures officielles, valeurs fictives.
+    data = formulaire()
+    organisations = data["EFORMS"][FORMULAIRE]["ext:UBLExtensions"][
+        "ext:UBLExtension"]["ext:ExtensionContent"]["efext:EformsExtension"][
+        "efac:Organizations"]["efac:Organization"]
+    organisations[0]["efac:Company"]["cac:PartyLegalEntity"]["cbc:CompanyID"] = SIRET
+    refs, statut = references_notice(notice(data))
+    assert refs == []
+    assert statut == "rattachement_organisation_non_univoque"
+    candidat = identifiant_acheteur_14_non_qualifie(notice(data))
+    assert candidat["identifiant_14_chiffres"] == SIRET
+    assert candidat["siret_juridiquement_verifie"] is False
+    assert candidat["categorie"] == "identifiant_acheteur_14_chiffres_sans_schema"
+    assert "efac:Organizations" in candidat["chemin_preuve"]
+
+
+def test_identifiant_14_extrait_meme_sans_reference_projet():
+    data = formulaire()
+    data["EFORMS"][FORMULAIRE].pop("cac:ProcurementProject")
+    organisations = data["EFORMS"][FORMULAIRE]["ext:UBLExtensions"][
+        "ext:UBLExtension"]["ext:ExtensionContent"]["efext:EformsExtension"][
+        "efac:Organizations"]["efac:Organization"]
+    organisations[0]["efac:Company"]["cac:PartyLegalEntity"]["cbc:CompanyID"] = SIRET
+    assert references_notice(notice(data))[0] == []
+    assert identifiant_acheteur_14_non_qualifie(notice(data))[
+        "identifiant_14_chiffres"] == SIRET
+
+
+def test_identifiant_europeen_ou_titulaire_nest_pas_siret_acheteur():
+    data = formulaire()
+    organisations = data["EFORMS"][FORMULAIRE]["ext:UBLExtensions"][
+        "ext:UBLExtension"]["ext:ExtensionContent"]["efext:EformsExtension"][
+        "efac:Organizations"]["efac:Organization"]
+    organisations[0]["efac:Company"]["cac:PartyLegalEntity"]["cbc:CompanyID"] = {
+        "@schemeName": "eu", "#text": "12345"}
+    organisations[1]["efac:Company"]["cac:PartyLegalEntity"]["cbc:CompanyID"] = SIRET
+    assert identifiant_acheteur_14_non_qualifie(notice(data)) is None
