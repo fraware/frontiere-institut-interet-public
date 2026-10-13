@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 
 from scripts.sonder_ressource_decp_aife import (
-    SondeDECPInvalide, choisir_ressource, executer,
+    SondeDECPInvalide, choisir_ressource, executer, diagnostiquer_structure,
     _url_officielle, PLAFOND_OCTETS,
 )
 
@@ -99,3 +99,18 @@ def test_taille_declaree_et_taille_effective_divergentes():
         return 2
     with pytest.raises(SondeDECPInvalide):
         executer(etat(), fiche(), recuperer=recuperation)
+
+
+
+def test_diagnostic_de_forme_ne_divulgue_pas_les_enregistrements(tmp_path):
+    fichier = tmp_path / "structure.json"
+    fichier.write_text(json.dumps({
+        "marches": {"marche": [{"objet": "information confidentielle test"}]},
+        "concessions": {"concession": [{"objet": "autre information test"}]},
+        "entete": "information confidentielle test",
+    }), encoding="utf-8")
+    rapport = diagnostiquer_structure(fichier)
+    assert rapport["champs_racine"] == ["concessions", "entete", "marches"]
+    assert rapport["types_racine"]["concessions"] == "dict"
+    assert rapport["types_sous_marches"]["marche"] == "list"
+    assert "information confidentielle test" not in json.dumps(rapport)
