@@ -130,8 +130,8 @@ def executer(
         not isinstance(e, dict) for e in deja
     ):
         raise LotDECPInvalide("Historique de collecte incorrect")
-    invalides = [f for f in deja if releve_non_exploitable(f)]
-    conserves = [f for f in deja if not releve_non_exploitable(f)]
+    invalides = [f for f in deja if releve_a_completer(f)]
+    conserves = [f for f in deja if not releve_a_completer(f)]
     selections = choisir_ressources(inventaire, fiche, ancien, maximum=maximum)
     if not selections:
         return ancien if ancien else {
