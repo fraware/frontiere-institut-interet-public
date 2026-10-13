@@ -19,6 +19,8 @@ on:
       - "tests/test_preuves_amont_pieces_boamp.py"
       - "scripts/etudier_consultation_caen.py"
       - "tests/test_etudier_consultation_caen.py"
+      - "scripts/rapprocher_references_decp_boamp.py"
+      - "tests/test_rapprocher_references_decp_boamp.py"
       - "evaluation/avis_amont_cibles_boamp_v1.json"
       - "evaluation/avis_amont_cibles_boamp_v2.json"
       - ".github/workflows/captures-notices-pilotes.yml"
@@ -61,7 +63,8 @@ jobs:
             tests/test_reconstituer_chronologies_pilotes_boamp.py \
             tests/test_collecter_avis_lies_boamp.py \
             tests/test_preuves_amont_pieces_boamp.py \
-            tests/test_etudier_consultation_caen.py
+            tests/test_etudier_consultation_caen.py \
+            tests/test_rapprocher_references_decp_boamp.py
 
       - name: Capturer les six réponses auprès de la source officielle
         shell: bash
@@ -150,6 +153,16 @@ jobs:
             --registre evaluation/avis_amont_cibles_boamp_v2.json \
             --sortie "$RUNNER_TEMP/inventaire-pieces-consultation.json"
 
+      - name: Présélectionner les références communes AIFE/DGFiP et BOAMP
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/rapprocher_references_decp_boamp.py \
+            --aife institutionnel/decp/sonde_aife_json.json \
+            --dgfip institutionnel/decp/lot_dgfip_xml.json \
+            --captures "$RUNNER_TEMP/captures-notices-pilotes" \
+            --sortie "$RUNNER_TEMP/rapprochement-decp-boamp.json"
+
       - name: Conserver les réponses exactes et leurs empreintes
         uses: actions/upload-artifact@v4
         with:
@@ -162,5 +175,6 @@ jobs:
             ${{ runner.temp }}/avis-amont/
             ${{ runner.temp }}/consultation-initiale-caen/
             ${{ runner.temp }}/inventaire-pieces-consultation.json
+            ${{ runner.temp }}/rapprochement-decp-boamp.json
           retention-days: 30
           if-no-files-found: error
