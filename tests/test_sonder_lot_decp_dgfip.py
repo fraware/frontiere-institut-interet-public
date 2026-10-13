@@ -114,3 +114,17 @@ def test_document_xml_incorrect_ne_devient_pas_succes():
         return len(XML)
     with pytest.raises(LotDECPInvalide):
         executer(local, distant, {}, recuperer=mauvais)
+
+
+
+def test_diagnostic_integralement_echoue_sans_contenu_distant():
+    local, distant = donnees(1)
+    secret = "objet privé présent dans une réponse arbitraire"
+    def casse(meta, cible):
+        raise ConnectionError(secret)
+    with pytest.raises(LotDECPInvalide) as excinfo:
+        executer(local, distant, {}, recuperer=casse)
+    message = str(excinfo.value)
+    assert secret not in message
+    assert "ConnectionError" in message
+    assert "curseur inchangé" in message

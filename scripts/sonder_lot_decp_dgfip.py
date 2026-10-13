@@ -157,10 +157,19 @@ def executer(
                         "HTTP_" + str(exc.code)
                         if isinstance(exc, HTTPError) else type(exc).__name__
                     ),
+                    # Les erreurs XML internes sont constituées par le programme.
+                    # Ne pas exposer la réponse HTTP, les objets de marchés ou
+                    # les informations issues de documents arbitraires.
+                    "diagnostic": (
+                        str(exc)[:150]
+                        if isinstance(exc, (XMLDECPInvalide, LotDECPInvalide))
+                        else None
+                    ),
                 })
     if not succes:
         raise LotDECPInvalide(
-            "Toutes les ressources XML sélectionnées ont échoué : curseur inchangé"
+            "Toutes les ressources XML sélectionnées ont échoué : curseur inchangé. "
+            + json.dumps(erreurs[:FICHIERS_PAR_CYCLE], ensure_ascii=False, sort_keys=True)
         )
     instant = moment or datetime.now(timezone.utc).isoformat(timespec="seconds")
     return {
