@@ -201,3 +201,79 @@ def test_execution_directe_en_ligne_de_commande():
     )
     assert reponse.returncode == 0, reponse.stderr
     assert "--captures" in reponse.stdout
+
+
+def _ajouter_identite_acheteur(dossier, identifiant, *, siret=SIRET,
+                               schema="FR-SIRET", org="ORG-0001"):
+    """Compléter une capture simulée et recalculer honnêtement son empreinte."""
+    fichier = dossier / f"{identifiant}.json"
+    reponse = json.loads(fichier.read_bytes())
+    notice = reponse["results"][0]
+    forme = json.loads(notice["donnees"])
+    racine = forme["EFORMS"]["ContractAwardNotice"]
+    racine["cac:ContractingParty"] = {
+        "cac:Party": {"cac:PartyIdentification": {
+            "cbc:ID": {"#text": "ORG-0001"}}}}
+    racine["ext:UBLExtensions"] = {"ext:UBLExtension": {
+        "ext:ExtensionContent": {"efext:EformsExtension": {
+            "efac:Organizations": {"efac:Organization": {
+                "efac:Company": {
+                    "cac:PartyIdentification": {"cbc:ID": {"#text": org}},
+                    "cac:PartyLegalEntity": {"cbc:CompanyID": {
+                        "#text": siret, "@schemeID": schema}},
+                }
+            }}
+        }}
+    }}
+    notice["donnees"] = json.dumps(forme)
+    brut = json.dumps(reponse).encode("utf-8")
+    fichier.write_bytes(brut)
+    manifest = dossier / "rapport.json"
+    rapport = json.loads(manifest.read_text(encoding="utf-8"))
+    entry = next(x for x in rapport["cas"] if x["identifiant"] == identifiant)
+    entry["sha256_reponse_http"] = hashlib.sha256(brut).hexdigest()
+    entry["octets_reponse"] = len(brut)
+    manifest.write_text(json.dumps(rapport), encoding="utf-8")
+
+
+def test_concordance_siret_acheteur_par_role_reste_non_contractuelle(tmp_path):
+    a, d = sources(tmp_path)
+    c = captures(tmp_path, [("26-30147", CLE)])
+    _ajouter_identite_acheteur(c, "26-30147")
+    resultat = produire(a, d, [c])
+    assert resultat["pistes_avec_concordance_de_siret"] == 1
+    assert resultat["correspondances_contractuelles_verifiees"] == 0
+    piste = resultat["pistes"][0]
+    assert piste["concordance_siret_verifiee_dans_boamp"] is True
+    assert piste["acheteur_boamp_identifie_dans_role"] == SIRET
+    assert "efac:Organizations" in piste["avis_boamp"][0]["chemin_preuve_siret"]
+
+
+def test_une_identite_dacheteur_incompatible_ne_confirme_aucun_lien(tmp_path):
+    a, d = sources(tmp_path)
+    c = captures(tmp_path, [("26-30147", CLE)])
+    _ajouter_identite_acheteur(c, "26-30147", siret="12345678901234")
+    resultat = produire(a, d, [c])
+    assert resultat["nombre_references_communes"] == 1
+    assert resultat["pistes_avec_concordance_de_siret"] == 0
+    assert resultat["pistes"][0]["identite_contractuelle_verifiee"] is False
+
+
+def test_identite_acheteur_non_qualifiee_nest_pas_validee(tmp_path):
+    a, d = sources(tmp_path)
+    c = captures(tmp_path, [("26-30147", CLE)])
+    _ajouter_identite_acheteur(c, "26-30147", schema="FR-SIREN")
+    resultat = produire(a, d, [c])
+    assert resultat["pistes_avec_concordance_de_siret"] == 0
+    assert resultat["pistes"][0]["avis_boamp"][0][
+        "statut_identification_acheteur"] == "rattachement_organisation_non_univoque"
+
+
+def test_deux_acheteurs_officiels_avec_meme_reference_restent_ambigus(tmp_path):
+    a, d = sources(tmp_path)
+    c = captures(tmp_path, [("26-30147", CLE), ("26-30148", CLE)])
+    _ajouter_identite_acheteur(c, "26-30147", siret=SIRET)
+    _ajouter_identite_acheteur(c, "26-30148", siret="12345678901234")
+    resultat = produire(a, d, [c])
+    assert resultat["pistes_avec_concordance_de_siret"] == 0
+    assert resultat["pistes"][0]["plusieurs_acheteurs_declares_dans_les_avis"] is True
