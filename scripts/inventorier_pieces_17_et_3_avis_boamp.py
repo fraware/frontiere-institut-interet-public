@@ -58,8 +58,14 @@ def qualifier_url(adresse: object) -> str:
         u = urlsplit(adresse)
     except ValueError:
         return "adresse_absente_ou_inexploitable"
-    if (u.scheme != "https" or not u.hostname or u.username or u.password
-            or u.fragment or u.port not in (None, 443)):
+    try:
+        autorisee = (
+            u.scheme == "https" and bool(u.hostname) and not u.username
+            and not u.password and not u.fragment and u.port in (None, 443)
+        )
+    except ValueError:
+        autorisee = False
+    if not autorisee:
         return "adresse_absente_ou_inexploitable"
     domaine = u.hostname.casefold()
     if domaine.endswith(".safelinks.protection.outlook.com"):
@@ -134,7 +140,8 @@ def extraire(notice: dict, code: str, origine: str, empreinte: str) -> list[dict
 def produire(archive_boamp: Path, chaines: Path, lies: Path) -> dict:
     liens_sources, sha_chaines = sources(archive_boamp, chaines)
     rapport_lies = verifier_archive(lies, archive_boamp, chaines)
-    assert len(liens_sources) == len(rapport_lies["avis_lies"])
+    if len(liens_sources) != len(rapport_lies["avis_lies"]):
+        raise LiensInvalides("Nombre d'avis explicitement liés incohérent")
     octets_rapport_lies = (lies / "rapport.json").read_bytes()
     chaines_doc = lire_json(chaines.read_bytes())
     origines = chaines_doc["dossiers"]
@@ -187,7 +194,7 @@ def produire(archive_boamp: Path, chaines: Path, lies: Path) -> dict:
             "adresses_precises_identiques": [
                 u for u in communs if qualifier_url(u) == "adresse_dossier_referencee"
             ],
-            "identity_juridique_etablie": False,
+            "identite_juridique_etablie": False,
         }
     return {
         "version": VERSION,
