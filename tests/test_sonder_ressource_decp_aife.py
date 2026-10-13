@@ -6,6 +6,7 @@ import pytest
 
 from scripts.sonder_ressource_decp_aife import (
     SondeDECPInvalide, choisir_ressource, executer, diagnostiquer_structure,
+    observation_equivalente,
     _url_officielle, PLAFOND_OCTETS,
 )
 
@@ -114,3 +115,18 @@ def test_diagnostic_de_forme_ne_divulgue_pas_les_enregistrements(tmp_path):
     assert rapport["types_racine"]["concessions"] == "dict"
     assert rapport["types_sous_marches"]["marche"] == "list"
     assert "information confidentielle test" not in json.dumps(rapport)
+
+
+
+def test_les_cycles_identiques_n_entretiennent_pas_de_fausses_nouveautes():
+    avant = {
+        "ressource_id": RID,
+        "sha256_fichier_brut": "a" * 64,
+        "releves": {"marches_uniques_valides": 127},
+        "releve_le": "2026-10-13T03:30:00+00:00",
+    }
+    apres = dict(avant, releve_le="2026-10-13T09:30:00+00:00")
+    assert observation_equivalente(avant, apres)
+    assert not observation_equivalente(avant, dict(apres, sha256_fichier_brut="b"*64))
+    assert not observation_equivalente(avant, dict(apres, releves={"marches_uniques_valides": 128}))
+    assert not observation_equivalente(avant, {"date": "incomplète"})
