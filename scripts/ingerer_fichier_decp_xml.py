@@ -199,7 +199,12 @@ def analyser_fichier(
         if racine is None or profondeur != 0:
             raise XMLDECPInvalide("Document XML sans racine complète")
     except ET.ParseError as exc:
-        raise XMLDECPInvalide("Structure XML incorrecte ou tronquée") from exc
+        # Seul le code de diagnostic et la position sont publiés, jamais le
+        # fragment de texte contractuel à l'origine de l'erreur.
+        ligne, colonne = exc.position
+        raise XMLDECPInvalide(
+            f"Erreur de syntaxe XML (code {exc.code}, ligne {ligne}, colonne {colonne})"
+        ) from exc
     return {
         "version": "decp-fichier-xml-v1", "source_catalogue": source_id,
         "ressource_id": ressource_id, "sha256_fichier_brut": h.hexdigest(),
