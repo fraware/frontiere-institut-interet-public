@@ -1,0 +1,108 @@
+name: "Chaînes documentaires des 17 avis et 16 acheteurs"
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/reconstituer_chaines_acheteurs_boamp_decp.py"
+      - "tests/test_reconstituer_chaines_acheteurs_boamp_decp.py"
+      - ".github/workflows/chaines-documentaires-acheteurs-boamp.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: chaines-documentaires-17-acheteurs
+  cancel-in-progress: false
+
+jobs:
+  reconstituer:
+    if: github.repository == 'fraware/frontiere-institut-interet-public'
+    name: Vérifier et joindre les preuves documentaires
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Lire la révision GitHub exacte
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Préparer Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Exécuter les essais de filiation documentaire
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install "pytest>=8,<10"
+          python -m pytest -q \
+            tests/test_reconstituer_chaines_acheteurs_boamp_decp.py \
+            tests/test_auditer_identifiants_acheteurs_independants_boamp.py \
+            tests/test_verifier_identifiants_acheteurs_api_entreprises.py
+
+      - name: Restaurer les sources officielles préalablement archivées
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/chaines"
+          mkdir -p "$ROOT/boamp" "$ROOT/admin"
+          gh run download 38474330466 \
+            --repo "$GITHUB_REPOSITORY" \
+            --name index-public-boamp-38474330466 \
+            --dir "$ROOT/boamp"
+          gh run download 38478573359 \
+            --repo "$GITHUB_REPOSITORY" \
+            --name verification-administrative-acheteurs-16-38478573359 \
+            --dir "$ROOT/admin"
+          (
+            cd "$ROOT/boamp"
+            echo "3626f84ccf9a39ce6d8882f0d5f7463eb6bde860c90a26904a6992f5fed791e3  audit-identifiants-acheteurs-36.json" | sha256sum --check --status
+          )
+          (
+            cd "$ROOT/admin"
+            echo "d8e4e7570eef4c2313b1a243114473bf5075aa1aa135e8e793bfd907177576fd  rapport.json" | sha256sum --check --status
+          )
+
+      - name: Reconstituer les dix-sept dossiers et qualifier leurs limites
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/chaines"
+          python scripts/reconstituer_chaines_acheteurs_boamp_decp.py \
+            --tirage "$ROOT/boamp/echantillon-independant-technique.json" \
+            --releve "$ROOT/boamp/releve-issues-36" \
+            --audit-boamp "$ROOT/boamp/audit-identifiants-acheteurs-36.json" \
+            --administration "$ROOT/admin" \
+            --sortie "$ROOT/chaines-documentaires-17.json"
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          import os
+          root = Path(os.environ["RUNNER_TEMP"]) / "chaines"
+          resultat = json.loads((root / "chaines-documentaires-17.json").read_text())
+          attendu = {"avis":17, "attributions":6, "references_procedure":15,
+                     "lots_declares":27, "resultats_lots":9, "contrats_locaux":9,
+                     "liens_lot_contrat":9}
+          for champ, valeur in attendu.items():
+              if resultat["mesures"][champ] != valeur:
+                  raise SystemExit(f"Décompte primaire inattendu {champ}")
+          if (resultat["nombre_siret_distincts"] != 16
+                  or resultat["liaisons_contractuelles_decp_prouvees"] != 0
+                  or resultat["validations_juridiques_du_role_acheteur"] != 0):
+              raise SystemExit("Statut scientifique incompatible")
+          print("Provenances contrôlées et 17 dossiers cohérents")
+          PY
+
+      - name: Conserver les chaînes et leurs références d'archives
+        uses: actions/upload-artifact@v4
+        with:
+          name: chaines-documentaires-acheteurs-17-${{ github.run_id }}
+          path: ${{ runner.temp }}/chaines/chaines-documentaires-17.json
+          retention-days: 30
+          if-no-files-found: error
