@@ -1,8 +1,8 @@
 {
   "couverture_exhaustive_des_besoins_publics": false,
-  "cycle_le": "2026-10-13T09:44:24+00:00",
+  "cycle_le": "2026-10-13T18:46:25+00:00",
   "enrichissements_metadonnees": 0,
-  "nombre_signaux_distincts": 284,
+  "nombre_signaux_distincts": 286,
   "nouveaux_signaux": 2,
   "qualification_de_besoins_effectuee": false,
   "rectification_historique": {
@@ -15,12 +15,12 @@
     "raison": "100 dates RSS auparavant non extraites puis reconnues lors du second relevé",
     "rectifie_le": "2026-10-12"
   },
-  "revisions": 0,
+  "revisions": 1,
   "sources": [
     {
       "actif": true,
       "cadence_heures": 6,
-      "dernier_succes": "2026-10-13T09:44:24+00:00",
+      "dernier_succes": "2026-10-13T18:46:25+00:00",
       "elements_lus": 16,
       "enrichissements_metadonnees": 0,
       "erreur": null,
@@ -28,38 +28,38 @@
       "id": "anr_appels",
       "nom": "ANR — appels à projets",
       "nouveaux": 0,
-      "revisions": 0
+      "revisions": 1
     },
     {
       "actif": true,
       "cadence_heures": 12,
-      "dernier_succes": "2026-10-13T09:44:24+00:00",
+      "dernier_succes": "2026-10-13T18:46:25+00:00",
       "elements_lus": 100,
       "enrichissements_metadonnees": 0,
       "erreur": null,
       "etat": "succes",
       "id": "service_public_pro",
       "nom": "DILA — actualités des professionnels",
-      "nouveaux": 1,
-      "revisions": 0
-    },
-    {
-      "actif": true,
-      "cadence_heures": 6,
-      "dernier_succes": "2026-10-13T09:44:24+00:00",
-      "elements_lus": 92,
-      "enrichissements_metadonnees": 0,
-      "erreur": null,
-      "etat": "succes",
-      "id": "anr_bluesky",
-      "nom": "ANR — compte social institutionnel Bluesky",
       "nouveaux": 0,
       "revisions": 0
     },
     {
       "actif": true,
       "cadence_heures": 6,
-      "dernier_succes": "2026-10-13T09:44:24+00:00",
+      "dernier_succes": "2026-10-13T18:46:25+00:00",
+      "elements_lus": 92,
+      "enrichissements_metadonnees": 0,
+      "erreur": null,
+      "etat": "succes",
+      "id": "anr_bluesky",
+      "nom": "ANR — compte social institutionnel Bluesky",
+      "nouveaux": 1,
+      "revisions": 0
+    },
+    {
+      "actif": true,
+      "cadence_heures": 6,
+      "dernier_succes": "2026-10-13T18:46:25+00:00",
       "elements_lus": 20,
       "enrichissements_metadonnees": 0,
       "erreur": null,
@@ -72,7 +72,7 @@
     {
       "actif": true,
       "cadence_heures": 6,
-      "dernier_succes": "2026-10-13T09:44:24+00:00",
+      "dernier_succes": "2026-10-13T18:46:25+00:00",
       "elements_lus": 10,
       "enrichissements_metadonnees": 0,
       "erreur": null,
@@ -85,7 +85,7 @@
     {
       "actif": true,
       "cadence_heures": 12,
-      "dernier_succes": "2026-10-13T09:44:24+00:00",
+      "dernier_succes": "2026-10-13T18:46:25+00:00",
       "elements_lus": 10,
       "enrichissements_metadonnees": 0,
       "erreur": null,
@@ -98,7 +98,7 @@
     {
       "actif": true,
       "cadence_heures": 12,
-      "dernier_succes": "2026-10-13T09:44:24+00:00",
+      "dernier_succes": "2026-10-13T18:46:25+00:00",
       "elements_lus": 10,
       "enrichissements_metadonnees": 0,
       "erreur": null,
@@ -111,7 +111,7 @@
     {
       "actif": true,
       "cadence_heures": 12,
-      "dernier_succes": "2026-10-13T09:44:24+00:00",
+      "dernier_succes": "2026-10-13T18:46:25+00:00",
       "elements_lus": 14,
       "enrichissements_metadonnees": 0,
       "erreur": null,
@@ -124,7 +124,7 @@
     {
       "actif": true,
       "cadence_heures": 12,
-      "dernier_succes": "2026-10-13T09:44:24+00:00",
+      "dernier_succes": "2026-10-13T18:46:25+00:00",
       "elements_lus": 10,
       "enrichissements_metadonnees": 0,
       "erreur": null,
