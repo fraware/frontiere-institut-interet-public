@@ -20,7 +20,9 @@ on:
       - "scripts/etudier_consultation_caen.py"
       - "tests/test_etudier_consultation_caen.py"
       - "scripts/rapprocher_references_decp_boamp.py"
+      - "scripts/extraire_references_boamp_decp.py"
       - "tests/test_rapprocher_references_decp_boamp.py"
+      - "tests/test_extraire_references_boamp_decp.py"
       - "evaluation/avis_amont_cibles_boamp_v1.json"
       - "evaluation/avis_amont_cibles_boamp_v2.json"
       - ".github/workflows/captures-notices-pilotes.yml"
@@ -64,7 +66,8 @@ jobs:
             tests/test_collecter_avis_lies_boamp.py \
             tests/test_preuves_amont_pieces_boamp.py \
             tests/test_etudier_consultation_caen.py \
-            tests/test_rapprocher_references_decp_boamp.py
+            tests/test_rapprocher_references_decp_boamp.py \
+            tests/test_extraire_references_boamp_decp.py
 
       - name: Capturer les six réponses auprès de la source officielle
         shell: bash
