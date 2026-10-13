@@ -19,7 +19,15 @@ RACINE = Path(__file__).resolve().parents[1]
 RELEVE = RACINE / "institutionnel/decp/sonde_aife_json.json"
 SHA = re.compile(r"^[0-9a-f]{64}$")
 SIRET = re.compile(r"^[0-9]{14}$")
-MAX_MARCHES = 200
+MAX_MARCHES = 1000
+CATALOGUES = {
+    ("decp-fichier-json-v1", "aife_api_decp"):
+        "https://www.data.gouv.fr/datasets/api-decp",
+    ("decp-fichier-xml-v1", "dgfip_pes_marche"):
+        ("https://www.data.gouv.fr/datasets/"
+         "donnees-essentielles-de-la-commande-publique-transmises-via-le-pes-marche-depuis-2024"),
+}
+
 
 SCHEMA = """
 PRAGMA foreign_keys=ON;
@@ -89,12 +97,12 @@ def _date(valeur: object, champ: str, *, absent: bool = False) -> str | None:
 
 def verifier_rapport(rapport: dict) -> list[dict]:
     """Vérifier origine, intégrité du décompte et non-troncature des notices."""
-    if not isinstance(rapport, dict) or rapport.get("version") != "decp-fichier-json-v1":
-        raise IndexDECPInvalide("Version du relevé non reconnue")
-    if rapport.get("source_catalogue") != "aife_api_decp":
-        raise IndexDECPInvalide("Origine du relevé incorrecte")
-    if rapport.get("page_catalogue") != "https://www.data.gouv.fr/datasets/api-decp":
-        raise IndexDECPInvalide("Page de provenance non reconnue")
+    if not isinstance(rapport, dict):
+        raise IndexDECPInvalide("Relevé non structuré")
+    identite_catalogue = (rapport.get("version"), rapport.get("source_catalogue"))
+    page_attendue = CATALOGUES.get(identite_catalogue)
+    if page_attendue is None or rapport.get("page_catalogue") != page_attendue:
+        raise IndexDECPInvalide("Version, source ou page de provenance incompatible")
     if not isinstance(rapport.get("sha256_fichier_brut"), str) or not SHA.fullmatch(
         rapport["sha256_fichier_brut"]
     ):
