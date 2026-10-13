@@ -119,10 +119,19 @@ def cibles(rapport: Path) -> tuple[dict, dict]:
     }
 
 
-def choisir_ressources(registre: dict, fiche: dict) -> list[dict]:
+def choisir_ressources(registre: dict, fiche: dict, *, mois: tuple[str, ...] = MOIS,
+                      plafond_fichier: int = PLAFOND_PAR_FICHIER,
+                      plafond_total: int = PLAFOND_TOTAL) -> list[dict]:
     """Croiser catalogue déjà observé et fiche officielle au même identifiant."""
     if not isinstance(registre, dict) or not isinstance(fiche, dict):
         raise BalayageInvalide("Catalogue non structuré")
+    if (not isinstance(mois, tuple) or not 1 <= len(mois) <= 12
+            or len(set(mois)) != len(mois)
+            or any(not re.fullmatch(r"20[0-9]{2}-(?:0[1-9]|1[0-2])", x) for x in mois)
+            or type(plafond_fichier) is not int or plafond_fichier <= 0
+            or type(plafond_total) is not int or plafond_total <= 0):
+        raise BalayageInvalide("Périmètre de ressources non admissible")
+    fichiers_demandes = {f"decp-{x}.json" for x in mois}
     local = next((x for x in registre.get("catalogues", [])
                   if x.get("source_id") == SOURCE), None)
     if local is None or not isinstance(local.get("ressources_recentes"), list):
@@ -139,7 +148,7 @@ def choisir_ressources(registre: dict, fiche: dict) -> list[dict]:
     retenues = {}
     for localitem in local["ressources_recentes"]:
         titre = localitem.get("titre")
-        if titre not in FICHIERS:
+        if titre not in fichiers_demandes:
             continue
         if titre in retenues:
             raise BalayageInvalide("Fichier mensuel déclaré plusieurs fois")
@@ -147,7 +156,7 @@ def choisir_ressources(registre: dict, fiche: dict) -> list[dict]:
         taille = localitem.get("taille_octets_declaree")
         if (distant is None
                 or type(taille) is not int
-                or not 0 < taille <= PLAFOND_PAR_FICHIER
+                or not 0 < taille <= plafond_fichier
                 or type(distant.get("filesize")) is not int
                 or distant["filesize"] != taille
                 or localitem.get("format") != "json"
@@ -160,16 +169,20 @@ def choisir_ressources(registre: dict, fiche: dict) -> list[dict]:
             "taille_octets": taille,
             "url": _url_officielle(distant.get("url")),
         }
-    if set(retenues) != FICHIERS:
-        raise BalayageInvalide("Un ou plusieurs des trois mois manquent")
-    selection = [retenues[f"decp-{m}.json"] for m in MOIS]
-    if sum(x["taille_octets"] for x in selection) > PLAFOND_TOTAL:
-        raise BalayageInvalide("Budget d'octets des trois mois dépassé")
+    if set(retenues) != fichiers_demandes:
+        raise BalayageInvalide("Un ou plusieurs des mois demandés manquent")
+    selection = [retenues[f"decp-{m}.json"] for m in mois]
+    if sum(x["taille_octets"] for x in selection) > plafond_total:
+        raise BalayageInvalide("Budget total d'octets dépassé")
     return selection
 
 
-def recevoir(selection: dict, fichier: Path) -> None:
+def recevoir(selection: dict, fichier: Path, *, plafond: int = PLAFOND_PAR_FICHIER) -> None:
     """Conserver les octets sans dépassement, téléchargement non suivi hors domaine."""
+    if (type(plafond) is not int or plafond < 1
+            or type(selection.get("taille_octets")) is not int
+            or not 0 < selection["taille_octets"] <= plafond):
+        raise BalayageInvalide("Plafond ou longueur déclarée non admissible")
     url = _url_officielle(selection["url"])
     demande = Request(url, headers={
         "Accept": "application/json,application/octet-stream",
@@ -182,18 +195,19 @@ def recevoir(selection: dict, fichier: Path) -> None:
         _url_officielle(reponse.geturl())
         with fichier.open("wb") as sortie:
             while True:
-                morceaux = reponse.read(min(1_048_576, PLAFOND_PAR_FICHIER - compte + 1))
+                morceaux = reponse.read(min(1_048_576, plafond - compte + 1))
                 if not morceaux:
                     break
                 compte += len(morceaux)
-                if compte > PLAFOND_PAR_FICHIER:
+                if compte > plafond:
                     raise BalayageInvalide("Dépassement du plafond par source")
                 sortie.write(morceaux)
     if compte != selection["taille_octets"]:
         raise BalayageInvalide("Volume téléchargé différent des métadonnées vérifiées")
 
 
-def analyser(chemin: Path, selection: dict, cibles_par_identite: dict) -> dict:
+def analyser(chemin: Path, selection: dict, cibles_par_identite: dict,
+             *, observer=None) -> dict:
     """Parcourir intégralement le fichier ; conserver les seuls candidats."""
     if chemin.stat().st_size != selection["taille_octets"]:
         raise BalayageInvalide("Taille réelle du fichier incorrecte")
@@ -223,6 +237,8 @@ def analyser(chemin: Path, selection: dict, cibles_par_identite: dict) -> dict:
                 erreurs[str(exc)[:180]] += 1
                 continue
             stats["notices_normalisees"] += 1
+            if observer is not None:
+                observer(ligne, selection["titre"])
             identite = (ligne["acheteur_siret"], ligne["id_marche"])
             if identite not in identites_vues:
                 identites_vues.add(identite)
