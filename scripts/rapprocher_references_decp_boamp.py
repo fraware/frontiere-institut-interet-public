@@ -16,9 +16,17 @@ import re
 import tempfile
 import unicodedata
 
-from scripts.collecter_notices_pilotes_boamp import verifier_capture
-from scripts.consolider_attributions_decp import rapports_dgfip
-from scripts.indexer_attributions_decp_sqlite import verifier_rapport
+try:
+    from scripts.collecter_notices_pilotes_boamp import verifier_capture
+    from scripts.consolider_attributions_decp import rapports_dgfip
+    from scripts.indexer_attributions_decp_sqlite import verifier_rapport
+except ModuleNotFoundError as exc:
+    # En exécution directe, Python place scripts/ et non sa racine sur sys.path.
+    if exc.name != "scripts":
+        raise
+    from collecter_notices_pilotes_boamp import verifier_capture
+    from consolider_attributions_decp import rapports_dgfip
+    from indexer_attributions_decp_sqlite import verifier_rapport
 
 VERSION = "rapprochement-references-decp-boamp-v1"
 CHEMIN_REFERENCE = "/donnees/EFORMS/{formulaire}/cac:ProcurementProject/cbc:ID"
