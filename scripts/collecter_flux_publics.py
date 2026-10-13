@@ -394,6 +394,9 @@ def executer(
         bilans.append(etat)
     if not reussites:
         raise CollecteInvalide("Aucune source récupérée : aucun état écrasé")
+    historique = ancien_etat.get("rectification_historique") if isinstance(ancien_etat, dict) else None
+    if historique is not None and not isinstance(historique, dict):
+        raise CollecteInvalide("Rectificatif historique non structuré")
     return (
         {"version": 1, "observations": [
             index[key] for key in sorted(index)
@@ -407,6 +410,7 @@ def executer(
             "nombre_signaux_distincts": len(index),
             "couverture_exhaustive_des_besoins_publics": False,
             "qualification_de_besoins_effectuee": False,
+            **({"rectification_historique": historique} if historique is not None else {}),
         },
     )
 
