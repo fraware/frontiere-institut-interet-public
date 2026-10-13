@@ -1,0 +1,26 @@
+{
+  "attestations_documentaires": 2164,
+  "besoins_encore_ouverts_demontres": 0,
+  "conformite_reglementaire_complete_verifiee": false,
+  "construit_le": "2026-10-13T18:46:33+00:00",
+  "controle_integrite_sqlite": "ok",
+  "correspondances_boamp_verifiees": 0,
+  "empreintes_releves_publies": {
+    "aife": "dbf939946273f80f7061b62a401214816ae039388686eea02d33c2b5c370a467",
+    "dgfip": "1b7099a442c86eeb0fbf4d580fa7609a993dd5d36829ab76d4f2ce692056dc82"
+  },
+  "enregistrements_normalises_par_fichier": 2164,
+  "fichiers_documentaires": 15,
+  "fichiers_sources_distincts": 15,
+  "identites_avec_plusieurs_variantes": 2,
+  "identites_distinctes_par_siret_et_id_marche": 2141,
+  "notices_detaillees_manquantes": 0,
+  "repetitions_de_variantes_deja_observees": 21,
+  "sources": {
+    "aife_api_decp": 1,
+    "dgfip_pes_marche": 14
+  },
+  "statut": "deux_releves_publics_complets_sans_couverture_nationale",
+  "variantes_documentaires_distinctes": 2143,
+  "version": "index-unifie-decp-v1"
+}
