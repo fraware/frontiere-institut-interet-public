@@ -137,16 +137,11 @@ def test_statut_du_manifeste_modifie_est_refuse(tmp_path):
         auditer(tirage, captures)
 
 
-def test_identifiant_de_titulaire_ne_devient_pas_acheteur():
+def test_siret_du_titulaire_nest_pas_attribue_a_lacheteur():
     form = formulaire()
-    form["EFORMS"]["ContractNotice"]["cac:ContractingParty"] = {
-        "cac:Party": {"cac:PartyIdentification": {
-            "cbc:ID": {"#text": "ORG-2"}
-        }}
-    }
     assert siret_acheteur_sans_reference_projet({
         "donnees": json.dumps(form)
-    })["acheteur_siret"] == "98765432109876"
+    }) is None
 
 
 def test_multi_acheteurs_sans_resolution():
