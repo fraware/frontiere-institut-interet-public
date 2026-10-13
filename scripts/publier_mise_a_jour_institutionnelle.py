@@ -16,6 +16,7 @@ import subprocess
 
 RACINE = Path(__file__).resolve().parents[1]
 CHEMINS = {
+    "sonde": ("institutionnel/decp/sonde_aife_json.json",),
     "canaux": ("institutionnel/canaux_publics/inventaire_v1.json",
                "institutionnel/canaux_publics/decouvertes_sites.json"),
     "decp": ("institutionnel/decp/etat_ressources.json",),
@@ -85,6 +86,7 @@ CHEMINS = {
     ),
 }
 TITRES = {
+    "sonde": "Actualiser le relevé borné de marchés JSON AIFE",
     "canaux": "Actualiser les éditeurs publics et leurs canaux de publication",
     "decp": "Actualiser les catalogues nationaux de ressources DECP",
     "flux": "Actualiser les signaux publics RSS et sociaux officiels",
@@ -95,7 +97,7 @@ TITRES = {
     "beauamp": "Archiver les marchés attribués enrichis publiés quotidiennement",
     "referentiel": "Actualiser le référentiel administratif et territorial",
 }
-BRANCH = re.compile(r"^automatisation/(rnsr|surveillance|referentiel|sources|besoins|beauamp|flux|decp|canaux)-([0-9]+)-([1-9][0-9]*)$")
+BRANCH = re.compile(r"^automatisation/(rnsr|surveillance|referentiel|sources|besoins|beauamp|flux|decp|canaux|sonde)-([0-9]+)-([1-9][0-9]*)$")
 REPO = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 
 
