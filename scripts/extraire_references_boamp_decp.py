@@ -189,6 +189,78 @@ def references_notice(notice: dict) -> tuple[list[dict], str]:
 
 
 
+def siret_acheteur_sans_reference_projet(notice: dict) -> dict | None:
+    """Lire un SIRET explicitement qualifié depuis le seul rôle acheteur.
+
+    La présence d'une référence de procédure n'est pas nécessaire pour
+    mesurer la couverture d'identification de l'acheteur. Une pluralité de
+    parties ou une pluralité de rattachements empêche toute extraction.
+    """
+    brut = notice.get("donnees")
+    if not isinstance(brut, str) or len(brut) > 5_000_000:
+        return None
+    try:
+        structure = json.loads(brut)
+    except json.JSONDecodeError:
+        return None
+    eforms = structure.get("EFORMS") if isinstance(structure, dict) else None
+    if not isinstance(eforms, dict) or len(eforms) != 1:
+        return None
+    nom, racine = next(iter(eforms.items()))
+    if not isinstance(racine, dict):
+        return None
+    try:
+        parties = elements(racine.get("cac:ContractingParty"))
+    except ExtractionInvalide:
+        return None
+    if len(parties) != 1:
+        return None
+    partie = chemin(parties[0], "cac:Party")
+    if not isinstance(partie, dict):
+        return None
+    prefixe = f"/results/0/donnees/EFORMS/{nom}"
+    origine = prefixe + "/cac:ContractingParty/cac:Party"
+    direct = siret_qualifie(chemin(
+        partie, "cac:PartyLegalEntity", "cbc:CompanyID",
+    ))
+    if direct is not None:
+        return {
+            "acheteur_siret": direct,
+            "chemin_preuve": origine + "/cac:PartyLegalEntity/cbc:CompanyID",
+            "verification_repertoire_sirene": False,
+        }
+    identifiant = identite(chemin(
+        partie, "cac:PartyIdentification", "cbc:ID",
+    ))
+    if identifiant is None:
+        return None
+    direct = siret_qualifie(chemin(
+        partie, "cac:PartyIdentification", "cbc:ID",
+    ))
+    if direct is not None:
+        return {
+            "acheteur_siret": direct,
+            "chemin_preuve": origine + "/cac:PartyIdentification/cbc:ID",
+            "verification_repertoire_sirene": False,
+        }
+    try:
+        organisations = repertoire_organisations(racine)
+    except ExtractionInvalide:
+        return None
+    candidates = [
+        (siret, adresse) for organisation, siret, adresse in organisations
+        if organisation == identifiant[0]
+    ]
+    if len(candidates) != 1:
+        return None
+    siret, preuve = candidates[0]
+    return {
+        "acheteur_siret": siret,
+        "chemin_preuve": prefixe + preuve,
+        "verification_repertoire_sirene": False,
+    }
+
+
 def identifiant_acheteur_14_non_qualifie(notice: dict) -> dict | None:
     """Observer un identifiant de 14 chiffres sans schéma annoncé.
 
