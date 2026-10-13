@@ -25,6 +25,14 @@ python -m pytest -q \
 
 Le programme reconstruit localement l'ensemble du fichier SQLite en appliquant la même structure de tables d'identités, versions, fichiers et attestations déjà employée pour les relevés AIFE. Une recherche plein texte FTS5 est disponible dans la base créée. Aucun compte ni service distant n'est nécessaire.
 
+## Publication automatisée du bilan
+
+La procédure `.github/workflows/index-decp-intersources.yml` est déclenchée par les modifications des deux relevés de marchés, des programmes d'indexation et de la procédure elle-même. Elle vérifie le logiciel, reconstruit temporairement la base SQLite complète, exécute les contrôles de cohérence, puis prépare le fichier `institutionnel/decp/bilan_index_unifie.json`.
+
+Le bilan n'est proposé que si ses informations diffèrent du précédent, en ignorant uniquement l'heure de génération. Les deux empreintes de relevés publiés sont conservées pour distinguer une donnée source modifiée d'un simple recalcul. Le fichier SQLite n'est pas publié.
+
+La proposition de données est limitée à ce seul fichier JSON et ne peut être fusionnée qu'après réussite des trois contrôles : Python 3.11, Python 3.12 et conteneur. En cas de relevé tronqué, incohérent ou d'erreur SQLite, la procédure échoue sans produire de nouveau bilan.
+
 ## Conditions de publication et limites
 
 La reconstruction échoue si une source ne respecte pas le profil d'extraction connu, si une ressource XML est tronquée, si une identité ou une date indispensable est invalide, ou si la correspondance entre nombre de marchés normalisés et notices conservées est incohérente. La base antérieure reste alors inchangée. Les contrôles d'intégrité SQLite et des clés étrangères sont exécutés avant le remplacement du fichier.

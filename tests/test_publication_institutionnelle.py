@@ -201,3 +201,18 @@ def test_base_identique_ne_demande_aucune_reprise(tmp_path: Path):
     assert verifier_reprise_sans_conflit(
         actuel, actuel, ["institutionnel/besoins_publics/etat_boamp.json"], tmp_path,
     ) is False
+
+
+
+def test_bilan_intersources_liste_blanche_stricte():
+    resultat = verifier_portee(
+        "index_decp", ["institutionnel/decp/bilan_index_unifie.json"]
+    )
+    assert resultat["nombre_fichiers"] == 1
+    assert identite_branche("index_decp", "1234567", "1") == (
+        "automatisation/index_decp-1234567-1"
+    )
+    with pytest.raises(PublicationRefusee, match="hors périmètre"):
+        verifier_portee("index_decp", ["institutionnel/decp/lot_dgfip_xml.json"])
+    with pytest.raises(PublicationRefusee, match="hors périmètre"):
+        verifier_portee("index_decp", ["institutionnel/decp/index.sqlite3"])
