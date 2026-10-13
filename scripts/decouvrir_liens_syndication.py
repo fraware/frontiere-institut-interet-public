@@ -85,7 +85,8 @@ class LiensSyndication(HTMLParser):
 
     def _ajouter(self, lien: str, raison: str, libelle: str) -> None:
         normalise = normaliser_lien(self.url, lien, self.hote)
-        if normalise is None or len(self.resultat) >= MAX_LIENS:
+        page_courante = normaliser_lien(self.url, self.url, self.hote)
+        if normalise is None or normalise == page_courante or len(self.resultat) >= MAX_LIENS:
             return
         self.resultat.setdefault(normalise, {
             "url": normalise, "methode": raison, "libelle": libelle.strip()[:180],
