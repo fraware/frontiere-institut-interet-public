@@ -33,7 +33,7 @@ python scripts/rapprocher_references_decp_boamp.py \
 python -m pytest -q tests/test_rapprocher_references_decp_boamp.py
 ```
 
-L'argument `--captures` est répétable pour plusieurs lots de captures complets. La sortie n'est publiée nulle part automatiquement.
+L'argument `--captures` est répétable pour plusieurs lots de captures complets. La sortie n'est pas ajoutée automatiquement au dépôt. Le dispositif existant de captures primaires des six pilotes BOAMP exécute aussi ce rapprochement au cours de ses passages hebdomadaires et lors des modifications du programme : son rapport est joint à l'archive GitHub Actions, avec les réponses primaires correspondantes. Une exécution interrompue ou un fichier absent n'autorise aucun résultat de substitution.
 
 ## Interprétation des résultats
 
