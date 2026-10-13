@@ -83,7 +83,7 @@ def extraire_reference(notice: dict) -> tuple[str | None, str | None, str]:
     normalisee = reference_normalisee(originale)
     if normalisee is None:
         return None, None, "reference_non_comparable"
-    return normale=normalisee, originale, CHEMIN_REFERENCE.format(formulaire=type_formulaire)
+    return normalisee, originale, CHEMIN_REFERENCE.format(formulaire=type_formulaire)
 
 
 def lire_marches(aife: Path, dgfip: Path) -> tuple[dict, dict]:
