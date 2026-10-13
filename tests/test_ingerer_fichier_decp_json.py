@@ -180,3 +180,23 @@ def test_collection_repetee_refusee():
     brut = '{"marches":{"marche":[],"marche":[]}}'
     with pytest.raises(DocumentDECPInvalide):
         list(iterer_documents(StringIO(brut)))
+
+
+def test_plafond_explicite_grand_fichier_et_limite_par_defaut():
+    donnees = {"marches": {"marche": [
+        marche(id=f"marche-grande-{i}") for i in range(5)
+    ], "contrat-concession": [{"id": "CONCESSION"}]}}
+    texte = json.dumps(donnees, ensure_ascii=False)
+    normal = list(iterer_documents(StringIO(texte)))
+    assert len(normal) == 6
+    with pytest.raises(DocumentDECPInvalide, match="plafond"):
+        list(iterer_documents(StringIO(texte), plafond_notices=5))
+    etendu = list(iterer_documents(StringIO(texte), plafond_notices=7))
+    assert len(etendu) == 6
+    assert etendu[-1][0] == "contrat-concession"
+
+
+@pytest.mark.parametrize("plafond", [0, -5, True, 200001, "100", None])
+def test_plafond_explicite_hors_contrat_refuse(plafond):
+    with pytest.raises(DocumentDECPInvalide, match="Plafond"):
+        list(iterer_documents(StringIO("[]"), plafond_notices=plafond))

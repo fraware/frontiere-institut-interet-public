@@ -14,6 +14,14 @@ Seuls les **quatre fichiers supplémentaires** sont téléchargés depuis les re
 
 Chaque fichier est conservé intégralement dans son état reçu. Les empreintes SHA-256 permettent de le distinguer des versions ultérieures d'un fichier portant le même titre. L'ensemble de l'étude est abandonné si l'une des quatre ressources ne respecte pas les critères documentaires ou si l'analyse échoue ; aucun rapport partiel n'est publié comme observation complète.
 
+## Rectification du plafond du lecteur de fichiers
+
+L'[exécution initiale des sept mois](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/38483778338) s'est interrompue sans rapport à l'occasion d'un fichier contenant **plus de 50 000 notices**. Cette limitation protégeait les ingestions ordinaires, conçues pour les petites ressources. Elle ne reflétait pas la population documentaire des fichiers mensuels complets.
+
+Le lecteur commun accepte désormais un **plafond explicite**, borné au maximum à 200 000 notices. La valeur par défaut de **50 000** est préservée pour toutes les anciennes collectes. La présente extension utilise expressément **150 000 notices par fichier**, marchés et concessions confondus. Elle conserve également les plafonds en octets, le traitement en flux et le refus de publication d'un rapport partiel.
+
+Le relevé de la première tentative est conservé comme échec technique de périmètre. Il ne démontre aucune absence de contrat et ne doit pas entrer dans les dénominateurs.
+
 ## Unités et mesures
 
 Le lecteur et le normalisateur existants traitent en flux les marchés des sept fichiers. Les concessions sont comptées séparément. Une notice rejetée par le normalisateur est comptée avec son motif et n'entre pas dans les recherches de références. `offresRecues: "NC"` est interprété comme un nombre **non communiqué**, sans supposer zéro offre.
