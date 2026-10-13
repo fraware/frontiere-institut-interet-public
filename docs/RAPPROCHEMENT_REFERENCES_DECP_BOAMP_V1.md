@@ -59,3 +59,15 @@ Une attribution ne démontre ni un besoin actuel, ni une pénurie de compétence
 ## Limitation actuelle
 
 Les captures BOAMP déjà réalisées sont un ensemble pilote de petite taille. Une absence de rapprochement ne prouve aucune absence de contrat correspondant dans BOAMP. La première extension empirique utile consistera à exploiter davantage de notices officielles complètes avec leur provenance, sans élargir prématurément la catégorie des liens confirmés.
+
+
+## Mesure de couverture de l'identité de l'acheteur
+
+Le rapport conserve désormais deux observations distinctes :
+
+- `entrees.avis_avec_siret_acheteur_role_verifie` dénombre les avis effectivement analysés dont un SIRET a été extrait du rôle d'acheteur au moyen du schéma contrôlé, **sans exiger de correspondance DECP**.
+- `pistes_avec_concordance_de_siret` dénombre les seules pistes présentant également au moins une identité DECP comportant ce SIRET et la référence interne comparée.
+
+La distribution `entrees.statuts_identification_acheteur` conserve les causes de non-extraction (formulaire non pris en charge, acheteur absent ou multiple, rattachement organisationnel non univoque, etc.). Son total correspond au nombre d'avis BOAMP distincts étudiés ; chaque avis est classé une seule fois. Ces effectifs sont publiés dans le compte rendu de la procédure de collecte pour rendre les résultats négatifs interprétables.
+
+Une extraction réussie ne vaut pas validation juridique du SIRET par un registre externe, et les avis réellement disponibles forment ici un échantillon pilote restreint. Zéro référence commune et zéro SIRET extrait sont des phénomènes différents, dont l'importance scientifique exige de séparer les comptages.
