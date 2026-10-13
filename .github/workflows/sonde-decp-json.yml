@@ -1,8 +1,7 @@
 name: "Données essentielles : sonde JSON AIFE"
 
 on:
-  schedule:
-    # La planification sera activée après validation du premier relevé réel.
+  # Première sonde déclenchée sur la fusion et manuellement ; pas de fréquence annoncée avant validation.
   push:
     branches: [main]
     paths:
