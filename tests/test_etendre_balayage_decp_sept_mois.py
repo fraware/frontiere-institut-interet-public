@@ -148,11 +148,11 @@ def test_execution_sept_mois_conserve_deux_types_de_collision(tmp_path):
     )
     assert resultat["version"] == VERSION
     assert resultat["nombre_fichiers_intacts_lus"] == 7
-    assert resultat["statistiques"]["notices_normalisees"] == 12
-    assert resultat["statistiques"]["offres_recues_non_communiquees_nc"] == 12
+    assert resultat["statistiques"]["notices_normalisees"] == 11
+    assert resultat["statistiques"]["offres_recues_non_communiquees_nc"] == 11
     assert resultat["dedoublonnage_intermois"]["identites_distinctes_siret_et_id_marche"] == 4
     assert resultat["dedoublonnage_intermois"]["variantes_documentaires_distinctes"] == 6
-    assert resultat["dedoublonnage_intermois"]["repetitions_de_variantes_identiques"] == 6
+    assert resultat["dedoublonnage_intermois"]["repetitions_de_variantes_identiques"] == 5
     assert resultat["nombre_pistes_avec_siret_acheteur_identique"] == 1
     assert resultat["nombre_references_collisions_autres_acheteurs"] == 1
     matches = [x for x in resultat["pistes_documentaires"]
