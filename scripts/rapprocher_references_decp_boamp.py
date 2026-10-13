@@ -8,7 +8,7 @@ sur les compétences, les budgets ou les délais d'exécution.
 from __future__ import annotations
 
 import argparse
-from collections import defaultdict
+from collections import Counter, defaultdict
 import hashlib
 import json
 from pathlib import Path
@@ -196,6 +196,14 @@ def lire_avis(dossiers: list[Path]) -> tuple[dict, dict]:
         "avis_distincts": len(avis),
         "avis_references_interpretees": sum(map(len, references.values())),
         "avis_non_interpretes": dict(sorted(non_interpretes.items())),
+        "avis_avec_siret_acheteur_role_verifie": sum(
+            x.get("siret_acheteur_role_verifie") is not None
+            for x in avis.values()
+        ),
+        "statuts_identification_acheteur": dict(sorted(Counter(
+            x.get("statut_identification_acheteur", "non_retrouve")
+            for x in avis.values()
+        ).items())),
     }
 
 
@@ -290,6 +298,15 @@ def main() -> None:
         print(json.dumps({
             "references_communes": rapport["nombre_references_communes"],
             "pistes_ambigues": rapport["nombre_pistes_ambigues"],
+            "avis_avec_siret_acheteur_role_verifie": rapport["entrees"][
+                "avis_avec_siret_acheteur_role_verifie"
+            ],
+            "statuts_identification_acheteur": rapport["entrees"][
+                "statuts_identification_acheteur"
+            ],
+            "pistes_avec_concordance_de_siret": rapport[
+                "pistes_avec_concordance_de_siret"
+            ],
             "correspondances_contractuelles_verifiees": 0,
         }, ensure_ascii=False, sort_keys=True))
     except (OSError, ValueError, KeyError, TypeError) as exc:

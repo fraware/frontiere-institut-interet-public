@@ -242,6 +242,10 @@ def test_concordance_siret_acheteur_par_role_reste_non_contractuelle(tmp_path):
     _ajouter_identite_acheteur(c, "26-30147")
     resultat = produire(a, d, [c])
     assert resultat["pistes_avec_concordance_de_siret"] == 1
+    assert resultat["entrees"]["avis_avec_siret_acheteur_role_verifie"] == 1
+    assert resultat["entrees"]["statuts_identification_acheteur"] == {
+        "reference_couple_explicitement_extraite": 1,
+    }
     assert resultat["correspondances_contractuelles_verifiees"] == 0
     piste = resultat["pistes"][0]
     assert piste["concordance_siret_verifiee_dans_boamp"] is True
@@ -277,3 +281,24 @@ def test_deux_acheteurs_officiels_avec_meme_reference_restent_ambigus(tmp_path):
     resultat = produire(a, d, [c])
     assert resultat["pistes_avec_concordance_de_siret"] == 0
     assert resultat["pistes"][0]["plusieurs_acheteurs_declares_dans_les_avis"] is True
+
+
+def test_compter_les_siret_independamment_des_references_communes(tmp_path):
+    a, d = sources(tmp_path)
+    c = captures(tmp_path, [("26-30147", "AUTRE-REFERENCE")])
+    _ajouter_identite_acheteur(c, "26-30147")
+    resultat = produire(a, d, [c])
+    assert resultat["nombre_references_communes"] == 0
+    assert resultat["entrees"]["avis_avec_siret_acheteur_role_verifie"] == 1
+    assert resultat["pistes_avec_concordance_de_siret"] == 0
+
+
+def test_total_avis_includes_formats_sans_identite(tmp_path):
+    a, d = sources(tmp_path)
+    c = captures(tmp_path, [("26-30147", CLE), ("26-30148", "AUTRE-REFERENCE")])
+    _ajouter_identite_acheteur(c, "26-30147")
+    resultat = produire(a, d, [c])
+    compte = resultat["entrees"]["statuts_identification_acheteur"]
+    assert compte["reference_couple_explicitement_extraite"] == 1
+    assert compte["acheteurs_multiples_ou_absents"] == 1
+    assert sum(compte.values()) == resultat["entrees"]["avis_distincts"]
