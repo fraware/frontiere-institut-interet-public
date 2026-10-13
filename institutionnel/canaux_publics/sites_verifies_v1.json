@@ -1,0 +1,37 @@
+{
+  "version": "canaux-web-verifies-v1",
+  "pages": [
+    {
+      "id": "anr_flux",
+      "organisme": "Agence nationale de la recherche",
+      "url": "https://anr.fr/fr/flux-rss-et-reseaux-sociaux/",
+      "hote": "anr.fr"
+    },
+    {
+      "id": "eco_flux",
+      "organisme": "Ministères économiques et financiers",
+      "url": "https://www.economie.gouv.fr/tous-les-fils-d-infos",
+      "hote": "www.economie.gouv.fr"
+    },
+    {
+      "id": "ecologie_flux",
+      "organisme": "Ministères chargés de la transition écologique",
+      "url": "https://www.ecologie.gouv.fr/flux-rss",
+      "hote": "www.ecologie.gouv.fr"
+    },
+    {
+      "id": "ccsd_flux",
+      "organisme": "Centre pour la communication scientifique directe (CNRS)",
+      "url": "https://www.ccsd.cnrs.fr/rester-informe/",
+      "hote": "www.ccsd.cnrs.fr"
+    },
+    {
+      "id": "cnrs_journal",
+      "organisme": "Centre national de la recherche scientifique",
+      "url": "https://lejournal.cnrs.fr/ecrans",
+      "hote": "lejournal.cnrs.fr"
+    }
+  ],
+  "strategie": "Extraction des liens déclarés sur des pages publiques officielles préalablement référencées, sans suivre ces liens.",
+  "couverture_exhaustive": false
+}

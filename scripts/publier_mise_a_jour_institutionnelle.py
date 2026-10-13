@@ -16,7 +16,8 @@ import subprocess
 
 RACINE = Path(__file__).resolve().parents[1]
 CHEMINS = {
-    "canaux": ("institutionnel/canaux_publics/inventaire_v1.json",),
+    "canaux": ("institutionnel/canaux_publics/inventaire_v1.json",
+               "institutionnel/canaux_publics/decouvertes_sites.json"),
     "decp": ("institutionnel/decp/etat_ressources.json",),
     "flux": (
         "institutionnel/flux_publics/observations.json",
