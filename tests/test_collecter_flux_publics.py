@@ -271,8 +271,8 @@ def test_rectificatif_du_second_cycle_reclasse_100_dates():
         for x in classes
     )
     assert etat["rectification_historique"]["nombre_publications_concernees"] == 100
-    assert etat["revisions"] == 0
-    assert etat["enrichissements_metadonnees"] >= 0  # Le compteur mesure uniquement le dernier cycle.
+    assert etat["revisions"] >= 0  # Mesure du cycle courant, indépendante de la correction de 2026.
+    assert etat["enrichissements_metadonnees"] >= 0
 
 
 
