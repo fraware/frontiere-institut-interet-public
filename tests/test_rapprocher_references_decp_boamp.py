@@ -219,8 +219,10 @@ def _ajouter_identite_acheteur(dossier, identifiant, *, siret=SIRET,
             "efac:Organizations": {"efac:Organization": {
                 "efac:Company": {
                     "cac:PartyIdentification": {"cbc:ID": {"#text": org}},
-                    "cac:PartyLegalEntity": {"cbc:CompanyID": {
-                        "#text": siret, "@schemeID": schema}},
+                    "cac:PartyLegalEntity": {"cbc:CompanyID": (
+                        siret if schema is None
+                        else {"#text": siret, "@schemeID": schema}
+                    )},
                 }
             }}
         }}
@@ -302,3 +304,26 @@ def test_total_avis_includes_formats_sans_identite(tmp_path):
     assert compte["reference_couple_explicitement_extraite"] == 1
     assert compte["acheteurs_multiples_ou_absents"] == 1
     assert sum(compte.values()) == resultat["entrees"]["avis_distincts"]
+
+
+def test_identifiant_sans_schema_ne_se_confond_pas_avec_siret_declare(tmp_path):
+    a, d = sources(tmp_path)
+    c = captures(tmp_path, [("26-30147", CLE)])
+    _ajouter_identite_acheteur(c, "26-30147", schema=None)
+    resultat = produire(a, d, [c])
+    assert resultat["entrees"]["avis_avec_identifiant_acheteur_14_sans_schema"] == 1
+    assert resultat["entrees"]["avis_avec_siret_acheteur_role_verifie"] == 0
+    assert resultat["pistes_avec_identifiant_14_non_qualifie_concordant"] == 1
+    assert resultat["pistes_avec_concordance_de_siret"] == 0
+    assert resultat["correspondances_contractuelles_verifiees"] == 0
+    assert resultat["pistes"][0]["identite_contractuelle_verifiee"] is False
+
+
+def test_14_chiffres_sans_schema_sans_reference_commune(tmp_path):
+    a, d = sources(tmp_path)
+    c = captures(tmp_path, [("26-30147", "AUTRE-REFERENCE")])
+    _ajouter_identite_acheteur(c, "26-30147", schema=None)
+    resultat = produire(a, d, [c])
+    assert resultat["nombre_references_communes"] == 0
+    assert resultat["entrees"]["avis_avec_identifiant_acheteur_14_sans_schema"] == 1
+    assert resultat["pistes_avec_identifiant_14_non_qualifie_concordant"] == 0
