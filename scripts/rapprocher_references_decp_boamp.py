@@ -20,6 +20,7 @@ try:
     from scripts.collecter_notices_pilotes_boamp import verifier_capture
     from scripts.consolider_attributions_decp import rapports_dgfip
     from scripts.indexer_attributions_decp_sqlite import verifier_rapport
+    from scripts.extraire_references_boamp_decp import references_notice
 except ModuleNotFoundError as exc:
     # En exécution directe, Python place scripts/ et non sa racine sur sys.path.
     if exc.name != "scripts":
@@ -27,6 +28,7 @@ except ModuleNotFoundError as exc:
     from collecter_notices_pilotes_boamp import verifier_capture
     from consolider_attributions_decp import rapports_dgfip
     from indexer_attributions_decp_sqlite import verifier_rapport
+    from extraire_references_boamp_decp import references_notice
 
 VERSION = "rapprochement-references-decp-boamp-v1"
 CHEMIN_REFERENCE = "/donnees/EFORMS/{formulaire}/cac:ProcurementProject/cbc:ID"
@@ -160,6 +162,10 @@ def lire_avis(dossiers: list[Path]) -> tuple[dict, dict]:
                 continue
             source = json.loads(brut)["results"][0]
             reference, originale, chemin_reference = extraire_reference(source)
+            references_acheteur, statut_acheteur = references_notice(source)
+            if references_acheteur and reference != reference_normalisee(
+                    references_acheteur[0]["id_marche"]):
+                raise RapprochementInvalide("Référence interne BOAMP contradictoire.")
             if reference is None:
                 non_interpretes[chemin_reference] += 1
             avis[code] = {
@@ -172,6 +178,15 @@ def lire_avis(dossiers: list[Path]) -> tuple[dict, dict]:
                 "reference_originale": originale,
                 "chemin_reference": chemin_reference,
                 "acheteur_libelle_non_verifie": source.get("nomacheteur"),
+                "siret_acheteur_role_verifie": (
+                    references_acheteur[0]["acheteur_siret"]
+                    if references_acheteur else None
+                ),
+                "chemin_preuve_siret": (
+                    references_acheteur[0]["chemin_preuve_siret"]
+                    if references_acheteur else None
+                ),
+                "statut_identification_acheteur": statut_acheteur,
             }
     references = defaultdict(list)
     for fiche in avis.values():
@@ -195,6 +210,19 @@ def produire(aife: Path, dgfip: Path, captures: list[Path]) -> dict:
         candidats = marches.get(ref, [])
         if not candidats:
             continue
+        acheteurs_etablis = {
+            n["siret_acheteur_role_verifie"] for n in notices
+            if n.get("siret_acheteur_role_verifie") is not None
+        }
+        acheteur_univoque = (
+            next(iter(acheteurs_etablis)) if len(acheteurs_etablis) == 1
+            else None
+        )
+        concordances_acheteur = [
+            x for x in candidats
+            if acheteur_univoque is not None
+            and x["acheteur_siret"] == acheteur_univoque
+        ]
         pistes.append({
             "reference_normalisee": ref,
             "classement": (
@@ -206,7 +234,10 @@ def produire(aife: Path, dgfip: Path, captures: list[Path]) -> dict:
             "nombre_avis": len(notices),
             "nombre_marches_distincts": len(candidats),
             "identite_contractuelle_verifiee": False,
-            "concordance_siret_verifiee_dans_boamp": False,
+            "concordance_siret_verifiee_dans_boamp": bool(concordances_acheteur),
+            "acheteur_boamp_identifie_dans_role": acheteur_univoque,
+            "nombre_identites_decp_avec_siret_concordant": len(concordances_acheteur),
+            "plusieurs_acheteurs_declares_dans_les_avis": len(acheteurs_etablis) > 1,
             "examen_humain_ou_piece_complementaire_necessaire": True,
         })
     return {
@@ -221,6 +252,9 @@ def produire(aife: Path, dgfip: Path, captures: list[Path]) -> dict:
             len(p["identites_decp"]) > 1 for p in pistes
         ),
         "correspondances_contractuelles_verifiees": 0,
+        "pistes_avec_concordance_de_siret": sum(
+            p["concordance_siret_verifiee_dans_boamp"] for p in pistes
+        ),
         "preuve_premiere_contribution_utile": False,
         "pistes": pistes,
         "limite": (
