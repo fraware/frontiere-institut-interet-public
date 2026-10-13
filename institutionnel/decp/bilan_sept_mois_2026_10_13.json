@@ -1,0 +1,130 @@
+{
+  "version": "bilan-decp-sept-mois-v1",
+  "date_execution": "2026-10-13T23:28:40.844631+00:00",
+  "source_catalogue": "mef_decp_consolides",
+  "execution_originale": "https://github.com/fraware/frontiere-institut-interet-public/actions/runs/38484330790",
+  "sha256_rapport_original": "3f97707eaeecce5f2b06bfad2c14e63ecb0caf978762decd891a48f0ca05ccde",
+  "sha256_rapport_initial_trois_mois": "5ea20aa0b0b2e7fd81029ccb514b1c4f5bac514016cd1f333e435e5e0407bc3a",
+  "sha256_rapport_cibles_boamp": "8a9f220a66f61a4a0e1ea0104e3fd9c7a23395e791866e997b10922bfcaf82b8",
+  "mois_examines": [
+    "2025-08",
+    "2025-10",
+    "2025-12",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05"
+  ],
+  "mesures": {
+    "objets_documentaires_lus": 262963,
+    "concessions_exclues": 163,
+    "observations_marches": 262800,
+    "observations_normalisees": 262800,
+    "notices_rejetees": 0,
+    "offres_non_communiquees_nc": 55596,
+    "identites_uniques_entre_mois": 202081,
+    "variantes_documentaires_distinctes": 228375,
+    "repetitions_variantes_identiques": 34425,
+    "identites_dans_plusieurs_mois": 28819,
+    "identites_avec_plusieurs_variantes": 7250,
+    "identites_distinctes_additionnees_par_fichier": 241696,
+    "repetitions_identites_dans_fichier": 21104,
+    "references_decp_communes_avec_cibles_boamp_tous_acheteurs": 1,
+    "pistes_reference_et_meme_siret_acheteur": 0,
+    "homonymies_reference_avec_autre_acheteur": 1,
+    "contrats_juridiquement_confirmes": 0
+  },
+  "homonymie_identifiee": {
+    "reference_marche_decp": "20251954",
+    "siret_acheteur_decp": "26310012500016",
+    "siret_acheteur_dans_avis_boamp": "26630746100019",
+    "mois": "2026-04",
+    "preuve_contrat_confirme": false
+  },
+  "sources": [
+    {
+      "mois": "2025-08",
+      "ressource_id": "393f8099-0e3c-41b4-9f40-59ec3914807c",
+      "sha256_fichier_brut": "cc15f6dc1b980bfa73f90b120bd61e731a94dd861a080be520b9c8797af02ae9",
+      "octets": 57625043,
+      "notices_marche_lues": 23414,
+      "identites_distinctes_dans_fichier": 23326,
+      "repetitions_dans_fichier": 88,
+      "offres_nc": 6450,
+      "origine": "anterieure"
+    },
+    {
+      "mois": "2026-02",
+      "ressource_id": "740ccc19-4130-4044-af2d-ae9a60d25311",
+      "sha256_fichier_brut": "4813dcade685770115ba10a74837cdc3bf89b5418360f232de19aa7161420caf",
+      "octets": 73053036,
+      "notices_marche_lues": 30604,
+      "identites_distinctes_dans_fichier": 28421,
+      "repetitions_dans_fichier": 2183,
+      "offres_nc": 7463,
+      "origine": "anterieure"
+    },
+    {
+      "mois": "2026-04",
+      "ressource_id": "f90c13f0-4123-4f62-8654-410aa723d5f7",
+      "sha256_fichier_brut": "8114588fa9e459fa88a193d959c65945587d7402d8f21f5254663a6cdadb1364",
+      "octets": 75720079,
+      "notices_marche_lues": 31163,
+      "identites_distinctes_dans_fichier": 29593,
+      "repetitions_dans_fichier": 1570,
+      "offres_nc": 8009,
+      "origine": "anterieure"
+    },
+    {
+      "mois": "2025-10",
+      "ressource_id": "c21e27fd-2a01-4e0e-ac42-8468d5429ad7",
+      "sha256_fichier_brut": "51846563246f1bf8de31bee6b318ac1aecff5f365d924f708f6e6e1776ccdbcc",
+      "octets": 93350551,
+      "notices_marche_lues": 39589,
+      "identites_distinctes_dans_fichier": 33376,
+      "repetitions_dans_fichier": 6213,
+      "offres_nc": 8232,
+      "origine": "nouvelle"
+    },
+    {
+      "mois": "2025-12",
+      "ressource_id": "7b3ff863-57dd-4039-a7b3-ffd80925106f",
+      "sha256_fichier_brut": "00dff3537609e4635fa744b37c04d8f6a7150f3350bfa059ef2b69d0d42e809c",
+      "octets": 152289937,
+      "notices_marche_lues": 70649,
+      "identites_distinctes_dans_fichier": 65154,
+      "repetitions_dans_fichier": 5495,
+      "offres_nc": 8152,
+      "origine": "nouvelle"
+    },
+    {
+      "mois": "2026-03",
+      "ressource_id": "aa32d81e-d6b9-4721-a1fa-daa812b81cdb",
+      "sha256_fichier_brut": "20fe4ab0c79de1a7e60eb69d26e32b303eb8575d7459debe357b2ff0ed8e948d",
+      "octets": 92839235,
+      "notices_marche_lues": 39035,
+      "identites_distinctes_dans_fichier": 35690,
+      "repetitions_dans_fichier": 3345,
+      "offres_nc": 9533,
+      "origine": "nouvelle"
+    },
+    {
+      "mois": "2026-05",
+      "ressource_id": "d1ece007-c56e-473d-a1f1-9960c8a393c8",
+      "sha256_fichier_brut": "8b744d5758eaca9c87a29659469773da3a6f916b8b6de5e721966b9f5ebe5fcd",
+      "octets": 69264442,
+      "notices_marche_lues": 28346,
+      "identites_distinctes_dans_fichier": 26136,
+      "repetitions_dans_fichier": 2210,
+      "offres_nc": 7757,
+      "origine": "nouvelle"
+    }
+  ],
+  "limites": {
+    "corpus_national_exhaustif": false,
+    "objet": "Publication de données essentielles de marchés attribués, sans mesure de demande non satisfaite",
+    "dedoublonnage": "Par SIRET acheteur et identifiant de marché; les variantes normalisées conservent leur distinctivité",
+    "portee_contractuelle": "Aucune identité contractuelle BOAMP-DECP démontrée; une référence homonyme existe sous un autre SIRET",
+    "archives_originales": "L'artefact GitHub est conservé temporairement ; les fichiers bruts ne sont pas versionnés dans le dépôt"
+  }
+}
