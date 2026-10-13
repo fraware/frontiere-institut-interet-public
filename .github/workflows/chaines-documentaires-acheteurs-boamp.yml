@@ -79,6 +79,8 @@ jobs:
             --releve "$ROOT/boamp/releve-issues-36" \
             --audit-boamp "$ROOT/boamp/audit-identifiants-acheteurs-36.json" \
             --administration "$ROOT/admin" \
+            --aife institutionnel/decp/sonde_aife_json.json \
+            --dgfip institutionnel/decp/lot_dgfip_xml.json \
             --sortie "$ROOT/chaines-documentaires-17.json"
           python - <<'PY'
           from pathlib import Path
@@ -88,7 +90,8 @@ jobs:
           resultat = json.loads((root / "chaines-documentaires-17.json").read_text())
           attendu = {"avis":17, "attributions":6, "references_procedure":15,
                      "lots_declares":27, "resultats_lots":9, "contrats_locaux":9,
-                     "liens_lot_contrat":9}
+                     "liens_lot_contrat":9, "references_contrat_explicites":9,
+                     "references_contrat_comparables":7}
           for champ, valeur in attendu.items():
               if resultat["mesures"][champ] != valeur:
                   raise SystemExit(f"Décompte primaire inattendu {champ}")
