@@ -93,47 +93,79 @@ class LecteurJSON:
                     raise DocumentDECPInvalide("Document JSON tronqué ou incorrect") from exc
 
 
-def iterer_marches(flux: TextIO):
-    """Accepter deux enveloppes documentées sans ignorer les clés inconnues."""
+def _iterer_tableau(lecteur: LecteurJSON, categorie: str, total: list[int]):
+    """Parcourir un tableau nommé, avec plafond global sur les deux catégories."""
+    lecteur.attendre("[")
+    while lecteur.caractere() != "]":
+        if total[0] >= MAX_NOTICES:
+            raise DocumentDECPInvalide("Nombre total de notices supérieur au plafond")
+        enregistrement = lecteur.valeur()
+        total[0] += 1
+        yield categorie, enregistrement
+        symbole = lecteur.caractere()
+        if symbole == ",":
+            lecteur.attendre(",")
+            if lecteur.caractere() == "]":
+                raise DocumentDECPInvalide("Virgule finale dans le tableau")
+        elif symbole != "]":
+            raise DocumentDECPInvalide("Séparateur du tableau invalide")
+    lecteur.attendre("]")
+
+
+def iterer_documents(flux: TextIO):
+    """Parcourir marchés et concessions comme catégories documentaires distinctes.
+
+    L'interface AIFE observée le 13 octobre 2026 utilise :
+    {"marches":{"marche":[...],"contrat-concession":[...]}}.
+    L'ordre des deux membres ne porte aucune signification. Une structure
+    inconnue est refusée, sans omission silencieuse.
+    """
     lecteur = LecteurJSON(flux)
+    total = [0]
     racine = lecteur.caractere()
-    enveloppe = racine == "{"
-    imbrique = False
-    if enveloppe:
+    if racine == "[":
+        yield from _iterer_tableau(lecteur, "marche", total)
+    elif racine == "{":
         lecteur.attendre("{")
         if lecteur.valeur() != "marches":
             raise DocumentDECPInvalide("Seule la clé principale marches est reconnue")
         lecteur.attendre(":")
-        if lecteur.caractere() == "{":
-            imbrique = True
+        if lecteur.caractere() == "[":
+            yield from _iterer_tableau(lecteur, "marche", total)
+        elif lecteur.caractere() == "{":
             lecteur.attendre("{")
-            if lecteur.valeur() != "marche":
-                raise DocumentDECPInvalide("Seule la clé secondaire marche est reconnue")
-            lecteur.attendre(":")
-    elif racine != "[":
+            noms = set()
+            while lecteur.caractere() != "}":
+                nom = lecteur.valeur()
+                if nom not in ("marche", "contrat-concession") or nom in noms:
+                    raise DocumentDECPInvalide("Collection inconnue ou répétée dans marches")
+                noms.add(nom)
+                lecteur.attendre(":")
+                yield from _iterer_tableau(lecteur, nom, total)
+                symbole = lecteur.caractere()
+                if symbole == ",":
+                    lecteur.attendre(",")
+                    if lecteur.caractere() == "}":
+                        raise DocumentDECPInvalide("Virgule finale dans les collections")
+                elif symbole != "}":
+                    raise DocumentDECPInvalide("Séparateur des collections invalide")
+            lecteur.attendre("}")
+            if "marche" not in noms:
+                raise DocumentDECPInvalide("Collection de marchés absente")
+        else:
+            raise DocumentDECPInvalide("Valeur de la clé marches non prise en charge")
+        lecteur.attendre("}")
+    else:
         raise DocumentDECPInvalide("Racine JSON de marchés non reconnue")
-    lecteur.attendre("[")
-    compteur = 0
-    while lecteur.caractere() != "]":
-        if compteur >= MAX_NOTICES:
-            raise DocumentDECPInvalide("Nombre de notices supérieur au plafond")
-        notice = lecteur.valeur()
-        compteur += 1
-        yield notice
-        suivant = lecteur.caractere()
-        if suivant == ",":
-            lecteur.attendre(",")
-            if lecteur.caractere() == "]":
-                raise DocumentDECPInvalide("Virgule finale dans le tableau")
-        elif suivant != "]":
-            raise DocumentDECPInvalide("Séparateur du tableau invalide")
-    lecteur.attendre("]")
-    if imbrique:
-        lecteur.attendre("}")
-    if enveloppe:
-        lecteur.attendre("}")
     if lecteur.caractere():
         raise DocumentDECPInvalide("Contenu supplémentaire après la racine")
+
+
+def iterer_marches(flux: TextIO):
+    """Interface de compatibilité ne retournant que les notices de marchés."""
+    for categorie, notice in iterer_documents(flux):
+        if categorie == "marche":
+            yield notice
 
 
 def _chaine(valeur: object, maximum: int) -> str | None:
@@ -221,7 +253,11 @@ def traiter_fichier(
     vus = {}
     cpv_categories = Counter()
     with entree.open("r", encoding="utf-8-sig") as handle:
-        for brut in iterer_marches(handle):
+        for categorie, brut in iterer_documents(handle):
+            compteur["objets_documentaires_lus"] += 1
+            if categorie == "contrat-concession":
+                compteur["concessions_non_normalisees"] += 1
+                continue
             compteur["notices_lues"] += 1
             try:
                 ligne = normaliser_marche(brut)
