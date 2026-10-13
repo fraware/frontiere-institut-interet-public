@@ -29,9 +29,9 @@ def fiche(source, n=5):
     }
 
 
-def test_source_fermee_et_deux_jeux_distincts():
+def test_source_fermee_et_trois_jeux_distincts():
     sources = verifier_catalogue(catalogue())
-    assert len(sources) == 2
+    assert len(sources) == 3
     assert all(x["url"].startswith("https://www.data.gouv.fr/api/1/datasets/") for x in sources)
     faux = deepcopy(catalogue())
     faux["sources"][0]["url"] = "https://attacker.invalid/requete"
@@ -72,11 +72,11 @@ def test_echec_partiel_preserve_source_precedente():
         return fiche(source, 6)
     suivant = executer(catalogue(), premier, recuperer=panne,
                        instant="2026-10-12T18:00:00+00:00")
-    assert suivant["sources_reussies"] == 1
+    assert suivant["sources_reussies"] == 2
     assert suivant["sources_echouees"][0]["motif"] == "TimeoutError"
     conserve = next(x for x in suivant["catalogues"] if x["source_id"] == sources[0]["id"])
     assert conserve == original
-    assert suivant["nombre_catalogues_avec_modifications"] == 1
+    assert suivant["nombre_catalogues_avec_modifications"] == 2
 
 
 def test_aucune_reussite_refuse_remplacement():
@@ -98,3 +98,10 @@ def test_pas_d_inference_de_besoins_actuels():
     assert resultat["qualifie_des_besoins_actuels"] is False
     assert resultat["inventaires_complets_telecharges"] == 0
     assert all(x["nouveaux_besoins_prospectifs_deduits"] == 0 for x in resultat["catalogues"])
+
+
+def test_source_aife_officielle_avec_role_distinct():
+    sources = {src["id"]: src for src in verifier_catalogue(catalogue())}
+    assert sources["aife_api_decp"]["url"] == "https://www.data.gouv.fr/api/1/datasets/api-decp/"
+    assert "etat" in sources["aife_api_decp"]["type_observation"]
+    assert sources["dgfip_pes_marche"]["id"] != sources["aife_api_decp"]["id"]
