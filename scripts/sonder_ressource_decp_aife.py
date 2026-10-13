@@ -152,7 +152,7 @@ def executer(etat: dict, fiche: dict, recuperer=recevoir_fichier) -> dict:
         try:
             resultat = traiter_fichier(
                 chemin, source_id=SOURCE, ressource_id=selection["id"],
-                limite_extraits=50,
+                limite_extraits=200,
             )
         except DocumentDECPInvalide as exc:
             try:
