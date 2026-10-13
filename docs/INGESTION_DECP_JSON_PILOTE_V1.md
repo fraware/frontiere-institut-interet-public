@@ -40,6 +40,17 @@ python scripts/sonder_ressource_decp_aife.py
 
 Elle échoue sans produire de nouvelle sortie si les ressources officielles ne sont pas consultables, si le domaine de stockage n'est pas autorisé, si la taille diverge ou si le fichier ne respecte pas les enveloppes reconnues. Un diagnostic de forme limité aux noms et types de champs accompagne les refus, sans journaliser de texte contractuel. Il n'existe pas de contournement automatique d'un refus d'accès.
 
+
+## Surveillance récurrente du prélèvement
+
+La première ingestion réelle du fichier AIFE a réussi avec **127 marchés normalisés**, **une concession** comptée distinctement et **zéro rejet** sur les champs du profil réduit.
+
+La procédure `.github/workflows/sonde-decp-json.yml` est désormais prévue quatre fois par jour à **03:23, 09:23, 15:23 et 21:23 UTC**, sous réserve des décalages d'ordonnancement GitHub Actions. À chaque cycle, elle interroge uniquement le catalogue AIFE et télécharge au plus un petit fichier JSON déjà référencé, de taille strictement limitée.
+
+Le programme compare l'ensemble des résultats normalisés à la version enregistrée, sans tenir compte de la seule heure du nouveau contrôle. **Un cycle identique ne crée pas de proposition de modification supplémentaire.** Toute modification du contenu, de l'empreinte ou des compteurs devra passer les contrôles et une nouvelle publication.
+
+Cette cadence concerne uniquement **la sonde d'un fichier récent**, et ne représente ni une ingestion exhaustive des publications AIFE ni la détection en temps réel de toutes les opérations d'achat. La mise en place d'un curseur parcourant chaque nouvelle ressource depuis le dernier passage est nécessaire pour évoluer vers une couverture temporelle vérifiable.
+
 ## Limites empiriques
 
 Une donnée de marché attribué ne signifie pas que le besoin est encore ouvert. L'attribution n'atteste pas la livraison ni la première contribution du prestataire. Le rattachement d'une annonce BOAMP à une attribution DECP demeure **non établi** à ce stade : les identifiants de marchés, d'acheteurs et de procédures doivent être rapprochés sur des critères vérifiables.

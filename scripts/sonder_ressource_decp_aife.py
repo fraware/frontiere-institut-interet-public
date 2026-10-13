@@ -170,6 +170,16 @@ def executer(etat: dict, fiche: dict, recuperer=recevoir_fichier) -> dict:
     return resultat
 
 
+def observation_equivalente(avant: object, apres: object) -> bool:
+    """Comparer le contenu observé indépendamment de l'heure de l'interrogation."""
+    if not isinstance(avant, dict) or not isinstance(apres, dict):
+        return False
+    return (
+        {cle: valeur for cle, valeur in avant.items() if cle != "releve_le"}
+        == {cle: valeur for cle, valeur in apres.items() if cle != "releve_le"}
+    )
+
+
 def main() -> None:
     """Lire les métadonnées et interroger le seul catalogue AIFE référencé."""
     p = argparse.ArgumentParser(description=__doc__)
@@ -183,6 +193,15 @@ def main() -> None:
         }
         fiche = telecharger_catalogue(source)
         rapport = executer(etat, fiche)
+        if args.sortie.is_file():
+            precedent = json.loads(args.sortie.read_text(encoding="utf-8"))
+            if observation_equivalente(precedent, rapport):
+                print(json.dumps({
+                    "statut": "contenu_identique_aucune_publication",
+                    "ressource_id": rapport["ressource_id"],
+                    "sha256_fichier_brut": rapport["sha256_fichier_brut"],
+                }, ensure_ascii=False))
+                return
         args.sortie.parent.mkdir(parents=True, exist_ok=True)
         temp = args.sortie.with_name(args.sortie.name + ".tmp")
         temp.write_text(
