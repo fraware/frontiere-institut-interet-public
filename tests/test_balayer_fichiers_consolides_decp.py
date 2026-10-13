@@ -8,7 +8,7 @@ import pytest
 
 from scripts.balayer_fichiers_consolides_decp import (
     VERSION, BalayageInvalide, MOIS, SOURCE, analyser, cibles,
-    choisir_ressources, executer,
+    choisir_ressources, executer, reexaminer_archive,
 )
 
 TARGET = "25M034"
@@ -60,6 +60,7 @@ def fichiers_json(tmp_path):
                             "11000201100044" if i == 1
                             else "99999999999999"},
                 "objet": "Marché public d'analyse technique",
+                "offresRecues": "NC",
                 "dateNotification": "2025-08-26",
             }, {
                 "id": TARGET,
@@ -125,6 +126,12 @@ def test_trois_fichiers_entiers_et_homonymies_conserves(tmp_path):
     assert resultat["statistiques_globales_avec_repetitions_possibles"]["notices_marche_rejetees"] == 3
     assert resultat["statistiques_globales_avec_repetitions_possibles"]["concessions_exclues"] == 3
     assert resultat["candidats_decp_meme_siret"] == 2
+    assert resultat["statistiques_globales_avec_repetitions_possibles"][
+        "offres_recues_non_communiquees_nc"
+    ] == 3
+    assert resultat["statistiques_globales_avec_repetitions_possibles"][
+        "notices_normalisees"
+    ] == 6
     assert resultat["contrats_juridiquement_demontrés"] == 0
     assert len(resultat["sources"][0]["candidats"]) == 2
     assert resultat["sources"][0]["candidats"][0]["meme_siret_acheteur"] is True
@@ -175,3 +182,41 @@ def test_mois_manquant_ne_produit_aucun_resultat(tmp_path):
     del fiche["resources"][-1]
     with pytest.raises(BalayageInvalide):
         choisir_ressources(meta, fiche)
+
+
+def test_relecture_du_meme_corpus_hors_reseau(tmp_path):
+    cible = rapport_cible(tmp_path)
+    sources = fichiers_json(tmp_path)
+    etat, fiche = catalogues(sources)
+    def copier(selection, sortie):
+        sortie.write_bytes(sources[selection["titre"]].read_bytes())
+    original = tmp_path / "initial"
+    premier = executer(
+        cible, etat, fiche, original, recuperer=copier,
+        instant=datetime(2026, 10, 13, tzinfo=timezone.utc),
+    )
+    relecture = reexaminer_archive(cible, original, tmp_path / "nouveau.json")
+    assert relecture["relecture_de_sources_archivees"] is True
+    assert relecture["retelechargement_officiel_effectue"] is False
+    assert relecture["interpretation_nc"] == "effectif_offres_non_communique_jamais_zero"
+    assert relecture["candidats_decp_meme_siret"] == premier["candidats_decp_meme_siret"]
+    assert relecture["statistiques_globales_avec_repetitions_possibles"][
+        "offres_recues_non_communiquees_nc"] == 3
+    assert relecture["contrats_juridiquement_demontrés"] == 0
+    assert all(a["sha256_source_brute"] == b["sha256_source_brute"]
+               for a, b in zip(relecture["sources"], premier["sources"]))
+
+
+def test_relecture_refuse_octets_modifies(tmp_path):
+    cible = rapport_cible(tmp_path)
+    sources = fichiers_json(tmp_path)
+    etat, fiche = catalogues(sources)
+    def copier(selection, sortie):
+        sortie.write_bytes(sources[selection["titre"]].read_bytes())
+    original = tmp_path / "initial"
+    executer(cible, etat, fiche, original, recuperer=copier)
+    fichier = original / "fichiers-officiels" / "decp-2025-08.json"
+    fichier.write_bytes(fichier.read_bytes() + b" ")
+    with pytest.raises(BalayageInvalide, match="Octets"):
+        reexaminer_archive(cible, original, tmp_path / "refuse.json")
+    assert not (tmp_path / "refuse.json").exists()
