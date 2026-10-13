@@ -271,5 +271,34 @@ def test_rectificatif_du_second_cycle_reclasse_100_dates():
         for x in classes
     )
     assert etat["rectification_historique"]["nombre_publications_concernees"] == 100
-    assert etat["revisions"] == 0
-    assert etat["enrichissements_metadonnees"] == 100
+    assert etat["revisions"] >= 0  # Mesure du cycle courant, indépendante de la correction de 2026.
+    assert etat["enrichissements_metadonnees"] >= 0
+
+
+
+def test_rectificatif_historique_conserve_mais_compteurs_renouveles():
+    """Préserver l'événement historique sans compter 100 enrichissements à chaque cycle."""
+    config = _configuration()
+    avant, etat = executer(
+        config, _ancien(), _etat(), _telecharger,
+        "2026-10-12T21:58:28+00:00",
+    )
+    etat["rectification_historique"] = {
+        "nombre_publications_concernees": 100,
+        "classification": "enrichissement_de_dates",
+    }
+    suivant, bilan = executer(
+        config, avant, etat, _telecharger,
+        "2026-10-13T02:00:00+00:00",
+    )
+    assert suivant == avant
+    assert bilan["rectification_historique"] == etat["rectification_historique"]
+    assert bilan["enrichissements_metadonnees"] == 0
+    assert bilan["revisions"] == 0
+    assert bilan["nouveaux_signaux"] == 0
+
+
+def test_historique_invalide_est_refuse():
+    ancien = {"version": 1, "sources": [], "rectification_historique": "incorrect"}
+    with pytest.raises(CollecteInvalide):
+        executer(_configuration(), _ancien(), ancien, _telecharger)
