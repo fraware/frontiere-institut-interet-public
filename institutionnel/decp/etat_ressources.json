@@ -1,22 +1,92 @@
 {
   "catalogues": [
     {
-      "actualise_le": "2026-10-10T04:13:17.005000+00:00",
+      "actualise_le": "2026-10-13T03:12:41.798000+00:00",
       "completude_des_marches_etablie": false,
       "contenu_des_fichiers_telecharge": false,
-      "empreinte_inventaire_complet": "e1844de5ca34cd4b79e58b03b1b2af02b8328bbbfe7ad747a6e17be390393c8c",
+      "empreinte_inventaire_complet": "f64d2f8e8e7ef061667782d9e262991b9a2c0194914733a4e467eb3196f92b2e",
       "formats": {
-        "xml": 5323
+        "xml": 5333
       },
       "jeu_id": "65cf3c55ec910b5a8e2fc084",
       "licence_declaree": "lov2",
       "nombre_ressources_indexees": 150,
-      "nombre_ressources_non_detaillees": 5173,
-      "nombre_ressources_total": 5323,
+      "nombre_ressources_non_detaillees": 5183,
+      "nombre_ressources_total": 5333,
       "nouveaux_besoins_prospectifs_deduits": 0,
-      "observe_le": "2026-10-13T03:12:11+00:00",
+      "observe_le": "2026-10-13T03:18:09+00:00",
       "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-transmises-via-le-pes-marche-depuis-2024",
       "ressources_recentes": [
+        {
+          "format": "xml",
+          "id": "118544f1-b022-43d4-b8e0-3856f66a8b1d",
+          "modifie_le": "2026-10-13T03:12:41.798000+00:00",
+          "taille_octets_declaree": 428473,
+          "titre": "decp-13000495500139-2026-10-13-01.xml"
+        },
+        {
+          "format": "xml",
+          "id": "ec06007c-1e84-4314-bee8-716fe54675ec",
+          "modifie_le": "2026-10-13T03:12:38.744000+00:00",
+          "taille_octets_declaree": 1120061,
+          "titre": "decp-13000495500139-2026-10-13-02.xml"
+        },
+        {
+          "format": "xml",
+          "id": "f6ac8df9-c3b0-4863-a42b-fb4235f3d6cb",
+          "modifie_le": "2026-10-13T03:12:35.399000+00:00",
+          "taille_octets_declaree": 651369,
+          "titre": "decp-13000495500139-2026-10-13-03.xml"
+        },
+        {
+          "format": "xml",
+          "id": "5fb2be5d-2392-45f8-92d8-230b2bcee559",
+          "modifie_le": "2026-10-13T03:12:32.249000+00:00",
+          "taille_octets_declaree": 478685,
+          "titre": "decp-13000495500139-2026-10-13-04.xml"
+        },
+        {
+          "format": "xml",
+          "id": "9e44c571-6bc1-42e8-a6f1-2c40c0691d66",
+          "modifie_le": "2026-10-13T03:12:29.798000+00:00",
+          "taille_octets_declaree": 343219,
+          "titre": "decp-13000495500139-2026-10-13-05.xml"
+        },
+        {
+          "format": "xml",
+          "id": "67903408-6540-4347-a570-61e9ab199ae3",
+          "modifie_le": "2026-10-13T03:12:27.589000+00:00",
+          "taille_octets_declaree": 87632,
+          "titre": "decp-13000495500139-2026-10-13-06.xml"
+        },
+        {
+          "format": "xml",
+          "id": "4ab3c105-49ce-44ad-ab5f-da346dd2d560",
+          "modifie_le": "2026-10-13T03:12:24.646000+00:00",
+          "taille_octets_declaree": 52031,
+          "titre": "decp-13000495500139-2026-10-13-07.xml"
+        },
+        {
+          "format": "xml",
+          "id": "ab14d292-6731-4153-bf0f-09da6dde823c",
+          "modifie_le": "2026-10-13T03:12:21.666000+00:00",
+          "taille_octets_declaree": 268556,
+          "titre": "decp-13000495500139-2026-10-13-08.xml"
+        },
+        {
+          "format": "xml",
+          "id": "5ad5bbe0-2c04-43db-a887-f842cbe56f79",
+          "modifie_le": "2026-10-13T03:12:19.277000+00:00",
+          "taille_octets_declaree": 789780,
+          "titre": "decp-13000495500139-2026-10-13-09.xml"
+        },
+        {
+          "format": "xml",
+          "id": "9a8c1b74-7ca3-4714-869c-ab92ff77f021",
+          "modifie_le": "2026-10-13T03:12:16.646000+00:00",
+          "taille_octets_declaree": 134520,
+          "titre": "decp-13000495500139-2026-10-13-10.xml"
+        },
         {
           "format": "xml",
           "id": "73f876a2-640a-4cf2-a140-0161124a8282",
@@ -996,76 +1066,6 @@
           "modifie_le": "2026-09-23T03:12:20.073000+00:00",
           "taille_octets_declaree": 158908,
           "titre": "decp-13000495500139-2026-09-23-10.xml"
-        },
-        {
-          "format": "xml",
-          "id": "0a114de9-662e-4709-aecb-42a5b132d1a7",
-          "modifie_le": "2026-09-22T03:12:37.106000+00:00",
-          "taille_octets_declaree": 304691,
-          "titre": "decp-13000495500139-2026-09-22-01.xml"
-        },
-        {
-          "format": "xml",
-          "id": "294f6362-5b54-493c-8130-9705b4aed46b",
-          "modifie_le": "2026-09-22T03:12:34.736000+00:00",
-          "taille_octets_declaree": 659072,
-          "titre": "decp-13000495500139-2026-09-22-02.xml"
-        },
-        {
-          "format": "xml",
-          "id": "0e451d61-7414-41dd-a9b8-526d9befeca1",
-          "modifie_le": "2026-09-22T03:12:31.687000+00:00",
-          "taille_octets_declaree": 636874,
-          "titre": "decp-13000495500139-2026-09-22-03.xml"
-        },
-        {
-          "format": "xml",
-          "id": "1babf9e7-2221-472e-b433-e4d4d1703e32",
-          "modifie_le": "2026-09-22T03:12:29.317000+00:00",
-          "taille_octets_declaree": 546729,
-          "titre": "decp-13000495500139-2026-09-22-04.xml"
-        },
-        {
-          "format": "xml",
-          "id": "86e4d8c9-b77c-4fbd-ad24-37848f5ae39f",
-          "modifie_le": "2026-09-22T03:12:26.893000+00:00",
-          "taille_octets_declaree": 368920,
-          "titre": "decp-13000495500139-2026-09-22-05.xml"
-        },
-        {
-          "format": "xml",
-          "id": "cb0c1227-dfc0-401a-bb57-039828684dc8",
-          "modifie_le": "2026-09-22T03:12:24.369000+00:00",
-          "taille_octets_declaree": 107202,
-          "titre": "decp-13000495500139-2026-09-22-06.xml"
-        },
-        {
-          "format": "xml",
-          "id": "600d03c1-5317-436b-a0ef-2cef51a03599",
-          "modifie_le": "2026-09-22T03:12:21.819000+00:00",
-          "taille_octets_declaree": 66663,
-          "titre": "decp-13000495500139-2026-09-22-07.xml"
-        },
-        {
-          "format": "xml",
-          "id": "68ff3f78-95c2-408d-ab35-e576af314ad2",
-          "modifie_le": "2026-09-22T03:12:19.354000+00:00",
-          "taille_octets_declaree": 120205,
-          "titre": "decp-13000495500139-2026-09-22-08.xml"
-        },
-        {
-          "format": "xml",
-          "id": "3a7fd7eb-c470-4745-9c69-93fb1056d8a2",
-          "modifie_le": "2026-09-22T03:12:16.783000+00:00",
-          "taille_octets_declaree": 395271,
-          "titre": "decp-13000495500139-2026-09-22-09.xml"
-        },
-        {
-          "format": "xml",
-          "id": "6d0bb992-42d1-4078-bef2-02863b7666f1",
-          "modifie_le": "2026-09-22T03:12:14.346000+00:00",
-          "taille_octets_declaree": 157801,
-          "titre": "decp-13000495500139-2026-09-22-10.xml"
         }
       ],
       "source_id": "dgfip_pes_marche",
@@ -1087,7 +1087,7 @@
       "nombre_ressources_non_detaillees": 0,
       "nombre_ressources_total": 42,
       "nouveaux_besoins_prospectifs_deduits": 0,
-      "observe_le": "2026-10-13T03:12:11+00:00",
+      "observe_le": "2026-10-13T03:18:09+00:00",
       "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides",
       "ressources_recentes": [
         {
@@ -1390,9 +1390,9 @@
       "type_observation": "marches_attribues_et_concessions"
     }
   ],
-  "controle_le": "2026-10-13T03:12:11+00:00",
+  "controle_le": "2026-10-13T03:18:09+00:00",
   "inventaires_complets_telecharges": 0,
-  "nombre_catalogues_avec_modifications": 0,
+  "nombre_catalogues_avec_modifications": 1,
   "qualifie_des_besoins_actuels": false,
   "sources_echouees": [],
   "sources_reussies": 2,
