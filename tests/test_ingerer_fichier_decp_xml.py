@@ -105,3 +105,19 @@ def test_depassement_du_plafond_de_retenue_ne_falsifie_pas_le_compte(tmp_path):
     assert bilan["extraits_plafonnes"] is True
     assert len(bilan["marches_extraits"]) == 1
     assert bilan["releves"]["marches_uniques_valides"] == 2
+
+
+
+def test_erreur_syntaxique_donne_code_et_position_sans_fragment_source(tmp_path):
+    fichier = tmp_path / "invalide.xml"
+    fichier.write_bytes(
+        b"<marches><marche><objet>secret test</objet></marches>"
+    )
+    with pytest.raises(XMLDECPInvalide) as excinfo:
+        analyser_fichier(fichier, source_id="dgfip_pes_marche",
+                        ressource_id=RID)
+    erreur = str(excinfo.value)
+    assert "code " in erreur
+    assert "ligne " in erreur
+    assert "colonne " in erreur
+    assert "secret test" not in erreur
