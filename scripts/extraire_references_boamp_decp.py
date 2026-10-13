@@ -129,7 +129,10 @@ def references_notice(notice: dict) -> tuple[list[dict], str]:
     if projet is None or not IDENTIFIANT.fullmatch(projet[0]):
         return [], "reference_projet_absente_ou_ambigue"
 
-    contractants = elements(racine.get("cac:ContractingParty"))
+    try:
+        contractants = elements(racine.get("cac:ContractingParty"))
+    except ExtractionInvalide:
+        return [], "structure_acheteur_non_interpretable"
     if len(contractants) != 1:
         return [], "acheteurs_multiples_ou_absents"
     partie = chemin(contractants[0], "cac:Party")
@@ -160,9 +163,13 @@ def references_notice(notice: dict) -> tuple[list[dict], str]:
         if siret is not None:
             preuve = origine_acheteur + "/cac:PartyIdentification/cbc:ID"
         else:
+            try:
+                organisations = repertoire_organisations(racine)
+            except ExtractionInvalide:
+                return [], "structure_organisations_non_interpretable"
             correspondances = [
                 (numero, origine)
-                for org, numero, origine in repertoire_organisations(racine)
+                for org, numero, origine in organisations
                 if org == identifiant_acheteur[0]
             ]
             if len(correspondances) != 1:
