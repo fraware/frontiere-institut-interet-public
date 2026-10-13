@@ -188,6 +188,108 @@ def references_notice(notice: dict) -> tuple[list[dict], str]:
     }], "reference_couple_explicitement_extraite"
 
 
+
+def identifiant_acheteur_14_non_qualifie(notice: dict) -> dict | None:
+    """Observer un identifiant de 14 chiffres sans schéma annoncé.
+
+    Cette catégorie ne constitue pas un SIRET juridiquement certifié. Le
+    caractère acheteur est attesté exclusivement par ContractingParty et,
+    le cas échéant, par le lien explicite vers Organizations. L'identifiant
+    d'un titulaire n'est jamais accepté à ce titre.
+    """
+    brut = notice.get("donnees")
+    if not isinstance(brut, str) or len(brut) > 5_000_000:
+        return None
+    try:
+        structure = json.loads(brut)
+    except json.JSONDecodeError:
+        return None
+    eforms = structure.get("EFORMS") if isinstance(structure, dict) else None
+    if not isinstance(eforms, dict) or len(eforms) != 1:
+        return None
+    nom, racine = next(iter(eforms.items()))
+    if not isinstance(racine, dict):
+        return None
+    try:
+        parties = elements(racine.get("cac:ContractingParty"))
+    except ExtractionInvalide:
+        return None
+    if len(parties) != 1:
+        return None
+    partie = chemin(parties[0], "cac:Party")
+    if not isinstance(partie, dict):
+        return None
+
+    def sans_schema(obj):
+        if isinstance(obj, str):
+            texte = obj
+        elif isinstance(obj, dict) and set(obj) == {"#text"}:
+            texte = obj.get("#text")
+        else:
+            return None
+        return texte if isinstance(texte, str) and SIRET.fullmatch(texte) else None
+
+    prefixe = f"/results/0/donnees/EFORMS/{nom}"
+    valeur_directe = sans_schema(chemin(
+        partie, "cac:PartyLegalEntity", "cbc:CompanyID",
+    ))
+    if valeur_directe is not None:
+        valeur, origine = valeur_directe, (
+            prefixe + "/cac:ContractingParty/cac:Party/"
+            "cac:PartyLegalEntity/cbc:CompanyID"
+        )
+    else:
+        id_acheteur = identite(chemin(
+            partie, "cac:PartyIdentification", "cbc:ID",
+        ))
+        if id_acheteur is None:
+            return None
+        organisations = chemin(
+            racine, "ext:UBLExtensions", "ext:UBLExtension",
+            "ext:ExtensionContent", "efext:EformsExtension",
+            "efac:Organizations", "efac:Organization",
+        )
+        try:
+            noeuds = elements(organisations)
+        except ExtractionInvalide:
+            return None
+        concordants = []
+        for i, organisation in enumerate(noeuds):
+            company = chemin(organisation, "efac:Company")
+            if not isinstance(company, dict):
+                continue
+            org_id = identite(chemin(
+                company, "cac:PartyIdentification", "cbc:ID",
+            ))
+            if org_id is None or org_id[0] != id_acheteur[0]:
+                continue
+            candidat = sans_schema(chemin(
+                company, "cac:PartyLegalEntity", "cbc:CompanyID",
+            ))
+            if candidat is None:
+                continue
+            preuve = (
+                prefixe + "/ext:UBLExtensions/ext:UBLExtension/"
+                "ext:ExtensionContent/efext:EformsExtension/efac:Organizations/"
+                "efac:Organization"
+            )
+            if isinstance(organisations, list):
+                preuve += f"/{i}"
+            concordants.append((
+                candidat,
+                preuve + "/efac:Company/cac:PartyLegalEntity/cbc:CompanyID",
+            ))
+        if len(concordants) != 1:
+            return None
+        valeur, origine = concordants[0]
+    return {
+        "identifiant_14_chiffres": valeur,
+        "chemin_preuve": origine,
+        "categorie": "identifiant_acheteur_14_chiffres_sans_schema",
+        "siret_juridiquement_verifie": False,
+    }
+
+
 def produire(captures: Path) -> dict:
     """Revalider les octets officiels, puis qualifier chaque avis séparément."""
     rapport = verifier_capture(captures)
