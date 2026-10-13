@@ -36,6 +36,7 @@ VERSION = "extension-decp-sept-mois-v1"
 MOIS_NOUVEAUX = ("2025-10", "2025-12", "2026-03", "2026-05")
 PLAFOND_PAR_FICHIER = 160_000_000
 PLAFOND_QUATRE_FICHIERS = 430_000_000
+PLAFOND_NOTICES_MENSUEL = 150_000
 EMP = re.compile(r"[0-9a-f]{64}")
 
 
@@ -150,7 +151,10 @@ def rapprocher_et_dedoublonner(
         if nom in mois_vus:
             raise ExtensionInvalide("Ressource mensuelle répétée")
         mois_vus.add(nom)
-        analyse = analyser(entree["fichier"], entree, cibles_boamp, observer=index.observer)
+        analyse = analyser(
+            entree["fichier"], entree, cibles_boamp, observer=index.observer,
+            plafond_notices=PLAFOND_NOTICES_MENSUEL,
+        )
         if analyse["sha256_source_brute"] != entree["sha_attendu"]:
             raise ExtensionInvalide("Source différente de l'empreinte déclarée")
         if "nombre_objets_attendu" in entree:
