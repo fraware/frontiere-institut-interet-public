@@ -1,0 +1,22 @@
+{
+  "version": "decp-metadonnees-v1",
+  "sources": [
+    {
+      "id": "mef_decp_consolides",
+      "producteur": "Ministères économiques et financiers",
+      "type_observation": "marches_attribues_et_concessions",
+      "url": "https://www.data.gouv.fr/api/1/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides/",
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides",
+      "limite_ressources_indexees": 150
+    },
+    {
+      "id": "dgfip_pes_marche",
+      "producteur": "Ministères économiques et financiers - DGFiP",
+      "type_observation": "marches_collectivites_et_etablissements_publics_locaux_hors_etat",
+      "url": "https://www.data.gouv.fr/api/1/datasets/donnees-essentielles-de-la-commande-publique-transmises-via-le-pes-marche-depuis-2024/",
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-transmises-via-le-pes-marche-depuis-2024",
+      "limite_ressources_indexees": 150
+    }
+  ],
+  "aucun_telechargement_de_fichier_source": true
+}
