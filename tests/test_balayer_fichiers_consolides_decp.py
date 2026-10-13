@@ -163,7 +163,7 @@ def test_rejet_profil_manquant_est_compte(tmp_path):
 def test_identite_cible_manquante_refusee(tmp_path):
     p = rapport_cible(tmp_path)
     d = json.loads(p.read_text())
-    d["dossiers"][0]["contrats_locaux"][0]["reference_contrat_declaree"] = "non comparable"
+    d["dossiers"][0]["contrats_locaux"][0]["reference_contrat_declaree"] = "!!!"
     p.write_text(json.dumps(d))
     with pytest.raises(BalayageInvalide, match="non comparable"):
         cibles(p)
