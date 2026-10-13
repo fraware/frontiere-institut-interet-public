@@ -18,7 +18,7 @@ Pour chaque numéro distinct, le programme interroge l'API à un débit inférie
 
 Les réponses sont catégorisées selon des critères stricts :
 
-- `siret_exact_retourne_par_api_publique` : la réponse de recherche directe contient le SIRET exact dans un champ **d'établissement** (`siege.siret` ou `matching_etablissements[].siret`), au sein de l'unité légale dont le SIREN concorde.
+- `siret_exact_retourne_par_api_publique` : la réponse de recherche directe contient le SIRET exact dans un champ **d'établissement** (établissement du siège ou établissement correspondant dans la réponse officielle), au sein de l'unité légale dont le SIREN concorde.
 - `unite_legale_associee_etablissement_non_atteste` : l'API retourne une unité légale au SIREN concordant, sans attestation explicite de l'établissement demandé.
 - `non_retrouve_dans_api_non_exhaustive` : aucun résultat retourné par cette interface.
 - `reponse_sans_identite_exacte` : des résultats sont présents, sans correspondance documentaire de l'unité légale.
