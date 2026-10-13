@@ -1,0 +1,139 @@
+name: "Références documentaires des vingt avis BOAMP"
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/inventorier_pieces_17_et_3_avis_boamp.py"
+      - "tests/test_inventorier_pieces_17_et_3_avis_boamp.py"
+      - ".github/workflows/inventaire-pieces-20-avis.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: frontiere-pieces-20-avis
+  cancel-in-progress: false
+
+jobs:
+  inventorier:
+    if: github.repository == 'fraware/frontiere-institut-interet-public'
+    name: Reconstituer les références de consultation depuis les sources
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Lire la révision exacte
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Installer Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Tester l'inventaire documentaire hors réseau
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install "pytest>=8,<10"
+          python -m pytest -q tests/test_inventorier_pieces_17_et_3_avis_boamp.py
+
+      - name: Restaurer les avis originaux et les trois avis cités
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/frontiere-pieces"
+          mkdir -p "$ROOT/boamp" "$ROOT/chaines" "$ROOT/lies"
+          gh run download 38474330466 \
+            --repo "$GITHUB_REPOSITORY" \
+            --name index-public-boamp-38474330466 \
+            --dir "$ROOT/boamp"
+          gh run download 38480457531 \
+            --repo "$GITHUB_REPOSITORY" \
+            --name chaines-documentaires-acheteurs-17-38480457531 \
+            --dir "$ROOT/chaines"
+          gh run download 38486850694 \
+            --repo "$GITHUB_REPOSITORY" \
+            --name frontiere-avis-lies-17-38486850694 \
+            --dir "$ROOT/lies"
+          (
+            cd "$ROOT/boamp"
+            echo "3626f84ccf9a39ce6d8882f0d5f7463eb6bde860c90a26904a6992f5fed791e3  audit-identifiants-acheteurs-36.json" | sha256sum --check
+          )
+          (
+            cd "$ROOT/chaines"
+            echo "8a9f220a66f61a4a0e1ea0104e3fd9c7a23395e791866e997b10922bfcaf82b8  chaines-documentaires-17.json" | sha256sum --check
+          )
+          (
+            cd "$ROOT/lies"
+            echo "2f1699fb9c7d0bded2f40587278019b45a3ca9f7c4d5251ed8c7d11cee4e8686  rapport.json" | sha256sum --check
+          )
+
+      - name: Constituer une archive locale des trente-six réponses sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import os
+          from zipfile import ZipFile, ZIP_STORED
+          root = Path(os.environ["RUNNER_TEMP"]) / "frontiere-pieces"
+          fichiers = sorted((root / "boamp/releve-issues-36").glob("*.json"))
+          if len(fichiers) != 37:
+              raise SystemExit("Manifestes ou notices BOAMP absents")
+          with ZipFile(root / "historique.zip", "w", compression=ZIP_STORED) as z:
+              for fichier in fichiers:
+                  z.write(fichier, "releve-issues-36/" + fichier.name)
+          PY
+
+      - name: Inventorier les références et les répétitions sans ouvrir les liens
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/frontiere-pieces"
+          python scripts/inventorier_pieces_17_et_3_avis_boamp.py \
+            --archive-boamp "$ROOT/historique.zip" \
+            --chaines "$ROOT/chaines/chaines-documentaires-17.json" \
+            --avis-lies "$ROOT/lies" \
+            --sortie "$ROOT/rapport-pieces-20.json"
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          p = Path(os.environ["RUNNER_TEMP"]) / "frontiere-pieces/rapport-pieces-20.json"
+          r = json.loads(p.read_text(encoding="utf-8"))
+          if (r["nombre_avis_examens"] != 20
+                  or r["nombre_avis_lies_retrouves"] != 3
+                  or r["nombre_mentions_references_documents"] != 22
+                  or r["nombre_avis_mentionnant_documents"] != 14
+                  or r["pieces_effectivement_telechargees"] != 0
+                  or r["actes_contractuels_verifies"] != 0):
+              raise SystemExit("Population de références documentaires incorrecte")
+          ap = r["concordances_adresses_entre_avis_lies"]["26-35619"]
+          if len(ap["adresses_precises_identiques"]) != 1:
+              raise SystemExit("Concordance AP-HP non reproductible")
+          dgac = r["concordances_adresses_entre_avis_lies"]["26-60102"]
+          if len(dgac["adresses_precises_identiques"]) != 0:
+              raise SystemExit("Portail générique pris à tort pour dossier DGAC")
+          print(json.dumps({
+              "avis": r["nombre_avis_examens"],
+              "references": r["nombre_mentions_references_documents"],
+              "avis_avec_references": r["nombre_avis_mentionnant_documents"],
+              "adresses_distinctes": r["nombre_adresses_distinctes"],
+              "categories": r["categories"],
+              "documents_telecharges": 0,
+          }, ensure_ascii=False))
+          PY
+
+      - name: Conserver l'inventaire avec ses chemins officiels
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontiere-references-pieces-20-${{ github.run_id }}
+          path: ${{ runner.temp }}/frontiere-pieces/rapport-pieces-20.json
+          retention-days: 30
+          if-no-files-found: error
