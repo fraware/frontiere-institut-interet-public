@@ -16,6 +16,7 @@ import subprocess
 
 RACINE = Path(__file__).resolve().parents[1]
 CHEMINS = {
+    "decp": ("institutionnel/decp/etat_ressources.json",),
     "flux": (
         "institutionnel/flux_publics/observations.json",
         "institutionnel/flux_publics/etat_collecte.json",
@@ -82,6 +83,7 @@ CHEMINS = {
     ),
 }
 TITRES = {
+    "decp": "Actualiser les catalogues nationaux de ressources DECP",
     "flux": "Actualiser les signaux publics RSS et sociaux officiels",
     "rnsr": "Actualiser les structures publiques de recherche",
     "surveillance": "Actualiser la surveillance des sources institutionnelles",
@@ -90,7 +92,7 @@ TITRES = {
     "beauamp": "Archiver les marchés attribués enrichis publiés quotidiennement",
     "referentiel": "Actualiser le référentiel administratif et territorial",
 }
-BRANCH = re.compile(r"^automatisation/(rnsr|surveillance|referentiel|sources|besoins|beauamp|flux)-([0-9]+)-([1-9][0-9]*)$")
+BRANCH = re.compile(r"^automatisation/(rnsr|surveillance|referentiel|sources|besoins|beauamp|flux|decp)-([0-9]+)-([1-9][0-9]*)$")
 REPO = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 
 
