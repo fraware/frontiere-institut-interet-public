@@ -86,3 +86,22 @@ def test_aucun_lien_sur_une_page_n_est_pas_absence_de_canal():
     assert resultat["sites_reussis"] == 5
     assert resultat["liens_candidats_dans_les_sites_reussis"] == 0
     assert all(x["aucune_absence_de_flux_prouvee"] for x in resultat["sites"])
+
+
+
+def test_page_de_presentation_ne_devient_pas_son_propre_flux():
+    """Le lien interne vers la page de présentation n'est pas un nouveau flux."""
+    page = config()["pages"][0]
+    texte = (
+        '<html><a href="/fr/flux-rss-et-reseaux-sociaux/">Flux RSS</a>'
+        '<a href="/rss/?news">Actualités</a></html>'
+    )
+    lignes = analyser(page, texte)
+    assert len(lignes) == 1
+    assert lignes[0]["url"] == "https://anr.fr/rss/?news"
+
+
+def test_page_ecologie_sans_candidat_veritable():
+    page = next(x for x in config()["pages"] if x["id"] == "ecologie_flux")
+    html = '<html><a href="/flux-rss">Flux RSS</a></html>'
+    assert analyser(page, html) == []
