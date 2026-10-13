@@ -37,8 +37,11 @@ def formulaire():
                     }},
                 ]},
                 "efac:NoticeResult": {
-                    "efac:SettledContract": {"cbc:ID": {
-                        "#text": "CON-0001", "@schemeName": "contract"}},
+                    "efac:SettledContract": {
+                        "cbc:ID": {
+                            "#text": "CON-0001", "@schemeName": "contract"},
+                        "efac:ContractReference": {"cbc:ID": "2025CC0501"},
+                    },
                     "efac:LotResult": {
                         "cbc:TenderResultCode": {"#text": "selec-w"},
                         "efac:TenderLot": {"cbc:ID": "LOT-0001"},
@@ -103,6 +106,11 @@ def test_relation_contrat_par_identifiants_explicites():
         avis_attribution(f), ["LOT-0001", "LOT-0002"]
     )
     assert len(resultat["contrats_locaux"]) == 1
+    assert resultat["contrats_locaux"][0]["reference_contrat_declaree"] == "2025CC0501"
+    assert resultat["contrats_locaux"][0]["reference_contrat_comparable_decp"] is True
+    assert resultat["contrats_locaux"][0]["origine_reference_contrat"].endswith(
+        "/efac:ContractReference/cbc:ID"
+    )
     assert len(resultat["resultats_lots"]) == 1
     assert resultat["relations_lot_contrat_dans_avis"] == [{
         "lot": "LOT-0001",
@@ -131,3 +139,14 @@ def test_denomination_normalisee_na_pas_de_portee_juridique():
     assert nom_normalise("MINARM") != nom_normalise(
         "SERVICES DE L'ETAT POUR LA FACTURATION ELECTRONIQUE"
     )
+
+
+def test_reference_description_nest_pas_une_cle_comparable_decp():
+    f = formulaire()
+    c = f["ext:UBLExtensions"]["ext:UBLExtension"][
+        "ext:ExtensionContent"]["efext:EformsExtension"][
+        "efac:NoticeResult"]["efac:SettledContract"]
+    c["efac:ContractReference"]["cbc:ID"] = "Lot 1"
+    r = attributs_attribution(avis_attribution(f), ["LOT-0001"])
+    assert r["contrats_locaux"][0]["reference_contrat_declaree"] == "Lot 1"
+    assert r["contrats_locaux"][0]["reference_contrat_comparable_decp"] is False
