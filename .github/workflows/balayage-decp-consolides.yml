@@ -1,12 +1,6 @@
 name: "Balayage complet de trois fichiers DECP consolidés"
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "scripts/balayer_fichiers_consolides_decp.py"
-      - "tests/test_balayer_fichiers_consolides_decp.py"
-      - ".github/workflows/balayage-decp-consolides.yml"
   workflow_dispatch:
 
 permissions:

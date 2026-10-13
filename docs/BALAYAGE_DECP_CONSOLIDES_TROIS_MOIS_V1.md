@@ -30,7 +30,7 @@ Même une égalité exacte des deux éléments est classée **piste documentaire
 
 ## Reproduction
 
-Le protocole est intégré à `.github/workflows/balayage-decp-consolides.yml`. Lors du premier passage sur la branche principale, la procédure vérifie les règles sans réseau, récupère le rapport de chaînage BOAMP à empreinte fixée, télécharge les trois fichiers consolidés officiels, parcourt leur contenu et conserve **le rapport et les octets primaires** en pièce jointe GitHub pendant quatorze jours. L'exécution manuelle est aussi possible. Il ne s'agit pas d'une couverture nationale permanente.
+Le protocole est intégré à `.github/workflows/balayage-decp-consolides.yml`. Lors d'une exécution manuelle du prélèvement officiel, la procédure vérifie les règles sans réseau, récupère le rapport de chaînage BOAMP à empreinte fixée, télécharge les trois fichiers consolidés officiels, parcourt leur contenu et conserve **le rapport et les octets primaires** en pièce jointe GitHub pendant quatorze jours. L'exécution manuelle est aussi possible. Il ne s'agit pas d'une couverture nationale permanente.
 
 ```bash
 python -m pytest -q tests/test_balayer_fichiers_consolides_decp.py
@@ -41,6 +41,27 @@ python scripts/balayer_fichiers_consolides_decp.py \
 ```
 
 Une mise à jour des fichiers administratifs sur data.gouv.fr peut modifier leur taille et entraîner un arrêt : cette précaution évite de considérer deux versions d'une même ressource comme identiques sans preuve. Les archives complètes conservées par GitHub permettent de reproduire l'étude pendant leur durée de conservation.
+
+## Réexamen des mentions « NC » dans les réponses primaires
+
+Le premier passage officiel de l'exécution GitHub [38481650597](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/38481650597) a parcouru **85 181 notices de marchés** issues des trois fichiers complets et a initialement normalisé **63 259** d'entre elles. La totalité des **21 922** rejets provenait d'une seule cause : le champ facultatif `offresRecues` contenait la chaîne officielle **`NC`**, sans effectif numérique.
+
+Ce code indique que le nombre d'offres est **non communiqué**. Il ne signifie jamais zéro offre, et n'affecte ni l'identifiant du marché ni le SIRET de l'acheteur. Le programme conserve désormais ce constat distinctement dans `offres_recues_non_communiquees_nc`, remplace cette seule valeur dans une copie de travail par l'absence de nombre, puis continue la normalisation stricte des autres champs. Les octets source ne sont jamais modifiés.
+
+La procédure `.github/workflows/relecture-decp-consolides.yml` réutilise les trois fichiers primaires déjà archivés, vérifie leur taille et leur SHA-256 exacts ainsi que l'empreinte du rapport d'origine, puis recalcule les dénominateurs et les recherches contractuelles **sans nouvelle requête** au catalogue. Le dépôt distingue désormais deux opérations : un nouveau prélèvement officiel volontaire via `balayage-decp-consolides.yml`, et la relecture reproductible sur archives via `relecture-decp-consolides.yml`.
+
+Les 85 181 notices représentent des lignes documentaires et non nécessairement 85 181 contrats distincts, du fait des répétitions et des chevauchements de sources. Les résultats du second passage constituent la référence statistique à utiliser sur ce corpus à octets constants.
+
+## Reproduire le réexamen hors réseau
+
+```bash
+python scripts/balayer_fichiers_consolides_decp.py \
+  --chaines /source/chaines-documentaires-17.json \
+  --archives /source/balayage-trois-mois \
+  --sortie /tmp/rapport-relecture.json
+```
+
+Les preuves exactes des captures sont référencées dans le rapport. Il reste impossible d'extrapoler un résultat négatif des trois mois à l'ensemble des publications DECP.
 
 ## Résultat autorisé
 
