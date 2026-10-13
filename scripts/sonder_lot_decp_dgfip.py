@@ -142,6 +142,7 @@ def executer(
                     "taille_octets_declaree": octets,
                     "modifie_le": selection["modifie_le"],
                     "empreinte_sha256": bilan["sha256_fichier_brut"],
+                    "transformation_xml": bilan["transformation_xml"],
                     "releves": bilan["releves"],
                     "rejets_par_categorie": bilan["rejets_par_categorie"],
                     "categories_cpv_prefixe_2": bilan["categories_cpv_prefixe_2"],
