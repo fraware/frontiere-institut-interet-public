@@ -122,3 +122,42 @@ def test_erreur_syntaxique_donne_code_et_position_sans_fragment_source(tmp_path)
     assert "colonne " in erreur
     assert "octets_proches=[" in erreur
     assert "secret test" not in erreur
+
+
+
+def test_namespace_mal_forme_dgfip_corrige_uniquement_dans_copie(tmp_path):
+    import hashlib
+    fichier = tmp_path / "decp-xml-de-source.xml"
+    texte = echantillon().replace(
+        "<marches>", '<marches xmlns:="https://exemple.gouv.fr/decp">'
+    )
+    original = texte.encode("utf-8")
+    fichier.write_bytes(original)
+    bilan = analyser_fichier(fichier, source_id="dgfip_pes_marche",
+                            ressource_id=RID)
+    assert bilan["releves"]["marches_uniques_valides"] == 1
+    assert bilan["releves"]["concessions_non_normalisees"] == 1
+    assert bilan["sha256_fichier_brut"] == hashlib.sha256(original).hexdigest()
+    transformation = bilan["transformation_xml"]
+    assert transformation["type"] == "rectification_lexicale_declaration_xmlns_vide"
+    assert transformation["occurrences"] == 1
+    assert transformation["sha256_contenu_analyse"] != bilan["sha256_fichier_brut"]
+    assert transformation["copie_temporaire_uniquement"] is True
+    assert fichier.read_bytes() == original
+
+
+def test_namespace_ambigu_ou_hors_racine_refuse(tmp_path):
+    fichier = tmp_path / "ambig.xml"
+    fichier.write_text(
+        '<marches xmlns:="urn:test" xmlns:="urn:autre"><marche/></marches>',
+        encoding="utf-8",
+    )
+    with pytest.raises(XMLDECPInvalide, match="Plusieurs"):
+        analyser_fichier(fichier, source_id="dgfip_pes_marche",
+                        ressource_id=RID)
+    fichier.write_text(
+        '<marches><marche xmlns:="urn:autre"/></marches>', encoding="utf-8"
+    )
+    with pytest.raises(XMLDECPInvalide, match="hors de"):
+        analyser_fichier(fichier, source_id="dgfip_pes_marche",
+                        ressource_id=RID)

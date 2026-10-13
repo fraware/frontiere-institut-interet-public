@@ -10,6 +10,7 @@ import argparse
 from collections import Counter
 from datetime import datetime, timezone
 import hashlib
+import io
 import json
 import math
 from pathlib import Path
@@ -118,6 +119,51 @@ def _interdire_definitions_xml(fichier: Path) -> None:
             debut = partie[-16:]
 
 
+def _preparer_source_xml(fichier: Path) -> tuple[Path | io.BytesIO, dict]:
+    """Rectifier uniquement l'attribut de namespace mal formé observé DGFiP.
+
+    Les ressources réelles du 13 octobre 2026 ont toutes une séquence
+    xmlns:="http... dans l'élément racine. Le ':' isolé rend la déclaration
+    syntaxiquement invalide. La correction est confinée à la racine et
+    chaque octet original reste attesté par l'empreinte du fichier brut.
+    """
+    original = fichier.read_bytes()
+    anomalie = b'xmlns:="'
+    occurrences = original.count(anomalie)
+    if occurrences == 0:
+        return fichier, {
+            "type": "aucune",
+            "occurrences": 0,
+            "sha256_contenu_analyse": hashlib.sha256(original).hexdigest(),
+        }
+    if occurrences != 1:
+        raise XMLDECPInvalide(
+            "Plusieurs déclarations de namespace invalides : correction refusée"
+        )
+    racine = original.find(b"<marches")
+    position = original.find(anomalie)
+    fin = original.find(b">", racine) if racine >= 0 else -1
+    if (
+        not (0 <= racine < position < fin < 4096)
+        or position == 0
+        or original[position - 1:position] not in (b" ", b"\t", b"\r", b"\n")
+    ):
+        raise XMLDECPInvalide(
+            "Anomalie de namespace hors de l'élément racine : correction refusée"
+        )
+    # Supprimer exactement le ':' du nom de l'attribut.
+    corrige = original[:position] + original[position:].replace(
+        anomalie, b'xmlns="', 1
+    )
+    return io.BytesIO(corrige), {
+        "type": "rectification_lexicale_declaration_xmlns_vide",
+        "occurrences": 1,
+        "sha256_contenu_analyse": hashlib.sha256(corrige).hexdigest(),
+        "copie_temporaire_uniquement": True,
+        "conformite_reglementaire_du_document_etablie": False,
+    }
+
+
 def analyser_fichier(
     fichier: Path, *, source_id: str, ressource_id: str,
     limite_extraits: int = PLAFOND_EXTRAITS,
@@ -147,8 +193,9 @@ def analyser_fichier(
     extraits = []
     profondeur = 0
     racine = None
+    source_analyse, transformation = _preparer_source_xml(fichier)
     try:
-        for evenement, element in ET.iterparse(fichier, events=("start", "end")):
+        for evenement, element in ET.iterparse(source_analyse, events=("start", "end")):
             tag = _nom(element.tag)
             if evenement == "start":
                 profondeur += 1
@@ -217,6 +264,7 @@ def analyser_fichier(
     return {
         "version": "decp-fichier-xml-v1", "source_catalogue": source_id,
         "ressource_id": ressource_id, "sha256_fichier_brut": h.hexdigest(),
+        "transformation_xml": transformation,
         "taille_fichier_octets": taille,
         "releves": dict(sorted(comptes.items())),
         "rejets_par_categorie": dict(sorted(rejets.items())),

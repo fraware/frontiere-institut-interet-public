@@ -8,6 +8,14 @@ Le programme `scripts/ingerer_fichier_decp_xml.py` est fondé sur les exemples X
 
 Les marchés sont ramenés au même **profil réduit** que les notices JSON AIFE : identifiant interne, SIRET de l'acheteur, objet, code CPV, dates, montant, nombre d'offres. Le profil ne contrôle pas l'intégralité du schéma réglementaire. Les concessions sont dénombrées séparément, sans fusion avec les marchés.
 
+## Anomalie de format constatée le 13 octobre 2026
+
+Le premier essai réel a téléchargé quatre ressources DGFiP, puis le parseur XML a refusé les quatre avec le code 4 à la ligne 2, colonne 15. L'inspection des neuf octets autour de cette position a établi la séquence `xmlns:="htt`. Une déclaration `xmlns:="..."` comporte un deux-points sans nom de préfixe, ce qui invalide la syntaxe XML.
+
+La prise en charge est **strictement bornée** : une unique occurrence de `xmlns:="` est admissible dans l'élément racine `marches`, et elle est interprétée comme `xmlns="`. Le programme ne modifie jamais le fichier reçu. Il analyse une copie en mémoire et conserve les deux empreintes SHA-256, le nombre de corrections et l'indication explicite que la conformité réglementaire du document n'est pas établie. Toute autre déclaration incorrecte, toute ambiguïté ou toute seconde erreur du document entraîne le refus normal du fichier.
+
+Cette correction relève d'une normalisation lexicale rendue nécessaire par une anomalie constatée sur des données publiques. Elle ne constitue pas une validation complète du fichier ni une correction générale des XML mal formés.
+
 ## Collecte par petits lots
 
 Le programme `scripts/sonder_lot_decp_dgfip.py` s'appuie sur les **150 ressources récentes** déjà connues du catalogue local `institutionnel/decp/etat_ressources.json`. Pour chaque ressource choisie, il recoupe identifiant, format, taille et adresse avec la fiche publique actuelle de data.gouv.fr.
