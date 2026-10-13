@@ -137,6 +137,13 @@ def executer(
                     chemin, source_id=SOURCE_ID,
                     ressource_id=selection["id"], limite_extraits=200,
                 )
+                if (
+                    bilan["releves"].get("notices_lues", 0) > 0
+                    and bilan["releves"].get("marches_uniques_valides", 0) == 0
+                ):
+                    raise LotDECPInvalide(
+                        "Aucune notice de marché normalisée : curseur inchangé"
+                    )
                 succes.append({
                     "id": selection["id"], "titre": selection["titre"],
                     "taille_octets_declaree": octets,
@@ -145,6 +152,7 @@ def executer(
                     "transformation_xml": bilan["transformation_xml"],
                     "releves": bilan["releves"],
                     "rejets_par_categorie": bilan["rejets_par_categorie"],
+                    "anomalies_champs_facultatifs": bilan["anomalies_champs_facultatifs"],
                     "categories_cpv_prefixe_2": bilan["categories_cpv_prefixe_2"],
                     "marches_extraits": bilan["marches_extraits"],
                     "extraits_plafonnes": bilan["extraits_plafonnes"],
