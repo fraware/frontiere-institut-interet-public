@@ -56,7 +56,9 @@ def fichiers_json(tmp_path):
             "marches": {"marche": [{
                 "_type": "Marché",
                 "id": TARGET if i == 0 else "2025CC0501",
-                "acheteur": {"id": SIRET if i < 2 else "99999999999999"},
+                "acheteur": {"id": SIRET if i == 0 else
+                            "11000201100044" if i == 1
+                            else "99999999999999"},
                 "objet": "Marché public d'analyse technique",
                 "dateNotification": "2025-08-26",
             }, {
