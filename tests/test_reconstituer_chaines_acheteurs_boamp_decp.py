@@ -49,7 +49,7 @@ def formulaire():
                     },
                 },
             }},
-        }}},
+        }},
         "cac:ProcurementProjectLot": [
             {"cbc:ID": {"#text": "LOT-0001", "@schemeName": "Lot"}},
             {"cbc:ID": "LOT-0002"},
