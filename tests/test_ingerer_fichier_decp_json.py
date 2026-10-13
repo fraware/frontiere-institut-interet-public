@@ -8,7 +8,7 @@ import pytest
 
 from scripts.ingerer_fichier_decp_json import (
     DocumentDECPInvalide, MAX_FICHIER_OCTETS,
-    iterer_marches, normaliser_marche, traiter_fichier,
+    iterer_marches, iterer_documents, normaliser_marche, traiter_fichier,
 )
 
 RESSOURCE = "db50f1f1-9fe5-4f9e-93dd-d273617d4a26"
@@ -132,3 +132,51 @@ def test_schema_pas_confondue_avec_validation_reglementaire(tmp_path):
     assert not d["conformite_complete_au_schema_reglementaire_verifiee"]
     assert d["releves"]["notices_lues"] == 1
     assert d["releves"]["marches_uniques_valides"] == 1
+
+
+
+@pytest.mark.parametrize("ordre", ["marche_d_abord", "concession_d_abord"])
+def test_structure_reelle_aife_marche_et_contrat_concession(ordre, tmp_path):
+    """Deux collections explicitement présentes, ordre indifférent."""
+    marches = [marche(id="SCI-001"), marche(id="SCI-002")]
+    concessions = [{"id": "C-001", "objet": "Concession hors périmètre"}]
+    sous = (
+        {"marche": marches, "contrat-concession": concessions}
+        if ordre == "marche_d_abord"
+        else {"contrat-concession": concessions, "marche": marches}
+    )
+    fichier = tmp_path / "reel-compatible.json"
+    fichier.write_text(json.dumps({"marches": sous}, ensure_ascii=False), encoding="utf-8")
+    with fichier.open(encoding="utf-8") as flux:
+        categories = [categorie for categorie, _ in iterer_documents(flux)]
+    assert sorted(categories) == ["contrat-concession", "marche", "marche"]
+    avec = traiter_fichier(fichier, source_id="aife_api_decp", ressource_id=RESSOURCE)
+    assert avec["releves"]["objets_documentaires_lus"] == 3
+    assert avec["releves"]["notices_lues"] == 2
+    assert avec["releves"]["concessions_non_normalisees"] == 1
+    assert avec["releves"]["marches_uniques_valides"] == 2
+    assert all(x["id_marche"].startswith("SCI-") for x in avec["marches_extraits"])
+
+
+def test_champs_inconnus_dans_enveloppe_rejetes():
+    payload = {
+        "marches": {
+            "marche": [marche()],
+            "information_inconnue": [{"sensible": "information non examinée"}],
+        }
+    }
+    with pytest.raises(DocumentDECPInvalide):
+        list(iterer_documents(StringIO(json.dumps(payload))))
+
+
+def test_concession_seule_refusee_sans_collection_de_marches():
+    with pytest.raises(DocumentDECPInvalide):
+        list(iterer_documents(
+            StringIO('{"marches":{"contrat-concession":[{"id":"C"}]}}')
+        ))
+
+
+def test_collection_repetee_refusee():
+    brut = '{"marches":{"marche":[],"marche":[]}}'
+    with pytest.raises(DocumentDECPInvalide):
+        list(iterer_documents(StringIO(brut)))
