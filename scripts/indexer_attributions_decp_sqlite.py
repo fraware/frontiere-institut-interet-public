@@ -43,22 +43,27 @@ CREATE TABLE IF NOT EXISTS versions (
       REFERENCES marches (acheteur_siret, id_marche)
 );
 CREATE TABLE IF NOT EXISTS fichiers_sources (
-    empreinte_fichier TEXT PRIMARY KEY,
+    empreinte_fichier TEXT NOT NULL,
     source_catalogue TEXT NOT NULL,
     ressource_id TEXT NOT NULL,
     page_catalogue TEXT NOT NULL,
-    date_premiere_importation TEXT NOT NULL
+    date_premiere_importation TEXT NOT NULL,
+    PRIMARY KEY (empreinte_fichier, source_catalogue, ressource_id)
 );
 CREATE TABLE IF NOT EXISTS attestations (
     acheteur_siret TEXT NOT NULL,
     id_marche TEXT NOT NULL,
     empreinte_version TEXT NOT NULL,
-    empreinte_fichier TEXT NOT NULL
-      REFERENCES fichiers_sources(empreinte_fichier),
+    empreinte_fichier TEXT NOT NULL,
+    source_catalogue TEXT NOT NULL,
+    ressource_id TEXT NOT NULL,
     observe_le TEXT NOT NULL,
-    PRIMARY KEY (acheteur_siret, id_marche, empreinte_version, empreinte_fichier),
+    PRIMARY KEY (acheteur_siret, id_marche, empreinte_version,
+                 empreinte_fichier, source_catalogue, ressource_id),
     FOREIGN KEY (acheteur_siret, id_marche, empreinte_version)
-      REFERENCES versions (acheteur_siret, id_marche, empreinte_version)
+      REFERENCES versions (acheteur_siret, id_marche, empreinte_version),
+    FOREIGN KEY (empreinte_fichier, source_catalogue, ressource_id)
+      REFERENCES fichiers_sources (empreinte_fichier, source_catalogue, ressource_id)
 );
 CREATE INDEX IF NOT EXISTS idx_versions_cpv ON versions (code_cpv);
 CREATE INDEX IF NOT EXISTS idx_versions_notification ON versions (date_notification);
@@ -199,9 +204,11 @@ def importer(base: Path, rapport: dict) -> dict:
                 attestation = con.execute(
                     """INSERT OR IGNORE INTO attestations
                        (acheteur_siret, id_marche, empreinte_version,
-                        empreinte_fichier, observe_le)
-                       VALUES (?, ?, ?, ?, ?)""",
-                    (siret, mid, empreinte, empreinte_fichier, rapport["releve_le"]),
+                        empreinte_fichier, source_catalogue, ressource_id, observe_le)
+                       VALUES (?, ?, ?, ?, ?, ?, ?)""",
+                    (siret, mid, empreinte, empreinte_fichier,
+                     rapport["source_catalogue"], rapport["ressource_id"],
+                     rapport["releve_le"]),
                 )
                 nouvelles_attestations += attestation.rowcount
         comptes = {
