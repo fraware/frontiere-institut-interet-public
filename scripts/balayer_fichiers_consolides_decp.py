@@ -210,6 +210,12 @@ def analyser(chemin: Path, selection: dict, cibles_par_identite: dict) -> dict:
                 stats["concessions_exclues"] += 1
                 continue
             stats["notices_marche_lues"] += 1
+            # Le champ officiel offresRecues="NC" signifie effectif non
+            # communiqué. Cette valeur facultative ne doit pas masquer une
+            # identité contractuelle valide ; elle ne signifie jamais zéro.
+            if isinstance(objet, dict) and objet.get("offresRecues") == "NC":
+                objet = {**objet, "offresRecues": None}
+                stats["offres_recues_non_communiquees_nc"] += 1
             try:
                 ligne = normaliser_marche(objet)
             except DocumentDECPInvalide as exc:
@@ -317,17 +323,110 @@ def executer(chaine: Path, etat: dict, fiche: dict, sorties: Path,
         raise
 
 
+def reexaminer_archive(chaine: Path, precedente: Path, sortie: Path) -> dict:
+    """Rejouer les octets du premier passage, sans nouveau téléchargement.
+
+    Le manifeste initial demeure intact. Chaque fichier archivé doit avoir
+    exactement son empreinte d'origine, son identifiant et sa taille.
+    """
+    if sortie.exists() or sortie.is_symlink():
+        raise BalayageInvalide("Refus d'écraser une relecture existante")
+    objectifs, preuve = cibles(chaine)
+    original = precedente / "rapport.json"
+    if not original.is_file() or original.is_symlink():
+        raise BalayageInvalide("Rapport original absent")
+    primaires = json.loads(original.read_text(encoding="utf-8"))
+    if (primaires.get("version") != VERSION
+            or primaires.get("sha256_rapport_chainage")
+               != preuve["sha256_rapport_chainage"]
+            or primaires.get("mois_examines") != list(MOIS)
+            or primaires.get("nombre_fichiers_analyses") != 3
+            or not isinstance(primaires.get("sources"), list)
+            or len(primaires["sources"]) != 3):
+        raise BalayageInvalide("Rapport source incompatible avec la relecture")
+    sources = precedente / "fichiers-officiels"
+    resultats, taille_totale = [], 0
+    for mois, entree in zip(MOIS, primaires["sources"]):
+        nom = f"decp-{mois}.json"
+        if (not isinstance(entree, dict) or entree.get("nom_fichier") != nom
+                or entree.get("source_catalogue") != SOURCE
+                or not isinstance(entree.get("ressource_id"), str)
+                or not isinstance(entree.get("sha256_source_brute"), str)
+                or not SHA.fullmatch(entree["sha256_source_brute"])
+                or type(entree.get("octets_source")) is not int
+                or not 0 < entree["octets_source"] <= PLAFOND_PAR_FICHIER):
+            raise BalayageInvalide("Identité primaire de ressource incohérente")
+        fichier = sources / nom
+        if not fichier.is_file() or fichier.is_symlink():
+            raise BalayageInvalide("Fichier primaire absent ou lien symbolique")
+        if (fichier.stat().st_size != entree["octets_source"]
+                or empreinte(fichier) != entree["sha256_source_brute"]):
+            raise BalayageInvalide("Octets de source différents de la première capture")
+        taille_totale += entree["octets_source"]
+        if taille_totale > PLAFOND_TOTAL:
+            raise BalayageInvalide("Budget total de fichiers dépassé")
+        selection = {
+            "titre": nom, "ressource_id": entree["ressource_id"],
+            "url": _url_officielle(entree["url_fichier_officiel"]),
+            "date_modification_declaree": entree["date_modification_declaree"],
+            "taille_octets": entree["octets_source"],
+        }
+        resultat = analyser(fichier, selection, objectifs)
+        if resultat["sha256_source_brute"] != entree["sha256_source_brute"]:
+            raise BalayageInvalide("Empreinte de relecture incohérente")
+        if (resultat["mesures"].get("objets_lus")
+                != entree["mesures"].get("objets_lus")
+                or resultat["mesures"].get("notices_marche_lues")
+                != entree["mesures"].get("notices_marche_lues")
+                or resultat["mesures"].get("concessions_exclues")
+                != entree["mesures"].get("concessions_exclues")):
+            raise BalayageInvalide("Population primaire modifiée pendant la relecture")
+        resultats.append(resultat)
+    stats = Counter()
+    for entree in resultats:
+        stats.update(entree["mesures"])
+    rapport = {
+        "version": VERSION,
+        "relecture_de_sources_archivees": True,
+        "source_rapport_precedent_sha256": empreinte(original),
+        "retelechargement_officiel_effectue": False,
+        "relecture_le": datetime.now(timezone.utc).isoformat(),
+        **preuve,
+        "mois_examines": list(MOIS),
+        "nombre_fichiers_analyses": 3,
+        "statistiques_globales_avec_repetitions_possibles": dict(sorted(stats.items())),
+        "identites_distinctes_entre_mois_non_dedoublonnees": True,
+        "candidats_decp_meme_siret": stats["candidats_avec_siret_acheteur_concordant"],
+        "contrats_juridiquement_demontrés": 0,
+        "extension_a_tous_les_marches_francais": False,
+        "interpretation_nc": "effectif_offres_non_communique_jamais_zero",
+        "sources": resultats,
+    }
+    sortie.parent.mkdir(parents=True, exist_ok=True)
+    sortie.write_text(
+        json.dumps(rapport, ensure_ascii=False, indent=2,
+                   sort_keys=True, allow_nan=False) + "\n",
+        encoding="utf-8",
+    )
+    return rapport
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--chaines", type=Path, required=True)
     p.add_argument("--etat", type=Path,
                    default=Path("institutionnel/decp/etat_ressources.json"))
     p.add_argument("--sortie", type=Path, required=True)
+    p.add_argument("--archives", type=Path,
+                   help="Relecture locale des trois sources déjà archivées, sans accès réseau")
     a = p.parse_args()
     try:
-        etat = json.loads(a.etat.read_text(encoding="utf-8"))
-        fiche = lire_fiche_officielle({"url": CATALOGUE_URL})
-        rapport = executer(a.chaines, etat, fiche, a.sortie)
+        if a.archives is not None:
+            rapport = reexaminer_archive(a.chaines, a.archives, a.sortie)
+        else:
+            etat = json.loads(a.etat.read_text(encoding="utf-8"))
+            fiche = lire_fiche_officielle({"url": CATALOGUE_URL})
+            rapport = executer(a.chaines, etat, fiche, a.sortie)
         print(json.dumps({
             "fichiers": rapport["nombre_fichiers_analyses"],
             "notices": rapport["statistiques_globales_avec_repetitions_possibles"].get(
