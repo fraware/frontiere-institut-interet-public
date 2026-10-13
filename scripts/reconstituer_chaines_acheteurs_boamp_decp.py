@@ -179,7 +179,8 @@ def attributs_attribution(notice: dict, codes_lots: list[str]) -> dict:
     }
 
 
-def produire(tirage: Path, releve: Path, audit_path: Path, administration: Path) -> dict:
+def produire(tirage: Path, releve: Path, audit_path: Path, administration: Path,
+            aife: Path, dgfip: Path) -> dict:
     """Revérifier trois sources documentaires et produire les 17 chaînes."""
     audit_brut = audit_path.read_bytes()
     audit = json.loads(audit_brut)
@@ -216,6 +217,7 @@ def produire(tirage: Path, releve: Path, audit_path: Path, administration: Path)
         fiches_admin[numero] = source
     if len(fiches_admin) != 16:
         raise ChaineInvalide("Inventaire administratif incomplet")
+    marches_par_reference, compte_decp = lire_marches(aife, dgfip)
     dossiers = []
     compte = Counter()
     numeros_utilises = set()
@@ -259,6 +261,35 @@ def produire(tirage: Path, releve: Path, audit_path: Path, administration: Path)
             else {"contrats_locaux": [], "resultats_lots": [],
                   "relations_lot_contrat_dans_avis": []}
         )
+        for contrat in attribution["contrats_locaux"]:
+            reference = contrat["reference_contrat_declaree"]
+            candidates = (
+                marches_par_reference.get(reference_normalisee(reference), [])
+                if contrat["reference_contrat_comparable_decp"]
+                else []
+            )
+            concordants = [
+                x for x in candidates if x["acheteur_siret"] == numero
+            ]
+            autres_acheteurs = [
+                x for x in candidates if x["acheteur_siret"] != numero
+            ]
+            contrat["pistes_decp_meme_siret"] = [{
+                "acheteur_siret": item["acheteur_siret"],
+                "id_marche_decp": item["id_marche"],
+                "identifiant_strictement_identique": item["id_marche"] == reference,
+                "versions_observees": item["versions_observees"],
+                "provenances_decp": item["provenances"],
+                "identite_contractuelle_demonstree": False,
+            } for item in concordants]
+            contrat["nombre_marches_decp_autres_acheteurs_meme_reference"] = len(
+                autres_acheteurs
+            )
+            compte["references_contrat_explicites"] += reference is not None
+            compte["references_contrat_comparables"] += (
+                contrat["reference_contrat_comparable_decp"]
+            )
+            compte["pistes_contrats_avec_decp_meme_siret"] += bool(concordants)
         admin = fiches_admin[numero]
         admin_occurrence = [
             x for x in admin["avis_boamp"]
@@ -323,6 +354,7 @@ def produire(tirage: Path, releve: Path, audit_path: Path, administration: Path)
         "sha256_rapport_administratif": sha256(rapport_admin_brut),
         "mesures": dict(sorted(compte.items())),
         "nombre_siret_distincts": len(numeros_utilises),
+        "perimetre_decp": compte_decp,
         "liaisons_contractuelles_decp_prouvees": 0,
         "validations_juridiques_du_role_acheteur": 0,
         "preuves_execution": 0,
@@ -343,11 +375,16 @@ def main() -> None:
     parser.add_argument("--releve", type=Path, required=True)
     parser.add_argument("--audit-boamp", type=Path, required=True)
     parser.add_argument("--administration", type=Path, required=True)
+    parser.add_argument("--aife", type=Path,
+                        default=Path("institutionnel/decp/sonde_aife_json.json"))
+    parser.add_argument("--dgfip", type=Path,
+                        default=Path("institutionnel/decp/lot_dgfip_xml.json"))
     parser.add_argument("--sortie", type=Path, required=True)
     args = parser.parse_args()
     try:
         rapport = produire(
-            args.tirage, args.releve, args.audit_boamp, args.administration
+            args.tirage, args.releve, args.audit_boamp, args.administration,
+            args.aife, args.dgfip,
         )
         if args.sortie.exists() or args.sortie.is_symlink():
             raise ChaineInvalide("Refus d'écraser un rapport précédent")
@@ -362,6 +399,12 @@ def main() -> None:
             "attributions": rapport["mesures"]["attributions"],
             "lots": rapport["mesures"]["lots_declares"],
             "liens_lot_contrat": rapport["mesures"]["liens_lot_contrat"],
+            "references_contrat_comparables": rapport["mesures"][
+                "references_contrat_comparables"
+            ],
+            "pistes_meme_siret_decp": rapport["mesures"].get(
+                "pistes_contrats_avec_decp_meme_siret", 0
+            ),
             "relations_decp_prouvees": 0,
         }, ensure_ascii=False))
     except (OSError, ValueError, TypeError, KeyError) as exc:
