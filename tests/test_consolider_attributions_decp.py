@@ -149,3 +149,34 @@ def test_importation_reelle_si_registres_complets(tmp_path):
     assert r["enregistrements_normalises_par_fichier"] == sum(
         f["releves"]["marches_uniques_valides"] for f in d["fichiers"]
     ) + a["releves"]["marches_uniques_valides"]
+
+
+
+def test_actualisation_conserve_le_bilan_identique_et_refuse_les_sources_partielles(tmp_path):
+    from scripts.actualiser_bilan_index_decp import actualiser
+
+    entree_a = tmp_path / "aife.json"
+    entree_d = tmp_path / "dgfip.json"
+    sortie = tmp_path / "bilan.json"
+    entree_a.write_text(json.dumps(aife()), encoding="utf-8")
+    entree_d.write_text(json.dumps(dgfip()), encoding="utf-8")
+    premier = actualiser(entree_a, entree_d, sortie)
+    assert premier["statut"] == "mis_a_jour"
+    initial = sortie.read_bytes()
+    second = actualiser(entree_a, entree_d, sortie)
+    assert second["statut"] == "identique"
+    assert sortie.read_bytes() == initial
+
+    tronque = dgfip([fichier_xml(RID_XML1, "b"*64, [marche()], tronque=True)])
+    entree_d.write_text(json.dumps(tronque), encoding="utf-8")
+    with pytest.raises(IndexDECPInvalide, match="incomplet"):
+        actualiser(entree_a, entree_d, sortie)
+    assert sortie.read_bytes() == initial
+
+    nouveau = dgfip([
+        fichier_xml(RID_XML1, "c"*64, [marche(id_marche="M-03")])
+    ])
+    entree_d.write_text(json.dumps(nouveau), encoding="utf-8")
+    modifie = actualiser(entree_a, entree_d, sortie)
+    assert modifie["statut"] == "mis_a_jour"
+    assert modifie["bilan"]["identites_distinctes_par_siret_et_id_marche"] == 2
