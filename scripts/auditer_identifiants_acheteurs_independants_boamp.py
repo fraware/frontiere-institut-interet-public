@@ -18,6 +18,7 @@ try:
     from scripts.collecter_notices_pilotes_boamp import adresse
     from scripts.extraire_references_boamp_decp import (
         references_notice, identifiant_acheteur_14_non_qualifie,
+        siret_acheteur_sans_reference_projet,
     )
     from scripts.relever_issues_echantillon_independant import (
         VERSION as VERSION_RELEVE, charger_tirage,
@@ -28,6 +29,7 @@ except ModuleNotFoundError as exc:
     from collecter_notices_pilotes_boamp import adresse
     from extraire_references_boamp_decp import (
         references_notice, identifiant_acheteur_14_non_qualifie,
+        siret_acheteur_sans_reference_projet,
     )
     from relever_issues_echantillon_independant import (
         VERSION as VERSION_RELEVE, charger_tirage,
@@ -132,15 +134,17 @@ def auditer(tirage: Path, releve: Path) -> dict:
         if statut in {"non_retrouve_lors_du_releve", "date_officielle_divergente"}:
             raise AuditInvalide("Statut absent/divergent incompatible avec l'avis")
         references, statut_ref = references_notice(notice)
+        siret_explicite = siret_acheteur_sans_reference_projet(notice)
         non_qualifie = identifiant_acheteur_14_non_qualifie(notice)
+        if siret_explicite is not None and non_qualifie is not None:
+            raise AuditInvalide("Deux qualifications d'identité contradictoires")
         resultat["statut_reference"] = statut_ref
-        if references:
-            valeur = references[0]
+        if siret_explicite is not None:
             resultat.update({
-                "identite_acheteur": valeur["acheteur_siret"],
-                "champ_identite": valeur["chemin_preuve_siret"],
+                "identite_acheteur": siret_explicite["acheteur_siret"],
+                "champ_identite": siret_explicite["chemin_preuve"],
                 "statut_identite": "siret_explicitement_qualifie_dans_avis",
-                "reference_projet": valeur["id_marche"],
+                "reference_projet": references[0]["id_marche"] if references else None,
             })
         elif non_qualifie is not None:
             resultat.update({
