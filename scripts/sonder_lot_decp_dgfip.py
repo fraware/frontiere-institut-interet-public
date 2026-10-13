@@ -48,6 +48,16 @@ def cle_ressource(resource: dict) -> tuple[str, int, str | None]:
     )
 
 
+def releve_non_exploitable(fichier: dict) -> bool:
+    """Reconnaître une collecte historique ayant rejeté tous ses marchés."""
+    compte = fichier.get("releves", {})
+    return (
+        isinstance(compte, dict)
+        and compte.get("notices_lues", 0) > 0
+        and compte.get("marches_uniques_valides", 0) == 0
+    )
+
+
 def choisir_ressources(
     inventaire: dict, fiche: dict, historique: dict,
     *, maximum: int = FICHIERS_PAR_CYCLE,
@@ -75,6 +85,7 @@ def choisir_ressources(
     prises = {
         (f["id"], f["taille_octets_declaree"], f.get("modifie_le"))
         for f in historique.get("fichiers", [])
+        if not releve_non_exploitable(f)
     }
     selections = []
     for connu in local["ressources_recentes"]:
@@ -116,6 +127,8 @@ def executer(
         not isinstance(e, dict) for e in deja
     ):
         raise LotDECPInvalide("Historique de collecte incorrect")
+    invalides = [f for f in deja if releve_non_exploitable(f)]
+    conserves = [f for f in deja if not releve_non_exploitable(f)]
     selections = choisir_ressources(inventaire, fiche, ancien, maximum=maximum)
     if not selections:
         return ancien if ancien else {
@@ -123,7 +136,7 @@ def executer(
             "fichiers": [], "echecs_du_dernier_cycle": [],
             "aucune_ressource_admissible_nouvelle": True,
         }
-    if len(deja) + len(selections) > MAX_HISTORIQUE:
+    if len(conserves) + len(selections) > MAX_HISTORIQUE:
         raise LotDECPInvalide("Plafond historique atteint : stockage externe nécessaire")
     succes, erreurs = [], []
     with tempfile.TemporaryDirectory(prefix="frontiere-dgfip-") as dossier:
@@ -181,6 +194,27 @@ def executer(
             + json.dumps(erreurs[:FICHIERS_PAR_CYCLE], ensure_ascii=False, sort_keys=True)
         )
     instant = moment or datetime.now(timezone.utc).isoformat(timespec="seconds")
+    rectifications = list(ancien.get("rectifications_historiques", []))
+    if not isinstance(rectifications, list):
+        raise LotDECPInvalide("Registre de rectification antérieur non structuré")
+    for ligne in invalides:
+        rectifications.append({
+            "id": ligne["id"],
+            "empreinte_fichier_brut": ligne["empreinte_sha256"],
+            "notices_lues_initialement": ligne["releves"].get("notices_lues", 0),
+            "notices_rejetees_initialement": ligne["releves"].get("notices_rejetees", 0),
+            "cause": "profil_initial_rejetait_champs_facultatifs",
+            "statut": (
+                "remplace_par_releve_exploitable"
+                if any(x["id"] == ligne["id"] and
+                       x["taille_octets_declaree"] == ligne["taille_octets_declaree"] and
+                       x.get("modifie_le") == ligne.get("modifie_le")
+                       for x in succes)
+                else "en_attente_de_relecture"
+            ),
+            "rectifie_le": instant,
+            "conservation_de_la_preuve_originale": True,
+        })
     return {
         "version": "lot-decp-dgfip-xml-v1",
         "source_catalogue": SOURCE_ID,
@@ -189,10 +223,12 @@ def executer(
             "donnees-essentielles-de-la-commande-publique-transmises-via-le-pes-marche-depuis-2024"
         ),
         "controle_le": instant,
-        "fichiers": deja + succes,
+        "fichiers": conserves + succes,
+        "rectifications_historiques": rectifications,
         "nombre_fichiers_du_cycle": len(succes),
         "echecs_du_dernier_cycle": erreurs,
-        "nombre_fichiers_historises": len(deja) + len(succes),
+        "nombre_fichiers_historises": len(conserves) + len(succes),
+        "nombre_fichiers_historiques_rectifies": len(invalides),
         "couverture_complete_des_ressources_dgfip": False,
         "liens_boamp_verifies": 0,
         "besoins_encore_ouverts_prouves": 0,

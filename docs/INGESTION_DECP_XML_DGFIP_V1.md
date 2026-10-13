@@ -24,6 +24,16 @@ La correction distingue désormais l'identité contractuelle et les **champs aux
 
 Les champs indispensables à l'identification et à la description d'un marché continuent à être contrôlés strictement. Un fichier comportant des notices de marchés mais **aucune notice normalisable** est refusé pour l'avancement du curseur. Cette règle préserve la distinction entre téléchargement réussi et ingestion de marchés réussie.
 
+## Rectification du premier relevé automatisé
+
+La proposition automatique n° 317 a été fusionnée malgré la tentative de fermeture engagée pour empêcher la publication d'un bilan sans marché normalisé. Elle contenait quatre ressources dont **829 notices avaient été lues mais intégralement rejetées par l'ancienne règle**. Elles avaient néanmoins été enregistrées comme traitées, ce qui aurait empêché leur relecture.
+
+Une seconde collecte, publiée dans la proposition n° 319, a commencé à traiter les ressources suivantes avec la règle corrigée, permettant d'obtenir des marchés normalisés. L'existence de ces nouveaux résultats ne corrige pas automatiquement les 829 notices du premier lot.
+
+Le collecteur considère désormais toute ressource présentant un nombre strictement positif de marchés lus et **zéro marché normalisé** comme un relevé documentaire historiquement non exploitable. Ces ressources sont sélectionnées à nouveau malgré leur présence dans le registre. Leurs anciens comptes et l'empreinte SHA-256 du fichier original sont déplacés dans un historique de rectification, avec la distinction entre fichiers effectivement relus et fichiers encore en attente. Aucune attribution n'est inférée depuis ces anciens rejets. Le nouvel enregistrement analytique est retenu seulement si le document donne au moins une notice de marché normalisée, ou ne contient effectivement aucun marché.
+
+La rectification conserve le fait qu'un relevé a été publié avec un défaut de normalisation ; elle ne réécrit pas les anciens commits et n'efface pas leur origine.
+
 ## Collecte par petits lots
 
 Le programme `scripts/sonder_lot_decp_dgfip.py` s'appuie sur les **150 ressources récentes** déjà connues du catalogue local `institutionnel/decp/etat_ressources.json`. Pour chaque ressource choisie, il recoupe identifiant, format, taille et adresse avec la fiche publique actuelle de data.gouv.fr.

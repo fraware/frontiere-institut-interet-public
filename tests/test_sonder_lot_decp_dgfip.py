@@ -140,3 +140,31 @@ def test_toutes_les_notices_invalides_n_avancent_pas_le_curseur():
         return len(texte)
     with pytest.raises(LotDECPInvalide, match="Toutes"):
         executer(local, distant, {}, recuperer=recup)
+
+
+
+def test_rejouer_un_fichier_historiquement_rejete_sans_effacer_sa_preuve():
+    local, distant = donnees(2)
+    premier = executer(local, distant, {}, recuperer=_recevoir)
+    ancien = deepcopy(premier)
+    ancien["fichiers"][0]["releves"] = {
+        "notices_lues": 1, "notices_rejetees": 1,
+    }
+    ancien["fichiers"][0]["marches_extraits"] = []
+    ancien["fichiers"][0]["empreinte_sha256"] = "a" * 64
+    original = deepcopy(ancien)
+    assert len(choisir_ressources(local, distant, ancien)) == 1
+    corrige = executer(
+        local, distant, ancien, recuperer=_recevoir,
+        moment="2026-10-13T09:00:00+00:00",
+    )
+    assert len(corrige["fichiers"]) == 2
+    assert corrige["nombre_fichiers_historiques_rectifies"] == 1
+    assert corrige["nombre_fichiers_du_cycle"] == 1
+    assert len(corrige["rectifications_historiques"]) == 1
+    rectificatif = corrige["rectifications_historiques"][0]
+    assert rectificatif["empreinte_fichier_brut"] == "a" * 64
+    assert rectificatif["statut"] == "remplace_par_releve_exploitable"
+    assert corrige["fichiers"][1]["releves"]["marches_uniques_valides"] == 1
+    assert ancien == original
+    assert choisir_ressources(local, distant, corrige) == []
