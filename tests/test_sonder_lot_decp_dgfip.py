@@ -168,3 +168,27 @@ def test_rejouer_un_fichier_historiquement_rejete_sans_effacer_sa_preuve():
     assert corrige["fichiers"][1]["releves"]["marches_uniques_valides"] == 1
     assert ancien == original
     assert choisir_ressources(local, distant, corrige) == []
+
+
+
+def test_relire_seulement_une_ressource_tronquee_sous_nouveau_plafond():
+    local, distant = donnees(2)
+    original = executer(local, distant, {}, recuperer=_recevoir)
+    precedent = deepcopy(original)
+    precedent["fichiers"][0]["extraits_plafonnes"] = True
+    precedent["fichiers"][0]["marches_extraits"] = []
+    selection = choisir_ressources(local, distant, precedent)
+    assert len(selection) == 1
+    assert selection[0]["id"] == precedent["fichiers"][0]["id"]
+    suivant = executer(local, distant, precedent, recuperer=_recevoir,
+                      moment="2026-10-13T09:00:00+00:00")
+    assert suivant["nombre_fichiers_historiques_rectifies"] == 1
+    assert len(suivant["fichiers"]) == 2
+    assert len(suivant["rectifications_historiques"]) == 1
+    rectification = suivant["rectifications_historiques"][0]
+    assert rectification["cause"] == "extraits_tronques_par_plafond_initial"
+    assert rectification["notices_detaillees_initialement"] == 0
+    assert rectification["statut"] == "remplace_par_releve_exploitable"
+    assert all(not x["extraits_plafonnes"] for x in suivant["fichiers"])
+    assert choisir_ressources(local, distant, suivant) == []
+    assert precedent["fichiers"][0]["extraits_plafonnes"] is True

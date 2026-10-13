@@ -16,11 +16,11 @@ from urllib.error import HTTPError, URLError
 if __package__:
     from scripts.collecter_catalogues_decp import telecharger as telecharger_fiche
     from scripts.sonder_ressource_decp_aife import recevoir_fichier, _url_officielle
-    from scripts.ingerer_fichier_decp_xml import analyser_fichier, XMLDECPInvalide
+    from scripts.ingerer_fichier_decp_xml import analyser_fichier, XMLDECPInvalide, PLAFOND_EXTRAITS
 else:
     from collecter_catalogues_decp import telecharger as telecharger_fiche
     from sonder_ressource_decp_aife import recevoir_fichier, _url_officielle
-    from ingerer_fichier_decp_xml import analyser_fichier, XMLDECPInvalide
+    from ingerer_fichier_decp_xml import analyser_fichier, XMLDECPInvalide, PLAFOND_EXTRAITS
 
 RACINE = Path(__file__).resolve().parents[1]
 INVENTAIRE = RACINE / "institutionnel/decp/etat_ressources.json"
@@ -48,13 +48,16 @@ def cle_ressource(resource: dict) -> tuple[str, int, str | None]:
     )
 
 
-def releve_non_exploitable(fichier: dict) -> bool:
-    """Reconnaître une collecte historique ayant rejeté tous ses marchés."""
+def releve_a_completer(fichier: dict) -> bool:
+    """Repérer un ancien rejet intégral ou un extrait réparable par le nouveau plafond."""
     compte = fichier.get("releves", {})
+    if not isinstance(compte, dict):
+        return False
+    valides = compte.get("marches_uniques_valides", 0)
     return (
-        isinstance(compte, dict)
-        and compte.get("notices_lues", 0) > 0
-        and compte.get("marches_uniques_valides", 0) == 0
+        (compte.get("notices_lues", 0) > 0 and valides == 0)
+        or (fichier.get("extraits_plafonnes") is True
+            and type(valides) is int and 0 < valides <= PLAFOND_EXTRAITS)
     )
 
 
@@ -85,7 +88,7 @@ def choisir_ressources(
     prises = {
         (f["id"], f["taille_octets_declaree"], f.get("modifie_le"))
         for f in historique.get("fichiers", [])
-        if not releve_non_exploitable(f)
+        if not releve_a_completer(f)
     }
     selections = []
     for connu in local["ressources_recentes"]:
@@ -127,8 +130,8 @@ def executer(
         not isinstance(e, dict) for e in deja
     ):
         raise LotDECPInvalide("Historique de collecte incorrect")
-    invalides = [f for f in deja if releve_non_exploitable(f)]
-    conserves = [f for f in deja if not releve_non_exploitable(f)]
+    invalides = [f for f in deja if releve_a_completer(f)]
+    conserves = [f for f in deja if not releve_a_completer(f)]
     selections = choisir_ressources(inventaire, fiche, ancien, maximum=maximum)
     if not selections:
         return ancien if ancien else {
@@ -148,7 +151,7 @@ def executer(
                     raise LotDECPInvalide("Taille effective différente de la fiche")
                 bilan = analyser_fichier(
                     chemin, source_id=SOURCE_ID,
-                    ressource_id=selection["id"], limite_extraits=200,
+                    ressource_id=selection["id"], limite_extraits=PLAFOND_EXTRAITS,
                 )
                 if (
                     bilan["releves"].get("notices_lues", 0) > 0
@@ -203,7 +206,13 @@ def executer(
             "empreinte_fichier_brut": ligne["empreinte_sha256"],
             "notices_lues_initialement": ligne["releves"].get("notices_lues", 0),
             "notices_rejetees_initialement": ligne["releves"].get("notices_rejetees", 0),
-            "cause": "profil_initial_rejetait_champs_facultatifs",
+            "cause": (
+                "profil_initial_rejetait_champs_facultatifs"
+                if ligne["releves"].get("notices_lues", 0) > 0
+                and ligne["releves"].get("marches_uniques_valides", 0) == 0
+                else "extraits_tronques_par_plafond_initial"
+            ),
+            "notices_detaillees_initialement": len(ligne.get("marches_extraits", [])),
             "statut": (
                 "remplace_par_releve_exploitable"
                 if any(x["id"] == ligne["id"] and

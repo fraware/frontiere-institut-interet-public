@@ -24,7 +24,7 @@ else:
 
 PLAFOND_FICHIER = 2_000_000
 PLAFOND_NOTICES = 20_000
-PLAFOND_EXTRAITS = 200
+PLAFOND_EXTRAITS = 1000
 PLAFOND_PROFONDEUR = 48
 SOURCES = {"dgfip_pes_marche", "aife_api_decp", "mef_decp_consolides"}
 RESSOURCE = re.compile(r"^[0-9a-fA-F-]{36}$")
