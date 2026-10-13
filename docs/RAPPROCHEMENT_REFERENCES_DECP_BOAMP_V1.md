@@ -71,3 +71,17 @@ Le rapport conserve désormais deux observations distinctes :
 La distribution `entrees.statuts_identification_acheteur` conserve les causes de non-extraction (formulaire non pris en charge, acheteur absent ou multiple, rattachement organisationnel non univoque, etc.). Son total correspond au nombre d'avis BOAMP distincts étudiés ; chaque avis est classé une seule fois. Ces effectifs sont publiés dans le compte rendu de la procédure de collecte pour rendre les résultats négatifs interprétables.
 
 Une extraction réussie ne vaut pas validation juridique du SIRET par un registre externe, et les avis réellement disponibles forment ici un échantillon pilote restreint. Zéro référence commune et zéro SIRET extrait sont des phénomènes différents, dont l'importance scientifique exige de séparer les comptages.
+
+
+## Audit structurel des premiers avis réels — 13 octobre 2026
+
+L'archive de la [collecte officielle 38470513271](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/38470513271) a été téléchargée et examinée directement, avec concordance des empreintes SHA-256 des six réponses du manifeste. Cinq avis utilisent eForms et un avis le formulaire FNSimple. Parmi les cinq avis eForms, **quatre** présentent, pour l'organisation identifiée par `cac:ContractingParty`, un `cac:PartyLegalEntity/cbc:CompanyID` constitué de quatorze chiffres **sans attribut de schéma explicite**. Le cinquième contient une identité relevant d'un schéma `eu` et ne donne pas de SIRET à quatorze chiffres à cet emplacement.
+
+Ce constat justifie deux voies de lecture étanches :
+
+1. **SIRET explicitement déclaré :** chaîne de quatorze chiffres possédant un schéma de type SIRET accepté, rattachée au rôle acheteur.
+2. **Identifiant de quatorze chiffres sans schéma :** observation strictement attachée au même rôle acheteur, mais sans conclusion juridique sur la nature de l'identifiant. Ce type d'observation est compté séparément. Une égalité avec un SIRET DECP produit seulement un indice de correspondance.
+
+Le programme `identifiant_acheteur_14_non_qualifie` conserve le chemin de provenance, refuse les identifiants de fournisseurs, les schémas déclarés d'une autre nature, les rattachements ambigus et les acheteurs multiples. Il opère même lorsque la référence interne `ProcurementProject/cbc:ID` est absente ou inexploitable. La comparaison avec le jeu AIFE/DGFiP maintient `correspondances_contractuelles_verifiees = 0`.
+
+La mesure indépendante `entrees.avis_avec_identifiant_acheteur_14_sans_schema` concerne tous les avis observés ; `pistes_avec_identifiant_14_non_qualifie_concordant` concerne uniquement les références communes effectivement examinées. Le compteur des SIRET à schéma explicite reste indépendant de ces deux valeurs. La confirmation éventuelle du numéro dans un registre officiel d'établissements et l'analyse des références de contrat constituent des étapes de vérification ultérieures.
