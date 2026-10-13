@@ -194,7 +194,7 @@ def executer(
             + json.dumps(erreurs[:FICHIERS_PAR_CYCLE], ensure_ascii=False, sort_keys=True)
         )
     instant = moment or datetime.now(timezone.utc).isoformat(timespec="seconds")
-    rectifications = ancien.get("rectifications_historiques", [])
+    rectifications = list(ancien.get("rectifications_historiques", []))
     if not isinstance(rectifications, list):
         raise LotDECPInvalide("Registre de rectification antérieur non structuré")
     for ligne in invalides:
@@ -204,6 +204,14 @@ def executer(
             "notices_lues_initialement": ligne["releves"].get("notices_lues", 0),
             "notices_rejetees_initialement": ligne["releves"].get("notices_rejetees", 0),
             "cause": "profil_initial_rejetait_champs_facultatifs",
+            "statut": (
+                "remplace_par_releve_exploitable"
+                if any(x["id"] == ligne["id"] and
+                       x["taille_octets_declaree"] == ligne["taille_octets_declaree"] and
+                       x.get("modifie_le") == ligne.get("modifie_le")
+                       for x in succes)
+                else "en_attente_de_relecture"
+            ),
             "rectifie_le": instant,
             "conservation_de_la_preuve_originale": True,
         })
