@@ -120,4 +120,5 @@ def test_erreur_syntaxique_donne_code_et_position_sans_fragment_source(tmp_path)
     assert "code " in erreur
     assert "ligne " in erreur
     assert "colonne " in erreur
+    assert "octets_proches=[" in erreur
     assert "secret test" not in erreur
