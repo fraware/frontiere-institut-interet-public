@@ -22,9 +22,18 @@ La référence interne de procédure est extraite exclusivement de `cac:Procurem
 
 Les lots sont extraits exclusivement de `cac:ProcurementProjectLot/cbc:ID`. Pour les **avis d'attribution**, l'analyseur existant lit les résultats de lots et les contrats déclarés dans `efac:NoticeResult`. Une relation locale `lot → contrat` est retenue seulement si le lot est déclaré dans l'avis et si la référence contractuelle citée par son résultat appartient aux contrats définis dans le même avis. Les doublons et références sans définition interrompent l'examen. Les désignations `LOT-0001`, `CON-0001` et `RES-0001` sont locales à l'avis, et non des clés utilisables sans contexte dans les données essentielles de la commande publique.
 
+### Deux types de références contractuelles
+
+Les neuf contrats définis dans `efac:NoticeResult/efac:SettledContract` possèdent aussi une entrée `efac:ContractReference/cbc:ID`. **Ce champ est distinct du code interne `CON-0001`** et fournit une piste plus précise vers les données essentielles de la commande publique (DECP).
+
+Sur ces neuf références déclarées, **sept** sont constituées comme des identifiants compacts admissibles pour une recherche documentaire. Les deux autres sont une indication générique de lot (« Lot 1 ») et une longue description de prestation. Elles sont conservées comme texte primaire, sans transformation en clé de marché.
+
+Les sept références de recherche sont comparées au relevé DECP AIFE/DGFiP déjà validé, en imposant la concordance du SIRET acheteur. Le programme conserve l'identifiant DECP brut et ses provenances, indique séparément l'égalité littérale et l'égalité après normalisation, et compte les références identiques présentes sous un **autre** SIRET. Même une concordance de numéro de contrat et de SIRET est une **piste documentaire** : il faut encore confirmer les unités de lot, les versions, les dates et l'identité de l'acte contractuel.
+
+
 ## Résultats documentaires et prudence
 
-L'examen des archives originales a identifié 17 avis, dont 6 attributions, 15 références internes de procédure renseignées, 27 lots, 9 résultats de lots et 9 références de contrats reliées au sein de leurs avis. Ces comptes sont revérifiés par le programme sur les trois sources et publiés dans le rapport d'exécution ; une anomalie empêche toute production.
+L'examen des archives originales a identifié 17 avis, dont 6 attributions, 15 références internes de procédure renseignées, 27 lots, 9 résultats de lots et 9 références de contrats reliées au sein de leurs avis. Sept références contractuelles déclarées ont une forme appropriée pour une comparaison documentaire avec l'index DECP. Ces comptes sont revérifiés par le programme sur les trois sources et publiés dans le rapport d'exécution ; une anomalie empêche toute production.
 
 Le cas `25-93431` présente l'intitulé « MINARM » dans l'avis, avec un établissement intitulé « SERVICES DE L'ÉTAT POUR LA FACTURATION ÉLECTRONIQUE » dans la réponse administrative. La différence de dénomination est un **signal de vérification**, non une erreur juridique établie. Les avis `25-108230` et `26-60102` réutilisent le même SIRET administratif tout en employant des dénominations de services opérationnels distinctes. Ces cas ne sont pas additionnés comme deux établissements.
 
@@ -39,6 +48,8 @@ python scripts/reconstituer_chaines_acheteurs_boamp_decp.py \
   --releve /sources/boamp/releve-issues-36 \
   --audit-boamp /sources/boamp/audit-identifiants-acheteurs-36.json \
   --administration /sources/administration \
+  --aife institutionnel/decp/sonde_aife_json.json \
+  --dgfip institutionnel/decp/lot_dgfip_xml.json \
   --sortie /tmp/frontiere-chaines-documentaires.json
 ```
 
