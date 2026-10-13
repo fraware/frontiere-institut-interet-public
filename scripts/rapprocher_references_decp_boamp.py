@@ -20,7 +20,9 @@ try:
     from scripts.collecter_notices_pilotes_boamp import verifier_capture
     from scripts.consolider_attributions_decp import rapports_dgfip
     from scripts.indexer_attributions_decp_sqlite import verifier_rapport
-    from scripts.extraire_references_boamp_decp import references_notice
+    from scripts.extraire_references_boamp_decp import (
+        references_notice, identifiant_acheteur_14_non_qualifie,
+    )
 except ModuleNotFoundError as exc:
     # En exécution directe, Python place scripts/ et non sa racine sur sys.path.
     if exc.name != "scripts":
@@ -28,7 +30,9 @@ except ModuleNotFoundError as exc:
     from collecter_notices_pilotes_boamp import verifier_capture
     from consolider_attributions_decp import rapports_dgfip
     from indexer_attributions_decp_sqlite import verifier_rapport
-    from extraire_references_boamp_decp import references_notice
+    from extraire_references_boamp_decp import (
+        references_notice, identifiant_acheteur_14_non_qualifie,
+    )
 
 VERSION = "rapprochement-references-decp-boamp-v1"
 CHEMIN_REFERENCE = "/donnees/EFORMS/{formulaire}/cac:ProcurementProject/cbc:ID"
@@ -163,6 +167,7 @@ def lire_avis(dossiers: list[Path]) -> tuple[dict, dict]:
             source = json.loads(brut)["results"][0]
             reference, originale, chemin_reference = extraire_reference(source)
             references_acheteur, statut_acheteur = references_notice(source)
+            acheteur_non_qualifie = identifiant_acheteur_14_non_qualifie(source)
             if references_acheteur and reference != reference_normalisee(
                     references_acheteur[0]["id_marche"]):
                 raise RapprochementInvalide("Référence interne BOAMP contradictoire.")
@@ -187,6 +192,14 @@ def lire_avis(dossiers: list[Path]) -> tuple[dict, dict]:
                     if references_acheteur else None
                 ),
                 "statut_identification_acheteur": statut_acheteur,
+                "acheteur_14_chiffres_sans_schema": (
+                    acheteur_non_qualifie["identifiant_14_chiffres"]
+                    if acheteur_non_qualifie else None
+                ),
+                "chemin_preuve_acheteur_14_sans_schema": (
+                    acheteur_non_qualifie["chemin_preuve"]
+                    if acheteur_non_qualifie else None
+                ),
             }
     references = defaultdict(list)
     for fiche in avis.values():
@@ -196,6 +209,10 @@ def lire_avis(dossiers: list[Path]) -> tuple[dict, dict]:
         "avis_distincts": len(avis),
         "avis_references_interpretees": sum(map(len, references.values())),
         "avis_non_interpretes": dict(sorted(non_interpretes.items())),
+        "avis_avec_identifiant_acheteur_14_sans_schema": sum(
+            x.get("acheteur_14_chiffres_sans_schema") is not None
+            for x in avis.values()
+        ),
         "avis_avec_siret_acheteur_role_verifie": sum(
             x.get("siret_acheteur_role_verifie") is not None
             for x in avis.values()
@@ -231,6 +248,19 @@ def produire(aife: Path, dgfip: Path, captures: list[Path]) -> dict:
             if acheteur_univoque is not None
             and x["acheteur_siret"] == acheteur_univoque
         ]
+        valeurs_non_qualifiees = {
+            n["acheteur_14_chiffres_sans_schema"] for n in notices
+            if n.get("acheteur_14_chiffres_sans_schema") is not None
+        }
+        compatible_non_qualifie = (
+            next(iter(valeurs_non_qualifiees))
+            if len(valeurs_non_qualifiees) == 1 else None
+        )
+        concordances_non_qualifiees = [
+            x for x in candidats
+            if compatible_non_qualifie is not None
+            and x["acheteur_siret"] == compatible_non_qualifie
+        ]
         pistes.append({
             "reference_normalisee": ref,
             "classement": (
@@ -246,6 +276,11 @@ def produire(aife: Path, dgfip: Path, captures: list[Path]) -> dict:
             "acheteur_boamp_identifie_dans_role": acheteur_univoque,
             "nombre_identites_decp_avec_siret_concordant": len(concordances_acheteur),
             "plusieurs_acheteurs_declares_dans_les_avis": len(acheteurs_etablis) > 1,
+            "identifiant_acheteur_14_sans_schema_concordant": bool(
+                concordances_non_qualifiees
+            ),
+            "identifiant_acheteur_14_non_qualifie": compatible_non_qualifie,
+            "plusieurs_acheteurs_non_qualifies": len(valeurs_non_qualifiees) > 1,
             "examen_humain_ou_piece_complementaire_necessaire": True,
         })
     return {
@@ -260,6 +295,9 @@ def produire(aife: Path, dgfip: Path, captures: list[Path]) -> dict:
             len(p["identites_decp"]) > 1 for p in pistes
         ),
         "correspondances_contractuelles_verifiees": 0,
+        "pistes_avec_identifiant_14_non_qualifie_concordant": sum(
+            p["identifiant_acheteur_14_sans_schema_concordant"] for p in pistes
+        ),
         "pistes_avec_concordance_de_siret": sum(
             p["concordance_siret_verifiee_dans_boamp"] for p in pistes
         ),
@@ -303,6 +341,12 @@ def main() -> None:
             ],
             "statuts_identification_acheteur": rapport["entrees"][
                 "statuts_identification_acheteur"
+            ],
+            "avis_avec_identifiant_acheteur_14_sans_schema": rapport["entrees"][
+                "avis_avec_identifiant_acheteur_14_sans_schema"
+            ],
+            "pistes_avec_identifiant_14_non_qualifie_concordant": rapport[
+                "pistes_avec_identifiant_14_non_qualifie_concordant"
             ],
             "pistes_avec_concordance_de_siret": rapport[
                 "pistes_avec_concordance_de_siret"
