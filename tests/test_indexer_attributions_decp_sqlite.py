@@ -125,3 +125,17 @@ def test_indexation_complete_d_une_sonde_reelle_si_disponible(tmp_path):
     statistique = importer(tmp_path / "reel.sqlite3", data)
     assert statistique["identites_marche"] == data["releves"]["marches_uniques_valides"]
     assert statistique["versions_conservees"] == statistique["identites_marche"]
+
+
+
+def test_meme_contenu_de_fichier_mais_autre_ressource_reste_distinct(tmp_path):
+    """Les identifiants de ressources sont aussi des identifiants de provenance."""
+    db = tmp_path / "distinct.sqlite3"
+    premier = rapport()
+    importer(db, premier)
+    autre = rapport()
+    autre["ressource_id"] = "a49df055-4fe1-4258-96bb-5bdda36c7484"
+    result = importer(db, autre)
+    assert result["fichiers_suivis"] == 2
+    assert result["versions_conservees"] == 1
+    assert result["attestations_de_fichier"] == 2
