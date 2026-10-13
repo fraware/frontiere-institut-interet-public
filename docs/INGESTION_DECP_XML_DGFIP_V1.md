@@ -34,11 +34,19 @@ Le collecteur considère désormais toute ressource présentant un nombre strict
 
 La rectification conserve le fait qu'un relevé a été publié avec un défaut de normalisation ; elle ne réécrit pas les anciens commits et n'efface pas leur origine.
 
+## Préservation des détails du premier échantillon
+
+Le premier ensemble de huit fichiers DGFiP normalisés contient 1 042 notices de marchés comptées dans les fichiers. Le deuxième fichier en contient 377, alors que le plafond initial ne permettait d'en conserver que 200 en détail. Sur les huit fichiers, seuls **865 enregistrements détaillés** avaient ainsi été archivés, et aucun doublon d'identité composée n'avait été constaté parmi ces 865.
+
+Le plafond est porté à **1 000 notices par fichier**, avec maintien de la limite de taille du fichier téléchargé. Les ressources dont les extraits étaient tronqués et dont le nombre total de marchés est compris dans le nouveau plafond sont sélectionnées à nouveau. Les premiers comptes, l'empreinte et le nombre d'extraits conservés initialement sont archivés dans le registre de rectification, sans effacer les anciens commits. Le mécanisme évite de retraiter les sept ressources dont l'extrait était déjà complet.
+
+Les fichiers plus volumineux dont le nombre de marchés excède le plafond de 1 000 ne sont pas relus indéfiniment : ils restent explicitement tronqués, en attendant leur ingestion directe dans une base de données persistante.
+
 ## Collecte par petits lots
 
 Le programme `scripts/sonder_lot_decp_dgfip.py` s'appuie sur les **150 ressources récentes** déjà connues du catalogue local `institutionnel/decp/etat_ressources.json`. Pour chaque ressource choisie, il recoupe identifiant, format, taille et adresse avec la fiche publique actuelle de data.gouv.fr.
 
-Il traite au plus **quatre fichiers XML par passage**, chacun limité à 1,5 Mo au téléchargement, avec origine HTTPS et redirections strictement contrôlées. L'analyse XML intervient en flux ; les déclarations d'entités ou DTD sont refusées. Le programme conserve le SHA-256 du fichier, les comptes de notices, les motifs de rejet et au plus 200 premières notices normalisées.
+Il traite au plus **quatre fichiers XML par passage**, chacun limité à 1,5 Mo au téléchargement, avec origine HTTPS et redirections strictement contrôlées. L'analyse XML intervient en flux ; les déclarations d'entités ou DTD sont refusées. Le programme conserve le SHA-256 du fichier, les comptes de notices, les motifs de rejet et au plus 1 000 premières notices normalisées.
 
 L'historique `institutionnel/decp/lot_dgfip_xml.json` conserve les **versions réellement téléchargées et analysées**, identifiées par identifiant de ressource, taille déclarée et date de modification du catalogue. Une ressource ayant échoué ne fait pas progresser le curseur. Une version déclarée différente peut être réanalysée. Le registre est limité à 2 000 versions documentaires et ne prétend pas couvrir l'ensemble des ressources DGFiP.
 
@@ -62,6 +70,6 @@ python scripts/sonder_lot_decp_dgfip.py
 
 Un fichier décrit par le catalogue n'est pas une attribution nouvelle ; deux fichiers différents peuvent contenir le même marché. Les compteurs de ce premier dispositif sont des **compteurs par fichier** et ne constituent pas un total de marchés indépendants sur plusieurs ressources. La déduplication inter-fichiers demande un index de versions fondé sur l'identité composée `SIRET de l'acheteur + identifiant du marché`, déjà introduit dans le projet pour le JSON AIFE.
 
-Les notices rejetées sont enregistrées par motif, sans reconstruction de valeurs absentes. Les fichiers contenant plus de 200 marchés normalisés disposent d'un compte total exact pour les objets observés, tout en indiquant que seuls 200 extraits sont conservés dans le relevé. Une véritable couverture nationale exige une ingestion de chaque ressource, un stockage persistant externe et un appariement documenté des attributions avec les avis BOAMP.
+Les notices rejetées sont enregistrées par motif, sans reconstruction de valeurs absentes. Les fichiers contenant plus de 1 000 marchés normalisés disposent d'un compte total exact pour les objets observés, tout en indiquant que seuls 1 000 extraits sont conservés dans le relevé. Une véritable couverture nationale exige une ingestion de chaque ressource, un stockage persistant externe et un appariement documenté des attributions avec les avis BOAMP.
 
 Le traitement XML n'établit ni la réalité d'un besoin encore ouvert, ni un délai de mobilisation, ni une première contribution utile. Ces faits appartiennent aux travaux de reconstitution des épisodes d'exécution.
