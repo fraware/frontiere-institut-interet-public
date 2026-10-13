@@ -16,11 +16,11 @@ from urllib.error import HTTPError, URLError
 if __package__:
     from scripts.collecter_catalogues_decp import telecharger as telecharger_fiche
     from scripts.sonder_ressource_decp_aife import recevoir_fichier, _url_officielle
-    from scripts.ingerer_fichier_decp_xml import analyser_fichier, XMLDECPInvalide
+    from scripts.ingerer_fichier_decp_xml import analyser_fichier, XMLDECPInvalide, PLAFOND_EXTRAITS
 else:
     from collecter_catalogues_decp import telecharger as telecharger_fiche
     from sonder_ressource_decp_aife import recevoir_fichier, _url_officielle
-    from ingerer_fichier_decp_xml import analyser_fichier, XMLDECPInvalide
+    from ingerer_fichier_decp_xml import analyser_fichier, XMLDECPInvalide, PLAFOND_EXTRAITS
 
 RACINE = Path(__file__).resolve().parents[1]
 INVENTAIRE = RACINE / "institutionnel/decp/etat_ressources.json"
@@ -57,7 +57,7 @@ def releve_a_completer(fichier: dict) -> bool:
     return (
         (compte.get("notices_lues", 0) > 0 and valides == 0)
         or (fichier.get("extraits_plafonnes") is True
-            and type(valides) is int and 0 < valides <= 1000)
+            and type(valides) is int and 0 < valides <= PLAFOND_EXTRAITS)
     )
 
 
@@ -151,7 +151,7 @@ def executer(
                     raise LotDECPInvalide("Taille effective différente de la fiche")
                 bilan = analyser_fichier(
                     chemin, source_id=SOURCE_ID,
-                    ressource_id=selection["id"], limite_extraits=1000,
+                    ressource_id=selection["id"], limite_extraits=PLAFOND_EXTRAITS,
                 )
                 if (
                     bilan["releves"].get("notices_lues", 0) > 0
