@@ -119,7 +119,7 @@ def test_reponse_dun_autre_siren_natteste_pas_identite():
     b'{"results": [], "total_results": 1}',
     b'{"results": [], "total_results": "0"}',
     b'{"results": [{"siren": 111}], "total_results": 1}',
-    b'{"results": [{"siren": "120064019", "matching_etablissements": {}}], "total_results": 1}',
+    b'{"results": [{"siren": "482622529", "matching_etablissements": {}}], "total_results": 1}',
 ])
 def test_schema_incompatible_refuse(contenu):
     with pytest.raises(VerificationInvalide):
