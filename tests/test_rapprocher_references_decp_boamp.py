@@ -4,6 +4,9 @@ from __future__ import annotations
 from copy import deepcopy
 import hashlib
 import json
+from pathlib import Path
+import subprocess
+import sys
 
 import pytest
 
@@ -186,3 +189,15 @@ def test_meme_marche_dans_deux_sources_ne_compte_qu_une_identite(tmp_path):
     resultat=produire(a,d,[c])
     assert resultat["pistes"][0]["nombre_marches_distincts"] == 1
     assert resultat["pistes"][0]["identites_decp"][0]["versions_observees"] == 2
+
+
+def test_execution_directe_en_ligne_de_commande():
+    """Éviter la régression découverte lors de la collecte officielle."""
+    racine = Path(__file__).resolve().parents[1]
+    outil = racine / "scripts" / "rapprocher_references_decp_boamp.py"
+    reponse = subprocess.run(
+        [sys.executable, str(outil), "--help"],
+        cwd=racine, capture_output=True, text=True, timeout=30, check=False,
+    )
+    assert reponse.returncode == 0, reponse.stderr
+    assert "--captures" in reponse.stdout
