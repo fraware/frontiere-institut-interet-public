@@ -1,0 +1,126 @@
+{
+  "besoins_encore_ouverts_prouves": 0,
+  "controle_le": "2026-10-13T04:33:59+00:00",
+  "couverture_complete_des_ressources_dgfip": false,
+  "echecs_du_dernier_cycle": [],
+  "fichiers": [
+    {
+      "besoin_encore_ouvert_demontre": false,
+      "categories_cpv_prefixe_2": {},
+      "empreinte_sha256": "a4f8f12acc3830f6d30c30ca0051393e2fbd6c34204fed1191117515be83280e",
+      "extraits_plafonnes": false,
+      "id": "118544f1-b022-43d4-b8e0-3856f66a8b1d",
+      "marches_extraits": [],
+      "modifie_le": "2026-10-13T03:12:41.798000+00:00",
+      "rejets_par_categorie": {
+        "Booléen XML inconnu": 85,
+        "Nombre entier incorrect : offresRecues": 40
+      },
+      "releves": {
+        "notices_lues": 125,
+        "notices_rejetees": 125,
+        "objets_documentaires_lus": 125
+      },
+      "schéma_complet_valide": false,
+      "taille_octets_declaree": 428473,
+      "titre": "decp-13000495500139-2026-10-13-01.xml",
+      "transformation_xml": {
+        "conformite_reglementaire_du_document_etablie": false,
+        "copie_temporaire_uniquement": true,
+        "occurrences": 1,
+        "sha256_contenu_analyse": "836c089900e8d5577322fd4ec60c076d879bc8d11715a6d750b978e45ce5387a",
+        "type": "rectification_lexicale_declaration_xmlns_vide"
+      }
+    },
+    {
+      "besoin_encore_ouvert_demontre": false,
+      "categories_cpv_prefixe_2": {},
+      "empreinte_sha256": "9f418977492e46f8f2322cea7e8901b77d9af606a9ee5ad52b0d621092240401",
+      "extraits_plafonnes": false,
+      "id": "ec06007c-1e84-4314-bee8-716fe54675ec",
+      "marches_extraits": [],
+      "modifie_le": "2026-10-13T03:12:38.744000+00:00",
+      "rejets_par_categorie": {
+        "Booléen XML inconnu": 301,
+        "Nombre entier incorrect : offresRecues": 76
+      },
+      "releves": {
+        "notices_lues": 377,
+        "notices_rejetees": 377,
+        "objets_documentaires_lus": 377
+      },
+      "schéma_complet_valide": false,
+      "taille_octets_declaree": 1120061,
+      "titre": "decp-13000495500139-2026-10-13-02.xml",
+      "transformation_xml": {
+        "conformite_reglementaire_du_document_etablie": false,
+        "copie_temporaire_uniquement": true,
+        "occurrences": 1,
+        "sha256_contenu_analyse": "4a06a14a392f9fb1e17788a3c7855a7079f1c0e85a698e20ed12cb5730e813b7",
+        "type": "rectification_lexicale_declaration_xmlns_vide"
+      }
+    },
+    {
+      "besoin_encore_ouvert_demontre": false,
+      "categories_cpv_prefixe_2": {},
+      "empreinte_sha256": "c362f89d2ab9e97cedb346424075ac1536e0944de60aa9b4c21e62c86fbb9439",
+      "extraits_plafonnes": false,
+      "id": "f6ac8df9-c3b0-4863-a42b-fb4235f3d6cb",
+      "marches_extraits": [],
+      "modifie_le": "2026-10-13T03:12:35.399000+00:00",
+      "rejets_par_categorie": {
+        "Booléen XML inconnu": 108,
+        "Nombre entier incorrect : offresRecues": 42
+      },
+      "releves": {
+        "notices_lues": 150,
+        "notices_rejetees": 150,
+        "objets_documentaires_lus": 150
+      },
+      "schéma_complet_valide": false,
+      "taille_octets_declaree": 651369,
+      "titre": "decp-13000495500139-2026-10-13-03.xml",
+      "transformation_xml": {
+        "conformite_reglementaire_du_document_etablie": false,
+        "copie_temporaire_uniquement": true,
+        "occurrences": 1,
+        "sha256_contenu_analyse": "cb8569f0137d86cfb7152d8a9504419eec186d627b6aab1dd529b894a368e795",
+        "type": "rectification_lexicale_declaration_xmlns_vide"
+      }
+    },
+    {
+      "besoin_encore_ouvert_demontre": false,
+      "categories_cpv_prefixe_2": {},
+      "empreinte_sha256": "79f951b249ddb309c9ada785b948841adb7bfda0bb059bee8a6b527f0b7b9149",
+      "extraits_plafonnes": false,
+      "id": "5fb2be5d-2392-45f8-92d8-230b2bcee559",
+      "marches_extraits": [],
+      "modifie_le": "2026-10-13T03:12:32.249000+00:00",
+      "rejets_par_categorie": {
+        "Booléen XML inconnu": 116,
+        "Nombre entier incorrect : offresRecues": 61
+      },
+      "releves": {
+        "notices_lues": 177,
+        "notices_rejetees": 177,
+        "objets_documentaires_lus": 177
+      },
+      "schéma_complet_valide": false,
+      "taille_octets_declaree": 478685,
+      "titre": "decp-13000495500139-2026-10-13-04.xml",
+      "transformation_xml": {
+        "conformite_reglementaire_du_document_etablie": false,
+        "copie_temporaire_uniquement": true,
+        "occurrences": 1,
+        "sha256_contenu_analyse": "aac8c2ba245d10ad5d7564412a1652f5cfec617e9f11ee77d8a900ad4397bca2",
+        "type": "rectification_lexicale_declaration_xmlns_vide"
+      }
+    }
+  ],
+  "liens_boamp_verifies": 0,
+  "nombre_fichiers_du_cycle": 4,
+  "nombre_fichiers_historises": 4,
+  "page_catalogue": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-transmises-via-le-pes-marche-depuis-2024",
+  "source_catalogue": "dgfip_pes_marche",
+  "version": "lot-decp-dgfip-xml-v1"
+}
