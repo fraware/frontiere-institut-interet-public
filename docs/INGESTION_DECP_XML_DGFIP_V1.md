@@ -16,6 +16,14 @@ La prise en charge est **strictement bornée** : une unique occurrence de `xmlns
 
 Cette correction relève d'une normalisation lexicale rendue nécessaire par une anomalie constatée sur des données publiques. Elle ne constitue pas une validation complète du fichier ni une correction générale des XML mal formés.
 
+## Problème de valeurs facultatives constaté
+
+Le premier traitement réel de quatre fichiers DGFiP (829 notices lues) a rejeté toutes les notices au niveau du profil réduit : les premières erreurs étaient des valeurs non reconnues pour `marcheInnovant` ou `offresRecues`. Il s'agit d'un défaut de notre première règle d'extraction, et non d'une preuve que les 829 marchés sont invalides.
+
+La correction distingue désormais l'identité contractuelle et les **champs auxiliaires**. Si `offresRecues` ne contient pas un entier strict, le nombre d'offres est conservé comme inconnu. Si `marcheInnovant` ne correspond pas aux booléens explicitement reconnus, son statut est conservé comme inconnu. Le nombre d'anomalies de chaque champ est publié séparément. Aucune valeur manquante n'est remplacée par zéro ou par « non ».
+
+Les champs indispensables à l'identification et à la description d'un marché continuent à être contrôlés strictement. Un fichier comportant des notices de marchés mais **aucune notice normalisable** est refusé pour l'avancement du curseur. Cette règle préserve la distinction entre téléchargement réussi et ingestion de marchés réussie.
+
 ## Collecte par petits lots
 
 Le programme `scripts/sonder_lot_decp_dgfip.py` s'appuie sur les **150 ressources récentes** déjà connues du catalogue local `institutionnel/decp/etat_ressources.json`. Pour chaque ressource choisie, il recoupe identifiant, format, taille et adresse avec la fiche publique actuelle de data.gouv.fr.

@@ -128,3 +128,15 @@ def test_diagnostic_integralement_echoue_sans_contenu_distant():
     assert secret not in message
     assert "ConnectionError" in message
     assert "curseur inchangé" in message
+
+
+
+def test_toutes_les_notices_invalides_n_avancent_pas_le_curseur():
+    local, distant = donnees(1)
+    texte = XML.replace(b"21750001630066", b"IDENTIFIANTXXX")
+    assert len(texte) == len(XML)
+    def recup(meta, cible):
+        cible.write_bytes(texte)
+        return len(texte)
+    with pytest.raises(LotDECPInvalide, match="Toutes"):
+        executer(local, distant, {}, recuperer=recup)

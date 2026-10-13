@@ -161,3 +161,29 @@ def test_namespace_ambigu_ou_hors_racine_refuse(tmp_path):
     with pytest.raises(XMLDECPInvalide, match="hors de"):
         analyser_fichier(fichier, source_id="dgfip_pes_marche",
                         ressource_id=RID)
+
+
+
+def test_valeurs_facultatives_inconnues_ne_suppriment_pas_un_marche(tmp_path):
+    fichier = tmp_path / "valeurs-facultatives.xml"
+    contenu = echantillon().replace(
+        "<offresRecues>2</offresRecues>",
+        "<offresRecues>information non disponible</offresRecues>",
+    ).replace(
+        "<marcheInnovant>oui</marcheInnovant>",
+        "<marcheInnovant>inconnu</marcheInnovant>",
+    )
+    fichier.write_text(contenu, encoding="utf-8")
+    bilan = analyser_fichier(fichier, source_id="dgfip_pes_marche",
+                            ressource_id=RID)
+    assert bilan["releves"]["notices_lues"] == 1
+    assert bilan["releves"]["marches_uniques_valides"] == 1
+    assert bilan["rejets_par_categorie"] == {}
+    assert bilan["anomalies_champs_facultatifs"] == {
+        "marcheInnovant_non_interpretable": 1,
+        "offresRecues_non_interpretable": 1,
+    }
+    marche = bilan["marches_extraits"][0]
+    assert marche["offres_recues_declarees"] is None
+    assert marche["marche_innovant_declare"] is None
+    assert marche["id_marche"] == "M-1"

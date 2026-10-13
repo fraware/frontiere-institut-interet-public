@@ -80,11 +80,24 @@ def _booleen(valeur: str | None) -> bool | None:
     return valeurs[valeur.lower()]
 
 
-def normaliser_xml(element: ET.Element) -> dict:
-    """Convertir les champs directs du marché vers le profil JSON déjà testé."""
+def normaliser_xml(
+    element: ET.Element, anomalies_facultatives: list[str] | None = None
+) -> dict:
+    """Valider les champs essentiels sans perdre un marché pour un champ accessoire."""
+    anomalies = anomalies_facultatives if anomalies_facultatives is not None else []
     if _nom(element.tag) != "marche":
         raise XMLDECPInvalide("Objet XML qui n'est pas un marché")
     acheteur = _enfant(element, "acheteur")
+    try:
+        offres = _entier(_contenu(element, "offresRecues"), "offresRecues")
+    except XMLDECPInvalide:
+        offres = None
+        anomalies.append("offresRecues_non_interpretable")
+    try:
+        innovant = _booleen(_contenu(element, "marcheInnovant"))
+    except XMLDECPInvalide:
+        innovant = None
+        anomalies.append("marcheInnovant_non_interpretable")
     champs = {
         "id": _contenu(element, "id"),
         "acheteur": {"id": _contenu(acheteur, "id") if acheteur is not None else None},
@@ -94,8 +107,8 @@ def normaliser_xml(element: ET.Element) -> dict:
         "dateNotification": _contenu(element, "dateNotification"),
         "datePublicationDonnees": _contenu(element, "datePublicationDonnees"),
         "montant": _nombre(_contenu(element, "montant")),
-        "offresRecues": _entier(_contenu(element, "offresRecues"), "offresRecues"),
-        "marcheInnovant": _booleen(_contenu(element, "marcheInnovant")),
+        "offresRecues": offres,
+        "marcheInnovant": innovant,
         "_type": "Marché",
     }
     try:
@@ -188,6 +201,7 @@ def analyser_fichier(
 
     comptes = Counter()
     rejets = Counter()
+    anomalies_optionnelles = Counter()
     cpvs = Counter()
     vus: dict[tuple[str, str], str] = {}
     extraits = []
@@ -214,8 +228,9 @@ def analyser_fichier(
                     comptes["concessions_non_normalisees"] += 1
                 else:
                     comptes["notices_lues"] += 1
+                    anomalies_notice = []
                     try:
-                        notice = normaliser_xml(element)
+                        notice = normaliser_xml(element, anomalies_notice)
                     except XMLDECPInvalide as exc:
                         comptes["notices_rejetees"] += 1
                         rejets[str(exc)] += 1
@@ -239,6 +254,7 @@ def analyser_fichier(
                                 cpvs[notice["code_cpv"][:2]] += 1
                             if len(extraits) < limite_extraits:
                                 extraits.append(notice)
+                    anomalies_optionnelles.update(anomalies_notice)
                 element.clear()
                 if racine is not None:
                     racine.clear()
@@ -268,6 +284,7 @@ def analyser_fichier(
         "taille_fichier_octets": taille,
         "releves": dict(sorted(comptes.items())),
         "rejets_par_categorie": dict(sorted(rejets.items())),
+        "anomalies_champs_facultatifs": dict(sorted(anomalies_optionnelles.items())),
         "categories_cpv_prefixe_2": dict(sorted(cpvs.items())),
         "marches_extraits": extraits,
         "extraits_plafonnes": len(extraits) < comptes["marches_uniques_valides"],
