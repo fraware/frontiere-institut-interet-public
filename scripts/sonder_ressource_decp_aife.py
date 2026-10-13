@@ -14,10 +14,12 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
-from scripts.collecter_catalogues_decp import telecharger as telecharger_catalogue
-from scripts.ingerer_fichier_decp_json import (
-    RACINE, DocumentDECPInvalide, traiter_fichier,
-)
+if __package__:
+    from scripts.collecter_catalogues_decp import telecharger as telecharger_catalogue
+    from scripts.ingerer_fichier_decp_json import RACINE, traiter_fichier
+else:
+    from collecter_catalogues_decp import telecharger as telecharger_catalogue
+    from ingerer_fichier_decp_json import RACINE, traiter_fichier
 
 ETAT = RACINE / "institutionnel/decp/etat_ressources.json"
 SORTIE = RACINE / "institutionnel/decp/sonde_aife_json.json"
