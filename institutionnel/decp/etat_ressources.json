@@ -1,0 +1,1400 @@
+{
+  "catalogues": [
+    {
+      "actualise_le": "2026-10-10T04:13:17.005000+00:00",
+      "completude_des_marches_etablie": false,
+      "contenu_des_fichiers_telecharge": false,
+      "empreinte_inventaire_complet": "e1844de5ca34cd4b79e58b03b1b2af02b8328bbbfe7ad747a6e17be390393c8c",
+      "formats": {
+        "xml": 5323
+      },
+      "jeu_id": "65cf3c55ec910b5a8e2fc084",
+      "licence_declaree": "lov2",
+      "nombre_ressources_indexees": 150,
+      "nombre_ressources_non_detaillees": 5173,
+      "nombre_ressources_total": 5323,
+      "nouveaux_besoins_prospectifs_deduits": 0,
+      "observe_le": "2026-10-13T03:12:11+00:00",
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-transmises-via-le-pes-marche-depuis-2024",
+      "ressources_recentes": [
+        {
+          "format": "xml",
+          "id": "73f876a2-640a-4cf2-a140-0161124a8282",
+          "modifie_le": "2026-10-10T04:13:17.005000+00:00",
+          "taille_octets_declaree": 501332,
+          "titre": "decp-13000495500139-2026-10-12-01.xml"
+        },
+        {
+          "format": "xml",
+          "id": "d5e6460b-a836-43f5-9560-ecff4236f3fd",
+          "modifie_le": "2026-10-10T04:13:14.332000+00:00",
+          "taille_octets_declaree": 708609,
+          "titre": "decp-13000495500139-2026-10-12-02.xml"
+        },
+        {
+          "format": "xml",
+          "id": "9388669f-7b89-4c61-84cf-6a02286f356e",
+          "modifie_le": "2026-10-10T04:13:11.333000+00:00",
+          "taille_octets_declaree": 568723,
+          "titre": "decp-13000495500139-2026-10-12-03.xml"
+        },
+        {
+          "format": "xml",
+          "id": "ca6079e8-7e2d-4efd-a47d-92e13920c937",
+          "modifie_le": "2026-10-10T04:13:08.262000+00:00",
+          "taille_octets_declaree": 721399,
+          "titre": "decp-13000495500139-2026-10-12-04.xml"
+        },
+        {
+          "format": "xml",
+          "id": "9e7c1606-3051-40c9-a05c-9332a3e0d9e4",
+          "modifie_le": "2026-10-10T04:13:05.441000+00:00",
+          "taille_octets_declaree": 491402,
+          "titre": "decp-13000495500139-2026-10-12-05.xml"
+        },
+        {
+          "format": "xml",
+          "id": "e6c622b6-b982-43c3-86a8-812f2adca02f",
+          "modifie_le": "2026-10-10T04:13:02.944000+00:00",
+          "taille_octets_declaree": 126661,
+          "titre": "decp-13000495500139-2026-10-12-06.xml"
+        },
+        {
+          "format": "xml",
+          "id": "ace2fd3c-7712-40ea-8c6a-2f46416e2282",
+          "modifie_le": "2026-10-10T04:12:59.941000+00:00",
+          "taille_octets_declaree": 86840,
+          "titre": "decp-13000495500139-2026-10-12-07.xml"
+        },
+        {
+          "format": "xml",
+          "id": "1ff8e080-41ae-4f63-aa4d-367a32d65550",
+          "modifie_le": "2026-10-10T04:12:57.985000+00:00",
+          "taille_octets_declaree": 300087,
+          "titre": "decp-13000495500139-2026-10-12-08.xml"
+        },
+        {
+          "format": "xml",
+          "id": "96f6f0f3-3af1-4858-9727-0a77faffff06",
+          "modifie_le": "2026-10-10T04:12:55.664000+00:00",
+          "taille_octets_declaree": 645460,
+          "titre": "decp-13000495500139-2026-10-12-09.xml"
+        },
+        {
+          "format": "xml",
+          "id": "23d0c0db-55d6-4142-8194-c77be1402969",
+          "modifie_le": "2026-10-10T04:12:52.857000+00:00",
+          "taille_octets_declaree": 149265,
+          "titre": "decp-13000495500139-2026-10-12-10.xml"
+        },
+        {
+          "format": "xml",
+          "id": "89768449-cc76-4005-8aa0-8591920342c8",
+          "modifie_le": "2026-10-09T03:12:49.231000+00:00",
+          "taille_octets_declaree": 419523,
+          "titre": "decp-13000495500139-2026-10-09-01.xml"
+        },
+        {
+          "format": "xml",
+          "id": "f50f668e-0937-4cf8-ac4f-7ed0328084d0",
+          "modifie_le": "2026-10-09T03:12:47.120000+00:00",
+          "taille_octets_declaree": 679672,
+          "titre": "decp-13000495500139-2026-10-09-02.xml"
+        },
+        {
+          "format": "xml",
+          "id": "7e0d54e3-a70e-485a-a487-fc24aaac37ef",
+          "modifie_le": "2026-10-09T03:12:43.352000+00:00",
+          "taille_octets_declaree": 697466,
+          "titre": "decp-13000495500139-2026-10-09-03.xml"
+        },
+        {
+          "format": "xml",
+          "id": "c8e59c47-3eea-4a00-b31e-49e2fd197ac5",
+          "modifie_le": "2026-10-09T03:12:41.015000+00:00",
+          "taille_octets_declaree": 678474,
+          "titre": "decp-13000495500139-2026-10-09-04.xml"
+        },
+        {
+          "format": "xml",
+          "id": "342b2fd4-0e45-4fb4-a2f0-865cefc2394c",
+          "modifie_le": "2026-10-09T03:12:38.711000+00:00",
+          "taille_octets_declaree": 480590,
+          "titre": "decp-13000495500139-2026-10-09-05.xml"
+        },
+        {
+          "format": "xml",
+          "id": "2484c413-f26f-439b-ab9b-ab20d632343f",
+          "modifie_le": "2026-10-09T03:12:36.295000+00:00",
+          "taille_octets_declaree": 96813,
+          "titre": "decp-13000495500139-2026-10-09-06.xml"
+        },
+        {
+          "format": "xml",
+          "id": "6445c33b-fd07-4cc7-8f75-4a5b8a545119",
+          "modifie_le": "2026-10-09T03:12:34.165000+00:00",
+          "taille_octets_declaree": 68717,
+          "titre": "decp-13000495500139-2026-10-09-07.xml"
+        },
+        {
+          "format": "xml",
+          "id": "07d78d05-432e-4290-af9e-ddfe2abb8a8d",
+          "modifie_le": "2026-10-09T03:12:31.689000+00:00",
+          "taille_octets_declaree": 291194,
+          "titre": "decp-13000495500139-2026-10-09-08.xml"
+        },
+        {
+          "format": "xml",
+          "id": "ee48580d-f0f8-4472-a87b-d7b28b80ced9",
+          "modifie_le": "2026-10-09T03:12:29.710000+00:00",
+          "taille_octets_declaree": 556182,
+          "titre": "decp-13000495500139-2026-10-09-09.xml"
+        },
+        {
+          "format": "xml",
+          "id": "0734f8eb-89e0-45eb-bbd2-cb48d55ea69a",
+          "modifie_le": "2026-10-09T03:12:26.614000+00:00",
+          "taille_octets_declaree": 86887,
+          "titre": "decp-13000495500139-2026-10-09-10.xml"
+        },
+        {
+          "format": "xml",
+          "id": "af176606-1a5f-4b35-93aa-e9c2dafd1b9d",
+          "modifie_le": "2026-10-08T03:16:38.179000+00:00",
+          "taille_octets_declaree": 530810,
+          "titre": "decp-13000495500139-2026-10-08-01.xml"
+        },
+        {
+          "format": "xml",
+          "id": "acb1de9b-b098-451a-9239-8af6be151192",
+          "modifie_le": "2026-10-08T03:16:34.841000+00:00",
+          "taille_octets_declaree": 791823,
+          "titre": "decp-13000495500139-2026-10-08-02.xml"
+        },
+        {
+          "format": "xml",
+          "id": "df71e5f4-cbb0-49b7-b536-4455bbf42a09",
+          "modifie_le": "2026-10-08T03:16:31.570000+00:00",
+          "taille_octets_declaree": 865817,
+          "titre": "decp-13000495500139-2026-10-08-03.xml"
+        },
+        {
+          "format": "xml",
+          "id": "5ab77c85-9678-46f4-88d8-3075bf7578b2",
+          "modifie_le": "2026-10-08T03:16:28.768000+00:00",
+          "taille_octets_declaree": 591901,
+          "titre": "decp-13000495500139-2026-10-08-04.xml"
+        },
+        {
+          "format": "xml",
+          "id": "2d8ee8a0-67d3-47e0-b1cf-04b3cc05d5ca",
+          "modifie_le": "2026-10-08T03:16:25.623000+00:00",
+          "taille_octets_declaree": 382050,
+          "titre": "decp-13000495500139-2026-10-08-05.xml"
+        },
+        {
+          "format": "xml",
+          "id": "1075191d-9ff3-4765-8239-095f56197c2a",
+          "modifie_le": "2026-10-08T03:16:23.375000+00:00",
+          "taille_octets_declaree": 112306,
+          "titre": "decp-13000495500139-2026-10-08-06.xml"
+        },
+        {
+          "format": "xml",
+          "id": "3b73161b-85b7-413f-bf28-d4c378fe11e6",
+          "modifie_le": "2026-10-08T03:16:21.064000+00:00",
+          "taille_octets_declaree": 118035,
+          "titre": "decp-13000495500139-2026-10-08-07.xml"
+        },
+        {
+          "format": "xml",
+          "id": "6d70b84a-0945-4041-9a37-3a3f1afc6c11",
+          "modifie_le": "2026-10-08T03:16:18.784000+00:00",
+          "taille_octets_declaree": 97807,
+          "titre": "decp-13000495500139-2026-10-08-08.xml"
+        },
+        {
+          "format": "xml",
+          "id": "1c8e3bfc-e667-47ff-a85e-106d29758d33",
+          "modifie_le": "2026-10-08T03:16:16.420000+00:00",
+          "taille_octets_declaree": 667551,
+          "titre": "decp-13000495500139-2026-10-08-09.xml"
+        },
+        {
+          "format": "xml",
+          "id": "837c5e9e-b64b-49c7-9431-d00618435cd4",
+          "modifie_le": "2026-10-08T03:16:14.063000+00:00",
+          "taille_octets_declaree": 168907,
+          "titre": "decp-13000495500139-2026-10-08-10.xml"
+        },
+        {
+          "format": "xml",
+          "id": "de3a8bbe-17ed-4bae-84ee-3a905af10e2d",
+          "modifie_le": "2026-10-07T03:12:41.214000+00:00",
+          "taille_octets_declaree": 350832,
+          "titre": "decp-13000495500139-2026-10-07-01.xml"
+        },
+        {
+          "format": "xml",
+          "id": "322c8b1b-1b6d-45f9-99f2-fc86ae822f67",
+          "modifie_le": "2026-10-07T03:12:38.746000+00:00",
+          "taille_octets_declaree": 803373,
+          "titre": "decp-13000495500139-2026-10-07-02.xml"
+        },
+        {
+          "format": "xml",
+          "id": "7fb5c582-8c4c-4319-a7f8-be6b2b4014e1",
+          "modifie_le": "2026-10-07T03:12:36.061000+00:00",
+          "taille_octets_declaree": 856331,
+          "titre": "decp-13000495500139-2026-10-07-03.xml"
+        },
+        {
+          "format": "xml",
+          "id": "05879669-9391-4526-92dc-3f8031180fe8",
+          "modifie_le": "2026-10-07T03:12:33.306000+00:00",
+          "taille_octets_declaree": 617997,
+          "titre": "decp-13000495500139-2026-10-07-04.xml"
+        },
+        {
+          "format": "xml",
+          "id": "bc29c96e-8ea1-4ee0-ae6c-9c1342b9d215",
+          "modifie_le": "2026-10-07T03:12:30.571000+00:00",
+          "taille_octets_declaree": 346131,
+          "titre": "decp-13000495500139-2026-10-07-05.xml"
+        },
+        {
+          "format": "xml",
+          "id": "e68c297c-c1aa-4e16-9b34-47a90aec9286",
+          "modifie_le": "2026-10-07T03:12:27.758000+00:00",
+          "taille_octets_declaree": 51609,
+          "titre": "decp-13000495500139-2026-10-07-06.xml"
+        },
+        {
+          "format": "xml",
+          "id": "4487520a-7536-4a54-a57d-b0b9b27811de",
+          "modifie_le": "2026-10-07T03:12:25.027000+00:00",
+          "taille_octets_declaree": 48065,
+          "titre": "decp-13000495500139-2026-10-07-07.xml"
+        },
+        {
+          "format": "xml",
+          "id": "d35edd02-868b-42dc-a92a-70430dd66f79",
+          "modifie_le": "2026-10-07T03:12:22.786000+00:00",
+          "taille_octets_declaree": 106548,
+          "titre": "decp-13000495500139-2026-10-07-08.xml"
+        },
+        {
+          "format": "xml",
+          "id": "5850455c-0014-4013-b5c8-9f6eb074cede",
+          "modifie_le": "2026-10-07T03:12:20.783000+00:00",
+          "taille_octets_declaree": 505424,
+          "titre": "decp-13000495500139-2026-10-07-09.xml"
+        },
+        {
+          "format": "xml",
+          "id": "80e0fa9a-69ee-4563-9aa0-fe7f6c8be663",
+          "modifie_le": "2026-10-07T03:12:18.555000+00:00",
+          "taille_octets_declaree": 194963,
+          "titre": "decp-13000495500139-2026-10-07-10.xml"
+        },
+        {
+          "format": "xml",
+          "id": "669a551a-ec29-4030-b4d7-56d2aa61e4c9",
+          "modifie_le": "2026-10-06T03:13:15.331000+00:00",
+          "taille_octets_declaree": 283867,
+          "titre": "decp-13000495500139-2026-10-06-01.xml"
+        },
+        {
+          "format": "xml",
+          "id": "e6386639-85a9-4979-ab19-cdee682eacb2",
+          "modifie_le": "2026-10-06T03:13:13.178000+00:00",
+          "taille_octets_declaree": 670516,
+          "titre": "decp-13000495500139-2026-10-06-02.xml"
+        },
+        {
+          "format": "xml",
+          "id": "65ba7f9a-dd21-4f30-8844-533ce5c64c1f",
+          "modifie_le": "2026-10-06T03:13:10.382000+00:00",
+          "taille_octets_declaree": 626707,
+          "titre": "decp-13000495500139-2026-10-06-03.xml"
+        },
+        {
+          "format": "xml",
+          "id": "ab83ca9c-7d56-4d0a-81a2-aa8cba2855e5",
+          "modifie_le": "2026-10-06T03:13:07.051000+00:00",
+          "taille_octets_declaree": 664965,
+          "titre": "decp-13000495500139-2026-10-06-04.xml"
+        },
+        {
+          "format": "xml",
+          "id": "83cb043a-c14f-49a3-b324-c283289cbb00",
+          "modifie_le": "2026-10-06T03:13:04.411000+00:00",
+          "taille_octets_declaree": 220921,
+          "titre": "decp-13000495500139-2026-10-06-05.xml"
+        },
+        {
+          "format": "xml",
+          "id": "c1c70908-be1b-4560-9893-6ef56d158505",
+          "modifie_le": "2026-10-06T03:13:01.492000+00:00",
+          "taille_octets_declaree": 175984,
+          "titre": "decp-13000495500139-2026-10-06-06.xml"
+        },
+        {
+          "format": "xml",
+          "id": "d850b12e-e243-4589-a0bb-612286657ab2",
+          "modifie_le": "2026-10-06T03:12:59.119000+00:00",
+          "taille_octets_declaree": 100726,
+          "titre": "decp-13000495500139-2026-10-06-07.xml"
+        },
+        {
+          "format": "xml",
+          "id": "3d3efaa2-29e0-442e-802d-c8119d36de81",
+          "modifie_le": "2026-10-06T03:12:56.925000+00:00",
+          "taille_octets_declaree": 78365,
+          "titre": "decp-13000495500139-2026-10-06-08.xml"
+        },
+        {
+          "format": "xml",
+          "id": "7b660a2e-6539-411a-8368-4e10d0ec7d3c",
+          "modifie_le": "2026-10-06T03:12:54.547000+00:00",
+          "taille_octets_declaree": 544775,
+          "titre": "decp-13000495500139-2026-10-06-09.xml"
+        },
+        {
+          "format": "xml",
+          "id": "75c21025-7304-45c5-b403-a3398afa9796",
+          "modifie_le": "2026-10-06T03:12:51.643000+00:00",
+          "taille_octets_declaree": 456503,
+          "titre": "decp-13000495500139-2026-10-06-10.xml"
+        },
+        {
+          "format": "xml",
+          "id": "b91cff17-40b4-45a6-a688-206c359c416b",
+          "modifie_le": "2026-10-03T10:55:08.884000+00:00",
+          "taille_octets_declaree": 441970,
+          "titre": "decp-13000495500139-2026-10-05-01.xml"
+        },
+        {
+          "format": "xml",
+          "id": "a827d4b3-c6ad-4065-b2e1-9beaa6125be2",
+          "modifie_le": "2026-10-03T10:55:06.231000+00:00",
+          "taille_octets_declaree": 847711,
+          "titre": "decp-13000495500139-2026-10-05-02.xml"
+        },
+        {
+          "format": "xml",
+          "id": "46712b8b-c99e-4767-9b91-f3bfb7f310d3",
+          "modifie_le": "2026-10-03T10:55:03.824000+00:00",
+          "taille_octets_declaree": 720573,
+          "titre": "decp-13000495500139-2026-10-05-03.xml"
+        },
+        {
+          "format": "xml",
+          "id": "9bd23683-3d02-4c14-a52e-af23773be123",
+          "modifie_le": "2026-10-03T10:54:58.819000+00:00",
+          "taille_octets_declaree": 543078,
+          "titre": "decp-13000495500139-2026-10-05-04.xml"
+        },
+        {
+          "format": "xml",
+          "id": "b2f7b35c-a60c-4fb6-a871-36088bbd5f52",
+          "modifie_le": "2026-10-03T10:54:56.675000+00:00",
+          "taille_octets_declaree": 361294,
+          "titre": "decp-13000495500139-2026-10-05-05.xml"
+        },
+        {
+          "format": "xml",
+          "id": "8d67e852-2246-4708-b4c9-116a2733f147",
+          "modifie_le": "2026-10-03T10:54:54.322000+00:00",
+          "taille_octets_declaree": 118920,
+          "titre": "decp-13000495500139-2026-10-05-06.xml"
+        },
+        {
+          "format": "xml",
+          "id": "433ffa09-a72e-4538-b565-bcdfbe9c22dd",
+          "modifie_le": "2026-10-03T10:54:51.949000+00:00",
+          "taille_octets_declaree": 144074,
+          "titre": "decp-13000495500139-2026-10-05-07.xml"
+        },
+        {
+          "format": "xml",
+          "id": "c9233089-924e-45ba-a49d-39f49afcdf1e",
+          "modifie_le": "2026-10-03T10:54:49.715000+00:00",
+          "taille_octets_declaree": 271959,
+          "titre": "decp-13000495500139-2026-10-05-08.xml"
+        },
+        {
+          "format": "xml",
+          "id": "55c5c96b-a128-4eea-b151-415c837b44cc",
+          "modifie_le": "2026-10-03T10:54:47.275000+00:00",
+          "taille_octets_declaree": 583634,
+          "titre": "decp-13000495500139-2026-10-05-09.xml"
+        },
+        {
+          "format": "xml",
+          "id": "ca9a4952-af8c-474e-ac6e-cd933df0f1d8",
+          "modifie_le": "2026-10-03T10:54:44.718000+00:00",
+          "taille_octets_declaree": 1197297,
+          "titre": "decp-13000495500139-2026-10-05-10.xml"
+        },
+        {
+          "format": "xml",
+          "id": "eaea600a-0e46-4935-8e46-f7572699d9c4",
+          "modifie_le": "2026-10-02T03:12:56.434000+00:00",
+          "taille_octets_declaree": 290491,
+          "titre": "decp-13000495500139-2026-10-02-01.xml"
+        },
+        {
+          "format": "xml",
+          "id": "b1a94ba6-3cc7-4d53-9622-927a3920b3f2",
+          "modifie_le": "2026-10-02T03:12:52.784000+00:00",
+          "taille_octets_declaree": 731884,
+          "titre": "decp-13000495500139-2026-10-02-02.xml"
+        },
+        {
+          "format": "xml",
+          "id": "6791382d-a3f5-4049-af7c-f6892339e7e3",
+          "modifie_le": "2026-10-02T03:12:49.639000+00:00",
+          "taille_octets_declaree": 703139,
+          "titre": "decp-13000495500139-2026-10-02-03.xml"
+        },
+        {
+          "format": "xml",
+          "id": "207b7efb-c96e-4bc2-a1b2-7ddd66f3bc78",
+          "modifie_le": "2026-10-02T03:12:46.950000+00:00",
+          "taille_octets_declaree": 572155,
+          "titre": "decp-13000495500139-2026-10-02-04.xml"
+        },
+        {
+          "format": "xml",
+          "id": "977454f6-64cd-4851-b1bf-c928f771e175",
+          "modifie_le": "2026-10-02T03:12:43.893000+00:00",
+          "taille_octets_declaree": 347228,
+          "titre": "decp-13000495500139-2026-10-02-05.xml"
+        },
+        {
+          "format": "xml",
+          "id": "0142a50b-8676-4961-9444-79ddd1d02815",
+          "modifie_le": "2026-10-02T03:12:41.528000+00:00",
+          "taille_octets_declaree": 101834,
+          "titre": "decp-13000495500139-2026-10-02-06.xml"
+        },
+        {
+          "format": "xml",
+          "id": "d6bf90c6-a5a9-4c09-a614-02ab91c2b4f9",
+          "modifie_le": "2026-10-02T03:12:39.193000+00:00",
+          "taille_octets_declaree": 44203,
+          "titre": "decp-13000495500139-2026-10-02-07.xml"
+        },
+        {
+          "format": "xml",
+          "id": "2455c0f9-4a08-41cf-9768-6c9235215e21",
+          "modifie_le": "2026-10-02T03:12:36.441000+00:00",
+          "taille_octets_declaree": 241747,
+          "titre": "decp-13000495500139-2026-10-02-08.xml"
+        },
+        {
+          "format": "xml",
+          "id": "bdb537c6-12ab-4dbe-ba21-c9f19bec7d0d",
+          "modifie_le": "2026-10-02T03:12:34.028000+00:00",
+          "taille_octets_declaree": 603802,
+          "titre": "decp-13000495500139-2026-10-02-09.xml"
+        },
+        {
+          "format": "xml",
+          "id": "7b2ba104-49bf-4391-a7f7-bcae243fa847",
+          "modifie_le": "2026-10-02T03:12:31.158000+00:00",
+          "taille_octets_declaree": 166475,
+          "titre": "decp-13000495500139-2026-10-02-10.xml"
+        },
+        {
+          "format": "xml",
+          "id": "d1385468-16b5-42a6-ab9d-514cdd58b792",
+          "modifie_le": "2026-10-01T03:13:23.406000+00:00",
+          "taille_octets_declaree": 351470,
+          "titre": "decp-13000495500139-2026-10-01-01.xml"
+        },
+        {
+          "format": "xml",
+          "id": "79cb5ea4-463b-447f-8772-fad8902b278e",
+          "modifie_le": "2026-10-01T03:13:20.765000+00:00",
+          "taille_octets_declaree": 762216,
+          "titre": "decp-13000495500139-2026-10-01-02.xml"
+        },
+        {
+          "format": "xml",
+          "id": "83a2f2ef-04ef-4276-b7e3-c882343e3069",
+          "modifie_le": "2026-10-01T03:13:18.384000+00:00",
+          "taille_octets_declaree": 693224,
+          "titre": "decp-13000495500139-2026-10-01-03.xml"
+        },
+        {
+          "format": "xml",
+          "id": "6d5ce187-9736-44fa-867b-b8b97906aee0",
+          "modifie_le": "2026-10-01T03:13:15.994000+00:00",
+          "taille_octets_declaree": 554849,
+          "titre": "decp-13000495500139-2026-10-01-04.xml"
+        },
+        {
+          "format": "xml",
+          "id": "ee4288c9-259e-4237-945c-6af2e23924d9",
+          "modifie_le": "2026-10-01T03:13:13.663000+00:00",
+          "taille_octets_declaree": 612543,
+          "titre": "decp-13000495500139-2026-10-01-05.xml"
+        },
+        {
+          "format": "xml",
+          "id": "81daa6db-76e4-4e74-a713-4147df2b7019",
+          "modifie_le": "2026-10-01T03:13:11.306000+00:00",
+          "taille_octets_declaree": 121571,
+          "titre": "decp-13000495500139-2026-10-01-06.xml"
+        },
+        {
+          "format": "xml",
+          "id": "0be080d1-dc26-48bd-9318-b9295f4d8466",
+          "modifie_le": "2026-10-01T03:13:09.222000+00:00",
+          "taille_octets_declaree": 83310,
+          "titre": "decp-13000495500139-2026-10-01-07.xml"
+        },
+        {
+          "format": "xml",
+          "id": "0819ac34-f655-4997-891b-06ecd5868441",
+          "modifie_le": "2026-10-01T03:13:07.035000+00:00",
+          "taille_octets_declaree": 414470,
+          "titre": "decp-13000495500139-2026-10-01-08.xml"
+        },
+        {
+          "format": "xml",
+          "id": "43b840f0-438f-4867-8763-bd222332c49d",
+          "modifie_le": "2026-10-01T03:13:04.474000+00:00",
+          "taille_octets_declaree": 558347,
+          "titre": "decp-13000495500139-2026-10-01-09.xml"
+        },
+        {
+          "format": "xml",
+          "id": "36c3f39f-46e1-4fb1-80e2-15b999805cf9",
+          "modifie_le": "2026-10-01T03:12:59.951000+00:00",
+          "taille_octets_declaree": 254870,
+          "titre": "decp-13000495500139-2026-10-01-10.xml"
+        },
+        {
+          "format": "xml",
+          "id": "0e3cfbcd-796d-4d02-8e79-cdb0bd5055dc",
+          "modifie_le": "2026-09-30T03:12:37.919000+00:00",
+          "taille_octets_declaree": 406782,
+          "titre": "decp-13000495500139-2026-09-30-01.xml"
+        },
+        {
+          "format": "xml",
+          "id": "614f8824-1fb4-4a40-9955-9293d1d5543e",
+          "modifie_le": "2026-09-30T03:12:35.913000+00:00",
+          "taille_octets_declaree": 721622,
+          "titre": "decp-13000495500139-2026-09-30-02.xml"
+        },
+        {
+          "format": "xml",
+          "id": "99c90671-67ec-43a6-9e91-0e85f1c05094",
+          "modifie_le": "2026-09-30T03:12:32.036000+00:00",
+          "taille_octets_declaree": 706418,
+          "titre": "decp-13000495500139-2026-09-30-03.xml"
+        },
+        {
+          "format": "xml",
+          "id": "9f1574ef-dc82-4fdb-871e-38602912001a",
+          "modifie_le": "2026-09-30T03:12:29.423000+00:00",
+          "taille_octets_declaree": 488251,
+          "titre": "decp-13000495500139-2026-09-30-04.xml"
+        },
+        {
+          "format": "xml",
+          "id": "48a25371-6d93-415e-ae0d-c1777edd6df3",
+          "modifie_le": "2026-09-30T03:12:27.096000+00:00",
+          "taille_octets_declaree": 310814,
+          "titre": "decp-13000495500139-2026-09-30-05.xml"
+        },
+        {
+          "format": "xml",
+          "id": "d06ba670-f3e2-428a-b0c0-d45175c99df8",
+          "modifie_le": "2026-09-30T03:12:24.942000+00:00",
+          "taille_octets_declaree": 77283,
+          "titre": "decp-13000495500139-2026-09-30-06.xml"
+        },
+        {
+          "format": "xml",
+          "id": "3ef96579-d78c-4777-94d2-f988a48a3b0a",
+          "modifie_le": "2026-09-30T03:12:22.272000+00:00",
+          "taille_octets_declaree": 90834,
+          "titre": "decp-13000495500139-2026-09-30-07.xml"
+        },
+        {
+          "format": "xml",
+          "id": "931abee4-415a-4a1d-9eb4-fd52b105b2bb",
+          "modifie_le": "2026-09-30T03:12:20.308000+00:00",
+          "taille_octets_declaree": 194309,
+          "titre": "decp-13000495500139-2026-09-30-08.xml"
+        },
+        {
+          "format": "xml",
+          "id": "49379ac3-c249-4f90-8db3-26d76a46c94a",
+          "modifie_le": "2026-09-30T03:12:18.215000+00:00",
+          "taille_octets_declaree": 649816,
+          "titre": "decp-13000495500139-2026-09-30-09.xml"
+        },
+        {
+          "format": "xml",
+          "id": "4886a39b-c782-40ef-a9c1-a72f445ae7dc",
+          "modifie_le": "2026-09-30T03:12:15.208000+00:00",
+          "taille_octets_declaree": 417190,
+          "titre": "decp-13000495500139-2026-09-30-10.xml"
+        },
+        {
+          "format": "xml",
+          "id": "26e175b6-0e50-4062-a451-597825ef66a0",
+          "modifie_le": "2026-09-29T03:12:31.326000+00:00",
+          "taille_octets_declaree": 320948,
+          "titre": "decp-13000495500139-2026-09-29-01.xml"
+        },
+        {
+          "format": "xml",
+          "id": "e6b34fca-dcf3-4508-8437-725f165abaad",
+          "modifie_le": "2026-09-29T03:12:29.123000+00:00",
+          "taille_octets_declaree": 714483,
+          "titre": "decp-13000495500139-2026-09-29-02.xml"
+        },
+        {
+          "format": "xml",
+          "id": "e325c5e2-4201-4b40-b6ed-3119606935a8",
+          "modifie_le": "2026-09-29T03:12:26.472000+00:00",
+          "taille_octets_declaree": 643616,
+          "titre": "decp-13000495500139-2026-09-29-03.xml"
+        },
+        {
+          "format": "xml",
+          "id": "74b2f7e4-3a68-4d50-b860-d6058f1a5e09",
+          "modifie_le": "2026-09-29T03:12:24.104000+00:00",
+          "taille_octets_declaree": 402052,
+          "titre": "decp-13000495500139-2026-09-29-04.xml"
+        },
+        {
+          "format": "xml",
+          "id": "6e660f3e-a431-4422-b159-1ca4fd7dd205",
+          "modifie_le": "2026-09-29T03:12:21.820000+00:00",
+          "taille_octets_declaree": 443850,
+          "titre": "decp-13000495500139-2026-09-29-05.xml"
+        },
+        {
+          "format": "xml",
+          "id": "86894ee8-6d61-488e-8675-58c07277e9f3",
+          "modifie_le": "2026-09-29T03:12:19.351000+00:00",
+          "taille_octets_declaree": 86298,
+          "titre": "decp-13000495500139-2026-09-29-06.xml"
+        },
+        {
+          "format": "xml",
+          "id": "bf4f7873-334c-4681-8666-47aa3884b7f3",
+          "modifie_le": "2026-09-29T03:12:17.047000+00:00",
+          "taille_octets_declaree": 50370,
+          "titre": "decp-13000495500139-2026-09-29-07.xml"
+        },
+        {
+          "format": "xml",
+          "id": "84efaac4-6c72-4d78-ab16-447b9aee281c",
+          "modifie_le": "2026-09-29T03:12:14.864000+00:00",
+          "taille_octets_declaree": 263056,
+          "titre": "decp-13000495500139-2026-09-29-08.xml"
+        },
+        {
+          "format": "xml",
+          "id": "6607a379-8b4a-436a-ba1e-eecb3732b8f5",
+          "modifie_le": "2026-09-29T03:12:12.370000+00:00",
+          "taille_octets_declaree": 502898,
+          "titre": "decp-13000495500139-2026-09-29-09.xml"
+        },
+        {
+          "format": "xml",
+          "id": "758456b7-9b82-4a82-95aa-2695196ba1bd",
+          "modifie_le": "2026-09-29T03:12:09.604000+00:00",
+          "taille_octets_declaree": 393552,
+          "titre": "decp-13000495500139-2026-09-29-10.xml"
+        },
+        {
+          "format": "xml",
+          "id": "44810c1e-c021-4d31-9cf5-856dc3a701ab",
+          "modifie_le": "2026-09-26T04:08:07.248000+00:00",
+          "taille_octets_declaree": 356273,
+          "titre": "decp-13000495500139-2026-09-28-01.xml"
+        },
+        {
+          "format": "xml",
+          "id": "bb2cd88f-162f-4d0e-b10e-8bc6be14921d",
+          "modifie_le": "2026-09-26T04:08:04.595000+00:00",
+          "taille_octets_declaree": 903630,
+          "titre": "decp-13000495500139-2026-09-28-02.xml"
+        },
+        {
+          "format": "xml",
+          "id": "ad8efda9-1a1d-491d-86e7-50a7fc688247",
+          "modifie_le": "2026-09-26T04:08:01.767000+00:00",
+          "taille_octets_declaree": 598228,
+          "titre": "decp-13000495500139-2026-09-28-03.xml"
+        },
+        {
+          "format": "xml",
+          "id": "388cf8f1-7081-4701-a93f-df51bab305f7",
+          "modifie_le": "2026-09-26T04:07:59.331000+00:00",
+          "taille_octets_declaree": 465858,
+          "titre": "decp-13000495500139-2026-09-28-04.xml"
+        },
+        {
+          "format": "xml",
+          "id": "18e11317-17d0-4196-bf61-e7a882307cbd",
+          "modifie_le": "2026-09-26T04:07:56.611000+00:00",
+          "taille_octets_declaree": 366664,
+          "titre": "decp-13000495500139-2026-09-28-05.xml"
+        },
+        {
+          "format": "xml",
+          "id": "22c050ad-5d2f-4f37-9aef-e4b1074d1fc2",
+          "modifie_le": "2026-09-26T04:07:53.850000+00:00",
+          "taille_octets_declaree": 101378,
+          "titre": "decp-13000495500139-2026-09-28-06.xml"
+        },
+        {
+          "format": "xml",
+          "id": "db75097e-330b-4988-bfca-ad09277f2534",
+          "modifie_le": "2026-09-26T04:07:51.042000+00:00",
+          "taille_octets_declaree": 62702,
+          "titre": "decp-13000495500139-2026-09-28-07.xml"
+        },
+        {
+          "format": "xml",
+          "id": "1f53daa3-429a-4e1d-a560-72b4da40ff0c",
+          "modifie_le": "2026-09-26T04:07:48.874000+00:00",
+          "taille_octets_declaree": 85801,
+          "titre": "decp-13000495500139-2026-09-28-08.xml"
+        },
+        {
+          "format": "xml",
+          "id": "a2affdab-1d73-4850-aea3-26e02443a65d",
+          "modifie_le": "2026-09-26T04:07:46.362000+00:00",
+          "taille_octets_declaree": 577695,
+          "titre": "decp-13000495500139-2026-09-28-09.xml"
+        },
+        {
+          "format": "xml",
+          "id": "3ed0fd24-92e3-4b5d-9bf6-e1ed9c01270b",
+          "modifie_le": "2026-09-26T04:07:43.747000+00:00",
+          "taille_octets_declaree": 118152,
+          "titre": "decp-13000495500139-2026-09-28-10.xml"
+        },
+        {
+          "format": "xml",
+          "id": "1e9f3744-d71f-4546-86be-f255ecfe3f8b",
+          "modifie_le": "2026-09-25T03:12:28.672000+00:00",
+          "taille_octets_declaree": 304575,
+          "titre": "decp-13000495500139-2026-09-25-01.xml"
+        },
+        {
+          "format": "xml",
+          "id": "b97eeff0-704e-4636-9227-6fbf03a34df4",
+          "modifie_le": "2026-09-25T03:12:26.497000+00:00",
+          "taille_octets_declaree": 490745,
+          "titre": "decp-13000495500139-2026-09-25-02.xml"
+        },
+        {
+          "format": "xml",
+          "id": "a8a35f75-f471-4297-b92a-689b80d18e59",
+          "modifie_le": "2026-09-25T03:12:24.389000+00:00",
+          "taille_octets_declaree": 633155,
+          "titre": "decp-13000495500139-2026-09-25-03.xml"
+        },
+        {
+          "format": "xml",
+          "id": "98d7d4f6-9cf0-43c8-a92b-680850a70de8",
+          "modifie_le": "2026-09-25T03:12:21.908000+00:00",
+          "taille_octets_declaree": 423746,
+          "titre": "decp-13000495500139-2026-09-25-04.xml"
+        },
+        {
+          "format": "xml",
+          "id": "519e1948-c8e6-4b17-b85f-58dda9e2bf28",
+          "modifie_le": "2026-09-25T03:12:19.587000+00:00",
+          "taille_octets_declaree": 280385,
+          "titre": "decp-13000495500139-2026-09-25-05.xml"
+        },
+        {
+          "format": "xml",
+          "id": "071904e5-9539-4fe2-bf59-a2029192bd09",
+          "modifie_le": "2026-09-25T03:12:17.270000+00:00",
+          "taille_octets_declaree": 189022,
+          "titre": "decp-13000495500139-2026-09-25-06.xml"
+        },
+        {
+          "format": "xml",
+          "id": "0b46f7c1-2d57-4416-9d8e-40322d321ae9",
+          "modifie_le": "2026-09-25T03:12:14.942000+00:00",
+          "taille_octets_declaree": 46193,
+          "titre": "decp-13000495500139-2026-09-25-07.xml"
+        },
+        {
+          "format": "xml",
+          "id": "aecbf03e-0bbb-406d-86c8-7e93b16baf92",
+          "modifie_le": "2026-09-25T03:12:12.850000+00:00",
+          "taille_octets_declaree": 179959,
+          "titre": "decp-13000495500139-2026-09-25-08.xml"
+        },
+        {
+          "format": "xml",
+          "id": "c9843dd8-6dd8-4536-9b61-b8b8e9ca6f9d",
+          "modifie_le": "2026-09-25T03:12:10.393000+00:00",
+          "taille_octets_declaree": 581596,
+          "titre": "decp-13000495500139-2026-09-25-09.xml"
+        },
+        {
+          "format": "xml",
+          "id": "4d6aaf8e-c860-44fe-b25d-d1a62af6b012",
+          "modifie_le": "2026-09-25T03:12:08.289000+00:00",
+          "taille_octets_declaree": 191118,
+          "titre": "decp-13000495500139-2026-09-25-10.xml"
+        },
+        {
+          "format": "xml",
+          "id": "94e7c6d2-816b-4076-834b-d15de07213a5",
+          "modifie_le": "2026-09-24T03:12:29.162000+00:00",
+          "taille_octets_declaree": 397771,
+          "titre": "decp-13000495500139-2026-09-24-01.xml"
+        },
+        {
+          "format": "xml",
+          "id": "c067718a-12c4-435f-a6be-0e3bf73a715f",
+          "modifie_le": "2026-09-24T03:12:27.011000+00:00",
+          "taille_octets_declaree": 616906,
+          "titre": "decp-13000495500139-2026-09-24-02.xml"
+        },
+        {
+          "format": "xml",
+          "id": "34ddc5ae-927e-4bc8-a01c-3844420b3cad",
+          "modifie_le": "2026-09-24T03:12:24.915000+00:00",
+          "taille_octets_declaree": 658647,
+          "titre": "decp-13000495500139-2026-09-24-03.xml"
+        },
+        {
+          "format": "xml",
+          "id": "564223b7-1ef5-42f5-affe-00a7562e5dc8",
+          "modifie_le": "2026-09-24T03:12:22.628000+00:00",
+          "taille_octets_declaree": 813323,
+          "titre": "decp-13000495500139-2026-09-24-04.xml"
+        },
+        {
+          "format": "xml",
+          "id": "be430a4d-26dd-4694-bb46-a68eff9ea293",
+          "modifie_le": "2026-09-24T03:12:20.277000+00:00",
+          "taille_octets_declaree": 430452,
+          "titre": "decp-13000495500139-2026-09-24-05.xml"
+        },
+        {
+          "format": "xml",
+          "id": "3d1e09c2-1cab-4350-880e-4ce85fdd8b78",
+          "modifie_le": "2026-09-24T03:12:18.120000+00:00",
+          "taille_octets_declaree": 104913,
+          "titre": "decp-13000495500139-2026-09-24-06.xml"
+        },
+        {
+          "format": "xml",
+          "id": "ca1d208d-994a-4fd0-8a10-f8a6ae2c43da",
+          "modifie_le": "2026-09-24T03:12:15.974000+00:00",
+          "taille_octets_declaree": 91696,
+          "titre": "decp-13000495500139-2026-09-24-07.xml"
+        },
+        {
+          "format": "xml",
+          "id": "a2b04745-89fe-49cf-871d-77158d2aaba5",
+          "modifie_le": "2026-09-24T03:12:13.837000+00:00",
+          "taille_octets_declaree": 131817,
+          "titre": "decp-13000495500139-2026-09-24-08.xml"
+        },
+        {
+          "format": "xml",
+          "id": "7881fd1e-66e6-41f5-bfab-33316b57fd72",
+          "modifie_le": "2026-09-24T03:12:11.846000+00:00",
+          "taille_octets_declaree": 592187,
+          "titre": "decp-13000495500139-2026-09-24-09.xml"
+        },
+        {
+          "format": "xml",
+          "id": "3228b204-472c-4f0b-aa73-5bcdbffed742",
+          "modifie_le": "2026-09-24T03:12:09.498000+00:00",
+          "taille_octets_declaree": 193073,
+          "titre": "decp-13000495500139-2026-09-24-10.xml"
+        },
+        {
+          "format": "xml",
+          "id": "11adf37f-617b-4762-87cf-ef36304edc5f",
+          "modifie_le": "2026-09-23T03:12:40.218000+00:00",
+          "taille_octets_declaree": 260106,
+          "titre": "decp-13000495500139-2026-09-23-01.xml"
+        },
+        {
+          "format": "xml",
+          "id": "91416036-9373-49a3-9dc7-6ccd44358cf5",
+          "modifie_le": "2026-09-23T03:12:37.957000+00:00",
+          "taille_octets_declaree": 905474,
+          "titre": "decp-13000495500139-2026-09-23-02.xml"
+        },
+        {
+          "format": "xml",
+          "id": "ede121d3-0aba-44e4-b679-230b803209de",
+          "modifie_le": "2026-09-23T03:12:35.632000+00:00",
+          "taille_octets_declaree": 845758,
+          "titre": "decp-13000495500139-2026-09-23-03.xml"
+        },
+        {
+          "format": "xml",
+          "id": "6bf070c1-63db-497a-81a3-55b4b42ae2de",
+          "modifie_le": "2026-09-23T03:12:33.372000+00:00",
+          "taille_octets_declaree": 580312,
+          "titre": "decp-13000495500139-2026-09-23-04.xml"
+        },
+        {
+          "format": "xml",
+          "id": "2786dde8-39d6-4e83-8811-10400c5fba27",
+          "modifie_le": "2026-09-23T03:12:31.172000+00:00",
+          "taille_octets_declaree": 273210,
+          "titre": "decp-13000495500139-2026-09-23-05.xml"
+        },
+        {
+          "format": "xml",
+          "id": "103a2c84-68e7-4b7b-98ca-3e0763eebf96",
+          "modifie_le": "2026-09-23T03:12:28.952000+00:00",
+          "taille_octets_declaree": 54328,
+          "titre": "decp-13000495500139-2026-09-23-06.xml"
+        },
+        {
+          "format": "xml",
+          "id": "157390aa-0504-41fe-81fc-bbd9bcc462f2",
+          "modifie_le": "2026-09-23T03:12:26.737000+00:00",
+          "taille_octets_declaree": 114939,
+          "titre": "decp-13000495500139-2026-09-23-07.xml"
+        },
+        {
+          "format": "xml",
+          "id": "93dd57d5-4262-48af-b612-2f640e547607",
+          "modifie_le": "2026-09-23T03:12:24.428000+00:00",
+          "taille_octets_declaree": 116974,
+          "titre": "decp-13000495500139-2026-09-23-08.xml"
+        },
+        {
+          "format": "xml",
+          "id": "e83ae8a6-4aa2-4db0-bdfc-52258d223af2",
+          "modifie_le": "2026-09-23T03:12:22.332000+00:00",
+          "taille_octets_declaree": 586294,
+          "titre": "decp-13000495500139-2026-09-23-09.xml"
+        },
+        {
+          "format": "xml",
+          "id": "4ed50529-de52-4c73-b387-dae17a73f115",
+          "modifie_le": "2026-09-23T03:12:20.073000+00:00",
+          "taille_octets_declaree": 158908,
+          "titre": "decp-13000495500139-2026-09-23-10.xml"
+        },
+        {
+          "format": "xml",
+          "id": "0a114de9-662e-4709-aecb-42a5b132d1a7",
+          "modifie_le": "2026-09-22T03:12:37.106000+00:00",
+          "taille_octets_declaree": 304691,
+          "titre": "decp-13000495500139-2026-09-22-01.xml"
+        },
+        {
+          "format": "xml",
+          "id": "294f6362-5b54-493c-8130-9705b4aed46b",
+          "modifie_le": "2026-09-22T03:12:34.736000+00:00",
+          "taille_octets_declaree": 659072,
+          "titre": "decp-13000495500139-2026-09-22-02.xml"
+        },
+        {
+          "format": "xml",
+          "id": "0e451d61-7414-41dd-a9b8-526d9befeca1",
+          "modifie_le": "2026-09-22T03:12:31.687000+00:00",
+          "taille_octets_declaree": 636874,
+          "titre": "decp-13000495500139-2026-09-22-03.xml"
+        },
+        {
+          "format": "xml",
+          "id": "1babf9e7-2221-472e-b433-e4d4d1703e32",
+          "modifie_le": "2026-09-22T03:12:29.317000+00:00",
+          "taille_octets_declaree": 546729,
+          "titre": "decp-13000495500139-2026-09-22-04.xml"
+        },
+        {
+          "format": "xml",
+          "id": "86e4d8c9-b77c-4fbd-ad24-37848f5ae39f",
+          "modifie_le": "2026-09-22T03:12:26.893000+00:00",
+          "taille_octets_declaree": 368920,
+          "titre": "decp-13000495500139-2026-09-22-05.xml"
+        },
+        {
+          "format": "xml",
+          "id": "cb0c1227-dfc0-401a-bb57-039828684dc8",
+          "modifie_le": "2026-09-22T03:12:24.369000+00:00",
+          "taille_octets_declaree": 107202,
+          "titre": "decp-13000495500139-2026-09-22-06.xml"
+        },
+        {
+          "format": "xml",
+          "id": "600d03c1-5317-436b-a0ef-2cef51a03599",
+          "modifie_le": "2026-09-22T03:12:21.819000+00:00",
+          "taille_octets_declaree": 66663,
+          "titre": "decp-13000495500139-2026-09-22-07.xml"
+        },
+        {
+          "format": "xml",
+          "id": "68ff3f78-95c2-408d-ab35-e576af314ad2",
+          "modifie_le": "2026-09-22T03:12:19.354000+00:00",
+          "taille_octets_declaree": 120205,
+          "titre": "decp-13000495500139-2026-09-22-08.xml"
+        },
+        {
+          "format": "xml",
+          "id": "3a7fd7eb-c470-4745-9c69-93fb1056d8a2",
+          "modifie_le": "2026-09-22T03:12:16.783000+00:00",
+          "taille_octets_declaree": 395271,
+          "titre": "decp-13000495500139-2026-09-22-09.xml"
+        },
+        {
+          "format": "xml",
+          "id": "6d0bb992-42d1-4078-bef2-02863b7666f1",
+          "modifie_le": "2026-09-22T03:12:14.346000+00:00",
+          "taille_octets_declaree": 157801,
+          "titre": "decp-13000495500139-2026-09-22-10.xml"
+        }
+      ],
+      "source_id": "dgfip_pes_marche",
+      "titre": "Données essentielles de la commande publique transmises via le PES Marché depuis 2024",
+      "type_observation": "marches_collectivites_et_etablissements_publics_locaux_hors_etat"
+    },
+    {
+      "actualise_le": "2026-10-12T14:46:47.841000+00:00",
+      "completude_des_marches_etablie": false,
+      "contenu_des_fichiers_telecharge": false,
+      "empreinte_inventaire_complet": "809dd7bd424820d541128c2c0ef794c7e2c330a146a95b43a413e6f237960150",
+      "formats": {
+        "json": 41,
+        "xml": 1
+      },
+      "jeu_id": "5cd57bf68b4c4179299eb0e9",
+      "licence_declaree": "fr-lo",
+      "nombre_ressources_indexees": 42,
+      "nombre_ressources_non_detaillees": 0,
+      "nombre_ressources_total": 42,
+      "nouveaux_besoins_prospectifs_deduits": 0,
+      "observe_le": "2026-10-13T03:12:11+00:00",
+      "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides",
+      "ressources_recentes": [
+        {
+          "format": "json",
+          "id": "2551ad40-584a-42fd-b3cc-e8906183287e",
+          "modifie_le": "2026-10-12T14:46:47.841000+00:00",
+          "taille_octets_declaree": 607314663,
+          "titre": "decp-2026.json"
+        },
+        {
+          "format": "json",
+          "id": "d00a6a5a-beef-442e-8aee-5867f47a87d0",
+          "modifie_le": "2026-10-12T14:45:24+00:00",
+          "taille_octets_declaree": 701394676,
+          "titre": "decp-2025.json"
+        },
+        {
+          "format": "json",
+          "id": "4fafdaff-b697-4494-9523-e9f56916fea8",
+          "modifie_le": "2026-10-12T14:43:50+00:00",
+          "taille_octets_declaree": 540206553,
+          "titre": "decp-2024.json"
+        },
+        {
+          "format": "json",
+          "id": "9cd07cc6-736a-423f-aeea-0f2c0726f65d",
+          "modifie_le": "2026-10-12T14:42:40.487000+00:00",
+          "taille_octets_declaree": 109245562,
+          "titre": "decp-2026-10.json"
+        },
+        {
+          "format": "json",
+          "id": "f0839416-6fee-4a88-85d0-137361c39eec",
+          "modifie_le": "2026-10-12T14:42:24.560000+00:00",
+          "taille_octets_declaree": 144153898,
+          "titre": "decp-2026-09.json"
+        },
+        {
+          "format": "json",
+          "id": "9e1c326d-4c4c-4340-ad12-c3dd3d994967",
+          "modifie_le": "2026-10-12T14:42:03.902000+00:00",
+          "taille_octets_declaree": 134893085,
+          "titre": "decp-2026-08.json"
+        },
+        {
+          "format": "json",
+          "id": "856b5b2b-104e-4e1e-86f4-23efc74da19b",
+          "modifie_le": "2026-10-12T14:41:45.291000+00:00",
+          "taille_octets_declaree": 140689156,
+          "titre": "decp-2026-06.json"
+        },
+        {
+          "format": "json",
+          "id": "7b3ff863-57dd-4039-a7b3-ffd80925106f",
+          "modifie_le": "2026-10-12T14:41:24.535000+00:00",
+          "taille_octets_declaree": 152289937,
+          "titre": "decp-2025-12.json"
+        },
+        {
+          "format": "json",
+          "id": "e0c3eb36-dd4f-4aa3-a0ec-b2736a903cd9",
+          "modifie_le": "2026-10-12T14:41:03.331000+00:00",
+          "taille_octets_declaree": 81114002,
+          "titre": "decp-2025-11.json"
+        },
+        {
+          "format": "json",
+          "id": "2a81ee65-9533-4dc8-941e-47df1fb38fbb",
+          "modifie_le": "2026-10-12T14:40:51.472000+00:00",
+          "taille_octets_declaree": 69334815,
+          "titre": "decp-2025-04.json"
+        },
+        {
+          "format": "json",
+          "id": "67614c69-f8b7-4df3-adf5-2b29c16643b1",
+          "modifie_le": "2026-10-12T14:40:40.573000+00:00",
+          "taille_octets_declaree": 201153397,
+          "titre": "decp-2024-12.json"
+        },
+        {
+          "format": "json",
+          "id": "df791acb-9b40-4ebb-a1ec-7ddf59cc11bb",
+          "modifie_le": "2026-10-12T10:31:25.042000+00:00",
+          "taille_octets_declaree": 1390760,
+          "titre": "decp-2024-01.json"
+        },
+        {
+          "format": "json",
+          "id": "d1ece007-c56e-473d-a1f1-9960c8a393c8",
+          "modifie_le": "2026-10-04T18:25:54.317000+00:00",
+          "taille_octets_declaree": 69264442,
+          "titre": "decp-2026-05.json"
+        },
+        {
+          "format": "json",
+          "id": "f90c13f0-4123-4f62-8654-410aa723d5f7",
+          "modifie_le": "2026-10-04T18:25:47.429000+00:00",
+          "taille_octets_declaree": 75720079,
+          "titre": "decp-2026-04.json"
+        },
+        {
+          "format": "json",
+          "id": "740ccc19-4130-4044-af2d-ae9a60d25311",
+          "modifie_le": "2026-09-28T09:04:30.560000+00:00",
+          "taille_octets_declaree": 73053036,
+          "titre": "decp-2026-02.json"
+        },
+        {
+          "format": "json",
+          "id": "2762506f-4a35-4e42-aa0f-56caba2c0bd6",
+          "modifie_le": "2026-09-28T09:04:06.916000+00:00",
+          "taille_octets_declaree": 2853148,
+          "titre": "decp-2024-04.json"
+        },
+        {
+          "format": "json",
+          "id": "aa32d81e-d6b9-4721-a1fa-daa812b81cdb",
+          "modifie_le": "2026-09-20T01:42:56.687000+00:00",
+          "taille_octets_declaree": 92839235,
+          "titre": "decp-2026-03.json"
+        },
+        {
+          "format": "json",
+          "id": "bd33e98f-f8e3-49ba-9f26-51c95fe57234",
+          "modifie_le": "2026-09-08T16:12:26.086000+00:00",
+          "taille_octets_declaree": 1056647869,
+          "titre": "decp-global.json"
+        },
+        {
+          "format": "json",
+          "id": "b7f37860-c2ce-428d-a03d-19ab28aaa4a2",
+          "modifie_le": "2026-09-08T15:33:35.871000+00:00",
+          "taille_octets_declaree": 141661342,
+          "titre": "decp-2026-07.json"
+        },
+        {
+          "format": "json",
+          "id": "a10ac288-2b4d-4963-9a55-42b38c6adb03",
+          "modifie_le": "2026-08-31T17:40:52.325000+00:00",
+          "taille_octets_declaree": 92486485,
+          "titre": "decp-2026-01.json"
+        },
+        {
+          "format": "json",
+          "id": "16962018-5c31-4296-9454-5998585496d2",
+          "modifie_le": "2026-08-08T04:22:42.418000+00:00",
+          "taille_octets_declaree": 943748408,
+          "titre": "decp-2019.json"
+        },
+        {
+          "format": "json",
+          "id": "07478a30-2741-4d89-85bc-f47d72ad49bc",
+          "modifie_le": "2026-08-05T10:19:19.505000+00:00",
+          "taille_octets_declaree": 78018027,
+          "titre": "decp-2025-01.json"
+        },
+        {
+          "format": "json",
+          "id": "c21e27fd-2a01-4e0e-ac42-8468d5429ad7",
+          "modifie_le": "2026-08-04T12:37:37.548000+00:00",
+          "taille_octets_declaree": 93350551,
+          "titre": "decp-2025-10.json"
+        },
+        {
+          "format": "json",
+          "id": "393f8099-0e3c-41b4-9f40-59ec3914807c",
+          "modifie_le": "2026-07-28T16:29:02.168000+00:00",
+          "taille_octets_declaree": 57625043,
+          "titre": "decp-2025-08.json"
+        },
+        {
+          "format": "json",
+          "id": "bb90091c-f0cb-4a59-ad41-b0ab929aad93",
+          "modifie_le": "2026-07-28T16:28:42.152000+00:00",
+          "taille_octets_declaree": 113793517,
+          "titre": "decp-2025-07.json"
+        },
+        {
+          "format": "json",
+          "id": "e2d4fdea-98c3-4f32-84d2-0457fc59fbcb",
+          "modifie_le": "2026-07-07T15:16:57.384000+00:00",
+          "taille_octets_declaree": 1694013,
+          "titre": "decp-2024-02.json"
+        },
+        {
+          "format": "json",
+          "id": "9a6f717c-4353-4435-a9f6-3b5a577ee9b4",
+          "modifie_le": "2026-07-02T16:05:47+00:00",
+          "taille_octets_declaree": 59210808,
+          "titre": "decp-2025-02.json"
+        },
+        {
+          "format": "json",
+          "id": "907fd525-a293-418a-b88f-df945236cf90",
+          "modifie_le": "2026-06-23T10:48:48.837000+00:00",
+          "taille_octets_declaree": 64436984,
+          "titre": "decp-2025-03.json"
+        },
+        {
+          "format": "json",
+          "id": "398e075e-5dc2-4797-86d7-21d04e39111f",
+          "modifie_le": "2026-06-23T10:46:56.973000+00:00",
+          "taille_octets_declaree": 56462970,
+          "titre": "decp-2024-11.json"
+        },
+        {
+          "format": "json",
+          "id": "eddb0aaf-e0cb-4dd2-abb4-9971fa84106c",
+          "modifie_le": "2026-06-23T10:46:37.680000+00:00",
+          "taille_octets_declaree": 84752956,
+          "titre": "decp-2024-10.json"
+        },
+        {
+          "format": "json",
+          "id": "700c7c9a-93f9-4ba1-a29d-830473ba78df",
+          "modifie_le": "2026-06-23T10:46:13.208000+00:00",
+          "taille_octets_declaree": 244983320,
+          "titre": "decp-2024-09.json"
+        },
+        {
+          "format": "json",
+          "id": "766fd1b9-9d26-4b5f-bdaf-661e9cb7ef18",
+          "modifie_le": "2026-06-23T10:44:54.420000+00:00",
+          "taille_octets_declaree": 6607086,
+          "titre": "decp-2024-08.json"
+        },
+        {
+          "format": "json",
+          "id": "0fbe30e6-b771-44c9-b7ca-8664d4b9ac63",
+          "modifie_le": "2026-06-23T10:44:42.428000+00:00",
+          "taille_octets_declaree": 7736197,
+          "titre": "decp-2024-07.json"
+        },
+        {
+          "format": "json",
+          "id": "2c81a92b-ff14-47f3-94df-59f698de9415",
+          "modifie_le": "2026-06-23T10:44:21.952000+00:00",
+          "taille_octets_declaree": 4290912,
+          "titre": "decp-2024-06.json"
+        },
+        {
+          "format": "json",
+          "id": "25902ffe-e1a0-4359-a281-b99b98de8b75",
+          "modifie_le": "2026-06-23T10:44:10.340000+00:00",
+          "taille_octets_declaree": 2296102,
+          "titre": "decp-2024-03.json"
+        },
+        {
+          "format": "json",
+          "id": "a5599c0b-e97e-4cbf-b4e5-8fe246816c59",
+          "modifie_le": "2026-06-19T14:22:44.484000+00:00",
+          "taille_octets_declaree": 61705662,
+          "titre": "decp-2025-09.json"
+        },
+        {
+          "format": "json",
+          "id": "6e5f9e37-196c-4584-985d-a83dc212fca2",
+          "modifie_le": "2026-06-19T14:21:34.763000+00:00",
+          "taille_octets_declaree": 79906652,
+          "titre": "decp-2025-06.json"
+        },
+        {
+          "format": "json",
+          "id": "50549a78-188d-42f4-b2fb-d099a0bb7faf",
+          "modifie_le": "2026-06-19T14:21:11.863000+00:00",
+          "taille_octets_declaree": 76899472,
+          "titre": "decp-2025-05.json"
+        },
+        {
+          "format": "json",
+          "id": "38ee545e-9a91-4490-8542-795aef55ebf8",
+          "modifie_le": "2026-06-19T14:16:30.388000+00:00",
+          "taille_octets_declaree": 3815006,
+          "titre": "decp-2024-05.json"
+        },
+        {
+          "format": "json",
+          "id": "59ba0edb-cf94-4bf1-a546-61f561553917",
+          "modifie_le": "2024-11-14T01:00:14.380000+00:00",
+          "taille_octets_declaree": 20595096,
+          "titre": "decp-2022.json"
+        },
+        {
+          "format": "json",
+          "id": "68bd2001-3420-4d94-bc49-c90878df322c",
+          "modifie_le": "2023-02-07T05:39:24.566000+00:00",
+          "taille_octets_declaree": 1042362622,
+          "titre": "decp.ocds.json"
+        },
+        {
+          "format": "xml",
+          "id": "17046b18-8921-486a-bc31-c9196d5c3e9c",
+          "modifie_le": "2023-02-07T05:36:54.741000+00:00",
+          "taille_octets_declaree": 646381097,
+          "titre": "decp.xml"
+        }
+      ],
+      "source_id": "mef_decp_consolides",
+      "titre": "Données essentielles de la commande publique - fichiers consolidés",
+      "type_observation": "marches_attribues_et_concessions"
+    }
+  ],
+  "controle_le": "2026-10-13T03:12:11+00:00",
+  "inventaires_complets_telecharges": 0,
+  "nombre_catalogues_avec_modifications": 0,
+  "qualifie_des_besoins_actuels": false,
+  "sources_echouees": [],
+  "sources_reussies": 2,
+  "version": "decp-metadonnees-v1"
+}
