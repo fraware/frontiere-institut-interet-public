@@ -12,6 +12,9 @@ on:
       - "scripts/constituer_pistes_boamp.py"
       - "scripts/echantillonner_avis_boamp.py"
       - "scripts/tirer_jeu_independant_boamp.py"
+      - "scripts/extraire_references_boamp_decp.py"
+      - "scripts/auditer_identifiants_acheteurs_independants_boamp.py"
+      - "tests/test_auditer_identifiants_acheteurs_independants_boamp.py"
       - "scripts/relever_issues_echantillon_independant.py"
       - "scripts/tirer_ensemble_epreuve_infructueux_boamp.py"
       - "scripts/relever_ensemble_epreuve_infructueux_boamp.py"
@@ -229,6 +232,17 @@ jobs:
             --echantillon "$DOSSIER/echantillon-independant-technique.json" \
             --sortie "$DOSSIER/releve-issues-36"
 
+      - name: Auditer les identifiants acheteurs des 36 avis indépendants
+        shell: bash
+        run: |
+          set -euo pipefail
+          DOSSIER="$RUNNER_TEMP/frontiere-boamp"
+          python -m pytest -q tests/test_auditer_identifiants_acheteurs_independants_boamp.py
+          python scripts/auditer_identifiants_acheteurs_independants_boamp.py \
+            --echantillon "$DOSSIER/echantillon-independant-technique.json" \
+            --releve "$DOSSIER/releve-issues-36" \
+            --sortie "$DOSSIER/audit-identifiants-acheteurs-36.json"
+
       - name: Tirer et contrôler une épreuve enrichie de 24 annonces sans étiquettes présumées
         shell: bash
         run: |
@@ -324,6 +338,7 @@ jobs:
             ${{ runner.temp }}/frontiere-boamp/echantillon-temporel-boamp.json
             ${{ runner.temp }}/frontiere-boamp/echantillon-independant-technique.json
             ${{ runner.temp }}/frontiere-boamp/releve-issues-36/
+            ${{ runner.temp }}/frontiere-boamp/audit-identifiants-acheteurs-36.json
             ${{ runner.temp }}/frontiere-boamp/epreuve-enrichie-infructueux.json
             ${{ runner.temp }}/frontiere-boamp/releve-epreuve-enrichie/
             ${{ runner.temp }}/frontiere-boamp/contre-verification-echantillon.json
