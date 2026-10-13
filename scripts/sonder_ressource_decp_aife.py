@@ -16,10 +16,10 @@ from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 if __package__:
     from scripts.collecter_catalogues_decp import telecharger as telecharger_catalogue
-    from scripts.ingerer_fichier_decp_json import RACINE, traiter_fichier
+    from scripts.ingerer_fichier_decp_json import RACINE, traiter_fichier, DocumentDECPInvalide
 else:
     from collecter_catalogues_decp import telecharger as telecharger_catalogue
-    from ingerer_fichier_decp_json import RACINE, traiter_fichier
+    from ingerer_fichier_decp_json import RACINE, traiter_fichier, DocumentDECPInvalide
 
 ETAT = RACINE / "institutionnel/decp/etat_ressources.json"
 SORTIE = RACINE / "institutionnel/decp/sonde_aife_json.json"
@@ -118,6 +118,29 @@ def recevoir_fichier(ressource: dict, cible: Path) -> int:
     return compte
 
 
+def diagnostiquer_structure(chemin: Path) -> dict:
+    """Décrire seulement la structure d'un petit fichier, sans publier son contenu."""
+    if chemin.stat().st_size > PLAFOND_OCTETS:
+        raise SondeDECPInvalide("Fichier de diagnostic hors plafond")
+    with chemin.open("r", encoding="utf-8-sig") as flux:
+        doc = json.load(flux)
+    if isinstance(doc, dict):
+        return {
+            "type": "objet",
+            "champs_racine": sorted(doc)[:30],
+            "types_racine": {
+                str(cle)[:100]: type(valeur).__name__
+                for cle, valeur in sorted(doc.items())[:30]
+            },
+            "types_sous_marches": (
+                {str(cle)[:100]: type(valeur).__name__
+                 for cle, valeur in doc["marches"].items()}
+                if isinstance(doc.get("marches"), dict) else {}
+            ),
+        }
+    return {"type": type(doc).__name__}
+
+
 def executer(etat: dict, fiche: dict, recuperer=recevoir_fichier) -> dict:
     """Comparer les métadonnées et produire un bilan sur le fichier téléchargé."""
     selection = choisir_ressource(etat, fiche)
@@ -126,9 +149,20 @@ def executer(etat: dict, fiche: dict, recuperer=recevoir_fichier) -> dict:
         taille = recuperer(selection, chemin)
         if taille != selection["taille_octets_declaree"] or chemin.stat().st_size != taille:
             raise SondeDECPInvalide("Taille du fichier différente du catalogue")
-        resultat = traiter_fichier(
-            chemin, source_id=SOURCE, ressource_id=selection["id"], limite_extraits=50
-        )
+        try:
+            resultat = traiter_fichier(
+                chemin, source_id=SOURCE, ressource_id=selection["id"],
+                limite_extraits=50,
+            )
+        except DocumentDECPInvalide as exc:
+            try:
+                structure = diagnostiquer_structure(chemin)
+            except (OSError, ValueError, UnicodeError):
+                structure = {"type": "structure_inaccessible"}
+            raise SondeDECPInvalide(
+                "Enveloppe JSON non prise en charge ; structure : "
+                + json.dumps(structure, ensure_ascii=False, sort_keys=True)
+            ) from exc
     resultat["page_catalogue"] = "https://www.data.gouv.fr/datasets/api-decp"
     resultat["titre_fichier"] = selection["titre"]
     resultat["type_essai"] = "sonde_reelle_bornee_non_exhaustive"
