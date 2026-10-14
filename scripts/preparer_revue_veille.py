@@ -135,8 +135,50 @@ def preparer_revue(flux: dict, deliberations: dict, maintenant: datetime,
             "classe_temporelle": categorie_temporelle(date_acte, maintenant),
             "statut_preuve": "correspondance_scdl_non_qualifiee",
         })
-    candidats.sort(key=lambda x: (x["observe_pour_la_premiere_fois"], x["id"]), reverse=True)
-    vus = candidats[:limite]
+    # La date du document prime sur la date d'ingestion : l'arrivée aujourd'hui
+    # d'une archive ancienne ne la transforme pas en publication d'actualité.
+    # À priorité temporelle égale, répartir les places entre producteurs pour
+    # éviter qu'un flux volumineux occupe toute la file de revue.
+    priorites = {
+        "publication_90_jours": 0,
+        "date_publication_inconnue": 1,
+        "archives": 2,
+        "date_publication_invalide": 3,
+        "date_publication_future_a_verifier": 4,
+    }
+    regroupes: dict[tuple[int, str], list[dict]] = {}
+    for candidat in candidats:
+        niveau = priorites[candidat["classe_temporelle"]]
+        cle_source = candidat["nature"] + ":" + str(candidat["source_id"])
+        regroupes.setdefault((niveau, cle_source), []).append(candidat)
+
+    for groupe in regroupes.values():
+        groupe.sort(
+            key=lambda x: (
+                x["date_publication"] or "",
+                x["observe_pour_la_premiere_fois"],
+                x["id"],
+            ),
+            reverse=True,
+        )
+    selection: list[dict] = []
+    for niveau in sorted(set(cle[0] for cle in regroupes)):
+        groupes = [regroupes[cle] for cle in sorted(regroupes) if cle[0] == niveau]
+        rang = 0
+        while len(selection) < limite:
+            activite = False
+            for groupe in groupes:
+                if rang < len(groupe):
+                    selection.append(groupe[rang])
+                    activite = True
+                    if len(selection) == limite:
+                        break
+            if not activite:
+                break
+            rang += 1
+        if len(selection) == limite:
+            break
+    vus = selection
     return {
         "version": 1,
         "produit_le": maintenant.astimezone(timezone.utc).isoformat(timespec="seconds"),
