@@ -178,9 +178,7 @@ def test_l_historique_est_borne_apres_une_longue_suite_de_modifications():
     src = source()
     etat = {"version": 1, "observations": []}
     for i in range(HISTORIQUE_MAX + 5):
-        corps = TEXTE + ("<p>révision numéro %d</p>" % i).encode("utf-8")
-        # L'ajout à l'extérieur du document ne constitue pas toujours du
-        # contenu principal ; ici on modifie le texte à l'intérieur de <main>.
+        # Modifier explicitement le contenu situé dans <main>.
         corps = TEXTE.replace(b"</main>", b"<p>" + str(i).encode() + b"</p></main>")
         etat, bilan = collecter([src], etat, MAINTENANT,
                                 acquerir=lambda _, c=corps: (c, "text/html"))
