@@ -1,0 +1,17 @@
+{
+  "archive_relative": "historique_boamp/2020/12/2020-12-01.jsonl.gz",
+  "attribution": "Direction de l'information légale et administrative (DILA), BOAMP",
+  "avis_distincts": 258,
+  "avis_recus": 258,
+  "collecte_le": "2026-10-14T22:39:17+00:00",
+  "exhaustif_pour_l_historique_du_boamp": false,
+  "exhaustif_pour_la_journee_au_moment_de_la_collecte": true,
+  "jour_parution": "2020-12-01",
+  "normalisation_categories": "liste_v2",
+  "octets_archive": 18728,
+  "pages_completes": true,
+  "sha256_archive_gzip": "fcd7c720ab2a3ac63a78e6ae440dab038d0affb5ea4a85102fe3f61296f6c11b",
+  "sha256_octets_decompresses": "272d1b880bfcbdf154e262cec9d84870a0c2e6cafca803ab8ca72155445cc0fd",
+  "source": "https://boamp-datadila.opendatasoft.com/api/explore/v2.1/catalog/datasets/boamp/records",
+  "version": "boamp-historique-journalier-v1"
+}
