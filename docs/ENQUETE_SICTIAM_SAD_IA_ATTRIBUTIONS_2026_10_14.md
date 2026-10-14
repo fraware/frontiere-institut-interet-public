@@ -16,6 +16,8 @@ Identifiants tels que publiés dans S2 :
 
 **S3 — Publication institutionnelle postérieure.** [SICTIAM, annonce de la matinale du 18 mai 2026](https://www.sictiam.fr/evenements/matinale-sad-intelligence-artificielle/). Programme annoncé : présentation du système d'acquisition et démonstrations de solutions récemment sélectionnées, dont transcription de réunions et assistant juridique. Cette communication constitue une trace **de présentation programmée**, pas une preuve de commande, de déploiement ou d'usage par un bénéficiaire. [Présentation par le SICTIAM de son activité en intelligence artificielle](https://www.sictiam.fr/expertises/intelligence-artificielle/) : description de l'offre d'accompagnement et du référencement ; la date exacte de dernière mise à jour de cette page reste inconnue.
 
+**S4 — Démonstration ultérieure d'un produit attribué.** [SICTIAM, annonce du webinaire DACTYLO du 8 juillet 2026](https://www.sictiam.fr/evenements/webinaire-intelligence-artificielle-decouvrez-dactylo-la-transcription-automatisee-de-vos-assemblees/) : la publication identifie explicitement MAGiC LEMP comme développeur de la solution et propose un accès de démonstration gratuit après la présentation. Elle corrobore l'existence d'une offre présentée aux collectivités postérieurement au marché attribué, **sans établir** la tenue effective du webinaire, l'utilisation d'un bon de commande, ni l'activation par une collectivité.
+
 ## 2. Chronologie strictement typée
 
 | Événement | Date publiée | Source et portée |
@@ -28,6 +30,9 @@ Identifiants tels que publiés dans S2 :
 | Envoi de l'avis d'attribution | 29 avril 2026, 12 h 12 | S2, p. 15 |
 | Diffusion européenne référencée | 30 avril 2026 | Publication n° 299058-2026 identifiée par une reproduction |
 | Matinale annoncée sur les solutions sélectionnées | 18 mai 2026 | S3 : présentation / démonstration annoncée, **pas** usage institutionnel prouvé |
+| Webinaire DACTYLO proposé, solution de MAGiC LEMP | 8 juillet 2026 | S4 : démonstration et accès d'essai annoncés, **pas** de bon de commande ni de mise en service attestés |
+
+**Intervalles calculés entre dates publiées :** 199 jours du 2 septembre 2025 au 20 mars 2026 ; 56 jours du choix déclaré de TOMORRO au 20 mars, contre 25 jours depuis le choix déclaré des trois autres titulaires ; 41 jours entre la conclusion déclarée et la diffusion européenne du 30 avril. Ce sont des écarts calendaires documentaires, **pas** des durées de mobilisation à partir d'un besoin ni de mise en service.
 
 **Interprétation du temps :** le délai entre la publication du dispositif général et la conclusion des marchés spécifiques ne mesure pas le temps entre l'expression d'un besoin concret et la première contribution utile. La date initiale de besoin propre aux deux lots, la date d'invitation des opérateurs admis, la notification effective et la première utilisation sont absentes des pièces contrôlées.
 
