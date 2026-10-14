@@ -189,6 +189,26 @@
       "licence": "Creative Commons Attribution Share-Alike",
       "objet": "resultats_attributions_marches_et_enrichissements_sirene",
       "remarque": "Données indicatives avec rapprochements et identifiants estimés ; avis originaux BOAMP prioritaires"
+    },
+    {
+      "id": "hal_oai_moissonnage",
+      "nom": "HAL — métadonnées scientifiques par OAI-PMH",
+      "producteur": "Centre pour la communication scientifique directe (CCSD)",
+      "statut": "candidat_conditions_de_reutilisation_a_verifier_sans_ingestion",
+      "documentation": "https://api.hal.science/docs/oai",
+      "point_entree": "https://api.archives-ouvertes.fr/oai/hal/",
+      "objet": "metadonnees_publications_scientifiques_francaises",
+      "remarque": "Le serveur OAI-PMH est accessible sans inscription. Sa documentation pose une restriction de réutilisation commerciale des métadonnées extraites. Vérifier droits, ensembles, modalités de pagination, dates de modification et licéité de l'usage avant toute collecte. Dépôt ≠ publication évaluée par les pairs et auteur affilié ≠ ressource mobilisable."
+    },
+    {
+      "id": "cordis_projets_recherche",
+      "nom": "CORDIS — projets et résultats de recherche européens",
+      "producteur": "Office des publications de l'Union européenne",
+      "statut": "candidat_technique_et_droits_a_verifier_sans_ingestion",
+      "documentation": "https://cordis.europa.eu/about/services",
+      "point_entree": "https://cordis.europa.eu/projects",
+      "objet": "projets_finances_publications_livrables_organismes_partenaires",
+      "remarque": "Les pages de recherche, les flux RSS et les jeux ouverts sont accessibles sans connexion dans les conditions publiées. L'API d'extraction DET est réservée aux utilisateurs enregistrés et demande une clé avec quotas ; ne pas créer d'appel anonyme à cette API. Vérifier licences par ressources et schémas. Une participation à un projet ne prouve ni compétence disponible ni besoin administratif non satisfait."
     }
   ]
 }
