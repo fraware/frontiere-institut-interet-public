@@ -160,9 +160,9 @@ def auditer_collecte(racine: Path, entree: dict, maintenant: datetime) -> dict:
                     alerter(resultat, "SOURCE_INDISPONIBLE",
                             f"{identite} : contrôle de la source en erreur",
                             gravite(source.get("criticite", "moyenne")))
-                elif source.get("fraicheur", {}).get("statut") in {"A_REVOIR", "ERREUR"}:
+                elif source.get("fraicheur", {}).get("statut") in {"A_REVOIR", "ERREUR", "INDETERMINE"}:
                     alerter(resultat, "CONTENU_A_REVOIR",
-                            f"{identite} : contenu ancien ou fraîcheur indéterminée",
+                            f"{identite} : fraîcheur du contenu ancienne ou indéterminée",
                             "attention")
         elif entree["controle"] == "flux":
             sources = donnees.get("sources")
