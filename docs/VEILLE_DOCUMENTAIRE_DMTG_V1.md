@@ -1,6 +1,6 @@
 # Veille documentaire DMTG — surveillance de cinq publications officielles
 
-**Mise en place : 14 octobre 2026.** **Statut : procédure intégrée ; incident de maintenance diagnostiqué lors du premier relevé, contrôle de contenu renforcé en cours de validation.**
+**Mise en place : 14 octobre 2026.** **Statut : procédure intégrée ; contrôle de maintenance vérifié en production ; une observation officielle enregistrée sur cinq sources suivies.**
 
 ## Question de recherche et limites
 
@@ -36,7 +36,7 @@ La [page des publications statistiques DGFiP 2026](https://www.impots.gouv.fr/dg
 
 `scripts/surveiller_publications_dmtg.py` contrôle les cinq adresses HTTPS, les domaines exacts, les redirections, le type HTML attendu, le délai et un volume maximum de trois millions d'octets par réponse. Le texte principal est transformé en empreinte SHA-256 suivant le traitement déjà utilisé par le dispositif de suivi des programmes scientifiques ANR. Les pages de navigation et les pieds de page sont écartés dans la mesure permise par la structure HTML de la source.
 
-`institutionnel/programmes_scientifiques/etat_veille_dmtg_v1.json` est initialisé avec une liste **vide** : aucune consultation ni signature n'est inventée. Une exécution réelle réussie fournit les premières empreintes. Les états suivants distinguent les documents identiques, les versions modifiées et les accès refusés. Une erreur réseau laisse les signatures précédentes disponibles, sans conclure à une disparition de la publication.
+`institutionnel/programmes_scientifiques/etat_veille_dmtg_v1.json` conserve désormais **une seule observation documentaire vérifiée**, la [réponse ministérielle n° 11677](https://questions.assemblee-nationale.fr/q17/17-11677QE.htm), issue de l'[exécution n° 38649504556](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/38649504556) du 14 octobre à 22 h 43 UTC. Les trois pages DGFiP servies en maintenance n'ont **aucune signature persistée**. Le rapport du second relevé indique quatre consultations inabouties, dont une erreur réseau temporaire lors de la lecture du Sénat. Les prochaines observations conserveront l'historique et signaleront leurs révisions sans inventer de résultat opérationnel.
 
 La procédure `.github/workflows/veille-publications-dmtg.yml` est prévue **une fois par jour** et comporte un lancement manuel. Elle teste le programme sans réseau, effectue ensuite le relevé et conserve un rapport JSON et Markdown durant 30 jours. Elle est référencée dans le contrôle transversal des procédures avec une fenêtre de retard de 72 heures.
 
@@ -60,6 +60,6 @@ Relevé direct sans fusion automatique :
 
 `python -m scripts.surveiller_publications_dmtg --bilan-json /tmp/dmtg-bilan.json --bilan-markdown /tmp/dmtg-bilan.md`
 
-La première exécution réelle sur `main` doit confirmer le type, l'accessibilité et la stabilité des cinq pages. Les réponses inaccessibles ou incompatibles seront consignées. Le suivi actuel ne garantit pas l'exhaustivité des publications ni une notification instantanée des nouvelles pièces.
+Les deux premières exécutions sur `main` ont confirmé une accessibilité variable. Le contrôle renforcé refuse correctement les pages génériques de maintenance, et les réponses inaccessibles sont consignées. Le suivi actuel ne garantit pas l'exhaustivité des publications ni une notification instantanée des nouvelles pièces.
 
 Dossier de recherche : [DMTG — moyens et échéances](DMTG_SUIVI_MOYENS_EFFECTIFS_ET_ECHEANCES_2026_10_14.md). Suivi d'enquête : [problème n° 442](https://github.com/fraware/frontiere-institut-interet-public/issues/442).
