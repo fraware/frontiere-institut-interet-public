@@ -33,6 +33,13 @@
       "preuve": "Inscrit un projet de coopération entre La Fibre64 et le CNFPT relatif à l'IA au point 8.",
       "pages": "1",
       "limite": "Inscription à l'ordre du jour non équivalente à une décision définitive ou une mise en œuvre."
+    },
+    "fibre64_pv_2025_12_04": {
+      "url": "https://publication-actes.fr/OpenData/200081263/Hors_prefecture/2026/71320/5bcc751a21182578f491d9fe6e674609854f88a989038f0568cd1a05db99b04a.pdf",
+      "type": "proces_verbal",
+      "preuve": "Le conseil syndical approuve à l'unanimité (20/20) le principe de l'expérimentation Foxy et les modalités proposées ; une utilisation de l'outil par le CDG est rapportée en séance.",
+      "pages": "12-13",
+      "limite": "Décision et témoignage de pratique, non rapport final du pilote ni mesures de résultats."
     }
   },
   "qualifications": [
@@ -99,7 +106,8 @@
         "fibre64_pv_2025_10_06",
         "fibre64_protocole_2025",
         "fibre64_cnfpt_2026",
-        "fibre64_ordre_2026_02_05"
+        "fibre64_ordre_2026_02_05",
+        "fibre64_pv_2025_12_04"
       ],
       "question_decisive": "Quel est l'objet intégral de la délibération de juillet, et qu'apporte-t-elle de nouveau par rapport aux coopérations déjà documentées ?",
       "observation": "Repérage par expression dans DELIB_OBJET ; objet intégral non conservé dans le registre de collecte."
@@ -209,7 +217,8 @@
         "fibre64_pv_2025_10_06",
         "fibre64_protocole_2025",
         "fibre64_cnfpt_2026",
-        "fibre64_ordre_2026_02_05"
+        "fibre64_ordre_2026_02_05",
+        "fibre64_pv_2025_12_04"
       ],
       "question_decisive": "La délibération de février concerne-t-elle la convention CNFPT visible dans une autre pièce du même ensemble documentaire ?",
       "observation": "Repérage par expression dans DELIB_OBJET ; objet intégral non conservé dans le registre de collecte."
