@@ -68,7 +68,7 @@ def evaluer_revisions(registre: dict, observations: dict,
             "etat": etat,
             "empreinte_reference": original,
             "empreinte_courante": source.get("empreinte_contenu") if source else None,
-            "interprétation_validee": False,
+            "interpretation_validee": False,
         })
 
     comptes = {etat: sum(x["etat"] == etat for x in resultat) for etat in (
