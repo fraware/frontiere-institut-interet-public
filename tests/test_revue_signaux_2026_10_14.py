@@ -31,7 +31,8 @@ def test_les_dix_publications_restent_identifiables_dans_le_flux_archive():
         assert uid in par_id
         origine = par_id[uid]
         assert observation["source_id"] == origine["source_id"]
-        assert len(observation["empreinte_contenu_reference"]) == 64\n        # Une révision du flux est signalée par le suivi, sans bloquer sa collecte.
+        assert len(observation["empreinte_contenu_reference"]) == 64
+        # Une révision du flux est signalée par le suivi, sans bloquer sa collecte.
         assert observation["url_source"] == origine["lien"]
         assert observation["date_publication_source"] == origine["date_publication"]
         assert observation["date_observation_initiale"] == origine["observe_initialement_le"]
