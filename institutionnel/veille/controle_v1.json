@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "description": "Tolérances maximales de retard des relevés enregistrés sur main, non fréquences garanties de publication par les producteurs.",
+  "collectes": [
+    {
+      "id": "organismes",
+      "fichier": "institutionnel/etat_sources.json",
+      "horodatage": "observe_le",
+      "retard_max_heures": 72,
+      "criticite": "critique",
+      "controle": "referentiel"
+    },
+    {
+      "id": "catalogue",
+      "fichier": "institutionnel/decouverte/etat_collecte.json",
+      "horodatage": "controle_le",
+      "retard_max_heures": 48,
+      "criticite": "haute",
+      "controle": "general"
+    },
+    {
+      "id": "balayage",
+      "fichier": "institutionnel/decouverte/balayage_etat.json",
+      "horodatage": "controle_le",
+      "retard_max_heures": 72,
+      "criticite": "haute",
+      "controle": "general"
+    },
+    {
+      "id": "flux",
+      "fichier": "institutionnel/flux_publics/etat_collecte.json",
+      "horodatage": "cycle_le",
+      "retard_max_heures": 36,
+      "criticite": "haute",
+      "controle": "flux"
+    },
+    {
+      "id": "canaux",
+      "fichier": "institutionnel/canaux_publics/decouvertes_sites.json",
+      "horodatage": "controle_le",
+      "retard_max_heures": 48,
+      "criticite": "moyenne",
+      "controle": "general"
+    },
+    {
+      "id": "boamp",
+      "fichier": "institutionnel/besoins_publics/etat_boamp.json",
+      "horodatage": "controle_le",
+      "retard_max_heures": 36,
+      "criticite": "critique",
+      "controle": "general"
+    },
+    {
+      "id": "emplois",
+      "fichier": "institutionnel/besoins_publics/etat_emplois_publics.json",
+      "horodatage": "controle_le",
+      "retard_max_heures": 48,
+      "criticite": "haute",
+      "controle": "general"
+    },
+    {
+      "id": "decp",
+      "fichier": "institutionnel/decp/etat_ressources.json",
+      "horodatage": "catalogues[0].observe_le",
+      "retard_max_heures": 96,
+      "criticite": "haute",
+      "controle": "general"
+    },
+    {
+      "id": "attributions",
+      "fichier": "institutionnel/marches_attribues/etat.json",
+      "horodatage": "controle_le",
+      "retard_max_heures": 72,
+      "criticite": "haute",
+      "controle": "general"
+    },
+    {
+      "id": "deliberations",
+      "fichier": "institutionnel/deliberations_publiques/etat_collecte.json",
+      "horodatage": "controle_le",
+      "retard_max_heures": 240,
+      "criticite": "moyenne",
+      "controle": "deliberations"
+    }
+  ],
+  "procedures": [
+    {
+      "fichier": "surveillance-institutionnelle.yml",
+      "retard_max_heures": 72,
+      "criticite": "critique"
+    },
+    {
+      "fichier": "decouverte-sources.yml",
+      "retard_max_heures": 48,
+      "criticite": "haute"
+    },
+    {
+      "fichier": "veille-flux-publics.yml",
+      "retard_max_heures": 36,
+      "criticite": "haute"
+    },
+    {
+      "fichier": "inventaire-canaux.yml",
+      "retard_max_heures": 48,
+      "criticite": "moyenne"
+    },
+    {
+      "fichier": "collecte-besoins-publics.yml",
+      "retard_max_heures": 36,
+      "criticite": "critique"
+    },
+    {
+      "fichier": "collecte-beauamp.yml",
+      "retard_max_heures": 72,
+      "criticite": "haute"
+    },
+    {
+      "fichier": "moissonnage-deliberations-scdl.yml",
+      "retard_max_heures": 240,
+      "criticite": "moyenne"
+    }
+  ]
+}
