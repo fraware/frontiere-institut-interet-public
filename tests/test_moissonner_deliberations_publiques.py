@@ -130,6 +130,53 @@ def test_collecte_idempotente_et_pas_de_double_compte():
     ] * 2
 
 
+def test_progression_circulaire_visite_des_fichiers_distincts():
+    jeux = []
+    for numero in range(50):
+        jeux.append({
+            "id": f"jeu-deliberations-{numero:03d}",
+            "title": f"Délibérations de la commune {numero}",
+            "license": "lov2", "resources": [{
+                "id": f"resource-scdl-{numero:03d}", "format": "csv",
+                "url": f"https://static.data.gouv.fr/resources/jeu-{numero:03d}/fichier.csv",
+            }],
+        })
+
+    def charger(url, _plafond):
+        if url.startswith(CATALOGUE):
+            return json.dumps(enveloppe(jeux)).encode("utf-8")
+        return CSV
+
+    initial = {"version": "pistes-deliberations-v1", "pistes": []}
+    premier, etat1 = collecter(
+        ancien=initial, charger=charger, instant="2026-10-14T03:00:00+00:00",
+        patienter=lambda _: None,
+    )
+    assert etat1["ressources_csv_examinees"] == 25
+    assert etat1["position_initiale"] == 0
+    assert etat1["position_suivante"] == 25
+    assert etat1["tour_du_releve_termine"] is False
+    assert len(premier["pistes"]) == 50
+    second, etat2 = collecter(
+        ancien=premier, etat_precedent=etat1, charger=charger,
+        instant="2026-10-15T03:00:00+00:00", patienter=lambda _: None,
+    )
+    assert etat2["position_initiale"] == 25
+    assert etat2["position_suivante"] == 0
+    assert etat2["tour_du_releve_termine"] is True
+    assert len(second["pistes"]) == 100
+
+
+def test_rejette_curseur_malforme():
+    with pytest.raises(CollecteInvalide, match="Curseur"):
+        collecter(
+            ancien={"version": "pistes-deliberations-v1", "pistes": []},
+            etat_precedent={"position_suivante": -1},
+            charger=faux_charger, instant="2026-10-14T03:00:00+00:00",
+            patienter=lambda _: None,
+        )
+
+
 def test_echec_partiel_preserve_historique():
     ancien, _ = collecter(
         ancien={"version": "pistes-deliberations-v1", "pistes": []},
