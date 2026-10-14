@@ -21,6 +21,7 @@ FICHIERS = [
 
 def proposition():
     return {
+        "number": 427,
         "headRefName": BRANCHE, "headRefOid": SHA,
         "baseRefName": "main", "state": "OPEN",
         "isDraft": False, "files": FICHIERS,
@@ -160,7 +161,7 @@ def test_examen_integration_consulte_la_base_actuelle(monkeypatch, tmp_path: Pat
     monkeypatch.setattr(module, "sortie", faux)
     examiner_proposition(
         "fraware/frontiere-institut-interet-public", "deliberations",
-        BRANCHE, SHA, racine=tmp_path,
+        BRANCHE, SHA, 427, racine=tmp_path,
     )
     assert any(x[:3] == ("git", "fetch", "--quiet") for x in appels)
     assert any(x[:3] == ("git", "diff", "--no-renames") for x in appels)
@@ -174,4 +175,17 @@ def test_succes_de_commande_ne_vaut_pas_preuve_de_fusion():
             fusionner=lambda: retour(),
             confirmer=lambda: False,
             attendre=lambda _: pytest.fail("Une commande acceptée ne se réessaie pas"),
+        )
+
+
+def test_refuse_numero_incoherent_de_proposition(monkeypatch, tmp_path: Path):
+    import json
+    from scripts import fusionner_proposition_controlee as module
+    def faux(*arguments, racine=None):
+        return json.dumps(proposition())
+    monkeypatch.setattr(module, "sortie", faux)
+    with pytest.raises(PublicationRefusee, match="Numéro"):
+        examiner_proposition(
+            "fraware/frontiere-institut-interet-public",
+            "deliberations", BRANCHE, SHA, 999, racine=tmp_path,
         )
