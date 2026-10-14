@@ -23,7 +23,8 @@ from urllib.request import HTTPRedirectHandler, Request, build_opener
 RACINE = Path(__file__).resolve().parents[1]
 SORTIE = RACINE / "institutionnel" / "deliberations_publiques"
 CATALOGUE = "https://www.data.gouv.fr/api/1/datasets/"
-HOTES_CSV = {"static.data.gouv.fr"}
+HOTES_CSV = {"static.data.gouv.fr", "tabular-api.data.gouv.fr"}
+RESSOURCE_UUID = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
 RECHERCHES = ("délibérations", "deliberations", "actes réglementaires")
 MAX_OCTETS_META = 3_000_000
 MAX_OCTETS_CSV = 4_000_000
@@ -74,7 +75,9 @@ def adresse_autorisee(url: object, *, catalogue: bool = False) -> bool:
         and p.port is None and not p.username and not p.password
         and not p.fragment
         and (p.path == "/api/1/datasets/" if catalogue else
-             p.path.startswith("/resources/"))
+             (p.hostname == "static.data.gouv.fr" and p.path.startswith("/resources/"))
+             or (p.hostname == "tabular-api.data.gouv.fr" and
+                 re.fullmatch(r"/api/resources/[0-9a-f-]{36}/data/csv/", p.path) is not None))
     )
 
 
@@ -149,9 +152,19 @@ def selectionner_datasets(pages: list[dict]) -> list[dict]:
                     continue
                 rid, url = res.get("id"), res.get("url")
                 if (isinstance(rid, str) and re.fullmatch(r"[a-zA-Z0-9_-]{5,120}", rid)
-                        and str(res.get("format", "")).lower() == "csv"
-                        and adresse_autorisee(url)):
-                    csvs.append({"id": rid, "url": url})
+                        and str(res.get("format", "")).lower() == "csv"):
+                    if adresse_autorisee(url):
+                        adresse_csv = url
+                    elif RESSOURCE_UUID.fullmatch(rid.lower()):
+                        # La lecture passe par le service public tabulaire,
+                        # jamais par le domaine externe contenu dans la fiche.
+                        adresse_csv = (
+                            "https://tabular-api.data.gouv.fr/api/resources/"
+                            + rid.lower() + "/data/csv/"
+                        )
+                    else:
+                        continue
+                    csvs.append({"id": rid, "url": adresse_csv})
             if csvs and uid not in choix:
                 choix[uid] = {
                     "id": uid, "titre": titre.strip()[:180], "licence": lic,
