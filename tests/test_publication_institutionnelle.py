@@ -204,6 +204,16 @@ def test_base_identique_ne_demande_aucune_reprise(tmp_path: Path):
 
 
 
+def test_publication_pieces_pdf_uniquement_metadonnees():
+    chemin = "institutionnel/pieces_publiques/observations_pdfs_municipaux.json"
+    assert verifier_portee("pieces", [chemin])["nombre_fichiers"] == 1
+    assert identite_branche("pieces", "987654", "1") == (
+        "automatisation/pieces-987654-1"
+    )
+    with pytest.raises(PublicationRefusee, match="hors périmètre"):
+        verifier_portee("pieces", ["institutionnel/pieces_publiques/original.pdf"])
+
+
 def test_pistes_deliberations_portee_publiable_bornee():
     attendu = [
         "institutionnel/deliberations_publiques/pistes.json",
