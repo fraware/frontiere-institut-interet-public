@@ -57,7 +57,17 @@
           "date": "2026-10-13",
           "etape": "selection_annoncee",
           "nature_preuve": "index_officiel_listes_selection",
-          "url": "https://anr.fr/fr/projets-finances-et-impact/projets-finances/dernieres-listes-de-projets-selectionnes/"
+          "url": "https://anr.fr/fr/projets-finances-et-impact/projets-finances/dernieres-listes-de-projets-selectionnes/",
+          "piece_selection": "https://anr.fr/fileadmin/aap/2026/selection/aap-anr-nrf-iabio-2026-selection.pdf",
+          "nombre_projets_retenus_annonces": 5,
+          "acronymes_selectionnes": [
+            "AI-FORGE v2",
+            "FERROMAP",
+            "KiPARK",
+            "SpaceLC",
+            "TAO"
+          ],
+          "precision": "Liste officielle des projets sélectionnés, financement individuel encore conditionné aux vérifications et actes attributifs."
         }
       ],
       "etapes_non_etablies": [
