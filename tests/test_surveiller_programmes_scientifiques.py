@@ -32,7 +32,8 @@ def test_catalogue_reel_borne_a_cinq_urls_anr():
     catalogue = json.loads((RACINE / "institutionnel/programmes_scientifiques/sources_v1.json")
                            .read_text(encoding="utf-8"))
     sources = charger_sources(catalogue)
-    assert len(sources) == 5
+    assert len(sources) == 6
+    assert len([s for s in sources if s["format"] == "pdf"]) == 2
     assert {s["programme"] for s in sources} == {
         "saps_cppe_2026", "anr_nrf_iabio_2026", "transversal"
     }
