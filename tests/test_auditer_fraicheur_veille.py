@@ -79,7 +79,7 @@ def test_erreur_source_critique_et_contenu_ancien(tmp_path):
             {"source_id": "dila", "criticite": "critique", "erreur": "HTTP 503",
              "fraicheur": {"statut": "ERREUR"}},
             {"source_id": "recherche", "criticite": "haute",
-             "fraicheur": {"statut": "A_REVOIR"}},
+             "fraicheur": {"statut": "INDETERMINE"}},
         ],
     })
     item = {**entree(controle="referentiel"), "horodatage": "observe_le"}
