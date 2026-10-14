@@ -6,7 +6,7 @@
 
 Le fichier [`pistes.json`](../institutionnel/deliberations_publiques/pistes.json) conserve onze lignes sélectionnées dans des ressources publiques au schéma SCDL. Le présent document reprend l'état de la révision `da7435801d65` ; les identifiants, dates, collectivités et mots de repérage viennent des métadonnées structurées. L'existence d'un lien vers un PDF n'atteste pas la consultation ni la validité du document : **aucun des dix PDF directement annoncés n'a été ouvert et contrôlé intégralement dans cette enquête**. La onzième ligne n'a pas d'URL d'acte.
 
-Les tentatives d'accès direct à plusieurs URL d'actes ont échoué dans l'outil de consultation ; l'environnement local ne possédait pas de résolution réseau. Ces échecs ne prouvent pas l'indisponibilité des actes chez leur éditeur. Les quatre autres documents officiels cités ci-dessous ont été consultés via leur copie indexée ; leur identité matérielle (empreinte des octets) n'a pas été établie ici.
+Les tentatives d'accès direct à plusieurs URL d'actes ont échoué dans l'outil de consultation ; l'environnement local ne possédait pas de résolution réseau. Ces échecs ne prouvent pas l'indisponibilité des actes chez leur éditeur. Les cinq autres documents officiels cités ci-dessous ont été consultés via leur copie indexée ; leur identité matérielle (empreinte des octets) n'a pas été établie ici.
 
 L'unité est une **piste documentaire**, non un déficit de capacité ni une mission publique. Chaque piste conserve son identifiant et une question de vérification ; les rapprochements n'ont aucun statut probatoire tant que l'acte concerné et son objet n'ont pas été examinés.
 
