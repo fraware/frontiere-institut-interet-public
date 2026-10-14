@@ -1,5 +1,5 @@
 {
-  "controle_le": "2026-10-14T05:51:46+00:00",
+  "controle_le": "2026-10-14T15:47:20+00:00",
   "donnees_probantes": "empreintes_et_paginage_sans_extraits_libres",
   "echecs": [],
   "effets_mesures": 0,
@@ -55,10 +55,32 @@
       "type_piece": "dossier-deliberations",
       "url_source_officielle": "https://www.escalquens.fr/wp-content/uploads/2025/02/D%C3%A9lib%C3%A9rations-CM-2025-02-13.pdf",
       "utilisation_effective_prouvee": false
+    },
+    {
+      "commune": "Escalquens",
+      "id_source": "esc-2025-02-13-pv",
+      "observation_le": "2026-10-14T15:47:20+00:00",
+      "octets_pdf_republies": false,
+      "pages": 28,
+      "pages_contenant_termes": {
+        "cybersécurité": [],
+        "delibia": [],
+        "environnemental": [],
+        "hébergement": [],
+        "sicoval": []
+      },
+      "pages_extraites_avec_texte": 0,
+      "qualification": "presence_lexicale_paginee_sans_validation_usage",
+      "repere": "13 février 2025, débat sur la délibération 2025-7",
+      "sha256_octets_pdf": "a22c6971dda5d3579ee88a73e75d20c0baf8467e551ada6b61c8c8f8531221ef",
+      "taille_octets": 11302876,
+      "type_piece": "proces-verbal",
+      "url_source_officielle": "https://www.escalquens.fr/wp-content/uploads/2025/04/PV-CM-2025-02-13.pdf",
+      "utilisation_effective_prouvee": false
     }
   ],
-  "pieces_avec_empreinte": 2,
-  "pieces_nouvelles_ou_changees": 2,
-  "sources_attendues": 2,
+  "pieces_avec_empreinte": 3,
+  "pieces_nouvelles_ou_changees": 1,
+  "sources_attendues": 3,
   "version": "observations-pdfs-municipaux-v1"
 }
