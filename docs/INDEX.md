@@ -53,6 +53,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [Surveillance ANR](VEILLE_PROGRAMMES_SCIENTIFIQUES_ANR_V1.md) | Consultation quotidienne bornée, empreintes des publications, détection des révisions et publication contrôlée |
 | [Comparateurs SAPS–CPPE 2026](ENQUETES_COMPARATIVES_SAPS_CPPE_2026_V1.md) | Six cas de coopération scientifique, statuts de sélection et programme d'enquête contradictoire |
 | [Enquête DATSUM et EXACT](DATSUM_EXACT_AFFILIATIONS_ET_PREUVES_2026_10_14.md) | Affiliation des coordinateurs, comparateur INRAE et preuves manquantes des consortiums |
+| [Candidature Fidelipro](FIDELIPRO_CANDIDATURE_ANR_ET_PREUVE_PARLEMENTAIRE_2026.md) | Coopération DGFiP–Insee–IPP signalée au Parlement, statut de sélection et de financement encore inconnu |
 
 ## Référentiel institutionnel
 
