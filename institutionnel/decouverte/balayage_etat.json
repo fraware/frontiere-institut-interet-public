@@ -1,14 +1,20 @@
 {
-  "controle_le": "2026-10-14T12:55:32+00:00",
+  "controle_le": "2026-10-14T18:02:34+00:00",
   "cycles_acheves": 1,
   "derniere_execution_est_un_tour_complet": false,
-  "derniere_page_traitee": 1040,
-  "erreurs": [],
+  "derniere_page_traitee": 1068,
+  "erreurs": [
+    {
+      "detail": null,
+      "motif": "URLError",
+      "page": 1069
+    }
+  ],
   "exhaustivite_du_web": false,
   "fichiers_bruts_copies": 0,
-  "nombre_total_jeux_declare_par_catalogue": 74633,
-  "notices_relevees_cette_execution": 4000,
-  "page_suivante": 1041,
-  "pages_examinees_cette_execution": 80,
+  "nombre_total_jeux_declare_par_catalogue": 74643,
+  "notices_relevees_cette_execution": 1400,
+  "page_suivante": 1069,
+  "pages_examinees_cette_execution": 28,
   "version": "balayage-national-v1"
 }
