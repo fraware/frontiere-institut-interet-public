@@ -1,0 +1,102 @@
+name: "Surveillance des publications officielles DMTG"
+
+on:
+  schedule:
+    - cron: "43 7 * * *"
+  workflow_dispatch:
+    inputs:
+      publier:
+        description: "Proposer les signatures nouvelles ou modifiées à la revue"
+        required: true
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths:
+      - "scripts/surveiller_publications_dmtg.py"
+      - "tests/test_surveiller_publications_dmtg.py"
+      - "scripts/publier_mise_a_jour_institutionnelle.py"
+      - "institutionnel/programmes_scientifiques/sources_veille_dmtg_v1.json"
+      - ".github/workflows/veille-publications-dmtg.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: frontiere-veille-publications-dmtg
+  cancel-in-progress: false
+
+jobs:
+  surveillance:
+    if: github.repository == 'fraware/frontiere-institut-interet-public'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    steps:
+      - name: Récupérer main sans conserver les identifiants
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Installer Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Vérifier les contrats sans réseau
+        run: |
+          python -m pip install "pytest>=8,<10"
+          python -m pytest -q tests/test_surveiller_publications_dmtg.py tests/test_publication_institutionnelle.py
+
+      - name: Relever les cinq pages officielles DMTG
+        id: observation
+        shell: bash
+        run: |
+          set +e
+          python -m scripts.surveiller_publications_dmtg \
+            --bilan-json "$RUNNER_TEMP/dmtg-bilan.json" \
+            --bilan-markdown "$RUNNER_TEMP/dmtg-bilan.md"
+          code=$?
+          set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          if [[ "$code" != "0" && "$code" != "2" ]]; then
+            exit "$code"
+          fi
+
+      - name: Proposer les signatures nouvelles sans fusion automatique
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.publier)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/publier_mise_a_jour_institutionnelle.py --source dmtg --publier
+
+      - name: Publier les constats techniques
+        if: always()
+        shell: bash
+        run: |
+          if [[ -f "$RUNNER_TEMP/dmtg-bilan.md" ]]; then
+            cat "$RUNNER_TEMP/dmtg-bilan.md" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Bilan DMTG absent : consulter les journaux." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Conserver le rapport technique
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dmtg-veille-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/dmtg-bilan.json
+            ${{ runner.temp }}/dmtg-bilan.md
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Signaler les réponses officielles inaccessibles
+        if: steps.observation.outputs.code == '2'
+        run: |
+          echo "Certaines pages DMTG n'ont pas pu être vérifiées."
+          exit 2

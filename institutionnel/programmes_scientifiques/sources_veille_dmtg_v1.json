@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "nature": "surveillance_documentaire_technique",
+  "date_mise_en_place": "2026-10-14",
+  "regle": "Une variation de publication déclenche une relecture ; elle ne prouve ni recrutement, ni déploiement, ni diffusion de microdonnées.",
+  "sources": [
+    {
+      "id": "dgfip_publications_2026",
+      "programme": "dmtg_2026",
+      "nature_document": "index_statistiques",
+      "format": "html",
+      "url": "https://www.impots.gouv.fr/dgfip-statistiques-2026",
+      "motif": "Identifier les nouvelles études fiscales publiées en 2026 et distinguer recettes globales et microdonnées successorales"
+    },
+    {
+      "id": "dgfip_recettes_fiscales",
+      "programme": "dmtg_2026",
+      "nature_document": "catalogue_recettes",
+      "format": "html",
+      "url": "https://www.impots.gouv.fr/recettes-fiscales",
+      "motif": "Suivre le catalogue des tableaux de recettes et ses dates de mise à jour, sans assimiler DMTO et DMTG"
+    },
+    {
+      "id": "dgfip_droits_mutation",
+      "programme": "dmtg_2026",
+      "nature_document": "catalogue_mutations",
+      "format": "html",
+      "url": "https://www.impots.gouv.fr/droits-de-mutation",
+      "motif": "Détecter l'arrivée de nouvelles ressources ; le catalogue actuel concerne surtout les mutations à titre onéreux"
+    },
+    {
+      "id": "assemblee_reponse_11677",
+      "programme": "dmtg_2026",
+      "nature_document": "reponse_ministerielle",
+      "format": "html",
+      "url": "https://questions.assemblee-nationale.fr/q17/17-11677QE.htm",
+      "motif": "Conserver la référence des essais de télédéclaration et du traitement BNDP déclaré en cours"
+    },
+    {
+      "id": "senat_rapport_760",
+      "programme": "dmtg_2026",
+      "nature_document": "rapport_parlementaire",
+      "format": "html",
+      "url": "https://www.senat.fr/rap/r25-760/r25-760_mono.html",
+      "motif": "Conserver la source primaire des moyens annoncés et de la cible de microdonnées 2028"
+    }
+  ]
+}

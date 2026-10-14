@@ -56,6 +56,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [Candidature Fidelipro](FIDELIPRO_CANDIDATURE_ANR_ET_PREUVE_PARLEMENTAIRE_2026.md) | Coopération DGFiP–Insee–IPP signalée au Parlement, statut de sélection et de financement encore inconnu |
 | [Fidélipro et statistiques successorales DMTG](FIDELIPRO_DMTG_CHAINES_PREUVES_2026_10_14.md) | Cinq sources primaires, chronologie des travaux, programmation distincte des résultats et moyens chiffrés du chantier DMTG |
 | [Suivi des moyens et échéances DMTG](DMTG_SUIVI_MOYENS_EFFECTIFS_ET_ECHEANCES_2026_10_14.md) | Estimations de volumes, recrutements annoncés, organisation DGFiP et jalons de production à vérifier |
+| [Surveillance DMTG](VEILLE_DOCUMENTAIRE_DMTG_V1.md) | Contrôle quotidien de cinq publications officielles, signatures documentaires et changements soumis à vérification |
 
 ## Référentiel institutionnel
 
