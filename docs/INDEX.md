@@ -52,6 +52,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [Comparateurs ANR et commande publique](COMPARATEURS_ANR_CNCP_SOURCES_PRIMAIRES_2026_10_14.md) | Sources primaires sur les appels de recherche, les sélections et les dispositifs de coopération |
 | [Surveillance ANR](VEILLE_PROGRAMMES_SCIENTIFIQUES_ANR_V1.md) | Consultation quotidienne bornée, empreintes des publications, détection des révisions et publication contrôlée |
 | [Comparateurs SAPS–CPPE 2026](ENQUETES_COMPARATIVES_SAPS_CPPE_2026_V1.md) | Six cas de coopération scientifique, statuts de sélection et programme d'enquête contradictoire |
+| [Enquête DATSUM et EXACT](DATSUM_EXACT_AFFILIATIONS_ET_PREUVES_2026_10_14.md) | Affiliation des coordinateurs, comparateur INRAE et preuves manquantes des consortiums |
 
 ## Référentiel institutionnel
 
