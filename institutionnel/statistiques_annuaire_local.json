@@ -2,7 +2,7 @@
   "categories_export": {
     "SI": 7909,
     "SIL": 6297,
-    "SL": 79580
+    "SL": 79578
   },
   "competence_geographique": {
     "dataset": "api-lannuaire-administration-locale-competence-geographique",
@@ -11,25 +11,25 @@
     "url": "https://api-lannuaire.service-public.gouv.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration-locale-competence-geographique"
   },
   "couverture": {
-    "avec_coordonnees": 85694,
+    "avec_coordonnees": 85692,
     "avec_fondement_juridique": 1546,
     "avec_mission": 29903,
     "avec_responsable": 5204,
-    "avec_siren": 44079,
-    "avec_siret": 54650,
-    "avec_territoire_direct": 85679
+    "avec_siren": 44083,
+    "avec_siret": 54649,
+    "avec_territoire_direct": 85677
   },
   "hierarchie": {
     "anomalies": 100,
     "avec_parent_principal": 3539,
     "entites_a_parents_directs_multiples": 0,
-    "sans_parent_principal": 82338
+    "sans_parent_principal": 82336
   },
-  "nombre_enregistrements_export_complet": 93786,
-  "nombre_entites_canoniques": 85877,
+  "nombre_enregistrements_export_complet": 93784,
+  "nombre_entites_canoniques": 85875,
   "nombre_relations_hierarchiques": 4158,
-  "nombre_services_locaux_source": 85877,
-  "observe_le": "2026-10-09T12:08:44+00:00",
+  "nombre_services_locaux_source": 85875,
+  "observe_le": "2026-10-12T13:35:02+00:00",
   "resolution_croisee_roae": {
     "anomalies_roae_initiales": 158,
     "resolues_par_annuaire_local": 158,
@@ -37,9 +37,9 @@
   },
   "source_id": "dila_annuaire_local",
   "stockage": {
-    "octets_entites": 226576229,
+    "octets_entites": 226576941,
     "octets_relations": 3671842,
-    "octets_total_canonique": 230248071
+    "octets_total_canonique": 230248783
   },
   "types_institutionnels_source": {
     "Administration centrale (ou Ministère)": 4,
@@ -72,7 +72,7 @@
     "Service local — ber": 98,
     "Service local — bsn": 34,
     "Service local — bureau_de_douane": 169,
-    "Service local — caf": 466,
+    "Service local — caf": 465,
     "Service local — cap_emploi": 96,
     "Service local — carsat": 20,
     "Service local — ccas": 11908,
@@ -124,7 +124,7 @@
     "Service local — huissiers_justice": 33,
     "Service local — hypotheque": 127,
     "Service local — maia": 86,
-    "Service local — mairie": 35807,
+    "Service local — mairie": 35806,
     "Service local — maison_arret": 73,
     "Service local — maison_centrale": 5,
     "Service local — maison_emploi": 67,
@@ -196,7 +196,7 @@
     "bsn": 34,
     "bureau_de_douane": 169,
     "caa": 9,
-    "caf": 466,
+    "caf": 465,
     "canope_atelier": 102,
     "canope_dt": 12,
     "cap_emploi": 96,
@@ -308,7 +308,7 @@
     "inspection_academique": 99,
     "laboratoire_departemental": 82,
     "maia": 86,
-    "mairie": 35808,
+    "mairie": 35807,
     "maison_arret": 73,
     "maison_centrale": 5,
     "maison_emploi": 67,
