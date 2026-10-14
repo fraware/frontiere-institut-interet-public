@@ -86,7 +86,7 @@ def test_erreur_source_critique_et_contenu_ancien(tmp_path):
     resultat = auditer_collecte(tmp_path, item, INSTANT)
     assert resultat["statut"] == "critique"
     codes = [x["code"] for x in resultat["alertes"]]
-    assert codes.count("SOURCE_INDISPONIBLE") == 1
+    assert codes.count("ECHEC_OBSERVATION_SOURCE") == 1
     assert codes.count("CONTENU_A_REVOIR") == 1
 
 
@@ -198,3 +198,22 @@ def test_toutes_les_procedures_programmees_sont_surveillées():
     # Le contrôleur ne peut garantir sa propre exécution ; une alerte
     # externe indépendante constituerait une vérification supplémentaire.
     assert programmes == configurees | {"controle-veille.yml"}
+
+def test_refus_403_ne_declare_pas_la_source_publiquement_indisponible(tmp_path):
+    """Un blocage du collecteur ne suffit pas à prouver l'absence du document."""
+    ecrire(tmp_path, "institutionnel/etat_exemple.json", {
+        "observe_le": INSTANT.isoformat(), "nombre_sources": 1,
+        "sources": [{
+            "source_id": "portefeuille",
+            "criticite": "haute",
+            "erreur": "HTTPError: HTTP Error 403: Forbidden",
+            "fraicheur": {"statut": "ERREUR"},
+        }],
+    })
+    item = {**entree(controle="referentiel"), "horodatage": "observe_le"}
+    resultat = auditer_collecte(tmp_path, item, INSTANT)
+    assert resultat["statut"] == "attention"
+    assert [x["code"] for x in resultat["alertes"]] == [
+        "ACCES_REFUSE_CLIENT_AUTOMATISE"
+    ]
+    assert "indisponible" not in resultat["alertes"][0]["detail"]
