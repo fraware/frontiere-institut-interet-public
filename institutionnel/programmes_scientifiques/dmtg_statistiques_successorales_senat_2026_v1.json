@@ -68,18 +68,71 @@
   ],
   "non_etablis": [
     "recrutement_effectif_en_septembre_2026",
-    "programme_dmtg_2_0_demarre",
     "premiers_fichiers_statistiques_produits",
     "cout_du_retard",
     "duree_de_mobilisation_de_competences_externes",
-    "effet_causal_d_une_nouvelle_institution"
+    "effet_causal_d_une_nouvelle_institution",
+    "enquete_dmtg_2_0_formellement_lancee"
   ],
   "relation_avec_fidelipro": "cas_different_malgre_un_service_statistique_concerne_et_des_sujets_patrimoniaux_voisins",
-  "qualification_provisoire": "cas_documente_de_difficulte_technique_et_de_moyens_rapportes; aucune_attribution_causale_a_une_penurie_generale_de_specialistes",
+  "qualification_provisoire": "chantier_technique_actif_et_besoin_de_competences_specifiques_documentes_par_dgfip_et_senat; effectifs_du_chantier_limites_selon_le_rapport; aucune_preuve_de_penurie_nationale",
   "hypotheses_a_departager": [
     "capacite_d_analyse",
     "structuration_et_acces_aux_donnees",
     "priorisation_budgétaire_et_des_moyens",
     "architecture_et_maturite_du_systeme_d_information"
-  ]
+  ],
+  "sources_complementaires": [
+    {
+      "id": "dgfip_offre_stage_traitement_dmtg_2026",
+      "nature": "fiche_officielle_offre_de_stage",
+      "date_publication_documentaire": "2026-02",
+      "source": "DGFiP, DESF, publiée sur le portail officiel des stages de la fonction publique",
+      "url": "https://www.pass.fonction-publique.gouv.fr/files/2026-02/Fiche_stage_otim_26%20nouvelle%20version.pdf",
+      "pages_pdf_zero": [
+        1,
+        2
+      ],
+      "limite": "Offre de stage publiée, sans attestation de recrutement effectif ni traitement achevé."
+    },
+    {
+      "id": "reponse_ministerielle_question_11677_2026",
+      "nature": "reponse_ministerielle_ecrite",
+      "date_publication": "2026-03-10",
+      "source": "Ministère de l'Action et des Comptes publics, réponse à la question écrite n° 11677",
+      "url": "https://questions.assemblee-nationale.fr/q17/17-11677QE.htm",
+      "limite": "Travaux d'enrichissement de la base patrimoniale en cours et expérimentations annoncées, sans validation de leur finalisation."
+    }
+  ],
+  "faits_complementaires": {
+    "effectif_total_desf_renseigne_par_offre": "un_peu_plus_de_40_agents",
+    "perimetre_effectif_total": "Effectif global du DESF décrit dans l'offre officielle, distinct des moyens d'un demi ETP rapportés pour le chantier successoral.",
+    "volume_pdfs_par_an_estime": 330000,
+    "periode_volume_decrite": "depuis_au_moins_2018",
+    "statut_volume": "charge_de_documents_annoncee_dans_la_description_du_poste; pas_un_volume_effectivement_traite",
+    "activite_preparatoire": "les_equipes_du_desf_ont_deja_commence_les_travaux_selon_la_fiche_de_stage",
+    "competences_recherchees": [
+      "extraction_documents_numerises",
+      "reconnaissance_optique_de_caracteres",
+      "expressions_regulieres",
+      "modeles_de_langage",
+      "modeles_multimodaux",
+      "python",
+      "polars",
+      "optimisation_logicielle",
+      "automatisation_de_traitement"
+    ],
+    "stage_prevu": {
+      "debut_annonce": "2026-05",
+      "duree_mois": 6,
+      "contrat_effectivement_pourvu": "non_etabli"
+    },
+    "reponse_ministerielle": {
+      "date": "2026-03-10",
+      "etat": "enrichissement_des_donnees_successorales_en_cours",
+      "donations_manuelles": "teleprocedure_obligatoire_depuis_2026-01-01_selon_le_ministere",
+      "transmission_successions": "tests_en_cours_et_deploiement_progressif_prevus_pour_second_semestre_2026",
+      "etat_deploiement_reel_en_octobre": "non_verifie"
+    }
+  }
 }
