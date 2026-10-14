@@ -22,7 +22,7 @@ def test_cinq_sources_et_six_jalons_fidelipro_respectent_la_nature_de_preuve():
     assert len(f["jalons"]) == 6
     sources = {s["id"]: s for s in f["sources"]}
     assert len(sources) == 5
-    assert {urlsplit(s["url"]).hostname for s in sources.values()} == HOSTES
+    assert {urlsplit(s["url"]).hostname for s in sources.values()} == HOTES
     assert all(urlsplit(s["url"]).scheme == "https" for s in sources.values())
     assert sources["ipp_note92_2023"]["date_document"] == "2023-06"
     assert sources["senat_rapport760_2026"]["date_document"] == "2026-06-17"
