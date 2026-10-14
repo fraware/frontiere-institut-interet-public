@@ -5,13 +5,13 @@ Ce répertoire contient les données normalisées utilisées par FRONTIÈRE pour
 ## État courant
 
 <!-- FRONTIERE:ETAT_INSTITUTIONNEL:DEBUT -->
-Dernier cycle complet observé le **2026-10-12** :
+Dernier cycle complet observé le **2026-10-14** :
 
-- **7 909 services ou organismes** issus du Référentiel de l’organisation administrative de l’État, avec **8 077 relations hiérarchiques résolues** ;
-- **85 875 services et guichets locaux** issus de l’Annuaire de l’administration, avec **4 158 relations hiérarchiques locales ou croisées** ;
+- **7 908 services ou organismes** issus du Référentiel de l’organisation administrative de l’État, avec **8 076 relations hiérarchiques résolues** ;
+- **85 834 services et guichets locaux** issus de l’Annuaire de l’administration, avec **4 158 relations hiérarchiques locales ou croisées** ;
 - **40 345 unités territoriales** issues du Code officiel géographique de l’Insee, reliées par **150 421 relations territoriales**.
 
-L’Annuaire contient **305 552 références à des codes Insee**. **305 545** correspondent à une unité territoriale actuelle. Les **7** références restantes correspondent à d’anciens codes attestés par l’historique officiel. **0** référence reste inexpliquée et **0** cas est ambigu.
+L’Annuaire contient **305 515 références à des codes Insee**. **305 508** correspondent à une unité territoriale actuelle. Les **7** références restantes correspondent à d’anciens codes attestés par l’historique officiel. **0** référence reste inexpliquée et **0** cas est ambigu.
 
 Le croisement des deux publications de la Direction de l’information légale et administrative résout également les **158 références hiérarchiques** dont la cible manquait dans la publication consacrée à l’organisation de l’État. Il reste **100 références hiérarchiques locales** dont la cible n’apparaît dans aucune catégorie courante de l’Annuaire.
 <!-- FRONTIERE:ETAT_INSTITUTIONNEL:FIN -->
