@@ -157,8 +157,12 @@ def auditer_collecte(racine: Path, entree: dict, maintenant: datetime) -> dict:
             for source in sources:
                 identite = source.get("source_id")
                 if source.get("erreur"):
-                    alerter(resultat, "SOURCE_INDISPONIBLE",
-                            f"{identite} : contrôle de la source en erreur",
+                    from scripts.surveiller_sources_institutionnelles import classifier_erreur_source
+
+                    code = (source.get("code_erreur")
+                            or classifier_erreur_source(str(source["erreur"])))
+                    alerter(resultat, code,
+                            f"{identite} : échec d'observation, état public inconnu",
                             gravite(source.get("criticite", "moyenne")))
                 elif source.get("fraicheur", {}).get("statut") in {"A_REVOIR", "ERREUR", "INDETERMINE"}:
                     alerter(resultat, "CONTENU_A_REVOIR",
