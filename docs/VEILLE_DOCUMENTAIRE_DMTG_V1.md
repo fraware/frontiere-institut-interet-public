@@ -1,12 +1,22 @@
 # Veille documentaire DMTG — surveillance de cinq publications officielles
 
-**Mise en place : 14 octobre 2026.** **Statut initial : procédure proposée ; première consultation effective et constitution d'un état de référence à confirmer après intégration.**
+**Mise en place : 14 octobre 2026.** **Statut : procédure intégrée ; incident de maintenance diagnostiqué lors du premier relevé, contrôle de contenu renforcé en cours de validation.**
 
 ## Question de recherche et limites
 
 L'enquête FRONTIÈRE sur les statistiques successorales cherche à déterminer si le renfort du Département des études statistiques et fiscales annoncé pour septembre 2026 a été affecté, si les traitements de déclarations successorales produisent des données vérifiées et si un premier résultat statistique détaillé est publié. La consultation des publications accessibles au 14 octobre n'a pas permis d'établir ces trois événements.
 
 Le [rapport d'information du Sénat n° 760](https://www.senat.fr/rap/r25-760/r25-760_mono.html) rapporte **0,5 ETP consacré au chantier en juin 2026**, un ETP supplémentaire annoncé pour septembre et une cible de première diffusion de microdonnées en 2028. La [réponse ministérielle du 10 mars 2026](https://questions.assemblee-nationale.fr/q17/17-11677QE.htm) décrit des travaux en cours d'enrichissement de la base nationale des données patrimoniales et des essais de télédéclaration notariale. La [fiche DGFiP de février 2026](https://www.pass.fonction-publique.gouv.fr/files/2026-02/Fiche_stage_otim_26%20nouvelle%20version.pdf) décrit un stock annuel à traiter, des travaux engagés et des compétences recherchées ; elle ne confirme ni une embauche ni une production achevée.
+
+## Incident de première exécution : une réponse HTTP ne suffit pas
+
+La [première exécution réelle n° 38649002286](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/38649002286), le 14 octobre 2026 à 22 h 38 UTC, a obtenu **cinq réponses HTTP techniquement acceptées**, mais l'examen de l'artefact a révélé que les **trois pages distinctes de la DGFiP renvoyaient exactement les mêmes 1 159 289 octets et la même empreinte SHA-256**. Les deux sources parlementaires avaient des empreintes différentes.
+
+Une [vérification publique de la DGFiP](https://www.impots.gouv.fr/recettes-fiscales) a montré une page indiquant que le site était **en maintenance**, avec une remise en service annoncée pour le 15 octobre 2026. Le premier relevé ne constitue donc pas une preuve de consultation de **trois documents DGFiP différents** : il a détecté un état temporaire du site.
+
+En réponse, le collecteur vérifie désormais que la page finale correspond au **chemin documentaire attendu**. Pour les trois pages de la DGFiP, il refuse les réponses de maintenance servies avec HTTP 200 et contrôle la présence d'un intitulé documentaire correspondant à chaque source. Les pages refusées sont classées comme **échecs de consultation**, les signatures anciennes restant conservées. Les contrôles dédiés simulent explicitement la maintenance et les redirections génériques.
+
+**Le registre scientifique DMTG ne reçoit aucune nouvelle preuve de recrutement ou de production à partir de cet incident.** Il faudra vérifier séparément la prochaine consultation réellement valable des pages DGFiP. Le résultat initial « cinq réponses sur cinq » doit être interprété comme un constat technique **avant validation du contenu**, et non comme cinq pièces administratives effectivement lues.
 
 ## Sources surveillées
 
