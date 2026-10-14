@@ -31,3 +31,34 @@ def test_seules_les_erreurs_critiques_font_echouer_la_surveillance():
         ]
     }
     assert lister_erreurs_critiques(etat) == ["critique"]
+
+def test_classification_de_l_acces_refuse_ne_juge_pas_le_producteur():
+    """Le statut HTTP d'un robot ne prouve pas l'indisponibilité de la source."""
+    from scripts.surveiller_sources_institutionnelles import (
+        classifier_erreur_source, construire_alertes,
+    )
+    erreur = "HTTPError: HTTP Error 403: Forbidden"
+    assert classifier_erreur_source(erreur) == "ACCES_REFUSE_CLIENT_AUTOMATISE"
+    assert classifier_erreur_source("HTTPError: HTTP Error 429: Too Many Requests") == (
+        "LIMITATION_TEMPORAIRE_ACCES"
+    )
+    assert classifier_erreur_source("HTTPError: HTTP Error 404: Not Found") == (
+        "RESSOURCE_NON_TROUVEE_A_CETTE_ADRESSE"
+    )
+    alertes = construire_alertes(
+        {"sources": []},
+        {"sources": [{"source_id": "ape", "criticite": "moyenne", "erreur": erreur}]},
+    )
+    assert alertes[0]["type"] == "ACCES_REFUSE_CLIENT_AUTOMATISE"
+
+
+def test_code_source_explicitement_enregistre_prime_sur_texte():
+    from scripts.surveiller_sources_institutionnelles import construire_alertes
+
+    alertes = construire_alertes({"sources": []}, {"sources": [{
+        "source_id": "exemple",
+        "criticite": "haute",
+        "erreur": "HTTPError: HTTP Error 403: Forbidden",
+        "code_erreur": "DIAGNOSTIC_SOURCE",
+    }]})
+    assert alertes[0]["type"] == "DIAGNOSTIC_SOURCE"
