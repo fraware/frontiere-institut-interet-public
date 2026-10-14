@@ -1,7 +1,7 @@
 {
-  "controle_le": "2026-10-14T05:51:46+00:00",
+  "controle_le": "2026-10-14T16:02:54+00:00",
   "couverture_exhaustive": false,
-  "csv_schemas_refuses": 3,
+  "csv_schemas_refuses": 2,
   "documents_primaires_pdf_telecharges": 0,
   "echecs": [
     {
@@ -29,36 +29,28 @@
       "type": "csv"
     },
     {
-      "jeu_id": "65a9c208aa7502a46d5aa47f",
-      "motif": "CollecteInvalide",
-      "ressource_id": "d8cf1d0b-f590-440a-a7c8-45c2ac4c09b9",
-      "type": "csv"
-    },
-    {
-      "jeu_id": "6ac9807be6a5522f074ef0e0",
+      "jeu_id": "662c46051a00d094ef3d4fc8",
       "motif": "HTTPError",
-      "ressource_id": "936f63c7-3506-4864-817d-a0eba9cfb4fe",
-      "type": "csv"
-    },
-    {
-      "jeu_id": "6acec62aa29e153dfae7a6f3",
-      "motif": "HTTPError",
-      "ressource_id": "b86ceb4e-000e-4fad-8d6e-d966a5a46428",
+      "ressource_id": "9ead5b79-45ff-4cc1-a120-a84b9fbac557",
       "type": "csv"
     }
   ],
-  "jeux_retenus": 15,
-  "lignes_scdl_examinees": 612,
-  "nouvelles_pistes": 0,
+  "fiches_ciblees_reussies": 10,
+  "fiches_ciblees_tentees": 10,
+  "jeux_retenus": 22,
+  "lignes_scdl_examinees": 42759,
+  "nouvelles_pistes": 11,
   "pages_catalogue_reussies": 2,
-  "pistes_conservees": 0,
+  "paginage_ressources_csv_verifie": false,
+  "pistes_conservees": 11,
   "position_initiale": 0,
-  "position_suivante": 0,
-  "requetes_catalogue": 3,
-  "ressources_csv_eligibles": 15,
-  "ressources_csv_examinees": 15,
-  "ressources_csv_telechargees": 11,
-  "tour_du_releve_termine": true,
+  "position_suivante": 25,
+  "requetes_catalogue": 13,
+  "ressources_csv_eligibles": 34,
+  "ressources_csv_examinees": 25,
+  "ressources_csv_telechargees": 23,
+  "ressources_sources_externes_directes_appelees": 0,
+  "tour_du_releve_termine": false,
   "utilisations_effectives_deduites": 0,
   "version": "collecte-deliberations-scdl-v1"
 }
