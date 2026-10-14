@@ -28,3 +28,19 @@ def test_sans_licence_la_republication_n_est_pas_presumee():
     assert "licence_a_verifier" in par_id["dgafp_referentiel_metiers"]["statut"]
     assert "volume" in par_id["insee_sirene"]["statut"] or "volumes" in par_id["insee_sirene"]["statut"]
     assert par_id["ted"]["point_entree"].startswith("https://api.ted.europa.eu/")
+
+
+def test_sources_hal_cordis_restent_candidats_sans_ingestion():
+    """Ne jamais confondre l'identification d'une API avec un collecteur opérationnel."""
+    registre = json.loads(REGISTRE.read_text(encoding="utf-8"))
+    fiches = {fiche["id"]: fiche for fiche in registre["catalogues"]}
+    hal = fiches["hal_oai_moissonnage"]
+    cordis = fiches["cordis_projets_recherche"]
+    assert hal["documentation"] == "https://api.hal.science/docs/oai"
+    assert hal["point_entree"] == "https://api.archives-ouvertes.fr/oai/hal/"
+    assert "sans_ingestion" in hal["statut"]
+    assert "reutilisation" in hal["statut"]
+    assert cordis["documentation"] == "https://cordis.europa.eu/about/services"
+    assert "sans_ingestion" in cordis["statut"]
+    assert "clé" in cordis["remarque"]
+    assert "quotas" in cordis["remarque"]
