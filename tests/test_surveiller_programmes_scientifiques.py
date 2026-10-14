@@ -157,3 +157,32 @@ def test_publication_n_autorise_que_l_etat_des_programmes():
               "institutionnel/veille/revue_signaux_2026_10_14.json"):
         with pytest.raises(PublicationRefusee, match="hors périmètre"):
             verifier_portee("programmes", [p])
+
+
+def test_menu_et_pied_de_page_n_alterent_pas_le_contenu_principal():
+    corps = b"Un programme de recherche publique et ses partenaires institutionnels. " * 5
+    un = (
+        b"<html><header>Menu actualite 1</header><main><article>" + corps +
+        b"</article></main><footer>Informations du mois</footer></html>"
+    )
+    deux = (
+        b"<html><header>Menu actualite 2</header><main><article>" + corps +
+        b"</article></main><footer>Nouvelles recentes</footer></html>"
+    )
+    assert empreinte_document(un, "html") == empreinte_document(deux, "html")
+    modifie = deux.replace(b"recherche publique", b"recherche territoriale")
+    assert empreinte_document(un, "html") != empreinte_document(modifie, "html")
+
+
+def test_l_historique_est_borne_apres_une_longue_suite_de_modifications():
+    src = source()
+    etat = {"version": 1, "observations": []}
+    for i in range(HISTORIQUE_MAX + 5):
+        corps = TEXTE + ("<p>révision numéro %d</p>" % i).encode("utf-8")
+        # L'ajout à l'extérieur du document ne constitue pas toujours du
+        # contenu principal ; ici on modifie le texte à l'intérieur de <main>.
+        corps = TEXTE.replace(b"</main>", b"<p>" + str(i).encode() + b"</p></main>")
+        etat, bilan = collecter([src], etat, MAINTENANT,
+                                acquerir=lambda _, c=corps: (c, "text/html"))
+    assert len(etat["observations"][0]["historique"]) == HISTORIQUE_MAX
+    assert bilan["transitions_institutionnelles_inferees"] == 0
