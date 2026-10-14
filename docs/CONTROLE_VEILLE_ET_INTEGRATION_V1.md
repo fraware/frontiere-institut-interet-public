@@ -23,7 +23,7 @@ Les métadonnées ne constituent pas une ingestion intégrale des données méti
 
 ## Contrôle transversal ajouté
 
-La politique de contrôle figure dans institutionnel/veille/controle_v1.json. Le programme scripts/auditer_fraicheur_veille.py vérifie dix fichiers d'état de collecte et, sur demande avec le droit de lecture GitHub Actions, les dernières réussites de sept procédures de veille.
+La politique de contrôle figure dans institutionnel/veille/controle_v1.json. Le programme scripts/auditer_fraicheur_veille.py vérifie dix fichiers d'état de collecte et, sur demande avec le droit de lecture GitHub Actions, les dernières réussites des seize procédures programmées recensées dans le dépôt.
 
 Il inspecte la date du dernier relevé, les erreurs partielles, la disponibilité des sources critiques, la fraîcheur déclarée du contenu chez le producteur et le dernier succès propre à chaque flux. Il reconnaît explicitement une collecte SCDL non exhaustive.
 
@@ -45,7 +45,7 @@ La procédure .github/workflows/controle-veille.yml est prévue toutes les six h
 
 Une source ancienne correctement consultée ne devient pas récente. Un état récent ne garantit pas la validité d'un acte, et un incident de collecte ne prouve pas l'absence de données.
 
-Les fenêtres maximales d'âge de 36 à 240 heures représentent des seuils exploratoires de *retard de surveillance*, et non des obligations de publication imposées aux producteurs.
+Les fenêtres maximales d'âge de 36 à 960 heures (40 jours pour les traitements mensuels) représentent des seuils exploratoires de *retard de surveillance*, et non des obligations de publication imposées aux producteurs.
 
 ## Incidents et décisions
 
