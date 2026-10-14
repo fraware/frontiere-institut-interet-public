@@ -204,6 +204,19 @@ def test_base_identique_ne_demande_aucune_reprise(tmp_path: Path):
 
 
 
+def test_pistes_deliberations_portee_publiable_bornee():
+    attendu = [
+        "institutionnel/deliberations_publiques/pistes.json",
+        "institutionnel/deliberations_publiques/etat_collecte.json",
+    ]
+    assert verifier_portee("deliberations", attendu)["nombre_fichiers"] == 2
+    assert identite_branche("deliberations", "987654", "1") == (
+        "automatisation/deliberations-987654-1"
+    )
+    with pytest.raises(PublicationRefusee, match="hors périmètre"):
+        verifier_portee("deliberations", ["institutionnel/besoins_publics/etat_boamp.json"])
+
+
 def test_bilan_intersources_liste_blanche_stricte():
     resultat = verifier_portee(
         "index_decp", ["institutionnel/decp/bilan_index_unifie.json"]
