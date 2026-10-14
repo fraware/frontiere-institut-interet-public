@@ -67,6 +67,14 @@ L'évaluation scientifique doit suivre une autre chaîne : sources primaires, ac
 
 Ces pistes ne sont **pas déclarées intégrées**. Leur admission nécessite une revue humaine, des essais techniques et une justification scientifique explicite. Ne pas doubler les découvertes encore en attente dans la proposition n° 401.
 
+## File de revue quotidienne à provenance contrôlée
+
+Le programme `scripts/preparer_revue_veille.py` parcourt les publications publiques et les onze pistes de délibérations déjà enregistrées. Il conserve pour chaque élément un identifiant de provenance, la date de publication déclarée, la date de première observation, un lien de référence et un statut explicite de pièce non qualifiée. Il ne télécharge aucun nouveau document.
+
+La priorité de revue est fondée sur la date de publication, en distinguant les **90 derniers jours**, les dates inconnues, les archives et les dates incohérentes. Les publications anciennes découvertes aujourd'hui ne sont pas présentées comme des nouvelles récentes. À priorité temporelle égale, la sélection est répartie entre producteurs afin qu'un flux très abondant ne monopolise pas les premiers dossiers. Les résultats et les éventuelles limites de la file sont consignés dans les pièces jointes de la procédure de contrôle.
+
+Les correspondances sont exclusivement lexicales et ne constituent pas une évaluation de pertinence scientifique, de nouveauté ni de fiabilité. Les délibérations du registre SCDL sont incluses parmi les pistes sans avoir été vérifiées par lecture de leurs actes primaires. La file ne modifie aucun registre d'épisodes vérifiés.
+
 ## Étape scientifique suivante
 
 Constituer un registre séparé des **propositions de liens documentaires**, avec identifiant de chaque source, méthode de correspondance, date, niveau de preuve, hypothèse concurrente, relecture humaine et résultat. Il permettra de transformer les observations issues des différentes veilles en enquêtes, sans assimiler une concordance de textes ou de fournisseurs à la preuve d'un même épisode.
