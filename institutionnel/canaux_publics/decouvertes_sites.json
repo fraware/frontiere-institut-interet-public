@@ -1,9 +1,9 @@
 {
   "comptes_sociaux_authentifies_par_cette_collecte": 0,
-  "controle_le": "2026-10-14T08:01:33+00:00",
+  "controle_le": "2026-10-14T14:01:44+00:00",
   "couverture_nationale": false,
   "formats_des_candidats_verifies": 0,
-  "liens_candidats_dans_les_sites_reussis": 11,
+  "liens_candidats_dans_les_sites_reussis": 12,
   "sites": [
     {
       "aucune_absence_de_flux_prouvee": true,
@@ -14,6 +14,13 @@
           "libelle": "EN",
           "methode": "lien_html_evoquant_flux",
           "url": "https://anr.fr/en/rss-feed-social-media/"
+        },
+        {
+          "contenu_telecharge": false,
+          "format_confirme": false,
+          "libelle": "Flux RSS et réseaux sociaux",
+          "methode": "lien_html_evoquant_flux",
+          "url": "https://anr.fr/flux-rss-et-reseaux-sociaux/"
         },
         {
           "contenu_telecharge": false,
@@ -38,7 +45,7 @@
         }
       ],
       "id": "anr_flux",
-      "observe_le": "2026-10-14T08:01:33+00:00",
+      "observe_le": "2026-10-14T14:01:44+00:00",
       "organisme": "Agence nationale de la recherche",
       "page_source": "https://anr.fr/fr/flux-rss-et-reseaux-sociaux/"
     },
@@ -82,7 +89,7 @@
         }
       ],
       "id": "ccsd_flux",
-      "observe_le": "2026-10-14T08:01:33+00:00",
+      "observe_le": "2026-10-14T14:01:44+00:00",
       "organisme": "Centre pour la communication scientifique directe (CNRS)",
       "page_source": "https://www.ccsd.cnrs.fr/rester-informe/"
     },
@@ -105,7 +112,7 @@
         }
       ],
       "id": "cnrs_journal",
-      "observe_le": "2026-10-14T08:01:33+00:00",
+      "observe_le": "2026-10-14T14:01:44+00:00",
       "organisme": "Centre national de la recherche scientifique",
       "page_source": "https://lejournal.cnrs.fr/ecrans"
     },
@@ -113,7 +120,7 @@
       "aucune_absence_de_flux_prouvee": true,
       "candidats": [],
       "id": "ecologie_flux",
-      "observe_le": "2026-10-14T08:01:33+00:00",
+      "observe_le": "2026-10-14T14:01:44+00:00",
       "organisme": "Ministères chargés de la transition écologique",
       "page_source": "https://www.ecologie.gouv.fr/flux-rss"
     }
