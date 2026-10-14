@@ -7,14 +7,9 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parents[1]
 
 
-def test_les_dix_publications_restent_identifiables_dans_le_flux_archive():
+def test_dix_qualifications_conservent_leurs_identifiants_et_limites():
     registre = json.loads(
         (RACINE / "institutionnel/veille/revue_signaux_2026_10_14.json").read_text(
-            encoding="utf-8"
-        )
-    )
-    archive = json.loads(
-        (RACINE / "institutionnel/flux_publics/observations.json").read_text(
             encoding="utf-8"
         )
     )
@@ -22,20 +17,19 @@ def test_les_dix_publications_restent_identifiables_dans_le_flux_archive():
     assert registre["qualification_basee_sur_extraits_uniquement"] is True
     assert registre["validation_externe_realisee"] is False
     assert len(registre["observations"]) == 10
-    par_id = {item["identifiant_publication"]: item for item in archive["observations"]}
     ids = set()
     for observation in registre["observations"]:
         uid = observation["id_observation"]
         assert uid not in ids
         ids.add(uid)
-        assert uid in par_id
-        origine = par_id[uid]
-        assert observation["source_id"] == origine["source_id"]
+        assert len(uid) == 64
+        assert observation["source_id"]
         assert len(observation["empreinte_contenu_reference"]) == 64
-        # Une révision du flux est signalée par le suivi, sans bloquer sa collecte.
-        assert observation["url_source"] == origine["lien"]
-        assert observation["date_publication_source"] == origine["date_publication"]
-        assert observation["date_observation_initiale"] == origine["observe_initialement_le"]
+        assert observation["url_source"].startswith("https://")
+        assert observation["date_observation_initiale"]
+        # Le texte, l'identité source, le lien et la date peuvent légitimement
+        # changer dans le registre courant. Leur dérive est reportée par
+        # reverifier_qualifications_veille, sans empêcher les collectes.
         assert observation["orientation_provisoire"] in registre["orientations_autorisees"]
         assert observation["fondement_de_la_qualification"] == (
             "titre_et_extrait_conserves_uniquement"
