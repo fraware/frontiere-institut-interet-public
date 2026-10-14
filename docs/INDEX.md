@@ -54,6 +54,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [Comparateurs SAPS–CPPE 2026](ENQUETES_COMPARATIVES_SAPS_CPPE_2026_V1.md) | Six cas de coopération scientifique, statuts de sélection et programme d'enquête contradictoire |
 | [Enquête DATSUM et EXACT](DATSUM_EXACT_AFFILIATIONS_ET_PREUVES_2026_10_14.md) | Affiliation des coordinateurs, comparateur INRAE et preuves manquantes des consortiums |
 | [Candidature Fidelipro](FIDELIPRO_CANDIDATURE_ANR_ET_PREUVE_PARLEMENTAIRE_2026.md) | Coopération DGFiP–Insee–IPP signalée au Parlement, statut de sélection et de financement encore inconnu |
+| [Fidélipro et statistiques successorales DMTG](FIDELIPRO_DMTG_CHAINES_PREUVES_2026_10_14.md) | Cinq sources primaires, chronologie des travaux, programmation distincte des résultats et moyens chiffrés du chantier DMTG |
 
 ## Référentiel institutionnel
 
