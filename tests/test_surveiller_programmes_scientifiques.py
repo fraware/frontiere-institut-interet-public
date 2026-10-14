@@ -184,3 +184,27 @@ def test_l_historique_est_borne_apres_une_longue_suite_de_modifications():
                                 acquerir=lambda _, c=corps: (c, "text/html"))
     assert len(etat["observations"][0]["historique"]) == HISTORIQUE_MAX
     assert bilan["transitions_institutionnelles_inferees"] == 0
+
+
+def test_chronologie_six_etapes_officielles_et_financement_inconnu():
+    chrono = json.loads(
+        (RACINE / "institutionnel/programmes_scientifiques/chronologie_documentaire_v1.json")
+        .read_text(encoding="utf-8")
+    )
+    assert chrono["version"] == 1
+    assert len(chrono["programmes"]) == 2
+    ids = set()
+    for programme in chrono["programmes"]:
+        ids.add(programme["id"])
+        etapes = programme["evenements"]
+        assert [e["etape"] for e in etapes] == [
+            "appel_ouvert", "appel_clos", "selection_annoncee"
+        ]
+        assert [e["date"] for e in etapes] == sorted(e["date"] for e in etapes)
+        assert all(adresse_autorisee(e["url"]) for e in etapes)
+        assert "convention_ou_notification" in programme["etapes_non_etablies"]
+        assert "premier_usage_administratif" in programme["etapes_non_etablies"]
+        assert not any(e["etape"] == "aide_attribuee_individuellement" for e in etapes)
+    assert ids == {"saps_cppe_2026", "anr_nrf_iabio_2026"}
+    saps = next(p for p in chrono["programmes"] if p["id"] == "saps_cppe_2026")
+    assert saps["evenements"][2]["nombre_projets_retenus_annonces"] == 22
