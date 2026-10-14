@@ -149,3 +149,35 @@ def test_date_future_nest_jamais_prioritaire():
         MAINTENANT, limite=1,
     )
     assert revue["dossiers"][0]["id"].endswith("d" * 64)
+
+def test_lancement_reel_depuis_la_racine_du_depot(tmp_path):
+    """Reproduire l'invocation en module depuis GitHub Actions."""
+    import json
+    from pathlib import Path
+    import subprocess
+    import sys
+
+    sources = tmp_path / "institutionnel/flux_publics/observations.json"
+    actes = tmp_path / "institutionnel/deliberations_publiques/pistes.json"
+    sources.parent.mkdir(parents=True)
+    actes.parent.mkdir(parents=True)
+    sources.write_text(
+        json.dumps({"observations": [publication("Intelligence artificielle")]}),
+        encoding="utf-8",
+    )
+    actes.write_text(json.dumps({"pistes": [piste()]}), encoding="utf-8")
+    resultat = subprocess.run(
+        [
+            sys.executable, "-m", "scripts.preparer_revue_veille",
+            "--racine", str(tmp_path),
+            "--sortie-json", str(tmp_path / "revue.json"),
+        ],
+        cwd=Path(__file__).resolve().parents[1],
+        text=True,
+        capture_output=True,
+        check=False,
+        timeout=20,
+    )
+    assert resultat.returncode == 0, resultat.stderr + resultat.stdout
+    revue = json.loads((tmp_path / "revue.json").read_text(encoding="utf-8"))
+    assert revue["nombre_total_de_pistes_selectionnees"] == 2
