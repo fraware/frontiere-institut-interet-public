@@ -326,10 +326,12 @@ def importer_cycle(stockage: StockageBOAMP, racine: Path, maximum: int = 0) -> d
     for fiche in fiches[:maximum or None]:
         capture, avis, _ = _lire_archive(racine, fiche)
         compteurs["archives_examinees"] += 1
+        avant = stockage.etat()["captures_importees"]
         ajout = stockage.ingerer(capture, avis)
         compteurs["avis_lus"] += ajout
-        compteurs["captures_nouvelles"] += int(ajout > 0 or len(avis) == 0 and
-                                            stockage.etat()["captures_importees"] > 0)
+        compteurs["captures_nouvelles"] += int(
+            stockage.etat()["captures_importees"] > avant
+        )
     courants_releves = _lire_courants(racine)
     if courants_releves is not None:
         capture, avis, _ = courants_releves
