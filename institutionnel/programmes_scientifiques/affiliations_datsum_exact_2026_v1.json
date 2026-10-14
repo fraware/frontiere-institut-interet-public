@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "examen_le": "2026-10-14",
+  "type": "rattachements_scientifiques_personnels_non_assimiles_aux_consortiums",
+  "regle": "Une affiliation professionnelle publiée concerne la personne identifiée. Elle ne démontre ni la participation juridique de son établissement à un projet SAPS–CPPE, ni l'identité des administrations partenaires.",
+  "source_selection_projets": "https://anr.fr/fileadmin/aap/2026/selection/aap-saps-cppe-2026-selection.pdf",
+  "projets": [
+    {
+      "id": "DATSUM",
+      "coordinateur_selection": "Nicolas Jullien",
+      "affiliations_publiques": [
+        {
+          "organisation": "IMT Atlantique",
+          "nature": "établissement d'exercice professionnel du coordinateur",
+          "url": "https://www.imt-atlantique.fr/fr/personne/nicolas-jullien",
+          "element": "Page institutionnelle : professeur, Département interdisciplinaire de sciences sociales, Brest."
+        },
+        {
+          "organisation": "Laboratoire LEGO",
+          "nature": "laboratoire présenté dans une notice biographique du coordinateur",
+          "url": "https://www.marsouin.org/auteur1.html",
+          "element": "MARSOUIN présente Nicolas Jullien comme chercheur au LEGO."
+        },
+        {
+          "organisation": "GIS MARSOUIN",
+          "nature": "fonction scientifique publiée du coordinateur",
+          "url": "https://www.marsouin.org/article1117.html",
+          "element": "Direction scientifique collégiale affichée le 12 janvier 2026."
+        }
+      ],
+      "preuves_specifiques_projet": [
+        "selection_anr"
+      ],
+      "non_etablis": [
+        "etablissement_beneficiaire_de_l_aide",
+        "liste_des_organismes_du_consortium",
+        "administrations_partenaires",
+        "convention_individuelle",
+        "date_de_demarrage",
+        "livrables",
+        "usage_operationnel"
+      ],
+      "statut_identification_partenaires": "non_etabli"
+    },
+    {
+      "id": "EXACT",
+      "coordinateur_selection": "David Demortain",
+      "affiliations_publiques": [
+        {
+          "organisation": "INRAE",
+          "nature": "établissement de recherche du coordinateur",
+          "url": "https://app.inrae.fr/mission-et-acteurs/",
+          "element": "INRAE présente David Demortain comme directeur de recherche en sociologie des sciences et de l'action publique."
+        },
+        {
+          "organisation": "UMR 1326 LISIS",
+          "nature": "laboratoire mentionné dans une fiche institutionnelle INRAE",
+          "url": "https://www.inrae.fr/sites/default/files/pdf/Fiche%20LISIS%20FR%20IN%202025%2001.pdf",
+          "element": "Fiche LISIS de 2025 : unité mixte INRAE–CNRS–Université Gustave Eiffel, David Demortain cité comme directeur."
+        }
+      ],
+      "preuves_specifiques_projet": [
+        "selection_anr"
+      ],
+      "non_etablis": [
+        "etablissement_beneficiaire_de_l_aide",
+        "liste_des_organismes_du_consortium",
+        "administrations_partenaires",
+        "convention_individuelle",
+        "date_de_demarrage",
+        "livrables",
+        "usage_operationnel"
+      ],
+      "statut_identification_partenaires": "non_etabli"
+    }
+  ],
+  "synthese": "Les deux responsables et plusieurs affiliations professionnelles sont corroborés par leurs organismes. Aucune des sources complémentaires consultées n'attribue explicitement le rôle de partenaire administratif ou de bénéficiaire juridique de DATSUM ou EXACT."
+}
