@@ -75,11 +75,12 @@ def obtenir_archive() -> bytes:
 
 
 def _nom_admissible(nom: str) -> bool:
-    p = PurePosixPath(nom)
+    propre = nom.removesuffix("/")
+    p = PurePosixPath(propre)
     return (
-        bool(nom) and len(nom) <= 300 and "\\" not in nom
+        bool(propre) and len(nom) <= 300 and "\\" not in nom
         and "\x00" not in nom and not nom.startswith("/")
-        and not any(part in {"", ".", ".."} for part in nom.split("/"))
+        and not any(part in {"", ".", ".."} for part in propre.split("/"))
         and ":" not in p.parts[0]
     )
 
