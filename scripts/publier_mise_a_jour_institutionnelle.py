@@ -16,6 +16,8 @@ import subprocess
 
 RACINE = Path(__file__).resolve().parents[1]
 CHEMINS = {
+    "deliberations": ("institutionnel/deliberations_publiques/pistes.json",
+                     "institutionnel/deliberations_publiques/etat_collecte.json"),
     "index_decp": ("institutionnel/decp/bilan_index_unifie.json",),
     "dgfip": ("institutionnel/decp/lot_dgfip_xml.json",),
     "sonde": ("institutionnel/decp/sonde_aife_json.json",),
@@ -88,6 +90,7 @@ CHEMINS = {
     ),
 }
 TITRES = {
+    "deliberations": "Repérer les délibérations techniques publiées au format SCDL",
     "index_decp": "Actualiser le bilan des identités de marchés AIFE et DGFiP",
     "dgfip": "Actualiser le premier lot de marchés XML DGFiP",
     "sonde": "Actualiser le relevé borné de marchés JSON AIFE",
@@ -101,7 +104,7 @@ TITRES = {
     "beauamp": "Archiver les marchés attribués enrichis publiés quotidiennement",
     "referentiel": "Actualiser le référentiel administratif et territorial",
 }
-BRANCH = re.compile(r"^automatisation/(rnsr|surveillance|referentiel|sources|besoins|beauamp|flux|decp|canaux|sonde|dgfip|index_decp)-([0-9]+)-([1-9][0-9]*)$")
+BRANCH = re.compile(r"^automatisation/(deliberations|rnsr|surveillance|referentiel|sources|besoins|beauamp|flux|decp|canaux|sonde|dgfip|index_decp)-([0-9]+)-([1-9][0-9]*)$")
 REPO = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 
 
