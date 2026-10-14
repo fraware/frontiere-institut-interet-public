@@ -47,14 +47,20 @@ def test_cinq_origines_publiques_stables():
     assert all(s["format"] == "html" for s in sources)
     etat = json.loads((RACINE / ETAT).read_text(encoding="utf-8"))
     assert etat["version"] == 1
-    assert len(etat["observations"]) == 1
-    unique = etat["observations"][0]
-    assert unique["source_id"] == "assemblee_reponse_11677"
-    assert unique["reference_execution"].endswith("/actions/runs/38649504556")
-    assert unique["empreinte"] == (
+    assert len(etat["observations"]) == 2
+    par_source = {x["source_id"]: x for x in etat["observations"]}
+    assert set(par_source) == {"assemblee_reponse_11677", "senat_rapport_760"}
+    assemblee = par_source["assemblee_reponse_11677"]
+    assert assemblee["reference_execution"].endswith("/actions/runs/38649504556")
+    assert assemblee["empreinte"] == (
         "39d538fae125a3768a46dff45e4a849c0819f9e883b32e9f5480bd544693a3cc"
     )
-    assert unique["historique"] == []
+    senat = par_source["senat_rapport_760"]
+    assert senat["reference_execution"].endswith("/actions/runs/38649946223")
+    assert senat["empreinte"] == (
+        "13e2cd9a06cfc96a3bbd327e8d6b38c675303fc60d576973ab438a02da32e484"
+    )
+    assert all(x["historique"] == [] for x in etat["observations"])
     assert not any(x["source_id"].startswith("dgfip_")
                    for x in etat["observations"])
 
