@@ -1,0 +1,28 @@
+{
+  "version": "sources-pdf-communaux-v1",
+  "sources": [
+    {
+      "id": "esc-2025-02-13",
+      "commune": "Escalquens",
+      "url": "https://www.escalquens.fr/wp-content/uploads/2025/02/D%C3%A9lib%C3%A9rations-CM-2025-02-13.pdf",
+      "type": "dossier-deliberations",
+      "repere": "13 février 2025, délibération 2025-7",
+      "mots": [
+        "delibia",
+        "sicoval"
+      ]
+    },
+    {
+      "id": "auz-2025-06-18",
+      "commune": "Auzeville-Tolosane",
+      "url": "https://www.auzeville.fr/wp-content/uploads/2025/06/PV-18-06-25.pdf",
+      "type": "proces-verbal",
+      "repere": "18 juin 2025, point 3",
+      "mots": [
+        "delibia",
+        "service juridique"
+      ]
+    }
+  ],
+  "limite": "uniquement ces deux URL communales publiques; pas de découverte de liens externes"
+}
