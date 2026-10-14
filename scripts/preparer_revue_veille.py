@@ -206,13 +206,15 @@ def resume(revue: dict) -> str:
         f"{revue['nombre_total_de_pistes_selectionnees']} repérages. "
         "**Aucune n'est un besoin public validé.**",
         "",
-        "| Origine | Date du document | Statut | Repères |",
-        "|---|---|---|---|",
+        "| Origine | Publication | Événement | Statut | Repères |",
+        "|---|---|---|---|---|",
     ]
     for item in revue["dossiers"][:25]:
-        date = item["date_publication"] or "inconnue"
+        publication = item["date_publication"] or "inconnue"
+        evenement = item.get("date_evenement") or "non renseigné"
         lignes.append(
-            f"| {item['nature']} | {date} | {item['classe_temporelle']} | "
+            f"| {item['nature']} | {publication} | {evenement} | "
+            f"{item['classe_temporelle']} | "
             f"{', '.join(item['reperage_lexical'] or [])} |"
         )
     if revue["nombre_dossiers_dans_la_file"] > 25:
