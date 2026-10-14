@@ -74,5 +74,21 @@
       "statut_identification_partenaires": "non_etabli"
     }
   ],
-  "synthese": "Les deux responsables et plusieurs affiliations professionnelles sont corroborés par leurs organismes. Aucune des sources complémentaires consultées n'attribue explicitement le rôle de partenaire administratif ou de bénéficiaire juridique de DATSUM ou EXACT."
+  "synthese": "Les deux responsables et plusieurs affiliations professionnelles sont corroborés par leurs organismes. Aucune des sources complémentaires consultées n'attribue explicitement le rôle de partenaire administratif ou de bénéficiaire juridique de DATSUM ou EXACT.",
+  "dispositifs_publics_existants_a_comparer": [
+    {
+      "nom": "Appui aux politiques publiques d'INRAE",
+      "organisme": "INRAE",
+      "mise_en_place_organisation": "2020",
+      "source_primaire": "https://app.inrae.fr/mission-et-acteurs/",
+      "fonctions_documentees": [
+        "coordination entre recherche et acteurs publics",
+        "expertises scientifiques collectives",
+        "outils et indicateurs d'aide à la décision"
+      ],
+      "lien_contractuel_avec_exact": "non_etabli",
+      "preuve_d_une_insuffisance_de_couverture_nationale": "non_etablie",
+      "interpretation": "alternative_institutionnelle_existante_a_comparer"
+    }
+  ]
 }
