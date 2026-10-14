@@ -163,6 +163,11 @@
       "fichier": "veille-flux-publics.yml",
       "retard_max_heures": 36,
       "criticite": "haute"
+    },
+    {
+      "fichier": "veille-programmes-scientifiques.yml",
+      "retard_max_heures": 72,
+      "criticite": "haute"
     }
   ]
 }
