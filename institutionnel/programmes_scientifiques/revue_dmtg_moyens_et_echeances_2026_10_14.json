@@ -59,6 +59,15 @@
       "url": "https://passerelles.economie.gouv.fr/offre-de-emploi/emploi-ipfip-ap-dp5-responsable-d-equipe-moa-d-un-grand-projet-numerique-h-f_32948.aspx",
       "fait": "Offre de responsable d'équipe de maîtrise d'ouvrage, emploi déclaré vacant ; son contexte mentionne l'acquisition dématérialisée de déclarations successorales à venir.",
       "limite": "Poste dans une direction de projets différente du service DESF, aucune preuve d'embauche ou d'exploitation du dispositif notarial."
+    },
+    {
+      "id": "dgfip_stats_recettes_2026",
+      "producteur": "DGFiP, Département des études et statistiques fiscales",
+      "date_document": "2026-06",
+      "genre": "bulletin_statistiques_agregees",
+      "url": "https://www.impots.gouv.fr/sites/default/files/media/9_statistiques/0_etudes_et_stats/0_publications/dgfip_statistiques/2026/num48_06/dgfip_stat_48_2026.pdf",
+      "fait": "Bulletin de recettes fiscales du premier trimestre 2026 comportant des montants agrégés de droits de mutation à titre gratuit.",
+      "limite": "La publication d'agrégats de recettes ne représente ni des microdonnées successorales individuelles, ni une nouvelle enquête DMTG 2.0."
     }
   ],
   "versionnage_charges_annuelles": [
@@ -161,5 +170,10 @@
     }
   ],
   "regle_interpretation": "Ne pas convertir une offre d'emploi en agent recruté, une volumétrie de documents entrants en documents traités, une prévision en résultat ni une mission de la DP5 en ETP affecté au DESF.",
-  "conclusion": "Difficulté technique documentée avec équipe permanente existante et tâches déjà commencées. L'effet du renfort, la production opérationnelle et le déficit résiduel demeurent des questions ouvertes."
+  "conclusion": "Difficulté technique documentée avec équipe permanente existante et tâches déjà commencées. L'effet du renfort, la production opérationnelle et le déficit résiduel demeurent des questions ouvertes.",
+  "distinction_statistique": {
+    "agregats_fiscaux_2026": "publies_dans_bulletin_dgfip_stats",
+    "microdonnees_successions_nouvelle_serie": "publication_comparable_non_retrouvee",
+    "interpretation": "Présence de statistiques de recettes sans preuve de reconstitution des tableaux microéconomiques et de l'ensemble des déclarations notariales."
+  }
 }
