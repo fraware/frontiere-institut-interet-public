@@ -45,6 +45,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | Document | Rôle |
 | --- | --- |
 | [Contrôle transversal de la veille](CONTROLE_VEILLE_ET_INTEGRATION_V1.md) | Fraîcheur des relevés, succès des collectes, anomalies, limites et passage des observations aux cas documentés |
+| [Fusion protégée des relevés SCDL](FUSION_CONTROLEE_COLLECTES_SCDL_V1.md) | Contrôle de concurrence, refus des conflits et reprises bornées de la publication des relevés |
 | [Sources scientifiques HAL et CORDIS](QUALIFICATION_VEILLE_SCIENTIFIQUE_HAL_CORDIS_2026_10_14.md) | Conditions d'accès, limites de réutilisation et critères d'admission de deux sources complémentaires |
 | [Diagnostic des accès et des dates](DIAGNOSTIC_ACCES_SOURCES_ET_DATES_2026_10_14.md) | Refus HTTP, dates indéterminées et séparation des dates de délibération et de publication |
 | [Revue des dix signaux publics](REVUE_INITIALE_DIX_SIGNAUX_2026_10_14.md) | Qualification provisoire, provenance des publications et contrôle de leurs révisions |
