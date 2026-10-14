@@ -133,6 +133,24 @@ class TextePage(HTMLParser):
             self.main += 1
         if tag == "article":
             self.article += 1
+        if tag == "a" and not self.exclus:
+            # Un lien vers une pièce officielle peut changer sans modification
+            # du libellé affiché. Inclure sa cible parmi les preuves de version.
+            for nom, valeur in attrs:
+                if (nom == "href" and isinstance(valeur, str)
+                        and len(valeur) <= 2048
+                        and (
+                            valeur.startswith("/fileadmin/")
+                            or valeur.startswith("https://anr.fr/fileadmin/")
+                            or valeur.startswith("https://www.anr.fr/fileadmin/")
+                        )):
+                    cible = f"[piece_officielle:{valeur}]"
+                    self.morceaux.append(cible)
+                    if self.main:
+                        self.contenu_main.append(cible)
+                    if self.article:
+                        self.contenu_article.append(cible)
+                    break
 
     def handle_endtag(self, tag: str) -> None:
         if tag in self.EXCLUS and self.exclus:
