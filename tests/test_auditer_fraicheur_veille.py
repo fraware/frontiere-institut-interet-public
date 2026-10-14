@@ -180,3 +180,21 @@ def test_politique_reelle_ne_recommande_pas_fausse_couverture():
         assert (racine / entree_reelle["fichier"]).is_file()
     for proc in politique["procedures"]:
         assert (racine / ".github/workflows" / proc["fichier"]).is_file()
+
+def test_toutes_les_procedures_programmees_sont_surveillées():
+    """Empêcher qu'un nouveau programme planifié échappe au contrôle transversal."""
+    import re
+
+    racine = Path(__file__).resolve().parents[1]
+    politique = lire_politique(racine / "institutionnel/veille/controle_v1.json")
+    configurees = {entree["fichier"] for entree in politique["procedures"]}
+    chemins = (racine / ".github/workflows").glob("*.yml")
+    programmes = {
+        chemin.name for chemin in chemins
+        if re.search(
+            r"(?m)^\s*-\s*cron\s*:", chemin.read_text(encoding="utf-8")
+        )
+    }
+    # Le contrôleur ne peut garantir sa propre exécution ; une alerte
+    # externe indépendante constituerait une vérification supplémentaire.
+    assert programmes == configurees | {"controle-veille.yml"}
