@@ -38,10 +38,17 @@ def test_catalogue_reel_borne_a_cinq_urls_anr():
         "saps_cppe_2026", "anr_nrf_iabio_2026", "transversal"
     }
     assert all(s["url"].startswith("https://anr.fr/") for s in sources)
-    assert verifier_etat(json.loads(
+    observations = verifier_etat(json.loads(
         (RACINE / "institutionnel/programmes_scientifiques/etat_observations.json")
         .read_text(encoding="utf-8")
-    )) == {}
+    ))
+    assert set(observations) == {s["id"] for s in sources}
+    for identifiant, item in observations.items():
+        assert len(item["empreinte"]) == 64
+        assert item["reference_execution"].endswith("/actions/runs/38629459886")
+        assert item["observe_initialement_le"] == "2026-10-14T20:08:23+00:00"
+        assert item["historique"] == []
+        assert item["source_id"] == identifiant
 
 
 @pytest.mark.parametrize("url", [
