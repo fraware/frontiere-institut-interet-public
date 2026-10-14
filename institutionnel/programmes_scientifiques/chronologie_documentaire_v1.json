@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "etablie_le": "2026-10-14",
+  "type": "chronologie_documentaire_sans_inference_causale",
+  "origine": "pages primaires de l'Agence nationale de la recherche",
+  "regle": "Une étape est constatée uniquement par une pièce officielle citée. Les étapes non établies ne sont ni niées ni affirmées.",
+  "programmes": [
+    {
+      "id": "saps_cppe_2026",
+      "objet": "Co-construction de politiques publiques par la recherche et les administrations",
+      "evenements": [
+        {
+          "date": "2025-12-09",
+          "etape": "appel_ouvert",
+          "nature_preuve": "page_officielle_appel",
+          "url": "https://anr.fr/fr/detail/call/1911/?no_cache=1"
+        },
+        {
+          "date": "2026-02-17",
+          "etape": "appel_clos",
+          "nature_preuve": "date_limite_officielle_appel",
+          "url": "https://anr.fr/fr/detail/call/1911/?no_cache=1"
+        },
+        {
+          "date": "2026-06-29",
+          "etape": "selection_annoncee",
+          "nature_preuve": "communique_officiel_anr",
+          "url": "https://anr.fr/actus/details/news/science-avec-et-pour-la-societe-22-laureats-pour-co-construire-les-politiques-publiques-par-lexpe/",
+          "nombre_projets_retenus_annonces": 22
+        }
+      ],
+      "etapes_non_etablies": [
+        "aide_attribuee_individuellement",
+        "convention_ou_notification",
+        "travaux_realises",
+        "resultat_operationnel",
+        "premier_usage_administratif"
+      ]
+    },
+    {
+      "id": "anr_nrf_iabio_2026",
+      "objet": "Recherche franco-coréenne en intelligence artificielle pour les biotechnologies",
+      "evenements": [
+        {
+          "date": "2026-04-02",
+          "etape": "appel_ouvert",
+          "nature_preuve": "page_officielle_appel",
+          "url": "https://anr.fr/fr/detail/call/appel-a-projets-anr-nrf-2026-intelligence-artificielle-pour-les-biotechnologies/"
+        },
+        {
+          "date": "2026-06-04",
+          "etape": "appel_clos",
+          "nature_preuve": "date_limite_officielle_appel",
+          "url": "https://anr.fr/fr/detail/call/appel-a-projets-anr-nrf-2026-intelligence-artificielle-pour-les-biotechnologies/"
+        },
+        {
+          "date": "2026-10-13",
+          "etape": "selection_annoncee",
+          "nature_preuve": "index_officiel_listes_selection",
+          "url": "https://anr.fr/fr/projets-finances-et-impact/projets-finances/dernieres-listes-de-projets-selectionnes/"
+        }
+      ],
+      "etapes_non_etablies": [
+        "aide_attribuee_individuellement",
+        "convention_ou_notification",
+        "travaux_realises",
+        "resultat_operationnel",
+        "premier_usage_administratif"
+      ]
+    }
+  ]
+}
