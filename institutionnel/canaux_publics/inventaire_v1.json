@@ -1,11 +1,11 @@
 {
-  "construit_le": "2026-10-14T20:08:21+00:00",
+  "construit_le": "2026-10-14T22:38:41+00:00",
   "couverture_tous_les_organismes_publics": false,
   "editeurs": [
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-12T07:10:00.239000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T18:12:27+00:00",
       "editeur_publie": "Région Auvergne-Rhône-Alpes",
       "identite_juridique_verifiee": false,
       "jeux_declares": 2007,
@@ -35,7 +35,7 @@
       "dernier_jeu_actualise_le": "2026-10-14T04:20:59.373000+00:00",
       "editeur_publie": "Office Français de la Biodiversité",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 1829,
+      "jeux_declares": 1858,
       "jeux_exemples": [
         {
           "id": "6a5820f777c58f2d2ec27873",
@@ -59,37 +59,10 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T01:57:04.579000+00:00",
-      "editeur_publie": "Région Île-de-France",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 1095,
-      "jeux_exemples": [
-        {
-          "id": "69c75287084a6cbddeb42a12",
-          "page": "https://www.data.gouv.fr/datasets/69c75287084a6cbddeb42a12/",
-          "titre": "Absentéisme des agents de la Région (siège et lycées) : arrêts par motif"
-        },
-        {
-          "id": "53698e47a3a729239d20340b",
-          "page": "https://www.data.gouv.fr/datasets/53698e47a3a729239d20340b/",
-          "titre": "Accessibilité des arrêts de bus RATP"
-        },
-        {
-          "id": "53698e48a3a729239d20340d",
-          "page": "https://www.data.gouv.fr/datasets/53698e48a3a729239d20340d/",
-          "titre": "Accessibilité des équipements de la Ville de Paris"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T12:43:12.716000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T18:51:24.859000+00:00",
       "editeur_publie": "Occitanie Pyrénées en Intelligence Géomatique",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 1082,
+      "jeux_declares": 1083,
       "jeux_exemples": [
         {
           "id": "62ce0d060e5890789cf49333",
@@ -105,6 +78,33 @@
           "id": "6836522b0074d75f587082dd",
           "page": "https://www.data.gouv.fr/datasets/6836522b0074d75f587082dd/",
           "titre": "Accès sondages Tet"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T18:11:41.596000+00:00",
+      "editeur_publie": "Région Île-de-France",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 1079,
+      "jeux_exemples": [
+        {
+          "id": "69c75287084a6cbddeb42a12",
+          "page": "https://www.data.gouv.fr/datasets/69c75287084a6cbddeb42a12/",
+          "titre": "Absentéisme des agents de la Région (siège et lycées) : arrêts par motif"
+        },
+        {
+          "id": "53698e47a3a729239d20340b",
+          "page": "https://www.data.gouv.fr/datasets/53698e47a3a729239d20340b/",
+          "titre": "Accessibilité des arrêts de bus RATP"
+        },
+        {
+          "id": "53698e48a3a729239d20340d",
+          "page": "https://www.data.gouv.fr/datasets/53698e48a3a729239d20340d/",
+          "titre": "Accessibilité des équipements de la Ville de Paris"
         }
       ],
       "organisme_associe": null,
@@ -140,10 +140,10 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T05:34:25.128000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T20:52:40.528000+00:00",
       "editeur_publie": "Toulouse métropole",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 890,
+      "jeux_declares": 884,
       "jeux_exemples": [
         {
           "id": "5edb15591b6b21734a179ef2",
@@ -170,7 +170,7 @@
       "dernier_jeu_actualise_le": "2026-10-09T00:00:00+00:00",
       "editeur_publie": "Direction Départementale des Territoires et de la Mer de la Somme",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 850,
+      "jeux_declares": 847,
       "jeux_exemples": [
         {
           "id": "69db1c4f456fca6597a38dce",
@@ -197,7 +197,7 @@
       "dernier_jeu_actualise_le": "2026-06-27T16:33:37.597000+00:00",
       "editeur_publie": "Direction Départementale des Territoires et de la Mer des Pyrénées-Atlantiques",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 818,
+      "jeux_declares": 819,
       "jeux_exemples": [
         {
           "id": "673780a9c9b74bce3bc40c4f",
@@ -224,7 +224,7 @@
       "dernier_jeu_actualise_le": "2026-09-30T00:00:00+00:00",
       "editeur_publie": "DREAL Grand Est",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 781,
+      "jeux_declares": 771,
       "jeux_exemples": [
         {
           "id": "6a9b9fb7ddd48b69724a4081",
@@ -275,7 +275,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T03:00:21.612000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T15:06:04.423000+00:00",
       "editeur_publie": "Ministère de l'intérieur",
       "identite_juridique_verifiee": false,
       "jeux_declares": 732,
@@ -302,7 +302,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T12:46:37.463000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T17:56:26.115000+00:00",
       "editeur_publie": "Système d'Information sur l'Eau",
       "identite_juridique_verifiee": false,
       "jeux_declares": 727,
@@ -329,10 +329,10 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T17:39:51.698000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T18:10:39.171000+00:00",
       "editeur_publie": "SIG-GR",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 697,
+      "jeux_declares": 702,
       "jeux_exemples": [
         {
           "id": "686bb93f4627187cf5cf7a8b",
@@ -359,7 +359,7 @@
       "dernier_jeu_actualise_le": "2026-10-12T00:00:00+00:00",
       "editeur_publie": "Direction Départementale des Territoires de l'Orne",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 679,
+      "jeux_declares": 682,
       "jeux_exemples": [
         {
           "id": "684cedca77189fa96c52b638",
@@ -386,7 +386,7 @@
       "dernier_jeu_actualise_le": "2026-10-13T02:59:07+00:00",
       "editeur_publie": "Rennes Métropole en accès libre",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 666,
+      "jeux_declares": 670,
       "jeux_exemples": [
         {
           "id": "659d807cb7566525a0e756ff",
@@ -406,6 +406,39 @@
       ],
       "organisme_associe": null,
       "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [
+        "economie_actualites",
+        "economie_achats_etat",
+        "economie_affaires_juridiques",
+        "economie_bulletins_officiels",
+        "economie_tracfin"
+      ],
+      "dernier_jeu_actualise_le": "2026-10-14T00:03:17.680000+00:00",
+      "editeur_publie": "Ministères économiques et financiers",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 661,
+      "jeux_exemples": [
+        {
+          "id": "555b3ec7c751df4633190c7a",
+          "page": "https://www.data.gouv.fr/datasets/555b3ec7c751df4633190c7a/",
+          "titre": "Adresses des débits de tabac"
+        },
+        {
+          "id": "595e006288ee3831bd5f689f",
+          "page": "https://www.data.gouv.fr/datasets/595e006288ee3831bd5f689f/",
+          "titre": "PLR 2016 - projet de loi de règlement pour l'année 2016 - Données de l’exécution budgétaire"
+        },
+        {
+          "id": "6a88e70281ac492a778966dc",
+          "page": "https://www.data.gouv.fr/datasets/6a88e70281ac492a778966dc/",
+          "titre": "AFA extrait Eurobarometre perception generale corruption UE27"
+        }
+      ],
+      "organisme_associe": "mef",
+      "type_rapprochement": "correspondance_de_libelle_configuree"
     },
     {
       "absence_de_canaux_etablie": false,
@@ -437,37 +470,10 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T05:11:30.493000+00:00",
-      "editeur_publie": "Ville de Paris",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 647,
-      "jeux_exemples": [
-        {
-          "id": "53698e49a3a729239d20340f",
-          "page": "https://www.data.gouv.fr/datasets/53698e49a3a729239d20340f/",
-          "titre": "Accessibilité des équipements de la Ville de Paris"
-        },
-        {
-          "id": "65680979e357b7f0a3604e0a",
-          "page": "https://www.data.gouv.fr/datasets/65680979e357b7f0a3604e0a/",
-          "titre": "Accessibilité des Hébergements en Ile de France - Paris je t'aime"
-        },
-        {
-          "id": "6493c833e1045a0de543d748",
-          "page": "https://www.data.gouv.fr/datasets/6493c833e1045a0de543d748/",
-          "titre": "Accidentologie : base victimes"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-04T17:45:53.230000+00:00",
       "editeur_publie": "DREAL Occitanie",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 641,
+      "jeux_declares": 642,
       "jeux_exemples": [
         {
           "id": "6a4b80301d7ecb5a4eb55bdf",
@@ -483,6 +489,33 @@
           "id": "6a4b7ed51d7ecb5a4eb55a16",
           "page": "https://www.data.gouv.fr/datasets/6a4b7ed51d7ecb5a4eb55a16/",
           "titre": "Assemblage des zones d'aléas des plans de prévention contre les risques naturels dans le Gard"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T05:11:30.493000+00:00",
+      "editeur_publie": "Ville de Paris",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 641,
+      "jeux_exemples": [
+        {
+          "id": "53698e49a3a729239d20340f",
+          "page": "https://www.data.gouv.fr/datasets/53698e49a3a729239d20340f/",
+          "titre": "Accessibilité des équipements de la Ville de Paris"
+        },
+        {
+          "id": "65680979e357b7f0a3604e0a",
+          "page": "https://www.data.gouv.fr/datasets/65680979e357b7f0a3604e0a/",
+          "titre": "Accessibilité des Hébergements en Ile de France - Paris je t'aime"
+        },
+        {
+          "id": "6493c833e1045a0de543d748",
+          "page": "https://www.data.gouv.fr/datasets/6493c833e1045a0de543d748/",
+          "titre": "Accidentologie : base victimes"
         }
       ],
       "organisme_associe": null,
@@ -518,10 +551,10 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T02:35:49.887000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T16:06:35.854000+00:00",
       "editeur_publie": "DREAL Auvergne-Rhône-Alpes",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 603,
+      "jeux_declares": 604,
       "jeux_exemples": [
         {
           "id": "6ab70e0481c7da90f304fa26",
@@ -625,44 +658,11 @@
     },
     {
       "absence_de_canaux_etablie": false,
-      "canaux_documentes": [
-        "economie_actualites",
-        "economie_achats_etat",
-        "economie_affaires_juridiques",
-        "economie_bulletins_officiels",
-        "economie_tracfin"
-      ],
-      "dernier_jeu_actualise_le": "2026-10-14T00:03:17.680000+00:00",
-      "editeur_publie": "Ministères économiques et financiers",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 549,
-      "jeux_exemples": [
-        {
-          "id": "555b3ec7c751df4633190c7a",
-          "page": "https://www.data.gouv.fr/datasets/555b3ec7c751df4633190c7a/",
-          "titre": "Adresses des débits de tabac"
-        },
-        {
-          "id": "595e006288ee3831bd5f689f",
-          "page": "https://www.data.gouv.fr/datasets/595e006288ee3831bd5f689f/",
-          "titre": "PLR 2016 - projet de loi de règlement pour l'année 2016 - Données de l’exécution budgétaire"
-        },
-        {
-          "id": "6a88e70281ac492a778966dc",
-          "page": "https://www.data.gouv.fr/datasets/6a88e70281ac492a778966dc/",
-          "titre": "AFA extrait Eurobarometre perception generale corruption UE27"
-        }
-      ],
-      "organisme_associe": "mef",
-      "type_rapprochement": "correspondance_de_libelle_configuree"
-    },
-    {
-      "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-09-15T00:00:00+00:00",
       "editeur_publie": "Département de la Seine-Maritime",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 545,
+      "jeux_declares": 541,
       "jeux_exemples": [
         {
           "id": "63cf2225094b9de78e404410",
@@ -686,10 +686,10 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T05:53:21.583000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T19:02:55.777000+00:00",
       "editeur_publie": "Métropole Européenne de Lille",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 536,
+      "jeux_declares": 537,
       "jeux_exemples": [
         {
           "id": "665fe74a69c257dd6f9fc904",
@@ -740,33 +740,6 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T18:00:00.782000+00:00",
-      "editeur_publie": "Métropole de Lyon",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 489,
-      "jeux_exemples": [
-        {
-          "id": "5dd64b2b8b4c4171dacda65c",
-          "page": "https://www.data.gouv.fr/datasets/5dd64b2b8b4c4171dacda65c/",
-          "titre": "Accès des parkings Lyon Parc Auto de la Métropole de Lyon"
-        },
-        {
-          "id": "5e3aec728b4c4137ce5aa0bf",
-          "page": "https://www.data.gouv.fr/datasets/5e3aec728b4c4137ce5aa0bf/",
-          "titre": "Accès direct aux documents constitutifs du dossier PLU-H, par commune, via le site internet du PLU-H de la Métropole de Lyon"
-        },
-        {
-          "id": "6531a7a801a18c0a2a53ac06",
-          "page": "https://www.data.gouv.fr/datasets/6531a7a801a18c0a2a53ac06/",
-          "titre": "Acteurs de l'économie sociale et solidaire de la Métropole de Lyon"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-06T23:00:16+00:00",
       "editeur_publie": "DREAL Nouvelle Aquitaine",
       "identite_juridique_verifiee": false,
@@ -786,6 +759,33 @@
           "id": "68625134b6576ee57df61238",
           "page": "https://www.data.gouv.fr/datasets/68625134b6576ee57df61238/",
           "titre": "Directive inondation - Enjeu du patrimoine du territoire à risque important d'inondations (TRI) de La Rochelle (ponctuel)"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T19:07:38.752000+00:00",
+      "editeur_publie": "Métropole de Lyon",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 486,
+      "jeux_exemples": [
+        {
+          "id": "5dd64b2b8b4c4171dacda65c",
+          "page": "https://www.data.gouv.fr/datasets/5dd64b2b8b4c4171dacda65c/",
+          "titre": "Accès des parkings Lyon Parc Auto de la Métropole de Lyon"
+        },
+        {
+          "id": "5e3aec728b4c4137ce5aa0bf",
+          "page": "https://www.data.gouv.fr/datasets/5e3aec728b4c4137ce5aa0bf/",
+          "titre": "Accès direct aux documents constitutifs du dossier PLU-H, par commune, via le site internet du PLU-H de la Métropole de Lyon"
+        },
+        {
+          "id": "6531a7a801a18c0a2a53ac06",
+          "page": "https://www.data.gouv.fr/datasets/6531a7a801a18c0a2a53ac06/",
+          "titre": "Acteurs de l'économie sociale et solidaire de la Métropole de Lyon"
         }
       ],
       "organisme_associe": null,
@@ -902,7 +902,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T05:21:49.344000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T17:13:58+00:00",
       "editeur_publie": "Institut français de recherche pour l'exploitation de la mer (IFREMER)",
       "identite_juridique_verifiee": false,
       "jeux_declares": 439,
@@ -929,10 +929,10 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T22:00:39.019000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-13T22:01:41.208000+00:00",
       "editeur_publie": "Région des Pays de la Loire",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 434,
+      "jeux_declares": 433,
       "jeux_exemples": [
         {
           "id": "5e3221e906e3e70513320bb1",
@@ -956,7 +956,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T18:46:05+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T14:01:25.450000+00:00",
       "editeur_publie": "Brest métropole",
       "identite_juridique_verifiee": false,
       "jeux_declares": 425,
@@ -986,7 +986,7 @@
       "dernier_jeu_actualise_le": "2026-10-14T00:00:00+00:00",
       "editeur_publie": "Région Provence-Alpes-Côte-d'Azur",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 422,
+      "jeux_declares": 423,
       "jeux_exemples": [
         {
           "id": "69dd880528e3e30540a6b411",
@@ -1040,7 +1040,7 @@
       "dernier_jeu_actualise_le": "2026-10-13T23:55:03+00:00",
       "editeur_publie": "Bordeaux Métropole",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 406,
+      "jeux_declares": 405,
       "jeux_exemples": [
         {
           "id": "67f5baa403325228295b7d6d",
@@ -1202,7 +1202,7 @@
       "dernier_jeu_actualise_le": "2026-10-14T03:17:02.935000+00:00",
       "editeur_publie": "Région Hauts-de-France",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 348,
+      "jeux_declares": 350,
       "jeux_exemples": [
         {
           "id": "6407d117b93f1dde15022e2c",
@@ -1256,7 +1256,7 @@
       "dernier_jeu_actualise_le": "2026-10-13T06:05:00.866000+00:00",
       "editeur_publie": "Ministère des Solidarités et de la Santé",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 326,
+      "jeux_declares": 327,
       "jeux_exemples": [
         {
           "id": "5369956ba3a729239d2046fc",
@@ -1280,10 +1280,10 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T06:03:27.815000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-13T08:00:25.407000+00:00",
       "editeur_publie": "Nantes Métropole",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 320,
+      "jeux_declares": 321,
       "jeux_exemples": [
         {
           "id": "67f70b0bc7f49c50e69ac777",
@@ -1310,7 +1310,7 @@
       "dernier_jeu_actualise_le": "2026-10-14T00:00:00+00:00",
       "editeur_publie": "Direction régionale de l'Environnement, de l'Aménagement et du Logement de Normandie",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 307,
+      "jeux_declares": 306,
       "jeux_exemples": [
         {
           "id": "684d07a93c3a49fbb3adfdf5",
@@ -1364,7 +1364,7 @@
       "dernier_jeu_actualise_le": "2026-10-09T00:00:00+00:00",
       "editeur_publie": "Direction Départementale des Territoires des Vosges",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 296,
+      "jeux_declares": 297,
       "jeux_exemples": [
         {
           "id": "6aab6b7b06431b306604fa46",
@@ -1415,7 +1415,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T14:58:31.564000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T19:05:48.591000+00:00",
       "editeur_publie": "Direction régionale de l'environnement, de l'aménagement et du logement de Bretagne",
       "identite_juridique_verifiee": false,
       "jeux_declares": 292,
@@ -1469,10 +1469,10 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T07:02:50+00:00",
+      "dernier_jeu_actualise_le": "2026-10-13T23:15:05+00:00",
       "editeur_publie": "Conseil départemental de la Haute-Garonne - Haute-Garonne Open Data",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 290,
+      "jeux_declares": 289,
       "jeux_exemples": [
         {
           "id": "5baaef2e06e3e7590d7347e6",
@@ -1496,10 +1496,10 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T04:43:37.484000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T17:32:48.953000+00:00",
       "editeur_publie": "Ville d'Issy-les-Moulineaux",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 286,
+      "jeux_declares": 285,
       "jeux_exemples": [
         {
           "id": "595c2711a3a7296407d69b4b",
@@ -1604,7 +1604,34 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T17:16:32.521000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-13T21:01:02.221000+00:00",
+      "editeur_publie": "Département de Loire-Atlantique",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 274,
+      "jeux_exemples": [
+        {
+          "id": "5b6063769ce2e7334ba40d7a",
+          "page": "https://www.data.gouv.fr/datasets/5b6063769ce2e7334ba40d7a/",
+          "titre": "APA (Allocation Personnalisée à l’Autonomie) en établissement hors Loire-Atlantique par EPCI"
+        },
+        {
+          "id": "5b60673006e3e7372ae1d90e",
+          "page": "https://www.data.gouv.fr/datasets/5b60673006e3e7372ae1d90e/",
+          "titre": "APA (Allocation Personnalisée à l’Autonomie) en établissement hors Loire-Atlantique"
+        },
+        {
+          "id": "5b60686f9ce2e73b3fa40d86",
+          "page": "https://www.data.gouv.fr/datasets/5b60686f9ce2e73b3fa40d86/",
+          "titre": "APA (Allocation Personnalisée à l’Autonomie) en établissement hors Loire-Atlantique par commune"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T18:10:42.713000+00:00",
       "editeur_publie": "Ministère de l'Enseignement supérieur, de la Recherche et de l'Espace",
       "identite_juridique_verifiee": false,
       "jeux_declares": 274,
@@ -1623,33 +1650,6 @@
           "id": "577cc0a4c751df40e49901a0",
           "page": "https://www.data.gouv.fr/datasets/577cc0a4c751df40e49901a0/",
           "titre": "Appels à projets 7ème PCRDT - Projets retenus et participants identifiés"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T21:01:02.221000+00:00",
-      "editeur_publie": "Département de Loire-Atlantique",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 273,
-      "jeux_exemples": [
-        {
-          "id": "5b6063769ce2e7334ba40d7a",
-          "page": "https://www.data.gouv.fr/datasets/5b6063769ce2e7334ba40d7a/",
-          "titre": "APA (Allocation Personnalisée à l’Autonomie) en établissement hors Loire-Atlantique par EPCI"
-        },
-        {
-          "id": "5b60673006e3e7372ae1d90e",
-          "page": "https://www.data.gouv.fr/datasets/5b60673006e3e7372ae1d90e/",
-          "titre": "APA (Allocation Personnalisée à l’Autonomie) en établissement hors Loire-Atlantique"
-        },
-        {
-          "id": "5b60686f9ce2e73b3fa40d86",
-          "page": "https://www.data.gouv.fr/datasets/5b60686f9ce2e73b3fa40d86/",
-          "titre": "APA (Allocation Personnalisée à l’Autonomie) en établissement hors Loire-Atlantique par commune"
         }
       ],
       "organisme_associe": null,
@@ -1688,7 +1688,7 @@
       "dernier_jeu_actualise_le": "2026-10-13T14:10:20.707000+00:00",
       "editeur_publie": "Ville de Nantes",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 263,
+      "jeux_declares": 262,
       "jeux_exemples": [
         {
           "id": "5b4eeb71b595087c4ad496d9",
@@ -1769,7 +1769,7 @@
       "dernier_jeu_actualise_le": "2026-10-11T00:00:00+00:00",
       "editeur_publie": "DREAL Provence-Alpes-Côte d'Azur",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 248,
+      "jeux_declares": 247,
       "jeux_exemples": [
         {
           "id": "673788602681d108c1c2538a",
@@ -1793,7 +1793,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T20:05:04.078000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T16:53:30.364000+00:00",
       "editeur_publie": "Région Bretagne",
       "identite_juridique_verifiee": false,
       "jeux_declares": 244,
@@ -1820,7 +1820,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T05:51:19.021000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T17:43:14.588000+00:00",
       "editeur_publie": "Centre Régional Auvergne-Rhône-Alpes de l'Information Géographique",
       "identite_juridique_verifiee": false,
       "jeux_declares": 242,
@@ -1847,7 +1847,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T04:48:49+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T14:56:44+00:00",
       "editeur_publie": "Cour des comptes",
       "identite_juridique_verifiee": false,
       "jeux_declares": 237,
@@ -1928,33 +1928,6 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T00:00:00+00:00",
-      "editeur_publie": "La Rochelle",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 235,
-      "jeux_exemples": [
-        {
-          "id": "6088a697964b6e14db296bc7",
-          "page": "https://www.data.gouv.fr/datasets/6088a697964b6e14db296bc7/",
-          "titre": "Accessibilité - Feux sonores"
-        },
-        {
-          "id": "6088a69931d514e2fa9bacd5",
-          "page": "https://www.data.gouv.fr/datasets/6088a69931d514e2fa9bacd5/",
-          "titre": "Accessibilité – Sites ATH"
-        },
-        {
-          "id": "6088a699c9b1f11a769bacd5",
-          "page": "https://www.data.gouv.fr/datasets/6088a699c9b1f11a769bacd5/",
-          "titre": "Accessibilité – Cheminements privilégiés"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-02T00:00:00+00:00",
       "editeur_publie": "Direction Départementale des Territoires du Val-d'Oise",
       "identite_juridique_verifiee": false,
@@ -1982,10 +1955,10 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T02:28:32+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T15:34:03.752000+00:00",
       "editeur_publie": "Ministère de l'Agriculture, de l'agro-alimentaire et de la souveraineté alimentaire",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 232,
+      "jeux_declares": 231,
       "jeux_exemples": [
         {
           "id": "60845e900f33616874cbe067",
@@ -2090,10 +2063,37 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T00:00:00+00:00",
+      "editeur_publie": "La Rochelle",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 222,
+      "jeux_exemples": [
+        {
+          "id": "6088a697964b6e14db296bc7",
+          "page": "https://www.data.gouv.fr/datasets/6088a697964b6e14db296bc7/",
+          "titre": "Accessibilité - Feux sonores"
+        },
+        {
+          "id": "6088a69931d514e2fa9bacd5",
+          "page": "https://www.data.gouv.fr/datasets/6088a69931d514e2fa9bacd5/",
+          "titre": "Accessibilité – Sites ATH"
+        },
+        {
+          "id": "6088a699c9b1f11a769bacd5",
+          "page": "https://www.data.gouv.fr/datasets/6088a699c9b1f11a769bacd5/",
+          "titre": "Accessibilité – Cheminements privilégiés"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-06T00:00:00+00:00",
       "editeur_publie": "Direction Départementale des Territoires d'Eure-et-Loir",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 219,
+      "jeux_declares": 218,
       "jeux_exemples": [
         {
           "id": "673779248705bc2edfc25449",
@@ -2171,6 +2171,33 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T11:57:50.738000+00:00",
+      "editeur_publie": "Cerema",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 209,
+      "jeux_exemples": [
+        {
+          "id": "67502dcd2c210743ea4c0614",
+          "page": "https://www.data.gouv.fr/datasets/67502dcd2c210743ea4c0614/",
+          "titre": "ANEMOC - Atlas Numérique d'Etats de mer Océanique et Côtier"
+        },
+        {
+          "id": "691e0dea0379dac5d0a376b7",
+          "page": "https://www.data.gouv.fr/datasets/691e0dea0379dac5d0a376b7/",
+          "titre": "AMI hydrolien : zones propices à l'implantation des fermes pilotes"
+        },
+        {
+          "id": "691e0e0d0379dac5d0a376fb",
+          "page": "https://www.data.gouv.fr/datasets/691e0e0d0379dac5d0a376fb/",
+          "titre": "AMI hydrolien : résultat concertation 2013"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-08T00:00:00+00:00",
       "editeur_publie": "DDT de la Marne (DDT51)",
       "identite_juridique_verifiee": false,
@@ -2225,33 +2252,6 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T21:01:51+00:00",
-      "editeur_publie": "Cerema",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 205,
-      "jeux_exemples": [
-        {
-          "id": "67502dcd2c210743ea4c0614",
-          "page": "https://www.data.gouv.fr/datasets/67502dcd2c210743ea4c0614/",
-          "titre": "ANEMOC - Atlas Numérique d'Etats de mer Océanique et Côtier"
-        },
-        {
-          "id": "691e0dea0379dac5d0a376b7",
-          "page": "https://www.data.gouv.fr/datasets/691e0dea0379dac5d0a376b7/",
-          "titre": "AMI hydrolien : zones propices à l'implantation des fermes pilotes"
-        },
-        {
-          "id": "691e0e0d0379dac5d0a376fb",
-          "page": "https://www.data.gouv.fr/datasets/691e0e0d0379dac5d0a376fb/",
-          "titre": "AMI hydrolien : résultat concertation 2013"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-13T02:33:34.882000+00:00",
       "editeur_publie": "Département des Côtes d'Armor",
       "identite_juridique_verifiee": false,
@@ -2279,33 +2279,6 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T18:05:49.595000+00:00",
-      "editeur_publie": "Institut national de la statistique et des études économiques (Insee)",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 199,
-      "jeux_exemples": [
-        {
-          "id": "53698e6aa3a729239d203466",
-          "page": "https://www.data.gouv.fr/datasets/53698e6aa3a729239d203466/",
-          "titre": "Activité productrice des entreprises"
-        },
-        {
-          "id": "53699434a3a729239d2043b3",
-          "page": "https://www.data.gouv.fr/datasets/53699434a3a729239d2043b3/",
-          "titre": "Activité emploi et chômage - enquête emploi en continu"
-        },
-        {
-          "id": "66685855500cccd9a708910e",
-          "page": "https://www.data.gouv.fr/datasets/66685855500cccd9a708910e/",
-          "titre": "Activité, emploi et chômage - séries longues"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-08T12:56:54.923000+00:00",
       "editeur_publie": "Ministère des Armées",
       "identite_juridique_verifiee": false,
@@ -2325,6 +2298,33 @@
           "id": "53d37b7ca3a729042701368f",
           "page": "https://www.data.gouv.fr/datasets/53d37b7ca3a729042701368f/",
           "titre": "Accompagnement des conjoints du personnel de la défense et de la gendarmerie 2013"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T17:21:54.524000+00:00",
+      "editeur_publie": "Institut national de la statistique et des études économiques (Insee)",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 198,
+      "jeux_exemples": [
+        {
+          "id": "53698e6aa3a729239d203466",
+          "page": "https://www.data.gouv.fr/datasets/53698e6aa3a729239d203466/",
+          "titre": "Activité productrice des entreprises"
+        },
+        {
+          "id": "53699434a3a729239d2043b3",
+          "page": "https://www.data.gouv.fr/datasets/53699434a3a729239d2043b3/",
+          "titre": "Activité emploi et chômage - enquête emploi en continu"
+        },
+        {
+          "id": "66685855500cccd9a708910e",
+          "page": "https://www.data.gouv.fr/datasets/66685855500cccd9a708910e/",
+          "titre": "Activité, emploi et chômage - séries longues"
         }
       ],
       "organisme_associe": null,
@@ -2444,7 +2444,7 @@
       "dernier_jeu_actualise_le": "2026-10-13T22:01:05+00:00",
       "editeur_publie": "Région Occitanie / Pyrénées Méditerranée",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 191,
+      "jeux_declares": 190,
       "jeux_exemples": [
         {
           "id": "5bd89da706e3e738f68c0eca",
@@ -2460,33 +2460,6 @@
           "id": "5bd89dae06e3e738f68c0ed0",
           "page": "https://www.data.gouv.fr/datasets/5bd89dae06e3e738f68c0ed0/",
           "titre": "Agendas participatifs des sorties en Occitanie"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T04:01:42+00:00",
-      "editeur_publie": "Open Data Réseaux Énergies",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 184,
-      "jeux_exemples": [
-        {
-          "id": "60c431acf0bf638bcd2fcb3b",
-          "page": "https://www.data.gouv.fr/datasets/60c431acf0bf638bcd2fcb3b/",
-          "titre": "Bilan d'émissions de gaz à effet de serre par scope et opérateur"
-        },
-        {
-          "id": "5cecb32906e3e73487b31ef5",
-          "page": "https://www.data.gouv.fr/datasets/5cecb32906e3e73487b31ef5/",
-          "titre": "Bilan prévisionnel électrique 2017 - Offre de production"
-        },
-        {
-          "id": "5cecb32e9ce2e73588c3af02",
-          "page": "https://www.data.gouv.fr/datasets/5cecb32e9ce2e73588c3af02/",
-          "titre": "Bilan prévisionnel électrique 2017 - Bilans énergétiques"
         }
       ],
       "organisme_associe": null,
@@ -2576,7 +2549,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T12:04:36.836000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T21:26:22.557000+00:00",
       "editeur_publie": "Grand Poitiers Open Data",
       "identite_juridique_verifiee": false,
       "jeux_declares": 181,
@@ -2630,10 +2603,37 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T03:30:13+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T19:24:05.960000+00:00",
+      "editeur_publie": "Premier ministre",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 179,
+      "jeux_exemples": [
+        {
+          "id": "5be990f48b4c4107f6cadd8c",
+          "page": "https://www.data.gouv.fr/datasets/5be990f48b4c4107f6cadd8c/",
+          "titre": "Simulateur CALCULATEUR DE PRIX APRES REDUCTION"
+        },
+        {
+          "id": "5a0b0be188ee3871db07ce4e",
+          "page": "https://www.data.gouv.fr/datasets/5a0b0be188ee3871db07ce4e/",
+          "titre": "ACCO : Accords d’entreprise"
+        },
+        {
+          "id": "587ccbcd88ee382c669b81a4",
+          "page": "https://www.data.gouv.fr/datasets/587ccbcd88ee382c669b81a4/",
+          "titre": "API BOAMP"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-13T10:12:52+00:00",
       "editeur_publie": "SNCF",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 180,
+      "jeux_declares": 179,
       "jeux_exemples": [
         {
           "id": "53698ee4a3a729239d2035c6",
@@ -2657,25 +2657,25 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T07:32:10+00:00",
-      "editeur_publie": "Premier ministre",
+      "dernier_jeu_actualise_le": "2026-10-14T04:01:42+00:00",
+      "editeur_publie": "Open Data Réseaux Énergies",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 179,
+      "jeux_declares": 178,
       "jeux_exemples": [
         {
-          "id": "5be990f48b4c4107f6cadd8c",
-          "page": "https://www.data.gouv.fr/datasets/5be990f48b4c4107f6cadd8c/",
-          "titre": "Simulateur CALCULATEUR DE PRIX APRES REDUCTION"
+          "id": "60c431acf0bf638bcd2fcb3b",
+          "page": "https://www.data.gouv.fr/datasets/60c431acf0bf638bcd2fcb3b/",
+          "titre": "Bilan d'émissions de gaz à effet de serre par scope et opérateur"
         },
         {
-          "id": "5a0b0be188ee3871db07ce4e",
-          "page": "https://www.data.gouv.fr/datasets/5a0b0be188ee3871db07ce4e/",
-          "titre": "ACCO : Accords d’entreprise"
+          "id": "5cecb32906e3e73487b31ef5",
+          "page": "https://www.data.gouv.fr/datasets/5cecb32906e3e73487b31ef5/",
+          "titre": "Bilan prévisionnel électrique 2017 - Offre de production"
         },
         {
-          "id": "587ccbcd88ee382c669b81a4",
-          "page": "https://www.data.gouv.fr/datasets/587ccbcd88ee382c669b81a4/",
-          "titre": "API BOAMP"
+          "id": "5cecb32e9ce2e73588c3af02",
+          "page": "https://www.data.gouv.fr/datasets/5cecb32e9ce2e73588c3af02/",
+          "titre": "Bilan prévisionnel électrique 2017 - Bilans énergétiques"
         }
       ],
       "organisme_associe": null,
@@ -2741,7 +2741,7 @@
       "dernier_jeu_actualise_le": "2026-10-12T00:00:00+00:00",
       "editeur_publie": "Direction Départementale des Territoires et de la Mer de Loire-Atlantique",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 172,
+      "jeux_declares": 173,
       "jeux_exemples": [
         {
           "id": "67377abcb034c8d8c3c40a8d",
@@ -2795,7 +2795,7 @@
       "dernier_jeu_actualise_le": "2026-07-15T00:00:00+00:00",
       "editeur_publie": "Direction Départementale et des Territoires du Cantal",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 169,
+      "jeux_declares": 168,
       "jeux_exemples": [
         {
           "id": "660bf6afa9c3b12c3a83d68a",
@@ -2819,37 +2819,10 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-12T14:26:27.608000+00:00",
-      "editeur_publie": "Ville d'Antibes",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 168,
-      "jeux_exemples": [
-        {
-          "id": "5e737ffa237ddb08067aaf30",
-          "page": "https://www.data.gouv.fr/datasets/5e737ffa237ddb08067aaf30/",
-          "titre": "Actes municipaux de la Ville d'Antibes"
-        },
-        {
-          "id": "5f08191147be1ce8aa83f320",
-          "page": "https://www.data.gouv.fr/datasets/5f08191147be1ce8aa83f320/",
-          "titre": "Activité Autonomie du centre communal d'action sociale d'Antibes"
-        },
-        {
-          "id": "5e725417e06233005b060dfd",
-          "page": "https://www.data.gouv.fr/datasets/5e725417e06233005b060dfd/",
-          "titre": "Activités de Sport Santé mises en place par la Ville d'Antibes"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-09T00:00:00+00:00",
       "editeur_publie": "DREAL Bourgogne-Franche-Comté",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 163,
+      "jeux_declares": 164,
       "jeux_exemples": [
         {
           "id": "69f4182f57a19a11f6eff72b",
@@ -2865,6 +2838,33 @@
           "id": "69f4183257a19a11f6eff72d",
           "page": "https://www.data.gouv.fr/datasets/69f4183257a19a11f6eff72d/",
           "titre": "Aire d'Influence Paysagère de Vézelay"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-12T14:26:27.608000+00:00",
+      "editeur_publie": "Ville d'Antibes",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 164,
+      "jeux_exemples": [
+        {
+          "id": "5e737ffa237ddb08067aaf30",
+          "page": "https://www.data.gouv.fr/datasets/5e737ffa237ddb08067aaf30/",
+          "titre": "Actes municipaux de la Ville d'Antibes"
+        },
+        {
+          "id": "5f08191147be1ce8aa83f320",
+          "page": "https://www.data.gouv.fr/datasets/5f08191147be1ce8aa83f320/",
+          "titre": "Activité Autonomie du centre communal d'action sociale d'Antibes"
+        },
+        {
+          "id": "5e725417e06233005b060dfd",
+          "page": "https://www.data.gouv.fr/datasets/5e725417e06233005b060dfd/",
+          "titre": "Activités de Sport Santé mises en place par la Ville d'Antibes"
         }
       ],
       "organisme_associe": null,
@@ -2927,7 +2927,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T05:28:00.409000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T17:13:29.097000+00:00",
       "editeur_publie": "Géo2France",
       "identite_juridique_verifiee": false,
       "jeux_declares": 161,
@@ -3008,10 +3008,10 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T10:50:51+00:00",
+      "dernier_jeu_actualise_le": "2026-10-13T10:55:03+00:00",
       "editeur_publie": "Grand Paris Seine Ouest",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 158,
+      "jeux_declares": 156,
       "jeux_exemples": [
         {
           "id": "685d5df6df03f8ee70634254",
@@ -3027,33 +3027,6 @@
           "id": "68632c3ab6576ee57df61400",
           "page": "https://www.data.gouv.fr/datasets/68632c3ab6576ee57df61400/",
           "titre": "Acteurs du réemploi"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-06T00:00:00+00:00",
-      "editeur_publie": "DREAL Hauts-de-France",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 156,
-      "jeux_exemples": [
-        {
-          "id": "6745dc516aebba85151bcc90",
-          "page": "https://www.data.gouv.fr/datasets/6745dc516aebba85151bcc90/",
-          "titre": "Accidentologie : Nombre de tués pas commune en Nord - Pas de Calais"
-        },
-        {
-          "id": "674661dc8731a4f47077341a",
-          "page": "https://www.data.gouv.fr/datasets/674661dc8731a4f47077341a/",
-          "titre": "Action Coeur de Ville (ACV)"
-        },
-        {
-          "id": "6745dc4d6aebba85151bcc85",
-          "page": "https://www.data.gouv.fr/datasets/6745dc4d6aebba85151bcc85/",
-          "titre": "Aires d'attraction des villes"
         }
       ],
       "organisme_associe": null,
@@ -3081,6 +3054,33 @@
           "id": "6737845b8695f1fa14c253b5",
           "page": "https://www.data.gouv.fr/datasets/6737845b8695f1fa14c253b5/",
           "titre": "Cantons de la Vienne"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-06T00:00:00+00:00",
+      "editeur_publie": "DREAL Hauts-de-France",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 155,
+      "jeux_exemples": [
+        {
+          "id": "6745dc516aebba85151bcc90",
+          "page": "https://www.data.gouv.fr/datasets/6745dc516aebba85151bcc90/",
+          "titre": "Accidentologie : Nombre de tués pas commune en Nord - Pas de Calais"
+        },
+        {
+          "id": "674661dc8731a4f47077341a",
+          "page": "https://www.data.gouv.fr/datasets/674661dc8731a4f47077341a/",
+          "titre": "Action Coeur de Ville (ACV)"
+        },
+        {
+          "id": "6745dc4d6aebba85151bcc85",
+          "page": "https://www.data.gouv.fr/datasets/6745dc4d6aebba85151bcc85/",
+          "titre": "Aires d'attraction des villes"
         }
       ],
       "organisme_associe": null,
@@ -3251,79 +3251,25 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T10:34:10.665000+00:00",
-      "editeur_publie": "CapAtlantique La Baule-Guérande Agglo",
+      "dernier_jeu_actualise_le": "2026-10-12T13:29:03+00:00",
+      "editeur_publie": "Mulhouse Alsace Agglomération",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 145,
+      "jeux_declares": 146,
       "jeux_exemples": [
         {
-          "id": "5fbef0358dba81796571eb96",
-          "page": "https://www.data.gouv.fr/datasets/5fbef0358dba81796571eb96/",
-          "titre": "Adresse secteur déchet pour widget"
+          "id": "5be560bd06e3e70c7277c6ea",
+          "page": "https://www.data.gouv.fr/datasets/5be560bd06e3e70c7277c6ea/",
+          "titre": "Actes d'état civil à Rixheim en 2017"
         },
         {
-          "id": "6372d8798edfe64e93f64c85",
-          "page": "https://www.data.gouv.fr/datasets/6372d8798edfe64e93f64c85/",
-          "titre": "Agenda de la Ville de Guérande"
+          "id": "5be560b99ce2e72d63830ff6",
+          "page": "https://www.data.gouv.fr/datasets/5be560b99ce2e72d63830ff6/",
+          "titre": "Activité Emploi 2013 Iris m2A"
         },
         {
-          "id": "63a24cb4e8471be8029dde9c",
-          "page": "https://www.data.gouv.fr/datasets/63a24cb4e8471be8029dde9c/",
-          "titre": "Agenda de la ville de La Baule-Escoublac"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-12T22:02:40+00:00",
-      "editeur_publie": "Commune d'Anglet",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 145,
-      "jeux_exemples": [
-        {
-          "id": "682e6a88cce4d375997082f4",
-          "page": "https://www.data.gouv.fr/datasets/682e6a88cce4d375997082f4/",
-          "titre": "Accessibilité des cheminements de la voirie vers les établissements communaux recevant du public"
-        },
-        {
-          "id": "6647f581185447ed614c46b1",
-          "page": "https://www.data.gouv.fr/datasets/6647f581185447ed614c46b1/",
-          "titre": "Adresse sur Anglet (Base Adresse Locale) au format BAL"
-        },
-        {
-          "id": "62a3dbdec6e7047dcb364d95",
-          "page": "https://www.data.gouv.fr/datasets/62a3dbdec6e7047dcb364d95/",
-          "titre": "Aires de jeux pour enfants sur la commune d'Anglet"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-09-24T14:51:36.033000+00:00",
-      "editeur_publie": "Commune de Brignoles",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 145,
-      "jeux_exemples": [
-        {
-          "id": "6710c717332895e22c4d7637",
-          "page": "https://www.data.gouv.fr/datasets/6710c717332895e22c4d7637/",
-          "titre": "3-7/2024 Fourniture de matériel informatique en 7 lots sur 2 ans - Lot n°07"
-        },
-        {
-          "id": "6711328707df39ac75bf198e",
-          "page": "https://www.data.gouv.fr/datasets/6711328707df39ac75bf198e/",
-          "titre": "33-4-2024 Lot 4"
-        },
-        {
-          "id": "671132f41f567d88940376a1",
-          "page": "https://www.data.gouv.fr/datasets/671132f41f567d88940376a1/",
-          "titre": "33-5-2024"
+          "id": "6361b5a46a6704f4c490f68e",
+          "page": "https://www.data.gouv.fr/datasets/6361b5a46a6704f4c490f68e/",
+          "titre": "Acteurs de la médiation numérique à Mulhouse"
         }
       ],
       "organisme_associe": null,
@@ -3386,25 +3332,25 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-12T13:29:03+00:00",
-      "editeur_publie": "Mulhouse Alsace Agglomération",
+      "dernier_jeu_actualise_le": "2026-10-12T10:15:20.988000+00:00",
+      "editeur_publie": "Commune de Brignoles",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 145,
+      "jeux_declares": 144,
       "jeux_exemples": [
         {
-          "id": "5be560bd06e3e70c7277c6ea",
-          "page": "https://www.data.gouv.fr/datasets/5be560bd06e3e70c7277c6ea/",
-          "titre": "Actes d'état civil à Rixheim en 2017"
+          "id": "6710c717332895e22c4d7637",
+          "page": "https://www.data.gouv.fr/datasets/6710c717332895e22c4d7637/",
+          "titre": "3-7/2024 Fourniture de matériel informatique en 7 lots sur 2 ans - Lot n°07"
         },
         {
-          "id": "5be560b99ce2e72d63830ff6",
-          "page": "https://www.data.gouv.fr/datasets/5be560b99ce2e72d63830ff6/",
-          "titre": "Activité Emploi 2013 Iris m2A"
+          "id": "6711328707df39ac75bf198e",
+          "page": "https://www.data.gouv.fr/datasets/6711328707df39ac75bf198e/",
+          "titre": "33-4-2024 Lot 4"
         },
         {
-          "id": "6361b5a46a6704f4c490f68e",
-          "page": "https://www.data.gouv.fr/datasets/6361b5a46a6704f4c490f68e/",
-          "titre": "Acteurs de la médiation numérique à Mulhouse"
+          "id": "671132f41f567d88940376a1",
+          "page": "https://www.data.gouv.fr/datasets/671132f41f567d88940376a1/",
+          "titre": "33-5-2024"
         }
       ],
       "organisme_associe": null,
@@ -3440,6 +3386,87 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-13T10:34:10.665000+00:00",
+      "editeur_publie": "CapAtlantique La Baule-Guérande Agglo",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 143,
+      "jeux_exemples": [
+        {
+          "id": "5fbef0358dba81796571eb96",
+          "page": "https://www.data.gouv.fr/datasets/5fbef0358dba81796571eb96/",
+          "titre": "Adresse secteur déchet pour widget"
+        },
+        {
+          "id": "6372d8798edfe64e93f64c85",
+          "page": "https://www.data.gouv.fr/datasets/6372d8798edfe64e93f64c85/",
+          "titre": "Agenda de la Ville de Guérande"
+        },
+        {
+          "id": "63a24cb4e8471be8029dde9c",
+          "page": "https://www.data.gouv.fr/datasets/63a24cb4e8471be8029dde9c/",
+          "titre": "Agenda de la ville de La Baule-Escoublac"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-12T22:02:40+00:00",
+      "editeur_publie": "Commune d'Anglet",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 142,
+      "jeux_exemples": [
+        {
+          "id": "682e6a88cce4d375997082f4",
+          "page": "https://www.data.gouv.fr/datasets/682e6a88cce4d375997082f4/",
+          "titre": "Accessibilité des cheminements de la voirie vers les établissements communaux recevant du public"
+        },
+        {
+          "id": "6647f581185447ed614c46b1",
+          "page": "https://www.data.gouv.fr/datasets/6647f581185447ed614c46b1/",
+          "titre": "Adresse sur Anglet (Base Adresse Locale) au format BAL"
+        },
+        {
+          "id": "62a3dbdec6e7047dcb364d95",
+          "page": "https://www.data.gouv.fr/datasets/62a3dbdec6e7047dcb364d95/",
+          "titre": "Aires de jeux pour enfants sur la commune d'Anglet"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2025-11-18T00:00:00+00:00",
+      "editeur_publie": "DEAL Guadeloupe",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 141,
+      "jeux_exemples": [
+        {
+          "id": "6737858aede507b7dec25381",
+          "page": "https://www.data.gouv.fr/datasets/6737858aede507b7dec25381/",
+          "titre": "97104_PLU_20181022"
+        },
+        {
+          "id": "673785a3ede507b7dec253af",
+          "page": "https://www.data.gouv.fr/datasets/673785a3ede507b7dec253af/",
+          "titre": "97104_PRESCRIPTION_SURF_20181022"
+        },
+        {
+          "id": "673785c9ede507b7dec253de",
+          "page": "https://www.data.gouv.fr/datasets/673785c9ede507b7dec253de/",
+          "titre": "97112_pprn_Plan de zonage réglementaire"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-10T06:15:23+00:00",
       "editeur_publie": "Mairie de Cannes",
       "identite_juridique_verifiee": false,
@@ -3467,34 +3494,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2025-11-18T00:00:00+00:00",
-      "editeur_publie": "DEAL Guadeloupe",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 140,
-      "jeux_exemples": [
-        {
-          "id": "6737858aede507b7dec25381",
-          "page": "https://www.data.gouv.fr/datasets/6737858aede507b7dec25381/",
-          "titre": "97104_PLU_20181022"
-        },
-        {
-          "id": "673785a3ede507b7dec253af",
-          "page": "https://www.data.gouv.fr/datasets/673785a3ede507b7dec253af/",
-          "titre": "97104_PRESCRIPTION_SURF_20181022"
-        },
-        {
-          "id": "673785c9ede507b7dec253de",
-          "page": "https://www.data.gouv.fr/datasets/673785c9ede507b7dec253de/",
-          "titre": "97112_pprn_Plan de zonage réglementaire"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-12T00:00:00+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T00:00:00+00:00",
       "editeur_publie": "Enedis",
       "identite_juridique_verifiee": false,
       "jeux_declares": 139,
@@ -3818,37 +3818,10 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-07T00:00:00+00:00",
-      "editeur_publie": "DDTM Gard",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 123,
-      "jeux_exemples": [
-        {
-          "id": "67377825871a62e16cc40a8f",
-          "page": "https://www.data.gouv.fr/datasets/67377825871a62e16cc40a8f/",
-          "titre": "Accueil des gens du voyage pour le département du Gard"
-        },
-        {
-          "id": "673778b5871a62e16cc40b15",
-          "page": "https://www.data.gouv.fr/datasets/673778b5871a62e16cc40b15/",
-          "titre": "Aires de retournement, de croisement et impasses le long des tronçons des voies DFCI catégorisées dans le Gard"
-        },
-        {
-          "id": "673779c8871a62e16cc40bfb",
-          "page": "https://www.data.gouv.fr/datasets/673779c8871a62e16cc40bfb/",
-          "titre": "Aléa incendie de forêt (IFN 4) dans le Gard"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-07T15:35:31.148000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T17:33:35.123000+00:00",
       "editeur_publie": "Réunion des Opéras de France",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 122,
+      "jeux_declares": 123,
       "jeux_exemples": [
         {
           "id": "669e56c5633c57cfd3107c03",
@@ -3864,6 +3837,33 @@
           "id": "666d9cb15332ac40d0b9351c",
           "page": "https://www.data.gouv.fr/datasets/666d9cb15332ac40d0b9351c/",
           "titre": "Représentations d'opéra pour la saison 2023/2024"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-07T00:00:00+00:00",
+      "editeur_publie": "DDTM Gard",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 122,
+      "jeux_exemples": [
+        {
+          "id": "67377825871a62e16cc40a8f",
+          "page": "https://www.data.gouv.fr/datasets/67377825871a62e16cc40a8f/",
+          "titre": "Accueil des gens du voyage pour le département du Gard"
+        },
+        {
+          "id": "673778b5871a62e16cc40b15",
+          "page": "https://www.data.gouv.fr/datasets/673778b5871a62e16cc40b15/",
+          "titre": "Aires de retournement, de croisement et impasses le long des tronçons des voies DFCI catégorisées dans le Gard"
+        },
+        {
+          "id": "673779c8871a62e16cc40bfb",
+          "page": "https://www.data.gouv.fr/datasets/673779c8871a62e16cc40bfb/",
+          "titre": "Aléa incendie de forêt (IFN 4) dans le Gard"
         }
       ],
       "organisme_associe": null,
@@ -3980,7 +3980,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T05:35:30.009000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T11:26:45.193000+00:00",
       "editeur_publie": "Shom",
       "identite_juridique_verifiee": false,
       "jeux_declares": 121,
@@ -4007,7 +4007,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-11T22:31:08+00:00",
+      "dernier_jeu_actualise_le": "2026-10-13T22:02:24+00:00",
       "editeur_publie": "Département des Hauts-de-Seine",
       "identite_juridique_verifiee": false,
       "jeux_declares": 120,
@@ -4061,7 +4061,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T05:39:06.007000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T17:56:42.643000+00:00",
       "editeur_publie": "ADEME",
       "identite_juridique_verifiee": false,
       "jeux_declares": 114,
@@ -4145,7 +4145,7 @@
       "dernier_jeu_actualise_le": "2026-09-11T00:00:00+00:00",
       "editeur_publie": "DREAL Centre-Val de Loire",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 113,
+      "jeux_declares": 112,
       "jeux_exemples": [
         {
           "id": "6737856d34c5a87dedc2537c",
@@ -4172,7 +4172,7 @@
       "dernier_jeu_actualise_le": "2026-10-13T04:52:59.542000+00:00",
       "editeur_publie": "Département du Loiret",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 113,
+      "jeux_declares": 112,
       "jeux_exemples": [
         {
           "id": "61a5158e6494f40236993396",
@@ -4523,7 +4523,7 @@
       "dernier_jeu_actualise_le": "2026-10-14T09:35:43+00:00",
       "editeur_publie": "Ville de Digne-les-Bains",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 102,
+      "jeux_declares": 101,
       "jeux_exemples": [
         {
           "id": "5ce889989ce2e74e000dbf2e",
@@ -4539,33 +4539,6 @@
           "id": "5ce8899e06e3e76c44d57ec4",
           "page": "https://www.data.gouv.fr/datasets/5ce8899e06e3e76c44d57ec4/",
           "titre": "Activité de la cuisine du pôle social de Digne-les-Bains de 2010 à 2017"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T00:02:17+00:00",
-      "editeur_publie": "Tours Métropole Val de Loire",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 101,
-      "jeux_exemples": [
-        {
-          "id": "686327da8e28faa2edf61202",
-          "page": "https://www.data.gouv.fr/datasets/686327da8e28faa2edf61202/",
-          "titre": "Achats comportant des produits recyclés, réemployés, réutilisés ou issus de dons  (Loi AGEC) – Tours Métropole Val de Loire"
-        },
-        {
-          "id": "602322ed74ac1bb6917ce5a3",
-          "page": "https://www.data.gouv.fr/datasets/602322ed74ac1bb6917ce5a3/",
-          "titre": "Aides pour les étudiants - COVID19 - Tours Métropole Val de Loire"
-        },
-        {
-          "id": "5e315dac9ce2e74ee5f7fbb5",
-          "page": "https://www.data.gouv.fr/datasets/5e315dac9ce2e74ee5f7fbb5/",
-          "titre": "Aire de Camping-car - Tours Métropole Val de Loire"
         }
       ],
       "organisme_associe": null,
@@ -4601,10 +4574,37 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T00:02:17+00:00",
+      "editeur_publie": "Tours Métropole Val de Loire",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 98,
+      "jeux_exemples": [
+        {
+          "id": "686327da8e28faa2edf61202",
+          "page": "https://www.data.gouv.fr/datasets/686327da8e28faa2edf61202/",
+          "titre": "Achats comportant des produits recyclés, réemployés, réutilisés ou issus de dons  (Loi AGEC) – Tours Métropole Val de Loire"
+        },
+        {
+          "id": "602322ed74ac1bb6917ce5a3",
+          "page": "https://www.data.gouv.fr/datasets/602322ed74ac1bb6917ce5a3/",
+          "titre": "Aides pour les étudiants - COVID19 - Tours Métropole Val de Loire"
+        },
+        {
+          "id": "5e315dac9ce2e74ee5f7fbb5",
+          "page": "https://www.data.gouv.fr/datasets/5e315dac9ce2e74ee5f7fbb5/",
+          "titre": "Aire de Camping-car - Tours Métropole Val de Loire"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-06-26T14:21:24.746000+00:00",
       "editeur_publie": "Ville d'Agen",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 98,
+      "jeux_declares": 97,
       "jeux_exemples": [
         {
           "id": "5bec45699ce2e77c2e830ff7",
@@ -4628,7 +4628,34 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T00:10:19+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T02:18:29.895000+00:00",
+      "editeur_publie": "Direction Départementale des Territoires de Charente",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 95,
+      "jeux_exemples": [
+        {
+          "id": "673773d0a0dae6104ac40adb",
+          "page": "https://www.data.gouv.fr/datasets/673773d0a0dae6104ac40adb/",
+          "titre": "AZI (zones inondables en dehors des zones réglementaires des PPRNi) en Charente"
+        },
+        {
+          "id": "684e1d971e56cf0f1952b636",
+          "page": "https://www.data.gouv.fr/datasets/684e1d971e56cf0f1952b636/",
+          "titre": "Alerte sécheresse : mesures en vigueur en Charente"
+        },
+        {
+          "id": "67377378a0dae6104ac40aa2",
+          "page": "https://www.data.gouv.fr/datasets/67377378a0dae6104ac40aa2/",
+          "titre": "Assemblage des zonages réglementés des PPRN (inondation ou mouvements de terrain) en Charente"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T20:46:30.290000+00:00",
       "editeur_publie": "Métropole d'Aix-Marseille-Provence",
       "identite_juridique_verifiee": false,
       "jeux_declares": 95,
@@ -4655,10 +4682,37 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T04:04:01+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T00:00:00+00:00",
+      "editeur_publie": "Direction Départementale des Territoires des Alpes-de-Haute-Provence",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 94,
+      "jeux_exemples": [
+        {
+          "id": "6737718e4f5de128fcc2538f",
+          "page": "https://www.data.gouv.fr/datasets/6737718e4f5de128fcc2538f/",
+          "titre": "AOP de type autre que vin ou fromage des Alpes de Haute-Provence"
+        },
+        {
+          "id": "6737718e4f5de128fcc25391",
+          "page": "https://www.data.gouv.fr/datasets/6737718e4f5de128fcc25391/",
+          "titre": "AOP de type fromage des Alpes de Haute-Provence"
+        },
+        {
+          "id": "6737718f4f5de128fcc25392",
+          "page": "https://www.data.gouv.fr/datasets/6737718f4f5de128fcc25392/",
+          "titre": "AOP de type vin des Alpes de Haute-Provence"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T17:31:50.920000+00:00",
       "editeur_publie": "Île-de-France Mobilités",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 95,
+      "jeux_declares": 94,
       "jeux_exemples": [
         {
           "id": "65e699687162b3a88b7ba548",
@@ -4674,87 +4728,6 @@
           "id": "6246795cc693e8434deb4ce1",
           "page": "https://www.data.gouv.fr/datasets/6246795cc693e8434deb4ce1/",
           "titre": "Aménagements bus en Île-de-France"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T02:18:29.895000+00:00",
-      "editeur_publie": "Direction Départementale des Territoires de Charente",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 94,
-      "jeux_exemples": [
-        {
-          "id": "673773d0a0dae6104ac40adb",
-          "page": "https://www.data.gouv.fr/datasets/673773d0a0dae6104ac40adb/",
-          "titre": "AZI (zones inondables en dehors des zones réglementaires des PPRNi) en Charente"
-        },
-        {
-          "id": "684e1d971e56cf0f1952b636",
-          "page": "https://www.data.gouv.fr/datasets/684e1d971e56cf0f1952b636/",
-          "titre": "Alerte sécheresse : mesures en vigueur en Charente"
-        },
-        {
-          "id": "67377378a0dae6104ac40aa2",
-          "page": "https://www.data.gouv.fr/datasets/67377378a0dae6104ac40aa2/",
-          "titre": "Assemblage des zonages réglementés des PPRN (inondation ou mouvements de terrain) en Charente"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-06-30T14:11:50.105000+00:00",
-      "editeur_publie": "Troyes Champagne Métropole",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 94,
-      "jeux_exemples": [
-        {
-          "id": "66b61a7f16dfaaad95030fbc",
-          "page": "https://www.data.gouv.fr/datasets/66b61a7f16dfaaad95030fbc/",
-          "titre": "Achats de pesticides par code postal à Troyes Champagne Métropole"
-        },
-        {
-          "id": "66cc8ce255de75d55fb60321",
-          "page": "https://www.data.gouv.fr/datasets/66cc8ce255de75d55fb60321/",
-          "titre": "Action sociale pour enfants en bas-âge de Troyes Champagne Métropole"
-        },
-        {
-          "id": "66cc8db521305548841e1a28",
-          "page": "https://www.data.gouv.fr/datasets/66cc8db521305548841e1a28/",
-          "titre": "Action sociale pour les personnes en situation d’handicap de Troyes Champagne Métropole"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-09-18T00:00:00+00:00",
-      "editeur_publie": "DDT Oise",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 93,
-      "jeux_exemples": [
-        {
-          "id": "674539ca06a2b09e1a1bcc82",
-          "page": "https://www.data.gouv.fr/datasets/674539ca06a2b09e1a1bcc82/",
-          "titre": "Arrondissements préfectoraux de l'Oise (60)"
-        },
-        {
-          "id": "674539ce06a2b09e1a1bcc8f",
-          "page": "https://www.data.gouv.fr/datasets/674539ce06a2b09e1a1bcc8f/",
-          "titre": "Atlas des Zones Inondables de la vallée de la Brêche (60) - abrogé"
-        },
-        {
-          "id": "674539cf06a2b09e1a1bcc93",
-          "page": "https://www.data.gouv.fr/datasets/674539cf06a2b09e1a1bcc93/",
-          "titre": "Atlas des Zones Inondables de la vallée de l'Epte (60)"
         }
       ],
       "organisme_associe": null,
@@ -4790,25 +4763,79 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T00:00:00+00:00",
-      "editeur_publie": "Direction Départementale des Territoires des Alpes-de-Haute-Provence",
+      "dernier_jeu_actualise_le": "2026-06-30T14:11:50.105000+00:00",
+      "editeur_publie": "Troyes Champagne Métropole",
       "identite_juridique_verifiee": false,
       "jeux_declares": 93,
       "jeux_exemples": [
         {
-          "id": "6737718e4f5de128fcc2538f",
-          "page": "https://www.data.gouv.fr/datasets/6737718e4f5de128fcc2538f/",
-          "titre": "AOP de type autre que vin ou fromage des Alpes de Haute-Provence"
+          "id": "66b61a7f16dfaaad95030fbc",
+          "page": "https://www.data.gouv.fr/datasets/66b61a7f16dfaaad95030fbc/",
+          "titre": "Achats de pesticides par code postal à Troyes Champagne Métropole"
         },
         {
-          "id": "6737718e4f5de128fcc25391",
-          "page": "https://www.data.gouv.fr/datasets/6737718e4f5de128fcc25391/",
-          "titre": "AOP de type fromage des Alpes de Haute-Provence"
+          "id": "66cc8ce255de75d55fb60321",
+          "page": "https://www.data.gouv.fr/datasets/66cc8ce255de75d55fb60321/",
+          "titre": "Action sociale pour enfants en bas-âge de Troyes Champagne Métropole"
         },
         {
-          "id": "6737718f4f5de128fcc25392",
-          "page": "https://www.data.gouv.fr/datasets/6737718f4f5de128fcc25392/",
-          "titre": "AOP de type vin des Alpes de Haute-Provence"
+          "id": "66cc8db521305548841e1a28",
+          "page": "https://www.data.gouv.fr/datasets/66cc8db521305548841e1a28/",
+          "titre": "Action sociale pour les personnes en situation d’handicap de Troyes Champagne Métropole"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-09T16:22:23.249000+00:00",
+      "editeur_publie": "Communauté d'Agglomération du Puy-en-Velay",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 92,
+      "jeux_exemples": [
+        {
+          "id": "654d7324271617e2be12b366",
+          "page": "https://www.data.gouv.fr/datasets/654d7324271617e2be12b366/",
+          "titre": "A5 : Canalisations d'eau et d'assainissement"
+        },
+        {
+          "id": "654d7322271617e2be12b363",
+          "page": "https://www.data.gouv.fr/datasets/654d7322271617e2be12b363/",
+          "titre": "AC4 : AVAP - Éléments linéaires"
+        },
+        {
+          "id": "654d7324080808d75612b366",
+          "page": "https://www.data.gouv.fr/datasets/654d7324080808d75612b366/",
+          "titre": "AC4 : AVAP - Éléments surfaciques"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-09-18T00:00:00+00:00",
+      "editeur_publie": "DDT Oise",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 92,
+      "jeux_exemples": [
+        {
+          "id": "674539ca06a2b09e1a1bcc82",
+          "page": "https://www.data.gouv.fr/datasets/674539ca06a2b09e1a1bcc82/",
+          "titre": "Arrondissements préfectoraux de l'Oise (60)"
+        },
+        {
+          "id": "674539ce06a2b09e1a1bcc8f",
+          "page": "https://www.data.gouv.fr/datasets/674539ce06a2b09e1a1bcc8f/",
+          "titre": "Atlas des Zones Inondables de la vallée de la Brêche (60) - abrogé"
+        },
+        {
+          "id": "674539cf06a2b09e1a1bcc93",
+          "page": "https://www.data.gouv.fr/datasets/674539cf06a2b09e1a1bcc93/",
+          "titre": "Atlas des Zones Inondables de la vallée de l'Epte (60)"
         }
       ],
       "organisme_associe": null,
@@ -4871,33 +4898,6 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-09T16:22:23.249000+00:00",
-      "editeur_publie": "Communauté d'Agglomération du Puy-en-Velay",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 91,
-      "jeux_exemples": [
-        {
-          "id": "654d7324271617e2be12b366",
-          "page": "https://www.data.gouv.fr/datasets/654d7324271617e2be12b366/",
-          "titre": "A5 : Canalisations d'eau et d'assainissement"
-        },
-        {
-          "id": "654d7322271617e2be12b363",
-          "page": "https://www.data.gouv.fr/datasets/654d7322271617e2be12b363/",
-          "titre": "AC4 : AVAP - Éléments linéaires"
-        },
-        {
-          "id": "654d7324080808d75612b366",
-          "page": "https://www.data.gouv.fr/datasets/654d7324080808d75612b366/",
-          "titre": "AC4 : AVAP - Éléments surfaciques"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-09-02T00:00:00+00:00",
       "editeur_publie": "DDT Tarn",
       "identite_juridique_verifiee": false,
@@ -4952,33 +4952,6 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-09-23T00:00:00+00:00",
-      "editeur_publie": "Direction Départementale des Territoires et de la Mer de l'Hérault",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 90,
-      "jeux_exemples": [
-        {
-          "id": "6734cfbecca24127bdc40a9d",
-          "page": "https://www.data.gouv.fr/datasets/6734cfbecca24127bdc40a9d/",
-          "titre": "Agrégation tables génériques zones de bruit type A indice Lden dans l'Hérault"
-        },
-        {
-          "id": "6734cfd7cca24127bdc40aaa",
-          "page": "https://www.data.gouv.fr/datasets/6734cfd7cca24127bdc40aaa/",
-          "titre": "Agrégation tables génériques zones de bruit type A indice Ln dans l'Hérault"
-        },
-        {
-          "id": "6734cfd7cca24127bdc40aab",
-          "page": "https://www.data.gouv.fr/datasets/6734cfd7cca24127bdc40aab/",
-          "titre": "Agrégation tables génériques zones de bruit type B indice 00 dans l'Hérault"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-14T16:32:49+00:00",
       "editeur_publie": "Météo-France",
       "identite_juridique_verifiee": false,
@@ -5006,7 +4979,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T22:02:20.200000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-13T23:30:03.328000+00:00",
       "editeur_publie": "Saint-Nazaire agglo - La CARENE",
       "identite_juridique_verifiee": false,
       "jeux_declares": 90,
@@ -5033,25 +5006,25 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-12T01:28:22.732000+00:00",
-      "editeur_publie": "Ville du Havre",
+      "dernier_jeu_actualise_le": "2026-09-23T00:00:00+00:00",
+      "editeur_publie": "Direction Départementale des Territoires et de la Mer de l'Hérault",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 90,
+      "jeux_declares": 89,
       "jeux_exemples": [
         {
-          "id": "5a3a8a00c751df43a87a2472",
-          "page": "https://www.data.gouv.fr/datasets/5a3a8a00c751df43a87a2472/",
-          "titre": "Accessibilité - Stationnement PMR"
+          "id": "6734cfbecca24127bdc40a9d",
+          "page": "https://www.data.gouv.fr/datasets/6734cfbecca24127bdc40a9d/",
+          "titre": "Agrégation tables génériques zones de bruit type A indice Lden dans l'Hérault"
         },
         {
-          "id": "5a4bacf888ee38298b20f198",
-          "page": "https://www.data.gouv.fr/datasets/5a4bacf888ee38298b20f198/",
-          "titre": "Accessibilité - Traversées piétonnes sonorisées"
+          "id": "6734cfd7cca24127bdc40aaa",
+          "page": "https://www.data.gouv.fr/datasets/6734cfd7cca24127bdc40aaa/",
+          "titre": "Agrégation tables génériques zones de bruit type A indice Ln dans l'Hérault"
         },
         {
-          "id": "5a4d03d9c751df4bed49e873",
-          "page": "https://www.data.gouv.fr/datasets/5a4d03d9c751df4bed49e873/",
-          "titre": "Aménagements linéaires de modération de vitesse"
+          "id": "6734cfd7cca24127bdc40aab",
+          "page": "https://www.data.gouv.fr/datasets/6734cfd7cca24127bdc40aab/",
+          "titre": "Agrégation tables génériques zones de bruit type B indice 00 dans l'Hérault"
         }
       ],
       "organisme_associe": null,
@@ -5087,6 +5060,33 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-12T01:28:22.732000+00:00",
+      "editeur_publie": "Ville du Havre",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 88,
+      "jeux_exemples": [
+        {
+          "id": "5a3a8a00c751df43a87a2472",
+          "page": "https://www.data.gouv.fr/datasets/5a3a8a00c751df43a87a2472/",
+          "titre": "Accessibilité - Stationnement PMR"
+        },
+        {
+          "id": "5a4bacf888ee38298b20f198",
+          "page": "https://www.data.gouv.fr/datasets/5a4bacf888ee38298b20f198/",
+          "titre": "Accessibilité - Traversées piétonnes sonorisées"
+        },
+        {
+          "id": "5a4d03d9c751df4bed49e873",
+          "page": "https://www.data.gouv.fr/datasets/5a4d03d9c751df4bed49e873/",
+          "titre": "Aménagements linéaires de modération de vitesse"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-06-09T07:54:52.151000+00:00",
       "editeur_publie": "Panasonic France Succursale de Panasonic Marketing Europe Gmbh",
       "identite_juridique_verifiee": false,
@@ -5114,7 +5114,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T03:11:33.528000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T13:24:46.315000+00:00",
       "editeur_publie": "Le Havre Seine Métropole",
       "identite_juridique_verifiee": false,
       "jeux_declares": 86,
@@ -5276,6 +5276,33 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-12T00:00:00+00:00",
+      "editeur_publie": "Direction Départementale des Territoires du Haut-Rhin (68)",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 80,
+      "jeux_exemples": [
+        {
+          "id": "678f13d85dc2f3da9f25a412",
+          "page": "https://www.data.gouv.fr/datasets/678f13d85dc2f3da9f25a412/",
+          "titre": "Action prioritaire dans le cadre d'un Schéma Régional de Cohérence Écologique (SRCE) dans le Haut-Rhin"
+        },
+        {
+          "id": "6734d41a85f3870232c40aef",
+          "page": "https://www.data.gouv.fr/datasets/6734d41a85f3870232c40aef/",
+          "titre": "Bassins de vie dans le Haut-Rhin (emprise 2022)"
+        },
+        {
+          "id": "6734d41a85f3870232c40af0",
+          "page": "https://www.data.gouv.fr/datasets/6734d41a85f3870232c40af0/",
+          "titre": "Bassins de vie dans le Haut-Rhin (emprise 2022)"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-12T16:02:31.978000+00:00",
       "editeur_publie": "Communauté d'Agglomération Bar-le-Duc Sud Meuse",
       "identite_juridique_verifiee": false,
@@ -5330,34 +5357,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-12T00:00:00+00:00",
-      "editeur_publie": "Direction Départementale des Territoires du Haut-Rhin (68)",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 79,
-      "jeux_exemples": [
-        {
-          "id": "678f13d85dc2f3da9f25a412",
-          "page": "https://www.data.gouv.fr/datasets/678f13d85dc2f3da9f25a412/",
-          "titre": "Action prioritaire dans le cadre d'un Schéma Régional de Cohérence Écologique (SRCE) dans le Haut-Rhin"
-        },
-        {
-          "id": "6734d41a85f3870232c40aef",
-          "page": "https://www.data.gouv.fr/datasets/6734d41a85f3870232c40aef/",
-          "titre": "Bassins de vie dans le Haut-Rhin (emprise 2022)"
-        },
-        {
-          "id": "6734d41a85f3870232c40af0",
-          "page": "https://www.data.gouv.fr/datasets/6734d41a85f3870232c40af0/",
-          "titre": "Bassins de vie dans le Haut-Rhin (emprise 2022)"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T05:47:49.478000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T17:25:00.977000+00:00",
       "editeur_publie": "Institut national de l'information géographique et forestière",
       "identite_juridique_verifiee": false,
       "jeux_declares": 79,
@@ -5384,7 +5384,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T15:49:27.533000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T00:00:02+00:00",
       "editeur_publie": "Ministère du Travail du Plein emploi et de l'Insertion",
       "identite_juridique_verifiee": false,
       "jeux_declares": 79,
@@ -5403,60 +5403,6 @@
           "id": "53698f1da3a729239d20365d",
           "page": "https://www.data.gouv.fr/datasets/53698f1da3a729239d20365d/",
           "titre": "Atlas des zones d'emploi"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-09-23T00:00:00+00:00",
-      "editeur_publie": "DDT Haute-Garonne",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 78,
-      "jeux_exemples": [
-        {
-          "id": "673778e2484c5f09bec253b9",
-          "page": "https://www.data.gouv.fr/datasets/673778e2484c5f09bec253b9/",
-          "titre": "Accidents 2005 - 2009 - Haute-Garonne"
-        },
-        {
-          "id": "673778e2484c5f09bec253ba",
-          "page": "https://www.data.gouv.fr/datasets/673778e2484c5f09bec253ba/",
-          "titre": "Accidents 2009 - 2013 - Haute-Garonne"
-        },
-        {
-          "id": "6737789c484c5f09bec25391",
-          "page": "https://www.data.gouv.fr/datasets/6737789c484c5f09bec25391/",
-          "titre": "Aléa Avalanche hors PPRN en Haute-Garonne"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-09-21T00:00:00+00:00",
-      "editeur_publie": "Mairie de Saint-Denis (La Réunion)",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 78,
-      "jeux_exemples": [
-        {
-          "id": "6300257d11076ca98d9c0178",
-          "page": "https://www.data.gouv.fr/datasets/6300257d11076ca98d9c0178/",
-          "titre": "1ère Circonscription - A0"
-        },
-        {
-          "id": "6300257b1a97251b659c0161",
-          "page": "https://www.data.gouv.fr/datasets/6300257b1a97251b659c0161/",
-          "titre": "6 ème Circonscription (en partie) - A0"
-        },
-        {
-          "id": "6300257c182e8c94309c0178",
-          "page": "https://www.data.gouv.fr/datasets/6300257c182e8c94309c0178/",
-          "titre": "6 ème Circonscription (en partie) - A0"
         }
       ],
       "organisme_associe": null,
@@ -5492,6 +5438,33 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-09-23T00:00:00+00:00",
+      "editeur_publie": "DDT Haute-Garonne",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 77,
+      "jeux_exemples": [
+        {
+          "id": "673778e2484c5f09bec253b9",
+          "page": "https://www.data.gouv.fr/datasets/673778e2484c5f09bec253b9/",
+          "titre": "Accidents 2005 - 2009 - Haute-Garonne"
+        },
+        {
+          "id": "673778e2484c5f09bec253ba",
+          "page": "https://www.data.gouv.fr/datasets/673778e2484c5f09bec253ba/",
+          "titre": "Accidents 2009 - 2013 - Haute-Garonne"
+        },
+        {
+          "id": "6737789c484c5f09bec25391",
+          "page": "https://www.data.gouv.fr/datasets/6737789c484c5f09bec25391/",
+          "titre": "Aléa Avalanche hors PPRN en Haute-Garonne"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2024-05-30T06:00:56+00:00",
       "editeur_publie": "Mairie de Lille",
       "identite_juridique_verifiee": false,
@@ -5519,10 +5492,37 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-13T13:49:26+00:00",
+      "editeur_publie": "Communauté d'Agglomération Gap-Tallard-Durance",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 76,
+      "jeux_exemples": [
+        {
+          "id": "665048d74f27a29a83b3b15c",
+          "page": "https://www.data.gouv.fr/datasets/665048d74f27a29a83b3b15c/",
+          "titre": "Base Adresse Locale (BAL) de la commune d'ESPARRON (05)"
+        },
+        {
+          "id": "66504fe3115b6af6a886f065",
+          "page": "https://www.data.gouv.fr/datasets/66504fe3115b6af6a886f065/",
+          "titre": "Base Adresse Locale (BAL) de la commune d'ORCIERES"
+        },
+        {
+          "id": "665059260250a3e89d268b24",
+          "page": "https://www.data.gouv.fr/datasets/665059260250a3e89d268b24/",
+          "titre": "Base Adresse Locale (BAL) de la commune d'ASPREMONT(05)"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-06-30T15:22:32.515000+00:00",
       "editeur_publie": "Ville de Levallois",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 77,
+      "jeux_declares": 75,
       "jeux_exemples": [
         {
           "id": "60b4e790147021bcabcdd7a6",
@@ -5546,25 +5546,25 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T13:49:26+00:00",
-      "editeur_publie": "Communauté d'Agglomération Gap-Tallard-Durance",
+      "dernier_jeu_actualise_le": "2026-09-21T00:00:00+00:00",
+      "editeur_publie": "Mairie de Saint-Denis (La Réunion)",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 76,
+      "jeux_declares": 72,
       "jeux_exemples": [
         {
-          "id": "665048d74f27a29a83b3b15c",
-          "page": "https://www.data.gouv.fr/datasets/665048d74f27a29a83b3b15c/",
-          "titre": "Base Adresse Locale (BAL) de la commune d'ESPARRON (05)"
+          "id": "6300257d11076ca98d9c0178",
+          "page": "https://www.data.gouv.fr/datasets/6300257d11076ca98d9c0178/",
+          "titre": "1ère Circonscription - A0"
         },
         {
-          "id": "66504fe3115b6af6a886f065",
-          "page": "https://www.data.gouv.fr/datasets/66504fe3115b6af6a886f065/",
-          "titre": "Base Adresse Locale (BAL) de la commune d'ORCIERES"
+          "id": "6300257b1a97251b659c0161",
+          "page": "https://www.data.gouv.fr/datasets/6300257b1a97251b659c0161/",
+          "titre": "6 ème Circonscription (en partie) - A0"
         },
         {
-          "id": "665059260250a3e89d268b24",
-          "page": "https://www.data.gouv.fr/datasets/665059260250a3e89d268b24/",
-          "titre": "Base Adresse Locale (BAL) de la commune d'ASPREMONT(05)"
+          "id": "6300257c182e8c94309c0178",
+          "page": "https://www.data.gouv.fr/datasets/6300257c182e8c94309c0178/",
+          "titre": "6 ème Circonscription (en partie) - A0"
         }
       ],
       "organisme_associe": null,
@@ -5627,7 +5627,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T17:06:48.461000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T18:07:05.517000+00:00",
       "editeur_publie": "Electricité de France",
       "identite_juridique_verifiee": false,
       "jeux_declares": 70,
@@ -5843,33 +5843,6 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-07T00:00:00+00:00",
-      "editeur_publie": "Ville de Roubaix",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 66,
-      "jeux_exemples": [
-        {
-          "id": "6ab70c2355b2020a2104fa4a",
-          "page": "https://www.data.gouv.fr/datasets/6ab70c2355b2020a2104fa4a/",
-          "titre": "Activité sportive sport pass Roubaix"
-        },
-        {
-          "id": "6ab70c2555b2020a2104fa4d",
-          "page": "https://www.data.gouv.fr/datasets/6ab70c2555b2020a2104fa4d/",
-          "titre": "Activité sportive sport pass"
-        },
-        {
-          "id": "6ab70c2455b2020a2104fa4c",
-          "page": "https://www.data.gouv.fr/datasets/6ab70c2455b2020a2104fa4c/",
-          "titre": "Aire de jeux"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-13T03:44:14.074000+00:00",
       "editeur_publie": "Agence Technique de l'information sur l'Hospitalisation (ATIH)",
       "identite_juridique_verifiee": false,
@@ -5943,6 +5916,33 @@
           "id": "67377fa47f498b4211c25375",
           "page": "https://www.data.gouv.fr/datasets/67377fa47f498b4211c25375/",
           "titre": "Agregation des Cartes de Bruit Stratégiques de type C d'une grande infrastructure type Route Nationale. Agregation_N_BRUIT_ZBR_R_C_LN_S_066"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-07T00:00:00+00:00",
+      "editeur_publie": "Ville de Roubaix",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 64,
+      "jeux_exemples": [
+        {
+          "id": "6ab70c2355b2020a2104fa4a",
+          "page": "https://www.data.gouv.fr/datasets/6ab70c2355b2020a2104fa4a/",
+          "titre": "Activité sportive sport pass Roubaix"
+        },
+        {
+          "id": "6ab70c2555b2020a2104fa4d",
+          "page": "https://www.data.gouv.fr/datasets/6ab70c2555b2020a2104fa4d/",
+          "titre": "Activité sportive sport pass"
+        },
+        {
+          "id": "6ab70c2455b2020a2104fa4c",
+          "page": "https://www.data.gouv.fr/datasets/6ab70c2455b2020a2104fa4c/",
+          "titre": "Aire de jeux"
         }
       ],
       "organisme_associe": null,
@@ -6032,7 +6032,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-12T14:38:47+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T19:48:50.495000+00:00",
       "editeur_publie": "Ministère chargé des Sports",
       "identite_juridique_verifiee": false,
       "jeux_declares": 61,
@@ -6086,7 +6086,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-10T19:18:55+00:00",
+      "dernier_jeu_actualise_le": "2026-10-13T19:19:40+00:00",
       "editeur_publie": "Communauté de Communes de la Plaine d'Estrées",
       "identite_juridique_verifiee": false,
       "jeux_declares": 59,
@@ -6356,6 +6356,33 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-13T19:00:03.431000+00:00",
+      "editeur_publie": "Agence nationale de la cohésion des territoires",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 51,
+      "jeux_exemples": [
+        {
+          "id": "6437fc37fd63f5b47bce725e",
+          "page": "https://www.data.gouv.fr/datasets/6437fc37fd63f5b47bce725e/",
+          "titre": "Action coeur de ville : les Entrées de ville"
+        },
+        {
+          "id": "60e479bb496aed4df9401685",
+          "page": "https://www.data.gouv.fr/datasets/60e479bb496aed4df9401685/",
+          "titre": "Appel à manifestation d'intérêt Avenir montagnes mobilités"
+        },
+        {
+          "id": "60bdf0ac3fb013906f98dfc6",
+          "page": "https://www.data.gouv.fr/datasets/60bdf0ac3fb013906f98dfc6/",
+          "titre": "Conseiller numérique - Liste des structures validées par le comité de sélection Conum et Conum Coordinateur"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-09-16T15:07:40+00:00",
       "editeur_publie": "Bureau de Recherches Géologiques et Minières",
       "identite_juridique_verifiee": false,
@@ -6402,33 +6429,6 @@
           "id": "609568f834c51aa2b69625a7",
           "page": "https://www.data.gouv.fr/datasets/609568f834c51aa2b69625a7/",
           "titre": "Budget Primitif 2010 - CDA La Rochelle"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T19:00:03.431000+00:00",
-      "editeur_publie": "Agence nationale de la cohésion des territoires",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 50,
-      "jeux_exemples": [
-        {
-          "id": "6437fc37fd63f5b47bce725e",
-          "page": "https://www.data.gouv.fr/datasets/6437fc37fd63f5b47bce725e/",
-          "titre": "Action coeur de ville : les Entrées de ville"
-        },
-        {
-          "id": "60e479bb496aed4df9401685",
-          "page": "https://www.data.gouv.fr/datasets/60e479bb496aed4df9401685/",
-          "titre": "Appel à manifestation d'intérêt Avenir montagnes mobilités"
-        },
-        {
-          "id": "60bdf0ac3fb013906f98dfc6",
-          "page": "https://www.data.gouv.fr/datasets/60bdf0ac3fb013906f98dfc6/",
-          "titre": "Conseiller numérique - Liste des structures validées par le comité de sélection Conum et Conum Coordinateur"
         }
       ],
       "organisme_associe": null,
@@ -6545,33 +6545,6 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T05:52:34.098000+00:00",
-      "editeur_publie": "Mairie de Toulouse",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 49,
-      "jeux_exemples": [
-        {
-          "id": "53698fada3a729239d2037e6",
-          "page": "https://www.data.gouv.fr/datasets/53698fada3a729239d2037e6/",
-          "titre": "Boulodromes"
-        },
-        {
-          "id": "53698fd6a3a729239d203850",
-          "page": "https://www.data.gouv.fr/datasets/53698fd6a3a729239d203850/",
-          "titre": "Budget Primitif commune de Toulouse 2013"
-        },
-        {
-          "id": "53698fdaa3a729239d203858",
-          "page": "https://www.data.gouv.fr/datasets/53698fdaa3a729239d203858/",
-          "titre": "Budget Primitif Ville de Toulouse"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-05-21T00:00:00+00:00",
       "editeur_publie": "Avignon",
       "identite_juridique_verifiee": false,
@@ -6618,6 +6591,33 @@
           "id": "615c0b5448c0d2789eb0681b",
           "page": "https://www.data.gouv.fr/datasets/615c0b5448c0d2789eb0681b/",
           "titre": "Agence agglobus"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T17:49:05.093000+00:00",
+      "editeur_publie": "Mairie de Toulouse",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 48,
+      "jeux_exemples": [
+        {
+          "id": "53698fada3a729239d2037e6",
+          "page": "https://www.data.gouv.fr/datasets/53698fada3a729239d2037e6/",
+          "titre": "Boulodromes"
+        },
+        {
+          "id": "53698fd6a3a729239d203850",
+          "page": "https://www.data.gouv.fr/datasets/53698fd6a3a729239d203850/",
+          "titre": "Budget Primitif commune de Toulouse 2013"
+        },
+        {
+          "id": "53698fdaa3a729239d203858",
+          "page": "https://www.data.gouv.fr/datasets/53698fdaa3a729239d203858/",
+          "titre": "Budget Primitif Ville de Toulouse"
         }
       ],
       "organisme_associe": null,
@@ -6680,7 +6680,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T03:38:23.506000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T17:00:11.200000+00:00",
       "editeur_publie": "Etalab",
       "identite_juridique_verifiee": false,
       "jeux_declares": 47,
@@ -6699,33 +6699,6 @@
           "id": "53698f23a3a729239d20366d",
           "page": "https://www.data.gouv.fr/datasets/53698f23a3a729239d20366d/",
           "titre": "Attributions de cartes de presse en 2013"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-12T22:03:13+00:00",
-      "editeur_publie": "Ville de Lanester",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 47,
-      "jeux_exemples": [
-        {
-          "id": "67053a8efd2bed91ad3ecd72",
-          "page": "https://www.data.gouv.fr/datasets/67053a8efd2bed91ad3ecd72/",
-          "titre": "Accessibilité des bâtiments de la ville d'Elven aux Personnes à Mobilité Réduite"
-        },
-        {
-          "id": "67053a8dfd2bed91ad3ecd6d",
-          "page": "https://www.data.gouv.fr/datasets/67053a8dfd2bed91ad3ecd6d/",
-          "titre": "Aires de stationnement - Ville de Saint-Avé"
-        },
-        {
-          "id": "67053a91fd2bed91ad3ecd7a",
-          "page": "https://www.data.gouv.fr/datasets/67053a91fd2bed91ad3ecd7a/",
-          "titre": "Associations - Créations au journal officiel (Morbihan)"
         }
       ],
       "organisme_associe": null,
@@ -6780,6 +6753,33 @@
           "id": "673782b8a388aa299dc40a8c",
           "page": "https://www.data.gouv.fr/datasets/673782b8a388aa299dc40a8c/",
           "titre": "Assiettes surfaciques liées aux servitudes de la catégorie PM3 (Plan de prévention des risques technologiques) du département des Yvelines"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-12T22:03:13+00:00",
+      "editeur_publie": "Ville de Lanester",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 46,
+      "jeux_exemples": [
+        {
+          "id": "67053a8efd2bed91ad3ecd72",
+          "page": "https://www.data.gouv.fr/datasets/67053a8efd2bed91ad3ecd72/",
+          "titre": "Accessibilité des bâtiments de la ville d'Elven aux Personnes à Mobilité Réduite"
+        },
+        {
+          "id": "67053a8dfd2bed91ad3ecd6d",
+          "page": "https://www.data.gouv.fr/datasets/67053a8dfd2bed91ad3ecd6d/",
+          "titre": "Aires de stationnement - Ville de Saint-Avé"
+        },
+        {
+          "id": "67053a91fd2bed91ad3ecd7a",
+          "page": "https://www.data.gouv.fr/datasets/67053a91fd2bed91ad3ecd7a/",
+          "titre": "Associations - Créations au journal officiel (Morbihan)"
         }
       ],
       "organisme_associe": null,
@@ -6977,7 +6977,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T03:14:33+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T17:34:35+00:00",
       "editeur_publie": "data.gouv.fr",
       "identite_juridique_verifiee": false,
       "jeux_declares": 41,
@@ -7031,7 +7031,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T22:14:36+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T14:55:11+00:00",
       "editeur_publie": "Service des données et études statistiques (SDES)",
       "identite_juridique_verifiee": false,
       "jeux_declares": 41,
@@ -7112,7 +7112,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T18:15:08.187000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T20:39:31.837000+00:00",
       "editeur_publie": "Direction interministérielle du numérique",
       "identite_juridique_verifiee": false,
       "jeux_declares": 40,
@@ -7193,33 +7193,6 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T03:25:04.253000+00:00",
-      "editeur_publie": "Communauté d'Agglomeration Versailles Grand Parc",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 39,
-      "jeux_exemples": [
-        {
-          "id": "59ae1073a3a72917daf3fc17",
-          "page": "https://www.data.gouv.fr/datasets/59ae1073a3a72917daf3fc17/",
-          "titre": "Administrations - Versailles"
-        },
-        {
-          "id": "59ae1072a3a72917d9f3fc14",
-          "page": "https://www.data.gouv.fr/datasets/59ae1072a3a72917d9f3fc14/",
-          "titre": "Arbres d'alignements"
-        },
-        {
-          "id": "59ae1072b595087a24916978",
-          "page": "https://www.data.gouv.fr/datasets/59ae1072b595087a24916978/",
-          "titre": "Arbres remarquables"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-09-30T04:40:19.523000+00:00",
       "editeur_publie": "Communauté de Communes Coeur Côte Fleurie",
       "identite_juridique_verifiee": false,
@@ -7239,6 +7212,33 @@
           "id": "6a05133f985eaa523dc14acd",
           "page": "https://www.data.gouv.fr/datasets/6a05133f985eaa523dc14acd/",
           "titre": "Budget annexe de l'assainissement 2017"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-09-25T00:00:00+00:00",
+      "editeur_publie": "Conseil Départemental de Vaucluse",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 39,
+      "jeux_exemples": [
+        {
+          "id": "6604056503fc4b31f27263e3",
+          "page": "https://www.data.gouv.fr/datasets/6604056503fc4b31f27263e3/",
+          "titre": "Aires de covoiturage du Département de Vaucluse"
+        },
+        {
+          "id": "66040559a3976df4a68c8f69",
+          "page": "https://www.data.gouv.fr/datasets/66040559a3976df4a68c8f69/",
+          "titre": "Annexe au budget primitif 2017 du département de Vaucluse"
+        },
+        {
+          "id": "6604055a54e02689088c8f6a",
+          "page": "https://www.data.gouv.fr/datasets/6604055a54e02689088c8f6a/",
+          "titre": "Annexe au budget 2018 du département de Vaucluse"
         }
       ],
       "organisme_associe": null,
@@ -7293,33 +7293,6 @@
           "id": "69697ff9c82b3df7e1476433",
           "page": "https://www.data.gouv.fr/datasets/69697ff9c82b3df7e1476433/",
           "titre": "ARRETES 2026 Format SCDL"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-09-25T00:00:00+00:00",
-      "editeur_publie": "Conseil Départemental de Vaucluse",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 38,
-      "jeux_exemples": [
-        {
-          "id": "6604056503fc4b31f27263e3",
-          "page": "https://www.data.gouv.fr/datasets/6604056503fc4b31f27263e3/",
-          "titre": "Aires de covoiturage du Département de Vaucluse"
-        },
-        {
-          "id": "66040559a3976df4a68c8f69",
-          "page": "https://www.data.gouv.fr/datasets/66040559a3976df4a68c8f69/",
-          "titre": "Annexe au budget primitif 2017 du département de Vaucluse"
-        },
-        {
-          "id": "6604055a54e02689088c8f6a",
-          "page": "https://www.data.gouv.fr/datasets/6604055a54e02689088c8f6a/",
-          "titre": "Annexe au budget 2018 du département de Vaucluse"
         }
       ],
       "organisme_associe": null,
@@ -7517,37 +7490,10 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-09T23:15:46+00:00",
-      "editeur_publie": "Bassin Adour Garonne",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 36,
-      "jeux_exemples": [
-        {
-          "id": "644a33262a855a0156e8afcd",
-          "page": "https://www.data.gouv.fr/datasets/644a33262a855a0156e8afcd/",
-          "titre": "AEAG - SDAGE 2022-2027 - Axes à grands migrateurs amphihalins"
-        },
-        {
-          "id": "644a33272fc018ffe76deefd",
-          "page": "https://www.data.gouv.fr/datasets/644a33272fc018ffe76deefd/",
-          "titre": "AEAG - Captages sensibles"
-        },
-        {
-          "id": "644a33272fc018ffe76deefe",
-          "page": "https://www.data.gouv.fr/datasets/644a33272fc018ffe76deefe/",
-          "titre": "AEAG - SDAGE 2022-2027 - Cours d'eau en très bon état et réservoirs biologiques"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-13T01:26:23+00:00",
       "editeur_publie": "OpenStreetMap",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 36,
+      "jeux_declares": 37,
       "jeux_exemples": [
         {
           "id": "538071a9a3a7297e4d35d6ce",
@@ -7563,6 +7509,33 @@
           "id": "5ef48ff4d1c48dd30e3f8ab8",
           "page": "https://www.data.gouv.fr/datasets/5ef48ff4d1c48dd30e3f8ab8/",
           "titre": "Bornes de recharge de véhicule électrique issues d'OpenStreetMap"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-13T03:25:04.253000+00:00",
+      "editeur_publie": "Communauté d'Agglomeration Versailles Grand Parc",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 36,
+      "jeux_exemples": [
+        {
+          "id": "59ae1073a3a72917daf3fc17",
+          "page": "https://www.data.gouv.fr/datasets/59ae1073a3a72917daf3fc17/",
+          "titre": "Administrations - Versailles"
+        },
+        {
+          "id": "59ae1072a3a72917d9f3fc14",
+          "page": "https://www.data.gouv.fr/datasets/59ae1072a3a72917d9f3fc14/",
+          "titre": "Arbres d'alignements"
+        },
+        {
+          "id": "59ae1072b595087a24916978",
+          "page": "https://www.data.gouv.fr/datasets/59ae1072b595087a24916978/",
+          "titre": "Arbres remarquables"
         }
       ],
       "organisme_associe": null,
@@ -7598,7 +7571,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T11:22:33.511000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T11:22:41.230000+00:00",
       "editeur_publie": "SAINT-QUENTIN-EN-YVELINES",
       "identite_juridique_verifiee": false,
       "jeux_declares": 36,
@@ -7814,6 +7787,33 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-09T23:15:46+00:00",
+      "editeur_publie": "Bassin Adour Garonne",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 34,
+      "jeux_exemples": [
+        {
+          "id": "644a33262a855a0156e8afcd",
+          "page": "https://www.data.gouv.fr/datasets/644a33262a855a0156e8afcd/",
+          "titre": "AEAG - SDAGE 2022-2027 - Axes à grands migrateurs amphihalins"
+        },
+        {
+          "id": "644a33272fc018ffe76deefd",
+          "page": "https://www.data.gouv.fr/datasets/644a33272fc018ffe76deefd/",
+          "titre": "AEAG - Captages sensibles"
+        },
+        {
+          "id": "644a33272fc018ffe76deefe",
+          "page": "https://www.data.gouv.fr/datasets/644a33272fc018ffe76deefe/",
+          "titre": "AEAG - SDAGE 2022-2027 - Cours d'eau en très bon état et réservoirs biologiques"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-10T16:07:39.974000+00:00",
       "editeur_publie": "Centre national du cinéma et de l'image animée",
       "identite_juridique_verifiee": false,
@@ -7976,7 +7976,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-11T17:02:36.794000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T17:22:56.770000+00:00",
       "editeur_publie": "Métropole Toulon Provence Méditerranée",
       "identite_juridique_verifiee": false,
       "jeux_declares": 33,
@@ -8003,7 +8003,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T12:02:57.008000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T12:14:15.922000+00:00",
       "editeur_publie": "Saintes Grandes Rives, l'Agglo",
       "identite_juridique_verifiee": false,
       "jeux_declares": 33,
@@ -8030,7 +8030,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-11T17:47:11.610000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T17:45:37.714000+00:00",
       "editeur_publie": "Système d'information sur la biodiversité",
       "identite_juridique_verifiee": false,
       "jeux_declares": 33,
@@ -8049,33 +8049,6 @@
           "id": "66601a40c1dbeca6149fc8f3",
           "page": "https://www.data.gouv.fr/datasets/66601a40c1dbeca6149fc8f3/",
           "titre": "Données de synthèse sur la répartition des espèces"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-09-21T00:00:00+00:00",
-      "editeur_publie": "Ville d'Argenteuil",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 33,
-      "jeux_exemples": [
-        {
-          "id": "6a41b5a1aff1fb09c554d33d",
-          "page": "https://www.data.gouv.fr/datasets/6a41b5a1aff1fb09c554d33d/",
-          "titre": "Arbres (Grality)"
-        },
-        {
-          "id": "630025a2189c8d3c7349e2db",
-          "page": "https://www.data.gouv.fr/datasets/630025a2189c8d3c7349e2db/",
-          "titre": "Argenteuil geo open data"
-        },
-        {
-          "id": "690e88525d1ac071faa3767f",
-          "page": "https://www.data.gouv.fr/datasets/690e88525d1ac071faa3767f/",
-          "titre": "BAN"
         }
       ],
       "organisme_associe": null,
@@ -8165,33 +8138,6 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-12T23:03:04+00:00",
-      "editeur_publie": "Eurométropole de Strasbourg",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 32,
-      "jeux_exemples": [
-        {
-          "id": "61fdbf40307cd0c801952885",
-          "page": "https://www.data.gouv.fr/datasets/61fdbf40307cd0c801952885/",
-          "titre": "2020-2026 Périmètres des 20 référents.es de quartier de la Ville de Strasbourg"
-        },
-        {
-          "id": "684cbce66a26d3e75852b63f",
-          "page": "https://www.data.gouv.fr/datasets/684cbce66a26d3e75852b63f/",
-          "titre": "Affichage légal de la Ville et de l'Eurométropole de Strasbourg"
-        },
-        {
-          "id": "60f8b7a0c6a6c24e96042cfd",
-          "page": "https://www.data.gouv.fr/datasets/60f8b7a0c6a6c24e96042cfd/",
-          "titre": "Aménagements cyclables au format BNAC"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-12T23:20:58.476000+00:00",
       "editeur_publie": "Grand Paris Sud",
       "identite_juridique_verifiee": false,
@@ -8246,25 +8192,25 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2025-07-18T00:41:58+00:00",
-      "editeur_publie": "Colmar Agglomération",
+      "dernier_jeu_actualise_le": "2026-09-21T00:00:00+00:00",
+      "editeur_publie": "Ville d'Argenteuil",
       "identite_juridique_verifiee": false,
-      "jeux_declares": 31,
+      "jeux_declares": 32,
       "jeux_exemples": [
         {
-          "id": "677dc02638bc5ac115133b71",
-          "page": "https://www.data.gouv.fr/datasets/677dc02638bc5ac115133b71/",
-          "titre": "Centre de recyclage (déchetterie) sur Colmar Agglomération"
+          "id": "6a41b5a1aff1fb09c554d33d",
+          "page": "https://www.data.gouv.fr/datasets/6a41b5a1aff1fb09c554d33d/",
+          "titre": "Arbres (Grality)"
         },
         {
-          "id": "677dc01538bc5ac115133b61",
-          "page": "https://www.data.gouv.fr/datasets/677dc01538bc5ac115133b61/",
-          "titre": "DONNEE : Affichage d'opinion et colonnes Morris sur Colmar"
+          "id": "630025a2189c8d3c7349e2db",
+          "page": "https://www.data.gouv.fr/datasets/630025a2189c8d3c7349e2db/",
+          "titre": "Argenteuil geo open data"
         },
         {
-          "id": "677dc01038bc5ac115133b54",
-          "page": "https://www.data.gouv.fr/datasets/677dc01038bc5ac115133b54/",
-          "titre": "DONNEES : Emplacement de stationnement accessibles au PMR sur Colmar"
+          "id": "690e88525d1ac071faa3767f",
+          "page": "https://www.data.gouv.fr/datasets/690e88525d1ac071faa3767f/",
+          "titre": "BAN"
         }
       ],
       "organisme_associe": null,
@@ -8273,25 +8219,25 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-09T00:00:00+00:00",
-      "editeur_publie": "DDT Ardennes",
+      "dernier_jeu_actualise_le": "2026-10-13T06:16:32+00:00",
+      "editeur_publie": "Eurométropole de Strasbourg",
       "identite_juridique_verifiee": false,
       "jeux_declares": 31,
       "jeux_exemples": [
         {
-          "id": "67373fa43a5c7bfb9cc25371",
-          "page": "https://www.data.gouv.fr/datasets/67373fa43a5c7bfb9cc25371/",
-          "titre": "Assiettes surfaciques liées aux servitudes de catégorie A4 dans les Ardennes"
+          "id": "61fdbf40307cd0c801952885",
+          "page": "https://www.data.gouv.fr/datasets/61fdbf40307cd0c801952885/",
+          "titre": "2020-2026 Périmètres des 20 référents.es de quartier de la Ville de Strasbourg"
         },
         {
-          "id": "67373fa33a5c7bfb9cc2536e",
-          "page": "https://www.data.gouv.fr/datasets/67373fa33a5c7bfb9cc2536e/",
-          "titre": "Bassin versant dédié à un usage particulier - Surface d'alimentation d'un cours d'eau ou d'un plan d'eau"
+          "id": "684cbce66a26d3e75852b63f",
+          "page": "https://www.data.gouv.fr/datasets/684cbce66a26d3e75852b63f/",
+          "titre": "Affichage légal de la Ville et de l'Eurométropole de Strasbourg"
         },
         {
-          "id": "67373fa83a5c7bfb9cc2537e",
-          "page": "https://www.data.gouv.fr/datasets/67373fa83a5c7bfb9cc2537e/",
-          "titre": "Cantons du département des Ardennes"
+          "id": "60f8b7a0c6a6c24e96042cfd",
+          "page": "https://www.data.gouv.fr/datasets/60f8b7a0c6a6c24e96042cfd/",
+          "titre": "Aménagements cyclables au format BNAC"
         }
       ],
       "organisme_associe": null,
@@ -8327,25 +8273,25 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T19:00:27+00:00",
-      "editeur_publie": "Communauté d'Agglomération de la Région de Compiègne et de la Basse Automne",
+      "dernier_jeu_actualise_le": "2025-07-18T00:41:58+00:00",
+      "editeur_publie": "Colmar Agglomération",
       "identite_juridique_verifiee": false,
       "jeux_declares": 30,
       "jeux_exemples": [
         {
-          "id": "689e78a75f2208a14825237c",
-          "page": "https://www.data.gouv.fr/datasets/689e78a75f2208a14825237c/",
-          "titre": "Aire de service/repos sur l'Agglomération de la Région de Compiègne"
+          "id": "677dc02638bc5ac115133b71",
+          "page": "https://www.data.gouv.fr/datasets/677dc02638bc5ac115133b71/",
+          "titre": "Centre de recyclage (déchetterie) sur Colmar Agglomération"
         },
         {
-          "id": "689dd4a1b786d15c0c2523a1",
-          "page": "https://www.data.gouv.fr/datasets/689dd4a1b786d15c0c2523a1/",
-          "titre": "Aménagement cyclable sur l'Agglomération de la Région de Compiègne"
+          "id": "677dc01538bc5ac115133b61",
+          "page": "https://www.data.gouv.fr/datasets/677dc01538bc5ac115133b61/",
+          "titre": "DONNEE : Affichage d'opinion et colonnes Morris sur Colmar"
         },
         {
-          "id": "689dd4a7b786d15c0c2523ad",
-          "page": "https://www.data.gouv.fr/datasets/689dd4a7b786d15c0c2523ad/",
-          "titre": "Assemblage des Bases Adresses Locales de l'Agglomération de la Région de Compiègne"
+          "id": "677dc01038bc5ac115133b54",
+          "page": "https://www.data.gouv.fr/datasets/677dc01038bc5ac115133b54/",
+          "titre": "DONNEES : Emplacement de stationnement accessibles au PMR sur Colmar"
         }
       ],
       "organisme_associe": null,
@@ -8408,6 +8354,33 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-09T00:00:00+00:00",
+      "editeur_publie": "DDT Ardennes",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 30,
+      "jeux_exemples": [
+        {
+          "id": "67373fa43a5c7bfb9cc25371",
+          "page": "https://www.data.gouv.fr/datasets/67373fa43a5c7bfb9cc25371/",
+          "titre": "Assiettes surfaciques liées aux servitudes de catégorie A4 dans les Ardennes"
+        },
+        {
+          "id": "67373fa33a5c7bfb9cc2536e",
+          "page": "https://www.data.gouv.fr/datasets/67373fa33a5c7bfb9cc2536e/",
+          "titre": "Bassin versant dédié à un usage particulier - Surface d'alimentation d'un cours d'eau ou d'un plan d'eau"
+        },
+        {
+          "id": "67373fa83a5c7bfb9cc2537e",
+          "page": "https://www.data.gouv.fr/datasets/67373fa83a5c7bfb9cc2537e/",
+          "titre": "Cantons du département des Ardennes"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-01-07T07:52:53.039000+00:00",
       "editeur_publie": "Durance Luberon Verdon Agglomération",
       "identite_juridique_verifiee": false,
@@ -8435,33 +8408,6 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T02:55:37+00:00",
-      "editeur_publie": "Réseau de Transport d'Electricité",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 30,
-      "jeux_exemples": [
-        {
-          "id": "57863882c751df5b1f127787",
-          "page": "https://www.data.gouv.fr/datasets/57863882c751df5b1f127787/",
-          "titre": "Actual Generation"
-        },
-        {
-          "id": "57860b78c751df0b95127787",
-          "page": "https://www.data.gouv.fr/datasets/57860b78c751df0b95127787/",
-          "titre": "Balancing Energy"
-        },
-        {
-          "id": "57d9109b88ee3873a25ff490",
-          "page": "https://www.data.gouv.fr/datasets/57d9109b88ee3873a25ff490/",
-          "titre": "Balancing Capacity"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-12T05:03:47+00:00",
       "editeur_publie": "Ville de Rueil-Malmaison",
       "identite_juridique_verifiee": false,
@@ -8481,6 +8427,33 @@
           "id": "68ae4bcd70b9c93bd10dc60f",
           "page": "https://www.data.gouv.fr/datasets/68ae4bcd70b9c93bd10dc60f/",
           "titre": "Arrêtés d’interdiction d’habiter"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-13T19:19:40+00:00",
+      "editeur_publie": "Communauté d'Agglomération de la Région de Compiègne et de la Basse Automne",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 29,
+      "jeux_exemples": [
+        {
+          "id": "689e78a75f2208a14825237c",
+          "page": "https://www.data.gouv.fr/datasets/689e78a75f2208a14825237c/",
+          "titre": "Aire de service/repos sur l'Agglomération de la Région de Compiègne"
+        },
+        {
+          "id": "689dd4a1b786d15c0c2523a1",
+          "page": "https://www.data.gouv.fr/datasets/689dd4a1b786d15c0c2523a1/",
+          "titre": "Aménagement cyclable sur l'Agglomération de la Région de Compiègne"
+        },
+        {
+          "id": "689dd4a7b786d15c0c2523ad",
+          "page": "https://www.data.gouv.fr/datasets/689dd4a7b786d15c0c2523ad/",
+          "titre": "Assemblage des Bases Adresses Locales de l'Agglomération de la Région de Compiègne"
         }
       ],
       "organisme_associe": null,
@@ -8570,7 +8543,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T05:44:30.866000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T02:04:15+00:00",
       "editeur_publie": "Haute Autorité de santé",
       "identite_juridique_verifiee": false,
       "jeux_declares": 29,
@@ -8678,7 +8651,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-12T09:03:31+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T09:18:58.252000+00:00",
       "editeur_publie": "Syndicat mixte Atoumod",
       "identite_juridique_verifiee": false,
       "jeux_declares": 29,
@@ -8759,25 +8732,25 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T01:51:06.801000+00:00",
-      "editeur_publie": "Ville de Niort",
+      "dernier_jeu_actualise_le": "2026-10-13T02:55:37+00:00",
+      "editeur_publie": "Réseau de Transport d'Electricité",
       "identite_juridique_verifiee": false,
       "jeux_declares": 28,
       "jeux_exemples": [
         {
-          "id": "653da2bb93444d12a64090d9",
-          "page": "https://www.data.gouv.fr/datasets/653da2bb93444d12a64090d9/",
-          "titre": "Borne fontaine"
+          "id": "57863882c751df5b1f127787",
+          "page": "https://www.data.gouv.fr/datasets/57863882c751df5b1f127787/",
+          "titre": "Actual Generation"
         },
         {
-          "id": "653da2bbc780f0837cf8424b",
-          "page": "https://www.data.gouv.fr/datasets/653da2bbc780f0837cf8424b/",
-          "titre": "Crèche et halte-garderie"
+          "id": "57860b78c751df0b95127787",
+          "page": "https://www.data.gouv.fr/datasets/57860b78c751df0b95127787/",
+          "titre": "Balancing Energy"
         },
         {
-          "id": "685c02e27f55e777b77c59a6",
-          "page": "https://www.data.gouv.fr/datasets/685c02e27f55e777b77c59a6/",
-          "titre": "Déclaration AGEC 2024"
+          "id": "57d9109b88ee3873a25ff490",
+          "page": "https://www.data.gouv.fr/datasets/57d9109b88ee3873a25ff490/",
+          "titre": "Balancing Capacity"
         }
       ],
       "organisme_associe": null,
@@ -8840,7 +8813,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-06T19:50:43.523000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T13:31:58.834000+00:00",
       "editeur_publie": "Tableau de bord des mobilités durables",
       "identite_juridique_verifiee": false,
       "jeux_declares": 27,
@@ -8867,7 +8840,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-11T16:59:27.544000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T16:55:01.391000+00:00",
       "editeur_publie": "Ville de Besancon",
       "identite_juridique_verifiee": false,
       "jeux_declares": 27,
@@ -8894,7 +8867,34 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T10:51:38.465000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-13T01:54:15.337000+00:00",
+      "editeur_publie": "Ville de Niort",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 27,
+      "jeux_exemples": [
+        {
+          "id": "653da2bb93444d12a64090d9",
+          "page": "https://www.data.gouv.fr/datasets/653da2bb93444d12a64090d9/",
+          "titre": "Borne fontaine"
+        },
+        {
+          "id": "653da2bbc780f0837cf8424b",
+          "page": "https://www.data.gouv.fr/datasets/653da2bbc780f0837cf8424b/",
+          "titre": "Crèche et halte-garderie"
+        },
+        {
+          "id": "685c02e27f55e777b77c59a6",
+          "page": "https://www.data.gouv.fr/datasets/685c02e27f55e777b77c59a6/",
+          "titre": "Déclaration AGEC 2024"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T14:28:33+00:00",
       "editeur_publie": "Agence de l'eau Seine-Normandie",
       "identite_juridique_verifiee": false,
       "jeux_declares": 26,
@@ -9434,7 +9434,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T00:42:51.777000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T16:48:55.001000+00:00",
       "editeur_publie": "Régie autonome des transports parisiens (RATP)",
       "identite_juridique_verifiee": false,
       "jeux_declares": 25,
@@ -9677,7 +9677,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-10T16:00:48+00:00",
+      "dernier_jeu_actualise_le": "2026-10-13T16:00:28+00:00",
       "editeur_publie": "GRDF",
       "identite_juridique_verifiee": false,
       "jeux_declares": 23,
@@ -9974,7 +9974,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T17:46:45.328000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T17:57:48.474000+00:00",
       "editeur_publie": "Ministère de la Cohésion des territoires",
       "identite_juridique_verifiee": false,
       "jeux_declares": 22,
@@ -10182,33 +10182,6 @@
           "id": "6a1f00459c85cfabd0c2355b",
           "page": "https://www.data.gouv.fr/datasets/6a1f00459c85cfabd0c2355b/",
           "titre": "Base de données sur les recettes fiscales en Afrique sub-saharienne, 1980-2010"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2024-06-08T08:36:51.337000+00:00",
-      "editeur_publie": "VINCENT Alexandre",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 21,
-      "jeux_exemples": [
-        {
-          "id": "6662b72790711212691b109a",
-          "page": "https://www.data.gouv.fr/datasets/6662b72790711212691b109a/",
-          "titre": "Borne de charge A cupulatta"
-        },
-        {
-          "id": "654b58eba9a50fad5e925e04",
-          "page": "https://www.data.gouv.fr/datasets/654b58eba9a50fad5e925e04/",
-          "titre": "C2C CORSE"
-        },
-        {
-          "id": "64709d89458a2f3a9112dceb",
-          "page": "https://www.data.gouv.fr/datasets/64709d89458a2f3a9112dceb/",
-          "titre": "Camping La Vetta"
         }
       ],
       "organisme_associe": null,
@@ -10460,25 +10433,25 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T05:45:20.643000+00:00",
-      "editeur_publie": "Ville de Lyon",
+      "dernier_jeu_actualise_le": "2024-06-08T08:36:51.337000+00:00",
+      "editeur_publie": "VINCENT Alexandre",
       "identite_juridique_verifiee": false,
       "jeux_declares": 20,
       "jeux_exemples": [
         {
-          "id": "660202b3472d9fb756f993e8",
-          "page": "https://www.data.gouv.fr/datasets/660202b3472d9fb756f993e8/",
-          "titre": "Agenda du maire de Lyon"
+          "id": "6662b72790711212691b109a",
+          "page": "https://www.data.gouv.fr/datasets/6662b72790711212691b109a/",
+          "titre": "Borne de charge A cupulatta"
         },
         {
-          "id": "5dd6516e6f444110d07e9343",
-          "page": "https://www.data.gouv.fr/datasets/5dd6516e6f444110d07e9343/",
-          "titre": "Bureaux de vote de la commune de Lyon"
+          "id": "654b58eba9a50fad5e925e04",
+          "page": "https://www.data.gouv.fr/datasets/654b58eba9a50fad5e925e04/",
+          "titre": "C2C CORSE"
         },
         {
-          "id": "65383f195bd3d0cd763c05a9",
-          "page": "https://www.data.gouv.fr/datasets/65383f195bd3d0cd763c05a9/",
-          "titre": "Cartes postales du musée Gadagne de la ville de Lyon"
+          "id": "64709d89458a2f3a9112dceb",
+          "page": "https://www.data.gouv.fr/datasets/64709d89458a2f3a9112dceb/",
+          "titre": "Camping La Vetta"
         }
       ],
       "organisme_associe": null,
@@ -10622,7 +10595,34 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-11T09:01:54+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T05:45:20.643000+00:00",
+      "editeur_publie": "Ville de Lyon",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 19,
+      "jeux_exemples": [
+        {
+          "id": "660202b3472d9fb756f993e8",
+          "page": "https://www.data.gouv.fr/datasets/660202b3472d9fb756f993e8/",
+          "titre": "Agenda du maire de Lyon"
+        },
+        {
+          "id": "5dd6516e6f444110d07e9343",
+          "page": "https://www.data.gouv.fr/datasets/5dd6516e6f444110d07e9343/",
+          "titre": "Bureaux de vote de la commune de Lyon"
+        },
+        {
+          "id": "65383f195bd3d0cd763c05a9",
+          "page": "https://www.data.gouv.fr/datasets/65383f195bd3d0cd763c05a9/",
+          "titre": "Cartes postales du musée Gadagne de la ville de Lyon"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T09:02:01+00:00",
       "editeur_publie": "Autorité de régulation des communications électroniques, des postes et de la distribution de la presse (ARCEP)",
       "identite_juridique_verifiee": false,
       "jeux_declares": 18,
@@ -10811,7 +10811,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-11T15:10:55+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T15:32:57+00:00",
       "editeur_publie": "Grand Avignon",
       "identite_juridique_verifiee": false,
       "jeux_declares": 18,
@@ -10865,7 +10865,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T04:05:38.610000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T15:08:30.652000+00:00",
       "editeur_publie": "La Poste",
       "identite_juridique_verifiee": false,
       "jeux_declares": 18,
@@ -10884,33 +10884,6 @@
           "id": "56d44af588ee3867bcfa79cf",
           "page": "https://www.data.gouv.fr/datasets/56d44af588ee3867bcfa79cf/",
           "titre": "Communes nouvelles"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T04:11:35.135000+00:00",
-      "editeur_publie": "Mairie de Rillieux la Pape",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 18,
-      "jeux_exemples": [
-        {
-          "id": "6a02ce36512f48304a9629aa",
-          "page": "https://www.data.gouv.fr/datasets/6a02ce36512f48304a9629aa/",
-          "titre": "Aire de jeux de la commune de Rillieux-la-Pape"
-        },
-        {
-          "id": "6a5f3277ff227e943d830ae4",
-          "page": "https://www.data.gouv.fr/datasets/6a5f3277ff227e943d830ae4/",
-          "titre": "Aménagements cyclables de la Commune de Rillieux la Pape"
-        },
-        {
-          "id": "66959c9764f3a7f03175a65e",
-          "page": "https://www.data.gouv.fr/datasets/66959c9764f3a7f03175a65e/",
-          "titre": "Arbres urbains de la commune de Rillieux-la-Pape"
         }
       ],
       "organisme_associe": null,
@@ -11459,6 +11432,33 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T04:11:35.135000+00:00",
+      "editeur_publie": "Mairie de Rillieux la Pape",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 16,
+      "jeux_exemples": [
+        {
+          "id": "6a02ce36512f48304a9629aa",
+          "page": "https://www.data.gouv.fr/datasets/6a02ce36512f48304a9629aa/",
+          "titre": "Aire de jeux de la commune de Rillieux-la-Pape"
+        },
+        {
+          "id": "6a5f3277ff227e943d830ae4",
+          "page": "https://www.data.gouv.fr/datasets/6a5f3277ff227e943d830ae4/",
+          "titre": "Aménagements cyclables de la Commune de Rillieux la Pape"
+        },
+        {
+          "id": "66959c9764f3a7f03175a65e",
+          "page": "https://www.data.gouv.fr/datasets/66959c9764f3a7f03175a65e/",
+          "titre": "Arbres urbains de la commune de Rillieux-la-Pape"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-09-04T10:49:57.952000+00:00",
       "editeur_publie": "Observatoire des Finances et de la Gestion publique Locales",
       "identite_juridique_verifiee": false,
@@ -11729,7 +11729,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-10T01:03:01.182000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T01:02:58.822000+00:00",
       "editeur_publie": "Institut de la statistique de la Polynésie française",
       "identite_juridique_verifiee": false,
       "jeux_declares": 15,
@@ -11837,7 +11837,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T10:35:03+00:00",
+      "dernier_jeu_actualise_le": "2026-10-13T10:35:26+00:00",
       "editeur_publie": "Ville de Sèvres",
       "identite_juridique_verifiee": false,
       "jeux_declares": 15,
@@ -11856,60 +11856,6 @@
           "id": "602d47ef780a8f0a2d7ce5a3",
           "page": "https://www.data.gouv.fr/datasets/602d47ef780a8f0a2d7ce5a3/",
           "titre": "Cartes postales anciennes des Archives municipales"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-08-12T07:06:47.190000+00:00",
-      "editeur_publie": "Ville de Tourcoing",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 15,
-      "jeux_exemples": [
-        {
-          "id": "67c795a3c3d8dd22288e71f7",
-          "page": "https://www.data.gouv.fr/datasets/67c795a3c3d8dd22288e71f7/",
-          "titre": "Aires de jeux"
-        },
-        {
-          "id": "66a11a5a36a0e9674a444afe",
-          "page": "https://www.data.gouv.fr/datasets/66a11a5a36a0e9674a444afe/",
-          "titre": "Base Adresse Locale"
-        },
-        {
-          "id": "697d464147f316e982070bd7",
-          "page": "https://www.data.gouv.fr/datasets/697d464147f316e982070bd7/",
-          "titre": "Bureaux de vote"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2022-08-20T02:07:18.169000+00:00",
-      "editeur_publie": "Agglomération de Chalons en Champagne",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 14,
-      "jeux_exemples": [
-        {
-          "id": "630025b51e226aeefb9c0167",
-          "page": "https://www.data.gouv.fr/datasets/630025b51e226aeefb9c0167/",
-          "titre": "Canisites"
-        },
-        {
-          "id": "630025b583cd803ae29c0161",
-          "page": "https://www.data.gouv.fr/datasets/630025b583cd803ae29c0161/",
-          "titre": "Découpage des tournées de ramassage des emballages"
-        },
-        {
-          "id": "630025b5eedf7d90ec49e2de",
-          "page": "https://www.data.gouv.fr/datasets/630025b5eedf7d90ec49e2de/",
-          "titre": "Découpage des tournées de ramassage des biodéchets"
         }
       ],
       "organisme_associe": null,
@@ -11972,33 +11918,6 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2025-12-22T13:52:22.481000+00:00",
-      "editeur_publie": "Bornevo",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 14,
-      "jeux_exemples": [
-        {
-          "id": "66c5f5530279ab105d043c91",
-          "page": "https://www.data.gouv.fr/datasets/66c5f5530279ab105d043c91/",
-          "titre": "Bornevo - Technique Auto Drancy"
-        },
-        {
-          "id": "69494d1656718262557a3340",
-          "page": "https://www.data.gouv.fr/datasets/69494d1656718262557a3340/",
-          "titre": "Garage Angelus"
-        },
-        {
-          "id": "64dca831cdaecddba4bd79f0",
-          "page": "https://www.data.gouv.fr/datasets/64dca831cdaecddba4bd79f0/",
-          "titre": "IRVE statique (organisation Bornevo) NNR GLOBAL FRANCE"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-02-10T13:15:28.531000+00:00",
       "editeur_publie": "Communauté d'Agglomération du Pays Ajaccien",
       "identite_juridique_verifiee": false,
@@ -12018,33 +11937,6 @@
           "id": "5c9a32d2634f411ddd69eb05",
           "page": "https://www.data.gouv.fr/datasets/5c9a32d2634f411ddd69eb05/",
           "titre": "Information sur les transports en commun"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-12T19:00:29+00:00",
-      "editeur_publie": "Communauté de communes des Lisères de l'Oise",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 14,
-      "jeux_exemples": [
-        {
-          "id": "68d68d944b6be22a1d9c8867",
-          "page": "https://www.data.gouv.fr/datasets/68d68d944b6be22a1d9c8867/",
-          "titre": "Aménagement cyclable sur la Communauté de Communes des Lisières de l'Oise"
-        },
-        {
-          "id": "68d68d964b6be22a1d9c886c",
-          "page": "https://www.data.gouv.fr/datasets/68d68d964b6be22a1d9c886c/",
-          "titre": "Assemblage des PLU communaux en vigueur sur la Communauté de Communes des Lisières de l'Oise"
-        },
-        {
-          "id": "68d68d974b6be22a1d9c8870",
-          "page": "https://www.data.gouv.fr/datasets/68d68d974b6be22a1d9c8870/",
-          "titre": "Assemblage des Bases Adresses Locales de la Communauté de Communes des Lisières de l'Oise"
         }
       ],
       "organisme_associe": null,
@@ -12080,7 +11972,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-12T15:47:25+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T12:07:10+00:00",
       "editeur_publie": "Direction Générale de l'Administration et de la Fonction Publique",
       "identite_juridique_verifiee": false,
       "jeux_declares": 14,
@@ -12099,33 +11991,6 @@
           "id": "5c4b0be98b4c412d41f1fdba",
           "page": "https://www.data.gouv.fr/datasets/5c4b0be98b4c412d41f1fdba/",
           "titre": "Effectifs de la fonction publique depuis 2004"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-12T00:00:00+00:00",
-      "editeur_publie": "Département d'Ille-et-Vilaine",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 14,
-      "jeux_exemples": [
-        {
-          "id": "6659e07c3cff6a73f37c6364",
-          "page": "https://www.data.gouv.fr/datasets/6659e07c3cff6a73f37c6364/",
-          "titre": "CANTONS"
-        },
-        {
-          "id": "667220052864b3a163c4be1d",
-          "page": "https://www.data.gouv.fr/datasets/667220052864b3a163c4be1d/",
-          "titre": "CANTONS"
-        },
-        {
-          "id": "6659e07c7a67022cec8bb890",
-          "page": "https://www.data.gouv.fr/datasets/6659e07c7a67022cec8bb890/",
-          "titre": "CLIC"
         }
       ],
       "organisme_associe": null,
@@ -12404,6 +12269,33 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-08-12T07:06:47.190000+00:00",
+      "editeur_publie": "Ville de Tourcoing",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 14,
+      "jeux_exemples": [
+        {
+          "id": "67c795a3c3d8dd22288e71f7",
+          "page": "https://www.data.gouv.fr/datasets/67c795a3c3d8dd22288e71f7/",
+          "titre": "Aires de jeux"
+        },
+        {
+          "id": "66a11a5a36a0e9674a444afe",
+          "page": "https://www.data.gouv.fr/datasets/66a11a5a36a0e9674a444afe/",
+          "titre": "Base Adresse Locale"
+        },
+        {
+          "id": "697d464147f316e982070bd7",
+          "page": "https://www.data.gouv.fr/datasets/697d464147f316e982070bd7/",
+          "titre": "Bureaux de vote"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-09T07:41:48.601000+00:00",
       "editeur_publie": "Agence nationale de sécurité sanitaire, de l'alimentation, de l'environnement et du travail (Anses)",
       "identite_juridique_verifiee": false,
@@ -12458,6 +12350,33 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2025-12-22T13:52:22.481000+00:00",
+      "editeur_publie": "Bornevo",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 13,
+      "jeux_exemples": [
+        {
+          "id": "66c5f5530279ab105d043c91",
+          "page": "https://www.data.gouv.fr/datasets/66c5f5530279ab105d043c91/",
+          "titre": "Bornevo - Technique Auto Drancy"
+        },
+        {
+          "id": "69494d1656718262557a3340",
+          "page": "https://www.data.gouv.fr/datasets/69494d1656718262557a3340/",
+          "titre": "Garage Angelus"
+        },
+        {
+          "id": "64dca831cdaecddba4bd79f0",
+          "page": "https://www.data.gouv.fr/datasets/64dca831cdaecddba4bd79f0/",
+          "titre": "IRVE statique (organisation Bornevo) NNR GLOBAL FRANCE"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-09T08:44:24.366000+00:00",
       "editeur_publie": "Communauté d'agglomération Chauny-Tergnier-La Fère",
       "identite_juridique_verifiee": false,
@@ -12477,6 +12396,33 @@
           "id": "67ecd417ec4ba9952c7b0f60",
           "page": "https://www.data.gouv.fr/datasets/67ecd417ec4ba9952c7b0f60/",
           "titre": "Budget annexe Assainissement collectif 2025"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-13T19:19:41+00:00",
+      "editeur_publie": "Communauté de communes des Lisères de l'Oise",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 13,
+      "jeux_exemples": [
+        {
+          "id": "68d68d944b6be22a1d9c8867",
+          "page": "https://www.data.gouv.fr/datasets/68d68d944b6be22a1d9c8867/",
+          "titre": "Aménagement cyclable sur la Communauté de Communes des Lisières de l'Oise"
+        },
+        {
+          "id": "68d68d964b6be22a1d9c886c",
+          "page": "https://www.data.gouv.fr/datasets/68d68d964b6be22a1d9c886c/",
+          "titre": "Assemblage des PLU communaux en vigueur sur la Communauté de Communes des Lisières de l'Oise"
+        },
+        {
+          "id": "68d68d974b6be22a1d9c8870",
+          "page": "https://www.data.gouv.fr/datasets/68d68d974b6be22a1d9c8870/",
+          "titre": "Assemblage des Bases Adresses Locales de la Communauté de Communes des Lisières de l'Oise"
         }
       ],
       "organisme_associe": null,
@@ -12585,6 +12531,33 @@
           "id": "64c9108780539b5afd374f1c",
           "page": "https://www.data.gouv.fr/datasets/64c9108780539b5afd374f1c/",
           "titre": "COMBES"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-12T00:00:00+00:00",
+      "editeur_publie": "Département d'Ille-et-Vilaine",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 13,
+      "jeux_exemples": [
+        {
+          "id": "6659e07c3cff6a73f37c6364",
+          "page": "https://www.data.gouv.fr/datasets/6659e07c3cff6a73f37c6364/",
+          "titre": "CANTONS"
+        },
+        {
+          "id": "667220052864b3a163c4be1d",
+          "page": "https://www.data.gouv.fr/datasets/667220052864b3a163c4be1d/",
+          "titre": "CANTONS"
+        },
+        {
+          "id": "6659e07c7a67022cec8bb890",
+          "page": "https://www.data.gouv.fr/datasets/6659e07c7a67022cec8bb890/",
+          "titre": "CLIC"
         }
       ],
       "organisme_associe": null,
@@ -12917,7 +12890,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-09T02:38:33.944000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-13T23:36:17.673000+00:00",
       "editeur_publie": "Agence de l'eau Rhône-Méditerranée et Corse",
       "identite_juridique_verifiee": false,
       "jeux_declares": 12,
@@ -12936,6 +12909,33 @@
           "id": "536992cfa3a729239d20400b",
           "page": "https://www.data.gouv.fr/datasets/536992cfa3a729239d20400b/",
           "titre": "Descriptif technique des stations d'épuration des bassins Rhône-Méditerranée et Corse"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2022-08-20T02:07:18.169000+00:00",
+      "editeur_publie": "Agglomération de Chalons en Champagne",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 12,
+      "jeux_exemples": [
+        {
+          "id": "630025b51e226aeefb9c0167",
+          "page": "https://www.data.gouv.fr/datasets/630025b51e226aeefb9c0167/",
+          "titre": "Canisites"
+        },
+        {
+          "id": "630025b583cd803ae29c0161",
+          "page": "https://www.data.gouv.fr/datasets/630025b583cd803ae29c0161/",
+          "titre": "Découpage des tournées de ramassage des emballages"
+        },
+        {
+          "id": "630025b5eedf7d90ec49e2de",
+          "page": "https://www.data.gouv.fr/datasets/630025b5eedf7d90ec49e2de/",
+          "titre": "Découpage des tournées de ramassage des biodéchets"
         }
       ],
       "organisme_associe": null,
@@ -13376,33 +13376,6 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-07-20T14:10:58.231000+00:00",
-      "editeur_publie": "TACCT",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 12,
-      "jeux_exemples": [
-        {
-          "id": "6a5e184acb4c14a07ce07f65",
-          "page": "https://www.data.gouv.fr/datasets/6a5e184acb4c14a07ce07f65/",
-          "titre": "Arrêtés de catastrophe naturelle par commune"
-        },
-        {
-          "id": "6a4f57d53a20a5c758956649",
-          "page": "https://www.data.gouv.fr/datasets/6a4f57d53a20a5c758956649/",
-          "titre": "Atlas de la biodiversité communale (ABC)"
-        },
-        {
-          "id": "6a4f6aaea83cbe3a40e941af",
-          "page": "https://www.data.gouv.fr/datasets/6a4f6aaea83cbe3a40e941af/",
-          "titre": "Cas d'arbovirose importés et autochtones par département en France métropolitaine (2012-2024)"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-09-01T09:55:21.420000+00:00",
       "editeur_publie": "Unédic",
       "identite_juridique_verifiee": false,
@@ -13422,33 +13395,6 @@
           "id": "63a4384a1b57813fbca80dc8",
           "page": "https://www.data.gouv.fr/datasets/63a4384a1b57813fbca80dc8/",
           "titre": "Dépenses et recettes de l'Assurance chômage"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T03:54:31.107000+00:00",
-      "editeur_publie": "Vaulx-en-Velin",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 12,
-      "jeux_exemples": [
-        {
-          "id": "651b3e98a84c7347daee1555",
-          "page": "https://www.data.gouv.fr/datasets/651b3e98a84c7347daee1555/",
-          "titre": "Bureaux de vote de la commune de Vaulx-en-Velin"
-        },
-        {
-          "id": "67db4d29e7cab08518962f3f",
-          "page": "https://www.data.gouv.fr/datasets/67db4d29e7cab08518962f3f/",
-          "titre": "Catalogue de données de la Ville de Vaulx-en-Velin"
-        },
-        {
-          "id": "6a0c708fdc0f0d5d8b46bc18",
-          "page": "https://www.data.gouv.fr/datasets/6a0c708fdc0f0d5d8b46bc18/",
-          "titre": "Loi Agec"
         }
       ],
       "organisme_associe": null,
@@ -13565,33 +13511,6 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T05:42:14.982000+00:00",
-      "editeur_publie": "Caluire-et-Cuire",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 11,
-      "jeux_exemples": [
-        {
-          "id": "6a02ce3dab945ab34603062e",
-          "page": "https://www.data.gouv.fr/datasets/6a02ce3dab945ab34603062e/",
-          "titre": "Aire de jeux de la commune de Caluire-et-Cuire"
-        },
-        {
-          "id": "651b3e36bfbfea2046fd55ac",
-          "page": "https://www.data.gouv.fr/datasets/651b3e36bfbfea2046fd55ac/",
-          "titre": "Bureaux de vote de la commune de Caluire-et-Cuire"
-        },
-        {
-          "id": "67db4d2fc6e7ee484dfe0efb",
-          "page": "https://www.data.gouv.fr/datasets/67db4d2fc6e7ee484dfe0efb/",
-          "titre": "Catalogue de données de la Ville de Caluire-et-Cuire"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2015-01-16T13:32:53.307000+00:00",
       "editeur_publie": "CeNGEPS (Centre National de Gestion des Essais de Produits de Santé)",
       "identite_juridique_verifiee": false,
@@ -13638,33 +13557,6 @@
           "id": "5b6310418b4c4140e6d3db2b",
           "page": "https://www.data.gouv.fr/datasets/5b6310418b4c4140e6d3db2b/",
           "titre": "Subventions Année 2016"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-09-07T05:33:29.517000+00:00",
-      "editeur_publie": "Communauté d'Agglomération de Nevers",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 11,
-      "jeux_exemples": [
-        {
-          "id": "59ba7017c751df340ad3e6a2",
-          "page": "https://www.data.gouv.fr/datasets/59ba7017c751df340ad3e6a2/",
-          "titre": "Arrêts de Bus"
-        },
-        {
-          "id": "5b10041f88ee3801c09b36e6",
-          "page": "https://www.data.gouv.fr/datasets/5b10041f88ee3801c09b36e6/",
-          "titre": "Bornes de recharges pour véhicules électriques"
-        },
-        {
-          "id": "5a78835dc751df63627703ed",
-          "page": "https://www.data.gouv.fr/datasets/5a78835dc751df63627703ed/",
-          "titre": "EQUIPEMENTS PUBLICS"
         }
       ],
       "organisme_associe": null,
@@ -13889,33 +13781,6 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T16:10:31.683000+00:00",
-      "editeur_publie": "Haut-Léon Communauté",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 11,
-      "jeux_exemples": [
-        {
-          "id": "6a4fad4eaab14547e030c9d3",
-          "page": "https://www.data.gouv.fr/datasets/6a4fad4eaab14547e030c9d3/",
-          "titre": "Aménagements cyclables de Haut-Léon Communauté"
-        },
-        {
-          "id": "693bf49ee8a1c34da0a84e7f",
-          "page": "https://www.data.gouv.fr/datasets/693bf49ee8a1c34da0a84e7f/",
-          "titre": "Classement des voiries des communes de Haut-Léon Communauté à caractère de rue ou de chemin"
-        },
-        {
-          "id": "693bf49ee8a1c34da0a84e80",
-          "page": "https://www.data.gouv.fr/datasets/693bf49ee8a1c34da0a84e80/",
-          "titre": "Classement des voiries des communes de Haut-Léon Communauté à caractère de place"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-02-06T14:57:38.782000+00:00",
       "editeur_publie": "Institut national de la propriété industrielle (INPI)",
       "identite_juridique_verifiee": false,
@@ -13962,33 +13827,6 @@
           "id": "655a3f62b576ef4cb1bfe36f",
           "page": "https://www.data.gouv.fr/datasets/655a3f62b576ef4cb1bfe36f/",
           "titre": "Empreinte carbone du minage bitcoin par type de mineur et par type de production d'électricité"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-12T02:50:23+00:00",
-      "editeur_publie": "JVMALIN",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 11,
-      "jeux_exemples": [
-        {
-          "id": "5e6193339ce2e72071f4c8c2",
-          "page": "https://www.data.gouv.fr/datasets/5e6193339ce2e72071f4c8c2/",
-          "titre": "Agglobus offre théorique mobilité réseau urbain de Bourges"
-        },
-        {
-          "id": "5e6193349ce2e72071f4c8c4",
-          "page": "https://www.data.gouv.fr/datasets/5e6193349ce2e72071f4c8c4/",
-          "titre": "Agglopolys offre théorique mobilité réseau urbain Azalys de Blois"
-        },
-        {
-          "id": "5e6435f59ce2e71b24f4c8c0",
-          "page": "https://www.data.gouv.fr/datasets/5e6435f59ce2e71b24f4c8c0/",
-          "titre": "Arrêts, itinéraires et horaires théoriques des réseaux de transport des membres de JVMALIN"
         }
       ],
       "organisme_associe": null,
@@ -14124,6 +13962,60 @@
           "id": "54511ac8c751df360e5a81f0",
           "page": "https://www.data.gouv.fr/datasets/54511ac8c751df360e5a81f0/",
           "titre": "Audiences mensuelles Actions Gouvernement.fr"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-07-20T14:10:58.231000+00:00",
+      "editeur_publie": "TACCT",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 11,
+      "jeux_exemples": [
+        {
+          "id": "6a5e184acb4c14a07ce07f65",
+          "page": "https://www.data.gouv.fr/datasets/6a5e184acb4c14a07ce07f65/",
+          "titre": "Arrêtés de catastrophe naturelle par commune"
+        },
+        {
+          "id": "6a4f57d53a20a5c758956649",
+          "page": "https://www.data.gouv.fr/datasets/6a4f57d53a20a5c758956649/",
+          "titre": "Atlas de la biodiversité communale (ABC)"
+        },
+        {
+          "id": "6a4f6aaea83cbe3a40e941af",
+          "page": "https://www.data.gouv.fr/datasets/6a4f6aaea83cbe3a40e941af/",
+          "titre": "Cas d'arbovirose importés et autochtones par département en France métropolitaine (2012-2024)"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T17:37:03.580000+00:00",
+      "editeur_publie": "Vaulx-en-Velin",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 11,
+      "jeux_exemples": [
+        {
+          "id": "651b3e98a84c7347daee1555",
+          "page": "https://www.data.gouv.fr/datasets/651b3e98a84c7347daee1555/",
+          "titre": "Bureaux de vote de la commune de Vaulx-en-Velin"
+        },
+        {
+          "id": "67db4d29e7cab08518962f3f",
+          "page": "https://www.data.gouv.fr/datasets/67db4d29e7cab08518962f3f/",
+          "titre": "Catalogue de données de la Ville de Vaulx-en-Velin"
+        },
+        {
+          "id": "6a0c708fdc0f0d5d8b46bc18",
+          "page": "https://www.data.gouv.fr/datasets/6a0c708fdc0f0d5d8b46bc18/",
+          "titre": "Loi Agec"
         }
       ],
       "organisme_associe": null,
@@ -14402,6 +14294,33 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T16:42:07.637000+00:00",
+      "editeur_publie": "Caluire-et-Cuire",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 10,
+      "jeux_exemples": [
+        {
+          "id": "6a02ce3dab945ab34603062e",
+          "page": "https://www.data.gouv.fr/datasets/6a02ce3dab945ab34603062e/",
+          "titre": "Aire de jeux de la commune de Caluire-et-Cuire"
+        },
+        {
+          "id": "651b3e36bfbfea2046fd55ac",
+          "page": "https://www.data.gouv.fr/datasets/651b3e36bfbfea2046fd55ac/",
+          "titre": "Bureaux de vote de la commune de Caluire-et-Cuire"
+        },
+        {
+          "id": "67db4d2fc6e7ee484dfe0efb",
+          "page": "https://www.data.gouv.fr/datasets/67db4d2fc6e7ee484dfe0efb/",
+          "titre": "Catalogue de données de la Ville de Caluire-et-Cuire"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-10-06T15:58:35.236000+00:00",
       "editeur_publie": "Citeos Ingénierie IdF & Est (Cogelum IdF)",
       "identite_juridique_verifiee": false,
@@ -14475,6 +14394,33 @@
           "id": "5ca60d44634f4131c29be14d",
           "page": "https://www.data.gouv.fr/datasets/5ca60d44634f4131c29be14d/",
           "titre": "Localisation des Conteneurs de Points d'Apport Volontaire publics du territoire d'Annemasse Agglomération"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-09-07T05:33:29.517000+00:00",
+      "editeur_publie": "Communauté d'Agglomération de Nevers",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 10,
+      "jeux_exemples": [
+        {
+          "id": "59ba7017c751df340ad3e6a2",
+          "page": "https://www.data.gouv.fr/datasets/59ba7017c751df340ad3e6a2/",
+          "titre": "Arrêts de Bus"
+        },
+        {
+          "id": "5b10041f88ee3801c09b36e6",
+          "page": "https://www.data.gouv.fr/datasets/5b10041f88ee3801c09b36e6/",
+          "titre": "Bornes de recharges pour véhicules électriques"
+        },
+        {
+          "id": "5a78835dc751df63627703ed",
+          "page": "https://www.data.gouv.fr/datasets/5a78835dc751df63627703ed/",
+          "titre": "EQUIPEMENTS PUBLICS"
         }
       ],
       "organisme_associe": null,
@@ -14672,6 +14618,33 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T15:35:12.415000+00:00",
+      "editeur_publie": "Haut-Léon Communauté",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 10,
+      "jeux_exemples": [
+        {
+          "id": "6a4fad4eaab14547e030c9d3",
+          "page": "https://www.data.gouv.fr/datasets/6a4fad4eaab14547e030c9d3/",
+          "titre": "Aménagements cyclables de Haut-Léon Communauté"
+        },
+        {
+          "id": "693bf49ee8a1c34da0a84e7f",
+          "page": "https://www.data.gouv.fr/datasets/693bf49ee8a1c34da0a84e7f/",
+          "titre": "Classement des voiries des communes de Haut-Léon Communauté à caractère de rue ou de chemin"
+        },
+        {
+          "id": "693bf49ee8a1c34da0a84e80",
+          "page": "https://www.data.gouv.fr/datasets/693bf49ee8a1c34da0a84e80/",
+          "titre": "Classement des voiries des communes de Haut-Léon Communauté à caractère de place"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-06-08T07:36:45.109000+00:00",
       "editeur_publie": "Institut National du Cancer",
       "identite_juridique_verifiee": false,
@@ -14699,25 +14672,25 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-03-10T14:34:09.915000+00:00",
-      "editeur_publie": "Le Grand Chalon",
+      "dernier_jeu_actualise_le": "2026-10-14T00:02:05+00:00",
+      "editeur_publie": "JVMALIN",
       "identite_juridique_verifiee": false,
       "jeux_declares": 10,
       "jeux_exemples": [
         {
-          "id": "61fa3b2ea49746f1fe726a56",
-          "page": "https://www.data.gouv.fr/datasets/61fa3b2ea49746f1fe726a56/",
-          "titre": "Aires de covoiturage et parking relais"
+          "id": "5e6193339ce2e72071f4c8c2",
+          "page": "https://www.data.gouv.fr/datasets/5e6193339ce2e72071f4c8c2/",
+          "titre": "Agglobus offre théorique mobilité réseau urbain de Bourges"
         },
         {
-          "id": "6554e7c39d61e7aba0f676a7",
-          "page": "https://www.data.gouv.fr/datasets/6554e7c39d61e7aba0f676a7/",
-          "titre": "Compteurs vélos"
+          "id": "5e6193349ce2e72071f4c8c4",
+          "page": "https://www.data.gouv.fr/datasets/5e6193349ce2e72071f4c8c4/",
+          "titre": "Agglopolys offre théorique mobilité réseau urbain Azalys de Blois"
         },
         {
-          "id": "5ed7644c1a7721f0bd57255e",
-          "page": "https://www.data.gouv.fr/datasets/5ed7644c1a7721f0bd57255e/",
-          "titre": "Réseau cyclable"
+          "id": "5e6435f59ce2e71b24f4c8c0",
+          "page": "https://www.data.gouv.fr/datasets/5e6435f59ce2e71b24f4c8c0/",
+          "titre": "Arrêts, itinéraires et horaires théoriques des réseaux de transport des membres de JVMALIN"
         }
       ],
       "organisme_associe": null,
@@ -14780,7 +14753,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T14:19:05.896000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T14:39:56.116000+00:00",
       "editeur_publie": "Muséum National d'Histoire Naturelle",
       "identite_juridique_verifiee": false,
       "jeux_declares": 10,
@@ -15104,33 +15077,6 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T18:06:54.274000+00:00",
-      "editeur_publie": "Ville de Saint-Etienne",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 10,
-      "jeux_exemples": [
-        {
-          "id": "66fa92ee9d1c7891fcc61bde",
-          "page": "https://www.data.gouv.fr/datasets/66fa92ee9d1c7891fcc61bde/",
-          "titre": "Données Essentielles de la Commande Publique de la ville de Saint-Etienne"
-        },
-        {
-          "id": "6397699d70bac3bb96152ef1",
-          "page": "https://www.data.gouv.fr/datasets/6397699d70bac3bb96152ef1/",
-          "titre": "Données sur les achats de véhicules faibles émissions lors du renouvellement de la flotte"
-        },
-        {
-          "id": "68552ea55aef102248a9d8b5",
-          "page": "https://www.data.gouv.fr/datasets/68552ea55aef102248a9d8b5/",
-          "titre": "Déclaration art 58 loi AGEC de Saint-Etienne - Commune et CCAS"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
       "dernier_jeu_actualise_le": "2026-06-08T12:12:52.407000+00:00",
       "editeur_publie": "Ville de Villiers-le-Bel",
       "identite_juridique_verifiee": false,
@@ -15185,7 +15131,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T06:06:50.537000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T06:05:59.246000+00:00",
       "editeur_publie": "Agence Nationale de l'Habitat",
       "identite_juridique_verifiee": false,
       "jeux_declares": 9,
@@ -15455,7 +15401,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T06:10:21.368000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T21:40:07.800000+00:00",
       "editeur_publie": "Direction Interministérielle de la Transformation Publique",
       "identite_juridique_verifiee": false,
       "jeux_declares": 9,
@@ -15482,7 +15428,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-05T06:19:14.380000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-12T06:25:32.792000+00:00",
       "editeur_publie": "Département de l'Indre",
       "identite_juridique_verifiee": false,
       "jeux_declares": 9,
@@ -15536,7 +15482,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-11T14:32:23.362000+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T14:48:07.726000+00:00",
       "editeur_publie": "Estérel Côte d'Azur Agglomération",
       "identite_juridique_verifiee": false,
       "jeux_declares": 9,
@@ -15555,6 +15501,33 @@
           "id": "66f2e97cc41001275c716d9a",
           "page": "https://www.data.gouv.fr/datasets/66f2e97cc41001275c716d9a/",
           "titre": "Dix plus hautes rémunérations d'Estérel Côte d'Azur Agglomération"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-13T03:56:40.469000+00:00",
+      "editeur_publie": "Grenoble-Alpes Métropole",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 9,
+      "jeux_exemples": [
+        {
+          "id": "57600b36c751df018aac31a0",
+          "page": "https://www.data.gouv.fr/datasets/57600b36c751df018aac31a0/",
+          "titre": "Arceaux à vélo"
+        },
+        {
+          "id": "65c2cdc6ca8186592258ddc7",
+          "page": "https://www.data.gouv.fr/datasets/65c2cdc6ca8186592258ddc7/",
+          "titre": "Bornes de recharge pour véhicules GNV"
+        },
+        {
+          "id": "658053ac3e68b91a5a3a5a3b",
+          "page": "https://www.data.gouv.fr/datasets/658053ac3e68b91a5a3a5a3b/",
+          "titre": "Carnets de paysages et ambiances paysagères du PLUI de Grenoble-Alpes Métropole"
         }
       ],
       "organisme_associe": null,
@@ -15617,7 +15590,34 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T03:47:37.033000+00:00",
+      "dernier_jeu_actualise_le": "2026-03-10T14:34:09.915000+00:00",
+      "editeur_publie": "Le Grand Chalon",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 9,
+      "jeux_exemples": [
+        {
+          "id": "61fa3b2ea49746f1fe726a56",
+          "page": "https://www.data.gouv.fr/datasets/61fa3b2ea49746f1fe726a56/",
+          "titre": "Aires de covoiturage et parking relais"
+        },
+        {
+          "id": "6554e7c39d61e7aba0f676a7",
+          "page": "https://www.data.gouv.fr/datasets/6554e7c39d61e7aba0f676a7/",
+          "titre": "Compteurs vélos"
+        },
+        {
+          "id": "5ed7644c1a7721f0bd57255e",
+          "page": "https://www.data.gouv.fr/datasets/5ed7644c1a7721f0bd57255e/",
+          "titre": "Réseau cyclable"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T16:36:13.385000+00:00",
       "editeur_publie": "LEPHAY Yann",
       "identite_juridique_verifiee": false,
       "jeux_declares": 9,
@@ -15690,60 +15690,6 @@
           "id": "5c54534e8b4c416bb7bd1d90",
           "page": "https://www.data.gouv.fr/datasets/5c54534e8b4c416bb7bd1d90/",
           "titre": "Camping"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T03:59:08+00:00",
-      "editeur_publie": "Montpellier Méditerranée Métropole",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 9,
-      "jeux_exemples": [
-        {
-          "id": "6253e8fc6ed8eb554148b112",
-          "page": "https://www.data.gouv.fr/datasets/6253e8fc6ed8eb554148b112/",
-          "titre": "Disponibilité  en temps réel des vélos en libre-service Vélomagg de Montpellier"
-        },
-        {
-          "id": "5f3f9612a0ca851af8d8aef0",
-          "page": "https://www.data.gouv.fr/datasets/5f3f9612a0ca851af8d8aef0/",
-          "titre": "Parkings en ouvrage de Montpellier"
-        },
-        {
-          "id": "60a67c26518959a328ea81ef",
-          "page": "https://www.data.gouv.fr/datasets/60a67c26518959a328ea81ef/",
-          "titre": "Aménagements cyclables de Montpellier Méditerranée Métropole"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T06:04:46.366000+00:00",
-      "editeur_publie": "Neuville-sur-Saône",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 9,
-      "jeux_exemples": [
-        {
-          "id": "651b3e237324baa607d754c9",
-          "page": "https://www.data.gouv.fr/datasets/651b3e237324baa607d754c9/",
-          "titre": "Bureaux de vote de la commune de Neuville-sur-Saône"
-        },
-        {
-          "id": "67db4d29fef5345c86f594da",
-          "page": "https://www.data.gouv.fr/datasets/67db4d29fef5345c86f594da/",
-          "titre": "Catalogue de données de la Ville de Neuville-sur-Saône"
-        },
-        {
-          "id": "649caebc15c68b690e1de2e6",
-          "page": "https://www.data.gouv.fr/datasets/649caebc15c68b690e1de2e6/",
-          "titre": "Délibérations de la commune de Neuville-sur-Saône"
         }
       ],
       "organisme_associe": null,
@@ -15833,7 +15779,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-13T18:20:11+00:00",
+      "dernier_jeu_actualise_le": "2026-10-13T18:38:03+00:00",
       "editeur_publie": "Pôle métropolitain du Pays de Brest",
       "identite_juridique_verifiee": false,
       "jeux_declares": 9,
@@ -15879,60 +15825,6 @@
           "id": "65323d5337120b27393ae914",
           "page": "https://www.data.gouv.fr/datasets/65323d5337120b27393ae914/",
           "titre": "Zone à Faibles Emissions (organisation QUIETALIS)"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-12T06:03:15+00:00",
-      "editeur_publie": "Quimper Bretagne Occidentale",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 9,
-      "jeux_exemples": [
-        {
-          "id": "61e56981345674254d57db05",
-          "page": "https://www.data.gouv.fr/datasets/61e56981345674254d57db05/",
-          "titre": "Adresses"
-        },
-        {
-          "id": "67ab75c8274de8e16db4e821",
-          "page": "https://www.data.gouv.fr/datasets/67ab75c8274de8e16db4e821/",
-          "titre": "Données essentielles de la commande publique Quimper Bretagne Occidentale"
-        },
-        {
-          "id": "685a992bdcbae807cbcfab79",
-          "page": "https://www.data.gouv.fr/datasets/685a992bdcbae807cbcfab79/",
-          "titre": "Déclaration d'acquisition de produits issus du réemploi, de la réutilisation ou intégrant des matières recyclées (AGEC)"
-        }
-      ],
-      "organisme_associe": null,
-      "type_rapprochement": "non_resolu"
-    },
-    {
-      "absence_de_canaux_etablie": false,
-      "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-12T04:06:00.458000+00:00",
-      "editeur_publie": "Saint-Cyr-au-Mont-d'Or",
-      "identite_juridique_verifiee": false,
-      "jeux_declares": 9,
-      "jeux_exemples": [
-        {
-          "id": "651b3e6c249d16848d6c0ad3",
-          "page": "https://www.data.gouv.fr/datasets/651b3e6c249d16848d6c0ad3/",
-          "titre": "Bureaux de vote de la commune de Saint-Cyr-au-Mont-d'Or"
-        },
-        {
-          "id": "67db4d34584d85026f9e767d",
-          "page": "https://www.data.gouv.fr/datasets/67db4d34584d85026f9e767d/",
-          "titre": "Catalogue de données de la Ville de Saint-Cyr-au-Mont-d'Or"
-        },
-        {
-          "id": "64f654172ad89d6dc08568c0",
-          "page": "https://www.data.gouv.fr/datasets/64f654172ad89d6dc08568c0/",
-          "titre": "Délibérations de la commune de Saint-Cyr-au-Mont-d'Or"
         }
       ],
       "organisme_associe": null,
@@ -16014,6 +15906,33 @@
           "id": "6aa00eeae566655762d7765e",
           "page": "https://www.data.gouv.fr/datasets/6aa00eeae566655762d7765e/",
           "titre": "Commande publique 2026 - Ville de Rambouillet"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-10-14T20:54:30.608000+00:00",
+      "editeur_publie": "Ville de Saint-Etienne",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 9,
+      "jeux_exemples": [
+        {
+          "id": "66fa92ee9d1c7891fcc61bde",
+          "page": "https://www.data.gouv.fr/datasets/66fa92ee9d1c7891fcc61bde/",
+          "titre": "Données Essentielles de la Commande Publique de la ville de Saint-Etienne"
+        },
+        {
+          "id": "6397699d70bac3bb96152ef1",
+          "page": "https://www.data.gouv.fr/datasets/6397699d70bac3bb96152ef1/",
+          "titre": "Données sur les achats de véhicules faibles émissions lors du renouvellement de la flotte"
+        },
+        {
+          "id": "68552ea55aef102248a9d8b5",
+          "page": "https://www.data.gouv.fr/datasets/68552ea55aef102248a9d8b5/",
+          "titre": "Déclaration art 58 loi AGEC de Saint-Etienne - Commune et CCAS"
         }
       ],
       "organisme_associe": null,
@@ -16157,7 +16076,7 @@
     {
       "absence_de_canaux_etablie": false,
       "canaux_documentes": [],
-      "dernier_jeu_actualise_le": "2026-10-14T04:40:35+00:00",
+      "dernier_jeu_actualise_le": "2026-10-14T11:43:11+00:00",
       "editeur_publie": "Centre National des Œuvres Universitaires et Scolaires",
       "identite_juridique_verifiee": false,
       "jeux_declares": 8,
@@ -16203,6 +16122,87 @@
           "id": "600ff6b850fa2a79df45800b",
           "page": "https://www.data.gouv.fr/datasets/600ff6b850fa2a79df45800b/",
           "titre": "Délibérations 2017"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-08-24T12:23:49.604000+00:00",
+      "editeur_publie": "Communauté d'Agglomération du Pays de l'Or",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 8,
+      "jeux_exemples": [
+        {
+          "id": "6a8c37d51b5ef7df5c5c7e65",
+          "page": "https://www.data.gouv.fr/datasets/6a8c37d51b5ef7df5c5c7e65/",
+          "titre": "Données essentielles de la commande publique de 40 000 à 60 000 € HT"
+        },
+        {
+          "id": "637f7a5bef33d9de81fcf9eb",
+          "page": "https://www.data.gouv.fr/datasets/637f7a5bef33d9de81fcf9eb/",
+          "titre": "Jeu de données Patrimoine (Equipements collectifs publics)"
+        },
+        {
+          "id": "637f7e1b3167be4eb6c6387b",
+          "page": "https://www.data.gouv.fr/datasets/637f7e1b3167be4eb6c6387b/",
+          "titre": "Jeu de données Point d'Apport Volontaire  (PAV)"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2026-08-01T10:30:15.826000+00:00",
+      "editeur_publie": "Conseil départemental de la Nièvre",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 8,
+      "jeux_exemples": [
+        {
+          "id": "5a562daf88ee3813dc5714ac",
+          "page": "https://www.data.gouv.fr/datasets/5a562daf88ee3813dc5714ac/",
+          "titre": "Département de la Nièvre - Subventions"
+        },
+        {
+          "id": "64510b0dfb9893e98a58e4f1",
+          "page": "https://www.data.gouv.fr/datasets/64510b0dfb9893e98a58e4f1/",
+          "titre": "Département de la Nièvre - Arbres"
+        },
+        {
+          "id": "6470ab9361c8a9542707be29",
+          "page": "https://www.data.gouv.fr/datasets/6470ab9361c8a9542707be29/",
+          "titre": "Département de la Nièvre - Espaces Naturels Sensibles"
+        }
+      ],
+      "organisme_associe": null,
+      "type_rapprochement": "non_resolu"
+    },
+    {
+      "absence_de_canaux_etablie": false,
+      "canaux_documentes": [],
+      "dernier_jeu_actualise_le": "2024-12-06T06:49:24.822000+00:00",
+      "editeur_publie": "E.LECLERC MILLAU",
+      "identite_juridique_verifiee": false,
+      "jeux_declares": 8,
+      "jeux_exemples": [
+        {
+          "id": "63849c949b54f8c0d3397a4c",
+          "page": "https://www.data.gouv.fr/datasets/63849c949b54f8c0d3397a4c/",
+          "titre": "Infrastructures de recharge pour véhicules électriques (organisation E.LECLERC MILLAU)"
+        },
+        {
+          "id": "63849c9cf68a5c6be36a617b",
+          "page": "https://www.data.gouv.fr/datasets/63849c9cf68a5c6be36a617b/",
+          "titre": "Infrastructures de recharge pour véhicules électriques (organisation E.LECLERC MILLAU)"
+        },
+        {
+          "id": "63849ca5398d6da4b363a217",
+          "page": "https://www.data.gouv.fr/datasets/63849ca5398d6da4b363a217/",
+          "titre": "Infrastructures de recharge pour véhicules électriques (organisation E.LECLERC MILLAU)"
         }
       ],
       "organisme_associe": null,
@@ -16325,18 +16325,18 @@
     "couverture_exhaustive_du_catalogue_attestee": false,
     "derniere_page": 1488,
     "editeurs_detailles": 601,
-    "editeurs_distincts_libelles": 3977,
-    "editeurs_non_detailles": 3376,
-    "jeux_distincts": 74272,
+    "editeurs_distincts_libelles": 3976,
+    "editeurs_non_detailles": 3375,
+    "jeux_distincts": 74273,
     "lacunes_de_pagination": 0,
     "lignes_lues": 74377,
-    "lignes_sans_editeur_declare": 3984,
+    "lignes_sans_editeur_declare": 3977,
     "numeros_pages_manquantes_exemples": [],
     "organismes_a_canaux_documentes": 3,
     "pages_homogenes_temporellement_verifiees": false,
     "pages_presentes": 1488,
     "premiere_page": 1,
-    "reapparitions_identifiants": 105
+    "reapparitions_identifiants": 104
   },
   "version": "inventaire-canaux-v1"
 }
