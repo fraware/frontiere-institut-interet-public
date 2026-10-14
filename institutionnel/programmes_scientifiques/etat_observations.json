@@ -1,4 +1,89 @@
 {
   "version": 1,
-  "observations": []
+  "observations": [
+    {
+      "source_id": "anr_listes_recentes",
+      "programme": "transversal",
+      "nature_document": "index_selections",
+      "url": "https://anr.fr/fr/projets-finances-et-impact/projets-finances/dernieres-listes-de-projets-selectionnes/",
+      "format": "html",
+      "empreinte": "d6ac4ad2b7f120e657629f7c0aad5bd9633a486bfaf37d2c8f71075268317a91",
+      "observe_initialement_le": "2026-10-14T20:08:23+00:00",
+      "dernier_changement_le": "2026-10-14T20:08:23+00:00",
+      "historique": [],
+      "reference_execution": "https://github.com/fraware/frontiere-institut-interet-public/actions/runs/38629459886",
+      "octets_premiere_capture": 306822,
+      "media_premiere_capture": "text/html"
+    },
+    {
+      "source_id": "anr_nrf_appel_2026",
+      "programme": "anr_nrf_iabio_2026",
+      "nature_document": "appel",
+      "url": "https://anr.fr/fr/detail/call/appel-a-projets-anr-nrf-2026-intelligence-artificielle-pour-les-biotechnologies/",
+      "format": "html",
+      "empreinte": "f52bcc8827ebe164a38dbca32aceaf316ad47a5d7010b49525f317056220d46b",
+      "observe_initialement_le": "2026-10-14T20:08:23+00:00",
+      "dernier_changement_le": "2026-10-14T20:08:23+00:00",
+      "historique": [],
+      "reference_execution": "https://github.com/fraware/frontiere-institut-interet-public/actions/runs/38629459886",
+      "octets_premiere_capture": 245865,
+      "media_premiere_capture": "text/html"
+    },
+    {
+      "source_id": "anr_nrf_selection_2026",
+      "programme": "anr_nrf_iabio_2026",
+      "nature_document": "liste_selection",
+      "url": "https://anr.fr/fileadmin/aap/2026/selection/aap-anr-nrf-iabio-2026-selection.pdf",
+      "format": "pdf",
+      "empreinte": "35a8977ce8f327f63f6b750292c043b841def2b0a07b39e68207744b0048b184",
+      "observe_initialement_le": "2026-10-14T20:08:23+00:00",
+      "dernier_changement_le": "2026-10-14T20:08:23+00:00",
+      "historique": [],
+      "reference_execution": "https://github.com/fraware/frontiere-institut-interet-public/actions/runs/38629459886",
+      "octets_premiere_capture": 132988,
+      "media_premiere_capture": "application/pdf"
+    },
+    {
+      "source_id": "anr_saps_appel_2026",
+      "programme": "saps_cppe_2026",
+      "nature_document": "appel",
+      "url": "https://anr.fr/fr/detail/call/1911/?no_cache=1",
+      "format": "html",
+      "empreinte": "0f4d0d7a3d50feadfaddeedc7fe3893b30127e8ee9300e54a2c44c6e3f949ec4",
+      "observe_initialement_le": "2026-10-14T20:08:23+00:00",
+      "dernier_changement_le": "2026-10-14T20:08:23+00:00",
+      "historique": [],
+      "reference_execution": "https://github.com/fraware/frontiere-institut-interet-public/actions/runs/38629459886",
+      "octets_premiere_capture": 253405,
+      "media_premiere_capture": "text/html"
+    },
+    {
+      "source_id": "anr_saps_resultats_2026",
+      "programme": "saps_cppe_2026",
+      "nature_document": "communique_selection",
+      "url": "https://anr.fr/actus/details/news/science-avec-et-pour-la-societe-22-laureats-pour-co-construire-les-politiques-publiques-par-lexpe/",
+      "format": "html",
+      "empreinte": "314135b7b141ca0134ca7daf72d96ad3745692a9eed11865a55c519300403824",
+      "observe_initialement_le": "2026-10-14T20:08:23+00:00",
+      "dernier_changement_le": "2026-10-14T20:08:23+00:00",
+      "historique": [],
+      "reference_execution": "https://github.com/fraware/frontiere-institut-interet-public/actions/runs/38629459886",
+      "octets_premiere_capture": 242031,
+      "media_premiere_capture": "text/html"
+    },
+    {
+      "source_id": "anr_saps_selection_2026",
+      "programme": "saps_cppe_2026",
+      "nature_document": "liste_selection",
+      "url": "https://anr.fr/fileadmin/aap/2026/selection/aap-saps-cppe-2026-selection.pdf",
+      "format": "pdf",
+      "empreinte": "26640dec20c134fa2b1898ba0580338d2c34e0f6a58782ef1f827e3adf88d08b",
+      "observe_initialement_le": "2026-10-14T20:08:23+00:00",
+      "dernier_changement_le": "2026-10-14T20:08:23+00:00",
+      "historique": [],
+      "reference_execution": "https://github.com/fraware/frontiere-institut-interet-public/actions/runs/38629459886",
+      "octets_premiere_capture": 305367,
+      "media_premiere_capture": "application/pdf"
+    }
+  ]
 }

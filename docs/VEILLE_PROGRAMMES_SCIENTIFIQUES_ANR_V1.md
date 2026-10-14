@@ -1,6 +1,6 @@
 # Surveillance documentaire des programmes scientifiques ANR — version 1
 
-**Création : 14 octobre 2026.** **État : infrastructure proposée, validation réseau et première proposition d'observations encore à réaliser.**
+**Création : 14 octobre 2026.** **État : procédure intégrée dans `main` ; première observation réseau réussie le 14 octobre à 20:08 UTC (six sources sur six).**
 
 ## Finalité
 
@@ -23,7 +23,7 @@ Le registre `institutionnel/programmes_scientifiques/sources_v1.json` définit e
 
 Le programme `scripts/surveiller_programmes_scientifiques.py` normalise les textes HTML pour calculer une empreinte, ou calcule l'empreinte des octets du PDF. Il conserve uniquement les métadonnées techniques et les signatures SHA-256, sans republier les documents scientifiques.
 
-Le registre `institutionnel/programmes_scientifiques/etat_observations.json` démarre **vide**. Aucune capture HTTP réelle, date de consultation ou empreinte du producteur n'a été inventée pour l'initialiser. La première exécution réussie enregistrera les signatures et leur provenance.
+Le registre `institutionnel/programmes_scientifiques/etat_observations.json` conserve désormais les **six signatures observées** lors de l'[exécution GitHub Actions n° 38629459886](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/38629459886), achevée avec succès le 14 octobre 2026. Les deux PDF ont été effectivement téléchargés et contrôlés par le collecteur. Le registre conserve la date UTC du relevé, la taille, le type de réponse et l'empreinte de chaque document, avec lien de provenance vers l'exécution. Ces signatures constituent une preuve technique de consultation, sans validation automatique du contenu scientifique.
 
 Les états observables sont `premiere_observation`, `identique`, `modification_a_requalifier` et `echec_observation`. Une modification du code HTML peut correspondre à une variation éditoriale sans conséquence scientifique ; l'examen humain de l'acte ou de la liste nouvelle reste obligatoire.
 
