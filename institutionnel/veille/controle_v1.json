@@ -85,9 +85,29 @@
   ],
   "procedures": [
     {
-      "fichier": "surveillance-institutionnelle.yml",
+      "fichier": "captures-notices-pilotes.yml",
+      "retard_max_heures": 240,
+      "criticite": "moyenne"
+    },
+    {
+      "fichier": "catalogues-decp.yml",
+      "retard_max_heures": 48,
+      "criticite": "haute"
+    },
+    {
+      "fichier": "collecte-beauamp.yml",
       "retard_max_heures": 72,
+      "criticite": "haute"
+    },
+    {
+      "fichier": "collecte-besoins-publics.yml",
+      "retard_max_heures": 36,
       "criticite": "critique"
+    },
+    {
+      "fichier": "conservation-boamp-versions.yml",
+      "retard_max_heures": 960,
+      "criticite": "moyenne"
     },
     {
       "fichier": "decouverte-sources.yml",
@@ -95,8 +115,13 @@
       "criticite": "haute"
     },
     {
-      "fichier": "veille-flux-publics.yml",
-      "retard_max_heures": 36,
+      "fichier": "export-boamp-portable.yml",
+      "retard_max_heures": 240,
+      "criticite": "haute"
+    },
+    {
+      "fichier": "index-boamp-historique.yml",
+      "retard_max_heures": 72,
       "criticite": "haute"
     },
     {
@@ -105,19 +130,39 @@
       "criticite": "moyenne"
     },
     {
-      "fichier": "collecte-besoins-publics.yml",
-      "retard_max_heures": 36,
-      "criticite": "critique"
-    },
-    {
-      "fichier": "collecte-beauamp.yml",
-      "retard_max_heures": 72,
+      "fichier": "lot-decp-dgfip.yml",
+      "retard_max_heures": 48,
       "criticite": "haute"
     },
     {
       "fichier": "moissonnage-deliberations-scdl.yml",
       "retard_max_heures": 240,
       "criticite": "moyenne"
+    },
+    {
+      "fichier": "preparer-proposition-referentiel.yml",
+      "retard_max_heures": 72,
+      "criticite": "critique"
+    },
+    {
+      "fichier": "releve-pdfs-municipaux.yml",
+      "retard_max_heures": 960,
+      "criticite": "moyenne"
+    },
+    {
+      "fichier": "sonde-decp-json.yml",
+      "retard_max_heures": 36,
+      "criticite": "haute"
+    },
+    {
+      "fichier": "surveillance-institutionnelle.yml",
+      "retard_max_heures": 72,
+      "criticite": "critique"
+    },
+    {
+      "fichier": "veille-flux-publics.yml",
+      "retard_max_heures": 36,
+      "criticite": "haute"
     }
   ]
 }
