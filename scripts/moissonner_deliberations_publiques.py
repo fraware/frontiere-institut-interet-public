@@ -28,8 +28,8 @@ RESSOURCE_UUID = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0
 RECHERCHES = ("délibérations", "deliberations", "actes réglementaires")
 MAX_OCTETS_META = 3_000_000
 MAX_OCTETS_CSV = 4_000_000
-MAX_DATASETS = 90
-MAX_RESSOURCES_CSV = 15
+MAX_DATASETS = 180
+MAX_RESSOURCES_CSV = 25
 MAX_LIGNES_CSV = 80_000
 MAX_CANDIDATS = 1200
 AGENT = "FRONTIERE-deliberations-publiques/1.0 (donnees ouvertes; contact via depot)"
@@ -117,7 +117,7 @@ def sans_accents(texte: str) -> str:
 
 
 def requete(terme: str, page: int = 1) -> str:
-    if terme not in RECHERCHES or type(page) is not int or page not in (1, 2):
+    if terme not in RECHERCHES or type(page) is not int or page not in (1, 2, 3, 4):
         raise CollecteInvalide("Recherche hors de la sélection autorisée")
     return CATALOGUE + "?" + urlencode({"q": terme, "page": page, "page_size": 50})
 
@@ -233,7 +233,8 @@ def extraire_csv(donnees: bytes, *, jeu: dict, ressource: dict, instant: str) ->
     return trouves, lus
 
 
-def collecter(*, ancien: dict, charger=obtenir, instant: str | None = None,
+def collecter(*, ancien: dict, etat_precedent: dict | None = None,
+             charger=obtenir, instant: str | None = None,
              patienter=time.sleep) -> tuple[dict, dict]:
     """Préserver tous les constats passés lorsque des téléchargements échouent."""
     instant = instant or horodatage()
@@ -249,7 +250,7 @@ def collecter(*, ancien: dict, charger=obtenir, instant: str | None = None,
     pages, echecs = [], []
     tentatives = 0
     for terme in RECHERCHES:
-        for page in (1, 2):
+        for page in (1, 2, 3, 4):
             adresse = requete(terme, page)
             tentatives += 1
             try:
@@ -270,11 +271,23 @@ def collecter(*, ancien: dict, charger=obtenir, instant: str | None = None,
         raise CollecteInvalide("Aucune page de catalogue valide : sorties préservées")
     jeux = selectionner_datasets(pages)
     candidats = [(jeu, res) for jeu in jeux for res in jeu["ressources"]]
+    dernier_etat = etat_precedent or {}
+    if not isinstance(dernier_etat, dict):
+        raise CollecteInvalide("État de progression invalide")
+    position = dernier_etat.get("position_suivante", 0)
+    if type(position) is not int or position < 0:
+        raise CollecteInvalide("Curseur de progression incorrect")
+    # Un inventaire évolutif ne garantit pas la stabilité des positions :
+    # le curseur borne les lots mais ne prouve pas une exhaustivité historique.
+    debut = position % len(candidats) if candidats else 0
+    fin = min(len(candidats), debut + MAX_RESSOURCES_CSV)
+    lot = candidats[debut:fin]
+    suivant = 0 if fin == len(candidats) else fin
     telecharges = 0
     lignes = 0
     nouveaux = 0
     schemas_refuses = 0
-    for jeu, res in candidats[:MAX_RESSOURCES_CSV]:
+    for jeu, res in lot:
         try:
             donnees = charger(res["url"], MAX_OCTETS_CSV)
             telecharges += 1
@@ -308,7 +321,10 @@ def collecter(*, ancien: dict, charger=obtenir, instant: str | None = None,
         "version": "collecte-deliberations-scdl-v1", "controle_le": instant,
         "requetes_catalogue": tentatives, "pages_catalogue_reussies": len(pages),
         "jeux_retenus": len(jeux), "ressources_csv_eligibles": len(candidats),
-        "ressources_csv_examinees": min(len(candidats), MAX_RESSOURCES_CSV),
+        "ressources_csv_examinees": len(lot),
+        "position_initiale": debut,
+        "position_suivante": suivant,
+        "tour_du_releve_termine": bool(candidats) and suivant == 0,
         "ressources_csv_telechargees": telecharges,
         "csv_schemas_refuses": schemas_refuses,
         "lignes_scdl_examinees": lignes, "nouvelles_pistes": nouveaux,
@@ -328,7 +344,10 @@ def main() -> None:
     try:
         ancien = (json.loads(precedent.read_text(encoding="utf-8"))
                   if precedent.exists() else {"version": "pistes-deliberations-v1", "pistes": []})
-        resultat, etat = collecter(ancien=ancien)
+        etat_precedent = args.sortie / "etat_collecte.json"
+        precedent_etat = (json.loads(etat_precedent.read_text(encoding="utf-8"))
+                          if etat_precedent.exists() else None)
+        resultat, etat = collecter(ancien=ancien, etat_precedent=precedent_etat)
         args.sortie.mkdir(parents=True, exist_ok=True)
         for nom, valeur in (("pistes.json", resultat), ("etat_collecte.json", etat)):
             chemin = args.sortie / nom
