@@ -88,7 +88,7 @@ def test_identique_puis_revision_documentaire_sans_interpretation(tmp_path):
                              moment=MAINTENANT)
     assert identique == premier
     assert bilan["modifications_documentaires"] == []
-    modifiee = PAGE.replace(b"statistique", b"nouvelle-etude")
+    modifiee = PAGE.replace(b"traitement", b"transmission")
     revise, bilan2 = lancer(tmp_path, acquerir=lambda src: (
         (modifiee if src["id"] == identifiant else PAGE), "text/html"
     ), moment=MAINTENANT)
