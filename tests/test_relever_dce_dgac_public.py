@@ -33,6 +33,12 @@ def test_validation_et_empreintes_independantes():
     assert all(len(x["sha256"]) == 64 for x in result["documents_pdf"])
 
 
+def test_repertoire_zip_inoffensif_accepte():
+    documents = jeu_valide()
+    documents["dossier/"] = b""
+    assert analyser_archive(construire(documents))["nombre_documents_pdf_controles"] == 2
+
+
 def test_liste_incomplete_refusee():
     with pytest.raises(CollecteRefusee, match="non retrouvées"):
         analyser_archive(construire({"2026-SNARP-001 CCTP.pdf": b"%PDF-1.7\n"}))
