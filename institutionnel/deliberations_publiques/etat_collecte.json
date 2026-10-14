@@ -1,5 +1,5 @@
 {
-  "controle_le": "2026-10-14T05:40:19+00:00",
+  "controle_le": "2026-10-14T05:45:42+00:00",
   "couverture_exhaustive": false,
   "csv_schemas_refuses": 3,
   "documents_primaires_pdf_telecharges": 0,
@@ -52,10 +52,13 @@
   "nouvelles_pistes": 0,
   "pages_catalogue_reussies": 2,
   "pistes_conservees": 0,
+  "position_initiale": 0,
+  "position_suivante": 0,
   "requetes_catalogue": 3,
   "ressources_csv_eligibles": 15,
   "ressources_csv_examinees": 15,
   "ressources_csv_telechargees": 11,
+  "tour_du_releve_termine": true,
   "utilisations_effectives_deduites": 0,
   "version": "collecte-deliberations-scdl-v1"
 }
