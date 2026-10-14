@@ -47,7 +47,7 @@ jobs:
           python -m pip install "pytest>=8,<10" "pypdf>=5,<7"
           python -m pytest -q tests/test_relever_pdfs_municipaux.py tests/test_publication_institutionnelle.py
 
-      - name: Capturer les deux PDF municipaux publics et extraire leurs repères
+      - name: Capturer les trois PDF municipaux publics et extraire leurs repères
         run: python scripts/relever_pdfs_municipaux.py
 
       - name: Publier uniquement les empreintes et les repères de pages
