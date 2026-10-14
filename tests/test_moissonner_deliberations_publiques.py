@@ -72,6 +72,26 @@ def test_filtrage_licence_schema_et_domaine():
     assert len(selectionner_datasets([enveloppe(candidats)])) == 1
 
 
+def test_ressource_externe_passee_uniquement_par_api_tabulaire():
+    rid = "e4582554-7d43-40a7-a883-dca23db2c81b"
+    jeu = {
+        "id": "jeu-deliberations-remote", "title": "Délibérations de collectivités",
+        "license": "lov2", "resources": [
+            {"id": rid, "format": "csv", "url": "https://tiers.test/fichier.csv"},
+        ],
+    }
+    choisis = selectionner_datasets([enveloppe([jeu])])
+    assert len(choisis) == 1
+    url = choisis[0]["ressources"][0]["url"]
+    assert url == (
+        "https://tabular-api.data.gouv.fr/api/resources/" + rid + "/data/csv/"
+    )
+    assert adresse_autorisee(url)
+    assert not adresse_autorisee(
+        "https://tabular-api.data.gouv.fr/api/resources/not-uuid/data/csv/"
+    )
+
+
 def test_champs_et_protection_du_texte_libre():
     pistes, lus = extraire_csv(
         CSV, jeu=JEU, ressource=JEU["ressources"][0], instant="2026-10-14T02:00:00+00:00",
