@@ -174,6 +174,22 @@ def charger_json(chemin: Path, defaut: object) -> object:
         return defaut
 
 
+def classifier_erreur_source(erreur: str) -> str:
+    """Qualifier une erreur d'accès sans conclure à l'indisponibilité publique.
+
+    Un refus HTTP 403 établit seulement que le client utilisé n'a pas
+    obtenu la ressource lors de sa requête. Un 404 ou 5xx ne permet pas
+    davantage de conclure seul à la disparition de la source.
+    """
+    if erreur.startswith("HTTPError: HTTP Error 403:"):
+        return "ACCES_REFUSE_CLIENT_AUTOMATISE"
+    if erreur.startswith("HTTPError: HTTP Error 429:"):
+        return "LIMITATION_TEMPORAIRE_ACCES"
+    if erreur.startswith("HTTPError: HTTP Error 404:"):
+        return "RESSOURCE_NON_TROUVEE_A_CETTE_ADRESSE"
+    return "ECHEC_OBSERVATION_SOURCE"
+
+
 def construire_alertes(ancien: dict, nouveau: dict) -> list[dict]:
     anciens = {item["source_id"]: item for item in ancien.get("sources", [])}
     alertes = []
@@ -186,7 +202,8 @@ def construire_alertes(ancien: dict, nouveau: dict) -> list[dict]:
             alertes.append(
                 {
                     "source_id": source_id,
-                    "type": "SOURCE_INDISPONIBLE",
+                    "type": actuel.get("code_erreur")
+                            or classifier_erreur_source(actuel["erreur"]),
                     "criticite": actuel.get("criticite"),
                     "detail": actuel["erreur"],
                 }
@@ -245,6 +262,7 @@ def surveiller(registre: Path, sortie: Path, alertes_sortie: Path) -> tuple[dict
             item["fraicheur"] = fraicheur(source, observation, date_observation)
         except (HTTPError, URLError, TimeoutError, json.JSONDecodeError, UnicodeDecodeError, OSError) as exc:
             item["erreur"] = f"{type(exc).__name__}: {exc}"
+            item["code_erreur"] = classifier_erreur_source(item["erreur"])
             item["fraicheur"] = {"statut": "ERREUR", "seuil_jours": None, "age_jours": None}
         resultats.append(item)
 
