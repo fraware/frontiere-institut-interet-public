@@ -1,0 +1,179 @@
+{
+  "version": 1,
+  "etat_au": "2026-10-14",
+  "type": "revue_ciblee_de_preuves_publiques",
+  "objet": "DGFiP, traitement statistique des déclarations de succession et dématérialisation des formalités",
+  "source_principale": "institutionnel/programmes_scientifiques/dmtg_statistiques_successorales_senat_2026_v1.json",
+  "perimetre": "Documents publics sur la charge technique, la politique de traitement, les moyens humains annoncés et les calendriers. Aucun document fiscal individuel.",
+  "pieces": [
+    {
+      "id": "fiche_dgfip_decembre_2025",
+      "producteur": "DGFiP, DESF",
+      "date_document": "2025-12",
+      "genre": "offre_de_stage_version_antérieure",
+      "url": "https://www.pass.fonction-publique.gouv.fr/system/files/2025-12/Fiche_stage_otim_26.pdf",
+      "fait": "La fiche d'origine indique environ 300 000 actes à traiter annuellement depuis au moins 2018.",
+      "limite": "Version antérieure accessible dans les résultats documentaires ; ne pas la substituer à la version de février 2026 ni en déduire un volume effectivement traité."
+    },
+    {
+      "id": "fiche_dgfip_fevrier_2026",
+      "producteur": "DGFiP, DESF",
+      "date_document": "2026-02",
+      "genre": "offre_de_stage_version_actualisée",
+      "url": "https://www.pass.fonction-publique.gouv.fr/files/2026-02/Fiche_stage_otim_26%20nouvelle%20version.pdf",
+      "fait": "Version plus récente : 330 000 PDF par an depuis au moins 2018 ; méthodes OCR, expressions régulières, modèles de langage, Python et Polars ; équipes déjà engagées.",
+      "limite": "Volumétrie du stock entrant annoncée, sans volume traité, offre publiée sans preuve d'un recrutement."
+    },
+    {
+      "id": "reponse_ministerielle_mars_2026",
+      "producteur": "Ministère de l'Action et des Comptes publics",
+      "date_document": "2026-03-10",
+      "genre": "reponse_parlementaire",
+      "url": "https://questions.assemblee-nationale.fr/q17/17-11677QE.htm",
+      "fait": "Enrichissement BNDP en cours ; téléprocédure des dons manuels obligatoire depuis le 1er janvier ; essais de télédéclaration notariale des successions sans droits ; déploiement progressif envisagé au second semestre.",
+      "limite": "Prévision de calendrier et essais rapportés en mars, aucun constat de généralisation postérieure."
+    },
+    {
+      "id": "rapport_senat_juin_2026",
+      "producteur": "Sénat, commission des finances",
+      "date_document": "2026-06-17",
+      "genre": "rapport_d_information",
+      "url": "https://www.senat.fr/rap/r25-760/r25-760_mono.html",
+      "fait": "0,5 ETP affecté au chantier au moment du rapport, un ETP supplémentaire attendu à partir de septembre ; échéance d'administration de diffusion de microdonnées en 2028, recommandations d'accélération et horizon de couverture des actes en 2029.",
+      "limite": "Effectifs et dates rapportés au printemps-été 2026 ; leur réalisation ultérieure n'est pas établie."
+    },
+    {
+      "id": "offre_dp5_moe_septembre_2026",
+      "producteur": "DGFiP, direction des projets de l'enregistrement et de la publicité foncière (DP5)",
+      "date_document": "2026-09-22",
+      "genre": "offre_emploi_moa_moe_numerique",
+      "url": "https://www.passerelles.economie.gouv.fr/offre-de-emploi/emploi-ipfip-ap-dp5-responsable-d-equipe-moe-amoa-d-un-grand-projet-numerique-h-f_32951.aspx",
+      "fait": "Offre de responsable d'équipe MOE/AMOA, emploi déclaré vacant. Le descriptif de la direction mentionne e-Enregistrement, futur canal de transmission des déclarations de succession des notaires.",
+      "limite": "Recrutement annoncé et présentation générale d'une direction numérique ; aucun lien établi avec l'ETP prévu pour DESF, ni avec la production DMTG 2.0."
+    },
+    {
+      "id": "offre_dp5_moa_septembre_2026",
+      "producteur": "DGFiP, direction des projets de l'enregistrement et de la publicité foncière (DP5)",
+      "date_document": "2026-09-23",
+      "genre": "offre_emploi_maitrise_ouvrage",
+      "url": "https://passerelles.economie.gouv.fr/offre-de-emploi/emploi-ipfip-ap-dp5-responsable-d-equipe-moa-d-un-grand-projet-numerique-h-f_32948.aspx",
+      "fait": "Offre de responsable d'équipe de maîtrise d'ouvrage, emploi déclaré vacant ; son contexte mentionne l'acquisition dématérialisée de déclarations successorales à venir.",
+      "limite": "Poste dans une direction de projets différente du service DESF, aucune preuve d'embauche ou d'exploitation du dispositif notarial."
+    },
+    {
+      "id": "dgfip_stats_recettes_2026",
+      "producteur": "DGFiP, Département des études et statistiques fiscales",
+      "date_document": "2026-06",
+      "genre": "bulletin_statistiques_agregees",
+      "url": "https://www.impots.gouv.fr/sites/default/files/media/9_statistiques/0_etudes_et_stats/0_publications/dgfip_statistiques/2026/num48_06/dgfip_stat_48_2026.pdf",
+      "fait": "Bulletin de recettes fiscales du premier trimestre 2026 comportant des montants agrégés de droits de mutation à titre gratuit.",
+      "limite": "La publication d'agrégats de recettes ne représente ni des microdonnées successorales individuelles, ni une nouvelle enquête DMTG 2.0."
+    }
+  ],
+  "versionnage_charges_annuelles": [
+    {
+      "id_piece": "fiche_dgfip_decembre_2025",
+      "volume_annuel_estime": 300000,
+      "statut": "estimation_de_la_charge",
+      "effectivement_traite": null
+    },
+    {
+      "id_piece": "fiche_dgfip_fevrier_2026",
+      "volume_annuel_estime": 330000,
+      "statut": "estimation_de_la_charge",
+      "effectivement_traite": null
+    }
+  ],
+  "jalons": [
+    {
+      "id": "donations_manuelles_janvier_2026",
+      "date": "2026-01-01",
+      "type": "mesure_deja_en_vigueur_selon_reponse_ministerielle",
+      "piece_id": "reponse_ministerielle_mars_2026",
+      "etat": "teleprocedure_dons_manuels_obligatoire",
+      "autre_processus": "n_etablit_pas_la_dematerialisation_des_successions"
+    },
+    {
+      "id": "traitement_bndp_mars_2026",
+      "date": "2026-03-10",
+      "type": "travaux_en_cours",
+      "piece_id": "reponse_ministerielle_mars_2026",
+      "etat": "enrichissement_patrimonial_en_cours",
+      "autre_processus": "aucun_volume_traite_publie"
+    },
+    {
+      "id": "effectif_rapport_juin_2026",
+      "date": "2026-06-17",
+      "type": "moyens_constates_dans_le_rapport",
+      "piece_id": "rapport_senat_juin_2026",
+      "etat": "0_5_etp_concerne_le_chantier",
+      "autre_processus": "ne_decrit_pas_les_effectifs_totaux_du_desf"
+    },
+    {
+      "id": "renfort_septembre_2026",
+      "date": "2026-09",
+      "type": "annonce_de_renfort",
+      "piece_id": "rapport_senat_juin_2026",
+      "etat": "un_etp_supplementaire_annonce_non_confirme",
+      "autre_processus": "aucune_piece_individuelle_d_affectation"
+    },
+    {
+      "id": "pilotage_declarations_successions_2026",
+      "date": "2026-S2",
+      "type": "deploiement_envisage",
+      "piece_id": "reponse_ministerielle_mars_2026",
+      "etat": "tests_notariaux_et_deploiement_progressif_prevus",
+      "autre_processus": "service_complet_non_etabli"
+    },
+    {
+      "id": "diffusion_microdonnees_2028",
+      "date": "2028",
+      "type": "objectif_administratif_rapporte",
+      "piece_id": "rapport_senat_juin_2026",
+      "etat": "diffusion_cible_pour_2028",
+      "autre_processus": "pas_un_resultat_publié_en_2026"
+    },
+    {
+      "id": "couverture_numerisation_2029",
+      "date": "2029",
+      "type": "recommandation_parlementaire",
+      "piece_id": "rapport_senat_juin_2026",
+      "etat": "couverture_complete_des_actes_recommandee_pour_2029",
+      "autre_processus": "distinct_du_calendrier_des_microdonnees"
+    }
+  ],
+  "recherches_documentaires_negatives": [
+    {
+      "question": "L'ETP supplémentaire attendu en septembre 2026 a-t-il été effectivement affecté au DESF ?",
+      "conclusion": "non_etabli_par_les_documents_publics_recenses",
+      "date_verification": "2026-10-14"
+    },
+    {
+      "question": "Le stage proposé en mai 2026 a-t-il été pourvu ?",
+      "conclusion": "non_etabli_par_les_documents_publics_recenses",
+      "date_verification": "2026-10-14"
+    },
+    {
+      "question": "Quel nombre de déclarations a été traité avec qualité statistique contrôlée ?",
+      "conclusion": "non_etabli_par_les_documents_publics_recenses",
+      "date_verification": "2026-10-14"
+    },
+    {
+      "question": "Une série de microdonnées successorales postérieure à 2010 a-t-elle été publiée ?",
+      "conclusion": "aucune_piece_de_diffusion_comparable_retrouvee_au_cours_de_la_recherche",
+      "date_verification": "2026-10-14"
+    },
+    {
+      "question": "Le téléservice des successions notariales a-t-il été effectivement généralisé au second semestre 2026 ?",
+      "conclusion": "non_etabli_par_les_documents_publics_recenses",
+      "date_verification": "2026-10-14"
+    }
+  ],
+  "regle_interpretation": "Ne pas convertir une offre d'emploi en agent recruté, une volumétrie de documents entrants en documents traités, une prévision en résultat ni une mission de la DP5 en ETP affecté au DESF.",
+  "conclusion": "Difficulté technique documentée avec équipe permanente existante et tâches déjà commencées. L'effet du renfort, la production opérationnelle et le déficit résiduel demeurent des questions ouvertes.",
+  "distinction_statistique": {
+    "agregats_fiscaux_2026": "publies_dans_bulletin_dgfip_stats",
+    "microdonnees_successions_nouvelle_serie": "publication_comparable_non_retrouvee",
+    "interpretation": "Présence de statistiques de recettes sans preuve de reconstitution des tableaux microéconomiques et de l'ensemble des déclarations notariales."
+  }
+}
