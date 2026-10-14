@@ -44,7 +44,15 @@ Il s'agit d'une **capacité institutionnelle existante** et de postes déclarés
 
 La [version en vigueur de l'article 802 bis du code général des impôts](https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069577/LEGISCTA000006197329/) décrit les conditions légales de télédéclaration par notaire mandaté. Elle établit le **cadre juridique**, sans fournir la preuve de disponibilité technique générale du service en octobre 2026.
 
-## 5. Diagnostic scientifique de FRONTIÈRE
+## 5. Production statistique existante : recettes agrégées et données individuelles distinctes
+
+La DGFiP publie déjà des **résultats agrégés de recettes fiscales** relatives aux droits de mutation à titre gratuit. Le [bulletin DGFiP Statistiques n° 48 de juin 2026](https://www.impots.gouv.fr/sites/default/files/media/9_statistiques/0_etudes_et_stats/0_publications/dgfip_statistiques/2026/num48_06/dgfip_stat_48_2026.pdf) contient des montants de DMTG dans les tableaux de recettes du premier trimestre 2026.
+
+Ces montants n'apportent pas la granularité des **microdonnées de successions** dont le rapport sénatorial souligne l'absence de diffusion comparable depuis 2010. Les données agrégées décrivent des recettes fiscales ; les microdonnées permettraient des études détaillées sur les caractéristiques des successions, les transmissions, les valeurs patrimoniales et les droits dus.
+
+L'absence de nouvelle enquête DMTG comparable ne signifie donc pas **absence de statistiques DMTG en général**. Cette distinction est contrôlée dans le registre et dans les tests de provenance.
+
+## 6. Diagnostic scientifique de FRONTIÈRE
 
 Le cas atteste un travail technique engagé dans une organisation publique préexistante et des moyens modestes consacrés à un chantier particulier au moment du rapport parlementaire. Plusieurs explications restent recevables : capacité de traitement insuffisante pour les volumes annoncés, informations entrantes difficiles à structurer, limites d'infrastructure, arbitrages de moyens et difficultés d'accès ou de gouvernance des données.
 
