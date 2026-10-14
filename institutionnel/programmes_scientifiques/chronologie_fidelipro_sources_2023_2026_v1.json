@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "etat_au": "2026-10-14",
+  "id": "fidelipro_programme_statistique_et_candidature_2026",
+  "objet": "Appariements de données fiscales relatives à la détention de patrimoine professionnel, préparation de statistiques répétables et articulation avec l'enquête Histoire de vie et Patrimoine",
+  "statut_global": "travaux_publics_documentes_et_poursuite_annoncee_sans_preuve_de_production_periodique",
+  "sources": [
+    {
+      "id": "ipp_note92_2023",
+      "date_document": "2023-06",
+      "producteur": "Institut des politiques publiques",
+      "type": "publication_de_recherche",
+      "url": "https://www.ipp.eu/publication/note-ipp-n92-quels-impots-les-milliardaires-paient-ils/",
+      "contenu_probant": "Méthode de rapprochement des données d'actionnaires de sociétés et des déclarations fiscales de particuliers, sur l'année 2016, avec conditions de secret statistique et accès sécurisé."
+    },
+    {
+      "id": "cnis_programme_2024",
+      "date_document": "2024",
+      "producteur": "Conseil national de l'information statistique (programme de l'Insee)",
+      "type": "programmation_statistique",
+      "url": "https://www.cnis.fr/wp-content/uploads/2024/09/programme-de-travail-des-producteurs-de-statistiques-2024-commission-dqs.pdf",
+      "page_pdf_zero": 32,
+      "contenu_probant": "Table des appariements utilisant le code statistique non signifiant, prévus en 2024 ; Fidélipro et détention de patrimoine professionnel ; liasses DGFiP, Fideli Insee et RBE Inpi."
+    },
+    {
+      "id": "cnis_programme_2025",
+      "date_document": "2025",
+      "producteur": "Conseil national de l'information statistique (programme de l'Insee)",
+      "type": "programmation_statistique",
+      "url": "https://www.cnis.fr/wp-content/uploads/2025/05/programme-de-la-statistique-publique-2025-commission-demographie-et-questions-sociales.pdf",
+      "page_pdf_zero": 34,
+      "contenu_probant": "Appariements annoncés pour 2025 liant liasses fiscales 2020 à 2023 à Fideli pour Fidélipro ; autres rapprochements prévus avec le RBE et l'enquête HVP."
+    },
+    {
+      "id": "senat_rapport760_2026",
+      "date_document": "2026-06-17",
+      "producteur": "Sénat, commission des finances",
+      "type": "rapport_parlementaire_et_reponse_insee",
+      "url": "https://www.senat.fr/rap/r25-760/r25-760_mono.html",
+      "passage": "Encadré « Un exemple de collaboration étroite du service statistique public et de chercheurs, au sujet du patrimoine professionnel »",
+      "contenu_probant": "Insee : projet Fidélipro en élaboration, données 2020 et 2023, articulation avec l'enquête HVP prévue en 2029 ; réponse commune Insee-DESF-IPP à un appel ANR."
+    },
+    {
+      "id": "assemblee_rapport3056_2026",
+      "date_document": "2026-07-08",
+      "producteur": "Assemblée nationale, commission d'enquête",
+      "type": "rapport_parlementaire",
+      "url": "https://www.assemblee-nationale.fr/dyn/docs/RAPPANR5L17B3056-t1.raw",
+      "passage": "Section « Mise en œuvre d'une base de données relative au patrimoine professionnel »",
+      "contenu_probant": "Rappelle la candidature DESF-DGFiP, Insee, IPP à SAPS–CPPE 2026 pour pérenniser les appariements ; évoque au conditionnel un financement ANR."
+    }
+  ],
+  "jalons": [
+    {
+      "id": "resultat_ipp_2016_publie_2023",
+      "type": "travail_scientifique_realise_distinct_de_fidelipro",
+      "date_evenement": "2023-06",
+      "source_id": "ipp_note92_2023",
+      "statut": "publication_scientifique_documentee",
+      "qualification": "L'étude IPP utilise des données de 2016 ; sa publication ne démontre pas une production répétée de Fidélipro."
+    },
+    {
+      "id": "appariement_fidelipro_2024",
+      "type": "travail_prevu",
+      "date_evenement": "2024",
+      "source_id": "cnis_programme_2024",
+      "statut": "programme_de_travail",
+      "qualification": "Prévision de traitement et de rapprochement entre fichiers ; exécution non établie par la programmation seule."
+    },
+    {
+      "id": "appariement_fidelipro_2025",
+      "type": "travail_prevu",
+      "date_evenement": "2025",
+      "source_id": "cnis_programme_2025",
+      "statut": "programme_de_travail",
+      "qualification": "Données 2020 à 2023 concernées ; réalisation effective de chaque rapprochement non établie par cette source."
+    },
+    {
+      "id": "etat_fidelipro_juin_2026",
+      "type": "etat_decrit_par_producteur",
+      "date_evenement": "2026-06-17",
+      "source_id": "senat_rapport760_2026",
+      "statut": "projet_en_elaboration_d_apres_reponse_insee",
+      "qualification": "Le rapport identifie un projet existant en cours d'élaboration ; l'entrée en production périodique n'est pas déclarée."
+    },
+    {
+      "id": "candidature_anr_2026",
+      "type": "candidature_documentee",
+      "date_evenement": "2026",
+      "source_id": "assemblee_rapport3056_2026",
+      "statut": "candidature_signalee",
+      "qualification": "La candidature est relatée le 8 juillet ; la date propre du dépôt de la candidature et son résultat restent inconnus."
+    },
+    {
+      "id": "hvp_cible_2029",
+      "type": "echeance_previsionnelle",
+      "date_evenement": "2029",
+      "source_id": "senat_rapport760_2026",
+      "statut": "objectif_pour_future_collecte",
+      "qualification": "Calendrier annoncé pour l'enquête HVP, sans résultat de 2029 déjà observé."
+    }
+  ],
+  "organismes_mentions": [
+    "Insee",
+    "Département des études et statistiques fiscales (DGFiP)",
+    "Institut des politiques publiques"
+  ],
+  "processus_documentes": [
+    "appariement_fiscal",
+    "statistique_publique",
+    "protection_donnees_individuelles",
+    "recherche_cooperative"
+  ],
+  "inconnus": [
+    "statut_de_selection_dossier_anr",
+    "montant_attribue",
+    "convention_anr",
+    "equipe_operative_fidelipro",
+    "premiere_production_periodique",
+    "coût_de_production",
+    "delai_avant_usage_utile"
+  ],
+  "non_assimilation": "Fidélipro Insee, la base de recherche BADS2A utilisée par l'IPP pour 2016, et la candidature ANR doivent conserver des identités distinctes ; une continuité de méthode est documentée sans preuve d'identité juridique de projet.",
+  "donnees_personnelles": "Aucun fichier fiscal individuel n'est collecté ou dupliqué dans FRONTIÈRE.",
+  "conclusion_limitee": "Progression documentaire et programmation publique établies sur plusieurs années. L'intégration effective, la périodicité et la cause précise des difficultés ne sont pas établies."
+}

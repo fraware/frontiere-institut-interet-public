@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "etat_au": "2026-10-14",
+  "id": "dmtg_2_0_dgfip_statistiques_successorales_2026",
+  "nature": "difficulte_documentee_de_capacite_statistique_publique_dans_un_rapport_du_senat",
+  "source": {
+    "producteur": "Sénat, commission des finances",
+    "rapport": "Rapport d'information n° 760 (2025-2026), déposé le 17 juin 2026",
+    "date_source": "2026-06-17",
+    "url": "https://www.senat.fr/rap/r25-760/r25-760_mono.html",
+    "sections": [
+      "C. Complexe, le patrimoine des plus fortunés...",
+      "II. Enfin achever la numérisation des déclarations..."
+    ],
+    "passages": "DMTG 2.0 : enquête successorale, moyens du DESF, recommandation n° 2 et recommandation n° 3."
+  },
+  "organisme_concerne": "DGFiP, Département des études statistiques et fiscales (DESF)",
+  "besoin_precis": "Relancer une production statistique exploitable sur les transmissions patrimoniales et construire un traitement de déclarations successorales numériques.",
+  "donnees_historiques": {
+    "annees_enquetes_dmtg": [
+      1994,
+      2001,
+      2006,
+      2010
+    ],
+    "derniere_enquete_dmtg_rapportee": 2010,
+    "etat_decrit_2026": "Aucune nouvelle diffusion de microdonnées statistiques équivalentes depuis 2010 selon le rapport sénatorial.",
+    "limitations": "Les anciennes enquêtes utilisaient une saisie manuelle et un échantillon départemental ; le rapport questionne la représentativité."
+  },
+  "moyens_rapportes": {
+    "etp_constates_au_rapport": 0.5,
+    "perimetre": "ETP indiqué pour le chantier de traitement des déclarations successorales évoqué dans le rapport, sans généralisation à l'ensemble des effectifs DESF.",
+    "etp_additionnel_annonce": 1,
+    "date_annoncee": "2026-09",
+    "realisation_de_l_annonce": "non_verifiee",
+    "description_source": "Le rapport de juin 2026 annonce un ETP supplémentaire d'analyste des données à partir de septembre 2026.",
+    "interdiction_inference": "Ne pas annoncer 1,5 ETP comme effectif effectivement constaté en octobre 2026."
+  },
+  "obstacles_documentes": [
+    "donnees_de_succession_non_structurées",
+    "traitement_historique_manuel",
+    "systèmes_de_dematerialisation_inacheves",
+    "besoin_de_developpement_logiciel_pour_contenu_notarial",
+    "effectifs_identifies_comme_limités_pour_le_chantier"
+  ],
+  "recommandations_parlementaires": [
+    {
+      "numero": 2,
+      "statut": "proposition_du_rapport",
+      "objet": "Rétablir une enquête DMTG 2.0 et reconstituer les statistiques manquantes depuis 2010."
+    },
+    {
+      "numero": 3,
+      "statut": "proposition_du_rapport",
+      "objet": "Accélérer la numérisation des déclarations de successions et rendre le module statistique opérationnel."
+    },
+    {
+      "statut": "proposition_du_rapport",
+      "objet": "Redéployer des effectifs existants au sein des ministères économiques et financiers vers le DESF pour cette mission."
+    }
+  ],
+  "reponses_concurrentes_a_etudier": [
+    "renforts_d_equipes_internes",
+    "systemes_d_information_et_donnees_structurées",
+    "budget_de_numerisation_durable",
+    "assistance_scientifique_temporaire",
+    "prestations_existantes_et_cooperations_publiques"
+  ],
+  "non_etablis": [
+    "recrutement_effectif_en_septembre_2026",
+    "premiers_fichiers_statistiques_produits",
+    "cout_du_retard",
+    "duree_de_mobilisation_de_competences_externes",
+    "effet_causal_d_une_nouvelle_institution",
+    "enquete_dmtg_2_0_formellement_lancee"
+  ],
+  "relation_avec_fidelipro": "cas_different_malgre_un_service_statistique_concerne_et_des_sujets_patrimoniaux_voisins",
+  "qualification_provisoire": "chantier_technique_actif_et_besoin_de_competences_specifiques_documentes_par_dgfip_et_senat; effectifs_du_chantier_limites_selon_le_rapport; aucune_preuve_de_penurie_nationale",
+  "hypotheses_a_departager": [
+    "capacite_d_analyse",
+    "structuration_et_acces_aux_donnees",
+    "priorisation_budgétaire_et_des_moyens",
+    "architecture_et_maturite_du_systeme_d_information"
+  ],
+  "sources_complementaires": [
+    {
+      "id": "dgfip_offre_stage_traitement_dmtg_2026",
+      "nature": "fiche_officielle_offre_de_stage",
+      "date_publication_documentaire": "2026-02",
+      "source": "DGFiP, DESF, publiée sur le portail officiel des stages de la fonction publique",
+      "url": "https://www.pass.fonction-publique.gouv.fr/files/2026-02/Fiche_stage_otim_26%20nouvelle%20version.pdf",
+      "pages_pdf_zero": [
+        1,
+        2
+      ],
+      "limite": "Offre de stage publiée, sans attestation de recrutement effectif ni traitement achevé."
+    },
+    {
+      "id": "reponse_ministerielle_question_11677_2026",
+      "nature": "reponse_ministerielle_ecrite",
+      "date_publication": "2026-03-10",
+      "source": "Ministère de l'Action et des Comptes publics, réponse à la question écrite n° 11677",
+      "url": "https://questions.assemblee-nationale.fr/q17/17-11677QE.htm",
+      "limite": "Travaux d'enrichissement de la base patrimoniale en cours et expérimentations annoncées, sans validation de leur finalisation."
+    }
+  ],
+  "faits_complementaires": {
+    "effectif_total_desf_renseigne_par_offre": "un_peu_plus_de_40_agents",
+    "perimetre_effectif_total": "Effectif global du DESF décrit dans l'offre officielle, distinct des moyens d'un demi ETP rapportés pour le chantier successoral.",
+    "volume_pdfs_par_an_estime": 330000,
+    "periode_volume_decrite": "depuis_au_moins_2018",
+    "statut_volume": "charge_de_documents_annoncee_dans_la_description_du_poste; pas_un_volume_effectivement_traite",
+    "activite_preparatoire": "les_equipes_du_desf_ont_deja_commence_les_travaux_selon_la_fiche_de_stage",
+    "competences_recherchees": [
+      "extraction_documents_numerises",
+      "reconnaissance_optique_de_caracteres",
+      "expressions_regulieres",
+      "modeles_de_langage",
+      "modeles_multimodaux",
+      "python",
+      "polars",
+      "optimisation_logicielle",
+      "automatisation_de_traitement"
+    ],
+    "stage_prevu": {
+      "debut_annonce": "2026-05",
+      "duree_mois": 6,
+      "contrat_effectivement_pourvu": "non_etabli"
+    },
+    "reponse_ministerielle": {
+      "date": "2026-03-10",
+      "etat": "enrichissement_des_donnees_successorales_en_cours",
+      "donations_manuelles": "teleprocedure_obligatoire_depuis_2026-01-01_selon_le_ministere",
+      "transmission_successions": "tests_en_cours_et_deploiement_progressif_prevus_pour_second_semestre_2026",
+      "etat_deploiement_reel_en_octobre": "non_verifie"
+    }
+  }
+}
