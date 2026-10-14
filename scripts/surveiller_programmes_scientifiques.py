@@ -109,25 +109,59 @@ def obtenir(source: dict) -> tuple[bytes, str]:
 
 
 class TextePage(HTMLParser):
-    """Extraire le texte sans scripts, styles ni éléments interactifs."""
+    """Extraire le corps éditorial en ignorant menus, scripts et pied de page.
+
+    Lorsque <article> ou <main> est présent, privilégier ce texte. Un repli
+    vers le contenu restant évite d'exiger une structure HTML particulière.
+    """
+
+    EXCLUS = frozenset({"script", "style", "noscript", "svg", "nav", "footer", "header"})
 
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
         self.exclus = 0
+        self.main = 0
+        self.article = 0
         self.morceaux: list[str] = []
+        self.contenu_main: list[str] = []
+        self.contenu_article: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list) -> None:
-        if tag in {"script", "style", "noscript", "svg"}:
+        if tag in self.EXCLUS:
             self.exclus += 1
+        if tag == "main":
+            self.main += 1
+        if tag == "article":
+            self.article += 1
 
     def handle_endtag(self, tag: str) -> None:
-        if tag in {"script", "style", "noscript", "svg"} and self.exclus:
+        if tag in self.EXCLUS and self.exclus:
             self.exclus -= 1
+        if tag == "main" and self.main:
+            self.main -= 1
+        if tag == "article" and self.article:
+            self.article -= 1
 
     def handle_data(self, data: str) -> None:
-        if not self.exclus and data.strip():
-            self.morceaux.append(data)
+        if self.exclus or not data.strip():
+            return
+        self.morceaux.append(data)
+        if self.main:
+            self.contenu_main.append(data)
+        if self.article:
+            self.contenu_article.append(data)
 
+    def texte_utile(self) -> str:
+        """Conserver le segment substantiel le plus spécifique."""
+        for fragments in (
+            self.contenu_article, self.contenu_main, self.morceaux
+        ):
+            normalise = " ".join(
+                unicodedata.normalize("NFKC", " ".join(fragments)).split()
+            )
+            if len(normalise) >= 80:
+                return normalise
+        raise SurveillanceInvalide("Page insuffisamment informative")
 
 def empreinte_document(contenu: bytes, format_source: str) -> str:
     """Calculer un condensé de PDF brut ou de texte HTML normalisé."""
@@ -142,12 +176,7 @@ def empreinte_document(contenu: bytes, format_source: str) -> str:
             raise SurveillanceInvalide("Page non décodable en UTF-8") from exc
         analyseur = TextePage()
         analyseur.feed(texte)
-        normalise = " ".join(
-            unicodedata.normalize("NFKC", " ".join(analyseur.morceaux)).split()
-        )
-        if len(normalise) < 80:
-            raise SurveillanceInvalide("Page insuffisamment informative")
-        matiere = normalise.encode("utf-8")
+        matiere = analyseur.texte_utile().encode("utf-8")
     else:
         raise SurveillanceInvalide("Format de contenu inconnu")
     return hashlib.sha256(matiere).hexdigest()
