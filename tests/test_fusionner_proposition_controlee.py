@@ -94,6 +94,7 @@ def test_reessaie_uniquement_la_concurrence_de_base():
         "fraware/frontiere-institut-interet-public", "deliberations", BRANCHE, SHA,
         verifier=lambda: operations.append("controle"),
         fusionner=lambda: operations.append("fusion") or next(resultats),
+        confirmer=lambda: True,
         attendre=lambda secondes: operations.append(("attente", secondes)),
     )
     assert numero == 2
@@ -107,6 +108,7 @@ def test_interruption_immediate_sur_autre_echec():
             "fraware/frontiere-institut-interet-public", "deliberations", BRANCHE, SHA,
             verifier=lambda: operations.append("controle"),
             fusionner=lambda: retour(1, "permission denied"),
+            confirmer=lambda: pytest.fail("Aucune fusion à confirmer"),
             attendre=lambda _: pytest.fail("Une nouvelle tentative est interdite"),
         )
     assert operations == ["controle"]
@@ -119,6 +121,7 @@ def test_trois_tentatives_maximales():
             "fraware/frontiere-institut-interet-public", "deliberations", BRANCHE, SHA,
             verifier=lambda: nb.append("controle"),
             fusionner=lambda: retour(1, CHANGEMENT_BASE),
+            confirmer=lambda: pytest.fail("Aucune fusion à confirmer"),
             attendre=lambda _: None,
         )
     assert len(nb) == 3
@@ -133,6 +136,7 @@ def test_nouvelle_interference_interrompt_la_seconde_tentative():
                 (_ for _ in ()).throw(err) if (err := next(essais)) else None
             ),
             fusionner=lambda: retour(1, CHANGEMENT_BASE),
+            confirmer=lambda: pytest.fail("Aucune fusion à confirmer"),
             attendre=lambda _: None,
         )
 
@@ -160,3 +164,14 @@ def test_examen_integration_consulte_la_base_actuelle(monkeypatch, tmp_path: Pat
     )
     assert any(x[:3] == ("git", "fetch", "--quiet") for x in appels)
     assert any(x[:3] == ("git", "diff", "--no-renames") for x in appels)
+
+
+def test_succes_de_commande_ne_vaut_pas_preuve_de_fusion():
+    with pytest.raises(PublicationRefusee, match="sans preuve"):
+        fusionner_avec_reessais(
+            "fraware/frontiere-institut-interet-public", "deliberations", BRANCHE, SHA,
+            verifier=lambda: None,
+            fusionner=lambda: retour(),
+            confirmer=lambda: False,
+            attendre=lambda _: pytest.fail("Une commande acceptée ne se réessaie pas"),
+        )
