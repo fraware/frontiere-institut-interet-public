@@ -51,6 +51,18 @@ Pour la relance de ce chantier, le Sénat rapporte que le Département des étud
 
 Ces chiffres portent sur **la mission de traitement des informations successorales décrite dans le passage**, sans représenter un effectif total du DESF.
 
+### Pièces directes de l'administration : volume, compétences et travaux engagés
+
+Une [fiche officielle de stage de la DGFiP, publiée sur le portail de la fonction publique en 2026](https://www.pass.fonction-publique.gouv.fr/files/2026-02/Fiche_stage_otim_26%20nouvelle%20version.pdf), décrit le travail technique du DESF sur les statistiques successorales. Elle présente le DESF comme un service de **plus de 40 agents au total**, dont les compétences couvrent l'informatique, l'analyse de données et la fiscalité. Elle indique que les documents à extraire représentent **environ 330 000 PDF par an depuis au moins 2018**, et précise que les équipes ont **déjà commencé** ce travail.
+
+La mission proposée à un stagiaire à partir de mai 2026 pour six mois comprend l'étude des méthodes d'extraction automatique des actes notariaux, leur optimisation pour les volumes indiqués et la préparation d'un traitement automatisé. Les compétences citées incluent Python, la bibliothèque Polars, la reconnaissance optique de caractères, les expressions régulières, les modèles de langage et les modèles multimodaux. Le texte documente **une recherche concrète de compétences techniques**. Il ne confirme ni l'arrivée d'un stagiaire, ni un renfort effectif de l'équipe, ni 330 000 PDF déjà traités.
+
+La distinction des deux chiffres d'effectif est essentielle : les **plus de 40 agents** décrivent le DESF dans son ensemble ; le **demi-équivalent temps plein** mentionné par le Sénat porte sur la part des moyens mobilisés pour **ce chantier particulier** à la date du rapport. Il serait incorrect de déduire que l'ensemble du DESF ne comprend qu'un demi-agent.
+
+Une [réponse officielle du ministère de l'Action et des Comptes publics à la question écrite n° 11677, publiée le 10 mars 2026](https://questions.assemblee-nationale.fr/q17/17-11677QE.htm), confirme que l'enrichissement des informations sur les successions était en cours. Elle distingue une téléprocédure pour les dons manuels devenue obligatoire en janvier 2026 des **tests de transmission dématérialisée des déclarations de succession**, avec un déploiement progressif alors prévu au second semestre 2026. Ces circuits administratifs et leurs dates doivent rester séparés.
+
+L'ensemble atteste que la DGFiP a engagé des travaux préparatoires et identifié des besoins d'ingénierie. **La mise en production de l'enquête DMTG 2.0, le recrutement lié à l'offre et le renfort annoncé pour septembre 2026 restent non vérifiés.**
+
 ### Intervention envisagée et alternatives institutionnelles
 
 Le Sénat recommande une « enquête DMTG 2.0 », un travail d'extraction et de traitement des déclarations de succession numérisées et le renforcement des moyens de l'administration. Il préconise notamment un **redéploiement d'effectifs existants**. Ses recommandations constituent des options proposées, sans preuve de leur exécution.
@@ -67,7 +79,7 @@ Cette enquête est **séparée de Fidélipro**. Le rapprochement thématique aut
 | Fidélipro en 2024 et 2025 | Présence dans les programmes d'appariement du Cnis | Réalisation de l'ensemble des opérations programmées |
 | Fidélipro en juin 2026 | Projet d'élaboration décrit par l'Insee au Sénat | Déploiement régulier et effet opérationnel |
 | Candidature ANR | Réponse commune Insee, DGFiP et IPP décrite dans deux rapports parlementaires | Sélection, convention, attribution d'aide |
-| DMTG 2.0 | Absence de nouvelle diffusion comparable depuis 2010, selon le Sénat ; moyens rapportés en juin 2026 | Renfort de septembre effectivement réalisé et relance achevée |
+| DMTG 2.0 | Dernière enquête DMTG en 2010 ; travaux de traitement déjà engagés selon la DGFiP ; volume estimé de 330 000 PDF/an ; moyens rapportés au Sénat en juin 2026 | Stage et renfort de septembre effectivement pourvus ; traitement industriel achevé et nouvelle série diffusée |
 
 ## IV. Décision empirique à préparer
 
