@@ -11,6 +11,12 @@ Observer les publications officielles relatives à deux dispositifs ANR importan
 
 Le [répertoire officiel des dernières listes de projets sélectionnés](https://anr.fr/fr/projets-finances-et-impact/projets-finances/dernieres-listes-de-projets-selectionnes/) est le cinquième point de surveillance. Il sert à détecter des changements de publications et non à attribuer automatiquement un nouveau statut à un projet.
 
+## Chronologie documentaire préqualifiée
+
+Un fichier distinct, `institutionnel/programmes_scientifiques/chronologie_documentaire_v1.json`, conserve **six événements** explicitement datés à partir des pages officielles : ouverture, clôture et annonce de sélection pour chacun des deux dispositifs. Il conserve les URL primaires par événement et sépare les étapes non établies, notamment l'attribution financière individuelle, la notification, l'exécution et le premier usage administratif. Pour SAPS–CPPE, le communiqué ANR du 29 juin annonce 22 projets retenus. Pour ANR–NRF, la liste nationale de sélection indique la publication du 13 octobre ; aucun nombre de projets ni financement n'est déduit automatiquement de l'index.
+
+Ce fichier scientifique est modifié uniquement dans une contribution examinée, **jamais par le collecteur de signatures**. Les futures modifications de pages indiquent les pièces à relire, sans modifier cette chronologie par automatisme.
+
 ## Périmètre et garanties
 
 Le registre `institutionnel/programmes_scientifiques/sources_v1.json` définit exactement cinq URL officielles, leurs programmes, leurs natures documentaires et les formats attendus. La liste est fermée ; seuls `anr.fr` et `www.anr.fr` sont admis. Les accès imposent HTTPS, contrôlent les redirections et limitent chaque réponse à trois millions d'octets. Les contenus acceptés sont des pages HTML et un PDF dont la signature est vérifiée.
