@@ -31,7 +31,7 @@ Les états observables sont `premiere_observation`, `identique`, `modification_a
 
 ## Procédure programmée
 
-La procédure `.github/workflows/veille-programmes-scientifiques.yml` est prévue une fois par jour, avec lancement manuel possible. Elle vérifie d'abord les contrats par des tests hors connexion, puis effectue le relevé des cinq points d'entrée.
+La procédure `.github/workflows/veille-programmes-scientifiques.yml` est prévue une fois par jour, avec lancement manuel possible. Elle vérifie d'abord les contrats par des tests hors connexion, puis effectue le relevé des six points d'entrée.
 
 Les changements d'empreinte sont conservés dans un historique borné à 25 modifications par publication. Le rapport complet d'exécution est déposé comme pièce JSON/Markdown durant 30 jours. Les échecs d'accès sont signalés et n'effacent jamais les observations antérieures.
 
@@ -53,6 +53,6 @@ Les réponses réseau peuvent être refusées par le producteur, les pages peuve
 
 ## Prochain seuil scientifique
 
-Un rapprochement des cinq empreintes permet de décider **quelles pages relire**. La construction d'une véritable chronologie probatoire nécessite des identifiants de projet, des actes de sélection, des conventions, les résultats et leur utilisation effective. Ces relations seront proposées dans un registre scientifique distinct, revues contradictoirement et jamais déduites de la seule signature d'une page.
+Un rapprochement des six empreintes permet de décider **quelles pages relire**. La construction d'une véritable chronologie probatoire nécessite des identifiants de projet, des actes de sélection, des conventions, les résultats et leur utilisation effective. Ces relations seront proposées dans un registre scientifique distinct, revues contradictoirement et jamais déduites de la seule signature d'une page.
 
 Suivi correspondant : [problème GitHub n° 415](https://github.com/fraware/frontiere-institut-interet-public/issues/415).
