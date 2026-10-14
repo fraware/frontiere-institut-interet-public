@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-12",
+  "statut": "decouverte_documentaire_uniquement",
+  "ingestion_testee": false,
+  "requetes_api_reussies": false,
+  "registre_operationnel_modifie": false,
+  "comparaison": [
+    "institutionnel/sources_v1.json (main, version 1.4, 2026-10-08)",
+    "institutionnel/decouverte/catalogues_officiels_v1.json (main, version 2026-10-09)",
+    "institutionnel/decouverte/propositions_officielles_2026-10-10.json (branche veille/catalogues-officiels-2026-10-10)",
+    "institutionnel/decouverte/propositions_officielles_2026-10-11.json (branche veille/catalogues-officiels-2026-10-11)"
+  ],
+  "methodologie": "Recherche ciblée sur domaines officiels, vérification documentaire et déduplication par identité, périmètre et URL. Aucune collecte de données métier. Les essais réseau directs depuis le conteneur ont échoué par résolution DNS locale, sans diagnostic d'indisponibilité des services.",
+  "candidats": [
+    {
+      "id": "eu_esco_classification",
+      "nom": "ESCO — classification européenne des métiers et compétences",
+      "producteur": "Commission européenne, DG Emploi, affaires sociales et inclusion",
+      "priorite": "haute",
+      "objet": "Référentiel multilingue de professions, connaissances et compétences, URI stables et relations sémantiques; correspondances à étudier avec ROME, RMFP et RéFérens III",
+      "documentation": "https://esco.ec.europa.eu/en/use-esco",
+      "documentation_api": "https://esco.ec.europa.eu/en/use-esco/use-esco-services-api",
+      "documentation_export": "https://esco.ec.europa.eu/en/use-esco/download",
+      "documentation_droits": "https://esco.ec.europa.eu/en/copyright-notice-esco-skills-competences",
+      "licence": "Contenus UE: CC BY 4.0 sauf exceptions; éléments tiers présents dans la hiérarchie de compétences; logiciel API: EUPL 1.2, licence distincte de celle des données. Examiner les droits par composant avant redistribution.",
+      "formats_documentes": [
+        "CSV",
+        "ODS",
+        "RDF/Turtle",
+        "XML",
+        "JSON-LD",
+        "API web",
+        "API locale ZIP"
+      ],
+      "mise_a_jour": "Version du référentiel indiquée v1.2.1, mise à jour affichée 10/12/2025 (format de date à interpréter selon site UE); vérification technique de version non effectuée",
+      "acces": "Exports gratuits; téléchargement personnalisé avec acceptation de la déclaration de confidentialité et adresse électronique; API web documentée, endpoint non testé",
+      "statut_validation": "documentation_officielle_verifiee_sans_ingestion",
+      "distinction": "Classification européenne multilingue; complément aux référentiels nationaux déjà recensés."
+    },
+    {
+      "id": "eu_funding_tenders_portal_api",
+      "nom": "Funding & Tenders Portal — appels, financements, organismes et partenaires",
+      "producteur": "Commission européenne",
+      "priorite": "haute",
+      "objet": "Appels à projets et marchés européens, changements d'appels, profils publics d'organismes identifiés par PIC, partenaires et résultats de projets",
+      "documentation": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/support/apis",
+      "documentation_portail": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/about",
+      "point_entree_documente": "https://api.tech.ec.europa.eu/search-api/prod/rest/search?apiKey=SEDIA&text=***",
+      "methode_documentee": "HTTPS POST avec critères JSON; API Facet pour décodage des valeurs de référence; service organisation publique via PIC et SEDIA_PERSON",
+      "licence": "Conditions de réutilisation des données API non établies par la page technique; conditions du portail à examiner avant conservation et republication",
+      "formats_documentes": [
+        "JSON (REST)"
+      ],
+      "mise_a_jour": "Données d'appels évolutives; date de dernière mise à jour de la documentation non déterminée",
+      "acces": "Interfaces REST publiques documentées; réponse HTTP non obtenue dans cet environnement; quotas et restrictions à valider",
+      "statut_validation": "documentation_officielle_verifiee_endpoint_non_teste_avec_succes",
+      "distinction": "Couverture prospective des appels et changements, profils PIC et recherches de partenaires; distinct des projets historiques CORDIS et des avis TED."
+    },
+    {
+      "id": "eu_cohesion_open_data_2021_2027",
+      "nom": "Cohesion Open Data — finances et exécution des programmes européens 2021–2027",
+      "producteur": "Commission européenne, DG Politique régionale et urbaine",
+      "priorite": "haute",
+      "objet": "Budgets programmés, réallocations thématiques, paiements et indicateurs de résultats par fonds, pays et programme; identifier les investissements R&I en France",
+      "documentation": "https://cohesiondata.ec.europa.eu/",
+      "jeu_reference": "https://cohesiondata.ec.europa.eu/2021-2027-Categorisation/2021-2027-Planned-finances-detailed-categorisation/hgyj-gyin",
+      "jeu_derive_recent": "https://cohesiondata.ec.europa.eu/2021-2027-Categorisation/Allocation-by-Policy-Objective-for-2021-2027/nm58-jh7b",
+      "documentation_api_generique": "https://dev.socrata.com/docs/endpoints",
+      "licence": "Licence exacte du jeu et éventuelles conditions spécifiques non vérifiées; publication ouverte ne vaut pas détermination juridique",
+      "formats_documentes": [
+        "Export via portail (format exact à confirmer)",
+        "API Socrata/OData documentée par plateforme; JSON et CSV possibles selon jeu et version, non testés"
+      ],
+      "mise_a_jour": "Jeu de référence: fiche indiquant 2026-07-24; vue dérivée Allocation by Policy Objective: 2026-10-09. Fréquence annoncée quotidienne pour les finances programmées; calendrier distinct pour l'exécution et les indicateurs.",
+      "acces": "Consultation et export via portail officiel; point d'entrée API par identifiant de jeu à résoudre et tester, pagination et restrictions à valider",
+      "statut_validation": "fiches_officielles_verifiees_sans_ingestion",
+      "limites": "Dimensions de catégorisation multiples: ne pas sommer toutes les lignes, risque explicite de double comptage. Ne pas assimiler crédits programmés, dépenses et paiements.",
+      "distinction": "Financements territoriaux et sectoriels européens; complément d'Eurostat GBARD, des budgets français et des projets CORDIS."
+    }
+  ],
+  "tests": {
+    "pages_officielles_consultees": true,
+    "comparaison_avec_registres_et_propositions": true,
+    "telechargement_donnees_metier": false,
+    "validation_schema": false,
+    "validation_pagination": false,
+    "verification_licences_complete": false,
+    "essais_http_directs": "Trois essais HTTPS (Cohesion metadata, Funding & Tenders Search, ESCO API historique) interrompus par NameResolutionError du conteneur; aucun code HTTP reçu. Pas de preuve de panne des fournisseurs.",
+    "ingestion_effective": false
+  },
+  "recommandation": "Revue humaine des droits et tests HTTP sur environnement réseau autorisé, puis validation des schémas, des identifiants, de la pagination, des dates, des empreintes et de la provenance avant promotion éventuelle vers un collecteur."
+}
