@@ -9,7 +9,7 @@ Observer les publications officielles relatives à deux dispositifs ANR importan
 - **SAPS–CPPE 2026** : programme de recherche en coopération avec les administrations, dont l'ANR a annoncé 22 projets retenus le 29 juin 2026. Source primaire : [communiqué ANR](https://anr.fr/actus/details/news/science-avec-et-pour-la-societe-22-laureats-pour-co-construire-les-politiques-publiques-par-lexpe/).
 - **ANR–NRF 2026 (IA et biotechnologies)** : appel ouvert le 2 avril et clos le 4 juin 2026 ; [page de l'appel](https://anr.fr/fr/detail/call/appel-a-projets-anr-nrf-2026-intelligence-artificielle-pour-les-biotechnologies/). Une liste de cinq projets sélectionnés a été publiée le 13 octobre 2026, avec financement conditionné par les étapes administratives prévues.
 
-Le [répertoire officiel des dernières listes de projets sélectionnés](https://anr.fr/fr/projets-finances-et-impact/projets-finances/dernieres-listes-de-projets-selectionnes/) est le cinquième point de surveillance. Il sert à détecter des changements de publications et non à attribuer automatiquement un nouveau statut à un projet.
+Le [répertoire officiel des dernières listes de projets sélectionnés](https://anr.fr/fr/projets-finances-et-impact/projets-finances/dernieres-listes-de-projets-selectionnes/) est un point de surveillance transversal. Il sert à détecter des changements de publications et non à attribuer automatiquement un nouveau statut à un projet.
 
 ## Chronologie documentaire préqualifiée
 
@@ -19,7 +19,7 @@ Ce fichier scientifique est modifié uniquement dans une contribution examinée,
 
 ## Périmètre et garanties
 
-Le registre `institutionnel/programmes_scientifiques/sources_v1.json` définit exactement cinq URL officielles, leurs programmes, leurs natures documentaires et les formats attendus. La liste est fermée ; seuls `anr.fr` et `www.anr.fr` sont admis. Les accès imposent HTTPS, contrôlent les redirections et limitent chaque réponse à trois millions d'octets. Les contenus acceptés sont des pages HTML et un PDF dont la signature est vérifiée.
+Le registre `institutionnel/programmes_scientifiques/sources_v1.json` définit exactement six URL officielles, leurs programmes, leurs natures documentaires et les formats attendus. La liste est fermée ; seuls `anr.fr` et `www.anr.fr` sont admis. Les accès imposent HTTPS, contrôlent les redirections et limitent chaque réponse à trois millions d'octets. Les contenus acceptés sont des pages HTML et deux PDF dont les signatures sont vérifiées.
 
 Le programme `scripts/surveiller_programmes_scientifiques.py` normalise les textes HTML pour calculer une empreinte, ou calcule l'empreinte des octets du PDF. Il conserve uniquement les métadonnées techniques et les signatures SHA-256, sans republier les documents scientifiques.
 
