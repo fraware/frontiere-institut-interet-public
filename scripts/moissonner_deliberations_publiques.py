@@ -26,8 +26,23 @@ CATALOGUE = "https://www.data.gouv.fr/api/1/datasets/"
 HOTES_CSV = {"static.data.gouv.fr", "tabular-api.data.gouv.fr"}
 RESSOURCE_UUID = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
 RECHERCHES = ("délibérations", "deliberations", "actes réglementaires")
+# Repérages déjà confirmés comme jeux publics sur data.gouv.fr le 14/10/2026.
+# Les fiches de catalogue restent à télécharger et à valider au cours du passage.
+JEUX_CIBLES = (
+    "deliberations-2026",
+    "deliberations-2025",
+    "deliberations-evry-courcouronnes-format-scdl",
+    "deliberations-du-conseil-municipal-de-la-possession",
+    "deliberations-23",
+    "deliberations-des-organismes-adherents-du-gip-recia",
+    "deliberations-mandature-2020-2026-1",
+    "deliberations-mandature-2026-2033",
+    "sla-deliberations-depuis-2017-de-saint-louis-agglomeration",
+    "deliberations-du-conseil-departemental-du-cher-et-de-la-commission-permanente",
+)
+URLS_CIBLEES = frozenset(CATALOGUE + code + "/" for code in JEUX_CIBLES)
 MAX_OCTETS_META = 3_000_000
-MAX_OCTETS_CSV = 4_000_000
+MAX_OCTETS_CSV = 12_000_000
 MAX_DATASETS = 180
 MAX_RESSOURCES_CSV = 25
 MAX_LIGNES_CSV = 80_000
@@ -74,7 +89,7 @@ def adresse_autorisee(url: object, *, catalogue: bool = False) -> bool:
         and p.hostname in ({hote} if catalogue else HOTES_CSV)
         and p.port is None and not p.username and not p.password
         and not p.fragment
-        and (p.path == "/api/1/datasets/" if catalogue else
+        and ((p.path == "/api/1/datasets/" or url in URLS_CIBLEES) if catalogue else
              (p.hostname == "static.data.gouv.fr" and p.path.startswith("/resources/"))
              or (p.hostname == "tabular-api.data.gouv.fr" and
                  re.fullmatch(r"/api/resources/[0-9a-f-]{36}/data/csv/", p.path) is not None))
@@ -267,6 +282,24 @@ def collecter(*, ancien: dict, etat_precedent: dict | None = None,
                 break
             finally:
                 patienter(0.12)
+    fiches_ciblees_reussies = 0
+    for code in JEUX_CIBLES:
+        adresse = CATALOGUE + code + "/"
+        tentatives += 1
+        try:
+            jeu = json.loads(charger(adresse, MAX_OCTETS_META))
+            if not isinstance(jeu, dict) or jeu.get("slug") not in (code, None):
+                raise CollecteInvalide("Fiche ciblée incohérente")
+            # Une fiche de jeu directe n'a pas la même enveloppe que la recherche.
+            if not isinstance(jeu.get("id"), str) or not isinstance(jeu.get("resources"), list):
+                raise CollecteInvalide("Fiche ciblée sans identité ou ressources")
+            pages.append({"data": [jeu]})
+            fiches_ciblees_reussies += 1
+        except (OSError, ValueError, HTTPError, URLError) as exc:
+            echecs.append({"type": "fiche_ciblee", "code": code,
+                           "motif": type(exc).__name__})
+        finally:
+            patienter(0.12)
     if not pages:
         raise CollecteInvalide("Aucune page de catalogue valide : sorties préservées")
     jeux = selectionner_datasets(pages)
@@ -319,12 +352,17 @@ def collecter(*, ancien: dict, etat_precedent: dict | None = None,
     }
     etat = {
         "version": "collecte-deliberations-scdl-v1", "controle_le": instant,
-        "requetes_catalogue": tentatives, "pages_catalogue_reussies": len(pages),
+        "requetes_catalogue": tentatives,
+        "pages_catalogue_reussies": len(pages) - fiches_ciblees_reussies,
+        "fiches_ciblees_tentees": len(JEUX_CIBLES),
+        "fiches_ciblees_reussies": fiches_ciblees_reussies,
         "jeux_retenus": len(jeux), "ressources_csv_eligibles": len(candidats),
         "ressources_csv_examinees": len(lot),
         "position_initiale": debut,
         "position_suivante": suivant,
         "tour_du_releve_termine": bool(candidats) and suivant == 0,
+        "paginage_ressources_csv_verifie": False,
+        "ressources_sources_externes_directes_appelees": 0,
         "ressources_csv_telechargees": telecharges,
         "csv_schemas_refuses": schemas_refuses,
         "lignes_scdl_examinees": lignes, "nouvelles_pistes": nouveaux,
