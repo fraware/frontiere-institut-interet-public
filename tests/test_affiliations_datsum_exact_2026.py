@@ -43,3 +43,15 @@ def test_une_affiliation_ne_devient_jamais_un_partenaire_du_projet():
         for source in projet["affiliations_publiques"]:
             assert source["nature"] not in interdit
         assert "usage_operationnel" in projet["non_etablis"]
+
+
+def test_dispositif_inrae_reste_un_comparateur_independant():
+    preuve = json.loads(AFFILIATIONS.read_text(encoding="utf-8"))
+    dispositifs = preuve["dispositifs_publics_existants_a_comparer"]
+    assert len(dispositifs) == 1
+    disposition = dispositifs[0]
+    assert disposition["organisme"] == "INRAE"
+    assert disposition["mise_en_place_organisation"] == "2020"
+    assert disposition["source_primaire"] == "https://app.inrae.fr/mission-et-acteurs/"
+    assert disposition["lien_contractuel_avec_exact"] == "non_etabli"
+    assert disposition["preuve_d_une_insuffisance_de_couverture_nationale"] == "non_etablie"
