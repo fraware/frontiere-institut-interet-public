@@ -69,7 +69,7 @@ Ces pistes ne sont **pas déclarées intégrées**. Leur admission nécessite un
 
 ## File de revue quotidienne à provenance contrôlée
 
-Le programme `scripts/preparer_revue_veille.py` parcourt les publications publiques et les onze pistes de délibérations déjà enregistrées. Il conserve pour chaque élément un identifiant de provenance, la date de publication déclarée, la date de première observation, un lien de référence et un statut explicite de pièce non qualifiée. Il ne télécharge aucun nouveau document.
+Le programme `scripts/preparer_revue_veille.py` (à exécuter par `python -m scripts.preparer_revue_veille` depuis la racine) parcourt les publications publiques et les onze pistes de délibérations déjà enregistrées. Il conserve pour chaque élément un identifiant de provenance, la date de publication déclarée, la date de première observation, un lien de référence et un statut explicite de pièce non qualifiée. Il ne télécharge aucun nouveau document.
 
 La priorité de revue est fondée sur la date de publication, en distinguant les **90 derniers jours**, les dates inconnues, les archives et les dates incohérentes. Les publications anciennes découvertes aujourd'hui ne sont pas présentées comme des nouvelles récentes. À priorité temporelle égale, la sélection est répartie entre producteurs afin qu'un flux très abondant ne monopolise pas les premiers dossiers. Les résultats et les éventuelles limites de la file sont consignés dans les pièces jointes de la procédure de contrôle.
 
