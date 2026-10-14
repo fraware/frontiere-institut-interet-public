@@ -28,6 +28,12 @@ DOMAINES = frozenset({
 })
 IDENTIFIANT = re.compile(r"^[a-z][a-z0-9_]{3,70}$")
 TAILLE_MAX = 3_000_000
+MARQUEURS_DGFIP = {
+    "dgfip_publications_2026": "dgfip statistiques - 2026",
+    "dgfip_recettes_fiscales": "recettes fiscales",
+    "dgfip_droits_mutation": "droits de mutation",
+}
+
 NATURES = frozenset({
     "index_statistiques", "catalogue_recettes", "catalogue_mutations",
     "reponse_ministerielle", "rapport_parlementaire",
@@ -84,6 +90,29 @@ def valider_catalogue(catalogue: object) -> list[dict]:
     return sources
 
 
+def valider_contenu_officiel(source: dict, contenu: bytes, finale: str) -> None:
+    """Refuser la page générique de maintenance et les mauvais documents."""
+    import unicodedata
+    from scripts.surveiller_programmes_scientifiques import TextePage
+
+    attendue = urlsplit(autoriser_adresse(source["url"]))
+    recu = urlsplit(autoriser_adresse(finale))
+    if recu.path.rstrip("/") != attendue.path.rstrip("/"):
+        raise SurveillanceInvalide("Adresse finale non conforme à la pièce surveillée")
+    try:
+        html = contenu.decode("utf-8-sig")
+    except UnicodeDecodeError as exc:
+        raise SurveillanceInvalide("Réponse HTML impossible à vérifier") from exc
+    lecteur = TextePage()
+    lecteur.feed(html)
+    texte = unicodedata.normalize("NFKC", lecteur.texte_utile()).casefold()
+    if "impots.gouv.fr" in texte and "actuellement en maintenance" in texte:
+        raise SurveillanceInvalide("Site en maintenance : contenu documentaire indisponible")
+    attendu = MARQUEURS_DGFIP.get(source["id"])
+    if attendu and attendu not in texte:
+        raise SurveillanceInvalide("Contenu inattendu pour cette page DGFiP")
+
+
 def consulter(source: dict) -> tuple[bytes, str]:
     url = autoriser_adresse(source["url"])
     req = Request(
@@ -101,10 +130,10 @@ def consulter(source: dict) -> tuple[bytes, str]:
         }:
             raise SurveillanceInvalide("Réponse inattendue ou contenu non HTML")
         data = rep.read(TAILLE_MAX + 1)
+        finale = rep.geturl()
     if not data or len(data) > TAILLE_MAX:
         raise SurveillanceInvalide("Document vide ou excédant le plafond")
-    # Vérifier ici que la réponse contient un corps éditorial suffisant pour
-    # éviter d'archiver silencieusement une page de protection minimaliste.
+    valider_contenu_officiel(source, data, finale)
     empreinte_document(data, "html")
     return data, media
 
