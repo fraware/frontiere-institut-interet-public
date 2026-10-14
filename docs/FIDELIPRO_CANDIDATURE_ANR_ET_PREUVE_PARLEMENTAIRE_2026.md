@@ -16,6 +16,12 @@ Il s'agit toutefois d'un cas de coopération envisagée, non d'un résultat obse
 
 La confidentialité des données fiscales interdit de déduire des possibilités de réutilisation de fichiers individuels à partir du rapport parlementaire. L'enquête doit se limiter aux méthodes, décisions, documents et résultats rendus publics et aux autorisations établies.
 
+## Explications concurrentes à examiner
+
+Le rapport parlementaire insiste sur la difficulté de **pérenniser** une opération statistique qui mobilise déjà plusieurs organismes et un prototype technique. Il évoque aussi la nécessité d'un financement public dédié et régulier, au-delà du recours ponctuel à un appel de recherche. Ces éléments orientent l'enquête vers trois hypothèses concurrentes : insuffisance de compétences mobilisables, manque de moyens stables pour entretenir une production de données, ou contraintes d'accès, d'appariement et de gouvernance des données fiscales.
+
+Aucun élément ne permet de départager ces mécanismes à partir de la seule candidature. La valeur du cas pour FRONTIÈRE sera précisément d'établir si un renfort temporaire de spécialistes, un investissement permanent dans la chaîne statistique ou une autre intervention institutionnelle serait la réponse adaptée.
+
 ## Obligations de preuve
 
 | Question | Statut |
