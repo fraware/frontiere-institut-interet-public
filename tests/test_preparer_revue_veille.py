@@ -105,3 +105,47 @@ def test_source_scdl_sans_pdf_ne_prouve_pas_un_usage():
     element = revue["dossiers"][0]
     assert element["url_reference"] is None
     assert element["statut_preuve"] == "correspondance_scdl_non_qualifiee"
+
+def test_date_reelle_prime_sur_la_date_de_collecte():
+    ancien = publication("Intelligence artificielle", "1" * 64)
+    ancien["date_publication"] = "2025-01-01T00:00:00+00:00"
+    ancien["observe_initialement_le"] = "2026-10-14T17:59:00+00:00"
+    recent = publication("Recherche scientifique", "2" * 64)
+    recent["date_publication"] = "2026-10-13T08:00:00+00:00"
+    recent["observe_initialement_le"] = "2026-10-12T08:00:00+00:00"
+    resultat = preparer_revue(
+        {"observations": [ancien, recent]}, {"pistes": []},
+        MAINTENANT, limite=1,
+    )
+    assert resultat["dossiers"][0]["id"].endswith("2" * 64)
+    assert resultat["dossiers"][0]["classe_temporelle"] == "publication_90_jours"
+    assert resultat["file_limitee"] is True
+
+
+def test_equilibre_des_sources_dans_une_file_bornee():
+    abondants = [
+        {**publication("Marchés publics", f"{i:064x}"),
+         "source_id": "source_abondante"}
+        for i in range(1, 12)
+    ]
+    divers = publication("Recherche scientifique", "f" * 64)
+    divers["source_id"] = "source_distincte"
+    resultat = preparer_revue(
+        {"observations": abondants + [divers]}, {"pistes": []},
+        MAINTENANT, limite=2,
+    )
+    assert {x["source_id"] for x in resultat["dossiers"]} == {
+        "source_abondante", "source_distincte",
+    }
+
+
+def test_date_future_nest_jamais_prioritaire():
+    futur = publication("Intelligence artificielle", "e" * 64)
+    futur["date_publication"] = "2027-01-01T00:00:00+00:00"
+    courant = publication("Recherche scientifique", "d" * 64)
+    courant["date_publication"] = "2026-10-13T00:00:00+00:00"
+    revue = preparer_revue(
+        {"observations": [futur, courant]}, {"pistes": []},
+        MAINTENANT, limite=1,
+    )
+    assert revue["dossiers"][0]["id"].endswith("d" * 64)
