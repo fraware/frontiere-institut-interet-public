@@ -208,6 +208,13 @@ def test_chronologie_six_etapes_officielles_et_financement_inconnu():
     assert ids == {"saps_cppe_2026", "anr_nrf_iabio_2026"}
     saps = next(p for p in chrono["programmes"] if p["id"] == "saps_cppe_2026")
     assert saps["evenements"][2]["nombre_projets_retenus_annonces"] == 22
+    assert len(saps["evenements"][2]["acronymes_selectionnes"]) == 22
+    assert len(set(saps["evenements"][2]["acronymes_selectionnes"])) == 22
+    assert len(saps["evenements"][2]["acronymes_liste_complementaire"]) == 5
+    assert "DATSUM" in saps["evenements"][2]["acronymes_selectionnes"]
+    assert set(saps["evenements"][2]["acronymes_selectionnes"]).isdisjoint(
+        saps["evenements"][2]["acronymes_liste_complementaire"]
+    )
     nrf = next(p for p in chrono["programmes"] if p["id"] == "anr_nrf_iabio_2026")
     selection = nrf["evenements"][2]
     assert selection["nombre_projets_retenus_annonces"] == 5
