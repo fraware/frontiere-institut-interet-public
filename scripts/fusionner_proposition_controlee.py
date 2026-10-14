@@ -130,6 +130,7 @@ def examiner_proposition(
 def fusionner_avec_reessais(
     repo: str, source: str, branche: str, attendue: str,
     *, verifier: Callable[[], None], fusionner: Callable[[], subprocess.CompletedProcess[str]],
+    confirmer: Callable[[], bool],
     attendre: Callable[[int], None] = time.sleep,
     tentatives: int = MAX_TENTATIVES,
 ) -> int:
@@ -144,6 +145,10 @@ def fusionner_avec_reessais(
         verifier()
         resultat = fusionner()
         if resultat.returncode == 0:
+            if not confirmer():
+                raise PublicationRefusee(
+                    "Commande acceptée, sans preuve de fusion effective (file ou attente)"
+                )
             return indice
         if CHANGEMENT_BASE not in resultat.stderr:
             raise PublicationRefusee(
@@ -179,6 +184,10 @@ def main() -> int:
                 "--squash", "--match-head-commit", args.empreinte,
                 "--delete-branch",
             ),
+            confirmer=lambda: json.loads(sortie(
+                "gh", "pr", "view", args.branche, "--repo", depot,
+                "--json", "state"
+            )).get("state") == "MERGED",
         )
     except (PublicationRefusee, OSError, subprocess.TimeoutExpired) as exc:
         parser.exit(1, f"Fusion contrôlée interrompue : {exc}\n")
