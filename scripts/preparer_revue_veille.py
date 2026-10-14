@@ -119,8 +119,15 @@ def preparer_revue(flux: dict, deliberations: dict, maintenant: datetime,
         if identite in identifiants:
             raise PolitiqueInvalide("Délibération dupliquée")
         identifiants.add(identite)
+        # La date SCDL est celle de la délibération, sans preuve de sa
+        # date de publication. Conserver l'événement sans inventer celle-ci.
         jour = item.get("deliberation_date")
-        date_acte = jour + "T00:00:00+00:00" if isinstance(jour, str) else None
+        date_acte = jour if isinstance(jour, str) else None
+        if date_acte is not None:
+            try:
+                datetime.strptime(date_acte, "%Y-%m-%d")
+            except ValueError as exc:
+                raise PolitiqueInvalide("Date de délibération incorrecte") from exc
         candidats.append({
             "id": identite,
             "nature": "piste_de_deliberation",
@@ -130,9 +137,10 @@ def preparer_revue(flux: dict, deliberations: dict, maintenant: datetime,
             "reference_acte": item.get("deliberation_id"),
             "collectivite": item.get("collectivite"),
             "url_reference": url_reference(item.get("url_document_annonce")),
-            "date_publication": date_acte,
+            "date_publication": None,
+            "date_evenement": date_acte,
             "observe_pour_la_premiere_fois": premier,
-            "classe_temporelle": categorie_temporelle(date_acte, maintenant),
+            "classe_temporelle": "date_publication_inconnue",
             "statut_preuve": "correspondance_scdl_non_qualifiee",
         })
     # La date du document prime sur la date d'ingestion : l'arrivée aujourd'hui
@@ -198,13 +206,15 @@ def resume(revue: dict) -> str:
         f"{revue['nombre_total_de_pistes_selectionnees']} repérages. "
         "**Aucune n'est un besoin public validé.**",
         "",
-        "| Origine | Date du document | Statut | Repères |",
-        "|---|---|---|---|",
+        "| Origine | Publication | Événement | Statut | Repères |",
+        "|---|---|---|---|---|",
     ]
     for item in revue["dossiers"][:25]:
-        date = item["date_publication"] or "inconnue"
+        publication = item["date_publication"] or "inconnue"
+        evenement = item.get("date_evenement") or "non renseigné"
         lignes.append(
-            f"| {item['nature']} | {date} | {item['classe_temporelle']} | "
+            f"| {item['nature']} | {publication} | {evenement} | "
+            f"{item['classe_temporelle']} | "
             f"{', '.join(item['reperage_lexical'] or [])} |"
         )
     if revue["nombre_dossiers_dans_la_file"] > 25:

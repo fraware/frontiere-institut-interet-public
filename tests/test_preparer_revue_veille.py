@@ -181,3 +181,21 @@ def test_lancement_reel_depuis_la_racine_du_depot(tmp_path):
     assert resultat.returncode == 0, resultat.stderr + resultat.stdout
     revue = json.loads((tmp_path / "revue.json").read_text(encoding="utf-8"))
     assert revue["nombre_total_de_pistes_selectionnees"] == 2
+
+def test_date_de_deliberation_ne_devient_pas_date_de_publication():
+    """L'adoption ne fournit pas l'instant de mise en ligne de l'acte."""
+    resultat = preparer_revue(
+        {"observations": []},
+        {"pistes": [piste()]},
+        MAINTENANT,
+    )["dossiers"][0]
+    assert resultat["date_evenement"] == "2026-10-01"
+    assert resultat["date_publication"] is None
+    assert resultat["classe_temporelle"] == "date_publication_inconnue"
+    assert resultat["statut_preuve"] == "correspondance_scdl_non_qualifiee"
+
+
+def test_date_de_deliberation_calendairement_invalide_est_refusee():
+    fictif = {**piste(), "deliberation_date": "2026-02-30"}
+    with pytest.raises(PolitiqueInvalide, match="Date de délibération"):
+        preparer_revue({"observations": []}, {"pistes": [fictif]}, MAINTENANT)
