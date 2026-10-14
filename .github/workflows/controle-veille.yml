@@ -58,7 +58,7 @@ jobs:
       - name: Préparer les signaux à examiner par les chercheurs
         if: always()
         run: |
-          python scripts/preparer_revue_veille.py \
+          python -m scripts.preparer_revue_veille \
             --sortie-json "$RUNNER_TEMP/revue-signaux.json" \
             --resume-markdown "$RUNNER_TEMP/revue-signaux.md"
 
