@@ -1,5 +1,215 @@
 {
-  "pistes": [],
+  "pistes": [
+    {
+      "collectivite": "CC AUTOUR DE CHENONCEAUX BLERE-VAL DE CHER",
+      "collectivite_siret": "24370082000117",
+      "constat": "correspondance_textuelle_non_qualifiee",
+      "deliberation_date": "2026-09-16",
+      "deliberation_id": "DP2026_232",
+      "identifiant": "0e3428b77aad91e9b88143d9cab8134ac824716ebd303df65662e3e07c8958a8",
+      "jeu_id": "6613f3093bc928f205e87a83",
+      "mots_de_reperage": [
+        "cybersecurite"
+      ],
+      "observe_pour_la_premiere_fois": "2026-10-14T16:02:54+00:00",
+      "preuve_usage_verifiee": false,
+      "ressource_id": "27fcc287-1b21-409a-92dc-c6c4f8bcb562",
+      "sha256_csv": "1647bbb17d95c486c030612b8dedfcda99d0d34f74bbc74b28c1690dc31899a9",
+      "sha256_ligne": "927c927df64698f93629eadc9a99fefab3d268340e6042042bc3c4b9640659d5",
+      "url_document_annonce": "https://publication-actes.fr/OpenData/243700820/Deliberation/2026/90376/ed538eb67faf63bdfd2e8beb99ef29d35b7cab5b94bf88ab53ee44e96ee02512.pdf",
+      "url_ressource_csv": "https://static.data.gouv.fr/resources/deliberations-des-organismes-adherents-du-gip-recia/20261014-050111/2026-deliberations-de-la-region-centre-val-de-loire.csv"
+    },
+    {
+      "collectivite": "SYNDICAT INTERCOMMUNAL POUR LA COLLECTE ET LE TRAITEMENT DES ORDURES MENAGERES DE LA REGION D'AUNEAU",
+      "collectivite_siret": "25280006500044",
+      "constat": "correspondance_textuelle_non_qualifiee",
+      "deliberation_date": "2026-03-03",
+      "deliberation_id": "2026_4",
+      "identifiant": "2d0e377e4cde3039faba7d5d3de6beec102249920826ca71adbda601daff0f82",
+      "jeu_id": "6613f3093bc928f205e87a83",
+      "mots_de_reperage": [
+        "expertise_juridique"
+      ],
+      "observe_pour_la_premiere_fois": "2026-10-14T16:02:54+00:00",
+      "preuve_usage_verifiee": false,
+      "ressource_id": "27fcc287-1b21-409a-92dc-c6c4f8bcb562",
+      "sha256_csv": "1647bbb17d95c486c030612b8dedfcda99d0d34f74bbc74b28c1690dc31899a9",
+      "sha256_ligne": "bb4a5c2668153688dfd9b9c01d01a5d3c4ddfbd16f8dac2b3f9587987be225f1",
+      "url_document_annonce": "https://publication-actes.fr/OpenData/252800065/Deliberation/2026/74198/b302944b7367429248ac5b34a159f0249922cb8886a834cac6d7c01e8ac89b20.pdf",
+      "url_ressource_csv": "https://static.data.gouv.fr/resources/deliberations-des-organismes-adherents-du-gip-recia/20261014-050111/2026-deliberations-de-la-region-centre-val-de-loire.csv"
+    },
+    {
+      "collectivite": "SYNDICAT MIXTE LA FIBRE64",
+      "collectivite_siret": "20008126300010",
+      "constat": "correspondance_textuelle_non_qualifiee",
+      "deliberation_date": "2026-07-03",
+      "deliberation_id": "7_2026_07_03",
+      "identifiant": "344fe0d6f4fa54dfcf4f58d8311f9f2bc063be2bacf939fe439c156c3ec7f7cf",
+      "jeu_id": "6613f3093bc928f205e87a83",
+      "mots_de_reperage": [
+        "intelligence_artificielle"
+      ],
+      "observe_pour_la_premiere_fois": "2026-10-14T16:02:54+00:00",
+      "preuve_usage_verifiee": false,
+      "ressource_id": "27fcc287-1b21-409a-92dc-c6c4f8bcb562",
+      "sha256_csv": "1647bbb17d95c486c030612b8dedfcda99d0d34f74bbc74b28c1690dc31899a9",
+      "sha256_ligne": "6aa3976fd6251a0a0c035b79c8b860201985599c7142071a9e17ed3c86ab10cf",
+      "url_document_annonce": "https://publication-actes.fr/OpenData/200081263/Deliberation/2026/87023/a75bbd9585c89ca7c6c74062bfaff767f559c5d07abadf92687251d78c64fe2e.pdf",
+      "url_ressource_csv": "https://static.data.gouv.fr/resources/deliberations-des-organismes-adherents-du-gip-recia/20261014-050111/2026-deliberations-de-la-region-centre-val-de-loire.csv"
+    },
+    {
+      "collectivite": "COMMUNE D'AVOINE",
+      "collectivite_siret": "21370011500016",
+      "constat": "correspondance_textuelle_non_qualifiee",
+      "deliberation_date": "2024-04-03",
+      "deliberation_id": "DC20240326_19",
+      "identifiant": "3f0667b663bad26e230c2318fd6594d5875367da5c448f8133bb5305a7dc8487",
+      "jeu_id": "6613f3093bc928f205e87a83",
+      "mots_de_reperage": [
+        "expertise_juridique"
+      ],
+      "observe_pour_la_premiere_fois": "2026-10-14T16:02:54+00:00",
+      "preuve_usage_verifiee": false,
+      "ressource_id": "0e277676-1ab9-4c5b-8420-b7e8fa1df8be",
+      "sha256_csv": "877f8f8fae27e454fcfe2ebeb5a2237bcd7dab7eeb6aedb65c26b363115f6a8e",
+      "sha256_ligne": "a01ffe3402dcb46b0f3b283da830ae29d75f968a32459c2ce4a38ffad4766352",
+      "url_document_annonce": "https://publication-actes.fr/OpenData/213700115/Deliberation/2024/c41a97f7aac0ca53b504473ecd3e05dc7b7274cb7eeb7e2524f3ae63884b4753.pdf",
+      "url_ressource_csv": "https://static.data.gouv.fr/resources/deliberations-des-organismes-adherents-du-gip-recia/20250107-112359/2024-deliberations-de-la-region-centre-val-de-loire.csv"
+    },
+    {
+      "collectivite": "CC VIERZON-SOLOGNE-BERRY",
+      "collectivite_siret": "20009056100016",
+      "constat": "correspondance_textuelle_non_qualifiee",
+      "deliberation_date": "2025-04-24",
+      "deliberation_id": "DB25004",
+      "identifiant": "479aaa60ea088ab4811fa1ecedcd16b6a60b9daa646a655675a0b5d4201df901",
+      "jeu_id": "6613f3093bc928f205e87a83",
+      "mots_de_reperage": [
+        "cybersecurite"
+      ],
+      "observe_pour_la_premiere_fois": "2026-10-14T16:02:54+00:00",
+      "preuve_usage_verifiee": false,
+      "ressource_id": "fc1b78f8-00e0-4391-990a-433790898b09",
+      "sha256_csv": "fbc46a3032f3f02969561d51b5a3d78b130bcbd3fadaa171a851cd6fd7831cb0",
+      "sha256_ligne": "c29c5acbd1be630c789a86599e0ecedd4e6206d3132bd9eb218a0381a4db6a89",
+      "url_document_annonce": "https://publication-actes.fr/OpenData/200090561/Deliberation/2025/52860/21003320da9822214c33cbc6efef6f9415b3768e493074712149ee10a14995e0.pdf",
+      "url_ressource_csv": "https://static.data.gouv.fr/resources/deliberations-des-organismes-adherents-du-gip-recia/20250827-050026/2025-deliberations-de-la-region-centre-val-de-loire.csv"
+    },
+    {
+      "collectivite": "COMMUNE DE SAINT PIERRE DES CORPS",
+      "collectivite_siret": "21370233500018",
+      "constat": "correspondance_textuelle_non_qualifiee",
+      "deliberation_date": "2026-02-11",
+      "deliberation_id": "2025_10_01_13B",
+      "identifiant": "570fc228bbaeae052c2a38cf3e9a81e8f06d2f61ad6798d41f48af74bdcd207f",
+      "jeu_id": "6613f3093bc928f205e87a83",
+      "mots_de_reperage": [
+        "transcription"
+      ],
+      "observe_pour_la_premiere_fois": "2026-10-14T16:02:54+00:00",
+      "preuve_usage_verifiee": false,
+      "ressource_id": "27fcc287-1b21-409a-92dc-c6c4f8bcb562",
+      "sha256_csv": "1647bbb17d95c486c030612b8dedfcda99d0d34f74bbc74b28c1690dc31899a9",
+      "sha256_ligne": "96c2e145591d3bfae4dea500436eea266cb10188bdc0a32bde43f78b97319fcf",
+      "url_document_annonce": "https://publication-actes.fr/OpenData/213702335/Deliberation/2026/72163/861767d090be36228ad7160c97f0eb656437b82a85a6cf2d2eae5b8839e95d46.pdf",
+      "url_ressource_csv": "https://static.data.gouv.fr/resources/deliberations-des-organismes-adherents-du-gip-recia/20261014-050111/2026-deliberations-de-la-region-centre-val-de-loire.csv"
+    },
+    {
+      "collectivite": "CC CANAUX ET FORETS EN GATINAIS",
+      "collectivite_siret": "20006767600011",
+      "constat": "correspondance_textuelle_non_qualifiee",
+      "deliberation_date": "2026-05-06",
+      "deliberation_id": "D2026_037",
+      "identifiant": "5aa7f8419979e533c0dcc137cb9a8f8aeed2d96977c06bd01e7a3414e4f63456",
+      "jeu_id": "6613f3093bc928f205e87a83",
+      "mots_de_reperage": [
+        "expertise_juridique"
+      ],
+      "observe_pour_la_premiere_fois": "2026-10-14T16:02:54+00:00",
+      "preuve_usage_verifiee": false,
+      "ressource_id": "27fcc287-1b21-409a-92dc-c6c4f8bcb562",
+      "sha256_csv": "1647bbb17d95c486c030612b8dedfcda99d0d34f74bbc74b28c1690dc31899a9",
+      "sha256_ligne": "c1aaae461ee50b493670c278098f1500b11ad7d247d11cc56a7d5b0c4eefc568",
+      "url_document_annonce": "https://publication-actes.fr/OpenData/200067676/Deliberation/2026/80549/8d42c58f08e8c7987d19821269af6991f76db5bddd14a880d51f5354a29286bc.pdf",
+      "url_ressource_csv": "https://static.data.gouv.fr/resources/deliberations-des-organismes-adherents-du-gip-recia/20261014-050111/2026-deliberations-de-la-region-centre-val-de-loire.csv"
+    },
+    {
+      "collectivite": "SYNDICAT MIXTE LA FIBRE64",
+      "collectivite_siret": "20008126300010",
+      "constat": "correspondance_textuelle_non_qualifiee",
+      "deliberation_date": "2026-02-05",
+      "deliberation_id": "8_2026_02_05",
+      "identifiant": "9ea53dc570c17ff0a41839858c61820ecad62f79f9ba64f60bb3ce770e540f23",
+      "jeu_id": "6613f3093bc928f205e87a83",
+      "mots_de_reperage": [
+        "intelligence_artificielle"
+      ],
+      "observe_pour_la_premiere_fois": "2026-10-14T16:02:54+00:00",
+      "preuve_usage_verifiee": false,
+      "ressource_id": "27fcc287-1b21-409a-92dc-c6c4f8bcb562",
+      "sha256_csv": "1647bbb17d95c486c030612b8dedfcda99d0d34f74bbc74b28c1690dc31899a9",
+      "sha256_ligne": "64810a6e35fb4ce49b266d126db04b8e17bc9b8bd2df8824de722869ecbeaccd",
+      "url_document_annonce": "https://publication-actes.fr/OpenData/200081263/Deliberation/2026/71186/fc728f989ce03ec833a2491d99f981fd8574a98ccf0cea37cbada9eacb2f7ec2.pdf",
+      "url_ressource_csv": "https://static.data.gouv.fr/resources/deliberations-des-organismes-adherents-du-gip-recia/20261014-050111/2026-deliberations-de-la-region-centre-val-de-loire.csv"
+    },
+    {
+      "collectivite": "COMMUNE D'AVOINE",
+      "collectivite_siret": "21370011500016",
+      "constat": "correspondance_textuelle_non_qualifiee",
+      "deliberation_date": "2024-09-18",
+      "deliberation_id": "DC20240910_48",
+      "identifiant": "e0957228b6a67294ee700df7a086f1051da86b9e73583b205db1cc1158a7633e",
+      "jeu_id": "6613f3093bc928f205e87a83",
+      "mots_de_reperage": [
+        "expertise_juridique"
+      ],
+      "observe_pour_la_premiere_fois": "2026-10-14T16:02:54+00:00",
+      "preuve_usage_verifiee": false,
+      "ressource_id": "0e277676-1ab9-4c5b-8420-b7e8fa1df8be",
+      "sha256_csv": "877f8f8fae27e454fcfe2ebeb5a2237bcd7dab7eeb6aedb65c26b363115f6a8e",
+      "sha256_ligne": "6f94d690a87ef989a2cfdd3ead0c02800b51b75287821ae2f6807376dde60c80",
+      "url_document_annonce": "https://publication-actes.fr/OpenData/213700115/Deliberation/2024/37509/16e7f6fd2d43dc72ddf0d8ce9ccf518484f1c8bb51a6e3b9ba9d8d8864d9dddc.pdf",
+      "url_ressource_csv": "https://static.data.gouv.fr/resources/deliberations-des-organismes-adherents-du-gip-recia/20250107-112359/2024-deliberations-de-la-region-centre-val-de-loire.csv"
+    },
+    {
+      "collectivite": "Ville de La Possession",
+      "collectivite_siret": "21974008100019",
+      "constat": "correspondance_textuelle_non_qualifiee",
+      "deliberation_date": "2026-07-18",
+      "deliberation_id": "08-juil-26",
+      "identifiant": "e8b43054511d3d31aa2541be61104e238c0817adee2f294b4b962efadf6d57f4",
+      "jeu_id": "6287432ae7c0208ca54287b0",
+      "mots_de_reperage": [
+        "expertise_juridique"
+      ],
+      "observe_pour_la_premiere_fois": "2026-10-14T16:02:54+00:00",
+      "preuve_usage_verifiee": false,
+      "ressource_id": "e5aeb4ca-dd24-40df-8ccd-3f34edc69a9d",
+      "sha256_csv": "78b1f7295a69395a23fb5ff0815b3ebb9ffe443a9d0ad4516ff7b69cae702631",
+      "sha256_ligne": "f7f8b3908c0cdaca17d961f7e2c1d9b43f9f196e461b914e6fa7149c1d637043",
+      "url_document_annonce": null,
+      "url_ressource_csv": "https://static.data.gouv.fr/resources/deliberations-du-conseil-municipal-de-la-possession/20260811-114708/deliberation-possession-18-07-26.csv"
+    },
+    {
+      "collectivite": "CC DES TERRES DU VAL DE LOIRE",
+      "collectivite_siret": "20007018300013",
+      "constat": "correspondance_textuelle_non_qualifiee",
+      "deliberation_date": "2026-04-09",
+      "deliberation_id": "2026_045",
+      "identifiant": "f0cc3692c406f83212eeed3a75dd72ecdf4f5a426034bd472cd98c086ec0053b",
+      "jeu_id": "6613f3093bc928f205e87a83",
+      "mots_de_reperage": [
+        "transcription"
+      ],
+      "observe_pour_la_premiere_fois": "2026-10-14T16:02:54+00:00",
+      "preuve_usage_verifiee": false,
+      "ressource_id": "27fcc287-1b21-409a-92dc-c6c4f8bcb562",
+      "sha256_csv": "1647bbb17d95c486c030612b8dedfcda99d0d34f74bbc74b28c1690dc31899a9",
+      "sha256_ligne": "0668d9a2cc1479804edbfe2274ebc27147a69ddf75be091dde75bed641cbc068",
+      "url_document_annonce": "https://publication-actes.fr/OpenData/200070183/Deliberation/2026/77859/3c02c3cd761d4359fef853b1180b1338691ce54574be28eb969c47a426b5df42.pdf",
+      "url_ressource_csv": "https://static.data.gouv.fr/resources/deliberations-des-organismes-adherents-du-gip-recia/20261014-050111/2026-deliberations-de-la-region-centre-val-de-loire.csv"
+    }
+  ],
   "portee": "reperage_textuel_uniquement_sans_preuve_d_execution",
   "version": "pistes-deliberations-v1"
 }
