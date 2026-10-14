@@ -45,9 +45,18 @@ def test_cinq_origines_publiques_stables():
         "reponse_ministerielle", "rapport_parlementaire"
     }
     assert all(s["format"] == "html" for s in sources)
-    assert json.loads((RACINE / ETAT).read_text(encoding="utf-8")) == {
-        "version": 1, "observations": []
-    }
+    etat = json.loads((RACINE / ETAT).read_text(encoding="utf-8"))
+    assert etat["version"] == 1
+    assert len(etat["observations"]) == 1
+    unique = etat["observations"][0]
+    assert unique["source_id"] == "assemblee_reponse_11677"
+    assert unique["reference_execution"].endswith("/actions/runs/38649504556")
+    assert unique["empreinte"] == (
+        "39d538fae125a3768a46dff45e4a849c0819f9e883b32e9f5480bd544693a3cc"
+    )
+    assert unique["historique"] == []
+    assert not any(x["source_id"].startswith("dgfip_")
+                   for x in etat["observations"])
 
 
 @pytest.mark.parametrize("url", (
