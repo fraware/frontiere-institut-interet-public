@@ -1,26 +1,26 @@
 {
-  "attestations_documentaires": 2164,
+  "attestations_documentaires": 3569,
   "besoins_encore_ouverts_demontres": 0,
   "conformite_reglementaire_complete_verifiee": false,
-  "construit_le": "2026-10-13T18:46:33+00:00",
+  "construit_le": "2026-10-14T05:40:17+00:00",
   "controle_integrite_sqlite": "ok",
   "correspondances_boamp_verifiees": 0,
   "empreintes_releves_publies": {
     "aife": "dbf939946273f80f7061b62a401214816ae039388686eea02d33c2b5c370a467",
-    "dgfip": "1b7099a442c86eeb0fbf4d580fa7609a993dd5d36829ab76d4f2ce692056dc82"
+    "dgfip": "656747b1460c8967806d983e69a5bf021d1b0b8d970262a207a9d423111bee07"
   },
-  "enregistrements_normalises_par_fichier": 2164,
-  "fichiers_documentaires": 15,
-  "fichiers_sources_distincts": 15,
-  "identites_avec_plusieurs_variantes": 2,
-  "identites_distinctes_par_siret_et_id_marche": 2141,
+  "enregistrements_normalises_par_fichier": 3569,
+  "fichiers_documentaires": 27,
+  "fichiers_sources_distincts": 27,
+  "identites_avec_plusieurs_variantes": 9,
+  "identites_distinctes_par_siret_et_id_marche": 3463,
   "notices_detaillees_manquantes": 0,
-  "repetitions_de_variantes_deja_observees": 21,
+  "repetitions_de_variantes_deja_observees": 97,
   "sources": {
     "aife_api_decp": 1,
-    "dgfip_pes_marche": 14
+    "dgfip_pes_marche": 26
   },
   "statut": "deux_releves_publics_complets_sans_couverture_nationale",
-  "variantes_documentaires_distinctes": 2143,
+  "variantes_documentaires_distinctes": 3472,
   "version": "index-unifie-decp-v1"
 }
