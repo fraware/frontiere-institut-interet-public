@@ -23,7 +23,7 @@ Les métadonnées ne constituent pas une ingestion intégrale des données méti
 
 ## Contrôle transversal ajouté
 
-La politique de contrôle figure dans institutionnel/veille/controle_v1.json. Le programme scripts/auditer_fraicheur_veille.py vérifie dix fichiers d'état de collecte et, sur demande avec le droit de lecture GitHub Actions, les dernières réussites des seize procédures programmées recensées dans le dépôt.
+La politique de contrôle figure dans institutionnel/veille/controle_v1.json. Le programme scripts/auditer_fraicheur_veille.py vérifie dix fichiers d'état de collecte et, sur demande avec le droit de lecture GitHub Actions, les dernières réussites des dix-sept procédures programmées recensées dans le dépôt.
 
 Il inspecte la date du dernier relevé, les erreurs partielles, la disponibilité des sources critiques, la fraîcheur déclarée du contenu chez le producteur et le dernier succès propre à chaque flux. Il reconnaît explicitement une collecte SCDL non exhaustive.
 

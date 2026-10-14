@@ -49,6 +49,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [Diagnostic des accès et des dates](DIAGNOSTIC_ACCES_SOURCES_ET_DATES_2026_10_14.md) | Refus HTTP, dates indéterminées et séparation des dates de délibération et de publication |
 | [Revue des dix signaux publics](REVUE_INITIALE_DIX_SIGNAUX_2026_10_14.md) | Qualification provisoire, provenance des publications et contrôle de leurs révisions |
 | [Comparateurs ANR et commande publique](COMPARATEURS_ANR_CNCP_SOURCES_PRIMAIRES_2026_10_14.md) | Sources primaires sur les appels de recherche, les sélections et les dispositifs de coopération |
+| [Surveillance ANR](VEILLE_PROGRAMMES_SCIENTIFIQUES_ANR_V1.md) | Consultation quotidienne bornée, empreintes des publications, détection des révisions et publication contrôlée |
 
 ## Référentiel institutionnel
 
