@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "observe_le": "2026-10-14",
+  "id": "fidelipro_candidature_anr_saps_cppe_2026",
+  "nature": "candidature_a_un_appel_anr_mentionnee_dans_un_rapport_parlementaire",
+  "source_primaire": "https://www.assemblee-nationale.fr/dyn/docs/RAPPANR5L17B3056-t1.raw",
+  "source_identification": "Assemblée nationale, rapport d'enquête n° 3056, tome I, déposé le 8 juillet 2026",
+  "source_passage": "Partie concernant la mise en œuvre d'une base de données relative au patrimoine professionnel et la réponse du DESF de la DGFiP, de l'Insee et de l'IPP à un appel ANR.",
+  "acteurs_cites": [
+    {
+      "nom": "Département des études et statistiques fiscales (DESF)",
+      "rattachement": "DGFiP"
+    },
+    {
+      "nom": "Insee"
+    },
+    {
+      "nom": "Institut des politiques publiques (IPP)"
+    }
+  ],
+  "objet_documente": "Projet de pérennisation d'un appariement entre données d'actionnariat des sociétés et contribuables à l'impôt sur le revenu, à partir d'un prototype Insee et de méthodes mobilisées par l'IPP.",
+  "mecanisme_recherche": "Coopération de statistique publique, appariement de données et passage envisagé d'un prototype à une production répétée.",
+  "programme_reference": "SAPS–CPPE 2026",
+  "conclusion_autorisee": "Le rapport parlementaire atteste une réponse commune à l'appel et décrit une finalité de production statistique régulière.",
+  "etats_non_etablis": [
+    "acronyme_de_selection_anr",
+    "selection_par_anr",
+    "aide_attribuee",
+    "convention_signee",
+    "mise_en_production_reguliere",
+    "delais_reels",
+    "couts_reels",
+    "effet_sur_les_capacites_administratives"
+  ],
+  "relation_avec_datsum_ou_exact": "aucune_relation_documentee",
+  "position_dans_corpus": "candidature_documentee_separement_sans_correspondance_validee_avec_les_22_projets_selectionnes"
+}
