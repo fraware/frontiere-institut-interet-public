@@ -208,3 +208,10 @@ def test_chronologie_six_etapes_officielles_et_financement_inconnu():
     assert ids == {"saps_cppe_2026", "anr_nrf_iabio_2026"}
     saps = next(p for p in chrono["programmes"] if p["id"] == "saps_cppe_2026")
     assert saps["evenements"][2]["nombre_projets_retenus_annonces"] == 22
+    nrf = next(p for p in chrono["programmes"] if p["id"] == "anr_nrf_iabio_2026")
+    selection = nrf["evenements"][2]
+    assert selection["nombre_projets_retenus_annonces"] == 5
+    assert len(selection["acronymes_selectionnes"]) == 5
+    assert selection["piece_selection"].endswith(".pdf")
+    assert "conditionné" in selection["precision"] or "dépendent" in selection["precision"]
+
