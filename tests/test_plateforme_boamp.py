@@ -93,7 +93,7 @@ def test_releve_courant_identique_n_est_pas_duplique(tmp_path):
 def test_fichier_corrompu_ne_modifie_pas_la_base(tmp_path):
     racine = source(tmp_path)
     archive, _ = chemins_jour(racine, date(2026, 10, 1))
-    archive.write_bytes(archive.read_bytes() + b"altération")
+    archive.write_bytes(archive.read_bytes() + b"alteration")
     base = stockage(tmp_path)
     with pytest.raises(CaptureInvalide, match="comprimés"):
         importer_cycle(base, racine)
