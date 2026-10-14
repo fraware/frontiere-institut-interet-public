@@ -24,7 +24,7 @@ def config():
 
 def test_refuser_source_externe_et_injection_identite():
     sources = config()
-    assert len(verifier_sources(sources)) == 2
+    assert len(verifier_sources(sources)) == 3
     sources["sources"][0]["url"] = "https://tiers.example/PV.pdf"
     with pytest.raises(SourceInvalide, match="Identité"):
         verifier_sources(sources)
@@ -64,8 +64,8 @@ def test_idempotence_et_echec_partiel_sans_effacement():
     x = executer(config(), ancien=initial, telecharger=lambda _: PDF,
                  extracteur=lambda _: ["Delibia et le service juridique"],
                  instant="2026-10-14T00:00:00+00:00")
-    assert x["pieces_avec_empreinte"] == 2
-    assert x["pieces_nouvelles_ou_changees"] == 2
+    assert x["pieces_avec_empreinte"] == 3
+    assert x["pieces_nouvelles_ou_changees"] == 3
     y = executer(config(), ancien=x, telecharger=lambda _: PDF,
                  extracteur=lambda _: ["Delibia et le service juridique"],
                  instant="2026-10-15T00:00:00+00:00")
@@ -79,7 +79,7 @@ def test_idempotence_et_echec_partiel_sans_effacement():
     z = executer(config(), ancien=x, telecharger=indisponible,
                  extracteur=lambda _: ["Delibia"],
                  instant="2026-10-16T00:00:00+00:00")
-    assert z["pieces_avec_empreinte"] == 2
+    assert z["pieces_avec_empreinte"] == 3
     assert z["echecs"] == [{"source_id": "auz-2025-06-18",
                             "motif": "TimeoutError"}]
 
@@ -93,6 +93,15 @@ def test_zero_pieces_ne_doit_pas_ecraser_le_releve():
             extracteur=lambda _: ["inutilisé"],
             instant="2026-10-14T00:00:00+00:00",
         )
+
+
+def test_le_proces_verbal_n_est_pas_confondu_avec_la_deliberation():
+    urls = config()["sources"]
+    pv = next(x for x in urls if x["id"] == "esc-2025-02-13-pv")
+    dossier = next(x for x in urls if x["id"] == "esc-2025-02-13")
+    assert pv["url"].endswith("/PV-CM-2025-02-13.pdf")
+    assert dossier["url"] != pv["url"]
+    assert len({x["id"] for x in urls}) == 3
 
 
 def test_ne_confond_pas_presence_du_terme_et_action():
