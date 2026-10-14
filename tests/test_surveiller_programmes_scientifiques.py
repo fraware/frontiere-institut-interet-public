@@ -223,3 +223,14 @@ def test_chronologie_six_etapes_officielles_et_financement_inconnu():
     assert selection["piece_selection"].endswith(".pdf")
     assert "conditionné" in selection["precision"] or "dépendent" in selection["precision"]
 
+
+
+def test_changement_du_pdf_lie_est_detecte_meme_a_texte_identique():
+    texte = b"Description officielle du programme et de sa liste de projets." * 4
+    def page(version):
+        return (b"<html><main><article>" + texte +
+                b'<a href="/fileadmin/selection/' + version +
+                b'.pdf">Liste des projets selectionnes</a></article></main></html>')
+    assert empreinte_document(page(b"v1"), "html") != (
+        empreinte_document(page(b"v2"), "html")
+    )
