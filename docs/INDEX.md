@@ -40,6 +40,12 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [Rapprochement BOAMP–BeauAMP](RAPPROCHEMENTS_BOAMP_BEAUAMP_V1.md) | Liens exacts entre avis et attributions enrichies, sans inférence de mobilisation |
 | [Analyse actuelle des délais](ANALYSE_DELAIS_V10.md) | État actuel des chronologies et des délais exploitables |
 
+## Veille et qualité des sources
+
+| Document | Rôle |
+| --- | --- |
+| [Contrôle transversal de la veille](CONTROLE_VEILLE_ET_INTEGRATION_V1.md) | Fraîcheur des relevés, succès des collectes, anomalies, limites et passage des observations aux cas documentés |
+
 ## Référentiel institutionnel
 
 | Document | Rôle |
