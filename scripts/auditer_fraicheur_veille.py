@@ -157,10 +157,12 @@ def auditer_collecte(racine: Path, entree: dict, maintenant: datetime) -> dict:
             for source in sources:
                 identite = source.get("source_id")
                 if source.get("erreur"):
-                    from scripts.surveiller_sources_institutionnelles import classifier_erreur_source
-
-                    code = (source.get("code_erreur")
-                            or classifier_erreur_source(str(source["erreur"])))
+                    erreur = str(source["erreur"])
+                    code = source.get("code_erreur") or (
+                        "ACCES_REFUSE_CLIENT_AUTOMATISE"
+                        if erreur.startswith("HTTPError: HTTP Error 403:")
+                        else "ECHEC_OBSERVATION_SOURCE"
+                    )
                     alerter(resultat, code,
                             f"{identite} : échec d'observation, état public inconnu",
                             gravite(source.get("criticite", "moyenne")))
