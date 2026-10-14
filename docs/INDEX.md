@@ -47,6 +47,8 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [Contrôle transversal de la veille](CONTROLE_VEILLE_ET_INTEGRATION_V1.md) | Fraîcheur des relevés, succès des collectes, anomalies, limites et passage des observations aux cas documentés |
 | [Sources scientifiques HAL et CORDIS](QUALIFICATION_VEILLE_SCIENTIFIQUE_HAL_CORDIS_2026_10_14.md) | Conditions d'accès, limites de réutilisation et critères d'admission de deux sources complémentaires |
 | [Diagnostic des accès et des dates](DIAGNOSTIC_ACCES_SOURCES_ET_DATES_2026_10_14.md) | Refus HTTP, dates indéterminées et séparation des dates de délibération et de publication |
+| [Revue des dix signaux publics](REVUE_INITIALE_DIX_SIGNAUX_2026_10_14.md) | Qualification provisoire, provenance des publications et contrôle de leurs révisions |
+| [Comparateurs ANR et commande publique](COMPARATEURS_ANR_CNCP_SOURCES_PRIMAIRES_2026_10_14.md) | Sources primaires sur les appels de recherche, les sélections et les dispositifs de coopération |
 
 ## Référentiel institutionnel
 
