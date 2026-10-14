@@ -70,6 +70,8 @@ jobs:
             exit 0
           fi
           [[ "$NOMBRE" == "1" ]] || { echo "Nombre de propositions inattendu" >&2; exit 1; }
+          NUMERO=$(gh pr view "$BRANCHE" --repo "$GITHUB_REPOSITORY" --json number --jq '.number')
+          [[ "$NUMERO" =~ ^[1-9][0-9]*$ ]] || { echo "Numéro de proposition invalide" >&2; exit 1; }
           SHA=$(gh pr view "$BRANCHE" --repo "$GITHUB_REPOSITORY" --json headRefOid --jq '.headRefOid')
           [[ "$SHA" =~ ^[0-9a-f]{40}$ ]] || { echo "Empreinte de proposition invalide" >&2; exit 1; }
 
@@ -101,4 +103,4 @@ jobs:
           ACTUEL=$(gh pr view "$BRANCHE" --repo "$GITHUB_REPOSITORY" --json headRefOid --jq '.headRefOid')
           [[ "$ACTUEL" == "$SHA" ]] || { echo "Le commit a changé depuis les contrôles" >&2; exit 1; }
           python -m scripts.fusionner_proposition_controlee \
-            --source deliberations --branche "$BRANCHE" --empreinte "$SHA"
+            --source deliberations --branche "$BRANCHE" --empreinte "$SHA" --numero "$NUMERO"
