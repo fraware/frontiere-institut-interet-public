@@ -1,4 +1,4 @@
-"""Relever les octets de deux PDF municipaux officiels et leurs indices paginés.
+"""Relever les octets de trois PDF municipaux officiels et leurs indices paginés.
 
 Le PDF n'est ni publié à nouveau ni transcrit intégralement. Un mot repéré sur
 une page ne prouve ni un usage effectif ni le résultat d'une prestation.
@@ -29,6 +29,9 @@ CIBLES = {
     ),
     "auz-2025-06-18": (
         "https://www.auzeville.fr/wp-content/uploads/2025/06/PV-18-06-25.pdf"
+    ),
+    "esc-2025-02-13-pv": (
+        "https://www.escalquens.fr/wp-content/uploads/2025/04/PV-CM-2025-02-13.pdf"
     ),
 }
 

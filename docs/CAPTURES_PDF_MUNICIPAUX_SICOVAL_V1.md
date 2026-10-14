@@ -2,12 +2,13 @@
 
 ## Objet
 
-Cette procédure complète [l'étude Sicoval–Delibia](ENQUETE_SICOVAL_DELIBIA_USAGES_MUNICIPAUX_2026_10_14.md) par un contrôle **des octets de deux PDF primaires** publiés sur des domaines municipaux. Elle remédie à une limite de l'enquête initiale, fondée sur la lecture des textes de documents sans récupération locale de leurs fichiers exacts.
+Cette procédure complète [l'étude Sicoval–Delibia](ENQUETE_SICOVAL_DELIBIA_USAGES_MUNICIPAUX_2026_10_14.md) par un contrôle **des octets de trois PDF primaires** publiés sur des domaines municipaux. Elle remédie à une limite de l'enquête initiale, fondée sur la lecture des textes de documents sans récupération locale de leurs fichiers exacts.
 
-Les deux adresses sont fixées dans `institutionnel/pieces_publiques/sources_pdfs_municipaux_v1.json` :
+Les trois adresses sont fixées dans `institutionnel/pieces_publiques/sources_pdfs_municipaux_v1.json` :
 
 - Escalquens, délibérations du 13 février 2025, https://www.escalquens.fr/wp-content/uploads/2025/02/D%C3%A9lib%C3%A9rations-CM-2025-02-13.pdf.
 - Auzeville-Tolosane, procès-verbal du 18 juin 2025, https://www.auzeville.fr/wp-content/uploads/2025/06/PV-18-06-25.pdf.
+- Escalquens, procès-verbal et débat du 13 février 2025, https://www.escalquens.fr/wp-content/uploads/2025/04/PV-CM-2025-02-13.pdf.
 
 Le programme `scripts/relever_pdfs_municipaux.py` vérifie la concordance exacte de ces URL, refuse les redirections et limite chaque fichier à 15 millions d'octets. Il vérifie les signatures de début et de fin du PDF, puis utilise la bibliothèque `pypdf` pour compter les pages et rechercher **des expressions déterminées à l'avance**, notamment « Delibia », « Sicoval » et « service juridique ».
 
@@ -25,7 +26,7 @@ Le programme `scripts/relever_pdfs_municipaux.py` vérifie la concordance exacte
 
 ## Préservation et vérifications
 
-Une indisponibilité temporaire du site laisse le relevé précédent inchangé. Si les deux sources sont inaccessibles au premier passage, l'exécution échoue avant publication : le programme ne crée pas de succès fictif.
+Une indisponibilité temporaire du site laisse le relevé précédent inchangé. Si les trois sources sont inaccessibles au premier passage, l'exécution échoue avant publication : le programme ne crée pas de succès fictif.
 
 La tâche `.github/workflows/releve-pdfs-municipaux.yml` s'exécute mensuellement, au changement du collecteur ou à la demande. Ses résultats ne sont intégrés que par la procédure automatique de publication, sur un fichier JSON strictement autorisé, après les trois vérifications Python 3.11, Python 3.12 et conteneur de la révision proposée. Les tests `tests/test_relever_pdfs_municipaux.py` simulent sans réseau les pièces correctes, les documents tronqués, les sources externes et les indisponibilités.
 
