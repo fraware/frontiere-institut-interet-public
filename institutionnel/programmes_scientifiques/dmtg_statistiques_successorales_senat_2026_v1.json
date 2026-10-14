@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "etat_au": "2026-10-14",
+  "id": "dmtg_2_0_dgfip_statistiques_successorales_2026",
+  "nature": "difficulte_documentee_de_capacite_statistique_publique_dans_un_rapport_du_senat",
+  "source": {
+    "producteur": "Sénat, commission des finances",
+    "rapport": "Rapport d'information n° 760 (2025-2026), déposé le 17 juin 2026",
+    "date_source": "2026-06-17",
+    "url": "https://www.senat.fr/rap/r25-760/r25-760_mono.html",
+    "sections": [
+      "C. Complexe, le patrimoine des plus fortunés...",
+      "II. Enfin achever la numérisation des déclarations..."
+    ],
+    "passages": "DMTG 2.0 : enquête successorale, moyens du DESF, recommandation n° 2 et recommandation n° 3."
+  },
+  "organisme_concerne": "DGFiP, Département des études statistiques et fiscales (DESF)",
+  "besoin_precis": "Relancer une production statistique exploitable sur les transmissions patrimoniales et construire un traitement de déclarations successorales numériques.",
+  "donnees_historiques": {
+    "annees_enquetes_dmtg": [
+      1994,
+      2001,
+      2006,
+      2010
+    ],
+    "derniere_enquete_dmtg_rapportee": 2010,
+    "etat_decrit_2026": "Aucune nouvelle diffusion de microdonnées statistiques équivalentes depuis 2010 selon le rapport sénatorial.",
+    "limitations": "Les anciennes enquêtes utilisaient une saisie manuelle et un échantillon départemental ; le rapport questionne la représentativité."
+  },
+  "moyens_rapportes": {
+    "etp_constates_au_rapport": 0.5,
+    "perimetre": "ETP indiqué pour le chantier de traitement des déclarations successorales évoqué dans le rapport, sans généralisation à l'ensemble des effectifs DESF.",
+    "etp_additionnel_annonce": 1,
+    "date_annoncee": "2026-09",
+    "realisation_de_l_annonce": "non_verifiee",
+    "description_source": "Le rapport de juin 2026 annonce un ETP supplémentaire d'analyste des données à partir de septembre 2026.",
+    "interdiction_inference": "Ne pas annoncer 1,5 ETP comme effectif effectivement constaté en octobre 2026."
+  },
+  "obstacles_documentes": [
+    "donnees_de_succession_non_structurées",
+    "traitement_historique_manuel",
+    "systèmes_de_dematerialisation_inacheves",
+    "besoin_de_developpement_logiciel_pour_contenu_notarial",
+    "effectifs_identifies_comme_limités_pour_le_chantier"
+  ],
+  "recommandations_parlementaires": [
+    {
+      "numero": 2,
+      "statut": "proposition_du_rapport",
+      "objet": "Rétablir une enquête DMTG 2.0 et reconstituer les statistiques manquantes depuis 2010."
+    },
+    {
+      "numero": 3,
+      "statut": "proposition_du_rapport",
+      "objet": "Accélérer la numérisation des déclarations de successions et rendre le module statistique opérationnel."
+    },
+    {
+      "statut": "proposition_du_rapport",
+      "objet": "Redéployer des effectifs existants au sein des ministères économiques et financiers vers le DESF pour cette mission."
+    }
+  ],
+  "reponses_concurrentes_a_etudier": [
+    "renforts_d_equipes_internes",
+    "systemes_d_information_et_donnees_structurées",
+    "budget_de_numerisation_durable",
+    "assistance_scientifique_temporaire",
+    "prestations_existantes_et_cooperations_publiques"
+  ],
+  "non_etablis": [
+    "recrutement_effectif_en_septembre_2026",
+    "programme_dmtg_2_0_demarre",
+    "premiers_fichiers_statistiques_produits",
+    "cout_du_retard",
+    "duree_de_mobilisation_de_competences_externes",
+    "effet_causal_d_une_nouvelle_institution"
+  ],
+  "relation_avec_fidelipro": "cas_different_malgre_un_service_statistique_concerne_et_des_sujets_patrimoniaux_voisins",
+  "qualification_provisoire": "cas_documente_de_difficulte_technique_et_de_moyens_rapportes; aucune_attribution_causale_a_une_penurie_generale_de_specialistes",
+  "hypotheses_a_departager": [
+    "capacite_d_analyse",
+    "structuration_et_acces_aux_donnees",
+    "priorisation_budgétaire_et_des_moyens",
+    "architecture_et_maturite_du_systeme_d_information"
+  ]
+}
