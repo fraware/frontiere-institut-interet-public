@@ -51,7 +51,7 @@ Deux des onze pistes appartiennent à **La Fibre64** (5 février et 3 juillet 20
 ### Informations décisives à rechercher
 
 1. Les textes et éventuelles annexes des deux actes **`8_2026_02_05`** et **`7_2026_07_03`**, avec empreintes, pagination et décision adoptée.
-2. Le **rapport final de l'expérimentation** de l'assistant virtuel de réunion, prévu au deuxième trimestre 2026 : dates des essais, heures réellement consommées, incidents, erreurs et temps consacré à la correction.
+2. Le **rapport final de l'expérimentation** de l'assistant virtuel de réunion, prévu au deuxième trimestre 2026 : dates des essais, heures réellement consommées, incidents, erreurs et temps consacré à la correction. La [recherche documentaire et la demande de communication proposées](ENQUETE_FOXY_BILAN_2026_10_14.md) précisent les sources consultées, le procès-verbal du 3 juillet 2026 annoncé sur le portail et les pièces à obtenir (suivi [n° 408](https://github.com/fraware/frontiere-institut-interet-public/issues/408)).
 3. Des procès-verbaux d'utilisation, attestations de formation ou relevés anonymisés d'activité qui relient une **capacité disponible** à une **première contribution utile**.
 4. Les modalités de commande, de financement et d'hébergement, distinctes de toute preuve d'adoption ou de performance.
 5. Une comparaison explicite avec les mécanismes publics préexistants et, si elle existe, la cause d'un besoin initial non satisfait.
