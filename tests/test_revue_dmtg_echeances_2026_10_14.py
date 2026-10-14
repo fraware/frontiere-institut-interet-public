@@ -21,7 +21,7 @@ def test_sources_primaire_et_jalons_sur_chantiers_distincts():
     assert r["version"] == 1
     assert r["etat_au"] == "2026-10-14"
     sources = {s["id"]: s for s in r["pieces"]}
-    assert len(sources) == 6
+    assert len(sources) == 7
     assert set(sources) == {
         "fiche_dgfip_decembre_2025",
         "fiche_dgfip_fevrier_2026",
@@ -29,12 +29,13 @@ def test_sources_primaire_et_jalons_sur_chantiers_distincts():
         "rapport_senat_juin_2026",
         "offre_dp5_moe_septembre_2026",
         "offre_dp5_moa_septembre_2026",
+        "dgfip_stats_recettes_2026",
     }
     assert all(urlsplit(s["url"]).scheme == "https" for s in sources.values())
     assert all(urlsplit(s["url"]).hostname in {
         "www.pass.fonction-publique.gouv.fr", "questions.assemblee-nationale.fr",
         "www.senat.fr", "www.passerelles.economie.gouv.fr",
-        "passerelles.economie.gouv.fr",
+        "passerelles.economie.gouv.fr", "www.impots.gouv.fr",
     } for s in sources.values())
     assert len(r["jalons"]) == 7
     assert all(j["piece_id"] in sources for j in r["jalons"])
@@ -110,3 +111,13 @@ def test_cas_source_et_revue_sont_relies_sans_etat_invente():
         "couverture_effectivement_constatee"
     ] == "non_etablie"
     assert "nombre_de_pdf_extraits_avec_validation_statistique" in d["non_etablis"]
+
+
+def test_agregats_dmtg_ne_sont_pas_des_microdonnees_successorales():
+    r = charger("revue_dmtg_moyens_et_echeances_2026_10_14.json")
+    pieces = {piece["id"]: piece for piece in r["pieces"]}
+    assert pieces["dgfip_stats_recettes_2026"]["genre"] == "bulletin_statistiques_agregees"
+    assert pieces["dgfip_stats_recettes_2026"]["date_document"] == "2026-06"
+    assert "microdonnées successorales" in pieces["dgfip_stats_recettes_2026"]["limite"]
+    assert r["distinction_statistique"]["agregats_fiscaux_2026"] == "publies_dans_bulletin_dgfip_stats"
+    assert r["distinction_statistique"]["microdonnees_successions_nouvelle_serie"] == "publication_comparable_non_retrouvee"
