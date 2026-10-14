@@ -102,12 +102,13 @@ def valider_concurrence(
 
 
 def examiner_proposition(
-    repo: str, source: str, branche: str, attendue: str, racine: Path = RACINE,
+    repo: str, source: str, branche: str, attendue: str,
+    numero: int, racine: Path = RACINE,
 ) -> None:
     """Vérifier le commit et les changements de main jusqu'au dernier instant."""
     brut = sortie(
-        "gh", "pr", "view", branche, "--repo", repo,
-        "--json", "headRefName,headRefOid,baseRefName,state,isDraft,files",
+        "gh", "pr", "view", str(numero), "--repo", repo,
+        "--json", "number,headRefName,headRefOid,baseRefName,state,isDraft,files",
         racine=racine,
     )
     try:
@@ -115,6 +116,8 @@ def examiner_proposition(
     except json.JSONDecodeError as exc:
         raise PublicationRefusee("Métadonnées de proposition illisibles") from exc
 
+    if pr.get("number") != numero:
+        raise PublicationRefusee("Numéro de proposition non conforme")
     sortie("git", "fetch", "--quiet", "--no-tags", "origin", "main", branche, racine=racine)
     ancetre = sortie("git", "merge-base", attendue, "origin/main", racine=racine).strip()
     if not SHA.fullmatch(ancetre):
@@ -165,7 +168,10 @@ def main() -> int:
     parser.add_argument("--source", required=True, choices=tuple(CHEMINS))
     parser.add_argument("--branche", required=True)
     parser.add_argument("--empreinte", required=True)
+    parser.add_argument("--numero", type=int, required=True)
     args = parser.parse_args()
+    if args.numero < 1:
+        parser.error("Numéro de proposition invalide")
     depot = os.environ.get("GITHUB_REPOSITORY", "")
     if (os.environ.get("GITHUB_REF") != "refs/heads/main"
             or os.environ.get("GITHUB_EVENT_NAME") not in {
@@ -177,15 +183,15 @@ def main() -> int:
         n = fusionner_avec_reessais(
             depot, args.source, args.branche, args.empreinte,
             verifier=lambda: examiner_proposition(
-                depot, args.source, args.branche, args.empreinte
+                depot, args.source, args.branche, args.empreinte, args.numero
             ),
             fusionner=lambda: commande(
-                "gh", "pr", "merge", args.branche, "--repo", depot,
+                "gh", "pr", "merge", str(args.numero), "--repo", depot,
                 "--squash", "--match-head-commit", args.empreinte,
                 "--delete-branch",
             ),
             confirmer=lambda: json.loads(sortie(
-                "gh", "pr", "view", args.branche, "--repo", depot,
+                "gh", "pr", "view", str(args.numero), "--repo", depot,
                 "--json", "state"
             )).get("state") == "MERGED",
         )
