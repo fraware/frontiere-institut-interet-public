@@ -5,7 +5,7 @@ import json
 import pytest
 
 from scripts.moissonner_deliberations_publiques import (
-    CATALOGUE, MAX_OCTETS_CSV, MAX_OCTETS_META, CollecteInvalide,
+    CATALOGUE, MAX_OCTETS_CSV, MAX_OCTETS_META, JEUX_CIBLES, URLS_CIBLEES, CollecteInvalide,
     adresse_autorisee, collecter, extraire_csv, reference_document,
     requete, selectionner_datasets,
 )
@@ -40,6 +40,9 @@ def jeux_meta():
 
 
 def faux_charger(url, plafond):
+    if url in URLS_CIBLEES:
+        assert plafond == MAX_OCTETS_META
+        return json.dumps(dict(jeux_meta()[0], slug=url[len(CATALOGUE):-1])).encode()
     if url.startswith(CATALOGUE):
         assert plafond == MAX_OCTETS_META
         return json.dumps(enveloppe(jeux_meta())).encode()
@@ -58,6 +61,40 @@ def test_urls_fixes_et_sans_redirections():
     assert reference_document("https://www.escalquens.fr/document.pdf")
     with pytest.raises(CollecteInvalide):
         requete("expression non autorisée")
+
+
+def test_fiches_ciblees_accessibles_avec_liste_blanche():
+    assert len(JEUX_CIBLES) >= 6
+    for url in URLS_CIBLEES:
+        assert adresse_autorisee(url, catalogue=True)
+    assert not adresse_autorisee(
+        "https://www.data.gouv.fr/api/1/datasets/jeu-inconnu/",
+        catalogue=True,
+    )
+    assert not adresse_autorisee(
+        "https://tiers.test/api/1/datasets/" + JEUX_CIBLES[0] + "/",
+        catalogue=True,
+    )
+
+
+def test_repli_sur_fiches_ciblees_si_recherche_generale_en_panne():
+    def chargeur(url, plafond):
+        if url in URLS_CIBLEES:
+            return faux_charger(url, plafond)
+        if url.startswith(CATALOGUE):
+            raise TimeoutError("recherche indisponible")
+        return faux_charger(url, plafond)
+
+    registre, etat = collecter(
+        ancien={"version": "pistes-deliberations-v1", "pistes": []},
+        charger=chargeur, instant="2026-10-14T10:00:00+00:00",
+        patienter=lambda _: None,
+    )
+    assert etat["pages_catalogue_reussies"] == 0
+    assert etat["fiches_ciblees_reussies"] == len(JEUX_CIBLES)
+    assert etat["nouvelles_pistes"] == 2
+    assert len(registre["pistes"]) == 2
+    assert any(x["type"] == "catalogue" for x in etat["echecs"])
 
 
 def test_filtrage_licence_schema_et_domaine():
@@ -117,6 +154,9 @@ def test_collecte_idempotente_et_pas_de_double_compte():
     assert bilan["nouvelles_pistes"] == 2
     assert bilan["lignes_scdl_examinees"] == 3
     assert bilan["pages_catalogue_reussies"] == 3
+    assert bilan["fiches_ciblees_tentees"] == len(JEUX_CIBLES)
+    assert bilan["fiches_ciblees_reussies"] == len(JEUX_CIBLES)
+    assert bilan["paginage_ressources_csv_verifie"] is False
     assert len(registre["pistes"]) == 2
     identifiants = [p["identifiant"] for p in registre["pistes"]]
     nouveau, second = collecter(
