@@ -9,6 +9,8 @@ on:
     paths:
       - "scripts/auditer_fraicheur_veille.py"
       - "tests/test_auditer_fraicheur_veille.py"
+      - "tests/test_preparer_revue_veille.py"
+      - "scripts/preparer_revue_veille.py"
       - "institutionnel/veille/controle_v1.json"
       - ".github/workflows/controle-veille.yml"
 
@@ -41,7 +43,7 @@ jobs:
       - name: Tester le contrôleur sans accès réseau
         run: |
           python -m pip install "pytest>=8,<10"
-          python -m pytest -q tests/test_auditer_fraicheur_veille.py
+          python -m pytest -q tests/test_auditer_fraicheur_veille.py tests/test_preparer_revue_veille.py
 
       - name: Contrôler les relevés et les dernières exécutions GitHub
         id: diagnostic
@@ -53,6 +55,13 @@ jobs:
             --sortie-json "$RUNNER_TEMP/controle-veille.json" \
             --resume-markdown "$RUNNER_TEMP/controle-veille.md"
 
+      - name: Préparer les signaux à examiner par les chercheurs
+        if: always()
+        run: |
+          python scripts/preparer_revue_veille.py \
+            --sortie-json "$RUNNER_TEMP/revue-signaux.json" \
+            --resume-markdown "$RUNNER_TEMP/revue-signaux.md"
+
       - name: Afficher le bilan, y compris en cas de retard
         if: always()
         shell: bash
@@ -61,6 +70,9 @@ jobs:
             cat "$RUNNER_TEMP/controle-veille.md" >> "$GITHUB_STEP_SUMMARY"
           else
             echo "Contrôle non produit : inspecter les journaux de l'exécution." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [[ -f "$RUNNER_TEMP/revue-signaux.md" ]]; then
+            cat "$RUNNER_TEMP/revue-signaux.md" >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Conserver le bilan comme pièce d'exécution
@@ -71,5 +83,7 @@ jobs:
           path: |
             ${{ runner.temp }}/controle-veille.json
             ${{ runner.temp }}/controle-veille.md
+            ${{ runner.temp }}/revue-signaux.json
+            ${{ runner.temp }}/revue-signaux.md
           if-no-files-found: warn
           retention-days: 30
