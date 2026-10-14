@@ -7,7 +7,7 @@ import pytest
 
 from scripts.surveiller_publications_dmtg import (
     SurveillanceInvalide, autoriser_adresse, consulter, lancer,
-    valider_catalogue, ETAT, CATALOGUE,
+    valider_catalogue, valider_contenu_officiel, ETAT, CATALOGUE,
 )
 from scripts.publier_mise_a_jour_institutionnelle import (
     PublicationRefusee, verifier_portee, identite_branche,
@@ -142,3 +142,52 @@ def test_publisher_limite_a_un_seul_registre_dmtg():
     ):
         with pytest.raises(PublicationRefusee, match="hors périmètre"):
             verifier_portee("dmtg", [refuse])
+
+
+
+def test_refuse_page_de_maintenance_dgfip_servie_avec_http_200():
+    source = {
+        "id": "dgfip_publications_2026",
+        "url": "https://www.impots.gouv.fr/dgfip-statistiques-2026",
+    }
+    html = (
+        "<html><main><h1>Le site impots.gouv.fr est actuellement en "
+        "maintenance.</h1><p>La documentation n'est pas accessible, "
+        "veuillez revenir plus tard pour consulter les publications.</p>"
+        "</main></html>"
+    ).encode()
+    with pytest.raises(SurveillanceInvalide, match="maintenance"):
+        valider_contenu_officiel(source, html, source["url"])
+
+
+def test_refuse_page_generique_au_lieu_de_la_source_attendue():
+    source = {
+        "id": "dgfip_recettes_fiscales",
+        "url": "https://www.impots.gouv.fr/recettes-fiscales",
+    }
+    html = (
+        "<html><main><h1>Site gouvernemental et services publics</h1>"
+        "<p>Page générique de présentation des démarches administratives "
+        "avec les informations institutionnelles et les services disponibles."
+        "</p></main></html>"
+    ).encode()
+    with pytest.raises(SurveillanceInvalide, match="Contenu inattendu"):
+        valider_contenu_officiel(source, html, source["url"])
+
+
+def test_document_valide_et_redirection_hors_document():
+    source = {
+        "id": "dgfip_publications_2026",
+        "url": "https://www.impots.gouv.fr/dgfip-statistiques-2026",
+    }
+    html = (
+        "<html><main><h1>DGFiP Statistiques - 2026</h1>"
+        "<p>Liste de publications fiscales annuelles et trimestrielles de "
+        "l'administration, accompagnées de leurs références et titres."
+        "</p></main></html>"
+    ).encode()
+    valider_contenu_officiel(source, html, source["url"])
+    with pytest.raises(SurveillanceInvalide, match="Adresse finale"):
+        valider_contenu_officiel(
+            source, html, "https://www.impots.gouv.fr/"
+        )
