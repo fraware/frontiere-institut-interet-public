@@ -1,0 +1,48 @@
+name: "Examiner le DCE DGAC rendu publiquement accessible"
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/relever_dce_dgac_public.py"
+      - "tests/test_relever_dce_dgac_public.py"
+      - ".github/workflows/relever-dce-dgac.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  controle:
+    if: github.repository == 'fraware/frontiere-institut-interet-public'
+    name: "Contrôler le ZIP public sans le republier"
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Récupérer les scripts à contrôler
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Installer Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Valider la logique d'examen sans réseau
+        run: |
+          python -m pip install "pytest>=8,<10"
+          python -m pytest -q tests/test_relever_dce_dgac_public.py
+
+      - name: Relever l'archive publique et contrôler ses PDF
+        run: |
+          python scripts/relever_dce_dgac_public.py \
+            --sortie "$RUNNER_TEMP/releve-dce-dgac.json"
+
+      - name: Conserver seulement le relevé et les empreintes
+        uses: actions/upload-artifact@v4
+        with:
+          name: releve-public-dce-dgac-${{ github.run_id }}
+          path: ${{ runner.temp }}/releve-dce-dgac.json
+          if-no-files-found: error
+          retention-days: 14
