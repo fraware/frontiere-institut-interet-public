@@ -36,7 +36,7 @@ def test_identite_conservee_ne_vaut_pas_validation_scientifique():
     resultat = evaluer_revisions(qualification(), source(), MAINTENANT)
     assert resultat["comptes"]["identique"] == 1
     assert not resultat["nouvelle_validation_scientifique_effectuee"]
-    assert resultat["qualifications"][0]["interprétation_validee"] is False
+    assert resultat["qualifications"][0]["interpretation_validee"] is False
 
 
 def test_modification_de_contenu_reclame_requalification_sans_bloquer():
