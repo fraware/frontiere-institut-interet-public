@@ -1,0 +1,64 @@
+{
+  "controle_le": "2026-10-14T05:51:46+00:00",
+  "donnees_probantes": "empreintes_et_paginage_sans_extraits_libres",
+  "echecs": [],
+  "effets_mesures": 0,
+  "pieces": [
+    {
+      "commune": "Auzeville-Tolosane",
+      "id_source": "auz-2025-06-18",
+      "observation_le": "2026-10-14T05:51:46+00:00",
+      "octets_pdf_republies": false,
+      "pages": 26,
+      "pages_contenant_termes": {
+        "delibia": [
+          1,
+          5,
+          6,
+          7
+        ],
+        "service juridique": []
+      },
+      "pages_extraites_avec_texte": 26,
+      "qualification": "presence_lexicale_paginee_sans_validation_usage",
+      "repere": "18 juin 2025, point 3",
+      "sha256_octets_pdf": "54bf9572a40c992194097fafd0d5619ea0fad27f8bb2f9320e3f570f4e437fe6",
+      "taille_octets": 265795,
+      "type_piece": "proces-verbal",
+      "url_source_officielle": "https://www.auzeville.fr/wp-content/uploads/2025/06/PV-18-06-25.pdf",
+      "utilisation_effective_prouvee": false
+    },
+    {
+      "commune": "Escalquens",
+      "id_source": "esc-2025-02-13",
+      "observation_le": "2026-10-14T05:51:46+00:00",
+      "octets_pdf_republies": false,
+      "pages": 21,
+      "pages_contenant_termes": {
+        "delibia": [
+          5,
+          6,
+          7,
+          8,
+          10
+        ],
+        "sicoval": [
+          5,
+          10
+        ]
+      },
+      "pages_extraites_avec_texte": 14,
+      "qualification": "presence_lexicale_paginee_sans_validation_usage",
+      "repere": "13 février 2025, délibération 2025-7",
+      "sha256_octets_pdf": "aca8df52f91f26742cd1289f90e34789ca167ebd1a2f0411e2306d1a6645bf06",
+      "taille_octets": 2859295,
+      "type_piece": "dossier-deliberations",
+      "url_source_officielle": "https://www.escalquens.fr/wp-content/uploads/2025/02/D%C3%A9lib%C3%A9rations-CM-2025-02-13.pdf",
+      "utilisation_effective_prouvee": false
+    }
+  ],
+  "pieces_avec_empreinte": 2,
+  "pieces_nouvelles_ou_changees": 2,
+  "sources_attendues": 2,
+  "version": "observations-pdfs-municipaux-v1"
+}
