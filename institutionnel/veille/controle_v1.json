@@ -168,6 +168,11 @@
       "fichier": "veille-programmes-scientifiques.yml",
       "retard_max_heures": 72,
       "criticite": "haute"
+    },
+    {
+      "fichier": "veille-publications-dmtg.yml",
+      "retard_max_heures": 72,
+      "criticite": "haute"
     }
   ]
 }
