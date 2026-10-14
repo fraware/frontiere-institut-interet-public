@@ -72,7 +72,10 @@
     "cout_du_retard",
     "duree_de_mobilisation_de_competences_externes",
     "effet_causal_d_une_nouvelle_institution",
-    "enquete_dmtg_2_0_formellement_lancee"
+    "enquete_dmtg_2_0_formellement_lancee",
+    "nombre_de_pdf_extraits_avec_validation_statistique",
+    "deploiement_effectif_du_canal_notarial_au_second_semestre_2026",
+    "affectation_des_postes_dp5_publies_en_septembre_2026"
   ],
   "relation_avec_fidelipro": "cas_different_malgre_un_service_statistique_concerne_et_des_sujets_patrimoniaux_voisins",
   "qualification_provisoire": "chantier_technique_actif_et_besoin_de_competences_specifiques_documentes_par_dgfip_et_senat; effectifs_du_chantier_limites_selon_le_rapport; aucune_preuve_de_penurie_nationale",
@@ -133,6 +136,18 @@
       "donations_manuelles": "teleprocedure_obligatoire_depuis_2026-01-01_selon_le_ministere",
       "transmission_successions": "tests_en_cours_et_deploiement_progressif_prevus_pour_second_semestre_2026",
       "etat_deploiement_reel_en_octobre": "non_verifie"
-    }
-  }
+    },
+    "statistique_microdonnees_cible_2028": {
+      "horizon": "2028",
+      "nature": "echeance_de_diffusion_visée_selon_le_senat",
+      "premiere_diffusion_effectivement_constatee": "non_etablie"
+    },
+    "numerisation_declarations_cible_2029": {
+      "horizon": "2029",
+      "nature": "objectif_de_couverture_et_recommandation_parlementaire",
+      "couverture_effectivement_constatee": "non_etablie"
+    },
+    "volume_documents_revision_sources": "La fiche de décembre 2025 indique 300000 actes/an ; celle de février 2026 indique 330000 PDF/an. Chaque chiffre est une estimation documentaire, pas un nombre de documents effectivement traités."
+  },
+  "revue_moyens_et_echeances": "institutionnel/programmes_scientifiques/revue_dmtg_moyens_et_echeances_2026_10_14.json"
 }
