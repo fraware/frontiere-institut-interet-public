@@ -1,0 +1,240 @@
+{
+  "version": "episodes-mobilisation-preuves-v1",
+  "date_recherche": "2026-10-14",
+  "regles": {
+    "identite_fournisseur": "La concordance du SIREN ne prouve aucune relation contractuelle entre circuits.",
+    "premiere_utilite": "Toute date de premiere contribution utile absente reste null.",
+    "montants": "Les plafonds d'accords-cadres ne constituent pas des paiements."
+  },
+  "sources": [
+    {
+      "id": "BOAMP-SICTIAM-26-43435",
+      "type": "avis_attribution_officiel",
+      "url": "https://www.boamp.fr/telechargements/FILES/PDF/2026/04/26-43435.pdf",
+      "sha256_pdf": null,
+      "lecture_octets_independante": false,
+      "circuits": [
+        "SICTIAM-SAD-2026"
+      ]
+    },
+    {
+      "id": "SICTIAM-SAD-ORIGINE",
+      "type": "avis_publicite_profil_acheteur",
+      "url": "https://www.marches-securises.fr/entreprise/?cle_dce=17567093944fb28h9urd9g&module=script%7Cdl_la_s",
+      "sha256_pdf": null,
+      "lecture_octets_independante": false,
+      "circuits": [
+        "SICTIAM-SAD-2026"
+      ]
+    },
+    {
+      "id": "SICTIAM-DACTYLO-2026",
+      "type": "annonce_demonstration",
+      "url": "https://www.sictiam.fr/evenements/webinaire-intelligence-artificielle-decouvrez-dactylo-la-transcription-automatisee-de-vos-assemblees/",
+      "sha256_pdf": null,
+      "lecture_octets_independante": false,
+      "circuits": [
+        "SICTIAM-SAD-2026"
+      ]
+    },
+    {
+      "id": "SICOVAL-SB2025024",
+      "type": "registre_acte_officiel",
+      "url": "https://sicoval-actes-reglementaires.sicoval.fr/webdelibplus/jsp/seance_agenda.jsp?assembly=Bureau+communautaire+d%C3%A9lib%C3%A9rant&date=20250218&role=usager&type=apres",
+      "sha256_pdf": null,
+      "lecture_octets_independante": false,
+      "circuits": [
+        "SICOVAL-2025"
+      ]
+    },
+    {
+      "id": "ESCALQUENS-20250213",
+      "type": "pdf_communal",
+      "url": "https://www.escalquens.fr/wp-content/uploads/2025/02/D%C3%A9lib%C3%A9rations-CM-2025-02-13.pdf",
+      "sha256_pdf": "aca8df52f91f26742cd1289f90e34789ca167ebd1a2f0411e2306d1a6645bf06",
+      "lecture_octets_independante": true,
+      "circuits": [
+        "ESCALQUENS-2025"
+      ],
+      "capture_id": "esc-2025-02-13"
+    },
+    {
+      "id": "AUZEVILLE-20250618",
+      "type": "pdf_communal",
+      "url": "https://www.auzeville.fr/wp-content/uploads/2025/06/PV-18-06-25.pdf",
+      "sha256_pdf": "54bf9572a40c992194097fafd0d5619ea0fad27f8bb2f9320e3f570f4e437fe6",
+      "lecture_octets_independante": true,
+      "circuits": [
+        "AUZEVILLE-2025"
+      ],
+      "capture_id": "auz-2025-06-18"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "SICTIAM-SAD-2026",
+      "nature": "dispositif_acquisition_dynamique_et_marches_specifiques",
+      "organisme": "SICTIAM",
+      "reference": "26SAD08C1M01-01-02",
+      "siret_acheteur": "25060187900076",
+      "fournisseur_siren_partage": "908039142",
+      "relation_contractuelle_avec_autres_episodes_etablie": false,
+      "date_besoin_initial": null,
+      "date_premiere_contribution_utile": null,
+      "mesure_impact_independante": null,
+      "evenements": [
+        {
+          "id": "SAD-PUB",
+          "type": "publicite_dispositif",
+          "date": "2025-09-02",
+          "source_id": "SICTIAM-SAD-ORIGINE",
+          "page_pdf": null,
+          "qualite": "date_publication",
+          "precision": "jour"
+        },
+        {
+          "id": "CHOIX-TOMORRO",
+          "type": "choix_titulaire_declare",
+          "date": "2026-01-23",
+          "source_id": "BOAMP-SICTIAM-26-43435",
+          "page_pdf": 9,
+          "qualite": "date_declaree_dans_avis",
+          "precision": "jour"
+        },
+        {
+          "id": "CHOIX-AUTRES",
+          "type": "choix_titulaire_declare",
+          "date": "2026-02-23",
+          "source_id": "BOAMP-SICTIAM-26-43435",
+          "page_pdf": 10,
+          "qualite": "date_declaree_dans_avis",
+          "precision": "jour"
+        },
+        {
+          "id": "CONTRATS",
+          "type": "conclusion_contrats_declaree",
+          "date": "2026-03-20",
+          "source_id": "BOAMP-SICTIAM-26-43435",
+          "page_pdf": 9,
+          "qualite": "date_declaree_dans_avis",
+          "precision": "jour"
+        },
+        {
+          "id": "AVIS-ATTR",
+          "type": "publication_attribution",
+          "date": "2026-04-29",
+          "source_id": "BOAMP-SICTIAM-26-43435",
+          "page_pdf": 15,
+          "qualite": "date_publication",
+          "precision": "jour"
+        },
+        {
+          "id": "DACTYLO",
+          "type": "demonstration_annoncee",
+          "date": "2026-07-08",
+          "source_id": "SICTIAM-DACTYLO-2026",
+          "page_pdf": null,
+          "qualite": "annonce_non_confirmation_usage",
+          "precision": "jour"
+        }
+      ]
+    },
+    {
+      "id": "SICOVAL-2025",
+      "nature": "mutualisation_intercommunale",
+      "organisme": "Sicoval",
+      "reference": "SB2025024",
+      "siret_acheteur": null,
+      "fournisseur_siren_partage": "908039142",
+      "relation_contractuelle_avec_autres_episodes_etablie": false,
+      "date_besoin_initial": null,
+      "date_premiere_contribution_utile": null,
+      "mesure_impact_independante": null,
+      "evenements": [
+        {
+          "id": "DELIB-SIC",
+          "type": "deliberation_convention",
+          "date": "2025-02-18",
+          "source_id": "SICOVAL-SB2025024",
+          "page_pdf": null,
+          "qualite": "titre_et_date_registre",
+          "precision": "jour"
+        },
+        {
+          "id": "PUB-SIC",
+          "type": "publication_acte",
+          "date": "2025-02-20",
+          "source_id": "SICOVAL-SB2025024",
+          "page_pdf": null,
+          "qualite": "date_publication",
+          "precision": "jour"
+        }
+      ]
+    },
+    {
+      "id": "ESCALQUENS-2025",
+      "nature": "experimentations_communales",
+      "organisme": "Escalquens",
+      "reference": "2025-7",
+      "siret_acheteur": null,
+      "fournisseur_siren_partage": "908039142",
+      "relation_contractuelle_avec_autres_episodes_etablie": false,
+      "date_besoin_initial": null,
+      "date_premiere_contribution_utile": null,
+      "mesure_impact_independante": null,
+      "evenements": [
+        {
+          "id": "ESSAI-ESC",
+          "type": "experimentation_declaree",
+          "date": null,
+          "annee": "2024",
+          "source_id": "ESCALQUENS-20250213",
+          "page_pdf": 9,
+          "qualite": "retrospective_sans_date_precise",
+          "precision": "annee"
+        },
+        {
+          "id": "POURSUITE-ESC",
+          "type": "decision_poursuite",
+          "date": "2025-02-13",
+          "source_id": "ESCALQUENS-20250213",
+          "page_pdf": 9,
+          "qualite": "decision_institutionnelle",
+          "precision": "jour"
+        }
+      ]
+    },
+    {
+      "id": "AUZEVILLE-2025",
+      "nature": "usage_communal_declare",
+      "organisme": "Auzeville-Tolosane",
+      "reference": "20250601",
+      "siret_acheteur": null,
+      "fournisseur_siren_partage": "908039142",
+      "relation_contractuelle_avec_autres_episodes_etablie": false,
+      "date_besoin_initial": null,
+      "date_premiere_contribution_utile": null,
+      "mesure_impact_independante": null,
+      "evenements": [
+        {
+          "id": "USAGE-AUZ",
+          "type": "utilisation_declaree_par_agent",
+          "date": "2025-06-18",
+          "source_id": "AUZEVILLE-20250618",
+          "page_pdf": 5,
+          "qualite": "date_temoignage_ni_premier_usage",
+          "precision": "jour"
+        },
+        {
+          "id": "POURSUITE-AUZ",
+          "type": "decision_poursuite",
+          "date": "2025-06-18",
+          "source_id": "AUZEVILLE-20250618",
+          "page_pdf": 4,
+          "qualite": "decision_institutionnelle",
+          "precision": "jour"
+        }
+      ]
+    }
+  ]
+}
