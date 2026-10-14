@@ -80,5 +80,29 @@ def test_aucun_fichier_fiscal_individuel_ou_statut_de_mission_realisee():
     f = charger("chronologie_fidelipro_sources_2023_2026_v1.json")
     d = charger("dmtg_statistiques_successorales_senat_2026_v1.json")
     assert "Aucun fichier fiscal individuel" in f["donnees_personnelles"]
-    assert "programme_dmtg_2_0_demarre" in d["non_etablis"]
+    assert "enquete_dmtg_2_0_formellement_lancee" in d["non_etablis"]
     assert "premiers_fichiers_statistiques_produits" in d["non_etablis"]
+
+
+
+def test_volume_et_offre_de_competences_sont_documentes_sans_recrutement_presume():
+    dossier = charger("dmtg_statistiques_successorales_senat_2026_v1.json")
+    pieces = {s["id"]: s for s in dossier["sources_complementaires"]}
+    assert len(pieces) == 2
+    offre = pieces["dgfip_offre_stage_traitement_dmtg_2026"]
+    assert offre["url"].startswith("https://www.pass.fonction-publique.gouv.fr/")
+    assert offre["nature"] == "fiche_officielle_offre_de_stage"
+    reponse = pieces["reponse_ministerielle_question_11677_2026"]
+    assert reponse["date_publication"] == "2026-03-10"
+    assert reponse["url"].startswith("https://questions.assemblee-nationale.fr/")
+    faits = dossier["faits_complementaires"]
+    assert faits["effectif_total_desf_renseigne_par_offre"] == "un_peu_plus_de_40_agents"
+    assert faits["volume_pdfs_par_an_estime"] == 330000
+    assert faits["statut_volume"].startswith("charge_de_documents_annoncee")
+    assert faits["activite_preparatoire"].startswith("les_equipes_du_desf_ont_deja_commence")
+    assert "python" in faits["competences_recherchees"]
+    assert "optimisation_logicielle" in faits["competences_recherchees"]
+    assert faits["stage_prevu"]["contrat_effectivement_pourvu"] == "non_etabli"
+    assert faits["reponse_ministerielle"]["etat_deploiement_reel_en_octobre"] == "non_verifie"
+    assert dossier["moyens_rapportes"]["etp_constates_au_rapport"] == 0.5
+    assert dossier["moyens_rapportes"]["etp_additionnel_annonce"] == 1
