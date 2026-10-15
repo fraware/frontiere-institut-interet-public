@@ -67,14 +67,12 @@ def test_render_est_associe_au_projet_de_l_utilisateur():
     environnement = projet["environments"][0]
     assert environnement["name"] == "Production"
     assert len(environnement["services"]) == 1
-    variables = {
-        v["key"] for v in environnement["services"][0]["envVars"]
-    }
-    assert "FRONTIERE_TED_DB" not in variables
-    assert variables >= {
-        "FRONTIERE_BOAMP_DB", "FRONTIERE_EMPLOIS_DB",
-        "FRONTIERE_DECP_DB", "FRONTIERE_JETON_ACCES",
-    }
+    site = environnement["services"][0]
+    assert site["runtime"] == "static"
+    assert site["staticPublishPath"] == "./site_frontiere"
+    assert "disk" not in site
+    assert "plan" not in site
+    assert "envVars" not in site
 
 
 def test_modules_de_collecte_abandonnes_non_present_dans_image():
