@@ -68,27 +68,15 @@ def sources(tmp_path) -> Chemins:
            'Services informatiques');
         INSERT INTO attestations VALUES ('2026-10-14T04:00:00Z');
     """)
-    ted = base(tmp_path / "ted.db", """
-        CREATE TABLE avis_ted(
-          numero TEXT,titre TEXT,acheteur TEXT,date_publication TEXT,
-          source_url TEXT,codes_cpv TEXT,empreinte_courante TEXT
-        );
-        CREATE TABLE captures_ted(observe_le TEXT);
-        INSERT INTO avis_ted VALUES
-          ('1234-2026','Programme informatique','Université européenne',
-           '2026-10-12','https://ted.europa.eu/fr/notice/-/detail/1234-2026',
-           '72000000','sha-ted');
-        INSERT INTO captures_ted VALUES ('2026-10-14T08:00:00Z');
-    """)
-    return Chemins(boamp=boamp, emplois=emplois, decp=decp, ted=ted)
+    return Chemins(boamp=boamp, emplois=emplois, decp=decp)
 
 
-def test_quatre_sources_recherchees_independamment(tmp_path):
+def test_trois_sources_recherchees_independamment(tmp_path):
     resultats = rechercher(sources(tmp_path), "informati", limite=10)
     assert {x["source"] for x in resultats["resultats"]} == {
-        "boamp", "emplois", "decp", "ted"
+        "boamp", "emplois", "decp"
     }
-    assert resultats["nombre_retourne"] == 4
+    assert resultats["nombre_retourne"] == 3
     assert all(v == "accessible" for v in resultats["sources"].values())
     contrats = [x for x in resultats["resultats"] if x["source"] == "decp"]
     assert contrats[0]["montant_euros_ht"] == 95000
@@ -105,20 +93,20 @@ def test_troncature_limites_et_filtre_sur_source(tmp_path):
     reponse = rechercher(chemins, "informati", limite=2)
     assert reponse["nombre_retourne"] == 2
     assert reponse["troncature_par_limite"] is True
-    seul = rechercher(chemins, "informati", sources=("ted",))
+    seul = rechercher(chemins, "informati", sources=("emplois",))
     assert len(seul["resultats"]) == 1
-    assert seul["resultats"][0]["source"] == "ted"
-    assert list(seul["sources"]) == ["ted"]
+    assert seul["resultats"][0]["source"] == "emplois"
+    assert list(seul["sources"]) == ["emplois"]
 
 
 def test_absence_de_fichier_et_schema_incompatible(tmp_path):
     configuration = Chemins(
-        ted=tmp_path / "absent.db",
+        emplois=tmp_path / "absent.db",
         boamp=base(tmp_path / "incorrect.db", "CREATE TABLE inconnu(x INTEGER);"),
     )
     resultat = rechercher(configuration, "physique")
     assert resultat["resultats"] == []
-    assert resultat["sources"]["ted"] == "non_configure"
+    assert resultat["sources"]["emplois"] == "non_configure"
     assert resultat["sources"]["boamp"] == "schema_incompatible"
     suivi = etat(configuration)
     assert suivi["decp"]["etat"] == "non_configure"
@@ -136,14 +124,14 @@ def test_api_et_codes_de_validation(tmp_path):
     client = TestClient(creer_application(sources(tmp_path)))
     r = client.get("/recherche", params={"q": "informati", "limite": 10})
     assert r.status_code == 200
-    assert r.json()["nombre_retourne"] == 4
+    assert r.json()["nombre_retourne"] == 3
     r = client.get("/recherche", params={"q": "informati", "source": "emplois"})
     assert r.status_code == 200
     assert r.json()["resultats"][0]["source"] == "emplois"
     assert client.get("/recherche", params={"q": "informati", "source": "inconnue"}).status_code == 422
     assert client.get("/recherche", params={"q": "informati", "limite": 101}).status_code == 422
     statut = client.get("/sante").json()
-    assert statut["sources"]["ted"]["etat"] == "accessible"
+    assert statut["sources"]["emplois"]["etat"] == "accessible"
     assert "derniere_observation" in client.get("/sources").json()["boamp"]
 
 
