@@ -32,3 +32,17 @@ La deuxième commande produit l'index dans le répertoire publié par Render. La
 Le dernier relevé archivé dans GitHub, la date du déploiement et la période des documents ne sont pas équivalents. Aucune « actualisation en temps réel » n'est annoncée. Le fichier publie les identifiants des sources archivées et leurs empreintes afin qu'une sélection puisse être rattachée aux fichiers qui l'ont produite.
 
 Un service de recherche exhaustif ou le traitement de documents géants nécessite ultérieurement des index découpés ou un mécanisme de recherche spécialisé. Ce premier extrait consultable vise un coût fixe nul et une rigueur documentaire mesurable.
+
+
+## Environnement Render
+
+Le premier essai Render du 15 octobre 2026 utilisait la version Node 24
+par défaut et a échoué sur une lecture JSON, tandis que GitHub Actions
+avait construit avec succès le même index sous Node 22. La version Node
+est maintenant explicitement fixée dans `.node-version` à `22.16.0`.
+Les erreurs JSON indiquent désormais le fichier et, pour les partitions
+d'emplois, le numéro de ligne concerné, sans divulguer leur contenu.
+
+Il faudra vérifier une nouvelle construction sur Render. Les quatre
+contrôles GitHub établissent la reproductibilité dans leur environnement,
+pas encore la compatibilité confirmée de l'hébergeur.
