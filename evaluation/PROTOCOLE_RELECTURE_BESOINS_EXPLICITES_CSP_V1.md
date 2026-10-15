@@ -133,5 +133,8 @@ python -m scripts.preparer_relecture_besoins_explicites --sortie /tmp/candidats-
 ```
 
 Les contrôles GitHub exécutent aussi la procédure sur les 16 véritables
-partitions. La proposition ne collecte aucun contenu extérieur, ne
-conserve aucun contact nominatif et n'engage aucun abonnement.
+partitions. La proposition ne collecte aucun contenu extérieur et n'engage
+aucun abonnement. Les champs libres sont filtrés contre les courriels, liens
+web et numéros de téléphone reconnaissables. Ce filtrage ne constitue
+pas une garantie d'absence de données personnelles : la relecture humaine
+doit précéder toute publication durable des fiches.
