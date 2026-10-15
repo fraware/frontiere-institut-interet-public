@@ -197,7 +197,11 @@ def preparer(racine: Path, par_strate: int = 12) -> dict:
     verifier(variantes_lues == manifest["offres_distinctes"],
              "Nombre de variantes distinctes incompatible avec le manifeste.")
     verifier(len(general) == par_strate and len(technique) >= par_strate,
-             "Population admissible insuffisante.")
+             "Population admissible insuffisante : "
+             f"variantes_admissibles={admissibles}, "
+             f"variantes_techniques={admissibles_techniques}, "
+             f"references_generales={len(general)}, "
+             f"references_techniques={len(technique)}.")
     selection_general = sorted(general.values(),
                               key=lambda v: (rang(v["reference"], "general"),
                                              v["reference"]))
