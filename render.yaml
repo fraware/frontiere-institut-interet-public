@@ -11,7 +11,7 @@ projects:
           - type: web
             name: frontiere-observatoire-public
             runtime: static
-            buildCommand: node scripts/construire_index_statique.mjs
+            buildCommand: node scripts/construire_index_statique.mjs && node scripts/construire_partitions_statiques.mjs
             envVars:
               - key: SKIP_INSTALL_DEPS
                 value: "true"
