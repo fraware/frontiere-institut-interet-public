@@ -1,6 +1,6 @@
 # FRONTIÈRE — Procédure de premier déploiement permanent
 
-Ce document décrit l'installation des six services existants sur un hôte
+Ce document décrit l'installation des cinq services existants sur un hôte
 Linux disposant de Docker Compose, avec persistance des données.
 
 **La fusion du dépôt ne crée pas de serveur et n'engage aucun fournisseur
@@ -17,7 +17,7 @@ DECP consolidées, les historiques BOAMP, les offres d'emploi et les bases
 SQLite. Mesurer les besoins exacts en mémoire, débit et stockage sur les
 premiers fichiers avant de dimensionner définitivement.
 
-La configuration courante emploie quatre volumes persistants. Les
+La configuration courante emploie trois volumes persistants. Les
 collecteurs AIFE/DGFiP et consolidés DECP partagent leur volume et leur
 base SQLite sur le même hôte. Une infrastructure hébergeant chaque
 conteneur sur un hôte isolé sans volume partagé ne correspond pas à cette
@@ -60,15 +60,15 @@ Exécuter le plan sur l'hôte équipé de Docker Compose :
 Les opérations sont réalisées dans cet ordre :
 
 1. Contrôler la configuration Docker Compose.
-2. Construire les images des six services.
+2. Construire les images des cinq services.
 3. Importer les archives BOAMP dans leur volume persistant.
 4. Importer les variantes d'emploi public dans leur volume persistant.
 5. Importer le corpus documentaire DECP AIFE/DGFiP existant dans la
    base partagée avec les fichiers consolidés.
-6. Démarrer les cinq collecteurs et la consultation locale.
+6. Démarrer les quatre collecteurs et la consultation locale.
 7. Afficher l'état des conteneurs.
 
-L'extraction nationale DECP consolidée et TED se poursuivent ensuite
+L'extraction nationale DECP consolidée se poursuit ensuite
 selon les horaires paramétrés dans compose.collecte.yml. La première
 constitution de ces deux historiques nécessite un délai mesuré après le
 démarrage. Une exécution du script ne démontre pas leur couverture
@@ -98,12 +98,11 @@ Sur le serveur :
     docker compose -f compose.collecte.yml logs --tail=80 collecte-emplois
     docker compose -f compose.collecte.yml logs --tail=80 collecte-decp
     docker compose -f compose.collecte.yml logs --tail=80 collecte-decp-consolides
-    docker compose -f compose.collecte.yml logs --tail=80 collecte-ted
 
     curl http://127.0.0.1:8765/exploitation
     curl --fail http://127.0.0.1:8765/pret
 
-Le second appel est indisponible tant que les quatre bases ne sont pas
+Le second appel est indisponible tant que les trois bases ne sont pas
 effectivement alimentées. L'état de santé d'un conteneur n'établit pas
 à lui seul la réussite d'un passage récent sur toutes les sources.
 
@@ -111,7 +110,7 @@ effectivement alimentées. L'état de santé d'un conteneur n'établit pas
 
 Aucune suppression de volume ne doit faire partie d'une mise à jour
 ordinaire. La commande « docker compose down --volumes » effacerait
-les quatre volumes locaux : elle est exclue de cette procédure.
+les trois volumes locaux : elle est exclue de cette procédure.
 
 Les fichiers et bases présents dans les volumes ont une valeur
 documentaire propre. Il faut définir une sauvegarde cohérente des
@@ -128,6 +127,6 @@ bases et la dernière observation documentaire importée.
 ## Prochaines décisions
 
 La suite dépend de l'accès à l'hôte réel ou à un service de déploiement
-pouvant lancer les conteneurs et conserver les quatre volumes. Les mesures
+pouvant lancer les conteneurs et conserver les trois volumes. Les mesures
 de couverture, de débit et d'actualisation seront établies uniquement
 après exécution et observation de cette infrastructure.
