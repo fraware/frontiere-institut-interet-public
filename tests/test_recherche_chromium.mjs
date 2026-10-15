@@ -98,3 +98,52 @@ test("navigateur réel : recherche initiale, filtre BOAMP et recherche étendue"
     await new Promise((resolve, reject) => serveur.close(error => error ? reject(error) : resolve()));
   }
 });
+
+test("regroupement DECP : SIRET exact, années multiples et lien partageable", { timeout: 90_000 }, async () => {
+  const { serveur, url } = await demarrerServeur();
+  const browser = await chromium.launch({ headless: true });
+  try {
+    const page = await browser.newPage({ viewport: { width: 1100, height: 820 } });
+    const erreurs = [];
+    page.on("pageerror", erreur => erreurs.push(String(erreur)));
+    await page.goto(url + "/recherche-etendue.html", { waitUntil: "networkidle" });
+    await page.waitForFunction(() => !document.querySelector("#source").disabled);
+    await page.locator("#source").selectOption("decp");
+    await page.locator("#annee").selectOption("");
+    await page.locator("#lancer").click();
+    await page.waitForFunction(() => /documents examinés/.test(document.querySelector("#etat").textContent));
+    const premier = page.locator("article .lien-acheteur").first();
+    assert.ok(await premier.count() > 0, "Le corpus réel doit contenir au moins un SIRET DECP indexé");
+    const urlDossier = new URL(await premier.getAttribute("href"), page.url());
+    const siret = urlDossier.searchParams.get("acheteur");
+    assert.match(siret, /^[0-9]{14}$/);
+
+    // Le lien force un regroupement sur toutes les années de l'extrait.
+    await page.goto(urlDossier.href, { waitUntil: "networkidle" });
+    await page.waitForFunction(() => /Regroupement sur SIRET déclaré/.test(document.querySelector("#etat").textContent));
+    assert.equal(await page.locator("#source").inputValue(), "decp");
+    assert.equal(await page.locator("#annee").inputValue(), "");
+    assert.equal(await page.locator("#siret-acheteur").inputValue(), siret);
+    assert.ok(await page.locator("article").count() > 0);
+    const liens = await page.locator("article .lien-acheteur").evaluateAll(
+      elems => elems.map(a => new URL(a.href).searchParams.get("acheteur")));
+    assert.ok(liens.length > 0 && liens.every(id => id === siret));
+    assert.match(await page.locator("#etat").textContent(), /aucun lien de projet déduit/);
+
+    // Un identifiant correctement formé mais absent ne produit aucune correspondance.
+    await page.locator("#siret-acheteur").fill("00000000000000");
+    await page.locator("#lancer").click();
+    await page.waitForFunction(() => /Regroupement sur SIRET déclaré 00000000000000/.test(
+      document.querySelector("#etat").textContent));
+    assert.equal(await page.locator("article").count(), 0);
+
+    // Les paramètres non conformes sont rejetés avant consultation des lots.
+    await page.goto(url + "/recherche-etendue.html?acheteur=%3Cscript%3E", { waitUntil: "networkidle" });
+    assert.match(await page.locator("#etat").textContent(), /non conforme/);
+    assert.equal(await page.locator("article").count(), 0);
+    assert.deepEqual(erreurs, []);
+  } finally {
+    await browser.close();
+    await new Promise((resolve, reject) => serveur.close(error => error ? reject(error) : resolve()));
+  }
+});

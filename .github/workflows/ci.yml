@@ -79,7 +79,7 @@ jobs:
           node-version: "22"
 
       - name: Tester les invariants et les fichiers de démonstration
-        run: node --test tests/test_index_statique.mjs tests/test_recherche_navigateur.mjs tests/test_partitions_statiques.mjs
+        run: node --test tests/test_index_statique.mjs tests/test_recherche_navigateur.mjs tests/test_partitions_statiques.mjs tests/test_acheteurs_decp.mjs
 
       - name: Construire l'index sur les vraies archives
         run: node scripts/construire_index_statique.mjs

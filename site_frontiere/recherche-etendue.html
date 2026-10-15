@@ -18,6 +18,7 @@ article h2{font-size:18px;margin:5px 0}article p{font-size:13px;color:#566d69;ma
 .perimetre summary{cursor:pointer;font-weight:650}.perimetre dl{margin:14px 0 0}
 .perimetre dt{font-weight:650;margin-top:12px}.perimetre dd{margin:3px 0 0;color:#526b69}
 .perimetre p{color:#526b69;font-size:13px}
+.identifiant{grid-column:1/-1}.identifiant input{max-width:260px}.identifiant small{display:block;color:#526b69;margin-top:6px}
 [hidden]{display:none}@media(max-width:750px){form{grid-template-columns:1fr}}
 </style></head>
 <body><main class="page">
@@ -31,6 +32,7 @@ article h2{font-size:18px;margin:5px 0}article p{font-size:13px;color:#566d69;ma
 <div id="bilan-selection" aria-live="polite">Chargement du bilan de sélection…</div>
 </details>
 <form id="recherche" role="search">
+<div class="identifiant"><label for="siret-acheteur">Identifiant SIRET déclaré de l’acheteur (DECP uniquement)</label><input id="siret-acheteur" type="text" inputmode="numeric" autocomplete="off" maxlength="14" placeholder="14 chiffres" aria-describedby="siret-precision"><small id="siret-precision">Regroupe les marchés de l’extrait indexé par identifiant exact, sans établir de lien entre projets ni certifier l’identité juridique.</small></div>
 <div><label for="termes">Termes recherchés</label><input id="termes" type="search" maxlength="120" placeholder="Ex. informatique, recherche"></div>
 <div><label for="source">Source</label><select id="source" required disabled><option value="">Choisir</option><option value="boamp">BOAMP</option><option value="emplois">Emplois publics</option><option value="decp">DECP attribués</option></select></div>
 <div><label for="annee">Année</label><select id="annee" disabled><option value="">Toutes les années</option></select></div>

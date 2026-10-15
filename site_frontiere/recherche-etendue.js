@@ -1,3 +1,4 @@
+import { siretAdmissible, siretAcheteur, appartientAuMemeAcheteur, ordreChronologique } from "./acheteurs-decp.js";
 /** Consultation des partitions sélectionnées, sans serveur ni HTML issu des sources. */
 const q = id => document.getElementById(id);
 const racine = "./partitions/";
@@ -106,19 +107,79 @@ async function demarrer() {
     majAnnees();
     q("lancer").disabled = false;
     q("source").addEventListener("change", majAnnees);
+    q("siret-acheteur").addEventListener("input", () => {
+      if (q("siret-acheteur").value) {
+        q("source").value = "decp";
+        majAnnees();
+        q("annee").value = "";
+      }
+    });
     const total = m.partitions.reduce((n,p)=>n+p.documents,0);
     q("etat").textContent = francais.format(total) + " références au maximum dans " +
       m.partitions.length + " fichiers datés, couvrant les seuls extraits archivés.";
+    const parametres = new URLSearchParams(location.search);
+    if (parametres.has("acheteur")) {
+      const demandes = parametres.getAll("acheteur");
+      if (demandes.length !== 1 || !siretAdmissible(demandes[0])) {
+        q("etat").textContent = "Identifiant SIRET demandé non conforme : 14 chiffres attendus.";
+      } else {
+        q("source").value = "decp";
+        majAnnees();
+        q("annee").value = "";
+        q("siret-acheteur").value = demandes[0];
+        q("recherche").requestSubmit();
+      }
+    }
   } catch {
     q("etat").textContent = "Le catalogue des partitions est indisponible ; consultez les archives sur GitHub.";
   }
 }
+/** Ne restituer les liens qu'à partir de références déjà indexées et contrôlées. */
+function ajouterResultat(d, source, zone) {
+    const el=document.createElement("article");
+    const met=document.createElement("div");met.className="meta";
+    const s=document.createElement("span");s.textContent=source.toUpperCase();
+    const t=document.createElement("time");t.textContent=d.date || "Date absente";
+    met.append(s,t);el.append(met);
+    const h=document.createElement("h2"),a=document.createElement("a");
+    lien(a,d.lien,d.titre); if (!a.href) a.textContent=d.titre;
+    h.append(a);el.append(h);
+    const org=document.createElement("p");org.textContent=[d.organisme,d.localisation,d.code].filter(Boolean).join(" · ");
+    el.append(org);
+    const preuve=document.createElement("p");preuve.textContent="Référence " + d.id + " · ";
+    const lienSource=document.createElement("a");
+    if (/^[a-z0-9_./-]+$/i.test(d.provenance || "") && !d.provenance.includes("..")) {
+      const sha=/^[0-9a-f]{40}$/.test(manifeste.revision_sources || "") ? manifeste.revision_sources : "main";
+      lien(lienSource,"https://github.com/fraware/frontiere-institut-interet-public/blob/" + sha +
+        "/" + d.provenance.split("/").map(encodeURIComponent).join("/"),"Archive et provenance");
+      preuve.append(lienSource);
+    }
+    el.append(preuve);
+    const acheteur = siretAcheteur(d);
+    if (acheteur) {
+      const lienDossier = document.createElement("a");
+      lienDossier.className = "lien-acheteur";
+      lienDossier.href = "./recherche-etendue.html?acheteur=" + acheteur;
+      lienDossier.textContent = "Consulter les marchés indexés du même SIRET déclaré";
+      const paragraphe = document.createElement("p");
+      paragraphe.append(lienDossier);
+      el.append(paragraphe);
+    }
+    zone.append(el);
+}
+
 async function consulter(e) {
   e.preventDefault();
   if (!manifeste) return;
   const source = q("source").value, annee = q("annee").value;
   const debut = q("date-debut").value, fin = q("date-fin").value;
   const zone=q("resultats");
+  const acheteurDemande = q("siret-acheteur").value.trim();
+  if (acheteurDemande && (!siretAdmissible(acheteurDemande) || source !== "decp")) {
+    zone.replaceChildren();
+    q("etat").textContent = "Filtre d'acheteur invalide : saisir 14 chiffres et sélectionner DECP.";
+    return;
+  }
   if (debut && fin && debut > fin) {
     zone.replaceChildren();
     q("etat").textContent = "Période incohérente : la date de début dépasse la date de fin.";
@@ -134,6 +195,7 @@ async function consulter(e) {
   zone.replaceChildren();q("lancer").disabled=true;
   q("etat").textContent="Lecture de " + morceaux.length + " fichiers…";
   let correspondant=0, visites=0, affiches=0;
+  const documentsAcheteur = [];
   try {
     for (const p of morceaux) {
       const rep = await fetch(racine + encodeURIComponent(p.fichier), { credentials:"omit" });
@@ -151,35 +213,32 @@ async function consulter(e) {
       for (const d of lignes) {
         visites++;
         if ((debut && d.date < debut) || (fin && d.date > fin)) continue;
+        if (acheteurDemande && !appartientAuMemeAcheteur(d, acheteurDemande)) continue;
         if (mots.some(w => !normaliser([d.titre,d.organisme,d.localisation,d.code,d.id].join(" ")).includes(w))) continue;
         correspondant++;
-        if (affiches >= limiteAffichage) continue;
-        affiches++;
-        const el=document.createElement("article");
-        const met=document.createElement("div");met.className="meta";
-        const s=document.createElement("span");s.textContent=source.toUpperCase();
-        const t=document.createElement("time");t.textContent=d.date || "Date absente";
-        met.append(s,t);el.append(met);
-        const h=document.createElement("h2"),a=document.createElement("a");
-        lien(a,d.lien,d.titre); if (!a.href) a.textContent=d.titre;
-        h.append(a);el.append(h);
-        const org=document.createElement("p");org.textContent=[d.organisme,d.localisation,d.code].filter(Boolean).join(" · ");
-        el.append(org);
-        const preuve=document.createElement("p");preuve.textContent="Référence " + d.id + " · ";
-        const lienSource=document.createElement("a");
-        if (/^[a-z0-9_./-]+$/i.test(d.provenance || "") && !d.provenance.includes("..")) {
-          const sha=/^[0-9a-f]{40}$/.test(manifeste.revision_sources || "") ? manifeste.revision_sources : "main";
-          lien(lienSource,"https://github.com/fraware/frontiere-institut-interet-public/blob/" + sha +
-            "/" + d.provenance.split("/").map(encodeURIComponent).join("/"),"Archive et provenance");
-          preuve.append(lienSource);
+        if (acheteurDemande) {
+          // Conserver uniquement les références du SIRET exactement déclaré.
+          // Un tri des dates est effectué lorsque tous les lots sont attestés.
+          documentsAcheteur.push(d);
+        } else if (affiches < limiteAffichage) {
+          affiches++;
+          ajouterResultat(d, source, zone);
         }
-        el.append(preuve);zone.append(el);
+      }
+    }
+    if (acheteurDemande) {
+      documentsAcheteur.sort(ordreChronologique);
+      for (const document of documentsAcheteur.slice(0, limiteAffichage)) {
+        ajouterResultat(document, source, zone);
+        affiches++;
       }
     }
     q("etat").textContent = francais.format(correspondant) + " correspondances sur " +
       francais.format(visites) + " documents examinés (" + source.toUpperCase() +
       " · " + (annee || "toutes années") + "). " + Math.min(affiches,correspondant) +
-      " affichées (plafond " + limiteAffichage + ").";
+      " affichées (plafond " + limiteAffichage + ")." +
+      (acheteurDemande ? " Regroupement sur SIRET déclaré " + acheteurDemande +
+        ", uniquement dans l'extrait DECP indexé ; aucun lien de projet déduit." : "");
   } catch {
     zone.replaceChildren();
     q("etat").textContent="Impossible de vérifier toutes les partitions demandées ; résultats non publiés.";
