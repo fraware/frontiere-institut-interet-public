@@ -260,6 +260,19 @@ def creer_application(chemins: Chemins | None = None) -> FastAPI:
     def sources():
         return etat(config)
 
+    @app.get("/exploitation")
+    def exploitation():
+        from app.etat_exploitation import diagnostic
+        return diagnostic(config)
+
+    @app.get("/pret")
+    def pret():
+        from app.etat_exploitation import diagnostic
+        resultat = diagnostic(config)
+        if not resultat["pret_pour_consultation_complete"]:
+            raise HTTPException(status_code=503, detail=resultat)
+        return resultat
+
     @app.get("/recherche")
     def recherche(
         q: str = Query(min_length=1, max_length=150),
