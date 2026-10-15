@@ -202,3 +202,57 @@ node --test tests/test_avis_boamp_corrobores.mjs
 node scripts/construire_partitions_statiques.mjs
 node --test tests/test_recherche_chromium.mjs
 ```
+
+## Chronologies documentaires par SIRET exact
+
+La recherche par SIRET présente une chronologie datée réunissant les
+notices de marchés attribués DECP présentes dans **l'extrait statique
+de 5 000 documents** et les avis BOAMP corroborés issus de l'enquête
+indépendante de 17 avis. Les référentiels administratifs DILA restent
+une qualification d'identité distincte, sans date de création ou de
+changement supposée.
+
+La chronologie recourt aux seules identités d'acheteurs SIRET exactes.
+Elle exclut les rapprochements de noms, de projets et de fournisseurs.
+Elle conserve un événement par référence documentaire et sa provenance.
+Les documents sont rangés en ordre chronologique décroissant, puis par
+source et identifiant pour stabiliser les égalités de date.
+
+La **date BOAMP** est la date de parution déclarée de l'avis. Pour les
+notices **DECP**, l'extrait utilise une date de notification ou, à
+défaut, la date de publication déclarée par le producteur. Il ne
+conserve pas, pour chaque notice, laquelle des deux dates a été retenue.
+L'interface expose explicitement cette incertitude et ne transforme pas
+l'ordre des documents en succession de phases d'un projet.
+
+Pour un SIRET donné, les partitions DECP de toutes les années sont
+vérifiées et lues pour la chronologie, même si les champs de recherche
+restreignent les résultats affichés à une année, un terme ou une
+période. La liste de résultats conserve ses filtres. La chronologie,
+indépendante de ces filtres, présente au plus 100 événements et
+indique la troncature si davantage existent.
+
+Les deux avis indépendants corroborés restent des observations
+historiques distinctes du périmètre DECP du site. Ainsi les cinq
+identités de marchés historiques associées au SIRET
+`21060027600013` et l'unique identité historique associée à
+`18002002600019` ne sont jamais assimilées au nombre de notices
+DECP effectivement présentes dans l'extrait actuel.
+
+Une association par SIRET et une proximité temporelle **n'établissent
+ni identité de contrat, ni projet commun, ni causalité, ni besoin public
+non satisfait**. Les documents sont affichés uniquement après
+vérification des empreintes SHA-256 de leurs partitions et du fichier
+des deux avis corroborés. Une erreur de vérification bloque
+l'ensemble des résultats de la consultation.
+
+Vérification :
+
+```sh
+node --test tests/test_chronologies_documentaires.mjs
+node scripts/construire_partitions_statiques.mjs
+node --test tests/test_recherche_chromium.mjs
+```
+
+Le site reste entièrement statique et ne déclenche ni nouvelle
+collecte ni abonnement payant.
