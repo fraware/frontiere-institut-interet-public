@@ -113,7 +113,10 @@ def _iterer_tableau(lecteur: LecteurJSON, categorie: str, total: list[int],
     lecteur.attendre("]")
 
 
-def iterer_documents(flux: TextIO, *, plafond_notices: int = MAX_NOTICES):
+def iterer_documents(
+    flux: TextIO, *, plafond_notices: int = MAX_NOTICES,
+    plafond_source_max: int = 200_000,
+):
     """Parcourir marchés et concessions comme catégories documentaires distinctes.
 
     L'interface AIFE observée le 13 octobre 2026 utilise :
@@ -121,8 +124,10 @@ def iterer_documents(flux: TextIO, *, plafond_notices: int = MAX_NOTICES):
     L'ordre des deux membres ne porte aucune signification. Une structure
     inconnue est refusée, sans omission silencieuse.
     """
-    if (type(plafond_notices) is not int
-            or not 1 <= plafond_notices <= 200_000):
+    if (type(plafond_source_max) is not int or
+            not 1 <= plafond_source_max <= 5_000_000 or
+            type(plafond_notices) is not int or
+            not 1 <= plafond_notices <= plafond_source_max):
         raise DocumentDECPInvalide("Plafond de notices non admissible")
     lecteur = LecteurJSON(flux)
     total = [0]

@@ -58,6 +58,29 @@ services:
     # Surveillance des catalogues DECP et lecture bornée des petits fichiers
     # officiels ; la couverture nationale des fichiers massifs n'est pas établie.
 
+  collecte-decp-consolides:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile.collecte
+    restart: unless-stopped
+    command:
+      - python
+      - -m
+      - app.collecteur_decp_consolides
+      - --base
+      - /var/lib/frontiere/marches_decp.sqlite3
+      - --repertoire
+      - /var/lib/frontiere/fichiers-consolides
+      - suivre
+      - --maximum
+      - "2"
+      - --intervalle
+      - "21600"
+    volumes:
+      - stockage-frontiere-decp:/var/lib/frontiere
+    # Les fichiers mensuels bruts sont archivés dans le même volume persistant.
+    # L'index DECP est commun à la collecte AIFE/DGFiP et aux fichiers nationaux.
+
 volumes:
   stockage-frontiere-boamp:
   stockage-frontiere-emplois:
