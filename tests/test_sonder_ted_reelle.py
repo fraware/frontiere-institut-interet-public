@@ -50,3 +50,20 @@ def test_jour_sans_publication_possible():
 def test_incompatibilites_refusees(reponse):
     with pytest.raises(TEDInvalide):
         sonder(JOUR, demander=lambda _: reponse)
+
+
+def test_pagination_complete_et_projection_temporaire():
+    compteur = 0
+    def api(_corps):
+        nonlocal compteur
+        compteur += 1
+        if compteur == 1:
+            return {"notices": [publication("3001-2026")],
+                    "totalNoticeCount": 2, "iterationNextToken": "page2"}
+        return {"notices": [publication("3002-2026")],
+                "totalNoticeCount": 2}
+    bilan = sonder_integralement(JOUR, demander=api)
+    assert bilan["controle_integral"] == "reussi"
+    assert bilan["avis_recuperes"] == 2
+    assert bilan["pages_recuperees"] == 2
+    assert bilan["reprise_sans_doublon"] is True
