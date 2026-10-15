@@ -15,6 +15,7 @@ def test_blueprint_render_et_disque_persistant_unique():
     service = services[0]
     assert service["type"] == "web"
     assert service["runtime"] == "docker"
+    assert service["region"] == "frankfurt"
     assert service["plan"] != "free"
     assert service["plan"] == "1c-2g"
     assert service["numInstances"] == 1
