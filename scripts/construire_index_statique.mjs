@@ -225,6 +225,10 @@ async function main() {
   const data = await construire(racine);
   mkdirSync(dirname(sortie), { recursive: true });
   writeFileSync(sortie, data);
+  // La commande de construction Render historique doit également publier
+  // les partitions, même si le Blueprint est en synchronisation manuelle.
+  const { construirePartitions } = await import("./construire_partitions_statiques.mjs");
+  await construirePartitions(racine);
   const index = JSON.parse(data);
   console.log(JSON.stringify({
     statut: "construit", octets: data.length,
