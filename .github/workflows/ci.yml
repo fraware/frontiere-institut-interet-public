@@ -81,6 +81,28 @@ jobs:
       - name: Construire l'index sur les vraies archives
         run: node scripts/construire_index_statique.mjs
 
+      - name: Construire les partitions étendues
+        run: node scripts/construire_partitions_statiques.mjs
+
+      - name: Vérifier la cohérence de l'index étendu
+        run: |
+          node --input-type=module -e "
+            import fs from 'node:fs';
+            import crypto from 'node:crypto';
+            const dir='site_frontiere/partitions/';
+            const manifest=JSON.parse(fs.readFileSync(dir+'manifeste.json'));
+            let count=0;
+            for(const p of manifest.partitions) {
+              const data=fs.readFileSync(dir+p.fichier);
+              if(data.byteLength!==p.octets) process.exit(1);
+              if(crypto.createHash('sha256').update(data).digest('hex')!==p.sha256) process.exit(1);
+              if(JSON.parse(data).length!==p.documents) process.exit(1);
+              count+=p.documents;
+            }
+            if(count<=1900) process.exit(1);
+            console.log('Partitions attestées : '+count+' documents');
+          "
+
       - name: Vérifier la taille et la portée de la publication
         run: |
           node --input-type=module -e "
