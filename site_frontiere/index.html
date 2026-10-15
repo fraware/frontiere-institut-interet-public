@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="FRONTIÈRE : archives documentaires de la commande et de l'emploi publics en France, avec provenance et limites explicites.">
+  <title>FRONTIÈRE · Observatoire de l'intérêt public</title>
+  <style>
+    :root{color-scheme:light;--ink:#17282a;--sub:#50666b;--line:#d8e0df;--paper:#f6f8f6;--accent:#245d58}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+    a{color:var(--accent);text-underline-offset:3px}a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+    .wrap{max-width:1080px;margin:auto;padding:0 28px}.head{border-bottom:1px solid var(--line);background:white}
+    .head .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:19px;padding-bottom:19px}
+    .wordmark{font-weight:750;letter-spacing:.21em;font-size:15px}.head a{font-size:13px}
+    main{padding:66px 0 80px}.eyebrow{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:700}
+    h1{font-size:clamp(36px,5.3vw,65px);line-height:1.12;font-weight:580;letter-spacing:-.045em;max-width:930px;margin:16px 0 25px}
+    .intro{font-size:clamp(17px,2.2vw,20px);max-width:760px;color:var(--sub);margin:0 0 30px}
+    .status{border-left:3px solid var(--accent);padding:11px 18px;background:#eaf1ee;color:#294b48;max-width:780px;font-size:14px}
+    section{margin-top:68px}h2{font-size:25px;letter-spacing:-.025em;font-weight:620;margin:0 0 11px}
+    .desc{color:var(--sub);max-width:820px;margin:0 0 27px}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+    .card{background:white;border:1px solid var(--line);border-radius:4px;padding:23px;display:flex;flex-direction:column;min-height:235px}
+    .card h3{font-size:20px;letter-spacing:-.025em;margin:0 0 13px}.card p{color:var(--sub);font-size:14px;margin:0 0 22px;flex:1}
+    .card a{font-size:14px;font-weight:650}.principle{border-top:1px solid var(--line);padding-top:24px;display:grid;grid-template-columns:1fr 1.8fr;gap:20px}
+    .principle p{margin:0;color:var(--sub)}.footer{border-top:1px solid var(--line);padding:26px 0 37px;color:var(--sub);font-size:13px}
+    @media(max-width:770px){main{padding-top:43px}.grid{grid-template-columns:1fr}.card{min-height:0}.principle{grid-template-columns:1fr}.head .wrap{align-items:flex-start;flex-direction:column;gap:6px}section{margin-top:48px}}
+  </style>
+</head>
+<body>
+  <header class="head">
+    <div class="wrap"><div class="wordmark">FRONTIÈRE</div><a href="https://github.com/fraware/frontiere-institut-interet-public">Dépôt et archives documentaires ↗</a></div>
+  </header>
+  <main class="wrap">
+    <div class="eyebrow">Institut pour l’intérêt public · France</div>
+    <h1>Éclairer les besoins publics par des preuves documentées.</h1>
+    <p class="intro">Un travail d'acquisition et d'analyse des signaux institutionnels français, reliant marchés publics, besoins techniques et compétences mobilisables.</p>
+    <div class="status"><strong>Présentation statique — phase de construction.</strong> Les liens ci-dessous renvoient à des archives du dépôt. Ce site gratuit ne collecte pas de données en continu et ne présente aucune recherche nationale en temps réel.</div>
+    <section aria-labelledby="sources">
+      <h2 id="sources">Trois familles documentaires prioritaires</h2>
+      <p class="desc">Les sources sont distinctes. Les archives contiennent des observations datées dont la couverture et les limites figurent dans leurs manifestes.</p>
+      <div class="grid">
+        <article class="card"><h3>Avis de marchés publics</h3><p>BOAMP : publications de consultations et besoins exprimés dans la commande publique, conservés avec leurs références et dates d'observation.</p><a href="https://github.com/fraware/frontiere-institut-interet-public/tree/main/institutionnel/besoins_publics/historique_boamp">Parcourir les archives BOAMP ↗</a></article>
+        <article class="card"><h3>Emplois publics</h3><p>Offres de postes et compétences recherchées par les employeurs publics. Le manifeste distingue les références uniques des variantes observées.</p><a href="https://github.com/fraware/frontiere-institut-interet-public/blob/main/institutionnel/besoins_publics/manifest_offres_postes.json">Consulter le manifeste des emplois ↗</a></article>
+        <article class="card"><h3>Marchés attribués</h3><p>DECP : attributions documentées, acheteurs et objets contractuels, avec provenance AIFE et DGFiP. Les échantillons ne constituent pas un recensement exhaustif.</p><a href="https://github.com/fraware/frontiere-institut-interet-public/tree/main/institutionnel/decp">Consulter le corpus DECP ↗</a></article>
+      </div>
+    </section>
+    <section class="principle" aria-labelledby="method"><h2 id="method">Une méthode vérifiable</h2><p>Chaque observation doit pouvoir être ramenée à sa source et à son contexte. Une offre de poste, un avis de consultation et un marché attribué sont trois faits documentaires différents. Leur rapprochement demande une preuve supplémentaire. Les volumes présents dans le dépôt sont des archives de recherche, sans garantie de fraîcheur en temps réel.</p></section>
+  </main>
+  <footer class="footer"><div class="wrap">FRONTIÈRE · Présentation publique gratuite · <a href="https://github.com/fraware/frontiere-institut-interet-public">Code et documentation</a></div></footer>
+</body>
+</html>
