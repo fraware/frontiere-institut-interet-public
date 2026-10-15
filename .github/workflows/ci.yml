@@ -74,6 +74,9 @@ jobs:
       - name: Construire l'image
         run: docker build -t frontiere:test .
 
+      - name: Construire l'image du collecteur BOAMP permanent
+        run: docker build -f infra/Dockerfile.collecte -t frontiere-collecte:test .
+
       - name: Vérifier le service
         run: |
           docker run --detach --name frontiere-test --publish 8000:8000 frontiere:test
