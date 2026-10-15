@@ -52,6 +52,20 @@ test("navigateur réel : recherche initiale, filtre BOAMP et recherche étendue"
     await page.waitForFunction(() => /documents examinés/.test(document.querySelector("#etat").textContent));
     assert.ok(await page.locator("article").count() > 0);
     assert.ok((await page.locator("#etat").textContent()).includes("emplois".toUpperCase()));
+    // Modifier un champ JSON sans modifier sa longueur : la seule
+    // vérification de taille ne doit pas suffire à accepter le document.
+    await page.route("**/partitions/part-*.json", async route => {
+      const reponse = await route.fetch();
+      const brut = await reponse.text();
+      const fausseCopie = brut.replace('"titre":', '"titRe":');
+      assert.notEqual(fausseCopie, brut);
+      assert.equal(Buffer.byteLength(fausseCopie), Buffer.byteLength(brut));
+      await route.fulfill({ response: reponse, body: fausseCopie });
+    });
+    await page.locator("#lancer").click();
+    await page.waitForFunction(() =>
+      /résultats non publiés/.test(document.querySelector("#etat").textContent));
+    assert.equal(await page.locator("article").count(), 0);
     assert.deepEqual(erreurs, []);
   } finally {
     await browser.close();
