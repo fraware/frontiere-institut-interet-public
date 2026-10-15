@@ -1,11 +1,12 @@
 """Essais hors réseau de la base opérationnelle BOAMP."""
 from datetime import date, datetime, timezone
 import json
+from pathlib import Path
 
 import pytest
 
 from app.plateforme_boamp import (
-    CaptureInvalide, StockageBOAMP, importer_cycle,
+    CaptureInvalide, StockageBOAMP, importer_cycle, _lire_archive,
 )
 from scripts.collecter_historique_boamp import chemins_jour, publier_jour
 
@@ -133,3 +134,15 @@ def test_recherche_litterale_et_limites(tmp_path):
     assert base.rechercher("50_") == []
     with pytest.raises(ValueError):
         base.rechercher("x", limite=101)
+
+
+def test_lecture_d_une_archive_officielle_deja_versionnee():
+    """Essai d'intégration sur les octets réellement présents dans le dépôt."""
+    racine = Path(__file__).resolve().parents[1] / "institutionnel/besoins_publics"
+    fiche = racine / "historique_boamp/2026/10/2026-10-01.json"
+    assert fiche.is_file(), "Archive témoin BOAMP absente du dépôt."
+    capture, avis, _ = _lire_archive(racine, fiche)
+    manifeste = json.loads(fiche.read_text(encoding="utf-8"))
+    assert capture["jour_complet"] is True
+    assert len(avis) == manifeste["avis_distincts"]
+    assert all(x["date_parution"][:10] == "2026-10-01" for x in avis)
