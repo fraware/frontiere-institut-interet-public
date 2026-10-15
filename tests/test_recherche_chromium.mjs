@@ -45,6 +45,15 @@ test("navigateur réel : recherche initiale, filtre BOAMP et recherche étendue"
     assert.match(await page.locator("#etat-recherche").textContent(), /Aucun document/);
     await page.goto(url + "/recherche-etendue.html", { waitUntil: "networkidle" });
     await page.waitForFunction(() => !document.querySelector("#source").disabled);
+    // Le bilan est celui des partitions réellement publiées, pas une
+    // prétendue mesure de couverture nationale.
+    const bilan = await page.locator("#bilan-selection").textContent();
+    assert.match(bilan, /BOAMP/);
+    assert.match(bilan, /EMPLOIS/);
+    assert.match(bilan, /DECP/);
+    assert.match(bilan, /Plafond/);
+    assert.match(bilan, /Aucun pourcentage de couverture nationale/);
+
     await page.locator("#source").selectOption("emplois");
     assert.ok(await page.locator("#annee option").count() > 1);
     await page.locator("#termes").fill("");
