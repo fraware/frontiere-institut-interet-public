@@ -150,6 +150,7 @@ def collecter_jour(jour: date, *, obtenir=requete_ted,
     documents: dict[str, dict] = {}
     total: int | None = None
     pages = 0
+    pages_vides_consecutives = 0
     while True:
         pages += 1
         if pages > 200:
@@ -182,8 +183,14 @@ def collecter_jour(jour: date, *, obtenir=requete_ted,
             break
         if not isinstance(token, str) or token in vus_tokens or len(token) > 6000:
             raise TEDInvalide("Jeton de pagination TED invalide ou répété.")
-        if not lignes:
-            raise TEDInvalide("Page vide avec pagination encore ouverte.")
+        # Le serveur TED peut retourner une page vide avec un jeton de suite.
+        # La complétude est déterminée par le total déclaré, non par la
+        # présence de résultats sur une page intermédiaire.
+        pages_vides_consecutives = (
+            pages_vides_consecutives + 1 if not lignes else 0
+        )
+        if pages_vides_consecutives > 5:
+            raise TEDInvalide("Pagination TED bloquée sur des pages vides.")
         vus_tokens.add(token)
         corps["iterationNextToken"] = token
         attendre(0.4)
