@@ -1,4 +1,4 @@
-"""Exécuter les tests de logique de la recherche sans navigateur ni dépendances."""
+/* Vérifier la recherche documentaire dans le navigateur, sans dépendance. */
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
