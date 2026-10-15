@@ -137,10 +137,17 @@ export function indexerDecp(racine) {
   let lignes = [], lus = 0, empreintes = [];
   for (const chemin of chemins) {
     const { donnees, empreinte } = charger(racine, chemin);
-    verifier(Array.isArray(donnees?.marches_extraits), "Relevé DECP sans notices : " + chemin);
+    // AIFE stocke les notices directement ; DGFiP regroupe les observations
+    // par fichier XML officiel dans un tableau "fichiers".
+    const lots = Array.isArray(donnees?.marches_extraits)
+      ? [{ id: "", marches_extraits: donnees.marches_extraits }]
+      : Array.isArray(donnees?.fichiers) ? donnees.fichiers : null;
+    verifier(lots !== null && lots.every(x => x && Array.isArray(x.marches_extraits)),
+      "Relevé DECP sans notices : " + chemin);
     empreintes.push({ chemin, sha256: empreinte });
-    lus += donnees.marches_extraits.length;
-    for (const x of donnees.marches_extraits) {
+    for (const lot of lots) {
+      lus += lot.marches_extraits.length;
+      for (const x of lot.marches_extraits) {
       if (!x || typeof x !== "object") continue;
       const siret = texte(x.acheteur_siret, 14), id = texte(x.id_marche, 100);
       if (!/^\d{14}$/.test(siret) || !id) continue;
@@ -151,8 +158,9 @@ export function indexerDecp(racine) {
         localisation: "", code: texte(x.code_cpv, 50),
         lien: chemin === chemins[0] ? SOURCE_DECP :
           "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-transmises-via-le-pes-marche-depuis-2024",
-        provenance: chemin, cle_provenance: id
+        provenance: chemin, cle_provenance: texte(lot.id, 40) ? texte(lot.id, 40) + "/" + id : id
       });
+      }
     }
   }
   return { extraits: limiter(lignes, PLAFONDS.decp), total_candidats: lus, origines: empreintes };
