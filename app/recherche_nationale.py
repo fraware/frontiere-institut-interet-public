@@ -12,11 +12,13 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 import json
 import os
+import secrets
 from pathlib import Path
 import sqlite3
 from typing import Any
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi.responses import JSONResponse
 
 SOURCES = ("boamp", "emplois", "decp", "ted")
 TYPES = {
@@ -246,15 +248,42 @@ def rechercher(chemins: Chemins, expression: str, *,
 def creer_application(chemins: Chemins | None = None) -> FastAPI:
     config = chemins or Chemins.environnement()
     app = FastAPI(title="FRONTIÈRE — consultation nationale", version="0.1.0")
+    acces_obligatoire = os.environ.get(
+        "FRONTIERE_CONTROLE_ACCES_OBLIGATOIRE", "0"
+    ) == "1"
+    jeton = os.environ.get("FRONTIERE_JETON_ACCES", "")
+    jeton_valide = len(jeton) >= 32 and jeton.isascii()
+
+    @app.middleware("http")
+    async def controle_acces(requete: Request, suite):
+        # L'hébergeur doit pouvoir vérifier le fonctionnement du serveur,
+        # sans obtenir le contenu ni l'état documentaire des bases.
+        if requete.url.path == "/sante":
+            return await suite(requete)
+        if acces_obligatoire and not jeton_valide:
+            return JSONResponse(
+                status_code=503,
+                content={"detail": "Accès non configuré sur le service hébergé."},
+            )
+        if jeton and not secrets.compare_digest(
+            requete.headers.get("authorization", ""), "Bearer " + jeton
+        ):
+            return JSONResponse(
+                status_code=401,
+                content={"detail": "Autorisation nécessaire."},
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+        return await suite(requete)
 
     @app.get("/sante")
     def sante():
-        resultats = etat(config)
-        return {
+        resultat = {
             "service": "consultation_frontiere",
             "etat": "pret",
-            "sources": resultats,
         }
+        if acces_obligatoire or jeton:
+            return resultat
+        return {**resultat, "sources": etat(config)}
 
     @app.get("/sources")
     def sources():
