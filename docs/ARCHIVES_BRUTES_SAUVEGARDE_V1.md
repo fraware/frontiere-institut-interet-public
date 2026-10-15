@@ -16,10 +16,6 @@ principaux répertoires créés par l'instance gérée sont :
 - \`/var/lib/frontiere/decp/releves\`
 - \`/var/lib/frontiere/decp/fichiers-consolides\`
 
-Les avis TED dont seule la représentation normalisée figure dans SQLite
-restent protégés par la sauvegarde des bases. Les originaux TED en XML
-ne sont pas encore acquis par le service.
-
 ## Commandes sur l'hôte d'exploitation
 
 Dans un environnement Python, avec un espace de sauvegarde
