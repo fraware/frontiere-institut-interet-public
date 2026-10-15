@@ -1,4 +1,4 @@
-# FRONTIÈRE — Sauvegarde des quatre bases persistantes
+# FRONTIÈRE — Sauvegarde des trois bases persistantes
 
 Une instance de collecte permanente doit pouvoir être reprise à partir de
 copies vérifiées, sans arrêter les collecteurs pour copier directement les
@@ -7,22 +7,22 @@ fichiers SQLite.
 ## Première procédure reproductible
 
 La configuration Docker Compose propose un service ponctuel nommé
-sauvegarde, activable avec le profil maintenance. Les quatre volumes
+sauvegarde, activable avec le profil maintenance. Les trois volumes
 d'acquisition lui sont montés en lecture seule. La commande suivante
 est à exécuter sur la machine d'hébergement :
 
     mkdir -p sauvegardes
     docker compose -f compose.collecte.yml --profile maintenance run --rm sauvegarde
 
-L'outil crée un dossier sauvegardes/frontiere-... contenant les quatre
-bases boamp.sqlite3, emplois.sqlite3, decp.sqlite3 et ted.sqlite3, ainsi
+L'outil crée un dossier sauvegardes/frontiere-... contenant les trois
+bases boamp.sqlite3, emplois.sqlite3 et decp.sqlite3, ainsi
 que manifest.json avec la date, la taille et l'empreinte SHA-256 de chaque
 copie.
 
 Les copies sont produites par sqlite3.Connection.backup. Ce mécanisme
 produit un instantané cohérent pour chaque base prise séparément,
 même en présence de transactions concurrentes. Il ne constitue pas
-un instantané global simultané des quatre bases.
+un instantané global simultané des trois bases.
 
 L'outil confirme l'intégrité SQLite et les tables essentielles avant de
 publier le manifeste. Une erreur supprime le dossier partiel.
@@ -33,7 +33,7 @@ Depuis la racine du dépôt :
 
     python3 scripts/sauvegarder_bases.py --verifier sauvegardes/NOM_DU_DOSSIER
 
-La vérification relit les quatre fichiers, calcule leurs empreintes et
+La vérification relit les trois fichiers, calcule leurs empreintes et
 vérifie leurs structures et leur intégrité. Elle échoue si une copie est
 absente, modifiée ou incompatible.
 
