@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recherche étendue · FRONTIÈRE</title>
+<style>
+:root{font-family:system-ui,-apple-system,Arial,sans-serif;color:#18312e;background:#f7f9f8}
+*{box-sizing:border-box}body{margin:0}.page{max-width:980px;padding:32px 24px 90px;margin:auto}
+a{color:#1e5955;text-underline-offset:3px}h1{font-size:clamp(30px,5vw,50px);font-weight:600;letter-spacing:-.045em}
+.description{color:#526b69;max-width:780px}.note{padding:15px;border-left:3px solid #34746b;background:#eaf1ee;font-size:14px}
+form{background:white;padding:22px;border:1px solid #dce4e1;display:grid;grid-template-columns:1fr 160px 130px auto;gap:10px;align-items:end}
+label{display:block;font-size:13px;font-weight:650;margin-bottom:6px}
+input,select,button{min-height:44px;width:100%;font:inherit;padding:9px;border:1px solid #a6b5b2;border-radius:3px}
+button{background:#245d58;color:white;cursor:pointer;font-weight:600}
+#etat{font-size:14px;color:#566d69;margin-top:20px}article{border-top:1px solid #dce4e1;padding:18px 0}
+article h2{font-size:18px;margin:5px 0}article p{font-size:13px;color:#566d69;margin:5px 0}
+.meta{display:flex;justify-content:space-between;gap:16px;color:#476b66;font-size:12px}
+[hidden]{display:none}@media(max-width:750px){form{grid-template-columns:1fr}}
+</style></head>
+<body><main class="page">
+<p><a href="./">← FRONTIÈRE</a></p>
+<h1>Recherche documentaire étendue</h1>
+<p class="description">Index découpé par source et année. Choisissez un périmètre pour ne charger que les fichiers pertinents dans votre navigateur.</p>
+<p class="note">Sélection limitée aux 5 000 documents les plus récents par source et aux archives présentes dans le dépôt. Une publication BOAMP, une offre d'emploi et une attribution DECP sont des observations distinctes. Aucun suivi en temps réel ni couverture nationale exhaustive.</p>
+<form id="recherche" role="search">
+<div><label for="termes">Termes recherchés</label><input id="termes" type="search" maxlength="120" placeholder="Ex. informatique, recherche"></div>
+<div><label for="source">Source</label><select id="source" required disabled><option value="">Choisir</option><option value="boamp">BOAMP</option><option value="emplois">Emplois publics</option><option value="decp">DECP attribués</option></select></div>
+<div><label for="annee">Année</label><select id="annee" required disabled><option value="">Choisir</option></select></div>
+<div><button id="lancer" type="submit" disabled>Rechercher</button></div>
+</form>
+<p id="etat" role="status">Chargement du catalogue documentaire…</p>
+<div id="resultats" aria-label="Documents correspondants"></div>
+</main><script type="module" src="./recherche-etendue.js"></script></body></html>

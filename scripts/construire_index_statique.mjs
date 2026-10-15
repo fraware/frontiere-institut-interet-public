@@ -72,7 +72,7 @@ function limiter(lignes, plafond) {
   return [...vus.values()].sort(ordonner).slice(0, plafond);
 }
 
-export function indexerBoamp(racine) {
+export function indexerBoamp(racine, maximum = PLAFONDS.boamp) {
   const chemin = "institutionnel/besoins_publics/annonces_boamp.json";
   const { donnees, empreinte } = charger(racine, chemin);
   verifier(donnees?.version === "avis-boamp-v1" && Array.isArray(donnees.annonces), "Format BOAMP inattendu.");
@@ -86,7 +86,7 @@ export function indexerBoamp(racine) {
       provenance: chemin, cle_provenance: texte(x.id, 160)
     };
   });
-  return { extraits: limiter(lignes, PLAFONDS.boamp), total_candidats: donnees.annonces.length,
+  return { extraits: limiter(lignes, maximum), total_candidats: donnees.annonces.length,
            origine: chemin, sha256: empreinte };
 }
 
@@ -98,7 +98,7 @@ async function hacherFichier(fichier) {
 function resserrer(candidats, maximum) {
   return limiter(candidats, maximum);
 }
-export async function indexerEmplois(racine) {
+export async function indexerEmplois(racine, maximum = PLAFONDS.emplois) {
   const manifestePath = "institutionnel/besoins_publics/manifest_offres_postes.json";
   const { donnees: manifeste, empreinte } = charger(racine, manifestePath);
   verifier(manifeste.version === "emplois-publics-extraits-v1", "Manifeste CSP incompatible.");
@@ -138,14 +138,14 @@ export async function indexerEmplois(racine) {
         provenance: chemin, cle_provenance: texte(item.cle_enregistrement, 64)
       });
       // Sélection des annonces les plus récentes sans matérialiser 268 000 offres en mémoire.
-      if (candidats.length >= 3000) candidats = resserrer(candidats, PLAFONDS.emplois * 2);
+      if (candidats.length >= Math.max(3000, maximum * 2 + 1000)) candidats = resserrer(candidats, maximum * 2);
     }
   }
   verifier(lus === manifeste.offres_distinctes, "Comptage des variantes CSP incompatible.");
-  return { extraits: resserrer(candidats, PLAFONDS.emplois),
+  return { extraits: resserrer(candidats, maximum),
            total_candidats: lus, origine: manifestePath, sha256: empreinte };
 }
-export function indexerDecp(racine) {
+export function indexerDecp(racine, maximum = PLAFONDS.decp) {
   const chemins = [
     "institutionnel/decp/sonde_aife_json.json",
     "institutionnel/decp/lot_dgfip_xml.json",
@@ -179,7 +179,7 @@ export function indexerDecp(racine) {
       }
     }
   }
-  return { extraits: limiter(lignes, PLAFONDS.decp), total_candidats: lus, origines: empreintes };
+  return { extraits: limiter(lignes, maximum), total_candidats: lus, origines: empreintes };
 }
 
 export async function construire(racine = RACINE) {
