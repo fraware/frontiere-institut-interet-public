@@ -28,7 +28,7 @@ ON passages_collectes(source, demarre_le DESC);
 """
 SOURCES = (
     "amorcage_boamp", "amorcage_emplois", "amorcage_decp",
-    "boamp", "emplois", "decp", "decp_consolides", "ted", "ted_historique",
+    "boamp", "emplois", "decp", "decp_consolides",
 )
 
 
