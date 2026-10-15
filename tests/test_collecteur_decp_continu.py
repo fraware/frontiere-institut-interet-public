@@ -5,6 +5,7 @@ from copy import deepcopy
 from datetime import datetime, timezone
 import hashlib
 import json
+from pathlib import Path
 
 import pytest
 
@@ -203,3 +204,19 @@ def test_interdiction_d_inventer_un_besoin_ouvert(tmp_path):
     with pytest.raises(ValueError, match="besoin ouvert"):
         importer_archives(base, archives, dossier)
     assert etat_index(base)["fichiers"] == 0
+
+
+def test_amorcage_des_releves_reels_du_depot(tmp_path):
+    """Contrôler le corpus AIFE/DGFiP versionné, hors de toute connexion."""
+    archive = Path(__file__).resolve().parents[1] / "institutionnel" / "decp"
+    manifeste = json.loads((archive / "lot_dgfip_xml.json").read_text(encoding="utf-8"))
+    attendu = len(manifeste["fichiers"]) + 1
+    base = tmp_path / "reels.sqlite3"
+    dossier = tmp_path / "releve"
+    sortie = importer_archives(base, archive, dossier)
+    assert sortie["fichiers"] == attendu
+    assert sortie["releves_documentaires_importes"] == attendu
+    assert sortie["marches_distincts"] > 0
+    second = importer_archives(base, archive, dossier)
+    assert second["releves_documentaires_importes"] == 0
+    assert second["marches_distincts"] == sortie["marches_distincts"]
