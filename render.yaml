@@ -37,3 +37,5 @@ services:
         value: /var/lib/frontiere/decp/marches_decp.sqlite3
       - key: FRONTIERE_TED_DB
         value: /var/lib/frontiere/ted/avis_ted.sqlite3
+      - key: FRONTIERE_JOURNAL_COLLECTES
+        value: /var/lib/frontiere/exploitation/passages.sqlite3
