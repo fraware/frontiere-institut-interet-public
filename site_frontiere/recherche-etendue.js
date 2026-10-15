@@ -1,4 +1,5 @@
 import { siretAdmissible, siretAcheteur, appartientAuMemeAcheteur, ordreChronologique } from "./acheteurs-decp.js";
+import { construireChronologieDocumentaire } from "./chronologies-documentaires.js";
 /** Consultation des partitions sélectionnées, sans serveur ni HTML issu des sources. */
 const q = id => document.getElementById(id);
 const racine = "./partitions/";
@@ -251,7 +252,7 @@ async function afficherAvisBoampCorrobores(siret) {
   if (!m) {
     zone.textContent = "Étude BOAMP indépendante indisponible dans cette version du site.";
     zone.hidden = false;
-    return;
+    return [];
   }
   if (m.fichier !== "avis-boamp-corrobores.json" ||
       m.version !== "frontiere-avis-boamp-corrobores-v1" ||
@@ -336,6 +337,66 @@ async function afficherAvisBoampCorrobores(siret) {
     zone.append(absence);
   }
   zone.hidden = false;
+  return rapport.avis;
+}
+
+
+/** Présenter l'ordre des dates, sans attribuer aux documents une relation
+ * opérationnelle. Les informations DILA n'ont pas de date d'effet fiable
+ * dans cet index et restent affichées à part.
+ */
+function afficherChronologieDocumentaire(siret, marches, avis) {
+  const zone = q("chronologie-documentaire");
+  const chronologie = construireChronologieDocumentaire(siret, marches, avis);
+  const titre = document.createElement("h2");
+  titre.textContent = "Chronologie des documents associés au SIRET " + siret;
+  const bilan = document.createElement("p");
+  bilan.textContent = francais.format(chronologie.decomptes.documents_decp_index) +
+    " document(s) DECP dans l'extrait indexé et " +
+    francais.format(chronologie.decomptes.avis_boamp_etude) +
+    " avis BOAMP corroboré(s) dans l'étude indépendante.";
+  const reserve = document.createElement("p");
+  reserve.textContent = chronologie.limite_interpretation +
+    " Les référentiels administratifs sont présentés séparément, " +
+    "sans leur attribuer une date de création ou de changement.";
+  const liste = document.createElement("ol");
+  for (const evenement of chronologie.evenements.slice(0, 100)) {
+    const ligne = document.createElement("li");
+    const date = document.createElement("time");
+    date.dateTime = evenement.date;
+    date.textContent = evenement.date;
+    const provenance = document.createElement("span");
+    provenance.className = "type";
+    provenance.textContent = evenement.source === "boamp"
+      ? "BOAMP — date de parution d'avis"
+      : "DECP — date documentaire (notification ou publication déclarée)";
+    const intitule = document.createElement("span");
+    intitule.className = "titre-evt";
+    intitule.textContent = evenement.titre + " · Référence " + evenement.reference;
+    const archive = document.createElement("a");
+    const sha = /^[a-f0-9]{40}$/.test(manifeste.revision_sources || "")
+      ? manifeste.revision_sources : "main";
+    lien(archive, "https://github.com/fraware/frontiere-institut-interet-public/blob/" +
+      sha + "/" + evenement.provenance.split("/").map(encodeURIComponent).join("/"),
+      "Source archivée et preuves");
+    ligne.append(date, provenance, intitule, archive);
+    liste.append(ligne);
+  }
+  zone.replaceChildren(titre, bilan, reserve);
+  if (chronologie.evenements.length > 100) {
+    const truncature = document.createElement("p");
+    truncature.textContent = "Chronologie limitée aux 100 documents les plus récents parmi " +
+      chronologie.evenements.length + " événements documentaires admis.";
+    zone.append(truncature);
+  }
+  if (chronologie.evenements.length) zone.append(liste);
+  else {
+    const absence = document.createElement("p");
+    absence.textContent = "Aucun document daté dans les deux périmètres examinés ; " +
+      "cela ne signifie pas absence d'activité de l'établissement.";
+    zone.append(absence);
+  }
+  zone.hidden = false;
 }
 
 async function consulter(e) {
@@ -350,6 +411,9 @@ async function consulter(e) {
   const boamp = q("avis-boamp-corrobores");
   boamp.hidden = true;
   boamp.replaceChildren();
+  const chronologie = q("chronologie-documentaire");
+  chronologie.hidden = true;
+  chronologie.replaceChildren();
   const acheteurDemande = q("siret-acheteur").value.trim();
   if (acheteurDemande && (!siretAdmissible(acheteurDemande) || source !== "decp")) {
     zone.replaceChildren();
@@ -365,13 +429,15 @@ async function consulter(e) {
   // Préciser le périmètre AVANT les téléchargements : une partition
   // entièrement en dehors de l'intervalle n'est jamais téléchargée.
   const morceaux = manifeste.partitions.filter(p =>
-    p.source === source && (!annee || p.annee === annee) &&
-    (!debut || p.annee >= debut.slice(0,4)) &&
-    (!fin || p.annee <= fin.slice(0,4)));
+    p.source === source && (acheteurDemande || (
+      (!annee || p.annee === annee) &&
+      (!debut || p.annee >= debut.slice(0,4)) &&
+      (!fin || p.annee <= fin.slice(0,4)))));
   zone.replaceChildren();q("lancer").disabled=true;
   q("etat").textContent="Lecture de " + morceaux.length + " fichiers…";
   let correspondant=0, visites=0, affiches=0;
   const documentsAcheteur = [];
+  const documentsAcheteurNonFiltres = [];
   try {
     for (const p of morceaux) {
       const rep = await fetch(racine + encodeURIComponent(p.fichier), { credentials:"omit" });
@@ -388,8 +454,12 @@ async function consulter(e) {
       if (!Array.isArray(lignes) || lignes.length !== p.documents) throw new Error("Lot incompatible");
       for (const d of lignes) {
         visites++;
+        if (acheteurDemande) {
+          if (!appartientAuMemeAcheteur(d, acheteurDemande)) continue;
+          documentsAcheteurNonFiltres.push(d);
+        }
         if ((debut && d.date < debut) || (fin && d.date > fin)) continue;
-        if (acheteurDemande && !appartientAuMemeAcheteur(d, acheteurDemande)) continue;
+        if (acheteurDemande && annee && d.date.slice(0,4) !== annee) continue;
         if (mots.some(w => !normaliser([d.titre,d.organisme,d.localisation,d.code,d.id].join(" ")).includes(w))) continue;
         correspondant++;
         if (acheteurDemande) {
@@ -404,7 +474,8 @@ async function consulter(e) {
     }
     if (acheteurDemande) {
       situation.textContent = await lireRattachementInstitutionnel(acheteurDemande);
-      await afficherAvisBoampCorrobores(acheteurDemande);
+      const avisEtudies = await afficherAvisBoampCorrobores(acheteurDemande);
+      afficherChronologieDocumentaire(acheteurDemande, documentsAcheteurNonFiltres, avisEtudies);
       situation.hidden = false;
       documentsAcheteur.sort(ordreChronologique);
       for (const document of documentsAcheteur.slice(0, limiteAffichage)) {
@@ -424,6 +495,8 @@ async function consulter(e) {
     situation.textContent = "";
     boamp.hidden = true;
     boamp.replaceChildren();
+    chronologie.hidden = true;
+    chronologie.replaceChildren();
     q("etat").textContent="Impossible de vérifier toutes les sources demandées ; résultats non publiés.";
   } finally { q("lancer").disabled=false; }
 }
