@@ -1,4 +1,4 @@
-"""Recherche fédérée dans quatre bases persistantes de FRONTIÈRE.
+"""Recherche fédérée dans trois bases persistantes de FRONTIÈRE.
 
 Chaque flux conserve son identité documentaire. Les bases sont ouvertes en
 lecture seule, sans copie ni fusion factice des acheteurs, avis et contrats.
@@ -20,18 +20,16 @@ from typing import Any
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import JSONResponse
 
-SOURCES = ("boamp", "emplois", "decp", "ted")
+SOURCES = ("boamp", "emplois", "decp")
 TYPES = {
     "boamp": "avis de marché",
     "emplois": "offre d'emploi public",
     "decp": "marché attribué",
-    "ted": "avis européen",
 }
 CHEMINS_ENV = {
     "boamp": "FRONTIERE_BOAMP_DB",
     "emplois": "FRONTIERE_EMPLOIS_DB",
     "decp": "FRONTIERE_DECP_DB",
-    "ted": "FRONTIERE_TED_DB",
 }
 CATALOGUES = {
     "decp": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides",
@@ -43,7 +41,6 @@ class Chemins:
     boamp: Path | None = None
     emplois: Path | None = None
     decp: Path | None = None
-    ted: Path | None = None
 
     @classmethod
     def environnement(cls) -> "Chemins":
@@ -84,7 +81,6 @@ ATTENDUES = {
     "emplois": {"versions_emplois_publics", "apparitions_emplois_publics",
                 "captures_emplois_publics"},
     "decp": {"versions", "attestations", "recherche_marches"},
-    "ted": {"avis_ted", "captures_ted"},
 }
 
 
@@ -156,19 +152,6 @@ def _lire_decp(conn: sqlite3.Connection, expression: str, limite: int):
     )
 
 
-def _lire_ted(conn: sqlite3.Connection, motif: str, limite: int):
-    return conn.execute(
-        "SELECT numero AS identifiant,titre,acheteur AS organisme,"
-        "date_publication,source_url AS url_document,"
-        "codes_cpv AS code_cpv,NULL AS montant_euros_ht,"
-        "empreinte_courante AS empreinte_version "
-        "FROM avis_ted WHERE titre LIKE ? ESCAPE '\\' "
-        "OR acheteur LIKE ? ESCAPE '\\' "
-        "ORDER BY date_publication DESC,numero DESC LIMIT ?",
-        (motif, motif, limite),
-    )
-
-
 def etat(chemins: Chemins) -> dict[str, dict]:
     resultats: dict[str, dict] = {}
     for nom in SOURCES:
@@ -183,7 +166,6 @@ def etat(chemins: Chemins) -> dict[str, dict]:
                         "boamp": "SELECT MAX(observe_le) FROM captures_boamp",
                         "emplois": "SELECT MAX(observe_le) FROM captures_emplois_publics",
                         "decp": "SELECT MAX(observe_le) FROM attestations",
-                        "ted": "SELECT MAX(observe_le) FROM captures_ted",
                     }
                     resultats[nom] = {
                         "etat": "accessible",
@@ -212,7 +194,6 @@ def rechercher(chemins: Chemins, expression: str, *,
         "boamp": lambda conn: _lire_boamp(conn, motif, limite),
         "emplois": lambda conn: _lire_emplois(conn, motif, limite),
         "decp": lambda conn: _lire_decp(conn, expression, limite),
-        "ted": lambda conn: _lire_ted(conn, motif, limite),
     }
     rencontres: list[dict] = []
     etats: dict[str, str] = {}
@@ -332,7 +313,6 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--boamp", type=Path)
     parser.add_argument("--emplois", type=Path)
     parser.add_argument("--decp", type=Path)
-    parser.add_argument("--ted", type=Path)
     sub = parser.add_subparsers(dest="action", required=True)
     requete = sub.add_parser("rechercher")
     requete.add_argument("expression")

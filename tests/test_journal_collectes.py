@@ -19,7 +19,7 @@ def test_etats_distincts_et_derniere_reussite(tmp_path):
     journal.conclure(a, 0)
     b = journal.commencer("boamp")
     journal.conclure(b, 1)
-    c = journal.commencer("ted")
+    c = journal.commencer("emplois")
     journal.conclure(c, None)
     d = journal.commencer("decp")
     journal.conclure(d, None, erreur_type="OSError")
@@ -28,7 +28,7 @@ def test_etats_distincts_et_derniere_reussite(tmp_path):
     assert resultat["sources"]["boamp"]["nombre_echecs_observes"] == 1
     assert resultat["sources"]["boamp"]["derniere_reussite_le"]
     assert resultat["sources"]["boamp"]["dernier_passage"]["etat"] == "echec"
-    assert resultat["sources"]["ted"]["dernier_passage"]["etat"] == "interrompu"
+    assert resultat["sources"]["emplois"]["dernier_passage"]["etat"] == "interrompu"
     assert resultat["sources"]["decp"]["dernier_passage"]["erreur_type"] == "OSError"
     assert {p["etat"] for p in resultat["derniers_passages"]} == {
         "reussite", "echec", "interrompu",
@@ -69,24 +69,24 @@ def test_un_journal_non_accessible_n_interrompt_pas_la_collecte(tmp_path):
     assert code == 0
 
 
-def test_ordonnanceur_journalise_les_six_sources(tmp_path):
+def test_ordonnanceur_journalise_les_quatre_passages(tmp_path):
     arret = threading.Event()
     appels = []
     def faire(etape, _arret):
         appels.append(etape.nom)
-        if len(appels) == 6:
+        if len(appels) == 4:
             arret.set()
         return 0
     ordonnanceur(tmp_path, arret, initialiser=False, executant=faire)
     etat = derniere_activite(tmp_path / "exploitation/passages.sqlite3")
-    assert len(etat["derniers_passages"]) == 6
+    assert len(etat["derniers_passages"]) == 4
     assert all(x["etat"] == "reussite" for x in etat["derniers_passages"])
 
 
 def test_route_collectes_et_secret_herites(tmp_path, monkeypatch):
     chemin = tmp_path / "passages.sqlite3"
     journal = JournalCollectes(chemin)
-    identifiant = journal.commencer("ted")
+    identifiant = journal.commencer("emplois")
     journal.conclure(identifiant, 0)
     monkeypatch.setenv("FRONTIERE_JOURNAL_COLLECTES", str(chemin))
     monkeypatch.setenv("FRONTIERE_CONTROLE_ACCES_OBLIGATOIRE", "1")
@@ -98,5 +98,5 @@ def test_route_collectes_et_secret_herites(tmp_path, monkeypatch):
         "/collectes", headers={"Authorization": "Bearer " + jeton}
     )
     assert resultat.status_code == 200
-    assert resultat.json()["sources"]["ted"]["derniere_reussite_le"]
+    assert resultat.json()["sources"]["emplois"]["derniere_reussite_le"]
     assert client.get("/sante").status_code == 200

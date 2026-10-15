@@ -1,4 +1,4 @@
-"""Sauvegarder les quatre bases persistantes par le mécanisme SQLite backup.
+"""Sauvegarder les trois bases persistantes par le mécanisme SQLite backup.
 
 Chaque base est copiée au moyen d'une transaction de lecture cohérente même
 si le collecteur continue à écrire. Une empreinte SHA-256, les tables
@@ -18,12 +18,11 @@ import shutil
 import sqlite3
 import sys
 
-SOURCES = ("boamp", "emplois", "decp", "ted")
+SOURCES = ("boamp", "emplois", "decp")
 TABLES = {
     "boamp": {"avis_boamp", "versions_avis_boamp", "captures_boamp"},
     "emplois": {"versions_emplois_publics", "captures_emplois_publics"},
     "decp": {"marches", "versions", "fichiers_sources"},
-    "ted": {"avis_ted", "versions_avis_ted", "captures_ted"},
 }
 VERSION = "frontiere-sauvegarde-sqlite-v1"
 TAILLE_BLOC = 1024 * 1024
@@ -82,7 +81,7 @@ def _copier_sqlite(source: Path, cible: Path, nom: str) -> dict:
 def _analyser_sources(sources: dict[str, Path]) -> None:
     if set(sources) != set(SOURCES):
         raise SauvegardeInvalide(
-            "Les quatre sources boamp, emplois, decp, ted sont obligatoires."
+            "Les trois sources boamp, emplois et decp sont obligatoires."
         )
     for nom, chemin in sources.items():
         if not isinstance(chemin, Path):
@@ -178,7 +177,7 @@ def _entrees(valeurs: list[str]) -> dict[str, Path]:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", action="append", default=[],
-                        help="Répéter nom=chemin pour les quatre bases")
+                        help="Répéter nom=chemin pour les trois bases")
     parser.add_argument("--destination", type=Path)
     parser.add_argument("--verifier", type=Path)
     args = parser.parse_args(argv)

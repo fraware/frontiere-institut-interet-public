@@ -32,7 +32,7 @@ def environnement(tmp_path):
     return base
 
 
-def test_simulation_restitue_six_services_sans_operation(tmp_path, capsys):
+def test_simulation_restitue_cinq_services_sans_operation(tmp_path, capsys):
     base = environnement(tmp_path)
     resultat = plan(base)
     assert resultat["pret_a_amorcer"] is True

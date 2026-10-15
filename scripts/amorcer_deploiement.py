@@ -2,7 +2,7 @@
 
 Par défaut, imprime seulement le plan d'exécution. Avec --executer,
 construit les images, importe les archives présentes sur le disque,
-puis démarre les six services définis dans compose.collecte.yml.
+puis démarre les cinq services définis dans compose.collecte.yml.
 
 À exécuter sur l'hôte possédant Docker Compose et son espace disque durable.
 La fusion sur GitHub n'a aucun effet sur cet hôte.
@@ -24,7 +24,6 @@ SERVICES = (
     "collecte-emplois",
     "collecte-decp",
     "collecte-decp-consolides",
-    "collecte-ted",
     "consultation",
 )
 FICHIERS_ATTENDUS = (

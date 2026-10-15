@@ -1,8 +1,8 @@
-# FRONTIÈRE — Recherche nationale fédérée des quatre corpus publics
+# FRONTIÈRE — Recherche nationale fédérée des trois corpus publics
 
-Cette étape ajoute un point de consultation commun aux quatre bases
+Cette étape ajoute un point de consultation commun aux trois bases
 opérationnelles : BOAMP, offres d'emploi de la fonction publique, marchés
-attribués DECP et avis européens TED.
+attribués DECP.
 
 ## Principe
 
@@ -24,7 +24,7 @@ bases effectuent une recherche de termes dans les titres ou les organismes,
 ainsi que dans les compétences pour les offres d'emploi.
 
 Il ne s'agit pas encore d'une correspondance démontrée entre un appel
-d'offres BOAMP, un marché attribué DECP et une publication TED. Les
+d'offres BOAMP et un marché attribué DECP. Les
 résultats conservent leur provenance et leur nature.
 
 ## Démarrage local avec Docker
@@ -55,12 +55,11 @@ interprétée comme l'absence de marchés ou de recrutements.
       --boamp /tmp/frontiere/avis_boamp.sqlite3 \
       --emplois /tmp/frontiere/offres_emplois.sqlite3 \
       --decp /tmp/frontiere/marches_decp.sqlite3 \
-      --ted /tmp/frontiere/avis_ted.sqlite3 \
       rechercher "intelligence artificielle" --limite 30
 
 Les chemins peuvent aussi être renseignés avec les variables
 FRONTIERE_BOAMP_DB, FRONTIERE_EMPLOIS_DB, FRONTIERE_DECP_DB
-et FRONTIERE_TED_DB.
+.
 
 ## Limites à documenter dans les résultats
 
@@ -75,12 +74,12 @@ et FRONTIERE_TED_DB.
 - Le service ne crée aucun besoin public inféré ni aucun lien contractuel
   qui ne figure pas dans les documents.
 - Les requêtes larges sur les bases volumineuses devront être mesurées en
-  exploitation ; une indexation de recherche optimisée sur BOAMP, TED
+  exploitation ; une indexation de recherche optimisée sur BOAMP
   et emplois publics fait partie des optimisations ultérieures.
 
 ## Étapes suivantes
 
 Rassembler les profils d'administrations et leurs identifiants nationaux,
 puis rattacher les preuves d'offres, d'achats, de programmes et de budgets
-à des entités communes. Les liens entre avis BOAMP/TED et contrats DECP
+à des entités communes. Les liens entre avis BOAMP et contrats DECP
 seront soumis à des règles explicites de correspondance documentaire.
