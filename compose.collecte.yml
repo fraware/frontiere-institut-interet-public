@@ -6,6 +6,7 @@ services:
     restart: unless-stopped
     volumes:
       - stockage-frontiere-boamp:/var/lib/frontiere
+      - ./institutionnel/besoins_publics:/opt/frontiere/archives:ro
     # Aucun port n'est publié : ce service acquiert et stocke les données.
     # La fréquence réelle des nouvelles annonces dépend du producteur BOAMP.
 
