@@ -7,6 +7,7 @@ API locale FastAPI et interface en ligne de commande sur les mêmes requêtes.
 from __future__ import annotations
 
 import argparse
+from contextlib import contextmanager
 from dataclasses import dataclass
 from datetime import datetime, timezone
 import json
@@ -53,14 +54,21 @@ class Chemins:
         return getattr(self, source)
 
 
-def _connecter(path: Path | None) -> sqlite3.Connection | None:
+@contextmanager
+def _connecter(path: Path | None):
     if path is None or not path.is_file():
-        return None
-    connexion = sqlite3.connect(path.resolve().as_uri() + "?mode=ro", uri=True, timeout=20)
-    connexion.row_factory = sqlite3.Row
-    connexion.execute("PRAGMA query_only=ON")
-    connexion.execute("PRAGMA busy_timeout=20000")
-    return connexion
+        yield None
+        return
+    connexion = sqlite3.connect(
+        path.resolve().as_uri() + "?mode=ro", uri=True, timeout=20
+    )
+    try:
+        connexion.row_factory = sqlite3.Row
+        connexion.execute("PRAGMA query_only=ON")
+        connexion.execute("PRAGMA busy_timeout=20000")
+        yield connexion
+    finally:
+        connexion.close()
 
 
 def _tables(conn: sqlite3.Connection) -> set[str]:
