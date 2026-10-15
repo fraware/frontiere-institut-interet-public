@@ -12,7 +12,7 @@ RUN python -m pip install --no-cache-dir "sqlalchemy>=2.0,<3" \
 
 COPY app/__init__.py app/plateforme_boamp.py app/collecteur_boamp_continu.py app/plateforme_emplois.py app/collecteur_emplois_continu.py /opt/frontiere/app/
 COPY scripts/collecter_besoins_publics.py scripts/sonder_structure_offres_publiques.py scripts/extraire_offres_publiques.py scripts/collecter_catalogues_decp.py scripts/sonder_ressource_decp_aife.py scripts/sonder_lot_decp_dgfip.py scripts/ingerer_fichier_decp_json.py scripts/ingerer_fichier_decp_xml.py scripts/indexer_attributions_decp_sqlite.py scripts/consolider_attributions_decp.py /opt/frontiere/scripts/
-COPY app/collecteur_decp_continu.py app/collecteur_decp_consolides.py app/collecteur_ted_continu.py /opt/frontiere/app/
+COPY app/collecteur_decp_continu.py app/collecteur_decp_consolides.py /opt/frontiere/app/
 
 USER frontiere
 VOLUME ["/var/lib/frontiere"]
