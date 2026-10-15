@@ -275,3 +275,69 @@ test("BOAMP–DECP : deux concordances datées séparées du résultat des march
       serveur.close(error => error ? reject(error) : resolve()));
   }
 });
+
+
+test("chronologie institutionnelle documentaire : dates BOAMP et DECP distinctes",
+  { timeout: 120_000 }, async () => {
+  const { serveur, url } = await demarrerServeur();
+  const navigateur = await chromium.launch({ headless: true });
+  try {
+    const page = await navigateur.newPage({ viewport: { width: 1100, height: 820 } });
+    const erreurs = [];
+    page.on("pageerror", e => erreurs.push(String(e)));
+    for (const [siret, avis] of [
+      ["21060027600013", "25-94670"],
+      ["18002002600019", "26-62030"]
+    ]) {
+      await page.goto(url + "/recherche-etendue.html?acheteur=" + siret,
+        { waitUntil: "networkidle" });
+      await page.waitForFunction(() =>
+        !document.querySelector("#chronologie-documentaire").hidden);
+      const chronologie = page.locator("#chronologie-documentaire");
+      assert.match(await chronologie.textContent(), new RegExp(avis));
+      assert.match(await chronologie.textContent(), /aucun contrat|ni lien contractuel/i);
+      assert.match(await chronologie.textContent(), /notification ou publication déclarée/);
+      assert.equal(await chronologie.locator("li").count() > 0, true);
+      const contenu = await chronologie.textContent();
+      assert.match(contenu, /avis BOAMP corroboré/);
+      assert.equal((await chronologie.locator("li").allTextContents())
+        .filter(x => x.includes(avis)).length, 1);
+
+      // Le filtre de recherche reste indépendant du relevé chronologique.
+      await page.locator("#date-debut").fill("2027-01-01");
+      await page.locator("#lancer").click();
+      await page.waitForFunction(() =>
+        /Regroupement sur SIRET déclaré/.test(document.querySelector("#etat").textContent));
+      assert.equal(await page.locator("article").count(), 0);
+      assert.match(await chronologie.textContent(), new RegExp(avis));
+      assert.ok((await chronologie.locator("li").count()) > 0);
+    }
+
+    await page.goto(url + "/recherche-etendue.html?acheteur=00000000000000",
+      { waitUntil: "networkidle" });
+    await page.waitForFunction(() =>
+      !document.querySelector("#chronologie-documentaire").hidden);
+    assert.match(await page.locator("#chronologie-documentaire").textContent(),
+      /ne signifie pas absence d'activité/);
+
+    // Les deux sources doivent être contrôlées avant tout affichage.
+    await page.route("**/partitions/avis-boamp-corrobores.json", async route => {
+      const response = await route.fetch();
+      const texte = await response.text();
+      const alt = texte.replace('"version":', '"versiOn":');
+      assert.notEqual(texte, alt);
+      await route.fulfill({ response, body: alt });
+    });
+    await page.goto(url + "/recherche-etendue.html?acheteur=21060027600013",
+      { waitUntil: "networkidle" });
+    await page.waitForFunction(() => /résultats non publiés/.test(
+      document.querySelector("#etat").textContent));
+    assert.equal(await page.locator("#chronologie-documentaire").isHidden(), true);
+    assert.equal(await page.locator("article").count(), 0);
+    assert.deepEqual(erreurs, []);
+  } finally {
+    await navigateur.close();
+    await new Promise((resolve, reject) =>
+      serveur.close(error => error ? reject(error) : resolve()));
+  }
+});
