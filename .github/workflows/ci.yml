@@ -189,6 +189,24 @@ jobs:
             console.log('Qualifications documentaires contrôlées : '+q.documents_qualifies);
           "
 
+      - name: Préparer et contrôler les candidats de relecture depuis les archives CSP
+        run: |
+          python -m scripts.preparer_relecture_besoins_explicites \
+            --sortie "$RUNNER_TEMP/relecture-csp-24.json"
+          python - "$RUNNER_TEMP/relecture-csp-24.json" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          r = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          if (r["nombre_candidats"] != 24 or
+                  r["taille_par_strate"] != 12 or
+                  r["representativite_statistique_etablie"] is not False or
+                  r["relecture_humaine_effectuee"] is not False or
+                  r["besoins_actuellement_non_satisfaits_demonstres"] != 0 or
+                  len({x["reference"] for x in r["candidats"]}) != 24):
+              raise SystemExit("Échantillon de relecture non conforme.")
+          PY
+
       - name: Vérifier la taille et la portée de la publication
         run: |
           node --input-type=module -e "
