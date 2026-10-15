@@ -123,3 +123,26 @@ test("les bornes restent explicites et sont vérifiées", () => {
   assert.ok(PLAFONDS.decp <= 1000);
   assert.ok(OCTETS_MAX <= 2_000_000);
 });
+
+test("la révision Git attestée est immuable et absente si inconnue", async () => {
+  await dansFixture(async racine => {
+    const avant = process.env.GITHUB_SHA;
+    const rend = process.env.RENDER_GIT_COMMIT;
+    try {
+      delete process.env.RENDER_GIT_COMMIT;
+      process.env.GITHUB_SHA = "a".repeat(40);
+      let x = JSON.parse(await construire(racine));
+      assert.equal(x.revision_sources, "a".repeat(40));
+      assert.equal(x.provenance_revisionnee, true);
+      process.env.GITHUB_SHA = "branche-main";
+      x = JSON.parse(await construire(racine));
+      assert.equal(x.revision_sources, null);
+      assert.equal(x.provenance_revisionnee, false);
+    } finally {
+      if (avant === undefined) delete process.env.GITHUB_SHA;
+      else process.env.GITHUB_SHA = avant;
+      if (rend === undefined) delete process.env.RENDER_GIT_COMMIT;
+      else process.env.RENDER_GIT_COMMIT = rend;
+    }
+  });
+});
