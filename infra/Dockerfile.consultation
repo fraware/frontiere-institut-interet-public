@@ -9,7 +9,7 @@ RUN python -m pip install --no-cache-dir \
       "fastapi>=0.115,<1" "uvicorn>=0.30,<1" \
     && useradd --system --uid 10001 --home-dir /nonexistent consultation
 
-COPY app/__init__.py app/recherche_nationale.py app/etat_exploitation.py /opt/frontiere/app/
+COPY app/__init__.py app/recherche_nationale.py app/etat_exploitation.py app/hypotheses_documentaires.py app/journal_collectes.py /opt/frontiere/app/
 USER consultation
 EXPOSE 8765
 CMD ["uvicorn", "app.recherche_nationale:app", "--host", "0.0.0.0", "--port", "8765"]
