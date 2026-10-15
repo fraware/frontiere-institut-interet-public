@@ -12,6 +12,9 @@ projects:
             name: frontiere-observatoire-public
             runtime: static
             buildCommand: node scripts/construire_index_statique.mjs
+            envVars:
+              - key: SKIP_INSTALL_DEPS
+                value: "true"
             staticPublishPath: ./site_frontiere
             autoDeployTrigger: "off"
             previews:

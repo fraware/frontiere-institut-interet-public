@@ -26,6 +26,7 @@ def test_blueprint_gratuit_sans_calcul_facture_ni_disque():
     assert service["name"] == "frontiere-observatoire-public"
     assert service["staticPublishPath"] == "./site_frontiere"
     assert service["buildCommand"] == "node scripts/construire_index_statique.mjs"
+    assert service["envVars"] == [{"key": "SKIP_INSTALL_DEPS", "value": "true"}]
     assert service["autoDeployTrigger"] == "off"
     assert service["previews"]["generation"] == "off"
 
@@ -33,7 +34,7 @@ def test_blueprint_gratuit_sans_calcul_facture_ni_disque():
     for cle in (
         "plan", "disk", "numInstances", "region", "dockerfilePath",
         "dockerContext", "healthCheckPath", "maxShutdownDelaySeconds",
-        "envVars", "startCommand", "preDeployCommand",
+        "startCommand", "preDeployCommand",
     ):
         assert cle not in service, f"Paramètre incompatible avec l'option gratuite : {cle}"
 

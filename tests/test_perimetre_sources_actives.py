@@ -72,7 +72,7 @@ def test_render_est_associe_au_projet_de_l_utilisateur():
     assert site["staticPublishPath"] == "./site_frontiere"
     assert "disk" not in site
     assert "plan" not in site
-    assert "envVars" not in site
+    assert site["envVars"] == [{"key": "SKIP_INSTALL_DEPS", "value": "true"}]
 
 
 def test_modules_de_collecte_abandonnes_non_present_dans_image():
