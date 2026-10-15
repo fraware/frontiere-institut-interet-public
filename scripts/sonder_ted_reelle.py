@@ -61,7 +61,22 @@ def sonder(jour: date, *, demander=requete_ted) -> dict:
 
 def sonder_integralement(jour: date, *, demander=requete_ted) -> dict:
     """Contrôler toutes les pages et l'importation dans une base temporaire."""
-    notices, pages = collecter_jour(jour, obtenir=demander)
+    nombre_pages = [0]
+
+    def recevoir(corps: dict) -> dict:
+        reponse = demander(corps)
+        nombre_pages[0] += 1
+        # Journal technique : ne publier ni les jetons de pagination ni les
+        # documents complets reçus, seulement la cardinalité des pages.
+        print(json.dumps({
+            "page": nombre_pages[0],
+            "avis_page": len(reponse.get("notices", [])),
+            "total_annonce": reponse.get("totalNoticeCount"),
+            "pagination_continue": bool(reponse.get("iterationNextToken")),
+        }, ensure_ascii=False), file=sys.stderr, flush=True)
+        return reponse
+
+    notices, pages = collecter_jour(jour, obtenir=recevoir)
     with tempfile.TemporaryDirectory(prefix="frontiere-sonde-ted-") as dossier:
         stockage = StockageTED(Path(dossier) / "verification.sqlite3")
         premier = stockage.importer(jour, notices, pages)
