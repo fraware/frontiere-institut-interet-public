@@ -175,14 +175,39 @@ def verifier(dossier: Path) -> dict:
         if cle in trouves:
             raise ArchiveBruteInvalide("Même fichier déclaré deux fois.")
         trouves.add(cle)
-        chemin = dossier / "originaux" / nom / relatif
-        if chemin.is_symlink() or not chemin.is_file():
-            raise ArchiveBruteInvalide("Copie documentaire absente ou liée.")
+        racine = dossier / "originaux" / nom
+        chemin = racine
+        for segment in relatif.parts:
+            chemin = chemin / segment
+            if chemin.is_symlink():
+                raise ArchiveBruteInvalide("Lien symbolique dans la sauvegarde.")
+        if not chemin.is_file():
+            raise ArchiveBruteInvalide("Copie documentaire absente.")
         taille, sha = _hachage(chemin)
         if (taille != enregistrement.get("octets") or
                 sha != enregistrement.get("sha256")):
             raise ArchiveBruteInvalide("Empreinte ou taille documentaire incorrecte.")
         octets += taille
+    repertoires = dossier / "originaux"
+    fichiers_reels = set()
+    if repertoires.exists():
+        for racine, dossiers, noms_fichiers in os.walk(repertoires, followlinks=False):
+            base = Path(racine)
+            for nom_dossier in dossiers:
+                if (base / nom_dossier).is_symlink():
+                    raise ArchiveBruteInvalide("Répertoire de sauvegarde lié.")
+            for nom_fichier in noms_fichiers:
+                fichier = base / nom_fichier
+                if fichier.is_symlink() or not fichier.is_file():
+                    raise ArchiveBruteInvalide("Fichier de sauvegarde lié ou spécial.")
+                relatif_reel = fichier.relative_to(repertoires)
+                if len(relatif_reel.parts) < 2:
+                    raise ArchiveBruteInvalide("Arborescence de sauvegarde invalide.")
+                fichiers_reels.add((
+                    relatif_reel.parts[0], Path(*relatif_reel.parts[1:]).as_posix()
+                ))
+    if fichiers_reels != trouves:
+        raise ArchiveBruteInvalide("Fichiers inattendus ou absents dans la copie.")
     if octets != doc.get("octets_bruts"):
         raise ArchiveBruteInvalide("Total d'octets incohérent.")
     return {
