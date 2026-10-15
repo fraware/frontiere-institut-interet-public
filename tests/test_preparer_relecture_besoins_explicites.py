@@ -118,7 +118,9 @@ def test_un_octet_change_refuse_l_integration(tmp_path: Path):
     ecrire_dossier(tmp_path, [offre(i, i % 2 == 0) for i in range(48)])
     fichier = tmp_path / "institutionnel/besoins_publics/offres_postes/lot_00.jsonl"
     brut = fichier.read_bytes()
-    fichier.write_bytes(brut.replace(b"Accueil", b"AccueIl", 1))
+    assert b"Service public fictif" in brut
+    fichier.write_bytes(brut.replace(b"Service public fictif",
+                                    b"Service public fIctif", 1))
     with pytest.raises(EchecPreuve, match="Empreinte incohérente"):
         preparer(tmp_path, par_strate=2)
 
