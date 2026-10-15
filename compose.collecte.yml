@@ -81,26 +81,6 @@ services:
     # Les fichiers mensuels bruts sont archivés dans le même volume persistant.
     # L'index DECP est commun à la collecte AIFE/DGFiP et aux fichiers nationaux.
 
-  collecte-ted:
-    build:
-      context: .
-      dockerfile: infra/Dockerfile.collecte
-    restart: unless-stopped
-    command:
-      - python
-      - -m
-      - app.collecteur_ted_continu
-      - --base
-      - /var/lib/frontiere/avis_ted.sqlite3
-      - suivre
-      - --jours
-      - "4"
-      - --intervalle
-      - "7200"
-    volumes:
-      - stockage-frontiere-ted:/var/lib/frontiere
-    # Interface TED Search API v3 : quatre dates réinterrogées toutes les 2 h.
-
   consultation:
     build:
       context: .
@@ -110,12 +90,10 @@ services:
       FRONTIERE_BOAMP_DB: /data/boamp/avis_boamp.sqlite3
       FRONTIERE_EMPLOIS_DB: /data/emplois/offres_emplois.sqlite3
       FRONTIERE_DECP_DB: /data/decp/marches_decp.sqlite3
-      FRONTIERE_TED_DB: /data/ted/avis_ted.sqlite3
     volumes:
       - stockage-frontiere-boamp:/data/boamp:ro
       - stockage-frontiere-emplois:/data/emplois:ro
       - stockage-frontiere-decp:/data/decp:ro
-      - stockage-frontiere-ted:/data/ted:ro
     ports:
       - "127.0.0.1:8765:8765"
     healthcheck:
@@ -128,7 +106,7 @@ services:
       timeout: 15s
       retries: 3
       start_period: 15m
-    # La disponibilité complète n'est déclarée que si les quatre volumes
+    # La disponibilité complète n'est déclarée que si les trois volumes
     # contiennent effectivement des notices. /sante reste une sonde de vie.
 
 
@@ -146,14 +124,12 @@ services:
       - --source
       - decp=/data/decp/marches_decp.sqlite3
       - --source
-      - ted=/data/ted/avis_ted.sqlite3
       - --destination
       - /sauvegardes
     volumes:
       - stockage-frontiere-boamp:/data/boamp:ro
       - stockage-frontiere-emplois:/data/emplois:ro
       - stockage-frontiere-decp:/data/decp:ro
-      - stockage-frontiere-ted:/data/ted:ro
       - ./scripts/sauvegarder_bases.py:/opt/frontiere/sauvegarder_bases.py:ro
       - ./sauvegardes:/sauvegardes
     # Exécution ponctuelle : copies SQLite cohérentes, à répliquer hors hôte.
@@ -162,4 +138,3 @@ volumes:
   stockage-frontiere-boamp:
   stockage-frontiere-emplois:
   stockage-frontiere-decp:
-  stockage-frontiere-ted:
