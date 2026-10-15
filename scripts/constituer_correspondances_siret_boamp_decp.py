@@ -152,6 +152,8 @@ def construire(tirage: Path, releve: Path, audit: Path, administration: Path,
     """Recalculer toutes les preuves avant projection publique limitée."""
     chaines = reconstituer(tirage, releve, audit, administration, aife, dgfip)
     index = comptes_marches_decp(aife, dgfip)
+    if sum(index.values()) != chaines["perimetre_decp"]["identites_marches"]:
+        raise CorrespondanceInvalide("Décompte DECP différent de la reconstitution primaire.")
     return construire_correspondances(chaines, index, {
         "aife": sha256(aife), "dgfip": sha256(dgfip)
     })
