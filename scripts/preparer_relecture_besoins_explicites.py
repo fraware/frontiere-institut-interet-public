@@ -84,13 +84,23 @@ def candidat(ligne: dict, chemin: str, numero: int, octets: bytes) -> dict | Non
         raise EchecPreuve("Enregistrement de candidature non structuré.")
     ref = filtrer_texte(ligne.get("reference"), 180)
     titre = filtrer_texte(ligne.get("intitule"), 400)
-    organisme = filtrer_texte(ligne.get("organisme"), 240)
     variante = ligne.get("cle_enregistrement")
     tronques = ligne.get("champs_tronques")
-    if (not ref or not titre or not organisme or not isinstance(variante, str) or
+    if (not ref or not titre or not isinstance(variante, str) or
             not SHA.fullmatch(variante) or not isinstance(tronques, list) or
             not all(isinstance(c, str) for c in tronques) or
-            any(c in tronques for c in ("intitule", "organisme"))):
+            "intitule" in tronques):
+        return None
+    champ_entite = None
+    entite = None
+    for champ, limite in (("organisme", 240), ("employeur", 250)):
+        if champ in tronques:
+            continue
+        valeur = filtrer_texte(ligne.get(champ), limite)
+        if valeur:
+            entite, champ_entite = valeur, champ
+            break
+    if entite is None:
         return None
     champ_date = ("publication_debut" if date_publique(ligne.get("publication_debut"))
                   else "premiere_publication")
@@ -106,7 +116,8 @@ def candidat(ligne: dict, chemin: str, numero: int, octets: bytes) -> dict | Non
     return {
         "reference": ref,
         "cle_enregistrement": variante,
-        "organisme_declare": organisme,
+        "entite_declarante": entite,
+        "champ_entite_declarante": champ_entite,
         "titre_cite_integralement": titre,
         "competences_attendues_citees_integralement": competence,
         "date_publication": date_iso,
@@ -117,7 +128,7 @@ def candidat(ligne: dict, chemin: str, numero: int, octets: bytes) -> dict | Non
             "fichier": chemin,
             "ligne": numero,
             "sha256_ligne_jsonl": empreinte(octets),
-            "champs": ["reference", "intitule", "organisme", champ_date] +
+            "champs": ["reference", "intitule", champ_entite, champ_date] +
                       (["competences_attendues"] if competence else []),
         },
         "qualification": "recherche_de_competences_a_la_date_de_publication",
