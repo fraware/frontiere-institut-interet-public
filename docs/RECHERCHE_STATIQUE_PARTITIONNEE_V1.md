@@ -116,7 +116,7 @@ n'est ajouté.
 L'indexation statique produit désormais `partitions/rattachements-acheteurs.json`,
 à partir des SIRET **déclarés dans les seuls documents DECP indexés** et des
 partitions vérifiées du Référentiel de l'organisation administrative de l'État
-(ROAE) et de l'Annuaire local DILA. La construction n'interroge aucun serveur
+et de l'Annuaire local DILA. La construction n'interroge aucun serveur
 extérieur. Les manifestes déjà archivés dans le dépôt délimitent les partitions
 lues ; leurs tailles, décomptes et empreintes SHA-256 sont contrôlés à nouveau
 avant publication.
