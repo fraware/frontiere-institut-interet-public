@@ -1,7 +1,7 @@
 # FRONTIÈRE — Premier déploiement sur Render sans serveur administré
 
 Cette option transpose les six services actuels vers **une seule instance Web
-Render** équipée d'un disque persistant. L'interface et les cinq collecteurs
+Render** équipée d'un disque persistant. L'interface et les cinq collecteurs et le rattrapage TED historique
 fonctionnent dans une image Docker unique, avec un ordonnanceur qui exécute
 les acquisitions l'une après l'autre pour limiter la mémoire simultanée.
 
@@ -59,7 +59,7 @@ Parallèlement, l'ordonnanceur :
 - conserve des marqueurs d'amorçage sur le disque Render et les réutilise
   lors des redémarrages ;
 - exécute ensuite BOAMP, emplois publics, DECP AIFE/DGFiP, DECP
-  consolidés et TED à leurs intervalles configurés ;
+  consolidés, TED récent et TED historique à leurs intervalles configurés ;
 - ne lance qu'une acquisition coûteuse à la fois, en limitant à un fichier
   national DECP consolidé chaque fois.
 
