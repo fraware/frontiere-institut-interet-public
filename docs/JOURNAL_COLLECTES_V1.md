@@ -5,7 +5,7 @@ L'hébergement géré intègre un journal SQLite autonome sous
 réelle des commandes de collecte**, indépendante des dates de publication
 et des versions documentaires observées.
 
-Pour chaque amorçage et chaque cycle des cinq collecteurs et du rattrapage TED historique, le registre
+Pour chaque amorçage et chaque cycle des quatre collecteurs, le registre
 conserve la source, l'heure de démarrage, l'heure de fin, l'état
 (\`en_cours\`, \`reussite\`, \`echec\`, \`interrompu\`), le code de sortie
 et le type éventuel d'erreur. Il ne conserve pas les messages des
