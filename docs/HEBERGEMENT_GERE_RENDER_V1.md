@@ -10,7 +10,9 @@ les acquisitions l'une après l'autre pour limiter la mémoire simultanée.
 La configuration déclarative est \`render.yaml\`, à la racine du dépôt.
 Elle prévoit un service payant de 1 processeur / 2 Go de mémoire
 (\`1c-2g\`) et un disque de 50 Go monté sur
-\`/var/lib/frontiere\`. Les tarifs de référence consultés en octobre
+\`/var/lib/frontiere\`. La région déclarée est **Francfort, en Allemagne**,
+ce qui situe l'hébergement initial dans l'Union européenne sans
+prétendre à une implantation sur le territoire français. Les tarifs de référence consultés en octobre
 2026 donnent 25 USD/mois pour cette puissance et 0,25 USD par Go de
 disque et par mois. Le coût de base illustratif est donc de **37,50 USD
 par mois**, hors autres frais éventuels, transferts et taxes.
