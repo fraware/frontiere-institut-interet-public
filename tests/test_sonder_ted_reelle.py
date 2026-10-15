@@ -83,5 +83,5 @@ def test_page_intermediaire_vide_declenche_une_erreur(monkeypatch):
                     "iterationNextToken": "page3"}
         return {"notices": [publication("3002-2026")],
                 "totalNoticeCount": 2}
-    with pytest.raises(TEDInvalide, match="Page intermédiaire"):
+    with pytest.raises(TEDInvalide, match="incomplète"):
         sonder_integralement(JOUR, demander=api)
