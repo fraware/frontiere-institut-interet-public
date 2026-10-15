@@ -2,7 +2,7 @@
 from datetime import date
 import pytest
 
-from scripts.sonder_ted_reelle import sonder, TEDInvalide
+from scripts.sonder_ted_reelle import sonder, sonder_integralement, TEDInvalide
 
 JOUR = date(2026, 10, 13)
 
