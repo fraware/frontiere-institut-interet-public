@@ -225,7 +225,7 @@ test("BOAMP–DECP : deux concordances datées séparées du résultat des march
     page.on("pageerror", e => erreurs.push(String(e)));
     const cas = [
       ["21060027600013", "25-94670", "5 identités"],
-      ["18002002600019", "26-62030", "1 identités"]
+      ["18002002600019", "26-62030", "1 identité"]
     ];
     for (const [numero, avis, nombre] of cas) {
       await page.goto(url + "/recherche-etendue.html?acheteur=" + numero,
@@ -234,6 +234,7 @@ test("BOAMP–DECP : deux concordances datées séparées du résultat des march
         !document.querySelector("#avis-boamp-corrobores").hidden);
       const section = page.locator("#avis-boamp-corrobores");
       assert.match(await section.textContent(), new RegExp(avis));
+      assert.ok((await section.textContent()).includes(nombre));
       // Le décompte provient d'archives historiques distinctes de l'index.
       assert.match(await section.textContent(), /relevés DECP historiques/);
       assert.match(await section.textContent(), /aucun contrat commun ni besoin encore ouvert/);
