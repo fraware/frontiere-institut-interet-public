@@ -8,6 +8,7 @@ import { fileURLToPath } from "node:url";
 import { indexerBoamp, indexerEmplois, indexerDecp } from "./construire_index_statique.mjs";
 import { construireRattachements } from "./construire_rattachements_institutionnels.mjs";
 import { construireAvisCorrobores } from "./construire_avis_boamp_corrobores.mjs";
+import { qualifierDocument, bilanQualifications } from "../site_frontiere/qualification-besoins.js";
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const REPARTITION = Object.freeze({ boamp: 5000, emplois: 5000, decp: 5000 });
@@ -118,7 +119,10 @@ export async function construirePartitions(racine = RACINE) {
     indexerEmplois(racine, REPARTITION.emplois),
     Promise.resolve(indexerDecp(racine, REPARTITION.decp))
   ]);
-  const fichiers = partitionner([...boamp.extraits, ...emplois.extraits, ...decp.extraits]);
+  const documents = [...boamp.extraits, ...emplois.extraits, ...decp.extraits]
+    .map(d => ({ ...d, qualification: qualifierDocument(d) }));
+  const qualification = bilanQualifications(documents);
+  const fichiers = partitionner(documents);
   const rattachements = construireRattachements(racine, decp.extraits);
   const avisCorrobores = construireAvisCorrobores(racine);
   const dossier = join(racine, "site_frontiere", "partitions");
@@ -143,6 +147,7 @@ export async function construirePartitions(racine = RACINE) {
       decp: decp.total_candidats,
     },
     selection: bilanSelection({ boamp, emplois, decp }, fichiers),
+    qualification_besoins: qualification,
     rattachements_acheteurs: {
       fichier: "rattachements-acheteurs.json",
       version: rattachements.rapport.version,
