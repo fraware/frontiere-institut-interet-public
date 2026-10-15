@@ -5,6 +5,7 @@ services:
   - type: web
     name: frontiere-observatoire-public
     runtime: docker
+    region: frankfurt
     plan: 1c-2g
     numInstances: 1
     dockerfilePath: ./infra/Dockerfile.hebergement
