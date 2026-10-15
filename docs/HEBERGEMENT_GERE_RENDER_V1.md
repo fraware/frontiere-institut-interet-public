@@ -1,152 +1,93 @@
-# FRONTIÈRE — Premier déploiement sur Render sans serveur administré
+# FRONTIÈRE — Publication gratuite, sans serveur permanent
 
-Cette option transpose les cinq services actuels vers **une seule instance Web
-Render** équipée d'un disque persistant. L'interface et les quatre collecteurs
-fonctionnent dans une image Docker unique, avec un ordonnanceur qui exécute
-les acquisitions l'une après l'autre pour limiter la mémoire simultanée.
+## Décision budgétaire
 
-## Avant de créer la ressource payante
+Le financement d'un service Render à **37,50 dollars par mois** n'est pas
+autorisé. Le Blueprint actif (`render.yaml`) est désormais limité à un
+**site statique gratuit** dans le projet Render `Frontiere`, environnement
+`Production`. Il ne commande ni processeur permanent facturé ni disque.
 
-La configuration déclarative est \`render.yaml\`, à la racine du dépôt. Elle déclare explicitement le projet Render **Frontiere** et son environnement **Production** (identifiant affiché dans l'interface : `prj-db8ddpjrjlhs73e09flg`).
-Elle prévoit un service payant de 1 processeur / 2 Go de mémoire
-(\`1c-2g\`) et un disque de 50 Go monté sur
-\`/var/lib/frontiere\`. La région déclarée est **Francfort, en Allemagne**,
-ce qui situe l'hébergement initial dans l'Union européenne sans
-prétendre à une implantation sur le territoire français. Les tarifs de référence consultés en octobre
-2026 donnent 25 USD/mois pour cette puissance et 0,25 USD par Go de
-disque et par mois. Le coût de base illustratif est donc de **37,50 USD
-par mois**, hors autres frais éventuels, transferts et taxes.
+Le service proposé publie uniquement les fichiers de
+`site_frontiere/`. Le contenu constitue une présentation documentaire
+de trois corpus prioritaires : BOAMP, emplois publics et DECP.
 
-Le forfait gratuit Render ne permet pas d'attacher de disque persistant.
-Un disque Render est attaché à **une seule instance**, ce qui explique
-la consolidation des quatre collecteurs et de l'interface dans ce premier
-service. Pour une architecture répartie sur plusieurs machines, une
-base commune PostgreSQL et un stockage d'objets seront nécessaires.
+**Ce site ne collecte pas les données et ne dispose pas de base
+persistante.** Les composants de collecte construits précédemment sont
+conservés dans GitHub pour étude, reprise ou exécution sur un environnement
+réel adapté. Ils ne sont pas lancés par le Blueprint gratuit.
 
-Références techniques officielles :
+## Pourquoi ne pas déployer l'application actuelle sur Render Free ?
 
+Les services Web gratuits de Render possèdent un stockage local éphémère.
+Ils peuvent être mis en veille après quinze minutes d'inactivité ; un
+redémarrage ou un nouveau déploiement fait disparaître les fichiers créés,
+y compris les bases SQLite. Le calcul gratuit ne résout donc pas le
+problème de conservation des archives BOAMP, emplois et DECP.
+
+Une base Postgres gratuite sur Render est limitée en volume et expire
+après trente jours. Elle ne constitue pas une solution durable pour ce
+projet. Le disque persistant Render est réservé aux offres payantes.
+
+Documentation Render :
+- https://render.com/docs/free
 - https://render.com/docs/disks
 - https://render.com/docs/blueprint-spec
-- https://render.com/docs/health-checks
-- https://render.com/docs/compute-plans
 
-## Mise en ligne par le compte Render
+## Déployer le site de présentation
 
-1. Depuis le [projet Frontiere](https://dashboard.render.com/project/prj-db8ddpjrjlhs73e09flg) et son environnement Production, rattacher le dépôt GitHub
-   \`fraware/frontiere-institut-interet-public\`.
-2. Dans Render, choisir un nouveau déploiement à partir d'une
-   configuration de services et sélectionner ce dépôt.
-3. Vérifier le contenu de \`render.yaml\`, son forfait, le disque de
-   50 Go et le montant estimé par Render avant d'autoriser la création.
-4. Lancer le déploiement et lire les journaux du service
-   \`frontiere-observatoire-public\`.
+Depuis le projet Render existant :
 
-Aucune dépense ni aucune ressource Render n'est créée par une fusion Git.
-La création effective nécessite une autorisation sur un compte Render.
+https://dashboard.render.com/project/prj-db8ddpjrjlhs73e09flg
 
-## Comportement du premier démarrage
+1. Ouvrir ou recharger le déploiement Blueprint du dépôt
+   `fraware/frontiere-institut-interet-public`, branche `main`.
+2. Vérifier que le fichier `render.yaml` annonce le type
+   `web`, l'exécution `static` et le répertoire
+   `./site_frontiere`.
+3. Vérifier que le montant présenté est **0 dollar de forfait mensuel**
+   et qu'aucun disque ni base de données payants ne figurent dans le
+   récapitulatif.
+4. Autoriser uniquement le site statique si ces conditions sont réunies.
 
-Le serveur HTTP Uvicorn écoute sur le port défini par Render. La sonde
-\`/sante\` mesure uniquement la disponibilité du processus HTTP. Elle
-est volontairement indépendante de l'importation initiale : un corpus
-de centaines de milliers d'enregistrements peut prendre plusieurs
-minutes à importer.
+Les mises en ligne automatiques sont désactivées dans cette première
+configuration afin de limiter les usages de construction et les
+changements non examinés. Les futures mises à jour du site devront
+être publiées explicitement dans Render.
 
-Parallèlement, l'ordonnanceur :
+**Attention :** les sites statiques gratuits consomment des allocations
+mensuelles de bande passante et de construction. Un dépassement peut
+engendrer des frais si un moyen de paiement est enregistré. Contrôler
+les limites et les paramètres de facturation du compte, et suspendre
+le service si elles sont proches du plafond. Aucun coût strictement
+nul ne peut être garanti indépendamment de l'usage.
 
-- vérifie et importe les archives BOAMP, les seize partitions d'offres
-  publiques et les relevés AIFE/DGFiP copiés dans l'image ;
-- conserve des marqueurs d'amorçage sur le disque Render et les réutilise
-  lors des redémarrages ;
-- exécute ensuite BOAMP, emplois publics, DECP AIFE/DGFiP, DECP
-  consolidés à leurs intervalles configurés ;
-- ne lance qu'une acquisition coûteuse à la fois, en limitant à un fichier
-  national DECP consolidé chaque fois.
+## Collecte gratuite à reconstruire sans perdre la rigueur
 
-La constitution de l'historique national complet continue sur plusieurs
-cycles. La disponibilité de l'interface ne signifie pas que les archives
-sont déjà intégralement importées.
+La prochaine architecture cible trois opérations séparées :
 
-L'endpoint \`/exploitation\` décrit les trois bases. L'endpoint
-\`/pret\` devient disponible seulement si les trois corpus sont
-alimentés. Il s'agit de la disponibilité documentaire, distincte de
-la réussite récente de chaque téléchargement.
+1. Des programmes d'acquisition bornés, lancés périodiquement par
+   GitHub Actions sur le dépôt public, en conservant les vérifications
+   de provenance, de structure et de complétude déjà implémentées.
+2. Des résultats documentaires limités, versionnés et datés dans Git,
+   avec contrôle de taille. Aucun téléchargement national massif ne
+   doit être ajouté directement aux commits sans stratégie de stockage.
+3. Une publication statique présentant les observations vérifiées.
+   Les corpus volumineux pourront ensuite être distribués en archives
+   compressées par lots, avec une politique de taille et de conservation.
 
-## Persistance et redémarrage
+Les exécutions GitHub Actions sur des machines standard sont gratuites
+pour les dépôts publics, selon les règles GitHub applicables. Les archives
+temporaires d'exécution ne sont pas un entrepôt documentaire permanent.
+La pérennité de données volumineuses doit être mesurée et résolue
+séparément.
 
-Toutes les données produites sont écrites sous
-\`/var/lib/frontiere\`. Le disque Render conserve les bases et les
-fichiers source même si le service redémarre ou est reconstruit.
+https://docs.github.com/en/billing/concepts/product-billing/github-actions
 
-Les ressources archivées dans le dépôt sont incluses dans l'image comme
-source de premier amorçage, sans copie de leur contenu brut dans Git lors
-des nouvelles collectes. L'image peut être volumineuse ; les temps de
-construction seront mesurés en conditions réelles.
+## Principes de validation
 
-Render interdit de personnaliser le délai d'arrêt via
-`maxShutdownDelaySeconds` pour un service disposant d'un disque persistant.
-Le service utilise donc le comportement d'arrêt prévu par Render ;
-les fichiers incomplets ne sont pas validés et les traitements interrompus
-sont repris lors du prochain démarrage.
-Une nouvelle exécution peut reprendre les importations déjà attestées.
-
-Un disque persistant ne peut pas être partagé entre plusieurs instances
-Render, n'autorise pas la mise à l'échelle horizontale et entraîne une
-interruption du service pendant la substitution d'image.
-
-## Limites du premier hébergement
-
-La première instance est prévue pour un usage initial et un faible
-nombre de consultations simultanées. Les grands fichiers consolidés
-peuvent dépasser la mémoire ou le temps autorisé par cette capacité.
-Dans ce cas, ralentir l'acquisition, augmenter le forfait ou déplacer
-les index dans PostgreSQL.
-
-Render fournit des instantanés périodiques de disques mais ceux-ci ne
-remplacent pas les sauvegardes SQLite vérifiées ni la conservation des
-fichiers originaux sur un autre service de stockage.
-
-## Accès à l'interface hébergée
-
-Le service Render impose maintenant la variable
-\`FRONTIERE_CONTROLE_ACCES_OBLIGATOIRE=1\` et un secret
-\`FRONTIERE_JETON_ACCES\` qui est saisi dans le tableau de bord Render
-au moment de la création de l'infrastructure. Sa valeur n'est jamais
-enregistrée dans GitHub.
-
-Produire un secret localement :
-
-    python3 -c 'import secrets; print(secrets.token_urlsafe(32))'
-
-La valeur doit comporter au moins 32 caractères ASCII. En l'absence
-de cette valeur, les routes de consultation renvoient HTTP 503 et
-aucune recherche n'est accessible. Un mauvais secret renvoie HTTP 401.
-
-L'accès autorisé utilise l'en-tête HTTP Authorization :
-
-    curl -H "Authorization: Bearer VOTRE_JETON" \
-      "https://ADRESSE_RENDER/recherche?q=informatique"
-
-La sonde /sante reste accessible sans secret ; elle ne donne alors
-que l'état du processus HTTP, sans volumes documentaires. Les routes
-/sources, /exploitation, /pret, /recherche, /docs et /openapi.json
-restent privées.
-
-La conservation du jeton dans un terminal ou dans un fichier externe
-au dépôt appartient à l'administrateur du service. Le secret ne doit
-pas apparaître dans les liens partagés ni les journaux applicatifs.
-
-En configuration locale Docker Compose, le contrôle d'accès demeure
-facultatif tant que ces variables ne sont pas définies. Cette
-compatibilité préserve les usages existants sur 127.0.0.1.
-
-Les consultations publiques et l'authentification d'utilisateurs
-distincts relèvent d'une évolution suivante.
-
-## Vérification avant branchement au compte
-
-Les essais GitHub contrôlent la constitution de l'image, le démarrage du
-service HTTP avec collecteurs désactivés, la configuration déclarative
-Render et les modules de supervision. Les vérifications ne constituent
-ni un test de facturation, ni un test de capacité, ni une preuve que les
-sources officielles sont accessibles depuis l'environnement Render.
+- Toujours signaler la date du dernier relevé effectivement importé.
+- Ne jamais confondre affichage statique et collecte continue.
+- Ne jamais annoncer une couverture nationale exhaustive sans contrôles
+  par source et période.
+- Préserver une référence d'origine pour chaque donnée publiée.
+- Ne créer aucune ressource payante sans accord préalable explicite.
