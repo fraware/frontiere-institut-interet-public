@@ -138,7 +138,7 @@ export async function indexerEmplois(racine, maximum = PLAFONDS.emplois) {
         provenance: chemin, cle_provenance: texte(item.cle_enregistrement, 64)
       });
       // Sélection des annonces les plus récentes sans matérialiser 268 000 offres en mémoire.
-      if (candidats.length >= 3000) candidats = resserrer(candidats, maximum * 2);
+      if (candidats.length >= Math.max(3000, maximum * 2 + 1000)) candidats = resserrer(candidats, maximum * 2);
     }
   }
   verifier(lus === manifeste.offres_distinctes, "Comptage des variantes CSP incompatible.");
