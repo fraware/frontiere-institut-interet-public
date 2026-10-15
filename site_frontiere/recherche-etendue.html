@@ -23,6 +23,14 @@ article h2{font-size:18px;margin:5px 0}article p{font-size:13px;color:#566d69;ma
 .avis-corrobores h2{font-size:17px;margin:0 0 9px}
 .avis-corrobores p{color:#526b69;margin:7px 0}
 .avis-corrobores li{padding:6px 0}
+.chronologie{background:#fff;border:1px solid #dce4e1;padding:18px 20px;margin:16px 0}
+.chronologie h2{font-size:18px;margin:0 0 9px}
+.chronologie p{font-size:13px;color:#526b69;margin:7px 0}
+.chronologie ol{margin:14px 0 0;padding:0;list-style:none}
+.chronologie li{padding:11px 0 11px 15px;border-top:1px solid #dce4e1;border-left:3px solid #b2c7c1}
+.chronologie time{font-weight:650;font-variant-numeric:tabular-nums}
+.chronologie .type{font-size:12px;color:#526b69;display:block;margin:4px 0}
+.chronologie .titre-evt{display:block;font-size:14px;overflow-wrap:anywhere}
 
 [hidden]{display:none}@media(max-width:750px){form{grid-template-columns:1fr}}
 </style></head>
@@ -48,5 +56,6 @@ article h2{font-size:18px;margin:5px 0}article p{font-size:13px;color:#566d69;ma
 <p id="etat" role="status">Chargement du catalogue documentaire…</p>
 <p id="etat-institution" class="description" role="status" aria-live="polite" hidden></p>
 <section id="avis-boamp-corrobores" class="avis-corrobores" aria-label="Observations BOAMP corroborées" aria-live="polite" hidden></section>
+<section id="chronologie-documentaire" class="chronologie" aria-label="Chronologie documentaire par identifiant" aria-live="polite" hidden></section>
 <div id="resultats" aria-label="Documents correspondants"></div>
 </main><script type="module" src="./recherche-etendue.js"></script></body></html>
