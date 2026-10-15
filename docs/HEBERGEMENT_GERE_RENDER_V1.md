@@ -83,8 +83,11 @@ source de premier amorçage, sans copie de leur contenu brut dans Git lors
 des nouvelles collectes. L'image peut être volumineuse ; les temps de
 construction seront mesurés en conditions réelles.
 
-Le délai de terminaison est allongé à 300 secondes pour réduire les
-interruptions brutales. Les fichiers incomplets ne sont pas validés.
+Render interdit de personnaliser le délai d'arrêt via
+`maxShutdownDelaySeconds` pour un service disposant d'un disque persistant.
+Le service utilise donc le comportement d'arrêt prévu par Render ;
+les fichiers incomplets ne sont pas validés et les traitements interrompus
+sont repris lors du prochain démarrage.
 Une nouvelle exécution peut reprendre les importations déjà attestées.
 
 Un disque persistant ne peut pas être partagé entre plusieurs instances
