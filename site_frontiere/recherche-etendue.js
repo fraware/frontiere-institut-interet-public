@@ -19,6 +19,58 @@ function lien(a, adresse, texte) {
     a.rel = "noopener noreferrer";
   } catch { /* aucune destination externe non vérifiée */ }
 }
+/** Afficher les seules quantités observées, sans déduire une couverture nationale. */
+function afficherBilanSelection(m) {
+  const zone = q("bilan-selection");
+  if (!m.selection) {
+    zone.textContent = "Bilan de sélection indisponible dans cette version du catalogue.";
+    return;
+  }
+  const b = m.selection;
+  const sources = ["boamp", "emplois", "decp"];
+  if (b.version !== "frontiere-bilan-selection-v1" ||
+      b.couverture_nationale_etablie !== false ||
+      b.pourcentage_couverture_calculable !== false ||
+      !Array.isArray(b.sources) || b.sources.length !== sources.length) {
+    throw new Error("Bilan de sélection incompatible.");
+  }
+  const liste = document.createElement("dl");
+  for (const [i, source] of sources.entries()) {
+    const ligne = b.sources[i];
+    const fragments = m.partitions.filter(p => p.source === source);
+    const nombre = fragments.reduce((n, p) => n + p.documents, 0);
+    const annees = new Map();
+    for (const p of fragments) annees.set(p.annee, (annees.get(p.annee) || 0) + p.documents);
+    const declarees = ligne?.annees_indexees;
+    if (ligne?.source !== source || !Number.isSafeInteger(ligne.documents_indexes) ||
+        ligne.documents_indexes !== nombre ||
+        ligne.plafond !== m.limite_par_source?.[source] ||
+        ligne.plafond_atteint !== (nombre === ligne.plafond) ||
+        !Number.isSafeInteger(ligne.enregistrements_sources_parcourus) ||
+        ligne.enregistrements_sources_parcourus < nombre ||
+        typeof ligne.unite_enregistrements_sources !== "string" ||
+        !Array.isArray(declarees) || declarees.length !== annees.size ||
+        new Set(declarees.map(d => d?.annee)).size !== annees.size ||
+        typeof b.precision !== "string" ||
+        !declarees.every(d => /^\d{4}$/.test(d.annee) && annees.get(d.annee) === d.documents)) {
+      throw new Error("Bilan de sélection contradictoire.");
+    }
+    const nom = document.createElement("dt");
+    nom.textContent = source.toUpperCase() + " — " + francais.format(nombre) + " documents indexés";
+    const detail = document.createElement("dd");
+    const periode = declarees.map(d => d.annee + " (" + francais.format(d.documents) + ")").join(", ");
+    detail.textContent = "Plafond : " + francais.format(ligne.plafond) +
+      (ligne.plafond_atteint ? " (atteint)" : " (non atteint)") +
+      ". Périodes représentées : " + (periode || "aucune") +
+      ". Fichier source : " + francais.format(ligne.enregistrements_sources_parcourus) +
+      " " + ligne.unite_enregistrements_sources + ".";
+    liste.append(nom, detail);
+  }
+  const precision = document.createElement("p");
+  precision.textContent = b.precision;
+  zone.replaceChildren(liste, precision);
+}
+
 function majAnnees() {
   const source = q("source").value;
   const select = q("annee");
@@ -48,6 +100,7 @@ async function demarrer() {
       p.fichier.startsWith("part-" + p.source + "-" + p.annee + "-"))) {
       throw new Error("Partitions non conformes");
     }
+    afficherBilanSelection(m);
     manifeste = m;
     q("source").disabled = false; q("source").value = "boamp";
     majAnnees();

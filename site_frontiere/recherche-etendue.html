@@ -14,6 +14,10 @@ button{background:#245d58;color:white;cursor:pointer;font-weight:600}
 #etat{font-size:14px;color:#566d69;margin-top:20px}article{border-top:1px solid #dce4e1;padding:18px 0}
 article h2{font-size:18px;margin:5px 0}article p{font-size:13px;color:#566d69;margin:5px 0}
 .meta{display:flex;justify-content:space-between;gap:16px;color:#476b66;font-size:12px}
+.perimetre{margin:20px 0 25px;padding:15px 18px;background:#fff;border:1px solid #dce4e1;font-size:14px}
+.perimetre summary{cursor:pointer;font-weight:650}.perimetre dl{margin:14px 0 0}
+.perimetre dt{font-weight:650;margin-top:12px}.perimetre dd{margin:3px 0 0;color:#526b69}
+.perimetre p{color:#526b69;font-size:13px}
 [hidden]{display:none}@media(max-width:750px){form{grid-template-columns:1fr}}
 </style></head>
 <body><main class="page">
@@ -21,6 +25,11 @@ article h2{font-size:18px;margin:5px 0}article p{font-size:13px;color:#566d69;ma
 <h1>Recherche documentaire étendue</h1>
 <p class="description">Index découpé par source et année. Choisissez une source, une année ou un intervalle de dates : seuls les fichiers correspondant au périmètre sont chargés.</p>
 <p class="note">Sélection limitée aux 5 000 documents les plus récents par source et aux archives présentes dans le dépôt. Une publication BOAMP, une offre d'emploi et une attribution DECP sont des observations distinctes. Aucun suivi en temps réel ni couverture nationale exhaustive.</p>
+<details class="perimetre" id="couverture">
+<summary>Consulter le périmètre exact de l'index</summary>
+<p>Le nombre de documents publiés et les années représentées sont calculés à partir des fichiers du site. Les volumes d'origine utilisent des unités différentes selon les sources et ne constituent pas un dénominateur national.</p>
+<div id="bilan-selection" aria-live="polite">Chargement du bilan de sélection…</div>
+</details>
 <form id="recherche" role="search">
 <div><label for="termes">Termes recherchés</label><input id="termes" type="search" maxlength="120" placeholder="Ex. informatique, recherche"></div>
 <div><label for="source">Source</label><select id="source" required disabled><option value="">Choisir</option><option value="boamp">BOAMP</option><option value="emplois">Emplois publics</option><option value="decp">DECP attribués</option></select></div>

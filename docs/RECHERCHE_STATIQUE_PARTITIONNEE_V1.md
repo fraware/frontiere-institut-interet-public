@@ -22,3 +22,39 @@ node scripts/construire_partitions_statiques.mjs
 Le contrôle CI vérifie, sur les véritables archives, l'empreinte, le nombre de documents et la taille de chaque lot, ainsi que la présence de plus de 1 900 documents au total.
 
 La segmentation territoriale exige des champs géographiques fiables des producteurs et reste à préparer séparément. Le filtre de période accepte les années et les intervalles de dates présents dans les archives ; aucune date absente n'est inventée. La sélection par territoire reste exclue en l'absence d'identifiants géographiques comparables entre sources.
+
+## Bilan de sélection publié
+
+Le manifeste `site_frontiere/partitions/manifeste.json` comprend désormais
+`selection`, calculé pendant la construction à partir des documents effectivement
+retenus et des lots produits. La page `recherche-etendue.html` permet de
+consulter, pour BOAMP, emplois publics et DECP :
+
+- le nombre de documents indexés et le plafond de 5 000 par source ;
+- les années documentaires représentées et leur nombre de documents ;
+- le nombre d'enregistrements parcourus dans les fichiers locaux ainsi que
+  l'unité utilisée par chaque collecteur.
+
+Les enregistrements d'origine ne sont pas directement comparables : annonces
+BOAMP, variantes d'offres et notices contractuelles DECP. Le plafonnement
+à 5 000 documents sélectionne un sous-ensemble récent et ne permet pas de
+calculer les omissions uniques exactes ou un taux de couverture nationale.
+La présence d'une année indique uniquement qu'au moins un document de cette
+année figure dans l'extrait retenu.
+
+Le bilan est déterministe à archives données. Ses totaux sont vérifiés contre
+les lots du manifeste et les contrôles fonctionnels du site. Une version du
+manifeste antérieure à ce changement reste consultable, avec la mention
+explicite « bilan de sélection indisponible ».
+
+Pour reproduire les vérifications :
+
+```sh
+node --test tests/test_partitions_statiques.mjs
+node scripts/construire_partitions_statiques.mjs
+```
+
+La prochaine amélioration scientifique doit mesurer les documents admissibles
+écartés par les plafonds, source par source, sur les archives complètes et les
+identifiants distincts. Ce travail nécessitera des décomptes adaptés à chaque
+producteur ; aucune inférence de couverture nationale n'en découlera à lui seul.
