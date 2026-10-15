@@ -240,6 +240,102 @@ async function lireRattachementInstitutionnel(siret) {
   throw new Error("Statut institutionnel non cohérent");
 }
 
+
+/** Afficher uniquement les avis étudiés et corroborés, depuis l'extrait
+ * dont le manifeste atteste la taille et l'empreinte cryptographique.
+ * Les avis du lot indépendant n'obéissent pas aux filtres DECP courants.
+ */
+async function afficherAvisBoampCorrobores(siret) {
+  const zone = q("avis-boamp-corrobores");
+  const m = manifeste.avis_boamp_corroborees;
+  if (!m) {
+    zone.textContent = "Étude BOAMP indépendante indisponible dans cette version du site.";
+    zone.hidden = false;
+    return;
+  }
+  if (m.fichier !== "avis-boamp-corrobores.json" ||
+      m.version !== "frontiere-avis-boamp-corrobores-v1" ||
+      !Number.isSafeInteger(m.octets) || m.octets < 100 || m.octets > 20000 ||
+      !/^[a-f0-9]{64}$/.test(m.sha256) ||
+      m.empreinte_registre !==
+        "6dbdd44379ddbc48f2d46f59ae410653613ca880a431a38b716d4a9f7ec544d7" ||
+      m.nombre_avis_etudies !== 17 || m.nombre_corroborees !== 2) {
+    throw new Error("Métadonnées BOAMP indépendantes incorrectes");
+  }
+  const reponse = await fetch(racine + m.fichier, { credentials: "omit" });
+  if (!reponse.ok) throw new Error("Observations BOAMP indisponibles");
+  const octets = new Uint8Array(await reponse.arrayBuffer());
+  if (octets.length !== m.octets || !globalThis.crypto?.subtle) {
+    throw new Error("Contrôle de taille ou empreinte BOAMP indisponible");
+  }
+  const empreinte = Array.from(
+    new Uint8Array(await crypto.subtle.digest("SHA-256", octets)),
+    x => x.toString(16).padStart(2, "0")).join("");
+  if (empreinte !== m.sha256) throw new Error("Empreinte des observations BOAMP incorrecte");
+  const rapport = JSON.parse(new TextDecoder().decode(octets));
+  if (rapport.version !== m.version || rapport.population_avis_etudies !== 17 ||
+      rapport.population_sirets_distincts !== 16 ||
+      rapport.nombre_avis_corroborees !== 2 ||
+      rapport.sha256_registre_source !== m.empreinte_registre ||
+      rapport.sources_archives_non_exhaustives !== true ||
+      rapport.contrats_communs_demonstres !== 0 ||
+      rapport.rapprochement_par_nom !== false ||
+      rapport.extrait_decp_public_couvert !== false ||
+      !Array.isArray(rapport.avis) || rapport.avis.length !== 2) {
+    throw new Error("Portée du rapport BOAMP contradictoire");
+  }
+  const ids = new Set();
+  for (const a of rapport.avis) {
+    if (!/^[0-9]{2}-[0-9]{2,8}$/.test(a?.avis_boamp) ||
+        ids.has(a.avis_boamp) ||
+        !/^20[0-9]{2}-[0-9]{2}-[0-9]{2}$/.test(a.date_parution || "") ||
+        !siretAdmissible(a.acheteur_siret) ||
+        !Number.isSafeInteger(a.identites_marches_decp_dans_archives) ||
+        a.identites_marches_decp_dans_archives < 1 ||
+        !/^[a-f0-9]{64}$/.test(a.preuve_boamp_sha256 || "") ||
+        !/^[a-f0-9]{64}$/.test(a.preuve_administrative_sha256 || "") ||
+        !a.chemin_preuve_boamp?.startsWith("/results/0/donnees/EFORMS/")) {
+      throw new Error("Avis BOAMP documenté non conforme");
+    }
+    ids.add(a.avis_boamp);
+  }
+  const correspondants = rapport.avis.filter(a => a.acheteur_siret === siret);
+  const h = document.createElement("h2");
+  h.textContent = "Avis BOAMP documentés dans une étude indépendante";
+  const precision = document.createElement("p");
+  precision.textContent =
+    "Enquête limitée à 17 avis (16 établissements distincts). Les concordances " +
+    "concernent des SIRET déclarés et contrôlés dans des réponses administratives ; " +
+    "elles ne prouvent aucun contrat commun ni besoin encore ouvert. " +
+    "Ces avis sont indépendants des filtres et du plafond de l'index DECP.";
+  const liste = document.createElement("ol");
+  for (const a of correspondants) {
+    const ligne = document.createElement("li");
+    const description = document.createElement("span");
+    description.textContent = "Avis " + a.avis_boamp + " du " + a.date_parution +
+      " — " + francais.format(a.identites_marches_decp_dans_archives) +
+      " identités de marchés du même SIRET dans les relevés DECP historiques. ";
+    const preuve = document.createElement("a");
+    const rev = /^[a-f0-9]{40}$/.test(manifeste.revision_sources || "")
+      ? manifeste.revision_sources : "main";
+    lien(preuve,
+      "https://github.com/fraware/frontiere-institut-interet-public/blob/" + rev +
+      "/institutionnel/besoins_publics/correspondances_siret_boamp_decp_17.json",
+      "Consulter le registre et les empreintes");
+    ligne.append(description, preuve);
+    liste.append(ligne);
+  }
+  zone.replaceChildren(h, precision);
+  if (correspondants.length) zone.append(liste);
+  else {
+    const absence = document.createElement("p");
+    absence.textContent = "Aucune concordance observée pour ce SIRET parmi " +
+      "les 17 avis étudiés. Cela ne démontre pas l'absence d'autres avis BOAMP.";
+    zone.append(absence);
+  }
+  zone.hidden = false;
+}
+
 async function consulter(e) {
   e.preventDefault();
   if (!manifeste) return;
@@ -249,6 +345,9 @@ async function consulter(e) {
   const situation = q("etat-institution");
   situation.hidden = true;
   situation.textContent = "";
+  const boamp = q("avis-boamp-corrobores");
+  boamp.hidden = true;
+  boamp.replaceChildren();
   const acheteurDemande = q("siret-acheteur").value.trim();
   if (acheteurDemande && (!siretAdmissible(acheteurDemande) || source !== "decp")) {
     zone.replaceChildren();
@@ -303,6 +402,7 @@ async function consulter(e) {
     }
     if (acheteurDemande) {
       situation.textContent = await lireRattachementInstitutionnel(acheteurDemande);
+      await afficherAvisBoampCorrobores(acheteurDemande);
       situation.hidden = false;
       documentsAcheteur.sort(ordreChronologique);
       for (const document of documentsAcheteur.slice(0, limiteAffichage)) {
@@ -318,7 +418,11 @@ async function consulter(e) {
         ", uniquement dans l'extrait DECP indexé ; aucun lien de projet déduit." : "");
   } catch {
     zone.replaceChildren();
-    q("etat").textContent="Impossible de vérifier toutes les partitions demandées ; résultats non publiés.";
+    situation.hidden = true;
+    situation.textContent = "";
+    boamp.hidden = true;
+    boamp.replaceChildren();
+    q("etat").textContent="Impossible de vérifier toutes les sources demandées ; résultats non publiés.";
   } finally { q("lancer").disabled=false; }
 }
 q("recherche").addEventListener("submit", consulter);
