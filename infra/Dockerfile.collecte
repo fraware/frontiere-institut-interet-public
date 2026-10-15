@@ -1,0 +1,19 @@
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_ROOT_USER_ACTION=ignore
+
+WORKDIR /opt/frontiere
+RUN python -m pip install --no-cache-dir "sqlalchemy>=2.0,<3" \
+    && mkdir -p /opt/frontiere/app /opt/frontiere/scripts /var/lib/frontiere \
+    && useradd --system --uid 10001 --home-dir /var/lib/frontiere frontiere \
+    && chown -R frontiere:frontiere /var/lib/frontiere
+
+COPY app/__init__.py app/plateforme_boamp.py app/collecteur_boamp_continu.py /opt/frontiere/app/
+COPY scripts/collecter_besoins_publics.py /opt/frontiere/scripts/
+
+USER frontiere
+VOLUME ["/var/lib/frontiere"]
+
+CMD ["python", "-m", "app.collecteur_boamp_continu", "--base", "sqlite:////var/lib/frontiere/avis_boamp.sqlite3", "--repertoire", "/var/lib/frontiere/releves", "--suivre", "--intervalle", "1800"]
