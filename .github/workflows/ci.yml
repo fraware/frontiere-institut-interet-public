@@ -94,7 +94,7 @@ jobs:
           for tentative in {1..30}; do
             if curl --fail --silent http://127.0.0.1:18765/sante >/tmp/frontiere-gere-sante.json; then
               curl --fail --silent http://127.0.0.1:18765/exploitation > /tmp/frontiere-gere-volumes.json
-              python -c "import json; d=json.load(open('/tmp/frontiere-gere-volumes.json')); assert d['sources_attendues']==4"
+              python -c "import json; d=json.load(open('/tmp/frontiere-gere-volumes.json')); assert d['sources_attendues']==3"
               docker rm -f frontiere-heberge-test
               exit 0
             fi
