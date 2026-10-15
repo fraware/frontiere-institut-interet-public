@@ -40,7 +40,7 @@ function correspond(doc, termes, source) {
   const index = texteRecherche(doc);
   return termes.every(terme => index.includes(terme));
 }
-function notice(doc) {
+function notice(doc, revision) {
   const article = element("article", undefined, "resultat");
   const haut = element("div", undefined, "resultat-entete");
   haut.append(element("span", SOURCE[doc.source], "resultat-source"));
@@ -63,7 +63,8 @@ function notice(doc) {
   const chemin = doc.provenance;
   if (typeof chemin === "string" && /^[a-z0-9_./-]+$/i.test(chemin) && !chemin.includes("..")) {
     const lien = element("a", "Archive et provenance ↗");
-    lien.href = "https://github.com/fraware/frontiere-institut-interet-public/blob/main/" +
+    lien.href = "https://github.com/fraware/frontiere-institut-interet-public/blob/" +
+      (/^[0-9a-f]{40}$/.test(revision || "") ? revision : "main") + "/" +
       chemin.split("/").map(encodeURIComponent).join("/");
     lien.target = "_blank";
     lien.rel = "noopener noreferrer";
@@ -90,7 +91,7 @@ function afficher() {
   const matches = etat.documents.filter(doc => correspond(doc, termes, source));
   const debut = (etat.page - 1) * PAR_PAGE;
   zone.replaceChildren();
-  for (const doc of matches.slice(debut, debut + PAR_PAGE)) zone.append(notice(doc));
+  for (const doc of matches.slice(debut, debut + PAR_PAGE)) zone.append(notice(doc, etat.revision));
   const fin = Math.min(debut + PAR_PAGE, matches.length);
   message.textContent = matches.length
     ? compter(matches.length) + " documents dans cet extrait · " + compter(debut + 1) +
@@ -135,6 +136,7 @@ async function demarrer() {
     }
     etat.documents = doc.documents;
     etat.meta = doc.sources;
+    etat.revision = /^[0-9a-f]{40}$/.test(doc.revision_sources || "") ? doc.revision_sources : null;
     etatDocument.textContent =
       "Extrait consultable : " + compter(doc.documents.length) +
       " documents sélectionnés dans les archives versionnées. " +
