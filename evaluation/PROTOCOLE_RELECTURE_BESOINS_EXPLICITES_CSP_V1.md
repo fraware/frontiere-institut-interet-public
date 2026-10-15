@@ -36,8 +36,9 @@ enregistrement ou le décompte global est incompatible.
 
 Pour chaque ligne admissible, il conserve uniquement :
 
-- la référence, l'empreinte d'enregistrement, l'organisme et l'intitulé
-  déclaré intégralement ;
+- la référence, l'empreinte d'enregistrement, l'intitulé intégral et
+  l'entité déclarée, relevée dans « organisme » ou, en son absence, dans
+  « employeur », avec le nom du champ effectivement utilisé ;
 - la date de publication avec le nom du champ exact d'origine ;
 - les compétences attendues seulement si ce champ est renseigné,
   suffisamment court et non tronqué ;
