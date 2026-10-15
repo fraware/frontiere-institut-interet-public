@@ -34,6 +34,8 @@ export function projeterAvisCorrobores(rapport, empreinteSource) {
     rapport.nombre_avis_avec_etablissement_exact_api === 17 &&
     rapport.nombre_avis_avec_siret_egal_a_un_acheteur_decp === 2 &&
     rapport.aucune_identite_de_contrat_deduite === true &&
+    (rapport.contrats_communs_demonstres === undefined ||
+      rapport.contrats_communs_demonstres === 0) &&
     rapport.role_acheteur_juridiquement_etabli === false &&
     rapport.siret_boamp_initialement_sans_schema === true &&
     Array.isArray(rapport.observations) && rapport.observations.length === 17,
