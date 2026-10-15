@@ -9,11 +9,13 @@ from __future__ import annotations
 import argparse
 from datetime import date, datetime, timedelta, timezone
 import json
+from pathlib import Path
 import sys
+import tempfile
 from urllib.error import HTTPError, URLError
 
 from app.collecteur_ted_continu import (
-    CHAMPS, TEDInvalide, _notice, requete_ted,
+    CHAMPS, TEDInvalide, StockageTED, _notice, collecter_jour, requete_ted,
 )
 
 
@@ -57,15 +59,46 @@ def sonder(jour: date, *, demander=requete_ted) -> dict:
     }
 
 
+def sonder_integralement(jour: date, *, demander=requete_ted) -> dict:
+    """Contrôler toutes les pages et l'importation dans une base temporaire."""
+    notices, pages = collecter_jour(jour, obtenir=demander)
+    with tempfile.TemporaryDirectory(prefix="frontiere-sonde-ted-") as dossier:
+        stockage = StockageTED(Path(dossier) / "verification.sqlite3")
+        premier = stockage.importer(jour, notices, pages)
+        reprise = stockage.importer(jour, notices, pages)
+        etat = stockage.etat()
+    if (
+        premier["etat"] != "actualisé"
+        or reprise["etat"] != "inchangé"
+        or etat["avis"] != len(notices)
+        or etat["versions"] != len(notices)
+        or etat["jours"] != 1
+    ):
+        raise TEDInvalide("Contrôle de persistance du corpus TED incohérent.")
+    return {
+        "source": "TED Search API v3",
+        "jour": jour.isoformat(),
+        "avis_recuperes": len(notices),
+        "pages_recuperees": pages,
+        "enregistrements_en_base": etat["avis"],
+        "reprise_sans_doublon": True,
+        "controle_integral": "reussi",
+        "copie_temporaire_uniquement": True,
+    }
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--jour", type=date.fromisoformat,
         default=datetime.now(timezone.utc).date() - timedelta(days=2)
     )
+    parser.add_argument("--complet", action="store_true",
+                        help="Parcourir et importer provisoirement toute la journée")
     args = parser.parse_args(argv)
     try:
-        print(json.dumps(sonder(args.jour), ensure_ascii=False, sort_keys=True))
+        bilan = sonder_integralement(args.jour) if args.complet else sonder(args.jour)
+        print(json.dumps(bilan, ensure_ascii=False, sort_keys=True))
         return 0
     except (TEDInvalide, HTTPError, URLError, OSError, ValueError) as exc:
         print(f"Contrat TED non confirmé : {type(exc).__name__}: {exc}",
