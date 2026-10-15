@@ -12,8 +12,10 @@ acheteurs français, puis pour l'extension à d'autres pays.
 
 - Interrogation de la recherche experte avec pays acheteur FRA et date de
   publication précise.
-- Récupération de tous les résultats d'une journée par pagination de type
-  ITERATION, sans appliquer le plafond de 15 000 résultats de l'autre mode.
+- Récupération des avis par pagination numérotée, en découpant les
+  recherches par journée de publication française. La limite officielle
+  de 15 000 notices par requête est contrôlée explicitement ; une journée
+  au-dessus de ce seuil devra être subdivisée et n'est pas déclarée complète.
 - Contrôle du nombre de publications annoncé et de la pagination avant
   toute modification de la base pour cette journée.
 - Conservation du contenu JSON fourni par TED, de son empreinte SHA-256
