@@ -38,6 +38,12 @@ def test_chemins_des_quatre_bases_sur_le_disque_unique():
     assert env["FRONTIERE_DONNEES"] == "/var/lib/frontiere"
     assert env["FRONTIERE_COLLECTE_ACTIVE"] == "1"
     assert env["FRONTIERE_AMORCAGE_AUTO"] == "1"
+    assert env["FRONTIERE_CONTROLE_ACCES_OBLIGATOIRE"] == "1"
+    jeton = next(
+        x for x in configuration()["services"][0]["envVars"]
+        if x["key"] == "FRONTIERE_JETON_ACCES"
+    )
+    assert jeton == {"key": "FRONTIERE_JETON_ACCES", "sync": False}
     chemins = [
         env["FRONTIERE_BOAMP_DB"],
         env["FRONTIERE_EMPLOIS_DB"],
