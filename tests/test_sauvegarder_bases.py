@@ -83,7 +83,9 @@ def test_source_absente_schema_incompatible_et_liste_duplicative(tmp_path):
     sources["ted"] = tmp_path / "absente.db"
     with pytest.raises(SauvegardeInvalide, match="introuvable"):
         sauvegarder(sources, tmp_path / "copies")
-    sources = exemples(tmp_path)
+    autre_dossier = tmp_path / "nouvelle_source"
+    autre_dossier.mkdir()
+    sources = exemples(autre_dossier)
     with sqlite3.connect(sources["decp"]) as conn:
         conn.execute("DROP TABLE marches")
     with pytest.raises(SauvegardeInvalide, match="Schéma"):
