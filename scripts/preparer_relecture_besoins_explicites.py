@@ -28,7 +28,8 @@ SHA = re.compile(r"^[a-f0-9]{64}$")
 EMAIL = re.compile(r"(?i)[\w.+-]+@[\w.-]+\.[a-z]{2,}")
 URL = re.compile(r"(?i)https?://|www\.")
 TELEPHONE = re.compile(r"(?<!\w)(?:\+33\s?(?:\(0\))?\s?|0)[1-9](?:[\s.\-]?\d{2}){4}(?!\d)")
-DATE = re.compile(r"^20\d\d-\d\d-\d\d")
+DATE_ISO = re.compile(r"^(20\d\d-\d\d-\d\d)(?:$|[T ])")
+DATE_FR = re.compile(r"^(\d{2})/(\d{2})/(20\d{2})(?:$|\s)")
 LEXIQUE = re.compile(
     r"informati|numeriqu|donnee|logiciel|cyber|securite des systemes|"
     r"ingenier|recherche|scientifi|mathemati|statistiqu|"
@@ -51,10 +52,18 @@ def empreinte(texte: bytes) -> str:
 
 
 def date_publique(valeur: object) -> str | None:
-    """Accepter une date civile explicite, y compris un horodatage suffixé."""
-    if not isinstance(valeur, str) or not DATE.match(valeur):
+    """Conserver la sémantique de l'index : ISO et jour/mois/année."""
+    if not isinstance(valeur, str):
         return None
-    brut = valeur[:10]
+    iso = DATE_ISO.match(valeur)
+    francaise = DATE_FR.match(valeur)
+    if iso:
+        brut = iso.group(1)
+    elif francaise:
+        jour, mois, annee = francaise.groups()
+        brut = f"{annee}-{mois}-{jour}"
+    else:
+        return None
     try:
         return brut if date.fromisoformat(brut).isoformat() == brut else None
     except ValueError:
