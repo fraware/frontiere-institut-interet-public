@@ -1,0 +1,31 @@
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_ROOT_USER_ACTION=ignore \
+    FRONTIERE_DONNEES=/var/lib/frontiere
+
+WORKDIR /opt/frontiere
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends gosu \
+    && rm -rf /var/lib/apt/lists/* \
+    && python -m pip install --no-cache-dir \
+       "sqlalchemy>=2.0,<3" "fastapi>=0.115,<1" "uvicorn>=0.30,<1" \
+    && useradd --system --uid 10001 \
+       --home-dir /opt/frontiere --shell /bin/sh frontiere \
+    && mkdir -p /var/lib/frontiere
+
+COPY app/ /opt/frontiere/app/
+COPY scripts/ /opt/frontiere/scripts/
+COPY institutionnel/besoins_publics/ /opt/frontiere/archives/
+COPY institutionnel/decp/ /opt/frontiere/archives-decp/
+COPY infra/demarrer_hebergement.sh /usr/local/bin/demarrer-frontiere
+
+RUN chmod 755 /usr/local/bin/demarrer-frontiere \
+    && chown frontiere:frontiere /var/lib/frontiere \
+    && chmod 755 /var/lib/frontiere
+
+EXPOSE 10000
+
+CMD ["/usr/local/bin/demarrer-frontiere"]
