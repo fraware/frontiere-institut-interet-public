@@ -1,5 +1,6 @@
 import { siretAdmissible, siretAcheteur, appartientAuMemeAcheteur, ordreChronologique } from "./acheteurs-decp.js";
 import { construireChronologieDocumentaire } from "./chronologies-documentaires.js";
+import { qualifierDocument, TYPES_DOCUMENTAIRES, VERSION_QUALIFICATION } from "./qualification-besoins.js";
 /** Consultation des partitions sélectionnées, sans serveur ni HTML issu des sources. */
 const q = id => document.getElementById(id);
 const racine = "./partitions/";
@@ -73,6 +74,50 @@ function afficherBilanSelection(m) {
   zone.replaceChildren(liste, precision);
 }
 
+
+/** Attester les compteurs par les lots effectivement annoncés, sans
+ * présenter un nombre de documents comme le nombre de besoins ouverts.
+ */
+function afficherBilanQualifications(m) {
+  const zone = q("bilan-qualifications");
+  const b = m.qualification_besoins;
+  if (!b) {
+    zone.textContent = "Qualifications indisponibles dans cette version du catalogue.";
+    return;
+  }
+  const sources = ["boamp", "emplois", "decp"];
+  const total = m.partitions.reduce((n, p) => n + p.documents, 0);
+  if (b.version !== VERSION_QUALIFICATION ||
+      b.documents_qualifies !== total ||
+      b.couverture_nationale_demonstree !== false ||
+      b.besoins_actuels_non_satisfaits_demonstres !== 0 ||
+      b.projets_communs_demonstres !== 0 ||
+      b.hypotheses_de_besoins !== 0 ||
+      !Array.isArray(b.sources) || b.sources.length !== sources.length ||
+      typeof b.precision !== "string") {
+    throw new Error("Bilan de qualification non conforme");
+  }
+  const liste = document.createElement("dl");
+  for (const [i, source] of sources.entries()) {
+    const e = b.sources[i], type = TYPES_DOCUMENTAIRES[source];
+    const attendu = m.partitions.filter(p => p.source === source)
+      .reduce((n, p) => n + p.documents, 0);
+    if (e?.source !== source || e.type !== type.code ||
+        e.documents !== attendu ||
+        m.selection?.sources?.[i]?.documents_indexes !== attendu) {
+      throw new Error("Comptage documentaire non cohérent");
+    }
+    const titre = document.createElement("dt");
+    titre.textContent = type.titre + " — " + francais.format(attendu) + " documents";
+    const definition = document.createElement("dd");
+    definition.textContent = type.explication;
+    liste.append(titre, definition);
+  }
+  const precision = document.createElement("p");
+  precision.textContent = b.precision;
+  zone.replaceChildren(liste, precision);
+}
+
 function majAnnees() {
   const source = q("source").value;
   const select = q("annee");
@@ -103,6 +148,7 @@ async function demarrer() {
       throw new Error("Partitions non conformes");
     }
     afficherBilanSelection(m);
+    afficherBilanQualifications(m);
     manifeste = m;
     q("source").disabled = false; q("source").value = "boamp";
     majAnnees();
@@ -147,6 +193,17 @@ function ajouterResultat(d, source, zone) {
     h.append(a);el.append(h);
     const org=document.createElement("p");org.textContent=[d.organisme,d.localisation,d.code].filter(Boolean).join(" · ");
     el.append(org);
+    if (manifeste.qualification_besoins) {
+      const regle = TYPES_DOCUMENTAIRES[source];
+      const qualif = document.createElement("div");
+      qualif.className = "qualification";
+      const titreQualif = document.createElement("strong");
+      titreQualif.textContent = regle.titre;
+      const raison = document.createElement("span");
+      raison.textContent = regle.explication;
+      qualif.append(titreQualif, raison);
+      el.append(qualif);
+    }
     const preuve=document.createElement("p");preuve.textContent="Référence " + d.id + " · ";
     const lienSource=document.createElement("a");
     if (/^[a-z0-9_./-]+$/i.test(d.provenance || "") && !d.provenance.includes("..")) {
@@ -452,6 +509,16 @@ async function consulter(e) {
       // Tout le contenu du lot doit correspondre au manifeste publié.
       const lignes = JSON.parse(brut);
       if (!Array.isArray(lignes) || lignes.length !== p.documents) throw new Error("Lot incompatible");
+      // Les catégories sont reconstruites indépendamment avant tout affichage.
+      // Une incohérence interdit la publication des résultats, même filtrés.
+      if (manifeste.qualification_besoins) {
+        for (const d of lignes) {
+          if (JSON.stringify(d?.qualification) !== JSON.stringify(qualifierDocument(d)) ||
+              d.source !== p.source || d.date.slice(0, 4) !== p.annee) {
+            throw new Error("Qualification de partition contradictoire");
+          }
+        }
+      }
       for (const d of lignes) {
         visites++;
         if (acheteurDemande) {

@@ -31,6 +31,14 @@ article h2{font-size:18px;margin:5px 0}article p{font-size:13px;color:#566d69;ma
 .chronologie time{font-weight:650;font-variant-numeric:tabular-nums}
 .chronologie .type{font-size:12px;color:#526b69;display:block;margin:4px 0}
 .chronologie .titre-evt{display:block;font-size:14px;overflow-wrap:anywhere}
+.qualification{margin:9px 0 4px;padding:9px 12px;background:#eff4f2;border-left:2px solid #52746e;font-size:13px;color:#344f4b}
+.qualification strong{display:block;margin-bottom:3px}
+.registre-qualifications{margin:18px 0;padding:16px 18px;background:white;border:1px solid #dce4e1;font-size:14px}
+.registre-qualifications summary{cursor:pointer;font-weight:650}
+.registre-qualifications dl{margin:12px 0}
+.registre-qualifications dt{font-weight:650;margin-top:10px}
+.registre-qualifications dd{margin:3px 0;color:#526b69}
+.registre-qualifications p{font-size:13px;color:#526b69}
 
 [hidden]{display:none}@media(max-width:750px){form{grid-template-columns:1fr}}
 </style></head>
@@ -43,6 +51,10 @@ article h2{font-size:18px;margin:5px 0}article p{font-size:13px;color:#566d69;ma
 <summary>Consulter le périmètre exact de l'index</summary>
 <p>Le nombre de documents publiés et les années représentées sont calculés à partir des fichiers du site. Les volumes d'origine utilisent des unités différentes selon les sources et ne constituent pas un dénominateur national.</p>
 <div id="bilan-selection" aria-live="polite">Chargement du bilan de sélection…</div>
+</details>
+<details id="registre-qualification" class="registre-qualifications">
+<summary>Registre des observations et portée des preuves</summary>
+<div id="bilan-qualifications" aria-live="polite">Chargement des qualifications documentaires…</div>
 </details>
 <form id="recherche" role="search">
 <div class="identifiant"><label for="siret-acheteur">Identifiant SIRET déclaré de l’acheteur (DECP uniquement)</label><input id="siret-acheteur" type="text" inputmode="numeric" autocomplete="off" maxlength="14" placeholder="14 chiffres" aria-describedby="siret-precision"><small id="siret-precision">Regroupe les marchés de l’extrait indexé par identifiant exact, sans établir de lien entre projets ni certifier l’identité juridique.</small></div>

@@ -256,3 +256,68 @@ node --test tests/test_recherche_chromium.mjs
 
 Le site reste entièrement statique et ne déclenche ni nouvelle
 collecte ni abonnement payant.
+
+## Registre probatoire des observations liées aux besoins publics
+
+Chaque document effectivement retenu dans les partitions de recherche
+porte désormais un objet structuré `qualification`, produit de manière
+déterministe par `site_frontiere/qualification-besoins.js`. Il s'agit
+d'un registre **de qualifications documentaires**, et non d'une base
+d'estimations de besoins actuellement non satisfaits.
+
+La version `frontiere-qualification-besoins-v1` distingue :
+
+- **BOAMP : avis de commande publique publié.** La catégorie
+  `avis_commande_publique_publie` atteste une publication ; l'extrait
+  ne contient pas un type d'avis suffisamment qualifié pour prouver
+  une consultation encore ouverte ou une demande non satisfaite.
+- **Emplois publics : recherche de compétences publiée.** La catégorie
+  `recrutement_public_annonce` identifie une demande déclarée à la
+  date de publication ; elle ne démontre ni la validité actuelle
+  de l'offre, ni un recrutement réalisé, ni une pénurie de talents.
+- **DECP : attribution de marché déclarée.** La catégorie
+  `marche_public_attribue_declare` atteste l'enregistrement
+  d'une opération contractuelle ; la livraison, l'exécution
+  du contrat et l'existence d'un besoin actuel restent indéterminées.
+
+Les cinq propriétés de qualification par document sont la version,
+la nature du signal, la portée probatoire concernant le besoin,
+la portée probatoire concernant l'exécution et la connaissance
+de son état actuel. L'identifiant, la date, la source et le chemin
+d'archive restent ceux du document original dans la même partition.
+Le rapprochement avec les chronologies par SIRET ne crée aucune
+relation de projet ou de contrat commun supplémentaire.
+
+Le manifeste publie `qualification_besoins` avec le total et
+les effectifs par catégorie, calculés à partir des **documents
+réellement sélectionnés**. Il maintient explicitement à zéro les
+nombres de besoins non satisfaits démontrés, de projets communs
+démontrés et d'hypothèses de besoin produites dans cette étape.
+Il s'agit d'un **nombre d'observations indexées**, ni d'un nombre
+de besoins distincts ni d'une mesure de couverture nationale.
+
+L'interface de recherche affiche le libellé et les limites de preuve
+sur chaque résultat et dans un bilan global. Le navigateur reconstruit
+indépendamment la qualification de chaque document à partir de sa
+source, son identité, sa date et sa provenance **après vérification
+SHA-256 de la partition**. Une contradiction empêche la publication
+des résultats de la requête. Les manifestes plus anciens, sans
+qualifications, restent consultables avec un message explicite
+d'indisponibilité du registre.
+
+Cette première base méthodologique prépare l'étape suivante :
+extraire des **besoins explicitement formulés** dans des pièces dont
+le type et la portée sont connus, avec leurs preuves primaires,
+puis évaluer séparément toute hypothèse d'anticipation. Les documents
+actuels ne justifient aucune inférence générale de besoin ouvert.
+
+Contrôles :
+
+```sh
+node --test tests/test_qualification_besoins.mjs
+node scripts/construire_partitions_statiques.mjs
+node --test tests/test_recherche_chromium.mjs
+```
+
+Aucun serveur, abonnement, traitement automatique de données
+personnelles ou appel réseau supplémentaire n'est introduit.

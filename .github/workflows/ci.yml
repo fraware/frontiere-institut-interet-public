@@ -79,7 +79,7 @@ jobs:
           node-version: "22"
 
       - name: Tester les invariants et les fichiers de démonstration
-        run: node --test tests/test_index_statique.mjs tests/test_recherche_navigateur.mjs tests/test_partitions_statiques.mjs tests/test_acheteurs_decp.mjs tests/test_rattachements_institutionnels.mjs tests/test_avis_boamp_corrobores.mjs tests/test_chronologies_documentaires.mjs
+        run: node --test tests/test_index_statique.mjs tests/test_recherche_navigateur.mjs tests/test_partitions_statiques.mjs tests/test_acheteurs_decp.mjs tests/test_rattachements_institutionnels.mjs tests/test_avis_boamp_corrobores.mjs tests/test_chronologies_documentaires.mjs tests/test_qualification_besoins.mjs
 
       - name: Construire l'index sur les vraies archives
         run: node scripts/construire_index_statique.mjs
@@ -147,6 +147,46 @@ jobs:
                r.avis.length!==2 ||
                r.sha256_registre_source!==p.empreinte_registre) process.exit(1);
             console.log('Avis BOAMP corroborés contrôlés : '+r.avis.length);
+          "
+
+      - name: Contrôler les qualifications documentaires de toutes les partitions
+        run: |
+          node --input-type=module -e "
+            import fs from 'node:fs';
+            const path='site_frontiere/partitions/';
+            const m=JSON.parse(fs.readFileSync(path+'manifeste.json'));
+            const q=m.qualification_besoins;
+            const types={
+              boamp:'avis_commande_publique_publie',
+              emplois:'recrutement_public_annonce',
+              decp:'marche_public_attribue_declare'
+            };
+            if(q?.version!=='frontiere-qualification-besoins-v1' ||
+               q?.besoins_actuels_non_satisfaits_demonstres!==0 ||
+               q?.projets_communs_demonstres!==0 ||
+               q?.hypotheses_de_besoins!==0) process.exit(1);
+            const compte={boamp:0,emplois:0,decp:0};
+            for(const p of m.partitions){
+              const docs=JSON.parse(fs.readFileSync(path+p.fichier));
+              for(const d of docs){
+                if(d.source!==p.source ||
+                   d.qualification?.version!==q.version ||
+                   d.qualification?.type!==types[d.source] ||
+                   d.qualification?.etat_actuel!=='non_etabli' ||
+                   d.qualification?.execution!=='non_etablie' ||
+                   d.qualification?.besoin!==(
+                     d.source==='emplois'?
+                       'recherche_de_competences_a_la_publication':
+                       d.source==='boamp'?'non_etablie':'besoin_actuel_non_etabli'
+                   )) process.exit(1);
+                compte[d.source]++;
+              }
+            }
+            if(Object.values(compte).reduce((a,b)=>a+b,0)!==q.documents_qualifies ||
+               q.sources.length!==3 ||
+               q.sources.some(e=>e.documents!==compte[e.source] || e.type!==types[e.source]))
+              process.exit(1);
+            console.log('Qualifications documentaires contrôlées : '+q.documents_qualifies);
           "
 
       - name: Vérifier la taille et la portée de la publication

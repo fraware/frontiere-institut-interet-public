@@ -341,3 +341,41 @@ test("chronologie institutionnelle documentaire : dates BOAMP et DECP distinctes
       serveur.close(error => error ? reject(error) : resolve()));
   }
 });
+
+
+test("registre probatoire : les trois types de publication ne valent pas besoins ouverts",
+  { timeout: 120_000 }, async () => {
+  const { serveur, url } = await demarrerServeur();
+  const navigateur = await chromium.launch({ headless: true });
+  try {
+    const page = await navigateur.newPage({ viewport: { width: 1100, height: 820 } });
+    const erreurs = [];
+    page.on("pageerror", err => erreurs.push(String(err)));
+    await page.goto(url + "/recherche-etendue.html", { waitUntil: "networkidle" });
+    await page.waitForFunction(() => !document.querySelector("#source").disabled);
+    const bilan = await page.locator("#bilan-qualifications").textContent();
+    assert.match(bilan, /Avis de commande publique publié/);
+    assert.match(bilan, /Recherche de compétences publiée/);
+    assert.match(bilan, /Attribution de marché déclarée/);
+    for (const [source, titre, interdit] of [
+      ["boamp", "Avis de commande publique publié", "consultation encore ouverte"],
+      ["emplois", "Recherche de compétences publiée", "validité actuelle"],
+      ["decp", "Attribution de marché déclarée", "exécution effective"]
+    ]) {
+      await page.locator("#source").selectOption(source);
+      await page.locator("#annee").selectOption("");
+      await page.locator("#lancer").click();
+      await page.waitForFunction(() => /documents examinés/.test(
+        document.querySelector("#etat").textContent));
+      assert.ok(await page.locator("article").count() > 0);
+      const premier = page.locator("article .qualification").first();
+      assert.match(await premier.textContent(), new RegExp(titre));
+      assert.ok((await premier.textContent()).includes(interdit));
+    }
+    assert.deepEqual(erreurs, []);
+  } finally {
+    await navigateur.close();
+    await new Promise((resolve, reject) =>
+      serveur.close(error => error ? reject(error) : resolve()));
+  }
+});
