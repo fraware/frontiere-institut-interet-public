@@ -1,0 +1,15 @@
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_ROOT_USER_ACTION=ignore
+
+WORKDIR /opt/frontiere
+RUN python -m pip install --no-cache-dir \
+      "fastapi>=0.115,<1" "uvicorn>=0.30,<1" \
+    && useradd --system --uid 10001 --home-dir /nonexistent consultation
+
+COPY app/__init__.py app/recherche_nationale.py /opt/frontiere/app/
+USER consultation
+EXPOSE 8765
+CMD ["uvicorn", "app.recherche_nationale:app", "--host", "0.0.0.0", "--port", "8765"]
