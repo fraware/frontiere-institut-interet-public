@@ -54,9 +54,11 @@ function preparer() {
     date_notification: "2026-09-20", code_cpv: "72000000-5"
   };
   ecrire(racine, decpPath + "sonde_aife_json.json", { marches_extraits: [avis] });
-  ecrire(racine, decpPath + "lot_dgfip_xml.json", { marches_extraits: [
-    { ...avis, id_marche: "M-2", date_notification: "2026-08-12" },
-    { ...avis, id_marche: "M-1", date_notification: "2026-09-18" }
+  ecrire(racine, decpPath + "lot_dgfip_xml.json", { fichiers: [
+    { id: "xml-2026-01", marches_extraits: [
+      { ...avis, id_marche: "M-2", date_notification: "2026-08-12" },
+      { ...avis, id_marche: "M-1", date_notification: "2026-09-18" }
+    ] }
   ] });
   return racine;
 }
