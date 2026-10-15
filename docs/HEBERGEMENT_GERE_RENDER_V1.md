@@ -1,13 +1,13 @@
 # FRONTIÈRE — Premier déploiement sur Render sans serveur administré
 
-Cette option transpose les six services actuels vers **une seule instance Web
-Render** équipée d'un disque persistant. L'interface et les cinq collecteurs et le rattrapage TED historique
+Cette option transpose les cinq services actuels vers **une seule instance Web
+Render** équipée d'un disque persistant. L'interface et les quatre collecteurs
 fonctionnent dans une image Docker unique, avec un ordonnanceur qui exécute
 les acquisitions l'une après l'autre pour limiter la mémoire simultanée.
 
 ## Avant de créer la ressource payante
 
-La configuration déclarative est \`render.yaml\`, à la racine du dépôt.
+La configuration déclarative est \`render.yaml\`, à la racine du dépôt. Elle déclare explicitement le projet Render **Frontiere** et son environnement **Production** (identifiant affiché dans l'interface : `prj-db8ddpjrjlhs73e09flg`).
 Elle prévoit un service payant de 1 processeur / 2 Go de mémoire
 (\`1c-2g\`) et un disque de 50 Go monté sur
 \`/var/lib/frontiere\`. La région déclarée est **Francfort, en Allemagne**,
@@ -19,7 +19,7 @@ par mois**, hors autres frais éventuels, transferts et taxes.
 
 Le forfait gratuit Render ne permet pas d'attacher de disque persistant.
 Un disque Render est attaché à **une seule instance**, ce qui explique
-la consolidation des cinq collecteurs et de l'interface dans ce premier
+la consolidation des quatre collecteurs et de l'interface dans ce premier
 service. Pour une architecture répartie sur plusieurs machines, une
 base commune PostgreSQL et un stockage d'objets seront nécessaires.
 
@@ -32,7 +32,7 @@ Références techniques officielles :
 
 ## Mise en ligne par le compte Render
 
-1. Raccorder le compte Render au dépôt GitHub
+1. Depuis le [projet Frontiere](https://dashboard.render.com/project/prj-db8ddpjrjlhs73e09flg) et son environnement Production, rattacher le dépôt GitHub
    \`fraware/frontiere-institut-interet-public\`.
 2. Dans Render, choisir un nouveau déploiement à partir d'une
    configuration de services et sélectionner ce dépôt.
@@ -59,7 +59,7 @@ Parallèlement, l'ordonnanceur :
 - conserve des marqueurs d'amorçage sur le disque Render et les réutilise
   lors des redémarrages ;
 - exécute ensuite BOAMP, emplois publics, DECP AIFE/DGFiP, DECP
-  consolidés, TED récent et TED historique à leurs intervalles configurés ;
+  consolidés à leurs intervalles configurés ;
 - ne lance qu'une acquisition coûteuse à la fois, en limitant à un fichier
   national DECP consolidé chaque fois.
 
@@ -67,8 +67,8 @@ La constitution de l'historique national complet continue sur plusieurs
 cycles. La disponibilité de l'interface ne signifie pas que les archives
 sont déjà intégralement importées.
 
-L'endpoint \`/exploitation\` décrit les quatre bases. L'endpoint
-\`/pret\` devient disponible seulement si les quatre corpus sont
+L'endpoint \`/exploitation\` décrit les trois bases. L'endpoint
+\`/pret\` devient disponible seulement si les trois corpus sont
 alimentés. Il s'agit de la disponibilité documentaire, distincte de
 la réussite récente de chaque téléchargement.
 
