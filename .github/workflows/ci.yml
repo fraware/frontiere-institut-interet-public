@@ -115,6 +115,32 @@ jobs:
             console.log('Index vérifié : '+doc.documents.length+' documents');
           "
 
+  navigateur:
+    name: Navigateur Chromium
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v7
+
+      - name: Installer Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Installer Chromium pour les essais fonctionnels
+        run: |
+          npm install --no-save --no-audit --no-fund playwright@1.57.0
+          npx playwright install --with-deps chromium
+
+      - name: Construire les deux index depuis les archives versionnées
+        run: |
+          node scripts/construire_index_statique.mjs
+          node scripts/construire_partitions_statiques.mjs
+
+      - name: Effectuer une recherche dans un vrai navigateur
+        run: node --test tests/test_recherche_chromium.mjs
+
   conteneur:
     name: Conteneur
     runs-on: ubuntu-latest
