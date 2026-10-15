@@ -35,10 +35,12 @@ function texte(x, max = 250) {
 }
 function dateISO(x) {
   if (typeof x !== "string") return "";
-  const m = /^(\d{4}-\d{2}-\d{2})/.exec(x);
-  if (!m) return "";
-  const d = new Date(m[1] + "T00:00:00Z");
-  return Number.isFinite(d.getTime()) && d.toISOString().slice(0, 10) === m[1] ? m[1] : "";
+  const iso = /^(\d{4}-\d{2}-\d{2})/.exec(x);
+  const fr = /^(\d{2})\/(\d{2})\/(\d{4})(?:$|\s)/.exec(x);
+  const valeur = iso ? iso[1] : fr ? fr[3] + "-" + fr[2] + "-" + fr[1] : "";
+  if (!valeur) return "";
+  const date = new Date(valeur + "T00:00:00Z");
+  return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === valeur ? valeur : "";
 }
 function urlAdmise(valeur, origine) {
   try {
