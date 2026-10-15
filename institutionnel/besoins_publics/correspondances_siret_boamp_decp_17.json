@@ -1,0 +1,311 @@
+{
+  "aucune_identite_de_contrat_deduite": true,
+  "empreintes_sources": {
+    "audit_boamp": "3626f84ccf9a39ce6d8882f0d5f7463eb6bde860c90a26904a6992f5fed791e3",
+    "decp": {
+      "aife": "4b8ff802cbafb9f30414f30d4700f9b43aaf76ed83a662694bdd6830a88170bc",
+      "dgfip": "72b15008830d9d95dd19d46e14e6852d1ccb7883350ca2fffa8eb7be62997086"
+    },
+    "rapport_administratif": "d8e4e7570eef4c2313b1a243114473bf5075aa1aa135e8e793bfd907177576fd"
+  },
+  "limite": "Identifiant de quatorze chiffres sans schéma déclaré dans l'avis ; existence de l'établissement observée séparément dans une API publique non exhaustive. Une même chaîne SIRET en BOAMP et DECP est un rapprochement documentaire de l'acheteur, ni un contrat commun ni une confirmation juridique du rôle ni un besoin ouvert.",
+  "nombre_avis": 17,
+  "nombre_avis_avec_etablissement_exact_api": 17,
+  "nombre_avis_avec_siret_egal_a_un_acheteur_decp": 2,
+  "nombre_siret_boamp_distincts": 16,
+  "observations": [
+    {
+      "avis_boamp": "25-108230",
+      "date_parution": "2025-10-01",
+      "identite_contrat_decp_demonstree": false,
+      "marches_decp_identites_meme_siret": 0,
+      "preuves": {
+        "chemin_etablissement_reponse_administrative": "/results/0/siege/siret",
+        "chemin_siret_dans_avis": "/results/0/donnees/EFORMS/ContractNotice/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/0/efac:Company/cac:PartyLegalEntity/cbc:CompanyID",
+        "sha256_reponse_administrative": "80230506fd9365173f07d6985619a4e2bd050a5278d7eadc13156282cb8f7f47",
+        "sha256_reponse_boamp": "632ab36d3ef4342f81d38c2d6a435f49f86f288ddd70305816069c91f9b37e89"
+      },
+      "rapprochement_acheteur_documentaire": false,
+      "role_acheteur_juridiquement_confirme": false,
+      "siret_acheteur_sans_schema_dans_avis": "12006401900074",
+      "siret_etablissement_exact_dans_api": true,
+      "statut_administratif": "etablissement_exact_retrouve_dans_reponse_administrative"
+    },
+    {
+      "avis_boamp": "25-112128",
+      "date_parution": "2025-10-10",
+      "identite_contrat_decp_demonstree": false,
+      "marches_decp_identites_meme_siret": 0,
+      "preuves": {
+        "chemin_etablissement_reponse_administrative": "/results/0/siege/siret",
+        "chemin_siret_dans_avis": "/results/0/donnees/EFORMS/ContractNotice/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/0/efac:Company/cac:PartyLegalEntity/cbc:CompanyID",
+        "sha256_reponse_administrative": "67b949c39f11414ad1a70b4b0d9ac37683ca41711023bf8520efecd297dc13ba",
+        "sha256_reponse_boamp": "891c6cbe1795bd0b9c8bce353ec2504d63bf6d23fd082faf20e6ac3a8e63b54a"
+      },
+      "rapprochement_acheteur_documentaire": false,
+      "role_acheteur_juridiquement_confirme": false,
+      "siret_acheteur_sans_schema_dans_avis": "21973360700010",
+      "siret_etablissement_exact_dans_api": true,
+      "statut_administratif": "etablissement_exact_retrouve_dans_reponse_administrative"
+    },
+    {
+      "avis_boamp": "25-138686",
+      "date_parution": "2025-12-18",
+      "identite_contrat_decp_demonstree": false,
+      "marches_decp_identites_meme_siret": 0,
+      "preuves": {
+        "chemin_etablissement_reponse_administrative": "/results/0/siege/siret",
+        "chemin_siret_dans_avis": "/results/0/donnees/EFORMS/ContractAwardNotice/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/0/efac:Company/cac:PartyLegalEntity/cbc:CompanyID",
+        "sha256_reponse_administrative": "cc88a2446e4f85a0a22086c5d36d7208787a1a6bcd603227a90f708943bcb1d7",
+        "sha256_reponse_boamp": "b15a1c02b5a88b610ef4d2d2b0acff9bb604dc2478514d17182939a0278e3b2e"
+      },
+      "rapprochement_acheteur_documentaire": false,
+      "role_acheteur_juridiquement_confirme": false,
+      "siret_acheteur_sans_schema_dans_avis": "13001779100018",
+      "siret_etablissement_exact_dans_api": true,
+      "statut_administratif": "etablissement_exact_retrouve_dans_reponse_administrative"
+    },
+    {
+      "avis_boamp": "25-141009",
+      "date_parution": "2025-12-23",
+      "identite_contrat_decp_demonstree": false,
+      "marches_decp_identites_meme_siret": 0,
+      "preuves": {
+        "chemin_etablissement_reponse_administrative": "/results/0/siege/siret",
+        "chemin_siret_dans_avis": "/results/0/donnees/EFORMS/ContractNotice/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/0/efac:Company/cac:PartyLegalEntity/cbc:CompanyID",
+        "sha256_reponse_administrative": "62b79b31addb8da1259ec1029f3a1dbc7626dc7ecc99c3b5620cb09da38ee65f",
+        "sha256_reponse_boamp": "0d22d3efe60225a0d8ba1d4c4469f51df518c7efe6a843baca71ae611ddaab40"
+      },
+      "rapprochement_acheteur_documentaire": false,
+      "role_acheteur_juridiquement_confirme": false,
+      "siret_acheteur_sans_schema_dans_avis": "26950015300011",
+      "siret_etablissement_exact_dans_api": true,
+      "statut_administratif": "etablissement_exact_retrouve_dans_reponse_administrative"
+    },
+    {
+      "avis_boamp": "25-87899",
+      "date_parution": "2025-08-01",
+      "identite_contrat_decp_demonstree": false,
+      "marches_decp_identites_meme_siret": 0,
+      "preuves": {
+        "chemin_etablissement_reponse_administrative": "/results/0/siege/siret",
+        "chemin_siret_dans_avis": "/results/0/donnees/EFORMS/ContractNotice/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/0/efac:Company/cac:PartyLegalEntity/cbc:CompanyID",
+        "sha256_reponse_administrative": "6cae354c952a13ac86709c74492d1cb18854b536116ffdc80317e78d1b97e0e6",
+        "sha256_reponse_boamp": "c11094a89f9413b8abe0214ee686c47a456c4b2f1d76e420e225a5ccdea88d48"
+      },
+      "rapprochement_acheteur_documentaire": false,
+      "role_acheteur_juridiquement_confirme": false,
+      "siret_acheteur_sans_schema_dans_avis": "13002269200011",
+      "siret_etablissement_exact_dans_api": true,
+      "statut_administratif": "etablissement_exact_retrouve_dans_reponse_administrative"
+    },
+    {
+      "avis_boamp": "25-93431",
+      "date_parution": "2025-08-21",
+      "identite_contrat_decp_demonstree": false,
+      "marches_decp_identites_meme_siret": 0,
+      "preuves": {
+        "chemin_etablissement_reponse_administrative": "/results/0/siege/siret",
+        "chemin_siret_dans_avis": "/results/0/donnees/EFORMS/ContractAwardNotice/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/0/efac:Company/cac:PartyLegalEntity/cbc:CompanyID",
+        "sha256_reponse_administrative": "071dc5d7cb3e07270a4b173d4cced3e8c152b37b8d425992bb25a3f9c85deed7",
+        "sha256_reponse_boamp": "4ab64284e8861e33507cdd57988bd7768b62dac9bfb33738a7ce6b19831e81ed"
+      },
+      "rapprochement_acheteur_documentaire": false,
+      "role_acheteur_juridiquement_confirme": false,
+      "siret_acheteur_sans_schema_dans_avis": "11000201100044",
+      "siret_etablissement_exact_dans_api": true,
+      "statut_administratif": "etablissement_exact_retrouve_dans_reponse_administrative"
+    },
+    {
+      "avis_boamp": "25-94249",
+      "date_parution": "2025-08-24",
+      "identite_contrat_decp_demonstree": false,
+      "marches_decp_identites_meme_siret": 0,
+      "preuves": {
+        "chemin_etablissement_reponse_administrative": "/results/0/matching_etablissements/0/siret",
+        "chemin_siret_dans_avis": "/results/0/donnees/EFORMS/ContractNotice/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PartyLegalEntity/cbc:CompanyID",
+        "sha256_reponse_administrative": "8dd833ac71f15b3118ff1a4d522d44b68d19f87b25857db05a0391b58cc18151",
+        "sha256_reponse_boamp": "59a89cd637a7ec0dfb7e9b477cf997a93e3f5d5fee8a63f8d527bd3679e47dd8"
+      },
+      "rapprochement_acheteur_documentaire": false,
+      "role_acheteur_juridiquement_confirme": false,
+      "siret_acheteur_sans_schema_dans_avis": "48262252900022",
+      "siret_etablissement_exact_dans_api": true,
+      "statut_administratif": "etablissement_exact_retrouve_dans_reponse_administrative"
+    },
+    {
+      "avis_boamp": "25-94670",
+      "date_parution": "2025-08-26",
+      "identite_contrat_decp_demonstree": false,
+      "marches_decp_identites_meme_siret": 5,
+      "preuves": {
+        "chemin_etablissement_reponse_administrative": "/results/0/siege/siret",
+        "chemin_siret_dans_avis": "/results/0/donnees/EFORMS/ContractAwardNotice/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/0/efac:Company/cac:PartyLegalEntity/cbc:CompanyID",
+        "sha256_reponse_administrative": "7734192c01a584f1678948c7549ccee32c06d1e5ac7bcd976e6465317f1d5d0d",
+        "sha256_reponse_boamp": "9b6e85ba251b3e764c1d4f11cee1ed4bab5a7e39adf54eb972f22f442bed6a99"
+      },
+      "rapprochement_acheteur_documentaire": true,
+      "role_acheteur_juridiquement_confirme": false,
+      "siret_acheteur_sans_schema_dans_avis": "21060027600013",
+      "siret_etablissement_exact_dans_api": true,
+      "statut_administratif": "etablissement_exact_retrouve_dans_reponse_administrative"
+    },
+    {
+      "avis_boamp": "26-11703",
+      "date_parution": "2026-02-05",
+      "identite_contrat_decp_demonstree": false,
+      "marches_decp_identites_meme_siret": 0,
+      "preuves": {
+        "chemin_etablissement_reponse_administrative": "/results/0/siege/siret",
+        "chemin_siret_dans_avis": "/results/0/donnees/EFORMS/ContractNotice/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/0/efac:Company/cac:PartyLegalEntity/cbc:CompanyID",
+        "sha256_reponse_administrative": "dc00b10c188bc43742ef95aa73cc317ad6728e64bb7601ca5fa82a348cf952d9",
+        "sha256_reponse_boamp": "cffd9ad30f6983c369c5966c6112dbd6dd44317e2d83e28282ee28aea650fb68"
+      },
+      "rapprochement_acheteur_documentaire": false,
+      "role_acheteur_juridiquement_confirme": false,
+      "siret_acheteur_sans_schema_dans_avis": "18009214000037",
+      "siret_etablissement_exact_dans_api": true,
+      "statut_administratif": "etablissement_exact_retrouve_dans_reponse_administrative"
+    },
+    {
+      "avis_boamp": "26-16578",
+      "date_parution": "2026-02-18",
+      "identite_contrat_decp_demonstree": false,
+      "marches_decp_identites_meme_siret": 0,
+      "preuves": {
+        "chemin_etablissement_reponse_administrative": "/results/0/siege/siret",
+        "chemin_siret_dans_avis": "/results/0/donnees/EFORMS/ContractAwardNotice/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/2/efac:Company/cac:PartyLegalEntity/cbc:CompanyID",
+        "sha256_reponse_administrative": "2614e1a5247128d167b8eefdd5b7a33903a9f3ffd2a0fe49abfe8e92921459ca",
+        "sha256_reponse_boamp": "91124ae4b666edcca59d461591b4f95717b592405ee722172f6c44a078a1fa72"
+      },
+      "rapprochement_acheteur_documentaire": false,
+      "role_acheteur_juridiquement_confirme": false,
+      "siret_acheteur_sans_schema_dans_avis": "22080004900011",
+      "siret_etablissement_exact_dans_api": true,
+      "statut_administratif": "etablissement_exact_retrouve_dans_reponse_administrative"
+    },
+    {
+      "avis_boamp": "26-17037",
+      "date_parution": "2026-02-19",
+      "identite_contrat_decp_demonstree": false,
+      "marches_decp_identites_meme_siret": 0,
+      "preuves": {
+        "chemin_etablissement_reponse_administrative": "/results/0/siege/siret",
+        "chemin_siret_dans_avis": "/results/0/donnees/EFORMS/ContractNotice/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PartyLegalEntity/cbc:CompanyID",
+        "sha256_reponse_administrative": "355d6c8f0a4da4760d34ee09ee93c2ec092752303647d971971174ec860b86ba",
+        "sha256_reponse_boamp": "2dba51cc9928626d1103302f97df677e16c39c53944b35d0983ec0088452296c"
+      },
+      "rapprochement_acheteur_documentaire": false,
+      "role_acheteur_juridiquement_confirme": false,
+      "siret_acheteur_sans_schema_dans_avis": "51018963200035",
+      "siret_etablissement_exact_dans_api": true,
+      "statut_administratif": "etablissement_exact_retrouve_dans_reponse_administrative"
+    },
+    {
+      "avis_boamp": "26-35619",
+      "date_parution": "2026-04-09",
+      "identite_contrat_decp_demonstree": false,
+      "marches_decp_identites_meme_siret": 0,
+      "preuves": {
+        "chemin_etablissement_reponse_administrative": "/results/0/siege/siret",
+        "chemin_siret_dans_avis": "/results/0/donnees/EFORMS/ContractNotice/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/0/efac:Company/cac:PartyLegalEntity/cbc:CompanyID",
+        "sha256_reponse_administrative": "056be2c8b832ea837c688be6d820ba5226aea0186c46e4475a63b2e7d2020831",
+        "sha256_reponse_boamp": "0382dbb71f3c8d508cf11ea6d1072bf59f93e39514fa6c5122c20a01460c2bb9"
+      },
+      "rapprochement_acheteur_documentaire": false,
+      "role_acheteur_juridiquement_confirme": false,
+      "siret_acheteur_sans_schema_dans_avis": "26750045201928",
+      "siret_etablissement_exact_dans_api": true,
+      "statut_administratif": "etablissement_exact_retrouve_dans_reponse_administrative"
+    },
+    {
+      "avis_boamp": "26-36999",
+      "date_parution": "2026-04-12",
+      "identite_contrat_decp_demonstree": false,
+      "marches_decp_identites_meme_siret": 0,
+      "preuves": {
+        "chemin_etablissement_reponse_administrative": "/results/0/siege/siret",
+        "chemin_siret_dans_avis": "/results/0/donnees/EFORMS/ContractAwardNotice/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/0/efac:Company/cac:PartyLegalEntity/cbc:CompanyID",
+        "sha256_reponse_administrative": "8e4569ce8fe0d5730d003fb051becead558ef8b5b3c61023b44c82cd51390c81",
+        "sha256_reponse_boamp": "ab88724726076407528b3a761063cddf73841cc2e0c3d50ff46fad239d880825"
+      },
+      "rapprochement_acheteur_documentaire": false,
+      "role_acheteur_juridiquement_confirme": false,
+      "siret_acheteur_sans_schema_dans_avis": "26630746100019",
+      "siret_etablissement_exact_dans_api": true,
+      "statut_administratif": "etablissement_exact_retrouve_dans_reponse_administrative"
+    },
+    {
+      "avis_boamp": "26-37752",
+      "date_parution": "2026-04-15",
+      "identite_contrat_decp_demonstree": false,
+      "marches_decp_identites_meme_siret": 0,
+      "preuves": {
+        "chemin_etablissement_reponse_administrative": "/results/0/siege/siret",
+        "chemin_siret_dans_avis": "/results/0/donnees/EFORMS/ContractAwardNotice/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/0/efac:Company/cac:PartyLegalEntity/cbc:CompanyID",
+        "sha256_reponse_administrative": "66162f4144ca9caaa448b18f99b36249bd7534cc0b430914597ff7c28dd760b1",
+        "sha256_reponse_boamp": "4cce51b2dab72021c782587e51b040f07e97bfd4a8a94f29321eaa680246085b"
+      },
+      "rapprochement_acheteur_documentaire": false,
+      "role_acheteur_juridiquement_confirme": false,
+      "siret_acheteur_sans_schema_dans_avis": "20007188400106",
+      "siret_etablissement_exact_dans_api": true,
+      "statut_administratif": "etablissement_exact_retrouve_dans_reponse_administrative"
+    },
+    {
+      "avis_boamp": "26-56522",
+      "date_parution": "2026-06-10",
+      "identite_contrat_decp_demonstree": false,
+      "marches_decp_identites_meme_siret": 0,
+      "preuves": {
+        "chemin_etablissement_reponse_administrative": "/results/0/siege/siret",
+        "chemin_siret_dans_avis": "/results/0/donnees/EFORMS/ContractNotice/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/0/efac:Company/cac:PartyLegalEntity/cbc:CompanyID",
+        "sha256_reponse_administrative": "bf275b20148bff13897630aea823e80610685390e7bae91ee62144cb054080c6",
+        "sha256_reponse_boamp": "06073159522f998b100e1cdaa76a1f52d15639230a344201595669784cea3a79"
+      },
+      "rapprochement_acheteur_documentaire": false,
+      "role_acheteur_juridiquement_confirme": false,
+      "siret_acheteur_sans_schema_dans_avis": "19761904200017",
+      "siret_etablissement_exact_dans_api": true,
+      "statut_administratif": "etablissement_exact_retrouve_dans_reponse_administrative"
+    },
+    {
+      "avis_boamp": "26-60102",
+      "date_parution": "2026-06-19",
+      "identite_contrat_decp_demonstree": false,
+      "marches_decp_identites_meme_siret": 0,
+      "preuves": {
+        "chemin_etablissement_reponse_administrative": "/results/0/siege/siret",
+        "chemin_siret_dans_avis": "/results/0/donnees/EFORMS/ContractNotice/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/0/efac:Company/cac:PartyLegalEntity/cbc:CompanyID",
+        "sha256_reponse_administrative": "80230506fd9365173f07d6985619a4e2bd050a5278d7eadc13156282cb8f7f47",
+        "sha256_reponse_boamp": "d360be9cac0e5161f157ec239c42250ab72e6cfdd2e35b8216dcff8744ef12de"
+      },
+      "rapprochement_acheteur_documentaire": false,
+      "role_acheteur_juridiquement_confirme": false,
+      "siret_acheteur_sans_schema_dans_avis": "12006401900074",
+      "siret_etablissement_exact_dans_api": true,
+      "statut_administratif": "etablissement_exact_retrouve_dans_reponse_administrative"
+    },
+    {
+      "avis_boamp": "26-62030",
+      "date_parution": "2026-06-25",
+      "identite_contrat_decp_demonstree": false,
+      "marches_decp_identites_meme_siret": 1,
+      "preuves": {
+        "chemin_etablissement_reponse_administrative": "/results/0/siege/siret",
+        "chemin_siret_dans_avis": "/results/0/donnees/EFORMS/ContractNotice/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/0/efac:Company/cac:PartyLegalEntity/cbc:CompanyID",
+        "sha256_reponse_administrative": "fd5df657e1bb83a8e9b2cee5eaf97f93f5919017a877adb5c518586561fc1f15",
+        "sha256_reponse_boamp": "4eebdd3dd64af6134435eeb170455e57432d7385d83e57c38541a08447c6f0a7"
+      },
+      "rapprochement_acheteur_documentaire": true,
+      "role_acheteur_juridiquement_confirme": false,
+      "siret_acheteur_sans_schema_dans_avis": "18002002600019",
+      "siret_etablissement_exact_dans_api": true,
+      "statut_administratif": "etablissement_exact_retrouve_dans_reponse_administrative"
+    }
+  ],
+  "population": "17_avis_boamp_d_un_tirage_independant_non_representatif",
+  "role_acheteur_juridiquement_etabli": false,
+  "siret_boamp_initialement_sans_schema": true,
+  "version": "correspondances-siret-boamp-decp-17-v1"
+}
