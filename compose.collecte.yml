@@ -132,6 +132,32 @@ services:
     # contiennent effectivement des notices. /sante reste une sonde de vie.
 
 
+  sauvegarde:
+    image: python:3.12-slim
+    profiles: ["maintenance"]
+    restart: "no"
+    command:
+      - python
+      - /opt/frontiere/sauvegarder_bases.py
+      - --source
+      - boamp=/data/boamp/avis_boamp.sqlite3
+      - --source
+      - emplois=/data/emplois/offres_emplois.sqlite3
+      - --source
+      - decp=/data/decp/marches_decp.sqlite3
+      - --source
+      - ted=/data/ted/avis_ted.sqlite3
+      - --destination
+      - /sauvegardes
+    volumes:
+      - stockage-frontiere-boamp:/data/boamp:ro
+      - stockage-frontiere-emplois:/data/emplois:ro
+      - stockage-frontiere-decp:/data/decp:ro
+      - stockage-frontiere-ted:/data/ted:ro
+      - ./scripts/sauvegarder_bases.py:/opt/frontiere/sauvegarder_bases.py:ro
+      - ./sauvegardes:/sauvegardes
+    # Exécution ponctuelle : copies SQLite cohérentes, à répliquer hors hôte.
+
 volumes:
   stockage-frontiere-boamp:
   stockage-frontiere-emplois:
