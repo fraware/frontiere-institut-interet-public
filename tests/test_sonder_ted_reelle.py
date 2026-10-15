@@ -52,7 +52,8 @@ def test_incompatibilites_refusees(reponse):
         sonder(JOUR, demander=lambda _: reponse)
 
 
-def test_pagination_complete_et_projection_temporaire():
+def test_pagination_complete_et_projection_temporaire(monkeypatch):
+    monkeypatch.setattr("app.collecteur_ted_continu.NOMBRE_PAR_PAGE", 1)
     compteur = 0
     def api(_corps):
         nonlocal compteur
@@ -69,7 +70,8 @@ def test_pagination_complete_et_projection_temporaire():
     assert bilan["reprise_sans_doublon"] is True
 
 
-def test_page_intermediaire_vide_avec_jeton_est_autorisee():
+def test_page_intermediaire_vide_declenche_une_erreur(monkeypatch):
+    monkeypatch.setattr("app.collecteur_ted_continu.NOMBRE_PAR_PAGE", 1)
     etape = [0]
     def api(_corps):
         etape[0] += 1
@@ -81,6 +83,5 @@ def test_page_intermediaire_vide_avec_jeton_est_autorisee():
                     "iterationNextToken": "page3"}
         return {"notices": [publication("3002-2026")],
                 "totalNoticeCount": 2}
-    bilan = sonder_integralement(JOUR, demander=api)
-    assert bilan["avis_recuperes"] == 2
-    assert bilan["pages_recuperees"] == 3
+    with pytest.raises(TEDInvalide, match="Page intermédiaire"):
+        sonder_integralement(JOUR, demander=api)
