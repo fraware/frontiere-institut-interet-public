@@ -67,3 +67,20 @@ def test_pagination_complete_et_projection_temporaire():
     assert bilan["avis_recuperes"] == 2
     assert bilan["pages_recuperees"] == 2
     assert bilan["reprise_sans_doublon"] is True
+
+
+def test_page_intermediaire_vide_avec_jeton_est_autorisee():
+    etape = [0]
+    def api(_corps):
+        etape[0] += 1
+        if etape[0] == 1:
+            return {"notices": [publication("3001-2026")],
+                    "totalNoticeCount": 2, "iterationNextToken": "page2"}
+        if etape[0] == 2:
+            return {"notices": [], "totalNoticeCount": 2,
+                    "iterationNextToken": "page3"}
+        return {"notices": [publication("3002-2026")],
+                "totalNoticeCount": 2}
+    bilan = sonder_integralement(JOUR, demander=api)
+    assert bilan["avis_recuperes"] == 2
+    assert bilan["pages_recuperees"] == 3
