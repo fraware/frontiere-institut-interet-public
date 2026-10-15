@@ -8,7 +8,7 @@ La commande `node scripts/construire_partitions_statiques.mjs` parcourt les arch
 
 Chaque publication construit les données depuis le dépôt sans appel réseau vers les producteurs. Les archives ne sont pas exhaustives. Le chiffre maximal de 15 000 résultats ne représente donc ni le nombre national réel de marchés ni celui des offres disponibles.
 
-L'interface charge uniquement les lots de l'année et de la source demandées par l'utilisateur. Elle affiche au plus 100 correspondances par recherche, tout en comptant l'ensemble des résultats identifiés dans les lots sélectionnés. Le traitement s'exécute dans le navigateur ; aucun serveur ou stockage persistant payant n'est ajouté.
+L'interface charge uniquement les lots de la source et de la période demandées. L'utilisateur peut choisir une année, toutes les années disponibles, ou préciser des dates de publication de début et de fin. Les lots couvrant une année entièrement extérieure à l'intervalle ne sont pas téléchargés ; les documents sont ensuite filtrés à la date exacte. Un intervalle inversé est refusé avant tout téléchargement. Elle affiche au plus 100 correspondances par recherche, tout en comptant l'ensemble des résultats identifiés dans les lots sélectionnés. Le traitement s'exécute dans le navigateur ; aucun serveur ou stockage persistant payant n'est ajouté.
 
 La consultation vérifie la taille des lots, leur empreinte cryptographique SHA-256 avec l'interface native du navigateur et la cohérence du contenu avec le manifeste. Cette vérification est également répétée sur les archives réelles par les contrôles GitHub. Si le navigateur ne permet pas le contrôle d'empreinte, ou si un seul lot échoue, aucun résultat de la recherche demandée n'est affiché. Toute erreur de lecture interrompt la restitution pour éviter de présenter des résultats partiels comme complets.
 
@@ -21,4 +21,4 @@ node scripts/construire_partitions_statiques.mjs
 
 Le contrôle CI vérifie, sur les véritables archives, l'empreinte, le nombre de documents et la taille de chaque lot, ainsi que la présence de plus de 1 900 documents au total.
 
-La segmentation territoriale exige des champs géographiques fiables des producteurs et reste à préparer séparément. Le filtre de période est annuel, fondé sur les dates documentaires analysables ; aucune date absente n'est inventée.
+La segmentation territoriale exige des champs géographiques fiables des producteurs et reste à préparer séparément. Le filtre de période accepte les années et les intervalles de dates présents dans les archives ; aucune date absente n'est inventée. La sélection par territoire reste exclue en l'absence d'identifiants géographiques comparables entre sources.

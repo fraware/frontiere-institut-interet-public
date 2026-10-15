@@ -24,7 +24,7 @@ function majAnnees() {
   const select = q("annee");
   select.replaceChildren();
   const opt = document.createElement("option");
-  opt.value = ""; opt.textContent = "Choisir"; select.append(opt);
+  opt.value = ""; opt.textContent = "Toutes les années"; select.append(opt);
   const dates = [...new Set(manifeste.partitions.filter(p => p.source === source).map(p => p.annee))]
     .sort((a,b) => b.localeCompare(a));
   for (const annee of dates) {
@@ -64,9 +64,20 @@ async function consulter(e) {
   e.preventDefault();
   if (!manifeste) return;
   const source = q("source").value, annee = q("annee").value;
-  const mots = normaliser(q("termes").value.slice(0,120)).split(" ").filter(Boolean);
-  const morceaux = manifeste.partitions.filter(p => p.source === source && p.annee === annee);
+  const debut = q("date-debut").value, fin = q("date-fin").value;
   const zone=q("resultats");
+  if (debut && fin && debut > fin) {
+    zone.replaceChildren();
+    q("etat").textContent = "Période incohérente : la date de début dépasse la date de fin.";
+    return;
+  }
+  const mots = normaliser(q("termes").value.slice(0,120)).split(" ").filter(Boolean);
+  // Préciser le périmètre AVANT les téléchargements : une partition
+  // entièrement en dehors de l'intervalle n'est jamais téléchargée.
+  const morceaux = manifeste.partitions.filter(p =>
+    p.source === source && (!annee || p.annee === annee) &&
+    (!debut || p.annee >= debut.slice(0,4)) &&
+    (!fin || p.annee <= fin.slice(0,4)));
   zone.replaceChildren();q("lancer").disabled=true;
   q("etat").textContent="Lecture de " + morceaux.length + " fichiers…";
   let correspondant=0, visites=0, affiches=0;
@@ -86,6 +97,7 @@ async function consulter(e) {
       if (!Array.isArray(lignes) || lignes.length !== p.documents) throw new Error("Lot incompatible");
       for (const d of lignes) {
         visites++;
+        if ((debut && d.date < debut) || (fin && d.date > fin)) continue;
         if (mots.some(w => !normaliser([d.titre,d.organisme,d.localisation,d.code,d.id].join(" ")).includes(w))) continue;
         correspondant++;
         if (affiches >= limiteAffichage) continue;
@@ -113,7 +125,7 @@ async function consulter(e) {
     }
     q("etat").textContent = francais.format(correspondant) + " correspondances sur " +
       francais.format(visites) + " documents examinés (" + source.toUpperCase() +
-      " · " + annee + "). " + Math.min(affiches,correspondant) +
+      " · " + (annee || "toutes années") + "). " + Math.min(affiches,correspondant) +
       " affichées (plafond " + limiteAffichage + ").";
   } catch {
     zone.replaceChildren();
