@@ -165,6 +165,13 @@ def test_ne_pas_faire_passer_une_date_impossible_pour_un_besoin_actuel():
     cas = candidat(o, "f.jsonl", 1, b"test")
     assert cas["champ_date_publication"] == "premiere_publication"
     assert cas["date_publication"] == "2025-10-02"
+    o["publication_debut"] = "02/10/2025"
+    cas = candidat(o, "f.jsonl", 1, b"test")
+    assert cas["champ_date_publication"] == "publication_debut"
+    assert cas["date_publication"] == "2025-10-02"
+    o["publication_debut"] = "31/02/2025"
+    o["premiere_publication"] = "2025-02-30"
+    assert candidat(o, "f.jsonl", 1, b"test") is None
 
 
 def test_variantes_meme_reference_ne_se_transforment_pas_en_plusieurs_besoins(tmp_path):
