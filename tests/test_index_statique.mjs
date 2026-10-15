@@ -35,7 +35,7 @@ function preparer() {
     const name = "lot_" + i.toString(16).padStart(2, "0") + ".jsonl";
     const lignes = [
       { reference: "EMP" + i + "A", intitule: "Responsable informatique",
-        organisme: "Centre public", publication_debut: "2026-10-0" + (i % 9 + 1),
+        organisme: "Centre public", publication_debut: i === 0 ? "10/10/2026" : "2026-10-0" + (i % 9 + 1),
         localisation: "Lyon", metier: "Informatique", cle_enregistrement: "k" + i },
       { reference: "EMP" + i + "B", intitule: "Ingénieure de recherche",
         employeur: "Laboratoire public", premiere_publication: "2026-08-01",
@@ -84,6 +84,7 @@ test("index complet borné, déterministe, sans doublons ni données personnelle
     assert.equal(doc.documents.find(x => x.id === "B002").lien,
       "https://boamp-datadila.opendatasoft.com/explore/dataset/boamp/");
     assert.ok(doc.documents.every(x => x.provenance.startsWith("institutionnel/")));
+    assert.equal(doc.documents.find(x => x.id === "EMP0A").date, "2026-10-10");
     assert.equal(doc.documents.find(x => x.id === "EMP1A").lien,
       "https://www.data.gouv.fr/datasets/les-offres-diffusees-sur-choisir-le-service-public/");
     assert.ok(!a.toString().includes("contact_personnel"));
