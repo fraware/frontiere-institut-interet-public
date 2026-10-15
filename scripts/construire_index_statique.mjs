@@ -27,7 +27,13 @@ function charger(racine, chemin, max = 8_000_000) {
   const taille = statSync(p).size;
   verifier(taille > 0 && taille <= max, "Fichier absent, vide ou volumineux : " + chemin);
   const brut = readFileSync(p);
-  return { donnees: JSON.parse(brut.toString("utf8")), empreinte: createHash("sha256").update(brut).digest("hex") };
+  let donnees;
+  try {
+    donnees = JSON.parse(brut.toString("utf8"));
+  } catch (e) {
+    throw new Error("JSON source non lisible : " + chemin + " (" + e.name + ")");
+  }
+  return { donnees, empreinte: createHash("sha256").update(brut).digest("hex") };
 }
 function texte(x, max = 250) {
   if (typeof x !== "string") return "";
@@ -108,10 +114,18 @@ export async function indexerEmplois(racine) {
     const courant = await hacherFichier(absolu);
     verifier(courant === partitions[fichier], "Empreinte CSP incompatible : " + fichier);
     const lecteur = createInterface({ input: createReadStream(absolu, { encoding: "utf8" }), crlfDelay: Infinity });
+    let numeroLigne = 0;
     for await (const ligne of lecteur) {
+      numeroLigne++;
       if (!ligne.trim()) continue;
       verifier(ligne.length <= 24_000, "Ligne CSP hors plafond.");
-      const item = JSON.parse(ligne);
+      let item;
+      try {
+        item = JSON.parse(ligne);
+      } catch (e) {
+        throw new Error("Partition CSP non lisible : " + fichier + " à la ligne " +
+          numeroLigne + " (" + e.name + ")");
+      }
       lus++;
       const reference = texte(item.reference, 180);
       const titre = texte(item.intitule, 300);
