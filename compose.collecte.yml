@@ -118,7 +118,19 @@ services:
       - stockage-frontiere-ted:/data/ted:ro
     ports:
       - "127.0.0.1:8765:8765"
-    # Consultation locale des index ; les quatre bases demeurent distinctes.
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/pret', timeout=12).read()"
+      interval: 5m
+      timeout: 15s
+      retries: 3
+      start_period: 15m
+    # La disponibilité complète n'est déclarée que si les quatre volumes
+    # contiennent effectivement des notices. /sante reste une sonde de vie.
+
 
 volumes:
   stockage-frontiere-boamp:
