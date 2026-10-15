@@ -136,7 +136,9 @@ def _lire_emplois(conn: sqlite3.Connection, motif: str, limite: int):
 
 
 def _lire_decp(conn: sqlite3.Connection, expression: str, limite: int):
-    recherche = '"' + expression.strip().replace('"', '""') + '"'
+    # L'index DECP existant est FTS5 : un suffixe de préfixe permet
+    # de retrouver « informatiques » avec la requête « informati ».
+    recherche = '"' + expression.strip().replace('"', '""') + '"*'
     return conn.execute(
         "SELECT v.acheteur_siret || ':' || v.id_marche AS identifiant,"
         "v.objet AS titre,v.acheteur_siret AS organisme,"
