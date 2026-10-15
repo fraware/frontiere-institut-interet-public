@@ -135,7 +135,7 @@ def _notice(brut: object, jour: date) -> dict:
 
 def collecter_jour(jour: date, *, obtenir=requete_ted,
                    attendre=time.sleep) -> tuple[list[dict], int]:
-    """Parcourir la totalité d'une journée en contrôlant chaque page et token."""
+    """Parcourir une journée française via la pagination numérotée complète."""
     if not isinstance(jour, date) or jour > datetime.now(timezone.utc).date():
         raise TEDInvalide("Journée TED impossible ou future.")
     chaine = jour.strftime("%Y%m%d")
@@ -144,9 +144,9 @@ def collecter_jour(jour: date, *, obtenir=requete_ted,
         "fields": CHAMPS,
         "limit": NOMBRE_PAR_PAGE,
         "scope": "ALL",
-        "paginationMode": "ITERATION",
+        "paginationMode": "PAGE_NUMBER",
+        "page": 1,
     }
-    vus_tokens: set[str] = set()
     documents: dict[str, dict] = {}
     total: int | None = None
     pages = 0
@@ -160,8 +160,8 @@ def collecter_jour(jour: date, *, obtenir=requete_ted,
                 or not isinstance(resultat.get("notices"), list)):
             raise TEDInvalide("Réponse TED absente, expirée ou incorrecte.")
         decompte = resultat.get("totalNoticeCount")
-        if type(decompte) is not int or decompte < 0 or decompte > PLAFOND_JOUR:
-            raise TEDInvalide("Décompte TED absent ou hors plafond.")
+        if type(decompte) is not int or decompte < 0 or decompte > 15_000:
+            raise TEDInvalide("Décompte TED absent ou supérieur à 15 000 avis.")
         if total is None:
             total = decompte
         elif total != decompte:
@@ -177,15 +177,11 @@ def collecter_jour(jour: date, *, obtenir=requete_ted,
             documents[numero] = element
             if len(documents) > PLAFOND_JOUR:
                 raise TEDInvalide("Trop de notices TED dans une journée.")
-        token = resultat.get("iterationNextToken")
-        if token is None or token == "":
+        if pages * NOMBRE_PAR_PAGE >= total:
             break
-        if not isinstance(token, str) or token in vus_tokens or len(token) > 6000:
-            raise TEDInvalide("Jeton de pagination TED invalide ou répété.")
         if not lignes:
-            raise TEDInvalide("Page vide avec pagination encore ouverte.")
-        vus_tokens.add(token)
-        corps["iterationNextToken"] = token
+            raise TEDInvalide("Page intermédiaire TED vide avant le total déclaré.")
+        corps["page"] = pages + 1
         attendre(0.4)
     if len(documents) != total:
         raise TEDInvalide("Pagination TED incomplète selon le total déclaré.")

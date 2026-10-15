@@ -110,6 +110,11 @@
       "criticite": "moyenne"
     },
     {
+      "fichier": "contrat-public-ted.yml",
+      "retard_max_heures": 120,
+      "criticite": "moyenne"
+    },
+    {
       "fichier": "decouverte-sources.yml",
       "retard_max_heures": 48,
       "criticite": "haute"
