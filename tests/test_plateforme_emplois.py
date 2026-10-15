@@ -84,9 +84,9 @@ def test_changements_et_historique_avec_deux_cliches(tmp_path):
 def test_signature_de_partition_incorrecte_annule_transaction(tmp_path):
     fichier = tmp_path / "fichiers"
     manifeste = creer_cliche(fichier, [offre("R-01", "Physique")])
-    cible = fichier / "offres_postes" / "lot_0f.jsonl"
-    with cible.open("ab") as f:
-        f.write(b"\n")
+    cible = next(p for p in (fichier / "offres_postes").glob("*.jsonl")
+                 if p.stat().st_size > 0)
+    cible.write_bytes(cible.read_bytes().replace(b"\n", b"  \n", 1))
     base = stockage(tmp_path)
     with pytest.raises(ImportEmploisInvalide, match="Empreinte"):
         base.importer(fichier)
