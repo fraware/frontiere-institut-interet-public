@@ -213,3 +213,64 @@ test("SIRET DECP–DILA : rattachement exact, ambiguïtés et altération interd
     await new Promise((resolve, reject) => serveur.close(error => error ? reject(error) : resolve()));
   }
 });
+
+
+test("BOAMP–DECP : deux concordances datées séparées du résultat des marchés",
+  { timeout: 120_000 }, async () => {
+  const { serveur, url } = await demarrerServeur();
+  const navigateur = await chromium.launch({ headless: true });
+  try {
+    const page = await navigateur.newPage();
+    const erreurs = [];
+    page.on("pageerror", e => erreurs.push(String(e)));
+    const cas = [
+      ["21060027600013", "25-94670", "5 identités"],
+      ["18002002600019", "26-62030", "1 identités"]
+    ];
+    for (const [numero, avis, nombre] of cas) {
+      await page.goto(url + "/recherche-etendue.html?acheteur=" + numero,
+        { waitUntil: "networkidle" });
+      await page.waitForFunction(() =>
+        !document.querySelector("#avis-boamp-corrobores").hidden);
+      const section = page.locator("#avis-boamp-corrobores");
+      assert.match(await section.textContent(), new RegExp(avis));
+      // Le décompte provient d'archives historiques distinctes de l'index.
+      assert.match(await section.textContent(), /relevés DECP historiques/);
+      assert.match(await section.textContent(), /aucun contrat commun ni besoin encore ouvert/);
+      assert.equal(await section.locator("li").count(), 1);
+      assert.ok((await section.locator("a").getAttribute("href")).includes(
+        "correspondances_siret_boamp_decp_17.json"));
+      assert.match(await page.locator("#etat").textContent(), /aucun lien de projet déduit/);
+    }
+
+    await page.goto(url + "/recherche-etendue.html?acheteur=00000000000000",
+      { waitUntil: "networkidle" });
+    await page.waitForFunction(() =>
+      !document.querySelector("#avis-boamp-corrobores").hidden);
+    assert.match(await page.locator("#avis-boamp-corrobores").textContent(),
+      /ne démontre pas l'absence d'autres avis BOAMP/);
+    assert.equal(await page.locator("#avis-boamp-corrobores li").count(), 0);
+
+    // Une corruption qui conserve la taille invalide aussi le rendu des marchés :
+    // aucune donnée possiblement contradictoire n'est publiée.
+    await page.route("**/partitions/avis-boamp-corrobores.json", async route => {
+      const response = await route.fetch();
+      const original = await response.text();
+      const altered = original.replace('"version":', '"versiOn":');
+      assert.notEqual(original, altered);
+      assert.equal(Buffer.byteLength(original), Buffer.byteLength(altered));
+      await route.fulfill({ response, body: altered });
+    });
+    await page.goto(url + "/recherche-etendue.html?acheteur=21060027600013",
+      { waitUntil: "networkidle" });
+    await page.waitForFunction(() => /résultats non publiés/.test(
+      document.querySelector("#etat").textContent));
+    assert.equal(await page.locator("article").count(), 0);
+    assert.equal(await page.locator("#avis-boamp-corrobores").isHidden(), true);
+    assert.deepEqual(erreurs, []);
+  } finally {
+    await navigateur.close();
+    await new Promise((resolve, reject) =>
+      serveur.close(error => error ? reject(error) : resolve()));
+  }
+});
