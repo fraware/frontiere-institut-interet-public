@@ -30,4 +30,4 @@ jobs:
           python-version: "3.12"
 
       - name: Interroger une journée récente de TED
-        run: python -m scripts.sonder_ted_reelle
+        run: python -m scripts.sonder_ted_reelle --complet
