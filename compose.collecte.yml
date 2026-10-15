@@ -1,0 +1,13 @@
+services:
+  collecte-boamp:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile.collecte
+    restart: unless-stopped
+    volumes:
+      - stockage-frontiere-boamp:/var/lib/frontiere
+    # Aucun port n'est publié : ce service acquiert et stocke les données.
+    # La fréquence réelle des nouvelles annonces dépend du producteur BOAMP.
+
+volumes:
+  stockage-frontiere-boamp:
