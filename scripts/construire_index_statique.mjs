@@ -191,6 +191,11 @@ export async function construire(racine = RACINE) {
     version: "frontiere-index-public-borne-v1",
     portee: "echantillon_documentaire_non_exhaustif",
     recherche_temps_reel: false,
+    // GitHub Actions fournit GITHUB_SHA ; Render expose RENDER_GIT_COMMIT.
+    // Ne jamais fabriquer une référence immuable si elle est indisponible.
+    revision_sources: /^[0-9a-f]{40}$/i.test(process.env.RENDER_GIT_COMMIT || process.env.GITHUB_SHA || "")
+      ? (process.env.RENDER_GIT_COMMIT || process.env.GITHUB_SHA).toLowerCase() : null,
+    provenance_revisionnee: /^[0-9a-f]{40}$/i.test(process.env.RENDER_GIT_COMMIT || process.env.GITHUB_SHA || ""),
     sources: {
       boamp: { retenus: boamp.extraits.length, notices_fichier: boamp.total_candidats,
                empreinte_fichier: boamp.sha256, fichier: boamp.origine },
