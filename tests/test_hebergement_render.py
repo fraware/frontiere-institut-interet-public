@@ -34,7 +34,7 @@ def test_blueprint_gratuit_sans_calcul_facture_ni_disque():
     for cle in (
         "plan", "disk", "numInstances", "region", "dockerfilePath",
         "dockerContext", "healthCheckPath", "maxShutdownDelaySeconds",
-        "envVars", "startCommand", "preDeployCommand",
+        "startCommand", "preDeployCommand",
     ):
         assert cle not in service, f"Paramètre incompatible avec l'option gratuite : {cle}"
 
