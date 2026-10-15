@@ -23,6 +23,28 @@
     .card h3{font-size:20px;letter-spacing:-.025em;margin:0 0 13px}.card p{color:var(--sub);font-size:14px;margin:0 0 22px;flex:1}
     .card a{font-size:14px;font-weight:650}.principle{border-top:1px solid var(--line);padding-top:24px;display:grid;grid-template-columns:1fr 1.8fr;gap:20px}
     .principle p{margin:0;color:var(--sub)}.footer{border-top:1px solid var(--line);padding:26px 0 37px;color:var(--sub);font-size:13px}
+
+    .recherche{background:#fff;border:1px solid var(--line);padding:26px 28px;margin-top:36px}
+    .recherche h2{font-size:23px;margin:0 0 6px}
+    .recherche .desc{font-size:14px;margin-bottom:19px}
+    .recherche-form{display:grid;grid-template-columns:minmax(0,1fr) 195px auto;gap:10px;align-items:end}
+    .recherche-form label{display:block;font-size:13px;font-weight:650;margin-bottom:6px}
+    .recherche-form input,.recherche-form select{width:100%;min-height:46px;border:1px solid #9cacaa;border-radius:3px;padding:10px 11px;font:inherit;color:var(--ink);background:#fff}
+    .recherche-form button,.suite{min-height:46px;background:var(--accent);border:1px solid var(--accent);border-radius:3px;color:white;font-weight:650;padding:10px 18px;cursor:pointer}
+    .recherche-form button:disabled,.suite:disabled{opacity:.5;cursor:not-allowed}
+    .index-statut{font-size:13px;color:var(--sub);margin:17px 0 0}
+    .resultats-meta{font-size:14px;color:var(--sub);margin:29px 0 12px}
+    .resultats{display:grid;gap:0}
+    .resultat{padding:18px 0;border-top:1px solid var(--line)}
+    .resultat-entete{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .resultat-source{font-size:12px;color:var(--accent);font-weight:700}
+    .resultat-date{font-size:12px;color:var(--sub)}
+    .resultat-titre{font-size:18px;line-height:1.4;font-weight:620;margin:7px 0}
+    .resultat-details{font-size:14px;color:var(--sub);margin:4px 0}
+    .resultat-preuve{font-size:12px;color:var(--sub);margin:10px 0 0;overflow-wrap:anywhere}
+    .suite{margin-top:14px}
+    [hidden]{display:none!important}
+    @media(max-width:770px){.recherche{padding:20px 18px}.recherche-form{grid-template-columns:1fr}.recherche-form button{width:100%}}
     @media(max-width:770px){main{padding-top:43px}.grid{grid-template-columns:1fr}.card{min-height:0}.principle{grid-template-columns:1fr}.head .wrap{align-items:flex-start;flex-direction:column;gap:6px}section{margin-top:48px}}
   </style>
 </head>
@@ -34,7 +56,31 @@
     <div class="eyebrow">Institut pour l’intérêt public · France</div>
     <h1>Éclairer les besoins publics par des preuves documentées.</h1>
     <p class="intro">Un travail d'acquisition et d'analyse des signaux institutionnels français, reliant marchés publics, besoins techniques et compétences mobilisables.</p>
-    <div class="status"><strong>Présentation statique — phase de construction.</strong> Les liens ci-dessous renvoient à des archives du dépôt. Ce site gratuit ne collecte pas de données en continu et ne présente aucune recherche nationale en temps réel.</div>
+    <div class="status"><strong>Publication documentaire gratuite.</strong> La recherche ci-dessous porte sur un extrait borné et non exhaustif des archives versionnées. Elle ne constitue ni un recensement national exhaustif ni une recherche en temps réel. Les collectes n'ont pas lieu sur ce site.</div>
+    <section class="recherche" id="recherche" aria-labelledby="titre-recherche">
+      <h2 id="titre-recherche">Rechercher dans les archives</h2>
+      <p class="desc">Avis BOAMP, offres d'emplois publics et marchés attribués DECP. Les résultats conservent une référence documentaire vérifiable.</p>
+      <form id="formulaire-recherche" class="recherche-form en-chargement" role="search">
+        <div>
+          <label for="expression-recherche">Mots-clés ou organisme</label>
+          <input id="expression-recherche" name="q" type="search" placeholder="Ex. équipements scientifiques, laboratoire" maxlength="120" autocomplete="off" disabled>
+        </div>
+        <div>
+          <label for="filtre-source">Source</label>
+          <select id="filtre-source" name="source" disabled>
+            <option value="">Toutes les sources</option>
+            <option value="boamp">Avis BOAMP</option>
+            <option value="emplois">Emplois publics</option>
+            <option value="decp">Marchés attribués DECP</option>
+          </select>
+        </div>
+        <button type="submit">Rechercher</button>
+      </form>
+      <p id="etat-index" class="index-statut" role="status">Chargement de l'extrait documentaire vérifié…</p>
+      <p id="etat-recherche" class="resultats-meta" aria-live="polite"></p>
+      <div id="resultats-recherche" class="resultats" aria-label="Résultats de recherche"></div>
+      <button type="button" class="suite" id="suite-recherche" hidden>Résultats suivants</button>
+    </section>
     <section aria-labelledby="sources">
       <h2 id="sources">Trois familles documentaires prioritaires</h2>
       <p class="desc">Les sources sont distinctes. Les archives contiennent des observations datées dont la couverture et les limites figurent dans leurs manifestes.</p>
@@ -47,5 +93,6 @@
     <section class="principle" aria-labelledby="method"><h2 id="method">Une méthode vérifiable</h2><p>Chaque observation doit pouvoir être ramenée à sa source et à son contexte. Une offre de poste, un avis de consultation et un marché attribué sont trois faits documentaires différents. Leur rapprochement demande une preuve supplémentaire. Les volumes présents dans le dépôt sont des archives de recherche, sans garantie de fraîcheur en temps réel.</p></section>
   </main>
   <footer class="footer"><div class="wrap">FRONTIÈRE · Présentation publique gratuite · <a href="https://github.com/fraware/frontiere-institut-interet-public">Code et documentation</a></div></footer>
+  <script type="module" src="./recherche.js"></script>
 </body>
 </html>
