@@ -49,10 +49,17 @@ archives des actions GitHub, vérifie les empreintes connues et exécute
 le calcul sans effectuer d'appel aux producteurs publics.
 
 Son résultat est conservé dans une **pièce jointe temporaire de
-procédure pendant 30 jours**. Cette contribution ne publie pas
-automatiquement ces observations sur le site ni dans la branche
-principale. Les effectifs empiriques de concordance attendent
-l'exécution de cette procédure sur les archives originales.
+procédure pendant 30 jours**. Lors d'un déclenchement par modification
+de `main`, une seconde tâche disposant de droits de publication distincts
+contrôle la version du fichier et ouvre, sous réserve de permissions GitHub,
+une **demande de fusion en brouillon**, limitée au fichier
+`institutionnel/besoins_publics/correspondances_siret_boamp_decp_17.json`.
+Elle refuse de publier si `main` a changé depuis la révision de l'étude.
+Les écritures directes sur la branche principale restent interdites.
+
+Les nombres empiriques de correspondances ne sont considérés acquis
+qu'à la suite d'une exécution réussie sur les archives originales.
+La publication demeure soumise à examen et à la réussite des contrôles.
 
 Les sources archivées et les résultats de recherche associés ont
 également une durée de conservation limitée. Leur indisponibilité future
