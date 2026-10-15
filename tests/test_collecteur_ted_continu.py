@@ -30,21 +30,22 @@ def reponse(lignes, total, token=None):
     }
 
 
-def test_parcours_integral_et_importation(tmp_path):
+def test_parcours_integral_et_importation(tmp_path, monkeypatch):
+    monkeypatch.setattr("app.collecteur_ted_continu.NOMBRE_PAR_PAGE", 1)
     demandes = []
     def obtenir(corps):
         demandes.append(corps)
-        if "iterationNextToken" not in corps:
-            return reponse([avis("1234-2026")], 2, token="suite")
-        assert corps["iterationNextToken"] == "suite"
+        if corps["page"] == 1:
+            return reponse([avis("1234-2026")], 2)
+        assert corps["page"] == 2
         return reponse([avis("1235-2026", "Cybersécurité")], 2)
     captures, pages = collecter_jour(JOUR, obtenir=obtenir, attendre=lambda _: None)
     assert pages == 2
     assert len(captures) == 2
-    assert demandes[0]["paginationMode"] == "ITERATION"
+    assert demandes[0]["paginationMode"] == "PAGE_NUMBER"
     assert demandes[0]["scope"] == "ALL"
     assert "buyer-country = FRA" in demandes[0]["query"]
-    assert demandes[1]["iterationNextToken"] == "suite"
+    assert demandes[1]["page"] == 2
     db = StockageTED(tmp_path / "ted.sqlite3")
     first = db.importer(JOUR, captures, pages)
     assert first["etat"] == "actualisé"
@@ -76,23 +77,16 @@ def test_une_republication_change_la_version_sans_perdre_l_ancienne(tmp_path):
     ({"notices": [avis("1234-2026")], "totalNoticeCount": 1,
       "timedOut": True}, "expirée"),
     ({"notices": [], "totalNoticeCount": "0"}, "Décompte"),
-    ({"notices": [avis("1234-2026")], "totalNoticeCount": 1,
-      "iterationNextToken": "suite"}, "page"),
 ])
 def test_refus_des_pages_incompletes(reponse_fausse, raison):
-    if raison == "page":
-        def obtenir(_):
-            return reponse_fausse
-        with pytest.raises(TEDInvalide, match="répété"):
-            collecter_jour(JOUR, obtenir=obtenir, attendre=lambda _: None)
-    else:
-        with pytest.raises(TEDInvalide, match=raison):
-            collecter_jour(
-                JOUR, obtenir=lambda _: reponse_fausse, attendre=lambda _: None,
-            )
+    with pytest.raises(TEDInvalide, match=raison):
+        collecter_jour(
+            JOUR, obtenir=lambda _: reponse_fausse, attendre=lambda _: None,
+        )
 
 
-def test_decompte_changeant_et_identifiants_incoherents():
+def test_decompte_changeant_et_identifiants_incoherents(monkeypatch):
+    monkeypatch.setattr("app.collecteur_ted_continu.NOMBRE_PAR_PAGE", 1)
     compteur = 0
     def obtenir(_):
         nonlocal compteur
