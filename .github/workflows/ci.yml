@@ -77,6 +77,9 @@ jobs:
       - name: Construire l'image du collecteur BOAMP permanent
         run: docker build -f infra/Dockerfile.collecte -t frontiere-collecte:test .
 
+      - name: Vérifier les six services Docker Compose
+        run: docker compose -f compose.collecte.yml config --quiet
+
       - name: Construire l'image de consultation fédérée
         run: docker build -f infra/Dockerfile.consultation -t frontiere-consultation:test .
 
