@@ -41,7 +41,7 @@ Ne demander aucune donnée personnelle de candidat. Distinguer entretiens, archi
 
 ## Épisodes et capacités publiques
 
-Le niveau P0 signifie information insuffisante ; P1 signifie compétence publique trouvée et mobilisable ; P2, compétence trouvée mais difficulté de mobilisation étayée ; P3, aucune compétence identifiée au terme d'une recherche suffisamment documentée. **Les huit dossiers commencent en P0.**
+La recherche préalable des compétences publiques distingue quatre situations : information insuffisante, compétence publique identifiée et mobilisable, compétence identifiée mais difficile à mobiliser, ou absence de compétence identifiée après une recherche suffisamment documentée. **Les huit dossiers commencent avec une information insuffisante.**
 
 La qualification « épisode de déficit de capacité » exige un problème daté, une compétence précise, une difficulté de mobilisation effectivement attestée, des démarches publiques déjà tentées et une conséquence institutionnelle vérifiable. Les intitulés de poste ne remplissent pas ce standard.
 
