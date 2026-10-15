@@ -45,6 +45,19 @@ Le volume nommé stockage-frontiere-boamp conserve les relevés et la base
 SQLite lors des redémarrages du conteneur. Le service redémarre
 automatiquement sauf arrêt explicite.
 
+Les archives historiques déjà présentes dans le dépôt sont montées en lecture
+seule. Pour les importer dans cette même base, exécuter une fois :
+
+    docker compose -f compose.collecte.yml run --rm collecte-boamp \
+      python -m app.plateforme_boamp \
+      --base sqlite:////var/lib/frontiere/avis_boamp.sqlite3 \
+      importer --repertoire /opt/frontiere/archives
+
+Cette importation peut être relancée sans créer de doublons. Son exécution
+peut être longue selon la taille du corpus. Elle exploite les archives
+effectivement présentes dans la copie locale du dépôt ; un historique
+national complet ne doit pas être présumé.
+
 Consulter les derniers événements :
 
     docker compose -f compose.collecte.yml logs -f collecte-boamp
