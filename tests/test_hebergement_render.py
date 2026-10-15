@@ -34,6 +34,7 @@ def test_chemins_des_quatre_bases_sur_le_disque_unique():
     env = {
         x["key"]: x["value"]
         for x in configuration()["services"][0]["envVars"]
+        if "value" in x
     }
     assert env["FRONTIERE_DONNEES"] == "/var/lib/frontiere"
     assert env["FRONTIERE_COLLECTE_ACTIVE"] == "1"
