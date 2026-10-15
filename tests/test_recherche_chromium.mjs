@@ -52,6 +52,23 @@ test("navigateur réel : recherche initiale, filtre BOAMP et recherche étendue"
     await page.waitForFunction(() => /documents examinés/.test(document.querySelector("#etat").textContent));
     assert.ok(await page.locator("article").count() > 0);
     assert.ok((await page.locator("#etat").textContent()).includes("emplois".toUpperCase()));
+
+    // Recherche multiannuelle : le choix libre ne filtre plus par une seule année.
+    await page.locator("#annee").selectOption("");
+    await page.locator("#lancer").click();
+    await page.waitForFunction(() => /toutes années/.test(document.querySelector("#etat").textContent));
+    assert.ok(await page.locator("article").count() > 0);
+
+    // Intervalle de publication : une période incohérente est refusée
+    // sans afficher des résultats appartenant à la recherche précédente.
+    await page.locator("#date-debut").fill("2026-11-01");
+    await page.locator("#date-fin").fill("2026-10-01");
+    await page.locator("#lancer").click();
+    assert.match(await page.locator("#etat").textContent(), /Période incohérente/);
+    assert.equal(await page.locator("article").count(), 0);
+    await page.locator("#date-debut").fill("");
+    await page.locator("#date-fin").fill("");
+
     // Modifier un champ JSON sans modifier sa longueur : la seule
     // vérification de taille ne doit pas suffire à accepter le document.
     await page.route("**/partitions/part-*.json", async route => {
