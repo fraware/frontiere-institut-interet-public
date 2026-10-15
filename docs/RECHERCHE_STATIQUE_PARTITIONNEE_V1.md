@@ -154,3 +154,51 @@ node --test tests/test_rattachements_institutionnels.mjs
 node scripts/construire_partitions_statiques.mjs
 node --test tests/test_recherche_chromium.mjs
 ```
+
+## Avis BOAMP corroborés dans les dossiers DECP
+
+Les recherches par SIRET d'acheteur affichent désormais séparément les
+observations de l'enquête indépendante menée sur **17 avis BOAMP**.
+Dans cette population restreinte, 16 établissements distincts ont été
+retrouvés par recherche administrative exacte. Deux avis possèdent une
+concordance documentaire avec des identités de marchés DECP archivées :
+
+- Avis `25-94670` (26 août 2025), SIRET `21060027600013`,
+  cinq identités documentaires de marchés portant le même SIRET ;
+- avis `26-62030` (25 juin 2026), SIRET `18002002600019`,
+  une identité documentaire de marché portant le même SIRET.
+
+Les six identités DECP correspondent aux **relevés historiques utilisés par
+l'étude**, et non nécessairement aux 5 000 notices retenues dans la recherche
+étendue. La section dédiée reste distincte du résultat de recherche :
+ses observations ne sont pas affectées par les filtres d'année, de dates ou
+de termes appliqués à l'extrait DECP.
+
+Pour éviter toute attribution contractuelle infondée, la section expose
+exclusivement l'avis, la date, le SIRET, le nombre d'identités de marchés
+et le registre des preuves. Un SIRET BOAMP était un identifiant à quatorze
+chiffres sans schéma déclaré ; sa reconnaissance comme SIRET exact dépend
+de la vérification administrative indépendante figurant dans les archives
+de l'étude. Aucune liaison d'avis à un marché particulier n'est démontrée.
+
+Le générateur `scripts/construire_avis_boamp_corrobores.mjs` contrôle
+l'empreinte SHA-256 figée du registre de 17 avis et son fichier témoin,
+valide les 17 observations et publie seulement les deux concordances.
+Le résultat `site_frontiere/partitions/avis-boamp-corrobores.json` est
+annoncé dans le manifeste avec sa taille et son empreinte. Le navigateur
+les vérifie avant affichage. En cas d'altération, les résultats du dossier
+ne sont pas publiés.
+
+L'étude est non représentative de la France. L'absence de concordance
+sur un SIRET donné parmi 17 avis ne prouve pas l'absence d'autres avis.
+Aucun besoin ouvert, contrat commun ou taux de couverture nationale
+n'est déduit. L'ensemble fonctionne sans service nouveau ni collecte réseau
+au moment de la consultation.
+
+Essais de contrôle :
+
+```sh
+node --test tests/test_avis_boamp_corrobores.mjs
+node scripts/construire_partitions_statiques.mjs
+node --test tests/test_recherche_chromium.mjs
+```
