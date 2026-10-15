@@ -58,3 +58,54 @@ La prochaine amélioration scientifique doit mesurer les documents admissibles
 écartés par les plafonds, source par source, sur les archives complètes et les
 identifiants distincts. Ce travail nécessitera des décomptes adaptés à chaque
 producteur ; aucune inférence de couverture nationale n'en découlera à lui seul.
+
+## Regroupements documentaires par SIRET d'acheteur DECP
+
+La recherche étendue comporte désormais un filtre sur l'identifiant **SIRET
+déclaré de l'acheteur d'un marché attribué**. Lors de la construction de l'index
+DECP, `scripts/construire_index_statique.mjs` crée la référence documentaire
+`acheteur_siret/id_marche` à partir des données DECP AIFE et DGFiP. Le
+filtre utilise les **14 chiffres exacts** présents dans cette référence,
+indépendamment des noms, adresses et ressemblances de textes.
+
+Une notice affichée dans l'extrait DECP contient un lien « Consulter les
+marchés indexés du même SIRET déclaré ». Ce lien ouvre une adresse partageable
+de la forme `recherche-etendue.html?acheteur=12345678901234`, sélectionne
+automatiquement DECP et toutes les années présentes, puis restitue les notices
+datées par ordre documentaire décroissant. Les autres filtres de dates et de
+termes restent utilisables. Aucune collecte réseau supplémentaire n'est
+déclenchée vers les producteurs : le navigateur charge les partitions
+statiques sélectionnées avec leurs contrôles d'intégrité existants.
+
+Les données sont limitées aux documents **retenus dans l'index DECP** (au
+plus 5 000) ; l'interface affiche au plus 100 résultats et compte les
+correspondances du périmètre exploré. En l'absence de correspondance, elle
+présente zéro résultat. La date utilisée est la date de notification du
+marché, ou à défaut une date de publication déclarée dans le relevé.
+
+### Portée et exclusions
+
+Ce regroupement atteste uniquement que plusieurs notices portent le **même
+SIRET d'acheteur déclaré par le producteur**. L'identité administrative et
+juridique de ce SIRET n'est pas revérifiée à travers le répertoire Sirene ;
+un site, un service et une personne morale ne sont pas automatiquement
+assimilés. Le regroupement ne démontre ni projet commun, ni besoin encore
+ouvert, ni chronologie de mobilisation des compétences.
+
+Les avis BOAMP et les offres d'emploi public ne sont **pas** reliés par
+ressemblance de nom. Ils ne rejoindront ces ensembles que si une correspondance
+d'identifiant officiel est vérifiée et sourcée séparément.
+
+### Tests
+
+```sh
+node --test tests/test_acheteurs_decp.mjs
+node scripts/construire_partitions_statiques.mjs
+node --test tests/test_recherche_chromium.mjs
+```
+
+Les essais vérifient les égalités exactes, les faux rapprochements par nom,
+les identifiants malformés, les dates, le partage d'une adresse de dossier
+et la restitution sur le corpus réel dans Chromium. La consultation continue
+de refuser les lots altérés. Aucun service persistant ni abonnement payant
+n'est ajouté.
