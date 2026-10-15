@@ -101,6 +101,25 @@ services:
       - stockage-frontiere-ted:/var/lib/frontiere
     # Interface TED Search API v3 : quatre dates réinterrogées toutes les 2 h.
 
+  consultation:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile.consultation
+    restart: unless-stopped
+    environment:
+      FRONTIERE_BOAMP_DB: /data/boamp/avis_boamp.sqlite3
+      FRONTIERE_EMPLOIS_DB: /data/emplois/offres_emplois.sqlite3
+      FRONTIERE_DECP_DB: /data/decp/marches_decp.sqlite3
+      FRONTIERE_TED_DB: /data/ted/avis_ted.sqlite3
+    volumes:
+      - stockage-frontiere-boamp:/data/boamp:ro
+      - stockage-frontiere-emplois:/data/emplois:ro
+      - stockage-frontiere-decp:/data/decp:ro
+      - stockage-frontiere-ted:/data/ted:ro
+    ports:
+      - "127.0.0.1:8765:8765"
+    # Consultation locale des index ; les quatre bases demeurent distinctes.
+
 volumes:
   stockage-frontiere-boamp:
   stockage-frontiere-emplois:
