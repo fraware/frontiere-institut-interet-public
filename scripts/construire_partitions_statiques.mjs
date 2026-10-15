@@ -54,6 +54,62 @@ export function partitionner(lignes) {
   }
   return fragments;
 }
+/** Résumer les seules unités effectivement publiées, sans taux de couverture
+ * national ni assimilation entre annonces, variantes d'emploi et contrats.
+ *
+ * La valeur 'total_candidats' provient des fichiers parcourus. Elle ne
+ * dénombre pas nécessairement les documents distincts, valides ou actifs.
+ */
+export function bilanSelection(extractions, partitions, plafonds = REPARTITION) {
+  const sources = ["boamp", "emplois", "decp"];
+  const unites = {
+    boamp: "annonces du fichier BOAMP parcouru",
+    emplois: "variantes d'offres extraites du fichier public",
+    decp: "notices contractuelles parcourues, répétitions possibles"
+  };
+  if (!Array.isArray(partitions)) throw new Error("Partitions absentes du bilan.");
+  for (const p of partitions) {
+    if (!sources.includes(p?.source) || !/^\\d{4}$/.test(p.annee) ||
+        !Number.isSafeInteger(p.documents) || p.documents < 1) {
+      throw new Error("Partition incompatible avec le bilan de sélection.");
+    }
+  }
+  return {
+    version: "frontiere-bilan-selection-v1",
+    couverture_nationale_etablie: false,
+    pourcentage_couverture_calculable: false,
+    sources: sources.map(source => {
+      const releve = extractions?.[source];
+      const plafond = plafonds?.[source];
+      if (!Array.isArray(releve?.extraits) ||
+          !Number.isSafeInteger(releve.total_candidats) ||
+          !Number.isSafeInteger(plafond) || plafond < 1) {
+        throw new Error("Entrée source invalide pour le bilan : " + source);
+      }
+      const repartition = new Map();
+      for (const p of partitions.filter(p => p.source === source)) {
+        repartition.set(p.annee, (repartition.get(p.annee) || 0) + p.documents);
+      }
+      const retenus = [...repartition.values()].reduce((a, n) => a + n, 0);
+      if (retenus !== releve.extraits.length || retenus > plafond ||
+          retenus > releve.total_candidats) {
+        throw new Error("Décompte incohérent des documents : " + source);
+      }
+      return {
+        source, documents_indexes: retenus, plafond,
+        plafond_atteint: retenus === plafond,
+        enregistrements_sources_parcourus: releve.total_candidats,
+        unite_enregistrements_sources: unites[source],
+        annees_indexees: [...repartition.entries()].sort(([a], [b]) => a.localeCompare(b))
+          .map(([annee, documents]) => ({ annee, documents }))
+      };
+    }),
+    precision: "Le plafond atteint ne chiffre pas les omissions : les enregistrements " +
+      "parcourus contiennent des variantes, répétitions ou notices exclues. " +
+      "Aucun pourcentage de couverture nationale n'est calculable."
+  };
+}
+
 export async function construirePartitions(racine = RACINE) {
   const [boamp, emplois, decp] = await Promise.all([
     Promise.resolve(indexerBoamp(racine, REPARTITION.boamp)),
@@ -80,6 +136,7 @@ export async function construirePartitions(racine = RACINE) {
       emplois: emplois.total_candidats,
       decp: decp.total_candidats,
     },
+    selection: bilanSelection({ boamp, emplois, decp }, fichiers),
     partitions: fichiers.map(({ nom, source, annee, documents, octets, sha256 }) =>
       ({ fichier: nom, source, annee, documents, octets, sha256 })
     )
