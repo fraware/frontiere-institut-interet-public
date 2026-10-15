@@ -103,9 +103,42 @@ Render fournit des instantanés périodiques de disques mais ceux-ci ne
 remplacent pas les sauvegardes SQLite vérifiées ni la conservation des
 fichiers originaux sur un autre service de stockage.
 
-La recherche ouverte par une URL publique nécessite un contrôle d'accès
-adapté avant toute publication réservée à un groupe de travail. Ce contrôle
-est traité dans une livraison distincte.
+## Accès à l'interface hébergée
+
+Le service Render impose maintenant la variable
+\`FRONTIERE_CONTROLE_ACCES_OBLIGATOIRE=1\` et un secret
+\`FRONTIERE_JETON_ACCES\` qui est saisi dans le tableau de bord Render
+au moment de la création de l'infrastructure. Sa valeur n'est jamais
+enregistrée dans GitHub.
+
+Produire un secret localement :
+
+    python3 -c 'import secrets; print(secrets.token_urlsafe(32))'
+
+La valeur doit comporter au moins 32 caractères ASCII. En l'absence
+de cette valeur, les routes de consultation renvoient HTTP 503 et
+aucune recherche n'est accessible. Un mauvais secret renvoie HTTP 401.
+
+L'accès autorisé utilise l'en-tête HTTP Authorization :
+
+    curl -H "Authorization: Bearer VOTRE_JETON" \
+      "https://ADRESSE_RENDER/recherche?q=informatique"
+
+La sonde /sante reste accessible sans secret ; elle ne donne alors
+que l'état du processus HTTP, sans volumes documentaires. Les routes
+/sources, /exploitation, /pret, /recherche, /docs et /openapi.json
+restent privées.
+
+La conservation du jeton dans un terminal ou dans un fichier externe
+au dépôt appartient à l'administrateur du service. Le secret ne doit
+pas apparaître dans les liens partagés ni les journaux applicatifs.
+
+En configuration locale Docker Compose, le contrôle d'accès demeure
+facultatif tant que ces variables ne sont pas définies. Cette
+compatibilité préserve les usages existants sur 127.0.0.1.
+
+Les consultations publiques et l'authentification d'utilisateurs
+distincts relèvent d'une évolution suivante.
 
 ## Vérification avant branchement au compte
 

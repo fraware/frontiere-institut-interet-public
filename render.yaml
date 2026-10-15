@@ -25,6 +25,10 @@ services:
         value: "1"
       - key: FRONTIERE_AMORCAGE_AUTO
         value: "1"
+      - key: FRONTIERE_CONTROLE_ACCES_OBLIGATOIRE
+        value: "1"
+      - key: FRONTIERE_JETON_ACCES
+        sync: false
       - key: FRONTIERE_BOAMP_DB
         value: /var/lib/frontiere/boamp/avis_boamp.sqlite3
       - key: FRONTIERE_EMPLOIS_DB
