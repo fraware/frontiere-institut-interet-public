@@ -92,3 +92,85 @@ jobs:
           path: ${{ runner.temp }}/correspondances/correspondances-siret-17.json
           retention-days: 30
           if-no-files-found: error
+
+  proposer_publication:
+    name: Publier une proposition contrôlée du registre documentaire
+    needs: [recouper]
+    if: github.event_name == 'push' && github.repository == 'fraware/frontiere-institut-interet-public'
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: read
+    steps:
+      - name: Lire uniquement la révision déclenchante
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Récupérer le rapport produit par la vérification
+        uses: actions/download-artifact@v4
+        with:
+          name: correspondances-siret-boamp-decp-${{ github.run_id }}
+          path: ${{ runner.temp }}/publication
+
+      - name: Revalider le document à soumettre
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          p = Path(os.environ["RUNNER_TEMP"]) / "publication/correspondances-siret-17.json"
+          if not p.is_file() or not 1000 <= p.stat().st_size <= 100000:
+              raise SystemExit("Rapport documentaire absent ou anormal.")
+          r = json.loads(p.read_text(encoding="utf-8"))
+          if (r.get("version") != "correspondances-siret-boamp-decp-17-v1"
+                  or r.get("nombre_avis") != 17
+                  or r.get("nombre_siret_boamp_distincts") != 16
+                  or r.get("aucune_identite_de_contrat_deduite") is not True
+                  or r.get("role_acheteur_juridiquement_etabli") is not False
+                  or len(r.get("observations", [])) != 17
+                  or any(x.get("identite_contrat_decp_demonstree") is not False
+                         for x in r["observations"])):
+              raise SystemExit("Registre non conforme à la portée autorisée.")
+          PY
+
+      - name: Préparer une proposition distincte de main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          DEST="institutionnel/besoins_publics/correspondances_siret_boamp_decp_17.json"
+          SOURCE="$RUNNER_TEMP/publication/correspondances-siret-17.json"
+          SHA_ACTUEL="$(gh api "repos/$GITHUB_REPOSITORY/branches/main" --jq .commit.sha)"
+          if [[ "$SHA_ACTUEL" != "$GITHUB_SHA" ]]; then
+            echo "main a évolué depuis la preuve, proposition refusée."
+            exit 1
+          fi
+          if [[ -f "$DEST" ]] && cmp -s "$SOURCE" "$DEST"; then
+            echo "Le registre vérifié est déjà publié. Aucune proposition."
+            exit 0
+          fi
+          BRANCHE="donnees/correspondances-boamp-decp-$GITHUB_RUN_ID"
+          gh api -X POST "repos/$GITHUB_REPOSITORY/git/refs" \
+            -f ref="refs/heads/$BRANCHE" -f sha="$GITHUB_SHA" > /dev/null
+          BASE64="$(base64 -w0 < "$SOURCE")"
+          if [[ -f "$DEST" ]]; then
+            BLOB="$(git hash-object "$DEST")"
+            gh api -X PUT "repos/$GITHUB_REPOSITORY/contents/$DEST" \
+              -f branch="$BRANCHE" -f sha="$BLOB" \
+              -f message="Actualiser le registre BOAMP–DECP vérifié sur 17 avis" \
+              -f content="$BASE64" > /dev/null
+          else
+            gh api -X PUT "repos/$GITHUB_REPOSITORY/contents/$DEST" \
+              -f branch="$BRANCHE" \
+              -f message="Publier le registre BOAMP–DECP vérifié sur 17 avis" \
+              -f content="$BASE64" > /dev/null
+          fi
+          gh pr create --draft --base main --head "$BRANCHE" \
+            --title "Publier les 17 rapprochements documentaires BOAMP–DECP vérifiés" \
+            --body "Proposition de données issue de la procédure GitHub Actions $GITHUB_RUN_ID. Chaque réponse originale a été revalidée ; aucun lien contractuel ou besoin public n'est affirmé. Vérifier le fichier, la portée de l'enquête et les contrôles du dépôt avant fusion."
