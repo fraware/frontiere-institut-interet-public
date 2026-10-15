@@ -1,0 +1,74 @@
+name: Préparer la relecture des besoins de recrutement
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/preparer_relecture_besoins_explicites.py"
+      - "tests/test_preparer_relecture_besoins_explicites.py"
+      - ".github/workflows/relecture-besoins-explicites-csp.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: relecture-besoins-csp-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  extraire:
+    if: github.repository == 'fraware/frontiere-institut-interet-public'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Récupérer les archives de la révision
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Installer Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Vérifier les règles avec des cas synthétiques
+        run: |
+          python -m pip install "pytest>=8,<10"
+          python -m pytest -q tests/test_preparer_relecture_besoins_explicites.py
+
+      - name: Préparer les pièces à examiner sans interroger de site extérieur
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/frontiere-relecture"
+          python -m scripts.preparer_relecture_besoins_explicites \
+            --sortie "$RUNNER_TEMP/frontiere-relecture/candidats-csp.json"
+          python - "$RUNNER_TEMP/frontiere-relecture/candidats-csp.json" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          p = Path(sys.argv[1])
+          r = json.loads(p.read_text(encoding="utf-8"))
+          if (r.get("version") != "frontiere-candidats-relecture-besoins-v1"
+                  or r.get("nombre_candidats") != 24
+                  or len({c["reference"] for c in r["candidats"]}) != 24
+                  or r.get("relecture_humaine_effectuee") is not False
+                  or r.get("besoins_actuellement_non_satisfaits_demonstres") != 0
+                  or p.stat().st_size > 100_000):
+              raise SystemExit("Dossier de relecture incohérent.")
+          print("Pièces vérifiées, non expertisées : " + str(r["nombre_candidats"]))
+          PY
+          (
+            cd "$RUNNER_TEMP/frontiere-relecture"
+            sha256sum candidats-csp.json > candidats-csp.sha256
+          )
+
+      - name: Conserver temporairement les pièces sans intégration automatique
+        uses: actions/upload-artifact@v4
+        with:
+          name: relecture-besoins-csp-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/frontiere-relecture/candidats-csp.json
+            ${{ runner.temp }}/frontiere-relecture/candidats-csp.sha256
+          retention-days: 30
+          if-no-files-found: error
