@@ -10,8 +10,8 @@ RUN python -m pip install --no-cache-dir "sqlalchemy>=2.0,<3" \
     && useradd --system --uid 10001 --home-dir /var/lib/frontiere frontiere \
     && chown -R frontiere:frontiere /var/lib/frontiere
 
-COPY app/__init__.py app/plateforme_boamp.py app/collecteur_boamp_continu.py /opt/frontiere/app/
-COPY scripts/collecter_besoins_publics.py /opt/frontiere/scripts/
+COPY app/__init__.py app/plateforme_boamp.py app/collecteur_boamp_continu.py app/plateforme_emplois.py app/collecteur_emplois_continu.py /opt/frontiere/app/
+COPY scripts/collecter_besoins_publics.py scripts/sonder_structure_offres_publiques.py scripts/extraire_offres_publiques.py /opt/frontiere/scripts/
 
 USER frontiere
 VOLUME ["/var/lib/frontiere"]

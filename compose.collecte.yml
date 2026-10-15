@@ -10,5 +10,28 @@ services:
     # Aucun port n'est publié : ce service acquiert et stocke les données.
     # La fréquence réelle des nouvelles annonces dépend du producteur BOAMP.
 
+  collecte-emplois:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile.collecte
+    restart: unless-stopped
+    command:
+      - python
+      - -m
+      - app.collecteur_emplois_continu
+      - --base
+      - sqlite:////var/lib/frontiere/offres_emplois.sqlite3
+      - --repertoire
+      - /var/lib/frontiere/releves
+      - --suivre
+      - --intervalle
+      - "21600"
+    volumes:
+      - stockage-frontiere-emplois:/var/lib/frontiere
+      - ./institutionnel/besoins_publics:/opt/frontiere/archives:ro
+    # Fichier officiel DGAFP : vérifier le catalogue, télécharger le CSV
+    # seulement après changement observé ou en cas de reprise incomplète.
+
 volumes:
   stockage-frontiere-boamp:
+  stockage-frontiere-emplois:
