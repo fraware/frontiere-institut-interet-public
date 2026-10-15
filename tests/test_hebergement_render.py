@@ -39,7 +39,8 @@ def test_blueprint_render_et_disque_persistant_unique():
         "mountPath": "/var/lib/frontiere",
         "sizeGB": 50,
     }
-    assert 30 <= service["maxShutdownDelaySeconds"] <= 300
+    # Render refuse maxShutdownDelaySeconds pour les services avec disque.
+    assert "maxShutdownDelaySeconds" not in service
 
 
 def test_chemins_des_trois_bases_sur_le_disque_unique():
