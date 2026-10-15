@@ -1,79 +1,49 @@
-"""Tester la configuration Render et les invariants de l'instance mono-disque."""
+"""Le Blueprint par défaut ne doit engager aucune dépense d'hébergement."""
 from pathlib import Path
 import yaml
 
 RACINE = Path(__file__).resolve().parents[1]
 
 
-def configuration():
-    return yaml.safe_load((RACINE / "render.yaml").read_text(encoding="utf-8"))
-
-
 def services_production():
-    document = configuration()
+    document = yaml.safe_load((RACINE / "render.yaml").read_text(encoding="utf-8"))
     assert "services" not in document
-    projets = document["projects"]
-    assert len(projets) == 1
-    assert projets[0]["name"] == "Frontiere"
-    environnements = projets[0]["environments"]
-    assert len(environnements) == 1
-    assert environnements[0]["name"] == "Production"
-    return environnements[0]["services"]
+    assert len(document["projects"]) == 1
+    projet = document["projects"][0]
+    assert projet["name"] == "Frontiere"
+    assert len(projet["environments"]) == 1
+    environnement = projet["environments"][0]
+    assert environnement["name"] == "Production"
+    return environnement["services"]
 
 
-def test_blueprint_render_et_disque_persistant_unique():
+def test_blueprint_gratuit_sans_calcul_facture_ni_disque():
     services = services_production()
     assert len(services) == 1
     service = services[0]
     assert service["type"] == "web"
-    assert service["runtime"] == "docker"
-    assert service["region"] == "frankfurt"
-    assert service["plan"] != "free"
-    assert service["plan"] == "1c-2g"
-    assert service["numInstances"] == 1
-    assert service["dockerfilePath"] == "./infra/Dockerfile.hebergement"
-    assert service["dockerContext"] == "."
-    assert service["healthCheckPath"] == "/sante"
-    assert service["disk"] == {
-        "name": "frontiere-donnees",
-        "mountPath": "/var/lib/frontiere",
-        "sizeGB": 50,
-    }
-    # Render refuse maxShutdownDelaySeconds pour les services avec disque.
-    assert "maxShutdownDelaySeconds" not in service
+    assert service["runtime"] == "static"
+    assert service["name"] == "frontiere-observatoire-public"
+    assert service["staticPublishPath"] == "./site_frontiere"
+    assert service["buildCommand"] == "test -f site_frontiere/index.html"
+    assert service["autoDeployTrigger"] == "off"
+    assert service["previews"]["generation"] == "off"
+
+    # Interdire toute réintroduction implicite de la configuration payante.
+    for cle in (
+        "plan", "disk", "numInstances", "region", "dockerfilePath",
+        "dockerContext", "healthCheckPath", "maxShutdownDelaySeconds",
+        "envVars", "startCommand", "preDeployCommand",
+    ):
+        assert cle not in service, f"Paramètre incompatible avec l'option gratuite : {cle}"
 
 
-def test_chemins_des_trois_bases_sur_le_disque_unique():
-    env = {
-        x["key"]: x["value"]
-        for x in services_production()[0]["envVars"]
-        if "value" in x
-    }
-    assert env["FRONTIERE_DONNEES"] == "/var/lib/frontiere"
-    assert env["FRONTIERE_COLLECTE_ACTIVE"] == "1"
-    assert env["FRONTIERE_AMORCAGE_AUTO"] == "1"
-    assert env["FRONTIERE_CONTROLE_ACCES_OBLIGATOIRE"] == "1"
-    jeton = next(
-        x for x in services_production()[0]["envVars"]
-        if x["key"] == "FRONTIERE_JETON_ACCES"
-    )
-    assert jeton == {"key": "FRONTIERE_JETON_ACCES", "sync": False}
-    chemins = [
-        env["FRONTIERE_BOAMP_DB"],
-        env["FRONTIERE_EMPLOIS_DB"],
-        env["FRONTIERE_DECP_DB"],
-    ]
-    assert len(set(chemins)) == 3
-    assert all(p.startswith("/var/lib/frontiere/") for p in chemins)
-
-
-def test_image_contient_archives_initiales_et_modules_du_service():
-    image = (RACINE / "infra/Dockerfile.hebergement").read_text(encoding="utf-8")
-    script = (RACINE / "infra/demarrer_hebergement.sh").read_text(encoding="utf-8")
-    assert "COPY app/" in image
-    assert "COPY scripts/" in image
-    assert "COPY institutionnel/besoins_publics/" in image
-    assert "COPY institutionnel/decp/" in image
-    assert "gosu" in image and "gosu frontiere:frontiere" in script
-    assert "python -m app.exploitation_hebergee" in script
-    assert "chown frontiere:frontiere" in script
+def test_presentation_ne_pretend_pas_collecter_des_donnees():
+    page = (RACINE / "site_frontiere/index.html").read_text(encoding="utf-8")
+    assert "lang=\"fr\"" in page
+    assert "BOAMP" in page
+    assert "Emplois publics" in page or "emplois publics" in page
+    assert "DECP" in page
+    assert "ne collecte pas de données en continu" in page
+    assert "temps réel" in page
+    assert "TED" not in page
