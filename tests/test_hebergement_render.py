@@ -25,7 +25,7 @@ def test_blueprint_gratuit_sans_calcul_facture_ni_disque():
     assert service["runtime"] == "static"
     assert service["name"] == "frontiere-observatoire-public"
     assert service["staticPublishPath"] == "./site_frontiere"
-    assert service["buildCommand"] == "test -f site_frontiere/index.html"
+    assert service["buildCommand"] == "node scripts/construire_index_statique.mjs"
     assert service["autoDeployTrigger"] == "off"
     assert service["previews"]["generation"] == "off"
 

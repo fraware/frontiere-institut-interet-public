@@ -11,7 +11,7 @@ projects:
           - type: web
             name: frontiere-observatoire-public
             runtime: static
-            buildCommand: test -f site_frontiere/index.html
+            buildCommand: node scripts/construire_index_statique.mjs
             staticPublishPath: ./site_frontiere
             autoDeployTrigger: "off"
             previews:
