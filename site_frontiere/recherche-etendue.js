@@ -77,8 +77,11 @@ async function consulter(e) {
       const brut = await rep.text();
       const bytes = new TextEncoder().encode(brut);
       if (bytes.length !== p.octets) throw new Error("Taille incorrecte");
-      // Le manifeste rend explicite le SHA calculé au build. La correspondance
-      // des octets est vérifiée ici ; la CI atteste les empreintes à la publication.
+      if (!globalThis.crypto?.subtle) throw new Error("Vérification SHA-256 indisponible");
+      const empreinte = new Uint8Array(await crypto.subtle.digest("SHA-256", bytes));
+      const hex = Array.from(empreinte, b => b.toString(16).padStart(2, "0")).join("");
+      if (hex !== p.sha256) throw new Error("Empreinte incorrecte");
+      // Tout le contenu du lot doit correspondre au manifeste publié.
       const lignes = JSON.parse(brut);
       if (!Array.isArray(lignes) || lignes.length !== p.documents) throw new Error("Lot incompatible");
       for (const d of lignes) {

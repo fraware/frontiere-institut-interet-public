@@ -10,7 +10,7 @@ Chaque publication construit les données depuis le dépôt sans appel réseau v
 
 L'interface charge uniquement les lots de l'année et de la source demandées par l'utilisateur. Elle affiche au plus 100 correspondances par recherche, tout en comptant l'ensemble des résultats identifiés dans les lots sélectionnés. Le traitement s'exécute dans le navigateur ; aucun serveur ou stockage persistant payant n'est ajouté.
 
-La consultation vérifie la taille des lots et la cohérence de leur contenu avec le manifeste. La vérification cryptographique SHA-256 est effectuée lors de la construction par les contrôles GitHub ; le navigateur n'effectue pas cette vérification cryptographique. Toute erreur de lecture interrompt la restitution pour éviter de présenter des résultats partiels comme complets.
+La consultation vérifie la taille des lots, leur empreinte cryptographique SHA-256 avec l'interface native du navigateur et la cohérence du contenu avec le manifeste. Cette vérification est également répétée sur les archives réelles par les contrôles GitHub. Si le navigateur ne permet pas le contrôle d'empreinte, ou si un seul lot échoue, aucun résultat de la recherche demandée n'est affiché. Toute erreur de lecture interrompt la restitution pour éviter de présenter des résultats partiels comme complets.
 
 ## Contrôles
 
