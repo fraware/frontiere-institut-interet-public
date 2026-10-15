@@ -295,6 +295,12 @@ def creer_application(chemins: Chemins | None = None) -> FastAPI:
         from app.etat_exploitation import diagnostic
         return diagnostic(config)
 
+    @app.get("/collectes")
+    def collectes():
+        from app.journal_collectes import derniere_activite
+        fichier = os.environ.get("FRONTIERE_JOURNAL_COLLECTES")
+        return derniere_activite(Path(fichier) if fichier else None)
+
     @app.get("/pret")
     def pret():
         from app.etat_exploitation import diagnostic
