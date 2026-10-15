@@ -215,6 +215,44 @@ export async function construire(racine = RACINE) {
   return buffer;
 }
 
+/** Les dates de publication des documents ne sont jamais assimilées
+ * aux dates de capture des fichiers ou de construction du site.
+ */
+export function metadonneesDates(racine, revision, maintenant = new Date().toISOString()) {
+  const relever = (fichier, cle) => {
+    try {
+      const doc = JSON.parse(readFileSync(join(racine, fichier), "utf8"));
+      const valeur = doc?.[cle];
+      return typeof valeur === "string" && !Number.isNaN(Date.parse(valeur)) ? valeur : null;
+    } catch { return null; }
+  };
+  return {
+    version: "frontiere-dates-index-v1",
+    revision_sources: revision || null,
+    indexation_site_le: maintenant,
+    nature_des_dates_documentaires: {
+      boamp: "Date de parution déclarée de l'avis",
+      emplois: "Date de début de publication de l'offre",
+      decp: "Date de notification du marché, ou publication déclarée en repli"
+    },
+    etats_des_archives: {
+      boamp: {
+        dernier_controle_archive_le: relever("institutionnel/besoins_publics/etat_boamp.json", "controle_le"),
+        date_acquisition_de_chaque_avis: null
+      },
+      emplois: {
+        derniere_extraction_archive_le: relever("institutionnel/besoins_publics/manifest_offres_postes.json", "extraire_le"),
+        date_acquisition_de_chaque_offre: null
+      },
+      decp: {
+        derniere_construction_index_archive_le: relever("institutionnel/decp/bilan_index_unifie.json", "construit_le"),
+        date_acquisition_de_chaque_marche: null
+      }
+    },
+    precision: "Horodatages de fichier source et de site distincts des dates contractuelles. L'acquisition par document n'est pas attestée dans cet extrait."
+  };
+}
+
 async function main() {
   const params = process.argv.slice(2);
   const racineIndex = params.indexOf("--racine");
@@ -226,6 +264,8 @@ async function main() {
   mkdirSync(dirname(sortie), { recursive: true });
   writeFileSync(sortie, data);
   const index = JSON.parse(data);
+  const dates = metadonneesDates(racine, index.revision_sources);
+  writeFileSync(join(dirname(sortie), "metadonnees-index.json"), JSON.stringify(dates) + "\n");
   console.log(JSON.stringify({
     statut: "construit", octets: data.length,
     documents: index.documents.length,
