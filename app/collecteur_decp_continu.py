@@ -100,9 +100,13 @@ def importer_archives(base: Path, archives: Path, dossier: Path) -> dict:
     for nom in NOMS:
         original = archives / nom
         cible = dossier / nom
-        if not original.is_file() or cible.exists():
+        if not cible.is_file() and not original.is_file():
             continue
-        doc = _charger(original)
+        # Préférer un état local déjà actualisé au corpus historique monté.
+        # Réimporter dans la base les relevés déjà présents pour réparer une
+        # interruption entre l'écriture d'un état et sa projection SQL.
+        existait = cible.is_file()
+        doc = _charger(cible if existait else original)
         if nom == "sonde_aife_json.json":
             verifier_rapport(doc)
             importer_rapport(base, doc)
@@ -113,7 +117,8 @@ def importer_archives(base: Path, archives: Path, dossier: Path) -> dict:
                 compte += 1
         elif doc.get("version") != "decp-metadonnees-v1":
             raise CycleDECPInvalide("État du catalogue historique incompatible.")
-        _enregistrer(cible, doc)
+        if not existait:
+            _enregistrer(cible, doc)
     return {"releves_documentaires_importes": compte, **etat_index(base)}
 
 
