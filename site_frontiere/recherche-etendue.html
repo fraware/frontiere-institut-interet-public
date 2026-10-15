@@ -19,6 +19,11 @@ article h2{font-size:18px;margin:5px 0}article p{font-size:13px;color:#566d69;ma
 .perimetre dt{font-weight:650;margin-top:12px}.perimetre dd{margin:3px 0 0;color:#526b69}
 .perimetre p{color:#526b69;font-size:13px}
 .identifiant{grid-column:1/-1}.identifiant input{max-width:260px}.identifiant small{display:block;color:#526b69;margin-top:6px}
+.avis-corrobores{background:#fff;border:1px solid #dce4e1;padding:16px 19px;margin:16px 0;font-size:14px}
+.avis-corrobores h2{font-size:17px;margin:0 0 9px}
+.avis-corrobores p{color:#526b69;margin:7px 0}
+.avis-corrobores li{padding:6px 0}
+
 [hidden]{display:none}@media(max-width:750px){form{grid-template-columns:1fr}}
 </style></head>
 <body><main class="page">
@@ -42,5 +47,6 @@ article h2{font-size:18px;margin:5px 0}article p{font-size:13px;color:#566d69;ma
 </form>
 <p id="etat" role="status">Chargement du catalogue documentaire…</p>
 <p id="etat-institution" class="description" role="status" aria-live="polite" hidden></p>
+<section id="avis-boamp-corrobores" class="avis-corrobores" aria-label="Observations BOAMP corroborées" aria-live="polite" hidden></section>
 <div id="resultats" aria-label="Documents correspondants"></div>
 </main><script type="module" src="./recherche-etendue.js"></script></body></html>
