@@ -69,17 +69,17 @@ def test_un_journal_non_accessible_n_interrompt_pas_la_collecte(tmp_path):
     assert code == 0
 
 
-def test_ordonnanceur_journalise_les_cinq_sources(tmp_path):
+def test_ordonnanceur_journalise_les_six_sources(tmp_path):
     arret = threading.Event()
     appels = []
     def faire(etape, _arret):
         appels.append(etape.nom)
-        if len(appels) == 5:
+        if len(appels) == 6:
             arret.set()
         return 0
     ordonnanceur(tmp_path, arret, initialiser=False, executant=faire)
     etat = derniere_activite(tmp_path / "exploitation/passages.sqlite3")
-    assert len(etat["derniers_passages"]) == 5
+    assert len(etat["derniers_passages"]) == 6
     assert all(x["etat"] == "reussite" for x in etat["derniers_passages"])
 
 
