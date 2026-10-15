@@ -8,6 +8,7 @@ manifeste final. La sauvegarde n'inclut pas les fichiers sources bruts.
 from __future__ import annotations
 
 import argparse
+from contextlib import closing
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -51,7 +52,7 @@ def _ouvrir_readonly(chemin: Path) -> sqlite3.Connection:
 
 
 def _verifier_base(chemin: Path, nom: str) -> dict:
-    with _ouvrir_readonly(chemin) as conn:
+    with closing(_ouvrir_readonly(chemin)) as conn:
         resultat = conn.execute("PRAGMA integrity_check").fetchone()
         if not resultat or resultat[0] != "ok":
             raise SauvegardeInvalide(f"Intégrité SQLite non confirmée pour {nom}.")
@@ -68,8 +69,8 @@ def _verifier_base(chemin: Path, nom: str) -> dict:
 def _copier_sqlite(source: Path, cible: Path, nom: str) -> dict:
     temporaire = cible.with_suffix(".en_cours")
     try:
-        with _ouvrir_readonly(source) as entree:
-            with sqlite3.connect(temporaire, timeout=90) as sortie:
+        with closing(_ouvrir_readonly(source)) as entree:
+            with closing(sqlite3.connect(temporaire, timeout=90)) as sortie:
                 entree.backup(sortie, pages=256, sleep=0.1)
         resultat = _verifier_base(temporaire, nom)
         temporaire.replace(cible)
