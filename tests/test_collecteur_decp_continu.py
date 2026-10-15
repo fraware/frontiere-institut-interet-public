@@ -124,7 +124,7 @@ def test_cycle_sans_nouveaux_fichiers_ne_retelecharge_pas_aife(tmp_path):
     premier = cycle(base, dossier, config_etat(), actualiser=catalogues,
                    telecharger=telecharger, aife=aife, dgfip=dgfip,
                    selectionner_aife=selection)
-    assert premier["ressources_nouvelles"] == 1
+    assert premier["ressources_nouvelles"] == 0
     assert premier["fichiers"] == 2
     def interdit(*args, **kwargs):
         raise AssertionError("Fichier AIFE déjà traité : aucun téléchargement.")
@@ -156,7 +156,7 @@ def test_nouveau_fichier_dgfip_ajoute_une_version_avec_provenance(tmp_path):
                    dgfip=lambda _etat, _fiche, _ancien: nouveau)
     assert result["ressources_nouvelles"] == 1
     assert result["marches_distincts"] == 1
-    assert result["versions"] == 1  # Ancienne fiche non importée au préalable.
+    assert result["versions"] == 2  # Reprise de la fiche ancienne avant nouvelle version.
     assert result["erreurs_sources"][0]["source"] == "AIFE"
     assert _charger(dossier / "lot_dgfip_xml.json")["fichiers"] == nouveau["fichiers"]
     assert len(rechercher(base, "matériaux")) == 1
@@ -178,7 +178,7 @@ def test_dgfip_incomplet_preserve_un_ancien_curseur(tmp_path):
                    dgfip=lambda *_: incomplet)
     assert {x["source"] for x in result["erreurs_sources"]} == {"AIFE", "DGFiP"}
     assert _charger(dossier / "lot_dgfip_xml.json") == ancien
-    assert etat_index(base)["fichiers"] == 0
+    assert etat_index(base)["fichiers"] == 1
 
 
 def test_catalogue_indisponible_preserve_les_fichiers(tmp_path):
