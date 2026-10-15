@@ -18,7 +18,7 @@ def deux_sources(tmp_path):
         '{"id": 1}\n{"id": 2}\n', encoding="utf-8"
     )
     (decp / "consolide.json").write_bytes(b'{"marches":[]}')
-    (decp / ".decp-temp").write_bytes(b"écriture temporaire")
+    (decp / ".decp-temp").write_text("écriture temporaire", encoding="utf-8")
     (decp / "marches.sqlite3").write_bytes(b"base indépendante")
     return {"boamp": boamp, "decp": decp}
 
