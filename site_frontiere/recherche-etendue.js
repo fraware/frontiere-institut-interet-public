@@ -314,7 +314,9 @@ async function afficherAvisBoampCorrobores(siret) {
     const description = document.createElement("span");
     description.textContent = "Avis " + a.avis_boamp + " du " + a.date_parution +
       " — " + francais.format(a.identites_marches_decp_dans_archives) +
-      " identités de marchés du même SIRET dans les relevés DECP historiques. ";
+      (a.identites_marches_decp_dans_archives === 1
+        ? " identité de marché" : " identités de marchés") +
+      " du même SIRET dans les relevés DECP historiques. ";
     const preuve = document.createElement("a");
     const rev = /^[a-f0-9]{40}$/.test(manifeste.revision_sources || "")
       ? manifeste.revision_sources : "main";
