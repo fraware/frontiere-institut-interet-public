@@ -154,9 +154,25 @@ def test_collecte_incrementale_evite_les_secondes_telechargements(tmp_path):
 
 
 def test_l_index_reutilise_les_releves_decp_existants(tmp_path):
-    from tests.test_indexer_attributions_decp_sqlite import rapport
     db = tmp_path / "donnees.db"
-    importer_releve(db, rapport())
+    releve = {
+        "version": "decp-fichier-json-v1", "source_catalogue": "aife_api_decp",
+        "page_catalogue": "https://www.data.gouv.fr/datasets/api-decp",
+        "ressource_id": RID_B, "sha256_fichier_brut": "d" * 64,
+        "releve_le": "2026-10-14T08:00:00Z",
+        "extraits_plafonnes": False,
+        "releves": {"marches_uniques_valides": 1},
+        "marches_extraits": [{
+            "id_marche": "M-1", "acheteur_siret": "21750001630066",
+            "objet": "Recherche en sciences", "code_cpv": "73100000-3",
+            "nature": "Marché", "date_notification": "2026-10-10",
+            "date_publication_declaree": "2026-10-14",
+            "montant_euros_ht_declare": 150000.0,
+            "besoin_encore_ouvert_demontre": False,
+            "preuve_de_premiere_contribution": False,
+        }],
+    }
+    importer_releve(db, releve)
     f = fichier(tmp_path, {"marches": [
         marche(objet="Étude scientifique"),
     ]})
