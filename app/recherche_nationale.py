@@ -260,13 +260,14 @@ def creer_application(chemins: Chemins | None = None) -> FastAPI:
         # sans obtenir le contenu ni l'état documentaire des bases.
         if requete.url.path == "/sante":
             return await suite(requete)
-        if acces_obligatoire and not jeton_valide:
+        if (acces_obligatoire or jeton) and not jeton_valide:
             return JSONResponse(
                 status_code=503,
                 content={"detail": "Accès non configuré sur le service hébergé."},
             )
         if jeton and not secrets.compare_digest(
-            requete.headers.get("authorization", ""), "Bearer " + jeton
+            requete.headers.get("authorization", "").encode("utf-8"),
+            ("Bearer " + jeton).encode("ascii"),
         ):
             return JSONResponse(
                 status_code=401,
