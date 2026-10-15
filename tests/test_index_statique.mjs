@@ -4,7 +4,7 @@ import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from "nod
 import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
 import { createHash } from "node:crypto";
-import { construire, PLAFONDS, OCTETS_MAX } from "../scripts/construire_index_statique.mjs";
+import { construire, PLAFONDS, OCTETS_MAX, metadonneesDates } from "../scripts/construire_index_statique.mjs";
 
 function ecrire(racine, chemin, valeur) {
   const file = join(racine, chemin);
@@ -145,4 +145,18 @@ test("la révision Git attestée est immuable et absente si inconnue", async () 
       else process.env.RENDER_GIT_COMMIT = rend;
     }
   });
+});
+
+test("distinguer indexation, publication et observation avec dates sources absentes explicites", () => {
+  const root = preparer();
+  try {
+    const m = metadonneesDates(root, "a".repeat(40), "2026-10-15T16:40:00Z");
+    assert.equal(m.version, "frontiere-dates-index-v1");
+    assert.equal(m.indexation_site_le, "2026-10-15T16:40:00Z");
+    assert.equal(m.revision_sources, "a".repeat(40));
+    assert.equal(m.etats_des_archives.decp.date_acquisition_de_chaque_marche, null);
+    assert.equal(m.etats_des_archives.boamp.dernier_controle_archive_le, null);
+    assert.match(m.nature_des_dates_documentaires.decp, /notification/);
+    assert.notEqual(m.nature_des_dates_documentaires.decp, "Date d'acquisition");
+  } finally { rmSync(root, { recursive:true, force:true }); }
 });

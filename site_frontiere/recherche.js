@@ -144,6 +144,33 @@ async function demarrer() {
       compter(doc.sources.emplois.retenus) + " · DECP " +
       compter(doc.sources.decp.retenus) +
       ". Sélection non exhaustive, actualisée lors du dernier déploiement du site.";
+    try {
+      const datesReponse = await fetch("./metadonnees-index.json", {
+        cache: "no-cache", credentials: "omit"
+      });
+      if (datesReponse.ok) {
+        const dates = await datesReponse.json();
+        if (dates.version === "frontiere-dates-index-v1" &&
+            typeof dates.indexation_site_le === "string" &&
+            !Number.isNaN(Date.parse(dates.indexation_site_le))) {
+          etatDocument.textContent += " Index publié le " +
+            new Intl.DateTimeFormat("fr-FR", {
+              dateStyle: "medium", timeStyle: "short", timeZone: "UTC"
+            }).format(new Date(dates.indexation_site_le)) + " UTC.";
+        }
+        const controles = dates.etats_des_archives;
+        if (controles && controles.boamp && controles.emplois) {
+          // Ces dates concernent des contrôles ou extractions d'archives,
+          // et ne doivent jamais être présentées comme celles des avis.
+          const boamp = controles.boamp.dernier_controle_archive_le;
+          const emplois = controles.emplois.derniere_extraction_archive_le;
+          if (boamp) etatDocument.textContent += " Dernier contrôle des archives BOAMP : " +
+            boamp.slice(0, 10) + ".";
+          if (emplois) etatDocument.textContent += " Dernière extraction des archives d'emplois : " +
+            emplois.slice(0, 10) + ".";
+        }
+      }
+    } catch { /* la métadonnée facultative ne bloque jamais la recherche */ }
     form.classList.remove("en-chargement");
     entree.disabled = false;
     filtre.disabled = false;
