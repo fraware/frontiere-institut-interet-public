@@ -81,7 +81,28 @@ services:
     # Les fichiers mensuels bruts sont archivés dans le même volume persistant.
     # L'index DECP est commun à la collecte AIFE/DGFiP et aux fichiers nationaux.
 
+  collecte-ted:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile.collecte
+    restart: unless-stopped
+    command:
+      - python
+      - -m
+      - app.collecteur_ted_continu
+      - --base
+      - /var/lib/frontiere/avis_ted.sqlite3
+      - suivre
+      - --jours
+      - "4"
+      - --intervalle
+      - "7200"
+    volumes:
+      - stockage-frontiere-ted:/var/lib/frontiere
+    # Interface TED Search API v3 : quatre dates réinterrogées toutes les 2 h.
+
 volumes:
   stockage-frontiere-boamp:
   stockage-frontiere-emplois:
   stockage-frontiere-decp:
+  stockage-frontiere-ted:
