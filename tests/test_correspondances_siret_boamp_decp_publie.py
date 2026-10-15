@@ -32,12 +32,9 @@ def test_population_et_preuves_du_releve_sont_coherentes():
     assert releve["population"] == "17_avis_boamp_d_un_tirage_independant_non_representatif"
     assert releve["nombre_avis"] == len(obs) == 17
     assert len({o["avis_boamp"] for o in obs}) == 17
-    assert len({o["siret_acheteur_sans_schema_dans_avis"] for o in obs}) == (
-        releve["nombre_siret_boamp_distincts"] == 16)
-    assert sum(o["siret_etablissement_exact_dans_api"] for o in obs) == (
-        releve["nombre_avis_avec_etablissement_exact_api"] == 17)
-    assert sum(o["rapprochement_acheteur_documentaire"] for o in obs) == (
-        releve["nombre_avis_avec_siret_egal_a_un_acheteur_decp"] == 2)
+    assert len({o["siret_acheteur_sans_schema_dans_avis"] for o in obs}) == releve["nombre_siret_boamp_distincts"] == 16
+    assert sum(o["siret_etablissement_exact_dans_api"] for o in obs) == releve["nombre_avis_avec_etablissement_exact_api"] == 17
+    assert sum(o["rapprochement_acheteur_documentaire"] for o in obs) == releve["nombre_avis_avec_siret_egal_a_un_acheteur_decp"] == 2
     assert releve["aucune_identite_de_contrat_deduite"] is True
     assert releve["role_acheteur_juridiquement_etabli"] is False
     assert releve["siret_boamp_initialement_sans_schema"] is True
