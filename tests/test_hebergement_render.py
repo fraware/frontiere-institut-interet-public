@@ -9,8 +9,20 @@ def configuration():
     return yaml.safe_load((RACINE / "render.yaml").read_text(encoding="utf-8"))
 
 
+def services_production():
+    document = configuration()
+    assert "services" not in document
+    projets = document["projects"]
+    assert len(projets) == 1
+    assert projets[0]["name"] == "Frontiere"
+    environnements = projets[0]["environments"]
+    assert len(environnements) == 1
+    assert environnements[0]["name"] == "Production"
+    return environnements[0]["services"]
+
+
 def test_blueprint_render_et_disque_persistant_unique():
-    services = configuration()["services"]
+    services = services_production()
     assert len(services) == 1
     service = services[0]
     assert service["type"] == "web"
@@ -33,7 +45,7 @@ def test_blueprint_render_et_disque_persistant_unique():
 def test_chemins_des_trois_bases_sur_le_disque_unique():
     env = {
         x["key"]: x["value"]
-        for x in configuration()["services"][0]["envVars"]
+        for x in services_production()[0]["envVars"]
         if "value" in x
     }
     assert env["FRONTIERE_DONNEES"] == "/var/lib/frontiere"
@@ -41,7 +53,7 @@ def test_chemins_des_trois_bases_sur_le_disque_unique():
     assert env["FRONTIERE_AMORCAGE_AUTO"] == "1"
     assert env["FRONTIERE_CONTROLE_ACCES_OBLIGATOIRE"] == "1"
     jeton = next(
-        x for x in configuration()["services"][0]["envVars"]
+        x for x in services_production()[0]["envVars"]
         if x["key"] == "FRONTIERE_JETON_ACCES"
     )
     assert jeton == {"key": "FRONTIERE_JETON_ACCES", "sync": False}
