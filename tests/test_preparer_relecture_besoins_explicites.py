@@ -62,6 +62,8 @@ def test_prelever_des_extraits_integraux_sans_statut_actuel():
     b = (json.dumps(o, ensure_ascii=False) + "\n").encode()
     observation = candidat(o, "institutionnel/besoins_publics/offres_postes/lot_00.jsonl", 42, b)
     assert observation["titre_cite_integralement"] == o["intitule"]
+    assert observation["entite_declarante"] == o["organisme"]
+    assert observation["champ_entite_declarante"] == "organisme"
     assert observation["competences_attendues_citees_integralement"] == (
         o["competences_attendues"])
     assert observation["preuve"]["ligne"] == 42
@@ -71,6 +73,17 @@ def test_prelever_des_extraits_integraux_sans_statut_actuel():
     assert observation["revue_humaine"] == "non_effectuee"
     assert observation["selection_lexicale_scientifique_technique"] is True
 
+
+def test_l_employeur_est_un_champ_de_source_et_non_un_organisme_invente():
+    o = offre(4, True)
+    o["organisme"] = None
+    o["employeur"] = "Établissement public fictif"
+    r = candidat(o, "f.jsonl", 1, b"test")
+    assert r["entite_declarante"] == "Établissement public fictif"
+    assert r["champ_entite_declarante"] == "employeur"
+    assert "employeur" in r["preuve"]["champs"]
+    o["champs_tronques"] = ["employeur"]
+    assert candidat(o, "f.jsonl", 1, b"test") is None
 
 def test_ne_pas_recopier_un_champ_tronque_ni_du_contenu_de_contact():
     o = offre(3, True)
