@@ -1,39 +1,44 @@
 # Hébergement géré FRONTIÈRE — première instance nationale.
 # Une seule instance possède le disque SQLite : ce n'est pas la topologie
 # pour un service réparti sur plusieurs nœuds.
-services:
-  - type: web
-    name: frontiere-observatoire-public
-    runtime: docker
-    region: frankfurt
-    plan: 1c-2g
-    numInstances: 1
-    dockerfilePath: ./infra/Dockerfile.hebergement
-    dockerContext: .
-    healthCheckPath: /sante
-    maxShutdownDelaySeconds: 300
-    disk:
-      name: frontiere-donnees
-      mountPath: /var/lib/frontiere
-      sizeGB: 50
-    envVars:
-      - key: PORT
-        value: "10000"
-      - key: FRONTIERE_DONNEES
-        value: /var/lib/frontiere
-      - key: FRONTIERE_COLLECTE_ACTIVE
-        value: "1"
-      - key: FRONTIERE_AMORCAGE_AUTO
-        value: "1"
-      - key: FRONTIERE_CONTROLE_ACCES_OBLIGATOIRE
-        value: "1"
-      - key: FRONTIERE_JETON_ACCES
-        sync: false
-      - key: FRONTIERE_BOAMP_DB
-        value: /var/lib/frontiere/boamp/avis_boamp.sqlite3
-      - key: FRONTIERE_EMPLOIS_DB
-        value: /var/lib/frontiere/emplois/offres_emplois.sqlite3
-      - key: FRONTIERE_DECP_DB
-        value: /var/lib/frontiere/decp/marches_decp.sqlite3
-      - key: FRONTIERE_JOURNAL_COLLECTES
-        value: /var/lib/frontiere/exploitation/passages.sqlite3
+# Associer le service au projet Render existant : Frontiere / Production.
+projects:
+  - name: Frontiere
+    environments:
+      - name: Production
+      services:
+        - type: web
+          name: frontiere-observatoire-public
+          runtime: docker
+          region: frankfurt
+          plan: 1c-2g
+          numInstances: 1
+          dockerfilePath: ./infra/Dockerfile.hebergement
+          dockerContext: .
+          healthCheckPath: /sante
+          maxShutdownDelaySeconds: 300
+          disk:
+            name: frontiere-donnees
+            mountPath: /var/lib/frontiere
+            sizeGB: 50
+          envVars:
+            - key: PORT
+              value: "10000"
+            - key: FRONTIERE_DONNEES
+              value: /var/lib/frontiere
+            - key: FRONTIERE_COLLECTE_ACTIVE
+              value: "1"
+            - key: FRONTIERE_AMORCAGE_AUTO
+              value: "1"
+            - key: FRONTIERE_CONTROLE_ACCES_OBLIGATOIRE
+              value: "1"
+            - key: FRONTIERE_JETON_ACCES
+              sync: false
+            - key: FRONTIERE_BOAMP_DB
+              value: /var/lib/frontiere/boamp/avis_boamp.sqlite3
+            - key: FRONTIERE_EMPLOIS_DB
+              value: /var/lib/frontiere/emplois/offres_emplois.sqlite3
+            - key: FRONTIERE_DECP_DB
+              value: /var/lib/frontiere/decp/marches_decp.sqlite3
+            - key: FRONTIERE_JOURNAL_COLLECTES
+              value: /var/lib/frontiere/exploitation/passages.sqlite3
