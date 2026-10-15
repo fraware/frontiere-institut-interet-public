@@ -166,6 +166,11 @@ def cycle(
     L'avancement d'un curseur intervient après importation de ses notices.
     """
     dossier.mkdir(parents=True, exist_ok=True)
+    if (etat_index(base)["fichiers"] == 0
+            and any((dossier / nom).is_file() for nom in NOMS[1:])):
+        # Restaurer d'abord les derniers relevés locaux si le fichier SQLite
+        # a disparu, avant de consulter les sources.
+        importer_archives(base, dossier, dossier)
     catalogues_chemin = dossier / NOMS[0]
     precedent_catalogues = _charger(catalogues_chemin)
     etat = actualiser(config, precedent_catalogues, recuperer=telecharger)
@@ -203,29 +208,48 @@ def cycle(
                 # à chaque passage. Une relecture forcée reste réalisable
                 # en supprimant uniquement la sélection mémorisée.
                 if isinstance(ancien_selection, list) and tuple(ancien_selection) == signature:
+                    # Rejouer au besoin cette source si la base n'en contient
+                    # plus l'attestation, indépendamment du dernier curseur.
+                    verifier_rapport(ancien)
+                    importer_rapport(base, ancien)
                     continue
                 nouveau = aife(etat, fiche)
                 verifier_rapport(nouveau)
+                avant = etat_index(base)["fichiers"]
                 importer_rapport(base, nouveau)
                 nouveau["_selection_source"] = list(signature)
                 _enregistrer(chemin, nouveau)
-                resultats["ressources_nouvelles"] += 1
+                resultats["ressources_nouvelles"] += (
+                    etat_index(base)["fichiers"] - avant
+                )
             else:
                 nouveau = dgfip(etat, fiche, ancien)
                 if nouveau == ancien:
                     continue
                 if not isinstance(nouveau, dict) or not nouveau.get("fichiers"):
                     raise CycleDECPInvalide("Aucun fichier DGFiP complet dans l'état reçu.")
-                anciens_ids = {
-                    _identite_rapport(x)
+                anciennes_versions = {
+                    _identite_rapport(x): json.dumps(
+                        x["marches_extraits"], ensure_ascii=False,
+                        sort_keys=True, separators=(",", ":")
+                    )
                     for x in rapports_dgfip(ancien)
-                } if ancien.get("fichiers") else set()
+                } if ancien.get("fichiers") else {}
                 rapports = rapports_dgfip(nouveau)
-                nouvelle_liste = [x for x in rapports if _identite_rapport(x) not in anciens_ids]
+                nouvelle_liste = [
+                    x for x in rapports
+                    if anciennes_versions.get(_identite_rapport(x)) != json.dumps(
+                        x["marches_extraits"], ensure_ascii=False,
+                        sort_keys=True, separators=(",", ":")
+                    )
+                ]
+                avant = etat_index(base)["fichiers"]
                 for releve in nouvelle_liste:
                     importer_rapport(base, releve)
                 _enregistrer(chemin, nouveau)
-                resultats["ressources_nouvelles"] += len(nouvelle_liste)
+                resultats["ressources_nouvelles"] += (
+                    etat_index(base)["fichiers"] - avant
+                )
         except (OSError, ValueError, KeyError, TypeError, UnicodeError,
                 json.JSONDecodeError) as exc:
             resultats["erreurs_sources"].append({
