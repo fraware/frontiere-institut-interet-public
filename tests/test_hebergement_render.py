@@ -30,7 +30,7 @@ def test_blueprint_render_et_disque_persistant_unique():
     assert 30 <= service["maxShutdownDelaySeconds"] <= 300
 
 
-def test_chemins_des_quatre_bases_sur_le_disque_unique():
+def test_chemins_des_trois_bases_sur_le_disque_unique():
     env = {
         x["key"]: x["value"]
         for x in configuration()["services"][0]["envVars"]
@@ -49,9 +49,8 @@ def test_chemins_des_quatre_bases_sur_le_disque_unique():
         env["FRONTIERE_BOAMP_DB"],
         env["FRONTIERE_EMPLOIS_DB"],
         env["FRONTIERE_DECP_DB"],
-        env["FRONTIERE_TED_DB"],
     ]
-    assert len(set(chemins)) == 4
+    assert len(set(chemins)) == 3
     assert all(p.startswith("/var/lib/frontiere/") for p in chemins)
 
 
