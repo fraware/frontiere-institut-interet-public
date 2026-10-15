@@ -69,7 +69,7 @@ export function bilanSelection(extractions, partitions, plafonds = REPARTITION) 
   };
   if (!Array.isArray(partitions)) throw new Error("Partitions absentes du bilan.");
   for (const p of partitions) {
-    if (!sources.includes(p?.source) || !/^\\d{4}$/.test(p.annee) ||
+    if (!sources.includes(p?.source) || !/^\d{4}$/.test(p.annee) ||
         !Number.isSafeInteger(p.documents) || p.documents < 1) {
       throw new Error("Partition incompatible avec le bilan de sélection.");
     }
