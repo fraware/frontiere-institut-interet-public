@@ -83,6 +83,27 @@ jobs:
       - name: Construire l'image de consultation fédérée
         run: docker build -f infra/Dockerfile.consultation -t frontiere-consultation:test .
 
+      - name: Construire l'image d'hébergement géré
+        run: docker build -f infra/Dockerfile.hebergement -t frontiere-heberge:test .
+
+      - name: Vérifier le service géré sans collecte réseau
+        run: |
+          docker run --detach --name frontiere-heberge-test \
+            --env FRONTIERE_COLLECTE_ACTIVE=0 \
+            --publish 127.0.0.1:18765:10000 frontiere-heberge:test
+          for tentative in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:18765/sante >/tmp/frontiere-gere-sante.json; then
+              curl --fail --silent http://127.0.0.1:18765/exploitation > /tmp/frontiere-gere-volumes.json
+              python -c "import json; d=json.load(open('/tmp/frontiere-gere-volumes.json')); assert d['sources_attendues']==4"
+              docker rm -f frontiere-heberge-test
+              exit 0
+            fi
+            sleep 1
+          done
+          docker logs frontiere-heberge-test
+          docker rm -f frontiere-heberge-test
+          exit 1
+
       - name: Vérifier le service
         run: |
           docker run --detach --name frontiere-test --publish 8000:8000 frontiere:test
