@@ -238,6 +238,14 @@ class StockageBOAMP:
     def _insertion(self, table: Table):
         return insert_sqlite(table) if self.moteur.dialect.name == "sqlite" else insert_postgres(table)
 
+    def capture_deja(self, chemin: str, empreinte: str) -> bool:
+        """Tester si les octets d'une capture ont déjà été importés."""
+        with self.moteur.connect() as connexion:
+            return connexion.execute(select(captures.c.chemin).where(
+                captures.c.chemin == chemin,
+                captures.c.empreinte == empreinte,
+            )).first() is not None
+
     def ingerer(self, capture: dict, avis: list[dict]) -> int:
         """Intégrer une capture ou annuler entièrement sa transaction."""
         horloge = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
@@ -324,23 +332,35 @@ def importer_cycle(stockage: StockageBOAMP, racine: Path, maximum: int = 0) -> d
     compteurs = {"captures_nouvelles": 0, "avis_lus": 0, "archives_examinees": 0}
     fiches = sorted((racine / "historique_boamp").glob("*/*/*.json"))
     for fiche in fiches[:maximum or None]:
-        capture, avis, _ = _lire_archive(racine, fiche)
         compteurs["archives_examinees"] += 1
-        avant = stockage.etat()["captures_importees"]
-        ajout = stockage.ingerer(capture, avis)
-        compteurs["avis_lus"] += ajout
-        compteurs["captures_nouvelles"] += int(
-            stockage.etat()["captures_importees"] > avant
-        )
-    courants_releves = _lire_courants(racine)
+        manifeste = json.loads(fiche.read_text(encoding="utf-8"))
+        if not isinstance(manifeste, dict):
+            raise CaptureInvalide("Manifeste non structuré.")
+        relative = manifeste.get("archive_relative")
+        sha = manifeste.get("sha256_archive_gzip")
+        if (isinstance(relative, str) and isinstance(sha, str)
+                and EMPREINTE.fullmatch(sha)
+                and stockage.capture_deja(relative, sha)):
+            archive = _fichier_sur(racine, racine / relative)
+            if _empreinte_fichier(archive) != sha:
+                raise CaptureInvalide("Archive déjà importée altérée.")
+            continue
+        capture, avis, _ = _lire_archive(racine, fiche)
+        stockage.ingerer(capture, avis)
+        compteurs["avis_lus"] += len(avis)
+        compteurs["captures_nouvelles"] += 1
+    actuel = racine / "annonces_boamp.json"
+    if actuel.is_file() and stockage.capture_deja(
+        "annonces_boamp.json", _empreinte_fichier(actuel)
+    ):
+        courants_releves = None
+    else:
+        courants_releves = _lire_courants(racine)
     if courants_releves is not None:
         capture, avis, _ = courants_releves
-        avant = stockage.etat()["captures_importees"]
-        ajout = stockage.ingerer(capture, avis)
-        compteurs["avis_lus"] += ajout
-        compteurs["captures_nouvelles"] += int(
-            stockage.etat()["captures_importees"] > avant
-        )
+        stockage.ingerer(capture, avis)
+        compteurs["avis_lus"] += len(avis)
+        compteurs["captures_nouvelles"] += 1
     compteurs.update(stockage.etat())
     return compteurs
 
