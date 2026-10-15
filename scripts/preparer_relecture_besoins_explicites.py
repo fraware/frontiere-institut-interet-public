@@ -27,7 +27,7 @@ PARTITIONS = tuple(f"lot_{i:02x}.jsonl" for i in range(16))
 SHA = re.compile(r"^[a-f0-9]{64}$")
 EMAIL = re.compile(r"(?i)[\w.+-]+@[\w.-]+\.[a-z]{2,}")
 URL = re.compile(r"(?i)https?://|www\.")
-TELEPHONE = re.compile(r"(?<!\\w)(?:\\+33\\s?(?:\\(0\\))?\\s?|0)[1-9](?:[\\s.\\-]?\\d{2}){4}(?!\\d)")
+TELEPHONE = re.compile(r"(?<!\w)(?:\+33\s?(?:\(0\))?\s?|0)[1-9](?:[\s.\-]?\d{2}){4}(?!\d)")
 DATE = re.compile(r"^20\d\d-\d\d-\d\d")
 LEXIQUE = re.compile(
     r"informati|numeriqu|donnee|logiciel|cyber|securite des systemes|"
