@@ -50,7 +50,8 @@ function afficherBilanSelection(m) {
         ligne.enregistrements_sources_parcourus < nombre ||
         typeof ligne.unite_enregistrements_sources !== "string" ||
         !Array.isArray(declarees) || declarees.length !== annees.size ||
-        !declarees.every(d => /^\\d{4}$/.test(d.annee) && annees.get(d.annee) === d.documents)) {
+        typeof b.precision !== "string" ||
+        !declarees.every(d => /^\d{4}$/.test(d.annee) && annees.get(d.annee) === d.documents)) {
       throw new Error("Bilan de sélection contradictoire.");
     }
     const nom = document.createElement("dt");
