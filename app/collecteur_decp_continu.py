@@ -96,7 +96,7 @@ def importer_archives(base: Path, archives: Path, dossier: Path) -> dict:
     éviterait de revenir en arrière sur un curseur d'acquisition autonome.
     Les fichiers sources archivés sont lus sans jamais les modifier.
     """
-    compte = 0
+    avant = etat_index(base)["fichiers"]
     for nom in NOMS:
         original = archives / nom
         cible = dossier / nom
@@ -110,16 +110,15 @@ def importer_archives(base: Path, archives: Path, dossier: Path) -> dict:
         if nom == "sonde_aife_json.json":
             verifier_rapport(doc)
             importer_rapport(base, doc)
-            compte += 1
         elif nom == "lot_dgfip_xml.json":
             for releve in rapports_dgfip(doc):
                 importer_rapport(base, releve)
-                compte += 1
         elif doc.get("version") != "decp-metadonnees-v1":
             raise CycleDECPInvalide("État du catalogue historique incompatible.")
         if not existait:
             _enregistrer(cible, doc)
-    return {"releves_documentaires_importes": compte, **etat_index(base)}
+    final = etat_index(base)
+    return {"releves_documentaires_importes": final["fichiers"] - avant, **final}
 
 
 def etat_index(base: Path) -> dict:
