@@ -79,7 +79,7 @@ jobs:
           node-version: "22"
 
       - name: Tester les invariants et les fichiers de démonstration
-        run: node --test tests/test_index_statique.mjs tests/test_recherche_navigateur.mjs tests/test_partitions_statiques.mjs tests/test_acheteurs_decp.mjs tests/test_rattachements_institutionnels.mjs
+        run: node --test tests/test_index_statique.mjs tests/test_recherche_navigateur.mjs tests/test_partitions_statiques.mjs tests/test_acheteurs_decp.mjs tests/test_rattachements_institutionnels.mjs tests/test_avis_boamp_corrobores.mjs
 
       - name: Construire l'index sur les vraies archives
         run: node scripts/construire_index_statique.mjs
@@ -127,6 +127,26 @@ jobs:
               .reduce((n,x)=>n+x.documents,0);
             if(rapport.documents_decp_indexes!==retenus) process.exit(1);
             console.log('Rattachements exacts disponibles pour '+rapport.sirets_decp_distincts+' SIRET');
+          "
+
+      - name: Vérifier les deux avis BOAMP corroborés et leur empreinte
+        run: |
+          node --input-type=module -e "
+            import fs from 'node:fs';
+            import crypto from 'node:crypto';
+            const racine='site_frontiere/partitions/';
+            const m=JSON.parse(fs.readFileSync(racine+'manifeste.json'));
+            const p=m.avis_boamp_corroborees;
+            if(p?.fichier!=='avis-boamp-corrobores.json' ||
+               p?.nombre_avis_etudies!==17 || p?.nombre_corroborees!==2) process.exit(1);
+            const buf=fs.readFileSync(racine+p.fichier);
+            if(buf.length!==p.octets ||
+               crypto.createHash('sha256').update(buf).digest('hex')!==p.sha256) process.exit(1);
+            const r=JSON.parse(buf);
+            if(r.contrats_communs_demonstres!==0 ||
+               r.avis.length!==2 ||
+               r.sha256_registre_source!==p.empreinte_registre) process.exit(1);
+            console.log('Avis BOAMP corroborés contrôlés : '+r.avis.length);
           "
 
       - name: Vérifier la taille et la portée de la publication

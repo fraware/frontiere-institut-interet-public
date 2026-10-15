@@ -7,6 +7,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { indexerBoamp, indexerEmplois, indexerDecp } from "./construire_index_statique.mjs";
 import { construireRattachements } from "./construire_rattachements_institutionnels.mjs";
+import { construireAvisCorrobores } from "./construire_avis_boamp_corrobores.mjs";
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const REPARTITION = Object.freeze({ boamp: 5000, emplois: 5000, decp: 5000 });
@@ -119,6 +120,7 @@ export async function construirePartitions(racine = RACINE) {
   ]);
   const fichiers = partitionner([...boamp.extraits, ...emplois.extraits, ...decp.extraits]);
   const rattachements = construireRattachements(racine, decp.extraits);
+  const avisCorrobores = construireAvisCorrobores(racine);
   const dossier = join(racine, "site_frontiere", "partitions");
   mkdirSync(dossier, { recursive: true });
   const ancien = readdirSync(dossier).filter(s => /^part-(boamp|emplois|decp)-\d{4}-\d{3}\.json$/.test(s));
@@ -128,6 +130,7 @@ export async function construirePartitions(racine = RACINE) {
   for (const nom of ancien) if (!noms.has(nom)) rmSync(join(dossier, nom));
   for (const f of fichiers) writeFileSync(join(dossier, f.nom), f.contenu);
   writeFileSync(join(dossier, "rattachements-acheteurs.json"), rattachements.contenu);
+  writeFileSync(join(dossier, "avis-boamp-corrobores.json"), avisCorrobores.contenu);
   const manifeste = {
     version: "frontiere-partitions-v1",
     portee: "extrait_etendu_non_exhaustif",
@@ -147,6 +150,15 @@ export async function construirePartitions(racine = RACINE) {
       sha256: rattachements.sha256,
       documents_decp_indexes: rattachements.rapport.documents_decp_indexes,
       sirets_decp_distincts: rattachements.rapport.sirets_decp_distincts
+    },
+    avis_boamp_corroborees: {
+      fichier: "avis-boamp-corrobores.json",
+      version: avisCorrobores.publication.version,
+      octets: avisCorrobores.octets,
+      sha256: avisCorrobores.sha256,
+      nombre_avis_etudies: avisCorrobores.publication.population_avis_etudies,
+      nombre_corroborees: avisCorrobores.publication.nombre_avis_corroborees,
+      empreinte_registre: avisCorrobores.publication.sha256_registre_source
     },
     partitions: fichiers.map(({ nom, source, annee, documents, octets, sha256 }) =>
       ({ fichier: nom, source, annee, documents, octets, sha256 })
