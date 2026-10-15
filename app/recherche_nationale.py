@@ -309,6 +309,17 @@ def creer_application(chemins: Chemins | None = None) -> FastAPI:
             raise HTTPException(status_code=503, detail=resultat)
         return resultat
 
+    @app.get("/hypotheses/boamp-ted")
+    def hypotheses_boamp_ted(
+        q: str = Query(min_length=1, max_length=150),
+        limite: int = Query(default=20, ge=1, le=50),
+    ):
+        from app.hypotheses_documentaires import rapprocher
+        try:
+            return rapprocher(config, q, limite=limite)
+        except ValueError as exc:
+            raise HTTPException(status_code=422, detail=str(exc)) from exc
+
     @app.get("/recherche")
     def recherche(
         q: str = Query(min_length=1, max_length=150),
