@@ -77,6 +77,9 @@ def test_ne_pas_recopier_un_champ_tronque_ni_du_contenu_de_contact():
     o["competences_attendues"] = "Contact : personne@example.fr"
     assert candidat(o, "f.jsonl", 1, b"test")[
         "competences_attendues_citees_integralement"] is None
+    o["competences_attendues"] = "Appeler le 06 12 34 56 78"
+    assert candidat(o, "f.jsonl", 1, b"test")[
+        "competences_attendues_citees_integralement"] is None
     o["competences_attendues"] = "a" * 500
     assert candidat(o, "f.jsonl", 1, b"test")[
         "competences_attendues_citees_integralement"] is None
