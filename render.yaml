@@ -16,7 +16,6 @@ projects:
             dockerfilePath: ./infra/Dockerfile.hebergement
             dockerContext: .
             healthCheckPath: /sante
-            maxShutdownDelaySeconds: 300
             disk:
               name: frontiere-donnees
               mountPath: /var/lib/frontiere
