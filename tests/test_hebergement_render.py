@@ -47,3 +47,9 @@ def test_presentation_ne_pretend_pas_collecter_des_donnees():
     assert "ne collecte pas de données en continu" in page
     assert "temps réel" in page
     assert "TED" not in page
+
+
+def test_version_node_identique_aux_controles_d_index():
+    version = (RACINE / ".node-version").read_text(encoding="utf-8").strip()
+    assert version.startswith("22.")
+    assert version.count(".") == 2
