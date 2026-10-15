@@ -182,9 +182,17 @@ def cycle(
             fiche = telecharger({"url": url})
             if nom == "AIFE":
                 selection = selectionner_aife(etat, fiche)
+                source_aife = next(
+                    (x for x in etat.get("catalogues", [])
+                     if x.get("source_id") == "aife_api_decp"), {}
+                )
+                metadonnee = next(
+                    (x for x in source_aife.get("ressources_recentes", [])
+                     if x.get("id") == selection["id"]), {}
+                )
                 signature = (
                     selection["id"], selection.get("taille_octets_declaree"),
-                    selection.get("modifie_le"),
+                    metadonnee.get("modifie_le"),
                 )
                 ancien_selection = ancien.get("_selection_source")
                 # Les collecteurs ne téléchargent pas une ressource inchangée
