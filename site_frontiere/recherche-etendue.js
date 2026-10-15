@@ -168,12 +168,87 @@ function ajouterResultat(d, source, zone) {
     zone.append(el);
 }
 
+
+/** Vérifier séparément le jeu d'identités DILA produit à la construction.
+ * Aucun rapprochement n'est autorisé sur le nom d'un organisme.
+ */
+async function lireRattachementInstitutionnel(siret) {
+  const m = manifeste.rattachements_acheteurs;
+  if (!m) {
+    return "Rattachement institutionnel non disponible dans cette version du catalogue.";
+  }
+  if (m.fichier !== "rattachements-acheteurs.json" ||
+      m.version !== "frontiere-rattachements-acheteurs-dila-v1" ||
+      !Number.isSafeInteger(m.octets) || m.octets <= 0 || m.octets > 2_000_000 ||
+      !/^[0-9a-f]{64}$/.test(m.sha256) ||
+      !Number.isSafeInteger(m.documents_decp_indexes) ||
+      m.documents_decp_indexes !== manifeste.selection?.sources?.find(s => s.source === "decp")?.documents_indexes ||
+      !Number.isSafeInteger(m.sirets_decp_distincts) ||
+      m.sirets_decp_distincts > m.documents_decp_indexes) {
+    throw new Error("Manifeste institutionnel non conforme");
+  }
+  const rep = await fetch(racine + m.fichier, { credentials: "omit" });
+  if (!rep.ok) throw new Error("Répertoire institutionnel indisponible");
+  const brut = await rep.text(), octets = new TextEncoder().encode(brut);
+  if (octets.length !== m.octets || !globalThis.crypto?.subtle) {
+    throw new Error("Taille ou contrôle cryptographique indisponible");
+  }
+  const code = new Uint8Array(await crypto.subtle.digest("SHA-256", octets));
+  const empreinte = Array.from(code, n => n.toString(16).padStart(2, "0")).join("");
+  if (empreinte !== m.sha256) throw new Error("Empreinte institutionnelle incorrecte");
+  const rapport = JSON.parse(brut);
+  if (rapport.version !== m.version ||
+      rapport.source_achats !== "decp_archives_publiees_extrait_statique" ||
+      rapport.verification_juridique_exterieure !== false ||
+      rapport.rapprocher_par_nom !== false ||
+      rapport.documents_decp_indexes !== m.documents_decp_indexes ||
+      rapport.sirets_decp_distincts !== m.sirets_decp_distincts ||
+      !rapport.rattachements || typeof rapport.rattachements !== "object" ||
+      Array.isArray(rapport.rattachements)) {
+    throw new Error("Répertoire institutionnel contradictoire");
+  }
+  const fiche = Object.hasOwn(rapport.rattachements, siret)
+    ? rapport.rattachements[siret] : null;
+  if (!fiche) {
+    return "Aucun SIRET concordant identifié dans les deux instantanés DILA étudiés. " +
+      "Cela ne démontre pas l'absence de l'organisme dans les répertoires nationaux.";
+  }
+  if (fiche.siret !== siret || !Array.isArray(fiche.candidats) ||
+      fiche.candidats.length === 0 || fiche.candidats.length > 120_000 ||
+      !fiche.candidats.every(x =>
+        /^FRONTIERE-INST-[A-Z0-9-]+$/.test(x?.id) &&
+        typeof x.nom === "string" && x.nom.length <= 350 &&
+        ["dila_roae", "dila_annuaire_local"].includes(x.source_id))) {
+    throw new Error("Entités institutionnelles non conformes");
+  }
+  if (fiche.statut === "identifiant_exact_unique_dans_les_archives_dila" &&
+      fiche.candidats.length === 1 && fiche.candidats[0].etat === "ACTIF") {
+    const c = fiche.candidats[0];
+    return "Correspondance de SIRET déclarés dans les archives DILA : " + c.nom +
+      " (" + c.id + ", " + c.source_id + "). Identité juridique et lien contractuel non revérifiés.";
+  }
+  if (fiche.statut === "plusieurs_entites_memes_siret" &&
+      fiche.candidats.length > 1) {
+    return "Plusieurs entrées DILA portent ce SIRET (" + fiche.candidats.length +
+      ") : rapprochement institutionnel ambigu, aucune entité choisie.";
+  }
+  if (fiche.statut === "etat_institutionnel_non_actif_ou_inconnu" &&
+      fiche.candidats.length === 1 && fiche.candidats[0].etat !== "ACTIF") {
+    return "Un enregistrement DILA porte ce SIRET, avec état " +
+      fiche.candidats[0].etat + ". Rattachement actuel non établi.";
+  }
+  throw new Error("Statut institutionnel non cohérent");
+}
+
 async function consulter(e) {
   e.preventDefault();
   if (!manifeste) return;
   const source = q("source").value, annee = q("annee").value;
   const debut = q("date-debut").value, fin = q("date-fin").value;
   const zone=q("resultats");
+  const situation = q("etat-institution");
+  situation.hidden = true;
+  situation.textContent = "";
   const acheteurDemande = q("siret-acheteur").value.trim();
   if (acheteurDemande && (!siretAdmissible(acheteurDemande) || source !== "decp")) {
     zone.replaceChildren();
@@ -227,6 +302,8 @@ async function consulter(e) {
       }
     }
     if (acheteurDemande) {
+      situation.textContent = await lireRattachementInstitutionnel(acheteurDemande);
+      situation.hidden = false;
       documentsAcheteur.sort(ordreChronologique);
       for (const document of documentsAcheteur.slice(0, limiteAffichage)) {
         ajouterResultat(document, source, zone);

@@ -79,7 +79,7 @@ jobs:
           node-version: "22"
 
       - name: Tester les invariants et les fichiers de démonstration
-        run: node --test tests/test_index_statique.mjs tests/test_recherche_navigateur.mjs tests/test_partitions_statiques.mjs tests/test_acheteurs_decp.mjs
+        run: node --test tests/test_index_statique.mjs tests/test_recherche_navigateur.mjs tests/test_partitions_statiques.mjs tests/test_acheteurs_decp.mjs tests/test_rattachements_institutionnels.mjs
 
       - name: Construire l'index sur les vraies archives
         run: node scripts/construire_index_statique.mjs
@@ -104,6 +104,29 @@ jobs:
             }
             if(count<=1900) process.exit(1);
             console.log('Partitions attestées : '+count+' documents');
+          "
+
+      - name: Contrôler les empreintes des rattachements DILA
+        run: |
+          node --input-type=module -e "
+            import fs from 'node:fs';
+            import crypto from 'node:crypto';
+            const dir='site_frontiere/partitions/';
+            const m=JSON.parse(fs.readFileSync(dir+'manifeste.json'));
+            const p=m.rattachements_acheteurs;
+            if(p.fichier!=='rattachements-acheteurs.json') process.exit(1);
+            const bytes=fs.readFileSync(dir+p.fichier);
+            const hash=crypto.createHash('sha256').update(bytes).digest('hex');
+            if(bytes.length!==p.octets || hash!==p.sha256) process.exit(1);
+            const rapport=JSON.parse(bytes);
+            if(rapport.version!==p.version ||
+               rapport.documents_decp_indexes!==p.documents_decp_indexes ||
+               rapport.sirets_decp_distincts!==p.sirets_decp_distincts ||
+               rapport.verification_juridique_exterieure!==false) process.exit(1);
+            const retenus=m.partitions.filter(x=>x.source==='decp')
+              .reduce((n,x)=>n+x.documents,0);
+            if(rapport.documents_decp_indexes!==retenus) process.exit(1);
+            console.log('Rattachements exacts disponibles pour '+rapport.sirets_decp_distincts+' SIRET');
           "
 
       - name: Vérifier la taille et la portée de la publication

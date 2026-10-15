@@ -147,3 +147,69 @@ test("regroupement DECP : SIRET exact, années multiples et lien partageable", {
     await new Promise((resolve, reject) => serveur.close(error => error ? reject(error) : resolve()));
   }
 });
+
+
+test("SIRET DECP–DILA : rattachement exact, ambiguïtés et altération interdite",
+  { timeout: 90_000 }, async () => {
+  const { serveur, url } = await demarrerServeur();
+  const browser = await chromium.launch({ headless: true });
+  try {
+    const page = await browser.newPage({ viewport: { width: 1100, height: 820 } });
+    const erreurs = [];
+    page.on("pageerror", erreur => erreurs.push(String(erreur)));
+    const r = await page.request.get(url + "/partitions/rattachements-acheteurs.json");
+    assert.equal(r.ok(), true);
+    const rapprochements = await r.json();
+    assert.equal(rapprochements.verification_juridique_exterieure, false);
+
+    // Privilégier une correspondance réellement constatée dans le corpus.
+    let numero = Object.keys(rapprochements.rattachements)[0];
+    if (!numero) {
+      await page.goto(url + "/recherche-etendue.html", { waitUntil: "networkidle" });
+      await page.waitForFunction(() => !document.querySelector("#source").disabled);
+      await page.locator("#source").selectOption("decp");
+      await page.locator("#annee").selectOption("");
+      await page.locator("#lancer").click();
+      await page.waitForFunction(() => /documents examinés/.test(
+        document.querySelector("#etat").textContent));
+      const lien = page.locator("article .lien-acheteur").first();
+      numero = new URL(await lien.getAttribute("href"), page.url())
+        .searchParams.get("acheteur");
+    }
+    assert.match(numero, /^[0-9]{14}$/);
+    const consulter = url + "/recherche-etendue.html?acheteur=" + numero;
+    await page.goto(consulter, { waitUntil: "networkidle" });
+    await page.waitForFunction(() => !document.querySelector("#etat-institution").hidden);
+    const resultat = await page.locator("#etat-institution").textContent();
+    const dossier = rapprochements.rattachements[numero];
+    if (!dossier) {
+      assert.match(resultat, /Aucun SIRET concordant/);
+    } else if (dossier.statut === "plusieurs_entites_memes_siret") {
+      assert.match(resultat, /ambigu/);
+    } else if (dossier.statut === "etat_institutionnel_non_actif_ou_inconnu") {
+      assert.match(resultat, /non établi/);
+    } else {
+      assert.match(resultat, /Correspondance de SIRET déclarés/);
+      assert.ok(resultat.includes(dossier.candidats[0].id));
+    }
+    assert.match(await page.locator("#etat").textContent(), /aucun lien de projet déduit/);
+
+    // À taille identique, un octet modifié annule intégralement la restitution.
+    await page.route("**/partitions/rattachements-acheteurs.json", async route => {
+      const reponse = await route.fetch();
+      const source = await reponse.text();
+      const corrompu = source.replace('"version":', '"versiOn":');
+      assert.notEqual(corrompu, source);
+      assert.equal(Buffer.byteLength(corrompu), Buffer.byteLength(source));
+      await route.fulfill({ response: reponse, body: corrompu });
+    });
+    await page.goto(consulter, { waitUntil: "networkidle" });
+    await page.waitForFunction(() => /résultats non publiés/.test(
+      document.querySelector("#etat").textContent));
+    assert.equal(await page.locator("article").count(), 0);
+    assert.deepEqual(erreurs, []);
+  } finally {
+    await browser.close();
+    await new Promise((resolve, reject) => serveur.close(error => error ? reject(error) : resolve()));
+  }
+});

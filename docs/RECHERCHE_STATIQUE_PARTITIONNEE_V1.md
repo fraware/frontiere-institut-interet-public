@@ -109,3 +109,48 @@ les identifiants malformés, les dates, le partage d'une adresse de dossier
 et la restitution sur le corpus réel dans Chromium. La consultation continue
 de refuser les lots altérés. Aucun service persistant ni abonnement payant
 n'est ajouté.
+
+
+## Rattachement aux entités DILA par identifiant exact
+
+L'indexation statique produit désormais `partitions/rattachements-acheteurs.json`,
+à partir des SIRET **déclarés dans les seuls documents DECP indexés** et des
+partitions vérifiées du Référentiel de l'organisation administrative de l'État
+et de l'Annuaire local DILA. La construction n'interroge aucun serveur
+extérieur. Les manifestes déjà archivés dans le dépôt délimitent les partitions
+lues ; leurs tailles, décomptes et empreintes SHA-256 sont contrôlés à nouveau
+avant publication.
+
+Les rapprochements par nom, sigle, commune, SIREN seul, hiérarchie supposée ou
+similarité de projet sont interdits. Seule l'égalité de 14 chiffres d'un SIRET
+déclaré produit un **rapprochement documentaire**.
+
+Trois situations sont distinguées : un seul enregistrement administratif
+actif avec le même SIRET ; plusieurs entités portant le même SIRET (ambiguïté
+explicite) ; une entité de statut inactif ou inconnu. Les autres SIRET ne
+reçoivent aucun rattachement : leur absence des deux instantanés DILA ne
+démontre pas leur inexistence juridique ni leur absence d'autres catalogues.
+
+La page de recherche étendue charge le fichier de rattachement seulement pour
+une consultation filtrée par SIRET et vérifie sa taille et son empreinte
+cryptographique avant de présenter le résultat. En cas d'altération, aucun
+résultat n'est affiché. Les noms et identifiants institutionnels sont
+conservés sans contacts nominatifs, responsables ou coordonnées.
+
+**Frontière de preuve :** une concordance de SIRET dans deux publications
+ne démontre ni la personnalité morale de l'acheteur, ni son rôle réel dans
+l'acte contractuel, ni une continuité de projet, ni un besoin non satisfait.
+Pour établir de telles relations, il faudra recouper les pièces primaires,
+la chronologie et les répertoires administratifs appropriés.
+
+Le fichier est limité au même extrait DECP plafonné à 5 000 notices que la
+recherche étendue ; aucune exhaustivité nationale n'est revendiquée.
+L'intégration n'ajoute ni serveur, ni base permanente, ni prestation payante.
+
+Vérifications :
+
+```sh
+node --test tests/test_rattachements_institutionnels.mjs
+node scripts/construire_partitions_statiques.mjs
+node --test tests/test_recherche_chromium.mjs
+```

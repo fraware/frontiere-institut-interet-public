@@ -6,6 +6,7 @@ import { mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { indexerBoamp, indexerEmplois, indexerDecp } from "./construire_index_statique.mjs";
+import { construireRattachements } from "./construire_rattachements_institutionnels.mjs";
 
 const RACINE = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const REPARTITION = Object.freeze({ boamp: 5000, emplois: 5000, decp: 5000 });
@@ -117,6 +118,7 @@ export async function construirePartitions(racine = RACINE) {
     Promise.resolve(indexerDecp(racine, REPARTITION.decp))
   ]);
   const fichiers = partitionner([...boamp.extraits, ...emplois.extraits, ...decp.extraits]);
+  const rattachements = construireRattachements(racine, decp.extraits);
   const dossier = join(racine, "site_frontiere", "partitions");
   mkdirSync(dossier, { recursive: true });
   const ancien = readdirSync(dossier).filter(s => /^part-(boamp|emplois|decp)-\d{4}-\d{3}\.json$/.test(s));
@@ -125,6 +127,7 @@ export async function construirePartitions(racine = RACINE) {
   const noms = new Set(fichiers.map(f => f.nom));
   for (const nom of ancien) if (!noms.has(nom)) rmSync(join(dossier, nom));
   for (const f of fichiers) writeFileSync(join(dossier, f.nom), f.contenu);
+  writeFileSync(join(dossier, "rattachements-acheteurs.json"), rattachements.contenu);
   const manifeste = {
     version: "frontiere-partitions-v1",
     portee: "extrait_etendu_non_exhaustif",
@@ -137,6 +140,14 @@ export async function construirePartitions(racine = RACINE) {
       decp: decp.total_candidats,
     },
     selection: bilanSelection({ boamp, emplois, decp }, fichiers),
+    rattachements_acheteurs: {
+      fichier: "rattachements-acheteurs.json",
+      version: rattachements.rapport.version,
+      octets: rattachements.octets,
+      sha256: rattachements.sha256,
+      documents_decp_indexes: rattachements.rapport.documents_decp_indexes,
+      sirets_decp_distincts: rattachements.rapport.sirets_decp_distincts
+    },
     partitions: fichiers.map(({ nom, source, annee, documents, octets, sha256 }) =>
       ({ fichier: nom, source, annee, documents, octets, sha256 })
     )
