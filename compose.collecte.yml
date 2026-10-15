@@ -32,6 +32,33 @@ services:
     # Fichier officiel DGAFP : vérifier le catalogue, télécharger le CSV
     # seulement après changement observé ou en cas de reprise incomplète.
 
+  collecte-decp:
+    build:
+      context: .
+      dockerfile: infra/Dockerfile.collecte
+    restart: unless-stopped
+    command:
+      - python
+      - -m
+      - app.collecteur_decp_continu
+      - --base
+      - /var/lib/frontiere/marches_decp.sqlite3
+      - --repertoire
+      - /var/lib/frontiere/releves
+      - --config
+      - /opt/frontiere/archives-decp/sources_v1.json
+      - --archives
+      - /opt/frontiere/archives-decp
+      - suivre
+      - --intervalle
+      - "21600"
+    volumes:
+      - stockage-frontiere-decp:/var/lib/frontiere
+      - ./institutionnel/decp:/opt/frontiere/archives-decp:ro
+    # Surveillance des catalogues DECP et lecture bornée des petits fichiers
+    # officiels ; la couverture nationale des fichiers massifs n'est pas établie.
+
 volumes:
   stockage-frontiere-boamp:
   stockage-frontiere-emplois:
+  stockage-frontiere-decp:
