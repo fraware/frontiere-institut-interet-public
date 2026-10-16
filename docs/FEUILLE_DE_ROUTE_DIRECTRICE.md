@@ -186,11 +186,11 @@ Construire une infrastructure française permettant d'identifier les institution
 
 ## Ordre des premières contributions
 
-1. **R0 — État de référence transversal** : réviser le [premier relevé documenté](ETAT_INITIAL_CHAINE_DOCUMENTAIRE_2026-10-16.md), reproduire les deux bases et les requêtes exactes, et fixer les divergences observables.
-2. **R1 — File des propositions ouvertes** : analyser les huit demandes déjà ouvertes avant de produire des ajouts concurrents sur les mêmes corpus.
-3. **R2 — Archives → index → consultation** : comparer les manifestes, les documents effectivement indexés, les plafonds du site et le déploiement Render.
-4. **R3 — Dossiers institutionnels** : définir la relation sourcée organisme–événement–projet–capacité et construire un petit lot de chronologies avec évaluation indépendante.
-5. **R4 — Registre des besoins** : qualifier des pièces primaires, conserver les contre-exemples et séparer systématiquement demandes, ressources et déficits démontrés.
+1. **Contribution 1 — État de référence transversal** : réviser le [premier relevé documenté](ETAT_INITIAL_CHAINE_DOCUMENTAIRE_2026-10-16.md), reproduire les deux bases et les requêtes exactes, et fixer les divergences observables.
+2. **Contribution 2 — File des propositions ouvertes** : analyser les huit demandes déjà ouvertes avant de produire des ajouts concurrents sur les mêmes corpus.
+3. **Contribution 3 — Archives → index → consultation** : comparer les manifestes, les documents effectivement indexés, les plafonds du site et le déploiement Render.
+4. **Contribution 4 — Dossiers institutionnels** : définir la relation sourcée organisme–événement–projet–capacité et construire un petit lot de chronologies avec évaluation indépendante.
+5. **Contribution 5 — Registre des besoins** : qualifier des pièces primaires, conserver les contre-exemples et séparer systématiquement demandes, ressources et déficits démontrés.
 
 ## Indicateurs de progrès
 
