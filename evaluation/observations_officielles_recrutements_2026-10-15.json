@@ -1,0 +1,104 @@
+{
+  "version": "frontiere-observations-officielles-enquetes-v1",
+  "date_observation": "2026-10-15",
+  "origine": "pages publiques de recrutement et liste de sélection de l'ANR ; URLs originales sans archivage local des réponses",
+  "preuves_web_capturees_sha256": false,
+  "constats_issus_des_sources_primaire_uniquement": true,
+  "observations": [
+    {
+      "reference": "2026-2344611",
+      "institution": "École nationale vétérinaire de Toulouse",
+      "projet_declare": "PRECOBOVE",
+      "url": "https://choisirleservicepublic.gouv.fr/offre-emploi/2026-2344611/",
+      "publication_source": "Choisir le service public",
+      "date_limite_candidature": "2026-08-09",
+      "prise_de_poste_annoncee": "2026-09-01",
+      "contrat_annonce": "18 mois",
+      "qualifications_declarees": [
+        "doctorat en économie",
+        "économétrie",
+        "exploration de données",
+        "Python ou R ou SQL"
+      ],
+      "missions_declarees": [
+        "modélisation bioéconomique de la dermatose nodulaire contagieuse",
+        "analyse de données animales BDNI et de marchés"
+      ],
+      "source_historique_archives_csp": true
+    },
+    {
+      "reference": "2026-2398908",
+      "institution": "École nationale vétérinaire de Toulouse",
+      "projet_declare": "PRECOBOVE",
+      "url": "https://choisirleservicepublic.gouv.fr/offre-emploi/ingenieur-de-recherche-en-econometrie-reference-2026-2398908/",
+      "publication_source": "Choisir le service public",
+      "date_limite_candidature": "2026-09-25",
+      "prise_de_poste_annoncee": "2026-10-15",
+      "contrat_annonce": "12 mois renouvelable de 6 à 12 mois",
+      "qualifications_declarees": [
+        "doctorat en économie",
+        "économétrie",
+        "exploration de données",
+        "Python ou R ou SQL"
+      ],
+      "missions_declarees": [
+        "modélisation bioéconomique de la dermatose nodulaire contagieuse",
+        "analyse de données animales BDNI et de marchés"
+      ],
+      "source_historique_archives_csp": "non_verifiee_dans_ce_registre"
+    },
+    {
+      "reference": "DEF_04-00070536",
+      "institution": "Armée de terre",
+      "projet_declare": null,
+      "url": "https://choisirleservicepublic.gouv.fr/offre-emploi/technicien-de-la-maintenance-des-plateformes-informatiques-de-formation-reference-DEF_04-00070536/",
+      "publication_source": "Choisir le service public",
+      "prise_de_poste_annoncee": "2026-10-01",
+      "missions_declarees": [
+        "déploiement et soutien des plateformes informatiques d'instruction",
+        "traitement des incidents",
+        "application des règles de sécurité des systèmes d'information"
+      ],
+      "condition_exercice_annoncee": "demande d'habilitation Secret prévue",
+      "source_historique_archives_csp": true
+    },
+    {
+      "reference": "O032260213001234",
+      "institution": "Conseil départemental du Gers",
+      "projet_declare": null,
+      "url": "https://www.emploi-territorial.fr/offre/o032260213001234-chef-fe-projets-informatiques",
+      "publication_source": "Emploi territorial",
+      "date_publication_affichee": "2026-02-13",
+      "information_affichee": "délai de candidature expiré et annonce dépubliée",
+      "source_historique_archives_csp": true
+    }
+  ],
+  "contexte_financement": {
+    "organisme": "Agence nationale de la recherche",
+    "url": "https://anr.fr/fileadmin/aap/2026/selection/aap-flashpox-2026-selection.pdf",
+    "reference_projet": "PrEcoBovE",
+    "constat": "figure dans la liste officielle des projets sélectionnés de l'appel FLASH poxvirus 2026",
+    "limite": "le document précise que les décisions de financement demeurent conditionnées à des vérifications et validations ; il ne prouve pas à lui seul un versement",
+    "etat_paiement": "non_etabli"
+  },
+  "recoupements": [
+    {
+      "type": "meme_acronyme_projet_dans_deux_annonces",
+      "references": [
+        "2026-2344611",
+        "2026-2398908"
+      ],
+      "constat": "même acronyme PRECOBOVE et thèmes scientifiques proches",
+      "lien_juridique_entre_postes": "non_etabli",
+      "republication_du_meme_poste": "non_etablie",
+      "recrutement_anterieur_echoue": "non_etabli",
+      "nombre_de_postes_distincts": "inconnu"
+    }
+  ],
+  "etats_non_etablis": {
+    "recrutements_pourvus": 0,
+    "deficits_de_capacite_confirmes": 0,
+    "insuffisance_dispositifs_existants_confirmee": 0,
+    "organisme_contacte_dans_cette_enquete": false
+  }
+}
