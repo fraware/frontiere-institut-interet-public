@@ -169,7 +169,7 @@ def test_entrees_boamp_ambigues_refusees(champ, valeur):
 
 
 def test_separateurs_lignes_source_preserves_par_empreinte(tmp_path):
-    original = avis(titre="Étude scientifique\\nLot 1 et lot 2")
+    original = avis(titre="Étude scientifique\nLot 1 et lot 2")
     assert verifier_boamp({"version": "avis-boamp-v1", "annonces": [original]})
     racine = tmp_path / "depot"
     ecrire(racine, avis_sources=[original])
