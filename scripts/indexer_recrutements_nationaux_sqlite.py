@@ -43,8 +43,7 @@ CREATE TABLE offres (
  date_fin_publication TEXT,
  chemin_source TEXT NOT NULL,
  ligne_source INTEGER NOT NULL,
- sha256_ligne TEXT NOT NULL,
- PRIMARY KEY (id)
+ sha256_ligne TEXT NOT NULL
 );
 CREATE INDEX ix_offres_reference ON offres(reference, date_index DESC, cle_enregistrement);
 CREATE INDEX ix_offres_date ON offres(date_index DESC, reference);
