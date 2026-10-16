@@ -19,6 +19,12 @@ FRONTIÈRE étudie une question pratique : **comment une institution publique tr
 
 Le projet traite chaque situation comme un problème de capacité. La ressource pertinente peut être une personne, une équipe, un laboratoire, un organisme public, un prestataire, une donnée, un outil, une infrastructure ou une procédure. L’objectif consiste à identifier la cause réelle de la difficulté puis la plus petite intervention susceptible de la corriger.
 
+## Feuille de route et état d'exécution
+
+La [feuille de route directrice](docs/FEUILLE_DE_ROUTE_DIRECTRICE.md) réunit **91 étapes identifiées**, réparties entre fiabilité documentaire, couverture des sources, reconstruction institutionnelle, besoins publics, anticipation, recherche des ressources, infrastructure durable et validation. Les états d'avancement ne valent que s'ils sont appuyés par des preuves vérifiables.
+
+Le [journal des revues](docs/SUIVI_FEUILLE_ROUTE.md) consigne les changements de décision et de statut chaque semaine, ainsi qu'après les contributions substantielles. Le [premier état transversal des archives, index et publication](docs/ETAT_INITIAL_CHAINE_DOCUMENTAIRE_2026-10-16.md) identifie les différences entre données archivées, moteurs locaux et version publiée sur Render.
+
 ## Chaîne de travail
 
 ```mermaid
