@@ -121,6 +121,71 @@ jobs:
               raise SystemExit("Recherche de référence réelle incompatible.")
           PY
 
+
+  commande_publique_integrale:
+    name: Recherche intégrale BOAMP–DECP
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Lire les relevés versionnés
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Installer Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Tester l'intégrité et les rapprochements interdits
+        run: |
+          python -m pip install "pytest>=8,<10"
+          python -m pytest -q tests/test_indexer_commande_publique_sqlite.py
+
+      - name: Contrôler les archives BOAMP et DECP complètes
+        run: |
+          set -euo pipefail
+          python -m scripts.indexer_commande_publique_sqlite construire \
+            --base "$RUNNER_TEMP/commande-publique.sqlite3"
+          python -m scripts.indexer_commande_publique_sqlite bilan \
+            --base "$RUNNER_TEMP/commande-publique.sqlite3" > "$RUNNER_TEMP/bilan-commande.json"
+          python - "$RUNNER_TEMP/bilan-commande.json" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          r = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          if (r["version"] != "frontiere-commande-publique-integrale-v1"
+                  or r["avis_boamp"] != 5196
+                  or r["marches_identites"] != 5643
+                  or r["marches_variantes"] != 5665
+                  or r["marches_attestations"] != 5946
+                  or r["fichiers_decp"] != 47
+                  or r["liaisons_boamp_decp_prouvees"] != 0
+                  or r["couverture_nationale_demontree"] is not False):
+              raise SystemExit("Population des deux archives incompatible.")
+          print("BOAMP : 5 196 avis ; DECP : 5 643 identités / 5 665 variantes.")
+          PY
+          python -m scripts.indexer_commande_publique_sqlite rechercher \
+            --base "$RUNNER_TEMP/commande-publique.sqlite3" \
+            --identifiant 26-100001 > "$RUNNER_TEMP/avis.json"
+          python -m scripts.indexer_commande_publique_sqlite rechercher \
+            --base "$RUNNER_TEMP/commande-publique.sqlite3" \
+            --identifiant '21590271900016/2025026000000000' > "$RUNNER_TEMP/marche.json"
+          python - "$RUNNER_TEMP/avis.json" "$RUNNER_TEMP/marche.json" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          avis, marche = [json.loads(Path(p).read_text(encoding="utf-8"))
+                         for p in sys.argv[1:]]
+          if (avis["resultats_totaux"] != 1
+                  or avis["resultats"][0]["source"] != "boamp"
+                  or marche["resultats_totaux"] != 1
+                  or marche["resultats"][0]["source"] != "decp"
+                  or marche["resultats"][0]["siret_acheteur"] != "21590271900016"):
+              raise SystemExit("Recherche de références primaires impossible.")
+          PY
+
+
   index_public:
     name: Index documentaire
     runs-on: ubuntu-latest
