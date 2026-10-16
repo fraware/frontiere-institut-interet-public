@@ -241,6 +241,22 @@ jobs:
           retention-days: 14
           if-no-files-found: error
 
+      - name: Contrôler la publication distante sur Render
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          python scripts/verifier_site_publie.py \
+            --revision "${{ github.sha }}" \
+            --rapport "$RUNNER_TEMP/audit-site-publie.json"
+
+      - name: Conserver le diagnostic du site réellement servi
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-site-publie-${{ github.run_id }}
+          path: ${{ runner.temp }}/audit-site-publie.json
+          retention-days: 14
+          if-no-files-found: warn
+
       - name: Contrôler les empreintes des rattachements DILA
         run: |
           node --input-type=module -e "
