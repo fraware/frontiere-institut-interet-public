@@ -44,7 +44,7 @@ def source_fictive(racine: Path, lignes: list[dict]) -> None:
     lots.mkdir(parents=True, exist_ok=True)
     donnees = {nom: [] for nom in PARTITIONS}
     for d in lignes:
-        first = hashlib.sha256(d["reference"].encode("utf-8")).hexdigest()[0]
+        first = hashlib.sha256(d["cle_enregistrement"].encode("utf-8")).hexdigest()[0]
         fichier = f"lot_{int(first, 16):02x}.jsonl"
         donnees[fichier].append(d)
     empreintes = {}
