@@ -1,0 +1,79 @@
+name: Base de recherche intégrale des recrutements publics
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/indexer_recrutements_nationaux_sqlite.py"
+      - "tests/test_indexer_recrutements_nationaux_sqlite.py"
+      - ".github/workflows/index-recrutements-integraux.yml"
+      - "institutionnel/besoins_publics/manifest_offres_postes.json"
+      - "institutionnel/besoins_publics/offres_postes/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: index-csp-integral-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  index_integral:
+    if: github.repository == 'fraware/frontiere-institut-interet-public'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Extraire les archives de la révision
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Installer Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Vérifier les invariants
+        run: |
+          python -m pip install "pytest>=8,<10"
+          python -m pytest -q tests/test_indexer_recrutements_nationaux_sqlite.py
+
+      - name: Construire sans réseau une base intégrale temporaire
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/recrutements-integraux"
+          python -m scripts.indexer_recrutements_nationaux_sqlite construire \
+            --base "$RUNNER_TEMP/recrutements-integraux/recrutements.sqlite3"
+          python -m scripts.indexer_recrutements_nationaux_sqlite bilan \
+            --base "$RUNNER_TEMP/recrutements-integraux/recrutements.sqlite3" \
+            > "$RUNNER_TEMP/recrutements-integraux/bilan.json"
+          python - "$RUNNER_TEMP/recrutements-integraux/bilan.json" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          r = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          if (r["variantes_indexees"] != 268102
+                  or r["references_distinctes"] != 266139
+                  or r["references_multivariantes"] != 1168
+                  or r["partitions_verifiees"] != 16
+                  or r["couverture_nationale_demontree"] is not False
+                  or r["recrutements_actuels_confirmes"] != 0):
+              raise SystemExit("Bilan de la base intégrale incompatible.")
+          PY
+          (
+            cd "$RUNNER_TEMP/recrutements-integraux"
+            sha256sum recrutements.sqlite3 bilan.json > empreintes.sha256
+          )
+
+      - name: Conserver une base SQLite portable avec empreintes
+        uses: actions/upload-artifact@v4
+        with:
+          name: index-integral-recrutements-csp-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/recrutements-integraux/recrutements.sqlite3
+            ${{ runner.temp }}/recrutements-integraux/bilan.json
+            ${{ runner.temp }}/recrutements-integraux/empreintes.sha256
+          retention-days: 14
+          compression-level: 6
+          if-no-files-found: error
