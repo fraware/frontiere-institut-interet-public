@@ -1,0 +1,22 @@
+{
+  "archive_originale_sha256_gzip": "6f9b8cf5dc4b422e88104567acdf7a1a7ac183d6c48078dc5aa54fe1f1262466",
+  "archive_relative": "categories_boamp/2025/11/2025-11-19.jsonl.gz",
+  "categories_non_renseignees_pour_identifiants_initiaux": 4,
+  "categories_renseignees_pour_identifiants_initiaux": 510,
+  "completude_historique_de_la_source_etablie": false,
+  "controle_le": "2026-10-16T08:28:39+00:00",
+  "date_origine_de_la_categorie_etablie": false,
+  "jour_parution": "2025-11-19",
+  "nombre_identifiants_absents_depuis_initial": 0,
+  "nombre_identifiants_ajoutes_depuis_initial": 0,
+  "nombre_identifiants_initiaux": 514,
+  "nombre_identifiants_source": 514,
+  "octets_archive": 1765,
+  "photographie_initiale_modifiee": false,
+  "sha256_archive_gzip": "a5cbbe358512f2c25f02d79448a6d0211989e392d3cab18201967ea1161540ec",
+  "sha256_liste_absents": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sha256_liste_ajoutes": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "sha256_octets_decompresses": "77b919d56e405a9b2a02a04e2898d7d37653a7eec11c44a9e58ac1aa27aa782a",
+  "source": "https://boamp-datadila.opendatasoft.com/api/explore/v2.1/catalog/datasets/boamp/records",
+  "version": "complements-categories-boamp-v1"
+}
