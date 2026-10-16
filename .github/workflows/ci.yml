@@ -227,6 +227,20 @@ jobs:
             console.log('Partitions attestées : '+count+' documents');
           "
 
+      - name: Auditer la chaîne des archives vers le site
+        run: |
+          python scripts/auditer_chaine_publication.py \
+            --revision "${{ github.sha }}" \
+            --rapport "$RUNNER_TEMP/audit-chaine-documentaire.json"
+
+      - name: Conserver le rapport transversal vérifié
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-chaine-documentaire-${{ github.run_id }}
+          path: ${{ runner.temp }}/audit-chaine-documentaire.json
+          retention-days: 14
+          if-no-files-found: error
+
       - name: Contrôler les empreintes des rattachements DILA
         run: |
           node --input-type=module -e "
