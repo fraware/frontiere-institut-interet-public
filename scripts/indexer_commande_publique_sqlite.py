@@ -111,9 +111,14 @@ def _limite(valeur: object) -> str | None:
 def _courte(valeur: object, maximum: int, *, facultative: bool = False) -> str:
     if valeur is None and facultative:
         return ""
-    imposer(isinstance(valeur, str) and 0 < len(valeur.strip()) <= maximum and
-            not any(ord(c) < 32 for c in valeur), "Champ documentaire absent ou invalide.")
-    return valeur.strip()
+    imposer(isinstance(valeur, str), "Champ documentaire absent ou invalide.")
+    # Les titres des avis officiels contiennent parfois des séparateurs de
+    # ligne : les normaliser pour la recherche, sans altérer la pièce d'origine.
+    normalise = re.sub(r"[\\r\\n\\t]+", " ", valeur).strip()
+    imposer(0 < len(normalise) <= maximum
+            and not any(ord(c) < 32 for c in normalise),
+            "Champ documentaire absent ou invalide.")
+    return normalise
 
 
 def _url_boamp(adresse: object) -> str:
@@ -208,14 +213,14 @@ def construire(racine: Path, base: Path, *, remplacer: bool = False) -> dict:
                                 empreinte_ligne
                             ) VALUES (?,?,?,?,?,?,?,?,?,?)
                         """, (
-                            ident, a["objet"], a["acheteur"], a["date_parution"],
+                            ident, _courte(a["objet"], 3000), _courte(a["acheteur"], 600), a["date_parution"],
                             a["categorie_marche"] or "", a["etat_avis"],
                             a["date_limite_reponse"], a["avis"], str(BOAMP), hachage(a),
                         ))
                         cx.execute("""
                             INSERT INTO recherche_avis(identifiant,titre,acheteur_declare)
                             VALUES(?,?,?)
-                        """, (ident, a["objet"], a["acheteur"]))
+                        """, (ident, _courte(a["objet"], 3000), _courte(a["acheteur"], 600)))
                     infos = {
                         "version": VERSION,
                         "sha256_archive_boamp": sha_boamp,
