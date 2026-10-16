@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -121,3 +123,12 @@ def test_site_sans_attestation_de_revision_ne_dit_pas_actuel(tmp_path):
     bilan = controler_publication(lire, attendu=COMMIT, racine=tmp_path)
     assert bilan["statut"] == "revision_non_verifiable"
     assert bilan["site_a_jour"] is False
+
+def test_entree_module_python_chargeable_depuis_racine():
+    racine = Path(__file__).resolve().parents[1]
+    resultat = subprocess.run(
+        [sys.executable, "-m", "scripts.verifier_site_publie", "--help"],
+        cwd=racine, check=False, capture_output=True, text=True, timeout=15,
+    )
+    assert resultat.returncode == 0, resultat.stderr
+    assert "--rapport" in resultat.stdout
