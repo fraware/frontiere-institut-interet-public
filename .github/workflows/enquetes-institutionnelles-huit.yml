@@ -1,0 +1,77 @@
+name: Reconstituer huit enquêtes institutionnelles
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/constituer_enquetes_institutionnelles.py"
+      - "evaluation/enquetes_institutionnelles_8_cibles_v1.json"
+      - ".github/workflows/enquetes-institutionnelles-huit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: huit-enquetes-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  reconstituer:
+    if: github.repository == 'fraware/frontiere-institut-interet-public'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Lire le dépôt sans conserver de jeton
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Installer Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Tester les invariants des fiches sans réseau
+        run: |
+          python -m pip install "pytest>=8,<10"
+          python -m pytest -q tests/test_constituer_enquetes_institutionnelles.py
+
+      - name: Reconstituer les huit fiches à partir des seize archives
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/huit-enquetes"
+          python -m scripts.constituer_enquetes_institutionnelles \
+            --sortie "$RUNNER_TEMP/huit-enquetes/registre-huit.json"
+          python - "$RUNNER_TEMP/huit-enquetes/registre-huit.json" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          path = Path(sys.argv[1])
+          r = json.loads(path.read_text(encoding="utf-8"))
+          if (r["version"] != "frontiere-registre-enquetes-huit-v1"
+                  or r["references_examinees"] != 8
+                  or r["partitions_integralement_verifiees"] != 16
+                  or r["variantes_lues"] != 268102
+                  or r["episodes_de_deficit_de_capacite_confirmes"] != 0
+                  or r["entretiens_realises"] != 0
+                  or len({x["reference"] for x in r["dossiers"]}) != 8
+                  or sum(r["compteurs_champ_competences"].values()) != 8
+                  or path.stat().st_size > 100000):
+              raise SystemExit("Registre d'enquête incohérent.")
+          print("Huit enquêtes documentaires, zéro déficit présumé.")
+          PY
+          (
+            cd "$RUNNER_TEMP/huit-enquetes"
+            sha256sum registre-huit.json > registre-huit.sha256
+          )
+
+      - name: Conserver provisoirement les fiches et leur empreinte
+        uses: actions/upload-artifact@v4
+        with:
+          name: enquetes-institutionnelles-huit-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/huit-enquetes/registre-huit.json
+            ${{ runner.temp }}/huit-enquetes/registre-huit.sha256
+          retention-days: 30
+          if-no-files-found: error

@@ -1,0 +1,156 @@
+{
+  "version": "frontiere-cibles-enquete-institutionnelle-v1",
+  "source_selection": "relecture-besoins-csp-38817002674",
+  "sha256_registre_24": "38fb7b7c901391de7fd00e1c92d4f8f775351dfd083843fead976af9f37b3f22",
+  "date_etude": "2026-10-15",
+  "portee": "8 références de recrutement parmi les 24 dossiers préselectionnés ; ne démontrent aucun déficit de capacité",
+  "statuts_recrutement_verifies": 0,
+  "besoins_non_satisfaits_confirmes": 0,
+  "contacts_institutionnels_realises": 0,
+  "items": [
+    {
+      "reference": "DEF_04-00070536",
+      "partition": "institutionnel/besoins_publics/offres_postes/lot_0d.jsonl",
+      "ligne": 2447,
+      "sha256_ligne": "4779af3bc36888d26569ecd48a1db65c7d9d947d3cbcca6b8fd247cc2d2e73fb",
+      "date_publication_archives": "2026-09-14",
+      "domaine_enquete_hypothese": "maintenance et sécurité des plateformes de formation",
+      "organisme_cible_enquete": "Armée de terre",
+      "preuve_web": {
+        "type": "annonce_officielle_consultable",
+        "url": "https://choisirleservicepublic.gouv.fr/offre-emploi/technicien-de-la-maintenance-des-plateformes-informatiques-de-formation-reference-DEF_04-00070536/",
+        "consultation": "2026-10-15",
+        "statut_recrutement_actuel": "non_etabli",
+        "contrat_pourvu": "non_etabli",
+        "source_html_non_archivee": true
+      },
+      "question_institutionnelle": "Vérifier si le recrutement a abouti, si les habilitations et l'accès aux plateformes ont retardé la prise de poste et quelles solutions internes ont été tentées"
+    },
+    {
+      "reference": "2026-2344611",
+      "partition": "institutionnel/besoins_publics/offres_postes/lot_09.jsonl",
+      "ligne": 9615,
+      "sha256_ligne": "f0eb44383e502045f8b4e39ba3b02e730b6c81623071b637d3bb80dbe3353799",
+      "date_publication_archives": "2026-07-09",
+      "domaine_enquete_hypothese": "économétrie et modélisation bioéconomique de PRECOBOVE",
+      "organisme_cible_enquete": "École nationale vétérinaire de Toulouse",
+      "preuve_web": {
+        "type": "annonce_officielle_consultable_date_limite_passee",
+        "url": "https://choisirleservicepublic.gouv.fr/offre-emploi/2026-2344611/",
+        "consultation": "2026-10-15",
+        "statut_recrutement_actuel": "non_etabli",
+        "contrat_pourvu": "non_etabli",
+        "source_html_non_archivee": true
+      },
+      "question_institutionnelle": "Établir si le contrat PRECOBOVE a été pourvu, si les objectifs de recherche ont été atteints à temps et si d'autres compétences publiques avaient été recherchées"
+    },
+    {
+      "reference": "2026-2309597",
+      "partition": "institutionnel/besoins_publics/offres_postes/lot_06.jsonl",
+      "ligne": 6177,
+      "sha256_ligne": "35ba1355a0669440277df52b24b4ef3dc674803bfc00b46fcac7c9e6ac95411a",
+      "date_publication_archives": "2026-06-11",
+      "domaine_enquete_hypothese": "analyse chimique et techniques d'adsorption",
+      "organisme_cible_enquete": "Université de Haute-Alsace",
+      "preuve_web": {
+        "type": "lien_officiel_redirige_vers_offre_depubliee",
+        "url": "https://choisirleservicepublic.gouv.fr/offre-emploi/2026-2309597/",
+        "consultation": "2026-10-15",
+        "statut_recrutement_actuel": "non_etabli",
+        "contrat_pourvu": "non_etabli",
+        "source_html_non_archivee": true
+      },
+      "question_institutionnelle": "Établir les compétences analytiques précises, la continuité de la plateforme, le recrutement et les solutions de remplacement"
+    },
+    {
+      "reference": "UMR5214-MOBINT-Q56002",
+      "partition": "institutionnel/besoins_publics/offres_postes/lot_01.jsonl",
+      "ligne": 11073,
+      "sha256_ligne": "a8c6a69af17da673ba29d3ed1d9e1c55114f62c4328cb0adf6c0b40f8971c1c6",
+      "date_publication_archives": "2026-04-27",
+      "domaine_enquete_hypothese": "instrumentation et techniques expérimentales",
+      "organisme_cible_enquete": "CNRS",
+      "preuve_web": {
+        "type": "page_officielle_non_verifiee",
+        "url": null,
+        "consultation": "2026-10-15",
+        "statut_recrutement_actuel": "non_etabli",
+        "contrat_pourvu": "non_etabli",
+        "source_html_non_archivee": true
+      },
+      "question_institutionnelle": "Identifier les instruments, la durée de formation et les restrictions d'accès au laboratoire, puis établir le résultat du recrutement"
+    },
+    {
+      "reference": "2026-2181943",
+      "partition": "institutionnel/besoins_publics/offres_postes/lot_0e.jsonl",
+      "ligne": 6525,
+      "sha256_ligne": "3f806130934c06ebba9428a7d1ecc3cfce561b13667e6426ac2d7a622fc62ef3",
+      "date_publication_archives": "2026-02-03",
+      "domaine_enquete_hypothese": "statistiques et analyse des données",
+      "organisme_cible_enquete": "Aix-Marseille Université",
+      "preuve_web": {
+        "type": "page_officielle_non_verifiee",
+        "url": null,
+        "consultation": "2026-10-15",
+        "statut_recrutement_actuel": "non_etabli",
+        "contrat_pourvu": "non_etabli",
+        "source_html_non_archivee": true
+      },
+      "question_institutionnelle": "Identifier le programme, les méthodes statistiques nécessaires, les compétences déjà présentes et la durée de recrutement"
+    },
+    {
+      "reference": "O032260213001234",
+      "partition": "institutionnel/besoins_publics/offres_postes/lot_04.jsonl",
+      "ligne": 2335,
+      "sha256_ligne": "b1ff8db76ddc7aba8bb49d90c347acdea38a475e810c8397a00fbd12b5e003d3",
+      "date_publication_archives": "2026-02-13",
+      "domaine_enquete_hypothese": "gestion de projets informatiques",
+      "organisme_cible_enquete": "Conseil départemental du Gers",
+      "preuve_web": {
+        "type": "delai_candidature_expire_offre_depubliee",
+        "url": "https://www.emploi-territorial.fr/offre/o032260213001234-chef-fe-projets-informatiques",
+        "consultation": "2026-10-15",
+        "statut_recrutement_actuel": "non_etabli",
+        "contrat_pourvu": "non_etabli",
+        "source_html_non_archivee": true
+      },
+      "question_institutionnelle": "Déterminer si le poste a été pourvu, l'état du projet informatique et les solutions internes ou mutualisées"
+    },
+    {
+      "reference": "2026-2290038",
+      "partition": "institutionnel/besoins_publics/offres_postes/lot_0a.jsonl",
+      "ligne": 5995,
+      "sha256_ligne": "13ddfe5a884c381172334670a8f292e24dd0c5d8defde4b3adfddc36cc02aa50",
+      "date_publication_archives": "2026-05-28",
+      "domaine_enquete_hypothese": "recherche clinique et coordination de données",
+      "organisme_cible_enquete": "Centre hospitalier de Saint-Nazaire",
+      "preuve_web": {
+        "type": "page_officielle_non_verifiee",
+        "url": null,
+        "consultation": "2026-10-15",
+        "statut_recrutement_actuel": "non_etabli",
+        "contrat_pourvu": "non_etabli",
+        "source_html_non_archivee": true
+      },
+      "question_institutionnelle": "Identifier les protocoles, la gestion des données cliniques et les exigences réglementaires avant de qualifier une difficulté de recrutement"
+    },
+    {
+      "reference": "UMR5283-EMMSAN-003",
+      "partition": "institutionnel/besoins_publics/offres_postes/lot_09.jsonl",
+      "ligne": 4104,
+      "sha256_ligne": "2b47c04272d1741d7aa6bb7d71ce8c416c98dcd3c3ad5f57056ca0a7d9f905d3",
+      "date_publication_archives": "2026-02-26",
+      "domaine_enquete_hypothese": "traitement de transcriptions en recherche",
+      "organisme_cible_enquete": "CNRS",
+      "preuve_web": {
+        "type": "page_officielle_non_verifiee",
+        "url": null,
+        "consultation": "2026-10-15",
+        "statut_recrutement_actuel": "non_etabli",
+        "contrat_pourvu": "non_etabli",
+        "source_html_non_archivee": true
+      },
+      "question_institutionnelle": "Vérifier la nature des transcriptions, les logiciels et les enjeux de confidentialité, ainsi que le statut du recrutement"
+    }
+  ]
+}

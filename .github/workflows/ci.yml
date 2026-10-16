@@ -207,6 +207,28 @@ jobs:
               raise SystemExit("Échantillon de relecture non conforme.")
           PY
 
+      - name: Reconstituer les huit cas institutionnels et vérifier leurs preuves
+        run: |
+          python -m scripts.constituer_enquetes_institutionnelles \
+            --sortie "$RUNNER_TEMP/enquetes-huit.json"
+          python - "$RUNNER_TEMP/enquetes-huit.json" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          j = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          if (j["references_examinees"] != 8 or
+                  j["partitions_integralement_verifiees"] != 16 or
+                  j["variantes_lues"] != 268102 or
+                  j["episodes_de_deficit_de_capacite_confirmes"] != 0 or
+                  j["entretiens_realises"] != 0 or
+                  j["validations_independantes_realisees"] != 0 or
+                  len({d["reference"] for d in j["dossiers"]}) != 8 or
+                  sum(j["compteurs_champ_competences"].values()) != 8 or
+                  any(d["besoin_non_satisfait"] != "non_etabli"
+                      for d in j["dossiers"])):
+              raise SystemExit("Huit fiches ou limites de preuve incohérentes.")
+          PY
+
       - name: Vérifier la taille et la portée de la publication
         run: |
           node --input-type=module -e "
