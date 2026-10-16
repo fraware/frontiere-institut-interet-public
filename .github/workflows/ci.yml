@@ -93,20 +93,8 @@ jobs:
             --base "$RUNNER_TEMP/frontiere-csp.sqlite3"
           python -m scripts.indexer_recrutements_nationaux_sqlite bilan \
             --base "$RUNNER_TEMP/frontiere-csp.sqlite3" > "$RUNNER_TEMP/bilan-csp.json"
-          python - "$RUNNER_TEMP/bilan-csp.json" <<'PY'
-          import json
-          import sys
-          from pathlib import Path
-          b = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
-          if (b["variantes_indexees"] != 268102
-                  or b["references_distinctes"] != 266139
-                  or b["references_multivariantes"] != 1168
-                  or b["partitions_verifiees"] != 16
-                  or b["couverture_nationale_demontree"] is not False
-                  or b["recrutements_actuels_confirmes"] != 0):
-              raise SystemExit("Population de recherche CSP inattendue.")
-          print("Index national vérifié : 268 102 variantes, 266 139 références.")
-          PY
+          python scripts/verifier_bilans_index_ci.py \
+            --bilan-csp "$RUNNER_TEMP/bilan-csp.json"
           python -m scripts.indexer_recrutements_nationaux_sqlite rechercher \
             --base "$RUNNER_TEMP/frontiere-csp.sqlite3" \
             --reference 2026-2344611 > "$RUNNER_TEMP/recherche-csp.json"
@@ -149,22 +137,8 @@ jobs:
             --base "$RUNNER_TEMP/commande-publique.sqlite3"
           python -m scripts.indexer_commande_publique_sqlite bilan \
             --base "$RUNNER_TEMP/commande-publique.sqlite3" > "$RUNNER_TEMP/bilan-commande.json"
-          python - "$RUNNER_TEMP/bilan-commande.json" <<'PY'
-          import json
-          import sys
-          from pathlib import Path
-          r = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
-          if (r["version"] != "frontiere-commande-publique-integrale-v1"
-                  or r["avis_boamp"] != 5196
-                  or r["marches_identites"] != 5643
-                  or r["marches_variantes"] != 5665
-                  or r["marches_attestations"] != 5946
-                  or r["fichiers_decp"] != 47
-                  or r["liaisons_boamp_decp_prouvees"] != 0
-                  or r["couverture_nationale_demontree"] is not False):
-              raise SystemExit("Population des deux archives incompatible.")
-          print("BOAMP : 5 196 avis ; DECP : 5 643 identités / 5 665 variantes.")
-          PY
+          python scripts/verifier_bilans_index_ci.py \
+            --bilan-commande "$RUNNER_TEMP/bilan-commande.json"
           python -m scripts.indexer_commande_publique_sqlite rechercher \
             --base "$RUNNER_TEMP/commande-publique.sqlite3" \
             --identifiant 26-100001 > "$RUNNER_TEMP/avis.json"
