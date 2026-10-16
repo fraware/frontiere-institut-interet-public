@@ -65,6 +65,62 @@ jobs:
         run: pytest
 
 
+
+  recrutements_integraux:
+    name: Recherche intégrale CSP
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Récupérer les partitions versionnées
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Installer Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Contrôler les limites du moteur sur corpus synthétique
+        run: |
+          python -m pip install "pytest>=8,<10"
+          python -m pytest -q tests/test_indexer_recrutements_nationaux_sqlite.py
+
+      - name: Construire la recherche intégrale sur le véritable instantané
+        run: |
+          set -euo pipefail
+          python -m scripts.indexer_recrutements_nationaux_sqlite construire \
+            --base "$RUNNER_TEMP/frontiere-csp.sqlite3"
+          python -m scripts.indexer_recrutements_nationaux_sqlite bilan \
+            --base "$RUNNER_TEMP/frontiere-csp.sqlite3" > "$RUNNER_TEMP/bilan-csp.json"
+          python - "$RUNNER_TEMP/bilan-csp.json" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          b = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          if (b["variantes_indexees"] != 268102
+                  or b["references_distinctes"] != 266139
+                  or b["references_multivariantes"] != 1168
+                  or b["partitions_verifiees"] != 16
+                  or b["couverture_nationale_demontree"] is not False
+                  or b["recrutements_actuels_confirmes"] != 0):
+              raise SystemExit("Population de recherche CSP inattendue.")
+          print("Index national vérifié : 268 102 variantes, 266 139 références.")
+          PY
+          python -m scripts.indexer_recrutements_nationaux_sqlite rechercher \
+            --base "$RUNNER_TEMP/frontiere-csp.sqlite3" \
+            --reference 2026-2344611 > "$RUNNER_TEMP/recherche-csp.json"
+          python - "$RUNNER_TEMP/recherche-csp.json" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          r = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          if (r["references_retournees"] != 1 or
+                  r["resultats"][0]["reference"] != "2026-2344611"
+                  or not r["resultats"][0]["sha256_ligne"]):
+              raise SystemExit("Recherche de référence réelle incompatible.")
+          PY
+
   index_public:
     name: Index documentaire
     runs-on: ubuntu-latest
