@@ -1,0 +1,81 @@
+name: Base BOAMP et DECP intégrale
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/indexer_commande_publique_sqlite.py"
+      - "tests/test_indexer_commande_publique_sqlite.py"
+      - "institutionnel/besoins_publics/annonces_boamp.json"
+      - "institutionnel/decp/sonde_aife_json.json"
+      - "institutionnel/decp/lot_dgfip_xml.json"
+      - "institutionnel/decp/bilan_index_unifie.json"
+      - ".github/workflows/index-commande-publique-integral.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: commande-integrale-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  preparer_base:
+    if: github.repository == 'fraware/frontiere-institut-interet-public'
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Lire les archives Git versionnées
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Installer Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Vérifier les invariants sans réseau
+        run: |
+          python -m pip install "pytest>=8,<10"
+          python -m pytest -q tests/test_indexer_commande_publique_sqlite.py
+
+      - name: Construire la base depuis les archives
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/commande-publique"
+          python -m scripts.indexer_commande_publique_sqlite construire \
+            --base "$RUNNER_TEMP/commande-publique/commande.sqlite3"
+          python -m scripts.indexer_commande_publique_sqlite bilan \
+            --base "$RUNNER_TEMP/commande-publique/commande.sqlite3" \
+            > "$RUNNER_TEMP/commande-publique/bilan.json"
+          python - "$RUNNER_TEMP/commande-publique/bilan.json" <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          r = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+          if (r["avis_boamp"] != 5196
+                  or r["marches_identites"] != 5643
+                  or r["marches_variantes"] != 5665
+                  or r["marches_attestations"] != 5946
+                  or r["fichiers_decp"] != 47
+                  or r["liaisons_boamp_decp_prouvees"] != 0):
+              raise SystemExit("Base BOAMP/DECP non conforme à l'instantané.")
+          PY
+          (
+            cd "$RUNNER_TEMP/commande-publique"
+            sha256sum commande.sqlite3 bilan.json > empreintes.sha256
+          )
+
+      - name: Mettre à disposition la base portable temporaire
+        uses: actions/upload-artifact@v4
+        with:
+          name: index-commande-integral-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/commande-publique/commande.sqlite3
+            ${{ runner.temp }}/commande-publique/bilan.json
+            ${{ runner.temp }}/commande-publique/empreintes.sha256
+          retention-days: 14
+          compression-level: 6
+          if-no-files-found: error
