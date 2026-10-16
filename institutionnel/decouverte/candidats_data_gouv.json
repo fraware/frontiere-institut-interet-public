@@ -385,7 +385,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T05:04:24.445000+00:00",
+      "donnees_actualisees_le": "2026-10-16T17:05:49.749000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "annual",
       "id": "53699374a3a729239d2041cc",
@@ -401,7 +401,7 @@
         {
           "format": "api",
           "id": "ad71e2e9-d5d9-4f61-a708-4209ac00e414",
-          "modifie_le": "2026-10-16T05:04:24.445252+00:00",
+          "modifie_le": "2026-10-16T17:05:49.749186+00:00",
           "titre": "API",
           "url": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-sise-effectifs-d-etudiants-inscrits-esr-public/?tab=api"
         },
@@ -1060,6 +1060,33 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:24:05.386000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "daily",
+      "id": "53699af6a3a729239d2055fd",
+      "licence_declaree": "odc-odbl",
+      "modifie_le": "2015-06-05T23:35:21.533000+00:00",
+      "nombre_ressources_rapportees": 1,
+      "page": "https://www.data.gouv.fr/datasets/nomenclature-des-voies-tm",
+      "producteur": "Mairie de Toulouse",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "zip",
+          "id": "c0add05d-e891-4cc3-9c91-d8c93d729bd6",
+          "modifie_le": "2026-10-16T17:24:05.386230+00:00",
+          "titre": "Fichier ZIP",
+          "url": "http://data.toulouse-metropole.fr/les-donnees/-/opendata/card/19159-nomenclature-des-voies/resource/document"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Nomenclature des Voies"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-14T05:52:34.098000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "annual",
@@ -1393,7 +1420,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T05:18:51.694000+00:00",
+      "donnees_actualisees_le": "2026-10-16T17:21:17.163000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "punctual",
       "id": "53699dbfa3a729239d205ceb",
@@ -1409,28 +1436,28 @@
         {
           "format": "json",
           "id": "020eceb9-42ae-4700-b56c-55615a9bdeaf",
-          "modifie_le": "2026-10-16T03:38:01.036871+00:00",
+          "modifie_le": "2026-10-16T15:42:20.843451+00:00",
           "titre": "Fichier JSON",
           "url": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-principaux-etablissements-enseignement-superieur/download?format=json"
         },
         {
           "format": "csv",
           "id": "4f8684c6-4549-49cc-8fe2-dac127609a5d",
-          "modifie_le": "2026-10-16T05:18:51.694561+00:00",
+          "modifie_le": "2026-10-16T17:21:17.163794+00:00",
           "titre": "Fichier CSV",
           "url": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-principaux-etablissements-enseignement-superieur/download?format=csv"
         },
         {
           "format": "json",
           "id": "d013bfbd-d47a-42b9-96c9-2d506fd59058",
-          "modifie_le": "2026-10-16T03:50:59.394619+00:00",
+          "modifie_le": "2026-10-16T15:51:21.490729+00:00",
           "titre": "Fichier JSON",
           "url": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-principaux-etablissements-enseignement-superieur/download?format=json"
         },
         {
           "format": "xls",
           "id": "b25c7ffa-5500-47d5-a53e-b401cf07d877",
-          "modifie_le": "2026-10-16T01:33:34.465285+00:00",
+          "modifie_le": "2026-10-16T14:16:59.450672+00:00",
           "titre": "Fichier XLS",
           "url": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-principaux-etablissements-enseignement-superieur/download?format=xls"
         },
@@ -1673,6 +1700,60 @@
       "reutilisation_potentielle": true,
       "source_deja_suivie": false,
       "titre": "Recensement des équipements sportifs, espaces et sites de pratiques"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:22:49.088000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "weekly",
+      "id": "53699ec5a3a729239d205f76",
+      "licence_declaree": "odc-odbl",
+      "modifie_le": "2014-11-05T01:37:34.612000+00:00",
+      "nombre_ressources_rapportees": 1,
+      "page": "https://www.data.gouv.fr/datasets/recup-emballage-tm",
+      "producteur": "Toulouse métropole",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "zip",
+          "id": "f036ff87-eb06-4f70-8c13-7d4d8adc2e1a",
+          "modifie_le": "2026-10-16T17:22:49.088308+00:00",
+          "titre": "Fichier ZIP",
+          "url": "http://data.toulouse-metropole.fr/les-donnees/-/opendata/card/12494-recup-emballage/resource/document"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Récup' Emballage"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:22:40.501000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "weekly",
+      "id": "53699ec5a3a729239d205f77",
+      "licence_declaree": "odc-odbl",
+      "modifie_le": "2015-08-17T23:48:03.011000+00:00",
+      "nombre_ressources_rapportees": 1,
+      "page": "https://www.data.gouv.fr/datasets/recup-verre-tm",
+      "producteur": "Toulouse métropole",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "zip",
+          "id": "9f62b9b3-5954-497f-b67a-77eb24b2f8c8",
+          "modifie_le": "2026-10-16T17:22:40.501364+00:00",
+          "titre": "Fichier ZIP",
+          "url": "http://data.toulouse-metropole.fr/les-donnees/-/opendata/card/12496-recup-verre/resource/document"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Récup' Verre"
     },
     {
       "contenu_original_copie": false,
@@ -2217,7 +2298,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T05:28:40.314000+00:00",
+      "donnees_actualisees_le": "2026-10-16T14:11:41.862000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "annual",
       "id": "549355bbc751df357a04805a",
@@ -2240,7 +2321,7 @@
         {
           "format": "pdf",
           "id": "a2064aa3-3891-4e68-9163-fdcea833ee6d",
-          "modifie_le": "2026-10-16T00:57:20.448410+00:00",
+          "modifie_le": "2026-10-16T14:11:41.862894+00:00",
           "titre": "Personnel prg 150 231 dans le code SYMPA 2009 2014",
           "url": "http://sites.google.com/site/universitespc/code-sympa/EMPLOIS%20TITULAIRES%20CODE%20SYMPA%202009%202014.pdf?attredirects=0&d=1"
         }
@@ -2952,7 +3033,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-15T17:45:26.165000+00:00",
+      "donnees_actualisees_le": "2026-10-16T17:23:57.146000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
       "id": "555f05f0c751df57adc98e0f",
@@ -2989,154 +3070,154 @@
         {
           "format": "",
           "id": "30589653-9209-4f74-baaf-d3ed8747a8d9",
-          "modifie_le": "2026-10-15T15:37:45.883722+00:00",
+          "modifie_le": "2026-10-16T15:49:01.576617+00:00",
           "titre": "Concertation  numérique : discours de Manuel Valls",
           "url": "http://www.dailymotion.com/video/x27ifys_concertation-numerique-discours-de-manuel-valls_news"
         },
         {
           "format": "",
           "id": "e10ca50d-f188-408e-b9d9-4f4243b33422",
-          "modifie_le": "2026-10-15T17:16:42.196661+00:00",
+          "modifie_le": "2026-10-16T05:21:03.112609+00:00",
           "titre": "Concertation numérique : discours de Benoît Thieulin au Premier ministre",
           "url": "http://www.dailymotion.com/video/x27imcy_concertation-numerique-discours-de-benoit-thieulin-au-premier-ministre_news"
         },
         {
           "format": "",
           "id": "f3ff13a2-186e-4d83-91d2-078d6e590fd4",
-          "modifie_le": "2026-10-15T15:01:39.103440+00:00",
+          "modifie_le": "2026-10-16T15:04:49.143949+00:00",
           "titre": "Concertation numérique : discours d'Axelle Lemaire",
           "url": "http://www.dailymotion.com/video/x27iof3_concertation-numerique-discours-d-axelle-lemaire_news"
         },
         {
           "format": "",
           "id": "62fca86b-b038-4799-8da5-91ba9362ab4e",
-          "modifie_le": "2026-10-15T05:48:29.441348+00:00",
+          "modifie_le": "2026-10-16T05:54:34.777108+00:00",
           "titre": "Concertation numérique : discours de Thierry Mandon",
           "url": "http://www.dailymotion.com/video/x27ipt9_concertation-numerique-discours-de-thierry-mandon_news"
         },
         {
           "format": "",
           "id": "fe56f3c3-e18e-4fbd-ab6f-b3f852e721ea",
-          "modifie_le": "2026-10-15T17:26:41.360404+00:00",
+          "modifie_le": "2026-10-16T05:34:42.567794+00:00",
           "titre": "Lancement de la concertation numérique : résumé vidéo",
           "url": "http://www.dailymotion.com/video/x27uii8_lancement-de-la-concertation-numerique-resume_news"
         },
         {
           "format": "",
           "id": "3bcc2374-66f7-4534-b9c2-7b4e3ded06b7",
-          "modifie_le": "2026-10-15T11:56:31.002896+00:00",
+          "modifie_le": "2026-10-16T11:58:13.227802+00:00",
           "titre": "1ère journée contributive à Lille: Croissance, innovation, disruption",
           "url": "http://www.dailymotion.com/video/x2bnxcd_1ere-journee-contributive-a-lille-croissance-innovation-disruption_tech"
         },
         {
           "format": "",
           "id": "42dcd6f1-8b3f-432b-be4a-f7346ab998f6",
-          "modifie_le": "2026-10-15T15:22:06.667891+00:00",
+          "modifie_le": "2026-10-16T15:24:24.978827+00:00",
           "titre": "Présentation de la synthèse et des ateliers - Lille @euratechnologies",
           "url": "http://www.dailymotion.com/video/x2bvnad_presentation-de-la-synthese-et-des-ateliers-lille-euratechnologies_tech"
         },
         {
           "format": "",
           "id": "4f7378de-a57e-4111-a189-05caa498995d",
-          "modifie_le": "2026-10-15T17:45:26.165925+00:00",
+          "modifie_le": "2026-10-16T05:56:53.024756+00:00",
           "titre": "Ouverture de la 1ère journée contributive - Lille @euratechnologies",
           "url": "http://www.dailymotion.com/video/x2bvn94_ouverture-de-la-1ere-journee-contributive-lille-euratechnologies_tech"
         },
         {
           "format": "",
           "id": "0cdc1cc7-c9d4-4899-b859-7cb1d3971fea",
-          "modifie_le": "2026-10-15T15:10:36.920694+00:00",
+          "modifie_le": "2026-10-16T15:14:01.003003+00:00",
           "titre": "Restitution des ateliers contributifs et clôture de la 1ère journée contributive - Lille @euratechnologies",
           "url": "http://www.dailymotion.com/video/x2bvncm_restitution-des-ateliers-contributifs-et-cloture-de-la-1ere-journee-contributive-lille-euratechnolog_tech"
         },
         {
           "format": "",
           "id": "44ff1b0a-7a7f-48a0-882a-6e0fa7919092",
-          "modifie_le": "2026-10-15T17:30:42.056158+00:00",
+          "modifie_le": "2026-10-16T05:34:57.757028+00:00",
           "titre": "Les pitchs contributifs de la 1ère journée contributive - Lille @euratechnologies",
           "url": "http://www.dailymotion.com/video/x2bxgx4_pitchs-contributifs-de-la-1ere-journee-contributive-lille-euratechnologies_tech"
         },
         {
           "format": "",
           "id": "a72b6c20-2c81-4c89-a5e5-e0581e5817d9",
-          "modifie_le": "2026-10-15T15:39:38.308996+00:00",
+          "modifie_le": "2026-10-16T15:45:47.900366+00:00",
           "titre": "Journée Contributive #2 Strasbourg FR",
           "url": "http://www.dailymotion.com/video/x2ekcgy_journee-contributive-2-strasbourg-fr_tech"
         },
         {
           "format": "",
           "id": "bf2095c3-5545-494b-b6e5-30d6cccceab3",
-          "modifie_le": "2026-10-15T17:19:24.039965+00:00",
+          "modifie_le": "2026-10-16T17:23:57.146692+00:00",
           "titre": "Journée Contributive #2 Strasbourg EN",
           "url": "http://www.dailymotion.com/video/x2ekff4_journee-contributive-2-strasbourg-en_tech"
         },
         {
           "format": "",
           "id": "bb0ba312-722d-42b3-82d7-5491addecf10",
-          "modifie_le": "2026-10-15T17:45:15.167413+00:00",
+          "modifie_le": "2026-10-16T05:53:29.974798+00:00",
           "titre": "Résumé de la journée contributive #2 du 9 janvier à Strasbourg au Conseil de l'Europe",
           "url": "http://www.dailymotion.com/video/x2f48th_resume-de-la-journee-contributive-2-du-9-janvier-a-strasbourg-au-conseil-de-l-europe_tech"
         },
         {
           "format": "",
           "id": "77f90155-f1fc-4f6a-9e72-aaef99a6bedd",
-          "modifie_le": "2026-10-15T10:48:38.793547+00:00",
+          "modifie_le": "2026-10-16T10:57:29.032544+00:00",
           "titre": "Pitch #1 Luca Belli à la journée contributive #2 le 9 janvier à Strasbourg",
           "url": "http://www.dailymotion.com/video/x2f49x8_pitch-1-luca-belli-a-la-journee-contributive-2-le-9-janvier-a-strasbourg_tech"
         },
         {
           "format": "",
           "id": "34f1b011-29af-445e-b9d4-0d40210422aa",
-          "modifie_le": "2026-10-15T17:00:42.472019+00:00",
+          "modifie_le": "2026-10-16T17:04:47.883076+00:00",
           "titre": "Pitch #2 Marília Maciel en duplex à la journée contributive #2 le 9 janvier à Strasbourg",
           "url": "http://www.dailymotion.com/video/x2f4d3i_pitch-2-marilia-maciel-en-duplex-a-la-journee-contributive-2-le-9-janvier-a-strasbourg_tech"
         },
         {
           "format": "",
           "id": "44b7df46-83f4-437a-8563-da08d4c182f9",
-          "modifie_le": "2026-10-15T15:21:40.807627+00:00",
+          "modifie_le": "2026-10-16T15:25:02.780722+00:00",
           "titre": "Pitch #3 Marc Mossé à la journée contributive #2 le 9 janvier à Strasbourg",
           "url": "http://www.dailymotion.com/video/x2f4dnq_pitch-3-marc-mosse-a-la-journee-contributive-2-le-9-janvier-a-strasbourg_tech"
         },
         {
           "format": "",
           "id": "25a3780d-676a-47b2-a6b8-21890a877a05",
-          "modifie_le": "2026-10-15T15:05:57.694271+00:00",
+          "modifie_le": "2026-10-16T15:08:21.952480+00:00",
           "titre": "Pitch #4 Adrienne Charmet à la journée contributive #2 le 9 janvier à Strasbourg",
           "url": "http://www.dailymotion.com/video/x2f4dy1_pitch-4-adrienne-charmet-a-la-journee-contributive-2-le-9-janvier-a-strasbourg_tech"
         },
         {
           "format": "",
           "id": "79f3469d-dcae-4e6c-b57a-8e1d911c4526",
-          "modifie_le": "2026-10-15T16:06:30.447292+00:00",
+          "modifie_le": "2026-10-16T16:34:41.884179+00:00",
           "titre": "Pitch #5 Hugo Roy à la journée contributive #2 le 9 janvier à Strasbourg",
           "url": "http://www.dailymotion.com/video/x2f4ed1_pitch-5-hugo-roy-a-la-journee-contributive-2-le-9-janvier-a-strasbourg_tech"
         },
         {
           "format": "",
           "id": "37d2761c-d5d2-414a-9a5a-80351c980fe4",
-          "modifie_le": "2026-10-15T16:10:36.939381+00:00",
+          "modifie_le": "2026-10-16T16:16:16.149374+00:00",
           "titre": "Pitch #6 Nicolas Krameyer à la journée contributive #2 le 9 janvier à Strasbourg",
           "url": "http://www.dailymotion.com/video/x2f4ev7_pitch-6-nicolas-krameyer-a-la-journee-contributive-2-le-9-janvier-a-strasbourg_tech"
         },
         {
           "format": "",
           "id": "8a4ad1f5-26c2-43d4-b469-c58e4ff3c409",
-          "modifie_le": "2026-10-15T12:16:33.020657+00:00",
+          "modifie_le": "2026-10-16T14:11:52.147283+00:00",
           "titre": "Pitch #7 Jean-Baptiste Kempf à la journée contributive #2 le 9 janvier à Strasbourg",
           "url": "http://www.dailymotion.com/video/x2f4fbh_pitch-7-jean-baptiste-kempf-a-la-journee-contributive-2-le-9-janvier-a-strasbourg_tech"
         },
         {
           "format": "",
           "id": "16ba8a30-52ef-4234-98f9-3022168a264a",
-          "modifie_le": "2026-10-15T15:26:26.434846+00:00",
+          "modifie_le": "2026-10-16T15:30:21.237547+00:00",
           "titre": "Pitch #8 Olivia Zarcate à la journée contributive #2 le 9 janvier à Strasbourg",
           "url": "http://www.dailymotion.com/video/x2f4fir_pitch-8-olivia-zarcate-a-la-journee-contributive-2-le-9-janvier-a-strasbourg_tech"
         },
         {
           "format": "",
           "id": "0a62f5b9-07c3-41e3-b8e0-b70a0f49b22a",
-          "modifie_le": "2026-10-15T17:38:21.678608+00:00",
+          "modifie_le": "2026-10-16T05:42:22.696089+00:00",
           "titre": "Pitch #9 Pierre Aïdan à la journée contributive #2 le 9 janvier à Strasbourg",
           "url": "http://www.dailymotion.com/video/x2f4fnm_pitch-9-pierre-aidan-a-la-journee-contributive-2-le-9-janvier-a-strasbourg_tech"
         }
@@ -3305,7 +3386,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T11:41:21.476000+00:00",
+      "donnees_actualisees_le": "2026-10-16T15:20:07.339000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "punctual",
       "id": "559e98cdc751df4443390bd3",
@@ -3321,7 +3402,7 @@
         {
           "format": "api",
           "id": "1172bece-0367-4ba7-b126-717032bcd147",
-          "modifie_le": "2026-10-16T03:19:12.265065+00:00",
+          "modifie_le": "2026-10-16T15:20:07.339331+00:00",
           "titre": "API",
           "url": "http://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-cartographie/?tab=api&refine.annee=2013-2014"
         },
@@ -3506,6 +3587,110 @@
       "reutilisation_potentielle": false,
       "source_deja_suivie": false,
       "titre": "Statistiques mensuelles du nombre de téléchargements des jeux de données open data Enseignement supérieur et Recherche"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:24:01.085000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "annual",
+      "id": "565db6f2c751df2d32aad370",
+      "licence_declaree": "fr-lo",
+      "modifie_le": "2026-10-12T07:29:28.330000+00:00",
+      "nombre_ressources_rapportees": 12,
+      "page": "https://www.data.gouv.fr/datasets/aides-a-la-presse-1",
+      "producteur": "Ministère de la Culture",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "xlsx",
+          "id": "f598ed4c-4ce5-4efe-91bc-b059de0499ee",
+          "modifie_le": "2026-10-16T17:24:01.085072+00:00",
+          "titre": "Aide à l'exemplaire des titres de presse postés",
+          "url": "https://www.data.gouv.fr/fr/datasets/aide-a-lexemplaire-des-titres-de-presse-postes/"
+        },
+        {
+          "format": "lien vers",
+          "id": "586fa375-89b5-4def-8dbb-c4817ed73dbb",
+          "modifie_le": "2026-10-16T16:56:11.118024+00:00",
+          "titre": "Aide au pluralisme des services de presse tout en ligne",
+          "url": "https://www.data.gouv.fr/fr/datasets/aide-au-pluralisme-des-services-de-presse-tout-en-ligne/"
+        },
+        {
+          "format": "",
+          "id": "0242ddac-7ddd-4a2c-8cc0-aeef08d9a447",
+          "modifie_le": "2026-10-16T06:09:40.904439+00:00",
+          "titre": "Aide au pluralisme des titres ultramarins",
+          "url": "https://www.data.gouv.fr/fr/datasets/aide-au-pluralisme-des-titres-ultramarins/"
+        },
+        {
+          "format": "ods",
+          "id": "bc364702-98ff-4c85-a98c-65d6d822662c",
+          "modifie_le": "2026-10-16T16:41:53.151684+00:00",
+          "titre": "Aides à la presse : classement des titres de presse aidés",
+          "url": "https://www.data.gouv.fr/fr/datasets/aides-a-la-presse-classement-des-titres-de-presse-aides/"
+        },
+        {
+          "format": "xlsx",
+          "id": "e5978445-d9c0-4e76-9fc8-39fb100e732d",
+          "modifie_le": "2026-10-16T05:27:58.044721+00:00",
+          "titre": "Aides à la presse : classement des principaux groupes de presse aidés",
+          "url": "https://www.data.gouv.fr/fr/datasets/aides-a-la-presse-classement-des-principaux-groupes-de-presse-aides/"
+        },
+        {
+          "format": "csv",
+          "id": "f65cd323-8597-4aaa-860b-3f57a0f3e31f",
+          "modifie_le": "2026-10-16T05:21:03.839480+00:00",
+          "titre": "Aide à la distribution de la presse quotidienne nationale",
+          "url": "https://www.data.gouv.fr/fr/datasets/aide-a-la-distribution-de-la-presse-quotidienne-nationale-2/"
+        },
+        {
+          "format": "csv",
+          "id": "8ee44e0b-9b31-41fe-99c6-89192147ef1f",
+          "modifie_le": "2026-10-16T05:30:05.706432+00:00",
+          "titre": "Aide au pluralisme de la presse périodique régionale et locale",
+          "url": "https://www.data.gouv.fr/fr/datasets/aide-au-pluralisme-de-la-presse-periodique-regionale-et-locale-2/"
+        },
+        {
+          "format": "csv",
+          "id": "f9d1fe09-b566-4548-a95c-0052ecc97dd7",
+          "modifie_le": "2026-10-16T05:45:35.861402+00:00",
+          "titre": "Aides aux publications nationales à faibles ressources publicitaires",
+          "url": "https://www.data.gouv.fr/fr/datasets/aides-aux-publications-nationales-a-faibles-ressources-publicitaires-2/"
+        },
+        {
+          "format": "lien vers",
+          "id": "6b5b1f0c-75ba-4f7c-9dd6-f3fbdc48deb1",
+          "modifie_le": "2026-10-16T17:11:23.604351+00:00",
+          "titre": "Aide aux quotidiens régionaux, départementaux et locaux  à faibles ressources de petites annonces",
+          "url": "https://www.data.gouv.fr/fr/datasets/aide-aux-quotidiens-regionaux-departementaux-et-locaux-a-faibles-ressources-de-petites-annonces-2/"
+        },
+        {
+          "format": "csv",
+          "id": "ea0dd83e-264c-4380-a449-9ba20750f6c0",
+          "modifie_le": "2026-10-16T17:10:31.432176+00:00",
+          "titre": "Aide au portage de la presse",
+          "url": "https://www.data.gouv.fr/fr/datasets/aide-au-portage-de-la-presse-2/"
+        },
+        {
+          "format": "csv",
+          "id": "8d9851a6-1a4c-4df1-8986-a695b549d021",
+          "modifie_le": "2026-10-16T05:57:42.208665+00:00",
+          "titre": "Fonds stratégique pour le développement de la presse (FSDP)",
+          "url": "https://www.data.gouv.fr/fr/datasets/fonds-strategique-pour-le-developpement-de-la-presse-fsdp-1/"
+        },
+        {
+          "format": "csv",
+          "id": "f3267213-8c4c-4fb5-a3b3-cd7b958d33aa",
+          "modifie_le": "2026-10-16T16:49:59.095219+00:00",
+          "titre": "Fonds de soutien à l'émergence et à l'innovation dans la presse",
+          "url": "https://www.data.gouv.fr/fr/datasets/fonds-de-soutien-a-lemergence-et-a-linnovation-dans-la-presse-1/"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Aides à la presse"
     },
     {
       "contenu_original_copie": false,
@@ -4886,7 +5071,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T11:37:33.410000+00:00",
+      "donnees_actualisees_le": "2026-10-16T16:53:11.036000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "annual",
       "id": "57bea1c6c751df054897bae5",
@@ -4902,7 +5087,7 @@
         {
           "format": "csv",
           "id": "51401a7a-0efa-48ae-a108-74b8c35ff5b4",
-          "modifie_le": "2026-10-16T04:52:58.129242+00:00",
+          "modifie_le": "2026-10-16T16:53:11.036104+00:00",
           "titre": "Marchés publics 2015",
           "url": "http://data.stmalo-agglomeration.fr/explore/dataset/liste-des-marches-publics-conclus-en-20150/export"
         },
@@ -4916,7 +5101,7 @@
         {
           "format": "csv",
           "id": "97a5b5cf-5156-42a4-8c02-57ade2c47b8e",
-          "modifie_le": "2026-10-16T03:52:54.095696+00:00",
+          "modifie_le": "2026-10-16T15:54:16.385482+00:00",
           "titre": "Marchés publics 2013",
           "url": "http://data.stmalo-agglomeration.fr/explore/dataset/liste-des-marches-publics-conclus-en-2013/export/"
         }
@@ -4927,7 +5112,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T06:32:25.759000+00:00",
+      "donnees_actualisees_le": "2026-10-16T17:03:23.780000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "annual",
       "id": "57bea758c751df0fb197bae5",
@@ -4943,7 +5128,7 @@
         {
           "format": "csv",
           "id": "3a0b83fe-5daf-42b3-8ce0-7f81b386d1d1",
-          "modifie_le": "2026-10-16T05:01:08.743191+00:00",
+          "modifie_le": "2026-10-16T17:03:23.780065+00:00",
           "titre": "Marchés publics 2014",
           "url": "http://data.stmalo-agglomeration.fr/explore/dataset/liste-des-marches-publics-conclus-en-2014/export"
         },
@@ -5642,7 +5827,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T04:39:51.347000+00:00",
+      "donnees_actualisees_le": "2026-10-16T16:40:24.326000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "punctual",
       "id": "587ccbcd88ee382c669b81a4",
@@ -5665,7 +5850,7 @@
         {
           "format": "json , csv , excel",
           "id": "b05b13c4-20ad-4939-98b6-f85dbbf71073",
-          "modifie_le": "2026-10-16T04:39:51.347395+00:00",
+          "modifie_le": "2026-10-16T16:40:24.326281+00:00",
           "titre": "API BOAMP",
           "url": "https://boamp-datadila.opendatasoft.com/explore/dataset/boamp/api/"
         }
@@ -5676,7 +5861,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T00:44:17.360000+00:00",
+      "donnees_actualisees_le": "2026-10-16T14:12:48.564000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "punctual",
       "id": "5886230b88ee387e3f9b81a5",
@@ -5700,7 +5885,7 @@
         {
           "format": "xml",
           "id": "6f22cb26-9cb7-4eb0-9cde-53eb50bb45cf",
-          "modifie_le": "2026-10-16T00:44:17.360549+00:00",
+          "modifie_le": "2026-10-16T14:12:48.564818+00:00",
           "titre": "Définition du simulateur choix du forfait BOAMP",
           "url": "https://gitlab.com/pidila/sp-simulateurs-data/blob/master/definitions-des-simulateurs/forfaits.xml"
         }
@@ -10027,6 +10212,40 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:23:24+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "annual",
+      "id": "5b91145e8b4c417c199eaf45",
+      "licence_declaree": "odc-odbl",
+      "modifie_le": "2025-05-05T07:35:25.409000+00:00",
+      "nombre_ressources_rapportees": 2,
+      "page": "https://www.data.gouv.fr/datasets/base-des-pdu-et-autres-plans-de-deplacements-au-1er-janvier-2018",
+      "producteur": "Cerema",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "url",
+          "id": "7f785c35-d77e-498d-a006-dcaeb5d00be4",
+          "modifie_le": "2026-10-16T17:23:24+00:00",
+          "titre": "Base des PDU et autres plans de déplacements au 1er janvier 2018",
+          "url": "https://www.cerema.fr/fr/actualites/base-pdu-autres-plans-deplacements-au-1er-janvier-2018?folder=4366"
+        },
+        {
+          "format": "ods",
+          "id": "637db40c-1c01-4190-972f-35a6e10a7201",
+          "modifie_le": "2018-09-06T13:55:35.954000+00:00",
+          "titre": "base-pdu-pgd-2018-01-01-v1-3.ods",
+          "url": "https://static.data.gouv.fr/resources/base-des-pdu-et-autres-plans-de-deplacements-au-1er-janvier-2018/20180906-135012/base-pdu-pgd-2018-01-01-v1-3.ods"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Base des PDU et autres plans de déplacements au 1er janvier 2018"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-14T22:16:25+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "hourly",
@@ -11272,6 +11491,75 @@
       "reutilisation_potentielle": false,
       "source_deja_suivie": false,
       "titre": "Données essentielles marchés publics - INCa"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:23:10+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "continuous",
+      "id": "5cd4321f8b4c4137d1244318",
+      "licence_declaree": "lov2",
+      "modifie_le": "2025-12-04T16:33:38.436000+00:00",
+      "nombre_ressources_rapportees": 7,
+      "page": "https://www.data.gouv.fr/datasets/donnees-statiques-et-temps-reel-du-reseau-astuce-metropole-rouen-normandie",
+      "producteur": "Métropole Rouen Normandie",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "gtfs-rt",
+          "id": "773f526c-2e8a-4202-9f21-9fe98b04eda5",
+          "modifie_le": "2026-10-16T16:10:05+00:00",
+          "titre": "Information trafic en temps réel du réseau Astuce",
+          "url": "https://api.mrn.cityway.fr/dataflow/info-transport/download?provider=ASTUCE&dataFormat=gtfs-rt"
+        },
+        {
+          "format": "gtfs-rt",
+          "id": "0da9db94-d181-47b7-ae6f-cafe68014c4f",
+          "modifie_le": "2026-10-16T12:38:40+00:00",
+          "titre": "Position des véhicules en temps réel pour les lignes du réseau Astuce exploitées par Transdev Rouen",
+          "url": "https://api.mrn.cityway.fr/dataflow/vehicle-tc-tr/download?provider=TCAR&dataFormat=gtfs-rt"
+        },
+        {
+          "format": "gtfs-rt",
+          "id": "e28a981d-7f5f-4bd8-a4c1-e74a822f13f8",
+          "modifie_le": "2026-10-16T05:34:15+00:00",
+          "titre": "Position des véhicules en temps réel pour les lignes du réseau Astuce exploitées par TNI",
+          "url": "https://api.mrn.cityway.fr/dataflow/vehicule-tc-tr/download?provider=TNI&dataFormat=gtfs-rt"
+        },
+        {
+          "format": "gtfs-rt",
+          "id": "544afe29-c195-40b1-a52d-c5d654b98f75",
+          "modifie_le": "2026-10-16T17:23:10+00:00",
+          "titre": "Prochains passages des lignes du réseau Astuce exploitées par TNI",
+          "url": "https://api.mrn.cityway.fr/dataflow/horaire-tc-tr/download?provider=TNI&dataFormat=gtfs-rt"
+        },
+        {
+          "format": "gtfs-rt",
+          "id": "04647b22-2acc-46b2-b06b-67025acb823c",
+          "modifie_le": "2026-10-16T05:49:10+00:00",
+          "titre": "Prochains passages des lignes du réseau Astuce exploitées par TAE",
+          "url": "https://api.mrn.cityway.fr/dataflow/horaire-tc-tr/download?provider=TAE&dataFormat=gtfs-rt"
+        },
+        {
+          "format": "gtfs-rt",
+          "id": "b6f39c29-87a8-42c5-be52-cd439050b5d1",
+          "modifie_le": "2026-09-09T12:26:11+00:00",
+          "titre": "Prochains passages des lignes du réseau Astuce exploitées par Transdev Rouen",
+          "url": "https://api.mrn.cityway.fr/dataflow/horaire-tc-tr/download?provider=TCAR&dataFormat=gtfs-rt"
+        },
+        {
+          "format": "gtfs",
+          "id": "c0ebcf01-954a-4d24-b2d8-a00333ffe937",
+          "modifie_le": "2026-10-15T18:20:56+00:00",
+          "titre": "Liste des arrêts, horaires et parcours du réseau Astuce",
+          "url": "https://api.mrn.cityway.fr/dataflow/offre-tc/download?provider=ASTUCE&dataFormat=gtfs&dataProfil=ASTUCE"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Données statiques et temps réel du réseau Astuce Métropole Rouen Normandie"
     },
     {
       "contenu_original_copie": false,
@@ -12819,6 +13107,47 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:23:57.082000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "weekly",
+      "id": "5dd651766f444110e306fc0d",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-07-28T22:13:33.075000+00:00",
+      "nombre_ressources_rapportees": 3,
+      "page": "https://www.data.gouv.fr/datasets/etablissements-denseignement-artistique-de-la-metropole-de-lyon",
+      "producteur": "Métropole de Lyon",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "shp",
+          "id": "9b121ecb-707d-4d63-9336-8ccbf6ed7136",
+          "modifie_le": "2026-10-16T05:56:06.432650+00:00",
+          "titre": "Enseignement artistique de la Métropole de Lyon",
+          "url": "https://data.grandlyon.com/geoserver/metropole-de-lyon/ows?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=metropole-de-lyon:adr_voie_lieu.adrensart&outputFormat=shape-zip&SRSNAME=EPSG:2154"
+        },
+        {
+          "format": "geojson",
+          "id": "81c34a2b-25d0-45e8-9344-0bb8fc94e719",
+          "modifie_le": "2026-10-16T17:23:57.082185+00:00",
+          "titre": "Enseignement artistique de la Métropole de Lyon",
+          "url": "https://data.grandlyon.com/geoserver/metropole-de-lyon/ows?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=metropole-de-lyon:adr_voie_lieu.adrensart&outputFormat=application/json&SRSNAME=EPSG:4326"
+        },
+        {
+          "format": "csv",
+          "id": "055356ca-330a-4b9e-8649-95e09802fd97",
+          "modifie_le": "2026-05-19T22:12:09.423000+00:00",
+          "titre": "Enseignement artistique de la Métropole de Lyon",
+          "url": "https://data.grandlyon.com/geoserver/metropole-de-lyon/ows?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=metropole-de-lyon:adr_voie_lieu.adrensart&outputFormat=CSV&SRSNAME=EPSG:4326"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Etablissements d'enseignement artistique de la Métropole de Lyon"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2019-11-28T14:31:10.702000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
@@ -14068,6 +14397,68 @@
       "reutilisation_potentielle": false,
       "source_deja_suivie": false,
       "titre": "Liste des établissements publics de Savoie"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:23:23.083000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "weekly",
+      "id": "5ebc257e4694940a16d181d3",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2020-06-25T18:17:29.506000+00:00",
+      "nombre_ressources_rapportees": 6,
+      "page": "https://www.data.gouv.fr/datasets/donnees-relatives-aux-reports-decheances-fiscales-accordes-dans-le-cadre-de-lepidemie-de-covid-19",
+      "producteur": "Etalab",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "xlsx",
+          "id": "6c40890c-5feb-40e1-b810-65088370870f",
+          "modifie_le": "2020-05-13T19:16:01.970000+00:00",
+          "titre": "reports-echeances-fiscales-naf-covid19-departemental-xlsx",
+          "url": "https://github.com/etalab/dashboard-aides-entreprises/blob/master/published-data/reports-echeances-departemental-naf-latest.xlsx?raw=true"
+        },
+        {
+          "format": "csv",
+          "id": "08a4ed3c-66dd-4924-b46e-f4f96ec7f1f0",
+          "modifie_le": "2020-05-13T19:16:16.654000+00:00",
+          "titre": "reports-echeances-fiscales-naf-covid19-departemental-csv",
+          "url": "https://raw.githubusercontent.com/etalab/dashboard-aides-entreprises/master/published-data/reports-echeances-departemental-naf-latest.csv"
+        },
+        {
+          "format": "xlsx",
+          "id": "31f4360c-2435-46ca-aced-e56b5a554b02",
+          "modifie_le": "2020-05-13T19:14:31.616000+00:00",
+          "titre": "reports-echeances-fiscales-naf-covid19-regional-xlsx",
+          "url": "https://github.com/etalab/dashboard-aides-entreprises/blob/master/published-data/reports-echeances-regional-naf-latest.xlsx?raw=true"
+        },
+        {
+          "format": "csv",
+          "id": "35a8641a-0c73-4041-acb2-c0e62831121a",
+          "modifie_le": "2020-05-13T19:17:22.064000+00:00",
+          "titre": "reports-echeances-fiscales-naf-regionales-covid19-csv",
+          "url": "https://raw.githubusercontent.com/etalab/dashboard-aides-entreprises/master/published-data/reports-echeances-regional-naf-latest.csv"
+        },
+        {
+          "format": "html",
+          "id": "18b0af35-3127-478f-8ab6-2574f7e4fd6c",
+          "modifie_le": "2026-10-16T17:23:23.083735+00:00",
+          "titre": "Historique des données du Reports d'échéances fiscales",
+          "url": "https://github.com/etalab/dashboard-aides-entreprises/tree/master/published-data/reports-echeances"
+        },
+        {
+          "format": "csv",
+          "id": "7d66c81b-7c2d-4bbe-bcde-26a46f21424c",
+          "modifie_le": "2020-05-14T12:25:42.294000+00:00",
+          "titre": "metadonnees-reports-echeances.csv",
+          "url": "https://static.data.gouv.fr/resources/donnees-relatives-aux-reports-decheances-fiscales-accordes-dans-le-cadre-de-lepidemie-de-covid-19/20200513-221117/metadonnees-reports-echeances.csv"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Données relatives aux reports d'échéances fiscales accordés dans le cadre de l’épidémie de COVID-19"
     },
     {
       "contenu_original_copie": false,
@@ -16265,6 +16656,47 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:24:01.117000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "annual",
+      "id": "611621ef015cc1e65f3c91cc",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-07-28T22:09:57.747000+00:00",
+      "nombre_ressources_rapportees": 3,
+      "page": "https://www.data.gouv.fr/datasets/population-annuelle-par-communes-de-la-metropole-de-lyon",
+      "producteur": "Métropole de Lyon",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "shp",
+          "id": "8b7c2d65-f1d0-467e-9344-6b181b64da4f",
+          "modifie_le": "2026-10-16T17:24:01.117871+00:00",
+          "titre": "Population par commune",
+          "url": "https://data.grandlyon.com/geoserver/metropole-de-lyon/ows?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=metropole-de-lyon:ter_territoire.population_communale&outputFormat=shape-zip&SRSNAME=EPSG:2154"
+        },
+        {
+          "format": "geojson",
+          "id": "081d42df-9214-4b8d-aaee-be24a930a2ca",
+          "modifie_le": "2026-10-16T17:18:35.122931+00:00",
+          "titre": "Population par commune",
+          "url": "https://data.grandlyon.com/geoserver/metropole-de-lyon/ows?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=metropole-de-lyon:ter_territoire.population_communale&outputFormat=application/json&SRSNAME=EPSG:4326"
+        },
+        {
+          "format": "csv",
+          "id": "dfa45937-6eb4-4d86-a562-b2ddc73d0ab7",
+          "modifie_le": "2026-05-19T22:08:55.710000+00:00",
+          "titre": "Population par commune",
+          "url": "https://data.grandlyon.com/geoserver/metropole-de-lyon/ows?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=metropole-de-lyon:ter_territoire.population_communale&outputFormat=CSV&SRSNAME=EPSG:4326"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Population annuelle par communes de la Métropole de Lyon"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-15T17:46:09.686000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "punctual",
@@ -16344,6 +16776,47 @@
       "reutilisation_potentielle": true,
       "source_deja_suivie": false,
       "titre": "Ligne du service Rhônexpress de la Métropole de Lyon et du Département du Rhône"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:22:36.417000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "punctual",
+      "id": "611621fbed29c107edee4713",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-07-28T22:13:11.319000+00:00",
+      "nombre_ressources_rapportees": 3,
+      "page": "https://www.data.gouv.fr/datasets/donneries-de-la-metropole-de-lyon-v3",
+      "producteur": "Métropole de Lyon",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "shp",
+          "id": "b4b9eb2a-cf35-448c-a7c9-334d274968a8",
+          "modifie_le": "2026-09-13T05:20:02.361512+00:00",
+          "titre": "Donneries de la Métropole de Lyon (ver. 3.0.0)",
+          "url": "https://data.grandlyon.com/geoserver/metropole-de-lyon/ows?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=metropole-de-lyon:gip_proprete.gipdonnerie_3_0_0&outputFormat=shape-zip&SRSNAME=EPSG:2154"
+        },
+        {
+          "format": "geojson",
+          "id": "52cf1287-6a4b-43db-b155-2c49b93aba62",
+          "modifie_le": "2026-10-16T17:22:36.417877+00:00",
+          "titre": "Donneries de la Métropole de Lyon (ver. 3.0.0)",
+          "url": "https://data.grandlyon.com/geoserver/metropole-de-lyon/ows?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=metropole-de-lyon:gip_proprete.gipdonnerie_3_0_0&outputFormat=application/json&SRSNAME=EPSG:4326"
+        },
+        {
+          "format": "csv",
+          "id": "44b61424-2c75-4880-9a76-f2b4b631e57a",
+          "modifie_le": "2026-09-13T10:12:04.808823+00:00",
+          "titre": "Donneries de la Métropole de Lyon (ver. 3.0.0)",
+          "url": "https://data.grandlyon.com/geoserver/metropole-de-lyon/ows?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=metropole-de-lyon:gip_proprete.gipdonnerie_3_0_0&outputFormat=CSV&SRSNAME=EPSG:4326"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Donneries de la Métropole de Lyon (v3)"
     },
     {
       "contenu_original_copie": false,
@@ -17511,7 +17984,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-15T12:37:28.838000+00:00",
+      "donnees_actualisees_le": "2026-10-16T17:22:57.024000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
       "id": "61570cb4b1b67821b76241f8",
@@ -17527,21 +18000,21 @@
         {
           "format": "page web",
           "id": "8584a1db-7d87-4c4b-8d38-5f400d40ff00",
-          "modifie_le": "2026-10-15T05:07:58.869619+00:00",
+          "modifie_le": "2026-10-16T17:22:57.024328+00:00",
           "titre": "Description des champs",
           "url": "https://data.ademe.fr/datasets/rep-quantites-mises-sur-le-marche-(historique)"
         },
         {
           "format": "page web",
           "id": "beb67759-d90a-4467-8a9b-0b7d54ca9701",
-          "modifie_le": "2026-10-15T04:59:27.546383+00:00",
+          "modifie_le": "2026-10-16T17:09:24.113452+00:00",
           "titre": "Documentation de l'API",
           "url": "https://data.ademe.fr/datasets/rep-quantites-mises-sur-le-marche-(historique)"
         },
         {
           "format": "page web",
           "id": "c50ebd0f-8435-426f-aabd-4ce372b78437",
-          "modifie_le": "2026-10-15T12:37:28.838229+00:00",
+          "modifie_le": "2026-10-16T14:12:48.341183+00:00",
           "titre": "Consultez les données",
           "url": "https://data.ademe.fr/datasets/rep-quantites-mises-sur-le-marche-(historique)"
         }
@@ -18353,6 +18826,47 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:23:20.931000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "continuous",
+      "id": "61a8e5ff5b8754f4fb6a012b",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-01-13T14:14:19.529000+00:00",
+      "nombre_ressources_rapportees": 3,
+      "page": "https://www.data.gouv.fr/datasets/position-des-navires-de-la-flotte-oceanographique-francaise",
+      "producteur": "Institut français de recherche pour l'exploitation de la mer (IFREMER)",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "html",
+          "id": "f92713d6-9671-4a29-92f3-4a501409476c",
+          "modifie_le": "2022-07-06T15:37:48+00:00",
+          "titre": "Documentation de l'API",
+          "url": "https://localisation.flotteoceanographique.fr/"
+        },
+        {
+          "format": "json",
+          "id": "130f7f23-3ec0-4bd0-bcac-e4d74bde10b9",
+          "modifie_le": "2026-10-03T00:43:06.482515+00:00",
+          "titre": "Liste des navires",
+          "url": "https://localisation.flotteoceanographique.fr/api/v2/vessels"
+        },
+        {
+          "format": "geojson",
+          "id": "dcb000d2-91bf-4db0-ac98-54ea9ea3b068",
+          "modifie_le": "2026-10-16T17:23:20.931951+00:00",
+          "titre": "Position des navires",
+          "url": "https://localisation.flotteoceanographique.fr/api/v2/positions"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Position des navires de la Flotte Océanographique Française"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-11T18:06:31.576000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "irregular",
@@ -18840,7 +19354,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T04:29:00.717000+00:00",
+      "donnees_actualisees_le": "2026-10-16T16:30:43.720000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "bimonthly",
       "id": "61f922ef2323bec4c65011cb",
@@ -18857,7 +19371,7 @@
         {
           "format": "xls",
           "id": "cd57810e-43ab-4537-9a5d-39f5d78ae1d0",
-          "modifie_le": "2026-10-16T04:29:00.717297+00:00",
+          "modifie_le": "2026-10-16T16:30:43.720720+00:00",
           "titre": "Agglopolys - marchés publics 2019",
           "url": "https://blois-agglopolys-centrevaldeloire.opendatasoft.com/explore/dataset/agglopolys-marches-publics-2019-maj-11122019/information/"
         }
@@ -18895,7 +19409,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T05:17:30.562000+00:00",
+      "donnees_actualisees_le": "2026-10-16T17:19:30.672000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "bimonthly",
       "id": "61f9244e9941527fa2252a6b",
@@ -18911,7 +19425,7 @@
         {
           "format": "xls",
           "id": "8b778387-e118-4a0c-a16d-142d89ad592b",
-          "modifie_le": "2026-10-16T05:17:30.562106+00:00",
+          "modifie_le": "2026-10-16T17:19:30.672037+00:00",
           "titre": "Agglopolys - marchés publics 2018",
           "url": "https://blois-agglopolys-centrevaldeloire.opendatasoft.com/explore/dataset/agglopolys-marches-publics-2018/information/"
         }
@@ -18922,7 +19436,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T00:58:07.621000+00:00",
+      "donnees_actualisees_le": "2026-10-16T14:11:18.501000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "bimonthly",
       "id": "61f924f09c60ab56d9fac9e9",
@@ -18938,7 +19452,7 @@
         {
           "format": "xls",
           "id": "864fbc5e-da3a-4c79-8eeb-700d90d77ae6",
-          "modifie_le": "2026-10-16T00:58:07.621386+00:00",
+          "modifie_le": "2026-10-16T14:11:18.501977+00:00",
           "titre": "Blois - marchés publics 2018",
           "url": "https://blois-agglopolys-centrevaldeloire.opendatasoft.com/explore/dataset/blois-marches-publics-2018/information/"
         }
@@ -19238,7 +19752,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T03:44:58.164000+00:00",
+      "donnees_actualisees_le": "2026-10-16T15:45:44.185000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "annual",
       "id": "620bc9e576f082c18d91198d",
@@ -19255,7 +19769,7 @@
         {
           "format": "xls",
           "id": "662ff09b-737a-472b-8030-4cf7350e38fa",
-          "modifie_le": "2026-10-16T03:44:58.164557+00:00",
+          "modifie_le": "2026-10-16T15:45:44.185361+00:00",
           "titre": "Vineuil (41350) - Marchés publics 2021",
           "url": "https://blois-agglopolys-centrevaldeloire.opendatasoft.com/explore/dataset/vineuil-41350-marches-publics-2021/information/"
         }
@@ -19733,7 +20247,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T06:16:57.146000+00:00",
+      "donnees_actualisees_le": "2026-10-16T15:42:10.493000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "annual",
       "id": "6243fcf9baad4c7f02c71222",
@@ -19798,7 +20312,7 @@
         {
           "format": "url",
           "id": "a7d552cf-d75a-42cd-a2fe-7e9bcfe5b38e",
-          "modifie_le": "2026-10-16T03:39:41.034753+00:00",
+          "modifie_le": "2026-10-16T15:42:10.493956+00:00",
           "titre": "Autres données SuDocUH - Schéma de cohérence territoriale (SCoT)",
           "url": "https://www.data.gouv.fr/fr/datasets/schema-de-coherence-territoriale-scot-donnees-sudocuh-dernier-etat-des-lieux-annuel-au-31-decembre-2021/"
         },
@@ -22188,12 +22702,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T12:23:03.988000+00:00",
+      "donnees_actualisees_le": "2026-10-16T17:24:04.899000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "monthly",
       "id": "64060c2ac773dcf3fabbe5d2",
       "licence_declaree": "notspecified",
-      "modifie_le": "2026-10-16T12:23:03.989000+00:00",
+      "modifie_le": "2026-10-16T17:24:04.899000+00:00",
       "nombre_ressources_rapportees": 2,
       "page": "https://www.data.gouv.fr/datasets/public-charging-stations-for-electric-cars-from-several-cpos",
       "producteur": "Eco-Movement",
@@ -22204,9 +22718,9 @@
         {
           "format": "csv",
           "id": "b20d2793-db42-4d6d-a0b4-e94bf5ee4279",
-          "modifie_le": "2026-10-16T12:23:03.988000+00:00",
+          "modifie_le": "2026-10-16T17:24:04.899000+00:00",
           "titre": "irve-dynamique.csv",
-          "url": "https://static.data.gouv.fr/resources/public-charging-stations-for-electric-cars-from-several-cpos/20261016-122303/irve-dynamique.csv"
+          "url": "https://static.data.gouv.fr/resources/public-charging-stations-for-electric-cars-from-several-cpos/20261016-172404/irve-dynamique.csv"
         },
         {
           "format": "csv",
@@ -24332,7 +24846,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-15T17:45:51.231000+00:00",
+      "donnees_actualisees_le": "2026-10-16T17:22:54.063000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
       "id": "64ddf327d52f331e0c9f7201",
@@ -24390,7 +24904,7 @@
         {
           "format": "www:download-1.0-http--download",
           "id": "b14ac368-6e40-494e-bfa0-b5535ede51e1",
-          "modifie_le": "2026-10-15T17:45:51.231931+00:00",
+          "modifie_le": "2026-10-16T05:51:58.038749+00:00",
           "titre": "SHP : Format compatible sous arcgis, qgis mapinfo",
           "url": "https://webcarto.infogeo54.fr/index.php/lizmap/service/?repository=opendata&project=opendata&SERVICE=WFS&VERSION=1.3.0&REQUEST=GetFeature&typename=Cantons&outputFormat=SHP"
         },
@@ -24460,7 +24974,7 @@
         {
           "format": "www:download-1.0-http--download",
           "id": "5b9f98d9-0a26-4f3f-83fd-9f98c08d87fd",
-          "modifie_le": "2026-10-15T12:32:21.415483+00:00",
+          "modifie_le": "2026-10-16T12:42:34.219541+00:00",
           "titre": "SHP : Format compatible sous arcgis, qgis mapinfo",
           "url": "https://webcarto.infogeo54.fr/index.php/lizmap/service/?repository=opendata&project=opendata&SERVICE=WFS&VERSION=1.3.0&REQUEST=GetFeature&typename=Territoires&outputFormat=SHP"
         },
@@ -26909,19 +27423,67 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-15T15:39:48.412000+00:00",
+      "donnees_actualisees_le": "2026-10-16T17:22:36.702000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "punctual",
+      "id": "65a7fe45b1b081e97eeaf308",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-04-14T12:16:20.487000+00:00",
+      "nombre_ressources_rapportees": 3,
+      "page": "https://www.data.gouv.fr/datasets/donnees-theoriques-du-reseau-urbain-de-flers-agglo-au-format-gtfs",
+      "producteur": "NEMUS (Réseau de transports de Flers Agglo)",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "zip",
+          "id": "7d399812-e018-4e35-b3ae-a5ba44c8ad91",
+          "modifie_le": "2026-04-14T12:15:13.157000+00:00",
+          "titre": "NEMUS_gtfs_Du 01-01-26 au 31-12-26.zip",
+          "url": "https://static.data.gouv.fr/resources/donnees-theoriques-du-reseau-urbain-de-flers-agglo-au-format-gtfs/20260414-121512/nemus-gtfs-du-01-01-26-au-31-12-26.zip"
+        },
+        {
+          "format": "gtfs-rt",
+          "id": "eff8bfff-3d8d-4264-b443-f8aab1d94909",
+          "modifie_le": "2026-10-16T15:09:54.649109+00:00",
+          "titre": "Temps réel au format GTFS-RT (vehicle-position)",
+          "url": "https://flers-agglo.plateforme-2cloud.com/api/gtfsrt/2.0/vehiclepositions/FLERS-5197-3181-6523/bin?network=104"
+        },
+        {
+          "format": "gtfs-rt",
+          "id": "f8d5faf0-7662-41c1-97e2-dca45f77a3d6",
+          "modifie_le": "2026-10-16T17:22:36.702886+00:00",
+          "titre": "Temps réel au format GTFS-RT (trip_update)",
+          "url": "https://flers-agglo.plateforme-2cloud.com/api/gtfsrt/2.0/tripupdates/FLERS-5197-3181-6523/bin?network=104"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Données théoriques du réseau urbain de Flers Agglo au format GTFS"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T12:59:08.902000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "continuous",
       "id": "65af738956997a7f7fe2d502",
       "licence_declaree": "notspecified",
-      "modifie_le": "2026-10-15T15:39:48.445000+00:00",
-      "nombre_ressources_rapportees": 1246,
+      "modifie_le": "2026-10-16T12:59:09.115000+00:00",
+      "nombre_ressources_rapportees": 1247,
       "page": "https://www.data.gouv.fr/datasets/marches-publics-6",
       "producteur": "",
       "recherches": [
         "marchés publics"
       ],
       "ressources": [
+        {
+          "format": "json",
+          "id": "0b4ea16b-011a-46e6-a174-f5a16db1377f",
+          "modifie_le": "2026-10-16T12:59:08.902000+00:00",
+          "titre": "2026-10-16-1258.json",
+          "url": "https://static.data.gouv.fr/resources/marches-publics-6/20261016-125908/2026-10-16-1258.json"
+        },
         {
           "format": "json",
           "id": "c013dece-e8a1-43ea-b4d4-91577ae55f62",
@@ -27089,13 +27651,6 @@
           "modifie_le": "2026-09-28T09:13:25.574000+00:00",
           "titre": "2026-09-28-1235.json",
           "url": "https://static.data.gouv.fr/resources/marches-publics-6/20260928-091325/2026-09-28-1235.json"
-        },
-        {
-          "format": "json",
-          "id": "d7e79e8f-414c-465f-988e-a656abc11c7b",
-          "modifie_le": "2026-09-25T09:11:19.181000+00:00",
-          "titre": "2026-09-25-1234.json",
-          "url": "https://static.data.gouv.fr/resources/marches-publics-6/20260925-091118/2026-09-25-1234.json"
         }
       ],
       "reutilisation_potentielle": false,
@@ -30831,6 +31386,47 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:23:26.203000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "punctual",
+      "id": "665fe74c6b10a87cf49fc905",
+      "licence_declaree": "lov2",
+      "modifie_le": "2024-06-05T04:19:24.796000+00:00",
+      "nombre_ressources_rapportees": 3,
+      "page": "https://www.data.gouv.fr/datasets/orthophotographie-sans-devers-mel-2016-1",
+      "producteur": "Métropole Européenne de Lille",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "ogc:wms",
+          "id": "79519195-3a44-4d33-b80c-4db63f570c32",
+          "modifie_le": "2026-10-16T17:23:26.203714+00:00",
+          "titre": "2016_trueorthomel_7cm",
+          "url": "https://mel-geoserver.lillemetropole.fr/geoserver/Raster/wms"
+        },
+        {
+          "format": "ogc:wms-1.3.0-http-get-capabilities",
+          "id": "d553c4dd-f06d-40f9-87cd-b4b42f879133",
+          "modifie_le": "2026-09-15T02:23:51.342439+00:00",
+          "titre": "DIG GeoServer Raster WMS",
+          "url": "https://mel-geoserver.lillemetropole.fr/geoserver/Raster/ows?service=WMS&version=1.3.0&request=GetCapabilities"
+        },
+        {
+          "format": "www:download-1.0-http--download",
+          "id": "c5c9cbd2-c797-48f9-9040-252d39a0c5a7",
+          "modifie_le": "2024-06-05T04:19:24.799000+00:00",
+          "titre": "orthophotographies MEL",
+          "url": "https://webimaging.lillemetropole.fr/externe/orthophoto/2016_7cm.tif"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Orthophotographie sans dévers - MEL - 2016"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-09T21:21:46.311000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "punctual",
@@ -33536,12 +34132,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-07-21T07:01:05.362000+00:00",
+      "donnees_actualisees_le": "2026-10-16T14:36:03.316000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "punctual",
       "id": "669150845add796437b3098d",
       "licence_declaree": "cc-zero",
-      "modifie_le": "2026-07-21T07:01:05.365000+00:00",
+      "modifie_le": "2026-10-16T14:47:08.287000+00:00",
       "nombre_ressources_rapportees": 1,
       "page": "https://www.data.gouv.fr/datasets/liste-des-infrastructures-de-recherche-inrae",
       "producteur": "INRAE - Commission Nationale des Unités Expérimentales - Commission Nationale des Outils Collectifs - DISC",
@@ -33552,9 +34148,9 @@
         {
           "format": "csv",
           "id": "ef029d43-8ba5-4f52-abd2-3f1e01abdd99",
-          "modifie_le": "2026-07-21T07:01:05.362000+00:00",
+          "modifie_le": "2026-10-16T14:36:03.316000+00:00",
           "titre": "infrastructures-scientifiques-inrae.csv",
-          "url": "https://static.data.gouv.fr/resources/liste-des-infrastructures-de-recherche-inrae/20260721-070104/infrastructures-scientifiques-inrae.csv"
+          "url": "https://static.data.gouv.fr/resources/liste-des-infrastructures-de-recherche-inrae/20261016-143603/infrastructures-scientifiques-inrae.csv"
         }
       ],
       "reutilisation_potentielle": true,
@@ -34271,7 +34867,7 @@
         {
           "format": "arcgis geoservices rest api",
           "id": "58fdcefb-02c4-4845-986c-4236742223fe",
-          "modifie_le": "2026-10-15T07:48:19+00:00",
+          "modifie_le": "2026-10-16T07:38:07+00:00",
           "titre": "ArcGIS GeoService",
           "url": "https://services9.arcgis.com/7Sr9Ek9c1QTKmbwr/arcgis/rest/services/Indice_quotidien_de_qualit%C3%A9_de_l%E2%80%99air_pour_les_collectivit%C3%A9s_territoriales_en_Occitanie/FeatureServer/0"
         },
@@ -34299,14 +34895,14 @@
         {
           "format": "kml",
           "id": "76395186-0fd9-485d-94e5-a941ef82b336",
-          "modifie_le": "2026-10-16T03:50:20.293197+00:00",
+          "modifie_le": "2026-10-16T15:50:43.012569+00:00",
           "titre": "KML",
           "url": "https://data-atmo-occitanie.opendata.arcgis.com/api/download/v1/items/9b907eb44e8c4212ac3e159e05f2696a/kml?layers=0"
         },
         {
           "format": "zip",
           "id": "a8de7455-9f54-4f76-a9a2-426a53afd6dd",
-          "modifie_le": "2026-10-15T19:02:35+00:00",
+          "modifie_le": "2026-10-16T15:11:14.426724+00:00",
           "titre": "File Geodatabase",
           "url": "https://data-atmo-occitanie.opendata.arcgis.com/api/download/v1/items/9b907eb44e8c4212ac3e159e05f2696a/filegdb?layers=0"
         },
@@ -34320,21 +34916,21 @@
         {
           "format": "xlsx",
           "id": "27e6a50f-eba1-4a9f-b47b-6879da015930",
-          "modifie_le": "2026-10-15T14:06:28+00:00",
+          "modifie_le": "2026-10-16T14:23:14+00:00",
           "titre": "Excel",
           "url": "https://data-atmo-occitanie.opendata.arcgis.com/api/download/v1/items/9b907eb44e8c4212ac3e159e05f2696a/excel?layers=0"
         },
         {
           "format": "gpkg",
           "id": "1ca52268-38d5-4821-85ed-68ae61049460",
-          "modifie_le": "2026-10-15T16:56:32+00:00",
+          "modifie_le": "2026-10-16T16:58:11.062030+00:00",
           "titre": "GeoPackage",
           "url": "https://data-atmo-occitanie.opendata.arcgis.com/api/download/v1/items/9b907eb44e8c4212ac3e159e05f2696a/geoPackage?layers=0"
         },
         {
           "format": "gdb",
           "id": "a4552c5d-ba5a-47e8-93b0-ea171e01dc6e",
-          "modifie_le": "2026-10-15T09:29:47+00:00",
+          "modifie_le": "2026-10-16T09:40:04+00:00",
           "titre": "SQLite Geodatabase",
           "url": "https://data-atmo-occitanie.opendata.arcgis.com/api/download/v1/items/9b907eb44e8c4212ac3e159e05f2696a/sqlite?layers=0"
         }
@@ -39526,7 +40122,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-15T15:33:06.186000+00:00",
+      "donnees_actualisees_le": "2026-10-16T05:31:28+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "daily",
       "id": "67597783fd21598e5b511399",
@@ -39564,7 +40160,7 @@
         {
           "format": "csv",
           "id": "8adc9033-0600-4dfc-8cbc-6d392c13e009",
-          "modifie_le": "2026-10-15T05:31:19+00:00",
+          "modifie_le": "2026-10-16T05:31:28+00:00",
           "titre": "Fichier csv",
           "url": "https://data.ademe.fr/data-fair/api/v1/datasets/projets-de-recherche-ademe-vue-detaillee-depuis-2021/convert"
         }
@@ -39575,7 +40171,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T04:10:42.861000+00:00",
+      "donnees_actualisees_le": "2026-10-16T16:10:57.201000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "daily",
       "id": "675987a7ff0745bac41bc278",
@@ -39591,21 +40187,21 @@
         {
           "format": "url",
           "id": "f7bb5f03-fdf6-4f67-85da-0a2063b2f7bd",
-          "modifie_le": "2026-10-16T04:10:42.861941+00:00",
+          "modifie_le": "2026-10-16T16:10:57.201830+00:00",
           "titre": "Consultez les données",
           "url": "https://data.ademe.fr/datasets/projets-de-recherche-ademe-vue-detaillee-2014-2020"
         },
         {
           "format": "url",
           "id": "d92bd578-9a3a-4192-af43-3098e741ea00",
-          "modifie_le": "2026-10-16T02:34:58.984763+00:00",
+          "modifie_le": "2026-10-16T14:58:31.038277+00:00",
           "titre": "Description des champs",
           "url": "https://data.ademe.fr/datasets/projets-de-recherche-ademe-vue-detaillee-2014-2020"
         },
         {
           "format": "xlsx",
           "id": "31914971-73bf-4e67-b62a-7cdff2245b07",
-          "modifie_le": "2026-10-15T05:32:29+00:00",
+          "modifie_le": "2026-10-16T05:32:30+00:00",
           "titre": "Fichier xlsx",
           "url": "https://data.ademe.fr/data-fair/api/v1/datasets/projets-de-recherche-ademe-vue-detaillee-2014-2020/raw"
         },
@@ -39623,7 +40219,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T05:34:19+00:00",
+      "donnees_actualisees_le": "2026-10-16T16:45:54.770000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "daily",
       "id": "675989349d0cd0356d9ddcde",
@@ -39639,7 +40235,7 @@
         {
           "format": "url",
           "id": "198acf80-bb91-4e28-a814-e2e58e22211a",
-          "modifie_le": "2026-10-16T04:45:46.785165+00:00",
+          "modifie_le": "2026-10-16T16:45:54.770904+00:00",
           "titre": "Consultez les données",
           "url": "https://data.ademe.fr/datasets/projets-de-recherche-ademe-vue-agregee-depuis-2021"
         },
@@ -39660,7 +40256,7 @@
         {
           "format": "csv",
           "id": "f2936464-03b8-44a3-b615-26ce60a012b1",
-          "modifie_le": "2026-10-15T05:34:22+00:00",
+          "modifie_le": "2026-10-16T05:34:19+00:00",
           "titre": "Fichier csv",
           "url": "https://data.ademe.fr/data-fair/api/v1/datasets/projets-de-recherche-ademe-vue-agregee-depuis-2021/convert"
         }
@@ -39671,7 +40267,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T05:36:26+00:00",
+      "donnees_actualisees_le": "2026-10-16T16:40:09.417000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "daily",
       "id": "67598ac6c351ac73e912dfc0",
@@ -39687,14 +40283,14 @@
         {
           "format": "url",
           "id": "4672842f-d422-462d-a94a-445733519dd7",
-          "modifie_le": "2026-10-16T04:38:51.034295+00:00",
+          "modifie_le": "2026-10-16T16:40:09.417206+00:00",
           "titre": "Consultez les données",
           "url": "https://data.ademe.fr/datasets/projets-de-recherche-ademe-vue-agregee-2014-2020"
         },
         {
           "format": "url",
           "id": "a51acd2e-67aa-4ea8-b861-40f8f9252cae",
-          "modifie_le": "2026-10-16T03:37:10.374371+00:00",
+          "modifie_le": "2026-10-16T15:37:37.479279+00:00",
           "titre": "Description des champs",
           "url": "https://data.ademe.fr/datasets/projets-de-recherche-ademe-vue-agregee-2014-2020"
         },
@@ -39708,7 +40304,7 @@
         {
           "format": "csv",
           "id": "8d30f305-db5c-4dcb-bf73-2baa1e977993",
-          "modifie_le": "2026-10-15T05:36:15+00:00",
+          "modifie_le": "2026-10-16T05:36:26+00:00",
           "titre": "Fichier csv",
           "url": "https://data.ademe.fr/data-fair/api/v1/datasets/projets-de-recherche-ademe-vue-agregee-2014-2020/convert"
         }
@@ -41236,6 +41832,131 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:22:46.311000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "679d6582c31f00b34ec6a4a5",
+      "licence_declaree": "lov2",
+      "modifie_le": "2025-02-01T00:06:26.503000+00:00",
+      "nombre_ressources_rapportees": 15,
+      "page": "https://www.data.gouv.fr/datasets/sync-cd11-cantonsopendataaudefr-34",
+      "producteur": "Occitanie Pyrénées en Intelligence Géomatique",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "",
+          "id": "73b699e6-3a16-4ffa-b3f1-0fcacf021879",
+          "modifie_le": "2026-08-26T11:14:13.578255+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/kml",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/kml"
+        },
+        {
+          "format": "csv",
+          "id": "dba9d56b-669e-4cdc-9fa4-82ad2cceab90",
+          "modifie_le": "2026-09-15T04:31:27.069033+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/csv?use_labels=true",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/csv?use_labels=true"
+        },
+        {
+          "format": "",
+          "id": "b19adc78-1a09-4c99-a865-69fd94639fe6",
+          "modifie_le": "2026-09-17T18:05:27.641861+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/geojson",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/geojson"
+        },
+        {
+          "format": "",
+          "id": "fdac6fd8-f921-4465-aa93-f283e276d33c",
+          "modifie_le": "2026-08-31T10:28:08.311297+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/turtle",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/turtle"
+        },
+        {
+          "format": "",
+          "id": "cef2b1dc-2a50-4bdf-b67f-d2aa3c07c4bd",
+          "modifie_le": "2026-10-08T18:57:23.944423+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/rdfxml",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/rdfxml"
+        },
+        {
+          "format": "",
+          "id": "babfaff2-be0e-4d3e-8a0f-96146dcfc92f",
+          "modifie_le": "2026-08-26T11:12:43.987881+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/jsonl",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/jsonl"
+        },
+        {
+          "format": "",
+          "id": "24b3c4c3-3c20-40d4-9180-b951be8abc85",
+          "modifie_le": "2026-08-26T11:11:19.405083+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/xls?use_labels=true",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/xls?use_labels=true"
+        },
+        {
+          "format": "txt",
+          "id": "5b0d1ea6-f219-4cb1-a799-770b266d4032",
+          "modifie_le": "2025-02-01T00:06:26.507000+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/ov2",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/ov2"
+        },
+        {
+          "format": "",
+          "id": "53b18447-4f99-4c82-8fc1-4808b2e7dc04",
+          "modifie_le": "2026-10-08T13:52:29.948543+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/jsonld",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/jsonld"
+        },
+        {
+          "format": "",
+          "id": "f1743696-6e28-4b35-b73d-2c73e5fb6355",
+          "modifie_le": "2026-10-16T17:22:46.311698+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/shp",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/shp"
+        },
+        {
+          "format": "",
+          "id": "704003f0-4b7c-42b6-b94a-8f2751403348",
+          "modifie_le": "2026-09-15T04:31:08.780140+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/gpx",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/gpx"
+        },
+        {
+          "format": "",
+          "id": "f4b44244-42d7-4103-b406-8b936bdbce1c",
+          "modifie_le": "2026-09-16T04:34:30.609290+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/parquet",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/parquet"
+        },
+        {
+          "format": "",
+          "id": "92c9da02-4b78-4238-97ec-0d5dd8c0fa36",
+          "modifie_le": "2026-08-22T00:06:33.615599+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/fgb",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/fgb"
+        },
+        {
+          "format": "",
+          "id": "f07ffd9b-a73c-449d-9fd3-b7d4c286f65a",
+          "modifie_le": "2026-09-14T17:48:12.775758+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/json",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/json"
+        },
+        {
+          "format": "",
+          "id": "e9f872e3-69d2-4ae1-af95-e62b4bd0e0cb",
+          "modifie_le": "2026-08-31T10:28:34.669887+00:00",
+          "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/n3",
+          "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_cantons/exports/n3"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Cantons de l'Aude"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-14T05:52:27.722000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
@@ -41349,6 +42070,68 @@
       "reutilisation_potentielle": true,
       "source_deja_suivie": false,
       "titre": "Données essentielles marchés publics ATIH"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:24:01.668000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "67a94345b9fe171a2bc6a4ad",
+      "licence_declaree": "other-at",
+      "modifie_le": "2025-02-10T00:07:33.248000+00:00",
+      "nombre_ressources_rapportees": 6,
+      "page": "https://www.data.gouv.fr/datasets/sync-httpswwwarcgiscomhomeitemhtmlid19d9aa97511241dd8c7e1752e2a34adfsublayer25-96",
+      "producteur": "Occitanie Pyrénées en Intelligence Géomatique",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "",
+          "id": "b0ef289d-2c05-4de2-87b8-2d66ed93bcfb",
+          "modifie_le": "2026-05-04T13:35:22+00:00",
+          "titre": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/csv?layers=25",
+          "url": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/csv?layers=25"
+        },
+        {
+          "format": "",
+          "id": "2c7d3287-e031-4d56-9a06-666ed169006b",
+          "modifie_le": "2026-10-16T17:24:01.668502+00:00",
+          "titre": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/datasets/perpignan-mediterranee::eco-lotzae",
+          "url": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/datasets/perpignan-mediterranee::eco-lotzae"
+        },
+        {
+          "format": "",
+          "id": "b2b25630-b78e-426a-9b02-3cc836fb3dcb",
+          "modifie_le": "2026-05-04T13:35:04+00:00",
+          "titre": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/geojson?layers=25",
+          "url": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/geojson?layers=25"
+        },
+        {
+          "format": "",
+          "id": "3fc82e1d-fe4d-44a0-98cd-775e778feb2f",
+          "modifie_le": "2026-05-04T13:35:35+00:00",
+          "titre": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/shapefile?layers=25",
+          "url": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/shapefile?layers=25"
+        },
+        {
+          "format": "",
+          "id": "4973a48b-eb4e-4670-8b8b-13a0a4d0bd66",
+          "modifie_le": "2026-05-04T13:35:02+00:00",
+          "titre": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/kml?layers=25",
+          "url": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/kml?layers=25"
+        },
+        {
+          "format": "",
+          "id": "e73fc342-0377-41a5-873c-21d71a6f3928",
+          "modifie_le": "2026-09-26T10:46:38.581298+00:00",
+          "titre": "https://geometropole.perpignan-mediterranee.org/arcgis/rest/services/OPENDATA/OpenData_2022/FeatureServer/25",
+          "url": "https://geometropole.perpignan-mediterranee.org/arcgis/rest/services/OPENDATA/OpenData_2022/FeatureServer/25"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "eco lotZAE"
     },
     {
       "contenu_original_copie": false,
@@ -44142,6 +44925,68 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:22:50.182000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "punctual",
+      "id": "6801987f93473505d4622e5a",
+      "licence_declaree": "fr-lo",
+      "modifie_le": "2025-04-18T00:10:39.537000+00:00",
+      "nombre_ressources_rapportees": 6,
+      "page": "https://www.data.gouv.fr/datasets/masses-deau-de-transition-metropole-version-rapportage-2022",
+      "producteur": "Système d'Information sur l'Eau",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "056352bc-553d-44cc-a34e-3aae4e5027c1",
+          "modifie_le": "2026-10-16T17:22:50.182651+00:00",
+          "titre": "Consulter le dictionnaire Masses d'eau (MDO)",
+          "url": "https://id.eaufrance.fr/ddd/MDO/1.4/MasseDEauTransition"
+        },
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "a0727792-3d80-43f0-a0c1-290f139acbe9",
+          "modifie_le": "2026-10-16T14:10:03+00:00",
+          "titre": "Consulter le scénario d'échange géographique",
+          "url": "https://www.sandre.eaufrance.fr/notice-doc/diffusion-du-référentiel-des-masses-deau-vedl-2019-aux-formats-géographiques"
+        },
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "0e3f9ca4-d0fd-41f4-b028-1802271c166a",
+          "modifie_le": "2026-10-09T00:29:01+00:00",
+          "titre": "Consulter le rapport de contrôles en ligne",
+          "url": "https://mdm.sandre.eaufrance.fr/geo/rapportsv3/rapport/3277"
+        },
+        {
+          "format": "wfs",
+          "id": "95063315-2fa6-40bd-92b6-dea2bb0e7d36",
+          "modifie_le": "2025-04-18T00:10:39.541000+00:00",
+          "titre": "MasseDEauTransition_VRAP2022_FXX",
+          "url": "https://services.sandre.eaufrance.fr/geo/MasseDEau_VRAP2022?"
+        },
+        {
+          "format": "shp",
+          "id": "98245e7f-6c9c-422d-8ac6-b9d81b2a4efe",
+          "modifie_le": "2024-10-01T16:02:52+00:00",
+          "titre": "Téléchargement des données - Format ESRI Shapefile",
+          "url": "https://services.sandre.eaufrance.fr/telechargement/geo/MDO/MasseDEau/vrap_2022/MasseDEauTransition/MasseDEauTransition_FXX-shp.zip"
+        },
+        {
+          "format": "gpkg",
+          "id": "6a9962b1-3e2e-410c-92a9-ced78e0a2fe0",
+          "modifie_le": "2024-10-02T07:40:13+00:00",
+          "titre": "Téléchargement des données - Format GeoPackage",
+          "url": "https://services.sandre.eaufrance.fr/telechargement/geo/MDO/MasseDEau/vrap_2022/MasseDEauTransition/MasseDEauTransition_FXX-gpkg.zip"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Masses d'eau de transition - Métropole - Version Rapportage 2022"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-11T22:43:04.386000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "punctual",
@@ -44531,6 +45376,33 @@
       "reutilisation_potentielle": false,
       "source_deja_suivie": false,
       "titre": "Niveaux annuels de polluants dans l’air ambiant issus de la modélisation sur l'agglomération de Pau 2021"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:22:30.365000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "6807bd0e06293a7168005dd6",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2025-04-22T16:00:14.262000+00:00",
+      "nombre_ressources_rapportees": 1,
+      "page": "https://www.data.gouv.fr/datasets/niveaux-annuels-de-polluants-dans-lair-ambiant-issus-de-la-modelisation-sur-lagglomeration-de-pau-2020",
+      "producteur": "Atmo Nouvelle-Aquitaine",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "ogc:wms",
+          "id": "47a1f4e0-f868-4b99-a8a8-4be558eff8eb",
+          "modifie_le": "2026-10-16T17:22:30.365898+00:00",
+          "titre": "Ressource ogc:wms",
+          "url": "https://opendata.atmo-na.org/geoserver/mod_pau_2020/wms"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Niveaux annuels de polluants dans l’air ambiant issus de la modélisation sur l'agglomération de Pau 2020"
     },
     {
       "contenu_original_copie": false,
@@ -46537,6 +47409,40 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:24:01.683000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "683cebec079fc84e932f1779",
+      "licence_declaree": "other-at",
+      "modifie_le": "2025-06-02T00:10:19.900000+00:00",
+      "nombre_ressources_rapportees": 2,
+      "page": "https://www.data.gouv.fr/datasets/sync-httpswwwarcgiscomhomeitemhtmlida9ac0f434c7b42a99c4e80f21a75b4bb-119",
+      "producteur": "Occitanie Pyrénées en Intelligence Géomatique",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "",
+          "id": "64fc9a5c-5048-41a2-80d8-05ce7352e632",
+          "modifie_le": "2026-10-16T17:24:01.683272+00:00",
+          "titre": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/content/perpignan-mediterranee::perpignan-mediterranee-metropole",
+          "url": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/content/perpignan-mediterranee::perpignan-mediterranee-metropole"
+        },
+        {
+          "format": "",
+          "id": "b4620605-49b3-4728-a0d0-1390b441f04e",
+          "modifie_le": "2026-10-16T14:19:54.695804+00:00",
+          "titre": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/",
+          "url": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Perpignan-Mediterranee-Metropole"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-09T17:55:20.295000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
@@ -46943,6 +47849,61 @@
       "reutilisation_potentielle": true,
       "source_deja_suivie": false,
       "titre": "Budget des collectivités et établissements publics locaux (organisation VILLE DE QUIMPER)"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:23:11.223000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "punctual",
+      "id": "6840041f2f9592aab088e166",
+      "licence_declaree": "lov2",
+      "modifie_le": "2025-06-04T08:30:23.595000+00:00",
+      "nombre_ressources_rapportees": 5,
+      "page": "https://www.data.gouv.fr/datasets/sites-de-la-region-bretagne-2",
+      "producteur": "Région Bretagne",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "wms",
+          "id": "64a72700-1925-4523-86c2-c4210a00ea5e",
+          "modifie_le": "2026-07-21T00:31:07.348155+00:00",
+          "titre": "site_region",
+          "url": "https://ows.region-bretagne.fr/geoserver/rb/wms?REQUEST=GetCapabilities&SERVICE=WMS"
+        },
+        {
+          "format": "wfs",
+          "id": "56ba37d8-0f79-443e-96e4-d8ffdaddebac",
+          "modifie_le": "2026-09-10T22:57:07.316972+00:00",
+          "titre": "site_region",
+          "url": "https://ows.region-bretagne.fr/geoserver/rb/wfs?REQUEST=GetCapabilities&SERVICE=WFS"
+        },
+        {
+          "format": "esri shapefile",
+          "id": "ad2a78a7-a96f-43da-97de-845dde05d702",
+          "modifie_le": "2026-10-16T15:19:26.260924+00:00",
+          "titre": "Téléchargement simple au format SHP",
+          "url": "https://ows.region-bretagne.fr/geoserver/rb/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=rb%3Asite_region&outputFormat=SHAPE-ZIP"
+        },
+        {
+          "format": "esri shapefile",
+          "id": "891adfd1-c7bf-45ba-b373-f7dbba8ec23d",
+          "modifie_le": "2026-10-16T17:23:11.223435+00:00",
+          "titre": "Téléchargement simple au format Geopackage",
+          "url": "https://ows.region-bretagne.fr/geoserver/rb/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=rb%3Asite_region&outputFormat=application%2Fx-gpkg"
+        },
+        {
+          "format": "esri shapefile",
+          "id": "41f9c896-76fb-43d2-8327-ce47bb271f30",
+          "modifie_le": "2026-10-16T15:23:21.237966+00:00",
+          "titre": "Téléchargement simple au format GeoJson",
+          "url": "https://ows.region-bretagne.fr/geoserver/rb/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=rb%3Asite_region&outputFormat=application%2Fjson"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Sites de la région Bretagne"
     },
     {
       "contenu_original_copie": false,
@@ -52159,6 +53120,68 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:23:40.043000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "68a26f9be6852cd7d3513607",
+      "licence_declaree": "other-at",
+      "modifie_le": "2025-08-18T00:11:07.314000+00:00",
+      "nombre_ressources_rapportees": 6,
+      "page": "https://www.data.gouv.fr/datasets/sync-httpswwwarcgiscomhomeitemhtmlid19d9aa97511241dd8c7e1752e2a34adfsublayer6-6",
+      "producteur": "Occitanie Pyrénées en Intelligence Géomatique",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "",
+          "id": "cc414e89-e015-421a-801e-f3877b9eaab9",
+          "modifie_le": "2026-05-04T13:36:49+00:00",
+          "titre": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/kml?layers=6",
+          "url": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/kml?layers=6"
+        },
+        {
+          "format": "",
+          "id": "e0b21713-025d-444b-9237-fdd4adb58f35",
+          "modifie_le": "2026-09-18T22:26:31.746842+00:00",
+          "titre": "https://geometropole.perpignan-mediterranee.org/arcgis/rest/services/OPENDATA/OpenData_2022/FeatureServer/6",
+          "url": "https://geometropole.perpignan-mediterranee.org/arcgis/rest/services/OPENDATA/OpenData_2022/FeatureServer/6"
+        },
+        {
+          "format": "",
+          "id": "e683af6f-f7e2-4f4c-a55b-c3e35e529ef9",
+          "modifie_le": "2026-05-04T13:36:50+00:00",
+          "titre": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/csv?layers=6",
+          "url": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/csv?layers=6"
+        },
+        {
+          "format": "",
+          "id": "d517e453-5519-44af-847d-95804a0d77e4",
+          "modifie_le": "2026-05-04T13:36:28+00:00",
+          "titre": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/shapefile?layers=6",
+          "url": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/shapefile?layers=6"
+        },
+        {
+          "format": "",
+          "id": "a11a71d1-e3ed-432b-9b50-16242621b2e1",
+          "modifie_le": "2026-10-16T17:23:40.043870+00:00",
+          "titre": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/datasets/perpignan-mediterranee::bruit-2025-moindre-bruit",
+          "url": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/datasets/perpignan-mediterranee::bruit-2025-moindre-bruit"
+        },
+        {
+          "format": "",
+          "id": "ec64d213-c6a5-4d00-80ff-9136a5e0d6ce",
+          "modifie_le": "2026-05-04T13:37:17+00:00",
+          "titre": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/geojson?layers=6",
+          "url": "https://perpignan-mediterranee-metropole-perpignan-mediterranee.hub.arcgis.com/api/download/v1/items/19d9aa97511241dd8c7e1752e2a34adf/geojson?layers=6"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "bruit 2025 moindre bruit"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-09T17:55:50.599000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "punctual",
@@ -53272,6 +54295,40 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:22:48.845000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "annual",
+      "id": "68cbc40ddf952493fcc0bc8f",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2025-09-18T08:34:21.480000+00:00",
+      "nombre_ressources_rapportees": 2,
+      "page": "https://www.data.gouv.fr/datasets/tache-bati-en-bretagne-pci-vecteur-2016",
+      "producteur": "Direction régionale de l'environnement, de l'aménagement et du logement de Bretagne",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "wms",
+          "id": "2561f351-b680-46df-9702-10dddcfe8a66",
+          "modifie_le": "2026-10-16T06:23:03.308827+00:00",
+          "titre": "dreal_b:t50m_e25m_pci_bati_2016_053_et8",
+          "url": "https://geobretagne.fr/geoserver/dreal_b/t50m_e25m_pci_bati_2016_053_et8/wms?SERVICE=WMS&REQUEST=GetCapabilities"
+        },
+        {
+          "format": "wfs",
+          "id": "bf391db9-8ee0-4dec-8be5-d3e6fe7c0c37",
+          "modifie_le": "2026-10-16T17:22:48.845415+00:00",
+          "titre": "dreal_b:t50m_e25m_pci_bati_2016_053_et8",
+          "url": "https://geobretagne.fr/geoserver/dreal_b/t50m_e25m_pci_bati_2016_053_et8/wfs?SERVICE=WFS&REQUEST=GetCapabilities"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "Tache bâti en Bretagne (PCI vecteur) - 2016"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-10-13T03:18:39.020000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "punctual",
@@ -53919,7 +54976,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T04:48:54.327000+00:00",
+      "donnees_actualisees_le": "2026-10-16T16:49:43.221000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "punctual",
       "id": "68cbc443df952493fcc0bd1f",
@@ -53935,14 +54992,14 @@
         {
           "format": "wms",
           "id": "e1270f6b-f7a8-464c-ad01-7131b8744e50",
-          "modifie_le": "2026-10-16T04:38:29.354411+00:00",
+          "modifie_le": "2026-10-16T16:38:43.994277+00:00",
           "titre": "dreal_b:l_centre_ville_epci",
           "url": "https://geobretagne.fr/geoserver/dreal_b/l_centre_ville_epci/wms?SERVICE=WMS&REQUEST=GetCapabilities"
         },
         {
           "format": "wfs",
           "id": "7e04e263-a902-489e-88cb-05b79187982d",
-          "modifie_le": "2026-10-16T04:48:54.327768+00:00",
+          "modifie_le": "2026-10-16T16:49:43.221301+00:00",
           "titre": "dreal_b:l_centre_ville_epci",
           "url": "https://geobretagne.fr/geoserver/dreal_b/l_centre_ville_epci/wfs?SERVICE=WFS&REQUEST=GetCapabilities"
         }
@@ -58054,6 +59111,61 @@
     },
     {
       "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:22:53.839000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "annual",
+      "id": "6965fd7bdd5d82d4c4664a66",
+      "licence_declaree": "lov2",
+      "modifie_le": "2026-04-28T06:57:46.827000+00:00",
+      "nombre_ressources_rapportees": 5,
+      "page": "https://www.data.gouv.fr/datasets/production-annuelle-delectricite-par-filiere-saint-pierre-et-miquelon-1",
+      "producteur": "Electricité de France",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "url",
+          "id": "03b36f92-40c1-429f-8c9d-8e02fc150d5e",
+          "modifie_le": "2026-10-16T17:22:53.839389+00:00",
+          "titre": "Consultez les données",
+          "url": "https://opendata.edf.fr/datasets/production-annuelle-d-electricite-par-filiere-saint-pierre-et-miquelon"
+        },
+        {
+          "format": "url",
+          "id": "4bc2bae5-3023-4726-822f-7c9b638d0702",
+          "modifie_le": "2026-10-16T16:48:59.583059+00:00",
+          "titre": "Description des champs",
+          "url": "https://opendata.edf.fr/datasets/production-annuelle-d-electricite-par-filiere-saint-pierre-et-miquelon"
+        },
+        {
+          "format": "url",
+          "id": "14221625-2879-494b-a612-6c4ea0a8be7d",
+          "modifie_le": "2026-10-16T17:17:27.673410+00:00",
+          "titre": "Documentation de l'API",
+          "url": "https://opendata.edf.fr/datasets/production-annuelle-d-electricite-par-filiere-saint-pierre-et-miquelon/api-doc"
+        },
+        {
+          "format": "xlsx",
+          "id": "046610fe-80f2-438c-ba4b-d751b5cc3059",
+          "modifie_le": "2026-04-28T06:55:44+00:00",
+          "titre": "Fichier xlsx",
+          "url": "https://opendata.edf.fr/data-fair/api/v1/datasets/production-annuelle-d-electricite-par-filiere-saint-pierre-et-miquelon/raw"
+        },
+        {
+          "format": "csv",
+          "id": "16bfae5b-5766-4b45-8b7d-9da4c983fdfa",
+          "modifie_le": "2026-04-28T06:55:44+00:00",
+          "titre": "Fichier csv",
+          "url": "https://opendata.edf.fr/data-fair/api/v1/datasets/production-annuelle-d-electricite-par-filiere-saint-pierre-et-miquelon/convert"
+        }
+      ],
+      "reutilisation_potentielle": true,
+      "source_deja_suivie": false,
+      "titre": "Production annuelle d’électricité par filière - Saint-Pierre-et-Miquelon"
+    },
+    {
+      "contenu_original_copie": false,
       "donnees_actualisees_le": "2026-01-13T14:53:43.430000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "annual",
@@ -61227,7 +62339,7 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-13T03:24:10.913000+00:00",
+      "donnees_actualisees_le": "2026-10-16T17:22:37.715000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "unknown",
       "id": "69f3f0067c84efeeaa2c49ae",
@@ -61243,14 +62355,14 @@
         {
           "format": "csv",
           "id": "48cc73c5-438f-41e6-8961-06f415ab5b8a",
-          "modifie_le": "2026-10-11T17:21:46.066845+00:00",
+          "modifie_le": "2026-10-13T05:27:13.463581+00:00",
           "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/csv?use_labels=true",
           "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/csv?use_labels=true"
         },
         {
           "format": "",
           "id": "a8cdf623-c585-4097-8ea3-915d0ffe7296",
-          "modifie_le": "2026-10-11T17:01:30.910336+00:00",
+          "modifie_le": "2026-10-13T05:10:00.409250+00:00",
           "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/fgb",
           "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/fgb"
         },
@@ -61264,42 +62376,42 @@
         {
           "format": "",
           "id": "31490a30-3dc5-4ca7-acfe-8a82b671a22e",
-          "modifie_le": "2026-10-11T17:05:07.721305+00:00",
+          "modifie_le": "2026-10-13T05:08:01.615963+00:00",
           "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/xls?use_labels=true",
           "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/xls?use_labels=true"
         },
         {
           "format": "",
           "id": "6dbbc2ab-1c04-4e52-a4f1-54468e9ffec4",
-          "modifie_le": "2026-10-11T17:53:21.366731+00:00",
+          "modifie_le": "2026-10-13T08:15:51.849626+00:00",
           "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/kml",
           "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/kml"
         },
         {
           "format": "",
           "id": "37325192-133a-4d15-bf5f-90571cd26825",
-          "modifie_le": "2026-10-11T17:01:34.034259+00:00",
+          "modifie_le": "2026-10-13T05:07:15.980460+00:00",
           "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/gpx",
           "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/gpx"
         },
         {
           "format": "",
           "id": "24cf86f0-1ce7-4423-8cd6-a8479299668a",
-          "modifie_le": "2026-10-13T03:24:10.913332+00:00",
+          "modifie_le": "2026-10-16T17:22:37.715617+00:00",
           "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/shp",
           "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/shp"
         },
         {
           "format": "",
           "id": "ebb3204c-4c4c-4e90-bf8e-32c2f3d7502e",
-          "modifie_le": "2026-10-11T16:55:36.366111+00:00",
+          "modifie_le": "2026-10-13T05:07:02.873479+00:00",
           "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/turtle",
           "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/turtle"
         },
         {
           "format": "",
           "id": "cd2e6770-c302-4968-b14b-97b712f4adf6",
-          "modifie_le": "2026-10-11T17:27:46.966463+00:00",
+          "modifie_le": "2026-10-13T05:33:10.467611+00:00",
           "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/json",
           "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/json"
         },
@@ -61327,21 +62439,21 @@
         {
           "format": "",
           "id": "df239375-cb7e-4333-9d1e-6b81564daa49",
-          "modifie_le": "2026-10-11T17:01:34.033855+00:00",
+          "modifie_le": "2026-10-13T05:10:26.674134+00:00",
           "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/geojson",
           "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/geojson"
         },
         {
           "format": "",
           "id": "dca5baa2-23a3-48b6-a039-8b6cf0628c8a",
-          "modifie_le": "2026-10-11T16:54:26.340102+00:00",
+          "modifie_le": "2026-10-13T04:57:09.929368+00:00",
           "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/n3",
           "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/n3"
         },
         {
           "format": "",
           "id": "be3d74a0-77f0-4a94-ba55-ba44a1193485",
-          "modifie_le": "2026-10-11T17:17:33.527836+00:00",
+          "modifie_le": "2026-10-13T05:19:48.781742+00:00",
           "titre": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/jsonl",
           "url": "https://opendata.aude.fr/api/v2/catalog/datasets/cd11_restrictions_circulation/exports/jsonl"
         }
@@ -64879,12 +65991,12 @@
     },
     {
       "contenu_original_copie": false,
-      "donnees_actualisees_le": "2026-10-16T12:23:13.823000+00:00",
+      "donnees_actualisees_le": "2026-10-16T17:24:01.507000+00:00",
       "examen_licence_et_vie_privee_a_faire": true,
       "frequence_declaree": "oneMinute",
       "id": "6a75a5620dcff06bc7800727",
       "licence_declaree": "notspecified",
-      "modifie_le": "2026-10-16T12:23:13.824000+00:00",
+      "modifie_le": "2026-10-16T17:24:01.507000+00:00",
       "nombre_ressources_rapportees": 2,
       "page": "https://www.data.gouv.fr/datasets/irve-statique-dynamique-e-clearing-net",
       "producteur": "e-clearing.net",
@@ -64902,9 +66014,9 @@
         {
           "format": "csv",
           "id": "f6f2469e-542f-46a9-998a-46238010a8e7",
-          "modifie_le": "2026-10-16T12:23:13.823000+00:00",
+          "modifie_le": "2026-10-16T17:24:01.507000+00:00",
           "titre": "donnes-schema-irve-dynamique.csv",
-          "url": "https://static.data.gouv.fr/resources/irve-statique-dynamique-e-clearing-net/20261016-122313/donnes-schema-irve-dynamique.csv"
+          "url": "https://static.data.gouv.fr/resources/irve-statique-dynamique-e-clearing-net/20261016-172401/donnes-schema-irve-dynamique.csv"
         }
       ],
       "reutilisation_potentielle": false,
@@ -65888,6 +67000,54 @@
       "reutilisation_potentielle": false,
       "source_deja_suivie": false,
       "titre": "Données essentielles des marchés publics - Région Auvergne Rhône-Alpes"
+    },
+    {
+      "contenu_original_copie": false,
+      "donnees_actualisees_le": "2026-10-16T17:23:50.543000+00:00",
+      "examen_licence_et_vie_privee_a_faire": true,
+      "frequence_declaree": "unknown",
+      "id": "6acd7602c6d45596e64ef0e7",
+      "licence_declaree": "notspecified",
+      "modifie_le": "2026-10-13T00:06:26.362000+00:00",
+      "nombre_ressources_rapportees": 4,
+      "page": "https://www.data.gouv.fr/datasets/ctor-base-gnss-du-reservoir-de-boyon-a-tournon-sur-rhone-07",
+      "producteur": "Centre Régional Auvergne-Rhône-Alpes de l'Information Géographique",
+      "recherches": [
+        "actualisations recentes"
+      ],
+      "ressources": [
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "4b0ec8bd-4000-44a3-b7c5-7eb9d562b067",
+          "modifie_le": "2026-10-16T17:23:50.543245+00:00",
+          "titre": "Caster NTRIP Centipède",
+          "url": "http://crtk.net:2101/"
+        },
+        {
+          "format": "ogc:wms",
+          "id": "75dfe16c-6bbc-45f9-8050-3c9cee7a79e5",
+          "modifie_le": "2026-10-13T00:06:26.368000+00:00",
+          "titre": "centipede_bases_gnss",
+          "url": "http://ids.craig.fr/wxs/public/wms"
+        },
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "bf533cc9-71b8-41b2-a3f6-9213c744fcb2",
+          "modifie_le": "2026-10-15T16:56:56.905153+00:00",
+          "titre": "Grâce à la force d’un réseau ouvert et collaboratif, le CRAIG développe le levé centimétrique en Auvergne-Rhône-Alpes !",
+          "url": "https://www.craig.fr/services/centipede"
+        },
+        {
+          "format": "www:link-1.0-http--link",
+          "id": "1d684e19-bdbe-478d-a34f-79a84246b73e",
+          "modifie_le": "2026-10-13T00:06:26.369000+00:00",
+          "titre": "Service de correction (NTRIP) des bases GNSS du CRAIG et de ses membres",
+          "url": "https://ids.craig.fr/geocat/srv/api/records/f0475e90-31cd-40b9-b709-ac0fe89e9ba3"
+        }
+      ],
+      "reutilisation_potentielle": false,
+      "source_deja_suivie": false,
+      "titre": "CTOR - Base GNSS du réservoir de Boyon à Tournon-sur-Rhône (07)"
     },
     {
       "contenu_original_copie": false,
