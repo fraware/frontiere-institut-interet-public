@@ -168,6 +168,19 @@ def test_entrees_boamp_ambigues_refusees(champ, valeur):
         verifier_boamp({"version": "avis-boamp-v1", "annonces": [a]})
 
 
+def test_separateurs_lignes_source_preserves_par_empreinte(tmp_path):
+    original = avis(titre="Étude scientifique\\nLot 1 et lot 2")
+    assert verifier_boamp({"version": "avis-boamp-v1", "annonces": [original]})
+    racine = tmp_path / "depot"
+    ecrire(racine, avis_sources=[original])
+    base = tmp_path / "index.sqlite3"
+    construire(racine, base)
+    x = rechercher(base, identifiant=original["id"])["resultats"][0]
+    assert x["titre"] == "Étude scientifique Lot 1 et lot 2"
+    assert x["empreinte_preuve"] == hashlib.sha256(json.dumps(
+        original, ensure_ascii=False, sort_keys=True,
+        separators=(",", ":"), allow_nan=False).encode()).hexdigest()
+
 def test_identifiant_boamp_duplique_refuse():
     with pytest.raises(IndexCommandeInvalide, match="répété"):
         verifier_boamp({"version": "avis-boamp-v1", "annonces": [avis(), avis()]})
