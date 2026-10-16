@@ -186,10 +186,14 @@ def construire(racine: Path, base: Path, *, remplacer: bool = False) -> dict:
                     except (UnicodeError, ValueError, TypeError) as exc:
                         raise IndexRecrutementsInvalide(
                             f"Document invalide dans {nom}, ligne {n}.") from exc
-                    reference = valeurs[1]
-                    imposer(int(hashlib.sha256(reference.encode("utf-8"))
+                    # L'archive CSP historique a réparti les éléments
+                    # selon le SHA-256 du champ cle_enregistrement, et non
+                    # selon la référence administrative. La règle existante
+                    # est conservée sans réécrire les partitions sources.
+                    cle_version = valeurs[0]
+                    imposer(int(hashlib.sha256(cle_version.encode("utf-8"))
                                 .hexdigest()[0], 16) == numero_part,
-                            f"Référence dans la mauvaise partition : {nom}.")
+                            f"Variante dans la mauvaise partition : {nom}.")
                     cursor = connexion.execute("""
                         INSERT INTO offres (
                             cle_enregistrement, reference, titre, entite, metier,
