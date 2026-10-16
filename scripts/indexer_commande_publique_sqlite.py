@@ -114,7 +114,7 @@ def _courte(valeur: object, maximum: int, *, facultative: bool = False) -> str:
     imposer(isinstance(valeur, str), "Champ documentaire absent ou invalide.")
     # Les titres des avis officiels contiennent parfois des séparateurs de
     # ligne : les normaliser pour la recherche, sans altérer la pièce d'origine.
-    normalise = re.sub(r"[\\r\\n\\t]+", " ", valeur).strip()
+    normalise = re.sub(r"[\r\n\t]+", " ", valeur).strip()
     imposer(0 < len(normalise) <= maximum
             and not any(ord(c) < 32 for c in normalise),
             "Champ documentaire absent ou invalide.")
