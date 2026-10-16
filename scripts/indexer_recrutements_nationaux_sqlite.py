@@ -304,12 +304,19 @@ def rechercher(base: Path, *, expression: str | None = None,
                 3 <= len(reference) <= 180 and
                 not any(ord(c) < 32 for c in reference),
                 "Référence invalide.")
+    def date_filtre(v: str, champ: str) -> None:
+        imposer(isinstance(v, str) and len(v) == 10,
+                "Date incorrecte : " + champ)
+        try:
+            correcte = date.fromisoformat(v).isoformat() == v
+        except ValueError:
+            correcte = False
+        imposer(correcte, "Date incorrecte : " + champ)
+
     if depuis is not None:
-        imposer(date.fromisoformat(depuis).isoformat() == depuis,
-                "Date de début incorrecte.")
+        date_filtre(depuis, "début")
     if jusqua is not None:
-        imposer(date.fromisoformat(jusqua).isoformat() == jusqua,
-                "Date de fin incorrecte.")
+        date_filtre(jusqua, "fin")
     imposer(depuis is None or jusqua is None or depuis <= jusqua,
             "Intervalle de dates inversé.")
     filtres, args = [], []
