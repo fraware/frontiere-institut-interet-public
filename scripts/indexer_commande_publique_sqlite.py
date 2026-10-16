@@ -142,7 +142,7 @@ def verifier_boamp(source: dict) -> list[dict]:
         _courte(a.get("acheteur"), 600)
         _date_jour(a.get("date_parution"), ident)
         _limite(a.get("date_limite_reponse"))
-        imposer(a.get("categorie_marche") in CATEGORIES
+        imposer((a.get("categorie_marche") or "") in CATEGORIES
                 and a.get("etat_avis") in ETATS
                 and a.get("contenu_integral_copie") is False
                 and a.get("catalogue_source") == ORIGINE_BOAMP,
@@ -311,7 +311,7 @@ def rechercher(base: Path, *, expression: str | None = None,
             filtres, args = [], []
             table = "avis_boamp AS a"
             if expr:
-                table += " JOIN recherche_avis AS f ON f.identifiant=a.identifiant"
+                table += " JOIN recherche_avis ON recherche_avis.identifiant=a.identifiant"
                 filtres.append("recherche_avis MATCH ?")
                 # Une jointure FTS sans rowid d'avis évite de supposer un SIRET.
                 args.append(expr)
@@ -347,7 +347,7 @@ def rechercher(base: Path, *, expression: str | None = None,
             filtres, args = [], []
             jointure = "versions AS v"
             if expr:
-                jointure += (""" JOIN recherche_marches AS f ON f.cle=(
+                jointure += (""" JOIN recherche_marches ON recherche_marches.cle=(
                   v.acheteur_siret || char(31) || v.id_marche || char(31) || v.empreinte_version
                   )""")
                 filtres.append("recherche_marches MATCH ?")
