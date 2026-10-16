@@ -244,7 +244,7 @@ jobs:
       - name: Contrôler la publication distante sur Render
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
-          python scripts/verifier_site_publie.py \
+          python -m scripts.verifier_site_publie \
             --revision "${{ github.sha }}" \
             --rapport "$RUNNER_TEMP/audit-site-publie.json"
 
