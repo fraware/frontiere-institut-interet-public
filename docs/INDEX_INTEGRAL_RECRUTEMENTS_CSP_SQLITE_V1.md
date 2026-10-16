@@ -48,7 +48,9 @@ Le programme vérifie successivement :
 
 1. la structure du manifeste et les 16 empreintes SHA-256 ;
 2. la syntaxe de chaque ligne JSONL et le nombre de variantes ;
-3. la partition calculée sur la référence déclarée ;
+3. la partition historique calculée depuis l'empreinte de la variante,
+   qui est la clé réellement utilisée par le collecteur CSP versionné,
+   distincte de la référence administrative ;
 4. l'empreinte canonique de **chaque version d'annonce** à partir
    de sa projection JSON, afin qu'une simple modification du contenu
    accompagnée d'un nouveau SHA-256 de fichier soit détectée ;
