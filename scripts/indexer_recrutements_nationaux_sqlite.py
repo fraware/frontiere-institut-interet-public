@@ -277,7 +277,7 @@ def _ouvrir(base: Path) -> sqlite3.Connection:
 def _expression(texte: str) -> str:
     imposer(isinstance(texte, str) and
             1 <= len(texte) <= 160 and
-            not any(ord(c) < 32 for c in texte),
+            not any(ord(c) < 32 for c in texte) and ";" not in texte,
             "Expression de recherche invalide.")
     mots = TERMES.findall(texte)
     imposer(1 <= len(mots) <= 12 and all(len(m) <= 45 for m in mots),
