@@ -31,6 +31,24 @@ La liste initiale comprend les PR **570, 568, 550, 494, 487, 485, 484, 449, 407,
 
 Pour réduire durablement les blocages de collecte, chaque famille d'actualisation doit disposer d'au plus une proposition courante : soit la proposition existante est rendue compatible avec `main` et validée, soit elle est fermée avec justification après constat d'obsolescence. Aucun mélange automatique de deux instantanés de producteurs de dates différentes.
 
+## Entretien permanent prévu
+
+Le script `scripts/nettoyer_branches_fusionnees_hebdomadaire.py` et la procédure
+`.github/workflows/hygiene_branches_hebdomadaire.yml` instaurent une revue
+**hebdomadaire chaque lundi**, à partir de la branche principale. Elle retient
+uniquement les références de PR fusionnées depuis plus de vingt-quatre heures,
+avec nom et SHA encore identiques, absence de PR ouverte, aucune protection,
+et une limite stricte de 325 références par exécution.
+
+Avant toute suppression, les références sont lues à nouveau depuis GitHub.
+Chaque exécution conserve un rapport détaillé trente jours. Les essais sur
+PR sont sans suppression, et les déclenchements automatiques sont limités
+à `schedule` ou `workflow_dispatch` sur le dépôt autorisé.
+
+Il s'agit d'une seconde barrière de maintenance : la préférence à long terme
+reste la fonctionnalité native GitHub « Automatically delete head branches »,
+sous réserve d'une décision administrative distincte.
+
 ## Après le nettoyage
 
 Le résultat attendu de la première opération est d'environ **40 branches restantes**, auxquelles s'ajoute la branche de maintenance tant que cette dernière existe. Ce n'est pas une garantie : tout changement simultané, défaut de permission ou nouvelle PR ouverte justifie la conservation de la branche concernée.
