@@ -7,10 +7,16 @@
       "nature_document": "index_selections",
       "url": "https://anr.fr/fr/projets-finances-et-impact/projets-finances/dernieres-listes-de-projets-selectionnes/",
       "format": "html",
-      "empreinte": "d6ac4ad2b7f120e657629f7c0aad5bd9633a486bfaf37d2c8f71075268317a91",
+      "empreinte": "b6301c5252afbed81fb361bd0eb730677d5d8b98892cb97087a8a840132f282c",
       "observe_initialement_le": "2026-10-14T20:08:23+00:00",
-      "dernier_changement_le": "2026-10-14T20:08:23+00:00",
-      "historique": [],
+      "dernier_changement_le": "2026-10-16T12:33:11+00:00",
+      "historique": [
+        {
+          "observe_le": "2026-10-16T12:33:11+00:00",
+          "empreinte_avant": "d6ac4ad2b7f120e657629f7c0aad5bd9633a486bfaf37d2c8f71075268317a91",
+          "empreinte_apres": "b6301c5252afbed81fb361bd0eb730677d5d8b98892cb97087a8a840132f282c"
+        }
+      ],
       "reference_execution": "https://github.com/fraware/frontiere-institut-interet-public/actions/runs/38629459886",
       "octets_premiere_capture": 306822,
       "media_premiere_capture": "text/html"
