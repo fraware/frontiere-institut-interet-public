@@ -717,19 +717,6 @@
     },
     {
       "candidats_id": [
-        "da0afd81-d55a-4982-a406-e94fdcd64fc5"
-      ],
-      "parent_id_dila": "0d741978-05a0-4b4b-a7a1-206c3b3f7827",
-      "parent_nom": "Ardennes - 08",
-      "representation_source": {
-        "service": "da0afd81-d55a-4982-a406-e94fdcd64fc5",
-        "type_hierarchie": "Service Fils"
-      },
-      "type": "LIEN_HIERARCHIQUE_NON_RESOLU",
-      "type_hierarchie_dila": "Service Fils"
-    },
-    {
-      "candidats_id": [
         "2b2c895f-8dba-4a72-a820-10f99f9db059"
       ],
       "parent_id_dila": "4e84b72d-d641-4e93-aa3d-9cad730b2cff",
@@ -801,6 +788,19 @@
       "parent_nom": "Lot-et-Garonne - 47",
       "representation_source": {
         "service": "0d619394-5456-4fca-9b42-ee5c703d0163",
+        "type_hierarchie": "Service Fils"
+      },
+      "type": "LIEN_HIERARCHIQUE_NON_RESOLU",
+      "type_hierarchie_dila": "Service Fils"
+    },
+    {
+      "candidats_id": [
+        "da0afd81-d55a-4982-a406-e94fdcd64fc5"
+      ],
+      "parent_id_dila": "0d741978-05a0-4b4b-a7a1-206c3b3f7827",
+      "parent_nom": "Ardennes - 08",
+      "representation_source": {
+        "service": "da0afd81-d55a-4982-a406-e94fdcd64fc5",
         "type_hierarchie": "Service Fils"
       },
       "type": "LIEN_HIERARCHIQUE_NON_RESOLU",
@@ -925,6 +925,19 @@
     },
     {
       "candidats_id": [
+        "bfb11eba-1e9f-4e9c-be8b-4f9e86b0022e"
+      ],
+      "parent_id_dila": "7d9ef54a-875c-40dd-9f43-d9bf1d661d20",
+      "parent_nom": "Puy-de-Dôme - 63",
+      "representation_source": {
+        "service": "bfb11eba-1e9f-4e9c-be8b-4f9e86b0022e",
+        "type_hierarchie": "Service Fils"
+      },
+      "type": "LIEN_HIERARCHIQUE_NON_RESOLU",
+      "type_hierarchie_dila": "Service Fils"
+    },
+    {
+      "candidats_id": [
         "3352841c-3e69-4c8c-83e3-63876407c1c5"
       ],
       "parent_id_dila": "a49af9cb-7122-41bb-ad35-332a515c5f58",
@@ -970,19 +983,6 @@
       "parent_nom": "Manche - 50",
       "representation_source": {
         "service": "620a13c7-b945-4876-bbb3-81911a971dc2",
-        "type_hierarchie": "Service Fils"
-      },
-      "type": "LIEN_HIERARCHIQUE_NON_RESOLU",
-      "type_hierarchie_dila": "Service Fils"
-    },
-    {
-      "candidats_id": [
-        "bfb11eba-1e9f-4e9c-be8b-4f9e86b0022e"
-      ],
-      "parent_id_dila": "7d9ef54a-875c-40dd-9f43-d9bf1d661d20",
-      "parent_nom": "Puy-de-Dôme - 63",
-      "representation_source": {
-        "service": "bfb11eba-1e9f-4e9c-be8b-4f9e86b0022e",
         "type_hierarchie": "Service Fils"
       },
       "type": "LIEN_HIERARCHIQUE_NON_RESOLU",
@@ -1302,7 +1302,7 @@
     }
   ],
   "nombre_anomalies_hierarchiques": 100,
-  "observe_le": "2026-10-14T10:39:23+00:00",
+  "observe_le": "2026-10-15T10:22:07+00:00",
   "parents_directs_multiples": [],
   "source_id": "dila_annuaire_local",
   "version": "2"
