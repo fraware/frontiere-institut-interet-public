@@ -33,17 +33,16 @@ Pour réduire durablement les blocages de collecte, chaque famille d'actualisati
 
 ## Entretien permanent prévu
 
-Le script `scripts/nettoyer_branches_fusionnees_hebdomadaire.py` et la procédure
-`.github/workflows/hygiene_branches_hebdomadaire.yml` instaurent une revue
+Le programme de nettoyage hebdomadaire et la procédure automatisée instaurent une revue
 **hebdomadaire chaque lundi**, à partir de la branche principale. Elle retient
 uniquement les références de PR fusionnées depuis plus de vingt-quatre heures,
 avec nom et SHA encore identiques, absence de PR ouverte, aucune protection,
 et une limite stricte de 325 références par exécution.
 
 Avant toute suppression, les références sont lues à nouveau depuis GitHub.
-Chaque exécution conserve un rapport détaillé trente jours. Les essais sur
-PR sont sans suppression, et les déclenchements automatiques sont limités
-à `schedule` ou `workflow_dispatch` sur le dépôt autorisé.
+Chaque exécution conserve un rapport détaillé trente jours. Les essais sur les demandes de fusion sont en lecture seule. Les suppressions
+interviennent uniquement lors des passages programmés ou d'une exécution manuelle
+sur le dépôt autorisé.
 
 Il s'agit d'une seconde barrière de maintenance : la préférence à long terme
 reste la fonctionnalité native GitHub « Automatically delete head branches »,
