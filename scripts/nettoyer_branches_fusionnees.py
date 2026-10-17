@@ -72,7 +72,7 @@ def selectionner(candidats: list[dict], branches: list[dict],
     pr_fermees = {p["number"]: p for p in fermees}
     noms_ouverts = {
         p["head"]["ref"] for p in ouvertes
-        if p.get("head", {}).get("repo", {}).get("full_name") == REPO_ATTENDU
+        if ((p.get("head") or {}).get("repo") or {}).get("full_name") == REPO_ATTENDU
     }
     a_supprimer: list[dict] = []
     exclus: list[dict] = []
@@ -94,9 +94,9 @@ def selectionner(candidats: list[dict], branches: list[dict],
             raison = "sha_branche_modifie"
         elif p is None or not p.get("merged_at"):
             raison = "fusion_non_verifiee"
-        elif (p.get("head", {}).get("ref") != nom
-              or p.get("head", {}).get("sha") != sha
-              or p.get("head", {}).get("repo", {}).get("full_name") != REPO_ATTENDU):
+        elif ((p.get("head") or {}).get("ref") != nom
+              or (p.get("head") or {}).get("sha") != sha
+              or ((p.get("head") or {}).get("repo") or {}).get("full_name") != REPO_ATTENDU):
             raison = "pr_ou_sha_incompatible"
         if raison:
             exclus.append({"branche": nom, "raison": raison})
