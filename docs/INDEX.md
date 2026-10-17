@@ -9,6 +9,8 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [README](../README.md) | Vue d’ensemble, état actuel, installation et repères |
 | [Feuille de route directrice](FEUILLE_DE_ROUTE_DIRECTRICE.md) | Programme intégral de 91 étapes, jalons, preuves d'achèvement et priorités |
 | [Journal de suivi](SUIVI_FEUILLE_ROUTE.md) | Méthode et historique daté de mise à jour hebdomadaire |
+| [Registre de triage GitHub](REGISTRE_TRIAGE_GITHUB_2026-10-17.md) | Décisions sur les PR, issues, dépendances et conditions de clôture |
+| [Hygiène du dépôt](HYGIENE_DEPOT_2026-10-17.md) | Audit des branches et protections contre les suppressions abusives |
 | [État initial de la chaîne documentaire](ETAT_INITIAL_CHAINE_DOCUMENTAIRE_2026-10-16.md) | Premier contrôle transverse BOAMP, CSP, DECP, index et Render |
 | [Protocole de recherche](PROTOCOLE_V1.1.md) | Question de recherche, définition d’un cas et règles d’interprétation |
 | [Architecture du système](ARCHITECTURE.md) | Architecture conceptuelle, objets et frontières de responsabilité |
