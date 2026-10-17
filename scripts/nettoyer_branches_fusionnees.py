@@ -114,7 +114,7 @@ class GitHub:
         self.racine = f"https://api.github.com/repos/{REPO_ATTENDU}"
 
     def appel(self, chemin: str, methode: str = "GET"):
-        imposer(chemin.startswith("/") and "://" not in chemin
+        imposer((chemin == "" or chemin.startswith("/")) and "://" not in chemin
                 and ".." not in chemin, "Chemin API invalide.")
         request = Request(self.racine + chemin, method=methode, headers={
             "Authorization": f"Bearer {self.jeton}",
