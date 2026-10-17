@@ -1,70 +1,56 @@
 {
   "alertes": [
     {
-      "ancienne_empreinte": "2c5536f2adf13f0205e205a7627c56aeb836f21948839bb11a71d14a3b85c756",
+      "ancienne_empreinte": "2ddbb68581981ee61c1c38379789fcca128fa2b82ea9f78de4d30ec73ffcb798",
       "criticite": "critique",
-      "nouvelle_empreinte": "2ddbb68581981ee61c1c38379789fcca128fa2b82ea9f78de4d30ec73ffcb798",
+      "nouvelle_empreinte": "e6c3fe6929e3232f27301438657fdc6674fd0ffc0d4729ae1c19b2054dadf44b",
       "source_id": "dila_competence_geographique",
-      "type": "SOURCE_MODIFIEE"
-    },
-    {
-      "ancienne_empreinte": "f2c61177fd07f2ba3e2bdb769032643794769ded2661cb1fac0ac75e6db30c6f",
-      "criticite": "critique",
-      "nouvelle_empreinte": "b5b3085bc53dfc83c4c6ac6af3d01e04cec85ad9eeb41f2ae1aa5f386f81e7ee",
-      "source_id": "dgcl_banatic",
       "type": "SOURCE_MODIFIEE"
     },
     {
       "criticite": "haute",
       "detail": "HTTPError: HTTP Error 403: Forbidden",
       "source_id": "budget_operateurs_2026",
-      "type": "SOURCE_INDISPONIBLE"
+      "type": "ACCES_REFUSE_CLIENT_AUTOMATISE"
     },
     {
       "criticite": "haute",
       "detail": "HTTPError: HTTP Error 403: Forbidden",
       "source_id": "legifrance_aai_api",
-      "type": "SOURCE_INDISPONIBLE"
+      "type": "ACCES_REFUSE_CLIENT_AUTOMATISE"
     },
     {
-      "ancienne_empreinte": "dfac2557307ce3cf005b72875388ef7416236d61cab349b38859b5c3839bbc96",
-      "criticite": "critique",
-      "nouvelle_empreinte": "e8c447f67f13003a0aaeb8eaf1b4ce513a449c84cdca8efe27467d51b6f889a9",
-      "source_id": "dila_jorf",
-      "type": "SOURCE_MODIFIEE"
-    },
-    {
-      "ancienne_empreinte": "76499227d671cddfb8e187a76d46c459e46fa462f362288a6a1624d99df6aee8",
+      "ancienne_empreinte": "3c58c71f9f834f41892e17b950a0cbe117a58ccb4423d6416d5a66a19521f29d",
       "criticite": "haute",
-      "nouvelle_empreinte": "3c58c71f9f834f41892e17b950a0cbe117a58ccb4423d6416d5a66a19521f29d",
+      "nouvelle_empreinte": "c6ef36d3076c0c5223c8bcbbac2f71100eea205090a9859429c81beed1b9faba",
       "source_id": "mesr_etablissements",
       "type": "SOURCE_MODIFIEE"
     },
     {
-      "ancienne_empreinte": "af13374f85932956359695c6ff4dd8cb2bd5e457377d7ea6404ca0fea8e6ffba",
+      "ancienne_empreinte": "12c3c16e0b9c90d099ebee370a4e4b94a93f5ff5509091b7af49847603778ef9",
       "criticite": "haute",
-      "nouvelle_empreinte": "12c3c16e0b9c90d099ebee370a4e4b94a93f5ff5509091b7af49847603778ef9",
+      "nouvelle_empreinte": "3e9d5a0027834cefd0cf86c47d8a6583aa67f34ff2460a003db534f0c1424f26",
       "source_id": "mesr_rnsr",
       "type": "SOURCE_MODIFIEE"
     },
     {
-      "ancienne_empreinte": "1c4b63c7a5024add3c6dc8f33f70f57855fc8b25606082c43c8810d9a9804ce2",
+      "ancienne_empreinte": "da0a13821b73317b738c56267f4f4e22367986cce854ec8a5a8f9eda30d82952",
       "criticite": "haute",
-      "nouvelle_empreinte": "da0a13821b73317b738c56267f4f4e22367986cce854ec8a5a8f9eda30d82952",
+      "nouvelle_empreinte": "4466d6eeb09fb2555ac577bfb61a997d43c12d1f1744f3abebb418903b324c21",
       "source_id": "mesr_rnsr_structures_actives",
       "type": "SOURCE_MODIFIEE"
     },
     {
-      "ancienne_empreinte": "97a80519be60e1c3d667dfc7ea718b44abc780a3572f2605c510a4aeab9135c5",
+      "ancienne_empreinte": "a2e7fd851123c0450b5e398f11e28295fae45b88359c33cdf6f8b489e68a96cc",
       "criticite": "haute",
-      "nouvelle_empreinte": "a2e7fd851123c0450b5e398f11e28295fae45b88359c33cdf6f8b489e68a96cc",
+      "nouvelle_empreinte": "5ea37b36f863dbce4b1dfaf85485218fa5d5c367b6827b049d7543f754a8d2c6",
       "source_id": "ans_finess_structures",
       "type": "SOURCE_MODIFIEE"
     },
     {
-      "ancienne_empreinte": "66442e8d7add1c9c835c2274a8bfb3c9929e985e51fef2d1b3e526738fb5e52e",
+      "ancienne_empreinte": "f39bdf31643b2871dd53393a917d4a9d202658e933e9a0e4bcb6ac7a7a768e13",
       "criticite": "haute",
-      "nouvelle_empreinte": "f39bdf31643b2871dd53393a917d4a9d202658e933e9a0e4bcb6ac7a7a768e13",
+      "nouvelle_empreinte": "97997d5f604ff9ac111e869a15cc1a8a07ec4b2d6a5f2e00dfb7117d4340f99e",
       "source_id": "ans_finess_activites",
       "type": "SOURCE_MODIFIEE"
     },
@@ -72,9 +58,9 @@
       "criticite": "moyenne",
       "detail": "HTTPError: HTTP Error 403: Forbidden",
       "source_id": "ape_portefeuille",
-      "type": "SOURCE_INDISPONIBLE"
+      "type": "ACCES_REFUSE_CLIENT_AUTOMATISE"
     }
   ],
-  "observe_le": "2026-10-14T10:12:50+00:00",
+  "observe_le": "2026-10-15T09:54:29+00:00",
   "version": "1"
 }
