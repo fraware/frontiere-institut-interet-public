@@ -1,0 +1,79 @@
+name: "Hygiène exceptionnelle : six références déjà intégrées"
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "institutionnel/maintenance/branches_ancetres_2026-10-17.json"
+      - "scripts/nettoyer_branches_ancetres.py"
+      - "tests/test_nettoyer_branches_ancetres.py"
+      - ".github/workflows/nettoyer-ancetres.yml"
+  push:
+    branches: [main]
+    paths:
+      - "institutionnel/maintenance/branches_ancetres_2026-10-17.json"
+
+concurrency:
+  group: nettoyage-exceptionnel-ancetres
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  valider:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Vérifier les protections et la liste fermée
+        run: |
+          python -m pip install "pytest>=8,<10"
+          python -m pytest -q tests/test_nettoyer_branches_ancetres.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from scripts.nettoyer_branches_ancetres import verifier_plan
+          plan = json.loads(Path(
+            "institutionnel/maintenance/branches_ancetres_2026-10-17.json"
+          ).read_text(encoding="utf-8"))
+          assert len(verifier_plan(plan)) == 6
+          print("Liste de six branches vérifiée.")
+          PY
+
+  nettoyer:
+    needs: [valider]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'fraware/frontiere-institut-interet-public'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Revérifier l'ascendance et supprimer les seuls noms autorisés
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python -m scripts.nettoyer_branches_ancetres \
+            --appliquer --rapport "$RUNNER_TEMP/rapport-ancetres.json"
+      - name: Archiver les décisions et exclusions
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport-six-branches-ancetres
+          path: ${{ runner.temp }}/rapport-ancetres.json
+          if-no-files-found: warn
+          retention-days: 30
