@@ -56,6 +56,26 @@ branches sans PR ouverte dont le commit se trouve dans l'histoire de
 Elles restent en place à cette étape ; les branches présentant des commits
 inédits sont également conservées.
 
+## Dernier lot exceptionnel d'ancêtres intégrés
+
+Le [manifeste de six branches](../institutionnel/maintenance/branches_ancetres_2026-10-17.json)
+identifie six anciens pointeurs non protégés, sans demande de fusion
+ouverte, dont les SHA étaient déjà ancêtres de `main` au dernier audit.
+Trois concernent `fiabiliser-plan-controle`, une la recherche Conseil
+d'État/IA, une la sonde `tmp-write-probe` et une le catalogue des
+sources du 13 octobre.
+
+Le programme `scripts/nettoyer_branches_ancetres.py` vérifie à nouveau
+l'ascendance dans le clone intégral de la branche principale, la révision
+distante, les protections et les demandes ouvertes, puis conserve les
+raisons de toutes les suppressions ou refus. Il n'intervient qu'une fois,
+à l'intégration du manifeste. Il ne supprime aucun commit de l'histoire de
+`main` et ne concerne aucune branche porteuse d'un travail inédit.
+
+**État du travail :** suppression prévue, non réalisée à la rédaction
+de cette proposition. La réussite doit être attestée par le rapport
+de la procédure avant toute annonce de suppression.
+
 ## Entretien permanent prévu
 
 Le programme de nettoyage hebdomadaire et la procédure automatisée instaurent une revue
