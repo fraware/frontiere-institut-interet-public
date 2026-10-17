@@ -31,6 +31,19 @@ Une demande de fusion de documentation reste requise pour rendre le suivi durabl
 - **Coût nouveau engagé dans cette revue :** aucun service ni forfait créé.
 - **États de feuille de route :** « En cours » signifie développement partiel existant ; aucune des 91 étapes n'est déclarée « Terminée » sur la seule base de cet examen.
 
+### 2026-10-17 UTC — Reprise des index, collectes et publication
+
+- **Révision examinée :** [`0c196d8f461f83d5b10487995c37eaffc41ac63c`](https://github.com/fraware/frontiere-institut-interet-public/commit/0c196d8f461f83d5b10487995c37eaffc41ac63c), issue de la fusion contrôlée de la [PR n° 545](https://github.com/fraware/frontiere-institut-interet-public/pull/545).
+- **F-003 et F-004 — Avancement, toujours « En cours » :** les [PR n° 542](https://github.com/fraware/frontiere-institut-interet-public/pull/542) et [n° 540](https://github.com/fraware/frontiere-institut-interet-public/pull/540) sont intégrées. La première remplace les nombres figés de la CI pour les index intégraux par une comparaison aux manifestes de la même révision ; la seconde corrige le lancement du contrôle du site public.
+- **F-002 — Réconciliation partielle, toujours « À faire » :** la [PR n° 530](https://github.com/fraware/frontiere-institut-interet-public/pull/530) a été clôturée avec justification : l'échantillon AIFE du 15 octobre était antérieur à une extraction réelle du 17 octobre, dont la publication était bloquée. Le relevé du 17 octobre n'est pas encore intégré ; prochaine collecte à vérifier.
+- **F-003 et F-015 — Révision documentaire :** la [PR n° 545](https://github.com/fraware/frontiere-institut-interet-public/pull/545) a été actualisée sur `main`, ses sept vérifications préalables ont réussi, puis elle a été fusionnée. L'état BOAMP déclare **5 517 avis distincts** au 16 octobre, contre **5 196** dans le premier bilan ; la différence de **321** correspond à des avis archivés, pas à des déficits de compétences démontrés.
+- **Incidents identifiés :** la [veille transversale du 17 octobre](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/39045266302) signale des retards institutionnels et BOAMP. Les [collectes des besoins](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/39035023640) et de la [sonde AIFE](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/39034974496) avaient reçu un refus de publication motivé par une autre proposition encore ouverte. Ces échecs signalent un blocage de publication, non un échec de récupération des pièces observées.
+- **Publication publique :** le dernier déploiement Render vérifié avant cette entrée est toujours `2d48f7012fe36f78456acc79b7085dc991a833ab` (15 octobre). La revue ne prétend pas qu'un déploiement récent a eu lieu.
+- **Conditions restant à remplir :** contrôler la réussite des essais après la fusion n° 545 ; examiner la prochaine exécution de collecte AIFE ; publier la version validée sur Render et vérifier les manifestes effectivement servis ; terminer les vérifications indépendantes de l'[issue n° 537](https://github.com/fraware/frontiere-institut-interet-public/issues/537).
+- **États de la feuille de route :** aucun statut promu à « Terminé ». Aucun besoin institutionnel, contrat commun ni recrutement effectif supplémentaire inféré.
+- **Nouvelle dépense ou nouveau service :** aucun.
+- **Trois priorités :** (1) confirmer la CI après les trois fusions ; (2) contrôler puis actualiser Render ; (3) traiter les propositions anciennes restantes par source, sans fusion de données périmées.
+
 ### Modèle pour la prochaine entrée
 
 ```text
