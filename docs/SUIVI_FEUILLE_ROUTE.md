@@ -44,6 +44,17 @@ Une demande de fusion de documentation reste requise pour rendre le suivi durabl
 - **Nouvelle dépense ou nouveau service :** aucun.
 - **Trois priorités :** (1) confirmer la CI après les trois fusions ; (2) contrôler puis actualiser Render ; (3) traiter les propositions anciennes restantes par source, sans fusion de données périmées.
 
+### 2026-10-17 UTC — Réduction de la dette GitHub
+
+- **Référence examinée :** [`d0ba4b37257a99b0c4e9023020217fd31b34ee50`](https://github.com/fraware/frontiere-institut-interet-public/commit/d0ba4b37257a99b0c4e9023020217fd31b34ee50).
+- **Branches :** la [procédure n° 39048500462](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/39048500462) a supprimé exactement **308** branches de propositions déjà intégrées, sans erreur ni exclusion, depuis un inventaire initial de 348 branches. La [PR n° 573](https://github.com/fraware/frontiere-institut-interet-public/pull/573) a intégré le nettoyage hebdomadaire prudent ; les branches sans preuve suffisante d'intégration sont préservées.
+- **Propositions remplacées :** les [PR n° 575](https://github.com/fraware/frontiere-institut-interet-public/pull/575), [n° 578](https://github.com/fraware/frontiere-institut-interet-public/pull/578) et [n° 579](https://github.com/fraware/frontiere-institut-interet-public/pull/579) reprennent respectivement les canaux, la veille ANR et la veille DMTG. Chacune a passé sept contrôles et a été fusionnée ; les anciennes PR 568, 550 et 487 ont été clôturées après vérification des empreintes des fichiers effectivement intégrés. Les essais ANR et DMTG ont été renforcés pour accepter de véritables observations nouvelles en maintenant leur filiation.
+- **Conservation d'un refus scientifique :** la reprise de la [PR n° 570](https://github.com/fraware/frontiere-institut-interet-public/pull/570) a échoué aux contrôles DECP lorsqu'elle modifiait une sonde sans reconstruire le bilan associé. La reprise n° 576 a été fermée sans fusion ; la n° 570 demeure ouverte.
+- **Demandes actives :** cinq PR de fond (570, 485, 484, 449, 407) nécessitent une décision sur leurs données et leurs preuves. Les PR documentaires 401 et 494 ont été transférées dans la [tâche n° 572](https://github.com/fraware/frontiere-institut-interet-public/issues/572).
+- **Issues :** les issues 26 et 27 ont été clôturées comme sous-expériences déjà suivies par l'issue 63 ; **aucune mesure d'évaluation indépendante n'est considérée réalisée**. Le [registre de triage](REGISTRE_TRIAGE_GITHUB_2026-10-17.md) classe les 24 autres issues selon leurs dépendances réelles.
+- **États de la feuille de route :** aucun jalon scientifique marqué « Terminé » sans preuve. Aucune dépense ni nouveau service.
+- **Priorités suivantes :** préserver les historiques et contrôler la reprise du référentiel territorial, réconcilier le bilan DECP avec les sondes mises à jour, activer la protection de `main` selon l'issue 54 après essai des collectes.
+
 ### Modèle pour la prochaine entrée
 
 ```text
