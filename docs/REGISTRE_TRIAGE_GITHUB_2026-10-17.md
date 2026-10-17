@@ -18,13 +18,15 @@ La qualité d'un dépôt se mesure aux travaux réellement intégrés et suivis,
 - [Veille DMTG](https://github.com/fraware/frontiere-institut-interet-public/pull/579) : cinq observations conservées, dont trois sources DGFiP supplémentaires ; sept contrôles réussis, et fermeture de la PR d'origine n° 487 après concordance des empreintes.
 - **File résiduelle vérifiée** : PR n° 570 (sonde AIFE à réconcilier avec le bilan DECP), n° 485 (référentiel territorial), n° 484 (surveillance des sources), n° 449 (XML DGFiP) et n° 407 (enquête SCDL). Aucun de ces dossiers n'est déclaré terminé.
 
+- [Surveillance institutionnelle](https://github.com/fraware/frontiere-institut-interet-public/pull/581) : les deux fichiers de la PR n° 484 ont été repris à l'identique et fusionnés après sept contrôles réussis ; l'ancienne PR est fermée après concordance des empreintes. Les observations publiées restent datées du 15 octobre et seront réactualisées par la collecte suivante.
+- **Quatre PR de fond restent ouvertes** : 570 (sonde AIFE et bilan DECP), 485 (référentiel territorial), 449 (XML DGFiP) et 407 (étude SCDL). Leur fermeture n'est pas justifiée sur la seule base de leur âge.
+
 ## Demandes de fusion en attente de décision
 
 | PR | Nature | État de triage et suite indispensable |
 | --- | --- | --- |
 | [570](https://github.com/fraware/frontiere-institut-interet-public/pull/570) | Sonde AIFE | Reste ouverte : le bilan DECP versionné doit être reconstruit avec la nouvelle sonde ; reprise n° 576 fermée sans fusion à cause des contrôles d’intégrité |
 | [485](https://github.com/fraware/frontiere-institut-interet-public/pull/485) | Référentiel territorial | Modification importante de nombreux fichiers ; revue séparée de provenance, cohérence et comparaisons, aucune fusion automatique |
-| [484](https://github.com/fraware/frontiere-institut-interet-public/pull/484) | Surveillance des sources | Reprise potentielle des alertes historiques ; comparer à la veille récente avant fusion |
 | [449](https://github.com/fraware/frontiere-institut-interet-public/pull/449) | XML DGFiP | Grand lot de données originales ; vérifier sa nouveauté et l'intégrité avant toute éventuelle reprise |
 | [407](https://github.com/fraware/frontiere-institut-interet-public/pull/407) | Enquête SCDL | Projet de recherche avec tests et dossiers ; conserver en attente de relecture documentaire indépendante |
 
