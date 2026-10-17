@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-09",
+  "version": "2026-10-17",
   "regle": "La présence dans cette liste indique une source officielle identifiée, pas une ingestion technique réalisée. Les droits, quotas et formats sont à vérifier avant duplication du contenu.",
   "catalogues": [
     {
@@ -209,6 +209,58 @@
       "point_entree": "https://cordis.europa.eu/projects",
       "objet": "projets_finances_publications_livrables_organismes_partenaires",
       "remarque": "Les pages de recherche, les flux RSS et les jeux ouverts sont accessibles sans connexion dans les conditions publiées. L'API d'extraction DET est réservée aux utilisateurs enregistrés et demande une clé avec quotas ; ne pas créer d'appel anonyme à cette API. Vérifier licences par ressources et schémas. Une participation à un projet ne prouve ni compétence disponible ni besoin administratif non satisfait."
+    },
+    {
+      "id": "inrae_infrastructures_scientifiques",
+      "nom": "INRAE — Liste des infrastructures scientifiques",
+      "producteur": "INRAE — Commission nationale des unités expérimentales, Commission nationale des outils collectifs, DISC",
+      "statut": "decouverte_documentaire_uniquement",
+      "documentation": "https://www.data.gouv.fr/datasets/liste-des-infrastructures-de-recherche-inrae",
+      "objet": "infrastructures_equipements_installations_experimentales_et_services_scientifiques",
+      "licence": "Creative Commons CC0 (fiche officielle)",
+      "formats_documentes": [
+        "CSV"
+      ],
+      "acces": "Export public via data.gouv.fr; téléchargement et validation technique non réalisés",
+      "mise_a_jour": "Fiche consultée: 2026-07-21; résultat indexé plus récent: 2026-10-16. Divergence à résoudre par métadonnées de ressource.",
+      "ingestion_testee": false,
+      "remarque": "Validation scdl/catalogue signalée invalide sur la fiche; l'inventaire n'atteste ni disponibilité immédiate ni accès opérationnel aux installations."
+    },
+    {
+      "id": "anr_dgds_projets_partenaires",
+      "nom": "ANR_01 — Projets financés DGDS et partenaires",
+      "producteur": "Agence nationale de la recherche",
+      "statut": "decouverte_documentaire_uniquement",
+      "documentation": "https://www.data.gouv.fr/datasets/anr-01-projets-anr-dos-et-dgds-detail-des-projets-et-des-partenaires",
+      "objet": "projets_recherche_finances_partenaires_et_responsables_scientifiques_depuis_2005",
+      "licence": "Open Data Commons ODbL (fiche officielle)",
+      "formats_documentes": [
+        "CSV",
+        "JSON",
+        "XLSX"
+      ],
+      "acces": "Exports publics via data.gouv.fr; aucune ingestion ni validation de schéma",
+      "mise_a_jour": "Fiche: 2026-10-08; dates propres aux ressources à contrôler",
+      "ingestion_testee": false,
+      "remarque": "Archives 2005–2009 reconstituées; depuis 2010 extraits ANR. Identifiants et chevauchements avec scanR/ANR_02 à qualifier avant rapprochement; vérifier les obligations ODbL avant republication."
+    },
+    {
+      "id": "anr_dgpie_projets_partenaires",
+      "nom": "ANR_02 — Projets financés DGPIE et partenaires",
+      "producteur": "Agence nationale de la recherche",
+      "statut": "decouverte_documentaire_uniquement",
+      "documentation": "https://www.data.gouv.fr/datasets/anr-02-projets-anr-dgpie-detail-des-projets-et-des-partenaires",
+      "objet": "projets_et_partenaires_pia_investissements_avenir_depuis_2010",
+      "licence": "Open Data Commons ODbL (fiche officielle)",
+      "formats_documentes": [
+        "CSV",
+        "JSON",
+        "XLSX"
+      ],
+      "acces": "Exports publics via data.gouv.fr; aucune ingestion ni validation de schéma",
+      "mise_a_jour": "Fiche: 2026-10-01; ressources datées 2026-10-02 selon les noms affichés",
+      "ingestion_testee": false,
+      "remarque": "Périmètre DGPIE distinct du DGDS. Prévenir double comptage de projets et partenaires présents aussi dans scanR; obligations ODbL à examiner."
     }
   ]
 }
