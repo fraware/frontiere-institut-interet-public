@@ -1,0 +1,1549 @@
+{
+  "version": "frontiere-nettoyage-branche-fusionnee-v1",
+  "repository": "fraware/frontiere-institut-interet-public",
+  "reference_main": "0195a7688075e5d6e136a559feb41298a3bfc417",
+  "date_inventaire_utc": "2026-10-17",
+  "regle": "PR intégrée, nom de branche et SHA exacts; branche non protégée et sans PR ouverte",
+  "candidats": [
+    {
+      "branche": "analyse/concentration-preuves-boamp-20261011",
+      "sha": "65ceb7675ec7a0dcad2ec57d7c89fb6ae07ce607",
+      "pr": 217
+    },
+    {
+      "branche": "analyse/croisement-avis-capacites-20261011",
+      "sha": "26f7cd145d95b274ebb3ddfc62f07829b417a19b",
+      "pr": 216
+    },
+    {
+      "branche": "analyse/pistes-verification-boamp-20261011",
+      "sha": "8063870cff561d28ee9b26008e32c4f2227fe56a",
+      "pr": 214
+    },
+    {
+      "branche": "analyse/qualifier-nature-six-notices-20261011",
+      "sha": "34ebd06e08b70805e9d13a17aa75efe54a386f2f",
+      "pr": 238
+    },
+    {
+      "branche": "analyse/qualite-complements-categories-boamp-20261011",
+      "sha": "fe4ee34b6269e1566b99ae51f4a993bc4933bff2",
+      "pr": 233
+    },
+    {
+      "branche": "analyse/tableau-documentaire-boamp-20261011",
+      "sha": "f621815924c441668205789ab6a151f8457c1f01",
+      "pr": 211
+    },
+    {
+      "branche": "audit/bilans-dynamiques-index-537",
+      "sha": "1e6aeac6a8084b94994bda1aefb4180be54cae3d",
+      "pr": 542
+    },
+    {
+      "branche": "audit/contributions-ouvertes-priorites-v1",
+      "sha": "9b5cb905915abf89660d98238a1e11c6c9a9e882",
+      "pr": 501
+    },
+    {
+      "branche": "audit/evaluation-reproductible-20261007",
+      "sha": "ed84b384aaf68805b99cd8d9131d8d5986195d37",
+      "pr": 59
+    },
+    {
+      "branche": "audit/faits-collectes-pr-ouvertes-20261015",
+      "sha": "91e41335811c0b5c4755889a341da9b9e1844352",
+      "pr": 507
+    },
+    {
+      "branche": "audit/prevol-reserve-integrite-sessions-20261008",
+      "sha": "62779e4234c76f464bd7d5966967542ee9a224da",
+      "pr": 103
+    },
+    {
+      "branche": "audit/recherches-publiques-clean-20261008",
+      "sha": "13869eaebb1170620b5b309e1fe414ea46a33389",
+      "pr": 71
+    },
+    {
+      "branche": "audit/temporal-measurements-20261007",
+      "sha": "cc4c1de8ca0840b7892a2f528feb0d512cb2ca44",
+      "pr": 57
+    },
+    {
+      "branche": "audit/verifier-preenregistrements-20261007",
+      "sha": "097d23027e3f06c6d74f79502d5e256b0a2a6557",
+      "pr": 58
+    },
+    {
+      "branche": "automatisation/besoins-38465245565-1",
+      "sha": "71631bbb181c78d5395bb784f1e34caed3ae8d4e",
+      "pr": 342
+    },
+    {
+      "branche": "automatisation/besoins-38873082930-1",
+      "sha": "8e90047919ad148272ef10205d51f022e72f0393",
+      "pr": 545
+    },
+    {
+      "branche": "automatisation/bilan-intersources-decp-2026-10-13",
+      "sha": "49c32b68554b5ef85a6fb25946afe881fb069363",
+      "pr": 331
+    },
+    {
+      "branche": "automatisation/canaux-38343265929-1",
+      "sha": "b3d1e43a6acfae07fd00283b55bfd12a115269cc",
+      "pr": 298
+    },
+    {
+      "branche": "automatisation/canaux-38486863915-2",
+      "sha": "3c2ec0ac487b913b4a3ede3a843a656085f327c5",
+      "pr": 364
+    },
+    {
+      "branche": "automatisation/decp-38517844766-1",
+      "sha": "7eec7a1ebe70643f1a2988a9a5512ac250c531f7",
+      "pr": 372
+    },
+    {
+      "branche": "automatisation/deliberations-38629460138-1",
+      "sha": "1d813756a8f37a241707d91ecb3801e09460bb1f",
+      "pr": 427
+    },
+    {
+      "branche": "automatisation/referentiel-38256491088-1",
+      "sha": "1bfc47f641def16bebee29300939a0c594a34c99",
+      "pr": 255
+    },
+    {
+      "branche": "automatisation/referentiel-38550971979-1",
+      "sha": "16c05438471525bdaf3bc0078711b1ea55cd76f2",
+      "pr": 396
+    },
+    {
+      "branche": "automatisation/sources-38312348948-1",
+      "sha": "4c682c381eed4bbe8652c0ba5fa0e848f2e39449",
+      "pr": 264
+    },
+    {
+      "branche": "automatisation/surveillance-38047504160-1",
+      "sha": "abfa4497aab97747d3dc82b0462024fe9081eded",
+      "pr": 189
+    },
+    {
+      "branche": "automatisation/surveillance-38253790196-1",
+      "sha": "a06941680ea940bdade3b373bf6ba0db8f6713e0",
+      "pr": 254
+    },
+    {
+      "branche": "automatisation/surveillance-38547934733-1",
+      "sha": "26cf37f362f5874f9935063623b049d5432b2874",
+      "pr": 394
+    },
+    {
+      "branche": "automatisation/veille-decp-lots-limites-2026-10-13",
+      "sha": "27b52ba00cf554fce017c4be662ff8ee30d0c447",
+      "pr": 307
+    },
+    {
+      "branche": "chore/repository-audit-2026-10-06",
+      "sha": "4c35803c1d2690ad31ad16c7829f88fcd7f089ba",
+      "pr": 42
+    },
+    {
+      "branche": "collecte/accelerer-balayage-data-gouv-20261009",
+      "sha": "942bd0248379e54ef203f9e510a90a229a8a1b98",
+      "pr": 169
+    },
+    {
+      "branche": "collecte/activer-historique-boamp-20261009",
+      "sha": "faf50bf70e6c3b5730291f7edbd68bc140f3bbd5",
+      "pr": 167
+    },
+    {
+      "branche": "collecte/beauamp-historique-progressif-20261009",
+      "sha": "0cfff4b0bcfa1fd1375b63113d12e7771a405c45",
+      "pr": 166
+    },
+    {
+      "branche": "collecte/boamp-72-jours-20261011",
+      "sha": "f1b452102e01b72973b821e6efe98735f67bd2d1",
+      "pr": 203
+    },
+    {
+      "branche": "collecte/decouvrir-flux-sites-publics-2026-10-13",
+      "sha": "2780b72e90731e7fb6db60aa7942c3b05e8bff9f",
+      "pr": 286
+    },
+    {
+      "branche": "collecte/decp-aife-etat-2026-10-13",
+      "sha": "f2645f9f525a2d5681d95a9fe94756a3cf0a5555",
+      "pr": 280
+    },
+    {
+      "branche": "collecte/decp-metadonnees-consolidees-2026-10-13",
+      "sha": "c13b86393c412da6b403f1d73294c3201a56aa44",
+      "pr": 275
+    },
+    {
+      "branche": "collecte/historique-boamp-journalier-20261009",
+      "sha": "49fdbe6d24b630ce684aa95443ec663ae7fc7009",
+      "pr": 163
+    },
+    {
+      "branche": "collecte/lots-boamp-historique-24-jours-20261009",
+      "sha": "7bb21e280d5ed02c42f2576129e0759da145acb4",
+      "pr": 171
+    },
+    {
+      "branche": "collecte/suivi-revisions-boamp-20261009",
+      "sha": "294bdd360c39af83f7586116306bb89cd1049fe1",
+      "pr": 175
+    },
+    {
+      "branche": "collecte/xml-dgfip-lot-reel-2026-10-13",
+      "sha": "43cd596a901e02c96ddf496627990dc2cb60372a",
+      "pr": 308
+    },
+    {
+      "branche": "collectes/rebasage-sans-conflit-des-longues-ingestions-20261009",
+      "sha": "880283fd3471f0a3c2c7e80c7d92df6a49a9fcc5",
+      "pr": 154
+    },
+    {
+      "branche": "correctif/avis-amont-dates-divergentes-20261011",
+      "sha": "21a5c228e88c0afb376b0d833219edc077c2eb97",
+      "pr": 242
+    },
+    {
+      "branche": "correctif/bilan-boamp-pytest-index-20261011",
+      "sha": "81a5bfbabe0cd2394279aed3521a196bbb8aa8b5",
+      "pr": 212
+    },
+    {
+      "branche": "correctif/blueprint-sans-facturation-frontiere",
+      "sha": "246b5900c8cb166a9b6d167a530fced334e30292",
+      "pr": 493
+    },
+    {
+      "branche": "correctif/caracteriser-octets-xml-dgfip-2026-10-13",
+      "sha": "5cb6dbccf36c2611bdeba928d68d50e04bb80db2",
+      "pr": 315
+    },
+    {
+      "branche": "correctif/champs-facultatifs-xml-dgfip-2026-10-13",
+      "sha": "7c0bb4595c6a7bd6c0ca4531f7d40b4664e1989b",
+      "pr": 318
+    },
+    {
+      "branche": "correctif/chemin-publication-paquets-boamp-20261012",
+      "sha": "7c0dd15a380202eae7ef93d5c29043446bd84aad",
+      "pr": 258
+    },
+    {
+      "branche": "correctif/conserver-lot-dgfip-sans-troncature-2026-10-13",
+      "sha": "e2067c5c16fe9931ea6c9af17be6250408f48cf6",
+      "pr": 322
+    },
+    {
+      "branche": "correctif/declaration-namespace-xml-dgfip-2026-10-13",
+      "sha": "dea6d790f4cf2da7791649bb0e729106d2a3d95b",
+      "pr": 316
+    },
+    {
+      "branche": "correctif/demarrage-revue-veille-20261014",
+      "sha": "158c5c9aeb97a050c9e753a4e2b7501ed47a8cd5",
+      "pr": 411
+    },
+    {
+      "branche": "correctif/diagnostic-enveloppes-json-decp-2026-10-13",
+      "sha": "38159fa642e26fd775d6ad5c7abbb8268615b656",
+      "pr": 300
+    },
+    {
+      "branche": "correctif/diagnostic-xml-dgfip-reel-2026-10-13",
+      "sha": "b99103c131247bf44f8f9624dbf1bf6366008857",
+      "pr": 311
+    },
+    {
+      "branche": "correctif/exclure-pages-syndication-des-candidats-2026-10-13",
+      "sha": "da3eb7422a3ce1411d97e34aa83b7ed1bf8bba38",
+      "pr": 290
+    },
+    {
+      "branche": "correctif/execution-directe-rapprochement-decp-boamp",
+      "sha": "ae72bce1080442b3b44f1081efbf2bbc7af8a82d",
+      "pr": 341
+    },
+    {
+      "branche": "correctif/historique-rectificatif-flux-permanent-2026-10-13",
+      "sha": "6a93bddc42c291056af3a41a42937bda7610492b",
+      "pr": 289
+    },
+    {
+      "branche": "correctif/identifier-enrichissements-sans-fausses-revisions-2026-10-12",
+      "sha": "e840aa4e209059f405b933ac8ac0a22733abeb63",
+      "pr": 271
+    },
+    {
+      "branche": "correctif/lire-decp-marches-et-concessions-2026-10-13",
+      "sha": "012e5b791e894bce2a2f57468522cc7f1d73d22c",
+      "pr": 302
+    },
+    {
+      "branche": "correctif/localiser-erreurs-xml-dgfip-2026-10-13",
+      "sha": "fc6169e65ddfb4cd9afa5f6a3dafc79bb2bb3a5d",
+      "pr": 313
+    },
+    {
+      "branche": "correctif/procedure-besoins-nom-yaml-20261009",
+      "sha": "a00e397b9b7074fb372cd89aaf61b64fefbe3308",
+      "pr": 144
+    },
+    {
+      "branche": "correctif/rejouer-decp-xml-historique-incomplet-2026-10-13",
+      "sha": "48c836573432bc80dcce4e00528dd956da512ebc",
+      "pr": 320
+    },
+    {
+      "branche": "correctif/render-disque-arret-incompatible",
+      "sha": "b1be16070605d12754ef6f74942cd78b0175f7a1",
+      "pr": 492
+    },
+    {
+      "branche": "correctif/render-node22-index-statique-v1",
+      "sha": "433aa2192b59bbb1304830e33265e82f0170b067",
+      "pr": 498
+    },
+    {
+      "branche": "correction/publication-sources-chemins-presents-20261009",
+      "sha": "60be0be5689c14f66d08b8cc3e148ea806902ede",
+      "pr": 135
+    },
+    {
+      "branche": "decision/recherche-inconnu-non-absence-20261008",
+      "sha": "7d9f62b6551804b7ea75e1dea4ae27d8e0399f5c",
+      "pr": 69
+    },
+    {
+      "branche": "diagnostic/types-officiels-boamp-20261011",
+      "sha": "c2c5ae4bd68a7891f0106c4b7e36502a2ee899df",
+      "pr": 228
+    },
+    {
+      "branche": "docs/actualiser-source-corpus-actif-20261008",
+      "sha": "f6f592a32e71ded02f0e58325923dd18ccbd7771",
+      "pr": 105
+    },
+    {
+      "branche": "docs/feuille-route-frontiere-et-etat-initial-20261016",
+      "sha": "8efee5140e5f919eca65b5d8e137303479c83c3a",
+      "pr": 536
+    },
+    {
+      "branche": "docs/indexer-resultats-veille-20261014",
+      "sha": "37a4351fcc8056faa38ee96a17860b50a11dd41c",
+      "pr": 416
+    },
+    {
+      "branche": "docs/repository-polish-2026-10-06",
+      "sha": "769560190e91ba78fbce4b9e21ca63d189c46122",
+      "pr": 41
+    },
+    {
+      "branche": "documentation/clarte-sans-jargon-v1",
+      "sha": "428d7a3d6fb499648d091eb148ebc4792e4a00b4",
+      "pr": 56
+    },
+    {
+      "branche": "documentation/etat-instrumentation-20261008",
+      "sha": "e1e6ad895a2983726f6f951668fbef68b7f0fa02",
+      "pr": 72
+    },
+    {
+      "branche": "documentation/francais-clair",
+      "sha": "06958faf024fb72dc1785c6141efbf2064e49fdf",
+      "pr": 30
+    },
+    {
+      "branche": "documentation/resultats-primaires-chronologies-20261011",
+      "sha": "7645857271b5fa4e032d872afb284d5ff925f8dc",
+      "pr": 240
+    },
+    {
+      "branche": "donnees/analyse-delais-v1",
+      "sha": "f87d62248a60b03d38c757947897abe4465a5262",
+      "pr": 36
+    },
+    {
+      "branche": "donnees/asnr-corriger-datation-reforme-20261008",
+      "sha": "0915e6443cb13d267515242a76da640e6539afb9",
+      "pr": 82
+    },
+    {
+      "branche": "donnees/audit-cas-solides-v1",
+      "sha": "4c80bca1bbffd4cdb7991f8d84dde2a827978798",
+      "pr": 33
+    },
+    {
+      "branche": "donnees/balayage-general-catalogue-national-20261009",
+      "sha": "e0ad88c56e5ae26ce112877c26abc2629a3b598a",
+      "pr": 131
+    },
+    {
+      "branche": "donnees/boamp-couverture-complete-sept-jours-20261009",
+      "sha": "b05884a1225acd2ac2b3c6b000aa62637e79af92",
+      "pr": 146
+    },
+    {
+      "branche": "donnees/catalogue-recherche-esr-20261009",
+      "sha": "02643180a939114429d6fa890f765269a1e467c6",
+      "pr": 134
+    },
+    {
+      "branche": "donnees/categorie-boamp-versions-normalisation-20261011",
+      "sha": "15fba594dec6d14aba8bfadbcada79622a8b3810",
+      "pr": 230
+    },
+    {
+      "branche": "donnees/chronologies-approfondies-v2",
+      "sha": "f93b98aa00d0bb762290924a4c60054b1fbfb70c",
+      "pr": 37
+    },
+    {
+      "branche": "donnees/chronologies-v3",
+      "sha": "f447ae25f95b006a008be57faca0f11106e52363",
+      "pr": 38
+    },
+    {
+      "branche": "donnees/complements-categories-boamp-historiques-20261011",
+      "sha": "92b798221f298a8d0a1be4fc6843f22c6cfc137b",
+      "pr": 231
+    },
+    {
+      "branche": "donnees/conserver-variantes-offres-meme-reference-20261009",
+      "sha": "a5d1f2967b944749390d06ba3d5d2a232d3ad563",
+      "pr": 153
+    },
+    {
+      "branche": "donnees/consultation-catalogue-general-20261009",
+      "sha": "fe00978a063ee835c64f2849b5c5bddcfb6ea800",
+      "pr": 132
+    },
+    {
+      "branche": "donnees/controle-coherence-corpus-20261008",
+      "sha": "ca7e4e1b0b93cd236dc80eb40e409a0ac72f1ed3",
+      "pr": 68
+    },
+    {
+      "branche": "donnees/controle-filiation-chronologies-20261008",
+      "sha": "5b828058e67e8e8eba37af21632914f1a4580909",
+      "pr": 92
+    },
+    {
+      "branche": "donnees/corpus-public-v1",
+      "sha": "6d28c402459f5c6d30348995040c620d3c743e17",
+      "pr": 31
+    },
+    {
+      "branche": "donnees/corpus-public-v1-suite",
+      "sha": "54136876e83aafe02de91dbd811cff88a6323573",
+      "pr": 32
+    },
+    {
+      "branche": "donnees/correspondances-boamp-decp-38799338935",
+      "sha": "03e5b158351e50c7267b34e976494509515e4952",
+      "pr": 521
+    },
+    {
+      "branche": "donnees/decouverte-catalogue-recurrente-20261009",
+      "sha": "981122a10dc81e78267e1d6dce3376b0ce0fdd53",
+      "pr": 129
+    },
+    {
+      "branche": "donnees/dga-provenance-20261008",
+      "sha": "9b2e6868ab11b473a2f82277bd349f80ab6f6f3a",
+      "pr": 79
+    },
+    {
+      "branche": "donnees/export-inconnus-et-derniere-observation-20261008",
+      "sha": "d88f362dfaa1057c22b45652f803a18d1b4535b1",
+      "pr": 93
+    },
+    {
+      "branche": "donnees/flux-besoins-publics-boamp-emplois-20261009",
+      "sha": "db8327f1022bd5d46e6668721385044c6474efe6",
+      "pr": 143
+    },
+    {
+      "branche": "donnees/importer-lignes-offres-emplois-csp-20261009",
+      "sha": "a3bf5179cae8b354d61a2e381595157bf8aa0537",
+      "pr": 150
+    },
+    {
+      "branche": "donnees/index-recherche-historique-boamp-20261009",
+      "sha": "cebf3bd62f0ed5438f01db97bacc9798c5b258da",
+      "pr": 173
+    },
+    {
+      "branche": "donnees/inspecter-colonnes-offres-csp-20261009",
+      "sha": "d053d1af37eaaf1476fdd96a3aea0376751d4b94",
+      "pr": 147
+    },
+    {
+      "branche": "donnees/journal-etats-boamp-20261011",
+      "sha": "eb4194cebca66d0f613f6c26fe1417b3d279ac9a",
+      "pr": 200
+    },
+    {
+      "branche": "donnees/mayotte-ids-stables-20261008",
+      "sha": "411bd9dcad00e27604535bb8e69c17e89cb2c80b",
+      "pr": 78
+    },
+    {
+      "branche": "donnees/notices-primaires-six-pilotes-20261011",
+      "sha": "90ba740e4a289b6c7dd6addb6fe1bcbc496b5da4",
+      "pr": 236
+    },
+    {
+      "branche": "donnees/passages-restants-cibles-20261008",
+      "sha": "bcbef705267b7809662e31903bab32965ab5ca74",
+      "pr": 81
+    },
+    {
+      "branche": "donnees/passages-sources-primaires-20261008",
+      "sha": "fe9a66f623c20e1110846c33d63a73c70743978d",
+      "pr": 77
+    },
+    {
+      "branche": "donnees/pfas-remise-circulaire-20261008",
+      "sha": "059134a73f8a156a9f131f624d8740b3ab677ad5",
+      "pr": 80
+    },
+    {
+      "branche": "donnees/plafond-preuve-publique-v1",
+      "sha": "d9e006e6b1cbc7ca862042efa189273ddd953af0",
+      "pr": 39
+    },
+    {
+      "branche": "donnees/precision-saint-brieuc-20261008",
+      "sha": "7ae856aabd6d2f1d896e84342e3bf30f86cd419d",
+      "pr": 76
+    },
+    {
+      "branche": "donnees/rectificatif-sources-ign-francecompetences-20261008",
+      "sha": "4a8db54bea91f668254a47c414355c0dc9d004ab",
+      "pr": 75
+    },
+    {
+      "branche": "donnees/registre-provenance-evenements-20261008",
+      "sha": "7532eccd77023f69c5c502aa556272f40358c99a",
+      "pr": 74
+    },
+    {
+      "branche": "donnees/relever-fichiers-quotidiens-beauamp-20261009",
+      "sha": "e8464e304a2be3707e9daa167f5aabcdb09f7d20",
+      "pr": 157
+    },
+    {
+      "branche": "donnees/revisions-index-boamp-20261011",
+      "sha": "1df721849e859cb4d44b9a604e12d17dcbf48bad",
+      "pr": 199
+    },
+    {
+      "branche": "donnees/structures-recherche-rnsr-20261008",
+      "sha": "2b69072f79be805043969b1b8ced671d17c58bdb",
+      "pr": 96
+    },
+    {
+      "branche": "donnees/synthese-mecanismes-v1",
+      "sha": "01e20a89ca6d305c20cdaa477813aa814d83022e",
+      "pr": 34
+    },
+    {
+      "branche": "empirique/rapprochement-boamp-beauamp-20261011",
+      "sha": "4caa8b240ee876c683e94e13012ab5b34defbd5c",
+      "pr": 222
+    },
+    {
+      "branche": "evaluation/audit-independant-echantillon-boamp-20261011",
+      "sha": "c390c1278b8456025e0e0f46abc2a3291704af68",
+      "pr": 227
+    },
+    {
+      "branche": "evaluation/cas-retrospectifs-v1-propres",
+      "sha": "b956bbf3d17c12ea4880e26457202466bb165d41",
+      "pr": 35
+    },
+    {
+      "branche": "evaluation/comparaison-appariee-20261008",
+      "sha": "9f011560ab41d3ac60c5260330e1cfc0299ba18a",
+      "pr": 61
+    },
+    {
+      "branche": "evaluation/controle-pointeurs-preuves-boamp-20261012",
+      "sha": "f01393686528f38a415b32062c99ee7b764d6f58",
+      "pr": 259
+    },
+    {
+      "branche": "evaluation/dossiers-pilotes-automatiques-20261011",
+      "sha": "e9ee08bb886c632ad75d453990add57c13350916",
+      "pr": 229
+    },
+    {
+      "branche": "evaluation/essais-adversariaux-orientation-20261008",
+      "sha": "d6f3daec32dcc2be984e0bd6f048515932a53e87",
+      "pr": 101
+    },
+    {
+      "branche": "evaluation/gel-obligatoire-correction-20261008",
+      "sha": "0c166304dc5abcea6da0507b431d44e024bc6685",
+      "pr": 64
+    },
+    {
+      "branche": "evaluation/gel-reponses-independantes-20261007",
+      "sha": "8d9beafeaa7e7c12d8327b3b19a1520ffb8d3695",
+      "pr": 60
+    },
+    {
+      "branche": "evaluation/interdire-predictions-apres-revelation-20261008",
+      "sha": "aa87b94c3cc196a5a305c23ef56cef3cf798c8e2",
+      "pr": 91
+    },
+    {
+      "branche": "evaluation/lancement-relecteurs-independants-20261008",
+      "sha": "8de6397bbb40d22071175a03ed9cd8e1520f114a",
+      "pr": 85
+    },
+    {
+      "branche": "evaluation/lier-les-rapports-aux-questions-20261008",
+      "sha": "c005af60308205a0f5ef2f7df23105734484ac28",
+      "pr": 87
+    },
+    {
+      "branche": "evaluation/mesures-valides-versions-separees-20261008",
+      "sha": "47ea419c1be89f13219c18b822f659f02a6ae390",
+      "pr": 88
+    },
+    {
+      "branche": "evaluation/preparer-sessions-independantes-20261008",
+      "sha": "54c243411fb822c31ad01b5c5bc85bea099ddf2c",
+      "pr": 62
+    },
+    {
+      "branche": "evaluation/proteger-scores-cas-non-reveles-20261008",
+      "sha": "61897a23cd637b1d862b9b4b84f7111dbdaff587",
+      "pr": 86
+    },
+    {
+      "branche": "evaluation/rappel-lexical-census-20261011",
+      "sha": "e2db726324dc0d5792eb1789aa028a4570692b7a",
+      "pr": 226
+    },
+    {
+      "branche": "evaluation/references-independantes-lots-boamp-20261012",
+      "sha": "1dce92e5032b14880f68a229afdfd4f1d8d65a7c",
+      "pr": 257
+    },
+    {
+      "branche": "evaluation/relecture-aveugle-qualite-20261008",
+      "sha": "64f35c4cfeed82d981efe3e51add9a9f32dee684",
+      "pr": 65
+    },
+    {
+      "branche": "evaluation/relecture-independante-sources-20261008",
+      "sha": "9a10104b4e77065f11d1c5b1fee1dfec5cb61bc8",
+      "pr": 83
+    },
+    {
+      "branche": "evaluation/validation-journaux-20261008",
+      "sha": "a8198a2d5bd59c0cd21c5fc76690bf3c4624fd98",
+      "pr": 73
+    },
+    {
+      "branche": "evaluation/verifier-rapports-20261008",
+      "sha": "3f988212833cb0b5689425515a68a7acc0bf68fe",
+      "pr": 66
+    },
+    {
+      "branche": "execution/cas-prospectif-v1",
+      "sha": "fd169c6a2996cc49c8e87a0b46d04479fc98d6b0",
+      "pr": 55
+    },
+    {
+      "branche": "execution/premier-cycle-preuves-20261008",
+      "sha": "68d600ba639a52ba0bfdffccc2e485af540716a0",
+      "pr": 102
+    },
+    {
+      "branche": "feat/avis-boamp-corrobores-dossiers-20261015",
+      "sha": "fc686647508d28a45734025d3b42084ff63c8303",
+      "pr": 522
+    },
+    {
+      "branche": "feat/bilan-selection-recherche-20261015",
+      "sha": "b99ddfd8d05d27506313befdd7080d564d74115c",
+      "pr": 513
+    },
+    {
+      "branche": "feat/chronologies-documentaires-acheteurs-20261015",
+      "sha": "44da3d1f460ea94f5f3664d9c9d19db3962f1895",
+      "pr": 523
+    },
+    {
+      "branche": "feat/dossiers-acheteurs-siret-20261015",
+      "sha": "9b70fdf68e4820c691eeb7e0b3c4fc25975a3447",
+      "pr": 514
+    },
+    {
+      "branche": "feat/echantillon-preuves-recrutements-20261015",
+      "sha": "9ed39c2635c9c3a2f29116c46a6ee48c8a77d6c7",
+      "pr": 525
+    },
+    {
+      "branche": "feat/enquetes-institutionnelles-huit-cas-20261015",
+      "sha": "d49c5de95e49263dcd1022fab51adef3c51d7073",
+      "pr": 531
+    },
+    {
+      "branche": "feat/index-integral-recrutements-sqlite-20261015",
+      "sha": "c3dc6fb3832073bd681e794c79f6efca6ca94db2",
+      "pr": 534
+    },
+    {
+      "branche": "feat/ponts-boamp-decp-siret-audites-20261015",
+      "sha": "d6a3d6ebd797c4ee9e4c9ef9e06512ea4ea6ef27",
+      "pr": 517
+    },
+    {
+      "branche": "feat/preco-bove-publications-primaire-20261015",
+      "sha": "7f1a30f3c2719344e4e19edbeb7313e8ad24eab0",
+      "pr": 533
+    },
+    {
+      "branche": "feat/publication-controlee-preuves-boamp-decp-20261015",
+      "sha": "9e5b09d29d3e19068b7f25be3df11449a51c7dfd",
+      "pr": 520
+    },
+    {
+      "branche": "feat/rattachement-siret-institutions-20261015",
+      "sha": "dbc3afbfdb33af904a2a577e2a2d7450c033b458",
+      "pr": 516
+    },
+    {
+      "branche": "feat/recherche-integrale-boamp-decp-20261016",
+      "sha": "b053fe7da4852754bc9facfb338ef989e4310204",
+      "pr": 535
+    },
+    {
+      "branche": "feat/registre-qualification-besoins-20261015",
+      "sha": "51ef1047fa6766a527ceb59f118c7b5323247750",
+      "pr": 524
+    },
+    {
+      "branche": "fiabilite/integrite-partitions-csp-20261009",
+      "sha": "26b41311946a28e8168bd0a6b8ef9150d51c614c",
+      "pr": 161
+    },
+    {
+      "branche": "fiabilite/reessai-fusion-scdl-20261014",
+      "sha": "f02bba2d5e3290fca0eddc42c418598201c288c5",
+      "pr": 436
+    },
+    {
+      "branche": "fix/chemin-dependances-incomplets-20261008",
+      "sha": "a09c69e37378b44f044271b363b7ae9c4baa082b",
+      "pr": 104
+    },
+    {
+      "branche": "fix/invocation-audit-site-540",
+      "sha": "a14be4b1f7b24349b2d6e94850bcbe45c84470d9",
+      "pr": 540
+    },
+    {
+      "branche": "fonction/recherche-periode-etendue-v1",
+      "sha": "8a9b64a3cdb211098b043d5f6c21b54d9f2b3e81",
+      "pr": 509
+    },
+    {
+      "branche": "gouvernance/protection-main-configurable-20261009",
+      "sha": "f73fa1dc89beecec5150f35d63097cc2694c5cac",
+      "pr": 128
+    },
+    {
+      "branche": "governance/audit-ecritures-main-20261008",
+      "sha": "922761ba8451b1b69253952f4927c61f077ff438",
+      "pr": 108
+    },
+    {
+      "branche": "hotfix/holdout-label-commitment",
+      "sha": "094c64d9e0f305379ed66a0d5d452b217d5252ab",
+      "pr": 28
+    },
+    {
+      "branche": "infrastructure/audit-fraicheur-veille-20261014",
+      "sha": "c7a9e61293e5f7e68c7e32ef31f49485462a80b3",
+      "pr": 409
+    },
+    {
+      "branche": "infrastructure/conservation-mensuelle-publication-boamp-20261011",
+      "sha": "59194208e72c16e45ce5553d566697d5150f3787",
+      "pr": 207
+    },
+    {
+      "branche": "infrastructure/export-portable-archives-boamp-20261011",
+      "sha": "fa6d8f58fbe6ec10a7aa16d54942eeba234aa461",
+      "pr": 202
+    },
+    {
+      "branche": "infrastructure/index-boamp-apres-collecte-20261009",
+      "sha": "f3add8f8a1d5ef0897bf0af41bf924b78c15e313",
+      "pr": 180
+    },
+    {
+      "branche": "infrastructure/index-boamp-artifact-automatique-20261009",
+      "sha": "8418e77a44aede14b5f33e8c35c6bac6c99b5d38",
+      "pr": 176
+    },
+    {
+      "branche": "infrastructure/provenance-commit-index-20261009",
+      "sha": "5e4def09746248ef11aa8cd30a184b8098e51b54",
+      "pr": 179
+    },
+    {
+      "branche": "institutionnel/audit-annuaire-local-v1",
+      "sha": "92f3d63a6f582302f04d8ae7fe75726249bc049c",
+      "pr": 50
+    },
+    {
+      "branche": "institutionnel/fiabiliser-plan-controle-v4",
+      "sha": "201194c5dc0494bc0037bedbe463c14a8d931285",
+      "pr": 53
+    },
+    {
+      "branche": "institutionnel/ingestion-cog-v1",
+      "sha": "5c17822ec0a5daeed9828428e9148f4cf46f59c2",
+      "pr": 52
+    },
+    {
+      "branche": "institutionnel/ingestion-roae-v1",
+      "sha": "0aad45e25079e62379e5a887ae6724cce2eabb77",
+      "pr": 46
+    },
+    {
+      "branche": "institutionnel/referentiel-vivant-v1",
+      "sha": "fd1680c05eccc212840b170e2c9ec804fb0cde45",
+      "pr": 45
+    },
+    {
+      "branche": "institutionnel/territoire-integral-v1",
+      "sha": "c813b656ba37e23a7a6acc27390306655215d80d",
+      "pr": 47
+    },
+    {
+      "branche": "interface/consulter-offres-emplois-individuelles-20261009",
+      "sha": "d2555f048880fc845fcef401fa2c3569b916b36b",
+      "pr": 151
+    },
+    {
+      "branche": "inventaire/canaux-publics-base-actualisee-2026-10-13",
+      "sha": "d670005a589c1b11afca1b393f1ff41527b3f8f6",
+      "pr": 278
+    },
+    {
+      "branche": "maintenance/continuite-referentiels-base-actuelle-20261009",
+      "sha": "2776e5a816f2206a2fc13e9c01f09228de6667c5",
+      "pr": 119
+    },
+    {
+      "branche": "maintenance/pytest9-validation-20261008",
+      "sha": "b65ac2887e6a0b5f1c8858af04c0a6404978c3fa",
+      "pr": 106
+    },
+    {
+      "branche": "maintenance/retirer-declencheur-publication-20261009",
+      "sha": "f03384cdba96869c1361d764caa066f945690bbc",
+      "pr": 126
+    },
+    {
+      "branche": "maintenance/supprimer-controle-permissions-20261009",
+      "sha": "d190e9b4e1cbe3461a3dfde4af51ee9982a40dc3",
+      "pr": 123
+    },
+    {
+      "branche": "mesures/comptes-par-episode-20261008",
+      "sha": "8d0e51c1ff9a0056ae4ff53dc03f5ad459ae6773",
+      "pr": 89
+    },
+    {
+      "branche": "methodes/attributions-dates-uniques-et-fenetre-20261011",
+      "sha": "d2890ea71aadc9a44a0b39a856c412242c466b1b",
+      "pr": 225
+    },
+    {
+      "branche": "methodes/echantillonnage-temporel-boamp-20261011",
+      "sha": "30f31b742b70b3f83058523197ebd23c2e53526a",
+      "pr": 221
+    },
+    {
+      "branche": "methodes/etat-documentaire-et-valeurs-manquantes-boamp-20261011",
+      "sha": "9b404b2ac919df55e2c4a8d8d478d73ec21f9146",
+      "pr": 224
+    },
+    {
+      "branche": "methodes/expressions-exactes-capacites-20261011",
+      "sha": "ddd241b9c03f17161f486214a8cb618d3111791b",
+      "pr": 220
+    },
+    {
+      "branche": "migration/activer-propositions-collectes-independantes-20261009",
+      "sha": "d6ff17b9ed858b08132f01d5169d4f7f7d618942",
+      "pr": 124
+    },
+    {
+      "branche": "migration/chaine-unique-sans-poussee-main-20261009",
+      "sha": "454c9f9058d023b149f9f7cd99fef197a3fb621f",
+      "pr": 127
+    },
+    {
+      "branche": "migration/essai-chaine-referentiels-dependants-20261008",
+      "sha": "d4185a962272773ab5b594f71a83a3c0bd66db8a",
+      "pr": 113
+    },
+    {
+      "branche": "migration/publication-referentiel-verifiable-20261008",
+      "sha": "ae04b2889380595dd293ca81c7d5be72c4d984a3",
+      "pr": 111
+    },
+    {
+      "branche": "migration/rnsr-surveillance-vers-propositions-20261008",
+      "sha": "0b1ba677acc424c9d10dad97e78c3ceaf9239188",
+      "pr": 112
+    },
+    {
+      "branche": "operations/declencher-essai-referentiel-unique-20261008",
+      "sha": "431afbfda048fce3e3cff2aea183533bd54b52cc",
+      "pr": 114
+    },
+    {
+      "branche": "operations/essai-publication-referentiel-20261009",
+      "sha": "8cc3299bfab6da229d6e7d494b661e9e910557d8",
+      "pr": 125
+    },
+    {
+      "branche": "operations/retirer-declencheur-ponctuel-20261008",
+      "sha": "6f40d88a0e0ef2aa45bf5acb81c8589d23a3a0e6",
+      "pr": 115
+    },
+    {
+      "branche": "operations/reverifier-droits-propositions-20261009",
+      "sha": "3366e49fa09da02d9619fdd30215c568ec6225a6",
+      "pr": 121
+    },
+    {
+      "branche": "operations/supprimer-verification-droits-ponctuelle-20261008",
+      "sha": "1178afcdb41cc8b411c2f8b11c32354a6aa1f45f",
+      "pr": 117
+    },
+    {
+      "branche": "operations/verifier-autorisation-proposition-automatique-20261008",
+      "sha": "6dd4b4cd2f8a45923ef6407b9d94ebe0920c65b3",
+      "pr": 116
+    },
+    {
+      "branche": "ops/vague-1-outreach-pack",
+      "sha": "2e7e6742704cc2f197b312d82ef44fd94f7e916c",
+      "pr": 10
+    },
+    {
+      "branche": "optimisation/render-sans-installation-dependances",
+      "sha": "06dd2ec980f80a0479a1f2b80d817df31c2d050f",
+      "pr": 499
+    },
+    {
+      "branche": "prospectif/verrouiller-toutes-interventions-20261008",
+      "sha": "ec70edba5af00b77e3b20a23be80d529bfe0afd0",
+      "pr": 67
+    },
+    {
+      "branche": "qualite/curseur-boamp-fin-historique-20261011",
+      "sha": "73c8a60c89d65a369b16255f10738b3a39e8ac53",
+      "pr": 210
+    },
+    {
+      "branche": "qualite/verrou-bilan-decp-fichiers-source",
+      "sha": "efa8df33dc87134fff72e90e8b2b791d817f7c6a",
+      "pr": 508
+    },
+    {
+      "branche": "recherche/affiliations-datsum-exact-20261014",
+      "sha": "608621777ee36e3cbe084682009f0e3585e10084",
+      "pr": 440
+    },
+    {
+      "branche": "recherche/ameliorer-dates-liens-flux-2026-10-12",
+      "sha": "34c20e096b6098104466345f54771fea50a96253",
+      "pr": 267
+    },
+    {
+      "branche": "recherche/avis-amont-v2-distinction-liens-20261011",
+      "sha": "299210155149c9d35383b0e61f04db889592308e",
+      "pr": 243
+    },
+    {
+      "branche": "recherche/base-interrogeable-signaux-publics-2026-10-12",
+      "sha": "ffff30008c84e3d96d1aac76949391dea94ee004",
+      "pr": 268
+    },
+    {
+      "branche": "recherche/bilan-index-boamp-1640-jours-20261014",
+      "sha": "0521f713c7997c3fcf43e42e4d3e7f9137718cdb",
+      "pr": 366
+    },
+    {
+      "branche": "recherche/caen-capacites-radar-historiques-2026-10-12",
+      "sha": "45579d8939280e77c30f5a8f49125a71ce79fd85",
+      "pr": 262
+    },
+    {
+      "branche": "recherche/caen-meteo-evaluation-independante-20261012",
+      "sha": "91726e4c7c01b8f7b96681aa05a64d63d24312cc",
+      "pr": 247
+    },
+    {
+      "branche": "recherche/capture-proces-verbal-escalquens-20261014",
+      "sha": "79f90e68a5e43df1efe8084d54972cac1cb2d315",
+      "pr": 403
+    },
+    {
+      "branche": "recherche/chronologie-sictiam-ia-20261014",
+      "sha": "425c44d941ec2249ab6dc1f8634f1c5f0fa6c9ee",
+      "pr": 367
+    },
+    {
+      "branche": "recherche/chronologies-primaires-et-avis-lies-20261011",
+      "sha": "8d86fda211e0abf7e9218992e04c25e3154b3d73",
+      "pr": 239
+    },
+    {
+      "branche": "recherche/comparateurs-saps-preuves-20261014",
+      "sha": "2081044d0306a5c7d2a2407404ca48a898f0138a",
+      "pr": 438
+    },
+    {
+      "branche": "recherche/complements-execution-publics-2026-10-12",
+      "sha": "8337e4c86df9931f9cd64c2b4be0f0fea52e1425",
+      "pr": 260
+    },
+    {
+      "branche": "recherche/concordance-boamp-gie-dce-20261014",
+      "sha": "29041e658bb564daaabf323aad510cd58ce7ba59",
+      "pr": 363
+    },
+    {
+      "branche": "recherche/couverture-attributions-formats-20261012",
+      "sha": "bc1bbcd978924b7a1220798e41b20817f49e712d",
+      "pr": 249
+    },
+    {
+      "branche": "recherche/couverture-formats-unites-documentaires-20261012",
+      "sha": "3579907be56cf4d23cd37fa4c0d800ad73936ab6",
+      "pr": 244
+    },
+    {
+      "branche": "recherche/dmtg-moyens-calendrier-preuves-20261014",
+      "sha": "5440b008367ca9f74e63ec768b3ab1e3599f968d",
+      "pr": 444
+    },
+    {
+      "branche": "recherche/domaines-scientifiques-distincts-20261008",
+      "sha": "306d128cd380112d7018e799a3f847cac04508b8",
+      "pr": 97
+    },
+    {
+      "branche": "recherche/ensemble-epreuve-infructueux-distinct-20261012",
+      "sha": "273a8b7ec23693e08879821d7430182d70abace1",
+      "pr": 250
+    },
+    {
+      "branche": "recherche/episodes-et-preuves-sicoval-sictiam-20261014",
+      "sha": "f50e1182fc92df3586284ad389e30c6a5daa8b6c",
+      "pr": 402
+    },
+    {
+      "branche": "recherche/equilibre-categories-et-troncature-20261008",
+      "sha": "d529325fc080282d83ab32611ce85420b844f279",
+      "pr": 98
+    },
+    {
+      "branche": "recherche/fiche-consultation-gie-es-20261013",
+      "sha": "9579aa94a7f266672db5665724224ca4a2e6a1a2",
+      "pr": 362
+    },
+    {
+      "branche": "recherche/fidelipro-cnis-senat-dmtg-20261014",
+      "sha": "2316ca76bd4ca4906b77311c8972df3dc6868e58",
+      "pr": 441
+    },
+    {
+      "branche": "recherche/index-missions-institutionnelles-20261008",
+      "sha": "58bca9266a2fb69d0d765ba53ade78289bf4056b",
+      "pr": 94
+    },
+    {
+      "branche": "recherche/index-sqlite-attributions-decp-2026-10-13",
+      "sha": "6e42eb364787071ec7cc38b05d06fc58a2631d46",
+      "pr": 305
+    },
+    {
+      "branche": "recherche/index-unifie-decp-aife-dgfip-2026-10-13",
+      "sha": "7c049c23e80f33c63531a578ff01c658e049ceeb",
+      "pr": 330
+    },
+    {
+      "branche": "recherche/ingestion-decp-json-lots-bornes-2026-10-13",
+      "sha": "b0fc73ce920618391db02a6141e4335ac26f4ed8",
+      "pr": 296
+    },
+    {
+      "branche": "recherche/jalons-operationnels-publics-2026-10-12",
+      "sha": "7a14587dfea19ff5b985d8c1503276617f842569",
+      "pr": 261
+    },
+    {
+      "branche": "recherche/orientation-besoins-verrouilles-20261008",
+      "sha": "9962a610c1b2d66855325796712e8a68417bed51",
+      "pr": 99
+    },
+    {
+      "branche": "recherche/plafonds-et-omissions-explicites-20261008",
+      "sha": "b85320137fabf4e881a035290f15b007acbd3c30",
+      "pr": 100
+    },
+    {
+      "branche": "recherche/preuves-amont-acces-pieces-boamp-20261011",
+      "sha": "b8873ce843c9a8c79227c382f4b55a1a6b8ee121",
+      "pr": 241
+    },
+    {
+      "branche": "recherche/qualifier-resultats-echantillon-independant-20261012",
+      "sha": "29aa7471cf6e010088e407fe4efa884f37203216",
+      "pr": 248
+    },
+    {
+      "branche": "recherche/rapprochement-prudent-decp-boamp-20261013",
+      "sha": "fa2de975a53e42f5fdd2aae97d1313992f614523",
+      "pr": 340
+    },
+    {
+      "branche": "recherche/resultats-multiples-par-lot-boamp-20261012",
+      "sha": "6e767596758247172371320610d898b507eb3a64",
+      "pr": 251
+    },
+    {
+      "branche": "recherche/separer-zero-offre-et-motif-no-rece-20261012",
+      "sha": "31a9f5f275a2a9c667081e740a372d91b4f61fad",
+      "pr": 256
+    },
+    {
+      "branche": "recherche/sicoval-delibia-usage-documente-20261014",
+      "sha": "789f0faa00a1d7bc007465910e6fbcd29f9be174",
+      "pr": 368
+    },
+    {
+      "branche": "recherche/six-cas-pilotes-boamp-20261011",
+      "sha": "5d92e443570202c5acd593baefa3dee44ce8d767",
+      "pr": 218
+    },
+    {
+      "branche": "recherche/soumissions-par-lot-boamp-20261012",
+      "sha": "9bf72c1cb12297eaeee4aff4a1d63ea305c829a9",
+      "pr": 245
+    },
+    {
+      "branche": "recherche/sources-scdl-ciblees-oct2026",
+      "sha": "6ebe6a1b58045d657f7cbea19e69a765655cfa7c",
+      "pr": 405
+    },
+    {
+      "branche": "recherche/veille-multisource-officielle-2026-10-12",
+      "sha": "acfb4e79f34416ef282ddb9253e5e04aadfe0464",
+      "pr": 265
+    },
+    {
+      "branche": "recherche/verification-corpus-integral-20261008",
+      "sha": "902214fac9c003dcb5950c0fb980437d0cc620ad",
+      "pr": 95
+    },
+    {
+      "branche": "release/v0.1.0",
+      "sha": "2829ca68ff17d3f740f53ac72bfd22397b746ff1",
+      "pr": 1
+    },
+    {
+      "branche": "release/v0.2-operational",
+      "sha": "0a32a3b6d46bf8a7917680f65e3c947770d8536c",
+      "pr": 2
+    },
+    {
+      "branche": "release/v0.3-traceability",
+      "sha": "b1eba8f5fa2c48a72d12110b02fbaf4810d9dfdd",
+      "pr": 9
+    },
+    {
+      "branche": "release/v0.4-field-value",
+      "sha": "3ab91db41ad1ab00b6c4d6a0c05d8d87eaf8b874",
+      "pr": 16
+    },
+    {
+      "branche": "release/v0.5-capability-eval",
+      "sha": "cea80c08369575a74e1c5d48c408103befaa1464",
+      "pr": 18
+    },
+    {
+      "branche": "release/v0.5.1-benchmark-hardening",
+      "sha": "befe103c53a8e22f7ad63f2c79fcdc4a3c62eeab",
+      "pr": 23
+    },
+    {
+      "branche": "release/v0.5.2-holdout",
+      "sha": "93ce1b20d82e4bfbb84aab11b20a9996b24186fd",
+      "pr": 25
+    },
+    {
+      "branche": "release/v0.5.3-runner-pack",
+      "sha": "442cccf9cbf807322a9d871eeeb4ac0617d261fa",
+      "pr": 29
+    },
+    {
+      "branche": "research/archivage-brut-adresse-contenu-20261008",
+      "sha": "003f26e02806ab4b6315adc6bc312110ef4f70a3",
+      "pr": 107
+    },
+    {
+      "branche": "research/execution-terrain-v1-2026-10-06",
+      "sha": "68065cd402305a617996b1c9f27355603bbecd99",
+      "pr": 44
+    },
+    {
+      "branche": "research/lier-captures-manifestes-ingestion-20261008",
+      "sha": "1b1cec658002aecf911168008585745ca76dd1d5",
+      "pr": 110
+    },
+    {
+      "branche": "research/passage-terrain-2026-10-06",
+      "sha": "5bb5a1ae11ac336581c608def6994595dad865d7",
+      "pr": 40
+    },
+    {
+      "branche": "securite/empreintes-navigateur-partitions",
+      "sha": "09b9f403052809832129092eb8419c396626efbc",
+      "pr": 506
+    },
+    {
+      "branche": "securite/refus-demarrage-production-20261008",
+      "sha": "caa78385de375a8d656f1ec3ace1e370e7776336",
+      "pr": 90
+    },
+    {
+      "branche": "security/modele-acces-avant-donnees-sensibles-20261008",
+      "sha": "61586ba55f459c58b91a8e0e2e845fea8062623c",
+      "pr": 109
+    },
+    {
+      "branche": "security/separer-droits-propositions-annuaire-cog-20261009",
+      "sha": "bcca69860f0a45b129f7b6f6fae930ec037c70c9",
+      "pr": 120
+    },
+    {
+      "branche": "sources/catalogue-mesr-point-entree-api-20261009",
+      "sha": "a23803a0d59ef7f0e385582516a8df8754bfcdb5",
+      "pr": 138
+    },
+    {
+      "branche": "sources/diagnostic-catalogue-mesr-20261009",
+      "sha": "c5121836fa8bd3d029e443b3fcc0855a39b4f40d",
+      "pr": 141
+    },
+    {
+      "branche": "sources/etendre-referentiel-catalogues-officiels-20261009",
+      "sha": "cd8174a1b53fd17869999f45474d164d836a36fd",
+      "pr": 140
+    },
+    {
+      "branche": "sources/hal-cordis-qualification-20261014",
+      "sha": "cc6fcba27b887047295d7aa418696f0b9921caaa",
+      "pr": 410
+    },
+    {
+      "branche": "sources/rnsr-pagination-ordre-stable-20261009",
+      "sha": "44b2f855319135c0987d91e917f9a2662d3157bc",
+      "pr": 136
+    },
+    {
+      "branche": "suivi/revue-2026-10-17-publication-archives",
+      "sha": "36371309908905ee13eb5f6e6e5cdbe67212afb3",
+      "pr": 569
+    },
+    {
+      "branche": "tests/navigateur-recherche-statique-verifiee",
+      "sha": "7c0dec49f0d532c7dab1278e1269c574adf66e90",
+      "pr": 504
+    },
+    {
+      "branche": "travail/acces-prive-consultation-render-v1",
+      "sha": "de5ef3f36109428ba5a63f421812c428623f1550",
+      "pr": 475
+    },
+    {
+      "branche": "travail/amorcer-hebergement-continu-v1",
+      "sha": "ce379bbc7686cb0363468aa722d4ee77ee776dbf",
+      "pr": 471
+    },
+    {
+      "branche": "travail/audit-36-acheteurs-boamp-independants",
+      "sha": "167e926df3de3beb180ee4c6d6057f028c941f16",
+      "pr": 349
+    },
+    {
+      "branche": "travail/audit-couverture-siret-boamp-v1",
+      "sha": "434338046482cd98e2eb584d601cb28906ec3301",
+      "pr": 344
+    },
+    {
+      "branche": "travail/avis-lies-independants-17",
+      "sha": "4ebdc6118abfa1ee42372403b5d9d38fedb261c9",
+      "pr": 358
+    },
+    {
+      "branche": "travail/balayage-decp-consolides-2025-2026",
+      "sha": "9294f79c472997488202acef54f4c165e34cd628",
+      "pr": 352
+    },
+    {
+      "branche": "travail/bilan-permanent-decp-sept-mois",
+      "sha": "f6c566f8d23885071ac8697a0f99dc6afaa3793f",
+      "pr": 357
+    },
+    {
+      "branche": "travail/captures-pdf-municipaux-20261014",
+      "sha": "51cc79993eb3394560a48bf005fc3067c7dc008d",
+      "pr": 380
+    },
+    {
+      "branche": "travail/chaines-acheteur-procedure-lot-contrat-17-avis",
+      "sha": "8ea09bf40ff287b87f0c0f7217531fb98850369e",
+      "pr": 351
+    },
+    {
+      "branche": "travail/collecteur-boamp-direct-continu-v1",
+      "sha": "cde03e76a4b99288e384dd25d21816b2eb9f2fc0",
+      "pr": 461
+    },
+    {
+      "branche": "travail/decp-collecte-persistante-v1",
+      "sha": "e6ad72824a54f03394bece46ba775c3c46420f70",
+      "pr": 464
+    },
+    {
+      "branche": "travail/decp-consolides-ingestion-massive-v1",
+      "sha": "ca03f78701be36ae14f488ee4c73dffaf95998dc",
+      "pr": 465
+    },
+    {
+      "branche": "travail/decp-sept-mois-identites-versions-v1",
+      "sha": "436f6a7c5edb2492100e7d91f1979bcaa257c047",
+      "pr": 354
+    },
+    {
+      "branche": "travail/emplois-publics-persistants-v1",
+      "sha": "8d6e9bcce1987e08d1ddc8b47b4733879a46d884",
+      "pr": 463
+    },
+    {
+      "branche": "travail/hebergement-rendu-monoinstance-v1",
+      "sha": "343ecee735aec40d9c072cab5a8f6077ebe2008c",
+      "pr": 473
+    },
+    {
+      "branche": "travail/horodatages-provenance-archives-v1",
+      "sha": "b48bb26d574e62b184b6d12940a7f4f4ae6528ec",
+      "pr": 505
+    },
+    {
+      "branche": "travail/identifiants-14-acheteurs-sans-schema-v1",
+      "sha": "aa3274aa6142020bf8d3f740df4befb9e58d1d1f",
+      "pr": 345
+    },
+    {
+      "branche": "travail/index-statique-borne-sources-v1",
+      "sha": "0e6fbe822a80c1b1ff1727a10e77eb61f4830e5e",
+      "pr": 495
+    },
+    {
+      "branche": "travail/interface-recherche-statique-sur-main-v1",
+      "sha": "7c190ce737a30571f8bba8507844e9743d483a7e",
+      "pr": 497
+    },
+    {
+      "branche": "travail/journal-collectes-executions-v1",
+      "sha": "e0f92c4ff810f9486f10043a27532344372a5ebe",
+      "pr": 476
+    },
+    {
+      "branche": "travail/lecteur-decp-plafond-explicite-grands-fichiers",
+      "sha": "0b320d43a243355ce056e0042f9738cb4963584d",
+      "pr": 355
+    },
+    {
+      "branche": "travail/moissonner-deliberations-scdl-20261014",
+      "sha": "9b881567acb4ea2e9c671e6c841e4e691f3a7116",
+      "pr": 369
+    },
+    {
+      "branche": "travail/partitions-recherche-statique-v1",
+      "sha": "33880a09d44123a1ecb3568004bb9e859536a6b2",
+      "pr": 502
+    },
+    {
+      "branche": "travail/progression-mensuelle-deliberations-20261014",
+      "sha": "1d80b2e9cff00889b9ab74d137f152d6bd24a2a2",
+      "pr": 376
+    },
+    {
+      "branche": "travail/provenance-revision-immuable-v1",
+      "sha": "9acc14d3ec6d9ed5fbb54cbd7cefe69bf8ca58b2",
+      "pr": 500
+    },
+    {
+      "branche": "travail/qualification-acces-pieces-20-avis",
+      "sha": "d069514273e6718b9e01dd3ea515c35ebd6db5cd",
+      "pr": 361
+    },
+    {
+      "branche": "travail/rapprochement-decp-boamp-preuves-v1",
+      "sha": "323b8ea190bb353560fbb9334d94d01e4244a053",
+      "pr": 343
+    },
+    {
+      "branche": "travail/rattrapage-ted-historique-v1",
+      "sha": "c1ca6727025db2eb89578b5ef5b070a0c4bbc72c",
+      "pr": 478
+    },
+    {
+      "branche": "travail/recherche-federee-quatre-sources-v1",
+      "sha": "d84986e69294a28aa9532298fa8d824c80eddc85",
+      "pr": 467
+    },
+    {
+      "branche": "travail/recuperation-nc-balayage-consolides",
+      "sha": "a52d85024638c3e5a96b844dc28025b351f1e91a",
+      "pr": 353
+    },
+    {
+      "branche": "travail/references-pieces-20-avis",
+      "sha": "80d7a3113d2902543bc8bbb357bde60c65b9cb6d",
+      "pr": 360
+    },
+    {
+      "branche": "travail/render-deploiement-monodisque-v1",
+      "sha": "a0f9bcf0268ea7837ad8dc65eccabb8fcd0dbb31",
+      "pr": 474
+    },
+    {
+      "branche": "travail/retrait-complet-ted-render-v1",
+      "sha": "4f8789c0f2a2c56a6b69f4653901ba7549a92aaa",
+      "pr": 490
+    },
+    {
+      "branche": "travail/sauvegarde-fichiers-bruts-v1",
+      "sha": "302f0086e622fbac382e48e2dd0d87010a6915bb",
+      "pr": 477
+    },
+    {
+      "branche": "travail/sauvegardes-sqlite-coherentes-v1",
+      "sha": "4dc8426558a76e06dc6f70beca9ea7352a663c0e",
+      "pr": 472
+    },
+    {
+      "branche": "travail/stockage-persistant-boamp-v1",
+      "sha": "133cbdf8c3fe5469cc53a344ca77b82deb826b0b",
+      "pr": 460
+    },
+    {
+      "branche": "travail/suivi-exploitation-corpus-v1",
+      "sha": "9611aec1ad207374e5df0141c480f0e942c3a7e1",
+      "pr": 470
+    },
+    {
+      "branche": "travail/ted-france-ingestion-v1",
+      "sha": "4621d9eae0495af6d9409f2deab5508df4ca1c48",
+      "pr": 466
+    },
+    {
+      "branche": "travail/verification-administrative-16-acheteurs-boamp-v1",
+      "sha": "1156616657a3a65cfade319b5c494407423e674b",
+      "pr": 350
+    },
+    {
+      "branche": "travail/verification-ted-reelle-v1",
+      "sha": "eaf1698c90d24a8b37c0957fb625a3667fab68d2",
+      "pr": 468
+    },
+    {
+      "branche": "veille/catalogues-officiels-2026-10-12",
+      "sha": "6266385f6fe287024783afe10a3de06df1c53cce",
+      "pr": 263
+    },
+    {
+      "branche": "veille/conserver-source-senat-dmtg-20261014",
+      "sha": "14855e6eab59095a9b5a9f9635e1efda4d156852",
+      "pr": 457
+    },
+    {
+      "branche": "veille/etat-initial-verifie-dmtg-20261014",
+      "sha": "e22ac371f045b2308b89d14d88704f79a97f17b9",
+      "pr": 455
+    },
+    {
+      "branche": "veille/initialiser-empreintes-anr-20261014",
+      "sha": "a5a80d2487150961a9cbfb62effdb6b36e9ef178",
+      "pr": 429
+    },
+    {
+      "branche": "veille/qualification-manifeste-signaux-20261014",
+      "sha": "e8edd6488fe9d57ff049a64396bcfe54877daa8c",
+      "pr": 414
+    },
+    {
+      "branche": "veille/qualifier-403-et-dates-scdl-20261014",
+      "sha": "dffd4faeaa645b7abafcac37b854816e31b46f7c",
+      "pr": 413
+    },
+    {
+      "branche": "veille/rejet-maintenance-dgfip-20261014",
+      "sha": "6e611f530da96304dd68018a71482cdcec712cd1",
+      "pr": 453
+    },
+    {
+      "branche": "veille/suivi-transitions-anr-20261014",
+      "sha": "411e81be787883a2fc46e3908b8f3b1f6c0e12ff",
+      "pr": 421
+    },
+    {
+      "branche": "veille/surveillance-dmtg-pieces-20261014",
+      "sha": "c9f19e4949c7e123de6f20e3dda648a6fffbfe2a",
+      "pr": 445
+    },
+    {
+      "branche": "verification/chaine-documentaire-537",
+      "sha": "1dbbfe89b4efa236fc6a3c6fe283c7d88ebb303a",
+      "pr": 538
+    },
+    {
+      "branche": "verification/site-render-537",
+      "sha": "1a6343efd334952ae131da1ae12c2e9c2dcd1ecc",
+      "pr": 539
+    }
+  ]
+}
