@@ -38,7 +38,7 @@ Les essais entièrement synthétiques s'exécutent dans les travaux Python gén�
 Commande manuelle en environnement ayant accès au site public :
 
 ```sh
-python scripts/verifier_site_publie.py \
+python -m scripts.verifier_site_publie \
   --revision "<SHA du commit attendu>" \
   --rapport /tmp/frontiere-publication.json
 ```
