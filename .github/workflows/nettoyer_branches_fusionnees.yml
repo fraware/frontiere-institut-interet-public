@@ -1,0 +1,78 @@
+name: "Hygiène exceptionnelle : branches de PR fusionnées"
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "institutionnel/maintenance/branches_fusionnees_2026-10-17.json"
+      - "scripts/nettoyer_branches_fusionnees.py"
+      - "tests/test_nettoyer_branches_fusionnees.py"
+      - ".github/workflows/nettoyer_branches_fusionnees.yml"
+  push:
+    branches: [main]
+    paths:
+      - "institutionnel/maintenance/branches_fusionnees_2026-10-17.json"
+
+concurrency:
+  group: nettoyage-exceptionnel-branches
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  valider_plan:
+    name: Vérifier les protections hors réseau
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Contrôler le plan et ses tests adversariaux
+        run: |
+          python -m pip install "pytest>=8,<10"
+          python -m pytest -q tests/test_nettoyer_branches_fusionnees.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from scripts.nettoyer_branches_fusionnees import verifier_plan
+          chemin = Path("institutionnel/maintenance/branches_fusionnees_2026-10-17.json")
+          plan = json.loads(chemin.read_text(encoding="utf-8"))
+          items = verifier_plan(plan)
+          print(f"Plan vérifié : {len(items)} branches, sans branche par défaut.")
+          PY
+
+  nettoyer:
+    name: Supprimer uniquement les références intégrées
+    needs: [valider_plan]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'fraware/frontiere-institut-interet-public'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Revérifier les PR et SHA puis supprimer les seules branches admises
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python -m scripts.nettoyer_branches_fusionnees \
+            --appliquer --rapport "$RUNNER_TEMP/rapport-nettoyage-branche.json"
+      - name: Conserver les décisions et exclusions exactes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport-nettoyage-branches
+          path: ${{ runner.temp }}/rapport-nettoyage-branche.json
+          if-no-files-found: warn
+          retention-days: 30
