@@ -16,6 +16,39 @@
       "media_premiere_capture": "text/html"
     },
     {
+      "source_id": "dgfip_droits_mutation",
+      "programme": "dmtg_2026",
+      "nature_document": "catalogue_mutations",
+      "url": "https://www.impots.gouv.fr/droits-de-mutation",
+      "format": "html",
+      "empreinte": "e1dc5a9f2a98b80f5d65fe0d36e1dfd5968dde1fba0a480e2859100077b8245a",
+      "observe_initialement_le": "2026-10-15T12:52:05+00:00",
+      "dernier_changement_le": "2026-10-15T12:52:05+00:00",
+      "historique": []
+    },
+    {
+      "source_id": "dgfip_publications_2026",
+      "programme": "dmtg_2026",
+      "nature_document": "index_statistiques",
+      "url": "https://www.impots.gouv.fr/dgfip-statistiques-2026",
+      "format": "html",
+      "empreinte": "a16c7e6a2bd5963b7e6aaa2a1659764b988830778892c98ad03571d42a126f0f",
+      "observe_initialement_le": "2026-10-15T12:52:05+00:00",
+      "dernier_changement_le": "2026-10-15T12:52:05+00:00",
+      "historique": []
+    },
+    {
+      "source_id": "dgfip_recettes_fiscales",
+      "programme": "dmtg_2026",
+      "nature_document": "catalogue_recettes",
+      "url": "https://www.impots.gouv.fr/recettes-fiscales",
+      "format": "html",
+      "empreinte": "c791793d61fee1d29b2a78ee66062c4e0433094a22a5bab62b60ef2c9a5db2e5",
+      "observe_initialement_le": "2026-10-15T12:52:05+00:00",
+      "dernier_changement_le": "2026-10-15T12:52:05+00:00",
+      "historique": []
+    },
+    {
       "source_id": "senat_rapport_760",
       "programme": "dmtg_2026",
       "nature_document": "rapport_parlementaire",
