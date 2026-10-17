@@ -47,7 +47,33 @@ def test_catalogue_reel_borne_a_cinq_urls_anr():
         assert len(item["empreinte"]) == 64
         assert item["reference_execution"].endswith("/actions/runs/38629459886")
         assert item["observe_initialement_le"] == "2026-10-14T20:08:23+00:00"
-        assert item["historique"] == []
+        # Le registre est évolutif : les révisions officielles publiées
+        # doivent être admises, tout en conservant une filiation cohérente.
+        historique = item["historique"]
+        assert isinstance(historique, list)
+        assert len(historique) <= HISTORIQUE_MAX
+        courant = None
+        dates = []
+        for numero, changement in enumerate(historique):
+            assert set(changement) == {
+                "observe_le", "empreinte_avant", "empreinte_apres"
+            }
+            assert len(changement["empreinte_avant"]) == 64
+            assert len(changement["empreinte_apres"]) == 64
+            if numero:
+                assert changement["empreinte_avant"] == courant
+            assert changement["empreinte_avant"] != changement["empreinte_apres"]
+            courant = changement["empreinte_apres"]
+            date = datetime.fromisoformat(changement["observe_le"])
+            assert date.tzinfo is not None
+            dates.append(date)
+        assert dates == sorted(dates)
+        if historique:
+            assert courant == item["empreinte"]
+            assert item["dernier_changement_le"] == historique[-1]["observe_le"]
+            assert dates[0] >= datetime.fromisoformat(item["observe_initialement_le"])
+        else:
+            assert item["dernier_changement_le"] == item["observe_initialement_le"]
         assert item["source_id"] == identifiant
 
 
