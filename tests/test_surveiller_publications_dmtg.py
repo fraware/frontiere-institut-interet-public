@@ -47,9 +47,12 @@ def test_cinq_origines_publiques_stables():
     assert all(s["format"] == "html" for s in sources)
     etat = json.loads((RACINE / ETAT).read_text(encoding="utf-8"))
     assert etat["version"] == 1
-    assert len(etat["observations"]) == 2
+    # L'état doit progresser vers les cinq publications du catalogue ;
+    # seules deux disposaient d'une première capture avant le 15 octobre.
+    assert len(etat["observations"]) == len(sources)
     par_source = {x["source_id"]: x for x in etat["observations"]}
-    assert set(par_source) == {"assemblee_reponse_11677", "senat_rapport_760"}
+    assert len(par_source) == len(etat["observations"])
+    assert set(par_source) == {source["id"] for source in sources}
     assemblee = par_source["assemblee_reponse_11677"]
     assert assemblee["reference_execution"].endswith("/actions/runs/38649504556")
     assert assemblee["empreinte"] == (
@@ -60,9 +63,20 @@ def test_cinq_origines_publiques_stables():
     assert senat["empreinte"] == (
         "13e2cd9a06cfc96a3bbd327e8d6b38c675303fc60d576973ab438a02da32e484"
     )
-    assert all(x["historique"] == [] for x in etat["observations"])
-    assert not any(x["source_id"].startswith("dgfip_")
-                   for x in etat["observations"])
+    for item in etat["observations"]:
+        assert len(item["empreinte"]) == 64
+        assert item["historique"] == []
+        assert item["dernier_changement_le"] == item["observe_initialement_le"]
+        assert item["url"] == next(
+            src["url"] for src in sources if src["id"] == item["source_id"]
+        )
+    nouveaux = {
+        "dgfip_droits_mutation", "dgfip_publications_2026",
+        "dgfip_recettes_fiscales"
+    }
+    assert nouveaux.issubset(par_source)
+    assert all(par_source[x]["observe_initialement_le"]
+               == "2026-10-15T12:52:05+00:00" for x in nouveaux)
 
 
 @pytest.mark.parametrize("url", (
