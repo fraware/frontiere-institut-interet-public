@@ -14,13 +14,15 @@ La qualité d'un dépôt se mesure aux travaux réellement intégrés et suivis,
 - [Canaux publics](https://github.com/fraware/frontiere-institut-interet-public/pull/575) : reprise de la PR n° 568 fusionnée après sept contrôles réussis ; les deux SHA des fichiers correspondent exactement à la proposition initiale, fermée avec preuve. Le contenu est désormais dans `main`.
 - [Sonde AIFE](https://github.com/fraware/frontiere-institut-interet-public/pull/576) : reprise exploratoire non intégrée. Les tests ont révélé une incohérence entre l'échantillon et le bilan DECP ; la PR n° 570 reste ouverte, à traiter avec ses données dérivées.
 
+- [Veille ANR](https://github.com/fraware/frontiere-institut-interet-public/pull/578) : intégration des six observations avec leur historique ; sept contrôles réussis, et fermeture de la PR d'origine n° 550 après concordance de l'empreinte du fichier dans `main`.
+- [Veille DMTG](https://github.com/fraware/frontiere-institut-interet-public/pull/579) : cinq observations conservées, dont trois sources DGFiP supplémentaires ; sept contrôles réussis, et fermeture de la PR d'origine n° 487 après concordance des empreintes.
+- **File résiduelle vérifiée** : PR n° 570 (sonde AIFE à réconcilier avec le bilan DECP), n° 485 (référentiel territorial), n° 484 (surveillance des sources), n° 449 (XML DGFiP) et n° 407 (enquête SCDL). Aucun de ces dossiers n'est déclaré terminé.
+
 ## Demandes de fusion en attente de décision
 
 | PR | Nature | État de triage et suite indispensable |
 | --- | --- | --- |
 | [570](https://github.com/fraware/frontiere-institut-interet-public/pull/570) | Sonde AIFE | Reste ouverte : le bilan DECP versionné doit être reconstruit avec la nouvelle sonde ; reprise n° 576 fermée sans fusion à cause des contrôles d’intégrité |
-| [550](https://github.com/fraware/frontiere-institut-interet-public/pull/550) | Veille ANR | Variation de signatures documentaires non intégrée ; examiner dates et historique, puis relancer les contrôles sur branche actualisée |
-| [487](https://github.com/fraware/frontiere-institut-interet-public/pull/487) | Veille DMTG | Examiner les signatures et leur temporalité ; préserver les transitions historiques avant toute clôture |
 | [485](https://github.com/fraware/frontiere-institut-interet-public/pull/485) | Référentiel territorial | Modification importante de nombreux fichiers ; revue séparée de provenance, cohérence et comparaisons, aucune fusion automatique |
 | [484](https://github.com/fraware/frontiere-institut-interet-public/pull/484) | Surveillance des sources | Reprise potentielle des alertes historiques ; comparer à la veille récente avant fusion |
 | [449](https://github.com/fraware/frontiere-institut-interet-public/pull/449) | XML DGFiP | Grand lot de données originales ; vérifier sa nouveauté et l'intégrité avant toute éventuelle reprise |
