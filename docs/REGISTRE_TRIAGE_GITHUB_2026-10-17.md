@@ -11,12 +11,14 @@ La qualité d'un dépôt se mesure aux travaux réellement intégrés et suivis,
 - [Découvertes documentaires](https://github.com/fraware/frontiere-institut-interet-public/issues/572) : PR 401 et 494 fermées après transfert des dix pistes de sources, sans ingestion déclarée.
 - [Évaluation indépendante unique](https://github.com/fraware/frontiere-institut-interet-public/issues/63) : issues 26 et 27 closes comme doubles suivis de sous-expériences déjà décrites dans le protocole n° 63, sans résultat empirique présumé.
 
+- [Canaux publics](https://github.com/fraware/frontiere-institut-interet-public/pull/575) : reprise de la PR n° 568 fusionnée après sept contrôles réussis ; les deux SHA des fichiers correspondent exactement à la proposition initiale, fermée avec preuve. Le contenu est désormais dans `main`.
+- [Sonde AIFE](https://github.com/fraware/frontiere-institut-interet-public/pull/576) : reprise exploratoire non intégrée. Les tests ont révélé une incohérence entre l'échantillon et le bilan DECP ; la PR n° 570 reste ouverte, à traiter avec ses données dérivées.
+
 ## Demandes de fusion en attente de décision
 
 | PR | Nature | État de triage et suite indispensable |
 | --- | --- | --- |
-| [568](https://github.com/fraware/frontiere-institut-interet-public/pull/568) | Actualisation des canaux | Données plus récentes que `main` ; reprise à contenu identique dans la [PR 575](https://github.com/fraware/frontiere-institut-interet-public/pull/575) ; clore 568 seulement après fusion validée de 575 |
-| [570](https://github.com/fraware/frontiere-institut-interet-public/pull/570) | Sonde AIFE | Échantillon du 17 octobre ; reprise à contenu identique dans la [PR 576](https://github.com/fraware/frontiere-institut-interet-public/pull/576) ; clore 570 seulement après fusion validée de 576 |
+| [570](https://github.com/fraware/frontiere-institut-interet-public/pull/570) | Sonde AIFE | Reste ouverte : le bilan DECP versionné doit être reconstruit avec la nouvelle sonde ; reprise n° 576 fermée sans fusion à cause des contrôles d’intégrité |
 | [550](https://github.com/fraware/frontiere-institut-interet-public/pull/550) | Veille ANR | Variation de signatures documentaires non intégrée ; examiner dates et historique, puis relancer les contrôles sur branche actualisée |
 | [487](https://github.com/fraware/frontiere-institut-interet-public/pull/487) | Veille DMTG | Examiner les signatures et leur temporalité ; préserver les transitions historiques avant toute clôture |
 | [485](https://github.com/fraware/frontiere-institut-interet-public/pull/485) | Référentiel territorial | Modification importante de nombreux fichiers ; revue séparée de provenance, cohérence et comparaisons, aucune fusion automatique |
