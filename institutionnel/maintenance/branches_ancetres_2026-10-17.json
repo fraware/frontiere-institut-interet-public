@@ -1,0 +1,32 @@
+{
+  "version": "frontiere-ancetres-hygiene-v1",
+  "repository": "fraware/frontiere-institut-interet-public",
+  "reference_inventaire": "2026-10-17",
+  "raison": "Six branches non protégées, sans PR ouverte, dont le commit est ancêtre de main selon la comparaison GitHub du 17 octobre",
+  "candidats": [
+    {
+      "branche": "institutionnel/fiabiliser-plan-controle-v1",
+      "sha": "1c3bad50ffb03a7ce5dbed7a5c585e486333bbdb"
+    },
+    {
+      "branche": "institutionnel/fiabiliser-plan-controle-v2",
+      "sha": "5b05565a0bdd035fdcc5355a0a3b3bce6c78e5d2"
+    },
+    {
+      "branche": "institutionnel/fiabiliser-plan-controle-v3",
+      "sha": "dee79b848c98858c1ad593cc33347d109d9292c4"
+    },
+    {
+      "branche": "recherche/conseil-etat-ia-etapes-deploiement-2026",
+      "sha": "f6d28fbc1448f5c89f1b9eda50a70247bfccd32f"
+    },
+    {
+      "branche": "tmp-write-probe",
+      "sha": "1c3bad50ffb03a7ce5dbed7a5c585e486333bbdb"
+    },
+    {
+      "branche": "veille/catalogues-officiels-2026-10-13",
+      "sha": "52becec2955dde66cfa462540a2508b0300c9de3"
+    }
+  ]
+}
