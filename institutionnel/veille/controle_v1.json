@@ -120,6 +120,11 @@
       "criticite": "haute"
     },
     {
+      "fichier": "hygiene-branches-hebdomadaire.yml",
+      "retard_max_heures": 200,
+      "criticite": "moyenne"
+    },
+    {
       "fichier": "index-boamp-historique.yml",
       "retard_max_heures": 72,
       "criticite": "haute"

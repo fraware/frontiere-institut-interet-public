@@ -31,6 +31,48 @@ La liste initiale comprend les PR **570, 568, 550, 494, 487, 485, 484, 449, 407,
 
 Pour réduire durablement les blocages de collecte, chaque famille d'actualisation doit disposer d'au plus une proposition courante : soit la proposition existante est rendue compatible avec `main` et validée, soit elle est fermée avec justification après constat d'obsolescence. Aucun mélange automatique de deux instantanés de producteurs de dates différentes.
 
+## Résultat de l'opération du 17 octobre
+
+La [procédure 39048500462](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/39048500462)
+a effectivement supprimé les **308 branches du plan**, sur 308 admissibles,
+avec **zéro exclusion et zéro erreur**. Son rapport est conservé sous le nom
+`rapport-nettoyage-branches`, pendant trente jours. Un nouveau dénombrement
+des références a donné **41 branches**, contre 348 à l'état initial ; l'écart
+de comptage intègre la branche créée pour exécuter ce nettoyage.
+
+Les deux propositions documentaires [n° 401](https://github.com/fraware/frontiere-institut-interet-public/pull/401)
+et [n° 494](https://github.com/fraware/frontiere-institut-interet-public/pull/494)
+ont été fermées en conservant leur contenu dans les historiques et une
+[tâche de qualification des dix sources](https://github.com/fraware/frontiere-institut-interet-public/issues/572).
+Le nombre de PR ouvertes est ainsi passé de dix à huit, hors propositions
+ultérieures de maintenance. Aucun fichier inédit de ces deux propositions
+n'a été déclaré ingéré.
+
+L'examen complémentaire de l'ascendance Git a identifié six anciennes
+branches sans PR ouverte dont le commit se trouve dans l'histoire de
+`main` : trois itérations `institutionnel/fiabiliser-plan-controle-v1/v2/v3`,
+`recherche/conseil-etat-ia-etapes-deploiement-2026`,
+`tmp-write-probe` et `veille/catalogues-officiels-2026-10-13`.
+Elles restent en place à cette étape ; les branches présentant des commits
+inédits sont également conservées.
+
+## Entretien permanent prévu
+
+Le programme de nettoyage hebdomadaire et la procédure automatisée instaurent une revue
+**hebdomadaire chaque lundi**, à partir de la branche principale. Elle retient
+uniquement les références de PR fusionnées depuis plus de vingt-quatre heures,
+avec nom et SHA encore identiques, absence de PR ouverte, aucune protection,
+et une limite stricte de 325 références par exécution.
+
+Avant toute suppression, les références sont lues à nouveau depuis GitHub.
+Chaque exécution conserve un rapport détaillé trente jours. Les essais sur les demandes de fusion sont en lecture seule. Les suppressions
+interviennent uniquement lors des passages programmés ou d'une exécution manuelle
+sur le dépôt autorisé.
+
+Il s'agit d'une seconde barrière de maintenance : la préférence à long terme
+reste la fonctionnalité native GitHub « Automatically delete head branches »,
+sous réserve d'une décision administrative distincte.
+
 ## Après le nettoyage
 
 Le résultat attendu de la première opération est d'environ **40 branches restantes**, auxquelles s'ajoute la branche de maintenance tant que cette dernière existe. Ce n'est pas une garantie : tout changement simultané, défaut de permission ou nouvelle PR ouverte justifie la conservation de la branche concernée.
