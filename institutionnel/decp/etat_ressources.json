@@ -1,23 +1,30 @@
 {
   "catalogues": [
     {
-      "actualise_le": "2026-10-17T01:30:14.230000+00:00",
+      "actualise_le": "2026-10-18T01:30:01.984000+00:00",
       "completude_des_marches_etablie": false,
       "contenu_des_fichiers_telecharge": false,
-      "empreinte_inventaire_complet": "46a5f5a3843ffe2c4762519fadf4283425bce5b880a89dbd466b5865d6d63219",
+      "empreinte_inventaire_complet": "7fa1ac2fc72f0a6cbc4db84d5e3babec11566a2580f4014fd1d8dfc64669da75",
       "formats": {
-        "json": 201,
+        "json": 202,
         "xml": 1550
       },
       "jeu_id": "5df410e86f44413a91d34be3",
       "licence_declaree": "lov2",
       "nombre_ressources_indexees": 150,
-      "nombre_ressources_non_detaillees": 1601,
-      "nombre_ressources_total": 1751,
+      "nombre_ressources_non_detaillees": 1602,
+      "nombre_ressources_total": 1752,
       "nouveaux_besoins_prospectifs_deduits": 0,
-      "observe_le": "2026-10-17T18:52:44+00:00",
+      "observe_le": "2026-10-18T09:08:59+00:00",
       "page": "https://www.data.gouv.fr/datasets/api-decp",
       "ressources_recentes": [
+        {
+          "format": "json",
+          "id": "9d0588f3-1a6b-4787-984e-1b803e40e0f1",
+          "modifie_le": "2026-10-18T01:30:01.984000+00:00",
+          "taille_octets_declaree": 14115,
+          "titre": "decp-18102026-018-0130.json"
+        },
         {
           "format": "json",
           "id": "e3b34498-8153-4ceb-b862-9869752a451f",
@@ -1060,13 +1067,6 @@
           "modifie_le": "2026-05-21T03:30:21.207000+00:00",
           "taille_octets_declaree": 275908,
           "titre": "decp-21052026-020-0130.json"
-        },
-        {
-          "format": "json",
-          "id": "260ad7af-d8a8-47ac-8511-2976ab308268",
-          "modifie_le": "2026-05-20T03:30:22.067000+00:00",
-          "taille_octets_declaree": 305637,
-          "titre": "decp-20052026-033-0130.json"
         }
       ],
       "source_id": "aife_api_decp",
@@ -1087,7 +1087,7 @@
       "nombre_ressources_non_detaillees": 5223,
       "nombre_ressources_total": 5373,
       "nouveaux_besoins_prospectifs_deduits": 0,
-      "observe_le": "2026-10-17T18:52:44+00:00",
+      "observe_le": "2026-10-18T09:08:59+00:00",
       "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-transmises-via-le-pes-marche-depuis-2024",
       "ressources_recentes": [
         {
@@ -2160,7 +2160,7 @@
       "nombre_ressources_non_detaillees": 0,
       "nombre_ressources_total": 42,
       "nouveaux_besoins_prospectifs_deduits": 0,
-      "observe_le": "2026-10-17T18:52:44+00:00",
+      "observe_le": "2026-10-18T09:08:59+00:00",
       "page": "https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides",
       "ressources_recentes": [
         {
@@ -2463,9 +2463,9 @@
       "type_observation": "marches_attribues_et_concessions"
     }
   ],
-  "controle_le": "2026-10-17T18:52:44+00:00",
+  "controle_le": "2026-10-18T09:08:59+00:00",
   "inventaires_complets_telecharges": 0,
-  "nombre_catalogues_avec_modifications": 0,
+  "nombre_catalogues_avec_modifications": 1,
   "qualifie_des_besoins_actuels": false,
   "sources_echouees": [],
   "sources_reussies": 3,
