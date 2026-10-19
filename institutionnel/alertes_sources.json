@@ -1,17 +1,25 @@
 {
   "alertes": [
     {
-      "ancienne_empreinte": "2ddbb68581981ee61c1c38379789fcca128fa2b82ea9f78de4d30ec73ffcb798",
+      "ancienne_empreinte": "ca6a3a542b37a200d01f39e104330c18f92cffa7034797c8341e479099a8c82b",
       "criticite": "critique",
-      "nouvelle_empreinte": "e6c3fe6929e3232f27301438657fdc6674fd0ffc0d4729ae1c19b2054dadf44b",
+      "nouvelle_empreinte": "1eaec01637cc082899f15e004102cc61e8237fce79703be9007ecfd445537e58",
+      "source_id": "dila_roae",
+      "type": "SOURCE_MODIFIEE"
+    },
+    {
+      "ancienne_empreinte": "e6c3fe6929e3232f27301438657fdc6674fd0ffc0d4729ae1c19b2054dadf44b",
+      "criticite": "critique",
+      "nouvelle_empreinte": "ddc61e55a769df659a5a21e11c726f76d3d12a50eac730f6543ae9a40cb55597",
       "source_id": "dila_competence_geographique",
       "type": "SOURCE_MODIFIEE"
     },
     {
-      "criticite": "haute",
-      "detail": "HTTPError: HTTP Error 403: Forbidden",
-      "source_id": "budget_operateurs_2026",
-      "type": "ACCES_REFUSE_CLIENT_AUTOMATISE"
+      "ancienne_empreinte": "b5b3085bc53dfc83c4c6ac6af3d01e04cec85ad9eeb41f2ae1aa5f386f81e7ee",
+      "criticite": "critique",
+      "nouvelle_empreinte": "bce0abcbaba57532242e4a12e11d2e0ecd24eb5a243d68e84134b9c041888c0d",
+      "source_id": "dgcl_banatic",
+      "type": "SOURCE_MODIFIEE"
     },
     {
       "criticite": "haute",
@@ -20,37 +28,44 @@
       "type": "ACCES_REFUSE_CLIENT_AUTOMATISE"
     },
     {
-      "ancienne_empreinte": "3c58c71f9f834f41892e17b950a0cbe117a58ccb4423d6416d5a66a19521f29d",
+      "ancienne_empreinte": "e8c447f67f13003a0aaeb8eaf1b4ce513a449c84cdca8efe27467d51b6f889a9",
+      "criticite": "critique",
+      "nouvelle_empreinte": "04ba8901f47f1a0eb58b6f2e3cbe01dd18778b37d13158df2519f23fe1a59633",
+      "source_id": "dila_jorf",
+      "type": "SOURCE_MODIFIEE"
+    },
+    {
+      "ancienne_empreinte": "c6ef36d3076c0c5223c8bcbbac2f71100eea205090a9859429c81beed1b9faba",
       "criticite": "haute",
-      "nouvelle_empreinte": "c6ef36d3076c0c5223c8bcbbac2f71100eea205090a9859429c81beed1b9faba",
+      "nouvelle_empreinte": "142c99be84eccc7b989710bf5831f0f78e9bc359b4f862e9ae1296ec50c4f17d",
       "source_id": "mesr_etablissements",
       "type": "SOURCE_MODIFIEE"
     },
     {
-      "ancienne_empreinte": "12c3c16e0b9c90d099ebee370a4e4b94a93f5ff5509091b7af49847603778ef9",
+      "ancienne_empreinte": "3e9d5a0027834cefd0cf86c47d8a6583aa67f34ff2460a003db534f0c1424f26",
       "criticite": "haute",
-      "nouvelle_empreinte": "3e9d5a0027834cefd0cf86c47d8a6583aa67f34ff2460a003db534f0c1424f26",
+      "nouvelle_empreinte": "d32031214b40facc3d589658b83dc37d0443616f6f23895655ff1c27eda653b5",
       "source_id": "mesr_rnsr",
       "type": "SOURCE_MODIFIEE"
     },
     {
-      "ancienne_empreinte": "da0a13821b73317b738c56267f4f4e22367986cce854ec8a5a8f9eda30d82952",
+      "ancienne_empreinte": "4466d6eeb09fb2555ac577bfb61a997d43c12d1f1744f3abebb418903b324c21",
       "criticite": "haute",
-      "nouvelle_empreinte": "4466d6eeb09fb2555ac577bfb61a997d43c12d1f1744f3abebb418903b324c21",
+      "nouvelle_empreinte": "22b5d6025eb8dbd914662b470698c6188f6b81b09a0b5797a51d09599ec50364",
       "source_id": "mesr_rnsr_structures_actives",
       "type": "SOURCE_MODIFIEE"
     },
     {
-      "ancienne_empreinte": "a2e7fd851123c0450b5e398f11e28295fae45b88359c33cdf6f8b489e68a96cc",
+      "ancienne_empreinte": "5ea37b36f863dbce4b1dfaf85485218fa5d5c367b6827b049d7543f754a8d2c6",
       "criticite": "haute",
-      "nouvelle_empreinte": "5ea37b36f863dbce4b1dfaf85485218fa5d5c367b6827b049d7543f754a8d2c6",
+      "nouvelle_empreinte": "ff8ac9370dab2e197826dc44ebb44223f30e761ea2069c87c2becb0b7aa15020",
       "source_id": "ans_finess_structures",
       "type": "SOURCE_MODIFIEE"
     },
     {
-      "ancienne_empreinte": "f39bdf31643b2871dd53393a917d4a9d202658e933e9a0e4bcb6ac7a7a768e13",
+      "ancienne_empreinte": "97997d5f604ff9ac111e869a15cc1a8a07ec4b2d6a5f2e00dfb7117d4340f99e",
       "criticite": "haute",
-      "nouvelle_empreinte": "97997d5f604ff9ac111e869a15cc1a8a07ec4b2d6a5f2e00dfb7117d4340f99e",
+      "nouvelle_empreinte": "b9b59578b1bbe047eb680b12932de593c9b8704106a8c476eadea99ce600073a",
       "source_id": "ans_finess_activites",
       "type": "SOURCE_MODIFIEE"
     },
@@ -61,6 +76,6 @@
       "type": "ACCES_REFUSE_CLIENT_AUTOMATISE"
     }
   ],
-  "observe_le": "2026-10-15T09:54:29+00:00",
+  "observe_le": "2026-10-18T09:37:58+00:00",
   "version": "1"
 }
