@@ -32,10 +32,16 @@
       "nature_document": "index_statistiques",
       "url": "https://www.impots.gouv.fr/dgfip-statistiques-2026",
       "format": "html",
-      "empreinte": "a16c7e6a2bd5963b7e6aaa2a1659764b988830778892c98ad03571d42a126f0f",
+      "empreinte": "a3a1be510161ecc054df98bec631a8927e773bbfde2fc7a90a2f46ee3b4ac7fe",
       "observe_initialement_le": "2026-10-15T12:52:05+00:00",
-      "dernier_changement_le": "2026-10-15T12:52:05+00:00",
-      "historique": []
+      "dernier_changement_le": "2026-10-20T12:58:39+00:00",
+      "historique": [
+        {
+          "observe_le": "2026-10-20T12:58:39+00:00",
+          "empreinte_avant": "a16c7e6a2bd5963b7e6aaa2a1659764b988830778892c98ad03571d42a126f0f",
+          "empreinte_apres": "a3a1be510161ecc054df98bec631a8927e773bbfde2fc7a90a2f46ee3b4ac7fe"
+        }
+      ]
     },
     {
       "source_id": "dgfip_recettes_fiscales",
