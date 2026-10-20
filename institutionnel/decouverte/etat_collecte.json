@@ -1,22 +1,16 @@
 {
-  "collecte_complete": false,
-  "controle_le": "2026-10-19T22:54:21+00:00",
+  "collecte_complete": true,
+  "controle_le": "2026-10-20T06:00:29+00:00",
   "couverture_exhaustive_du_web": false,
-  "erreurs": [
-    {
-      "expression": "actualisations recentes",
-      "motif": "ErreurCollecte",
-      "page": 2
-    }
-  ],
-  "fiches_recues_avec_doublons": 432,
+  "erreurs": [],
+  "fiches_recues_avec_doublons": 452,
   "fichiers_sources_originaux_telecharges": 0,
-  "identifiants_distincts_conserves": 1404,
-  "nouveaux_identifiants": 3,
-  "pages_echouees": 1,
-  "pages_ignorees_sans_suite": 33,
-  "pages_reussies": 45,
-  "pages_tentees": 46,
+  "identifiants_distincts_conserves": 1418,
+  "nouveaux_identifiants": 14,
+  "pages_echouees": 0,
+  "pages_ignorees_sans_suite": 32,
+  "pages_reussies": 47,
+  "pages_tentees": 47,
   "sources_deja_suivies_dans_le_resultat": 0,
   "version": "veille-catalogue-v1"
 }
