@@ -1,15 +1,26 @@
 {
-  "collecte_complete": true,
-  "controle_le": "2026-10-20T17:58:50+00:00",
+  "collecte_complete": false,
+  "controle_le": "2026-10-20T22:17:17+00:00",
   "couverture_exhaustive_du_web": false,
-  "erreurs": [],
-  "fiches_recues_avec_doublons": 452,
+  "erreurs": [
+    {
+      "expression": "infrastructures recherche",
+      "motif": "RemoteDisconnected",
+      "page": 1
+    },
+    {
+      "expression": "enseignement supérieur",
+      "motif": "RemoteDisconnected",
+      "page": 2
+    }
+  ],
+  "fiches_recues_avec_doublons": 416,
   "fichiers_sources_originaux_telecharges": 0,
-  "identifiants_distincts_conserves": 1454,
-  "nouveaux_identifiants": 21,
-  "pages_echouees": 0,
+  "identifiants_distincts_conserves": 1463,
+  "nouveaux_identifiants": 9,
+  "pages_echouees": 2,
   "pages_ignorees_sans_suite": 32,
-  "pages_reussies": 47,
+  "pages_reussies": 45,
   "pages_tentees": 47,
   "sources_deja_suivies_dans_le_resultat": 0,
   "version": "veille-catalogue-v1"
