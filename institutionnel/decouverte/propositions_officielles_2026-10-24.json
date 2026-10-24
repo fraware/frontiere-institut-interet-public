@@ -1,0 +1,89 @@
+{
+  "version": "2026-10-24",
+  "objet": "Propositions de nouvelles sources officielles pour FRONTIÈRE / Horizon France ; aucune activation de collecteur",
+  "statut_global": "decouverte_documentaire_uniquement",
+  "reference_comparaison": {
+    "branche": "main",
+    "commit": "54e024d48eba8209fbac64b617d188db2bc5792c",
+    "registres": [
+      "institutionnel/sources_v1.json",
+      "institutionnel/decouverte/catalogues_officiels_v1.json"
+    ],
+    "note": "Absentes des deux registres de main ; les intitulés des demandes de fusion ouvertes ont été examinés. Le catalogue national balayé peut déjà contenir leurs métadonnées génériques : ne pas assimiler cela à une ingestion."
+  },
+  "sources": [
+    {
+      "id": "anct_croisement_dispositifs_territoriaux",
+      "nom": "Croisement des dispositifs de politique publique de l'ANCT",
+      "producteur": "Agence nationale de la cohésion des territoires",
+      "page_officielle": "https://www.data.gouv.fr/datasets/croisement-des-dispositifs-de-politique-publique-de-lanct",
+      "objet": "Appartenance des communes à seize dispositifs de politique publique, dont Territoires d'industrie et sites clés en main France 2030",
+      "licence_affichee": "Licence Ouverte 2.0",
+      "derniere_mise_a_jour_affichee": "2026-04-13",
+      "formats_documentes": [
+        "CSV UTF-8 (~1,8 Mo)",
+        "PDF de description (~88,7 Ko ; 2025-09-24)"
+      ],
+      "modalites_acces": "Téléchargement public par la fiche data.gouv.fr ; aucune authentification requise pour consulter la fiche ; téléchargement non testé",
+      "millesime_geographique_declare": "COG 2025",
+      "restrictions": "La fiche indique une fréquence de mise à jour non respectée et ne précise pas la couverture temporelle. Une appartenance à un dispositif ne démontre ni besoin scientifique ni financement obtenu.",
+      "rapprochements": "Croiser par code commune millésimé avec COG, BANATIC et DILA. Territoires d'industrie est une composante de ce tableau, à dédupliquer.",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "telechargement_donnees_metier_teste": false,
+      "validation_schema_testee": false
+    },
+    {
+      "id": "anct_territoires_industrie_2023_2027",
+      "nom": "Programme Territoires d'industrie — périmètres 2023–2027",
+      "producteur": "Agence nationale de la cohésion des territoires",
+      "page_officielle": "https://www.data.gouv.fr/datasets/programme-territoires-dindustrie",
+      "objet": "Périmètres des territoires d'industrie, communes et groupements associés, avec versions historiques 2018–2023",
+      "licence_affichee": "Licence Ouverte 2.0",
+      "derniere_mise_a_jour_affichee": "2026-08-26",
+      "formats_documentes": [
+        "CSV (six ressources, dont trois récentes 2026)",
+        "PDF méthodologique (2023-11-09)"
+      ],
+      "modalites_acces": "Fichiers CSV téléchargeables publiquement via la fiche data.gouv.fr ; accès aux fichiers non testé",
+      "millesime_geographique_declare": "COG 2026 pour les communes et EPCI 2023–2027",
+      "restrictions": "Source plus détaillée que le tableau croisé ANCT ; contenu commun à dédupliquer. Distinguer version 2023–2027 et archives 2018–2023. L'éligibilité à un programme n'établit aucune compétence technique ni subvention reçue.",
+      "rapprochements": "Clés communes/EPCI COG 2026, BANATIC et tableau ANCT COG 2025 ; documenter les changements de périmètre avant jointure.",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "telechargement_donnees_metier_teste": false,
+      "validation_schema_testee": false
+    },
+    {
+      "id": "culture_conventions_subventions",
+      "nom": "Données essentielles des conventions de subvention du ministère de la Culture",
+      "producteur": "Ministère de la Culture",
+      "page_officielle": "https://www.data.gouv.fr/datasets/donnees-essentielles-des-conventions-de-subvention-5",
+      "objet": "Conventions de subvention publiées pour l'ensemble des programmes ministériels ; flux financier distinct de la commande publique DECP",
+      "licence_affichee": "Licence Ouverte 2.0",
+      "derniere_mise_a_jour_affichee": "2026-10-18 (fiche consultée ; date de ressource présentée de manière relative)",
+      "formats_documentes": [
+        "CSV (~155,8 Mo)",
+        "PDF réglementaire (2025-08-27)"
+      ],
+      "modalites_acces": "Fichier CSV public proposé au téléchargement sur data.gouv.fr ; téléchargement non testé ; API d'ingestion dédiée non confirmée",
+      "restrictions": "Couverture temporelle non renseignée sur la fiche. Les montants de convention ne prouvent pas un décaissement ; seuils et règles juridiques à vérifier avant interprétation. Taille élevée : acquisition conditionnée à des limites de volume et à la validation des schémas.",
+      "rapprochements": "Complète DECP (marchés) sans l'assimiler à des marchés ; rapprocher organismes via SIREN/SIRET uniquement si présents et validés.",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "telechargement_donnees_metier_teste": false,
+      "validation_schema_testee": false
+    }
+  ],
+  "controles": {
+    "fiches_officielles_consultees": true,
+    "licences_dates_formats_releves_depuis_fiches": true,
+    "appel_api_direct_reussi": false,
+    "raison_absence_test_api": "Échec de résolution DNS du conteneur sur www.data.gouv.fr",
+    "fichiers_metier_telecharges": 0,
+    "donnees_metier_ingerees": 0,
+    "aucun_statut_termine_attribue": true,
+    "aucune_depense_engagee": true
+  },
+  "notes": "Cette proposition documente trois ressources officielles et leurs chevauchements ; elle ne revendique ni couverture exhaustive, ni collecte réussie, ni fraîcheur des données sous-jacentes."
+}
