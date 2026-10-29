@@ -1,6 +1,6 @@
 {
-  "version": "2026-10-09",
-  "regle": "La présence dans cette liste indique une source officielle identifiée, pas une ingestion technique réalisée. Les droits, quotas et formats sont à vérifier avant duplication du contenu.",
+  "version": "2026-10-29-consolidation",
+  "regle": "La présence dans cette liste indique une source officielle identifiée, pas une ingestion technique réalisée. Les droits, quotas et formats sont à vérifier avant duplication du contenu. Consolidation de propositions documentaires : ne présume aucune ingestion. Les propositions sources restent consultables dans les fichiers de provenance.",
   "catalogues": [
     {
       "id": "data_gouv_catalogue",
@@ -209,6 +209,106 @@
       "point_entree": "https://cordis.europa.eu/projects",
       "objet": "projets_finances_publications_livrables_organismes_partenaires",
       "remarque": "Les pages de recherche, les flux RSS et les jeux ouverts sont accessibles sans connexion dans les conditions publiées. L'API d'extraction DET est réservée aux utilisateurs enregistrés et demande une clé avec quotas ; ne pas créer d'appel anonyme à cette API. Vérifier licences par ressources et schémas. Une participation à un projet ne prouve ni compétence disponible ni besoin administratif non satisfait."
+    },
+    {
+      "id": "mesre_politiques_science_ouverte_etablissements",
+      "nom": "Politiques de science ouverte des établissements de l'ESR",
+      "producteur": "Ministère de l'Enseignement supérieur, de la Recherche et de l'Espace — Cellule science ouverte",
+      "statut": "decouverte_documentaire_uniquement",
+      "documentation": "https://www.data.gouv.fr/datasets/les-politiques-de-science-ouverte-des-etablissements-de-lesr-1",
+      "point_entree": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-politiques-so-etablissements/",
+      "identifiant_jeu": "fr-esr-politiques-so-etablissements",
+      "objet": "politiques_institutionnelles_science_ouverte_et_documents_cadres",
+      "licence": "Licence Ouverte 2.0 (Etalab), selon la fiche officielle",
+      "formats_annonces": [
+        "CSV",
+        "JSON",
+        "ZIP",
+        "PDF méthodologique"
+      ],
+      "date_mise_a_jour_affichee": "2026-07-16",
+      "modalites_acces": "Téléchargements publics et interface API annoncée sur le portail MESRE ; appel API et téléchargement non testés",
+      "ingestion_testee": false,
+      "verification_documentaire_le": "2026-10-25",
+      "remarque": "Résultats initiaux de l'enquête 2023-2024, enrichis à partir de 2025 par signalements et veille. Rapprochement possible par identifiants ROR, UAI et SIREN lorsque présents. La déclaration d'une politique ne prouve ni sa mise en œuvre ni la disponibilité d'une compétence. Ne pas confondre date de traitement des métadonnées et mise à jour des données."
+    },
+    {
+      "id": "mesre_doctorants_financements_cotutelles",
+      "nom": "Effectifs des doctorants et docteurs des écoles doctorales, financements et cotutelles",
+      "producteur": "Ministère de l'Enseignement supérieur, de la Recherche et de l'Espace — SIES",
+      "statut": "decouverte_documentaire_uniquement",
+      "documentation": "https://www.data.gouv.fr/datasets/effectifs-des-doctorants-et-docteurs-des-ecoles-doctorales-financements-des-doctorants-et-cotutelles",
+      "point_entree": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-effectifs-doctorants-docteurs-ecoles-doctorales-financements-doctorants-c/",
+      "identifiant_jeu": "fr-esr-effectifs-doctorants-docteurs-ecoles-doctorales-financements-doctorants-c",
+      "objet": "effectifs_doctoraux_par_ecole_et_etablissement_sources_financement_cotutelles",
+      "licence": "Licence Ouverte 2.0 (Etalab), selon la fiche officielle",
+      "formats_annonces": [
+        "CSV",
+        "JSON",
+        "RTF (documentation)"
+      ],
+      "date_mise_a_jour_affichee": "2025-07-29",
+      "periode_couverte_affichee": "2009-09-01 à 2025-08-31 (selon le portail producteur)",
+      "modalites_acces": "Téléchargements publics et interface API annoncée sur le portail MESRE ; appel API et téléchargement non testés",
+      "ingestion_testee": false,
+      "verification_documentaire_le": "2026-10-25",
+      "remarque": "Agrégats par école doctorale, établissement, année et sexe ; ne constituent ni une liste de personnes ni un indicateur de compétences mobilisables. Attention aux changements de périmètre et aux risques de double comptage lors de rapprochements avec les établissements et les financements ANR."
+    },
+    {
+      "id": "dgos_catalogue_collections_biologiques_crb",
+      "nom": "Catalogue national des collections biologiques des centres de ressources biologiques (CRB)",
+      "producteur": "Ministère chargé de la Santé — Direction générale de l'offre de soins (DGOS)",
+      "statut": "decouverte_documentaire_uniquement",
+      "documentation": "https://sante.gouv.fr/systeme-de-sante/innovation-et-recherche/l-innovation-et-la-recherche-clinique/article/collections-biologiques-des-centres-de-ressources-biologiques-crb",
+      "point_entree": "https://www.data.gouv.fr/datasets/catalogue-des-collections-biologiques-des-crb",
+      "objet": "collections_biologiques_et_infrastructures_de_recherche_biomedicale",
+      "licence": "Licence Ouverte 2.0, selon la fiche data.gouv.fr",
+      "formats_annonces": [
+        "XLSX",
+        "CSV (ressource 2025)"
+      ],
+      "date_mise_a_jour_affichee": "2026-03-03",
+      "cadence_annoncee": "annuelle",
+      "modalites_acces": "Fichiers publics référencés sur data.gouv.fr ; XLSX v2.0 du 3 mars 2026 et ressources 2025 ; pas d'API métier de consultation vérifiée ; téléchargement direct non réussi (DNS dans le conteneur)",
+      "ingestion_testee": false,
+      "verification_documentaire_le": "2026-10-27",
+      "remarque": "La version 2026 est publiée en XLSX et les ressources 2025 incluent un CSV ; ne pas attribuer le CSV 2025 à la version 2026. Le périmètre initial concerne les collections humaines des CRB hospitaliers ; une extension aux collections d'autres organismes est envisagée, sans être acquise. Certaines informations peuvent être omises à la demande des contributeurs. L'existence d'une collection ne prouve ni son accessibilité ni sa disponibilité opérationnelle. Aucun fichier métier téléchargé, aucune validation de schéma, de contenu, de pagination ou d'empreinte."
+    },
+    {
+      "id": "fonds_vert_projets_subventionnes",
+      "nom": "Fonds vert — projets subventionnés, millésimes 2023 à 2025",
+      "producteur": "Ministère chargé de la transition écologique",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes",
+      "licence": "Licence Ouverte 2.0",
+      "derniere_mise_a_jour_affichee": "2026-07-28",
+      "formats_affiches": [
+        "CSV",
+        "XLSX"
+      ],
+      "acces": "Dix ressources téléchargeables référencées sur la fiche officielle; téléchargement HTTP direct non validé depuis le conteneur (échec DNS le 2026-10-29).",
+      "objet": "projets_territoriaux_finances_beneficiaires_engagements_publics",
+      "remarque": "Listes des engagements des programmes P380 et P113, distincts selon millésime et mesure. Une ligne par projet et bénéficiaire; un même projet peut figurer sur plusieurs années. Les engagements comptables ne prouvent pas le paiement. La localisation déclarée peut désigner le porteur et non le site. Ne pas compter les lignes comme des projets uniques."
+    },
+    {
+      "id": "mesr_effectifs_enseignants_titulaires_national",
+      "nom": "Enseignants-chercheurs et enseignants titulaires du supérieur public — effectifs nationaux",
+      "producteur": "Ministère chargé de l'enseignement supérieur et de la recherche",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-enseignants-titulaires-esr-public-national/",
+      "licence": "Licence Ouverte (Etalab), version non précisée sur la fiche",
+      "derniere_mise_a_jour_affichee": "2026-09-04",
+      "periode_couverte": "Années universitaires 2010-2011 à 2023-2024",
+      "formats_affiches": [
+        "CSV",
+        "JSON",
+        "PDF (documentation)"
+      ],
+      "acces": "Exports et API Explore du portail MESR annoncés; appel API et téléchargement HTTP direct non validés depuis le conteneur (échec DNS le 2026-10-29).",
+      "objet": "effectifs_agreges_enseignants_chercheurs_disciplines_cnu_territoires",
+      "remarque": "Effectifs agrégés par discipline/section CNU, catégorie et géographie. Le millésime le plus récent est 2023-2024 malgré la mise à jour technique de septembre 2026. Ne pas inférer des individus, des compétences immédiatement mobilisables ou des capacités par laboratoire. Certaines ressources de la fiche miroir sont indisponibles."
     }
   ]
 }
