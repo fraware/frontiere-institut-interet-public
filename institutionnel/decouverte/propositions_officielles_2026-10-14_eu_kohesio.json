@@ -1,0 +1,20 @@
+{
+  "id": "eu_kohesio",
+  "date_decouverte": "2026-10-14",
+  "statut": "decouverte_documentaire",
+  "ingestion_testee": false,
+  "nom": "Kohesio, projets et beneficiaires des fonds de cohesion",
+  "producteur": "Commission europeenne / DG REGIO",
+  "url": "https://data.europa.eu/cs/publications/datastories/linking-data-kohesio-platform",
+  "portail": "https://kohesio.ec.europa.eu/",
+  "licence": "Reutilisation gratuite annoncee; licence exacte a confirmer",
+  "formats": [
+    "CSV",
+    "XLSX",
+    "RDF"
+  ],
+  "mise_a_jour_affichee": "Non etablie",
+  "acces": "Exports documentes; portail HTTP 403 depuis l'outil de consultation; aucun export teste",
+  "objet": "Projets et beneficiaires individuels, distincts des finances agregees de Cohesion Open Data.",
+  "limite": "Couverture 2014-2020 documentee; extension 2021-2027 non verifiee."
+}
