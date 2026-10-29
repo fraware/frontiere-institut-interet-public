@@ -68,6 +68,29 @@
   "limites": [
     "Les anciennes découvertes des journées sans fichier GitHub confirmé demandent une récupération distincte.",
     "Les métadonnées historiques reflètent leur date d'observation; leur fraîcheur n'a pas été revalidée ici.",
-    "Les autres propositions de la conversation non incluses dans cette première consolidation doivent être réconciliées avant revendication de complétude."
-  ]
+    "Les autres propositions de la conversation non incluses dans cette première consolidation doivent être réconciliées avant revendication de complétude.",
+    "Les journées du 10 au 22 octobre ne sont pas toutes représentées par des dossiers complets dans cette consolidation."
+  ],
+  "dossiers_historiques_recuperes": [
+    {
+      "pr": 401,
+      "dates": [
+        "2026-10-13",
+        "2026-10-14"
+      ],
+      "nombre_fichiers": 8
+    },
+    {
+      "pr": 494,
+      "dates": [
+        "2026-10-15"
+      ],
+      "nombre_fichiers": 1
+    }
+  ],
+  "dossier_2026_10_12": {
+    "pr": 263,
+    "etat": "deja_present_sur_main",
+    "fichier": "institutionnel/decouverte/propositions_officielles_2026-10-12.json"
+  }
 }
