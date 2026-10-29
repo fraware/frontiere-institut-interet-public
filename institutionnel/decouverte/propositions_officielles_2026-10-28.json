@@ -1,0 +1,64 @@
+{
+  "date_observation": "2026-10-28",
+  "base_main_sha": "54e024d48eba8209fbac64b617d188db2bc5792c",
+  "objet": "Découverte documentaire de source officielle et qualification d'une nouvelle interface d'un catalogue déjà recensé.",
+  "perimetre_comparaison": [
+    "institutionnel/sources_v1.json",
+    "institutionnel/decouverte/catalogues_officiels_v1.json",
+    "recherche des propositions GitHub accessibles au 2026-10-28"
+  ],
+  "sources_nouvelles": [
+    {
+      "id": "dge_annuaire_poles_competitivite",
+      "nom": "Annuaire des pôles de compétitivité et liste officielle téléchargeable",
+      "producteurs": [
+        "Direction générale des Entreprises (annuaire)",
+        "Premier ministre (fiche de jeu de données)"
+      ],
+      "domaine": [
+        "innovation",
+        "recherche_collaborative",
+        "laboratoires",
+        "competences_techniques",
+        "territoires"
+      ],
+      "justification": "Rapproche pôles labellisés, domaines technologiques et territoires, avec une entrée institutionnelle distincte des référentiels RNSR et scanR. Ne documente pas directement les membres de chaque pôle ni une compétence disponible.",
+      "documentation": "https://www.entreprises.gouv.fr/priorites-et-actions/autonomie-strategique/soutenir-linnovation-dans-les-secteurs-strategiques-de-5",
+      "point_entree": "https://www.entreprises.gouv.fr/espace-entreprises/etre-accompagne/annuaire-poles-competitivite",
+      "fiche_donnees": "https://www.data.gouv.fr/datasets/poles-de-competitivite-30382874",
+      "mise_a_jour_annuaire_page_cadre": "2026-07-27",
+      "mise_a_jour_fiche_donnees": "2026-06-10",
+      "licence_fichier": "Licence Ouverte (version non précisée sur la fiche consultée)",
+      "licence_annuaire": "Droits de réutilisation du contenu HTML à qualifier séparément",
+      "formats_decrits": [
+        "HTML (annuaire avec filtres par région et domaine)",
+        "XLS (59,3 Ko indiqué sur data.gouv.fr)"
+      ],
+      "acces": "Consultation publique des pages et ressource XLS annoncée ; aucun service API de lecture confirmé.",
+      "controles_qualite": "La fiche data.gouv.fr signale une couverture temporelle non renseignée et certains fichiers indisponibles. La page DGE affiche 52 pôles, chiffre distinct des 55 annoncés en 2023 ; conserver date et provenance, vérifier le périmètre du millésime avant toute comparaison.",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "fichier_metier_telecharge": false,
+      "schema_verifie": false,
+      "empreinte_verifiee": false
+    }
+  ],
+  "interfaces_nouvelles_de_catalogues_existants": [
+    {
+      "id_catalogue_existant": "recherche_data_gouv",
+      "interface": "Serveur MCP du catalogue Recherche Data Gouv",
+      "documentation": "https://recherche.data.gouv.fr/en/page/recherche-data-gouv-catalogue",
+      "point_entree": "https://catalogue.recherche.data.gouv.fr/mcp",
+      "mise_a_jour_documentation": "2026-10-16",
+      "objet": "Recherche et interrogation conversationnelle des métadonnées des jeux de données scientifiques moissonnés ; extension d'accès d'un catalogue déjà enregistré, non nouveau corpus indépendant.",
+      "formats_et_protocole": "MCP documenté ; transport, outils, schémas, quotas et authentification non vérifiés par échange effectif.",
+      "droits": "La documentation du site indique Etalab 2.0 pour ses contenus sauf mention contraire ; les droits de chaque jeu scientifique sous-jacent restent propres à sa notice.",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "appel_mcp_reussi": false
+    }
+  ],
+  "deduplication": "Le catalogue Recherche Data Gouv figure déjà dans catalogues_officiels_v1.json et est traité ici uniquement comme interface nouvelle. Aucun doublon exact trouvé pour l'annuaire national DGE des pôles dans les deux registres de main ni les PR ouvertes consultées ; ne garantit pas l'absence de références dans des branches historiques.",
+  "limite_acces": "Les pages officielles ont été consultées par outil de recherche. Les accès HTTPS directs depuis le conteneur ont échoué par résolution DNS ; aucune récupération de fichier métier, requête MCP, pagination, schéma ou empreinte n'est validée. Ces échecs ne démontrent pas une indisponibilité des producteurs.",
+  "politique": "Découverte uniquement. Ne modifier ni registre opérationnel, ni collecte, ni manifeste, ni état de feuille de route. Fusion exclusivement documentaire après contrôles obligatoires réussis et absence de conflit."
+}
