@@ -108,3 +108,13 @@ Les fichiers d’analyse successifs restent conservés lorsque leur présence pe
 ## Citation
 
 Les métadonnées de citation du projet figurent dans [`CITATION.cff`](../CITATION.cff).
+
+## Coopérations scientifiques et recherche-action — enquête 2026
+
+| Document | Rôle |
+| --- | --- |
+| [Extension du protocole sur les coopérations](ENQUETE_COOPERATIONS_SCIENTIFIQUES_2026-10-29.md) | Variables, hypothèses réfutables et confidentialité des entretiens |
+| [Comparateurs Rennes, Lille, Brest, POPSU](COMPARATEURS_COOPERATIONS_RENNES_LILLE_BREST_POPSU_2026-10-29.md) | Questions empiriques et sources publiques de quatre familles de dispositifs |
+| [Voies juridiques et coûts](VOIES_COUTS_COOPERATIONS_SCIENTIFIQUES_2026-10-29.md) | Matrice documentaire et limites de coût, sans avis juridique individuel |
+| [Formation continue et intelligence artificielle à l'ENS](ENS_SACLAY_FORMATION_CONTINUE_ET_IA_PISTES_2026-10-29.md) | Pistes de recherche distinctes d'un partenariat établi |
+| [Registre public des comparateurs](../donnees/registre_comparateurs_cooperation_2026-10-29.json) | Entrées documentaires sourcées, sans témoignages privés ni besoins supposés |
