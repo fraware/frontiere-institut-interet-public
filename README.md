@@ -1,21 +1,17 @@
 <div align="center">
 
-# FRONTIÈRE
-
-### Institut pour l’intérêt public
+# Institut pour l’Intérêt Public
 
 **Recherche appliquée sur la mobilisation des capacités scientifiques et techniques pour l’action publique**
 
 [![Vérifications](https://github.com/fraware/frontiere-institut-interet-public/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/fraware/frontiere-institut-interet-public/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB)
-![État](https://img.shields.io/badge/état-recherche%20expérimentale-5A5A5A)
-![Sécurité](https://img.shields.io/badge/données%20restreintes-exclues-1F6FEB)
 
 </div>
 
 ---
 
-FRONTIÈRE étudie une question pratique : **comment une institution publique trouve-t-elle et mobilise-t-elle, au moment utile, la capacité scientifique ou technique nécessaire à une mission précise ?**
+L'IIP étudie **comment une institution publique trouve-t-elle et mobilise-t-elle, au moment utile, la capacité scientifique ou technique nécessaire à une mission précise ?**
 
 Le projet traite chaque situation comme un problème de capacité. La ressource pertinente peut être une personne, une équipe, un laboratoire, un organisme public, un prestataire, une donnée, un outil, une infrastructure ou une procédure. L’objectif consiste à identifier la cause réelle de la difficulté puis la plus petite intervention susceptible de la corriger.
 
@@ -24,23 +20,6 @@ Le projet traite chaque situation comme un problème de capacité. La ressource 
 La [feuille de route directrice](docs/FEUILLE_DE_ROUTE_DIRECTRICE.md) réunit **91 étapes identifiées**, réparties entre fiabilité documentaire, couverture des sources, reconstruction institutionnelle, besoins publics, anticipation, recherche des ressources, infrastructure durable et validation. Les états d'avancement ne valent que s'ils sont appuyés par des preuves vérifiables.
 
 Le [journal des revues](docs/SUIVI_FEUILLE_ROUTE.md) consigne les changements de décision et de statut chaque semaine, ainsi qu'après les contributions substantielles. Le [premier état transversal des archives, index et publication](docs/ETAT_INITIAL_CHAINE_DOCUMENTAIRE_2026-10-16.md) identifie les différences entre données archivées, moteurs locaux et version publiée sur Render.
-
-## Chaîne de travail
-
-```mermaid
-flowchart LR
-    A[Besoin réel] --> B[Capacité nécessaire]
-    B --> C{Capacité publique mobilisable ?}
-    C -->|Oui| D[Voie publique]
-    C -->|À compléter| E[Recherche extérieure]
-    D --> F[Mobilisation]
-    E --> F
-    F --> G[Première contribution utile]
-    G --> H[Résultat observé]
-    H --> I[Connaissance réutilisable]
-```
-
-Les décisions institutionnelles restent humaines. Le logiciel structure les faits, conserve les preuves, rend les changements traçables et permet des comparaisons reproductibles.
 
 ## État actuel
 
@@ -91,47 +70,6 @@ FRONTIÈRE suit cinq disciplines.
 3. **Séparer identification et mobilisation.** Une ressource trouvée devient pertinente seulement si ses conditions réelles de mobilisation sont connues.
 4. **Conserver les contre-exemples et les résultats négatifs.** Une solution existante qui fonctionne correctement constitue un résultat utile.
 5. **Versionner les décisions et les preuves.** Les définitions, règles et interprétations évoluent de manière explicite et traçable.
-
-## Architecture conceptuelle
-
-```mermaid
-flowchart TB
-    subgraph Observation
-        A[Cas]
-        B[Besoin]
-        C[Preuve]
-    end
-
-    subgraph Diagnostic
-        D[Capacité recherchée]
-        E[Recherche publique]
-        F[Recherche extérieure]
-        G[Obstacle]
-    end
-
-    subgraph Décision
-        H[Voie de mobilisation]
-        I[Décision humaine]
-    end
-
-    subgraph Résultat
-        J[Contribution utile]
-        K[Coût et délai]
-        L[Connaissance réutilisable]
-    end
-
-    A --> B --> D
-    C --> B
-    D --> E
-    D --> F
-    E --> G
-    F --> G
-    G --> H --> I --> J
-    J --> K
-    J --> L
-```
-
-→ [Architecture détaillée](docs/ARCHITECTURE.md)
 
 ## Repères du dépôt
 
@@ -239,10 +177,5 @@ Les métadonnées de citation sont disponibles dans [CITATION.cff](CITATION.cff)
 
 Aucune licence ouverte n’est actuellement déclarée dans ce dépôt. La publication du code source n’accorde pas, à elle seule, un droit général de réutilisation. Une licence explicite devra être choisie avant toute diffusion visant la réutilisation externe.
 
----
-
 <div align="center">
-
-**FRONTIÈRE — comprendre où se situe réellement le déficit de capacité avant de choisir l’intervention.**
-
 </div>
