@@ -8,7 +8,7 @@
 
 Étudier l'articulation entre besoin public d'expertise scientifique, recherche partenariale, accès institutionnel aux données, usage opérationnel des résultats, indépendance de la recherche et compétences conservées par l'organisme bénéficiaire.
 
-L'unité de recherche est une **collaboration institutionnelle documentée**. Elle ne doit pas être comptée comme un épisode actuel de déficit de capacité ou comme une preuve de pénurie tant que le besoin initial, les démarches alternatives et le contrefactuel ne sont pas établis.
+L'unité de recherche est une **collaboration institutionnelle documentée**. Elle ne doit pas être comptée comme un épisode actuel de déficit de capacité ou comme une preuve de pénurie tant que le besoin initial, les démarches alternatives et le scénario sans la collaboration ne sont pas établis.
 
 ## Éléments vérifiés sur sources publiques
 
