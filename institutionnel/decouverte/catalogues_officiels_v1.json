@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-29-consolidation",
+  "version": "2026-10-30-consolidation",
   "regle": "La présence dans cette liste indique une source officielle identifiée, pas une ingestion technique réalisée. Les droits, quotas et formats sont à vérifier avant duplication du contenu. Consolidation de propositions documentaires : ne présume aucune ingestion. Les propositions sources restent consultables dans les fichiers de provenance.",
   "catalogues": [
     {
@@ -309,6 +309,53 @@
       "acces": "Exports et API Explore du portail MESR annoncés; appel API et téléchargement HTTP direct non validés depuis le conteneur (échec DNS le 2026-10-29).",
       "objet": "effectifs_agreges_enseignants_chercheurs_disciplines_cnu_territoires",
       "remarque": "Effectifs agrégés par discipline/section CNU, catégorie et géographie. Le millésime le plus récent est 2023-2024 malgré la mise à jour technique de septembre 2026. Ne pas inférer des individus, des compétences immédiatement mobilisables ou des capacités par laboratoire. Certaines ressources de la fiche miroir sont indisponibles."
+    },
+    {
+      "id": "commission_europeenne_era_scoreboard_2025",
+      "nom": "ERA Scoreboard 2025 — indicateurs et paquet de réplication",
+      "producteur": "Commission européenne — DG Recherche et Innovation",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://european-research-area.ec.europa.eu/era-monitoring-reports",
+      "point_entree": "https://european-research-area.ec.europa.eu/node/61",
+      "objet": "indicateurs_comparatifs_recherche_innovation_politique_scientifique_financement_europeen",
+      "millesime": "2025",
+      "date_verification": "2026-10-30",
+      "couverture": "Union européenne et pays associés à Horizon Europe, agrégats européens et nationaux selon les indicateurs",
+      "indicateurs_annonces": 60,
+      "formats_documentes": [
+        "pages HTML",
+        "rapports PDF",
+        "paquet de données de réplication téléchargeable"
+      ],
+      "format_exact_paquet_replication": "a_verifier_par_telechargement",
+      "acces": "consultation publique sans authentification observée; accès direct au paquet de réplication non testé",
+      "licence": "CC BY 4.0 pour les contenus appartenant à l'UE, sauf mention contraire; droits des fichiers et données tiers à vérifier",
+      "licence_reference": "https://european-research-area.ec.europa.eu/legal-notice",
+      "frequence_mise_a_jour": "édition annuelle; dates de coupure par indicateur à relever dans les rapports méthodologiques",
+      "remarque": "Les 60 indicateurs sont annoncés par la Commission. Le millésime 2025 ne signifie pas que toutes les observations datent de 2025. Ne pas inférer une couverture exhaustive des politiques ou dépenses. Aucune ingestion ni téléchargement de paquet réalisés."
+    },
+    {
+      "id": "commission_europeenne_paysage_eric",
+      "nom": "ERIC Landscape — consortiums européens d'infrastructures de recherche",
+      "producteur": "Commission européenne — DG Recherche et Innovation",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://research-and-innovation.ec.europa.eu/strategy/strategy-research-and-innovation/our-digital-future/european-research-infrastructures/eric/eric-landscape_en",
+      "point_entree": "https://research-and-innovation.ec.europa.eu/strategy/strategy-research-and-innovation/our-digital-future/european-research-infrastructures/eric/eric-landscape_en",
+      "objet": "infrastructures_scientifiques_europeennes_consorcia_statut_juridique_domaines_services_liens_decisions",
+      "date_verification": "2026-10-30",
+      "couverture": "Consortiums européens d'infrastructures de recherche (ERIC) actifs présentés par la Commission",
+      "formats_documentes": [
+        "page HTML",
+        "liens vers décisions et statuts officiels"
+      ],
+      "acces": "consultation publique sans authentification observée",
+      "api_documentee": "non identifiée dans la fiche",
+      "licence": "Réutilisation des contenus de la Commission sous conditions de la politique UE, sauf exceptions; licence spécifique du répertoire non confirmée",
+      "licence_reference": "https://commission.europa.eu/legal-notice_en",
+      "frequence_mise_a_jour": "non annoncée sur la page consultée",
+      "remarque": "La page est un inventaire institutionnel de consortiums et non un inventaire des équipements, des accès disponibles ni de la capacité réelle des plateformes. Les décisions juridiques et liens externes demandent des contrôles distincts. Aucune ingestion ni extraction automatique réalisées."
     }
   ]
 }
