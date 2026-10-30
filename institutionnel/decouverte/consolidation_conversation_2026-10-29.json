@@ -3,7 +3,7 @@
   "objet": "Consolidation des découvertes documentaires de la conversation dans le dépôt de référence",
   "registre": "institutionnel/decouverte/catalogues_officiels_v1.json",
   "sources_catalogue_main_initial": 23,
-  "sources_catalogue_consolide": 28,
+  "sources_catalogue_consolide": 30,
   "ajouts": [
     {
       "id": "mesre_politiques_science_ouverte_etablissements",
@@ -24,6 +24,16 @@
     {
       "id": "mesr_effectifs_enseignants_titulaires_national",
       "pr": 648
+    },
+    {
+      "id": "commission_europeenne_era_scoreboard_2025",
+      "date": "2026-10-30",
+      "provenance": "institutionnel/decouverte/propositions_officielles_2026-10-30.json"
+    },
+    {
+      "id": "commission_europeenne_paysage_eric",
+      "date": "2026-10-30",
+      "provenance": "institutionnel/decouverte/propositions_officielles_2026-10-30.json"
     }
   ],
   "propositions_conservees": [
@@ -92,5 +102,6 @@
     "pr": 263,
     "etat": "deja_present_sur_main",
     "fichier": "institutionnel/decouverte/propositions_officielles_2026-10-12.json"
-  }
+  },
+  "mise_a_jour": "2026-10-30"
 }
