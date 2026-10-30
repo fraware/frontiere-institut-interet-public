@@ -1,0 +1,18 @@
+{
+  "id": "mesr_nomenclature_cnu",
+  "date_decouverte": "2026-10-14",
+  "statut": "decouverte_documentaire",
+  "ingestion_testee": false,
+  "nom": "Nomenclature des sections et sous-sections du CNU",
+  "producteur": "MESR/SIES",
+  "url": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-nomenclature-conseil-national-universites-cnu/",
+  "licence": "Licence Ouverte v2.0",
+  "formats": [
+    "CSV",
+    "JSON"
+  ],
+  "mise_a_jour_affichee": "2026-01-15",
+  "acces": "Export public et console API documentes, non testes par requete directe",
+  "objet": "Taxonomie disciplinaire des recrutements universitaires; distincte de ROME, ESCO et Referens III.",
+  "limite": "Aucun poste vacant ou recrutement individuel mesure."
+}
