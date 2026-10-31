@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-30-consolidation",
+  "version": "2026-10-31-consolidation",
   "regle": "La présence dans cette liste indique une source officielle identifiée, pas une ingestion technique réalisée. Les droits, quotas et formats sont à vérifier avant duplication du contenu. Consolidation de propositions documentaires : ne présume aucune ingestion. Les propositions sources restent consultables dans les fichiers de provenance.",
   "catalogues": [
     {
@@ -356,6 +356,96 @@
       "licence_reference": "https://commission.europa.eu/legal-notice_en",
       "frequence_mise_a_jour": "non annoncée sur la page consultée",
       "remarque": "La page est un inventaire institutionnel de consortiums et non un inventaire des équipements, des accès disponibles ni de la capacité réelle des plateformes. Les décisions juridiques et liens externes demandent des contrôles distincts. Aucune ingestion ni extraction automatique réalisées."
+    },
+    {
+      "id": "anct_croisement_dispositifs_territoriaux",
+      "nom": "ANCT — croisement communal des dispositifs de politique publique",
+      "producteur": "Agence nationale de la cohésion des territoires",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/croisement-des-dispositifs-de-politique-publique-de-lanct",
+      "metadata_url": "https://www.data.gouv.fr/api/1/datasets/croisement-des-dispositifs-de-politique-publique-de-lanct/",
+      "resource_url": "https://www.data.gouv.fr/api/1/datasets/r/d1a3025a-8546-44b1-a93d-bfa5853790cd",
+      "licence": "Licence Ouverte 2.0",
+      "derniere_mise_a_jour_affichee": "2026-04-13",
+      "millesime_geographique": "COG 2025",
+      "formats_documentes": [
+        "CSV UTF-8 (1,9 Mo environ)",
+        "PDF (dictionnaire de champs)"
+      ],
+      "frequence_declaree": "mensuelle; non respectée selon la fiche officielle",
+      "acces": "Téléchargement public sans authentification annoncé; API data.gouv.fr de métadonnées accessible via consultation web; aucun téléchargement du fichier métier réalisé.",
+      "objet": "couverture_communale_dispositifs_anct_territoires_industrie_france_services_crte_pvd_france2030",
+      "remarque": "Croisement de 16 dispositifs, notamment Territoires d'industrie, Petites villes de demain, France services, CRTE et sites clés en main France 2030. Une couverture communale n'établit ni financement individuel ni succès d'un dispositif. Couverture temporelle non renseignée; vérifier les codes COG et le millésime avant rapprochement. Empreinte SHA-1 affichée par l'API de métadonnées, non recalculée localement."
+    },
+    {
+      "id": "anct_deploiement_incubateur_territoires",
+      "nom": "ANCT — déploiement des services de l'Incubateur des territoires",
+      "producteur": "Agence nationale de la cohésion des territoires",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/deploiement-des-services-de-lincubateur-des-territoires",
+      "licence": "Licence Ouverte 2.0",
+      "derniere_mise_a_jour_fiche_observee": "2026-10-13",
+      "frequence_annoncee": "quotidienne pour les ressources; vérifier la fraîcheur effective de chaque fichier",
+      "formats_documentes": [
+        "CSV",
+        "CSV.GZ"
+      ],
+      "fichiers_annonces": [
+        "services-quotidien.csv",
+        "operateurs-quotidien.csv",
+        "adherents-quotidien.csv.gz",
+        "souscriptions-quotidien.csv.gz",
+        "deploiement-quotidien.csv.gz"
+      ],
+      "acces": "Cinq téléchargements publics référencés; URL et dates de modification des fichiers à extraire via API de métadonnées; aucun fichier métier téléchargé ni API dédiée validée.",
+      "objet": "adoption_services_numeriques_collectivites_operateurs_souscriptions_deploiement",
+      "remarque": "Les fichiers distinguent services, opérateurs de mutualisation, collectivités adhérentes, souscriptions et métriques de déploiement. Une souscription ne prouve pas l'usage réel. Documentation de fichiers manquante et couverture temporelle non renseignée dans la fiche officielle. La date de mise à jour de la fiche et la date des ressources diffèrent."
+    },
+    {
+      "id": "ign_geoplateforme_index_offres",
+      "nom": "IGN Géoplateforme — index des offres et API de découverte des ressources géographiques",
+      "producteur": "Institut national de l'information géographique et forestière (IGN)",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://cartes.gouv.fr/aide/fr/guides-developpeur/tutoriels/gestion-des-index-recherche/index-standard/",
+      "point_entree": "https://data.geopf.fr/recherche/api/indexes/geoplateforme",
+      "documentation_telechargement": "https://cartes.gouv.fr/aide/fr/guides-utilisateur/utiliser-les-services-de-la-geoplateforme/telechargement/",
+      "point_entree_telechargement": "https://data.geopf.fr/telechargement/capabilities",
+      "date_documentation_index": "2026-06-30",
+      "date_documentation_telechargement": "2026-08-31",
+      "actualite_integration_data_gouv": "2026-10-28",
+      "actualite_reference": "https://www.data.gouv.fr/posts/de-data-gouv-fr-a-cartes-gouv-fr",
+      "formats_documentes": [
+        "JSON (index POST)",
+        "Atom RFC 4287 (API téléchargement)",
+        "WFS",
+        "WMS",
+        "WMTS",
+        "fichiers selon l'offre"
+      ],
+      "acces": "Index documenté par POST et suggestions GET; API de téléchargement documentée avec pagination 1 à 50 et plafond de 10 requêtes/s par IP. Accès des offres et droits à contrôler individuellement. Aucun appel API de production validé.",
+      "licence": "Variable selon l'offre; métadonnée licence facultative et renseignée par producteur, aucune licence globale inférée",
+      "objet": "decouverte_couches_geographiques_territoires_infrastructures_identifiants_offres",
+      "remarque": "Il s'agit d'une interface de découverte et de diffusion, non d'un nouveau corpus indépendant. Les résultats reflètent les offres publiées, et non toutes les données géographiques existantes. Le lien data.gouv.fr vers cartes.gouv.fr a été annoncé le 28 octobre 2026."
+    },
+    {
+      "id": "recherche_data_gouv_ateliers_competences",
+      "nom": "Recherche Data Gouv — annuaire des ateliers de la donnée et centres de compétences",
+      "producteur": "Recherche Data Gouv",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://recherche.data.gouv.fr/fr/ateliers-de-la-donnee",
+      "objet": "reseau_competences_gestion_donnees_recherche_etablissements_partenaires_services_territoriaux",
+      "formats_documentes": [
+        "HTML (annuaire public et descriptions)"
+      ],
+      "acces": "Page institutionnelle publique; aucune API structurée ni export normalisé identifié lors de cette veille.",
+      "nombre_ateliers_labellises_affiches": 24,
+      "licence": "Licence de réutilisation de l'annuaire non confirmée; vérifier avant extraction et redistribution",
+      "frequence_mise_a_jour": "Non renseignée; le réseau est présenté comme évolutif",
+      "remarque": "La page décrit les établissements porteurs et partenaires, les services de gestion de données, FAIR, stockage, calcul, formation et contacts professionnels. Ne pas inférer une capacité disponible ni un droit de republier les coordonnées. Source complémentaire du catalogue de jeux de données Recherche Data Gouv déjà répertorié; ne pas créer de doublon de ce catalogue."
     }
   ]
 }
