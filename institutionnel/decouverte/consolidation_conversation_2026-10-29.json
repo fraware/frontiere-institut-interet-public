@@ -3,7 +3,7 @@
   "objet": "Consolidation des découvertes documentaires de la conversation dans le dépôt de référence",
   "registre": "institutionnel/decouverte/catalogues_officiels_v1.json",
   "sources_catalogue_main_initial": 23,
-  "sources_catalogue_consolide": 30,
+  "sources_catalogue_consolide": 34,
   "ajouts": [
     {
       "id": "mesre_politiques_science_ouverte_etablissements",
@@ -34,6 +34,26 @@
       "id": "commission_europeenne_paysage_eric",
       "date": "2026-10-30",
       "provenance": "institutionnel/decouverte/propositions_officielles_2026-10-30.json"
+    },
+    {
+      "id": "anct_croisement_dispositifs_territoriaux",
+      "date": "2026-10-31",
+      "provenance": "institutionnel/decouverte/propositions_officielles_2026-10-31.json"
+    },
+    {
+      "id": "anct_deploiement_incubateur_territoires",
+      "date": "2026-10-31",
+      "provenance": "institutionnel/decouverte/propositions_officielles_2026-10-31.json"
+    },
+    {
+      "id": "ign_geoplateforme_index_offres",
+      "date": "2026-10-31",
+      "provenance": "institutionnel/decouverte/propositions_officielles_2026-10-31.json"
+    },
+    {
+      "id": "recherche_data_gouv_ateliers_competences",
+      "date": "2026-10-31",
+      "provenance": "institutionnel/decouverte/propositions_officielles_2026-10-31.json"
     }
   ],
   "propositions_conservees": [
@@ -79,7 +99,8 @@
     "Les anciennes découvertes des journées sans fichier GitHub confirmé demandent une récupération distincte.",
     "Les métadonnées historiques reflètent leur date d'observation; leur fraîcheur n'a pas été revalidée ici.",
     "Les autres propositions de la conversation non incluses dans cette première consolidation doivent être réconciliées avant revendication de complétude.",
-    "Les journées du 10 au 22 octobre ne sont pas toutes représentées par des dossiers complets dans cette consolidation."
+    "Les journées du 10 au 22 octobre ne sont pas toutes représentées par des dossiers complets dans cette consolidation.",
+    "Les ressources du 31 octobre sont documentées uniquement; la consultation des fiches ne constitue pas un test d'ingestion."
   ],
   "dossiers_historiques_recuperes": [
     {
@@ -103,5 +124,5 @@
     "etat": "deja_present_sur_main",
     "fichier": "institutionnel/decouverte/propositions_officielles_2026-10-12.json"
   },
-  "mise_a_jour": "2026-10-30"
+  "mise_a_jour": "2026-10-31"
 }
