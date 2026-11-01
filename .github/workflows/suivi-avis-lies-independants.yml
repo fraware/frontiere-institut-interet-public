@@ -130,7 +130,7 @@ jobs:
           PY
 
       - name: Conserver les trois réponses BOAMP avec leurs empreintes
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: frontiere-avis-lies-17-${{ github.run_id }}
           path: ${{ runner.temp }}/frontiere-liens/avis-lies/

@@ -103,7 +103,7 @@ jobs:
           PY
 
       - name: Conserver les chaînes et leurs références d'archives
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: chaines-documentaires-acheteurs-17-${{ github.run_id }}
           path: ${{ runner.temp }}/chaines/chaines-documentaires-17.json

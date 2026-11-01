@@ -67,7 +67,7 @@ jobs:
           )
 
       - name: Conserver une base SQLite portable avec empreintes
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: index-integral-recrutements-csp-${{ github.run_id }}
           path: |

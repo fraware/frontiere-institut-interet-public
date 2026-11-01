@@ -69,7 +69,7 @@ jobs:
           )
 
       - name: Mettre à disposition la base portable temporaire
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: index-commande-integral-${{ github.run_id }}
           path: |

@@ -77,7 +77,7 @@ jobs:
           PY
 
       - name: Conserver temporairement le paquet et ses preuves
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: archives-boamp-portables-${{ github.run_id }}
           path: |

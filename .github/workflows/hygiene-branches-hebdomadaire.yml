@@ -62,7 +62,7 @@ jobs:
             --appliquer --rapport "$RUNNER_TEMP/hygiene-hebdomadaire.json"
       - name: Conserver le registre détaillé des décisions
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: hygiene-branches-hebdomadaire
           path: ${{ runner.temp }}/hygiene-hebdomadaire.json

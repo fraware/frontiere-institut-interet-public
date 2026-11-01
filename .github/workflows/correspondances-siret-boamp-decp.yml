@@ -86,7 +86,7 @@ jobs:
           PY
 
       - name: Archiver le registre et sa provenance
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: correspondances-siret-boamp-decp-${{ github.run_id }}
           path: ${{ runner.temp }}/correspondances/correspondances-siret-17.json

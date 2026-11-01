@@ -64,7 +64,7 @@ jobs:
           )
 
       - name: Conserver temporairement les pièces sans intégration automatique
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: relecture-besoins-csp-${{ github.run_id }}
           path: |

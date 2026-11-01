@@ -28,7 +28,7 @@ jobs:
         run: |
           python scripts/auditer_types_champs_boamp.py | tee "$RUNNER_TEMP/schema-boamp.json"
       - name: Publier les résultats de diagnostic
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: diagnostic-champs-boamp
           path: ${{ runner.temp }}/schema-boamp.json
