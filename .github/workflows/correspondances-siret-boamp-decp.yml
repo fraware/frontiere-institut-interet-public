@@ -111,7 +111,7 @@ jobs:
           persist-credentials: false
 
       - name: Récupérer le rapport produit par la vérification
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: correspondances-siret-boamp-decp-${{ github.run_id }}
           path: ${{ runner.temp }}/publication
