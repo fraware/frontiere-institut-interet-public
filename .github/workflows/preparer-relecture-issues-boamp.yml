@@ -106,7 +106,7 @@ jobs:
           done
 
       - name: Paquet du premier lecteur — aucune correspondance privée
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: double-relecture-boamp-lecteur-1-${{ github.run_id }}
           path: ${{ runner.temp }}/double-relecture-60/relecteur_1/
@@ -114,7 +114,7 @@ jobs:
           if-no-files-found: error
 
       - name: Paquet du second lecteur — aucune correspondance privée
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: double-relecture-boamp-lecteur-2-${{ github.run_id }}
           path: ${{ runner.temp }}/double-relecture-60/relecteur_2/

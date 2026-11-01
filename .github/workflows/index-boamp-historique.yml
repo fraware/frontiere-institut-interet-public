@@ -323,7 +323,7 @@ jobs:
           python -m pytest -q tests/test_analyser_complements_categories_boamp.py
 
       - name: Publier l'index vérifié en artefact téléchargeable
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: index-public-boamp-${{ github.run_id }}
           path: |

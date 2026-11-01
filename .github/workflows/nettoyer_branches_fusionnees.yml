@@ -70,7 +70,7 @@ jobs:
             --appliquer --rapport "$RUNNER_TEMP/rapport-nettoyage-branche.json"
       - name: Conserver les décisions et exclusions exactes
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: rapport-nettoyage-branches
           path: ${{ runner.temp }}/rapport-nettoyage-branche.json

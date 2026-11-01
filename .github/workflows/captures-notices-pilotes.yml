@@ -167,7 +167,7 @@ jobs:
             --sortie "$RUNNER_TEMP/rapprochement-decp-boamp.json"
 
       - name: Conserver les réponses exactes et leurs empreintes
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: notices-primaires-pilotes-${{ github.run_id }}
           path: |

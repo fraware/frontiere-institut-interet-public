@@ -131,7 +131,7 @@ jobs:
           PY
 
       - name: Conserver l'inventaire avec ses chemins officiels
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: frontiere-references-pieces-20-${{ github.run_id }}
           path: ${{ runner.temp }}/frontiere-pieces/rapport-pieces-20.json
