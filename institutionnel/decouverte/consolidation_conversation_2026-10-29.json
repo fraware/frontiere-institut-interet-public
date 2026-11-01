@@ -3,7 +3,7 @@
   "objet": "Consolidation des découvertes documentaires de la conversation dans le dépôt de référence",
   "registre": "institutionnel/decouverte/catalogues_officiels_v1.json",
   "sources_catalogue_main_initial": 23,
-  "sources_catalogue_consolide": 34,
+  "sources_catalogue_consolide": 36,
   "ajouts": [
     {
       "id": "mesre_politiques_science_ouverte_etablissements",
@@ -54,6 +54,14 @@
       "id": "recherche_data_gouv_ateliers_competences",
       "date": "2026-10-31",
       "provenance": "institutionnel/decouverte/propositions_officielles_2026-10-31.json"
+    },
+    {
+      "id": "datagouv_catalogue_schemas_donnees",
+      "pr": "649 (mise à jour 2026-11-01)"
+    },
+    {
+      "id": "daj_referentiel_schemas_decp",
+      "pr": "649 (mise à jour 2026-11-01)"
     }
   ],
   "propositions_conservees": [
@@ -124,5 +132,13 @@
     "etat": "deja_present_sur_main",
     "fichier": "institutionnel/decouverte/propositions_officielles_2026-10-12.json"
   },
-  "mise_a_jour": "2026-10-31"
+  "mise_a_jour": "2026-10-31",
+  "nouvelle_observation_2026_11_01": {
+    "fichier": "institutionnel/decouverte/propositions_officielles_2026-11-01.json",
+    "sources": [
+      "datagouv_catalogue_schemas_donnees",
+      "daj_referentiel_schemas_decp"
+    ],
+    "ingestion_testee": false
+  }
 }
