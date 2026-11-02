@@ -1,0 +1,149 @@
+{
+  "version": "1.0",
+  "date_observation": "2026-11-02",
+  "objet": "Cartographie de sources officielles pour étudier la mobilisation des compétences scientifiques dans le PEPR Quantique",
+  "perimetre": "Informations publiques uniquement. Ne contient ni compte rendu confidentiel, ni transcription, ni résultat d'entretien individuel.",
+  "regles_interpretation": [
+    "Une offre d'emploi ne démontre pas une pénurie.",
+    "La mention d'un bénéficiaire de chaire ne démontre pas l'effet causal du soutien sur sa carrière.",
+    "La rémunération annoncée ne démontre pas un écart salarial avec le privé sans comparateur équivalent.",
+    "Les situations de recrutement scientifique et les missions opérationnelles auprès d'administrations sont des unités d'analyse distinctes."
+  ],
+  "dispositifs": [
+    {
+      "id": "pepr_quantique_nouvelle_generation_2026",
+      "intitule": "AMI Nouvelle Génération",
+      "statut_au_2026_11_02": "cloture",
+      "date_cloture": "2026-10-09",
+      "budget_max_eur_par_projet": 500000,
+      "date_debut_prevue": "2027-T1",
+      "date_fin_obligatoire": "2029-12-31",
+      "public_vise": "scientifiques récemment recrutés sur poste permanent dans la recherche publique",
+      "question_ouverte": "lauréats, attributions effectives, recrutements subséquents, critères et résultats à observer",
+      "sources": [
+        "https://www.pepr-quantique.fr/appels/",
+        "https://www.pepr-quantique.fr/2026/06/15/ouverture-de-lami-nouvelle-generation/"
+      ]
+    },
+    {
+      "id": "pepr_quantique_early_stage_researchers",
+      "intitule": "Chaires Early-Stage Researchers (anciennement chaires super postdocs)",
+      "statut_au_2026_11_02": "dispositif existant",
+      "selection": "au fil de l'eau par la direction du programme, sur proposition d'une coordination de projet",
+      "appuis_prevus": [
+        "postdoctorat long environné",
+        "soutien à une équipe naissante",
+        "personnel non permanent",
+        "équipement et coûts de fonctionnement"
+      ],
+      "projets_mentionnes": [
+        "EPiQ",
+        "NISQ2LSQ",
+        "PQ-TLS",
+        "Presquile",
+        "RobustSuperQ"
+      ],
+      "question_ouverte": "déterminer les allocations précises, les parcours des lauréats et les résultats",
+      "sources": [
+        "https://www.pepr-quantique.fr/chaires-early-stage-researchers/",
+        "https://www.pepr-quantique.fr/projet/robustsuperq/"
+      ]
+    },
+    {
+      "id": "raise_quantum_talents",
+      "intitule": "Raise Quantum Talents",
+      "statut_au_2026_11_02": "programme publié",
+      "duree_soutien_annees": 5,
+      "public_vise": "chercheurs travaillant à l'étranger, de deux à sept ans d'expérience depuis la thèse, résidant à l'étranger depuis au moins deux ans",
+      "operateurs": [
+        "CNRS",
+        "CEA",
+        "Inria"
+      ],
+      "accompagnement": "Campus France",
+      "question_ouverte": "cohortes effectives, installations réalisées, refus et causes, suivi longitudinal",
+      "sources": [
+        "https://quantique.france2030.gouv.fr/talents/raise-quantum-talents/"
+      ]
+    }
+  ],
+  "signaux_publics": [
+    {
+      "id": "robustsuperq_chaires",
+      "nature": "mecanisme",
+      "constat": "Le projet décrit trois chaires environnées de jeunes scientifiques pouvant recruter doctorants et postdoctorants.",
+      "responsables_publics": [
+        "Nicolas Roch (CNRS)",
+        "Denis Vion (CEA)",
+        "Erika Borsje-Hekking (gestion de projet)"
+      ],
+      "source": "https://www.pepr-quantique.fr/projet/robustsuperq/",
+      "limite": "nombre de chaires prévues; ne présume pas les résultats obtenus"
+    },
+    {
+      "id": "obts_2026_chaires",
+      "nature": "beneficiaires_publics",
+      "constat": "Neuf titulaires de chaires ont présenté leurs travaux lors de l'événement du 9 au 11 septembre 2026.",
+      "noms": [
+        "Simon Zihlmann",
+        "Ambroise Peugeot",
+        "Yixin Shen",
+        "James O'Sullivan",
+        "Quentin Ficheux",
+        "Rémi Robin",
+        "Michael Vasmer",
+        "Loïc Masure",
+        "Stefano Di Matteo"
+      ],
+      "source": "https://www.pepr-quantique.fr/en/2026/09/22/a-look-back-at-on-board-to-synergy-2026/",
+      "limite": "présence et présentation publiées; aucun résultat causal de carrière n'est inféré"
+    },
+    {
+      "id": "poste_qutisym_nice_2026",
+      "nature": "offre_recrutement",
+      "constat": "Postdoctorat en systèmes quantiques désordonnés à l'Institut de physique de Nice, durée 24 mois, salaire annoncé de 3 072 à 4 714,89 euros mensuels selon expérience.",
+      "reference": "UMR7010-GABLEM-001",
+      "date_limite": "2026-10-23",
+      "source": "https://emploi.cnrs.fr/Offres/CDD/UMR7010-GABLEM-001/Default.aspx?lang=FR",
+      "limite": "aucune information sur les candidatures, l'embauche effective ou les offres concurrentes"
+    },
+    {
+      "id": "offres_pepr",
+      "nature": "catalogue_offres",
+      "constat": "La page officielle rassemble des offres de postdoctorat, ingénierie et mobilité interne, datées.",
+      "source": "https://www.pepr-quantique.fr/recrutement/",
+      "limite": "catalogue d'offres non assimilable à un registre de pénuries"
+    }
+  ],
+  "contacts_publics": [
+    {
+      "role": "direction PEPR",
+      "canal": "direction@pepr-quantique.fr",
+      "responsables": [
+        "Sébastien Tanzilli",
+        "Olivier Serre",
+        "Luce Chiodelli",
+        "Salvatore Cinà",
+        "Harold Ollivier"
+      ],
+      "source": "https://www.pepr-quantique.fr/la-gouvernance/"
+    }
+  ],
+  "comparateurs": [
+    {
+      "nature": "grilles indicatives CNRS",
+      "source": "https://carrieres.cnrs.fr/remuneration-des-fonctionnaires/"
+    },
+    {
+      "nature": "rapport social unique CNRS",
+      "source": "https://carrieres.cnrs.fr/rapport-social-unique/"
+    }
+  ],
+  "prochaines_verifications": [
+    "identifier les lauréats et dates de recrutement des chaires",
+    "obtenir un recrutement difficile et un recrutement réussi avec leurs chronologies",
+    "établir la durée entre besoin, publication, sélection et contribution utile",
+    "identifier des dispositifs d'expertise ponctuelle et des cas de sollicitation non satisfaite",
+    "comparer des rémunérations totales réellement comparables, avec consentement et confidentialité"
+  ]
+}
