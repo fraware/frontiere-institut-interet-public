@@ -3,7 +3,7 @@
   "objet": "Consolidation des découvertes documentaires de la conversation dans le dépôt de référence",
   "registre": "institutionnel/decouverte/catalogues_officiels_v1.json",
   "sources_catalogue_main_initial": 23,
-  "sources_catalogue_consolide": 36,
+  "sources_catalogue_consolide": 39,
   "ajouts": [
     {
       "id": "mesre_politiques_science_ouverte_etablissements",
@@ -62,6 +62,21 @@
     {
       "id": "daj_referentiel_schemas_decp",
       "pr": "649 (mise à jour 2026-11-01)"
+    },
+    {
+      "id": "mesre_referens_iii_metiers_it_rf",
+      "date": "2026-11-02",
+      "provenance": "institutionnel/decouverte/propositions_officielles_2026-11-02.json"
+    },
+    {
+      "id": "mesre_referens_iii_dictionnaire_competences",
+      "date": "2026-11-02",
+      "provenance": "institutionnel/decouverte/propositions_officielles_2026-11-02.json"
+    },
+    {
+      "id": "idf_partenaires_campus_metiers_qualifications",
+      "date": "2026-11-02",
+      "provenance": "institutionnel/decouverte/propositions_officielles_2026-11-02.json"
     }
   ],
   "propositions_conservees": [
@@ -132,12 +147,21 @@
     "etat": "deja_present_sur_main",
     "fichier": "institutionnel/decouverte/propositions_officielles_2026-10-12.json"
   },
-  "mise_a_jour": "2026-10-31",
+  "mise_a_jour": "2026-11-02",
   "nouvelle_observation_2026_11_01": {
     "fichier": "institutionnel/decouverte/propositions_officielles_2026-11-01.json",
     "sources": [
       "datagouv_catalogue_schemas_donnees",
       "daj_referentiel_schemas_decp"
+    ],
+    "ingestion_testee": false
+  },
+  "nouvelle_observation_2026_11_02": {
+    "fichier": "institutionnel/decouverte/propositions_officielles_2026-11-02.json",
+    "sources": [
+      "mesre_referens_iii_metiers_it_rf",
+      "mesre_referens_iii_dictionnaire_competences",
+      "idf_partenaires_campus_metiers_qualifications"
     ],
     "ingestion_testee": false
   }
