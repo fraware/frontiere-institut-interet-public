@@ -13,6 +13,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [Hygiène du dépôt](HYGIENE_DEPOT_2026-10-17.md) | Audit des branches et protections contre les suppressions abusives |
 | [État initial de la chaîne documentaire](ETAT_INITIAL_CHAINE_DOCUMENTAIRE_2026-10-16.md) | Premier contrôle transverse BOAMP, CSP, DECP, index et Render |
 | [Protocole de recherche](PROTOCOLE_V1.1.md) | Question de recherche, définition d’un cas et règles d’interprétation |
+| [Intégration institutionnelle des compétences](INTEGRATION_INSTITUTIONNELLE_COMPETENCES_V0_1.md) | Module exploratoire sur le mandat, l'accès aux décisions et la pérennisation ; aucune nouvelle observation revendiquée |
 | [Architecture du système](ARCHITECTURE.md) | Architecture conceptuelle, objets et frontières de responsabilité |
 | [État du projet](ETAT_DU_PROJET.md) | État empirique actuel, acquis, inconnues et prochain seuil |
 
