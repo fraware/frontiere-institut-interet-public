@@ -107,3 +107,31 @@ Les messages préparés doivent solliciter une information observable ou une ori
 ## 9. Source structurée
 
 Voir [la base de sources PEPR Quantique](../institutionnel/programmes_scientifiques/pepr_quantique_competences_sources_2026_11_02_v1.json).
+
+## 10. Informations complémentaires vérifiées le 2 novembre
+
+La [rétrospective 2025](https://www.pepr-quantique.fr/2026/01/21/retrospective-2025-du-pepr-quantique/) mentionne, depuis le lancement du PEPR en 2022, **14 chaires super postdocs, 74 doctorantes ou doctorants et 49 postdoctorantes ou postdoctorants financés**. Ces quantités sont des volumes de financement annoncés par le programme ; elles ne mesurent ni le nombre total de candidatures, ni les recrutements non pourvus, ni les résultats attribuables aux chaires.
+
+Le [répertoire officiel de RobustSuperQ](https://www.robustsuperq.fr/team-3) associe trois chaires à des lots de travail : **Ambroise Peugeot (WP1, ENS Lyon), James O'Sullivan (WP2, CEA IRAMIS), Quentin Ficheux (WP3, CNRS Institut Néel)**. Il publie l'adresse institutionnelle **info@robustsuperq.fr**, adaptée à une demande de données adressée à la coordination. Les rôles des responsables de lots et la présence d'autres membres dans les équipes ne permettent pas d'inférer le lien d'emploi, la date du recrutement ou le devenir des titulaires.
+
+### Échantillonnage initial et démarche
+
+- Étudier les trois chaires de RobustSuperQ comme **sous-ensemble documenté d'un même projet**, pour limiter les différences de contexte institutionnel. Interroger la coordination sur la sélection, les moyens attribués, les personnels recrutés, la chronologie et l'évolution des titulaires.
+- Étudier séparément **au moins un recrutement de postdoctorant qui a été pourvu et un qui a rencontré une difficulté vérifiée** ; le résultat de la procédure constitue un préalable à l'inclusion. Les offres diffusées seules ne suffisent pas.
+- Préserver une comparaison externe raisonnable sur la spécialité, l'ancienneté, l'employeur, la période et la rémunération totale. Les cas ne forment pas un échantillon représentatif du marché français.
+- Confronter les résultats aux mécanismes d'expertise ponctuelle décrits dans le protocole général, sans assimiler ces missions aux contrats scientifiques des laboratoires.
+
+### Mesures et sources de données recommandées
+
+| Mesure | Source privilégiée | Limite d'inférence |
+| --- | --- | --- |
+| Date d'identification du besoin | Décision de projet ou note RH datée | Souvenir rétrospectif à distinguer de la pièce |
+| Date d'ouverture de la procédure | Publication ou dossier de recrutement | Peut différer de la recherche informelle |
+| Date d'offre acceptée et de prise de fonctions | Données RH anonymisées | Préserver les informations individuelles protégées |
+| Début de contribution scientifique | Responsable opérationnel et preuve d'activité | Convention locale de mesure à établir |
+| Motif d'un refus / absence de candidat | Compte rendu RH ou déclaration contextualisée | Témoignage non vérifié à coder comme tel |
+| Situation après une chaire | Informations de carrière publiques ou consenties | Corrélation temporelle ≠ effet causal |
+
+### État de progression vérifié
+
+**Sources et cas candidats identifiés : oui.** **Données individuelles de recrutements et entretiens opérationnels : non obtenus.** **Estimations causales : aucune.** **Courriels : rédigés, non envoyés.**
