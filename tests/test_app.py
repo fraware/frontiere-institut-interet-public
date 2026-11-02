@@ -1,5 +1,5 @@
 import json
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 
 from fastapi.testclient import TestClient
 from sqlalchemy import delete, select
@@ -7,6 +7,11 @@ from sqlalchemy import delete, select
 from app.database import Base, SessionLocal, engine
 from app.main import app
 from app.models import AuditEvent, BenchmarkCase, BenchmarkPrediction, CapabilityQuery, Episode, EpisodeResult, KnowledgeItem, NeedVersion, Organization, ReuseEvent, RouteAssessment, SearchRun
+
+
+def _future_observation_date() -> str:
+    """Return a valid future observation date independent of test execution day."""
+    return (date.today() + timedelta(days=7)).isoformat()
 
 
 def reset_db():
@@ -729,7 +734,7 @@ def test_paired_plan_unlocks_search_and_preserves_preregistration():
                 "usual_owner": "Analyste A",
                 "frontiere_owner": "Analyste B",
                 "primary_outcome": "temps jusqu'à une ressource mobilisable",
-                "observation_date": "2026-10-20",
+                "observation_date": _future_observation_date(),
                 "interference_policy": "Les deux recherches restent séparées jusqu'au point de mesure.",
                 "usual_budget_minutes": "90",
                 "frontiere_budget_minutes": "90",
@@ -812,7 +817,7 @@ def test_prospective_actions_cannot_bypass_paired_comparison():
             "usual_owner": "Analyste A",
             "frontiere_owner": "Analyste B",
             "primary_outcome": "temps jusqu'à une capacité mobilisable",
-            "observation_date": "2026-10-20",
+            "observation_date": _future_observation_date(),
             "interference_policy": "Aucun échange avant la mesure.",
         }, follow_redirects=False)
         assert plan.status_code == 303
@@ -840,7 +845,7 @@ def test_paired_comparison_refuses_legacy_intervention():
             "usual_owner": "Analyste A",
             "frontiere_owner": "Analyste B",
             "primary_outcome": "délai",
-            "observation_date": "2026-10-20",
+            "observation_date": _future_observation_date(),
             "interference_policy": "aucun échange",
         }, follow_redirects=False)
         assert blocked.status_code == 409
