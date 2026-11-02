@@ -4,27 +4,27 @@ Date de référence : 2 novembre 2026. **Périmètre public uniquement.** Ce reg
 
 | ID | Travail | Priorité | État au 02-11-2026 | Preuve de clôture |
 | --- | --- | --- | --- | --- |
-| RH-01 | Identifier un interlocuteur de suivi des politiques RH numériques | P0 | À solliciter, hors dépôt public | Réponse et accord de rendez-vous |
-| RH-02 | Extraire les indicateurs des bilans DINUM 2023–2025 | P0 | Sources localisées, extraction à réaliser | Tableau comparatif avec pages, définitions, périodes |
-| RH-03 | Cartographier les responsabilités de la transition vers ARIANE | P0 | Réforme annoncée, transfert détaillé non vérifié | Organigramme/décision daté(e) et responsables |
-| RH-04 | Analyser les résultats de PINUM | P0 | 37 mobilités/18 mois publiées ; dénominateurs inconnus | Flux complet, délais, coûts, causes d'échec |
-| RH-05 | Vérifier l'extension de PINUM aux cadres A | P1 | Non établi publiquement | Décision, périmètre, moyens, bilan |
-| RH-06 | Établir les interactions PINUM–DIESE | P1 | Collaboration de lancement mentionnée | Responsabilités et protocoles actualisés |
-| RH-07 | Mesurer l'effet du référentiel salarial 2024 | P0 | Circulaire identifiée, effets inconnus | Séries comparables de recrutement et fidélisation |
-| RH-08 | Reconstituer deux recrutements interrompus | P0 | Aucun cas admissible encore enregistré ici | Deux chronologies avec pièces et issues |
-| RH-09 | Reconstituer un cas de recrutement de profils spécialisés et leur maintien | P0 | Service et épisodes à identifier et vérifier | Cas daté et anonymisé, parcours complet |
-| RH-10 | Étudier l'échéance triennale et le renouvellement des contrats | P1 | Hypothèse à tester, cadre de droit à préciser | Causes des départs, chronologie, contrefactuel |
-| RH-11 | Examiner des synthèses anonymisées d'entretiens de départ | P1 | Disponibilité inconnue | Agrégats anonymes et méthode de collecte |
-| RH-12 | Comparer recrutement technique seul et recrutement associant RH | P1 | Hypothèse à tester | Cas comparables, critères de décision et limites |
-| RH-13 | Étudier l'adéquation entre poste annoncé et conditions de travail | P1 | Hypothèse à tester | Cas datés, indicateurs d'accueil et de départ |
-| RH-14 | Reconstituer une procédure de recrutement EIG | P0 | Cadre public identifié, durée réelle inconnue | Dates et procédures d'un cas anonymisé |
-| RH-15 | Comparer les voies de missions de 3–6 mois | P0 | Contrat de projet inadapté à cette durée; autres voies identifiées | Matrice juridique validée sur cas réels |
-| RH-16 | Examiner les simplifications possibles des pièces RH | P2 | Guide CNIL trouvé, gains inconnus | Procédures conformes, durées observées |
-| RH-17 | Suivre les obligations de transparence salariale applicables | P2 | Suivi réglementaire à actualiser | Texte en vigueur, calendrier et effets |
-| RH-18 | Comparer les canaux d'attractivité et de recrutement | P2 | Évaluation inconnue | Source des candidatures, taux de conversion |
-| RH-19 | Tester l'extension aux juristes, acheteurs et scientifiques | P1 | Comparaison non réalisée | Cas multi-métiers appariés |
-| RH-20 | Contrôler l'état des centres de compétences recommandés par IGF–CGE | P1 | Recommandation initiale identifiée | Inventaire des structures et de leur activité |
-| RH-21 | Étudier la continuité des capacités pendant la réorganisation | P1 | Transition annoncée, effets inconnus | Documentation des transferts, pertes et continuités |
+| RH-01 | Identifier un interlocuteur de suivi des politiques RH numériques | immédiate | À solliciter, hors dépôt public | Réponse et accord de rendez-vous |
+| RH-02 | Extraire les indicateurs des bilans DINUM 2023–2025 | immédiate | Sources localisées, extraction à réaliser | Tableau comparatif avec pages, définitions, périodes |
+| RH-03 | Cartographier les responsabilités de la transition vers ARIANE | immédiate | Réforme annoncée, transfert détaillé non vérifié | Organigramme/décision daté(e) et responsables |
+| RH-04 | Analyser les résultats de PINUM | immédiate | 37 mobilités/18 mois publiées ; dénominateurs inconnus | Flux complet, délais, coûts, causes d'échec |
+| RH-05 | Vérifier l'extension de PINUM aux cadres A | élevée | Non établi publiquement | Décision, périmètre, moyens, bilan |
+| RH-06 | Établir les interactions PINUM–DIESE | élevée | Collaboration de lancement mentionnée | Responsabilités et protocoles actualisés |
+| RH-07 | Mesurer l'effet du référentiel salarial 2024 | immédiate | Circulaire identifiée, effets inconnus | Séries comparables de recrutement et fidélisation |
+| RH-08 | Reconstituer deux recrutements interrompus | immédiate | Aucun cas admissible encore enregistré ici | Deux chronologies avec pièces et issues |
+| RH-09 | Reconstituer un cas de recrutement de profils spécialisés et leur maintien | immédiate | Service et épisodes à identifier et vérifier | Cas daté et anonymisé, parcours complet |
+| RH-10 | Étudier l'échéance triennale et le renouvellement des contrats | élevée | Hypothèse à tester, cadre de droit à préciser | Causes des départs, chronologie, solution qui aurait été retenue en l’absence de l’intervention |
+| RH-11 | Examiner des synthèses anonymisées d'entretiens de départ | élevée | Disponibilité inconnue | Agrégats anonymes et méthode de collecte |
+| RH-12 | Comparer recrutement technique seul et recrutement associant RH | élevée | Hypothèse à tester | Cas comparables, critères de décision et limites |
+| RH-13 | Étudier l'adéquation entre poste annoncé et conditions de travail | élevée | Hypothèse à tester | Cas datés, indicateurs d'accueil et de départ |
+| RH-14 | Reconstituer une procédure de recrutement EIG | immédiate | Cadre public identifié, durée réelle inconnue | Dates et procédures d'un cas anonymisé |
+| RH-15 | Comparer les voies de missions de 3–6 mois | immédiate | Contrat de projet inadapté à cette durée; autres voies identifiées | Matrice juridique validée sur cas réels |
+| RH-16 | Examiner les simplifications possibles des pièces RH | secondaire | Guide CNIL trouvé, gains inconnus | Procédures conformes, durées observées |
+| RH-17 | Suivre les obligations de transparence salariale applicables | secondaire | Suivi réglementaire à actualiser | Texte en vigueur, calendrier et effets |
+| RH-18 | Comparer les canaux d'attractivité et de recrutement | secondaire | Évaluation inconnue | Source des candidatures, taux de conversion |
+| RH-19 | Tester l'extension aux juristes, acheteurs et scientifiques | élevée | Comparaison non réalisée | Cas multi-métiers appariés |
+| RH-20 | Contrôler l'état des centres de compétences recommandés par IGF–CGE | élevée | Recommandation initiale identifiée | Inventaire des structures et de leur activité |
+| RH-21 | Étudier la continuité des capacités pendant la réorganisation | élevée | Transition annoncée, effets inconnus | Documentation des transferts, pertes et continuités |
 
 ## Protocole commun de clôture
 
