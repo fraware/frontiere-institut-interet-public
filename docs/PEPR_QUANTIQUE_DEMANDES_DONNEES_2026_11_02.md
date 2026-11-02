@@ -13,24 +13,24 @@ Bonjour,
 
 Je travaille à une étude indépendante sur la mobilisation des compétences scientifiques dans les organismes publics français.
 
-La présentation officielle des chaires Early-Stage Researchers décrit un accompagnement des jeunes scientifiques, incluant selon les cas le recrutement de personnels, la conduite d'un projet ou l'équipement. Je souhaiterais établir les résultats déjà documentés de ce mécanisme.
+La rétrospective officielle 2025 du PEPR mentionne 14 chaires super postdocs financées depuis 2022, ainsi que 74 doctorants et 49 postdoctorants. Je souhaiterais comprendre les suites professionnelles des titulaires des chaires, afin de distinguer le financement d'un projet de ses résultats réellement constatés.
 
-Existe-t-il un bilan public précisant, par cohorte ou par projet, le nombre de chaires effectivement attribuées, les recrutements associés et les suites professionnelles observées ? Un document existant ou une orientation vers la personne chargée de ce suivi serait très utile.
+Existe-t-il un bilan public par cohorte ou par projet précisant les recrutements pérennes ultérieurs, ou un responsable du suivi vers lequel vous pourriez m'orienter ? Une référence documentaire ou un simple aiguillage institutionnel suffirait.
 
 Bien cordialement,  
 Mateo Petel
 
 **Minimum suffisant :** référence d'un bilan existant ou fonction responsable du suivi.  
-**Source :** https://www.pepr-quantique.fr/chaires-early-stage-researchers/
+**Sources :** https://www.pepr-quantique.fr/chaires-early-stage-researchers/ et https://www.pepr-quantique.fr/2026/01/21/retrospective-2025-du-pepr-quantique/
 
 ## B. Coordination de RobustSuperQ — un recrutement documentable
 
-**Destinataire :** responsable de projet identifié par la page publique (Nicolas Roch, Denis Vion ou gestion de projet Erika Borsje-Hekking), à contacter via un canal institutionnel confirmé.  
+**Destinataire :** info@robustsuperq.fr (adresse générale du projet publiée sur son site), à l'attention de la coordination ou de la gestion de projet.  
 **Objet :** Question factuelle sur un recrutement scientifique dans RobustSuperQ
 
 Bonjour,
 
-Je mène une étude sur les délais de mobilisation de compétences spécialisées par les organismes publics. Le projet RobustSuperQ décrit trois chaires de jeunes scientifiques et des recrutements de doctorants et de postdoctorants.
+Je mène une étude sur les délais de mobilisation de compétences spécialisées par les organismes publics. Le projet RobustSuperQ identifie publiquement trois titulaires de chaires : Ambroise Peugeot (WP1), James O'Sullivan (WP2) et Quentin Ficheux (WP3). Il décrit également des recrutements de doctorants et de postdoctorants.
 
 Je souhaite documenter un recrutement concret, réussi ou difficile, avec une chronologie simplifiée : mois d'identification du besoin, ouverture du poste, sélection et prise de fonctions, ainsi que la principale cause éventuelle de délai.
 
@@ -40,7 +40,7 @@ Bien cordialement,
 Mateo Petel
 
 **Minimum suffisant :** un poste identifié, dates au mois, résultat, motif de délai.  
-**Source :** https://www.pepr-quantique.fr/projet/robustsuperq/
+**Sources :** https://www.pepr-quantique.fr/projet/robustsuperq/ et https://www.robustsuperq.fr/team-3
 
 ## C. RH ou responsable du recrutement QUTISYM — issue du poste publié à Nice
 
