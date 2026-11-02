@@ -120,6 +120,41 @@
       "constat": "Quentin Ficheux, titulaire d'une chaire Early-Stage Researcher associée à RobustSuperQ, est annoncé comme lauréat d'une ERC Starting Grant en 2026.",
       "source": "https://www.pepr-quantique.fr/en/2026/09/07/pepr-quantum-2026-erc-starting-grant/",
       "limite": "Aucun effet causal attribué à la chaire ; sélection individuelle et financement extérieur distincts."
+    },
+    {
+      "id": "pepr_2025_bilan_recrutements_chaires",
+      "nature": "bilan_de_programme_public_cumulatif",
+      "constat": "La rétrospective 2025 du PEPR Quantique indique depuis le lancement en 2022 : 14 chaires super post-doc, 74 doctorants et 49 postdoctorants financés.",
+      "chaires_super_postdoc_financees": 14,
+      "doctorants_finances": 74,
+      "postdoctorants_finances": 49,
+      "periode": "depuis_2022_jusqua_bilan_2025",
+      "source": "https://www.pepr-quantique.fr/2026/01/21/retrospective-2025-du-pepr-quantique/",
+      "limite": "Ces nombres sont des financements annoncés dans le bilan, non des estimations de pénurie, de taux de placement ou d'effets causaux."
+    },
+    {
+      "id": "robustsuperq_3_titulaires_chaires",
+      "nature": "identification_nominale_officielle_titulaires",
+      "constat": "Le site du projet rattache la chaire WP1 à Ambroise Peugeot (ENS Lyon), la WP2 à James O'Sullivan (CEA IRAMIS) et la WP3 à Quentin Ficheux (CNRS Institut Néel).",
+      "titulaires": [
+        {
+          "nom": "Ambroise Peugeot",
+          "lot": "WP1",
+          "institution": "ENS Lyon"
+        },
+        {
+          "nom": "James O'Sullivan",
+          "lot": "WP2",
+          "institution": "CEA IRAMIS"
+        },
+        {
+          "nom": "Quentin Ficheux",
+          "lot": "WP3",
+          "institution": "CNRS Institut Néel"
+        }
+      ],
+      "source": "https://www.robustsuperq.fr/team-3",
+      "limite": "L'identification n'établit ni date d'attribution individuelle, ni durée de contrat, ni bénéfice causal de la chaire."
     }
   ],
   "contacts_publics": [
@@ -134,6 +169,16 @@
         "Harold Ollivier"
       ],
       "source": "https://www.pepr-quantique.fr/la-gouvernance/"
+    },
+    {
+      "role": "coordination RobustSuperQ",
+      "canal": "info@robustsuperq.fr",
+      "responsables": [
+        "Nicolas Roch",
+        "Denis Vion",
+        "Erika Borsje-Hekking"
+      ],
+      "source": "https://www.robustsuperq.fr/team-3"
     }
   ],
   "comparateurs": [
