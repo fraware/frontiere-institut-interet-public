@@ -108,3 +108,9 @@ Les fichiers d’analyse successifs restent conservés lorsque leur présence pe
 ## Citation
 
 Les métadonnées de citation du projet figurent dans [`CITATION.cff`](../CITATION.cff).
+
+## Comparateurs de financement et de construction institutionnelle
+
+| Document | Rôle |
+| --- | --- |
+| [Break Poverty, 2017–2026](COMPARATEUR_PHILANTHROPIQUE_BREAK_POVERTY_2026_11_03.md) | Comparateur public et financier : ressources, structures juridiques, mécanismes territoriaux, limites de transposition et sources primaires |
