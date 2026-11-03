@@ -77,6 +77,13 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [Territoires de référence de l’Insee](INGESTION_COG_V1.md) | Territoires de référence de l’Insee, relations géographiques et raccordement avec l’Annuaire |
 | [../institutionnel/README.md](../institutionnel/README.md) | Organisation des fichiers du référentiel vivant |
 
+## Recherche partenariale et mobilités scientifiques
+
+| Document | Rôle |
+| --- | --- |
+| [Dossier de sources ANRT et limites de preuve, 3 novembre 2026](ANRT_RECHERCHE_PARTENARIALE_SOURCES_2026_11_03.md) | Sources publiques sur contractualisation, Cifre, Cofra, observatoires et articulation avec la capacité publique |
+| [Protocole exploratoire des coopérations interrompues](PROTOCOLE_COOPERATIONS_NON_ABOUTIES_V1.md) | Population, trajectoires, biais, données, comparateurs et critères de validité préalables à toute collecte |
+
 ## Exécution
 
 | Document | Rôle |
