@@ -35,7 +35,7 @@ Ces populations et leurs dénominateurs diffèrent. Les données d'une conventio
 2. **Abandons** : dates de dernier échange, motifs vérifiables, issue de remplacement et double comptage des projets réorientés.
 3. **Temporalité** : date de formulation du besoin, date de début de négociation, date d'accord et date de première contribution utile.
 4. **Mécanismes** : conflits de propriété intellectuelle, rémunération, décision, sécurité, protection des données, accès, autorisation de mobilité.
-5. **Contrefactuel** : autres solutions effectivement disponibles, y compris mobilisations internes et coopération sans nouvelle institution.
+5. **Situation sans intervention supplémentaire** : autres solutions effectivement disponibles, y compris mobilisations internes et coopération sans nouvelle institution.
 6. **Comparaison** : projets rapides et aboutis comme contre-exemples ; catégories de projets observées avant et après mars 2026.
 7. **Provenance** : source directe / sources concordantes / témoignage / estimation / piste ; accord de diffusion séparé.
 
@@ -49,6 +49,6 @@ La note méthodologique détaillée est conservée dans [PROTOCOLE_COOPERATIONS_
 
 ## 5. Règle d'intégration dans FRONTIÈRE
 
-Une étude de coopération partenariale n'est pas automatiquement un **cas prospectif D2+** de capacité publique. L'admission exige une mission publique définie, une capacité précise, un responsable, un calendrier, un résultat attendu et une preuve du besoin. Les enseignements purement institutionnels restent des comparateurs ou hypothèses.
+Une étude de coopération partenariale n'est pas automatiquement un **cas prospectif de besoin actuel avec responsable identifié** de capacité publique. L'admission exige une mission publique définie, une capacité précise, un responsable, un calendrier, un résultat attendu et une preuve du besoin. Les enseignements purement institutionnels restent des comparateurs ou hypothèses.
 
 **État des actions :** sources recensées et protocole proposé. Aucune demande de données, invitation, partenariat, prise de contact ou évaluation empirique n'est déclarée exécutée par cette note.
