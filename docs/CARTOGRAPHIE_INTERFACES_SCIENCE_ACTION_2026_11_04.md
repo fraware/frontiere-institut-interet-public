@@ -49,6 +49,26 @@ Le programme Cofra distingue formation doctorale partenariale, contrat de projet
 
 Source : https://www.anrt.asso.fr/fr/cofra-convention-de-formation-par-la-recherche-en-administration-37208
 
+
+## Réseau transversal R&AP — initiative existante observée en octobre 2026
+
+**Fait public confirmé :** les deuxièmes Journées *Recherche & Action Publique* (R&AP) se sont déroulées les **14 et 15 octobre 2026** sur le campus Agro Paris-Saclay. INRAE, Université Gustave Eiffel, Cerema, Fédération TEPP du CNRS, IGN, MNHN et BRGM étaient coorganisateurs. Un compte rendu de l'Université Gustave Eiffel publié le **23 octobre 2026** indique près de 200 participants et environ 50 interventions, avec une modalité singulière : de nombreux cas présentés conjointement par une personne de la recherche et une personne porteuse de politique ou d'action publique. Les chiffres « près de 200 » et « environ 50 » sont des chiffres déclarés par les organisateurs, non vérifiés indépendamment.
+
+**Valeur pour l'enquête :** ce dispositif fournit immédiatement un réseau documenté de **binômes science–action publique** qui ont effectivement travaillé ensemble. Leur contribution à un événement ne démontre cependant ni succès d'un projet, ni rapidité de mobilisation, ni appropriation durable. Utiliser les communications publiques pour présélectionner 2 à 3 cas contrastés, puis vérifier les pièces, le statut et le consentement des intervenants.
+
+**Actions :**
+- [ ] Obtenir le programme et, si disponibles publiquement, les communications ou comptes rendus correspondant à des cas avec deux responsables identifiés.
+- [ ] Reconstituer au moins un cas avec chronologie de la qualification du besoin, recherche de l'équipe, travail produit et réutilisation publique.
+- [ ] Chercher un cas où le dispositif a été insuffisant ou où la coopération a été interrompue.
+- [ ] Identifier le secrétariat de l'organisation pour une mise en relation ciblée, sans solliciter en doublon plusieurs coorganisateurs.
+- [ ] Étudier la relation déclarée par les organisateurs entre R&AP et EIPM 2.0 ; ne pas supposer une identité de gouvernance ou de financement.
+
+Sources officielles :
+- Université Gustave Eiffel, compte rendu publié le 23 octobre 2026 : https://www.univ-gustave-eiffel.fr/luniversite/pages-speciales/vue-detaillee/retour-sur-les-journees-recherche-action-publique
+- INRAE, présentation des rencontres : https://www.inrae.fr/actualites/croiser-recherche-action-publique
+- Cerema, programme et contact logistique : https://www.cerema.fr/fr/evenements/journees-recherche-action-publique-rap-2026
+- Commission européenne / CCR, objectifs EIPM 2.0 : https://knowledge-for-policy.ec.europa.eu/projects-activities/evidence-informed-policymaking-twin-transition-eipm-20_en
+
 ## Conduite de l'enquête
 
 Les prises de contact sont des **actions à entreprendre**, et non des envois enregistrés. Chaque institution doit apporter au moins une chronologie documentable, un cas négatif ou une vérification de redondance. Une mise en relation n'est pas présumée. Les correspondances nominatives et les relevés privés restent hors du dépôt public.
