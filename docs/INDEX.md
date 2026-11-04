@@ -22,6 +22,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | --- | --- |
 | [Modèle de données](MODELE_DONNEES_V0.2.md) | Objets enregistrés par l’application |
 | [Règles de décision](REGLES_DECISION.md) | Qualification des situations et choix des voies |
+| [Mobilisation des compétences numériques : dispositifs publics au 4 novembre 2026](MOBILISATION_COMPETENCES_NUMERIQUES_DISPOSITIFS_PUBLICS_2026_11_04.md) | Réinternalisation, mobilité, achats, réserves, bases juridiques, références publiques et plan d'enquête comparatif |
 | [Repères de lecture](REPERES_DE_LECTURE.md) | Définitions en français clair |
 | [Traçabilité](TRACEABILITE_V0.3.md) | Historique des décisions et changements |
 | [Reproductibilité](REPRODUCTIBILITE.md) | Reproduction du logiciel, du corpus et des évaluations |
