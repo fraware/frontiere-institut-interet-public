@@ -49,7 +49,7 @@ Pour PINUM et les fonctions RH interministérielles : nombre de candidatures/par
 
 ### C — Commande publique et expertise scientifique
 
-Utiliser les collectes déjà disponibles du dépôt : BOAMP, offres d'emploi publiques, BeauAMP. **Ne pas créer de chaîne de collecte redondant.** Préenregistrer une sélection diversifiée de vingt marchés pertinents et cinq marchés témoins, en distinguant achat annoncé, marché attribué, prestation réalisée, qualité mesurée et résultat conservé. Les données publiques de contrats ne suffisent pas à établir l'efficacité.
+Utiliser les collectes déjà disponibles du dépôt : BOAMP, offres d'emploi publiques, BeauAMP. **Ne pas créer de chaîne de collecte redondante.** Préenregistrer une sélection diversifiée de vingt marchés pertinents et cinq marchés témoins, en distinguant achat annoncé, marché attribué, prestation réalisée, qualité mesurée et résultat conservé. Les données publiques de contrats ne suffisent pas à établir l'efficacité.
 
 ### D — Réserve et mise à disposition
 
@@ -83,7 +83,7 @@ Sélectionner trois cas parmi le corpus public existant, puis recueillir des pi�
 - [Recherche partenariale et mobilités, ticket #669](https://github.com/fraware/frontiere-institut-interet-public/issues/669) : recherche et contrats existants.
 - [Interfaces science/action, ticket #674](https://github.com/fraware/frontiere-institut-interet-public/issues/674) : complémentarité avec les organismes scientifiques.
 
-La documentation présente une **état de référence sourcée**, et non une nouvelle validation institutionnelle. Les cas prospectifs complets, l'évaluation indépendante et une démonstration de valeur supplémentaire restent ouverts.
+La documentation présente un **état de référence sourcé**, et non une nouvelle validation institutionnelle. Les cas prospectifs complets, l'évaluation indépendante et une démonstration de valeur supplémentaire restent ouverts.
 
 ## 6. Décisions possibles à la clôture
 
@@ -93,4 +93,4 @@ La documentation présente une **état de référence sourcée**, et non une nou
 - **Prolonger** si les informations manquent.
 - **Arrêter** si les mécanismes existants résolvent les besoins avec moins de coût et de risque.
 
-Toute proposition nouvelle devra expliciter son solution alternative observée ou estimée, sa voie juridique, sa durée, son financement, son responsable public, l'accès autorisé et la capacité conservée par l'administration.
+Toute proposition nouvelle devra expliciter sa solution alternative observée ou estimée, sa voie juridique, sa durée, son financement, son responsable public, l'accès autorisé et la capacité conservée par l'administration.
