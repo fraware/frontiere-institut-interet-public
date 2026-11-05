@@ -57,6 +57,22 @@ Sources :
 - https://www.asnr.fr/nous-contacter
 - https://reglementation-controle.asnr.fr/divers/nous-contacter
 
+### Plateforme nationale d'épidémiosurveillance en santé animale (ESA) — cas opérationnel candidat
+
+La plateforme ESA est une coopération pérenne associant notamment la Direction générale de l'alimentation, INRAE, l'Anses, le Cirad, l'OFB et d'autres organismes de surveillance. Ses fonctions publiques comprennent l'appui aux gestionnaires de systèmes de surveillance, la production de méthodes et d'outils, la veille sanitaire et la facilitation de l'accès aux données. La documentation mentionne des compétences complémentaires en épidémiologie, statistiques, informatique et santé animale. Une publication de 2026 décrit une veille sanitaire internationale copilotée par INRAE et l'Anses, mobilisant un réseau pluridisciplinaire pour trier, analyser et contextualiser des signaux. La présence de cette organisation constitue un **comparateur institutionnel documenté**, sans établir encore le délai ni les résultats d'un épisode particulier.
+
+**Enquête proposée :** choisir un signal sanitaire daté et reconstituer les étapes exactes de détection, qualification, mobilisation, analyse, restitution et réutilisation des résultats. Relever la contribution des capacités préparées, les ressources supplémentaires et les éventuels points de blocage. Chercher aussi un signal sans difficulté de mobilisation, afin de documenter un contre-exemple.
+
+Sources :
+- https://app.inrae.fr/activites/one-health/risques-sanitaires-environnement/plateforme-depidemiosurveillance-en-sante-animale-esa/
+- https://www.inrae.fr/index.php/actualites/epidemiosurveillance-sante-animale-signature-plateforme-esa
+
+### Observatoire de l'alimentation (Oqali) — comparateur de long terme
+
+L'Observatoire de l'alimentation est un dispositif conjoint Anses–INRAE, destiné au suivi de la qualité nutritionnelle de l'offre alimentaire. Il constitue un cas utile pour examiner la création et l'entretien d'une capacité partagée durable, distincte des mobilisations d'urgence. Les données publiques ne renseignent pas à elles seules les coûts comparatifs, les difficultés de coordination et les délais d'activation.
+
+Source institutionnelle : https://app.inrae.fr/partenaires/dispositifs-perennes-et-de-collaboration/
+
 ### Réseau historique Paris Risk Group — Anses
 
 Un site hébergé par l'Anses présente le **Paris Risk Group**, destiné aux spécialistes des sciences sociales intervenant auprès d'agences d'évaluation et de gestion des risques. Ses objectifs publiés comprennent le repérage d'experts, le partage de pratiques, la constitution d'un ensemble de connaissances méthodologiques, les transferts durables et une fonction de « call for help ». **Vigilance temporelle :** la navigation consultée comporte des ateliers de 2013 à 2016 et des contenus de démonstration ; cette source établit une initiative antérieure, pas son activité effective en 2026 ni la réalisation de la fonction d'appel à l'aide. Le statut contemporain, les responsables et les résultats sont à vérifier auprès de l'Anses.
@@ -73,6 +89,7 @@ Pour chaque mécanisme, recueillir des cas réels avec pièces, dates, alternati
 4. **Comparaison Anses :** reconstituer une expertise collective urgente avec un responsable opérationnel et une saisine publique ; distinguer délai scientifique, données, disponibilité, coordination et validation.
 5. **Comparaison ASNR :** examiner un exercice public de mobilisation rapide de compétences scientifiques pré-identifiées, en distinguant préparation, simulation et performance constatée.
 6. **Paris Risk Group :** demander si ce réseau historique a encore une activité en 2026, si la fonction d'appui aux demandes d'expertise a été mise en œuvre et s'il existe des résultats datés.
+7. **Plateforme ESA :** reconstruire au moins un cas sanitaire daté, avec délais et traces du rôle des partenaires ; comparer à un dispositif pérenne moins urgent, comme Oqali.
 
 ### Critère de décision
 
