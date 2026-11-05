@@ -62,6 +62,39 @@ La doctrine interministérielle des achats numériques publiée le 6 février 20
 
 **Point de décision à tester :** une direction nationale plus intégrée apporterait-elle un bénéfice supplémentaire mesurable par rapport à l'autorité et aux mécanismes déjà attribués à la DINUM ? L'intitulé des structures et l'existence de politiques nationales sont des éléments de contexte, pas des résultats de performance.
 
+## Actualité institutionnelle au 5 novembre 2026 — ARIANE et EIG
+
+### ARIANE, évolution envisagée de la DINUM
+
+Le Pacte numérique et IA du 10 septembre 2026 prévoit le rôle de la DINUM, appelée à devenir **l'Autorité référente pour l'intelligence artificielle et le numérique de l'État (ARIANE)**. Le pacte et son fonctionnement opérationnel constituent des annonces gouvernementales publiques ; ils ne suffisent pas à établir l'adoption d'un décret portant l'ensemble des futures compétences d'ARIANE.
+
+- Communication officielle du 10 septembre : https://www.numerique.gouv.fr/sinformer/espace-presse/pacte-numerique-et-ia-letat-sengage-aux-cotes-de-la-filiere-francaise-pour-un-numerique-souverain-et-resilient/
+- Fonctionnement et groupes de travail du pacte, publiés le 13 octobre : https://www.numerique.gouv.fr/actualites/pacte-numerique-ia-entre-phase-operationnelle/
+
+Le **4 novembre 2026**, *Acteurs publics* a décrit un projet de décret en arbitrage prévoyant notamment l'obligation de recourir à certaines infrastructures et services mutualisés, sous conditions d'exception, et un rôle renforcé dans la gestion prévisionnelle des compétences numériques. Le journal rapporte aussi le retrait d'une disposition qui prévoyait l'avis préalable du responsable d'ARIANE sur les nominations des directeurs numériques ministériels. Il situe l'installation envisagée au 1er janvier 2027.
+
+- Enquête de presse datée, non assimilable à un décret adopté : https://acteurspublics.fr/articles/exclusif-les-arbitrages-renforcent-le-pouvoir-de-mutualisation-de-la-future-autorite-du-numerique-de-letat/
+
+**À vérifier :** publication réglementaire, entrée en vigueur, champ précis des services mutualisés, exceptions, pouvoirs effectifs sur les ressources humaines et articulation avec les directions ministérielles. Conserver séparément les annonces, projets de texte, règlements en vigueur et résultats opérationnels.
+
+### Entrepreneurs d'intérêt général : vérifier la continuité réelle
+
+Le site officiel du programme EIG décrit encore en 2026 des modalités de participation des administrations et une poursuite du déploiement du programme. Il décrit trois profils de dirigeants (produit, technique et impact) et inscrit expressément le sponsoring, l'autonomie et l'accès aux ressources parmi ses critères de sélection. Ces informations établissent la présentation institutionnelle d'un programme en activité ; elles ne démontrent ni le volume des nouvelles missions ni leur stabilité budgétaire, ni l'absence de réorientations.
+
+- https://eig.numerique.gouv.fr/participer/administrations/
+- https://beta.gouv.fr/eig/
+
+**Question de recherche :** vérifier les cohortes réellement ouvertes, les recrutements et renouvellements, les budgets et la continuité des missions de 2024 à 2027. Étudier les résultats des interventions et la persistance des compétences au-delà du départ des personnes mobilisées. Ne pas conclure à une disparition du programme sur la seule base d'un jugement général, ni à sa pérennité sur la seule base de l'existence d'un site officiel.
+
+### Comparateur : Direction de l'intelligence artificielle et du numérique des ministères économiques et financiers
+
+Les ministères économiques et financiers ont annoncé le 16 juin 2026 la création de la **DIAN**, appelée à définir et piloter leur stratégie numérique et IA. Elle constitue un comparateur ministériel contemporain de la DNUM des ministères sociaux, sous réserve d'un examen des différences de périmètre, mandat et ressources.
+
+- https://www.economie.gouv.fr/actualites/intelligence-artificielle-une-nouvelle-direction-au-sein-des-ministeres-economiques-et-financiers
+- https://www.numerique.gouv.fr/actualites/ia-etat-experimentations-aux-usages/
+
+Un comparateur doit être défini avant l'observation des résultats et inclure les différences initiales et les explications concurrentes.
+
 ## Hypothèses à réfuter
 
 | ID | Hypothèse exploratoire | Preuve pertinente | Observation contradictoire |
