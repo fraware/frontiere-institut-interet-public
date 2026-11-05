@@ -57,6 +57,12 @@ Sources :
 - https://www.asnr.fr/nous-contacter
 - https://reglementation-controle.asnr.fr/divers/nous-contacter
 
+### Réseau historique Paris Risk Group — Anses
+
+Un site hébergé par l'Anses présente le **Paris Risk Group**, destiné aux spécialistes des sciences sociales intervenant auprès d'agences d'évaluation et de gestion des risques. Ses objectifs publiés comprennent le repérage d'experts, le partage de pratiques, la constitution d'un ensemble de connaissances méthodologiques, les transferts durables et une fonction de « call for help ». **Vigilance temporelle :** la navigation consultée comporte des ateliers de 2013 à 2016 et des contenus de démonstration ; cette source établit une initiative antérieure, pas son activité effective en 2026 ni la réalisation de la fonction d'appel à l'aide. Le statut contemporain, les responsables et les résultats sont à vérifier auprès de l'Anses.
+
+Source : https://parisriskgroup.anses.fr/
+
 ## 4. Plan de vérification empirique
 
 Pour chaque mécanisme, recueillir des cas réels avec pièces, dates, alternatives et résultats.
@@ -66,6 +72,7 @@ Pour chaque mécanisme, recueillir des cas réels avec pièces, dates, alternati
 3. **Conventions et dispositifs pérennes :** identifier un besoin couvert par une convention existante, son calendrier, sa gouvernance, les coûts et le produit réutilisé ; identifier également un besoin légitime qui en est resté exclu.
 4. **Comparaison Anses :** reconstituer une expertise collective urgente avec un responsable opérationnel et une saisine publique ; distinguer délai scientifique, données, disponibilité, coordination et validation.
 5. **Comparaison ASNR :** examiner un exercice public de mobilisation rapide de compétences scientifiques pré-identifiées, en distinguant préparation, simulation et performance constatée.
+6. **Paris Risk Group :** demander si ce réseau historique a encore une activité en 2026, si la fonction d'appui aux demandes d'expertise a été mise en œuvre et s'il existe des résultats datés.
 
 ### Critère de décision
 
