@@ -63,9 +63,12 @@ La plateforme ESA est une coopération pérenne associant notamment la Direction
 
 **Enquête proposée :** choisir un signal sanitaire daté et reconstituer les étapes exactes de détection, qualification, mobilisation, analyse, restitution et réutilisation des résultats. Relever la contribution des capacités préparées, les ressources supplémentaires et les éventuels points de blocage. Chercher aussi un signal sans difficulté de mobilisation, afin de documenter un contre-exemple.
 
+Une note publique relative à la dermatose nodulaire contagieuse détectée le **14 avril 2026 en Sardaigne** fournit un épisode candidat, avec des auteurs issus de l'Anses, de la DGAL et d'INRAE. Le contact institutionnel de la plateforme associé à cette note est `plateforme-esa@anses.fr`. La publication et la liste des auteurs démontrent une production commune, sans permettre de reconstituer de manière certaine les délais de contribution de chaque expert.
+
 Sources :
 - https://app.inrae.fr/activites/one-health/risques-sanitaires-environnement/plateforme-depidemiosurveillance-en-sante-animale-esa/
 - https://www.inrae.fr/index.php/actualites/epidemiosurveillance-sante-animale-signature-plateforme-esa
+- https://www.plateforme-esa.fr/fr/un-premier-foyer-de-dermatose-nodulaire-contagieuse-cette-saison-2026-en-sardaigne
 
 ### Observatoire de l'alimentation (Oqali) — comparateur de long terme
 
