@@ -81,6 +81,9 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 
 | Document | Rôle |
 | --- | --- |
+| [Intermédiation, incitations et continuité — protocole (novembre 2026)](PROTOCOLE_INTERMEDIATION_INCITATIONS_2026_11.md) | Hypothèses réfutables, codage d'épisodes, comparateurs et seuils de preuve |
+| [COFRA et INSP — protocole public de vérification (novembre 2026)](COFRA_INSP_PLAN_VERIFICATION_2026_11.md) | Parcours, questionnaires, contributions et précautions sur les cohortes |
+| [Horizon Institute et essai limité (novembre 2026)](COMPARATEUR_HORIZON_PILOTE_SCIENTIFIQUE_2026_11.md) | Comparateur, critères d'admissibilité et mesures séparées |
 | [Qualification scientifique des besoins — protocole exploratoire (4 novembre 2026)](QUALIFICATION_BESOINS_SCIENTIFIQUES_2026_11_04.md) | Variables, cas contrastés, conditions de preuve et distinction des frictions |
 | [Interfaces science–action publique (4 novembre 2026)](CARTOGRAPHIE_INTERFACES_SCIENCE_ACTION_2026_11_04.md) | Comparateurs INRAE, EIPM 2.0, BRGM, Université Gustave Eiffel et sources primaires |
 | [Suivi des recommandations IGEDD (4 novembre 2026)](SUIVI_RECOMMANDATIONS_IGEDD_2026_11_04.md) | Matrice des douze recommandations et vérification des mises en œuvre sur pièces |
