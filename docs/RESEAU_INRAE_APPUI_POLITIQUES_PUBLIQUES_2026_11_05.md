@@ -6,19 +6,24 @@
 
 ### Réseau métier inter-organismes
 
-Selon la présentation publique d'INRAE, un groupe informel de partage d'expérience sur l'appui aux politiques publiques est lancé en **2021** à l'initiative de sa direction de l'appui aux politiques publiques. Le groupe rassemble des praticiens de **14 organismes et universités**. Ses objectifs publics concernent la formation, la valorisation des activités, l'innovation, l'ouverture européenne et internationale ainsi que la constitution d'outils partagés d'apprentissage et de mesure de l'impact. Il est décrit comme ouvert à de nouveaux organismes scientifiques et techniques publics.
+Les publications d'INRAE datent différemment l'émergence du groupe : la page thématique indique un lancement informel en **2021**, tandis qu'un article institutionnel publié le 25 mars 2025 parle d'un groupe « initié et animé » dès **2022**. Une autre page décrit un partage inter-organismes engagé en 2021. Ces formulations sont compatibles avec une phase informelle en 2021 suivie d'une animation structurée en 2022, sans que cette séquence soit établie par les sources. Le groupe rassemble des praticiens de **14 organismes et universités**. Ses objectifs publics concernent la formation, la valorisation des activités, l'innovation, l'ouverture européenne et internationale ainsi que la constitution d'outils partagés d'apprentissage et de mesure de l'impact. Il est décrit comme ouvert à de nouveaux organismes scientifiques et techniques publics.
 
 **Limite de preuve :** cette description établit une communauté de pratiques. Elle n'établit pas l'existence d'un inventaire inter-organismes de disponibilités nominatives, d'un dispositif de recrutement, d'un service d'affectation en urgence ou d'un résultat mesuré en délai de mobilisation.
 
-Source primaire : https://app.inrae.fr/partenaires/vers-des-communautes-de-pratiques/
+Sources primaires :
+- https://app.inrae.fr/partenaires/vers-des-communautes-de-pratiques/
+- https://www.inrae.fr/actualites/expertise-appui-aux-politiques-publiques-ressources-au-service-dune-communaute
+- https://app.inrae.fr/mission-et-acteurs/
 
 ### Guichet de recherche d'experts et d'orientation de demandes
 
-Le formulaire public de la direction de l'appui aux politiques publiques d'INRAE accueille explicitement les demandes de recherche d'experts scientifiques, de résultats éclairant les politiques publiques et de contacts pour construire un partenariat. La direction oriente ensuite la demande vers un membre de son équipe. La page présente les chargés de mission thématiques et les correspondants des départements scientifiques.
+Le formulaire public de la direction de l'appui aux politiques publiques d'INRAE accueille explicitement les demandes de recherche d'experts scientifiques, de résultats éclairant les politiques publiques et de contacts pour construire un partenariat. La direction oriente ensuite la demande vers un membre de son équipe. La page présente les chargés de mission thématiques et **14 correspondants de l'appui aux politiques publiques** dans les départements scientifiques, chargés notamment d'identifier les compétences et d'appuyer les partenariats. Ces correspondants constituent un mécanisme interne d'orientation des compétences déjà documenté.
 
 **Limite de preuve :** l'existence d'un formulaire et d'une fonction d'orientation ne détermine pas le nombre de demandes traitées, leur délai, leur taux de résolution ou l'aptitude à répondre hors des domaines de recherche d'INRAE.
 
-Source primaire : https://app.inrae.fr/contact/
+Sources primaires :
+- https://app.inrae.fr/contact/
+- https://app.inrae.fr/mission-et-acteurs/
 
 ### Partenariats et dispositifs scientifiques pérennes
 
@@ -56,7 +61,7 @@ Sources :
 
 Pour chaque mécanisme, recueillir des cas réels avec pièces, dates, alternatives et résultats.
 
-1. **Réseau métier :** qui le coordonne actuellement, qui participe, quels sont les travaux achevés depuis 2024 et existe-t-il un cas daté de mobilisation interinstitutionnelle rendue possible par le réseau ?
+1. **Réseau métier :** vérifier la date et les étapes de constitution (publications 2021/2022), qui le coordonne actuellement, qui participe, quels sont les travaux achevés depuis 2024 et existe-t-il un cas daté de mobilisation interinstitutionnelle rendue possible par le réseau ?
 2. **Guichet INRAE :** quelle demande exacte a été reçue, comment fut-elle qualifiée, combien de temps jusqu'au premier spécialiste ou collectif effectivement mobilisable, quelles solutions ont échoué ?
 3. **Conventions et dispositifs pérennes :** identifier un besoin couvert par une convention existante, son calendrier, sa gouvernance, les coûts et le produit réutilisé ; identifier également un besoin légitime qui en est resté exclu.
 4. **Comparaison Anses :** reconstituer une expertise collective urgente avec un responsable opérationnel et une saisine publique ; distinguer délai scientifique, données, disponibilité, coordination et validation.
