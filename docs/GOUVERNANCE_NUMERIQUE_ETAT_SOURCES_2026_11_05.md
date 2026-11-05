@@ -45,6 +45,23 @@ Le Conseil général de l'économie et l'Inspection générale des finances pré
 
 Ces données sont des propositions et estimations du rapport de 2023. Elles ne constatent ni des créations effectives de postes dans un ministère précis ni des performances ultérieures.
 
+## Comparateur interministériel existant
+
+La stratégie numérique de l'État de 2023 retient déjà quatre priorités : transformation des organisations publiques, renforcement des compétences numériques, exploitation effective des données et outils mutualisés. La DINUM exerce formellement les missions de chef de file du numérique de l'État, de coordination technique, de politique des données et de ressources humaines de la filière numérique. Ces attributions doivent être distinguées de l'autorité hiérarchique et budgétaire effectivement exercée sur les directions ministérielles.
+
+- https://www.numerique.gouv.fr/numerique-etat/strat-numerique-etat/
+- https://www.numerique.gouv.fr/numerique-etat/dinum/
+
+Depuis janvier 2026, les grands projets numériques soumis à avis préalable de la DINUM, à partir de **15 millions d'euros en coûts complets prévisionnels**, utilisent la méthode rénovée **MAREVA produit**, qui introduit un examen plus explicite de l'impact et du mode produit. Ce mécanisme existant constitue un comparateur particulièrement important : il faut mesurer ce que la méthode modifie réellement dans les décisions et dans le déroulement des projets avant de postuler l'absence d'un dispositif interministériel adapté.
+
+- https://www.numerique.gouv.fr/actualites/mareva-refonte-audit-grands-projets-si-numeriques-etat/
+
+La doctrine interministérielle des achats numériques publiée le 6 février 2026 privilégie l'examen des solutions existantes, qu'elles soient mutualisées dans le secteur public ou disponibles sur le marché. Le développement spécifique intervient selon les conditions définies dans cette doctrine. Les impératifs de résilience, de souveraineté et de continuité de service peuvent justifier une forte maîtrise interne. La recherche devra comparer cette doctrine aux décisions contractuelles réellement prises.
+
+- https://www.numerique.gouv.fr/sinformer/espace-presse/achats-publics-numeriques-letat-precise-sa-doctrine/
+
+**Point de décision à tester :** une direction nationale plus intégrée apporterait-elle un bénéfice supplémentaire mesurable par rapport à l'autorité et aux mécanismes déjà attribués à la DINUM ? L'intitulé des structures et l'existence de politiques nationales sont des éléments de contexte, pas des résultats de performance.
+
 ## Hypothèses à réfuter
 
 | ID | Hypothèse exploratoire | Preuve pertinente | Observation contradictoire |
