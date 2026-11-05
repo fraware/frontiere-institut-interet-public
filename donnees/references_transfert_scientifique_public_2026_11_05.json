@@ -1,0 +1,119 @@
+{
+  "schema": "frontiere_public_transfer_documentary_sources_v1",
+  "verified_on": "2026-11-05",
+  "publication_scope": "public_sources_only",
+  "state": "documentary_exploration_not_empirical_results",
+  "private_interviews_included": false,
+  "external_contacts_performed": false,
+  "related_documents": [
+    "docs/TRANSFERT_SCIENTIFIQUE_SOURCES_ET_INSTRUMENT_2026_11_05.md",
+    "docs/PROTOCOLE_INTERMEDIATION_INCITATIONS_2026_11.md",
+    "docs/ANRT_RECHERCHE_PARTENARIALE_SOURCES_2026_11_03.md"
+  ],
+  "sources": [
+    {
+      "id": "apollo_accueil",
+      "title": "Programme Apollo — présentation",
+      "publisher": "Inria",
+      "url": "https://apollo.inria.fr/",
+      "supports": "Périmètre du dispositif; trois ingrédients d'un projet",
+      "does_not_establish": "Ni durée de déploiement ni impact mesuré"
+    },
+    {
+      "id": "apollo_offre",
+      "title": "Programme Apollo — offre du programme",
+      "publisher": "Inria",
+      "url": "https://apollo.inria.fr/programme/offre-programme/",
+      "supports": "Qualification, R&D, consortiums, suivi dans la durée",
+      "does_not_establish": "Ni couverture nationale ni efficacité moyenne"
+    },
+    {
+      "id": "apollo_criteres",
+      "title": "Programme Apollo — critères de sélection",
+      "publisher": "Inria",
+      "url": "https://apollo.inria.fr/projets/criteres/",
+      "supports": "Périmètre éligible et exclusions",
+      "does_not_establish": "Ni couverture de secteurs extra-numériques"
+    },
+    {
+      "id": "cnaf_catala",
+      "title": "Communiqué CNAF–Inria Catala, 8 juin 2026",
+      "publisher": "CNAF",
+      "url": "https://www.caf.fr/professionnels/presse/publications/la-cnaf-et-inria-s-engagent-ensemble-pour-developper-catala-une-solution-souveraine-de-calcul-des",
+      "supports": "Partenariat, objectifs déclarés, études depuis 2024",
+      "does_not_establish": "Ni autonomie vérifiée ni bilan industriel"
+    },
+    {
+      "id": "apollo_junior",
+      "title": "Apollo — Junior",
+      "publisher": "Inria",
+      "url": "https://apollo.inria.fr/projets/junior/",
+      "supports": "Pilote de trois mois; modélisation de l'offre de soins",
+      "does_not_establish": "Ni impact de santé ni déploiement durable"
+    },
+    {
+      "id": "cofra_guide",
+      "title": "Programme COFRA, cadre et labellisation",
+      "publisher": "Ministère chargé de la recherche",
+      "url": "https://www.enseignementsup-recherche.gouv.fr/fr/programme-cofra-cadre-criteres-et-conditions-de-labellisation-d-une-recherche-au-service-de-l-action-100227",
+      "supports": "Partenariat doctoral en administration; conditions",
+      "does_not_establish": "Ni missions courtes ni taux de rétention"
+    },
+    {
+      "id": "cofra_perennisation",
+      "title": "Pérennisation COFRA, 1 juillet 2025",
+      "publisher": "Ministère chargé de la recherche",
+      "url": "https://www.enseignementsup-recherche.gouv.fr/fr/le-mesr-annonce-la-perennisation-du-programme-de-convention-de-formation-par-la-recherche-en-99506",
+      "supports": "Pérennisation annoncée en 2025",
+      "does_not_establish": "Ni bilan causal"
+    },
+    {
+      "id": "dae_innovation",
+      "title": "DAE — achats de solutions innovantes",
+      "publisher": "Direction des achats de l’État",
+      "url": "https://www.economie.gouv.fr/dae/la-politique-des-achats-de-letat/les-achats-de-solutions-innovantes",
+      "supports": "Politique d'achat innovant",
+      "does_not_establish": "Ni taux d'adoption ni efficacité"
+    },
+    {
+      "id": "dae_sourcage",
+      "title": "DAE — guide du sourçage 2025",
+      "publisher": "Direction des achats de l’État",
+      "url": "https://www.economie.gouv.fr/dae/le-sourcage-operationnel-ledition-2025-du-guide-publie-par-la-direction-des-achats-de-letat-est-desormais-disponible",
+      "supports": "Existence et contenu d'un guide opérationnel",
+      "does_not_establish": "Ni preuve d'application par acheteur donné"
+    },
+    {
+      "id": "dae_bureau",
+      "title": "Arrêté de délégation du 13 septembre 2026",
+      "publisher": "Légifrance",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054902819",
+      "supports": "Existence du bureau Innovation, PME et achat déconcentré",
+      "does_not_establish": "Ni disponibilité des agents"
+    },
+    {
+      "id": "brun_lisis",
+      "title": "Victoria Brun — LISIS",
+      "publisher": "LISIS",
+      "url": "https://umr-lisis.fr/membre/victoria-brun/",
+      "supports": "Travaux en STS et valorisation scientifique",
+      "does_not_establish": "Ni collaboration ni disponibilité"
+    },
+    {
+      "id": "alauzen_psl",
+      "title": "Marie Alauzen — profil Dauphine-PSL",
+      "publisher": "Université Paris Dauphine-PSL",
+      "url": "https://dauphine.psl.eu/recherche/cvtheque/profil/alauzen-marie",
+      "supports": "Thèmes de recherche, publications",
+      "does_not_establish": "Ni collaboration ni disponibilité"
+    },
+    {
+      "id": "doueneau_ens",
+      "title": "Gaëtan Douéneau-Tabot — témoignage",
+      "publisher": "ENS Paris-Saclay",
+      "url": "https://informatique.ens-paris-saclay.fr/temoignages/gaetan-doueneau-tabot",
+      "supports": "Contribution aux réflexions doctorat-administration",
+      "does_not_establish": "Ni application exhaustive du rapport 2021"
+    }
+  ]
+}
