@@ -86,6 +86,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [Horizon Institute et essai limité (novembre 2026)](COMPARATEUR_HORIZON_PILOTE_SCIENTIFIQUE_2026_11.md) | Comparateur, critères d'admissibilité et mesures séparées |
 | [Qualification scientifique des besoins — protocole exploratoire (4 novembre 2026)](QUALIFICATION_BESOINS_SCIENTIFIQUES_2026_11_04.md) | Variables, cas contrastés, conditions de preuve et distinction des frictions |
 | [Interfaces science–action publique (4 novembre 2026)](CARTOGRAPHIE_INTERFACES_SCIENCE_ACTION_2026_11_04.md) | Comparateurs INRAE, EIPM 2.0, BRGM, Université Gustave Eiffel et sources primaires |
+| [Réseau INRAE et dispositifs d'appui (5 novembre 2026)](RESEAU_INRAE_APPUI_POLITIQUES_PUBLIQUES_2026_11_05.md) | Sources officielles sur le groupe inter-organismes, le guichet de recherche d'experts, les conventions et les tests de complémentarité |
 | [Suivi des recommandations IGEDD (4 novembre 2026)](SUIVI_RECOMMANDATIONS_IGEDD_2026_11_04.md) | Matrice des douze recommandations et vérification des mises en œuvre sur pièces |
 | [Dossier de sources ANRT et limites de preuve, 3 novembre 2026](ANRT_RECHERCHE_PARTENARIALE_SOURCES_2026_11_03.md) | Sources publiques sur contractualisation, Cifre, Cofra, observatoires et articulation avec la capacité publique |
 | [Protocole exploratoire des coopérations interrompues](PROTOCOLE_COOPERATIONS_NON_ABOUTIES_V1.md) | Population, trajectoires, biais, données, comparateurs et critères de validité préalables à toute collecte |
