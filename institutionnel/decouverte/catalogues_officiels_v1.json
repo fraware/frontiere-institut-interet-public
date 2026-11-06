@@ -209,6 +209,50 @@
       "point_entree": "https://cordis.europa.eu/projects",
       "objet": "projets_finances_publications_livrables_organismes_partenaires",
       "remarque": "Les pages de recherche, les flux RSS et les jeux ouverts sont accessibles sans connexion dans les conditions publiées. L'API d'extraction DET est réservée aux utilisateurs enregistrés et demande une clé avec quotas ; ne pas créer d'appel anonyme à cette API. Vérifier licences par ressources et schémas. Une participation à un projet ne prouve ni compétence disponible ni besoin administratif non satisfait."
+    },
+    {
+      "id": "mesre_politiques_science_ouverte_etablissements",
+      "nom": "Politiques de science ouverte des établissements de l'ESR",
+      "producteur": "Ministère de l'Enseignement supérieur, de la Recherche et de l'Espace — Cellule science ouverte",
+      "statut": "decouverte_documentaire_uniquement",
+      "documentation": "https://www.data.gouv.fr/datasets/les-politiques-de-science-ouverte-des-etablissements-de-lesr-1",
+      "point_entree": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-politiques-so-etablissements/",
+      "identifiant_jeu": "fr-esr-politiques-so-etablissements",
+      "objet": "politiques_institutionnelles_science_ouverte_et_documents_cadres",
+      "licence": "Licence Ouverte 2.0 (Etalab), selon la fiche officielle",
+      "formats_annonces": [
+        "CSV",
+        "JSON",
+        "ZIP",
+        "PDF méthodologique"
+      ],
+      "date_mise_a_jour_affichee": "2026-07-16",
+      "modalites_acces": "Téléchargements publics et interface API annoncée sur le portail MESRE ; appel API et téléchargement non testés",
+      "ingestion_testee": false,
+      "verification_documentaire_le": "2026-10-25",
+      "remarque": "Résultats initiaux de l'enquête 2023-2024, enrichis à partir de 2025 par signalements et veille. Rapprochement possible par identifiants ROR, UAI et SIREN lorsque présents. La déclaration d'une politique ne prouve ni sa mise en œuvre ni la disponibilité d'une compétence. Ne pas confondre date de traitement des métadonnées et mise à jour des données."
+    },
+    {
+      "id": "mesre_doctorants_financements_cotutelles",
+      "nom": "Effectifs des doctorants et docteurs des écoles doctorales, financements et cotutelles",
+      "producteur": "Ministère de l'Enseignement supérieur, de la Recherche et de l'Espace — SIES",
+      "statut": "decouverte_documentaire_uniquement",
+      "documentation": "https://www.data.gouv.fr/datasets/effectifs-des-doctorants-et-docteurs-des-ecoles-doctorales-financements-des-doctorants-et-cotutelles",
+      "point_entree": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-effectifs-doctorants-docteurs-ecoles-doctorales-financements-doctorants-c/",
+      "identifiant_jeu": "fr-esr-effectifs-doctorants-docteurs-ecoles-doctorales-financements-doctorants-c",
+      "objet": "effectifs_doctoraux_par_ecole_et_etablissement_sources_financement_cotutelles",
+      "licence": "Licence Ouverte 2.0 (Etalab), selon la fiche officielle",
+      "formats_annonces": [
+        "CSV",
+        "JSON",
+        "RTF (documentation)"
+      ],
+      "date_mise_a_jour_affichee": "2025-07-29",
+      "periode_couverte_affichee": "2009-09-01 à 2025-08-31 (selon le portail producteur)",
+      "modalites_acces": "Téléchargements publics et interface API annoncée sur le portail MESRE ; appel API et téléchargement non testés",
+      "ingestion_testee": false,
+      "verification_documentaire_le": "2026-10-25",
+      "remarque": "Agrégats par école doctorale, établissement, année et sexe ; ne constituent ni une liste de personnes ni un indicateur de compétences mobilisables. Attention aux changements de périmètre et aux risques de double comptage lors de rapprochements avec les établissements et les financements ANR."
     }
   ]
 }
