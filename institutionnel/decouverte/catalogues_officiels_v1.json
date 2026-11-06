@@ -209,6 +209,26 @@
       "point_entree": "https://cordis.europa.eu/projects",
       "objet": "projets_finances_publications_livrables_organismes_partenaires",
       "remarque": "Les pages de recherche, les flux RSS et les jeux ouverts sont accessibles sans connexion dans les conditions publiées. L'API d'extraction DET est réservée aux utilisateurs enregistrés et demande une clé avec quotas ; ne pas créer d'appel anonyme à cette API. Vérifier licences par ressources et schémas. Une participation à un projet ne prouve ni compétence disponible ni besoin administratif non satisfait."
+    },
+    {
+      "id": "dgos_catalogue_collections_biologiques_crb",
+      "nom": "Catalogue national des collections biologiques des centres de ressources biologiques (CRB)",
+      "producteur": "Ministère chargé de la Santé — Direction générale de l'offre de soins (DGOS)",
+      "statut": "decouverte_documentaire_uniquement",
+      "documentation": "https://sante.gouv.fr/systeme-de-sante/innovation-et-recherche/l-innovation-et-la-recherche-clinique/article/collections-biologiques-des-centres-de-ressources-biologiques-crb",
+      "point_entree": "https://www.data.gouv.fr/datasets/catalogue-des-collections-biologiques-des-crb",
+      "objet": "collections_biologiques_et_infrastructures_de_recherche_biomedicale",
+      "licence": "Licence Ouverte 2.0, selon la fiche data.gouv.fr",
+      "formats_annonces": [
+        "XLSX",
+        "CSV (ressource 2025)"
+      ],
+      "date_mise_a_jour_affichee": "2026-03-03",
+      "cadence_annoncee": "annuelle",
+      "modalites_acces": "Fichiers publics référencés sur data.gouv.fr ; XLSX v2.0 du 3 mars 2026 et ressources 2025 ; pas d'API métier de consultation vérifiée ; téléchargement direct non réussi (DNS dans le conteneur)",
+      "ingestion_testee": false,
+      "verification_documentaire_le": "2026-10-27",
+      "remarque": "La version 2026 est publiée en XLSX et les ressources 2025 incluent un CSV ; ne pas attribuer le CSV 2025 à la version 2026. Le périmètre initial concerne les collections humaines des CRB hospitaliers ; une extension aux collections d'autres organismes est envisagée, sans être acquise. Certaines informations peuvent être omises à la demande des contributeurs. L'existence d'une collection ne prouve ni son accessibilité ni sa disponibilité opérationnelle. Aucun fichier métier téléchargé, aucune validation de schéma, de contenu, de pagination ou d'empreinte."
     }
   ]
 }
