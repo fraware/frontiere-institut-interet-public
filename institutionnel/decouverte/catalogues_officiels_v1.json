@@ -209,6 +209,42 @@
       "point_entree": "https://cordis.europa.eu/projects",
       "objet": "projets_finances_publications_livrables_organismes_partenaires",
       "remarque": "Les pages de recherche, les flux RSS et les jeux ouverts sont accessibles sans connexion dans les conditions publiées. L'API d'extraction DET est réservée aux utilisateurs enregistrés et demande une clé avec quotas ; ne pas créer d'appel anonyme à cette API. Vérifier licences par ressources et schémas. Une participation à un projet ne prouve ni compétence disponible ni besoin administratif non satisfait."
+    },
+    {
+      "id": "fonds_vert_projets_subventionnes",
+      "nom": "Fonds vert — projets subventionnés, millésimes 2023 à 2025",
+      "producteur": "Ministère chargé de la transition écologique",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes",
+      "licence": "Licence Ouverte 2.0",
+      "derniere_mise_a_jour_affichee": "2026-07-28",
+      "formats_affiches": [
+        "CSV",
+        "XLSX"
+      ],
+      "acces": "Dix ressources téléchargeables référencées sur la fiche officielle; téléchargement HTTP direct non validé depuis le conteneur (échec DNS le 2026-10-29).",
+      "objet": "projets_territoriaux_finances_beneficiaires_engagements_publics",
+      "remarque": "Listes des engagements des programmes P380 et P113, distincts selon millésime et mesure. Une ligne par projet et bénéficiaire; un même projet peut figurer sur plusieurs années. Les engagements comptables ne prouvent pas le paiement. La localisation déclarée peut désigner le porteur et non le site. Ne pas compter les lignes comme des projets uniques."
+    },
+    {
+      "id": "mesr_effectifs_enseignants_titulaires_national",
+      "nom": "Enseignants-chercheurs et enseignants titulaires du supérieur public — effectifs nationaux",
+      "producteur": "Ministère chargé de l'enseignement supérieur et de la recherche",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-enseignants-titulaires-esr-public-national/",
+      "licence": "Licence Ouverte (Etalab), version non précisée sur la fiche",
+      "derniere_mise_a_jour_affichee": "2026-09-04",
+      "periode_couverte": "Années universitaires 2010-2011 à 2023-2024",
+      "formats_affiches": [
+        "CSV",
+        "JSON",
+        "PDF (documentation)"
+      ],
+      "acces": "Exports et API Explore du portail MESR annoncés; appel API et téléchargement HTTP direct non validés depuis le conteneur (échec DNS le 2026-10-29).",
+      "objet": "effectifs_agreges_enseignants_chercheurs_disciplines_cnu_territoires",
+      "remarque": "Effectifs agrégés par discipline/section CNU, catégorie et géographie. Le millésime le plus récent est 2023-2024 malgré la mise à jour technique de septembre 2026. Ne pas inférer des individus, des compétences immédiatement mobilisables ou des capacités par laboratoire. Certaines ressources de la fiche miroir sont indisponibles."
     }
   ]
 }
