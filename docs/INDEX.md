@@ -79,6 +79,8 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 
 ## Recherche partenariale et mobilités scientifiques
 
+| [Gouvernance numérique de l'État — sources et protocole (5 novembre 2026)](GOUVERNANCE_NUMERIQUE_ETAT_SOURCES_2026_11_05.md) | Textes officiels, marché PIXEL 2026, hypothèses vérifiables et limites documentaires |
+
 | Document | Rôle |
 | --- | --- |
 | [Intermédiation, incitations et continuité — protocole (novembre 2026)](PROTOCOLE_INTERMEDIATION_INCITATIONS_2026_11.md) | Hypothèses réfutables, codage d'épisodes, comparateurs et seuils de preuve |
