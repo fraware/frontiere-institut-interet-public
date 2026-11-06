@@ -43,6 +43,17 @@ Sources primaires :
 - https://github.com/etalab-ia/document-ia
 - https://ia.numerique.gouv.fr/
 
+### Architecture et indicateurs à interpréter avec prudence
+
+Le dépôt de développement public décrit une API FastAPI, une exécution asynchrone appuyée sur Redis, un stockage compatible S3, un journal d'événements PostgreSQL, ainsi qu'une application d'évaluation séparée. La présence d'un module d'évaluation documente une **capacité instrumentale**, sans attester de performances de production, de seuils métier ou de validation indépendante.
+
+La fiche beta.gouv.fr indique que **DossierFacile traite plus de 700 000 pièces justificatives mensuelles**. Cette volumétrie concerne DossierFacile, **pas le nombre établi de pièces effectivement analysées par Document-IA**. Ne pas utiliser ce chiffre comme taux d'adoption, de couverture ou d'impact causal de Document-IA.
+
+Sources :
+- https://github.com/etalab-ia/document-ia/blob/develop/README.md
+- https://github.com/etalab-ia/document-ia/blob/develop/document-ia-evals/METRICS.md
+- https://beta.gouv.fr/startups/document-ia
+
 ### Direction de programme IA du ministère de la Justice
 
 Le ministère annonce la création de la direction de programme IA le 1er décembre 2025 et la nomination d'Élise Farge Di Maria à sa tête. Cette annonce officielle ne permet pas à elle seule de déduire l'effectif réellement présent en novembre 2026, les durées de recrutement ou les contributions déjà livrées.
