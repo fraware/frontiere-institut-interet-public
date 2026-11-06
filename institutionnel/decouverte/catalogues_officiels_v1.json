@@ -1,6 +1,6 @@
 {
-  "version": "2026-10-09",
-  "regle": "La présence dans cette liste indique une source officielle identifiée, pas une ingestion technique réalisée. Les droits, quotas et formats sont à vérifier avant duplication du contenu.",
+  "version": "2026-11-01-consolidation",
+  "regle": "La présence dans cette liste indique une source officielle identifiée, pas une ingestion technique réalisée. Les droits, quotas et formats sont à vérifier avant duplication du contenu. Consolidation de propositions documentaires : ne présume aucune ingestion. Les propositions sources restent consultables dans les fichiers de provenance.",
   "catalogues": [
     {
       "id": "data_gouv_catalogue",
@@ -209,6 +209,346 @@
       "point_entree": "https://cordis.europa.eu/projects",
       "objet": "projets_finances_publications_livrables_organismes_partenaires",
       "remarque": "Les pages de recherche, les flux RSS et les jeux ouverts sont accessibles sans connexion dans les conditions publiées. L'API d'extraction DET est réservée aux utilisateurs enregistrés et demande une clé avec quotas ; ne pas créer d'appel anonyme à cette API. Vérifier licences par ressources et schémas. Une participation à un projet ne prouve ni compétence disponible ni besoin administratif non satisfait."
+    },
+    {
+      "id": "mesre_politiques_science_ouverte_etablissements",
+      "nom": "Politiques de science ouverte des établissements de l'ESR",
+      "producteur": "Ministère de l'Enseignement supérieur, de la Recherche et de l'Espace — Cellule science ouverte",
+      "statut": "decouverte_documentaire_uniquement",
+      "documentation": "https://www.data.gouv.fr/datasets/les-politiques-de-science-ouverte-des-etablissements-de-lesr-1",
+      "point_entree": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-politiques-so-etablissements/",
+      "identifiant_jeu": "fr-esr-politiques-so-etablissements",
+      "objet": "politiques_institutionnelles_science_ouverte_et_documents_cadres",
+      "licence": "Licence Ouverte 2.0 (Etalab), selon la fiche officielle",
+      "formats_annonces": [
+        "CSV",
+        "JSON",
+        "ZIP",
+        "PDF méthodologique"
+      ],
+      "date_mise_a_jour_affichee": "2026-07-16",
+      "modalites_acces": "Téléchargements publics et interface API annoncée sur le portail MESRE ; appel API et téléchargement non testés",
+      "ingestion_testee": false,
+      "verification_documentaire_le": "2026-10-25",
+      "remarque": "Résultats initiaux de l'enquête 2023-2024, enrichis à partir de 2025 par signalements et veille. Rapprochement possible par identifiants ROR, UAI et SIREN lorsque présents. La déclaration d'une politique ne prouve ni sa mise en œuvre ni la disponibilité d'une compétence. Ne pas confondre date de traitement des métadonnées et mise à jour des données."
+    },
+    {
+      "id": "mesre_doctorants_financements_cotutelles",
+      "nom": "Effectifs des doctorants et docteurs des écoles doctorales, financements et cotutelles",
+      "producteur": "Ministère de l'Enseignement supérieur, de la Recherche et de l'Espace — SIES",
+      "statut": "decouverte_documentaire_uniquement",
+      "documentation": "https://www.data.gouv.fr/datasets/effectifs-des-doctorants-et-docteurs-des-ecoles-doctorales-financements-des-doctorants-et-cotutelles",
+      "point_entree": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-effectifs-doctorants-docteurs-ecoles-doctorales-financements-doctorants-c/",
+      "identifiant_jeu": "fr-esr-effectifs-doctorants-docteurs-ecoles-doctorales-financements-doctorants-c",
+      "objet": "effectifs_doctoraux_par_ecole_et_etablissement_sources_financement_cotutelles",
+      "licence": "Licence Ouverte 2.0 (Etalab), selon la fiche officielle",
+      "formats_annonces": [
+        "CSV",
+        "JSON",
+        "RTF (documentation)"
+      ],
+      "date_mise_a_jour_affichee": "2025-07-29",
+      "periode_couverte_affichee": "2009-09-01 à 2025-08-31 (selon le portail producteur)",
+      "modalites_acces": "Téléchargements publics et interface API annoncée sur le portail MESRE ; appel API et téléchargement non testés",
+      "ingestion_testee": false,
+      "verification_documentaire_le": "2026-10-25",
+      "remarque": "Agrégats par école doctorale, établissement, année et sexe ; ne constituent ni une liste de personnes ni un indicateur de compétences mobilisables. Attention aux changements de périmètre et aux risques de double comptage lors de rapprochements avec les établissements et les financements ANR."
+    },
+    {
+      "id": "dgos_catalogue_collections_biologiques_crb",
+      "nom": "Catalogue national des collections biologiques des centres de ressources biologiques (CRB)",
+      "producteur": "Ministère chargé de la Santé — Direction générale de l'offre de soins (DGOS)",
+      "statut": "decouverte_documentaire_uniquement",
+      "documentation": "https://sante.gouv.fr/systeme-de-sante/innovation-et-recherche/l-innovation-et-la-recherche-clinique/article/collections-biologiques-des-centres-de-ressources-biologiques-crb",
+      "point_entree": "https://www.data.gouv.fr/datasets/catalogue-des-collections-biologiques-des-crb",
+      "objet": "collections_biologiques_et_infrastructures_de_recherche_biomedicale",
+      "licence": "Licence Ouverte 2.0, selon la fiche data.gouv.fr",
+      "formats_annonces": [
+        "XLSX",
+        "CSV (ressource 2025)"
+      ],
+      "date_mise_a_jour_affichee": "2026-03-03",
+      "cadence_annoncee": "annuelle",
+      "modalites_acces": "Fichiers publics référencés sur data.gouv.fr ; XLSX v2.0 du 3 mars 2026 et ressources 2025 ; pas d'API métier de consultation vérifiée ; téléchargement direct non réussi (DNS dans le conteneur)",
+      "ingestion_testee": false,
+      "verification_documentaire_le": "2026-10-27",
+      "remarque": "La version 2026 est publiée en XLSX et les ressources 2025 incluent un CSV ; ne pas attribuer le CSV 2025 à la version 2026. Le périmètre initial concerne les collections humaines des CRB hospitaliers ; une extension aux collections d'autres organismes est envisagée, sans être acquise. Certaines informations peuvent être omises à la demande des contributeurs. L'existence d'une collection ne prouve ni son accessibilité ni sa disponibilité opérationnelle. Aucun fichier métier téléchargé, aucune validation de schéma, de contenu, de pagination ou d'empreinte."
+    },
+    {
+      "id": "fonds_vert_projets_subventionnes",
+      "nom": "Fonds vert — projets subventionnés, millésimes 2023 à 2025",
+      "producteur": "Ministère chargé de la transition écologique",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/fonds-vert-liste-des-projets-subventionnes",
+      "licence": "Licence Ouverte 2.0",
+      "derniere_mise_a_jour_affichee": "2026-07-28",
+      "formats_affiches": [
+        "CSV",
+        "XLSX"
+      ],
+      "acces": "Dix ressources téléchargeables référencées sur la fiche officielle; téléchargement HTTP direct non validé depuis le conteneur (échec DNS le 2026-10-29).",
+      "objet": "projets_territoriaux_finances_beneficiaires_engagements_publics",
+      "remarque": "Listes des engagements des programmes P380 et P113, distincts selon millésime et mesure. Une ligne par projet et bénéficiaire; un même projet peut figurer sur plusieurs années. Les engagements comptables ne prouvent pas le paiement. La localisation déclarée peut désigner le porteur et non le site. Ne pas compter les lignes comme des projets uniques."
+    },
+    {
+      "id": "mesr_effectifs_enseignants_titulaires_national",
+      "nom": "Enseignants-chercheurs et enseignants titulaires du supérieur public — effectifs nationaux",
+      "producteur": "Ministère chargé de l'enseignement supérieur et de la recherche",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-enseignants-titulaires-esr-public-national/",
+      "licence": "Licence Ouverte (Etalab), version non précisée sur la fiche",
+      "derniere_mise_a_jour_affichee": "2026-09-04",
+      "periode_couverte": "Années universitaires 2010-2011 à 2023-2024",
+      "formats_affiches": [
+        "CSV",
+        "JSON",
+        "PDF (documentation)"
+      ],
+      "acces": "Exports et API Explore du portail MESR annoncés; appel API et téléchargement HTTP direct non validés depuis le conteneur (échec DNS le 2026-10-29).",
+      "objet": "effectifs_agreges_enseignants_chercheurs_disciplines_cnu_territoires",
+      "remarque": "Effectifs agrégés par discipline/section CNU, catégorie et géographie. Le millésime le plus récent est 2023-2024 malgré la mise à jour technique de septembre 2026. Ne pas inférer des individus, des compétences immédiatement mobilisables ou des capacités par laboratoire. Certaines ressources de la fiche miroir sont indisponibles."
+    },
+    {
+      "id": "commission_europeenne_era_scoreboard_2025",
+      "nom": "ERA Scoreboard 2025 — indicateurs et paquet de réplication",
+      "producteur": "Commission européenne — DG Recherche et Innovation",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://european-research-area.ec.europa.eu/era-monitoring-reports",
+      "point_entree": "https://european-research-area.ec.europa.eu/node/61",
+      "objet": "indicateurs_comparatifs_recherche_innovation_politique_scientifique_financement_europeen",
+      "millesime": "2025",
+      "date_verification": "2026-10-30",
+      "couverture": "Union européenne et pays associés à Horizon Europe, agrégats européens et nationaux selon les indicateurs",
+      "indicateurs_annonces": 60,
+      "formats_documentes": [
+        "pages HTML",
+        "rapports PDF",
+        "paquet de données de réplication téléchargeable"
+      ],
+      "format_exact_paquet_replication": "a_verifier_par_telechargement",
+      "acces": "consultation publique sans authentification observée; accès direct au paquet de réplication non testé",
+      "licence": "CC BY 4.0 pour les contenus appartenant à l'UE, sauf mention contraire; droits des fichiers et données tiers à vérifier",
+      "licence_reference": "https://european-research-area.ec.europa.eu/legal-notice",
+      "frequence_mise_a_jour": "édition annuelle; dates de coupure par indicateur à relever dans les rapports méthodologiques",
+      "remarque": "Les 60 indicateurs sont annoncés par la Commission. Le millésime 2025 ne signifie pas que toutes les observations datent de 2025. Ne pas inférer une couverture exhaustive des politiques ou dépenses. Aucune ingestion ni téléchargement de paquet réalisés."
+    },
+    {
+      "id": "commission_europeenne_paysage_eric",
+      "nom": "ERIC Landscape — consortiums européens d'infrastructures de recherche",
+      "producteur": "Commission européenne — DG Recherche et Innovation",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://research-and-innovation.ec.europa.eu/strategy/strategy-research-and-innovation/our-digital-future/european-research-infrastructures/eric/eric-landscape_en",
+      "point_entree": "https://research-and-innovation.ec.europa.eu/strategy/strategy-research-and-innovation/our-digital-future/european-research-infrastructures/eric/eric-landscape_en",
+      "objet": "infrastructures_scientifiques_europeennes_consorcia_statut_juridique_domaines_services_liens_decisions",
+      "date_verification": "2026-10-30",
+      "couverture": "Consortiums européens d'infrastructures de recherche (ERIC) actifs présentés par la Commission",
+      "formats_documentes": [
+        "page HTML",
+        "liens vers décisions et statuts officiels"
+      ],
+      "acces": "consultation publique sans authentification observée",
+      "api_documentee": "non identifiée dans la fiche",
+      "licence": "Réutilisation des contenus de la Commission sous conditions de la politique UE, sauf exceptions; licence spécifique du répertoire non confirmée",
+      "licence_reference": "https://commission.europa.eu/legal-notice_en",
+      "frequence_mise_a_jour": "non annoncée sur la page consultée",
+      "remarque": "La page est un inventaire institutionnel de consortiums et non un inventaire des équipements, des accès disponibles ni de la capacité réelle des plateformes. Les décisions juridiques et liens externes demandent des contrôles distincts. Aucune ingestion ni extraction automatique réalisées."
+    },
+    {
+      "id": "anct_croisement_dispositifs_territoriaux",
+      "nom": "ANCT — croisement communal des dispositifs de politique publique",
+      "producteur": "Agence nationale de la cohésion des territoires",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/croisement-des-dispositifs-de-politique-publique-de-lanct",
+      "metadata_url": "https://www.data.gouv.fr/api/1/datasets/croisement-des-dispositifs-de-politique-publique-de-lanct/",
+      "resource_url": "https://www.data.gouv.fr/api/1/datasets/r/d1a3025a-8546-44b1-a93d-bfa5853790cd",
+      "licence": "Licence Ouverte 2.0",
+      "derniere_mise_a_jour_affichee": "2026-04-13",
+      "millesime_geographique": "COG 2025",
+      "formats_documentes": [
+        "CSV UTF-8 (1,9 Mo environ)",
+        "PDF (dictionnaire de champs)"
+      ],
+      "frequence_declaree": "mensuelle; non respectée selon la fiche officielle",
+      "acces": "Téléchargement public sans authentification annoncé; API data.gouv.fr de métadonnées accessible via consultation web; aucun téléchargement du fichier métier réalisé.",
+      "objet": "couverture_communale_dispositifs_anct_territoires_industrie_france_services_crte_pvd_france2030",
+      "remarque": "Croisement de 16 dispositifs, notamment Territoires d'industrie, Petites villes de demain, France services, CRTE et sites clés en main France 2030. Une couverture communale n'établit ni financement individuel ni succès d'un dispositif. Couverture temporelle non renseignée; vérifier les codes COG et le millésime avant rapprochement. Empreinte SHA-1 affichée par l'API de métadonnées, non recalculée localement."
+    },
+    {
+      "id": "anct_deploiement_incubateur_territoires",
+      "nom": "ANCT — déploiement des services de l'Incubateur des territoires",
+      "producteur": "Agence nationale de la cohésion des territoires",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/deploiement-des-services-de-lincubateur-des-territoires",
+      "licence": "Licence Ouverte 2.0",
+      "derniere_mise_a_jour_fiche_observee": "2026-10-13",
+      "frequence_annoncee": "quotidienne pour les ressources; vérifier la fraîcheur effective de chaque fichier",
+      "formats_documentes": [
+        "CSV",
+        "CSV.GZ"
+      ],
+      "fichiers_annonces": [
+        "services-quotidien.csv",
+        "operateurs-quotidien.csv",
+        "adherents-quotidien.csv.gz",
+        "souscriptions-quotidien.csv.gz",
+        "deploiement-quotidien.csv.gz"
+      ],
+      "acces": "Cinq téléchargements publics référencés; URL et dates de modification des fichiers à extraire via API de métadonnées; aucun fichier métier téléchargé ni API dédiée validée.",
+      "objet": "adoption_services_numeriques_collectivites_operateurs_souscriptions_deploiement",
+      "remarque": "Les fichiers distinguent services, opérateurs de mutualisation, collectivités adhérentes, souscriptions et métriques de déploiement. Une souscription ne prouve pas l'usage réel. Documentation de fichiers manquante et couverture temporelle non renseignée dans la fiche officielle. La date de mise à jour de la fiche et la date des ressources diffèrent."
+    },
+    {
+      "id": "ign_geoplateforme_index_offres",
+      "nom": "IGN Géoplateforme — index des offres et API de découverte des ressources géographiques",
+      "producteur": "Institut national de l'information géographique et forestière (IGN)",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://cartes.gouv.fr/aide/fr/guides-developpeur/tutoriels/gestion-des-index-recherche/index-standard/",
+      "point_entree": "https://data.geopf.fr/recherche/api/indexes/geoplateforme",
+      "documentation_telechargement": "https://cartes.gouv.fr/aide/fr/guides-utilisateur/utiliser-les-services-de-la-geoplateforme/telechargement/",
+      "point_entree_telechargement": "https://data.geopf.fr/telechargement/capabilities",
+      "date_documentation_index": "2026-06-30",
+      "date_documentation_telechargement": "2026-08-31",
+      "actualite_integration_data_gouv": "2026-10-28",
+      "actualite_reference": "https://www.data.gouv.fr/posts/de-data-gouv-fr-a-cartes-gouv-fr",
+      "formats_documentes": [
+        "JSON (index POST)",
+        "Atom RFC 4287 (API téléchargement)",
+        "WFS",
+        "WMS",
+        "WMTS",
+        "fichiers selon l'offre"
+      ],
+      "acces": "Index documenté par POST et suggestions GET; API de téléchargement documentée avec pagination 1 à 50 et plafond de 10 requêtes/s par IP. Accès des offres et droits à contrôler individuellement. Aucun appel API de production validé.",
+      "licence": "Variable selon l'offre; métadonnée licence facultative et renseignée par producteur, aucune licence globale inférée",
+      "objet": "decouverte_couches_geographiques_territoires_infrastructures_identifiants_offres",
+      "remarque": "Il s'agit d'une interface de découverte et de diffusion, non d'un nouveau corpus indépendant. Les résultats reflètent les offres publiées, et non toutes les données géographiques existantes. Le lien data.gouv.fr vers cartes.gouv.fr a été annoncé le 28 octobre 2026."
+    },
+    {
+      "id": "recherche_data_gouv_ateliers_competences",
+      "nom": "Recherche Data Gouv — annuaire des ateliers de la donnée et centres de compétences",
+      "producteur": "Recherche Data Gouv",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://recherche.data.gouv.fr/fr/ateliers-de-la-donnee",
+      "objet": "reseau_competences_gestion_donnees_recherche_etablissements_partenaires_services_territoriaux",
+      "formats_documentes": [
+        "HTML (annuaire public et descriptions)"
+      ],
+      "acces": "Page institutionnelle publique; aucune API structurée ni export normalisé identifié lors de cette veille.",
+      "nombre_ateliers_labellises_affiches": 24,
+      "licence": "Licence de réutilisation de l'annuaire non confirmée; vérifier avant extraction et redistribution",
+      "frequence_mise_a_jour": "Non renseignée; le réseau est présenté comme évolutif",
+      "remarque": "La page décrit les établissements porteurs et partenaires, les services de gestion de données, FAIR, stockage, calcul, formation et contacts professionnels. Ne pas inférer une capacité disponible ni un droit de republier les coordonnées. Source complémentaire du catalogue de jeux de données Recherche Data Gouv déjà répertorié; ne pas créer de doublon de ce catalogue."
+    },
+    {
+      "id": "datagouv_catalogue_schemas_donnees",
+      "nom": "Catalogue national des schémas de données publiques",
+      "producteur": "data.gouv.fr / DINUM",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/catalogue-des-schemas-de-donnees",
+      "source_code": "https://github.com/datagouv/schema.data.gouv.fr",
+      "licence": "Licence Ouverte 2.0 pour les données du catalogue ; code du dépôt sous licence MIT (à distinguer)",
+      "date_mise_a_jour_fiche_observee": "2026-10-19",
+      "formats_documentes": [
+        "CSV pour l'export du catalogue",
+        "références de schémas et fichiers associés, formats variables"
+      ],
+      "acces": "Page publique et export CSV sans authentification annoncée ; téléchargement et analyse du CSV non effectués",
+      "objet": "referentiels_schemas_validation_interoperabilite_donnees_publiques",
+      "remarque": "Catalogue transversal de standards, non corpus d'observations métiers. Sert à identifier les versions de schéma applicables à chaque producteur. Aucun test d'ingestion, de pagination ou de conformité réalisé. Vérifier la licence de chaque schéma référencé séparément."
+    },
+    {
+      "id": "daj_referentiel_schemas_decp",
+      "nom": "Référentiel officiel des schémas de données essentielles de la commande publique",
+      "producteur": "Etalab et Direction des affaires juridiques des ministères économiques et financiers",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/referentiel-de-donnees-marches-publics",
+      "source_code": "https://github.com/139bercy/format-commande-publique",
+      "licence": "Licence Ouverte affichée sur la fiche data.gouv.fr ; vérifier la licence des fichiers de code source séparément",
+      "derniere_mise_a_jour_fiche_observee": "fin octobre 2026 (date affichée variable selon consultation ; vérification au 2026-11-01)",
+      "formats_documentes": [
+        "JSON Schema versions 1.4, 1.5 et 2.0",
+        "XSD/XML versions 1.4, 1.5 et 2.0",
+        "documentation HTML et PDF"
+      ],
+      "acces": "Consultation et téléchargement publics depuis data.gouv.fr et dépôt GitHub officiel ; aucun fichier téléchargé ni validateur exécuté dans cette veille",
+      "objet": "validation_versionnee_des_fichiers_decp_marches_concessions",
+      "remarque": "Le format 2.0 s'applique aux marchés notifiés à partir du 2024-01-01 ; les formats 1.5 concernent les données antérieures. Le dépôt officiel documente la sous-version 2.0.3 ; vérifier les tags et les changements normatifs avant de figer un validateur. Source de schémas, distincte des données DECP consolidées déjà référencées."
+    },
+    {
+      "id": "mesre_referens_iii_metiers_it_rf",
+      "nom": "RéFérens III — référentiel des métiers ITRF et ITA",
+      "producteur": "Ministère de l'Enseignement supérieur, de la Recherche et de l'Espace",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/referentiel-metiers-referens-iii-pour-la-filiere-des-itrf",
+      "metadata_url": "https://www.data.gouv.fr/api/1/datasets/referentiel-metiers-referens-iii-pour-la-filiere-des-itrf/",
+      "source_primaire": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr_referentiel_metier_referens_3/",
+      "identifiant_source": "fr-esr_referentiel_metier_referens_3",
+      "licence": "Licence Ouverte (Etalab), code fr-lo dans les métadonnées data.gouv.fr; version exacte non précisée sur cette fiche",
+      "derniere_actualisation_catalogue_observee": "2026-10-28 (API data.gouv.fr; ne prouve pas une révision des métiers)",
+      "date_modification_donnees_primaires_documentee": "2017-11-17 (portail MESRE)",
+      "formats_documentes": [
+        "CSV UTF-8",
+        "JSON",
+        "XLS"
+      ],
+      "acces": "Exports publics et console API Explore documentés; aucun téléchargement ni appel de pagination effectué dans cette veille",
+      "volume_documente": "242 métiers-types selon le producteur, décompte non reconstruit",
+      "objet": "taxonomie_emplois_types_ingenierie_technique_recherche_formation",
+      "limites": "Référentiel de métiers-types, distinct d'offres de recrutement ou de personnels disponibles. Historique ancien malgré des contrôles de ressources en 2026; valider actualité, champs et liaisons avant exploitation."
+    },
+    {
+      "id": "mesre_referens_iii_dictionnaire_competences",
+      "nom": "RéFérens III — dictionnaire des compétences ITRF et ITA",
+      "producteur": "Ministère de l'Enseignement supérieur, de la Recherche et de l'Espace",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/dictionnaire-des-competences-referens-iii-pour-la-filiere-des-itrf",
+      "metadata_url": "https://www.data.gouv.fr/api/1/datasets/dictionnaire-des-competences-referens-iii-pour-la-filiere-des-itrf/",
+      "source_primaire": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr_dictionnaire_competences_referens_3/",
+      "identifiant_source": "fr-esr_dictionnaire_competences_referens_3",
+      "licence": "Licence Ouverte (Etalab), code fr-lo dans les métadonnées data.gouv.fr; version exacte non précisée sur cette fiche",
+      "derniere_actualisation_catalogue_observee": "2026-10-27 (API data.gouv.fr; ne prouve pas une révision des compétences)",
+      "date_modification_donnees_primaires_documentee": "Référentiel RéFérens III ancien; contrôler la date de modification des enregistrements dans le portail primaire",
+      "formats_documentes": [
+        "CSV UTF-8",
+        "JSON",
+        "XLS"
+      ],
+      "acces": "Exports publics et console API Explore documentés; aucun téléchargement ni appel de pagination effectué dans cette veille",
+      "objet": "dictionnaire_competences_connaissances_operationnelles_comportementales_ingenierie_recherche",
+      "limites": "Catégories connaissance, compétence opérationnelle, compétence comportementale. Une compétence définie dans un référentiel ne prouve ni sa présence chez un agent ni la disponibilité d'une ressource."
+    },
+    {
+      "id": "idf_partenaires_campus_metiers_qualifications",
+      "nom": "Île-de-France — partenaires des campus des métiers et qualifications",
+      "producteur": "Région Île-de-France",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/partenaires-des-campus-des-metiers-et-qualifications",
+      "source_primaire": "https://data.iledefrance.fr/explore/dataset/partenaires-des-campus-des-metiers-et-qualifications/",
+      "identifiant_source": "partenaires-des-campus-des-metiers-et-qualifications",
+      "licence": "Licence Ouverte 2.0 selon data.gouv.fr",
+      "date_actualisation_fiche_observee": "2026-10-21 (fiche data.gouv.fr consultée; dates des ressources à contrôler)",
+      "formats_documentes": [
+        "CSV",
+        "JSON",
+        "GeoJSON",
+        "ZIP"
+      ],
+      "acces": "Téléchargements publics et portail régional Explore; endpoint API exact, quotas et pagination à valider par appel direct",
+      "objet": "reseaux_formation_recherche_entreprises_campus_metiers_qualifications_ile_de_france",
+      "limites": "Annuaire explicitement en cours de finalisation; complétude, structure et qualité évolutives. Périmètre régional, aucune couverture nationale. Un partenariat déclaré ne démontre ni compétence mobilisable ni capacité d'accueil."
     }
   ]
 }
