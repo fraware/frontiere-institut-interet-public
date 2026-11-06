@@ -77,6 +77,12 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [Territoires de référence de l’Insee](INGESTION_COG_V1.md) | Territoires de référence de l’Insee, relations géographiques et raccordement avec l’Annuaire |
 | [../institutionnel/README.md](../institutionnel/README.md) | Organisation des fichiers du référentiel vivant |
 
+## Observation associative et financements publics
+
+| Document | Rôle |
+| --- | --- |
+| [Sources et protocole d'observation associative (6 novembre 2026)](OBSERVATION_ASSOCIATIVE_SOURCES_PROTOCOLE_2026_11_06.md) | Sources publiques INSEE, INJEP, RNMA, Recherches & Solidarités, Dauphine, NOURA, IGF et Data.Subvention ; comparabilité, périmètres budgétaires, conditions d'un test restreint et limites de preuve |
+
 ## Recherche partenariale et mobilités scientifiques
 
 | Document | Rôle |
