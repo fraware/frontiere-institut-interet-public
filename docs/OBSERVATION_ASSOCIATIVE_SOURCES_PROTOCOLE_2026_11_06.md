@@ -33,6 +33,12 @@ La première comparaison doit porter sur les **estimands** et leurs définitions
 - **Data.Subvention**. Le service recense plusieurs jeux de données administratives sur les associations, leurs demandes, décisions, versements et engagements. La documentation décrit notamment Chorus, Osiris, FONJEP, Dauphin et les référentiels Sirene/RNA. La couverture dépend de la nature du flux, de l'organisme payeur, du traitement et des droits d'accès. Ne jamais traiter « toutes les subventions de l'État via Chorus » comme équivalent de « tous les financements publics de toutes natures ».
 - **Budget de l'État**. Le programme 163 « Jeunesse et vie associative » n'est pas, à lui seul, un total des financements associatifs ; une cartographie transversale doit reprendre les programmes pertinents et les règles d'imputation.
 
+### Premier constat documentaire reproductible — exercice 2024
+
+La page 28 de l'**annexe au PLF 2026** indique, pour les associations relevant du ministère des Sports, de la Jeunesse et de la Vie associative, une participation de **334,25 M€ en 2024**, ventilée en **216 M€ au programme 163**, **58,3 M€ au programme 219** et **59,95 M€ au programme 350**. Cela démontre, sur ce périmètre ministériel seulement, qu'examiner le programme 163 isolément omet des flux explicitement présentés dans la même annexe. Il ne s'agit ni d'un total national, ni d'une validation de rapprochement avec Chorus ou Data.Subvention.
+
+La page 33 précise que la **liste électronique des crédits attribués** repose sur les **paiements effectués par les ministères pendant l'année précédente**, sans restriction à la seule subvention : elle peut inclure des prestations de services et d'autres paiements, et l'association peut ne pas être le bénéficiaire final. Les versements couverts par un secret protégé sont exclus. Une extraction brute ne mesure donc pas automatiquement la dépense de subventionnement ni sa destination finale. Source : https://www.budget.gouv.fr/documentation/file-download/31474, pages 28 et 33.
+
 ### Protocole de test restreint sur les financements
 
 1. Choisir **un exercice clos et un petit périmètre de programmes**, justifiés avant extraction.
