@@ -1,6 +1,6 @@
 # FRONTIÈRE — Journal des revues de la feuille de route
 
-**Document de suivi :** [feuille de route directrice et 91 travaux](FEUILLE_DE_ROUTE_DIRECTRICE.md). Ce journal est un historique daté de vérifications et de décisions, pas un compte rendu automatique de succès. Les révisions de la feuille de route conservent leurs identifiants stables `F-001` à `F-091`.
+**Document de suivi :** [feuille de route directrice et 92 travaux](FEUILLE_DE_ROUTE_DIRECTRICE.md). Ce journal est un historique daté de vérifications et de décisions, pas un compte rendu automatique de succès. Les révisions de la feuille de route conservent leurs identifiants stables `F-001` à `F-091`.
 
 ## Méthode de revue hebdomadaire
 
@@ -54,6 +54,18 @@ Une demande de fusion de documentation reste requise pour rendre le suivi durabl
 - **Issues :** les issues 26 et 27 ont été clôturées comme sous-expériences déjà suivies par l'issue 63 ; **aucune mesure d'évaluation indépendante n'est considérée réalisée**. Le [registre de triage](REGISTRE_TRIAGE_GITHUB_2026-10-17.md) classe les 24 autres issues selon leurs dépendances réelles.
 - **États de la feuille de route :** aucun jalon scientifique marqué « Terminé » sans preuve. Aucune dépense ni nouveau service.
 - **Priorités suivantes :** préserver les historiques et contrôler la reprise du référentiel territorial, réconcilier le bilan DECP avec les sondes mises à jour, activer la protection de `main` selon l'issue 54 après essai des collectes.
+
+### 2026-11-04 UTC — Comparaison publique des voies de mobilisation des compétences
+
+- **Révision observée :** `2b237851ab2c8db0e11b4ec673c5faf7cbd5184f` sur `main` lors de l'ouverture du travail ; la demande [n° 675](https://github.com/fraware/frontiere-institut-interet-public/pull/675) reste distincte de toute fusion effective.
+- **Nouvelle tâche :** F-092, revue comparative des réinternalisations, mobilités, achats d'expertise, réserves et coopérations, suivie dans [l'issue n° 676](https://github.com/fraware/frontiere-institut-interet-public/issues/676).
+- **Preuves publiques versées à la proposition :** rapport IGF–CGE 2023, commission parlementaire 2026, bilan DINUM de la mobilité, documents officiels de commande publique, réserve de cyberdéfense et Code général de la fonction publique. Les chiffres ont des dénominateurs et statuts distincts.
+- **Contrôles :** une première exécution de Python 3.12 a trouvé trois termes incompatibles avec les conventions de langue du dépôt ; les termes ont été reformulés sur la branche. Aucune réussite sur la révision corrigée n'est présumée dans cette entrée.
+- **État scientifique :** absence d'estimation nationale, aucun nouvel épisode prospectif complet ni comparaison indépendante exécutée. Les sources publiques documentent des instruments existants, pas la nécessité d'un dispositif nouveau.
+- **Protection des données :** aucune transcription, correspondance, appréciation issue d'un échange privé ou coordonnée individuelle sensible dans le dépôt public.
+- **États des jalons antérieurs :** inchangés ; F-092 demeure « En cours » jusqu'aux dossiers de cas, à la vérification contradictoire et à la décision étayée.
+- **Trois priorités :** (1) examiner les trois trajectoires ministérielles sur pièces ; (2) documenter des mobilités abouties et non abouties ; (3) présélectionner des achats spécialisés avec cas témoins.
+- **Dépenses nouvelles :** aucune.
 
 ### Modèle pour la prochaine entrée
 

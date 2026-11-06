@@ -7,7 +7,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | Document | Rôle |
 | --- | --- |
 | [README](../README.md) | Vue d’ensemble, état actuel, installation et repères |
-| [Feuille de route directrice](FEUILLE_DE_ROUTE_DIRECTRICE.md) | Programme intégral de 91 étapes, jalons, preuves d'achèvement et priorités |
+| [Feuille de route directrice](FEUILLE_DE_ROUTE_DIRECTRICE.md) | Programme intégral de 92 étapes, jalons, preuves d'achèvement et priorités |
 | [Journal de suivi](SUIVI_FEUILLE_ROUTE.md) | Méthode et historique daté de mise à jour hebdomadaire |
 | [Registre de triage GitHub](REGISTRE_TRIAGE_GITHUB_2026-10-17.md) | Décisions sur les PR, issues, dépendances et conditions de clôture |
 | [Hygiène du dépôt](HYGIENE_DEPOT_2026-10-17.md) | Audit des branches et protections contre les suppressions abusives |
@@ -22,6 +22,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | --- | --- |
 | [Modèle de données](MODELE_DONNEES_V0.2.md) | Objets enregistrés par l’application |
 | [Règles de décision](REGLES_DECISION.md) | Qualification des situations et choix des voies |
+| [Mobilisation des compétences numériques : dispositifs publics au 4 novembre 2026](MOBILISATION_COMPETENCES_NUMERIQUES_DISPOSITIFS_PUBLICS_2026_11_04.md) | Réinternalisation, mobilité, achats, réserves, bases juridiques, références publiques et plan d'enquête comparatif |
 | [Repères de lecture](REPERES_DE_LECTURE.md) | Définitions en français clair |
 | [Traçabilité](TRACEABILITE_V0.3.md) | Historique des décisions et changements |
 | [Reproductibilité](REPRODUCTIBILITE.md) | Reproduction du logiciel, du corpus et des évaluations |
