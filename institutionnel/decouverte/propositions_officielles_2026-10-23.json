@@ -1,0 +1,111 @@
+{
+  "version": "2026-10-23",
+  "projet": "FRONTIERE / Horizon France",
+  "date_verification": "2026-10-23",
+  "portee": "Proposition documentaire seulement. Ne vaut pas validation d'ingestion ni preuve d'exhaustivité.",
+  "comparaison": {
+    "fichiers_examines": [
+      "institutionnel/sources_v1.json",
+      "institutionnel/decouverte/catalogues_officiels_v1.json"
+    ],
+    "verification_branches": "PR #401, #494, #637 examinées pour chevauchement; autres branches historiques non exhaustivement vérifiées",
+    "remarque": "Identifiants distincts des deux registres sur main et des découvertes des rapports de veille du 13 au 22 octobre 2026."
+  },
+  "sources": [
+    {
+      "id": "hceres_evaluations_entites_recherche",
+      "nom": "Évaluation des entités de recherche par le Hcéres",
+      "producteur": "Haut Conseil de l'évaluation de la recherche et de l'enseignement supérieur",
+      "url": "https://www.data.gouv.fr/datasets/evaluation-des-entites-de-recherche-par-le-hceres",
+      "licence_affichee": "Licence Ouverte 2.0",
+      "derniere_mise_a_jour_affichee": "2024-05-22",
+      "formats_affiches": [
+        "CSV"
+      ],
+      "acces": "Téléchargement public d'un fichier; API spécifique non confirmée",
+      "contenu": "Identifiants Hcéres et RNSR, unités et tutelles (UAI), campagnes et liens vers rapports publics",
+      "valeur": "Jointure évaluations des laboratoires avec RNSR et organismes de tutelle",
+      "precautions": [
+        "Couverture depuis la campagne 2023-2024; fraîcheur insuffisante pour prétendre à une situation courante",
+        "Une unité figure plusieurs fois lorsqu'elle possède plusieurs tutelles; dédupliquer par identifiant Hcéres et campagne",
+        "Les URL des rapports peuvent être vides tant que les rapports ne sont pas publiés",
+        "Certains codes RNSR fictifs ont été retirés d'une version antérieure; conserver la provenance"
+      ],
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "telechargement_donnees_metier": false,
+      "controle_schema": false,
+      "controle_pagination": false,
+      "verification_http_directe": "echec_dns_conteneur_le_2026-10-23",
+      "source_verification": "fiche_officielle_data_gouv_fr",
+      "registre_operationnel_a_modifier": false
+    },
+    {
+      "id": "hceres_evaluations_formations",
+      "nom": "Évaluation des formations par le Hcéres",
+      "producteur": "Haut Conseil de l'évaluation de la recherche et de l'enseignement supérieur",
+      "url": "https://www.data.gouv.fr/datasets/evaluation-des-formations-par-le-hceres",
+      "licence_affichee": "Licence Ouverte 2.0",
+      "derniere_mise_a_jour_affichee": "2024-05-22",
+      "formats_affiches": [
+        "CSV"
+      ],
+      "acces": "Téléchargement public d'un fichier; API spécifique non confirmée",
+      "contenu": "Formations et formations doctorales, établissements UAI, domaines, vagues d'évaluation, URL des rapports",
+      "valeur": "Relations entre formations doctorales, disciplines et établissements, complémentaires aux référentiels de compétences",
+      "precautions": [
+        "Fréquence de mise à jour non respectée signalée sur la fiche",
+        "Co-accréditations entraînant des lignes multiples; ne pas compter des formations uniques par lignes",
+        "Évaluation ne signifie pas accréditation effective ni capacité disponible"
+      ],
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "telechargement_donnees_metier": false,
+      "controle_schema": false,
+      "controle_pagination": false,
+      "verification_http_directe": "echec_dns_conteneur_le_2026-10-23",
+      "source_verification": "fiche_officielle_data_gouv_fr",
+      "registre_operationnel_a_modifier": false
+    },
+    {
+      "id": "onisep_ideo_structures_superieur",
+      "nom": "Idéo — Structures d'enseignement supérieur",
+      "producteur": "Office national d'information sur les enseignements et les professions (Onisep)",
+      "url": "https://www.data.gouv.fr/datasets/ideo-structures-denseignement-superieur",
+      "licence_affichee": "ODbL",
+      "derniere_mise_a_jour_affichee": "2026-10-22",
+      "formats_affiches": [
+        "XML",
+        "CSV",
+        "XLSX",
+        "JSON",
+        "GeoJSON",
+        "ZIP",
+        "ODS"
+      ],
+      "acces": "Fichiers téléchargeables listés sur la fiche officielle; aucune API d'extraction testée",
+      "contenu": "UAI, SIRET, tutelle, type et statut d'établissement, université de rattachement, coordonnées et géolocalisation",
+      "valeur": "Compléter les établissements MESR par les UFR, IUT, écoles et établissements liés",
+      "precautions": [
+        "Changement de structure signalé au 2026-01-20; vérifier le schéma et le journal des évolutions",
+        "La réutilisation ODbL implique des obligations spécifiques, à instruire avant republication ou combinaison de bases",
+        "Couverture des établissements Onisep ne garantit pas une liste exhaustive des établissements scientifiques",
+        "Environ dix actualisations annuelles annoncées, non validées par observation de séries"
+      ],
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "telechargement_donnees_metier": false,
+      "controle_schema": false,
+      "controle_pagination": false,
+      "verification_http_directe": "echec_dns_conteneur_le_2026-10-23",
+      "source_verification": "fiche_officielle_data_gouv_fr",
+      "registre_operationnel_a_modifier": false
+    }
+  ],
+  "actions_avant_ingestion": [
+    "Tester téléchargement d'échantillons, en-têtes, empreintes et encodages depuis un environnement avec réseau",
+    "Valider identifiants, relations plusieurs-à-plusieurs, fraîcheur réelle et duplications",
+    "Revoir les obligations ODbL en cas de base dérivée redistribuée",
+    "Ne modifier le registre opérationnel qu'après validation indépendante des collectes"
+  ]
+}
