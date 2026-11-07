@@ -106,13 +106,25 @@
         "national_institution_uai": "0672462M",
         "public_evidence": [
           {
+            "date": "2025",
+            "type": "published_parcoursup_2025_summary",
+            "source": "https://dossier.parcoursup.fr/Candidats/public/fiches/afficherFicheFormation?g_ta_cod=8003",
+            "values": {
+              "offered_places": 58,
+              "applicants_reported": 528,
+              "accepted_reported": 57
+            },
+            "status": "official_page_counts_differ_from_open_data"
+          },
+          {
             "date": "2025-09-10",
             "type": "fin_de_campagne_2025",
             "source": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-parcoursup/?flg=fr-fr",
             "values": {
               "offered_places": 58,
               "wishes": 531,
-              "accepted": 56
+              "accepted": 56,
+              "qualifier": "Base ouverte : 56 admis ; une fiche officielle Parcoursup rapporte 57 candidats ayant choisi d'intégrer la formation en 2025. Les dénombrements ne sont pas réconciliés."
             },
             "status": "official_open_data"
           },
@@ -144,7 +156,20 @@
           "matches_published_offer_2026": true,
           "decision_authority_caveat": "CFVU proposes, rector determines final capacity; individual rector decision not obtained.",
           "effect_size_on_published_offer_percentage": -3.45,
-          "final_admissions_2026": "unknown"
+          "final_admissions_2026": "unknown",
+          "source_count_discrepancy_2025": {
+            "open_data": {
+              "wishes": 531,
+              "accepted": 56
+            },
+            "parcoursup_page": {
+              "applicants": 528,
+              "accepted": 57
+            },
+            "status": "unresolved",
+            "possible_mechanisms": "different extraction, population definition or observation stage; none verified",
+            "safe_conclusion": "Capacity 58 in both; 2026 capacity 56; do not infer 2025 actual fills as motive"
+          }
         },
         "evidence_status": {
           "published_capacity_change": "P3_limited_to_published_admission_capacity",
@@ -155,7 +180,7 @@
         },
         "caveats": [
           "Selection after observing concordance; not an unbiased sample of administrative actions.",
-          "2025 accepted count 56 is a plausible alternative explanation for 2026 offer 56, not a known administrative motivation.",
+          "2025 admitted count is not reconciled: 56 in official open data versus 57 displayed on the official program page; neither number establishes the motivation for the 2026 capacity reduction.",
           "Confirmed wishes are not a count of unserved students.",
           "Differences in program admissions and registration populations must not be collapsed.",
           "University vote is not automatically the formal rectoral decision.",
