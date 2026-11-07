@@ -106,3 +106,49 @@ Sélectionner **avant la vérification des résultats** trois demandes du tablea
 
 **Statut d'exécution :** nouvelles sources vérifiées et comparées ; demandes de données non envoyées ; accès privés et journaux de livraison non obtenus ; essais prospectifs non réalisés. Ces observations ne justifient aucune nouvelle infrastructure.
 
+
+## Complément du 7 novembre 2026 — vérification de la livraison et des usages
+
+**Périmètre :** preuves institutionnelles publiques, sans données nominatives de recherche ni consultation de systèmes internes. Statut documentaire au 7 novembre 2026.
+
+### FRESQ et Annelis : accord-cadre attribué, dépense et livraison inconnues
+
+L'[avis d'attribution BOAMP n° 26-89987 du 17 septembre 2026](https://www.francemarches.com/files/BOAMP/26-89987.html), reproduit par France Marchés, annonce l'attribution à **Atos France** d'un accord-cadre concernant le développement et la tierce maintenance de FRESQ, Annelis et d'une éventuelle application voisine. Date de conclusion annoncée : **27 juillet 2026**. L'offre pour le scénario de commande est d'environ **2 585 036,88 € HT** et le plafond total du marché est de **7 M€ HT**, pour une durée initiale de douze mois, reconductible au maximum trois fois.
+
+**Ne pas transformer ces valeurs en dépenses réalisées**, ni attribuer ces montants exclusivement à FresqViz : l'objet du marché couvre plusieurs systèmes et le plafond n'est pas un engagement de dépense.
+
+Une [offre d'emploi ministérielle 2026 pour l'assistance à la maîtrise d'ouvrage FRESQ](https://choisirleservicepublic.gouv.fr/offre-emploi/2026-2260132/) décrit les fonctions prévues : recueil des besoins, tickets Redmine, organisation des recettes, documentation, conduite du changement, coordination entre DGESIP, SIES, agences d'évaluation, établissements et prestataires. L'offre prouve la définition d'une fonction, **pas le recrutement de son titulaire**.
+
+Le programme SIES 2026 distingue les modules **REF et REC annoncés en production**, le dépôt de l'offre de formation, et la visualisation **FresqViz** développée séparément. Les preuves publiques de fonctionnement de REF/REC ne doivent pas être transposées à FresqViz.
+
+### SIES : trois demandes suivies sans présumer leur issue
+
+| ID | Décision dans le programme SIES 2026 | Preuve d'issue à obtenir | Statut |
+| --- | --- | --- | --- |
+| SIES-HEB | Hébergement des applications de prospective non pris en charge par le SIES, orientation vers la DNE | Date de saisine DNE, service effectivement hébergé et utilisé | Inconnue |
+| SIES-DON | Accès à des données pour la prospective non pris en charge, données déclarées déjà ouvertes | Jeux identifiés, extraction effective, résultat dans une analyse | Inconnue |
+| SIES-QUA | Déploiement et enrichissement de Quadrant pris en charge, réintégration prévue dans dataSupR | Version livrée, date de rafraîchissement et cas d'usage vérifié | Usage historique établi ; nouvelle version inconnue |
+
+La [Direction du numérique pour l'éducation](https://www.education.gouv.fr/direction-du-numerique-pour-l-education-dne-9983) décrit une **délégation des services numériques pour l'administration centrale (DNE-AC)** chargée de la conception, du développement, du soutien et des services informatiques centraux. Cela rend plausible la réorientation d'une demande d'hébergement, **sans démontrer qu'elle a abouti**.
+
+### DAEI « Expertises » : comparateur confirmé, efficacité inconnue
+
+Le [programme SIES 2026](https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-02/programme-de-travail-sies---2026-39542.pdf) décrit l'application Expertises, ses relations avec Campus France et un **vivier déclaré d'environ 250 experts**. L'[appel ministériel PHC Toubkal 2026](https://www.enseignementsup-recherche.gouv.fr/fr/appel-candidatures-pour-la-co-presidence-du-comite-mixte-du-programme-de-cooperation-scientifique-et-101411) confirme l'usage des expertises DAEI dans un véritable mécanisme de sélection de projets. Aucun de ces documents ne donne les taux d'affectation, les délais de réponse ou le taux de réalisation des évolutions logicielles annoncées. La production d'un avis d'évaluation n'établit pas la disponibilité de son auteur pour effectuer une mission technique.
+
+### Quadrant : corrections possibles de la couverture InserSup, effets non vérifiés
+
+La [Cour des comptes, audit flash COMP de mars 2025](https://www.ccomptes.fr/sites/default/files/2025-03/20250314-Les-contrats-d-objectifs-de-moyens-et-de-performance-COMP.pdf), notamment p. 23, et le [rapport IGÉSR d'octobre 2025 publié en 2026](https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-05/le-pilotage-de-l-offre-de-formation-dans-les-universit-s-strat-gie-outils-r-gulation-40075.pdf), notamment p. 44, ont signalé des limites de fraîcheur, de contexte socio-économique, de couverture et de durée laissée à la contradiction. L'audit note aussi une prolongation de certains délais de concertation.
+
+La [fiche officielle InserSup, version révisée en juillet 2026](https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-insersup/information/?flg=fr-fr) documente une extension à l'emploi **non salarié** via la BNS de l'Insee. Le dernier millésime BNS indiqué est **2023**, contre **décembre 2025** pour la source DSN des salariés. Un seuil de **20 sortants par mention** régule la publication ; certaines observations sont agrégées sur deux promotions ou supprimées. **Il est inconnu si ces enrichissements sont déjà intégrés à la version de Quadrant utilisée dans les négociations de COMP fin 2026.**
+
+Tests requis : provenance et dates des données affichées, taux de couverture, règles d'agrégation, comparaison contextuelle, délai de contestation, correction des données, suites des décisions et capacité de réexamen.
+
+### État d'exécution
+
+- Recherche documentaire : effectuée et sourcée.
+- Suivi du résultat effectif des trois demandes SIES : **inconnu**.
+- Consultation des systèmes Expertises, Quadrant ou FresqViz en accès administratif : **non réalisée**.
+- Mesure de délais de réponse, de qualité des avis et de coûts réels : **non réalisée**.
+- Données privées ou témoignages identifiants publiés : **aucun**.
+- Conclusion institutionnelle : aucune nouvelle fonction de FRONTIÈRE n'est démontrée nécessaire par ces seules sources.
+
