@@ -79,6 +79,8 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 
 ## Recherche partenariale et mobilités scientifiques
 
+| [SIES, COFRA et COMP — suivi documentaire des demandes et gouvernances (7 novembre 2026)](ENQUETE_SIES_COFRA_COMP_SUIVI_OPERATIONNEL_2026_11_07.md) | Dix demandes administratives, expertises déjà existantes, coopérations doctorales, contrats territoriaux signés et preuves manquantes |
+
 | Document | Rôle |
 | --- | --- |
 | [De l'expertise scientifique à la décision : chronologies et comparateurs (7 novembre 2026)](TRACABILITE_SCIENCE_DECISION_COMPARATEURS_2026_11_07.md) | Saisines, avis, décisions publiques, délais de transmission, comparateurs britanniques et européens et limites de preuve |
