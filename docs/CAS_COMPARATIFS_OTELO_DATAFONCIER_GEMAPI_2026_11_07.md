@@ -10,11 +10,13 @@
 
 **Suivi d'exécution.** La délibération **n° 25-C-0342 du 17 octobre 2025** présente le bilan 2024 : **5 279 logements mis en chantier**, soit environ **85 %** de l'objectif de 6 200, et **1 198 logements sociaux et très sociaux programmés**, en dessous de l'objectif annuel annoncé de 2 300. Le bilan cite un contexte de crise nationale du logement et d'autres facteurs. Un écart entre les réalisations et les objectifs ne permet **aucune attribution causale** à la méthode OTELO ni à la qualité de la mobilisation scientifique.
 
+Le **bilan 2024**, approuvé le **17 octobre 2025**, permet de suivre la politique une fois la décision prise. Ses chiffres décrivent la production immobilière observée dans un contexte économique défavorable, non l'efficacité propre de la méthode de calcul. La **revue en 2024 d'un résultat de 2023** et la **revue en 2025 d'un résultat de 2024** illustrent également les délais de mesure des effets administratifs.
+
 **Pièces à obtenir :** date et termes de la commande initiale au Cerema, versions du calcul, coût et volume de travail, dates de réception des scénarios, arbitrages sur le choix de 6 200, cas comparables sans OTELO.
 
 Sources :
 - [Pérenchies, délibération 22CM0399, 29 octobre 2022](https://www.ville-perenchies.fr/wp-content/uploads/2022/11/22CM0399_Avis-PLH-MEL.pdf).
-- [MEL, adoption définitive 23-C-0178, 30 juin 2023](https://lillemetropole.fr/sites/default/files/2023-07/Recueil_delib_tome3_0.pdf).
+- [MEL, adoption définitive 23-C-0178, 30 juin 2023](https://www.lillemetropole.fr/sites/default/files/2023-07/20230703_CRS_RESUME_C3006.pdf).
 - [MEL, bilan 2024, délibération 25-C-0342 du 17 octobre 2025](https://www.lillemetropole.fr/sites/default/files/2025-10/C1710_RECUEIL_TOME2.pdf).
 - [MEL, présentation du diagnostic du PLH et des scénarios OTELO](https://www.lillemetropole.fr/sites/default/files/2023-07/Recueil_delib_tome3_0.pdf).
 
