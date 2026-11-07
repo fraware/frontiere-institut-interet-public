@@ -46,6 +46,20 @@
           "source": "https://en.unistra.fr/sites/default/files/2025-10/Delib_004-2025_-_PV_CFVU_28_janvier_2025.pdf"
         },
         {
+          "date": "2025-11-25",
+          "level": "P2",
+          "kind": "CFVU_programme_specific_capacity",
+          "claim": "Official minutes vote −2 admissions slots for BUT programme 8003 (24 votes for, 7 against, 2 abstentions). Rector has final authority.",
+          "source": "https://www.unistra.fr/sites/default/files/2026-04/De%CC%81lib%20001-2026%20-%20PV%20CFVU%2025%20novembre%202025.pdf"
+        },
+        {
+          "date": "2026-01-20",
+          "level": "P2",
+          "kind": "PV_approved",
+          "claim": "CFVU approves November 25, 2025 minutes through deliberation 001-2026.",
+          "source": "https://www.unistra.fr/sites/default/files/2026-04/De%CC%81lib%20001-2026%20-%20PV%20CFVU%2025%20novembre%202025.pdf"
+        },
+        {
           "date": "2026-09-22",
           "level": "P2",
           "kind": "index_actes",
@@ -84,6 +98,76 @@
         "source": "https://strasbourg.blog.snptes.org/post/2026/09/21/%5BUNISTRA%5D-Ordre-du-jour-CFVU-du-22-septembre-2026",
         "assertion": "Ordre du jour syndical annonçant un bilan de la mission « Pilotage de l'offre de formation »",
         "not_established": "Contenu du bilan et lien d'un parcours identifié à un résultat; pas d'utilisation comme preuve de progrès institutionnel"
+      },
+      "subcase_but_schiltigheim_8003": {
+        "id": "UNI-STRASBOURG-BUT-8003-CAPACITE-2026",
+        "institutional_object": "BUT Génie biologique, parcours Sciences de l'aliment et biotechnologie, IUT de Schiltigheim",
+        "national_programme_id": "8003",
+        "national_institution_uai": "0672462M",
+        "public_evidence": [
+          {
+            "date": "2025-09-10",
+            "type": "fin_de_campagne_2025",
+            "source": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-parcoursup/?flg=fr-fr",
+            "values": {
+              "offered_places": 58,
+              "wishes": 531,
+              "accepted": 56
+            },
+            "status": "official_open_data"
+          },
+          {
+            "date": "2025-11-25",
+            "type": "university_CFVU_vote",
+            "source": "https://www.unistra.fr/sites/default/files/2026-04/De%CC%81lib%20001-2026%20-%20PV%20CFVU%2025%20novembre%202025.pdf",
+            "values": {
+              "capacity_change_proposed": -2,
+              "votes_for": 24,
+              "votes_against": 7,
+              "abstentions": 2
+            },
+            "status": "official_minutes_approved_2026_01_20"
+          },
+          {
+            "date": "2026",
+            "type": "published_programme_offer",
+            "source": "https://dossier.parcoursup.fr/Candidats/public/fiches/afficherFicheFormation?g_ta_cod=8003",
+            "values": {
+              "offered_places": 56,
+              "confirmed_wishes": 572
+            },
+            "status": "official_parcoursup_page"
+          }
+        ],
+        "reconciliation": {
+          "equation": "58 + (-2) = 56",
+          "matches_published_offer_2026": true,
+          "decision_authority_caveat": "CFVU proposes, rector determines final capacity; individual rector decision not obtained.",
+          "effect_size_on_published_offer_percentage": -3.45,
+          "final_admissions_2026": "unknown"
+        },
+        "evidence_status": {
+          "published_capacity_change": "P3_limited_to_published_admission_capacity",
+          "outcome_on_students": "unknown",
+          "attribution_to_carnet_de_sante": "not_established",
+          "attribution_to_CPerf": "not_established",
+          "causal_effect": "not_established"
+        },
+        "caveats": [
+          "Selection after observing concordance; not an unbiased sample of administrative actions.",
+          "2025 accepted count 56 is a plausible alternative explanation for 2026 offer 56, not a known administrative motivation.",
+          "Confirmed wishes are not a count of unserved students.",
+          "Differences in program admissions and registration populations must not be collapsed.",
+          "University vote is not automatically the formal rectoral decision.",
+          "No evidence the carnet-de-sante or CPerf caused this capacity change."
+        ],
+        "next_documentary_obligations": [
+          "Individual rectoral capacity act for 2026",
+          "Document motivating university proposal",
+          "Evidence of any carnet-de-sante alert for programme 8003",
+          "Final 2026 admissions and 2026-27 registrations",
+          "Change in contact hours, costs and cohort outcomes"
+        ]
       }
     },
     {
