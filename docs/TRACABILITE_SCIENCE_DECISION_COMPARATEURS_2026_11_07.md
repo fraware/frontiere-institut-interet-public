@@ -60,6 +60,35 @@ Sources :
 - [JRC, rapid science for policy](https://knowledge-for-policy.ec.europa.eu/publication/report-guidelines-rapid-science-policy-0_en)
 - [JRC, compte rendu de la communauté EIPM, octobre 2026](https://knowledge-for-policy.ec.europa.eu/blog/european-community-practice-evidence-informed-policymaking-eipm-exploring-how-evidence_en)
 
+## Complément documentaire : acte préfectoral identifiable et limites de la saisine
+
+**Lait et produits laitiers, octobre 2019.** Le recueil des actes administratifs spécial de Seine-Maritime n° 76-2019-177 contient l'arrêté du **14 octobre 2019**, référence **76-2019-10-14-003**, levant les restrictions applicables au lait et aux produits laitiers. La reproduction consultée cite expressément l'avis de l'Anses du même jour, la conformité des analyses alors disponibles et la poursuite d'une surveillance renforcée. **La copie consultée est hébergée par un site de reproduction de documents officiels : l'exemplaire du recueil provenant directement de la préfecture reste à comparer.**
+
+Une chaîne indépendante de sources **ministérielles originales** atteste la traduction administrative : le communiqué du ministère de l'Agriculture du **14 octobre** se fonde explicitement sur l'avis de l'Anses, et l'instruction **DGAL/SDPAL/2019-710**, datée du 14 et publiée le **16 octobre**, précise les mesures d'exécution, les destinataires et la surveillance. Cette instruction historique a depuis été abrogée par **DGAL/SDPAL/2019-796**. Le statut ultérieur ne retire aucune valeur à l'observation de la séquence de 2019.
+
+La mission interministérielle de retour d'expérience de **mai 2020** constate que les saisines initiales de l'Anses du **1er et 2 octobre** n'avaient pas suffisamment défini l'usage attendu de l'avis dans la levée des restrictions. Le **11 octobre au soir**, une demande urgente spécifique a été formulée ; le premier avis relatif au lait a été produit le **14 octobre**. La mission considère qu'un cadrage explicite dès le début est essentiel, y compris en situation d'urgence. Cela documente une **friction de qualification du mandat**, mais aucun nombre de journées évitables ne saurait être déduit de cette chronologie sans tenir compte de la disponibilité progressive des résultats analytiques.
+
+Le même rapport décrit une **friction d'interopérabilité des données** : le format des résultats transmis par le Service commun des laboratoires imposait un reformatage avant exploitation par l'Anses. Le LABERCA a été mobilisé sept jours sur sept pendant six semaines, avec le concours d'autres laboratoires. La question n'est donc pas seulement la disponibilité de spécialistes, mais aussi l'organisation préalable des mandats, formats, capacités matérielles et canaux de restitution.
+
+**Sources et contrôles :**
+- [Copie du recueil de Seine-Maritime n° 76-2019-177 et de l'arrêté n° 76-2019-10-14-003 (source secondaire)](https://politique.pappers.fr/commune/document/07ed50a87183aed0d980cfe618e749e8)
+- [Ministère de l'Agriculture, communiqué du 14 octobre 2019](https://agriculture.gouv.fr/lubrizol-levee-des-mesures-de-restriction-sur-le-lait-et-les-produits-laitiers)
+- [Ministère de l'Agriculture, instruction DGAL/SDPAL/2019-710](https://info.agriculture.gouv.fr/boagri/instruction-2019-710)
+- [Retour d'expérience interministériel, mai 2020, pp. 57–60](https://www.seine-maritime.gouv.fr/contenu/telechargement/42376/279416/file/Rapport%20inter-inspection%20RETEX%20mai%202020.pdf)
+
+## Cas contemporain de formulation et de critique d'hypothèses énergétiques
+
+La **PPE3**, publiée le **13 février 2026**, et les travaux prospectifs de RTE donnent lieu à une chaîne institutionnelle distincte. Le bilan triennal du contrat de service public État–RTE décrit un **comité industriel de raccordement de l'éolien en mer** associant la DGEC, la DGE et la Commission de régulation de l'énergie (CRE). La CRE est un **régulateur indépendant** et sa délibération n° **2026-22 du 20 février 2026** examine, dans son propre mandat, le schéma décennal de développement du réseau soumis par RTE.
+
+La CRE y confronte plusieurs scénarios de consommation, leurs incertitudes et les projets industriels effectivement concrétisés. Elle demande des **analyses techniques complémentaires**, notamment sur la demande électrique dans des trajectoires plus modérées, la prise en compte des projets de raccordement partiellement réalisés, la gestion de tension et le choix d'une température de répartition de **85 °C** pour les lignes aériennes au regard des canicules futures. Ce document démontre la formulation publique de questions scientifiques et d'exigences de justification ; l'exécution de chacune de ces demandes doit être vérifiée dans les documents ultérieurs de RTE. Il ne prouve aucun déficit de personnel à la DGEC.
+
+**Sources :**
+- [PPE3, page ministérielle et date de publication](https://www.ecologie.gouv.fr/politiques-publiques/programmations-pluriannuelles-lenergie-ppe)
+- [État–RTE, bilan triennal du contrat de service public 2022–2025, février 2026](https://assets.rte-france.com/prod/public/2026-02/2026-02-25-bilan-triennal.pdf)
+- [CRE, délibération n° 2026-22, 20 février 2026, notamment annexe 1](https://www.cre.fr/fileadmin/Documents/Deliberations/2026/260220_2026-22_SDDR.pdf)
+
+**Questions empiriques supplémentaires :** à quelle date une question scientifique a-t-elle été suffisamment qualifiée ; quelles pièces ont fixé les formats et le niveau de preuve ; qui a reçu l'avis ; quelle autorité l'a utilisé ; et quelles suites documentées ont été données aux demandes complémentaires ? Les besoins déjà satisfaits par des dispositifs publics sont des contre-exemples obligatoires.
+
 ## Prochain protocole de preuve
 
 Étudier au moins trois cas contrastés : une expertise formalisée qui débouche sur une décision ; un produit technique préparé mais acheminé tardivement ; une coordination scientifique pluriannuelle par organismes publics. Pour chaque cas : dater le **besoin**, le **produit prêt**, sa **réception par l'autorité**, son **usage opérationnel**, les **alternatives** et le **coût**. Confronter systématiquement les explications concurrentes et retenir un cas où les dispositifs existants suffisent. La simple coexistence temporelle d'un avis et d'une décision ne suffit pas à prouver l'effet causal propre de l'avis.
