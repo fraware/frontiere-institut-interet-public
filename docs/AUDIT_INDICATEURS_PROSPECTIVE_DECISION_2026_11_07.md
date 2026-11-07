@@ -142,3 +142,44 @@ Le [rapport IGÉSR sur le pilotage de l'offre de formation](https://www.educatio
 | Quadrant | Limites méthodologiques et usages signalés par l'IGÉSR | Corrections effectives et conséquences sur des décisions individuelles |
 
 **Conclusions :** le versionnement de la preuve et la contradiction sont des exigences méthodologiques démontrables ; aucune supériorité ni nécessité d'une nouvelle structure FRONTIÈRE n'est établie. L'étude demeure exploratoire et non représentative. L'annexe d'entretien privé demeure exclusivement dans le document Word de travail, hors GitHub.
+
+
+## Complément longitudinal — Strasbourg et Pau, sources 2022–2026
+
+**Statut au 7 novembre 2026 :** étude de cas documentaire sur deux établissements sélectionnés à dessein. Les sources de Strasbourg et de Pau sont exclusivement publiques. Aucun dossier individuel, résultat à 12–24 mois, courrier de recommandation non public ou entretien n'a été obtenu. Le [registre structuré des deux trajectoires](../donnees/audit_decisions_universitaires_strasbourg_pau_2026_v1.json) distingue niveaux de preuve, dates, hypothèses et pièces manquantes.
+
+### 1. Strasbourg : diagnostic reconnu avant la mise en place du carnet de santé
+
+- **Juin 2022 :** l'[autoévaluation présentée au conseil d'administration](https://www.unistra.fr/sites/default/files/2025-10/Point_3.01_-_HCERES.pdf) mentionne une collecte d'indicateurs difficile, une appropriation insuffisante de l'outil décisionnel existant et un audit interne de la qualité des formations en 2021. La difficulté est donc au moins partiellement celle de l'intégration des données dans les pratiques.
+- **Septembre 2023 :** l'[évaluation indépendante du Hcéres](https://www.hceres.fr/sites/default/files/media/publications/rapports_evaluations/pdf/C2023-EV-0673021V-DEE-ETAB230023434-RD.pdf), fondée notamment sur les années 2017–2021, relève des limites de planification, d'autoévaluation et de coordination stratégique des 35 composantes. Ce diagnostic **ne prouve pas** la persistance de ces limites en 2026.
+- **Octobre 2023 :** le [procès-verbal de la CFVU, point 9](https://www.unistra.fr/fileadmin/upload/unistra/universite/fonctionnement/actes_reglementaires/deliberations_de_la_CFVU/Annee_universitaire_2023-2024/2023-11-21/Delib_138-2023_-_Proces-verbal_CFVU_24_octobre_2023.pdf) débat d'un classement de formations comme signal initial et de critères de soutenabilité. Les disciplines rares, les nouveautés, la mutualisation et les effectifs prévus rendent insuffisante la seule couleur du tableau. Les missions pédagogique (CFVU) et financière (conseil d'administration) sont distinguées.
+- **Janvier 2025 :** le [PV CFVU du 28 janvier 2025, p. 4–7](https://en.unistra.fr/sites/default/files/2025-10/Delib_004-2025_-_PV_CFVU_28_janvier_2025.pdf) rapporte un outil de suivi Excel, des lettres de recommandation, un appui d'Espace Avenir et des plans d'action présentés au dialogue stratégique. Il décrit des difficultés persistantes de saisie manuelle, de soutenabilité non mesurée et de taux d'insertion supprimés pour petits effectifs. Il cite **121 parcours sur 550** sous 15 étudiants, dont **54** sous 10 ; cela ne signifie pas que ces parcours ont été fermés.
+- **Septembre 2026 :** l'[index de la CFVU](https://www.unistra.fr/fr/universite/documents/actes-reglementaires/deliberation/commission-la-formation-et-la-vie-seance-22-septembre-2026) publie des actes de modification de maquettes pour l'année 2026–2027. L'index **ne relie pas** ces modifications à des recommandations du carnet de santé ou à des résultats de correction. Une telle attribution exigerait un identifiant stable de parcours et une décision motivée.
+
+**Observation vérifiée :** un processus public de diagnostic et de réaction existait. **Inconnue centrale :** quelles formations ont effectivement modifié leurs pratiques, à quelle date, pour quel résultat et à quel coût ?
+
+### 2. Pau : le plan de stabilisation précède les projections de 2026
+
+- La [stratégie 2022–2027 de l'UPPA](https://organisation.univ-pau.fr/fr/decouvrir-l-uppa/strategie-de-l-universite-2022-2027.html), adoptée le **30 novembre 2023**, inscrit un plan de stabilisation financière et de l'emploi **pour 2023–2025**, ainsi qu'un développement du dialogue de gestion.
+- Le [PV de la Commission de la recherche du **17 septembre 2025**](https://organisation.univ-pau.fr/_shared-resource/all/Publique%20GED/Base%20documentaire/Espaces%20de%20publication/Public/Communication/Documents%20UPPA%20Publics/Recueil%20actes%20administratifs/Extraits%20des%20d%C3%A9lib%C3%A9rations/Commission%20de%20la%20recherche%20%28ACR%29/2025/09%20-%20Septembre/09_ComR_25Sept2025_PV%2BAnnexes?download=true) prévoit la préparation d'une feuille de route à l'automne 2025 et une concertation sous l'égide du rectorat.
+- La [synthèse COMP publiée le 5 novembre 2026](https://organisation.univ-pau.fr/fr/decouvrir-l-uppa/comp-2026-2030.html) rapporte la signature du 7 juillet 2026, la cible de **24 000 heures** de formation à réduire **d'ici 2028**, des changements prévus de seuils d'ouverture de **10 à 20** pour certaines premières années de licence et de **8 à 12** pour certains masters, ainsi qu'un ratio de masse salariale de **84,9 %** en 2025. Ce sont des contraintes et objectifs publiés ; **aucun nombre d'heures déjà économisées n'est établi**.
+- La [Direction Data et Observatoire de l'UPPA](https://ode.univ-pau.fr/fr/l-ode/l-equipe-de-l-ode.html) identifie des compétences internes de collecte, de fiabilisation et d'exploitation des indicateurs. Une structure extérieure devrait démontrer une fonction additionnelle à cette capacité, sans l'ignorer.
+
+**Erreur chronologique à éviter :** la prévision nationale du SIES publiée en octobre 2026 est postérieure à la signature de juillet. Celle de mai existait, sans preuve qu'elle ait été mobilisée. Une justification ex post ne doit pas être substituée à la source réellement disponible à la date d'arbitrage.
+
+### 3. Contrôle de comparabilité et niveaux de preuve
+
+La couleur d'alerte de Strasbourg (effectifs faibles ou écart au cadrage) et les seuils d'ouverture annoncés à Pau ne sont **ni le même objet de mesure ni la même règle de décision**. Les règles d'exception, la mutualisation, les disciplines rares et l'accès territorial doivent être examinés avant toute comparaison.
+
+| Niveau | Définition pour ce registre | Strasbourg | Pau |
+| --- | --- | --- | --- |
+| P0 | Source publique datée | Établi | Établi |
+| P1 | Diagnostic, règle ou recommandation | Établi | Établi |
+| P2 | Acte engagé, lettre, contrat ou suivi annoncé | Appuis et plans documentés | COMP signé et engagements publiés |
+| P3 | Exécution terminée et vérifiable | Inconnue au niveau du parcours | Inconnue au niveau des heures |
+| P4 | Effet observé sur des résultats définis | Inconnu | Inconnu |
+| P5 | Effet causal attribuable avec contrefactuel pertinent | Non établi | Non établi |
+
+**Test prioritaire :** sélectionner un dossier par université qui possède un identifiant de formation stable, la version de l'indicateur consultée, l'acte qui décide, la preuve d'exécution et une mesure de résultat. Chercher également un cas positif entièrement résolu par le dispositif existant et un cas où le dispositif a dû corriger son premier jugement. Publier les incertitudes et le droit de contradiction avant toute généralisation. Une comparaison de deux trajectoires raisonnées ne permet aucune inférence représentative ou causale nationale.
+
+**Décision provisoire :** renforcer la preuve d'usage, la version des indicateurs et le suivi des effets avant toute proposition d'infrastructure FRONTIÈRE. Aucun partenaire externe n'est réputé engagé.
