@@ -240,15 +240,15 @@ Constituer **deux paires de parcours**, chacune fixée avant connaissance de l'i
 
 Le [procès-verbal de la CFVU du 25 novembre 2025](https://www.unistra.fr/sites/default/files/2026-04/De%CC%81lib%20001-2026%20-%20PV%20CFVU%2025%20novembre%202025.pdf), annexé à la délibération n° 001-2026 approuvée le 20 janvier 2026, indique, au point 21, une **diminution de deux places** dans les capacités d'accueil du **BUT Génie biologique, parcours Sciences de l'aliment et biotechnologie** à l'IUT de Schiltigheim ; le vote est rapporté à **24 pour, 7 contre et 2 abstentions**. Le même procès-verbal précise que **l'université propose les capacités** et que **le recteur de région académique dispose du dernier mot** : le vote n'est pas, à lui seul, l'arrêté définitif de capacité.
 
-La [base ouverte officielle Parcoursup 2025](https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-parcoursup/?flg=fr-fr) identifie la formation (code Parcoursup **8003**, UAI **0672462M**) et donne **58 places offertes**, **531 vœux** et **56 admis** pour la campagne 2025. La [fiche officielle Parcoursup 2026, code 8003](https://dossier.parcoursup.fr/Candidats/public/fiches/afficherFicheFormation?g_ta_cod=8003) affiche **56 places en 2026** et **572 vœux confirmés**. La cohérence documentaire **58 − 2 = 56** est donc vérifiée.
+La [base ouverte officielle Parcoursup 2025](https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-parcoursup/?flg=fr-fr) identifie la formation (code Parcoursup **8003**, UAI **0672462M**) et donne **58 places offertes**, **531 vœux** et **56 admis** pour la campagne 2025. La [fiche officielle Parcoursup, code 8003](https://dossier.parcoursup.fr/Candidats/public/fiches/afficherFicheFormation?g_ta_cod=8003) affiche **58 places en 2025**, mais **528 candidats postulants** et **57 candidats ayant choisi d'intégrer la formation** pour ce millésime. **Cette divergence de dénombrement n'a pas été résolue** : définition, étape de la procédure ou extraction différente sont des explications à vérifier. Les deux sources concordent sur la capacité de **58 places en 2025**. La même fiche affiche **56 places en 2026** et **572 vœux confirmés**, confirmant la cohérence de l'offre **58 − 2 = 56**, sans preuve sur les admissions finales de 2026.
 
 | Maillon de preuve | Observation | Limite |
 | --- | --- | --- |
 | 2025, capacité initiale | 58 places dans l'open data Parcoursup | Ce nombre n'est pas le nombre d'inscrits. |
 | 25 novembre 2025, CFVU | Proposition d'une réduction de deux places, vote 24/7/2 | Le rectorat arrête la capacité finale ; l'arrêté particulier n'a pas été obtenu. |
 | 2026, publication nationale | 56 places dans la fiche officielle, même code 8003 | Cohérence avec le vote ; pas une preuve des inscriptions définitives. |
-| 2025, admission observée | 56 admis pour 58 places | Alternative explicative possible d'une capacité moins élevée en 2026, sans preuve de motivation. |
-| 2026, demande affichée | 572 vœux confirmés | Les vœux ne mesurent ni la demande insatisfaite ni l'effet de la réduction. |
+| 2025, admissions rapportées | 56 dans la base ouverte ; 57 dans la fiche Parcoursup | Divergence non résolue ; aucune motivation administrative ne peut en être inférée. |
+| 2026, demande affichée | 572 vœux confirmés | Les vœux ne mesurent ni la demande insatisfaite ni l'effet de la réduction ; 2025 : 531 vœux dans la base, 528 candidats dans la fiche. |
 
 **Niveau de preuve particulier :** une décision proposée puis une capacité publique conforme sont observées (livrable publié ; **P3 limité à l'offre affichée**). Aucun résultat étudiant, financier ou pédagogique n'est établi (**P4 inconnu**) et aucune attribution au « carnet de santé » n'est prouvée (**P5 non établi**).
 
