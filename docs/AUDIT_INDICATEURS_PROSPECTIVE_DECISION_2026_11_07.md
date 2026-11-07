@@ -92,3 +92,53 @@ Les études de cas pourront départager certains mécanismes, **sans inférer de
 - Accès au logiciel Expertises ou aux outils sous authentification : **non obtenu**.
 - Mesure de gain d'une intervention FRONTIÈRE : **non réalisée**.
 - Témoignages et informations privés intégrés à ce document : **aucun**.
+
+
+## Complément longitudinal — versions de prévision et chaînes d'action (7 novembre 2026)
+
+**Question :** quelles informations statistiques étaient réellement disponibles à la date d'une décision, et quels maillons de la chaîne indicateur → délibération → action → résultat sont documentés ? Ce complément repose exclusivement sur des sources publiques, sans consultation d'un logiciel authentifié ni accès à un dossier individuel.
+
+### 1. Audit reproductible de millésimes SIES 2026
+
+Le [SIES, note d'information 2026-04 de mai 2026, tableau 2 p. 6](https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-05/ni-sies-2026-04-40235.pdf), prévoit **3 106 300** inscrits en 2026 et **3 124 400** en 2027. La [note flash SIES 2026-25 d'octobre 2026, p. 1](https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-10/2026_10_NF_SIES_25_projections.pdf) retient **3 074 600** et **3 093 800**.
+
+| Grandeur | Prévision mai 2026 | Prévision octobre 2026 | Révision octobre − mai |
+| --- | ---: | ---: | ---: |
+| Total national, rentrée 2026 | 3 106 300 | 3 074 600 | **−31 700** |
+| Total national, rentrée 2027 | 3 124 400 | 3 093 800 | **−30 600** |
+| Universités, y compris IUT, 2026 | 1 690 400 | 1 692 400 | **+2 000** |
+| BTS apprentis, rentrée 2026 | 181 900 | 162 100 | **−19 800** |
+| Base 2025 | 3 071 900 (projection) | 3 049 600 (« constat » publié) | **−22 300** |
+
+Les BTS en apprentissage représentent ainsi **environ 62 % de la révision arithmétique du total 2026**. La base d'estimation, la structure et les hypothèses ont pu changer. Il s'agit d'une *comparaison descriptive de deux prévisions*, **pas d'une mesure d'erreur de prévision**, ni d'une attribution causale de la révision à l'apprentissage. Le champ et les subdivisions doivent encore être vérifiés pour un audit longitudinal exhaustif.
+
+Le [registre reproductible des millésimes](../donnees/audit_millesimes_projections_sies_2026_v1.json) conserve les cinq paires de valeurs, les liens officiels, le type de mesure, la formule de différence et les réserves.
+
+### 2. Cas de décision documentée : UPPA 2026–2030
+
+L'[Université de Pau et des Pays de l'Adour publie le 5 novembre 2026](https://organisation.univ-pau.fr/fr/decouvrir-l-uppa/comp-2026-2030.html) sa synthèse de COMP, signé le **7 juillet 2026**. Elle inscrit dans sa trajectoire une **réduction envisagée de 24 000 heures d'enseignement à horizon 2028** (présentée comme 10 % du volume), ainsi qu'une augmentation de certains seuils d'ouverture **de 10 à 20** en première année de licence et **de 8 à 12** en première année de master. Le dialogue annuel avec le rectorat et une revue intermédiaire en 2028 sont prévus.
+
+**Vérification temporelle cruciale :** la note SIES d'octobre 2026 est *postérieure* à la signature du 7 juillet, et ne saurait être invoquée comme source documentaire contemporaine de cette signature. Celle de mai était disponible ; son usage effectif n'est pas démontré. La publication de novembre indique des engagements, non les nombres de cours réellement réduits ni les effets sur l'accès à l'enseignement supérieur.
+
+### 3. Contrôle institutionnel avec actions observées : Université de Strasbourg
+
+Le [procès-verbal de la CFVU du 28 janvier 2025, p. 4–7](https://en.unistra.fr/sites/default/files/2025-10/Delib_004-2025_-_PV_CFVU_28_janvier_2025.pdf) décrit le « carnet de santé » de l'offre de formation 2024–2028. Il documente des signaux d'effectifs ou de conformité pédagogique, des **courriers de recommandation** aux parcours signalés, un accompagnement par le **service Espace Avenir** et des **plans d'action** présentés dans le dialogue stratégique.
+
+Le procès-verbal évoque **550 parcours**, dont **343** considérés comme complets sur le cadrage étudié, **161** partiels et **22** quasiment dépourvus de mise en situation professionnelle. **Le texte ne démontre pas que ces trois catégories sont mutuellement exclusives ou exhaustives** ; il est interdit de créer une catégorie résiduelle par simple soustraction. Il signale **47 formations** sans taux d'insertion exploitable, des données de soutenabilité indisponibles et un risque d'erreur des saisies manuelles. Environ **5 % des parcours** n'ont pas ouvert, pour des motifs divers ; ce résultat ne doit pas être attribué automatiquement au carnet de santé.
+
+**Niveau de preuve :** une capacité administrative interne a produit un diagnostic et des interventions. L'efficacité durable et les corrections obtenues demeurent inconnues. Ce contrôle empêche de présumer qu'une interface extérieure était nécessaire au déclenchement des actions.
+
+### 4. Contre-expertise : limites des comparaisons nationales
+
+Le [rapport IGÉSR sur le pilotage de l'offre de formation](https://www.education.gouv.fr/sites/default/files/document/le-pilotage-de-l-offre-de-formation-dans-les-universites-strategie-outils-regulation-515951.pdf) souligne des limites de **Quadrant** (ancienneté, contexte, capture partielle de l'emploi, comparaison par médiane), tout en recensant des usages par certaines universités. Il signale, à partir d'une comparaison de publications SIES, une révision considérable des effectifs anticipés pour 2025 dans les « autres filières » entre 2017 et 2025, liée notamment à l'essor du privé et aux mutations de l'apprentissage. Les champs et méthodes ont évolué : le chiffre cité par l'IGÉSR **ne constitue pas une erreur de prévision vérifiée sur une population harmonisée**.
+
+### 5. Chaînes décisionnelles : seuils de constat
+
+| Cas | Observation datée établie | Preuve nécessaire pour conclure au résultat |
+| --- | --- | --- |
+| SIES projections | Deux publications de prévisions avec révision | Version réellement consultée, usage dans une décision, statistiques ex post harmonisées |
+| UPPA | Orientations et seuils publiés, contrat signé | Diagnostics et délibérations d'origine, actes d'exécution, effets mesurés |
+| Strasbourg | Indicateurs, courriers, appui, plans d'action | Réévaluations et résultats après mise en œuvre |
+| Quadrant | Limites méthodologiques et usages signalés par l'IGÉSR | Corrections effectives et conséquences sur des décisions individuelles |
+
+**Conclusions :** le versionnement de la preuve et la contradiction sont des exigences méthodologiques démontrables ; aucune supériorité ni nécessité d'une nouvelle structure FRONTIÈRE n'est établie. L'étude demeure exploratoire et non représentative. L'annexe d'entretien privé demeure exclusivement dans le document Word de travail, hors GitHub.
