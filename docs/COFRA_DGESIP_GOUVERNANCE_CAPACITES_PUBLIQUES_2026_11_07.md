@@ -30,6 +30,30 @@ Ces formulations **soulèvent une question d'interprétation et de régime appli
 
 **Questions prioritaires à l'ANRT et au CRGN :** quelle est la portée exacte de « projet doctoral » dans les activités de l'unité ? Sous quelles conditions une mission administrative extérieure au sujet de thèse est-elle admissible ? Quel document prévaut en cas de divergence sur la répartition des activités ? Quelles modalités de médiation et de révision sont applicables ?
 
+## Demandes techniques traçables — programme SIES 2026
+
+Le [programme de travail du SIES, daté du 24 février 2026](https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-02/programme-de-travail-sies---2026-39542.pdf), section 6.5.5 et tableau 3, publie des demandes formulées par les services de la DGESIP et de la DGRI, leur statut de prise en charge et les réponses envisagées. Il constitue une **source de demandes inscrites à un programme**, et non une preuve de livraison ou d'insuffisance institutionnelle.
+
+| Demande | Position du SIES | Classification provisoire |
+| --- | --- | --- |
+| Outil de cartographie pour la DGESIP et les rectorats | Non pris en charge ; logiciels proposés pour un traitement local | Orientation vers un instrument existant |
+| Outil de ticketing pour boîte mail générique | Non pris en charge ; compétence de déploiement absente | Limite de capacité dans le périmètre de ce département |
+| Hébergement des applications de la Mission prospective | Non pris en charge ; orientation vers la DNE | Répartition des responsabilités entre services |
+| Accès aux données pour les études prospectives | Non pris en charge ; données déclarées déjà ouvertes | Besoin jugé couvert, à vérifier |
+| Relance d'une plateforme devenue obsolète | Non pris en charge ; décision de fermeture | Abandon justifié d'une demande devenue inutile |
+| Déploiement et enrichissement de Quadrant | Pris en charge ; rattachement prévu à dataSupR | Exécution et usage à vérifier |
+| Cartographie de compétences des agences de programme | Pris en charge, via enrichissement envisagé de scanR | Instrument public existant à examiner |
+
+Une décision « non pris en charge » ne constitue donc pas automatiquement une pénurie ou un besoin non satisfait. De même, « pris en charge » décrit une intention ou une organisation annoncée, sans preuve suffisante de résultat. Pour chaque cas, rechercher l'issue réelle, le responsable, le coût, le délai, la voie alternative et l'effet opérationnel.
+
+## Trois comparateurs institutionnels vérifiables
+
+1. **Pilotage doctoral COFRA** — [Université Lumière Lyon 2, publication du 7 mai 2026](https://www.univ-lyon2.fr/recherche/actualites/these-nfabre) : témoignages publics du doctorant, de ses directeurs de thèse et de l'institution d'accueil. Les encadrants expliquent l'utilité des comités de pilotage pour préserver la cohérence du projet doctoral malgré des missions administratives complémentaires. Ces déclarations réunies dans une communication institutionnelle ne sont pas des preuves indépendantes de l'effet causal du dispositif.
+2. **Formalisation locale dès 2023** — [Paris-Est Sup, rapport d'autoévaluation de juin 2024 destiné à une campagne Hcéres](https://www.paris-est-sup.fr/fileadmin/Fichiers/UPE/Ecoles_doctorales/ED_VTT/Documents/RAPPORT_HCERES_13062024.pdf), p. 31 : décision du 20 octobre 2023 d'impliquer aussi la direction de l'école doctorale et celle de l'unité de recherche dans la signature des COFRA. L'adhésion formelle ne prouve pas l'efficacité d'une médiation en cours d'exécution.
+3. **Déconcentration suivie dans le temps** — [circulaire du 11 août 2025](https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENG2523527C), [feuille de route de Nouvelle-Aquitaine (octobre 2025)](https://www.ac-bordeaux.fr/la-lettre-actu-rana-octobre-2025-133329), [bilan des ateliers et négociations (mai 2026)](https://www.ac-bordeaux.fr/la-lettre-actu-rana-mai-2026-134077), [six contrats signés le 7 juillet 2026](https://www.enseignementsup-recherche.gouv.fr/fr/philippe-baptiste-signe-bordeaux-les-six-premiers-contrats-d-objectifs-de-moyens-et-de-performance-103211), [quatre autres le 16 juillet 2026](https://www.enseignementsup-recherche.gouv.fr/fr/philippe-baptiste-signe-aix-en-provence-les-comp-des-quatre-universites-de-paca-l-acte-ii-de-la-103230). La [mission sénatoriale de 2025](https://www.senat.fr/rap/r25-058/r25-058_mono.html) signale des réserves sur les effectifs et la capacité d'accompagnement rectoral. Les signatures établissent un jalon administratif, pas un résultat final.
+
+**Précaution de version :** l'[annexe gouvernementale au PLF 2025](https://www2.assemblee-nationale.fr/static/17/Annexes-DL/PLF2025-Jaunes/11-Jaune_Recherche.pdf) documente un cofinancement de 14 000 € par an dans la phase expérimentale COFRA ; la [formule consolidée en 2025](https://doctorat.gouv.fr/avant/financement/cofra/) ne prévoit plus de subvention d'État à l'administration partenaire. Ne pas agréger les régimes contractuels sans distinguer leur période et financement.
+
 ## Contradiction publique à conserver
 
 Le référé de la Cour des comptes constate notamment des insuffisances dans le pilotage stratégique et dans la conduite de projets transversaux. Dans sa réponse datée du 13 janvier 2026, le Premier ministre partage une large part du diagnostic général, tout en contestant notamment la procédure de contradiction des recommandations et en décrivant des réformes engagées. Le statut de chaque mesure doit être vérifié à une date donnée avant de conclure que la difficulté demeure.
