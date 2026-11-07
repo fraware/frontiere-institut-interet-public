@@ -152,3 +152,5 @@ Tests requis : provenance et dates des données affichées, taux de couverture, 
 - Données privées ou témoignages identifiants publiés : **aucun**.
 - Conclusion institutionnelle : aucune nouvelle fonction de FRONTIÈRE n'est démontrée nécessaire par ces seules sources.
 
+
+Le [registre exploratoire de trois demandes SIES](../donnees/sies_demandes_2026_pilote_v1.json) consigne les décisions publiées, les résultats encore inconnus et les pièces attendues. Il ne s'agit ni d'un jeu d'évaluation validé ni d'une mesure de performance.
