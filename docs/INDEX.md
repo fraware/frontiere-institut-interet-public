@@ -86,6 +86,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | Document | Rôle |
 | --- | --- |
 | [De l'expertise scientifique à la décision : chronologies et comparateurs (7 novembre 2026)](TRACABILITE_SCIENCE_DECISION_COMPARATEURS_2026_11_07.md) | Saisines, avis, décisions publiques, délais de transmission, comparateurs britanniques et européens et limites de preuve |
+| [Audit Reco-co, SofIA, Booster Conseil et bilans régionaux (7 novembre 2026)](AUDIT_RECOCO_SOFIA_MISSION_ADAPTATION_PREUVES_2026_11_07.md) | Infrastructure open source AGPL, 162 dossiers, 220 conseillers, audit de l'IA publique et des résultats déclarés |
 | [Diagnostic contradictoire IGF–I4CE–HCC et audit Mission adaptation (7 novembre 2026)](EVALUATION_CRITIQUE_MISSION_ADAPTATION_INGENIERIE_2026_11_07.md) | Fragmentation des dispositifs, estimation 4 M€/an, chaînes de preuves contractuelles et protocole de comparaison |
 | [Mission adaptation, Périgord–Limousin et SIGERLy : preuves comparatives (7 novembre 2026)](MISSION_ADAPTATION_ET_CAS_TERRITORIAUX_CONTROLES_2026_11_07.md) | Guichet interopérateurs, 184/200 collectivités, ressources 2025, coûts de conventions et tests d'utilité supplémentaire |
 | [Cerema 2026 et audit OTELO : suivi des neuf recommandations sénatoriales (7 novembre 2026)](CONTROLE_EXECUTION_CEREMA_2026_ET_AUDIT_OTELO_2026_11_07.md) | Statut de mise en œuvre, contrainte budgétaire, mission MEL–OTELO et protocole de validation des quinze documents influencés |
