@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0.0",
+  "date_reference": "2026-11-07",
+  "method": "Registre documentaire public préalablement à tout suivi empirique. L'existence d'une source n'est pas une preuve d'effet causal.",
+  "statuses": {
+    "P0": "source publique datée",
+    "P1": "recommandation ou mécanisme envisagé",
+    "P2": "acte engagé ou documenté",
+    "P3": "exécution terminée",
+    "P4": "effet observé après exécution",
+    "P5": "effet attribuable avec contrefactuel crédible"
+  },
+  "study_population": "Deux établissements sélectionnés à dessein (non représentatifs), aucun accès sous authentification ni renseignement nominatif d'entretien",
+  "cases": [
+    {
+      "id": "UNI-STRASBOURG-CARNET-2024-2028",
+      "institution": "Université de Strasbourg",
+      "topic": "Suivi interne des parcours de formation",
+      "evidence": [
+        {
+          "date": "2022-06-07",
+          "level": "P0",
+          "kind": "auto_evaluation",
+          "claim": "Constat interne de collecte difficile des indicateurs et faible appropriation des outils décisionnels",
+          "source": "https://www.unistra.fr/sites/default/files/2025-10/Point_3.01_-_HCERES.pdf"
+        },
+        {
+          "date": "2023-09-04",
+          "level": "P1",
+          "kind": "evaluation_externe",
+          "claim": "Hcéres critique une capacité limitée de planification et de suivi, fondée sur la période 2017-2021",
+          "source": "https://www.hceres.fr/sites/default/files/media/publications/rapports_evaluations/pdf/C2023-EV-0673021V-DEE-ETAB230023434-RD.pdf"
+        },
+        {
+          "date": "2023-10-24",
+          "level": "P1",
+          "kind": "deliberation_preparatoire",
+          "claim": "Critères de soutenabilité et de cadrage débattus ; seuils 10 master, 15 licence ; disciplines rares et mutualisations à considérer",
+          "source": "https://www.unistra.fr/fileadmin/upload/unistra/universite/fonctionnement/actes_reglementaires/deliberations_de_la_CFVU/Annee_universitaire_2023-2024/2023-11-21/Delib_138-2023_-_Proces-verbal_CFVU_24_octobre_2023.pdf"
+        },
+        {
+          "date": "2025-01-28",
+          "level": "P2",
+          "kind": "instance_et_actions",
+          "claim": "Carnet Excel, lettres de recommandation, intervention d'Espace Avenir, dialogues stratégiques et plans d'action documentés",
+          "source": "https://en.unistra.fr/sites/default/files/2025-10/Delib_004-2025_-_PV_CFVU_28_janvier_2025.pdf"
+        },
+        {
+          "date": "2026-09-22",
+          "level": "P2",
+          "kind": "index_actes",
+          "claim": "Actes de modifications de maquettes 2026-2027 publiés ; aucune liaison individualisée au carnet établie",
+          "source": "https://www.unistra.fr/fr/universite/documents/actes-reglementaires/deliberation/commission-la-formation-et-la-vie-seance-22-septembre-2026"
+        }
+      ],
+      "descriptive_counts": {
+        "total_parcours_rapportes": 550,
+        "cadrage_complet": 343,
+        "cadrage_partiel": 161,
+        "absence_ou_quasi_absence_mises_en_situation": 22,
+        "taux_insertion_inexploitable": 47,
+        "effectifs_inferieurs_15": 121,
+        "effectifs_inferieurs_10": 54
+      },
+      "count_warning": "Les catégories 343/161/22 ne sont pas prouvées exclusives ou exhaustives ; les seuils ne décrivent pas des suppressions, 47 taux manquants ne sont pas des échecs.",
+      "last_verified_level": "P2",
+      "result_status": "effets_inconnus",
+      "link_2026_to_warning": "Aucun lien direct entre une lettre du carnet et une modification de maquette publiée en 2026 n'est démontré.",
+      "required_documents": [
+        "identifiants des parcours et critères par date",
+        "registre agrégé des recommandations et actions",
+        "décisions individuelles justifiées",
+        "données sur la mise en œuvre 2025-2026",
+        "résultats en 2026 et anomalies corrigées"
+      ]
+    },
+    {
+      "id": "UNI-PAU-COMP-2026-2030",
+      "institution": "Université de Pau et des Pays de l'Adour",
+      "topic": "Contrat territorialisé et soutenabilité de l'offre",
+      "evidence": [
+        {
+          "date": "2023-11-30",
+          "level": "P1",
+          "kind": "strategie_adoptee",
+          "claim": "Adoption d'une stratégie intégrant PSFE sur 2023-2025",
+          "source": "https://organisation.univ-pau.fr/fr/decouvrir-l-uppa/strategie-de-l-universite-2022-2027.html"
+        },
+        {
+          "date": "2025-09-17",
+          "level": "P1",
+          "kind": "commission_recherche",
+          "claim": "Nouveau COMP en préparation, feuille de route octobre 2025 et concertation régionale prévues",
+          "source": "https://organisation.univ-pau.fr/_shared-resource/all/Publique%20GED/Base%20documentaire/Espaces%20de%20publication/Public/Communication/Documents%20UPPA%20Publics/Recueil%20actes%20administratifs/Extraits%20des%20d%C3%A9lib%C3%A9rations/Commission%20de%20la%20recherche%20%28ACR%29/2025/09%20-%20Septembre/09_ComR_25Sept2025_PV%2BAnnexes?download=true"
+        },
+        {
+          "date": "2026-07-07",
+          "level": "P2",
+          "kind": "contrat_signe",
+          "claim": "Signature du nouveau COMP 2026-2030, rapportée dans la synthèse publiée le 5 novembre",
+          "source": "https://organisation.univ-pau.fr/fr/decouvrir-l-uppa/comp-2026-2030.html"
+        },
+        {
+          "date": "2026-11-05",
+          "level": "P2",
+          "kind": "publication_engagements",
+          "claim": "Objectif réduction 24000 heures d'enseignement d'ici 2028 et relèvement de certains seuils, pas résultats ex post",
+          "source": "https://organisation.univ-pau.fr/fr/decouvrir-l-uppa/comp-2026-2030.html"
+        },
+        {
+          "date": "2025-07-25",
+          "level": "P0",
+          "kind": "capacite_existante",
+          "claim": "Direction Data et Observatoire existante, mission de fiabilisation et exploitation des indicateurs",
+          "source": "https://ode.univ-pau.fr/fr/l-ode/l-equipe-de-l-ode.html"
+        }
+      ],
+      "descriptive_targets": {
+        "teaching_hours_reduction_goal_2028": 24000,
+        "licence_first_year_opening_threshold_before": 10,
+        "licence_first_year_opening_threshold_after": 20,
+        "master_first_year_opening_threshold_before": 8,
+        "master_first_year_opening_threshold_after": 12,
+        "salary_ratio_2025_percent": 84.9
+      },
+      "count_warning": "Seuils pour certaines formations, sans applicabilité universelle établie ; les 24000 heures représentent une cible à horizon 2028, pas une réduction réalisée.",
+      "last_verified_level": "P2",
+      "result_status": "effets_inconnus",
+      "projection_warning": "Le SIES d'octobre 2026 est postérieur à la signature de juillet. La note de mai était disponible mais son usage n'a pas été démontré.",
+      "required_documents": [
+        "feuille de route octobre 2025 et comptes rendus de concertation",
+        "annexes de COMP signées et tableaux d'indicateurs",
+        "instances qui ont arrêté les seuils",
+        "première exécution et volumes réels d'heures",
+        "analyse des conséquences sur l'accès et les parcours"
+      ]
+    }
+  ],
+  "guardrails": [
+    "Une modification de maquette n'est pas automatiquement l'effet d'une recommandation antérieure.",
+    "Évaluer à l'échelle de la formation et des composantes en distinguant disciplines rares et mutualisations.",
+    "Le P2 peut être documenté sans résultats P3/P4.",
+    "Deux cas documentaires ne suffisent pas à estimer un effet causal ni une prévalence.",
+    "Aucune conclusion sur la nécessité d'une nouvelle institution n'est établie."
+  ],
+  "publication_boundary": "Public sources only. No private interview transcripts or named third-party testimony."
+}
