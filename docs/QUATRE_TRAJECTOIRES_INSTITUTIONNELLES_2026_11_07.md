@@ -45,3 +45,11 @@ Les observations seront classées suivant la fonction rencontrée : qualificatio
 - [IGEDD, Révision de la comitologie du parc éolien de Saint-Brieuc](https://www.igedd.developpement-durable.gouv.fr/revision-de-la-comitologie-du-parc-eolien-en-mer-a4393.html)
 
 Cette note ne publie aucune correspondance privée, aucun entretien nominatif ni aucune affirmation de démarche réalisée. Les recherches de pièces ont été effectuées ; aucune demande externe n'a été envoyée au titre de cette note.
+
+## Complément documentaire — 7 novembre 2026
+
+**IGN : capacité de coordination en cours d'organisation.** Une [offre de coordinateur/coordinatrice IA de l'IGN](https://www.ign.fr/nous-rejoindre/offres-emploi/coordinateurcoordinatrice-ia-1714), publiée en 2026, décrit la coordination des projets IA, la mutualisation des ressources (données, modèles, calcul), l'animation d'un comité consultatif et l'appui aux équipes internes. Elle témoigne d'une fonction institutionnelle explicitement prévue, mais **ni la conclusion du recrutement ni son efficacité ne sont attestées**. La demande d'enquête doit couvrir recrutement, formation et conservation des capacités.
+
+**Saint-Brieuc : périmètre des opérateurs.** L'[IGEDD](https://www.igedd.developpement-durable.gouv.fr/revision-de-la-comitologie-du-parc-eolien-en-mer-a4393.html) identifie le **SHOM, l'Ifremer et le Cerema** parmi les opérateurs publics sollicités directement par le préfet. La recherche vise une paire documentaire saisine/avis d'un de ces opérateurs ; elle ne doit pas confondre ces consultations avec les avis du conseil scientifique historique. Le [conseil scientifique de façade NAMO](https://www.dirm.nord-atlantique-manche-ouest.developpement-durable.gouv.fr/le-conseil-scientifique-eolien-en-mer-namo-a1620.html) a été créé en avril 2023 : la recommandation IGEDD de lui transférer des missions ne démontre pas que le transfert a eu lieu.
+
+**Statut des démarches :** quatre messages sont préparés ; **zéro envoi et zéro réponse** sont établis à la date de cette note. L'accès aux formulaires officiels, dont celui de l'IGN avec CAPTCHA, relève de l'expéditeur. Les correspondances demeurent hors du dépôt public.
