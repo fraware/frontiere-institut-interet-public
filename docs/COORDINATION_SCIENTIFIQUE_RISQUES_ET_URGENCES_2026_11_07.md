@@ -19,6 +19,22 @@ L'enquête doit distinguer trois temporalités : la programmation scientifique p
 | Programmation scientifique du ministère | La stratégie ministérielle de recherche 2026–2030 est publiée ; elle définit des priorités de connaissance pour les politiques publiques. | Comment chaque priorité se traduit en mission, financement, équipe, livrable et contribution effectivement utilisée |
 | Mobilité par mécénat de compétences à la Foncsi | La Foncsi indique que sa direction scientifique est assurée depuis 2024 dans le cadre d'une mise à disposition par Airbus. | Conditions contractuelles communicables, compatibilité des intérêts, droits de publication, effets sur la continuité ; aucune transposition à l'administration n'est présumée |
 
+## Trois cas publics déjà reconstituables
+
+**Feuille de route nationale « Cavités », 2020–2024.** L'Ineris indique que la DGPR a initié la démarche fin 2019, avec un déploiement à partir de 2020 et un pilotage associant le BRGM et le Cerema. Son bilan publié recense 33 actions, plus de 25 % menées en commun selon l'Ineris, huit réunions d'avancement et plusieurs guides, observatoires et outils. L'infographie signale également qu'un guide relatif aux marnières reste « à venir » : le total présenté comme « quatre nouveaux guides » ne doit pas être interprété comme quatre livraisons entièrement achevées. Les journées techniques des 8 et 9 octobre 2026 attestent la poursuite des échanges ; ni les coûts de coordination ni la réutilisation des résultats dans une décision déterminée ne sont établis par ces publications.
+
+Sources : https://www.ineris.fr/fr/recherche-appui/comprendre-maitriser-risques-echelle-site-industriel-territoire/securite-0 ; https://www.ineris.fr/fr/ineris/actualites/prevention-risques-lies-cavites-souterraines-france-point-feuille-route-nationale ; https://www.ineris.fr/fr/ineris/actualites/gestion-risque-lie-cavites-souterraines-ineris-brgm-cerema-reunis-occasion-0
+
+**Appui de l'Ineris lors de l'incendie de Lubrizol, 2019.** Le retour d'expérience publié par l'Ineris indique une sollicitation de la CASU vers 6 heures le 26 septembre 2019 et quatre avis successifs. Une première modélisation de panache a été produite dès le premier jour pour guider les prélèvements ; l'Institut signale des analyses à J+1, des résultats spécialisés à J+5 et des modélisations à plus grande distance disponibles le mardi suivant. Les difficultés documentées portent notamment sur les équipements et méthodes de prélèvement, les données d'entrée, la disponibilité d'experts, la coordination des analyses et le financement de la phase post-accidentelle. L'incidence exacte de chaque avis sur les décisions administratives reste à établir.
+
+Sources : https://www.ineris.fr/fr/risques/dossiers-thematiques/intervention-ineris-incendie-lubrizol-rouen-decryptage/retour ; https://www.ineris.fr/fr/ineris/institut-bref/cellule-appui-situations-urgence-casu
+
+**Expertise collective d'urgence de l'Anses, 2022.** L'avis public n° 2022-SA-0059 concerne le 2-chloroéthanol dans du gluten destiné à des denrées alimentaires. Il indique une saisine de la DGCCRF le 23 mars 2022, des réunions d'un groupe d'expertise collective d'urgence du 6 avril au 16 mai, une validation le 16 mai et un avis daté du 1er juin. Ce calendrier de plusieurs semaines diffère radicalement de l'urgence accidentelle en quelques heures. Le groupe a explicité plusieurs hypothèses et incertitudes ; une décision administrative directement liée à cet avis doit être retrouvée avant toute conclusion sur son usage.
+
+Source : https://www.anses.fr/system/files/ESPA2022SA0059.pdf
+
+**Point méthodologique commun.** La présence d'une équipe, d'un comité, d'un avis ou d'un guide établit une activité ; la durée de préparation, le délai jusqu'à une première contribution utile et l'effet sur la décision publique constituent trois mesures différentes. L'existence de cas publics réussis doit aussi rester un contrôle contre une hypothèse de déficit généralisé.
+
 ## Trois enquêtes comparatives prioritaires
 
 ### Cas A. Coordination et programmation des risques naturels
