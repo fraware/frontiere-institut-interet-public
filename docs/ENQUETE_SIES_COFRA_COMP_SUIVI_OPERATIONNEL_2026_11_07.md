@@ -73,3 +73,36 @@ Pour chaque demande ou coopération : identifiant public ; source primaire ; dat
 ## Décision de recherche
 
 Poursuivre l’étude des dispositifs publics existants. Aucune plateforme additionnelle de talents ni structure de conseil scientifique n’est encore justifiée par une preuve comparée d’insuffisance, de coût ou de gain sur des besoins réels. Les résultats peuvent conduire à appuyer une capacité publique existante, à créer une intervention ciblée, à réorienter l’étude ou à arrêter.
+
+## Complément du 7 novembre 2026 — suivi longitudinal et contrôle contradictoire
+
+### Expertises : distinguer utilisation et réalisation des modules
+
+Les trois [programmes officiels SIES 2024](https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2024-06/programme-de-travail-sies---2024-33642.pdf), [2025](https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2025-01/programme-de-travail-sies---2025-35999.pdf) et [2026](https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-02/programme-de-travail-sies---2026-39542.pdf) décrivent une application « Expertises » employée pour l'examen scientifique de projets bilatéraux, avec un corpus déclaré d'environ 250 experts. L'import de décisions de réunions bilatérales et l'exploitation par tableau de bord SIDATA apparaissent dans plusieurs programmes successifs. Le programme 2026 annonce encore ces évolutions, avec migration de composants techniques.
+
+**Inférence permise :** il faut vérifier les dates réelles de livraison, les redéfinitions de périmètre et les dépendances du projet. **Inférence interdite :** affirmer à partir de ces seuls programmes que l'application a été continuellement en retard ou qu'elle fonctionne mal.
+
+L'[appel PHC Toubkal de mai 2026](https://www.enseignementsup-recherche.gouv.fr/fr/appel-candidatures-pour-la-co-presidence-du-comite-mixte-du-programme-de-cooperation-scientifique-et-101411) confirme l'usage d'avis scientifiques de la DAEI dans une sélection de projets réelle. Il ne prouve pas que chaque avis passe par le logiciel Expertises, ni les délais d'assignation ou la qualité mesurée.
+
+### Fresq n'est pas FresqViz
+
+La [circulaire sur l'accréditation des INSPE d'octobre 2025](https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo41/MENS2527262C) prévoit le dépôt des dossiers dans le référentiel Fresq. Le programme SIES 2026 indique également l'engagement de la collecte de l'offre Mon Master 2026–2027 via Fresq dès novembre 2025. Le référentiel dispose donc d'usages administratifs identifiables.
+
+La [circulaire de déconcentration d'août 2025](https://www.enseignementsup-recherche.gouv.fr/fr/bo/2025/Hebdo32/MENG2523527C) et le programme 2026 présentent FresqViz et les enrichissements de Quadrant / dataSupR comme des **développements ou déploiements à suivre séparément**. L'usage de Fresq ne prouve ni leur livraison ni leur adoption.
+
+### Quadrant : preuve contradictoire d'un contrôle externe
+
+Le [rapport IGÉSR sur le pilotage de l'offre de formation](https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-05/le-pilotage-de-l-offre-de-formation-dans-les-universit-s-strat-gie-outils-r-gulation-40075.pdf), daté d'octobre 2025, rapporte un accueil favorable au principe d'outillage, mais aussi des critiques relatives au déploiement de Quadrant, au périmètre des données d'insertion, au décalage temporel des indicateurs et à des demandes de transformation contestées. Il constate également des utilisations des résultats pour engager des changements. La position sous une médiane est relative ; elle ne suffit pas à établir une défaillance absolue.
+
+Conséquence pour les évaluations de FRONTIÈRE : mesurer la justesse des critères, la contextualisation, la procédure contradictoire et l'effet des décisions, en plus de l'accès à un expert et de la rapidité de la réponse.
+
+### scanR : réutilisation publique et frontière de qualité
+
+Le [catalogue national de l'API scanR](https://www.data.gouv.fr/dataservices/scanr-moteur-de-la-recherche-et-de-linnovation) signale un service ouvert, reconnaît les approximations et l'incomplétude des données et exclut son usage comme instrument d'évaluation. Le [dépôt de code ministériel](https://github.com/MinistereSupRecherche/scanR) décrit des endpoints de recherche et d'accès aux objets. Ces informations documentent une capacité de repérage ; elles n'établissent ni disponibilité opérationnelle des experts ni adéquation à une mission administrative particulière. Aucun test d'API avec journal de requêtes n'a été exécuté pour cette mise à jour.
+
+### Trois épisodes pilotes et critères de clôture
+
+Sélectionner **avant la vérification des résultats** trois demandes du tableau SIES : une demande renvoyée à un autre service (hébergement MiP vers DNE), une demande considérée comme déjà couverte (données prospectives ouvertes) et une demande prise en charge (Quadrant/FresqViz ou Expertises). Pour chaque épisode : besoin daté, responsabilité, alternatives, décision, preuve de réalisation, délai, coût humain, usage de la contribution et relecture contradictoire. Éviter d'assimiler « non pris en charge par le SIES » à « non satisfait dans l'État ». Sans preuve d'issue, consigner « inconnu ».
+
+**Statut d'exécution :** nouvelles sources vérifiées et comparées ; demandes de données non envoyées ; accès privés et journaux de livraison non obtenus ; essais prospectifs non réalisés. Ces observations ne justifient aucune nouvelle infrastructure.
+
