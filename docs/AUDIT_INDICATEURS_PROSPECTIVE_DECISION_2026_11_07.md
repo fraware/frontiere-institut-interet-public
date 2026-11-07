@@ -183,3 +183,50 @@ La couleur d'alerte de Strasbourg (effectifs faibles ou écart au cadrage) et le
 **Test prioritaire :** sélectionner un dossier par université qui possède un identifiant de formation stable, la version de l'indicateur consultée, l'acte qui décide, la preuve d'exécution et une mesure de résultat. Chercher également un cas positif entièrement résolu par le dispositif existant et un cas où le dispositif a dû corriger son premier jugement. Publier les incertitudes et le droit de contradiction avant toute généralisation. Une comparaison de deux trajectoires raisonnées ne permet aucune inférence représentative ou causale nationale.
 
 **Décision provisoire :** renforcer la preuve d'usage, la version des indicateurs et le suivi des effets avant toute proposition d'infrastructure FRONTIÈRE. Aucun partenaire externe n'est réputé engagé.
+
+
+## Complément — COMEX, règles de sélection et indicateurs du COMP UPPA (7 novembre 2026)
+
+**Statut de la recherche :** actes publics d'universités. Aucune vérification de dossier individuel de formation, aucun entretien, aucun accès à une annexe non publiée et aucune estimation d'effet causal. Les nouveaux constats mettent à jour le [registre documentaire Strasbourg–Pau](../donnees/audit_decisions_universitaires_strasbourg_pau_2026_v1.json).
+
+### 1. Un document contractuel primaire plus substantiel que la communication générale
+
+Le [recueil des actes du CA de l'Université de Pau et des Pays de l'Adour](https://organisation.univ-pau.fr/fr/organisation/instances/conseil-d-administration/actes-a-caractere-reglementaire-du-ca.html) publie, à la rubrique **Conseil d'administration du 11 juin 2026**, la **délibération n° 2026_06-11_5, COMP 2026–2030** (PDF de 32 pages, rubrique publiée le 7 juillet 2026). Le corps de l'acte porte « version validée par la région académique – 04 juin 2026 » et l'annexe « V2 – 29 mai 2026 ». La cérémonie de signature du 7 juillet constitue un événement distinct. Cette pièce décrit une organisation et des engagements plutôt qu'une série de résultats ex post.
+
+Le contrat (p. 10–11) décrit un **comité d'expertise des formations, COMEX**, existant depuis environ deux ans. Il réunit la vice-présidence CFVU, le DGS, la direction générale déléguée Formation et vie étudiante, et des représentants des directions métiers. Il instruit avec les collèges les créations, transformations et fermetures en fonction de trois axes : **efficacité, soutenabilité et stratégie**. Les critères incluent la réussite, le recrutement, l'insertion, les coûts en heures, les RH, les mutualisations, l'adossement scientifique et l'accès territorial. Ce dispositif existant est un **comparateur interne prioritaire**, et non un déficit présumé.
+
+Les seuils projetés de L1 (**10 → 20**) et M1 (**8 → 12**) et la réduction cible de **24 000 heures d'enseignement d'ici 2028** s'accompagnent, dans le texte, d'une **analyse approfondie des formations sous seuil**. Une adaptation de la capacité de formations à plus de 150 entrants, par groupes de 30, est envisagée sous condition de réduction réelle d'heures. Il serait inexact d'en déduire une fermeture automatique, une réduction déjà réalisée ou une suppression uniforme de parcours.
+
+### 2. Une procédure d'arbitrage et des ressources déjà explicites
+
+La chronologie annoncée prévoit cadrage envoyé aux collèges **en janvier N**, remontée des maquettes et créations **fin avril N**, expertise COMEX et collèges, **conférences budgétaires en septembre**, puis arbitrages et budget initial. Le suivi du COMP et du PSFE est décrit comme trimestriel dans plusieurs instances, avec une revue annuelle en CAC et CA (p. 17–18). Ces dispositions sont des engagements à comparer à des comptes rendus de réunions réellement tenues.
+
+Le contrat (p. 17) ventile **2,0 M€ de bonus contractuel annuel programmé**, dont 0,8 M€ de pérennisation de moyens, 0,34 M€ d'actions nouvelles, 0,46 M€ d'atterrissage de projets et compétences expertes, et 0,4 M€ de GPEEC. Il s'agit de montants contractuels annoncés, **pas de dépenses vérifiées**.
+
+### 3. Statuts des indicateurs au 29 mai 2026 : produit ≠ effet
+
+L'inventaire final (p. 31) distingue notamment :
+
+| Référence | Indicateur ou pièce | Statut documentaire |
+| --- | --- | --- |
+| N-01 | Nombre de formations transformées parmi les formations signalées et trajectoire d'heures PSFE | « Produit » ; valeurs et transformations réalisées non reproduites dans cet inventaire |
+| N-02 / N-03 | Formations répondant aux grands défis / indice composite de vie étudiante | Prévision « Automne 2026 » |
+| N-04 / N-05 | Horizon Europe / innovation et PUI | « Produit » |
+| N-06 | UMR en délégation globale de gestion | Saisie en attente |
+| N-07 / N-08 | Ressources propres / niveau de trésorerie | « Produit » |
+| R-01 / R-02 | Coût par étudiant, taux d'encadrement / indice FORME | Prévision « Automne 2026 » |
+| Annexe NOF formation par formation | Décision stratégique pour chaque formation | Production annoncée pour **2028**, lors de l'accréditation |
+
+La mention « produit » qualifie le tableau préparatoire et **ne constitue pas une preuve que ses objectifs ont été atteints**. Le document publié ne contient pas ici les données par formation permettant d'établir le lien entre diagnostic, COMEX, arbitrage, maquette exécutée et résultats.
+
+### 4. Strasbourg : un nouveau jalon, pas encore de chaîne individuelle prouvée
+
+Le [recueil officiel des délibérations CFVU du 22 septembre 2026](https://www.unistra.fr/fr/universite/documents/actes-reglementaires/deliberation/commission-la-formation-et-la-vie-seance-22-septembre-2026), mis en ligne le 9 octobre, inclut des procès-verbaux de juin et des modifications de maquettes 2026–2027 de plusieurs composantes. L'[ordre du jour syndical de la séance](https://strasbourg.blog.snptes.org/post/2026/09/21/%5BUNISTRA%5D-Ordre-du-jour-CFVU-du-22-septembre-2026) annonçait un **bilan de la mission « Pilotage de l'offre de formation »**, mais il s'agit d'une source **secondaire**, sans contenu de bilan. Aucun procès-verbal du 22 septembre exposant ce bilan n'a été vérifié dans la recherche.
+
+Une maquette modifiée n'est pas, à elle seule, la preuve d'une réponse au « carnet de santé » présenté le 28 janvier 2025. Le rapprochement exige l'identifiant de formation, la recommandation, l'arbitrage et la mesure exécutée.
+
+### 5. Protocole discriminant resserré
+
+Constituer **deux paires de parcours**, chacune fixée avant connaissance de l'issue : signalé/non signalé à Strasbourg ; instruit par COMEX/maintenu pour motif stratégique à Pau. Recueillir, si autorisé, la version de l'indicateur, la règle d'exception, la note d'expertise, la décision datée, la maquette réellement exécutée, les moyens consommés, le premier résultat et l'explication contrefactuelle. À défaut, garder les catégories « résultat inconnu » et « attribution inconnue ».
+
+**Décision provisoire :** la recherche démontre l'existence de mécanismes publics de qualification et d'arbitrage scientifique et administratif. Elle ne démontre pas un besoin résiduel de plateforme FRONTIÈRE ni une performance comparative supérieure. Les informations d'entretien privées restent hors GitHub.
