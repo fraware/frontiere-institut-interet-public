@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0.0",
+  "snapshot_date": "2026-11-07",
+  "purpose": "Audit de versions de prévisions nationales publiques. Comparaison descriptive, non évaluation de performance et non preuve d'usage dans une décision.",
+  "source_may": {
+    "title": "SIES Note d'information 2026-04, mai 2026",
+    "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-05/ni-sies-2026-04-40235.pdf",
+    "source_table": "Tableau 2, page imprimée 6 du PDF (index écran 5)",
+    "status": "projection de moyen terme"
+  },
+  "source_oct": {
+    "title": "SIES Note flash 2026-25, octobre 2026",
+    "url": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-10/2026_10_NF_SIES_25_projections.pdf",
+    "source_table": "Effectifs projetés par filière p. 1 et par cursus p. 2",
+    "status": "actualisation court terme"
+  },
+  "field_note": "France, sans doubles inscriptions simultanées licence et CPGE selon notes ; contrôles de champ / sous-filières nécessaires avant tout audit longitudinal complet.",
+  "comparison_kind": "revision_vintage_not_observed_forecast_error",
+  "observations": [
+    {
+      "year": 2025,
+      "series": "total_enseignement_superieur",
+      "may_2026": 3071900,
+      "oct_2026": 3049600,
+      "may_status": "projection_ou_estimation",
+      "oct_status": "constat_publie",
+      "difference_oct_minus_may": -22300
+    },
+    {
+      "year": 2026,
+      "series": "total_enseignement_superieur",
+      "may_2026": 3106300,
+      "oct_2026": 3074600,
+      "may_status": "projection",
+      "oct_status": "projection",
+      "difference_oct_minus_may": -31700
+    },
+    {
+      "year": 2027,
+      "series": "total_enseignement_superieur",
+      "may_2026": 3124400,
+      "oct_2026": 3093800,
+      "may_status": "projection",
+      "oct_status": "projection",
+      "difference_oct_minus_may": -30600
+    },
+    {
+      "year": 2026,
+      "series": "universites_incluant_IUT",
+      "may_2026": 1690400,
+      "oct_2026": 1692400,
+      "may_status": "projection",
+      "oct_status": "projection",
+      "difference_oct_minus_may": 2000
+    },
+    {
+      "year": 2026,
+      "series": "BTS_apprentis",
+      "may_2026": 181900,
+      "oct_2026": 162100,
+      "may_status": "projection",
+      "oct_status": "projection",
+      "difference_oct_minus_may": -19800
+    }
+  ],
+  "decomposition_2026": {
+    "total_revision": -31700,
+    "bts_apprentice_revision": -19800,
+    "share_of_absolute_revision_rounded_percent": 62,
+    "mechanism": "contribution comptable indicative, pas décomposition causale de la révision",
+    "missing": "données et hypothèses par filière, pont de base 2025"
+  },
+  "institutional_case": {
+    "source": "https://organisation.univ-pau.fr/fr/decouvrir-l-uppa/comp-2026-2030.html",
+    "institution": "Université de Pau et des Pays de l'Adour",
+    "contract_signature_date": "2026-07-07",
+    "publication_date": "2026-11-05",
+    "public_commitments": [
+      "cible de réduction de 24000 heures d'enseignement à horizon 2028, présentée comme 10 % du volume",
+      "seuils prévus de 10 à 20 étudiants en première année de licence pour certaines formations",
+      "seuils prévus de 8 à 12 en première année de master pour certaines formations",
+      "dialogue annuel avec le rectorat et revue intermédiaire prévue en 2028"
+    ],
+    "evidence_status": "orientations et engagements publiés, exécution et usage de projections SIES non établis",
+    "chronological_falsification": "La note SIES d'octobre 2026 ne pouvait pas documenter la signature du 7 juillet 2026 ; la note de mai était disponible mais son usage n'est pas établi."
+  },
+  "institutional_control": {
+    "source": "https://en.unistra.fr/sites/default/files/2025-10/Delib_004-2025_-_PV_CFVU_28_janvier_2025.pdf",
+    "institution": "Université de Strasbourg, CFVU 28 janvier 2025",
+    "mechanism": "Carnet de santé des formations 2024-2028",
+    "reported_numbers": {
+      "parcours_total": 550,
+      "cadrage_complet": 343,
+      "cadrage_partiel": 161,
+      "quasi_sans_mise_en_situation": 22,
+      "insertion_taux_inexploitable": 47,
+      "part_de_parcours_non_ouverts_estimee": "environ 5 %"
+    },
+    "denominators_caution": "Les trois nombres 343, 161, 22 s'additionnent à 526 mais la source ne prouve pas leur exclusivité ni leur exhaustivité ; aucune classe restante ne peut être inférée.",
+    "documented_actions": [
+      "courriers de recommandations aux parcours signalés",
+      "appui du service Espace Avenir",
+      "plans d'action discutés pendant le dialogue stratégique"
+    ],
+    "unknown": [
+      "résultat durable des plans d'action",
+      "effet causal sur l'offre",
+      "coût complet du dispositif"
+    ]
+  },
+  "constraints": [
+    "Conserver le millésime original consultable à la date de la décision.",
+    "Ne pas assimiler écart entre prévisions à erreur de prévision observée.",
+    "Ne pas imputer un résultat à un outil sans pièce décisionnelle datée.",
+    "Les données historiques 2017 peuvent avoir un périmètre territorial et institutionnel différent, et nécessitent harmonisation avant calcul d'erreurs."
+  ]
+}
