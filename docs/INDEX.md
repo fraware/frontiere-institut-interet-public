@@ -79,6 +79,8 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 
 ## Recherche partenariale et mobilités scientifiques
 
+| [Audit des indicateurs, prospective et décisions (7 novembre 2026)](AUDIT_INDICATEURS_PROSPECTIVE_DECISION_2026_11_07.md) | Mission prospective, initiatives de définition d’indicateurs, validité des comparaisons et continuité MEC–MiP |
+
 | [SIES, COFRA et COMP — suivi documentaire des demandes et gouvernances (7 novembre 2026)](ENQUETE_SIES_COFRA_COMP_SUIVI_OPERATIONNEL_2026_11_07.md) | Dix demandes administratives, expertises déjà existantes, coopérations doctorales, contrats territoriaux signés et preuves manquantes |
 
 | Document | Rôle |
