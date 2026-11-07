@@ -23,7 +23,19 @@
         "date de mise en service",
         "fonctionnement et usage final"
       ],
-      "resultat_observe": null
+      "resultat_observe": null,
+      "indices_publics_additionnels": [
+        {
+          "nature": "capacite_preexistante",
+          "source": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-02/programme-de-travail-sies---2026-39542.pdf",
+          "description": "Le SIES précise qu'il bénéficie de trois centres de données fournis par la DNE pour l'hébergement de ses propres applications ; cela n'établit pas la suite donnée à la demande de la MiP."
+        },
+        {
+          "nature": "competence_institutionnelle",
+          "source": "https://www.education.gouv.fr/direction-du-numerique-pour-l-education-dne-9983",
+          "description": "La DNE-AC assure la conception, le développement, l'exploitation et le support des services numériques pour l'administration centrale."
+        }
+      ]
     },
     {
       "id": "SIES-DON-2026",
@@ -37,7 +49,19 @@
         "prouver leur consultation ou extraction",
         "documenter l'exploitation dans un travail réalisé"
       ],
-      "resultat_observe": null
+      "resultat_observe": null,
+      "indices_publics_additionnels": [
+        {
+          "nature": "catalogue_general",
+          "source": "https://data.esr.gouv.fr/outils",
+          "description": "Le catalogue ministériel propose des données et outils ouverts ; aucune liste individualisée des jeux nécessaires à l'étude de la MiP n'est établie."
+        },
+        {
+          "nature": "limite_de_fraicheur",
+          "source": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-insersup/information/?flg=fr-fr",
+          "description": "Une mise à jour de juillet 2026 ne signifie pas que chaque source ait le millésime 2026 : DSN jusqu'à décembre 2025, base non salariée jusqu'en 2023 dans la fiche publique."
+        }
+      ]
     },
     {
       "id": "SIES-QUA-2026",
@@ -51,7 +75,20 @@
         "millésimes des sources utilisés",
         "usage dans une négociation COMP et délai de contradiction"
       ],
-      "resultat_observe": null
+      "resultat_observe": null,
+      "indices_publics_additionnels": [
+        {
+          "nature": "service_voisin",
+          "source": "https://data.esr.gouv.fr/outils/A04",
+          "description": "Le catalogue référence dataFRESQ avec authentification requise ; équivalence à FresqViz et couverture des fonctionnalités non vérifiées."
+        },
+        {
+          "nature": "acces_page_connexion",
+          "source": "https://datafresq.data.esr.gouv.fr/",
+          "description": "La page de connexion de dataFRESQ est exposée publiquement ; aucune session authentifiée ni recette fonctionnelle."
+        }
+      ]
     }
-  ]
+  ],
+  "note_de_controle_2026_11_07": "Ce registre préserve les inconnues sur la résolution effective des trois demandes malgré l'identification de services publics et de capacités techniques. Aucune mesure de performance n'a été effectuée."
 }
