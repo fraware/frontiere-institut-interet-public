@@ -89,6 +89,37 @@ La CRE y confronte plusieurs scénarios de consommation, leurs incertitudes et l
 
 **Questions empiriques supplémentaires :** à quelle date une question scientifique a-t-elle été suffisamment qualifiée ; quelles pièces ont fixé les formats et le niveau de preuve ; qui a reçu l'avis ; quelle autorité l'a utilisé ; et quelles suites documentées ont été données aux demandes complémentaires ? Les besoins déjà satisfaits par des dispositifs publics sont des contre-exemples obligatoires.
 
+## Vérification complémentaire du 7 novembre 2026 — origine des actes et suivi du schéma RTE
+
+### Arrêté préfectoral du 14 octobre 2019
+
+La reproduction du Recueil des actes administratifs spécial de Seine-Maritime **n° 76-2019-177**, daté du **14 octobre 2019**, contient l'arrêté **n° 76-2019-10-14-003**, portant levée de restrictions concernant le lait et les produits laitiers après Lubrizol. Son identification est corroborée par les communications du ministère de l'Agriculture et l'instruction technique **DGAL/SDPAL/2019-710**. Le recueil d'origine n'a toutefois **pas été obtenu directement sur le serveur préfectoral** lors de la présente vérification ; le document copié ne saurait être présenté comme un exemplaire original authentifié. Les dates génériques attribuées à la notice du site de reproduction ne doivent pas se substituer à celles figurant dans le texte de l'acte.
+
+- [Portail préfectoral des recueils administratifs](https://www.seine-maritime.gouv.fr/Publications/Recueils-des-actes-administratifs-RAA)
+- [Reproduction du recueil n° 76-2019-177](https://politique.pappers.fr/commune/document/07ed50a87183aed0d980cfe618e749e8)
+- [Instruction ministérielle DGAL/SDPAL/2019-710](https://info.agriculture.gouv.fr/boagri/instruction-2019-710)
+
+### RTE, CRE et Autorité environnementale — étapes distinctes
+
+La **CRE**, par sa délibération **n° 2026-22 du 20 février 2026**, formule en **annexe 1** des demandes de modification du SDDR 2025. Elle distingue les modifications de stratégie ou de chiffrage à intégrer à la publication définitive et les demandes destinées aux futurs dossiers d'investissement. Exemples de demandes : scénarios de consommation plus modérée, concrétisation partielle des projets, analyse statistique de l'hypothèse de température **85 °C**, justification des lignes souterraines et études complémentaires de gestion de la tension.
+
+Dans sa **décision du 12 juin 2026**, RTE reconnaît explicitement que la CRE a demandé des modifications et indique qu'il actualisera le schéma. Le document atteste une **prise en compte procédurale**, pas l'achèvement vérifié de chaque réponse technique. Le texte RTE adressé en parallèle à la **Commission particulière du débat public** répond à un autre ensemble de recommandations et ne tient pas lieu de tableau de conformité à l'annexe 1 CRE.
+
+RTE présente une saisine de l'**Autorité environnementale** en date du **30 juillet 2026**. Le registre des saisines de l'IGEDD indique une réception administrative du dossier **Ae n° 2026-080 le 24 août 2026**. Ces deux dates décrivent des étapes différentes. Ni le seul accusé de réception ni une évaluation environnementale déposée ne constituent l'avis final. La version finale du SDDR intégrant demande par demande les corrections de la CRE n'a pas été établie par les documents consultés au **7 novembre 2026**.
+
+| Observation | Statut documentaire | Vérification restante |
+| --- | --- | --- |
+| Demandes de modification CRE | Établies par la délibération et son annexe 1 | Affectation à la version finale ou à de futurs programmes |
+| RTE reconnaît ces demandes | Établi par sa décision du 12 juin 2026 | Tableau de concordance et versions techniques modifiées |
+| Saisine environnementale | Annonce RTE du 30 juillet et réception IGEDD du 24 août | Avis de l'Ae et réponse du maître d'ouvrage |
+| Version définitive du SDDR | Non établie dans les documents consultés | Publication de RTE, dates et contrôle de contenu |
+
+Sources :
+- [CRE, délibération n° 2026-22, annexe 1, pages 72 à 74](https://www.cre.fr/fileadmin/Documents/Deliberations/2026/260220_2026-22_SDDR.pdf)
+- [RTE, décision du maître d'ouvrage, 12 juin 2026](https://assets.rte-france.com/prod/public/2026-06/2026-06-12-decision-maitre-ouvrage-sddr.pdf)
+- [RTE, suivi public du SDDR 2025](https://www.rte-france.com/donnees-publications/plans-strategiques/schema-developpement-reseau)
+- [IGEDD, registre des saisines de l'Autorité environnementale](https://www.igedd.developpement-durable.gouv.fr/les-saisines-de-l-autorite-environnementale-du-a417.html)
+
 ## Prochain protocole de preuve
 
 Étudier au moins trois cas contrastés : une expertise formalisée qui débouche sur une décision ; un produit technique préparé mais acheminé tardivement ; une coordination scientifique pluriannuelle par organismes publics. Pour chaque cas : dater le **besoin**, le **produit prêt**, sa **réception par l'autorité**, son **usage opérationnel**, les **alternatives** et le **coût**. Confronter systématiquement les explications concurrentes et retenir un cas où les dispositifs existants suffisent. La simple coexistence temporelle d'un avis et d'une décision ne suffit pas à prouver l'effet causal propre de l'avis.
