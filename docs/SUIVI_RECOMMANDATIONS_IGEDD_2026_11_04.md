@@ -58,6 +58,24 @@ Sources :
 - [Avis de vacance de la sous-direction, 18 décembre 2025](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053044435)
 - [Rapport IGEDD n° 016247-01, publié en avril 2026](https://www.igedd.developpement-durable.gouv.fr/prise-en-compte-de-la-recherche-dans-l-elaboration-a4405.html)
 
+## Vérification documentaire VI — indicateurs antérieurs et ressources qualifiées
+
+La stratégie ministérielle de recherche **2026–2030**, publiée en **janvier 2026**, constitue un comparateur institutionnel antérieur à la publication du rapport IGEDD. Elle définit **18 actions**, un **comité de pilotage annuel** présidé par le CGDD, un dialogue avec les directions métier et le réseau scientifique et technique, et des indicateurs de suivi. Ce plan n'est donc pas, en lui-même, une preuve de mise en œuvre des recommandations IGEDD publiées en avril.
+
+La stratégie fournit les situations initiales suivantes :
+- **2024** : **19 doctorants** travaillant pour le pôle ministériel ; **910 experts scientifiques et techniques** qualifiés par les comités de domaine, dont **17 % de femmes**, selon le tableau du document.
+- **2025** : sur **78 plans ou stratégies nationaux** en cours d'exécution, **26** ne comportaient pas d'actions de recherche ou de connaissance explicitement identifiées ; soit **52/78**, ou **66,7 %**, qui en comportaient selon le périmètre du tableau.
+- **Indicateurs d'activité** du réseau : le nombre de travaux d'expertise impliquant le ministère et le nombre d'actions associant plusieurs membres du réseau scientifique et technique apparaissent comme **« à remonter lors des COPIL »**. Le document de janvier 2026 ne fournit donc pas de base chiffrée pour ces deux résultats.
+
+La page officielle des **comités de domaine**, mise à jour en octobre 2026, décrit un système d'évaluation par les pairs, dix comités scientifiques et **près de 950 agents titulaires d'une qualification valide au 31 décembre 2025**. Ce nombre n'est pas un effectif de spécialistes disponibles, ni un chiffre limité à l'administration centrale. Les niveaux « spécialiste », « expert » et « expert international » sont attribués pour quatre ans. Les qualifications de fin 2025 et celles de la stratégie (2024) ne doivent pas être confondues en une série temporelle homogène sans contrôle du périmètre et de la méthode de comptage.
+
+**Priorité d'enquête mesurable :** vérifier l'existence des comptes rendus du premier comité de pilotage annuel, des valeurs renseignées en 2026 pour les deux indicateurs d'activité, et des procédures permettant de transformer une qualification de spécialiste en mobilisation interinstitutionnelle effective. Un annuaire de compétences constitue un préalable utile, sans démontrer le résultat opérationnel.
+
+Sources :
+- https://www.ecologie.gouv.fr/sites/default/files/publications/strategie_de_recherche_pole_environnement.pdf (notamment pp. 18–21)
+- https://www.ecologie.gouv.fr/politiques-publiques/evaluation-activites-dexpertise-scientifique-technique-comites-domaine
+- https://www.ecologie.gouv.fr/commissariat-general-au-developpement-durable-cgdd
+
 ## Sources primaires
 
 - Rapport IGEDD et liste exacte des douze recommandations (page 8) : https://www.igedd.developpement-durable.gouv.fr/IMG/pdf/016247-01_rapport_publie_cle56c121.pdf
