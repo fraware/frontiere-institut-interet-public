@@ -51,6 +51,13 @@
           "kind": "index_actes",
           "claim": "Actes de modifications de maquettes 2026-2027 publiés ; aucune liaison individualisée au carnet établie",
           "source": "https://www.unistra.fr/fr/universite/documents/actes-reglementaires/deliberation/commission-la-formation-et-la-vie-seance-22-septembre-2026"
+        },
+        {
+          "date": "2026-10-09",
+          "level": "P2",
+          "kind": "index_actes_CFVU",
+          "claim": "Publication des délibérations de la séance du 22 septembre, dont procès-verbaux de juin et modifications de maquettes ; aucun lien au carnet de santé établi",
+          "source": "https://www.unistra.fr/fr/universite/documents/actes-reglementaires/deliberation/commission-la-formation-et-la-vie-seance-22-septembre-2026"
         }
       ],
       "descriptive_counts": {
@@ -72,7 +79,12 @@
         "décisions individuelles justifiées",
         "données sur la mise en œuvre 2025-2026",
         "résultats en 2026 et anomalies corrigées"
-      ]
+      ],
+      "secondary_lead_2026_11_07": {
+        "source": "https://strasbourg.blog.snptes.org/post/2026/09/21/%5BUNISTRA%5D-Ordre-du-jour-CFVU-du-22-septembre-2026",
+        "assertion": "Ordre du jour syndical annonçant un bilan de la mission « Pilotage de l'offre de formation »",
+        "not_established": "Contenu du bilan et lien d'un parcours identifié à un résultat; pas d'utilisation comme preuve de progrès institutionnel"
+      }
     },
     {
       "id": "UNI-PAU-COMP-2026-2030",
@@ -99,6 +111,13 @@
           "kind": "commission_recherche",
           "claim": "Nouveau COMP en préparation, feuille de route octobre 2025 et concertation régionale prévues",
           "source": "https://organisation.univ-pau.fr/_shared-resource/all/Publique%20GED/Base%20documentaire/Espaces%20de%20publication/Public/Communication/Documents%20UPPA%20Publics/Recueil%20actes%20administratifs/Extraits%20des%20d%C3%A9lib%C3%A9rations/Commission%20de%20la%20recherche%20%28ACR%29/2025/09%20-%20Septembre/09_ComR_25Sept2025_PV%2BAnnexes?download=true"
+        },
+        {
+          "date": "2026-06-11",
+          "level": "P2",
+          "kind": "deliberation_COMP_CA",
+          "claim": "Pièce 2026_06-11_5 disponible dans les actes : COMEX existant, trois axes de sélection des formations, calendrier de pilotage, seuils soumis à expertise et tableau de production des indicateurs",
+          "source": "https://organisation.univ-pau.fr/fr/organisation/instances/conseil-d-administration/actes-a-caractere-reglementaire-du-ca.html"
         },
         {
           "date": "2026-07-07",
@@ -133,7 +152,54 @@
         "instances qui ont arrêté les seuils",
         "première exécution et volumes réels d'heures",
         "analyse des conséquences sur l'accès et les parcours"
-      ]
+      ],
+      "comex_method_2026_11_07": {
+        "status": "documented_as_formal_process_not_evaluated_effectiveness",
+        "existence": "environ deux ans au moment du COMP juin 2026",
+        "axes": [
+          "efficacité",
+          "soutenabilité",
+          "stratégie"
+        ],
+        "institutional_members": [
+          "vice-présidence CFVU",
+          "direction générale des services",
+          "direction générale déléguée Formation et Vie étudiante",
+          "directions métiers"
+        ],
+        "cycle": [
+          "janvier : cadrage des collèges",
+          "fin avril : maquettes et demandes",
+          "été : instruction COMEX en lien avec collèges",
+          "septembre : conférences budgétaires",
+          "novembre-décembre : vote budget initial"
+        ],
+        "status_evidence": "COMP UPPA, pages imprimées 10–11 et 17–18"
+      },
+      "indicators_contract_2026_11_07": {
+        "as_of": "2026-05-29",
+        "source": "https://organisation.univ-pau.fr/fr/organisation/instances/conseil-d-administration/actes-a-caractere-reglementaire-du-ca.html",
+        "N-01": "Produit (tableau préparatoire uniquement ; aucune mesure d'heures réalisées)",
+        "N-02": "Automne 2026",
+        "N-03": "Automne 2026",
+        "N-04": "Produit",
+        "N-05": "Produit",
+        "N-06": "Saisie en attente",
+        "N-07": "Produit",
+        "N-08": "Produit",
+        "R-01": "Automne 2026",
+        "R-02": "Automne 2026",
+        "detailed_formation_decision": "annexe NOF individualisée annoncée pour 2028",
+        "interpretation_warning": "Les tableaux signalés produits ne démontrent ni valeurs actuelles, ni exécution d'un arbitrage, ni résultat étudiant"
+      },
+      "proposed_financial_bonus_annual_eur": {
+        "existing_course_sustainment": 800000,
+        "new_actions": 340000,
+        "structural_projects_and_skills": 460000,
+        "workforce_planning": 400000,
+        "total_programmed": 2000000,
+        "realized_disbursement": "unknown"
+      }
     }
   ],
   "guardrails": [
@@ -143,5 +209,11 @@
     "Deux cas documentaires ne suffisent pas à estimer un effet causal ni une prévalence.",
     "Aucune conclusion sur la nécessité d'une nouvelle institution n'est établie."
   ],
-  "publication_boundary": "Public sources only. No private interview transcripts or named third-party testimony."
+  "publication_boundary": "Public sources only. No private interview transcripts or named third-party testimony.",
+  "primary_contract_followup_2026_11_07": {
+    "source": "https://organisation.univ-pau.fr/fr/organisation/instances/conseil-d-administration/actes-a-caractere-reglementaire-du-ca.html",
+    "entry": "Délibération UPPA CA 2026_06-11_5 COMP 2026–2030, PDF de 32 pages, publié 7 juillet 2026",
+    "document_version": "Version validée par la région académique 4 juin 2026, annexes V2 du 29 mai 2026",
+    "purpose": "documenter mécanismes de qualification et statut des instruments, sans attribuer des résultats"
+  }
 }
