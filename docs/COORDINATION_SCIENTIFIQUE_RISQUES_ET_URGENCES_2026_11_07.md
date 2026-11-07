@@ -35,6 +35,34 @@ Source : https://www.anses.fr/system/files/ESPA2022SA0059.pdf
 
 **Point méthodologique commun.** La présence d'une équipe, d'un comité, d'un avis ou d'un guide établit une activité ; la durée de préparation, le délai jusqu'à une première contribution utile et l'effet sur la décision publique constituent trois mesures différentes. L'existence de cas publics réussis doit aussi rester un contrôle contre une hypothèse de déficit généralisé.
 
+## Moyens de l'Ineris et prudence sur les coûts
+
+Le contrat d'objectifs et de performance **2026–2030**, signé le **22 décembre 2025**, indique un programme de maintien des capacités d'intervention d'environ **2 M€ de fonctionnement annuel** au sein du budget d'appui, complété par des investissements pluriannuels. Environ **25 ingénieurs** participent aux différentes astreintes ; **243 sollicitations CASU** sont recensées pour **2021–2024**. La présentation institutionnelle de la CASU recense **66 activations en 2024**.
+
+Ces quatre données n'ont pas le même dénominateur. Le montant de 2 M€ couvre un programme plus large que la seule CASU, et 25 ingénieurs participant aux astreintes ne signifie pas 25 équivalents temps plein dédiés à la cellule. Il serait méthodologiquement incorrect de diviser le budget de maintien des capacités par le nombre d'activations pour en déduire un coût unitaire d'intervention.
+
+La circulaire du **15 juillet 2005** explicite le financement de l'astreinte et de certaines prestations, ainsi que la distinction entre un **volume d'appui en heures-personnes** et le **délai de réponse**. Ce cadre historique ne dispense pas d'une vérification des conventions et textes applicables aujourd'hui.
+
+Le projet stratégique 05 du contrat 2026–2030 prévoit le perfectionnement des outils, des exercices, la consolidation des partenariats et des tests sur l'intelligence artificielle en situation d'urgence. Il s'agit d'engagements programmatiques et non de résultats déjà mesurés.
+
+Sources : https://www.ineris.fr/sites/default/files/contribution/Documents/Ineris_Cop2026-2030_vdef.pdf ; https://www.ineris.fr/fr/ineris/institut-bref/cellule-appui-situations-urgence-casu ; https://aida.ineris.fr/reglementation/circulaire-150705-relative-missions-modalites-dintervention-lineris-cellule-dappui
+
+## Traçabilité des décisions publiques et limites d'attribution
+
+Le retour d'expérience de l'Ineris indique qu'une première modélisation du panache a été produite dès le **26 septembre 2019** pour orienter les prélèvements. Les premiers résultats d'analyses chimiques étaient disponibles le **27 septembre**. Une instruction ministérielle du **2 octobre 2019**, puis des arrêtés de mesures d'urgence du **14 octobre 2019**, ont prescrit diverses actions administratives et des investigations environnementales. Un plan gouvernemental présenté en **septembre 2020** a notamment retenu la professionnalisation du réseau de prélèvements post-accidentels.
+
+Cela établit une séquence publique **expertise → activité opérationnelle → actes administratifs et mesures de renforcement**, sans démontrer que chaque acte découle causalement d'un avis déterminé de l'Ineris. Les saisines, versions d'avis, documents d'arbitrage et considérants des actes restent indispensables pour reconstituer la chaîne complète.
+
+Sources : https://www.ineris.fr/fr/risques/dossiers-thematiques/intervention-ineris-incendie-lubrizol-rouen-decryptage/retour ; https://aida.ineris.fr/reglementation/instruction-gouvernement-021019-relative-premieres-mesures-a-prendre-a-suite ; https://www.seine-maritime.gouv.fr/content/download/42424/279716/file/IEM%20HdF%20finale.pdf ; https://www.ecologie.gouv.fr/sites/default/files/documents/23.09.2020_DP_Lubrizol.pdf
+
+## Chronologie des fonctions publiques de recherche et des recommandations IGEDD
+
+La stratégie ministérielle de recherche 2026–2030 a été publiée en **janvier 2026**, en amont de la publication du rapport IGEDD n° 016247-01 le **20 avril 2026**. Un arrêté du **11 mars 2026** nomme Jessica Brouard-Masson sous-directrice de l'animation scientifique et technique du CGDD à compter du **1er avril 2026**.
+
+Ces faits attestent une programmation scientifique et une fonction ministérielle existantes, mais **ne constituent pas à eux seuls une mise en œuvre postérieure** des recommandations 5, 6, 8 ou 10 du rapport. Il faut vérifier séparément les missions d'animation *au sein de chaque direction*, les pôles de compétence effectivement constitués, les procédures d'appropriation et les éventuels espaces partagés avec mandats et moyens.
+
+Sources : https://www.ecologie.gouv.fr/presse/nouvelle-strategie-recherche-mieux-accompagner-transition-ecologique ; https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053659365 ; https://www.ecologie.gouv.fr/commissariat-general-au-developpement-durable-cgdd ; https://www.igedd.developpement-durable.gouv.fr/prise-en-compte-de-la-recherche-dans-l-elaboration-a4405.html
+
 ## Trois enquêtes comparatives prioritaires
 
 ### Cas A. Coordination et programmation des risques naturels
