@@ -84,6 +84,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | Document | Rôle |
 | --- | --- |
 | [De l'expertise scientifique à la décision : chronologies et comparateurs (7 novembre 2026)](TRACABILITE_SCIENCE_DECISION_COMPARATEURS_2026_11_07.md) | Saisines, avis, décisions publiques, délais de transmission, comparateurs britanniques et européens et limites de preuve |
+| [Logement, foncier et eau : chaînes de preuve comparatives (7 novembre 2026)](CAS_COMPARATIFS_OTELO_DATAFONCIER_GEMAPI_2026_11_07.md) | Cas MEL–OTELO, accès en Guyane, Datafoncier, commande de guide pluvial et GEMAPI, avec contrôles de causalité |
 | [De l'expertise qualifiée à la contribution utilisée (7 novembre 2026)](MOBILISATION_EXPERTISE_QUALIFIEE_CAS_VERIFICATION_2026_11_07.md) | Deux situations publiques du Cerema, échelle de preuve, données ministérielles 2026 encore manquantes |
 | [Coordination scientifique, risques naturels et expertise urgente (7 novembre 2026)](COORDINATION_SCIENTIFIQUE_RISQUES_ET_URGENCES_2026_11_07.md) | Sources institutionnelles, trois enquêtes comparatives et contrôles de preuve sans donnée d'entretien privée |
 | [Intermédiation, incitations et continuité — protocole (novembre 2026)](PROTOCOLE_INTERMEDIATION_INCITATIONS_2026_11.md) | Hypothèses réfutables, codage d'épisodes, comparateurs et seuils de preuve |
