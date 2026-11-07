@@ -154,3 +154,53 @@ Tests requis : provenance et dates des données affichées, taux de couverture, 
 
 
 Le [registre exploratoire de trois demandes SIES](../donnees/sies_demandes_2026_pilote_v1.json) consigne les décisions publiées, les résultats encore inconnus et les pièces attendues. Il ne s'agit ni d'un jeu d'évaluation validé ni d'une mesure de performance.
+
+
+## Vérification approfondie du 7 novembre 2026 — trois demandes et capacités préexistantes
+
+**Portée :** informations institutionnelles publiques. Ce complément conserve les résultats des cas SIES-HEB-2026, SIES-DON-2026 et SIES-QUA-2026 au statut **inconnu**. Aucune donnée d'entretien, aucun document individuel ni aucune information sous accès restreint n'est publié.
+
+### 1. SIES-HEB : une offre d'hébergement existe, son usage par la MiP demeure inconnu
+
+Le [programme de travail SIES 2026, tableau 3](https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-02/programme-de-travail-sies---2026-39542.pdf) indique que la demande d'hébergement de la Mission prospective est réorientée vers la DNE, sans résultat rapporté. Le même programme précise, aux sections 5 et 5.4.1, que le SIES exploite déjà des applications grâce à **trois centres de données** mis à disposition par la DNE et que des systèmes auparavant hébergés par la DEPP ont été progressivement transférés à cet opérateur.
+
+La [présentation officielle de la DNE](https://www.education.gouv.fr/direction-du-numerique-pour-l-education-dne-9983) confirme une délégation dédiée aux services numériques de l'administration centrale. Ces sources établissent une **capacité d'accueil informatique**, sans établir la prise en charge de la demande particulière DGESIP_MIP.
+
+**Pièces discriminantes :** éventuelle saisine DNE ; qualification de sécurité ; décision d'admission ; recette ; date de production ; premier usage. Hypothèses concurrentes : résolution du besoin, changement de besoin, impossibilité d'accueil ou fonctionnalité disponible mais non utilisée. Éviter de déduire un taux d'échec du nombre de demandes réorientées.
+
+### 2. SIES-DON : les jeux existent, le besoin exact n'est pas défini publiquement
+
+Le [portail public #dataESR](https://data.esr.gouv.fr/outils) documente une offre d'applications et de données ouvertes, cohérente avec la décision « données déjà ouvertes » mentionnée dans le programme SIES. Cependant, aucune liste des variables et millésimes demandés par la Mission prospective n'est associée à cette ligne du tableau.
+
+La [documentation InserSup, révisée le 29 juillet 2026](https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-insersup/information/?flg=fr-fr), illustre les limites de la seule disponibilité. La dernière DSN déclarée porte sur **décembre 2025** et la base des non-salariés mobilisée sur **2023**. Les petits effectifs et les regroupements de promotions limitent certaines comparaisons. La date de mise à jour technique du jeu n'est pas celle de ses observations élémentaires.
+
+**Pièces discriminantes :** jeu précis, champ nécessaire, granularity, dernier millésime, règles de suppression, utilisation dans une note ou décision. La disponibilité d'un portail ne suffit pas à coder « demande satisfaite ».
+
+### 3. SIES-QUA et dataFRESQ : niveaux distincts de preuve
+
+Le [catalogue ministériel de dataFRESQ](https://data.esr.gouv.fr/outils/A04) décrit une application de consultation et d'analyse des formations nécessitant une authentification. L'[adresse de l'application](https://datafresq.data.esr.gouv.fr/) présente un formulaire de connexion accessible. Cela établit l'existence d'un point d'accès opérationnel au sens de son exposition sur Internet ; **ni la connexion autorisée, ni l'état des fonctionnalités, ni l'équivalence avec FresqViz ne sont vérifiés**.
+
+L'actualisation de Quadrant, son intégration à dataSupR et les enrichissements de FresqViz figurent parmi les développements envisagés dans le programme SIES 2026. Les rapports antérieurs de la Cour des comptes soulèvent des questions de fraîcheur des indicateurs et de contradiction avec les établissements. Aucune preuve publique recueillie ici ne permet de clore le suivi de la version 2026 ni de mesurer son effet sur les décisions COMP.
+
+**Pièces discriminantes :** version déployée, date de livraison, millésimes des données effectivement affichées, droits d'accès, traçabilité d'une décision ayant mobilisé les indicateurs, faculté de contestation et preuve de correction.
+
+### 4. Contrôle négatif : des difficultés internes directement décrites
+
+Le programme SIES 2026 (p. 5) indique que le département des études statistiques de l'enseignement supérieur compte **25 cadres** et attribue à **cinq stagiaires et deux apprentis** une part des productions nouvelles réalisées en 2025. Il prévoit que les restrictions de recrutement de stagiaires en 2026 entraîneront des travaux reportés ou non engagés. Il décrit aussi le traitement de **18 000 doublons INE en 2025**, tout en reconnaissant un stock résiduel non résorbé par manque de moyens.
+
+Ces chiffres ne constituent pas une mesure de pénurie nationale : le nombre de **380 000 écarts** concerne toutes les anomalies et ne constitue pas le dénominateur des doublons. Les travaux annoncés comme reportés ne doivent pas être codés comme définitivement non réalisés.
+
+**Implication :** une capacité interne de traitement récurrent peut représenter un besoin très différent d'une expertise externe ponctuelle. Comparer renforcement de l'équipe, correction du processus, automatisation, mutualisation et coopération temporaire.
+
+### 5. La Mission prospective a des réalisations publiques concrètes
+
+Les [observations définitives de la Cour des comptes, n° S2025-1731](https://www.ccomptes.fr/sites/default/files/2026-02/20260210-S2025-1731-Administration-centrale-enseignement-superieur-et-recherche-DGSIP-et-DGRI.pdf) mentionnent des travaux de la Mission prospective sur **la microcertification des diplômes** et **les formations d'ingénieurs**, tout en évaluant globalement les études prospectives comme insuffisamment développées.
+
+L'[IH2EF a publié le 2 avril 2026 un dossier sur les atteintes à la probité dans l'enseignement supérieur](https://www.ih2ef.gouv.fr/lutte-contre-les-atteintes-la-probite), avec une collaboration explicitement attribuée à Danièle Kernéis (MiP), aux responsables ministériels du contrôle interne et à la direction scientifique d'un professeur de droit public. Il s'agit d'une **production interinstitutionnelle attestée**, dont les usages et effets restent à mesurer.
+
+L'[offre de services DGESIP](https://services.dgesip.fr/T844/S162/campus_et_territoires) identifie aussi des fonctions de conseil liées à l'immobilier et à l'évolution des campus, associées à la MiP. La [réponse du secrétariat général à la Cour](https://www.ccomptes.fr/sites/default/files/2026-02/20260210-S2025-1731-Administration-centrale-enseignement-superieur-et-recherche-DGSIP-DGRI-rep-SG-MEN.pdf) décrit des adaptations en cours du Collège des conseillers scientifiques et de la Mission prospective. Ce document est une position institutionnelle à examiner contradictoirement ; sa publication ne suffit pas à démontrer les effets de ces réformes.
+
+### Décision
+
+Poursuivre une enquête **sur les issues des demandes**, à partir des trois cas préenregistrés et d'un contre-exemple de capacité interne. Les nouveaux faits ne justifient ni un projet de plateforme parallèle ni une affirmation selon laquelle l'expertise existante serait inefficace. La prochaine mise à jour des résultats exige une pièce datée de livraison, de première utilisation ou d'abandon explicite.
+
