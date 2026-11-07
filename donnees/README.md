@@ -87,3 +87,8 @@ Les 45 événements actifs disposent tous d'une première lecture documentaire l
 Le programme `python scripts/auditer_filiation_chronologies.py` compare les versions 3 à 9 de la série historique. Il contrôle les mêmes dix cas, la continuité des identifiants d'événements, les changements de dates et de formulations, les rectifications ajoutées, les fusions de doublons et les retraits explicitement motivés. Une modification d'une version précédente, une disparition d'événement non déclarée ou la suppression d'un motif de rectification provoquent une erreur.
 
 Le rapport contient les nombres d'événements par version, les identifiants supprimés ou ajoutés, les cas modifiés et les empreintes de chaque fichier. Le contrôle est également exécuté lors des vérifications automatiques du dépôt. Il ne vérifie pas le contenu des sources officielles, ne produit aucun nouvel événement et ne se substitue pas à la double relecture indépendante.
+
+
+## Études documentaires de chaînes décisionnelles universitaires
+
+Le [registre public Strasbourg–Pau 2026](audit_decisions_universitaires_strasbourg_pau_2026_v1.json) décrit deux trajectoires historiques de pilotage des formations et contractualisation, avec des niveaux de preuve P0 à P5, des sources datées et des résultats explicitement inconnus. Il documente des actes administratifs et des pistes de vérification, sans représenter une base de résultats, une mesure causale ni un corpus d'entretiens. Son analyse est présentée dans [l'audit de la prospective et de la validité des indicateurs](../docs/AUDIT_INDICATEURS_PROSPECTIVE_DECISION_2026_11_07.md).
