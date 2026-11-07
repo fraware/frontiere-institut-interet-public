@@ -81,6 +81,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 
 | Document | Rôle |
 | --- | --- |
+| [De l'expertise scientifique à la décision : chronologies et comparateurs (7 novembre 2026)](TRACABILITE_SCIENCE_DECISION_COMPARATEURS_2026_11_07.md) | Saisines, avis, décisions publiques, délais de transmission, comparateurs britanniques et européens et limites de preuve |
 | [Coordination scientifique, risques naturels et expertise urgente (7 novembre 2026)](COORDINATION_SCIENTIFIQUE_RISQUES_ET_URGENCES_2026_11_07.md) | Sources institutionnelles, trois enquêtes comparatives et contrôles de preuve sans donnée d'entretien privée |
 | [Intermédiation, incitations et continuité — protocole (novembre 2026)](PROTOCOLE_INTERMEDIATION_INCITATIONS_2026_11.md) | Hypothèses réfutables, codage d'épisodes, comparateurs et seuils de preuve |
 | [COFRA et INSP — protocole public de vérification (novembre 2026)](COFRA_INSP_PLAN_VERIFICATION_2026_11.md) | Parcours, questionnaires, contributions et précautions sur les cohortes |
