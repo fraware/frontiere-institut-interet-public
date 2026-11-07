@@ -37,6 +37,27 @@ Ne jamais assimiler « annoncé » à « réalisé ». La réorganisation minist
 4. Vérifier les recommandations 7, 9, 11 et 12 à partir des dispositifs, carrières et programmes déjà documentés.
 5. Mettre à jour la matrice avec une date et une preuve primaire pour chaque changement de statut.
 
+## Vérification complémentaire du 7 novembre 2026 : antériorité des fonctions
+
+**Rectification importante :** la sous-direction de l'animation scientifique et technique du CGDD n'a pas été créée en 2026. Une fonction correspondante apparaît dans l'organisation fixée par l'arrêté du **9 juillet 2008** ; ses missions et son positionnement ont ensuite été précisés par les arrêtés du **30 décembre 2019** et du **13 juillet 2023**. Une nouvelle nomination en mars 2026 établit l'occupation d'un poste déjà organisé et **ne constitue pas une mesure d'exécution causée par le rapport IGEDD publié en avril 2026**.
+
+Les dispositions réglementaires préexistantes portent notamment sur l'animation du réseau scientifique et technique ministériel, la définition de ses orientations stratégiques, l'appui aux directions et la reconnaissance de l'expertise scientifique des agents. Le suivi des recommandations doit distinguer cette capacité **transversale** de fonctions dédiées **au sein de chaque direction**, ainsi que leur dotation et leur usage.
+
+| Recommandation | État précis au 7 novembre 2026 | Pièce restante |
+| --- | --- | --- |
+| 5 — Pôles scientifiques de compétence | Réseau et coordination existants, mais constitution postérieure de pôles propres à la recommandation non établie. | Acte, responsables, moyens et programme réalisé |
+| 6 — Animation scientifique dans les DAC | Sous-direction ministérielle transversale ancienne ; implantation et programmation propres aux directions non établies par ces seules sources. | Lettres de mission, organigrammes, programmes et moyens de chaque direction |
+| 8 — Appropriation des productions | Existence de guides et d'avis scientifiques ne démontre pas l'adoption d'une méthode ministérielle nouvelle. | Méthode officiellement diffusée et cas de réemploi dans une décision |
+| 10 — Espaces communs | Les conventions et structures existantes ne prouvent pas à elles seules la création d'un espace résultant de la recommandation. | Convention, budget, équipe, résultats documentés |
+
+**Règle causale :** l'antériorité d'un dispositif interdit de lui attribuer rétrospectivement la mise en œuvre d'une recommandation plus récente. Les états de la matrice principale restent **« à vérifier »** tant qu'une preuve d'exécution datée n'a pas été produite.
+
+Sources :
+- [Arrêté du 9 juillet 2008, organisation ministérielle et historique des versions](https://www.legifrance.gouv.fr/loda/id/JORFTEXT000019147078/2026-05-23)
+- [Arrêté du 30 décembre 2019, fonctions de la sous-direction](https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000039698861)
+- [Avis de vacance de la sous-direction, 18 décembre 2025](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053044435)
+- [Rapport IGEDD n° 016247-01, publié en avril 2026](https://www.igedd.developpement-durable.gouv.fr/prise-en-compte-de-la-recherche-dans-l-elaboration-a4405.html)
+
 ## Sources primaires
 
 - Rapport IGEDD et liste exacte des douze recommandations (page 8) : https://www.igedd.developpement-durable.gouv.fr/IMG/pdf/016247-01_rapport_publie_cle56c121.pdf
