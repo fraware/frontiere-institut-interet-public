@@ -22,6 +22,14 @@ Trois unités doivent rester distinctes :
 | CRGN, COFRA | Le Centre de recherche de la Gendarmerie nationale accompagne les unités et doctorants, prépare les dossiers et administre les contrats ; campagne 2026 avec un poste annoncé. | Suivi effectif pendant l'exécution et mécanismes de gestion des conflits ; aucun avantage comparatif démontré. |
 | Cour des comptes, DGESIP/DGRI | Le référé n° S2025-1591, rendu public en février 2026, décrit des limites de pilotage, prospective et transversalité, et recommande notamment une revue des missions et le renforcement des capacités prospectives. | Réalisations depuis le contrôle et effet des réponses et réorganisations institutionnelles. |
 
+## Point de clarification : allocation du temps de travail dans les conventions COFRA
+
+La [page 4 du guide COFRA d'octobre 2025](https://www.anrt.asso.fr/sites/default/files/2025-10/Guide_COFRA_criteres_conditions_labelisation_oct2025.pdf) indique que le temps de travail du doctorant est entièrement consacré au projet doctoral, avec partage du temps entre laboratoire et administration adapté au projet. La [brochure CRGN de la campagne 2026, page 2](https://www.gendarmerie.interieur.gouv.fr/crgn/content/download/57169/file/COFRA%20-%20Campagne%20de%20recrutement%202026.pdf) annonce un partage 50/50 et des missions dans l'unité d'accueil qui ne sont pas nécessairement limitées au thème de recherche.
+
+Ces formulations **soulèvent une question d'interprétation et de régime applicable**, sans démontrer à elles seules une contradiction juridique ou une non-conformité. Les contrats individuels, la version du programme, les règles d'emploi et les objectifs de la convention doivent être examinés avant toute conclusion.
+
+**Questions prioritaires à l'ANRT et au CRGN :** quelle est la portée exacte de « projet doctoral » dans les activités de l'unité ? Sous quelles conditions une mission administrative extérieure au sujet de thèse est-elle admissible ? Quel document prévaut en cas de divergence sur la répartition des activités ? Quelles modalités de médiation et de révision sont applicables ?
+
 ## Contradiction publique à conserver
 
 Le référé de la Cour des comptes constate notamment des insuffisances dans le pilotage stratégique et dans la conduite de projets transversaux. Dans sa réponse datée du 13 janvier 2026, le Premier ministre partage une large part du diagnostic général, tout en contestant notamment la procédure de contradiction des recommandations et en décrivant des réformes engagées. Le statut de chaque mesure doit être vérifié à une date donnée avant de conclure que la difficulté demeure.
