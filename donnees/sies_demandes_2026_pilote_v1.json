@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "date_reference": "2026-11-07",
+  "source_principale": "https://www.enseignementsup-recherche.gouv.fr/sites/default/files/2026-02/programme-de-travail-sies---2026-39542.pdf",
+  "source_section": "6.5.5, tableau 3, p. 49-51 (pagination du document)",
+  "usage": "Jeu exploratoire de suivi de demandes publiques, non représentatif, non évalué et sans données individuelles",
+  "regles": [
+    "Les décisions de prise en charge ne sont pas assimilées à des résultats finaux.",
+    "Les informations manquantes sont codées 'inconnu', et non 'échec'.",
+    "Les délais ne sont calculés que sur des dates directement vérifiées.",
+    "Les informations nouvelles requièrent une source datée avant changement de statut."
+  ],
+  "cas": [
+    {
+      "id": "SIES-HEB-2026",
+      "demande": "Hébergement des applications de la Mission prospective",
+      "decision_sies": "non pris en charge ; orientation DNE",
+      "source_secondaire": "https://www.education.gouv.fr/direction-du-numerique-pour-l-education-dne-9983",
+      "observation_secondaire": "La DNE-AC dispose d'un mandat public de service informatique à l'administration centrale.",
+      "statut_resultat": "inconnu",
+      "verification_requise": [
+        "preuve de saisine DNE",
+        "date de mise en service",
+        "fonctionnement et usage final"
+      ],
+      "resultat_observe": null
+    },
+    {
+      "id": "SIES-DON-2026",
+      "demande": "Accès à des données pour les études prospectives",
+      "decision_sies": "non pris en charge ; données jugées déjà ouvertes",
+      "source_secondaire": null,
+      "observation_secondaire": null,
+      "statut_resultat": "inconnu",
+      "verification_requise": [
+        "identifier les jeux précis",
+        "prouver leur consultation ou extraction",
+        "documenter l'exploitation dans un travail réalisé"
+      ],
+      "resultat_observe": null
+    },
+    {
+      "id": "SIES-QUA-2026",
+      "demande": "Poursuite du déploiement et de l'enrichissement Quadrant",
+      "decision_sies": "pris en charge ; actualisation et intégration progressive dans dataSupR",
+      "source_secondaire": "https://www.ccomptes.fr/sites/default/files/2025-03/20250314-Les-contrats-d-objectifs-de-moyens-et-de-performance-COMP.pdf",
+      "observation_secondaire": "Usages et problèmes méthodologiques antérieurs documentés par la Cour en 2025 ; nouveaux travaux à vérifier.",
+      "statut_resultat": "version_2026_inconnue",
+      "verification_requise": [
+        "preuve de livraison version actualisée",
+        "millésimes des sources utilisés",
+        "usage dans une négociation COMP et délai de contradiction"
+      ],
+      "resultat_observe": null
+    }
+  ]
+}
