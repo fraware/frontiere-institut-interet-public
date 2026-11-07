@@ -120,6 +120,23 @@ Sources :
 - [RTE, suivi public du SDDR 2025](https://www.rte-france.com/donnees-publications/plans-strategiques/schema-developpement-reseau)
 - [IGEDD, registre des saisines de l'Autorité environnementale](https://www.igedd.developpement-durable.gouv.fr/les-saisines-de-l-autorite-environnementale-du-a417.html)
 
+## Vérification documentaire VI — statut de la publication du SDDR et corroboration municipale
+
+**État au 7 novembre 2026.** La page officielle de RTE consacrée au SDDR 2025 publie les orientations de 2025, l'avis de la CRE du 20 février 2026, la décision de poursuite du 12 juin 2026 et l'évaluation environnementale déposée en juillet 2026. Elle présente encore comme **futures** l'émission de l'avis environnemental, une phase de participation du public par voie électronique et la publication du SDDR définitif. La page des saisines de l'Autorité environnementale conserve la référence **Ae 2026-080**, accusée reçue le **24 août 2026**. Les recherches effectuées ne permettent pas d'établir l'existence d'une version définitive publique du SDDR ni d'un avis final de l'Ae à cette date de contrôle. Cette constatation ne signifie ni retard juridiquement démontré ni inexécution par RTE ; la procédure doit encore produire ses pièces finales.
+
+La CRE distingue expressément, dans l'introduction de l'**annexe 1 de sa délibération 2026-22**, les modifications destinées au schéma définitif (passages soulignés dans le PDF) et les demandes relatives aux **futurs dossiers d'investissement**. Cette distinction doit être conservée lors de chaque vérification. L'extraction textuelle ne permet pas de qualifier avec sûreté tous les passages soulignés ; une revue visuelle du PDF de référence sera nécessaire pour une table de conformité exhaustive.
+
+**Pièce publique améliorant la provenance de l'arrêté Lubrizol.** La commune de **Bois-Guillaume** maintient sur son site un relevé d'informations de septembre et octobre 2019, comprenant un lien vers l'arrêté préfectoral du **14 octobre 2019** et l'avis de l'Anses du même jour. Il s'agit d'un **hébergement municipal contemporain** de documents établis par d'autres autorités, non d'une copie extraite directement de la base documentaire de la préfecture. La reproduction conservée sur un autre site mentionne l'acte **76-2019-10-14-003**. La convergence améliore la provenance, sans lever la nécessité de consulter l'original du recueil préfectoral lorsque disponible.
+
+**Actions documentaires restantes** : conserver les versions datées de la page RTE ; obtenir et comparer la version définitive du schéma et la réponse technique de RTE aux demandes de la CRE dès leur publication ; rechercher l'avis Ae 2026-080 ; vérifier le PDF municipal de l'arrêté et son contenu contre le recueil préfectoral d'origine.
+
+Sources officielles :
+- https://www.rte-france.com/donnees-publications/plans-strategiques/schema-developpement-reseau
+- https://www.cre.fr/fileadmin/Documents/Deliberations/2026/260220_2026-22_SDDR.pdf
+- https://www.igedd.developpement-durable.gouv.fr/les-saisines-de-l-autorite-a417.html
+- https://www.ville-bois-guillaume.fr/actu-incendie/
+- https://politique.pappers.fr/commune/document/07ed50a87183aed0d980cfe618e749e8
+
 ## Prochain protocole de preuve
 
 Étudier au moins trois cas contrastés : une expertise formalisée qui débouche sur une décision ; un produit technique préparé mais acheminé tardivement ; une coordination scientifique pluriannuelle par organismes publics. Pour chaque cas : dater le **besoin**, le **produit prêt**, sa **réception par l'autorité**, son **usage opérationnel**, les **alternatives** et le **coût**. Confronter systématiquement les explications concurrentes et retenir un cas où les dispositifs existants suffisent. La simple coexistence temporelle d'un avis et d'une décision ne suffit pas à prouver l'effet causal propre de l'avis.
