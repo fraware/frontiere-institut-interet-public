@@ -84,6 +84,7 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [Coordination scientifique, risques naturels et expertise urgente (7 novembre 2026)](COORDINATION_SCIENTIFIQUE_RISQUES_ET_URGENCES_2026_11_07.md) | Sources institutionnelles, trois enquêtes comparatives et contrôles de preuve sans donnée d'entretien privée |
 | [Intermédiation, incitations et continuité — protocole (novembre 2026)](PROTOCOLE_INTERMEDIATION_INCITATIONS_2026_11.md) | Hypothèses réfutables, codage d'épisodes, comparateurs et seuils de preuve |
 | [COFRA et INSP — protocole public de vérification (novembre 2026)](COFRA_INSP_PLAN_VERIFICATION_2026_11.md) | Parcours, questionnaires, contributions et précautions sur les cohortes |
+| [COFRA, DGESIP et gouvernance des capacités (7 novembre 2026)](COFRA_DGESIP_GOUVERNANCE_CAPACITES_PUBLIQUES_2026_11_07.md) | Sources primaires récentes, questions de suivi, comparateurs et limites de publication |
 | [Horizon Institute et essai limité (novembre 2026)](COMPARATEUR_HORIZON_PILOTE_SCIENTIFIQUE_2026_11.md) | Comparateur, critères d'admissibilité et mesures séparées |
 | [Qualification scientifique des besoins — protocole exploratoire (4 novembre 2026)](QUALIFICATION_BESOINS_SCIENTIFIQUES_2026_11_04.md) | Variables, cas contrastés, conditions de preuve et distinction des frictions |
 | [Interfaces science–action publique (4 novembre 2026)](CARTOGRAPHIE_INTERFACES_SCIENCE_ACTION_2026_11_04.md) | Comparateurs INRAE, EIPM 2.0, BRGM, Université Gustave Eiffel et sources primaires |
