@@ -1,0 +1,28 @@
+{
+  "date_verification": "2026-11-05",
+  "nature": "decouverte_documentaire_uniquement",
+  "ingestion_testee": false,
+  "source": {
+    "id": "inrae_infrastructures_scientifiques_2026",
+    "nom": "Liste des infrastructures scientifiques de recherche INRAE",
+    "producteur": "INRAE — CNUE/CNOC/DISC",
+    "statut": "decouverte_documentaire_uniquement",
+    "ingestion_testee": false,
+    "documentation": "https://www.data.gouv.fr/datasets/liste-des-infrastructures-de-recherche-inrae",
+    "licence": "Creative Commons CC0 (fiche officielle)",
+    "derniere_mise_a_jour_affichee": "2026-10-16",
+    "formats_documentes": [
+      "CSV"
+    ],
+    "acces": "Fichier public référencé sur data.gouv.fr; téléchargement du contenu et validation des colonnes non réalisés.",
+    "objet": "infrastructures_experimentales_plateformes_services_scientifiques_inrae",
+    "perimetre": "Infrastructures de l'INRAE ou auxquelles l'institut contribue, six domaines thématiques. La présence au catalogue ne prouve ni capacité disponible ni droit d'accès à un équipement.",
+    "controle": "Comparé le 2026-11-05 aux identifiants et libellés des 15 sources de référence, 23 catalogues de main et 39 catalogues de la branche de consolidation #649; aucune entrée identique.",
+    "limites": "Le portail indique un schéma scdl/catalogue invalide; ne pas présumer une conformité de structure. Fréquence de mise à jour non vérifiée indépendamment."
+  },
+  "actions_avant_ingestion": [
+    "Télécharger un échantillon et contrôler les colonnes, encodage et identifiants.",
+    "Vérifier la cadence et la fraîcheur du CSV.",
+    "Rapprocher les infrastructures avec les identifiants RNSR et les autres inventaires sans présumer l'équivalence."
+  ]
+}
