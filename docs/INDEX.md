@@ -110,6 +110,10 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | Document | Rôle |
 | --- | --- |
 | [Plan de recherche sur douze semaines](PLAN_12_SEMAINES.md) | Séquence de recherche sur douze semaines |
+| [Enquête documentaire sur les compétences numériques de l'État](ENQUETE_RH_NUMERIQUE_PUBLIC_2026-11-02.md) | Rapports IGF–CGE, PINUM, EIG, rémunération, mobilité et réorganisation ; faits et inconnues séparés |
+| [Registre de suivi RH numérique](REGISTRE_SUIVIS_RH_NUMERIQUE_2026-11-02.md) | Vingt et une actions documentaires et empiriques, priorités et preuves attendues |
+| [Matrice de mise en œuvre IGF–CGE](MATRICE_IGF_CGE_RH_NUMERIQUE_2026-11-02.md) | Axes 2023, instruments publics ultérieurs et données nécessaires pour mesurer les résultats |
+| [Voies juridiques de missions techniques temporaires](MATRICE_VOIES_TEMPORAIRES_RH_2026-11-02.md) | Cadres possibles et conditions de validation, notamment pour les missions de 3 à 6 mois |
 | [Premier cas prospectif](CAS_PROSPECTIF_V1.md) | Enregistrement de l’état initial, comparaison de deux méthodes et mesures du premier cas prospectif |
 | [Vérification des six cas pilotes BOAMP](CONTROLE_AUTOMATIQUE_SIX_CAS_V1.md) | Avis exacts, rectificatifs et liens secondaires BeauAMP vérifiés |
 | [Lancement opérationnel](LANCEMENT_OPERATIONNEL.md) | Première vague opérationnelle |
