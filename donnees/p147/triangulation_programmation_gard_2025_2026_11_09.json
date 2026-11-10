@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.1",
+  "date_of_analysis": "2026-11-09",
+  "evidence_status": "public_programming_correspondence_only",
+  "ci_ville2": {
+    "repository": "https://github.com/anct-carto/ci-ville2",
+    "source_commit": "999ba72cf7230842c192f8a261ced86351283e61",
+    "source_blob_sha1": "9f3f541f9adcd948f0867515ab0c151475b66f8e",
+    "source_row_index_0based": 8209,
+    "id_action": "00320551",
+    "code_tiers": "82754656500025",
+    "organisation": "COMPAGNONS BÂTISSEURS OCCITANIE",
+    "action_title": "Chantier solidaire « Feltre- Muriers » QPV des Escanaux",
+    "amount_displayed_eur": 9000,
+    "year": 2025,
+    "department": "30"
+  },
+  "independent_public_source": {
+    "issuing_authority": "Ville de Bagnols-sur-Cèze",
+    "document_title": "Comité de pilotage du 20 mars 2025 — Tableau de programmation 2025",
+    "document_date": "2025-04-24",
+    "document_url": "https://www.bagnolssurceze.fr/wp-content/uploads/2025/04/2025-04-22-ANNEXE-AAP-2025-Politique-de-la-ville.pdf",
+    "page": 1,
+    "row_number": 23,
+    "organisation_label": "LES COMPAGNONS BATISSEURS",
+    "action_label": "Chantier solidaire Feltre-Mûriers",
+    "amount_category": "ETAT / Accordé",
+    "amount_eur": 9000
+  },
+  "comparison": {
+    "matching_fields": [
+      "funded_action_label",
+      "organisational_identity_label",
+      "year",
+      "location_Bagnols_sur_Ceze",
+      "amount_9000_Etat"
+    ],
+    "conclusion": "High-confidence candidate for correspondence at action/amount level, not a proved unique administrative dossier join",
+    "unresolved": [
+      "PDF does not state Ci.Ville id_action or SIRET",
+      "Administrative grant decision, contractual beneficiary and exact financial breakdown remain unverified",
+      "No statement-of-expenditure, payment evidence or execution report obtained"
+    ]
+  },
+  "next_document": "Request attribution decision, 2025 compte rendu financier (Cerfa 15059*02 or Dauphin equivalent), and possible final qualitative activity report; verify source authority and applicable communications rules."
+}
