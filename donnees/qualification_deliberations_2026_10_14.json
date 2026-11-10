@@ -1,0 +1,290 @@
+{
+  "version": "qualification-pistes-deliberations-2026-10-14-v1",
+  "date_enquete": "2026-10-14",
+  "source_fichier": "institutionnel/deliberations_publiques/pistes.json",
+  "source_revision": "da7435801d65fab34ac103f64cbb0daa5d94b4a7",
+  "source_blob_sha": "aabdd81ff04b55b65825a336956bd7a250a723a9",
+  "doctrine": "Le repérage SCDL ne prouve ni besoin déficitaire, ni recrutement, ni usage. Une pièce d'un dossier apparenté ne valide pas le contenu de l'acte ciblé.",
+  "sources_connexes": {
+    "fibre64_pv_2025_10_06": {
+      "url": "https://publication-actes.fr/OpenData/200081263/Hors_prefecture/2025/66344/7e351071422a7bb70deb3d90d99a174fdebb3da1608bef71e4161b1cd929455f.pdf",
+      "type": "proces_verbal",
+      "preuve": "Déclaration en séance : solution de transcription activée ce jour pour la première fois dans une séance du conseil syndical.",
+      "pages": "3-4",
+      "limite": "Déclaration institutionnelle, pas journal technique ni quantification."
+    },
+    "fibre64_protocole_2025": {
+      "url": "https://publication-actes.fr/OpenData/200081263/Deliberation/2025/66196/f1e5cc43e6dfe330fcd2b9c2e3ff15cb1d129ee8f0419a186d22bfe2d0241bb5.pdf",
+      "type": "modele_protocole_experimentation",
+      "preuve": "Prévoit trois mois minimum, une évaluation technique et d'usage et un rapport final.",
+      "pages": "1-4",
+      "limite": "Exemplaire avec participant non renseigné ; objectifs et obligations prévus, aucune mesure obtenue."
+    },
+    "fibre64_cnfpt_2026": {
+      "url": "https://publication-actes.fr/OpenData/200081263/Deliberation/2026/71186/0ae5901eabb48d1b7bb9c81070780253718b7ab34ac082bcf6be20e2f975109e.pdf",
+      "type": "projet_convention_cooperation",
+      "preuve": "Définit les responsabilités CNFPT/Fibre64 en formation à l'IA et l'évaluation des acquis.",
+      "pages": "1-3",
+      "limite": "Dates et signatures non renseignées sur l'exemplaire consulté ; sessions réalisées non confirmées."
+    },
+    "fibre64_ordre_2026_02_05": {
+      "url": "https://publication-actes.fr/OpenData/200081263/Hors_prefecture/2026/70764/e835c967de687e19c6577abd1e74c2735b91f5287f29f903f95b838dae99ad3d.pdf",
+      "type": "ordre_du_jour",
+      "preuve": "Inscrit un projet de coopération entre La Fibre64 et le CNFPT relatif à l'IA au point 8.",
+      "pages": "1",
+      "limite": "Inscription à l'ordre du jour non équivalente à une décision définitive ou une mise en œuvre."
+    },
+    "fibre64_pv_2025_12_04": {
+      "url": "https://publication-actes.fr/OpenData/200081263/Hors_prefecture/2026/71320/5bcc751a21182578f491d9fe6e674609854f88a989038f0568cd1a05db99b04a.pdf",
+      "type": "proces_verbal",
+      "preuve": "Le conseil syndical approuve à l'unanimité (20/20) le principe de l'expérimentation Foxy et les modalités proposées ; une utilisation de l'outil par le CDG est rapportée en séance.",
+      "pages": "12-13",
+      "limite": "Décision et témoignage de pratique, non rapport final du pilote ni mesures de résultats."
+    }
+  },
+  "qualifications": [
+    {
+      "identifiant": "0e3428b77aad91e9b88143d9cab8134ac824716ebd303df65662e3e07c8958a8",
+      "collectivite": "CC AUTOUR DE CHENONCEAUX BLERE-VAL DE CHER",
+      "deliberation_id": "DP2026_232",
+      "deliberation_date_csv": "2026-09-16",
+      "mots_de_reperage": [
+        "cybersecurite"
+      ],
+      "url_acte_annoncee": "https://publication-actes.fr/OpenData/243700820/Deliberation/2026/90376/ed538eb67faf63bdfd2e8beb99ef29d35b7cab5b94bf88ab53ee44e96ee02512.pdf",
+      "source_csv_sha256": "1647bbb17d95c486c030612b8dedfcda99d0d34f74bbc74b28c1690dc31899a9",
+      "ligne_csv_sha256": "927c927df64698f93629eadc9a99fefab3d268340e6042042bc3c4b9640659d5",
+      "statut": "reperage_scdl_acte_cible_non_lu",
+      "acte_cible_lu": false,
+      "acte_cible_verifie_par_octets": false,
+      "besoin_technique_deficitaire_etabli": false,
+      "usage_attribuable_a_cet_acte_etabli": false,
+      "effet_causal_etabli": false,
+      "source_connexe_ids": [],
+      "question_decisive": "Quel acte exact a été adopté, et quelle capacité publique de cybersécurité était recherchée ou déjà disponible ?",
+      "observation": "Repérage par expression dans DELIB_OBJET ; objet intégral non conservé dans le registre de collecte."
+    },
+    {
+      "identifiant": "2d0e377e4cde3039faba7d5d3de6beec102249920826ca71adbda601daff0f82",
+      "collectivite": "SYNDICAT INTERCOMMUNAL POUR LA COLLECTE ET LE TRAITEMENT DES ORDURES MENAGERES DE LA REGION D'AUNEAU",
+      "deliberation_id": "2026_4",
+      "deliberation_date_csv": "2026-03-03",
+      "mots_de_reperage": [
+        "expertise_juridique"
+      ],
+      "url_acte_annoncee": "https://publication-actes.fr/OpenData/252800065/Deliberation/2026/74198/b302944b7367429248ac5b34a159f0249922cb8886a834cac6d7c01e8ac89b20.pdf",
+      "source_csv_sha256": "1647bbb17d95c486c030612b8dedfcda99d0d34f74bbc74b28c1690dc31899a9",
+      "ligne_csv_sha256": "bb4a5c2668153688dfd9b9c01d01a5d3c4ddfbd16f8dac2b3f9587987be225f1",
+      "statut": "reperage_scdl_acte_cible_non_lu",
+      "acte_cible_lu": false,
+      "acte_cible_verifie_par_octets": false,
+      "besoin_technique_deficitaire_etabli": false,
+      "usage_attribuable_a_cet_acte_etabli": false,
+      "effet_causal_etabli": false,
+      "source_connexe_ids": [],
+      "question_decisive": "Le libellé juridique décrit-il une expertise spécialisée, une prestation courante ou une simple procédure de gouvernance ?",
+      "observation": "Repérage par expression dans DELIB_OBJET ; objet intégral non conservé dans le registre de collecte."
+    },
+    {
+      "identifiant": "344fe0d6f4fa54dfcf4f58d8311f9f2bc063be2bacf939fe439c156c3ec7f7cf",
+      "collectivite": "SYNDICAT MIXTE LA FIBRE64",
+      "deliberation_id": "7_2026_07_03",
+      "deliberation_date_csv": "2026-07-03",
+      "mots_de_reperage": [
+        "intelligence_artificielle"
+      ],
+      "url_acte_annoncee": "https://publication-actes.fr/OpenData/200081263/Deliberation/2026/87023/a75bbd9585c89ca7c6c74062bfaff767f559c5d07abadf92687251d78c64fe2e.pdf",
+      "source_csv_sha256": "1647bbb17d95c486c030612b8dedfcda99d0d34f74bbc74b28c1690dc31899a9",
+      "ligne_csv_sha256": "6aa3976fd6251a0a0c035b79c8b860201985599c7142071a9e17ed3c86ab10cf",
+      "statut": "contexte_primaire_connexe_lu_acte_cible_non_lu",
+      "acte_cible_lu": false,
+      "acte_cible_verifie_par_octets": false,
+      "besoin_technique_deficitaire_etabli": false,
+      "usage_attribuable_a_cet_acte_etabli": false,
+      "effet_causal_etabli": false,
+      "source_connexe_ids": [
+        "fibre64_pv_2025_10_06",
+        "fibre64_protocole_2025",
+        "fibre64_cnfpt_2026",
+        "fibre64_ordre_2026_02_05",
+        "fibre64_pv_2025_12_04"
+      ],
+      "question_decisive": "Quel est l'objet intégral de la délibération de juillet, et qu'apporte-t-elle de nouveau par rapport aux coopérations déjà documentées ?",
+      "observation": "Repérage par expression dans DELIB_OBJET ; objet intégral non conservé dans le registre de collecte."
+    },
+    {
+      "identifiant": "3f0667b663bad26e230c2318fd6594d5875367da5c448f8133bb5305a7dc8487",
+      "collectivite": "COMMUNE D'AVOINE",
+      "deliberation_id": "DC20240326_19",
+      "deliberation_date_csv": "2024-04-03",
+      "mots_de_reperage": [
+        "expertise_juridique"
+      ],
+      "url_acte_annoncee": "https://publication-actes.fr/OpenData/213700115/Deliberation/2024/c41a97f7aac0ca53b504473ecd3e05dc7b7274cb7eeb7e2524f3ae63884b4753.pdf",
+      "source_csv_sha256": "877f8f8fae27e454fcfe2ebeb5a2237bcd7dab7eeb6aedb65c26b363115f6a8e",
+      "ligne_csv_sha256": "a01ffe3402dcb46b0f3b283da830ae29d75f968a32459c2ce4a38ffad4766352",
+      "statut": "reperage_scdl_acte_cible_non_lu",
+      "acte_cible_lu": false,
+      "acte_cible_verifie_par_octets": false,
+      "besoin_technique_deficitaire_etabli": false,
+      "usage_attribuable_a_cet_acte_etabli": false,
+      "effet_causal_etabli": false,
+      "source_connexe_ids": [],
+      "question_decisive": "L'acte contient-il un besoin technique identifiable ou seulement une mention d'assistance juridique ?",
+      "observation": "Repérage par expression dans DELIB_OBJET ; objet intégral non conservé dans le registre de collecte."
+    },
+    {
+      "identifiant": "479aaa60ea088ab4811fa1ecedcd16b6a60b9daa646a655675a0b5d4201df901",
+      "collectivite": "CC VIERZON-SOLOGNE-BERRY",
+      "deliberation_id": "DB25004",
+      "deliberation_date_csv": "2025-04-24",
+      "mots_de_reperage": [
+        "cybersecurite"
+      ],
+      "url_acte_annoncee": "https://publication-actes.fr/OpenData/200090561/Deliberation/2025/52860/21003320da9822214c33cbc6efef6f9415b3768e493074712149ee10a14995e0.pdf",
+      "source_csv_sha256": "fbc46a3032f3f02969561d51b5a3d78b130bcbd3fadaa171a851cd6fd7831cb0",
+      "ligne_csv_sha256": "c29c5acbd1be630c789a86599e0ecedd4e6206d3132bd9eb218a0381a4db6a89",
+      "statut": "reperage_scdl_acte_cible_non_lu",
+      "acte_cible_lu": false,
+      "acte_cible_verifie_par_octets": false,
+      "besoin_technique_deficitaire_etabli": false,
+      "usage_attribuable_a_cet_acte_etabli": false,
+      "effet_causal_etabli": false,
+      "source_connexe_ids": [],
+      "question_decisive": "Existe-t-il un diagnostic de cybersécurité, des ressources identifiées et une trace d'exécution ?",
+      "observation": "Repérage par expression dans DELIB_OBJET ; objet intégral non conservé dans le registre de collecte."
+    },
+    {
+      "identifiant": "570fc228bbaeae052c2a38cf3e9a81e8f06d2f61ad6798d41f48af74bdcd207f",
+      "collectivite": "COMMUNE DE SAINT PIERRE DES CORPS",
+      "deliberation_id": "2025_10_01_13B",
+      "deliberation_date_csv": "2026-02-11",
+      "mots_de_reperage": [
+        "transcription"
+      ],
+      "url_acte_annoncee": "https://publication-actes.fr/OpenData/213702335/Deliberation/2026/72163/861767d090be36228ad7160c97f0eb656437b82a85a6cf2d2eae5b8839e95d46.pdf",
+      "source_csv_sha256": "1647bbb17d95c486c030612b8dedfcda99d0d34f74bbc74b28c1690dc31899a9",
+      "ligne_csv_sha256": "96c2e145591d3bfae4dea500436eea266cb10188bdc0a32bde43f78b97319fcf",
+      "statut": "reperage_scdl_acte_cible_non_lu",
+      "acte_cible_lu": false,
+      "acte_cible_verifie_par_octets": false,
+      "besoin_technique_deficitaire_etabli": false,
+      "usage_attribuable_a_cet_acte_etabli": false,
+      "effet_causal_etabli": false,
+      "source_connexe_ids": [],
+      "question_decisive": "Le terme transcription concerne-t-il une technologie de réunion, une transcription administrative ou un autre usage ?",
+      "observation": "Repérage par expression dans DELIB_OBJET ; objet intégral non conservé dans le registre de collecte."
+    },
+    {
+      "identifiant": "5aa7f8419979e533c0dcc137cb9a8f8aeed2d96977c06bd01e7a3414e4f63456",
+      "collectivite": "CC CANAUX ET FORETS EN GATINAIS",
+      "deliberation_id": "D2026_037",
+      "deliberation_date_csv": "2026-05-06",
+      "mots_de_reperage": [
+        "expertise_juridique"
+      ],
+      "url_acte_annoncee": "https://publication-actes.fr/OpenData/200067676/Deliberation/2026/80549/8d42c58f08e8c7987d19821269af6991f76db5bddd14a880d51f5354a29286bc.pdf",
+      "source_csv_sha256": "1647bbb17d95c486c030612b8dedfcda99d0d34f74bbc74b28c1690dc31899a9",
+      "ligne_csv_sha256": "c1aaae461ee50b493670c278098f1500b11ad7d247d11cc56a7d5b0c4eefc568",
+      "statut": "reperage_scdl_acte_cible_non_lu",
+      "acte_cible_lu": false,
+      "acte_cible_verifie_par_octets": false,
+      "besoin_technique_deficitaire_etabli": false,
+      "usage_attribuable_a_cet_acte_etabli": false,
+      "effet_causal_etabli": false,
+      "source_connexe_ids": [],
+      "question_decisive": "Une assistance juridique a-t-elle été commandée, déployée ou simplement évoquée ?",
+      "observation": "Repérage par expression dans DELIB_OBJET ; objet intégral non conservé dans le registre de collecte."
+    },
+    {
+      "identifiant": "9ea53dc570c17ff0a41839858c61820ecad62f79f9ba64f60bb3ce770e540f23",
+      "collectivite": "SYNDICAT MIXTE LA FIBRE64",
+      "deliberation_id": "8_2026_02_05",
+      "deliberation_date_csv": "2026-02-05",
+      "mots_de_reperage": [
+        "intelligence_artificielle"
+      ],
+      "url_acte_annoncee": "https://publication-actes.fr/OpenData/200081263/Deliberation/2026/71186/fc728f989ce03ec833a2491d99f981fd8574a98ccf0cea37cbada9eacb2f7ec2.pdf",
+      "source_csv_sha256": "1647bbb17d95c486c030612b8dedfcda99d0d34f74bbc74b28c1690dc31899a9",
+      "ligne_csv_sha256": "64810a6e35fb4ce49b266d126db04b8e17bc9b8bd2df8824de722869ecbeaccd",
+      "statut": "contexte_primaire_connexe_lu_acte_cible_non_lu",
+      "acte_cible_lu": false,
+      "acte_cible_verifie_par_octets": false,
+      "besoin_technique_deficitaire_etabli": false,
+      "usage_attribuable_a_cet_acte_etabli": false,
+      "effet_causal_etabli": false,
+      "source_connexe_ids": [
+        "fibre64_pv_2025_10_06",
+        "fibre64_protocole_2025",
+        "fibre64_cnfpt_2026",
+        "fibre64_ordre_2026_02_05",
+        "fibre64_pv_2025_12_04"
+      ],
+      "question_decisive": "La délibération de février concerne-t-elle la convention CNFPT visible dans une autre pièce du même ensemble documentaire ?",
+      "observation": "Repérage par expression dans DELIB_OBJET ; objet intégral non conservé dans le registre de collecte."
+    },
+    {
+      "identifiant": "e0957228b6a67294ee700df7a086f1051da86b9e73583b205db1cc1158a7633e",
+      "collectivite": "COMMUNE D'AVOINE",
+      "deliberation_id": "DC20240910_48",
+      "deliberation_date_csv": "2024-09-18",
+      "mots_de_reperage": [
+        "expertise_juridique"
+      ],
+      "url_acte_annoncee": "https://publication-actes.fr/OpenData/213700115/Deliberation/2024/37509/16e7f6fd2d43dc72ddf0d8ce9ccf518484f1c8bb51a6e3b9ba9d8d8864d9dddc.pdf",
+      "source_csv_sha256": "877f8f8fae27e454fcfe2ebeb5a2237bcd7dab7eeb6aedb65c26b363115f6a8e",
+      "ligne_csv_sha256": "6f94d690a87ef989a2cfdd3ead0c02800b51b75287821ae2f6807376dde60c80",
+      "statut": "reperage_scdl_acte_cible_non_lu",
+      "acte_cible_lu": false,
+      "acte_cible_verifie_par_octets": false,
+      "besoin_technique_deficitaire_etabli": false,
+      "usage_attribuable_a_cet_acte_etabli": false,
+      "effet_causal_etabli": false,
+      "source_connexe_ids": [],
+      "question_decisive": "Quel est le contenu technique de la décision, et quelle est sa relation à la première décision de la même commune ?",
+      "observation": "Repérage par expression dans DELIB_OBJET ; objet intégral non conservé dans le registre de collecte."
+    },
+    {
+      "identifiant": "e8b43054511d3d31aa2541be61104e238c0817adee2f294b4b962efadf6d57f4",
+      "collectivite": "Ville de La Possession",
+      "deliberation_id": "08-juil-26",
+      "deliberation_date_csv": "2026-07-18",
+      "mots_de_reperage": [
+        "expertise_juridique"
+      ],
+      "url_acte_annoncee": null,
+      "source_csv_sha256": "78b1f7295a69395a23fb5ff0815b3ebb9ffe443a9d0ad4516ff7b69cae702631",
+      "ligne_csv_sha256": "f7f8b3908c0cdaca17d961f7e2c1d9b43f9f196e461b914e6fa7149c1d637043",
+      "statut": "reperage_scdl_acte_cible_non_lu",
+      "acte_cible_lu": false,
+      "acte_cible_verifie_par_octets": false,
+      "besoin_technique_deficitaire_etabli": false,
+      "usage_attribuable_a_cet_acte_etabli": false,
+      "effet_causal_etabli": false,
+      "source_connexe_ids": [],
+      "question_decisive": "Le fichier SCDL sans URL de l'acte permet-il de retrouver une publication officielle indépendante et datée ?",
+      "observation": "Repérage par expression dans DELIB_OBJET ; objet intégral non conservé dans le registre de collecte."
+    },
+    {
+      "identifiant": "f0cc3692c406f83212eeed3a75dd72ecdf4f5a426034bd472cd98c086ec0053b",
+      "collectivite": "CC DES TERRES DU VAL DE LOIRE",
+      "deliberation_id": "2026_045",
+      "deliberation_date_csv": "2026-04-09",
+      "mots_de_reperage": [
+        "transcription"
+      ],
+      "url_acte_annoncee": "https://publication-actes.fr/OpenData/200070183/Deliberation/2026/77859/3c02c3cd761d4359fef853b1180b1338691ce54574be28eb969c47a426b5df42.pdf",
+      "source_csv_sha256": "1647bbb17d95c486c030612b8dedfcda99d0d34f74bbc74b28c1690dc31899a9",
+      "ligne_csv_sha256": "0668d9a2cc1479804edbfe2274ebc27147a69ddf75be091dde75bed641cbc068",
+      "statut": "reperage_scdl_acte_cible_non_lu",
+      "acte_cible_lu": false,
+      "acte_cible_verifie_par_octets": false,
+      "besoin_technique_deficitaire_etabli": false,
+      "usage_attribuable_a_cet_acte_etabli": false,
+      "effet_causal_etabli": false,
+      "source_connexe_ids": [],
+      "question_decisive": "Le terme transcription correspond-il à une opération technique documentée, et existe-t-il une première contribution datée ?",
+      "observation": "Repérage par expression dans DELIB_OBJET ; objet intégral non conservé dans le registre de collecte."
+    }
+  ]
+}
