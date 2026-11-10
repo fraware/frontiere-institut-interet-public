@@ -1,8 +1,8 @@
 {
   "categories_export": {
-    "SI": 7908,
+    "SI": 7907,
     "SIL": 6297,
-    "SL": 79537
+    "SL": 79535
   },
   "competence_geographique": {
     "dataset": "api-lannuaire-administration-locale-competence-geographique",
@@ -11,25 +11,25 @@
     "url": "https://api-lannuaire.service-public.gouv.fr/api/explore/v2.1/catalog/datasets/api-lannuaire-administration-locale-competence-geographique"
   },
   "couverture": {
-    "avec_coordonnees": 85651,
+    "avec_coordonnees": 85649,
     "avec_fondement_juridique": 1546,
-    "avec_mission": 29866,
+    "avec_mission": 29864,
     "avec_responsable": 5205,
-    "avec_siren": 44082,
-    "avec_siret": 54611,
-    "avec_territoire_direct": 85637
+    "avec_siren": 44095,
+    "avec_siret": 54616,
+    "avec_territoire_direct": 85635
   },
   "hierarchie": {
     "anomalies": 100,
     "avec_parent_principal": 3539,
     "entites_a_parents_directs_multiples": 0,
-    "sans_parent_principal": 82295
+    "sans_parent_principal": 82293
   },
-  "nombre_enregistrements_export_complet": 93742,
-  "nombre_entites_canoniques": 85834,
+  "nombre_enregistrements_export_complet": 93739,
+  "nombre_entites_canoniques": 85832,
   "nombre_relations_hierarchiques": 4158,
-  "nombre_services_locaux_source": 85834,
-  "observe_le": "2026-10-14T10:39:23+00:00",
+  "nombre_services_locaux_source": 85832,
+  "observe_le": "2026-10-15T10:22:07+00:00",
   "resolution_croisee_roae": {
     "anomalies_roae_initiales": 158,
     "resolues_par_annuaire_local": 158,
@@ -37,9 +37,9 @@
   },
   "source_id": "dila_annuaire_local",
   "stockage": {
-    "octets_entites": 226465950,
+    "octets_entites": 226458997,
     "octets_relations": 3671842,
-    "octets_total_canonique": 230137792
+    "octets_total_canonique": 230130839
   },
   "types_institutionnels_source": {
     "Administration centrale (ou Ministère)": 4,
@@ -75,7 +75,7 @@
     "Service local — caf": 467,
     "Service local — cap_emploi": 96,
     "Service local — carsat": 20,
-    "Service local — ccas": 11870,
+    "Service local — ccas": 11868,
     "Service local — cci": 267,
     "Service local — cdad": 105,
     "Service local — cdg": 97,
@@ -203,7 +203,7 @@
     "carif_oref": 19,
     "carsat": 20,
     "caue": 93,
-    "ccas": 11870,
+    "ccas": 11868,
     "cci": 267,
     "ccsf": 103,
     "cdad": 105,

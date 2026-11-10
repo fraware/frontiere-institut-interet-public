@@ -37,14 +37,14 @@ Le [journal des revues](docs/SUIVI_FEUILLE_ROUTE.md) consigne les changements de
 <!-- FRONTIERE:ETAT_REFERENTIEL:DEBUT -->
 | Couverture institutionnelle | État |
 | --- | ---: |
-| Enregistrements de l’Annuaire de l’administration couverts | 93 742 / 93 742 |
-| Services issus du Référentiel de l’organisation administrative de l’État | 7 908 |
-| Services et guichets locaux issus de l’Annuaire | 85 834 |
-| Relations hiérarchiques résolues dans l’organisation de l’État | 8 076 |
+| Enregistrements de l’Annuaire de l’administration couverts | 93 739 / 93 739 |
+| Services issus du Référentiel de l’organisation administrative de l’État | 7 907 |
+| Services et guichets locaux issus de l’Annuaire | 85 832 |
+| Relations hiérarchiques résolues dans l’organisation de l’État | 8 075 |
 | Relations hiérarchiques résolues parmi les services locaux | 4 158 |
 | Unités territoriales issues du Code officiel géographique 2026 | 40 345 |
 | Relations entre unités territoriales | 150 421 |
-| Références de l’Annuaire reliées à une unité territoriale actuelle | 305 508 / 305 515 |
+| Références de l’Annuaire reliées à une unité territoriale actuelle | 305 506 / 305 513 |
 | Références territoriales anciennes expliquées par l’historique officiel | 7 / 7 |
 <!-- FRONTIERE:ETAT_REFERENTIEL:FIN -->
 
