@@ -1,0 +1,123 @@
+{
+  "status": "independent_aggregation_from_github_blob_api",
+  "audit_date": "2026-11-09",
+  "source": {
+    "repository": "https://github.com/anct-carto/ci-ville2",
+    "commit": "999ba72cf7230842c192f8a261ced86351283e61",
+    "files": [
+      {
+        "year": 2024,
+        "path": "src/assets/subventions-2024.json",
+        "git_blob_sha1": "45f326a3cf2387177f347a5824ef3ef9d3005f3e",
+        "bytes_expected": 16717279
+      },
+      {
+        "year": 2025,
+        "path": "src/assets/subventions-2025.json",
+        "git_blob_sha1": "9f3f541f9adcd948f0867515ab0c151475b66f8e",
+        "bytes_expected": 15488987
+      }
+    ]
+  },
+  "units": "JSON rows of Ci.Ville 2 derived display data; not accounting payments or independently validated projects",
+  "year_2024": {
+    "records": 39079,
+    "unique_id_action": 39079,
+    "unique_code_tiers": 13667,
+    "total_cents": "38087473152",
+    "zero_amount_rows": 0,
+    "duplicated_action_ids": [],
+    "scales": {
+      "dep": 302,
+      "cdv": 37240,
+      "nat": 404,
+      "reg": 1133
+    },
+    "theme_counts": {
+      "1": 9444,
+      "2": 6485,
+      "3": 2608,
+      "4": 14707,
+      "5": 3732,
+      "6": 2103
+    },
+    "nonempty_fields": {
+      "id_action": 39079,
+      "lib_action": 39079,
+      "raison_sociale": 39079,
+      "code_tiers": 39079,
+      "theme": 39079,
+      "sous_theme": 39079,
+      "montant": 39079,
+      "objectif": 39079,
+      "echelle": 39079,
+      "annee": 39079,
+      "insee_reg": 38671,
+      "insee_dep": 37542,
+      "montant_format": 39079,
+      "code_cv": 38773
+    },
+    "invalid_14_digit_luhn": 0
+  },
+  "year_2025": {
+    "records": 38372,
+    "unique_id_action": 38368,
+    "unique_code_tiers": 13522,
+    "total_cents": "36052103200",
+    "zero_amount_rows": 7,
+    "duplicated_action_ids": [
+      "00327440",
+      "00338070",
+      "00352813",
+      "00371219"
+    ],
+    "scales": {
+      "nat": 186,
+      "cdv": 37154,
+      "reg": 1032
+    },
+    "theme_counts": {
+      "1": 10099,
+      "2": 6648,
+      "3": 2786,
+      "4": 13522,
+      "5": 3370,
+      "6": 1947
+    },
+    "nonempty_fields": {
+      "id_action": 38372,
+      "lib_action": 38372,
+      "raison_sociale": 38372,
+      "code_tiers": 38372,
+      "theme": 38372,
+      "sous_theme": 38372,
+      "montant": 38372,
+      "objectif": 38372,
+      "echelle": 38372,
+      "annee": 38372,
+      "code_cv": 38372,
+      "montant_format": 38372,
+      "insee_reg": 38186,
+      "insee_dep": 37154
+    },
+    "invalid_14_digit_luhn": 0
+  },
+  "pilot": {
+    "purposive_units": 12,
+    "control_duplicate_ids": [
+      "00338070",
+      "00371219",
+      "00327440"
+    ],
+    "additional_theme_diversity_units": 6,
+    "selection_type": "non-probability, technical document-access feasibility",
+    "not_yet_requested": true
+  },
+  "limits": [
+    "No raw 2024/2025 original Dauphin CSV acquired",
+    "No Dauphin financial justification document acquired",
+    "No accounting payment reconciliation",
+    "No impact or implementation verification",
+    "Git blob SHA-1 identifies version; no local byte-for-byte SHA-256 reproduction"
+  ]
+}
