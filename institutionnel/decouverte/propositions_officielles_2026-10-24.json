@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-24",
+  "nature": "proposition_documentaire",
+  "statut": "decouverte_documentaire_uniquement",
+  "ingestion_testee": false,
+  "registre_operationnel_modifie": false,
+  "controle": {
+    "registres_main": [
+      "institutionnel/sources_v1.json",
+      "institutionnel/decouverte/catalogues_officiels_v1.json"
+    ],
+    "doublons_exacts_dans_registres_main": 0,
+    "propositions_github_recherchees": [
+      "Athéna",
+      "aides-entreprises"
+    ],
+    "portee": "Recherche sur main et dans les titres/descriptions de PR indexées; absence de doublon universel non garantie.",
+    "fiches_officielles_consultees": true,
+    "telechargement_donnees_metier": false,
+    "appels_api_metier_reussis": false,
+    "validation_schema": false,
+    "validation_pagination": false,
+    "verification_integrite": false,
+    "limite_reseau": "Deux essais HTTPS directs depuis le conteneur ont échoué sur la résolution DNS. Le navigateur de recherche a pu lire les fiches officielles; il n'a pas permis de télécharger les ressources."
+  },
+  "candidats": [
+    {
+      "id": "ism_aides_entreprises",
+      "nom": "Aides entreprises — dispositifs, financeurs, territoires et référentiels associés",
+      "producteur": "Institut Supérieur des Métiers (ISM), dispositif piloté avec la Direction générale des entreprises (DGE)",
+      "page_officielle": "https://www.data.gouv.fr/datasets/aides-entreprises",
+      "licence_affichee": "Licence Ouverte / Open Licence (version non précisée sur la fiche)",
+      "date_derniere_mise_a_jour_affichee": "2026-10-17",
+      "formats_documentes": [
+        "CSV"
+      ],
+      "ressources_documentees": [
+        "aides",
+        "projets",
+        "profils",
+        "natures",
+        "domaines",
+        "niveaux",
+        "contacts",
+        "financeurs",
+        "territoires"
+      ],
+      "modalites_acces": "Neuf ressources CSV publiques sur la fiche; téléchargement direct et API éventuelle non testés. Ne pas supposer un accès API anonyme.",
+      "interet": "Rapprocher dispositifs publics de financement, financeurs et territoires; complément des données ANR, budgets territoriaux et financements européens qui décrivent surtout des projets ou des montants.",
+      "limites": "La présence d'une aide ne prouve ni l'éligibilité d'un bénéficiaire ni un financement accordé. Conditions juridiques et actualité de chaque dispositif à vérifier; conserver les relations et dates de validité."
+    },
+    {
+      "id": "alliance_athena_structures_shs_2025",
+      "nom": "Structures de recherche publiques françaises en sciences humaines et sociales — millésime 2025",
+      "producteur": "Alliance thématique nationale des sciences humaines et sociales (Alliance Athéna)",
+      "page_officielle": "https://www.data.gouv.fr/datasets/base-de-donnees-des-structures-de-recherche-publiques-francaises-en-sciences-humaines-et-sociales-en-2025",
+      "licence_affichee": "Licence Ouverte / Open Licence version 2.0",
+      "date_derniere_mise_a_jour_affichee": "2026-01-08",
+      "millesime": "2025",
+      "formats_documentes": [
+        "XLSX"
+      ],
+      "modalites_acces": "Un fichier XLSX public référencé sur data.gouv.fr; aucun appel API spécifique documenté ni téléchargement réussi.",
+      "interet": "Vue disciplinaire SHS consolidée par une alliance scientifique, utile pour auditer la couverture RNSR et scanR, identifier les divergences de périmètre et vérifier les tutelles.",
+      "limites": "Le producteur indique un croisement du RNSR, de scanR et de sites d'établissements. Source dérivée, à ne pas compter comme inventaire indépendant ni comme preuve de disponibilité des compétences. Le millésime 2025 ne représente pas un état garanti au 24 octobre 2026."
+    }
+  ],
+  "suite": "Réaliser un échantillon de téléchargement licite, validation de format et schéma, contrôle de dates et de licences, puis rapprochement des identifiants et évaluation de la valeur marginale avant toute promotion dans un registre d'ingestion.",
+  "decision": "Ajout documentaire uniquement; aucune modification de institutionnel/sources_v1.json ni d'état de la feuille de route."
+}
