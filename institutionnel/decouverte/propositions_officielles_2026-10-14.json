@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-14",
+  "statut": "decouverte_documentaire_uniquement",
+  "ingestion_testee": false,
+  "registre_operationnel_modifie": false,
+  "comparaison": [
+    "institutionnel/sources_v1.json",
+    "institutionnel/decouverte/catalogues_officiels_v1.json",
+    "propositions officielles des 10, 11, 12 et 13 octobre"
+  ],
+  "candidats": [
+    "mesr_nomenclature_cnu",
+    "eu_kohesio",
+    "eu_cellar",
+    "mesr_affiliation_matcher"
+  ],
+  "tests": {
+    "consultation_documentation_officielle": true,
+    "telechargement_donnees_metier": false,
+    "appels_api_reussis": false,
+    "validation_schema": false,
+    "validation_pagination": false
+  },
+  "note": "Les quatre fiches sont documentaires. Licences, droits tiers, endpoints et mises a jour restent a valider avant ingestion."
+}

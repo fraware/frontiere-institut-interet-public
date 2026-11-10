@@ -1,0 +1,168 @@
+{
+  "date": "2026-10-29",
+  "objet": "Consolidation des découvertes documentaires de la conversation dans le dépôt de référence",
+  "registre": "institutionnel/decouverte/catalogues_officiels_v1.json",
+  "sources_catalogue_main_initial": 23,
+  "sources_catalogue_consolide": 39,
+  "ajouts": [
+    {
+      "id": "mesre_politiques_science_ouverte_etablissements",
+      "pr": 643
+    },
+    {
+      "id": "mesre_doctorants_financements_cotutelles",
+      "pr": 643
+    },
+    {
+      "id": "dgos_catalogue_collections_biologiques_crb",
+      "pr": 646
+    },
+    {
+      "id": "fonds_vert_projets_subventionnes",
+      "pr": 648
+    },
+    {
+      "id": "mesr_effectifs_enseignants_titulaires_national",
+      "pr": 648
+    },
+    {
+      "id": "commission_europeenne_era_scoreboard_2025",
+      "date": "2026-10-30",
+      "provenance": "institutionnel/decouverte/propositions_officielles_2026-10-30.json"
+    },
+    {
+      "id": "commission_europeenne_paysage_eric",
+      "date": "2026-10-30",
+      "provenance": "institutionnel/decouverte/propositions_officielles_2026-10-30.json"
+    },
+    {
+      "id": "anct_croisement_dispositifs_territoriaux",
+      "date": "2026-10-31",
+      "provenance": "institutionnel/decouverte/propositions_officielles_2026-10-31.json"
+    },
+    {
+      "id": "anct_deploiement_incubateur_territoires",
+      "date": "2026-10-31",
+      "provenance": "institutionnel/decouverte/propositions_officielles_2026-10-31.json"
+    },
+    {
+      "id": "ign_geoplateforme_index_offres",
+      "date": "2026-10-31",
+      "provenance": "institutionnel/decouverte/propositions_officielles_2026-10-31.json"
+    },
+    {
+      "id": "recherche_data_gouv_ateliers_competences",
+      "date": "2026-10-31",
+      "provenance": "institutionnel/decouverte/propositions_officielles_2026-10-31.json"
+    },
+    {
+      "id": "datagouv_catalogue_schemas_donnees",
+      "pr": "649 (mise à jour 2026-11-01)"
+    },
+    {
+      "id": "daj_referentiel_schemas_decp",
+      "pr": "649 (mise à jour 2026-11-01)"
+    },
+    {
+      "id": "mesre_referens_iii_metiers_it_rf",
+      "date": "2026-11-02",
+      "provenance": "institutionnel/decouverte/propositions_officielles_2026-11-02.json"
+    },
+    {
+      "id": "mesre_referens_iii_dictionnaire_competences",
+      "date": "2026-11-02",
+      "provenance": "institutionnel/decouverte/propositions_officielles_2026-11-02.json"
+    },
+    {
+      "id": "idf_partenaires_campus_metiers_qualifications",
+      "date": "2026-11-02",
+      "provenance": "institutionnel/decouverte/propositions_officielles_2026-11-02.json"
+    }
+  ],
+  "propositions_conservees": [
+    {
+      "pr": 641,
+      "branche": "veille/catalogues-officiels-2026-10-23-hceres-onisep",
+      "fichier": "institutionnel/decouverte/propositions_officielles_2026-10-23.json"
+    },
+    {
+      "pr": 642,
+      "branche": "veille/catalogues-officiels-2026-10-24-aides-shs",
+      "fichier": "institutionnel/decouverte/propositions_officielles_2026-10-24.json"
+    },
+    {
+      "pr": 643,
+      "branche": "veille/catalogues-officiels-2026-10-25-politiques-doctorat",
+      "fichier": "institutionnel/decouverte/catalogues_officiels_v1.json"
+    },
+    {
+      "pr": 644,
+      "branche": "veille/revue-directrice-2026-10-26-eurostat",
+      "fichier": "institutionnel/decouverte/propositions_officielles_2026-10-26.json"
+    },
+    {
+      "pr": 646,
+      "branche": "veille/catalogues-officiels-2026-10-27-crb",
+      "fichier": "institutionnel/decouverte/catalogues_officiels_v1.json"
+    },
+    {
+      "pr": 647,
+      "branche": "veille/catalogues-officiels-2026-10-28-poles-mcp",
+      "fichier": "institutionnel/decouverte/propositions_officielles_2026-10-28.json"
+    },
+    {
+      "pr": 648,
+      "branche": "veille/catalogues-officiels-2026-10-29-fonds-vert-effectifs",
+      "fichier": "institutionnel/decouverte/catalogues_officiels_v1.json"
+    }
+  ],
+  "statut": "decouverte_documentaire_uniquement",
+  "ingestion_testee_par_cette_consolidation": false,
+  "limites": [
+    "Les anciennes découvertes des journées sans fichier GitHub confirmé demandent une récupération distincte.",
+    "Les métadonnées historiques reflètent leur date d'observation; leur fraîcheur n'a pas été revalidée ici.",
+    "Les autres propositions de la conversation non incluses dans cette première consolidation doivent être réconciliées avant revendication de complétude.",
+    "Les journées du 10 au 22 octobre ne sont pas toutes représentées par des dossiers complets dans cette consolidation.",
+    "Les ressources du 31 octobre sont documentées uniquement; la consultation des fiches ne constitue pas un test d'ingestion."
+  ],
+  "dossiers_historiques_recuperes": [
+    {
+      "pr": 401,
+      "dates": [
+        "2026-10-13",
+        "2026-10-14"
+      ],
+      "nombre_fichiers": 8
+    },
+    {
+      "pr": 494,
+      "dates": [
+        "2026-10-15"
+      ],
+      "nombre_fichiers": 1
+    }
+  ],
+  "dossier_2026_10_12": {
+    "pr": 263,
+    "etat": "deja_present_sur_main",
+    "fichier": "institutionnel/decouverte/propositions_officielles_2026-10-12.json"
+  },
+  "mise_a_jour": "2026-11-02",
+  "nouvelle_observation_2026_11_01": {
+    "fichier": "institutionnel/decouverte/propositions_officielles_2026-11-01.json",
+    "sources": [
+      "datagouv_catalogue_schemas_donnees",
+      "daj_referentiel_schemas_decp"
+    ],
+    "ingestion_testee": false
+  },
+  "nouvelle_observation_2026_11_02": {
+    "fichier": "institutionnel/decouverte/propositions_officielles_2026-11-02.json",
+    "sources": [
+      "mesre_referens_iii_metiers_it_rf",
+      "mesre_referens_iii_dictionnaire_competences",
+      "idf_partenaires_campus_metiers_qualifications"
+    ],
+    "ingestion_testee": false
+  }
+}
