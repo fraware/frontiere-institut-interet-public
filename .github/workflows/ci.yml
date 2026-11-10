@@ -208,7 +208,7 @@ jobs:
             --rapport "$RUNNER_TEMP/audit-chaine-documentaire.json"
 
       - name: Conserver le rapport transversal vérifié
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: audit-chaine-documentaire-${{ github.run_id }}
           path: ${{ runner.temp }}/audit-chaine-documentaire.json
@@ -224,7 +224,7 @@ jobs:
 
       - name: Conserver le diagnostic du site réellement servi
         if: github.event_name == 'push' && github.ref == 'refs/heads/main' && always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: audit-site-publie-${{ github.run_id }}
           path: ${{ runner.temp }}/audit-site-publie.json

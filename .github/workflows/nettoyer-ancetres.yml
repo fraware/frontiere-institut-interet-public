@@ -71,7 +71,7 @@ jobs:
             --appliquer --rapport "$RUNNER_TEMP/rapport-ancetres.json"
       - name: Archiver les décisions et exclusions
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: rapport-six-branches-ancetres
           path: ${{ runner.temp }}/rapport-ancetres.json
