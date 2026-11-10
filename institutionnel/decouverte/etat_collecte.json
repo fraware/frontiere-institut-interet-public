@@ -1,26 +1,21 @@
 {
   "collecte_complete": false,
-  "controle_le": "2026-10-20T22:17:17+00:00",
+  "controle_le": "2026-10-21T06:02:49+00:00",
   "couverture_exhaustive_du_web": false,
   "erreurs": [
     {
-      "expression": "infrastructures recherche",
-      "motif": "RemoteDisconnected",
+      "expression": "fonction publique emploi",
+      "motif": "TimeoutError",
       "page": 1
-    },
-    {
-      "expression": "enseignement supérieur",
-      "motif": "RemoteDisconnected",
-      "page": 2
     }
   ],
-  "fiches_recues_avec_doublons": 416,
+  "fiches_recues_avec_doublons": 448,
   "fichiers_sources_originaux_telecharges": 0,
-  "identifiants_distincts_conserves": 1463,
-  "nouveaux_identifiants": 9,
-  "pages_echouees": 2,
+  "identifiants_distincts_conserves": 1478,
+  "nouveaux_identifiants": 15,
+  "pages_echouees": 1,
   "pages_ignorees_sans_suite": 32,
-  "pages_reussies": 45,
+  "pages_reussies": 46,
   "pages_tentees": 47,
   "sources_deja_suivies_dans_le_resultat": 0,
   "version": "veille-catalogue-v1"
