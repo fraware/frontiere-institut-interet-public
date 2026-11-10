@@ -1,0 +1,107 @@
+{
+  "version": "2026-10-29",
+  "statut": "repérage public non qualifié",
+  "confidentialite": "public",
+  "regle": "Aucun témoignage privé ni information de disponibilité individuelle n'est publié. Chaque entrée relève d'une vérification documentaire et ne compte pas comme besoin opérationnel.",
+  "entrees": [
+    {
+      "identifiant": "REN-TMAP-01",
+      "objet": "Chaire Territoires et mutations de l'action publique",
+      "institution": "Sciences Po Rennes",
+      "type": "comparateur documentaire",
+      "constat_public": "Chaire créée en 2015; recherche, formation, échanges avec partenaires publics, associatifs et privés",
+      "etat": "à étudier",
+      "preuves": [
+        "https://www.sciencespo-rennes.fr/recherche/chaires/chaire-territoires-mutations-laction-publique-tmap"
+      ],
+      "inconnues": [
+        "effet sur décisions publiques",
+        "financement effectif par année",
+        "contrefactuel"
+      ]
+    },
+    {
+      "identifiant": "REN-BIF-01",
+      "objet": "Laboratoire de politiques publiques des bifurcations",
+      "institution": "Sciences Po Rennes",
+      "type": "comparateur documentaire",
+      "constat_public": "Travaux liés à Pierre Wokuri et aux politiques publiques de transition",
+      "etat": "à qualifier",
+      "preuves": [
+        "https://www.sciencespo-rennes.fr/annuaire/pierre-wokuri",
+        "https://www.sciencespo-rennes.fr/agenda/colloque-transchaire-sur-bifurcation-ecologique"
+      ],
+      "inconnues": [
+        "statut institutionnel du laboratoire",
+        "commandes réalisées",
+        "coûts",
+        "preuves d'utilisation"
+      ]
+    },
+    {
+      "identifiant": "LIL-RD-01",
+      "objet": "Recherche et développement et innovation publique",
+      "institution": "Métropole européenne de Lille",
+      "type": "comparateur documentaire",
+      "constat_public": "Direction R&D mentionnée dans un événement public de novembre 2026",
+      "etat": "à étudier",
+      "preuves": [
+        "https://www.modernisation.gouv.fr/mois-de-linnovation-publique/webinaire-et-toi-tu-fais-comment-pour-innover"
+      ],
+      "inconnues": [
+        "budget",
+        "rôle opérationnel",
+        "résultats vérifiables"
+      ]
+    },
+    {
+      "identifiant": "BRE-EDU-01",
+      "objet": "Projet éducatif et citoyen Grandir à Brest",
+      "institution": "Ville de Brest",
+      "type": "piste documentaire",
+      "constat_public": "La collectivité présente son projet éducatif et citoyen et ses six axes",
+      "etat": "cas possible sans épisode de déficit démontré",
+      "preuves": [
+        "https://brest.fr/brest-ville-et-metropole/grands-projets/bien-vivre-ensemble"
+      ],
+      "inconnues": [
+        "historique des versions",
+        "participation scientifique effective",
+        "décisions affectées",
+        "coûts"
+      ]
+    },
+    {
+      "identifiant": "POPSU-TRANS-01",
+      "objet": "POPSU Transitions",
+      "institution": "EPAU et collectivités partenaires",
+      "type": "comparateur documentaire",
+      "constat_public": "Programme présenté comme actif par son opérateur",
+      "etat": "financements futurs inconnus",
+      "preuves": [
+        "https://epau.fr/programmes/popsu-transitions"
+      ],
+      "inconnues": [
+        "décisions financières 2027",
+        "opérations brestoises correspondantes",
+        "conventions et effets"
+      ]
+    },
+    {
+      "identifiant": "ENS-FC-01",
+      "objet": "Service formation continue",
+      "institution": "ENS Paris-Saclay",
+      "type": "comparateur documentaire",
+      "constat_public": "Service public d'ingénierie pédagogique et formation continue, incluant partenaires publics et privés",
+      "etat": "à étudier",
+      "preuves": [
+        "https://ens-paris-saclay.fr/lecole/organisation-et-gouvernance/services-administratifs/formation-continue"
+      ],
+      "inconnues": [
+        "retombées en coopération scientifique",
+        "coûts des formats",
+        "demande des administrations"
+      ]
+    }
+  ]
+}
