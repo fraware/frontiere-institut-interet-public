@@ -1,0 +1,84 @@
+{
+  "date": "2026-10-10",
+  "statut": "decouverte_uniquement",
+  "ingestion_testee": false,
+  "endpoint_teste": false,
+  "comparaison": [
+    "institutionnel/sources_v1.json",
+    "institutionnel/decouverte/catalogues_officiels_v1.json"
+  ],
+  "candidats": [
+    {
+      "id": "anr_dgds_projets_partenaires",
+      "nom": "ANR DGDS — projets et partenaires depuis 2005",
+      "documentation": "https://www.data.gouv.fr/datasets/anr-01-projets-anr-dos-et-dgds-detail-des-projets-et-des-partenaires",
+      "licence": "ODbL",
+      "formats": [
+        "CSV",
+        "JSON",
+        "XLSX"
+      ],
+      "mise_a_jour_fiche": "2026-10-08",
+      "acces": "fichiers publics",
+      "usage": "projets, organismes, financement"
+    },
+    {
+      "id": "anr_dgpie_projets_partenaires",
+      "nom": "ANR DGPIE — projets et partenaires PIA",
+      "documentation": "https://www.data.gouv.fr/datasets/anr-02-projets-anr-dgpie-detail-des-projets-et-des-partenaires",
+      "licence": "ODbL",
+      "formats": [
+        "CSV",
+        "JSON",
+        "XLSX"
+      ],
+      "mise_a_jour_fiche": "2026-10-01",
+      "acces": "fichiers publics",
+      "usage": "France 2030, investissements d'avenir"
+    },
+    {
+      "id": "cordis_projets_europeens",
+      "nom": "CORDIS — projets et partenaires européens",
+      "documentation": "https://cordis.europa.eu/about/services",
+      "point_entree": "https://data.europa.eu/data/datasets/cordis-eu-research-projects-under-horizon-europe-2021-2027",
+      "licence": "Réutilisation UE, exceptions et droits des bénéficiaires à contrôler",
+      "formats": [
+        "CSV",
+        "XML",
+        "JSON",
+        "XLS",
+        "SPARQL"
+      ],
+      "acces": "archives publiques, SPARQL public ; API avancée sur inscription",
+      "usage": "projets, partenaires, livrables"
+    },
+    {
+      "id": "eurostat_gbard",
+      "nom": "Eurostat — allocations budgétaires de R&D",
+      "documentation": "https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction",
+      "jeu": "gba_nabsfin07",
+      "licence": "Réutilisation avec attribution et exceptions",
+      "formats": [
+        "JSON-stat",
+        "SDMX-CSV",
+        "TSV",
+        "SDMX-ML"
+      ],
+      "acces": "API REST gratuite ; endpoint non testé",
+      "usage": "comparaisons de budgets R&D",
+      "reference": "Eurostat, 7 août 2026"
+    },
+    {
+      "id": "mesr_infrastructures_recherche_historique",
+      "nom": "MESR — infrastructures de recherche 2018 et 2021",
+      "documentation": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-feuille-de-route-infrastructures-recherche-historique/table/?flg=fr-fr",
+      "licence": "à vérifier",
+      "formats": [
+        "interface Opendatasoft, exports à vérifier"
+      ],
+      "acces": "fiche publique ; endpoint non testé",
+      "usage": "historique des infrastructures",
+      "limite": "ne couvre pas 2026"
+    }
+  ]
+}
