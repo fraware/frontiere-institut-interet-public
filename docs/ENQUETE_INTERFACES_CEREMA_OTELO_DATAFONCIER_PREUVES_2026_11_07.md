@@ -104,19 +104,19 @@ L'unité primaire est la **demande publique datée**, et non l'individu qualifi�
 
 ### Conception d'évaluation recommandée
 
-Pour étudier une mesure d'accompagnement nouvelle, conserver un comparateur **amélioration interne standard** et documenter les interventions, les ressources et les critères d'accès. Lorsque l'ordre de déploiement peut être déterminé de manière équitable avec l'accord des partenaires, un **déploiement progressif randomisé par collectivité** est envisageable, avec groupes comparables et suivi de contamination intercollectivités. À défaut, une comparaison appariée et une analyse de tendances préalables seront descriptives ou conditionnelles à des hypothèses fortes, sans transformer leur résultat en démonstration expérimentale. Définir les règles de protection des données, la gouvernance, les abandons et les modifications de protocole avant le début de l'étude.
+Pour étudier une mesure d'accompagnement nouvelle, conserver un comparateur **amélioration interne standard** et documenter les interventions, les ressources et les critères d'accès. Lorsque l'ordre de déploiement peut être déterminé de manière équitable avec l'accord des partenaires, un **déploiement progressif randomisé par collectivité** est envisageable, avec groupes comparables et suivi de contamination intercollectivités. À défaut, une comparaison de cas appariés et une analyse de tendances préalables seront descriptives ou conditionnelles à des hypothèses fortes, sans transformer leur résultat en démonstration expérimentale. Définir les règles de protection des données, la gouvernance, les abandons et les modifications de protocole avant le début de l'étude.
 
 ## 7. Pièces classées par valeur probatoire
 
 | Rang | Pièce ou donnée demandée | Organisme gardien / source existante | Test servi |
 | --- | --- | --- | --- |
-| P0 | Suites datées des recommandations 1, 2 et 5 du Sénat, décisions et budget | CGDD/Cerema et publications administratives | Déterminer si la coordination publique est déjà renforcée |
-| P0 | Contrat, cahier des charges, livrables, compte rendu d'arbitrage MEL–OTELO | MEL et Cerema | Reconstituer les coûts et l'influence d'une intervention effectivement achevée |
-| P0 | Dictionnaire des 15 documents « influencés », méthode d'enquête, actes | Équipe OTELO, collectivités | Valider un indicateur d'impact déclaré |
-| P0 | Définitions et extractions des téléchargements 2025 « 7 340 » / « 7 077 » | Datafoncier/Cerema | Établir un dénominateur reproductible |
-| P1 | Matrice d'impact OTELO (contenu, non seulement l'URL) et budget | Équipe OTELO, documents liés | Contrôler la théorie du changement et le coût |
-| P1 | Journal de demandes d'accès OTELO, dates et statuts anonymisés | Exploitant de la démarche | Mesurer l'instruction administrative et ses cas extrêmes |
-| P1 | Résultats prospectifs d'accompagnement EPCI 2026, avec cohorte | Datafoncier/Cerema | Tester l'appropriation et la valeur ajoutée |
-| P2 | Déploiements satisfaisants sans dispositif extérieur | Collectivités, Cerema, DDT | Alimenter l'hypothèse H0 et réduire la sélection sur le succès |
+| priorité 0 | Suites datées des recommandations 1, 2 et 5 du Sénat, décisions et budget | CGDD/Cerema et publications administratives | Déterminer si la coordination publique est déjà renforcée |
+| priorité 0 | Contrat, cahier des charges, livrables, compte rendu d'arbitrage MEL–OTELO | MEL et Cerema | Reconstituer les coûts et l'influence d'une intervention effectivement achevée |
+| priorité 0 | Dictionnaire des 15 documents « influencés », méthode d'enquête, actes | Équipe OTELO, collectivités | Valider un indicateur d'impact déclaré |
+| priorité 0 | Définitions et extractions des téléchargements 2025 « 7 340 » / « 7 077 » | Datafoncier/Cerema | Établir un dénominateur reproductible |
+| priorité 1 | Matrice d'impact OTELO (contenu, non seulement l'URL) et budget | Équipe OTELO, documents liés | Contrôler la théorie du changement et le coût |
+| priorité 1 | Journal de demandes d'accès OTELO, dates et statuts anonymisés | Exploitant de la démarche | Mesurer l'instruction administrative et ses cas extrêmes |
+| priorité 1 | Résultats prospectifs d'accompagnement EPCI 2026, avec cohorte | Datafoncier/Cerema | Tester l'appropriation et la valeur ajoutée |
+| priorité 2 | Déploiements satisfaisants sans dispositif extérieur | Collectivités, Cerema, DDT | Alimenter l'hypothèse H0 et réduire la sélection sur le succès |
 
 **Frontière de confidentialité.** Cette note contient uniquement des faits publics et des protocoles prospectifs. Aucun contenu d'entretien privé, correspondance, transcription ni information sensible sur les disponibilités d'agents n'a été ajouté. La publication ne constitue pas une sollicitation des institutions ni une approbation de leur part.
