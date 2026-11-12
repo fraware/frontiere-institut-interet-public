@@ -1,0 +1,21 @@
+{
+  "id": "mesr_patrimoine_immobilier_operateurs_esr",
+  "date_decouverte": "2026-10-13",
+  "statut": "decouverte_documentaire",
+  "ingestion_testee": false,
+  "nom": "Patrimoine immobilier des operateurs de l'enseignement superieur",
+  "producteur": "MESR",
+  "url": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-patrimoine-immobilier-des-operateurs-de-l-enseignement-superieur/",
+  "licence": "Licence Ouverte v2.0",
+  "formats": [
+    "CSV",
+    "JSON",
+    "Excel",
+    "GeoJSON",
+    "Shapefile"
+  ],
+  "maj_affichee": "2026-07-03",
+  "acces": "Export et onglet API publics, aucun appel HTTP reussi",
+  "objet": "Batiments, surfaces, localisation, accessibilite et energie des etablissements.",
+  "limite": "Pas un inventaire d'equipements scientifiques; declarations des etablissements a verifier."
+}

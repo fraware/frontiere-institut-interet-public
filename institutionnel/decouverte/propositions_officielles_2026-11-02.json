@@ -1,0 +1,110 @@
+{
+  "date_verification": "2026-11-02",
+  "objet": "Trois sources officielles complémentaires sur les métiers scientifiques, compétences et réseaux territoriaux",
+  "comparaison": {
+    "main_sources": "institutionnel/sources_v1.json",
+    "main_catalogues": "institutionnel/decouverte/catalogues_officiels_v1.json",
+    "branche_consolidation": "veille/consolidation-conversation-2026-10-29",
+    "deduplication": "Identifiants et URLs documentaires comparés aux deux registres main, aux 36 entrées consolidées et aux dossiers documentaires accessibles dans la PR #649. Le référentiel des métiers de la fonction publique et ROME sont des périmètres distincts."
+  },
+  "statut": "decouverte_documentaire_uniquement",
+  "ingestion_testee": false,
+  "sources": [
+    {
+      "id": "mesre_referens_iii_metiers_it_rf",
+      "nom": "RéFérens III — référentiel des métiers ITRF et ITA",
+      "producteur": "Ministère de l'Enseignement supérieur, de la Recherche et de l'Espace",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/referentiel-metiers-referens-iii-pour-la-filiere-des-itrf",
+      "metadata_url": "https://www.data.gouv.fr/api/1/datasets/referentiel-metiers-referens-iii-pour-la-filiere-des-itrf/",
+      "source_primaire": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr_referentiel_metier_referens_3/",
+      "identifiant_source": "fr-esr_referentiel_metier_referens_3",
+      "licence": "Licence Ouverte (Etalab), code fr-lo dans les métadonnées data.gouv.fr; version exacte non précisée sur cette fiche",
+      "derniere_actualisation_catalogue_observee": "2026-10-28 (API data.gouv.fr; ne prouve pas une révision des métiers)",
+      "date_modification_donnees_primaires_documentee": "2017-11-17 (portail MESRE)",
+      "formats_documentes": [
+        "CSV UTF-8",
+        "JSON",
+        "XLS"
+      ],
+      "acces": "Exports publics et console API Explore documentés; aucun téléchargement ni appel de pagination effectué dans cette veille",
+      "volume_documente": "242 métiers-types selon le producteur, décompte non reconstruit",
+      "objet": "taxonomie_emplois_types_ingenierie_technique_recherche_formation",
+      "limites": "Référentiel de métiers-types, distinct d'offres de recrutement ou de personnels disponibles. Historique ancien malgré des contrôles de ressources en 2026; valider actualité, champs et liaisons avant exploitation."
+    },
+    {
+      "id": "mesre_referens_iii_dictionnaire_competences",
+      "nom": "RéFérens III — dictionnaire des compétences ITRF et ITA",
+      "producteur": "Ministère de l'Enseignement supérieur, de la Recherche et de l'Espace",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/dictionnaire-des-competences-referens-iii-pour-la-filiere-des-itrf",
+      "metadata_url": "https://www.data.gouv.fr/api/1/datasets/dictionnaire-des-competences-referens-iii-pour-la-filiere-des-itrf/",
+      "source_primaire": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr_dictionnaire_competences_referens_3/",
+      "identifiant_source": "fr-esr_dictionnaire_competences_referens_3",
+      "licence": "Licence Ouverte (Etalab), code fr-lo dans les métadonnées data.gouv.fr; version exacte non précisée sur cette fiche",
+      "derniere_actualisation_catalogue_observee": "2026-10-27 (API data.gouv.fr; ne prouve pas une révision des compétences)",
+      "date_modification_donnees_primaires_documentee": "Référentiel RéFérens III ancien; contrôler la date de modification des enregistrements dans le portail primaire",
+      "formats_documentes": [
+        "CSV UTF-8",
+        "JSON",
+        "XLS"
+      ],
+      "acces": "Exports publics et console API Explore documentés; aucun téléchargement ni appel de pagination effectué dans cette veille",
+      "objet": "dictionnaire_competences_connaissances_operationnelles_comportementales_ingenierie_recherche",
+      "limites": "Catégories connaissance, compétence opérationnelle, compétence comportementale. Une compétence définie dans un référentiel ne prouve ni sa présence chez un agent ni la disponibilité d'une ressource."
+    },
+    {
+      "id": "idf_partenaires_campus_metiers_qualifications",
+      "nom": "Île-de-France — partenaires des campus des métiers et qualifications",
+      "producteur": "Région Île-de-France",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/partenaires-des-campus-des-metiers-et-qualifications",
+      "source_primaire": "https://data.iledefrance.fr/explore/dataset/partenaires-des-campus-des-metiers-et-qualifications/",
+      "identifiant_source": "partenaires-des-campus-des-metiers-et-qualifications",
+      "licence": "Licence Ouverte 2.0 selon data.gouv.fr",
+      "date_actualisation_fiche_observee": "2026-10-21 (fiche data.gouv.fr consultée; dates des ressources à contrôler)",
+      "formats_documentes": [
+        "CSV",
+        "JSON",
+        "GeoJSON",
+        "ZIP"
+      ],
+      "acces": "Téléchargements publics et portail régional Explore; endpoint API exact, quotas et pagination à valider par appel direct",
+      "objet": "reseaux_formation_recherche_entreprises_campus_metiers_qualifications_ile_de_france",
+      "limites": "Annuaire explicitement en cours de finalisation; complétude, structure et qualité évolutives. Périmètre régional, aucune couverture nationale. Un partenariat déclaré ne démontre ni compétence mobilisable ni capacité d'accueil."
+    }
+  ],
+  "preuves_consultees": [
+    {
+      "url": "https://www.data.gouv.fr/api/1/datasets/referentiel-metiers-referens-iii-pour-la-filiere-des-itrf/",
+      "constat": "Licence fr-lo, 242 métiers annoncés, 3 formats de ressources, fiche mise à jour le 2026-10-28; source primaire datée 2017"
+    },
+    {
+      "url": "https://www.data.gouv.fr/api/1/datasets/dictionnaire-des-competences-referens-iii-pour-la-filiere-des-itrf/",
+      "constat": "Licence fr-lo, CSV/JSON/XLS et interface API référencés, fiche mise à jour le 2026-10-27; données historiques distinctes des contrôles récents"
+    },
+    {
+      "url": "https://www.data.gouv.fr/datasets/partenaires-des-campus-des-metiers-et-qualifications",
+      "constat": "Licence Ouverte 2.0, CSV/JSON/GeoJSON/ZIP, mise à jour de la fiche le 2026-10-21; producteur prévient de l'incomplétude"
+    },
+    {
+      "url": "https://data.iledefrance.fr/explore/dataset/partenaires-des-campus-des-metiers-et-qualifications/",
+      "constat": "Portail source original et identifiant technique confirmés"
+    }
+  ],
+  "conditions_avant_ingestion": [
+    "Télécharger et contrôler l'empreinte des fichiers, l'encodage et les schémas réels.",
+    "Vérifier l'API, les quotas, les clés d'identité et la pagination.",
+    "Comparer les versions de RéFérens III aux référentiels métiers récents et documenter les changements.",
+    "Évaluer la complétude et la stabilité des partenaires de campus; conserver le périmètre Île-de-France.",
+    "Enregistrer les licences par ressource et les dates propres aux données, séparées des dates de mise à jour des fiches."
+  ],
+  "limitations": [
+    "Aucun fichier métier téléchargé et aucune requête d'ingestion réalisée.",
+    "Les données RéFérens III ont une ancienneté scientifique et administrative importante malgré des mises à jour de métadonnées en 2026.",
+    "Aucune prétention de couverture exhaustive des établissements, métiers, personnes ou compétences."
+  ]
+}
