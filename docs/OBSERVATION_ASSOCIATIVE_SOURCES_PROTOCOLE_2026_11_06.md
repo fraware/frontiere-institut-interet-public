@@ -65,7 +65,7 @@ Pour chaque indicateur, enregistrer : producteur, population-cible, unité, règ
 
 ## Décision avant toute intervention
 
-Le protocole FRONTIÈRE exige un besoin daté, un responsable, une recherche des capacités déjà existantes, une voie juridiquement possible, un résultat vérifiable et un contrefactuel. Ce dossier constitue un **travail de qualification documentaire**, pas un cas opérationnel validé, une expertise commandée ni un partenariat.
+Le protocole FRONTIÈRE exige un besoin daté, un responsable, une recherche des capacités déjà existantes, une voie juridiquement possible, un résultat vérifiable et une situation de référence comparable permettant d'examiner l'attribution du résultat. Ce dossier constitue un **travail de qualification documentaire**, pas un cas opérationnel validé, une expertise commandée ni un partenariat.
 
 Les options restent : documentation de la complémentarité existante ; revue méthodologique ponctuelle ; appui à un organisme déjà mandaté ; test technique restreint ; prolongation de l'enquête ; arrêt.
 
