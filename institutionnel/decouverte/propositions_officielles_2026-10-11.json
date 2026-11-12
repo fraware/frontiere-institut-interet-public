@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-11",
+  "statut": "proposition_de_decouverte_sans_ingestion",
+  "ingestion_testee": false,
+  "requetes_api_executees_avec_succes": false,
+  "registre_operationnel_modifie": false,
+  "comparaison": [
+    "institutionnel/sources_v1.json (branche principale, version 1.4, reference 2026-10-08)",
+    "institutionnel/decouverte/catalogues_officiels_v1.json (branche principale, version 2026-10-09)",
+    "institutionnel/decouverte/propositions_officielles_2026-10-10.json (branche veille/catalogues-officiels-2026-10-10)"
+  ],
+  "methode": "Comparaison des identifiants, noms, périmètres et URL documentaires; vérification des fiches officielles publiques. Aucun fichier de données téléchargé ni contenu métier intégré. Tests réseau directs de deux API tentés, bloqués par une erreur de résolution DNS de l'environnement; ils ne prouvent pas une panne de la source.",
+  "candidats": [
+    {
+      "id": "mesr_referens_iii_metiers",
+      "nom": "RéFérens III — référentiel des métiers ITRF/ITA",
+      "producteur": "Ministère de l'Enseignement supérieur, de la Recherche et de l'Espace",
+      "priorite": "haute",
+      "objet": "242 emplois-types techniques et scientifiques, activités et compétences; jointure à prévoir avec dictionnaire RéFérens III",
+      "documentation": "https://www.data.gouv.fr/datasets/referentiel-metiers-referens-iii-pour-la-filiere-des-itrf",
+      "source_originale": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr_referentiel_metier_referens_3/",
+      "point_entree_documente": "https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/catalog/datasets/fr-esr_referentiel_metier_referens_3/records",
+      "licence": "Licence Ouverte / Open Licence (version non précisée sur la fiche consultée)",
+      "formats_annonces": [
+        "XLS",
+        "JSON",
+        "CSV UTF-8",
+        "API Opendatasoft"
+      ],
+      "derniere_mise_a_jour_fiche_observee": "2026-10-10",
+      "acces": "fichiers publics et interface API documentée; réponse API non validée dans cette exécution",
+      "statut_validation": "fiche_officielle_verifiee_endpoint_non_teste_avec_succes",
+      "distinction": "Complète ROME et le référentiel des métiers de la fonction publique déjà présents: classification spécifique aux emplois scientifiques et techniques ESR."
+    },
+    {
+      "id": "mesr_referens_iii_competences",
+      "nom": "RéFérens III — dictionnaire des compétences ITRF/ITA",
+      "producteur": "Ministère de l'Enseignement supérieur, de la Recherche et de l'Espace",
+      "priorite": "haute",
+      "objet": "Connaissances, compétences opérationnelles et comportementales des métiers de recherche et formation",
+      "documentation": "https://www.data.gouv.fr/datasets/dictionnaire-des-competences-referens-iii-pour-la-filiere-des-itrf",
+      "source_originale": "https://data.enseignementsup-recherche.gouv.fr/explore/assets/fr-esr_dictionnaire_competences_referens_3/api/",
+      "point_entree_documente": "https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/catalog/datasets/fr-esr_dictionnaire_competences_referens_3/records",
+      "licence": "Licence Ouverte / Open Licence (version non précisée sur la fiche consultée)",
+      "formats_annonces": [
+        "XLS",
+        "JSON",
+        "CSV UTF-8",
+        "API Opendatasoft"
+      ],
+      "date_mise_a_jour": "Fiche ouverte: 2026-09-15; résultat indexé plus récent: 2026-10-09; divergence à résoudre via métadonnées API",
+      "acces": "fichiers publics et interface API documentée; réponse API non validée dans cette exécution",
+      "statut_validation": "fiche_officielle_verifiee_endpoint_non_teste_avec_succes",
+      "distinction": "Complète le jeu des métiers RéFérens III, sans doublon avec les nomenclatures ROME/RMFP."
+    },
+    {
+      "id": "mesr_horizon_europe_projets_participations",
+      "nom": "Horizon Europe — projets lauréats et participations",
+      "producteur": "Ministère de l'Enseignement supérieur, de la Recherche et de l'Espace (données Commission européenne)",
+      "priorite": "haute",
+      "objet": "Projets Horizon Europe 2021–2027, organisations participantes, coordinations, subventions, pays et types d'organismes",
+      "documentation": "https://www.data.gouv.fr/datasets/horizon-europe-projets-laureats-et-participations",
+      "source_originale": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-horizon-projects-entities/",
+      "licence": "Licence Ouverte 2.0 affichée par data.gouv.fr; droits sur données amont à vérifier pour réutilisation",
+      "formats_annonces": [
+        "CSV",
+        "JSON",
+        "ZIP"
+      ],
+      "derniere_mise_a_jour_fiche_observee": "2026-09-19",
+      "acces": "fichiers publics annoncés; fiche signale que certains fichiers sont indisponibles; API et téléchargements non testés",
+      "statut_validation": "fiche_officielle_verifiee_ressources_partiellement_indisponibles",
+      "distinction": "Complément français de CORDIS proposé le 2026-10-10: analyse par types d'organismes et participation; déduplication à l'identifiant de projet avant toute ingestion."
+    },
+    {
+      "id": "budget_rap_performance_2025",
+      "nom": "Performance de la dépense — RAP 2025",
+      "producteur": "Direction du Budget / ministères économiques et financiers",
+      "priorite": "haute",
+      "objet": "Objectifs, indicateurs et résultats des politiques publiques financées par l'État, millésime RAP 2025",
+      "documentation": "https://www.data.gouv.fr/datasets/performance-de-la-depense-rap-2025",
+      "licence": "Licence Ouverte 2.0",
+      "formats_annonces": [
+        "CSV",
+        "JSON"
+      ],
+      "derniere_mise_a_jour_fiche_observee": "2026-06-04",
+      "acces": "exports publics annoncés sur data.gouv.fr; téléchargement non testé",
+      "statut_validation": "fiche_officielle_verifiee_exports_non_testes",
+      "distinction": "Complète le PLF/opérateurs déjà présents avec les résultats exécutés et indicateurs de performance; ne pas assimiler objectifs, crédits votés et dépenses réalisées."
+    }
+  ],
+  "tests": {
+    "pages_officielles_consultees": true,
+    "controle_identifiants_et_recouvrement_registres": true,
+    "telechargement_fichiers_metier": false,
+    "validation_schema_et_comptage_lignes": false,
+    "test_http_direct_api": "Tenté pour les deux endpoints RéFérens III, échec de résolution DNS de l'environnement d'exécution. Ce n'est pas une preuve de dysfonctionnement du service.",
+    "recommandation": "Conserver ces entrées dans le registre de découverte; promouvoir en ingestion seulement après réponse HTTP valide, validation de schéma, pagination, licence, fraîcheur, empreintes et journal de provenance."
+  }
+}
