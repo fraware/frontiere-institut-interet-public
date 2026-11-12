@@ -1932,6 +1932,381 @@
         "objet": "Projets et infrastructures pan-européens, trajectoires de mise en œuvre et monitoring",
         "limites": "Inscription feuille de route ne prouve ni ouverture d'une installation ni droit d'accès"
       }
+    },
+    {
+      "id": "mesr_patrimoine_immobilier_operateurs_esr",
+      "nom": "Patrimoine immobilier des operateurs de l'enseignement superieur",
+      "producteur": "MESR",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-patrimoine-immobilier-des-operateurs-de-l-enseignement-superieur/",
+      "licence": "Licence Ouverte v2.0",
+      "formats_documentes": [
+        "CSV",
+        "JSON",
+        "Excel",
+        "GeoJSON",
+        "Shapefile"
+      ],
+      "acces": "Export et onglet API publics, aucun appel HTTP reussi",
+      "date_observation_documentaire": "s_2026-10-",
+      "provenance_documentaire": "institutionnel/decouverte/propositions_officielles_2026-10-13_mesr_patrimoine_immobilier.json",
+      "details_source_observee": {
+        "id": "mesr_patrimoine_immobilier_operateurs_esr",
+        "date_decouverte": "2026-10-13",
+        "statut": "decouverte_documentaire",
+        "ingestion_testee": false,
+        "nom": "Patrimoine immobilier des operateurs de l'enseignement superieur",
+        "producteur": "MESR",
+        "url": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-patrimoine-immobilier-des-operateurs-de-l-enseignement-superieur/",
+        "licence": "Licence Ouverte v2.0",
+        "formats": [
+          "CSV",
+          "JSON",
+          "Excel",
+          "GeoJSON",
+          "Shapefile"
+        ],
+        "maj_affichee": "2026-07-03",
+        "acces": "Export et onglet API publics, aucun appel HTTP reussi",
+        "objet": "Batiments, surfaces, localisation, accessibilite et energie des etablissements.",
+        "limite": "Pas un inventaire d'equipements scientifiques; declarations des etablissements a verifier."
+      },
+      "objet": "Batiments, surfaces, localisation, accessibilite et energie des etablissements.",
+      "limites": "Pas un inventaire d'equipements scientifiques; declarations des etablissements a verifier."
+    },
+    {
+      "id": "mesr_projections_departs_enseignants_par_etablissement",
+      "nom": "Projections de departs definitifs d'enseignants par etablissement",
+      "producteur": "MESR / SIES",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-prevision-depart-enseignant-superieur-tutelle-esr-etablissement/",
+      "licence": "Licence Ouverte v2.0",
+      "formats_documentes": [
+        "CSV",
+        "JSON",
+        "XLSX methodologique",
+        "PDF"
+      ],
+      "acces": "Fichiers et console API annonces, connexion HTTP non testee avec succes",
+      "date_observation_documentaire": "s_2026-10-",
+      "provenance_documentaire": "institutionnel/decouverte/propositions_officielles_2026-10-13_mesr_projections_departs.json",
+      "details_source_observee": {
+        "id": "mesr_projections_departs_enseignants_par_etablissement",
+        "date_decouverte": "2026-10-13",
+        "statut": "decouverte_documentaire",
+        "ingestion_testee": false,
+        "nom": "Projections de departs definitifs d'enseignants par etablissement",
+        "producteur": "MESR / SIES",
+        "url": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-prevision-depart-enseignant-superieur-tutelle-esr-etablissement/",
+        "licence": "Licence Ouverte v2.0",
+        "formats": [
+          "CSV",
+          "JSON",
+          "XLSX methodologique",
+          "PDF"
+        ],
+        "maj_affichee": "2026-04-23",
+        "acces": "Fichiers et console API annonces, connexion HTTP non testee avec succes",
+        "objet": "Retraites et autres departs projetes sur dix ans par etablissement.",
+        "limite": "Projections, pas offres de recrutement; secret statistique et exclusions d'etablissements."
+      },
+      "objet": "Retraites et autres departs projetes sur dix ans par etablissement.",
+      "limites": "Projections, pas offres de recrutement; secret statistique et exclusions d'etablissements."
+    },
+    {
+      "id": "eu_cellar",
+      "nom": "Cellar, publications et metadonnees officielles de l'UE",
+      "producteur": "Office des publications de l'UE",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://op.europa.eu/en/web/cellar/cellar-data",
+      "licence": "Droits des publications individuelles et tiers a verifier; contenu editorial du site CC BY 4.0",
+      "formats_documentes": [
+        "REST",
+        "SPARQL/RDF",
+        "RSS",
+        "Atom"
+      ],
+      "acces": "Interfaces documentees; endpoints et pagination non testes",
+      "date_observation_documentaire": "s_2026-10-",
+      "provenance_documentaire": "institutionnel/decouverte/propositions_officielles_2026-10-14_eu_cellar.json",
+      "details_source_observee": {
+        "id": "eu_cellar",
+        "date_decouverte": "2026-10-14",
+        "statut": "decouverte_documentaire",
+        "ingestion_testee": false,
+        "nom": "Cellar, publications et metadonnees officielles de l'UE",
+        "producteur": "Office des publications de l'UE",
+        "url": "https://op.europa.eu/en/web/cellar/cellar-data",
+        "droits": "https://op.europa.eu/en/web/about-us/legal-notices/publications-office-of-the-european-union-copyright",
+        "licence": "Droits des publications individuelles et tiers a verifier; contenu editorial du site CC BY 4.0",
+        "formats": [
+          "REST",
+          "SPARQL/RDF",
+          "RSS",
+          "Atom"
+        ],
+        "mise_a_jour_affichee": "Non etablie",
+        "acces": "Interfaces documentees; endpoints et pagination non testes",
+        "objet": "Flux de publications, metadonnees institutionnelles, politiques et budgets; distinct de CORDIS et Legifrance."
+      },
+      "objet": "Flux de publications, metadonnees institutionnelles, politiques et budgets; distinct de CORDIS et Legifrance."
+    },
+    {
+      "id": "eu_kohesio",
+      "nom": "Kohesio, projets et beneficiaires des fonds de cohesion",
+      "producteur": "Commission europeenne / DG REGIO",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://data.europa.eu/cs/publications/datastories/linking-data-kohesio-platform",
+      "licence": "Reutilisation gratuite annoncee; licence exacte a confirmer",
+      "formats_documentes": [
+        "CSV",
+        "XLSX",
+        "RDF"
+      ],
+      "acces": "Exports documentes; portail HTTP 403 depuis l'outil de consultation; aucun export teste",
+      "date_observation_documentaire": "s_2026-10-",
+      "provenance_documentaire": "institutionnel/decouverte/propositions_officielles_2026-10-14_eu_kohesio.json",
+      "details_source_observee": {
+        "id": "eu_kohesio",
+        "date_decouverte": "2026-10-14",
+        "statut": "decouverte_documentaire",
+        "ingestion_testee": false,
+        "nom": "Kohesio, projets et beneficiaires des fonds de cohesion",
+        "producteur": "Commission europeenne / DG REGIO",
+        "url": "https://data.europa.eu/cs/publications/datastories/linking-data-kohesio-platform",
+        "portail": "https://kohesio.ec.europa.eu/",
+        "licence": "Reutilisation gratuite annoncee; licence exacte a confirmer",
+        "formats": [
+          "CSV",
+          "XLSX",
+          "RDF"
+        ],
+        "mise_a_jour_affichee": "Non etablie",
+        "acces": "Exports documentes; portail HTTP 403 depuis l'outil de consultation; aucun export teste",
+        "objet": "Projets et beneficiaires individuels, distincts des finances agregees de Cohesion Open Data.",
+        "limite": "Couverture 2014-2020 documentee; extension 2021-2027 non verifiee."
+      },
+      "objet": "Projets et beneficiaires individuels, distincts des finances agregees de Cohesion Open Data.",
+      "limites": "Couverture 2014-2020 documentee; extension 2021-2027 non verifiee."
+    },
+    {
+      "id": "mesr_affiliation_matcher",
+      "nom": "Affiliation matcher",
+      "producteur": "Equipe #dataESR du ministere de la Recherche",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://data.esr.gouv.fr/outils/T01",
+      "licence": "MIT pour le code, licences des referentiels distinctes",
+      "formats_documentes": [
+        "HTTP POST JSON /match",
+        "HTTP POST JSON /match_list",
+        "Docker"
+      ],
+      "acces": "Documentation de serveur local, aucun endpoint public confirme; non execute",
+      "date_observation_documentaire": "s_2026-10-",
+      "provenance_documentaire": "institutionnel/decouverte/propositions_officielles_2026-10-14_mesr_affiliation_matcher.json",
+      "details_source_observee": {
+        "id": "mesr_affiliation_matcher",
+        "date_decouverte": "2026-10-14",
+        "statut": "decouverte_documentaire",
+        "ingestion_testee": false,
+        "nom": "Affiliation matcher",
+        "producteur": "Equipe #dataESR du ministere de la Recherche",
+        "url": "https://data.esr.gouv.fr/outils/T01",
+        "code": "https://github.com/dataesr/affiliation-matcher",
+        "licence": "MIT pour le code, licences des referentiels distinctes",
+        "formats": [
+          "HTTP POST JSON /match",
+          "HTTP POST JSON /match_list",
+          "Docker"
+        ],
+        "mise_a_jour_affichee": "Non etablie",
+        "acces": "Documentation de serveur local, aucun endpoint public confirme; non execute",
+        "objet": "Resolution probabiliste des affiliations vers RNSR/ROR; complement des repertoires, pas un nouveau repertoire.",
+        "limite": "Rapprochements a verifier avant tout rattachement institutionnel."
+      },
+      "objet": "Resolution probabiliste des affiliations vers RNSR/ROR; complement des repertoires, pas un nouveau repertoire.",
+      "limites": "Rapprochements a verifier avant tout rattachement institutionnel."
+    },
+    {
+      "id": "mesr_nomenclature_cnu",
+      "nom": "Nomenclature des sections et sous-sections du CNU",
+      "producteur": "MESR/SIES",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-nomenclature-conseil-national-universites-cnu/",
+      "licence": "Licence Ouverte v2.0",
+      "formats_documentes": [
+        "CSV",
+        "JSON"
+      ],
+      "acces": "Export public et console API documentes, non testes par requete directe",
+      "date_observation_documentaire": "s_2026-10-",
+      "provenance_documentaire": "institutionnel/decouverte/propositions_officielles_2026-10-14_mesr_nomenclature_cnu.json",
+      "details_source_observee": {
+        "id": "mesr_nomenclature_cnu",
+        "date_decouverte": "2026-10-14",
+        "statut": "decouverte_documentaire",
+        "ingestion_testee": false,
+        "nom": "Nomenclature des sections et sous-sections du CNU",
+        "producteur": "MESR/SIES",
+        "url": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-nomenclature-conseil-national-universites-cnu/",
+        "licence": "Licence Ouverte v2.0",
+        "formats": [
+          "CSV",
+          "JSON"
+        ],
+        "mise_a_jour_affichee": "2026-01-15",
+        "acces": "Export public et console API documentes, non testes par requete directe",
+        "objet": "Taxonomie disciplinaire des recrutements universitaires; distincte de ROME, ESCO et Referens III.",
+        "limite": "Aucun poste vacant ou recrutement individuel mesure."
+      },
+      "objet": "Taxonomie disciplinaire des recrutements universitaires; distincte de ROME, ESCO et Referens III.",
+      "limites": "Aucun poste vacant ou recrutement individuel mesure."
+    },
+    {
+      "id": "mesr_agrements_cir_prestataires",
+      "nom": "Organismes et prestataires agréés pour le crédit d'impôt recherche (CIR)",
+      "producteur": "MESRE",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/organismes-experts-bureaux-de-style-stylistes-agrees-credit-dimpot-recherche-cir",
+      "licence": "Licence Ouverte 2.0",
+      "formats_documentes": [
+        "CSV",
+        "JSON"
+      ],
+      "acces": "export public, API non testee",
+      "date_observation_documentaire": "s_2026-10-",
+      "provenance_documentaire": "institutionnel/decouverte/propositions_officielles_2026-10-15.json",
+      "details_source_observee": {
+        "id": "mesr_agrements_cir_prestataires",
+        "documentation": "https://www.data.gouv.fr/datasets/organismes-experts-bureaux-de-style-stylistes-agrees-credit-dimpot-recherche-cir",
+        "licence": "Licence Ouverte 2.0",
+        "maj": "2026-06-18",
+        "formats": [
+          "CSV",
+          "JSON"
+        ],
+        "acces": "export public, API non testee"
+      }
+    },
+    {
+      "id": "mesr_agrements_cii_prives",
+      "nom": "Organismes privés agréés pour le crédit d'impôt innovation (CII)",
+      "producteur": "MESRE",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/organismes-prives-agrees-credit-dimpot-innovation-cii",
+      "licence": "Licence Ouverte 2.0",
+      "formats_documentes": [
+        "CSV",
+        "JSON"
+      ],
+      "acces": "export public, API non testee",
+      "date_observation_documentaire": "s_2026-10-",
+      "provenance_documentaire": "institutionnel/decouverte/propositions_officielles_2026-10-15.json",
+      "details_source_observee": {
+        "id": "mesr_agrements_cii_prives",
+        "documentation": "https://www.data.gouv.fr/datasets/organismes-prives-agrees-credit-dimpot-innovation-cii",
+        "licence": "Licence Ouverte 2.0",
+        "maj": "2026-06-18",
+        "formats": [
+          "CSV",
+          "JSON"
+        ],
+        "acces": "export public, API non testee"
+      }
+    },
+    {
+      "id": "mesr_agrements_cico_publics",
+      "nom": "Organismes publics agréés pour le crédit d'impôt collaboration de recherche (CICo)",
+      "producteur": "MESRE",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/organismes-publics-agrees-credit-impot-collaboration-de-recherche-cico",
+      "licence": "Licence Ouverte 2.0",
+      "formats_documentes": [
+        "CSV",
+        "JSON"
+      ],
+      "acces": "export public, API non testee",
+      "date_observation_documentaire": "s_2026-10-",
+      "provenance_documentaire": "institutionnel/decouverte/propositions_officielles_2026-10-15.json",
+      "details_source_observee": {
+        "id": "mesr_agrements_cico_publics",
+        "documentation": "https://www.data.gouv.fr/datasets/organismes-publics-agrees-credit-impot-collaboration-de-recherche-cico",
+        "licence": "Licence Ouverte 2.0",
+        "maj": "2026-06-18",
+        "formats": [
+          "CSV",
+          "JSON"
+        ],
+        "acces": "export public, API non testee"
+      }
+    },
+    {
+      "id": "mesr_enseignants_non_permanents_esr",
+      "nom": "Enseignants non permanents de l'enseignement supérieur public",
+      "producteur": "MESRE",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/les-enseignants-non-permanents-des-etablissements-publics-de-lenseignement-superieur",
+      "licence": "Licence Ouverte (version non précisée)",
+      "formats_documentes": [
+        "CSV",
+        "JSON"
+      ],
+      "acces": "export public, API non testee",
+      "date_observation_documentaire": "s_2026-10-",
+      "provenance_documentaire": "institutionnel/decouverte/propositions_officielles_2026-10-15.json",
+      "details_source_observee": {
+        "id": "mesr_enseignants_non_permanents_esr",
+        "documentation": "https://www.data.gouv.fr/datasets/les-enseignants-non-permanents-des-etablissements-publics-de-lenseignement-superieur",
+        "licence": "Licence Ouverte (version non précisée)",
+        "maj": "2026-09-04",
+        "formats": [
+          "CSV",
+          "JSON"
+        ],
+        "acces": "export public, API non testee"
+      }
+    },
+    {
+      "id": "euraxess_research_jobs_portal",
+      "nom": "EURAXESS — offres de recrutement et possibilités d'accueil scientifique",
+      "producteur": "Commission européenne et réseau EURAXESS",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://euraxess.ec.europa.eu/jobs/search",
+      "licence": "Conditions de réutilisation des offres publiées à confirmer; ne pas extraire massivement sans autorisation",
+      "formats_documentes": [
+        "HTML",
+        "Filtres de recherche Web; API publique non confirmée"
+      ],
+      "acces": "Recherche publique et filtres métier/pays/profil, aucun export ni API testés",
+      "date_observation_documentaire": "_2026-11-1",
+      "provenance_documentaire": "institutionnel/decouverte/verification_officielle_2026-11-12",
+      "details_source_observee": {
+        "id": "euraxess_research_jobs_portal",
+        "nom": "EURAXESS — offres de recrutement et possibilités d'accueil scientifique",
+        "producteur": "Commission européenne et réseau EURAXESS",
+        "documentation": "https://euraxess.ec.europa.eu/jobs/search",
+        "licence": "Conditions de réutilisation des offres publiées à confirmer; ne pas extraire massivement sans autorisation",
+        "formats_documentes": [
+          "HTML",
+          "Filtres de recherche Web; API publique non confirmée"
+        ],
+        "acces": "Recherche publique et filtres métier/pays/profil, aucun export ni API testés",
+        "objet": "Vacances de recherche, recrutements européens et offres d'accueil, distincts des postes de la fonction publique française",
+        "limite": "Une offre ne constitue pas une mesure de pénurie ni une garantie de recrutement"
+      },
+      "objet": "Vacances de recherche, recrutements européens et offres d'accueil, distincts des postes de la fonction publique française",
+      "limites": "Une offre ne constitue pas une mesure de pénurie ni une garantie de recrutement"
     }
   ]
 }
