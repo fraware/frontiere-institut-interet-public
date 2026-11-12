@@ -117,6 +117,8 @@ Cet index indique le rôle de chaque document durable et propose un ordre de lec
 | [Six cas pilotes techniques BOAMP](SIX_CAS_PILOTES_BOAMP_2026-10.md) | Six situations documentées et hypothèses concurrentes à vérifier avant toute conclusion |
 | [Exécution terrain](EXECUTION_TERRAIN_V1.md) | Canaux vérifiés, messages prêts à envoyer et règles de relance |
 | [Plan des sources publiques](PLAN_SOURCES_PUBLIQUES.md) | Constitution et approfondissement du corpus public |
+| [Catalogue des sources officielles consolidées](../institutionnel/decouverte/INDEX_SOURCES_IDENTIFIEES_2026_11_12.md) | 81 sources et interfaces documentées, provenance, licences et limites; aucune ingestion supposée |
+| [Observation associative — sources et protocole](OBSERVATION_ASSOCIATIVE_SOURCES_PROTOCOLE_2026_11_06.md) | Dossier public sur les enquêtes, sources statistiques et limites de qualification |
 | [Limite actuelle des sources publiques](LIMITE_SOURCES_PUBLIQUES_V2.md) | Point où la recherche publique générale cesse d’être productive |
 
 ## Sécurité et gouvernance
