@@ -1,0 +1,78 @@
+{
+  "date_observation": "2026-11-01",
+  "statut": "decouverte_documentaire_uniquement",
+  "ingestion_testee": false,
+  "sources": [
+    {
+      "id": "datagouv_catalogue_schemas_donnees",
+      "nom": "Catalogue national des schémas de données publiques",
+      "producteur": "data.gouv.fr / DINUM",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/catalogue-des-schemas-de-donnees",
+      "source_code": "https://github.com/datagouv/schema.data.gouv.fr",
+      "licence": "Licence Ouverte 2.0 pour les données du catalogue ; code du dépôt sous licence MIT (à distinguer)",
+      "date_mise_a_jour_fiche_observee": "2026-10-19",
+      "formats_documentes": [
+        "CSV pour l'export du catalogue",
+        "références de schémas et fichiers associés, formats variables"
+      ],
+      "acces": "Page publique et export CSV sans authentification annoncée ; téléchargement et analyse du CSV non effectués",
+      "objet": "referentiels_schemas_validation_interoperabilite_donnees_publiques",
+      "remarque": "Catalogue transversal de standards, non corpus d'observations métiers. Sert à identifier les versions de schéma applicables à chaque producteur. Aucun test d'ingestion, de pagination ou de conformité réalisé. Vérifier la licence de chaque schéma référencé séparément."
+    },
+    {
+      "id": "daj_referentiel_schemas_decp",
+      "nom": "Référentiel officiel des schémas de données essentielles de la commande publique",
+      "producteur": "Etalab et Direction des affaires juridiques des ministères économiques et financiers",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "documentation": "https://www.data.gouv.fr/datasets/referentiel-de-donnees-marches-publics",
+      "source_code": "https://github.com/139bercy/format-commande-publique",
+      "licence": "Licence Ouverte affichée sur la fiche data.gouv.fr ; vérifier la licence des fichiers de code source séparément",
+      "derniere_mise_a_jour_fiche_observee": "fin octobre 2026 (date affichée variable selon consultation ; vérification au 2026-11-01)",
+      "formats_documentes": [
+        "JSON Schema versions 1.4, 1.5 et 2.0",
+        "XSD/XML versions 1.4, 1.5 et 2.0",
+        "documentation HTML et PDF"
+      ],
+      "acces": "Consultation et téléchargement publics depuis data.gouv.fr et dépôt GitHub officiel ; aucun fichier téléchargé ni validateur exécuté dans cette veille",
+      "objet": "validation_versionnee_des_fichiers_decp_marches_concessions",
+      "remarque": "Le format 2.0 s'applique aux marchés notifiés à partir du 2024-01-01 ; les formats 1.5 concernent les données antérieures. Le dépôt officiel documente la sous-version 2.0.3 ; vérifier les tags et les changements normatifs avant de figer un validateur. Source de schémas, distincte des données DECP consolidées déjà référencées."
+    }
+  ],
+  "comparaison": {
+    "registres": [
+      "institutionnel/sources_v1.json",
+      "institutionnel/decouverte/catalogues_officiels_v1.json"
+    ],
+    "verifications": [
+      "comparaison des identifiants dans les registres main et dans la consolidation",
+      "recherche textuelle dans le code du dépôt sur main (trois expressions exactes)"
+    ],
+    "conclusion": "Aucune entrée identique trouvée dans les registres comparés ; cette recherche ne démontre pas l'absence de références dans l'ensemble des branches historiques."
+  },
+  "preuves": [
+    {
+      "url": "https://www.data.gouv.fr/datasets/catalogue-des-schemas-de-donnees",
+      "date_maj_affichee": "2026-10-19",
+      "formats": "CSV",
+      "licence": "Licence Ouverte 2.0"
+    },
+    {
+      "url": "https://www.data.gouv.fr/datasets/referentiel-de-donnees-marches-publics",
+      "date_maj_affichee": "fin octobre 2026",
+      "formats": "JSON Schema, XSD/XML, documentation",
+      "licence": "Licence Ouverte"
+    },
+    {
+      "url": "https://github.com/139bercy/format-commande-publique",
+      "description": "Versions et spécifications du format de commande publique"
+    }
+  ],
+  "limitations": [
+    "Consultation documentaire et métadonnées seulement ; aucune ressource métier téléchargée.",
+    "Aucun validateur exécuté sur un fichier DECP réel.",
+    "Les mises à jour de fiche ne prouvent pas une modification normative des schémas."
+  ]
+}
