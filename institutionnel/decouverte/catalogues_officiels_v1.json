@@ -62,7 +62,19 @@
       "producteur": "Recherche Data Gouv",
       "statut": "a_integrer",
       "documentation": "https://recherche.data.gouv.fr/fr/page/catalogue-recherche-data-gouv",
-      "objet": "catalogue_donnees_scientifiques"
+      "objet": "catalogue_donnees_scientifiques",
+      "interfaces_complementaires": [
+        {
+          "nom": "Serveur MCP du catalogue Recherche Data Gouv",
+          "documentation": "https://recherche.data.gouv.fr/en/page/recherche-data-gouv-catalogue",
+          "point_entree": "https://catalogue.recherche.data.gouv.fr/mcp",
+          "date_documentation_observee": "2026-10-16",
+          "statut": "documente_non_teste",
+          "ingestion_testee": false,
+          "transport_et_authentification": "à vérifier",
+          "provenance": "institutionnel/decouverte/propositions_officielles_2026-10-28.json"
+        }
+      ]
     },
     {
       "id": "legifrance_api",
@@ -1865,7 +1877,7 @@
       }
     },
     {
-      "id": "mesre_lauréats_ilab",
+      "id": "mesre_laureats_ilab",
       "nom": "Lauréats i-LAB du concours national d'aide à la création d'entreprises innovantes",
       "producteur": "MESRE",
       "statut": "decouverte_documentaire_uniquement",
@@ -2307,6 +2319,43 @@
       },
       "objet": "Vacances de recherche, recrutements européens et offres d'accueil, distincts des postes de la fonction publique française",
       "limites": "Une offre ne constitue pas une mesure de pénurie ni une garantie de recrutement"
+    },
+    {
+      "id": "eu_competition_state_aid_cases",
+      "nom": "Commission européenne — registre des dossiers d'aides d'État",
+      "producteur": "Commission européenne, DG COMP",
+      "documentation": "https://competition-cases.ec.europa.eu/search",
+      "documentation_recherche": "https://competition-policy.ec.europa.eu/state-aid/cases-search-user-guide_en",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "licence": "Conditions de réutilisation et documents tiers à qualifier avant extraction",
+      "formats_documentes": [
+        "HTML (moteur de recherche)",
+        "Dossiers et décisions téléchargeables au cas par cas; export ouvert à qualifier"
+      ],
+      "acces": "Recherche publique par numéro SA, État, secteur, décision et date; API structurée non vérifiée",
+      "objet": "Décisions, régimes et dossiers d'aides d'État, notamment RDI; distinct du montant d'aides effectivement versées",
+      "limites": "Une autorisation de régime ne démontre pas le versement aux bénéficiaires; ne pas confondre dossiers avec aides attribuées",
+      "provenance_documentaire": "https://competition-policy.ec.europa.eu/state-aid/cases-search-user-guide_en",
+      "date_observation_documentaire": "2026-11-12"
+    },
+    {
+      "id": "eu_eaidregister_beneficiaries",
+      "nom": "eAidRegister — montants attribués au titre des aides d'État et de minimis",
+      "producteur": "Commission européenne et autorités nationales publiantes",
+      "documentation": "https://aid-register.ec.europa.eu/",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "licence": "Droits et conditions propres aux données des États membres à vérifier avant redistribution",
+      "formats_documentes": [
+        "HTML (recherche)",
+        "Formats d'export à confirmer"
+      ],
+      "acces": "Recherche publique, API et modalités de téléchargement non testées",
+      "objet": "Bénéficiaires, identifiants, montants attribués, instruments, dates et secteurs, selon États participants",
+      "limites": "Périmètres nationaux variables; inscription d'une aide ne vaut pas décaissement et peut manquer les régimes hors plateforme",
+      "provenance_documentaire": "https://competition-policy.ec.europa.eu/state-aid/aid-beneficiaries_en",
+      "date_observation_documentaire": "2026-11-12"
     }
   ]
 }
