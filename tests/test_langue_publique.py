@@ -48,7 +48,7 @@ def test_documents_et_interface_en_francais_clair():
     for chemin in FICHIERS_PUBLICS:
         if not chemin.exists():
             continue
-        texte = chemin.read_text(encoding="utf-8")
+        texte = texte_visible_markdown(chemin.read_text(encoding="utf-8"))
         trouves = [terme for terme in TERMES_INTERDITS if present(texte, terme)]
         if trouves:
             problemes.append(f"{chemin}: {', '.join(trouves)}")

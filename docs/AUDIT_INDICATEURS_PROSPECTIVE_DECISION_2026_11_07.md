@@ -173,12 +173,12 @@ La couleur d'alerte de Strasbourg (effectifs faibles ou écart au cadrage) et le
 
 | Niveau | Définition pour ce registre | Strasbourg | Pau |
 | --- | --- | --- | --- |
-| P0 | Source publique datée | Établi | Établi |
-| P1 | Diagnostic, règle ou recommandation | Établi | Établi |
-| P2 | Acte engagé, lettre, contrat ou suivi annoncé | Appuis et plans documentés | COMP signé et engagements publiés |
-| P3 | Exécution terminée et vérifiable | Inconnue au niveau du parcours | Inconnue au niveau des heures |
-| P4 | Effet observé sur des résultats définis | Inconnu | Inconnu |
-| P5 | Effet causal attribuable avec contrefactuel pertinent | Non établi | Non établi |
+| niveau de preuve 0 | Source publique datée | Établi | Établi |
+| niveau de preuve 1 | Diagnostic, règle ou recommandation | Établi | Établi |
+| niveau de preuve 2 | Acte engagé, lettre, contrat ou suivi annoncé | Appuis et plans documentés | COMP signé et engagements publiés |
+| niveau de preuve 3 | Exécution terminée et vérifiable | Inconnue au niveau du parcours | Inconnue au niveau des heures |
+| niveau de preuve 4 | Effet observé sur des résultats définis | Inconnu | Inconnu |
+| niveau de preuve 5 | Effet causal attribuable avec une situation de comparaison hypothétique pertinente | Non établi | Non établi |
 
 **Test prioritaire :** sélectionner un dossier par université qui possède un identifiant de formation stable, la version de l'indicateur consultée, l'acte qui décide, la preuve d'exécution et une mesure de résultat. Chercher également un cas positif entièrement résolu par le dispositif existant et un cas où le dispositif a dû corriger son premier jugement. Publier les incertitudes et le droit de contradiction avant toute généralisation. Une comparaison de deux trajectoires raisonnées ne permet aucune inférence représentative ou causale nationale.
 
@@ -227,7 +227,7 @@ Une maquette modifiée n'est pas, à elle seule, la preuve d'une réponse au « 
 
 ### 5. Protocole discriminant resserré
 
-Constituer **deux paires de parcours**, chacune fixée avant connaissance de l'issue : signalé/non signalé à Strasbourg ; instruit par COMEX/maintenu pour motif stratégique à Pau. Recueillir, si autorisé, la version de l'indicateur, la règle d'exception, la note d'expertise, la décision datée, la maquette réellement exécutée, les moyens consommés, le premier résultat et l'explication contrefactuelle. À défaut, garder les catégories « résultat inconnu » et « attribution inconnue ».
+Constituer **deux paires de parcours**, chacune fixée avant connaissance de l'issue : signalé/non signalé à Strasbourg ; instruit par COMEX/maintenu pour motif stratégique à Pau. Recueillir, si autorisé, la version de l'indicateur, la règle d'exception, la note d'expertise, la décision datée, la maquette réellement exécutée, les moyens consommés, le premier résultat et l'explication fondée sur une situation de comparaison hypothétique. À défaut, garder les catégories « résultat inconnu » et « attribution inconnue ».
 
 **Décision provisoire :** la recherche démontre l'existence de mécanismes publics de qualification et d'arbitrage scientifique et administratif. Elle ne démontre pas un besoin résiduel de plateforme FRONTIÈRE ni une performance comparative supérieure. Les informations d'entretien privées restent hors GitHub.
 
@@ -250,7 +250,7 @@ La [base ouverte officielle Parcoursup 2025](https://data.enseignementsup-recher
 | 2025, admissions rapportées | 56 dans la base ouverte ; 57 dans la fiche Parcoursup | Divergence non résolue ; aucune motivation administrative ne peut en être inférée. |
 | 2026, demande affichée | 572 vœux confirmés | Les vœux ne mesurent ni la demande insatisfaite ni l'effet de la réduction ; 2025 : 531 vœux dans la base, 528 candidats dans la fiche. |
 
-**Niveau de preuve particulier :** une décision proposée puis une capacité publique conforme sont observées (livrable publié ; **P3 limité à l'offre affichée**). Aucun résultat étudiant, financier ou pédagogique n'est établi (**P4 inconnu**) et aucune attribution au « carnet de santé » n'est prouvée (**P5 non établi**).
+**Niveau de preuve particulier :** une décision proposée puis une capacité publique conforme sont observées (livrable publié ; **niveau de preuve 3 limité à l'offre affichée**). Aucun résultat étudiant, financier ou pédagogique n'est établi (**niveau de preuve 4 inconnu**) et aucune attribution au « carnet de santé » n'est prouvée (**niveau de preuve 5 non établi**).
 
 ### Vérification contradictoire : le carnet de santé et CPerf ne sont pas le même mécanisme
 
