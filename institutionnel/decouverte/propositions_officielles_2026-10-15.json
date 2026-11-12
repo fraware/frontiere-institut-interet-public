@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-15",
+  "statut": "decouverte_documentaire",
+  "ingestion_testee": false,
+  "candidats": [
+    {
+      "id": "mesr_agrements_cir_prestataires",
+      "documentation": "https://www.data.gouv.fr/datasets/organismes-experts-bureaux-de-style-stylistes-agrees-credit-dimpot-recherche-cir",
+      "licence": "Licence Ouverte 2.0",
+      "maj": "2026-06-18",
+      "formats": [
+        "CSV",
+        "JSON"
+      ],
+      "acces": "export public, API non testee"
+    },
+    {
+      "id": "mesr_agrements_cii_prives",
+      "documentation": "https://www.data.gouv.fr/datasets/organismes-prives-agrees-credit-dimpot-innovation-cii",
+      "licence": "Licence Ouverte 2.0",
+      "maj": "2026-06-18",
+      "formats": [
+        "CSV",
+        "JSON"
+      ],
+      "acces": "export public, API non testee"
+    },
+    {
+      "id": "mesr_agrements_cico_publics",
+      "documentation": "https://www.data.gouv.fr/datasets/organismes-publics-agrees-credit-impot-collaboration-de-recherche-cico",
+      "licence": "Licence Ouverte 2.0",
+      "maj": "2026-06-18",
+      "formats": [
+        "CSV",
+        "JSON"
+      ],
+      "acces": "export public, API non testee"
+    },
+    {
+      "id": "mesr_enseignants_non_permanents_esr",
+      "documentation": "https://www.data.gouv.fr/datasets/les-enseignants-non-permanents-des-etablissements-publics-de-lenseignement-superieur",
+      "licence": "Licence Ouverte (version non précisée)",
+      "maj": "2026-09-04",
+      "formats": [
+        "CSV",
+        "JSON"
+      ],
+      "acces": "export public, API non testee"
+    }
+  ],
+  "comparaison": "Absents des registres main et des propositions 10-14 octobre; les agréments sont distincts de scanR, RNSR et des référentiels métiers. Effectifs non permanents distincts des projections de départs.",
+  "limites": "Listes d'agrément indicatives, non opposables et parfois historiques. Les effectifs couvrent 2012-2013 à 2023-2024. Aucune donnée métier téléchargée; aucune validation API, pagination ou schéma. Essai HTTP direct bloqué par DNS local. La licence affichée ne vaut pas audit des droits tiers."
+}
