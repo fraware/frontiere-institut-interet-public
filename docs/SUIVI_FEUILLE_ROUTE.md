@@ -55,6 +55,17 @@ Une demande de fusion de documentation reste requise pour rendre le suivi durabl
 - **États de la feuille de route :** aucun jalon scientifique marqué « Terminé » sans preuve. Aucune dépense ni nouveau service.
 - **Priorités suivantes :** préserver les historiques et contrôler la reprise du référentiel territorial, réconcilier le bilan DECP avec les sondes mises à jour, activer la protection de `main` selon l'issue 54 après essai des collectes.
 
+### 2026-11-14 UTC — Audit documentaire exceptionnel des sources et contrôles GitHub
+
+- **Révision de `main` observée :** [`b34cb3542385c6a759fe5fc56fdb640721f509e5`](https://github.com/fraware/frontiere-institut-interet-public/commit/b34cb3542385c6a759fe5fc56fdb640721f509e5).
+- **Documents de preuve proposés :** [état détaillé du 14 novembre](ETAT_VEILLE_GITHUB_2026_11_14.md) et [mandat de veille avec échéances](MANDAT_VEILLE_SOURCES_ET_COMPLEMENTS_2026_11_14.md). Leur présence dans cette PR ne signifie pas fusion dans `main`.
+- **Sources :** 15 références dans `sources_v1.json`, 23 catalogues sur `main` ; consolidation à 81 identifiants proposée dans la [PR #685](https://github.com/fraware/frontiere-institut-interet-public/pull/685), toujours ouverte. Aucune ingestion métier supplémentaire établie.
+- **Contrôles :** [CI #685](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43262189427) en échec ; [CI #686](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43262645623) avec sept jobs réussis, PR technique non fusionnée. Quatre exécutions de publication automatiques de `main` en échec le 14 novembre ; échecs de publication, pas de collecte métier démontrés.
+- **Nouvelle pièce publique :** [article d'Alexandre Pointier, 3 novembre 2026](https://legrandcontinent.eu/fr/2026/11/03/la-france-a-besoin-dune-revolution-bureaucratique-lia-pourrait-la-rendre-possible/), directement confirmé ; étude d'architecture à conduire, sans présumer une politique adoptée.
+- **Manifestes et Render :** aucune reconstruction indépendante des manifestes ; service Render non examiné faute d'espace de travail identifié.
+- **États modifiés :** aucun, et aucun jalon déclaré « Terminé ». **Dépenses nouvelles :** aucune.
+- **Trois priorités :** (1) revue technique et décision contrôlée sur #686 ; (2) relance des contrôles de #685 et réconciliation de #682 ; (3) diagnostic des échecs de publication, contrôle des manifestes et rapprochement Render–GitHub après identification autorisée.
+
 ### Modèle pour la prochaine entrée
 
 ```text
