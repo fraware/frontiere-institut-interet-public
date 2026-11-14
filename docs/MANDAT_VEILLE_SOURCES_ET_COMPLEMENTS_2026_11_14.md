@@ -28,7 +28,7 @@ Chaque lundi, consulter [la feuille de route](FEUILLE_DE_ROUTE_DIRECTRICE.md) et
 4. L'état de déploiement Render **uniquement si l'espace de travail et le service ont été identifiés et consultés**, avec correspondance à un commit.
 5. Les modifications d'état justifiées dans la feuille de route, le journal, les blocages et les **trois priorités suivantes**.
 
-Faire passer toute modification publique par une branche et une PR traçable. « Terminé » suppose une preuve propre à l'étape. Aucune réécriture silencieuse des états, aucun coût nouveau. Fusionner exclusivement une PR documentaire sans conflit, après réussite de tous les contrôles obligatoires et vérifications requises. Une PR comportant du code, un workflow ou des données doit conserver son examen technique approprié. En l'absence de changement justifié, ne créer aucun commit artificiel.
+Faire passer toute modification publique par une branche et une PR traçable. « Terminé » suppose une preuve propre à l'étape. Aucune réécriture silencieuse des états, aucun coût nouveau. Fusionner exclusivement une PR documentaire sans conflit, après réussite de tous les contrôles obligatoires et vérifications requises. Une PR comportant du code, un procédure automatisée ou des données doit conserver son examen technique approprié. En l'absence de changement justifié, ne créer aucun commit artificiel.
 
 ## 3. Complément ponctuel — Alexandre Pointier
 
