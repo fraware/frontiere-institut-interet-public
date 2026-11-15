@@ -66,6 +66,16 @@ Une demande de fusion de documentation reste requise pour rendre le suivi durabl
 - **États modifiés :** aucun, et aucun jalon déclaré « Terminé ». **Dépenses nouvelles :** aucune.
 - **Trois priorités :** (1) revue technique et décision contrôlée sur #686 ; (2) relance des contrôles de #685 et réconciliation de #682 ; (3) diagnostic des échecs de publication, contrôle des manifestes et rapprochement Render–GitHub après identification autorisée.
 
+### 2026-11-15 UTC — Contrôle ciblé MCP et fraîcheur des publications
+
+- **Révision de `main` observée :** [`b34cb3542385c6a759fe5fc56fdb640721f509e5`](https://github.com/fraware/frontiere-institut-interet-public/commit/b34cb3542385c6a759fe5fc56fdb640721f509e5).
+- **Note documentaire nouvelle :** [interface MCP, manifestes, causes des échecs et déploiement non vérifié](CONTROLE_MCP_ET_FRAICHEUR_VEILLE_2026_11_15.md). L'interface MCP est déjà dans le périmètre de la source `recherche_data_gouv` ; aucun téléchargement ou essai d'ingestion supplémentaire établi.
+- **Contrôles :** [diagnostic 43684985948](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43684985948) : retard des dix relevés de `main` ; les dossiers institutionnels accusent 740,4 heures (seuil 72 heures). Les exécutions [ANR 43726595062](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43726595062), [DMTG 43727176372](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43727176372) et [surveillance 43715306954](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43715306954) réussissent leurs vérifications indiquées dans les journaux, puis rencontrent un refus de publication lié à une PR déjà ouverte pour la même source.
+- **Échec de collecte avéré et distinct :** [découverte scientifique 43691593769](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43691593769), aucune page officielle reçue lors de l'essai examiné ; la publication a aussi été refusée.
+- **État des fusions :** PR #685, #686 et #687 toujours ouvertes à la date du relevé. Aucune fusion effectuée dans cette revue.
+- **Render :** absence de vérification du déploiement actuel ; confirmation préalable de l'espace Render nécessaire. **États modifiés :** aucun. **Dépenses nouvelles :** aucune.
+- **Trois priorités :** (1) triage des propositions automatiques bloquantes par source ; (2) revue technique de #686 puis nouveaux contrôles de #685 et #687 ; (3) contrôle et réconciliation des dix manifestes avant rapprochement Render–GitHub.
+
 ### Modèle pour la prochaine entrée
 
 ```text
