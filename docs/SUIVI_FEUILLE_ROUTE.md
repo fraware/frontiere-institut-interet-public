@@ -1,6 +1,6 @@
 # FRONTIÈRE — Journal des revues de la feuille de route
 
-**Document de suivi :** [feuille de route directrice et 92 travaux](FEUILLE_DE_ROUTE_DIRECTRICE.md). Ce journal est un historique daté de vérifications et de décisions, pas un compte rendu automatique de succès. Les révisions de la feuille de route conservent leurs identifiants stables `F-001` à `F-091`.
+**Document de suivi :** [feuille de route directrice et 92 travaux](FEUILLE_DE_ROUTE_DIRECTRICE.md). Ce journal est un historique daté de vérifications et de décisions, pas un compte rendu automatique de succès. Les révisions de la feuille de route conservent leurs identifiants stables `F-001` à `F-092`.
 
 ## Méthode de revue hebdomadaire
 
