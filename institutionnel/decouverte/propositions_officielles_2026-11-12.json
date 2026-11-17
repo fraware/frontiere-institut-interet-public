@@ -1,0 +1,109 @@
+{
+  "date": "2026-11-12",
+  "projet": "FRONTIÈRE / Horizon France",
+  "statut": "decouverte_documentaire_uniquement",
+  "ingestion_testee": false,
+  "references_consultees": [
+    "https://op.europa.eu/en/web/eu-vocabularies",
+    "https://abes.fr/reseau-theses/reutiliser-les-donnees/",
+    "https://abes.fr/api-et-web-services/",
+    "https://www.data.gouv.fr/datasets/horizon-europe-synthese-des-projets-evalues-et-laureats",
+    "https://www.data.gouv.fr/datasets/laureats-i-lab-concours-national-daide-a-la-creation-dentreprises-de-technologies-innovantes-1",
+    "https://www.esfri.eu/esfri-roadmap",
+    "https://euraxess.ec.europa.eu/jobs/search",
+    "https://competition-cases.ec.europa.eu/search",
+    "https://aid-register.ec.europa.eu/"
+  ],
+  "sources": [
+    {
+      "identifiant": "eu_vocabularies_portail_reference",
+      "url": "https://op.europa.eu/en/web/eu-vocabularies",
+      "preuve": "Catalogue officiel multilingue, téléchargements versionnés; migration INSPIRE effective au 16-09-2026 selon actualité officielle",
+      "formats": "RDF/OWL/JSON-LD et CSV selon jeu; SPARQL accessible via portail",
+      "licence": "À examiner au niveau du jeu et de ses ressources",
+      "limites": "Catalogue de référentiels, pas catalogue de capacités scientifiques",
+      "api_testee": false
+    },
+    {
+      "identifiant": "abes_theses_fr_metadonnees",
+      "url": "https://abes.fr/reseau-theses/reutiliser-les-donnees/",
+      "preuve": "ABES décrit explicitement les APIs et la Licence Ouverte des métadonnées",
+      "formats": "CSV JSON NDJSON XML RDF RIS BibTeX selon service",
+      "licence": "Licence Ouverte Etalab sur les métadonnées; date et source obligatoires",
+      "limites": "Les fichiers de thèse ont des droits propres; personnes et affiliations non disponibles automatiquement",
+      "api_testee": false
+    },
+    {
+      "identifiant": "abes_idref_autorites",
+      "url": "https://abes.fr/api-et-web-services/",
+      "preuve": "ABES documente ses services de référentiels d'autorité; granularité et licence IdRef à requalifier",
+      "formats": "Services de notices, formats à contrôler",
+      "licence": "À qualifier",
+      "limites": "Pas de preuve d'emploi actuel ou de capacité de mobilisation",
+      "api_testee": false
+    },
+    {
+      "identifiant": "mesre_horizon_europe_synthese_evalues_laureats",
+      "url": "https://www.data.gouv.fr/datasets/horizon-europe-synthese-des-projets-evalues-et-laureats",
+      "preuve": "Fiche MESRE actualisée 10-09-2026, CSV et JSON; projets évalués et signés ventilés",
+      "formats": "CSV JSON",
+      "licence": "Licence Ouverte 2.0; droits amont à confirmer",
+      "limites": "Ne pas additionner décomptes de projets évalués et signés; distinct de CORDIS",
+      "api_testee": false
+    },
+    {
+      "identifiant": "mesre_laureats_ilab",
+      "url": "https://www.data.gouv.fr/datasets/laureats-i-lab-concours-national-daide-a-la-creation-dentreprises-de-technologies-innovantes-1",
+      "preuve": "Fiche officielle MESRE avec exports CSV JSON GeoJSON, mise à jour affichée 25-09-2026",
+      "formats": "CSV JSON GeoJSON Shapefile",
+      "licence": "Licence Ouverte 2.0",
+      "limites": "Lauréat ne prouve pas résultat technologique ou financier ultérieur",
+      "api_testee": false
+    },
+    {
+      "identifiant": "esfri_research_infrastructures_roadmap",
+      "url": "https://www.esfri.eu/esfri-roadmap",
+      "preuve": "Guide public Roadmap 2026, monitoring ESFRI; pas d'ingestion du système MOS",
+      "formats": "HTML PDF; formats MOS inconnus",
+      "licence": "À vérifier",
+      "limites": "Projet ESFRI ne prouve ni mise en service ni accès à des équipements",
+      "api_testee": false
+    },
+    {
+      "identifiant": "euraxess_research_jobs_portal",
+      "url": "https://euraxess.ec.europa.eu/jobs/search",
+      "preuve": "Portail officiel à recherche publique, filtre par discipline, pays, profil et type d'offre",
+      "formats": "HTML, API à établir",
+      "licence": "Conditions des offres publiées à examiner",
+      "limites": "Offre publiée ≠ poste pourvu, ni pénurie de compétences",
+      "api_testee": false
+    },
+    {
+      "identifiant": "eu_competition_state_aid_cases",
+      "url": "https://competition-cases.ec.europa.eu/search",
+      "preuve": "Registre officiel DG COMP, guide de recherche des dossiers SA; recherche publique",
+      "formats": "HTML, export/API non testés",
+      "licence": "À vérifier",
+      "limites": "Décision sur une aide ≠ montant attribué ou versé",
+      "api_testee": false
+    },
+    {
+      "identifiant": "eu_eaidregister_beneficiaries",
+      "url": "https://aid-register.ec.europa.eu/",
+      "preuve": "Portail officiel des aides individuelles rapportées par les autorités et États participants",
+      "formats": "HTML, export/API non testés",
+      "licence": "À qualifier selon États et régimes",
+      "limites": "Couverture nationale variable, aides octroyées ≠ paiements",
+      "api_testee": false
+    }
+  ],
+  "decisions": {
+    "registre_operationnel_modifie": false,
+    "collecteur_ajoute": false,
+    "stockage_donnees_metier": false,
+    "validation_schema_metier": false,
+    "pagination_testee": false,
+    "empreintes_recalculees": false
+  },
+  "avertissement": "Le rapport conserve les constatations documentaires, à leurs dates d'observation; les licences et API non testées restent explicitement à qualifier."
+}

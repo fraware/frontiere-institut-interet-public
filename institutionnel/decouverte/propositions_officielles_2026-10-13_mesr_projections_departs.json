@@ -1,0 +1,20 @@
+{
+  "id": "mesr_projections_departs_enseignants_par_etablissement",
+  "date_decouverte": "2026-10-13",
+  "statut": "decouverte_documentaire",
+  "ingestion_testee": false,
+  "nom": "Projections de departs definitifs d'enseignants par etablissement",
+  "producteur": "MESR / SIES",
+  "url": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-prevision-depart-enseignant-superieur-tutelle-esr-etablissement/",
+  "licence": "Licence Ouverte v2.0",
+  "formats": [
+    "CSV",
+    "JSON",
+    "XLSX methodologique",
+    "PDF"
+  ],
+  "maj_affichee": "2026-04-23",
+  "acces": "Fichiers et console API annonces, connexion HTTP non testee avec succes",
+  "objet": "Retraites et autres departs projetes sur dix ans par etablissement.",
+  "limite": "Projections, pas offres de recrutement; secret statistique et exclusions d'etablissements."
+}

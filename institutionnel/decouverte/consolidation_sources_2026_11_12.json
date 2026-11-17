@@ -1,0 +1,307 @@
+{
+  "version": "2026-11-12-v1",
+  "objet": "Consolidation documentaire des catalogues et interfaces officiels identifiés dans la conversation FRONTIÈRE / Horizon France",
+  "branche_source": "main",
+  "branche_proposition": "veille/consolidation-sources-2026-11-12",
+  "branche_initiale_de_consolidation": "veille/consolidation-conversation-2026-10-29",
+  "revision_main_depart": "b34cb3542385c6a759fe5fc56fdb640721f509e5",
+  "nombre_sources_institutionnelles_reference_main_observe": 15,
+  "nombre_catalogues_main_avant_consolidation": 23,
+  "nombre_catalogues_consolides": 81,
+  "nombre_ajouts_documentaires": 58,
+  "identifiants_uniques": 81,
+  "identifiants_consolides": [
+    "data_gouv_catalogue",
+    "data_gouv_ensemble",
+    "dila_annuaire",
+    "boamp",
+    "ted",
+    "recherche_entreprises",
+    "recherche_data_gouv",
+    "legifrance_api",
+    "rnsr_mesr",
+    "scanr",
+    "csp_offres",
+    "decp",
+    "mesr_rnsr_historique",
+    "rna",
+    "france_travail_rome",
+    "france_competences_rncp_rs",
+    "france_travail_marche_travail",
+    "ademe_catalogue",
+    "insee_sirene",
+    "dgafp_referentiel_metiers",
+    "beauamp",
+    "hal_oai_moissonnage",
+    "cordis_projets_recherche",
+    "mesre_politiques_science_ouverte_etablissements",
+    "mesre_doctorants_financements_cotutelles",
+    "dgos_catalogue_collections_biologiques_crb",
+    "fonds_vert_projets_subventionnes",
+    "mesr_effectifs_enseignants_titulaires_national",
+    "commission_europeenne_era_scoreboard_2025",
+    "commission_europeenne_paysage_eric",
+    "anct_croisement_dispositifs_territoriaux",
+    "anct_deploiement_incubateur_territoires",
+    "ign_geoplateforme_index_offres",
+    "recherche_data_gouv_ateliers_competences",
+    "datagouv_catalogue_schemas_donnees",
+    "daj_referentiel_schemas_decp",
+    "mesre_referens_iii_metiers_it_rf",
+    "mesre_referens_iii_dictionnaire_competences",
+    "idf_partenaires_campus_metiers_qualifications",
+    "inrae_infrastructures_scientifiques_2026",
+    "mesre_collterr_budget_recherche_enseignement_superieur",
+    "mesre_collterr_budget_cper_poles_agregats",
+    "eurostat_gbard_nabs2007",
+    "mesr_bso_publications",
+    "mesr_technologies_familles_brevets",
+    "mesr_historique_infrastructures_recherche",
+    "anr_dgds_projets_partenaires",
+    "anr_dgpie_projets_partenaires",
+    "mesr_horizon_europe_projets_participations",
+    "budget_rap_performance_2025",
+    "eu_esco_classification",
+    "eu_funding_tenders_portal_api",
+    "eu_cohesion_open_data_2021_2027",
+    "hal_aurehal_api",
+    "eu_data_europa_federated_catalogue",
+    "eu_whoiswho_directory",
+    "hceres_evaluations_entites_recherche",
+    "hceres_evaluations_formations",
+    "onisep_ideo_structures_superieur",
+    "ism_aides_entreprises",
+    "alliance_athena_structures_shs_2025",
+    "dge_annuaire_poles_competitivite",
+    "eu_vocabularies_portail_reference",
+    "abes_theses_fr_metadonnees",
+    "abes_idref_autorites",
+    "mesre_horizon_europe_synthese_evalues_laureats",
+    "mesre_laureats_ilab",
+    "esfri_research_infrastructures_roadmap",
+    "mesr_patrimoine_immobilier_operateurs_esr",
+    "mesr_projections_departs_enseignants_par_etablissement",
+    "eu_cellar",
+    "eu_kohesio",
+    "mesr_affiliation_matcher",
+    "mesr_nomenclature_cnu",
+    "mesr_agrements_cir_prestataires",
+    "mesr_agrements_cii_prives",
+    "mesr_agrements_cico_publics",
+    "mesr_enseignants_non_permanents_esr",
+    "euraxess_research_jobs_portal",
+    "eu_competition_state_aid_cases",
+    "eu_eaidregister_beneficiaries"
+  ],
+  "statut": "proposition_documentaire_versionnee_sur_branche_en_attente_validation_et_fusion",
+  "ingestion_testee_par_cette_consolidation": false,
+  "registre_operationnel_modifie": false,
+  "collecteur_ajoute": false,
+  "donnees_metier_telechargees": 0,
+  "source_de_verite_apres_fusion": "institutionnel/decouverte/catalogues_officiels_v1.json",
+  "dossiers_historiques_documentes": [
+    {
+      "date": "2026-10-10",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-10-10.json",
+      "remarque": null
+    },
+    {
+      "date": "2026-10-11",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-10-11.json",
+      "remarque": null
+    },
+    {
+      "date": "2026-10-12",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-10-12.json",
+      "remarque": null
+    },
+    {
+      "date": "2026-10-13",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-10-13.json",
+      "remarque": "Voir aussi les dossiers spécialisés portant la même date"
+    },
+    {
+      "date": "2026-10-14",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-10-14.json",
+      "remarque": "Voir aussi les dossiers spécialisés portant la même date"
+    },
+    {
+      "date": "2026-10-15",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-10-15.json",
+      "remarque": null
+    },
+    {
+      "date": "2026-10-16",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-10-16.json",
+      "remarque": null
+    },
+    {
+      "date": "2026-10-19",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-10-19.json",
+      "remarque": null
+    },
+    {
+      "date": "2026-10-23",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-10-23.json",
+      "remarque": null
+    },
+    {
+      "date": "2026-10-24",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-10-24.json",
+      "remarque": null
+    },
+    {
+      "date": "2026-10-26",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-10-26.json",
+      "remarque": null
+    },
+    {
+      "date": "2026-10-28",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-10-28.json",
+      "remarque": null
+    },
+    {
+      "date": "2026-10-30",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-10-30.json",
+      "remarque": null
+    },
+    {
+      "date": "2026-10-31",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-10-31.json",
+      "remarque": null
+    },
+    {
+      "date": "2026-11-01",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-11-01.json",
+      "remarque": null
+    },
+    {
+      "date": "2026-11-02",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-11-02.json",
+      "remarque": null
+    },
+    {
+      "date": "2026-11-05",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-11-05.json",
+      "remarque": null
+    },
+    {
+      "date": "2026-11-06",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-11-06.json",
+      "remarque": null
+    },
+    {
+      "date": "2026-11-12",
+      "chemin": "institutionnel/decouverte/propositions_officielles_2026-11-12.json",
+      "remarque": null
+    }
+  ],
+  "propositions_reconciliees": [
+    263,
+    401,
+    494,
+    641,
+    642,
+    643,
+    644,
+    646,
+    647,
+    648,
+    649,
+    678,
+    683
+  ],
+  "deduplication_connue": [
+    {
+      "equivalence": [
+        "anr_dgds_projets_partenaires",
+        "ANR_01"
+      ],
+      "retenu": "anr_dgds_projets_partenaires"
+    },
+    {
+      "equivalence": [
+        "anr_dgpie_projets_partenaires",
+        "ANR_02"
+      ],
+      "retenu": "anr_dgpie_projets_partenaires"
+    },
+    {
+      "equivalence": [
+        "cordis_projets_europeens",
+        "cordis_projets_recherche"
+      ],
+      "retenu": "cordis_projets_recherche"
+    },
+    {
+      "equivalence": [
+        "eurostat_gbard",
+        "eurostat_gbard_nabs2007"
+      ],
+      "retenu": "eurostat_gbard_nabs2007"
+    },
+    {
+      "equivalence": [
+        "mesr_infrastructures_recherche_historique",
+        "mesr_historique_infrastructures_recherche"
+      ],
+      "retenu": "mesr_historique_infrastructures_recherche"
+    },
+    {
+      "equivalence": [
+        "inrae_infrastructures_scientifiques",
+        "inrae_infrastructures_scientifiques_2026"
+      ],
+      "retenu": "inrae_infrastructures_scientifiques_2026"
+    },
+    {
+      "equivalence": [
+        "mesr_referens_iii_competences",
+        "mesre_referens_iii_dictionnaire_competences"
+      ],
+      "retenu": "mesre_referens_iii_dictionnaire_competences"
+    },
+    {
+      "equivalence": [
+        "mesr_referens_iii_metiers",
+        "mesre_referens_iii_metiers_it_rf"
+      ],
+      "retenu": "mesre_referens_iii_metiers_it_rf"
+    },
+    {
+      "catalogue": "recherche_data_gouv",
+      "interface": "MCP",
+      "traitement": "interface_complementaire_pas_catalogue_independant"
+    }
+  ],
+  "sources_restees_a_qualifier_sans_assertion_de_nouveaute": [
+    {
+      "nom": "Formacode v14",
+      "cause": "Lien d'édition, droits et valeur incrémentale non établis dans cette consolidation"
+    },
+    {
+      "nom": "Jeux de données de formation professionnelle examinés le 8 novembre",
+      "cause": "Producteur et jeu précis non déterminés au niveau suffisant"
+    },
+    {
+      "nom": "Portail national de suivi des publications de données publiques",
+      "cause": "Valeur incrémentale, licence et périmètre opérationnel non établis"
+    }
+  ],
+  "documents_transversaux_a_conserver_separement": [
+    "institutionnel/programmes_scientifiques/pepr_quantique_competences_sources_2026_11_02_v1.json",
+    "docs/QUALIFICATION_BESOINS_SCIENTIFIQUES_2026_11_04.md",
+    "docs/CARTOGRAPHIE_INTERFACES_SCIENCE_ACTION_2026_11_04.md",
+    "docs/SUIVI_RECOMMANDATIONS_IGEDD_2026_11_04.md",
+    "docs/OBSERVATION_ASSOCIATIVE_SOURCES_PROTOCOLE_2026_11_06.md (PR #682, si non fusionnée)"
+  ],
+  "limites": [
+    "Les dates, formats, licences et modalités d'accès sont des observations documentaires propres à chaque fiche; pas de revérification exhaustive du contenu de chaque ressource le 12 novembre.",
+    "Certaines métadonnées proviennent de PR anciennes. Le registre signale explicitement les conditions à vérifier avant ingestion.",
+    "La consolidation ne prouve aucun téléchargement métier, aucune pagination API, aucun contrôle de schéma ou empreinte, et aucune intégration applicative.",
+    "Les fichiers de référence et manifestes des collecteurs déjà présents sur main n'ont pas été modifiés.",
+    "Une publication officielle, un recrutement, un financement ou une inscription à un répertoire ne démontre pas de capacité mobilisable ou de résultat causal.",
+    "Les dossiers publics thématiques déjà fusionnés sur main ne doivent pas être dupliqués en catalogue de données sans source identifiable.",
+    "La présente consolidation ne constitue pas un inventaire exhaustif du Web."
+  ]
+}

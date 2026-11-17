@@ -1,0 +1,20 @@
+{
+  "id": "mesr_affiliation_matcher",
+  "date_decouverte": "2026-10-14",
+  "statut": "decouverte_documentaire",
+  "ingestion_testee": false,
+  "nom": "Affiliation matcher",
+  "producteur": "Equipe #dataESR du ministere de la Recherche",
+  "url": "https://data.esr.gouv.fr/outils/T01",
+  "code": "https://github.com/dataesr/affiliation-matcher",
+  "licence": "MIT pour le code, licences des referentiels distinctes",
+  "formats": [
+    "HTTP POST JSON /match",
+    "HTTP POST JSON /match_list",
+    "Docker"
+  ],
+  "mise_a_jour_affichee": "Non etablie",
+  "acces": "Documentation de serveur local, aucun endpoint public confirme; non execute",
+  "objet": "Resolution probabiliste des affiliations vers RNSR/ROR; complement des repertoires, pas un nouveau repertoire.",
+  "limite": "Rapprochements a verifier avant tout rattachement institutionnel."
+}

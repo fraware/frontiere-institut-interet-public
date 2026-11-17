@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-19",
+  "statut": "decouverte_documentaire_uniquement",
+  "reference_main": "287c01c6bb7e81658b8d5df70bdc0b78e350bb21",
+  "comparaison": [
+    "institutionnel/sources_v1.json",
+    "institutionnel/decouverte/catalogues_officiels_v1.json",
+    "propositions de découverte 2026-10-12 à 2026-10-18 connues"
+  ],
+  "registre_operationnel_modifie": false,
+  "ingestion_testee": false,
+  "requetes_api_metier_reussies": false,
+  "candidats": [
+    {
+      "id": "mesr_bso_publications",
+      "nom": "Baromètre de la science ouverte — publications françaises",
+      "producteur": "Ministère chargé de l'Enseignement supérieur et de la Recherche",
+      "priorite": "haute",
+      "documentation": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/open-access-monitor-france/",
+      "licence_declaree": "Licence Ouverte 2.0 (métadonnées)",
+      "formats_documentes": [
+        "CSV.GZ",
+        "JSONL.GZ",
+        "API du portail non testée"
+      ],
+      "mise_a_jour_affichee": "2026-02-25",
+      "frequence_declaree": "annuelle",
+      "acces": "Exports publics et séries annuelles documentés",
+      "apport": "Métadonnées DOI, HAL, ROR, financements ANR/européens et mentions de logiciels/données",
+      "limites": "Les licences des textes complets sont distinctes. Mentions et affiliations ne démontrent pas une capacité disponible. Dédupliquer avec HAL et scanR.",
+      "statut_validation": "fiche_officielle_verifiee_sans_ingestion"
+    },
+    {
+      "id": "mesr_technologies_familles_brevets",
+      "nom": "Technologies des familles de brevets liées à la France",
+      "producteur": "Ministère chargé de l'Enseignement supérieur et de la Recherche, à partir de PATSTAT/OEB",
+      "priorite": "haute",
+      "documentation": "https://www.data.gouv.fr/datasets/technologies-des-familles-de-brevets",
+      "licence_declaree": "Licence Ouverte 2.0 affichée; conditions des composants tiers à vérifier",
+      "formats_documentes": [
+        "CSV",
+        "JSON",
+        "API du portail non testée"
+      ],
+      "mise_a_jour_affichee": "2026-05-11",
+      "acces": "Exports publics documentés; certains fichiers signalés indisponibles",
+      "apport": "Familles DOCDB et classes CPC, signal historique d'activité technologique",
+      "limites": "Ni capacité mobilisable, ni brevet exploitable, ni compétence actuelle démontrée; droits PATSTAT/OEB à examiner.",
+      "statut_validation": "fiche_officielle_verifiee_sans_ingestion"
+    },
+    {
+      "id": "mesr_historique_infrastructures_recherche",
+      "nom": "Historique des infrastructures des feuilles de route nationales 2018 et 2021",
+      "producteur": "Ministère chargé de l'Enseignement supérieur et de la Recherche",
+      "priorite": "moyenne",
+      "documentation": "https://www.data.gouv.fr/datasets/historique-des-infrastructures-de-recherche-inscrites-dans-les-feuilles-de-route-des-infrastructures-de-recherche",
+      "documentation_api": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-feuille-de-route-infrastructures-recherche-historique/api/",
+      "licence_declaree": "Licence Ouverte 2.0",
+      "formats_documentes": [
+        "CSV",
+        "JSON",
+        "API du portail non testée"
+      ],
+      "mise_a_jour_affichee": "2023-09-06",
+      "acces": "Exports publics et console API documentés",
+      "apport": "Évolution historique de l'inscription d'infrastructures, distincte du catalogue INRAE",
+      "limites": "Éditions 2018 et 2021 seulement; ne prouve ni existence actuelle ni disponibilité en 2026.",
+      "statut_validation": "fiche_officielle_verifiee_sans_ingestion"
+    }
+  ],
+  "tests": {
+    "pages_officielles_consultees": true,
+    "ingestion_effective": false,
+    "telechargement_donnees_metier": false,
+    "verification_schema": false,
+    "verification_pagination": false,
+    "verification_empreintes": false,
+    "examen_juridique_complet": false
+  }
+}

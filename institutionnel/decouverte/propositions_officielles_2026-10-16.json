@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-16",
+  "statut": "decouverte_documentaire_uniquement",
+  "ingestion_testee": false,
+  "candidats": [
+    {
+      "id": "hal_aurehal_api",
+      "nom": "HAL et aureHAL",
+      "documentation": "https://api.archives-ouvertes.fr/docs/",
+      "licence": "Metadonnees CC0 selon HAL; documentation OAI-PMH mentionne une restriction commerciale a clarifier",
+      "formats": [
+        "JSON",
+        "XML",
+        "CSV",
+        "RDF",
+        "OAI-PMH"
+      ],
+      "acces": "API publiques documentees, non testees",
+      "mise_a_jour": "Continue selon les depots; frequence non mesuree"
+    },
+    {
+      "id": "eu_data_europa_federated_catalogue",
+      "nom": "data.europa.eu",
+      "documentation": "https://data.europa.eu/es/node/61",
+      "licence": "Metadonnees portail CC0; ressources selon licence propre",
+      "formats": [
+        "API recherche",
+        "SPARQL"
+      ],
+      "acces": "Documentation publique; API non testee",
+      "mise_a_jour": "Catalogue evolutif; cadence non verifiee"
+    },
+    {
+      "id": "eu_whoiswho_directory",
+      "nom": "EU Whoiswho",
+      "documentation": "https://op.europa.eu/en/web/who-is-who",
+      "licence": "Droits specifiques a verifier; pas de redistribution de personnes",
+      "formats": [
+        "Web",
+        "PDF",
+        "RDF/SPARQL"
+      ],
+      "acces": "Consultation publique, SPARQL non teste",
+      "mise_a_jour": "Archive juillet 2026; frequence non verifiee"
+    }
+  ],
+  "tests": {
+    "http_direct": "echec DNS local sur trois essais",
+    "donnees_collectees": false,
+    "validation_schema": false,
+    "pagination": false
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "eu_cellar",
+  "date_decouverte": "2026-10-14",
+  "statut": "decouverte_documentaire",
+  "ingestion_testee": false,
+  "nom": "Cellar, publications et metadonnees officielles de l'UE",
+  "producteur": "Office des publications de l'UE",
+  "url": "https://op.europa.eu/en/web/cellar/cellar-data",
+  "droits": "https://op.europa.eu/en/web/about-us/legal-notices/publications-office-of-the-european-union-copyright",
+  "licence": "Droits des publications individuelles et tiers a verifier; contenu editorial du site CC BY 4.0",
+  "formats": [
+    "REST",
+    "SPARQL/RDF",
+    "RSS",
+    "Atom"
+  ],
+  "mise_a_jour_affichee": "Non etablie",
+  "acces": "Interfaces documentees; endpoints et pagination non testes",
+  "objet": "Flux de publications, metadonnees institutionnelles, politiques et budgets; distinct de CORDIS et Legifrance."
+}
