@@ -1,0 +1,35 @@
+{
+  "date_observation": "2026-11-17",
+  "statut": "decouverte_documentaire_sans_ingestion",
+  "sources": [
+    {
+      "id": "recherche_data_gouv_mcp",
+      "nom": "Interface MCP du catalogue Recherche Data Gouv",
+      "producteur": "Recherche Data Gouv",
+      "documentation": "https://recherche.data.gouv.fr/fr/page/catalogue-recherche-data-gouv",
+      "point_entree": "https://catalogue.recherche.data.gouv.fr/mcp",
+      "date_page": "2026-10-16",
+      "objet": "interrogation_en_langage_naturel_des_metadonnees_de_donnees_de_recherche",
+      "licence": "a_verifier_par_jeu_et_service",
+      "formats": "MCP annonce; outils et transport non testes",
+      "acces": "configuration publique annoncee; authentification et quotas non testes",
+      "statut": "decouverte_confirmee_par_documentation_officielle; aucune_ingestion_testee",
+      "remarque": "Extension d'interface d'une source déjà enregistrée; éviter un doublon de catalogue."
+    },
+    {
+      "id": "mesr_pcri_projets_laureats",
+      "nom": "PCRI — informations sur les projets lauréats",
+      "producteur": "MESR / Commission européenne",
+      "documentation": "https://data.enseignementsup-recherche.gouv.fr/explore/dataset/fr-esr-all-projects-signed-informations/information/",
+      "date_modification": "2026-09-01",
+      "periode_fin": "2026-05-19",
+      "licence": "Licence Ouverte 2.0 (Etalab) selon la fiche officielle",
+      "cadence": "trois fois par an",
+      "formats": "API Opendatasoft et exports à tester",
+      "acces": "fiche publique; récupération de données non testée",
+      "objet": "projets_finances_participants_subventions_recherche_europeenne",
+      "statut": "decouverte_confirmee_par_fiche_officielle; aucune_ingestion_testee",
+      "remarque": "Complément de granularité au catalogue CORDIS existant; ne pas inférer disponibilité des compétences ni impact causal des financements."
+    }
+  ]
+}
