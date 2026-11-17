@@ -64,14 +64,14 @@ Une [interview de la direction du SIGERLy en mai 2026](https://www.clesdelatrans
 
 | Priorité | Document à demander ou contrôler | Organisme / source | Décision conditionnée |
 | --- | --- | --- | --- |
-| P0 | Bilan régional PACA du 2 décembre 2025, tableaux et compte rendu | Cerema–Ademe / COP régionale / DGEC–CGDD | Déterminer ce qui est déjà mesuré |
-| P0 | Export **agrégé** et daté des stades du portail Mission adaptation | Équipe Reco-co et référents publics | Réconcilier 162 dossiers / 184 collectivités / 200 territoires |
-| P0 | Définitions exactes des taux de passage à l'action et questionnaires | Équipe UrbanVitaliz / SOS Ponts | Vérifier la mesure d'impact avant imitation |
-| P0 | Protocole et mesures anonymisées de Booster Conseil | Accélérema / Cerema / Ademe | Tester l'effet du conseil augmenté par IA |
-| P0 | Signature, réception et résultats de SIGERLy–Cerema | SIGERLy / Cerema | Dépasser la preuve de démonstration |
-| P1 | Documentation des coûts et statuts du réemploi MATEUS | SIGERLy et consortium / FNCCR | Vérifier une généralisation déclarée |
-| P1 | Convention et livrables du marché Périgord–Limousin | Acheteur public / titulaire si attribué | Vérifier prestation et éventuel usage |
-| P1 | Cartographie des autres portails fondés sur Reco-co | Équipe produit / dépôt open source | Éviter de créer une fonction déjà mutualisée |
+| priorité 0 | Bilan régional PACA du 2 décembre 2025, tableaux et compte rendu | Cerema–Ademe / COP régionale / DGEC–CGDD | Déterminer ce qui est déjà mesuré |
+| priorité 0 | Export **agrégé** et daté des stades du portail Mission adaptation | Équipe Reco-co et référents publics | Réconcilier 162 dossiers / 184 collectivités / 200 territoires |
+| priorité 0 | Définitions exactes des taux de passage à l'action et questionnaires | Équipe UrbanVitaliz / SOS Ponts | Vérifier la mesure d'impact avant imitation |
+| priorité 0 | Protocole et mesures anonymisées de Booster Conseil | Accélérema / Cerema / Ademe | Tester l'effet du conseil augmenté par IA |
+| priorité 0 | Signature, réception et résultats de SIGERLy–Cerema | SIGERLy / Cerema | Dépasser la preuve de démonstration |
+| priorité 1 | Documentation des coûts et statuts du réemploi MATEUS | SIGERLy et consortium / FNCCR | Vérifier une généralisation déclarée |
+| priorité 1 | Convention et livrables du marché Périgord–Limousin | Acheteur public / titulaire si attribué | Vérifier prestation et éventuel usage |
+| priorité 1 | Cartographie des autres portails fondés sur Reco-co | Équipe produit / dépôt open source | Éviter de créer une fonction déjà mutualisée |
 
 **Règle de décision** : ne pas construire de nouveau portail public ou un agent de conseil générique avant d'avoir examiné les outils Reco-co, SofIA et Booster Conseil, leurs conditions de réemploi, leurs garanties et leurs limites. Une fonction indépendante pourrait avoir sa place **uniquement sur un besoin résiduel défini** : recherche de capacités rares non couvertes, financement ciblé, traduction de demandes complexes hors périmètre actuel, ou évaluation indépendante des résultats ; aucun de ces déficits n'est encore quantifié.
 

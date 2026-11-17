@@ -30,7 +30,7 @@ Le **bulletin officiel Cerema** recense la **délibération n° 2026-13** du con
 
 Sources : https://www.budget.gouv.fr/documentation/file-download/30943 ; https://www.cerema.fr/fr/actualites/rapport-activite-2025 ; https://www.cerema.fr/fr/cerema ; https://www.cerema.fr/fr/bulletin-officiel ; https://www.cfdt-ufetam.org/cerema-le-premier-conseil-dadministration-detienne-crepon-20-10-2026/ ; https://unsa-developpement-durable.fr/index.php/divers/item/11914-cerema-des-ambitions-pour-les-territoires-mais-toujours-moins-de-moyens
 
-**Hypothèse concurrente P0 :** l'absence de réponse rapide à une demande publique peut provenir d'une *capacité financée insuffisante*, même avec une coordination correcte. Le renforcement de l'opérateur doit être une option comparée à la création d'un nouvel intermédiaire.
+**Hypothèse concurrente priorité 0 :** l'absence de réponse rapide à une demande publique peut provenir d'une *capacité financée insuffisante*, même avec une coordination correcte. Le renforcement de l'opérateur doit être une option comparée à la création d'un nouvel intermédiaire.
 
 ## 3. Lille–OTELO : contrôler un véritable succès de l'interface publique
 
