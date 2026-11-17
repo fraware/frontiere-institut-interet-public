@@ -97,6 +97,15 @@ Une demande de fusion de documentation reste requise pour rendre le suivi durabl
 - **Manifestes, preuves et déploiement :** les états sur `main` restent ceux décrits dans la note du 15 novembre ; aucune reconstruction des corpus ni vérification du service Render courant. Aucun état de feuille de route modifié, aucun « Terminé » déclaré, aucune dépense.
 - **Trois priorités suivantes :** (1) décider séparément du sort des PR automatiques empêchant les publications, en préservant leurs preuves ; (2) faire examiner #686 puis relancer les contrôles propres à #685 et #687 ; (3) valider les manifestes contre des exécutions reproductibles et comparer ensuite le déploiement Render au commit publié.
 
+### 2026-11-17 UTC — Revue d'hygiène des branches et des PR
+
+- **Révision de référence :** [`75998abc37f99bea1c9d1130ae3686458ccd8093`](https://github.com/fraware/frontiere-institut-interet-public/commit/75998abc37f99bea1c9d1130ae3686458ccd8093), intégrant la [PR documentaire #675](https://github.com/fraware/frontiere-institut-interet-public/pull/675) après sept contrôles réussis et absence de conflit. **F-092** est désormais enregistré sur `main`, sans statut « Terminé ».
+- **Inventaire public :** [audit du 17 novembre](AUDIT_HYGIENE_GITHUB_2026_11_17.md) et [instantané machine-lisible des 81 branches et 42 PR ouvertes](../institutionnel/maintenance/inventaire_hygiene_github_2026_11_17.json). Quatorze PR automatiques demeurent ouvertes ; quatre branches sans PR ouverte sont des ancêtres de `main`, une correspond à la tête de #675 fusionnée, 33 autres références restent non qualifiées et conservées.
+- **Réconciliation documentaire :** les mises à jour de l'index de #685 tiennent désormais compte de F-092. La branche #687 conserve les entrées des 14, 15 et 16 novembre ainsi que F-092 grâce à une fusion contrôlée avec `main` ; ses contrôles propres restent à obtenir. Aucune fusion des PR #685 ou #687 n'est revendiquée.
+- **Blocages :** la PR technique #686 attend sa revue spécifique ; onze PR automatiques examinées présentent des exécutions `action_required`, et trois des échecs. `main` demeure signalée non protégée.
+- **Déploiement Render :** non vérifié dans cette revue. **Branches supprimées :** aucune. **États modifiés hors ajout de F-092 :** aucun. **Dépenses nouvelles :** aucune.
+- **Trois priorités :** (1) valider techniquement #686 ; (2) requalifier et intégrer les PR documentaires #685/#687 après contrôles, puis dédoublonner les propositions reprises ; (3) triage des PR automatiques et nettoyage exclusif des branches à redondance prouvée, avec protection de `main`.
+
 ### Modèle pour la prochaine entrée
 
 ```text
