@@ -1,0 +1,1085 @@
+{
+  "version": "2026-11-17-v2",
+  "nature": "inventaire_git_lecture_seule_sans_suppression_ni_fusion",
+  "observation_utc": "2026-11-17",
+  "depot": "fraware/frontiere-institut-interet-public",
+  "reference_main": "db7a31d7cc2e862c0226f44127abdee1d300be16",
+  "main_protegee": false,
+  "pagination_verifiee": "les deux listes ont moins de 100 éléments pour une limite de 100",
+  "compteurs": {
+    "branches": 81,
+    "pr_ouvertes": 40,
+    "pr_automatiques_ouvertes": 14,
+    "branches_sans_pr_ouverte_hors_main": 40,
+    "ancetres_controles": 4,
+    "branche_pr_fusionnee_squash": 3,
+    "branches_non_qualifiees": 33
+  },
+  "branches": [
+    {
+      "nom": "audit/recherches-publiques-historiques-20261008",
+      "sha": "ab7fd463b431e29c24f938945de6c3d129195496",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/beauamp-39578758872-1",
+      "sha": "a99613e5851967e0dd87dcec65b0108cf9813d46",
+      "protegee": false,
+      "pr_ouverte": 638,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/beauamp-38249219365-1",
+      "sha": "da8bfc1d9661da7a7144c94ba09e6cdb140ba2ca",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/besoins-39227783857-1",
+      "sha": "6c5ed1a7d3d64bef5ab0380dd95a436d75daadd3",
+      "protegee": false,
+      "pr_ouverte": 618,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/canaux-39032384643-1",
+      "sha": "7e7d640ca8591056af27fc47340eeba0d8bc404e",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/canaux-39281109733-1",
+      "sha": "2ab179780473ebd7ce06f1b2bf356c4f3921bd46",
+      "protegee": false,
+      "pr_ouverte": 622,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/decp-39578886514-1",
+      "sha": "3e8969cacb75d0bf36544ef50a6f3eab581be164",
+      "protegee": false,
+      "pr_ouverte": 639,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/decp-38649002290-1",
+      "sha": "c24bc1e159dbd18bb581e26c3e8aee5fe1dee6b5",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/deliberations-39932656164-1",
+      "sha": "c4aa41af5a22c515984205074d7bf1d19dfdce1a",
+      "protegee": false,
+      "pr_ouverte": 640,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/dgfip-38649002358-1",
+      "sha": "0b00bd94c90f1707463b32db4251479d04b81e70",
+      "protegee": false,
+      "pr_ouverte": 449,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/dmtg-38737899955-1",
+      "sha": "5177586805ed2a2fa05381477bda598634d1dd6c",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/dmtg-39426451763-1",
+      "sha": "7558038d3c1278a8af7d3349c21313dd028f2253",
+      "protegee": false,
+      "pr_ouverte": 632,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/flux-39281106819-1",
+      "sha": "63c413798d90f177180b25e92df18844f1fc3ad3",
+      "protegee": false,
+      "pr_ouverte": 623,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/flux-38315169092-1",
+      "sha": "94e0596b4d1ecdd59e1bb74d399aec8cc5e1767b",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/pieces-41304300750-1",
+      "sha": "87d38f082eed9385d7f2a58efbe90f9fda6119ab",
+      "protegee": false,
+      "pr_ouverte": 664,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/programmes-38901258363-1",
+      "sha": "caba84191eb81fca5a7249f9f4fcf8f37d1b2abd",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/programmes-39125931835-1",
+      "sha": "0d3df68463b8af77ad694289f3df294327e9c52f",
+      "protegee": false,
+      "pr_ouverte": 601,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/referentiel-38719647476-1",
+      "sha": "7090ab02468563ecbf1ac7df750a0a969dbc7cd6",
+      "protegee": false,
+      "pr_ouverte": 485,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/sonde-38825219533-1",
+      "sha": "935e0c70f37c339bc0420cd493c27157fa89fda7",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/sonde-39034974496-2",
+      "sha": "85db615f1186730aeb879b168a42d010845bd4e8",
+      "protegee": false,
+      "pr_ouverte": 570,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/sources-39552701307-1",
+      "sha": "57951b85caacfc8bae35ad978b275878fceffb2d",
+      "protegee": false,
+      "pr_ouverte": 637,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/surveillance-38716355215-1",
+      "sha": "e0f0f28d918035028cbd2ee1b220b2575081b617",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "automatisation/surveillance-39116073250-1",
+      "sha": "b988f5dd03665c30eaa165f9c8707b3134ab71f5",
+      "protegee": false,
+      "pr_ouverte": 599,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "correctif/render-index-partitions-commande-existante",
+      "sha": "ab12a7a4fb09b5c8b3b09becb2c9264cfb1811f6",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "dependabot/github_actions/actions/checkout-7",
+      "sha": "8e01c056b48452ee56490e6eeed49d9ff2993e27",
+      "protegee": false,
+      "pr_ouverte": 663,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "dependabot/github_actions/actions/download-artifact-8",
+      "sha": "6d6b55077b85b4532d6564223c5f55effd32b72f",
+      "protegee": false,
+      "pr_ouverte": 661,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "dependabot/github_actions/actions/setup-node-7",
+      "sha": "f61bc24b95125f38adf68118a55aafde24f2d24b",
+      "protegee": false,
+      "pr_ouverte": 659,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "dependabot/github_actions/actions/setup-python-7",
+      "sha": "53b287cb83a8b300f61b19dedd2134ef0b6250e5",
+      "protegee": false,
+      "pr_ouverte": 660,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "dependabot/github_actions/actions/upload-artifact-7",
+      "sha": "d51529b61a55c7bc7de851f7b879d5c96da9e3cd",
+      "protegee": false,
+      "pr_ouverte": 662,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "docs/comparateur-philanthropique-2026-11-03",
+      "sha": "afcf56070f2bdfaaf064a4ee06dddb88d785a9e2",
+      "protegee": false,
+      "pr_ouverte": 670,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "docs/financement-preuve-2026-11-07",
+      "sha": "6f2751464140e63b51d5c85ed4a1c0f47ad7aad5",
+      "protegee": false,
+      "pr_ouverte": 684,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "docs/mandat-veille-frontiere-2026-11-14",
+      "sha": "d47e6dfbd89f04b79c7a98e9e5f425d7bbed05c8",
+      "protegee": false,
+      "pr_ouverte": 687,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "docs/qualification-accueil-continuite-2026-11-04",
+      "sha": "ab84ac302d6450738a9068ac0b8d1ac0a9a5a999",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "tete_pr_fusionnee_par_squash",
+      "pr_fusionnee": 671
+    },
+    {
+      "nom": "donnees/approfondissements-v1",
+      "sha": "5db8a5108744749f8c743cf646404e418711709c",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "donnees/inventaire-domaines-publies-20261009",
+      "sha": "f505a7ed6dfade3f8f38051ac184220a67071eff",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "enquete/qualification-deliberations-20261014",
+      "sha": "1176726ddc83137e246578cc010889104d51b6c9",
+      "protegee": false,
+      "pr_ouverte": 407,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "etude-cooperations-territoires-2026-10-29",
+      "sha": "799cf1f8f017aca5ebf71da2586877e1e3592b3f",
+      "protegee": false,
+      "pr_ouverte": 650,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "etude-donnees-associatives-2026-10-30",
+      "sha": "d35775d3e666e84429e2805606040d15e3460fc6",
+      "protegee": false,
+      "pr_ouverte": 655,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "evaluation/categories-et-cas-retrospectifs-v1",
+      "sha": "1013a9aaa42ea26470650205b28207a390bad3a6",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "field-ready/v0.2.0",
+      "sha": "88e849c08611c5871813df547ea5f228c93396d8",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "fix/ci-validation-2026-11-12",
+      "sha": "592a1435674a7703364eae2100bf69a96cc3683c",
+      "protegee": false,
+      "pr_ouverte": 686,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "institutionnel/analyse-annuaire-local-v1",
+      "sha": "c2ec2ff746d797caefdc59a398a57b7295ed1761",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "institutionnel/ingestion-cog-2026-v1",
+      "sha": "e8651214bae22bb102f58655ab3838ef0249e7a9",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "inventaire/editeurs-publics-et-canaux-2026-10-13",
+      "sha": "9058fa16750d7c63d69d72bb999ceaa02eca41c9",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "main",
+      "sha": "db7a31d7cc2e862c0226f44127abdee1d300be16",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "branche_principale",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "maintenance/attester-nettoyage-314-branches-20261017",
+      "sha": "bea41c78e8f10c4ee3482fc0a93abee98d7f8f91",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "ancetre_de_main_controle_2026_11_17",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "maintenance/reprendre-sonde-aife-570-20261017",
+      "sha": "e876cf1dc62e665062dd8cf4bfcbf7d0cdca2ed5",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "maintenance/retablir-actualisations-avant-permission-pr-20261008",
+      "sha": "1ac215ea6ec0c840eda1f5a74b87ad9553893c67",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "recherche/domaines-scientifiques-rnsr-20261008",
+      "sha": "2b69072f79be805043969b1b8ced671d17c58bdb",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "recherche/releve-verifiable-dce-dgac-20261014",
+      "sha": "38d8fe188ae7c7d438d791cc3a27695fe9c7eaeb",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "research/capacites-numeriques-mobilite-2026-11-04",
+      "sha": "b921377bde8f68ec6ac4f57681b596b4faee82d8",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "tete_pr_fusionnee_par_squash",
+      "pr_fusionnee": 675
+    },
+    {
+      "nom": "research/gouvernance-numerique-sources-2026-11-05",
+      "sha": "f2ab2c7772150275a80d56fadbe102d929c7e7e4",
+      "protegee": false,
+      "pr_ouverte": 679,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "research/integration-institutionnelle-2026-11-02",
+      "sha": "c33d453edf5589c962ae33a762862f89448ed837",
+      "protegee": false,
+      "pr_ouverte": 665,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "research/observation-associative-sources-2026-11-06",
+      "sha": "d2f8fc94db96a04e492fdfba4528a2fb780ea4e6",
+      "protegee": false,
+      "pr_ouverte": 682,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "research/rh-numerique-pinum-2026-11-02",
+      "sha": "c5c725fe32bead818fc88fe5fc42bfb9ec2a18bd",
+      "protegee": false,
+      "pr_ouverte": 667,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "travail/hypotheses-boamp-ted-tracables-v1",
+      "sha": "67f52209949bc7d1afe71588860665f8872e1c83",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "travail/recherche-navigateur-statique-v1",
+      "sha": "40f236a1001c272cefe06dfca2c726c707565c2b",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "travail/render-blueprint-disque-v1",
+      "sha": "a28cd4ec5eb144a3cbf4f49f76bfcba802d59d09",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/budgets-recherche-collectivites-2026-11-06",
+      "sha": "da837cd28a93d8d89460bd3565ab2efb4f9f187d",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "tete_pr_fusionnee_par_squash",
+      "pr_fusionnee": 683
+    },
+    {
+      "nom": "veille/catalogues-officiels-2026-10-10",
+      "sha": "2d425368b03491fea2b8612c2dc34a9ec163da80",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/catalogues-officiels-2026-10-11",
+      "sha": "452c1394fe2c9c66f9bd057b540d57a62c02a387",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/catalogues-officiels-2026-10-14",
+      "sha": "49cab9302b9ca8f36c7aaca24ca5e89f189d5ffe",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/catalogues-officiels-2026-10-15",
+      "sha": "ac0a620932f57ad77169d60cb4bab83c138a4820",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/catalogues-officiels-2026-10-16",
+      "sha": "b1840ddf210196ff546977b7b65da65b39d2c096",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/catalogues-officiels-2026-10-17",
+      "sha": "c402dcb107a728f0b7451498eed45e85228b856b",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/catalogues-officiels-2026-10-18-abes",
+      "sha": "faa8b27b7cbd5346b02f87f8ecc2f4a2151d200c",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "ancetre_de_main_controle_2026_11_17",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/catalogues-officiels-2026-10-20",
+      "sha": "5d7af54ea1a705a65f3b7fda4880245d7a4352ba",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/catalogues-officiels-2026-10-21",
+      "sha": "54e024d48eba8209fbac64b617d188db2bc5792c",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "ancetre_de_main_controle_2026_11_17",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/catalogues-officiels-2026-10-22",
+      "sha": "54e024d48eba8209fbac64b617d188db2bc5792c",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "ancetre_de_main_controle_2026_11_17",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/catalogues-officiels-2026-10-23-hceres-onisep",
+      "sha": "32c4110d79b8beeb8476c3bcc834590be7da2a23",
+      "protegee": false,
+      "pr_ouverte": 641,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/catalogues-officiels-2026-10-24-aides-shs",
+      "sha": "10bbfe08cc74e93f6f6f87130d5d398c54cbf39d",
+      "protegee": false,
+      "pr_ouverte": 642,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/catalogues-officiels-2026-10-24-anct-subventions",
+      "sha": "26f4414a214c0643e50defec737e3efb6cb499d0",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/catalogues-officiels-2026-10-25-politiques-doctorat",
+      "sha": "336faa5331e4ad15b8b23f853cd6f2cfb0ff71db",
+      "protegee": false,
+      "pr_ouverte": 643,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/catalogues-officiels-2026-10-27-crb",
+      "sha": "5ff4274007bb0acb3e15ac6ef0276df5dda64a63",
+      "protegee": false,
+      "pr_ouverte": 646,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/catalogues-officiels-2026-10-28-poles-mcp",
+      "sha": "a494e39980f2ca51ce7a285e913e2c88599155ec",
+      "protegee": false,
+      "pr_ouverte": 647,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/catalogues-officiels-2026-10-29-fonds-vert-effectifs",
+      "sha": "5002822bcbd5b559d047fd210f4a8635550adfcd",
+      "protegee": false,
+      "pr_ouverte": 648,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/consolidation-conversation-2026-10-29",
+      "sha": "91547acc6942fa697d19c5b3968a211ffe816f95",
+      "protegee": false,
+      "pr_ouverte": 649,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/consolidation-sources-2026-11-12",
+      "sha": "4499bad8b48faffe2b62d6f7e1c9eb9357886496",
+      "protegee": false,
+      "pr_ouverte": 685,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/infrastructures-inrae-2026-11-05",
+      "sha": "15c5eb81d76349827083df7c03bd2862464bab7f",
+      "protegee": false,
+      "pr_ouverte": 678,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/revue-directrice-2026-10-19",
+      "sha": "5da8a7b6755dd9d4e72bf0e7a5b0b0874496bb09",
+      "protegee": false,
+      "pr_ouverte": null,
+      "qualification": "inconnue_preserver",
+      "pr_fusionnee": null
+    },
+    {
+      "nom": "veille/revue-directrice-2026-10-26-eurostat",
+      "sha": "5688c6435e897189082aa4b77113d0c72ac1e5cd",
+      "protegee": false,
+      "pr_ouverte": 644,
+      "qualification": "pr_ouverte",
+      "pr_fusionnee": null
+    }
+  ],
+  "demandes_fusion_ouvertes": [
+    {
+      "numero": 687,
+      "titre": "Auditer l'hygiène GitHub et harmoniser les 92 travaux FRONTIÈRE",
+      "brouillon": false,
+      "ref_tete": "docs/mandat-veille-frontiere-2026-11-14",
+      "sha_tete": "d47e6dfbd89f04b79c7a98e9e5f425d7bbed05c8",
+      "base": "main",
+      "derniere_activite": "2026-11-17T01:39:10Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/687"
+    },
+    {
+      "numero": 686,
+      "titre": "Rétablir les vérifications Python et Chromium sur GitHub Actions",
+      "brouillon": false,
+      "ref_tete": "fix/ci-validation-2026-11-12",
+      "sha_tete": "592a1435674a7703364eae2100bf69a96cc3683c",
+      "base": "main",
+      "derniere_activite": "2026-11-17T01:38:27Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/686"
+    },
+    {
+      "numero": 685,
+      "titre": "Consolider les 81 sources officielles documentées de FRONTIÈRE",
+      "brouillon": false,
+      "ref_tete": "veille/consolidation-sources-2026-11-12",
+      "sha_tete": "4499bad8b48faffe2b62d6f7e1c9eb9357886496",
+      "base": "main",
+      "derniere_activite": "2026-11-17T01:41:33Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/685"
+    },
+    {
+      "numero": 684,
+      "titre": "Documenter les voies publiques existantes et leurs conditions de financement",
+      "brouillon": true,
+      "ref_tete": "docs/financement-preuve-2026-11-07",
+      "sha_tete": "6f2751464140e63b51d5c85ed4a1c0f47ad7aad5",
+      "base": "main",
+      "derniere_activite": "2026-11-07T20:16:45Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/684"
+    },
+    {
+      "numero": 682,
+      "titre": "Documenter les sources de l'observation associative",
+      "brouillon": true,
+      "ref_tete": "research/observation-associative-sources-2026-11-06",
+      "sha_tete": "d2f8fc94db96a04e492fdfba4528a2fb780ea4e6",
+      "base": "main",
+      "derniere_activite": "2026-11-06T16:44:26Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/682"
+    },
+    {
+      "numero": 679,
+      "titre": "Documentation publique : gouvernance numérique, DNUM et PIXEL 2026",
+      "brouillon": true,
+      "ref_tete": "research/gouvernance-numerique-sources-2026-11-05",
+      "sha_tete": "f2ab2c7772150275a80d56fadbe102d929c7e7e4",
+      "base": "main",
+      "derniere_activite": "2026-11-05T22:40:48Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/679"
+    },
+    {
+      "numero": 678,
+      "titre": "Découverte officielle : infrastructures scientifiques INRAE (sans ingestion)",
+      "brouillon": true,
+      "ref_tete": "veille/infrastructures-inrae-2026-11-05",
+      "sha_tete": "15c5eb81d76349827083df7c03bd2862464bab7f",
+      "base": "main",
+      "derniere_activite": "2026-11-17T01:41:18Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/678"
+    },
+    {
+      "numero": 670,
+      "titre": "Documenter le comparateur philanthropique Break Poverty sur sources publiques",
+      "brouillon": true,
+      "ref_tete": "docs/comparateur-philanthropique-2026-11-03",
+      "sha_tete": "afcf56070f2bdfaaf064a4ee06dddb88d785a9e2",
+      "base": "main",
+      "derniere_activite": "2026-11-03T19:10:00Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/670"
+    },
+    {
+      "numero": 667,
+      "titre": "Documenter les dispositifs RH numériques et les 21 vérifications à conduire",
+      "brouillon": true,
+      "ref_tete": "research/rh-numerique-pinum-2026-11-02",
+      "sha_tete": "c5c725fe32bead818fc88fe5fc42bfb9ec2a18bd",
+      "base": "main",
+      "derniere_activite": "2026-11-02T19:22:50Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/667"
+    },
+    {
+      "numero": 665,
+      "titre": "Documenter l'intégration institutionnelle des compétences",
+      "brouillon": true,
+      "ref_tete": "research/integration-institutionnelle-2026-11-02",
+      "sha_tete": "c33d453edf5589c962ae33a762862f89448ed837",
+      "base": "main",
+      "derniere_activite": "2026-11-02T17:21:34Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/665"
+    },
+    {
+      "numero": 664,
+      "titre": "Actualiser les empreintes des pièces municipales officielles",
+      "brouillon": false,
+      "ref_tete": "automatisation/pieces-41304300750-1",
+      "sha_tete": "87d38f082eed9385d7f2a58efbe90f9fda6119ab",
+      "base": "main",
+      "derniere_activite": "2026-11-01T11:59:53Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/664"
+    },
+    {
+      "numero": 663,
+      "titre": "Bump actions/checkout from 4 to 7",
+      "brouillon": false,
+      "ref_tete": "dependabot/github_actions/actions/checkout-7",
+      "sha_tete": "8e01c056b48452ee56490e6eeed49d9ff2993e27",
+      "base": "main",
+      "derniere_activite": "2026-11-01T02:19:12Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/663"
+    },
+    {
+      "numero": 662,
+      "titre": "Bump actions/upload-artifact from 4 to 7",
+      "brouillon": false,
+      "ref_tete": "dependabot/github_actions/actions/upload-artifact-7",
+      "sha_tete": "d51529b61a55c7bc7de851f7b879d5c96da9e3cd",
+      "base": "main",
+      "derniere_activite": "2026-11-01T02:19:08Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/662"
+    },
+    {
+      "numero": 661,
+      "titre": "Bump actions/download-artifact from 4 to 8",
+      "brouillon": false,
+      "ref_tete": "dependabot/github_actions/actions/download-artifact-8",
+      "sha_tete": "6d6b55077b85b4532d6564223c5f55effd32b72f",
+      "base": "main",
+      "derniere_activite": "2026-11-01T02:19:02Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/661"
+    },
+    {
+      "numero": 660,
+      "titre": "Bump actions/setup-python from 5 to 7",
+      "brouillon": false,
+      "ref_tete": "dependabot/github_actions/actions/setup-python-7",
+      "sha_tete": "53b287cb83a8b300f61b19dedd2134ef0b6250e5",
+      "base": "main",
+      "derniere_activite": "2026-11-01T02:18:56Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/660"
+    },
+    {
+      "numero": 659,
+      "titre": "Bump actions/setup-node from 4 to 7",
+      "brouillon": false,
+      "ref_tete": "dependabot/github_actions/actions/setup-node-7",
+      "sha_tete": "f61bc24b95125f38adf68118a55aafde24f2d24b",
+      "base": "main",
+      "derniere_activite": "2026-11-01T02:18:50Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/659"
+    },
+    {
+      "numero": 655,
+      "titre": "Documenter la faisabilité des données associatives",
+      "brouillon": false,
+      "ref_tete": "etude-donnees-associatives-2026-10-30",
+      "sha_tete": "d35775d3e666e84429e2805606040d15e3460fc6",
+      "base": "main",
+      "derniere_activite": "2026-10-30T17:17:12Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/655"
+    },
+    {
+      "numero": 650,
+      "titre": "Documenter les coopérations scientifiques et leurs comparateurs",
+      "brouillon": true,
+      "ref_tete": "etude-cooperations-territoires-2026-10-29",
+      "sha_tete": "799cf1f8f017aca5ebf71da2586877e1e3592b3f",
+      "base": "main",
+      "derniere_activite": "2026-10-29T18:07:16Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/650"
+    },
+    {
+      "numero": 649,
+      "titre": "Consolider les découvertes documentaires FRONTIÈRE de la conversation",
+      "brouillon": true,
+      "ref_tete": "veille/consolidation-conversation-2026-10-29",
+      "sha_tete": "91547acc6942fa697d19c5b3968a211ffe816f95",
+      "base": "main",
+      "derniere_activite": "2026-11-02T17:08:44Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/649"
+    },
+    {
+      "numero": 648,
+      "titre": "Documenter les projets du Fonds vert et les effectifs d'enseignants-chercheurs",
+      "brouillon": true,
+      "ref_tete": "veille/catalogues-officiels-2026-10-29-fonds-vert-effectifs",
+      "sha_tete": "5002822bcbd5b559d047fd210f4a8635550adfcd",
+      "base": "main",
+      "derniere_activite": "2026-10-29T15:56:32Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/648"
+    },
+    {
+      "numero": 647,
+      "titre": "Documenter les pôles de compétitivité et l'interface MCP Recherche Data Gouv",
+      "brouillon": true,
+      "ref_tete": "veille/catalogues-officiels-2026-10-28-poles-mcp",
+      "sha_tete": "a494e39980f2ca51ce7a285e913e2c88599155ec",
+      "base": "main",
+      "derniere_activite": "2026-10-28T15:20:44Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/647"
+    },
+    {
+      "numero": 646,
+      "titre": "Documenter le catalogue national des collections biologiques CRB (découverte seule)",
+      "brouillon": true,
+      "ref_tete": "veille/catalogues-officiels-2026-10-27-crb",
+      "sha_tete": "5ff4274007bb0acb3e15ac6ef0276df5dda64a63",
+      "base": "main",
+      "derniere_activite": "2026-10-27T15:49:08Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/646"
+    },
+    {
+      "numero": 644,
+      "titre": "Revue directrice du 26 octobre et découverte Eurostat GBARD (sans ingestion)",
+      "brouillon": true,
+      "ref_tete": "veille/revue-directrice-2026-10-26-eurostat",
+      "sha_tete": "5688c6435e897189082aa4b77113d0c72ac1e5cd",
+      "base": "main",
+      "derniere_activite": "2026-10-26T15:24:21Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/644"
+    },
+    {
+      "numero": 643,
+      "titre": "Documenter deux jeux MESRE : politiques de science ouverte et financement doctoral",
+      "brouillon": true,
+      "ref_tete": "veille/catalogues-officiels-2026-10-25-politiques-doctorat",
+      "sha_tete": "336faa5331e4ad15b8b23f853cd6f2cfb0ff71db",
+      "base": "main",
+      "derniere_activite": "2026-10-25T15:39:56Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/643"
+    },
+    {
+      "numero": 642,
+      "titre": "Documenter deux sources officielles complémentaires : aides publiques et laboratoires SHS 2025",
+      "brouillon": true,
+      "ref_tete": "veille/catalogues-officiels-2026-10-24-aides-shs",
+      "sha_tete": "10bbfe08cc74e93f6f6f87130d5d398c54cbf39d",
+      "base": "main",
+      "derniere_activite": "2026-10-24T16:15:08Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/642"
+    },
+    {
+      "numero": 641,
+      "titre": "Documenter trois sources officielles Hcéres et Onisep (découverte seule)",
+      "brouillon": true,
+      "ref_tete": "veille/catalogues-officiels-2026-10-23-hceres-onisep",
+      "sha_tete": "32c4110d79b8beeb8476c3bcc834590be7da2a23",
+      "base": "main",
+      "derniere_activite": "2026-10-23T15:28:27Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/641"
+    },
+    {
+      "numero": 640,
+      "titre": "Repérer les délibérations techniques publiées au format SCDL",
+      "brouillon": false,
+      "ref_tete": "automatisation/deliberations-39932656164-1",
+      "sha_tete": "c4aa41af5a22c515984205074d7bf1d19dfdce1a",
+      "base": "main",
+      "derniere_activite": "2026-10-23T09:33:54Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/640"
+    },
+    {
+      "numero": 639,
+      "titre": "Actualiser les catalogues nationaux de ressources DECP",
+      "brouillon": false,
+      "ref_tete": "automatisation/decp-39578886514-1",
+      "sha_tete": "3e8969cacb75d0bf36544ef50a6f3eab581be164",
+      "base": "main",
+      "derniere_activite": "2026-10-21T09:41:49Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/639"
+    },
+    {
+      "numero": 638,
+      "titre": "Archiver les marchés attribués enrichis publiés quotidiennement",
+      "brouillon": false,
+      "ref_tete": "automatisation/beauamp-39578758872-1",
+      "sha_tete": "a99613e5851967e0dd87dcec65b0108cf9813d46",
+      "base": "main",
+      "derniere_activite": "2026-10-21T09:41:10Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/638"
+    },
+    {
+      "numero": 637,
+      "titre": "Actualiser le catalogue des sources publiques découvertes",
+      "brouillon": false,
+      "ref_tete": "automatisation/sources-39552701307-1",
+      "sha_tete": "57951b85caacfc8bae35ad978b275878fceffb2d",
+      "base": "main",
+      "derniere_activite": "2026-10-21T06:05:14Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/637"
+    },
+    {
+      "numero": 632,
+      "titre": "Actualiser les signatures des publications officielles DMTG",
+      "brouillon": false,
+      "ref_tete": "automatisation/dmtg-39426451763-1",
+      "sha_tete": "7558038d3c1278a8af7d3349c21313dd028f2253",
+      "base": "main",
+      "derniere_activite": "2026-10-20T12:58:50Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/632"
+    },
+    {
+      "numero": 623,
+      "titre": "Actualiser les signaux publics RSS et sociaux officiels",
+      "brouillon": false,
+      "ref_tete": "automatisation/flux-39281106819-1",
+      "sha_tete": "63c413798d90f177180b25e92df18844f1fc3ad3",
+      "base": "main",
+      "derniere_activite": "2026-10-19T15:52:25Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/623"
+    },
+    {
+      "numero": 622,
+      "titre": "Actualiser les éditeurs publics et leurs canaux de publication",
+      "brouillon": false,
+      "ref_tete": "automatisation/canaux-39281109733-1",
+      "sha_tete": "2ab179780473ebd7ce06f1b2bf356c4f3921bd46",
+      "base": "main",
+      "derniere_activite": "2026-10-19T15:52:20Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/622"
+    },
+    {
+      "numero": 618,
+      "titre": "Actualiser les annonces de marchés et les offres publiques",
+      "brouillon": false,
+      "ref_tete": "automatisation/besoins-39227783857-1",
+      "sha_tete": "6c5ed1a7d3d64bef5ab0380dd95a436d75daadd3",
+      "base": "main",
+      "derniere_activite": "2026-10-19T09:18:20Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/618"
+    },
+    {
+      "numero": 601,
+      "titre": "Actualiser les signatures des publications ANR surveillées",
+      "brouillon": false,
+      "ref_tete": "automatisation/programmes-39125931835-1",
+      "sha_tete": "0d3df68463b8af77ad694289f3df294327e9c52f",
+      "base": "main",
+      "derniere_activite": "2026-10-18T12:07:15Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/601"
+    },
+    {
+      "numero": 599,
+      "titre": "Actualiser la surveillance des sources institutionnelles",
+      "brouillon": false,
+      "ref_tete": "automatisation/surveillance-39116073250-1",
+      "sha_tete": "b988f5dd03665c30eaa165f9c8707b3134ab71f5",
+      "base": "main",
+      "derniere_activite": "2026-10-18T09:38:13Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/599"
+    },
+    {
+      "numero": 570,
+      "titre": "Actualiser le relevé borné de marchés JSON AIFE",
+      "brouillon": false,
+      "ref_tete": "automatisation/sonde-39034974496-2",
+      "sha_tete": "85db615f1186730aeb879b168a42d010845bd4e8",
+      "base": "main",
+      "derniere_activite": "2026-10-17T17:18:10Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/570"
+    },
+    {
+      "numero": 485,
+      "titre": "Actualiser le référentiel administratif et territorial",
+      "brouillon": false,
+      "ref_tete": "automatisation/referentiel-38719647476-1",
+      "sha_tete": "7090ab02468563ecbf1ac7df750a0a969dbc7cd6",
+      "base": "main",
+      "derniere_activite": "2026-10-15T10:23:42Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/485"
+    },
+    {
+      "numero": 449,
+      "titre": "Actualiser le premier lot de marchés XML DGFiP",
+      "brouillon": false,
+      "ref_tete": "automatisation/dgfip-38649002358-1",
+      "sha_tete": "0b00bd94c90f1707463b32db4251479d04b81e70",
+      "base": "main",
+      "derniere_activite": "2026-10-14T22:38:53Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/449"
+    },
+    {
+      "numero": 407,
+      "titre": "Qualifier les onze pistes de délibérations sans attribuer d'usages non prouvés",
+      "brouillon": true,
+      "ref_tete": "enquete/qualification-deliberations-20261014",
+      "sha_tete": "1176726ddc83137e246578cc010889104d51b6c9",
+      "base": "main",
+      "derniere_activite": "2026-10-14T16:42:11Z",
+      "url": "https://github.com/fraware/frontiere-institut-interet-public/pull/407"
+    }
+  ],
+  "controles_provenance": [
+    "https://api.github.com/repos/fraware/frontiere-institut-interet-public/branches",
+    "https://api.github.com/repos/fraware/frontiere-institut-interet-public/pulls?state=open",
+    "https://github.com/fraware/frontiere-institut-interet-public/pull/675",
+    "https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43915079137",
+    "https://github.com/fraware/frontiere-institut-interet-public/pull/671",
+    "https://github.com/fraware/frontiere-institut-interet-public/pull/683"
+  ],
+  "notes": [
+    "Le présent instantané annule les décomptes du même fichier en version v1 (42 PR). Les SHAs et références proviennent des API GitHub indiquées.",
+    "Quatre ancêtres de main ont été contrôlés par comparaison ahead_by=0 avant les fusions documentaires ; aucune suppression de branche effectuée.",
+    "Trois branches conservent les têtes exactes de PR intégrées par squash : #675, #671 et #683 ; ces commits ne sont pas nécessairement ancêtres de main.",
+    "Les 33 autres branches sans PR ouverte sont conservées par défaut.",
+    "Les PR ouvertes et les contrôles ne constituent pas un inventaire de contenu métier ingéré."
+  ]
+}

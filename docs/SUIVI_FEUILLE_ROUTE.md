@@ -1,6 +1,6 @@
 # FRONTIÈRE — Journal des revues de la feuille de route
 
-**Document de suivi :** [feuille de route directrice et 92 travaux](FEUILLE_DE_ROUTE_DIRECTRICE.md). Ce journal est un historique daté de vérifications et de décisions, pas un compte rendu automatique de succès. Les révisions de la feuille de route conservent leurs identifiants stables `F-001` à `F-091`.
+**Document de suivi :** [feuille de route directrice et 92 travaux](FEUILLE_DE_ROUTE_DIRECTRICE.md). Ce journal est un historique daté de vérifications et de décisions, pas un compte rendu automatique de succès. Les révisions de la feuille de route conservent leurs identifiants stables `F-001` à `F-092`.
 
 ## Méthode de revue hebdomadaire
 
@@ -66,6 +66,48 @@ Une demande de fusion de documentation reste requise pour rendre le suivi durabl
 - **États des jalons antérieurs :** inchangés ; F-092 demeure « En cours » jusqu'aux dossiers de cas, à la vérification contradictoire et à la décision étayée.
 - **Trois priorités :** (1) examiner les trois trajectoires ministérielles sur pièces ; (2) documenter des mobilités abouties et non abouties ; (3) présélectionner des achats spécialisés avec cas témoins.
 - **Dépenses nouvelles :** aucune.
+
+### 2026-11-14 UTC — Audit documentaire exceptionnel des sources et contrôles GitHub
+
+- **Révision de `main` observée :** [`b34cb3542385c6a759fe5fc56fdb640721f509e5`](https://github.com/fraware/frontiere-institut-interet-public/commit/b34cb3542385c6a759fe5fc56fdb640721f509e5).
+- **Documents de preuve proposés :** [état détaillé du 14 novembre](ETAT_VEILLE_GITHUB_2026_11_14.md) et [mandat de veille avec échéances](MANDAT_VEILLE_SOURCES_ET_COMPLEMENTS_2026_11_14.md). Leur présence dans cette PR ne signifie pas fusion dans `main`.
+- **Sources :** 15 références dans `sources_v1.json`, 23 catalogues sur `main` ; consolidation à 81 identifiants proposée dans la [PR #685](https://github.com/fraware/frontiere-institut-interet-public/pull/685), toujours ouverte. Aucune ingestion métier supplémentaire établie.
+- **Contrôles :** [CI #685](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43262189427) en échec ; [CI #686](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43262645623) avec sept jobs réussis, PR technique non fusionnée. Quatre exécutions de publication automatiques de `main` en échec le 14 novembre ; échecs de publication, pas de collecte métier démontrés.
+- **Nouvelle pièce publique :** [article d'Alexandre Pointier, 3 novembre 2026](https://legrandcontinent.eu/fr/2026/11/03/la-france-a-besoin-dune-revolution-bureaucratique-lia-pourrait-la-rendre-possible/), directement confirmé ; étude d'architecture à conduire, sans présumer une politique adoptée.
+- **Manifestes et Render :** aucune reconstruction indépendante des manifestes ; service Render non examiné faute d'espace de travail identifié.
+- **États modifiés :** aucun, et aucun jalon déclaré « Terminé ». **Dépenses nouvelles :** aucune.
+- **Trois priorités :** (1) revue technique et décision contrôlée sur #686 ; (2) relance des contrôles de #685 et réconciliation de #682 ; (3) diagnostic des échecs de publication, contrôle des manifestes et rapprochement Render–GitHub après identification autorisée.
+
+### 2026-11-15 UTC — Contrôle ciblé MCP et fraîcheur des publications
+
+- **Révision de `main` observée :** [`b34cb3542385c6a759fe5fc56fdb640721f509e5`](https://github.com/fraware/frontiere-institut-interet-public/commit/b34cb3542385c6a759fe5fc56fdb640721f509e5).
+- **Note documentaire nouvelle :** [interface MCP, manifestes, causes des échecs et déploiement non vérifié](CONTROLE_MCP_ET_FRAICHEUR_VEILLE_2026_11_15.md). L'interface MCP est déjà dans le périmètre de la source `recherche_data_gouv` ; aucun téléchargement ou essai d'ingestion supplémentaire établi.
+- **Contrôles :** [diagnostic 43684985948](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43684985948) : retard des dix relevés de `main` ; les dossiers institutionnels accusent 740,4 heures (seuil 72 heures). Les exécutions [ANR 43726595062](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43726595062), [DMTG 43727176372](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43727176372) et [surveillance 43715306954](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43715306954) réussissent leurs vérifications indiquées dans les journaux, puis rencontrent un refus de publication lié à une PR déjà ouverte pour la même source.
+- **Échec de collecte avéré et distinct :** [découverte scientifique 43691593769](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43691593769), aucune page officielle reçue lors de l'essai examiné ; la publication a aussi été refusée.
+- **État des fusions :** PR #685, #686 et #687 toujours ouvertes à la date du relevé. Aucune fusion effectuée dans cette revue.
+- **Render :** absence de vérification du déploiement actuel ; confirmation préalable de l'espace Render nécessaire. **États modifiés :** aucun. **Dépenses nouvelles :** aucune.
+- **Trois priorités :** (1) triage des propositions automatiques bloquantes par source ; (2) revue technique de #686 puis nouveaux contrôles de #685 et #687 ; (3) contrôle et réconciliation des dix manifestes avant rapprochement Render–GitHub.
+
+### 2026-11-16 — Revue hebdomadaire de la veille (observations publiées jusqu'au 17 novembre UTC)
+
+- **Révision de `main` examinée :** [`b34cb3542385c6a759fe5fc56fdb640721f509e5`](https://github.com/fraware/frontiere-institut-interet-public/commit/b34cb3542385c6a759fe5fc56fdb640721f509e5), inchangée au dernier contrôle. La date du titre désigne le lundi de référence ; certaines exécutions observées sont horodatées le 17 novembre en UTC.
+- **Rectification et nouvelle vérification publique :** [note MCP et fraîcheur, actualisée le 16 novembre](CONTROLE_MCP_ET_FRAICHEUR_VEILLE_2026_11_15.md). Guide officiel du catalogue Recherche Data Gouv mis à jour le **4 septembre**, et non le 29 octobre. [Fiche Insee Associations 2024](https://www.insee.fr/fr/metadonnees/source/operation/s2229/produits) datée du **16 novembre 2026**, sans nouveau produit associé établi dans le contenu consulté ; aucune publication de résultats statistiques ou ingestion n'est attribuée à cette fiche.
+- **Demandes de fusion :** [#685](https://github.com/fraware/frontiere-institut-interet-public/pull/685) (81 catalogues proposés), [#686](https://github.com/fraware/frontiere-institut-interet-public/pull/686) (correctif technique) et [#687](https://github.com/fraware/frontiere-institut-interet-public/pull/687) (journal et mandat) toujours ouvertes. Le [contrôle de #687](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43740257350) a échoué ; aucune fusion autorisée dans cet état.
+- **Collecte et publication :** [exécution de découverte 43973987919](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43973987919) : aucune page officielle reçue par le collecteur scientifique ; publication également refusée en raison d'une PR de même source déjà ouverte. [Contrôle transversal 43965220084](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43965220084) : nouveau dépassement des seuils de fraîcheur des relevés sur `main`. Les données des anciennes PR ne sont pas assimilées à un état à jour de `main`.
+- **Manifestes, preuves et déploiement :** les états sur `main` restent ceux décrits dans la note du 15 novembre ; aucune reconstruction des corpus ni vérification du service Render courant. Aucun état de feuille de route modifié, aucun « Terminé » déclaré, aucune dépense.
+- **Trois priorités suivantes :** (1) décider séparément du sort des PR automatiques empêchant les publications, en préservant leurs preuves ; (2) faire examiner #686 puis relancer les contrôles propres à #685 et #687 ; (3) valider les manifestes contre des exécutions reproductibles et comparer ensuite le déploiement Render au commit publié.
+
+### 2026-11-17 UTC — Revue d'hygiène des branches et des PR
+
+- **Révision de référence :** [`75998abc37f99bea1c9d1130ae3686458ccd8093`](https://github.com/fraware/frontiere-institut-interet-public/commit/75998abc37f99bea1c9d1130ae3686458ccd8093), intégrant la [PR documentaire #675](https://github.com/fraware/frontiere-institut-interet-public/pull/675) après sept contrôles réussis et absence de conflit. **F-092** est désormais enregistré sur `main`, sans statut « Terminé ».
+- **Autres fusions documentaires contrôlées :** [#671](https://github.com/fraware/frontiere-institut-interet-public/pull/671) (grille méthodologique d'accueil, sept jobs réussis ; commit `bca6c5c15aecb93d2667faaabad140b9872070f1`) et [#683](https://github.com/fraware/frontiere-institut-interet-public/pull/683) (budgets CollTerr, sept jobs réussis ; commit `db7a31d7cc2e862c0226f44127abdee1d300be16`). Aucune donnée métier supplémentaire ingérée.
+- **Inventaire public actualisé :** [audit du 17 novembre](AUDIT_HYGIENE_GITHUB_2026_11_17.md) et [instantané de 81 branches / 40 PR ouvertes](../institutionnel/maintenance/inventaire_hygiene_github_2026_11_17.json). Quatorze PR automatiques restent ouvertes ; quatre branches sans PR ouverte sont des ancêtres de `main`, trois correspondent aux têtes des PR #675, #671 et #683 fusionnées, 33 autres références restent non qualifiées et conservées.
+- **Contrôle post-fusion de main :** [CI 43996077099](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43996077099) en échec : deux tests de rédaction publique sur Python 3.11/3.12 et installation Chromium sous Ubuntu 26.04. L'intégration de #675 ne constitue pas une validation de la chaîne globale ; correctif technique #686 à examiner.
+- **Réconciliation documentaire :** les mises à jour de l'index de #685 tiennent désormais compte de F-092. La branche #687 conserve les entrées des 14, 15 et 16 novembre ainsi que F-092 grâce à une fusion contrôlée avec `main` ; ses contrôles propres restent à obtenir. Aucune fusion des PR #685 ou #687 n'est revendiquée.
+- **Blocages :** la PR technique #686 attend sa revue spécifique ; onze PR automatiques examinées présentent des exécutions `action_required`, et trois des échecs. `main` demeure signalée non protégée.
+- **Correction documentaire supplémentaire :** fiche INRAE du 21 juillet 2026 revérifiée ; date rectifiée dans #678 et #685, sans essai d'ingestion.
+- **Déploiement Render :** non vérifié dans cette revue. **Branches supprimées :** aucune. **États modifiés hors ajout de F-092 :** aucun. **Dépenses nouvelles :** aucune.
+- **Trois priorités :** (1) valider techniquement #686 ; (2) requalifier et intégrer les PR documentaires #685/#687 après contrôles, puis dédoublonner les propositions reprises ; (3) triage des PR automatiques et nettoyage exclusif des branches à redondance prouvée, avec protection de `main`.
 
 ### Modèle pour la prochaine entrée
 
