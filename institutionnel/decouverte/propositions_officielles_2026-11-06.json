@@ -1,0 +1,63 @@
+{
+  "date_verification": "2026-11-06",
+  "nature": "decouverte_documentaire_uniquement",
+  "ingestion_testee": false,
+  "comparaison": {
+    "registres": [
+      "institutionnel/sources_v1.json (main)",
+      "institutionnel/decouverte/catalogues_officiels_v1.json (main)",
+      "institutionnel/decouverte/catalogues_officiels_v1.json (PR #649)"
+    ],
+    "deduplication": "Aucun identifiant ni intitulé correspondant dans les registres examinés; vérification de contenu des autres PR non exhaustive."
+  },
+  "sources": [
+    {
+      "id": "mesre_collterr_budget_recherche_enseignement_superieur",
+      "nom": "Budgets des collectivités territoriales pour la recherche, le transfert de technologie et l'enseignement supérieur",
+      "producteur": "MESRE — SIES",
+      "documentation": "https://www.data.gouv.fr/datasets/budgets-des-collectivites-territoriales-en-faveur-de-la-recherche-et-du-transfert-de-technologie-r-t-de-lenseignement-superieur-et-de-la-vie-etudiante-es-ve",
+      "licence": "Licence Ouverte 2.0",
+      "date_mise_a_jour_fiche": "2026-09-09",
+      "formats_documentes": [
+        "CSV",
+        "JSON",
+        "PDF (documentation)"
+      ],
+      "acces": "Téléchargement public via data.gouv.fr, publication source portail MESRE; API Explore v2.1 annoncée, non testée",
+      "objet": "Ventilation des budgets territoriaux R&T et ES&VE par région, catégorie de collectivité et opération",
+      "limites": "Enquête biennale CollTerr : budgets réalisés des trois années antérieures et prévisions de l'année courante. Prévisions et réalisations à distinguer. Ne mesure ni impact ni causalité.",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "verification": "Fiches officielles consultées le 2026-11-06; aucun téléchargement des fichiers métiers, aucun test de disponibilité API ni de conformité de schéma."
+    },
+    {
+      "id": "mesre_collterr_budget_cper_poles_agregats",
+      "nom": "Budgets territoriaux de recherche et enseignement supérieur : agrégats et cadres CPER, pôles, international et privé",
+      "producteur": "MESRE — SIES",
+      "documentation": "https://www.data.gouv.fr/datasets/budgets-des-collectivites-territoriales-en-faveur-de-la-recherche-et-du-transfert-de-technologie-r-t-de-lenseignement-superieur-et-de-la-vie-etudiante-es-ve-agregats-et-montants-inscrits-dans-des-cadres-specifiques-cper-poles-de-competitivite-enseignement",
+      "licence": "Licence Ouverte 2.0",
+      "date_mise_a_jour_fiche": "2026-09-09",
+      "formats_documentes": [
+        "CSV",
+        "JSON",
+        "PDF (documentation)"
+      ],
+      "acces": "Téléchargement public via data.gouv.fr, publication source portail MESRE; API Explore v2.1 annoncée, non testée",
+      "objet": "Montants inscrits dans des cadres spécifiques, dont CPER et pôles de compétitivité, avec agrégats",
+      "limites": "Complément du premier jeu CollTerr : ne pas additionner ses montants aux totaux du jeu principal sans contrôle des périmètres; prévisions distinctes des dépenses réalisées.",
+      "statut": "decouverte_documentaire_uniquement",
+      "ingestion_testee": false,
+      "verification": "Fiches officielles consultées le 2026-11-06; aucun téléchargement des fichiers métiers, aucun test de disponibilité API ni de conformité de schéma."
+    }
+  ],
+  "interface_associee": {
+    "documentation": "https://www.data.gouv.fr/dataservices/explore-api-v2-68",
+    "base_url": "https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/",
+    "statut": "interface_documentee_non_testee"
+  },
+  "suite": [
+    "Télécharger un échantillon CSV et JSON et vérifier les schémas, unités, millésimes et licences de ressources.",
+    "Identifier les identifiants de datasets Opendatasoft et tester l'API avec pagination.",
+    "Documenter la distinction prévisionnel/réalisé et les risques de double comptage CPER."
+  ]
+}
