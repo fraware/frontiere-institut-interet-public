@@ -11,6 +11,8 @@ La [PR documentaire #675](https://github.com/fraware/frontiere-institut-interet-
 
 Avant fusion, sa branche était sans conflit et les **sept jobs de la procédure de vérification 41868442983** avaient abouti avec succès (Python 3.11/3.12, Chromium, index CSP, index BOAMP–DECP, index documentaire, conteneur). La PR modifie exclusivement cinq fichiers documentaires, dont la feuille de route, qui contient maintenant **F-092**. Elle ne déclare aucun cas d'intervention scientifique empiriquement terminé et ne déploie aucun nouveau collecteur.
 
+**Contrôle après fusion :** la [procédure sur `main` 43996077099](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43996077099) s'est terminée en **échec**, malgré les sept contrôles réussis de la PR #675 : les jobs Python 3.11 et Python 3.12 échouent sur deux contrôles de rédaction publique (les 1 266 autres tests Python 3.12 passent), et Chromium échoue car Playwright ne prend pas en charge `ubuntu26.04-x64`. Le correctif est précisément proposé dans [#686](https://github.com/fraware/frontiere-institut-interet-public/pull/686), qui a sept contrôles réussis **sur sa propre branche**. **L'intégration de #675 est effective, sans preuve que la CI de `main` soit actuellement saine.** Le résultat n'autorise ni désactivation des contrôles ni fusion de #685/#687 sans exécutions propres réussies.
+
 ## 2. Inventaire observé
 
 | Objet | Nombre | Qualification |
