@@ -17,7 +17,7 @@ Le projet traite chaque situation comme un problème de capacité. La ressource 
 
 ## Feuille de route et état d'exécution
 
-La [feuille de route directrice](docs/FEUILLE_DE_ROUTE_DIRECTRICE.md) réunit **91 étapes identifiées**, réparties entre fiabilité documentaire, couverture des sources, reconstruction institutionnelle, besoins publics, anticipation, recherche des ressources, infrastructure durable et validation. Les états d'avancement ne valent que s'ils sont appuyés par des preuves vérifiables.
+La [feuille de route directrice](docs/FEUILLE_DE_ROUTE_DIRECTRICE.md) réunit **92 étapes identifiées**, réparties entre fiabilité documentaire, couverture des sources, reconstruction institutionnelle, besoins publics, anticipation, recherche des ressources, infrastructure durable et validation. Les états d'avancement ne valent que s'ils sont appuyés par des preuves vérifiables.
 
 Le [journal des revues](docs/SUIVI_FEUILLE_ROUTE.md) consigne les changements de décision et de statut chaque semaine, ainsi qu'après les contributions substantielles. Le [premier état transversal des archives, index et publication](docs/ETAT_INITIAL_CHAINE_DOCUMENTAIRE_2026-10-16.md) identifie les différences entre données archivées, moteurs locaux et version publiée sur Render.
 

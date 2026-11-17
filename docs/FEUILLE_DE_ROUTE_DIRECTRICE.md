@@ -184,6 +184,14 @@ Construire une infrastructure française permettant d'identifier les institution
 | F-090 | À faire | Sélectionner les premiers partenaires selon des preuves d'utilité | Cas, autorisations, responsabilités et limites définis |
 | F-091 | À faire | Statuer sur construire, cibler, réorienter, prolonger ou arrêter | Décision datée, contradictoire et liée aux preuves |
 
+### Phase 9 — Comparaison des voies établies de mobilisation des compétences
+
+**Horizon indicatif :** novembre–décembre 2026. **Résultat de phase :** décisions appuyées sur des cas contrastés, prenant en compte les mécanismes publics existants.
+
+| ID | État au lancement | Action | Preuve minimale d'achèvement |
+| --- | --- | --- | --- |
+| F-092 | En cours | Comparer sur des cas réels la réinternalisation, les mobilités, les achats spécialisés, les réserves et la coopération scientifique ; documenter la fonction complémentaire éventuelle | Trois épisodes contrastés, coûts et délais vérifiés, solution publique de référence, relecture contradictoire, décision étayée ; voir [suivi n° 676](https://github.com/fraware/frontiere-institut-interet-public/issues/676) |
+
 ## Ordre des premières contributions
 
 1. **Contribution 1 — État de référence transversal** : réviser le [premier relevé documenté](ETAT_INITIAL_CHAINE_DOCUMENTAIRE_2026-10-16.md), reproduire les deux bases et les requêtes exactes, et fixer les divergences observables.
