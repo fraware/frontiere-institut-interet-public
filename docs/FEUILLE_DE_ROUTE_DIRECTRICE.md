@@ -10,7 +10,7 @@ Construire une infrastructure française permettant d'identifier les institution
 
 ## Règles de gestion
 
-- **Identifiant permanent :** chaque travail possède un numéro `F-001` à `F-091`. Ne pas le réaffecter même en cas d'abandon. Pour de nouveaux travaux, attribuer `F-092` et suivants sans renuméroter les anciens.
+- **Identifiant permanent :** les travaux actuellement identifiés portent les numéros `F-001` à `F-092`. Ne jamais réaffecter un identifiant, même en cas d'abandon. Pour de nouveaux travaux, attribuer `F-093` et suivants sans renuméroter les anciens.
 - **États autorisés :** `À faire`, `En cours`, `Bloqué`, `Terminé`, `Abandonné`. `Terminé` exige une preuve (révision Git, procédure réussie et, si nécessaire, vérification sur données réelles ou institutionnelle). Une réalisation partielle ne suffit pas.
 - **Traçabilité :** inscrire dans le [journal des revues](SUIVI_FEUILLE_ROUTE.md) la date UTC, la révision observée, les changements, les références GitHub et les inconnues. Documenter toute modification de priorité, d'échéance ou de critère.
 - **Cadence :** revue **hebdomadaire le lundi**, après chaque contribution substantielle et lors de tout incident critique. Une revue sans changement significatif peut conclure « aucun changement ». Les mises à jour passent par une demande de fusion validée ; aucune réécriture automatique silencieuse.
@@ -28,7 +28,7 @@ Construire une infrastructure française permettant d'identifier les institution
 | J4 | Janvier 2027 | Évaluation historique anti-fuite et premières hypothèses prospectives préenregistrées |
 | J5 | Premier semestre 2027 | Recherche de capacités et infrastructure durables, sous réserve des mesures |
 
-## Suivi exhaustif des 91 travaux
+## Suivi exhaustif des 92 travaux
 
 ### Phase 0 — Stabiliser la chaîne existante
 
