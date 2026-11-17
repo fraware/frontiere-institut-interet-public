@@ -15,6 +15,8 @@ Avant fusion, sa branche était sans conflit et les **sept jobs de la procédure
 
 **Contrôle après la fusion #675 :** la [procédure sur `main` 43996077099](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43996077099) s'est terminée en **échec**, malgré les sept contrôles réussis de la PR #675 : les jobs Python 3.11 et Python 3.12 échouent sur deux contrôles de rédaction publique (les 1 266 autres tests Python 3.12 passent), et Chromium échoue car Playwright ne prend pas en charge `ubuntu26.04-x64`. Le correctif est précisément proposé dans [#686](https://github.com/fraware/frontiere-institut-interet-public/pull/686), qui a sept contrôles réussis **sur sa propre branche**. **L'intégration de #675 est effective, sans preuve que la CI de `main` soit actuellement saine.** Le résultat n'autorise ni désactivation des contrôles ni fusion de #685/#687 sans exécutions propres réussies.
 
+**Dernier contrôle de `main` :** la [CI 43997404230](https://github.com/fraware/frontiere-institut-interet-public/actions/runs/43997404230) associée au commit `db7a31d7cc2e862c0226f44127abdee1d300be16` a également **échoué**. Ainsi, trois PR documentaires ont été intégrées avec leurs contrôles de branche réussis, tandis que la procédure globale de la branche principale demeure défaillante. Ne pas assimiler les fusions à une restauration de santé du dépôt ; la correction technique #686 reste une dépendance vérifiable.
+
 ## 2. Inventaire observé
 
 | Objet | Nombre | Qualification |
